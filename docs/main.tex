@@ -1,0 +1,89 @@
+\documentclass[12pt,a4paper,draft,headsepline]{scrreprt}
+\usepackage[latin1]{input enc}
+\usepackage{german, graphicx}
+\usepackage[pdftitle={XChat Dokumentation 1.2 - deutsch},colorlinks]{hyperref}
+\usepackage{latexsym}
+\usepackage[refpage,german]{nomencl} %glossary
+% aufruf von makeindex:
+% makeindex x-chat-uebersetzung.glo -s nomencl.ist -o x-chat-uebersetzung.gls
+\pagestyle{headings}
+
+\date{\today}
+\author{R\'oman Joost}
+\title{XChat Dokumentation 1.8.6 - deutsch}
+\makeglossary
+
+\begin{document}
+\maketitle
+
+\Huge{Vorwort}
+\index{Vorwort}
+\\
+\normalsize
+\par Das Dokument versucht XChat zu dokumentieren und eine allgemeine Einführung in das IRC zu geben. Große Teile des 1. Abschnitts wurden aus dem \textbf{alt.irc} FAQ genommen. Vielen Dank an die Autoren. Sie haben noch was gut.
+
+\textsf{Beim Übersetzen der gesamten Dokumentation musste ich feststellen, daß es noch erhebliche Unterschiede zwischen den XChat Versionen und der englischen Dokumentation gibt. Ich habe versucht, mich sowohl an die englische Originalfassung zu halten, als auch schon auf Änderungen in den neueren Versionen einzugehen. Die meisten beschriebenen Einstellungen und Funktionen beziehen sich auf Unix-kompatible Betriebssysteme, da ich selber kaum noch mit Windows arbeite. Dennoch habe ich versucht, die größten Änderungen die mir im XChat für Windows aufgefallen sind, zu dokumentieren. 
+Ich hoffe, daß jeder, der in diese Dokumentation schaut, den XChat besser bedienen kann und auch das IRC ein wenig mehr versteht. 
+Alle, die diese Dokumentation verbessern wollen, sollten sich an die Autoren, wie in Kapitel (\ref{sec:Autoren}) beschrieben, wenden. Jeder ist Herzlich Willkommen und kann seine Verbesserungen mit einbringen.\\
+\\Viel Spass beim lesen dieser Dokumentation.}
+\\
+\\
+\textsf{Roman Joost}\\
+
+\vspace{4cm} Danksagung \\ \scriptsize \par Besonderen Dank geht an Marika
+Wolff, die mir vor allem bei der anfänglichen Übersetzung sehr geholfen hat,
+die vielen Fehler zu finden.  Desweiteren geht auch Dank an Rolf Eike Beer und
+allen anderen, die mir tatkräftig bei dieser Arbeit geholfen haben. Ohne diese
+Hilfe wäre die Arbeit sehr viel schwerer und Zeitaufwendiger gewesen.
+
+\vspace{1cm}
+Copyright \copyright \ 2003 by Roman Joost $<$roman@bromeco.de$>$\index{Lizenz}
+\\
+Es wird die Erlaubnis gegeben dieses Dokument zu kopieren, verteilen und/oder
+zu verändern unter den Bedingungen der GNU Free Documentation License,
+Version 1.1 oder einer späteren, von der Free Software Foundation
+veröffentlichten Version; mit keinen Unveränderlichen Abschnitten,
+keine Vorderseitentexte, und keine Rückseitentexte. Eine Kopie dieser Lizenz
+kann unter Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA 
+bezogen werden, wie auch im Internet unter: \texttt{http://www.gnu.org}
+
+\normalsize
+\tableofcontents
+
+\input{schnellstart}
+\part{XChat 1.8.X}
+\input{irc}
+\input{bekocosta}
+\input{benutzeroberflaeche}
+\input{einstellungen}
+\input{fenster}
+\input{jetztgehtslos}
+\part{XChat 2.X}
+\input{xchat2}
+
+\part{XChat für Windows}
+\input{windows}
+\input{support}
+
+\appendix
+\include{appendix}
+
+\printglossary
+
+\begin{thebibliography}{99}
+\bibitem{1}
+\textit{IRC Einführung,} ftp://cs-pub.bu.edu/irc/support
+\bibitem{2}
+\textit{IRC Protokoll, RFC 1459,} ftp://cs-pub.bu.edu/irc/support/rfc1459.txt
+\bibitem{3}
+\textit{Infos rund um IRC (inkl. FAQ),} http://www.irchelp.org
+\bibitem{4}
+\textit{Deutsche Infos der FU Berlin,} http://irc.fu-berlin.de
+\bibitem{5}
+\textit{XChat Dokumentation-englisch,} http://www.xchat.org/docs/xchat.html
+\bibitem{6}
+\textit{XChat Dokumentation-französisch,} http://darktigrou.free.fr/
+
+\end{thebibliography}
+
+\end{document}
