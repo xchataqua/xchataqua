@@ -16,7 +16,7 @@ TCLOUTPUT = xctcl.dll
 CC = cl
 LINK = link
 CFLAGS = /MD /G5 /O1 /nologo /DWIN32 /DG_DISABLE_CAST_CHECKS
-LIBS = $(LIBS) wsock32.lib dirent.lib gdi32.lib shell32.lib user32.lib advapi32.lib
+LIBS = $(LIBS) wsock32.lib dirent.lib gdi32.lib shell32.lib user32.lib advapi32.lib imm32.lib ole32.lib
 
 !IFDEF OPENSSL
 CFLAGS = $(CFLAGS) /DUSE_OPENSSL
