@@ -6,6 +6,9 @@ PROG = xchat.exe
 
 all: $(PROG)
 
+mmx_cmod.o: mmx_cmod.S
+	gcc -DUNDERSCORE_SYMBOLS -c mmx_cmod.S
+
 .c.obj:
 	$(CC) $(CFLAGS) $(GLIB) $(GTK) /c $<
 

@@ -1,6 +1,7 @@
 ### EDIT THESE ################################################
 #OPENSSL = YES
 #IPV6 = YES
+#MMX = YES
 GLIB = editme
 GTK = editme
 LIBS = editme
@@ -12,8 +13,8 @@ PERLPATH = C:\PERL\LIB\CORE
 PERLLIB = perl58
 PERLOUTPUT = xcperl.dll
 
-PYTHONPATH = C:\PYTHON22
-PYTHONLIB = python22
+PYTHONPATH = C:\PYTHON23
+PYTHONLIB = python23
 PYTHONOUTPUT = xcpython.dll
 
 TCLPATH = C:\TCL
@@ -88,3 +89,8 @@ textgui.obj \
 urlgrab.obj \
 userlistgui.obj \
 xtext.obj
+
+!IFDEF MMX
+FEGTK_OBJECTS = $(FEGTK_OBJECTS) mmx_cmod.o
+CFLAGS = $(CFLAGS) -DUSE_MMX
+!ENDIF
