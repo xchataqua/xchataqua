@@ -1,29 +1,28 @@
 ### EDIT THESE ################################################
 #OPENSSL = YES
-#PERL = YES
-SYSLIBS = wsock32.lib dirent.lib gdi32.lib shell32.lib user32.lib advapi32.lib
 GLIB = editme
 GTK = editme
-LIBS = $(SYSLIBS) editme
-PERLPATH = C:\PERL\LIB\CORE
-PERLLIB = perl56.lib
+LIBS = editme
 ###############################################################
+
+PERLPATH = C:\PERL\LIB\CORE
+PERLLIB = perl56
+PERLOUTPUT = xcperl.dll
+
+TCLPATH = C:\TCL
+TCLLIB = tcl84
+TCLOUTPUT = xctcl.dll
 
 CC = cl
 LINK = link
 CFLAGS = /MD /G5 /O1 /nologo /DWIN32 /DG_DISABLE_CAST_CHECKS
+LIBS = $(LIBS) wsock32.lib dirent.lib gdi32.lib shell32.lib user32.lib advapi32.lib
 
 !IFDEF OPENSSL
 CFLAGS = $(CFLAGS) /DUSE_OPENSSL
 LIBS = $(LIBS) libeay32.lib libssl32.lib
 SSLOBJ = ssl.obj
 !ENDIF
-
-#!IFDEF PERL
-#CFLAGS = $(CFLAGS) /DUSE_PERL /I$(PERLPATH)
-#LIBS = $(LIBS) $(PERLLIB) /LIBPATH$(PERLPATH)
-#PERLOBJ = plugin-perl.obj
-#!ENDIF
 
 COMMON_OBJECTS = \
 cfgfiles.obj \

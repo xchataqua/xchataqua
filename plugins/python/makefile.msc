@@ -1,0 +1,51 @@
+#Edit These
+#GLIB=/Ic:\path\to\glib\include\glib-2.0
+#GLIBLIBPATH=/LIBPATHc:\path\to\glib\lib
+#PYTHON=/Ic:\path\to\python\include
+#PYTHONLIBPATH=/LIBPATHc:\path\to\python\libs
+GLIB=/Ic:\glib\include\glib-2.0
+GLIBLIBPATH=/LIBPATHc:\glib\lib
+PYTHON=/Ic:\python22\include
+PYTHONLIBPATH=/LIBPATHc:\python22\libs
+
+#Edit this only if your .lib names differ from the Tor L. binaries
+GLIBLIBS=glib-2.0.lib
+
+PYTHONLIBS=python22.lib
+
+LIBS=$(GLIBLIBS) $(PYTHONLIBS) dirent.lib $(GLIBLIBPATH) $(PYTHONLIBPATH) \
+/NODEFAULTLIB:LIBCMT.lib
+
+CFLAGS=/DWIN32 /Dstrcasecmp=stricmp /Dusleep=_sleep /DPATH_MAX=260
+
+CC=cl
+LINK=link
+
+PROG=xcpython22.dll
+DEF=python.def
+
+FILES=python.c
+
+all: copy $(DEF) $(PROG)
+
+#cl python.c /LD /DWIN32 /IC:\Python22\include /IC:\glib\include\glib-2.0 /link glib-2.0.lib dirent.lib \
+#/LIBPATHC:\Python22\libs /LIBPATHC:\Glib\lib /NODEFAULTLIB:LIBC.lib
+
+copy:
+	copy ..\xchat-plugin.h
+
+$(PROG):
+	$(CC) $(FILES) /LD $(CFLAGS) $(GLIB) $(PYTHON) /link /OUT:$(PROG) $(LIBS) /DEF:$(DEF) /NOLOGO /OPT:NOWIN98
+
+$(DEF):
+	echo EXPORTS > $(DEF)
+	echo xchat_plugin_init >> $(DEF)
+	echo xchat_plugin_deinit >> $(DEF)
+
+
+clean:
+	del *.dll
+	del *.lib
+	del *.exp
+	del *.obj
+
