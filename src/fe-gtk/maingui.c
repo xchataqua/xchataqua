@@ -343,7 +343,10 @@ mg_populate_userlist (session *sess)
 	sess = current_sess;
 	gui = sess->gui;
 
-	mg_set_access_icon (sess->gui, get_user_icon (sess->server, sess->res->myself));
+	if (sess->type == SESS_DIALOG)
+		mg_set_access_icon (sess->gui, NULL);
+	else
+		mg_set_access_icon (sess->gui, get_user_icon (sess->server, sess->res->myself));
 	userlist_show (sess);
 	userlist_set_value (sess->gui->user_tree, sess->res->old_ul_value);
 
@@ -2136,9 +2139,9 @@ fe_dlgbuttons_update (session *sess)
 
 	gtk_widget_destroy (gui->dialogbutton_box);
 
-	/* FIXME: reorder child */
 	gui->dialogbutton_box = box = gtk_hbox_new (0, 0);
 	gtk_box_pack_start (GTK_BOX (gui->topic_bar), box, 0, 0, 0);
+	gtk_box_reorder_child (GTK_BOX (gui->topic_bar), box, 3);
 	mg_create_dialogbuttons (box);
 	gtk_widget_show_all (box);
 }
@@ -2193,11 +2196,10 @@ fe_set_nick (server *serv, char *newnick)
 	GSList *list = sess_list;
 	session *sess;
 
-	safe_strcpy (serv->nick, newnick, NICKLEN);
 	while (list)
 	{
 		sess = list->data;
-		if (sess->server == serv && sess->type != SESS_DIALOG)
+		if (sess->server == serv)
 		{
 			if (current_tab == sess || !sess->gui->is_tab)
 				gtk_button_set_label (GTK_BUTTON (sess->gui->nick_label), newnick);
