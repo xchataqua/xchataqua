@@ -13,4 +13,4 @@ python.obj: python.c
 	$(CC) -nologo -O1 -MD -G5 -DWIN32 -DG_DISABLE_CAST_CHECKS -Dusleep=_sleep -Dstrcasecmp=stricmp -DPATH_MAX=255 -c python.c $(GLIB) -I.. -I$(PYTHONPATH)\INCLUDE -DPYTHON_DLL=\"$(PYTHONLIB).dll\"
 
 $(TARGET): python.obj python.def
-	$(LINK) /DLL /out:$(TARGET) /SUBSYSTEM:WINDOWS /nologo python.obj $(PYTHONLIB).lib /LIBPATH:$(PYTHONPATH)\LIBS /DELAYLOAD:$(PYTHONLIB).dll DELAYIMP.LIB dirent.lib user32.lib shell32.lib advapi32.lib $(LIBS) /def:python.def /OPT:NOWIN98
+	$(LINK) /DLL /out:$(TARGET) /SUBSYSTEM:WINDOWS /nologo python.obj $(PYTHONLIB).lib /LIBPATH:$(PYTHONPATH)\LIBS $(PYTHONLIB).lib dirent.lib user32.lib shell32.lib advapi32.lib $(LIBS) /def:python.def /OPT:NOWIN98
