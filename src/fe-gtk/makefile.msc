@@ -1,0 +1,18 @@
+include "..\makeinc.msc"
+
+LDFLAGS = $(LIBS) /NOLOGO /OPT:NOWIN98
+COMLIB = ..\common\xchatcommon.lib
+PROG = xchat.exe
+
+all: $(PROG)
+
+.c.obj:
+	$(CC) $(CFLAGS) $(GLIB) $(GTK) /c $<
+
+$(PROG): $(FEGTK_OBJECTS) $(COMLIB)
+	$(LINK) /out:$(PROG) /SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup $(LDFLAGS) $(FEGTK_OBJECTS) $(COMLIB)
+	@dir $(PROG)
+
+clean:
+	del *.obj
+	del $(PROG)
