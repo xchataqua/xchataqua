@@ -1,51 +1,16 @@
-#Edit These
-#GLIB=/Ic:\path\to\glib\include\glib-2.0
-#GLIBLIBPATH=/LIBPATHc:\path\to\glib\lib
-#PYTHON=/Ic:\path\to\python\include
-#PYTHONLIBPATH=/LIBPATHc:\path\to\python\libs
-GLIB=/Ic:\glib\include\glib-2.0
-GLIBLIBPATH=/LIBPATH:c:\glib\lib
-PYTHON=/Ic:\python22\include
-PYTHONLIBPATH=/LIBPATH:c:\python22\libs
+include "..\..\src\makeinc.msc"
 
-#Edit this only if your .lib names differ from the Tor L. binaries
-GLIBLIBS=glib-2.0.lib
+TARGET = $(PYTHONOUTPUT)
 
-PYTHONLIBS=python22.lib
+all: $(TARGET)
 
-LIBS=$(GLIBLIBS) $(PYTHONLIBS) dirent.lib $(GLIBLIBPATH) $(PYTHONLIBPATH) \
-/NODEFAULTLIB:LIBCMT.lib
+python.def:
+	echo EXPORTS > python.def
+	echo xchat_plugin_init >> python.def
+	echo xchat_plugin_deinit >> python.def
 
-CFLAGS=/DWIN32 /Dstrcasecmp=stricmp /Dusleep=_sleep /DPATH_MAX=260
+python.obj: python.c
+	$(CC) -nologo -O1 -MD -G5 -DWIN32 -DG_DISABLE_CAST_CHECKS -Dstrncasecmp=strnicmp -Dstrcasecmp=stricmp -DPATH_MAX=255 -c python.c $(GLIB) -I.. -I$(PYTHONPATH)\INCLUDE -DPYTHON_DLL=\"$(PYTHONLIB).dll\"
 
-CC=cl
-LINK=link
-
-PROG=xcpython22.dll
-DEF=python.def
-
-FILES=python.c
-
-all: copy $(DEF) $(PROG)
-
-#cl python.c /LD /DWIN32 /IC:\Python22\include /IC:\glib\include\glib-2.0 /link glib-2.0.lib dirent.lib \
-#/LIBPATHC:\Python22\libs /LIBPATHC:\Glib\lib /NODEFAULTLIB:LIBC.lib
-
-copy:
-	copy ..\xchat-plugin.h
-
-$(PROG):
-	$(CC) $(FILES) /LD $(CFLAGS) $(GLIB) $(PYTHON) /link /OUT:$(PROG) $(LIBS) /DEF:$(DEF) /NOLOGO /OPT:NOWIN98
-
-$(DEF):
-	echo EXPORTS > $(DEF)
-	echo xchat_plugin_init >> $(DEF)
-	echo xchat_plugin_deinit >> $(DEF)
-
-
-clean:
-	del *.dll
-	del *.lib
-	del *.exp
-	del *.obj
-
+$(TARGET): python.obj python.def
+	$(LINK) /DLL /out:$(TARGET) /SUBSYSTEM:WINDOWS /nologo python.obj $(PYTHONLIB).lib /LIBPATH:$(PYTHONPATH)\LIBS /DELAYLOAD:$(PYTHONLIB).dll DELAYIMP.LIB dirent.lib user32.lib shell32.lib advapi32.lib /def:python.def /OPT:NOWIN98
