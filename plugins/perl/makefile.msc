@@ -1,0 +1,12 @@
+include "..\..\src\makeinc.msc"
+
+VER = 56
+TARGET = xchatperl$(VER).dll
+
+all: $(TARGET)
+
+perl.obj: perl.c
+	$(CC) -nologo -O1 -MD -G5 -DWIN32 -DG_DISABLE_CAST_CHECKS -c perl.c $(GLIB) -I.. -I$(PERLPATH)
+
+$(TARGET): perl.obj
+	$(LINK) /DLL /out:$(TARGET) /SUBSYSTEM:WINDOWS /nologo perl.obj perl$(VER).lib /LIBPATH$(PERLPATH) /DELAYLOAD:Perl$(VER).dll DELAYIMP.LIB dirent.lib gdi32.lib user32.lib shell32.lib iconv.lib advapi32.lib /def:perl.def /OPT:NOWIN98
