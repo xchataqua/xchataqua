@@ -24,7 +24,7 @@ TCLOUTPUT = xctcl.dll
 CC = cl
 LINK = link
 CFLAGS = $(CFLAGS) -Dstrcasecmp=stricmp -Dstrncasecmp=strnicmp /MD /nologo /DWIN32 /DG_DISABLE_CAST_CHECKS
-LIBS = $(LIBS) dirent.lib gdi32.lib shell32.lib user32.lib advapi32.lib imm32.lib ole32.lib
+LIBS = $(LIBS) dirent.lib gdi32.lib shell32.lib user32.lib advapi32.lib imm32.lib ole32.lib winmm.lib
 
 !IFDEF IPV6
 CFLAGS = $(CFLAGS) -DUSE_IPV6
