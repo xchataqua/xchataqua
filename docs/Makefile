@@ -2,12 +2,12 @@
 # makefile for generating xchat documentation pdf
 #
 
-all: main
+all: xchat-german
 
-main: main.tex Makefile
-	pdflatex main.tex
-	makeindex main.idx
-	pdflatex main.tex
-	pdflatex main.tex
+xchat-german: xchat-german.tex Makefile
+	pdflatex xchat-german.tex
+	makeindex xchat-german.idx
+	pdflatex xchat-german.tex
+	pdflatex xchat-german.tex
 clean::
-	rm -rf *.aux *.toc *.glo *.log *.ilg *.idx *.ind
+	rm -rf *.aux *.toc *.glo *.log *.ilg *.idx *.ind *.out
