@@ -13,6 +13,9 @@ perl.def:
 perl.obj: perl.c
 	$(CC) $(CFLAGS) -c perl.c $(GLIB) -I.. -I$(PERLPATH) -DPERL_DLL=\"$(PERLLIB).dll\"
 
+perl.c: xchat.pm.h
+	perl.exe generate_header
+
 $(TARGET): perl.obj perl.def
 	$(LINK) /DLL /out:$(TARGET) /SUBSYSTEM:WINDOWS /nologo perl.obj $(PERLLIB).lib /LIBPATH:$(PERLPATH) /DELAYLOAD:$(PERLLIB).dll DELAYIMP.LIB dirent.lib user32.lib shell32.lib advapi32.lib /def:perl.def /OPT:NOWIN98
 
