@@ -10,7 +10,7 @@ tcl.def:
 	echo xchat_plugin_deinit >> tcl.def
 
 tclplugin.obj: tclplugin.c
-	$(CC) $(CFLAGS) -Dstrncasecmp=strnicmp -Dstrcasecmp=stricmp -c tclplugin.c -I$(TCLPATH)\INCLUDE -I../../include -I.. -DTCL_DLL=\"$(TCLLIB).dll\"
+	$(CC) $(CFLAGS) -c tclplugin.c -I$(TCLPATH)\INCLUDE -I../../include -I.. -DTCL_DLL=\"$(TCLLIB).dll\"
 
 $(TARGET): tclplugin.obj tcl.def
 	$(LINK) /DLL /out:$(TARGET) /SUBSYSTEM:WINDOWS /nologo tclplugin.obj /LIBPATH:$(TCLPATH)\LIB $(TCLLIB).lib /DELAYLOAD:$(TCLLIB).dll DELAYIMP.LIB dirent.lib /def:tcl.def /OPT:NOWIN98
