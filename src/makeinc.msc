@@ -1,9 +1,10 @@
 ### EDIT THESE ################################################
 #OPENSSL = YES
 #PERL = YES
+SYSLIBS = wsock32.lib dirent.lib gdi32.lib shell32.lib user32.lib advapi32.lib
 GLIB = editme
 GTK = editme
-LIBS = editme wsock32.lib dirent.lib gdi32.lib shell32.lib user32.lib advapi32.lib
+LIBS = $(SYSLIBS) editme
 PERLPATH = C:\PERL\LIB\CORE
 PERLLIB = perl56.lib
 ###############################################################
