@@ -9,12 +9,18 @@ all: $(PROG)
 .c.obj:
 	$(CC) $(CFLAGS) $(GLIB) $(GTK) /c $<
 
-$(PROG): $(FEGTK_OBJECTS) $(COMLIB)
-	$(LINK) /out:$(PROG) /SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup $(LDFLAGS) $(FEGTK_OBJECTS) $(COMLIB)
+$(PROG): $(FEGTK_OBJECTS) $(COMLIB) xchat-icon.obj
+	$(LINK) /out:$(PROG) /SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup $(LDFLAGS) $(FEGTK_OBJECTS) $(COMLIB) xchat-icon.obj
 	@dir $(PROG)
 
-xchatico.obj: xchat.rc xchat.ico
-	cvtres xchat.rc /OUT:xchatico.obj
+xchat.rc:
+	echo XC_ICON ICON "../xchat.ico" > xchat.rc
+
+xchat.res: xchat.rc ../xchat.ico
+	rc /r xchat.rc
+
+xchat-icon.obj: xchat.res
+	cvtres /NOLOGO /OUT:xchat-icon.obj xchat.res
 
 clean:
 	del *.obj
