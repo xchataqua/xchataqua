@@ -14,9 +14,9 @@ $(PROG): $(FEGTK_OBJECTS) $(COMLIB) xchat-icon.obj
 	@dir $(PROG)
 
 xchat.rc:
-	echo XC_ICON ICON "../xchat.ico" > xchat.rc
+	echo XC_ICON ICON "../../xchat.ico" > xchat.rc
 
-xchat.res: xchat.rc ../xchat.ico
+xchat.res: xchat.rc ../../xchat.ico
 	rc /r xchat.rc
 
 xchat-icon.obj: xchat.res
