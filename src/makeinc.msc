@@ -4,10 +4,12 @@
 GLIB = editme
 GTK = editme
 LIBS = editme
+# optimize for Pentium and size
+CFLAGS = /G5 /O1
 ###############################################################
 
 PERLPATH = C:\PERL\LIB\CORE
-PERLLIB = perl56
+PERLLIB = perl58
 PERLOUTPUT = xcperl.dll
 
 TCLPATH = C:\TCL
@@ -16,7 +18,7 @@ TCLOUTPUT = xctcl.dll
 
 CC = cl
 LINK = link
-CFLAGS = /MD /G5 /O1 /nologo /DWIN32 /DG_DISABLE_CAST_CHECKS
+CFLAGS = $(CFLAGS) /MD /nologo /DWIN32 /DG_DISABLE_CAST_CHECKS
 LIBS = $(LIBS) dirent.lib gdi32.lib shell32.lib user32.lib advapi32.lib imm32.lib ole32.lib
 
 !IFDEF IPV6
