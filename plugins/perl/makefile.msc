@@ -14,6 +14,8 @@ perl.obj: perl.c
 	$(CC) $(CFLAGS) -c perl.c $(GLIB) -I.. -I$(PERLPATH) -DPERL_DLL=\"$(PERLLIB).dll\"
 
 perl.c: xchat.pm.h
+
+xchat.pm.h: Xchat.pm IRC.pm
 	perl.exe generate_header
 
 $(TARGET): perl.obj perl.def
