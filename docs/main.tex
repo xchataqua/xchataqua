@@ -1,9 +1,10 @@
 \documentclass[12pt,a4paper,draft,headsepline]{scrreprt}
 \usepackage[latin1]{input enc}
-\usepackage{german, graphicx, longtable}
+\usepackage{german, graphicx, longtable, makeidx}
 \usepackage[pdftitle={XChat Dokumentation 1.2 - deutsch},colorlinks]{hyperref}
 \usepackage{latexsym}
 \usepackage[refpage,german]{nomencl} %glossary
+\makeindex
 % aufruf von makeindex:
 % makeindex main.glo -s nomencl.ist -o main.gls
 \pagestyle{headings}
@@ -69,6 +70,8 @@ bezogen werden, wie auch im Internet unter: \texttt{http://www.gnu.org}
 \include{appendix}
 
 \printglossary
+
+\printindex
 
 \begin{thebibliography}{99}
 \bibitem{1}
