@@ -8,6 +8,7 @@ tcl.def:
 	echo EXPORTS > tcl.def
 	echo xchat_plugin_init >> tcl.def
 	echo xchat_plugin_deinit >> tcl.def
+	echo xchat_plugin_get_info >> tcl.def
 
 tclplugin.obj: tclplugin.c
 	$(CC) $(CFLAGS) -c tclplugin.c -I$(TCLPATH)\INCLUDE -I../../include -I.. -DTCL_DLL=\"$(TCLLIB).dll\"

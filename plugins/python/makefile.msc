@@ -8,6 +8,7 @@ python.def:
 	echo EXPORTS > python.def
 	echo xchat_plugin_init >> python.def
 	echo xchat_plugin_deinit >> python.def
+	echo xchat_plugin_get_info >> python.def
 
 python.obj: python.c
 	$(CC) $(CFLAGS) -Dusleep=_sleep -DPATH_MAX=255 -c python.c $(GLIB) -I.. -I$(PYTHONPATH)\INCLUDE -DPYTHON_DLL=\"$(PYTHONLIB).dll\"
