@@ -1,8 +1,8 @@
 \chapter{Jetzt gehts los} 
 \section{Mailing Listen} XChat hat 3 Mailing Listen\footnote{freundlicherweise gehostet von nl.linux.org},
 in die Du Dich einschreiben lassen kannst - xchat-discuss für allgemeine
-Diskussionen, xchat-script für Diskusionen über Scripte und Plugins des  XChats und
-xchat-announce für Bekannmachungen. Um Dich in einer
+Diskussionen, xchat-script für Diskussionen über Scripte und Plugins des  XChats und
+xchat-announce für Bekanntmachungen. Um Dich in einer
 Mailing Liste einzuschreiben, schicke eine Mail mit keinem Betreff und folgendem
 in die Mail: \begin{quote} subscribe listen-name \end{quote}
 
@@ -10,7 +10,7 @@ an \texttt{majordomo@nl.linux.org} wobei der \emph{listen-name} entweder
 \texttt{xchat-discuss}, \texttt{xchat-script} oder \texttt{xchat-announce} ist.
 Danach bekommst Du nochmal eine Nachfrage und musst diese zurückschicken, um
 Deine Einschreibung zu bestätigen. \texttt{xchat-discuss} ist eine generelle Mailing
-Liste, wo Du einfach mitdiskutieren kannst. Hilfe wird jedem gegeben der fragt.
+Liste, wo Du einfach mit diskutieren kannst. Hilfe wird jedem gegeben der fragt.
 \verb|xchat-announce| ist eine moderierte Liste (nur zed und ich
   können dort posten) wo Ankündigungen (wie z.B. neue Versionen) diskutiert
 werden. \texttt{Versucht bitte nicht, xchat-announce beizutreten}
@@ -18,7 +18,7 @@ werden. \texttt{Versucht bitte nicht, xchat-announce beizutreten}
 
 Solltet Ihr irgendwelche Fragen über die Mailing Listen haben, mailt mir (Adam Langley) \texttt{tagl@linuxpower.org}.
 
-\section{Kanalmodi} Jeder Kanal kann eine Menge von Modie haben. Nur
+\section{Kanalmodi} Jeder Kanal kann eine Menge von Modi haben. Nur
 Kanal-Operatoren können diese Kanalmodi ändern. Die Kanalmodi können durch die
 ``Buchstaben''-Knöpfe am rechten Rand der Werkzeugleiste gesetzt werden oder
 durch Benutzen des \texttt{/mode} Kommandos. Modi können auch durch einige
@@ -42,7 +42,7 @@ andere Kommandos gesetzt werden, wie \texttt{/op},\texttt{/deop} oder
     mit aufgeführt, es sei denn Du hast ihn betreten. Diese Option kann nicht
     gesetzt werden, wenn \emph{Secret} gesetzt ist. 
   \item[I]Invite Only -
-    Hiermit legt man fest, daß Leute nicht den Kanal betreten
+    Hiermit legt man fest, dass Leute nicht den Kanal betreten
     können\texttt{/join}. Sie müssen von jemandem aus dem Kanal aufgefordert
     \texttt{/invite} werden.  
   \item[M]Moderated - Hiermit legt man fest, dass
@@ -67,7 +67,7 @@ ohne Verändern des Codes zu erweitern.  Informationen wie man diese schreibt,
 erfährst Du in Kapitel \ref{scripte}. Scripte sind PERL Scripte und um diese zu benutzen,
 sollte PERL auf Deinem System installiert sein und XChat sollte mit PERL
 Unterstützung kompiliert worden sein. Plugins sind geteilte Bibliotheken (.so
-  Dateien) welche dynamisch zum XChat hinzugelinkt oder weggelinkt werden.
+  Dateien) welche dynamisch zum XChat hinzu gelinkt oder weg gelinkt werden.
 
 
 Beim Starten werden alle Dateien, die mit *.pl enden, automatisch geladen. Um ein Script manuell zu laden, benutze das \texttt{/load} Kommando oder wähle \emph{``Laden - Perl Script''} aus dem
@@ -113,7 +113,7 @@ In diesem Fall findet er den 1. passenden Eintrag welcher \texttt{aaaaaaa} ist u
 \section{Automatisches Ersetzen}
 Jetzt wähle Einstellungen - Ersetzen Popup aus. Ein Listendialog wird erscheinen, mit einer ganzen Serie von Standardeinstellungen (vorausgesetzt, Du hast es nicht verändert). Eine der Eintragungen sollte sein: wenn \texttt{r} dann \texttt{are}, wenn nicht füge es hinzu. Nun tippe in der Eingabezeile irgendwas ein und benutze das \texttt{r}. Das sollte sich dann zu \texttt{are} verändern.
 
-Die Ersetzen-Fähigkeit läuft jedesmal wenn Du die Leertaste in der Eingabezeile betätigst und wird das zuletzt eingetragene Wort feststellen. Wenn das Wort in der Liste vorkommt, wird es mit dem Eintrag ersetzt. Wenn das Wort in Anführungszeichen wie \texttt{'r'} ist, wird das Wort nicht ersetzt. Wenn das Wort ein \texttt{'}(Hochkomma) beinhaltet, wird der Teil vor dem Hochkomma überprüft. Wird der Teil gefunden, wird er erstetzt, die Hochkommamarkierung verworfen und der Teil nach dem Hochkomma drangehängt. Zum Beispiel hast Du einen Eintrag \texttt{u} und \texttt{you}.
+Die Ersetzen-Fähigkeit läuft jedes mal wenn Du die Leertaste in der Eingabezeile betätigst und wird das zuletzt eingetragene Wort feststellen. Wenn das Wort in der Liste vorkommt, wird es mit dem Eintrag ersetzt. Wenn das Wort in Anführungszeichen wie \texttt{'r'} ist, wird das Wort nicht ersetzt. Wenn das Wort ein \texttt{'}(Hochkomma) beinhaltet, wird der Teil vor dem Hochkomma überprüft. Wird der Teil gefunden, wird er ersetzt, die Hochkommamarkierung verworfen und der Teil nach dem Hochkomma angehängt. Zum Beispiel hast Du einen Eintrag \texttt{u} und \texttt{you}.
 \begin{itemize}
 \item u - you
 \item u'r - your
@@ -128,7 +128,7 @@ Wenn Du zu Einstellungen - Einstellungen - Optionen gehst, und auf \textbf{Logbü
 \item irc-2.mint.net,\#gimp.xchatlog
 \item ircnet.demon.co.uk,\#linux.xchatlog
 \end{itemize}
-Du kannst auch \emph{Ohne Server-Namen} Protokolle verwenden, so daß die Dateinamen ohne Anhang des Server-Namens geschrieben werden:
+Du kannst auch \emph{Ohne Server-Namen} Protokolle verwenden, so dass die Dateinamen ohne Anhang des Server-Namens geschrieben werden:
 \begin{itemize}
 \item \#linux.xchatlog
 \item \#gimp.xchatlog
@@ -138,8 +138,22 @@ Denke daran, wenn Du in 2 Kanälen mit demselben Namen bist, werden die Protokoll
 
 \section{Panel Unterstützung}
 \texttt{Leider habe ich den XChat ohne Panel-Unterstützung. Ich habe den Text soweit möglich übersetzt.}
-Ist Panel-Unterstützung eingeschaltet, erscheint ein neuer Knopf neben dem De/Link Knopf in der Werkzeugleiste. Er hat einen Pfeil, der nach unten zeigt. Dieser Knopf klingt XChat in das Panel ein. Wenn Du diesen Knopf zuerst drückst, wird ein \emph{Panel Applet} erscheinen. 
-Das \emph{Panel Applet} ist mit ``X-Chat'' gekennzeichnet und hat einige Knöpfe. Die Richtung der Knöpfe kann in ``Einstellungen - Einstellungen - Optionen mit der ``Layout für das vertikale Panel'' Option'' geändert werden. Denke daran, daß man im Moment noch den X-Chat neustarten muss, um die Veränderungen wirksam zu machen. Jede eingeklinkte Sitzung erscheint als ein Knopf im \emph{Panel Applet}. Wenn die ``Versteck-Sitzung beim Einklinken'' eingeschaltet ist, bleibt die Sitzung verborgen. Durch Klicken des Knopfes wird die Sitzung wieder angezeigt. Die Textfarbe des Knopfes verändert sich normal (rot und blau) und wird zurückgesetzt, wenn Du die Sitzung wiederherstellst. Darunter gibt es noch eine Reihe von Knöpfen:
+
+Ist Panel-Unterstützung eingeschaltet, erscheint ein neuer Knopf neben dem
+De/Link Knopf in der Werkzeugleiste. Er hat einen Pfeil, der nach unten zeigt.
+Dieser Knopf klingt XChat in das Panel ein. Wenn Du diesen Knopf zuerst
+drückst, wird ein \emph{Panel Applet} erscheinen.  Das \emph{Panel Applet} ist
+mit ``X-Chat'' gekennzeichnet und hat einige Knöpfe. Die Richtung der Knöpfe
+kann in ``Einstellungen - Einstellungen - Optionen mit der ``Layout für das
+vertikale Panel'' Option'' geändert werden. Denke daran, dass man im Moment
+noch den X-Chat neu starten muss, um die Veränderungen wirksam zu machen. Jede
+eingeklinkte Sitzung erscheint als ein Knopf im \emph{Panel Applet}. Wenn die
+``Versteck-Sitzung beim Einklinken'' eingeschaltet ist, bleibt die Sitzung
+verborgen. Durch Klicken des Knopfes wird die Sitzung wieder angezeigt. Die
+Textfarbe des Knopfes verändert sich normal (rot und blau) und wird
+zurückgesetzt, wenn Du die Sitzung wiederherstellst. Darunter gibt es noch
+eine Reihe von Knöpfen:
+
 \begin{itemize}
 \item[Close] - Schließt die Sitzung.
 \item[Remove] - Entfernt den Panel-Knopf.
@@ -170,13 +184,13 @@ Also lösche alles, was in dem Editorkästchen enthalten ist und füge folgendes ei
 \$1 joined \$2 (host: \$3)}
 \end{quote}
 
-Das erste Stückchen ist das Standard-Rot; weiß, rote Sterne welche XChat benutzt. Danach ist alles klar. Warte im Haupt-XChatfenster auf jemanden, der den Kanal betritt (Hinweis: Wir änderten das \texttt{join}-Ereignis \textbf{nicht} das Betreten-Ereignis, so daß es nur für Leute gilt, die in den Kanal hinzukommen).
+Das erste Stückchen ist das Standard-Rot; weiß, rote Sterne welche XChat benutzt. Danach ist alles klar. Warte im Haupt-XChatfenster auf jemanden, der den Kanal betritt (Hinweis: Wir änderten das \texttt{join}-Ereignis \textbf{nicht} das Betreten-Ereignis, so dass es nur für Leute gilt, die in den Kanal hinzukommen).
 Du wirst folgendes so ähnlich sehen:
 \begin{quote}
 \texttt{*** Hey! Ich kann die Ereignistexte editieren! Adam joined \#a (host: ~Adam@127.0.0.1)}
 \end{quote}
 
-Durch den Sound-Datei-Eintrag kannst Du einen Sound festlegen, der jedesmal, wenn das Ereignis ausgelöst wird, abgespielt wird (vorausgesetzt Du benutzt das \texttt{play} Kommando).
+Durch den Sound-Datei-Eintrag kannst Du einen Sound festlegen, der jedes mal, wenn das Ereignis ausgelöst wird, abgespielt wird (vorausgesetzt Du benutzt das \texttt{play} Kommando).
 Die 5 unteren Knöpfe machen folgendes:
 \begin{itemize}
 \item[OK] - Schließt und speichert den Dialog.
@@ -189,7 +203,7 @@ Die 5 unteren Knöpfe machen folgendes:
 
 \section{Tastaturbindungen}
 Durch Auswählen von Einstellungen - Tastaturbindungen editieren, kannst Du die Tastaturbindungen, welche 
-XChat benutzt, editieren. Die Tastaturbindungen werden nach Benutzbarkeit sortiert, so daß die häufig genutzten Tastaturbindungen ganz oben zu finden sind. Eine Tastaturbindung ist:
+XChat benutzt, editieren. Die Tastaturbindungen werden nach Benutzbarkeit sortiert, so dass die häufig genutzten Tastaturbindungen ganz oben zu finden sind. Eine Tastaturbindung ist:
 \begin{description}
 \item Eine Modifikation (Strg, ALT und SHIFT Tasten).
 \item Ein Tastaturname.
