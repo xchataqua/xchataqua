@@ -19,17 +19,30 @@ Viele, viele Leute haben XChat geholfen. Zuviel, um diese hier aufzulisten. Ihr 
 
 Viele andere haben mit sonstigen Veränderungen geholfen. Solltest Du einen Patch übermittelt haben und möchtest, daß Dein Name hier erscheint, lass es \textbf{zed@linuxpower.org} wissen.
 
-\subsection{Maintainers}
-Peter Zelezny (alias: zed) fügt alle Patches zu einem (hoffentlich richtigen) etwas zusammen. Er ist für die Webseite zuständig und kontrolliert alle ``wirklichen'' Veröffentlichungen vom XChat, welche von ihm kommen. Er verwaltet auch die Freshmeat und GNOME AppList Bekanntmachungen. Jede Veränderung im ChangeLog ohne Namen ist sein Werk. Seine Email Adresse ist: \textbf{zed@linuxpower.org}.
+\subsection{Maintainers} 
+Peter Zelezny (alias: zed) fügt alle Patches zu einem
+(hoffentlich richtigen) etwas zusammen. Er ist für die Webseite zuständig und
+kontrolliert alle ``wirklichen'' Veröffentlichungen vom XChat, welche von ihm
+kommen. Er verwaltet auch die Freshmeat und GNOME AppList Bekanntmachungen.
+Jede Veränderung im ChangeLog ohne Namen ist sein Werk. Seine Email Adresse
+ist: \textbf{zed@linuxpower.org}.
 
 
-Adam Langley (alias: Nebulae) verwaltet die Dokumentation und einige Brocken von Code, meistens Signal- und den Plugin Code. Veröffentlichungen von ihm sind meistens nicht die ``wirklichen'' Veröffentlichungen und meistens nicht stabil.
+Adam Langley (alias: Nebulae) verwaltet die Dokumentation und einige Brocken
+von Code, meistens Signal- und den Plugin Code. Veröffentlichungen von ihm
+sind meistens nicht die ``wirklichen'' Veröffentlichungen und meistens nicht
+stabil.
 
 
-Andere Leute, die Code und Ideen mit in das Projekt bringen, gehen meistens an zed - im Elitenet - (\#linux).
+Andere Leute, die Code und Ideen mit in das Projekt bringen, gehen meistens an
+zed - im Elitenet - (\#linux).
 
 
-Patches sollten zu Peter gemailt werden. Solltest Du Ratschläge oder Hilfe für den XChat gebrauchen, schau Dir als erstes dieses Dokument an, dann frag jemanden im Elitenet\footnote{Server: irc.xchat.org} (\#linux), aber denke daran, daß die Leute in \#linux nicht irgendwelchen Schrott unterstützen. Sie werden über Dich lachen.
+Patches sollten zu Peter gemailt werden. Solltest Du Ratschläge oder Hilfe für
+den XChat gebrauchen, schau Dir als erstes dieses Dokument an, dann frag
+jemanden im Elitenet\footnote{Server: irc.xchat.org} (\#linux), aber denke
+daran, daß die Leute in \#linux nicht irgendwelchen Schrott unterstützen. Sie
+werden über Dich lachen.
 
 \section{Autoren der deutschen Dokumentation}
 \label{sec:Autoren}
@@ -41,46 +54,35 @@ Hier seien nur die aufgezählt, die bei der Übersetzung ins Deutsche mitgewirkt h
     von Fehlern)
 \end{itemize}
 
-\chapter{Einschicken von korrigiertem Text}
-Für alle, die uns helfen wollen, hier eine kurze Anleitung wie man korrigierte Texte erstellt. Bitte denkt daran, daß die Dokumentation sehr groß ist und wir nicht sehr viel Zeit haben,um uns ellenlange Text durchzulesen, worin vermerkt ist, daß in Zeilennummer ``sowieso'' ein Fehler verborgen ist. \textbf{Bitte denkt daran, daß ihr euch für die entsprechenden Sprachen an die entsprechenden Autoren wendet.}
-Im Grunde genommen ist es ganz einfach: 
+\section{Einschicken von korrigiertem Text}
+
+Für alle, die uns helfen wollen, hier eine kurze Anleitung wie man korrigierte
+Texte erstellt. Bitte denkt daran, daß die Dokumentation sehr groß ist und wir
+nicht sehr viel Zeit haben,um uns ellenlange Text durchzulesen, worin vermerkt
+ist, daß in Zeilennummer ``sowieso'' ein Fehler verborgen ist. \textbf{Bitte
+  denkt daran, daß ihr euch für die entsprechenden Sprachen an die
+  entsprechenden Autoren wendet.} Im Grunde genommen ist es ganz einfach: 
+
 \begin{enumerate}
 \item Ihr nehmt die Originaldatei (*.tex) und korrigiert die Textpassagen die Fehler enthalten bzw. fügt Text hinzu, wo Ihr denkt, das dort noch was fehlt. Solltet Ihr die Originaldatei nicht zu diesem Dokument erhalten haben, ladet sie euch einfach unter \textbf{www.xchat.org} oder \textbf{www.romanofski.de} herunter.
 \item Hängt das ganze Dokument an eine Email und schickt es an einen von uns (Email stehen bei \textbf{\ref{sec:Autoren}}
 \item Wir kümmern uns um den Rest. 
 \end{enumerate}
 
-\section{Wie gehts mit diff und patch?}
-Hier noch eine kleine Anleitung, wie man das ganze noch angenehmer Gestalten kann. Auch zu empfehlen, wenn Ihr selber Dokumentationen bzw. Texte aller Art schreibt:
+\chapter{Übersicht der Tastaturkürzel im XChat 2}
 
-\section{diff}
-Ok.. ich gebe zu, daß es wirklich sehr viel bessere und komplexere Dokumentationen für den Befehl \texttt{diff} gibt. Aber für meine Zwecke soll es ausreichen und ich hoffe auch für jeden, der mir ein diff schickt.
-Also kommen wir zum Punkt. 
-
-Ihr habt Euch eine Dokumentation runtergeladen und haufenweise Fehler entdeckt. Ok.. was macht der Posixkompatible Betriebssystemfan? Er korrigiert die Fehler und greift zu \texttt{diff}. Sagen wir mal, ich habe eine Datei die heißt
-\textbf{dokument.tex} und Deine korrigierte Version heißt \textbf{korrigiert.tex}.
-Jetzt kommt \texttt{diff} ins Spiel, denn \texttt{diff} wird uns eine Datei erzeugen, mit der der Autor des Dokumentes seine eigene Originaldatei ``patchen'', also Deiner anpassen kann.
-
-\begin{quote}
-\texttt{diff -u dokument.tex korrigiert.tex > dokumentdiff.diff}\footnote{Unter Unix ist es egal, welche Endung die Datei hat, aber hier ist es hilfreich. So sieht man gleich, das es ein Unified-Diff-Format ist} 
-\end{quote}
-
-\section{patchen}
-Sagen wir mal, wir sind jetzt der Autor, der von einem wutentbrannten Rechtschreibverehrer so ein diff bekommen hat. Wir sollten nun unser Originaldokument \textbf{patchen}.
-Mit folgenden Befehlen wenden wir unser diff auf unser Originaldokument an:
-
-\begin{quote}
-\texttt{patch Originaldokument.tex dokumentdiff.diff\\ 
-patching file Originaldokument.tex}
-\end{quote}
-Das sollte damit geschehen sein. Nun wird die Zukunft es zeigen, ob es klappen wird ;)
-
-
-Achso.. da war noch folgendes: \emph{Um diff abzugewöhnen, auch hinzugekommene oder gelöschte Leerzeilen als Unterschied zu vermerken, benutzt man den Parameter -B (kurz für --ignore-blank-lines). Interessieren Differenzen nicht, die auf eine unterschiedliche Anzahl von Leerzeichen zurückzuführen sind, bekommt das Tool das Flag -b mit auf den Weg. Auch Änderungen bei der Groß- und Kleinschreibung können ignoriert werden: Die passende Option heißt -i (kurz für --ignore-case).}
-
-\chapter{Veränderungen}
-Ich habe mir gedacht, die Veränderungen die an dem Dokument gemacht wurden zu
-dokumentieren. 
-\section{Version 1.85 zu 1.86}
-Berichtigen von Fehlern durch Rolf Eike Beer.
+\begin{longtable}{|p{3cm}|p{7cm}|}
+\hline
+\textbf{Tastaturkürzel} & \textbf{Funktion}\\
+\hline
+\hline
+Strg + S & Server List\\
+Strg + I & Detach Tab \\
+Shift+Strg+W & Close Tab\\
+Strg+Q & Beenden\\
+Alt+A & Als abwesend markieren\\
+Strg+L & Clear Text\\
+Strg+F & Search Text\\
+\hline
+\end{longtable}
 
