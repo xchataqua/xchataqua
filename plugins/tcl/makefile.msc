@@ -16,6 +16,6 @@ $(TARGET): tclplugin.obj tcl.def
 	$(LINK) /DLL /out:$(TARGET) /SUBSYSTEM:WINDOWS /nologo tclplugin.obj /LIBPATH:$(TCLPATH)\LIB $(TCLLIB).lib /DELAYLOAD:$(TCLLIB).dll DELAYIMP.LIB dirent.lib /def:tcl.def /OPT:NOWIN98
 
 clean:
-	rm $(TARGET)
-	rm *.obj
-	rm tcl.def
+	del $(TARGET)
+	del *.obj
+	del tcl.def
