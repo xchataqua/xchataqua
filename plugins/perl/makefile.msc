@@ -10,12 +10,14 @@ perl.def:
 	echo xchat_plugin_deinit >> perl.def
 
 perl.obj: perl.c
-	$(CC) $(CFLAGS) -c perl.c $(GLIB) -I.. -I$(PERLPATH) -DPERL_DLL=\"$(PERLLIB).dll\"
+	$(CC) $(CFLAGS) -c perl.c $(GLIB) -I.. -I$(PERLPATH) -DOLD_PERL=1 -DPERL_DLL=\"$(PERLLIB).dll\"
 
 $(TARGET): perl.obj perl.def
 	$(LINK) /DLL /out:$(TARGET) /SUBSYSTEM:WINDOWS /nologo perl.obj $(PERLLIB).lib /LIBPATH:$(PERLPATH) /DELAYLOAD:$(PERLLIB).dll DELAYIMP.LIB dirent.lib user32.lib shell32.lib advapi32.lib /def:perl.def /OPT:NOWIN98
 
 clean:
-	rm $(TARGET)
-	rm *.obj
-	rm perl.def
+	del $(TARGET)
+	del *.obj
+	del perl.def
+	del *.lib
+	del *.exp
