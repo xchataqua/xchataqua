@@ -1,0 +1,22 @@
+TCLPATH = C:\TCL
+TARGET = xchattcl.dll
+LINK = link
+CC = cl
+
+all: $(TARGET)
+
+tcl.def:
+	echo EXPORTS > tcl.def
+	echo xchat_plugin_init >> tcl.def
+	echo xchat_plugin_deinit >> tcl.def
+
+tclplugin.obj: tclplugin.c
+	$(CC) -GF -nologo -O1 -MD -G5 -DWIN32 -Dstrncasecmp=strnicmp -Dstrcasecmp=stricmp -c tclplugin.c -I$(TCLPATH)\INCLUDE -I../../include
+
+$(TARGET): tclplugin.obj tcl.def
+	$(LINK) /DLL /out:$(TARGET) /SUBSYSTEM:WINDOWS /nologo tclplugin.obj /LIBPATH$(TCLPATH)\LIB tcl84.lib dirent.lib /def:tcl.def /OPT:NOWIN98
+
+clean:
+	rm $(TARGET)
+	rm *.obj
+	rm tcl.def
