@@ -11,14 +11,14 @@ Beim Starten erscheint ein Fenster mit keinem Zustand (es ist mit ``<none>'' bes
 
 \section{Die Menüzeile}
 Die Menüzeile beinhaltet 6 Menüs\footnote{Solltest Du eine andere Sprache benutzen, dann kann der Text variieren}.
-\begin{enumerate}
-\item ``X-Chat`` - Wichtige Befehle, ähnlich dem ``Datei'' Menü
-\item ``Fenster'' - Jedes XChat Fenster kann von diesem Menü aufgerufen werden. Es beinhaltet auch Befehle die den Puffer betreffen.
-\item ``Benutzermodi'' - Alle Gegenstände aus diesem Menü können den Zustand des IRC Benutzers verändern.
-\item ``Einstellungen'' - Alle Konfigurationsdialoge können von hier aus aufgerufen werden.
-\item ``Scripte \& Plugins'' - Befehle, die diese Sachen betreffen
-\item ``Hilfe'' - Standard Hilfe Menü
-\end{enumerate}
+\begin{description}
+\item[X-Chat] Wichtige Befehle, ähnlich dem ``Datei'' Menü
+\item[Fenster] Jedes XChat Fenster kann von diesem Menü aufgerufen werden. Es beinhaltet auch Befehle die den Puffer betreffen.
+\item[Benutzermodi] Alle Gegenstände aus diesem Menü können den Zustand des IRC Benutzers verändern.
+\item[Einstellungen] Alle Konfigurationsdialoge können von hier aus aufgerufen werden.
+\item[Scripte \& Plugins] Befehle, die diese Sachen betreffen
+\item[Hilfe]  Standard Hilfe Menü
+\end{description}
 
 \begin{figure}[htb]
   \begin{center}
@@ -30,18 +30,18 @@ Die Menüzeile beinhaltet 6 Menüs\footnote{Solltest Du eine andere Sprache benutz
 \subsection{Das X-Chat Menü}
 Im X-Chat Menü befinden sich die wichtigsten Befehle für den Betrieb des
 Programms. Im einzelnen gliedert sich das Menü in folgende Unterpunkte:
-\begin{enumerate}
-  \item ``Server-Liste`` - Die Verwaltung der Server, zu denen man sich
+\begin{description}
+  \item[Server-Liste] Die Verwaltung der Server, zu denen man sich
   verbinden kann.
-  \item ``Neuer Server-Reiter\dots'' - Ein neues Tab für einen neuen Server öffnen
+  \item[Neuer Server-Reiter\dots] Ein neues Tab für einen neuen Server öffnen
   lassen.
-  \item ``Neues Server-Fenster\dots'' - Ein neues Fenster für einen neuen
+  \item[Neues Server-Fenster\dots] Ein neues Fenster für einen neuen
   Server öffnen lassen.
-  \item ``Neuer Kanal-Reiter\dots'' - Ein neues Tab für einen neuen Kanal
+  \item[Neuer Kanal-Reiter\dots] Ein neues Tab für einen neuen Kanal
   öffnen lassen.
-  \item ``Neues Kanal-Fenster\dots''- Ein neues Fenster für einen neuen Kanal
+  \item[Neues Kanal-Fenster\dots] Ein neues Fenster für einen neuen Kanal
   öffnen lassen.
-\end{enumerate}
+\end{description}
 
 \subsection{Das Fenstermenü}
 Im Fenstermenü lässt sich alles zur Verwaltung des Hauptfensters und
@@ -50,6 +50,7 @@ bleiben nur für die aktuelle Sitzung bestehen und werden nach Beenden des
 XChats wieder gelöscht.
 Im einzelnen gliedert sich das Menü\footnote{Hinweis: Die deutsche Übersetzung kann
   sich je nach Version noch verändert haben.} wie folgt:
+
 \begin{enumerate}
   \item ``Kanallisten-Fenster'' - Das Fenster ist zur Verwaltung der Kanäle
   auf dem gerade verbundenen Server. Mit Optionen kann eine Liste abgefragt werden,
@@ -61,8 +62,10 @@ Im einzelnen gliedert sich das Menü\footnote{Hinweis: Die deutsche Übersetzung k
   \item ``File Send Window'' - Dieses Fenster gibt eine Übersicht, über die
   verschickten Daten. Neben dem derzeitigen Sendestatus, kann man den Namen
   der Datei einsehen, die derzeitige Sendeposition und die benutzte
-  Bandbreite. Zusätzliche Informationen geben noch weitere Auskunft über den
-  Sendestatus. %XXX
+  Bandbreite.
+
+  \item ``File Receive Window'' - Ähnlich dem ``File Send Window'' gibt dieses
+  Fenster Auskunft über die empfangenen Daten.
   
   \item ``DCC-Chat-Fenster'' - Das DCC-Chat-Fenster gibt Auskunft über den
   derzeitigen Stand, der offenen DCC-Chats zu anderen IRC Benutzern.
@@ -93,8 +96,146 @@ Im einzelnen gliedert sich das Menü\footnote{Hinweis: Die deutsche Übersetzung k
   
   \item ``Puffer speichern'' - Der Text im Textfenster abspeichern.
   
-  \item ``File Receive'' - %XXX
 \end{enumerate}
+
+\subsection{Die Benutzermodi}
+Mit den Benutzermodi kann man verschiedene Optionen die relevant für den
+IRC-Serveraufenthalt werden, einstellen.
+\begin{description}
+  \item[Unsichtbar]
+  \item[Wallops empfangen]
+  \item[Server-Nachrichten empfangen]
+  \item[Als abwesend markieren] Ist diese Option ausgewählt, gilt man auf dem
+  verbundenen Server als abwesend. Auf den meisten Servern, erscheint bei
+  Abwesenheit eine Hinweisnachricht. 
+  
+  \item[Auto Rejoin bei Kick] Wird man aus einem Kanal ``gekicked'', so kann
+  XChat nach 2 Sekunden den Kanal automatisch wiederbetreten. Die Auswahl
+  dieser Option sollte mit etwas Bedacht geschehen. In manchen Fällen ist es
+  durchaus legitim die Benutzer aus den Kanal zu werfen. Sollte danach ein
+  rausgeworfener Benutzer immer wieder erscheinen, kann es passieren, dass der
+  Kanaloperator einen Bann verhängt.
+  
+  \item[Auto ReConnect zum Server] Ist diese Option ausgewählt, versucht XChat
+  automatisch die Verbindung zum Server wieder herzustellen, falls sie
+  getrennt wurde. 
+  
+  \item[ReConnect nie aufgeben] XChat wird immer versuchen die Verbindung zum
+  Server wieder herzustellen, falls diese getrennt wurde.
+  
+  \item[Automatisches Öffnen der Dialog-Fenster] Wenn diese Option selektiert
+  wurde, springen die Dialogfenster (z.B. DCC Empfang) automatisch auf.
+  
+  \item[Automatisches Akzeptieren von DCC-Chat] Durch diese Option, wird ein
+  DCC Chat immer automatisch angenommen. Diese Option sollte mit Vorsicht
+  eingestellt werden, da es in manchen Kanälen auch Personen gibt, die den
+  direkten Rechnerkontakt missbrauchen können.
+  
+  \item[Automatisches Akzeptieren von DCC-Send] Hier wird ebenfalls
+  automatisch eine Anfrage zum Empfang von Daten mittels DCC angenommen. Auch
+  hier ist die Einstellung mit Vorsicht zu genießen, da über einen
+  automatischen Empfang böswilliger Programmcode auf den Rechner gelangen
+  kann.
+\end{description}
+
+\subsection{Die Einstellungen}
+
+\begin{description}
+  \item[Einstellungen\dots] Zu den Einstellungen, die auf Seite
+  \pageref{chap:einstellungen} näher
+  beschrieben werden.
+  
+  \item[Palette\dots] Hier kann eine andere Farbpalette für den XChat
+  eingestellt werden.
+  
+  \item[Benutzerkommandos\dots] Benutzerkommandos sind Benutzerspezifische
+  Makros die den täglichen Aufenthalt im IRC erleichtern können. Sie rufen
+  wiederrum IRC Kommandos mit Parametern auf.
+  
+  \item[CTCP-Antworten\dots]
+  
+  \item[Benutzerlisten-Knöpfe\dots] Hier kann man Eigene Knöpfe für die
+  Benutzerliste erstellen oder vorhandene bearbeiten. Es sind ebenfalls
+  Makros, die im Kontext der Benutzer aufgerufen werden.
+  
+  \item[Benutzerlisten-Popup\dots] Wer mit der rechten Maustaste auf einen
+  Benutzer klick, sieht das Benutzerlisten-Popup. Dieser Unterpunkt gibt einem
+  die Möglichkeit dieses Popupmenü zu editieren und ggf. Benutzerdefinierte
+  Kommandos einzubinden.
+  
+  \item[Dialog Buttons\dots] In einem Dialog\footnote{Wird meist auch
+    ``Query'' oder ``Separ\'e'' genannt.} mit einem Benutzer lassen sich
+  verschiedene Funktionen aufrufen, die man hier einstellen kann.
+  
+  \item[Ersetzen-Popup\dots] Die Funktion, falsch geschriebene Wörter
+  automatisch zu berichtigen kann über diesen Menüpunkt bearbeitet werden.
+  Hier können neue Wörter hinzugefügt oder bestehende modifiziert werden.
+  
+  \item[Anwendungen für URLS\dots] Damit URLs sich mit verschiedenen
+  Programmen öffnen lassen, müssen diese hier eingestellt sein. Viele
+  Programme sind, der jeweiligen Distribution abhängig, schon voreingestellt. 
+ 
+  \item[Ereignistexte editieren\dots] Die Formatierung der Ereignisse auf
+  einem Server, lässt sich hier einstellen. 
+  
+  \item[Tastaturbindungen editieren\dots] Tastaturkürzel für die Bedienung des
+  XChat lassen sich hier spezifizieren. 
+  
+  \item[Einstellungen neu laden] Hiermit lassen sich abgespeicherte XChat
+  Einstellungen neu laden.
+  
+  \item[Änderungen jetzt speichern] Die gemachten Änderungen am XChat lassen
+  sich mit diesem Menüeintrag abspeichern. Dies ist vor allem dann von
+  Vorteil, wenn man keine Gelegenheit hat, den XChat selber zu schließen um
+  die gemachten Veränderungen an der Konfiguration abspeichern zu lassen.
+  
+  \item[Einstellungen beim Beenden speichern] Hier kann festgelegt werden, ob
+  XChat beim Beenden automatisch die Änderungen speichern soll oder nicht.
+\end{description}
+
+\subsection{Skripte \& Plugins}
+\begin{description}
+  \item[Laden] Hiermit lassen sich Perl oder Python Scripte, sowie Plugins für
+  den XChat laden.
+  \item[Info] Über diesen Menüpunkt lassen sich Informationen zu geladenen
+  Scripten und Plugins aufrufen.
+  \item[Töten] Die geladenen Plugins oder Scripte lassen sich über diesen
+  Menüpunkt wieder aus dem XChat entfernen. \textbf{Hinweis:} Perl oder
+  Python Scripte werden automatisch geladen, wenn sie sich unter Linux/Unix im
+  persönlichen Heimordner des XChat befinden. (Bsp:
+    \texttt{/home/name/.xchat/}) Diese werden nur bis zum nächsten Start
+  beendet.
+\end{description}
+
+\subsection{Das Benutzermenü}
+\begin{description}
+  \item[Benutzermenü bearbeiten]
+  \item[IRC Stuff]
+  \begin{description}
+    \item[Disconnect]
+    \item[Reconnect]
+    \item[Part Channel]
+    \item[Cycle Channel]
+    \item[Server Map]
+    \item[Server Links]
+    \item[Ping Server]
+  \end{description}
+  \item[Connect]
+  \item[Settings]
+  \begin{description}
+    \item[Hide Version]
+    \item[Colored Nicks]
+    \item[1.4.x Nick Comp.]
+    \item[Strip mIRC color]
+    \item[Filter Beeps]
+    \item[Raw MODE Display]
+    \item[Perl Warnings]
+    \item[Mail Checker]
+  \end{description}
+  \item[External]
+\end{description}
+
+\subsection{Die Hilfe}
 
 \section{Die Toolzeile} 
 Die Toolzeile beinhaltet Reiter für jedes Fenster
@@ -141,10 +282,7 @@ benutzten Objekt (Kanal, Nick usw.) und die Ausgabe von Kommandos, die gerade
 benutzt wurden.
 
 Es ist normalerweise ein GTK Textfenster, daß man durch Optionen
-``Einstellungen - Einstellungen - Kanal Fenster'' aufrufen kann. Wie auch
-immer, kann es eine ZVT\footnote{Anmerkung des Übersetzers: Fragt mich nicht
-  was das sein soll?} sein (nur GNOME), welches Pseudo-Transparente
-Hintergründe erlaubt.
+``Einstellungen - Einstellungen - Kanal Fenster'' aufrufen kann. 
 
 Abbildung \ref{fig:textfenster} zeigt ein Bild des Textfensters.
 
