@@ -1,17 +1,11 @@
 \chapter{Die Benutzeroberfläche}
+
 \begin{figure}[htp]
   \begin{center}
     \includegraphics{xchat2_images/hauptfenster.png}
   \end{center}
   \caption{Das Hauptfenster kurz nach dem Start des Programmes}
 \end{figure}
-
-Im Vergleich zur älteren XChat Version, möchte ich hier nur die Veränderungen
-erwähnen, die gegenüber der älteren Version gemacht wurden. Außerdem ist
-anzumerken, dass sich die Übersetzung in die eigene Landessprache noch in der
-Entwicklung befindet. Die Einzelnen hier angesprochenen Teile der
-Benutzeroberfläche kann man ein- und ausblenden, indem man das Kontextmenü
-durch klicken mit der Rechten Maustaste im Textfenster aufruft.
 
 \section{Die Menüzeile}\index{XChat 2 !Menüzeile}
 
@@ -346,4 +340,57 @@ Proxy auswählen.
     \includegraphics{xchat2_images/serverliste.png}
   \end{center}
   \caption{Die Serverliste im Editiermodus.}
+  \label{fig:servlistedit}
 \end{figure}
+
+
+\subsection{Aufruf}
+Der Aufruf der Serverliste erfolgt mit dem Tastaturkürzel (\verb|STRG+S|) oder
+über die Menüzeile (\verb|X-Chat, Server List ...|).
+
+\subsection{Ansichtsmodi}
+\begin{figure}[htp]
+  \begin{center}
+    \input{xchat2_images/serverlist.latex}
+  \end{center}
+  \caption{Vereinfachte Ansicht der Serverliste. Das mit * markierte Feld ist
+    nur im Editiermodus sichtbar.}
+\end{figure}
+
+Beim öffnen der Serverliste, werden 2 Modi unterschieden:
+\begin{itemize}
+  \item der Betrachtermodus
+  \item der Editiermodus
+\end{itemize}
+
+\subsection{Global User Info}
+Die Ansicht auf die globalen Benutzer Informationen (Global User Info) bleiben
+beim wechseln in die verschiedenen Ansichtsmodi erhalten. Hier können
+persönliche Einstellungen vorgenommen werden. Es existieren 3 verschiedene
+Felder für das Einstellen des \textbf{Nick Namen}, im folgenden auch
+\textbf{Spitznamen} genannt. Im ersten Feld wird der
+normal gebräuchliche Spitzname hineingeschrieben. Die zwei weiteren Felder
+dienen dazu, alternative Spitznamen zu verwenden, die auf dem ersten Server schon vergeben
+sind. Auf Abbildung (\ref{fig:servlistedit}) wird zum Beispiel \verb|roman|
+anstatt von \verb|romanofski| verwendet, wenn \verb|romanofski| schon auf dem
+zu verbindenen Server vergeben ist.
+
+
+Der Benutzername (\textbf{User Name:}) und der reale Name (\textbf{Real
+    Name:}) sollte ebenfalls noch spezifiziert werden. Manche Server fragen
+auch diese Einstellungen ab und lassen keine Verbindung zu, falls diese Felder
+nicht ausgefüllt sind.
+
+\subsection{Betrachtermodus}
+
+Der Betrachtermodus stellt nur die eingetragenen
+Netzwerke\footnote{Nochmal zu Erinnerung: Zu jedem Netzwerk können mehrere
+  oder einzelne Server gehören. Die Benutzer werden dann auf die jeweiligen
+  Server im IRC Netz aufgeteilt} dar, zu denen sich eine Verbindung herstellen
+lässt. 
+
+\section{Verbindungsaufbau}
+Eine Verbindung zu einem Netzwerk wird aufgebaut, wenn dieses
+ausgewählt ist und der \textbf{Connect} Knopf gedrückt wird.
+
+\section{Verbindungsabbau und Beenden des Programmes}
