@@ -1,19 +1,20 @@
 /* Implementation of the internal dcigettext function.
-   Copyright (C) 1995-1999, 2000, 2001 Free Software Foundation, Inc.
+   Copyright (C) 1995-1999, 2000-2002 Free Software Foundation, Inc.
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2, or (at your option)
+   This program is free software; you can redistribute it and/or modify it
+   under the terms of the GNU Library General Public License as published
+   by the Free Software Foundation; either version 2, or (at your option)
    any later version.
 
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Library General Public License for more details.
 
-   You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software Foundation,
-   Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.  */
+   You should have received a copy of the GNU Library General Public
+   License along with this program; if not, write to the Free Software
+   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
+   USA.  */
 
 /* Tell glibc's <string.h> to provide a prototype for mempcpy().
    This must come before <config.h> because <config.h> may include
@@ -55,13 +56,7 @@ extern int errno;
 
 #include <stddef.h>
 #include <stdlib.h>
-
 #include <string.h>
-#if !HAVE_STRCHR && !defined _LIBC
-# ifndef strchr
-#  define strchr index
-# endif
-#endif
 
 #if defined HAVE_UNISTD_H || defined _LIBC
 # include <unistd.h>
@@ -69,11 +64,26 @@ extern int errno;
 
 #include <locale.h>
 
+#ifdef _LIBC
+  /* Guess whether integer division by zero raises signal SIGFPE.
+     Set to 1 only if you know for sure.  In case of doubt, set to 0.  */
+# if defined __alpha__ || defined __arm__ || defined __i386__ \
+     || defined __m68k__ || defined __s390__
+#  define INTDIV0_RAISES_SIGFPE 1
+# else
+#  define INTDIV0_RAISES_SIGFPE 0
+# endif
+#endif
+#if !INTDIV0_RAISES_SIGFPE
+# include <signal.h>
+#endif
+
 #if defined HAVE_SYS_PARAM_H || defined _LIBC
 # include <sys/param.h>
 #endif
 
 #include "gettextP.h"
+#include "plural-exp.h"
 #ifdef _LIBC
 # include <libintl.h>
 #else
@@ -106,10 +116,10 @@ extern int errno;
    names than the internal variables in GNU libc, otherwise programs
    using libintl.a cannot be linked statically.  */
 #if !defined _LIBC
-# define _nl_default_default_domain _nl_default_default_domain__
-# define _nl_current_default_domain _nl_current_default_domain__
-# define _nl_default_dirname _nl_default_dirname__
-# define _nl_domain_bindings _nl_domain_bindings__
+# define _nl_default_default_domain libintl_nl_default_default_domain
+# define _nl_current_default_domain libintl_nl_current_default_domain
+# define _nl_default_dirname libintl_nl_default_dirname
+# define _nl_domain_bindings libintl_nl_domain_bindings
 #endif
 
 /* Some compilers, like SunOS4 cc, don't have offsetof in <stddef.h>.  */
@@ -197,16 +207,6 @@ static void *mempcpy PARAMS ((void *dest, const void *src, size_t n));
 # define IS_PATH_WITH_DIR(P) (strchr (P, '/') != NULL)
 #endif
 
-/* XPG3 defines the result of `setlocale (category, NULL)' as:
-   ``Directs `setlocale()' to query `category' and return the current
-     setting of `local'.''
-   However it does not specify the exact format.  Neither do SUSV2 and
-   ISO C 99.  So we can use this feature only on selected systems (e.g.
-   those using GNU C Library).  */
-#if defined _LIBC || (defined __GNU_LIBRARY__ && __GNU_LIBRARY__ >= 2)
-# define HAVE_LOCALE_NULL
-#endif
-
 /* This is the type used for the search tree where known translations
    are stored.  */
 struct known_translation_t
@@ -273,13 +273,18 @@ transcmp (p1, p2)
 
 /* Name of the default domain used for gettext(3) prior any call to
    textdomain(3).  The default value for this is "messages".  */
-const char _nl_default_default_domain[] = "messages";
+const char _nl_default_default_domain[] attribute_hidden = "messages";
 
 /* Value used as the default domain for gettext(3).  */
-const char *_nl_current_default_domain = _nl_default_default_domain;
+const char *_nl_current_default_domain attribute_hidden
+     = _nl_default_default_domain;
 
 /* Contains the default location of the message catalogs.  */
+#if defined __EMX__
+extern const char _nl_default_dirname[];
+#else
 const char _nl_default_dirname[] = LOCALEDIR;
+#endif
 
 /* List with bindings of specific domains created by bindtextdomain()
    calls.  */
@@ -291,9 +296,6 @@ static char *plural_lookup PARAMS ((struct loaded_l10nfile *domain,
 				    const char *translation,
 				    size_t translation_len))
      internal_function;
-static unsigned long int plural_eval PARAMS ((struct expression *pexp,
-					      unsigned long int n))
-     internal_function;
 static const char *category_to_name PARAMS ((int category)) internal_function;
 static const char *guess_category_value PARAMS ((int category,
 						 const char *categoryname))
@@ -304,6 +306,7 @@ static const char *guess_category_value PARAMS ((int category,
    some additional code emulating it.  */
 #ifdef HAVE_ALLOCA
 /* Nothing has to be done.  */
+# define freea(p) /* nothing */
 # define ADD_BLOCK(list, address) /* nothing */
 # define FREE_BLOCKS(list) /* nothing */
 #else
@@ -328,11 +331,13 @@ struct block_list
     while (list != NULL) {						      \
       struct block_list *old = list;					      \
       list = list->next;						      \
+      free (old->address);						      \
       free (old);							      \
     }									      \
   } while (0)
 # undef alloca
 # define alloca(size) (malloc (size))
+# define freea(p) free (p)
 #endif	/* have alloca */
 
 
@@ -356,12 +361,12 @@ typedef unsigned char transmem_block_t;
 #ifdef _LIBC
 # define DCIGETTEXT __dcigettext
 #else
-# define DCIGETTEXT dcigettext__
+# define DCIGETTEXT libintl_dcigettext
 #endif
 
 /* Lock variable to protect the global data in the gettext implementation.  */
 #ifdef _LIBC
-__libc_rwlock_define_initialized (, _nl_state_lock)
+__libc_rwlock_define_initialized (, _nl_state_lock attribute_hidden)
 #endif
 
 /* Checking whether the binaries runs SUID must be done and glibc provides
@@ -393,6 +398,9 @@ static int enable_secure;
 	enable_secure = -1;						      \
     }
 #endif
+
+/* Get the function to evaluate the plural expression.  */
+#include "eval-plural.h"
 
 /* Look up MSGID in the DOMAINNAME message catalog for the current
    CATEGORY locale and, if PLURAL is nonzero, search over string
@@ -437,6 +445,12 @@ DCIGETTEXT (domainname, msgid1, msgid2, plural, n, category)
   if (domainname == NULL)
     domainname = _nl_current_default_domain;
 
+  /* OS/2 specific: backward compatibility with older libintl versions  */
+#ifdef LC_MESSAGES_COMPAT
+  if (category == LC_MESSAGES_COMPAT)
+    category = LC_MESSAGES;
+#endif
+
 #if defined HAVE_TSEARCH || defined _LIBC
   msgid_len = strlen (msgid1) + 1;
 
@@ -449,6 +463,7 @@ DCIGETTEXT (domainname, msgid1, msgid2, plural, n, category)
   search->category = category;
 
   foundp = (struct known_translation_t **) tfind (search, &root, transcmp);
+  freea (search);
   if (foundp != NULL && (*foundp)->counter == _nl_msg_cat_cntr)
     {
       /* Now deal with plural.  */
@@ -517,6 +532,7 @@ DCIGETTEXT (domainname, msgid1, msgid2, plural, n, category)
 	  /* We cannot get the current working directory.  Don't signal an
 	     error but simply return the default string.  */
 	  FREE_BLOCKS (block_list);
+	  __libc_rwlock_unlock (_nl_state_lock);
 	  __set_errno (saved_errno);
 	  return (plural == 0
 		  ? (char *) msgid1
@@ -681,6 +697,7 @@ _nl_find_msg (domain_file, domainbinding, msgid, lengthp)
      size_t *lengthp;
 {
   struct loaded_domain *domain;
+  nls_uint32 nstrings;
   size_t act;
   char *result;
   size_t resultlen;
@@ -693,8 +710,10 @@ _nl_find_msg (domain_file, domainbinding, msgid, lengthp)
 
   domain = (struct loaded_domain *) domain_file->data;
 
+  nstrings = domain->nstrings;
+
   /* Locate the MSGID and its translation.  */
-  if (domain->hash_size > 2 && domain->hash_tab != NULL)
+  if (domain->hash_tab != NULL)
     {
       /* Use the hashing table.  */
       nls_uint32 len = strlen (msgid);
@@ -704,22 +723,30 @@ _nl_find_msg (domain_file, domainbinding, msgid, lengthp)
 
       while (1)
 	{
-	  nls_uint32 nstr = W (domain->must_swap, domain->hash_tab[idx]);
+	  nls_uint32 nstr =
+	    W (domain->must_swap_hash_tab, domain->hash_tab[idx]);
 
 	  if (nstr == 0)
 	    /* Hash table entry is empty.  */
 	    return NULL;
 
-	  /* Compare msgid with the original string at index nstr-1.
+	  nstr--;
+
+	  /* Compare msgid with the original string at index nstr.
 	     We compare the lengths with >=, not ==, because plural entries
 	     are represented by strings with an embedded NUL.  */
-	  if (W (domain->must_swap, domain->orig_tab[nstr - 1].length) >= len
-	      && (strcmp (msgid,
-			  domain->data + W (domain->must_swap,
-					    domain->orig_tab[nstr - 1].offset))
-		  == 0))
+	  if (nstr < nstrings
+	      ? W (domain->must_swap, domain->orig_tab[nstr].length) >= len
+		&& (strcmp (msgid,
+			    domain->data + W (domain->must_swap,
+					      domain->orig_tab[nstr].offset))
+		    == 0)
+	      : domain->orig_sysdep_tab[nstr - nstrings].length > len
+		&& (strcmp (msgid,
+			    domain->orig_sysdep_tab[nstr - nstrings].pointer)
+		    == 0))
 	    {
-	      act = nstr - 1;
+	      act = nstr;
 	      goto found;
 	    }
 
@@ -737,7 +764,7 @@ _nl_find_msg (domain_file, domainbinding, msgid, lengthp)
       size_t top, bottom;
 
       bottom = 0;
-      top = domain->nstrings;
+      top = nstrings;
       while (bottom < top)
 	{
 	  int cmp_val;
@@ -760,9 +787,17 @@ _nl_find_msg (domain_file, domainbinding, msgid, lengthp)
  found:
   /* The translation was found at index ACT.  If we have to convert the
      string to use a different character set, this is the time.  */
-  result = ((char *) domain->data
-	    + W (domain->must_swap, domain->trans_tab[act].offset));
-  resultlen = W (domain->must_swap, domain->trans_tab[act].length) + 1;
+  if (act < nstrings)
+    {
+      result = (char *)
+	(domain->data + W (domain->must_swap, domain->trans_tab[act].offset));
+      resultlen = W (domain->must_swap, domain->trans_tab[act].length) + 1;
+    }
+  else
+    {
+      result = (char *) domain->trans_sysdep_tab[act - nstrings].pointer;
+      resultlen = domain->trans_sysdep_tab[act - nstrings].length;
+    }
 
 #if defined _LIBC || HAVE_ICONV
   if (domain->codeset_cntr
@@ -795,8 +830,9 @@ _nl_find_msg (domain_file, domainbinding, msgid, lengthp)
 	 NULs.  */
 
       if (domain->conv_tab == NULL
-	  && ((domain->conv_tab = (char **) calloc (domain->nstrings,
-						    sizeof (char *)))
+	  && ((domain->conv_tab =
+		 (char **) calloc (nstrings + domain->n_sysdep_strings,
+				   sizeof (char *)))
 	      == NULL))
 	/* Mark that we didn't succeed allocating a table.  */
 	domain->conv_tab = (char **) -1;
@@ -1003,87 +1039,6 @@ plural_lookup (domain, n, translation, translation_len)
 }
 
 
-/* Function to evaluate the plural expression and return an index value.  */
-static unsigned long int
-internal_function
-plural_eval (pexp, n)
-     struct expression *pexp;
-     unsigned long int n;
-{
-  switch (pexp->nargs)
-    {
-    case 0:
-      switch (pexp->operation)
-	{
-	case var:
-	  return n;
-	case num:
-	  return pexp->val.num;
-	default:
-	  break;
-	}
-      /* NOTREACHED */
-      break;
-    case 1:
-      {
-	/* pexp->operation must be lnot.  */
-	unsigned long int arg = plural_eval (pexp->val.args[0], n);
-	return ! arg;
-      }
-    case 2:
-      {
-	unsigned long int leftarg = plural_eval (pexp->val.args[0], n);
-	if (pexp->operation == lor)
-	  return leftarg || plural_eval (pexp->val.args[1], n);
-	else if (pexp->operation == land)
-	  return leftarg && plural_eval (pexp->val.args[1], n);
-	else
-	  {
-	    unsigned long int rightarg = plural_eval (pexp->val.args[1], n);
-
-	    switch (pexp->operation)
-	      {
-	      case mult:
-		return leftarg * rightarg;
-	      case divide:
-		return leftarg / rightarg;
-	      case module:
-		return leftarg % rightarg;
-	      case plus:
-		return leftarg + rightarg;
-	      case minus:
-		return leftarg - rightarg;
-	      case less_than:
-		return leftarg < rightarg;
-	      case greater_than:
-		return leftarg > rightarg;
-	      case less_or_equal:
-		return leftarg <= rightarg;
-	      case greater_or_equal:
-		return leftarg >= rightarg;
-	      case equal:
-		return leftarg == rightarg;
-	      case not_equal:
-		return leftarg != rightarg;
-	      default:
-		break;
-	      }
-	  }
-	/* NOTREACHED */
-	break;
-      }
-    case 3:
-      {
-	/* pexp->operation must be qmop.  */
-	unsigned long int boolarg = plural_eval (pexp->val.args[0], n);
-	return plural_eval (pexp->val.args[boolarg ? 1 : 2], n);
-      }
-    }
-  /* NOTREACHED */
-  return 0;
-}
-
-
 /* Return string representation of locale CATEGORY.  */
 static const char *
 internal_function
@@ -1164,27 +1119,21 @@ guess_category_value (category, categoryname)
   /* We have to proceed with the POSIX methods of looking to `LC_ALL',
      `LC_xxx', and `LANG'.  On some systems this can be done by the
      `setlocale' function itself.  */
-#if defined _LIBC || (defined HAVE_SETLOCALE && defined HAVE_LC_MESSAGES && defined HAVE_LOCALE_NULL)
+#ifdef _LIBC
   retval = setlocale (category, NULL);
 #else
-  /* Setting of LC_ALL overwrites all other.  */
-  retval = getenv ("LC_ALL");
-  if (retval == NULL || retval[0] == '\0')
-    {
-      /* Next comes the name of the desired category.  */
-      retval = getenv (categoryname);
-      if (retval == NULL || retval[0] == '\0')
-	{
-	  /* Last possibility is the LANG environment variable.  */
-	  retval = getenv ("LANG");
-	  if (retval == NULL || retval[0] == '\0')
-	    /* We use C as the default domain.  POSIX says this is
-	       implementation defined.  */
-	    return "C";
-	}
-    }
+  retval = _nl_locale_name (category, categoryname);
 #endif
 
+  /* Ignore LANGUAGE if the locale is set to "C" because
+     1. "C" locale usually uses the ASCII encoding, and most international
+	messages use non-ASCII characters. These characters get displayed
+	as question marks (if using glibc's iconv()) or as invalid 8-bit
+	characters (because other iconv()s refuse to convert most non-ASCII
+	characters to ASCII). In any case, the output is ugly.
+     2. The precise output of some programs in the "C" locale is specified
+	by POSIX and should not depend on environment variables like
+	"LANGUAGE".  We allow such programs to use gettext().  */
   return language != NULL && strcmp (retval, "C") != 0 ? language : retval;
 }
 
