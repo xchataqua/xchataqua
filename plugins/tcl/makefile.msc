@@ -13,7 +13,7 @@ tclplugin.obj: tclplugin.c
 	$(CC) -nologo -O1 -MD -G5 -DWIN32 -Dstrncasecmp=strnicmp -Dstrcasecmp=stricmp -c tclplugin.c -I$(TCLPATH)\INCLUDE -I../../include -I..
 
 $(TARGET): tclplugin.obj tcl.def
-	$(LINK) /DLL /out:$(TARGET) /SUBSYSTEM:WINDOWS /nologo tclplugin.obj /LIBPATH:$(TCLPATH)\LIB $(TCLLIB).lib dirent.lib wsock32.lib /def:tcl.def /OPT:NOWIN98
+	$(LINK) /DLL /out:$(TARGET) /SUBSYSTEM:WINDOWS /nologo tclplugin.obj /LIBPATH:$(TCLPATH)\LIB $(TCLLIB).lib /DELAYLOAD:$(TCLLIB).dll DELAYIMP.LIB dirent.lib /def:tcl.def /OPT:NOWIN98
 
 clean:
 	rm $(TARGET)
