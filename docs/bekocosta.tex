@@ -20,29 +20,46 @@ Unter folgenden Systemen sollte es laufen:
 
 
 \section{Bekommen}
-Wenn Du faul bist und nicht noch einige Hilfsbibliotheken installieren willst, hostet Peter Alexandrou eine \emph{X-Chat Paketseite}\footnote{http://www.users.bigpond.com/redowl/xchat/}.
-Die Hauptdistribution gibt es von der XChat Homepage\footnote{http://xchat.linuxpower.org}. XChat benötigt GTK\footnote{http://www.gtk.org} und dazu kannst Du optional noch GNOME und PERL benutzen.
+In den meisten Linux Distributionen ist das XChat Paket schon enthalten und
+kann über die verschiedenen Installationsroutinen der Distribution installiert
+werden. Für andere Plattformen, wie zum Beispiel Windows gibt es die XChat
+Homepage\footnote{http://www.xchat.org}. Hier kann man die Windows Binärpakete
+runterladen, die sich wie ein normales Windows Programm installieren lassen.
+Zusätzlich gibt es noch weitere Wege ``inoffizielle'' Windows Pakete von XChat
+zu bekommen. Die Seite: \verb|http://ursus.mif.vu.lt/xchat/news/| bietet einen
+guten Anlaufpunkt für aktuelle Windows-Versionen. Angemerkt sei aber hier,
+dass die meisten Seiten in englischer Sprache sind.
 
-\section{Compilieren}
-XChat benutzt das ``GNU autoconf system'', so dass das Compilieren sehr leicht sein sollte. Für die meisten Systeme sollte die automatische Erkennung funktionieren:
-\texttt{./configure ; make ; su ; make install}
-Auf einigen Systemen wird gmake mehr gebraucht, als make. Dem Konfigurationsscript(configure) kann man noch einige Optionen übergeben:
-\begin{itemize}
-\item --disable-perl = Schaltet die PERL Unterstützung aus
-\item --disable-gnome = Schaltet die GNOME Unterstützung aus
-\end{itemize}
+\section{Compilieren unter Unix/Linux}
+\textbf{Hinweis:} Wer sich nicht mit dem Entwickeln von Programmen unter
+Unix/Linux auskennt, sollte die oben genannten Distributionswege auswählen.
+Das Compilieren der Quelldateien setzt Programmierwissen vorraus.
 
-Es sei darauf hingewiesen, dass das Script diese Optionen automatisch setzt, wenn kein GNOME oder PERL installiert ist. Sie sind nur für den Fall gedacht, wenn man GNOME oder PERL installiert hat, aber es nicht nutzen möchte.
-Sollte es bei dieser Methode Probleme geben, versuch die alte Methode:
-\texttt{cp Makefile.gtk Makefile ; make ; su ; make install}
+XChat benutzt das ``GNU autoconf system'', so dass das Compilieren sehr leicht
+sein sollte. Für die meisten Systeme wird die automatische Erkennung
+funktionieren: \texttt{./configure ; make ; su ; make install}. Auf einigen
+Systemen wird \verb|gmake| mehr gebraucht, als \verb|make|. Dem
+Konfigurationsscript (\verb|configure|) kann man noch einige Optionen übergeben:
+\begin{itemize} \item \verb|--disable-perl| = Schaltet die PERL Unterstützung aus
+  \item \verb|--disable-gnome| = Schaltet die GNOME Unterstützung aus \end{itemize}
+
+Es sei darauf hingewiesen, dass das Script diese Optionen automatisch setzt,
+wenn kein GNOME oder PERL installiert ist. Sie sind nur für den Fall gedacht,
+wenn man GNOME oder PERL installiert hat, aber es nicht nutzen möchte. Eine
+Übersicht über die möglichen Optionen die \verb|configure| benötigt, kann man
+sich mit 
+\begin{verbatim}
+  ./configure --help
+\end{verbatim} 
+ausgeben lassen.
 
 \section{Starten}
 
-Die Compilierung erzeugt eine Binärdatei namens xchat. Wenn Du es installiert
-hast, sollte XChat laufen, wenn man \verb|xchat| in die Konsole eintippt.
+Die Compilierung erzeugt eine Binärdatei namens \verb|xchat|. Wenn Du es installiert
+hast, kannst du das Programm mit \verb|xchat| starten.
 Ansonsten einfach in das XChat Verzeichnis und \verb|./xchat| eintippen.
 
 
-Das Verzeichnis \verb|./xchat| sollte für Dich automatisch erstellt werden.
+Dein persönliches Verzeichnis \verb|~/.xchat| sollte für Dich automatisch erstellt werden.
 XChat benutzt das Verzeichnis, um benutzerspezifische Einstellungen und Logs
-abzulegen.
+abzulegen. 
