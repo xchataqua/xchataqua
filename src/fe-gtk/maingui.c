@@ -65,8 +65,6 @@ static const char chan_flags[] = { 't', 'n', 's', 'i', 'p', 'm', 'l', 'k' };
 
 static GtkWidget *active_tab = NULL;	/* active tab - toggle button */
 
-GtkWidget *main_menu = NULL;
-
 GtkStyle *newmsg_style = NULL;
 GtkStyle *nickseen_style;
 GtkStyle *newdata_style;
@@ -2013,23 +2011,24 @@ mg_create_tabwindow (session *sess)
 	mg_create_tabs (sess->gui, vbox);
 	mg_create_menu (sess->gui, vbox, sess->server->is_away);
 
-	main_menu = sess->gui->menu;	/* menu.c uses this global var */
-
 	mg_focus (sess);
 
 	if (prefs.tabs_position != 0)
 		mg_set_tabs_pos (sess->gui, prefs.tabs_position);
-	
-	gtk_widget_show_all (win);
 
-	if (prefs.hidemenu)
-		gtk_widget_hide (sess->gui->menu);
+	if (!prefs.hidemenu)
+		gtk_widget_show (sess->gui->menu);
+
+	gtk_widget_show (vbox);
+	gtk_widget_show_all (book);
 
 	if (prefs.hideuserlist)
 		gtk_widget_hide (sess->gui->user_box);
 
 	if (!prefs.topicbar)
 		gtk_widget_hide (sess->gui->topic_bar);
+
+	gtk_widget_show (win);
 }
 
 void
@@ -2139,9 +2138,9 @@ fe_dlgbuttons_update (session *sess)
 
 	gtk_widget_destroy (gui->dialogbutton_box);
 
-	/* FIXME: reorder child */
 	gui->dialogbutton_box = box = gtk_hbox_new (0, 0);
 	gtk_box_pack_start (GTK_BOX (gui->topic_bar), box, 0, 0, 0);
+	gtk_box_reorder_child (GTK_BOX (gui->topic_bar), box, 3);
 	mg_create_dialogbuttons (box);
 	gtk_widget_show_all (box);
 }
