@@ -1,6 +1,10 @@
 \chapter{Die Benutzeroberfläche}
 Im Vergleich zur älteren XChat Version, möchte ich hier nur die Veränderungen
-erwähnen, die gegenüber der älteren Version gemacht wurden.
+erwähnen, die gegenüber der älteren Version gemacht wurden. Ausserdem ist
+anzumerken, dass sich die Übersetzung in die eigene Landessprache noch in der
+Entwicklung befindet. Die Einzelnen hier angesprochenen Teile der
+Benutzeroberfläche kann man ein- und ausblenden, indem man das Kontextmenü
+durch klicken mit der Rechten Maustaste im Textfenster aufruft.
 
 \section{Die Menüzeile}
 
@@ -12,7 +16,34 @@ erwähnen, die gegenüber der älteren Version gemacht wurden.
   \label{fig:menuezeile2}
 \end{figure}
 
+Die Menüzeile wurde gegenüber der alten Version etwas aufgeräumt. So befinden
+sich folgende Menüpunkte in der Menüzeile:
+\begin{description}
+  \item[Server List] Verwalten der IRC Server und Netzwerke mit denen man in
+  Verbindung treten kann. Ausserdem können noch Verbindungsoptionen
+  eingestellt werden.
+  
+  \item[New] Über die Untermenüs, kann man neue Server- und Kanalreiter, sowie
+  Fenster zum Hauptfenster des XChat hinzufügen.
+  
+  \item[Load Plugin or Script\dots] Neue Plugins oder Skripte können über
+  diesen Menüpunkt zum XChat hinzugeladen werden. XChat kann mit Perl-, Tcl-
+  und Pythonscripts erweitert werden. Abhängig ist dies jedoch von der
+  Distribution und der Compilation des Programs.
+ 
+  \item[Detach Tab] Hier kann der aktuelle Reiter aus dem Hauptfenster ``abgetrennt''
+  werden. Der Reiter erscheint dann in einem neuen Fenster.
+  
+  \item[Close Tab] Der aktuelle Reiter kann mit diesem Menüpunkt geschlossen werden.
+  \item[Beenden] Hiermit kann XChat beendet werden.
+\end{description}
+
+
 \section{Die Toolzeile}
+Die Toolzeile hat sich gegenüber der alten Version kaum verändert. Die
+Funktion $\rightarrow$ \emph{Detach Tab} ist in die Menüzeile mit
+eingegliedert worden. Mehr über die Menüzeile gibts auf Seite
+\pageref{sec:toolzeile}.
 
 \begin{figure}[htb]
   \begin{center}
@@ -24,6 +55,9 @@ erwähnen, die gegenüber der älteren Version gemacht wurden.
 
 
 \section{Das Textfenster}
+Das Textfenster erfüllt wie in der alten Version des XChat das anzeigen des
+Textes (wer hätte das wohl gedacht ;-)). Mehr dazu auf Seite
+\pageref{sec:textfenster}.
 
 \begin{figure}[htb]
   \begin{center}
@@ -34,6 +68,10 @@ erwähnen, die gegenüber der älteren Version gemacht wurden.
 \end{figure}
 
 \section{Die Benutzerliste}
+Im Vergleich zur alten Version des XChat, kann man nun per Maus die
+Benutzerliste aus der rechten Seite herausziehen und dort wieder
+hineinschieben.
+Die Funktionalität der Benutzerliste ist aber gleich geblieben.
 
 \begin{figure}[htb]
   \begin{center}
@@ -45,4 +83,15 @@ erwähnen, die gegenüber der älteren Version gemacht wurden.
 
 
 \section{Die Eingabezeile}
+Die Eingabezeile wurde in seiner Funktionalität etwas abgeändert. So kann man
+den Nick für den aktuellen Reiter durch klicken auf dessen ändern. Durch
+klicken auf die Eingabezeile mit der rechten Maustaste, kann man zusätzlich noch
+\begin{itemize}
+  \item Text ausschneiden, kopieren, einfügen und alles markieren
+  \item die Eingabemethode ändern und
+  \item Unicode-Steuerzeichen einfügen
+\end{itemize}
 
+\section{Reiter oder Tabs}
+
+\section{Server List}
