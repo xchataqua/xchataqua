@@ -1,0 +1,27 @@
+CONV = gdk-pixbuf-csource
+
+all: book.h hop.h op.h purple.h red.h voice.h xchat.h
+
+book.h: book.png
+	$(CONV) --name=bookpng book.png > $@
+
+hop.h: book.png
+	$(CONV) --name=hoppng hop.png > $@
+
+op.h: book.png
+	$(CONV) --name=oppng op.png > $@
+
+purple.h: purple.png
+	$(CONV) --name=purplepng purple.png > $@
+
+red.h: red.png
+	$(CONV) --name=redpng red.png > $@
+
+voice.h: voice.png
+	$(CONV) --name=voicepng voice.png > $@
+
+xchat.h: xchat.png
+	$(CONV) --name=xchatpng xchat.png > $@
+
+clean:
+	del *.h
