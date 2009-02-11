@@ -1,0 +1,14 @@
+prefs.use_server_tab = 0;
+prefs.text_manual_indent_chars = 15;
+prefs.outline_width = 150;
+prefs.partonsleep = 1;
+prefs.tab_left_key = 123;
+prefs.tab_left_modifiers = 1 << 20 | 1 << 17;
+prefs.tab_right_key = 124;
+prefs.tab_right_modifiers = 1 << 20 | 1 << 17;
+prefs.auto_away = 0;
+prefs.auto_away_delay = 10;
+strcpy (prefs.urlcommand, "browser %s");
+strcpy (prefs.nickcommand, "query %s");
+strcpy (prefs.channelcommand, "join %s");
+strcpy (prefs.sleepmessage, "This computer has gone to sleep");

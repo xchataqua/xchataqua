@@ -23,7 +23,11 @@
 #include <string.h>				  /* strncpy() */
 #include "ssl.h"					  /* struct cert_info */
 #include "inet.h"
-#include "../../config.h"		  /* HAVE_SNPRINTF */
+#ifdef FE_AQUA
+#include "../config.h"
+#else
+#include "../../config.h"
+#endif
 
 #ifndef HAVE_SNPRINTF
 #define snprintf g_snprintf

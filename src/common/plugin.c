@@ -439,7 +439,11 @@ plugin_auto_load (session *sess)
 #if defined(__hpux)
 	for_files (XCHATLIBDIR"/plugins", "*.sl", plugin_auto_load_cb);
 	for_files (get_xdir_fs (), "*.sl", plugin_auto_load_cb);
-#else
+#elif defined(FE_AQUA)
+	//TODO: hide plugins into app bundle
+	for_files ("./plugins", "*.so", plugin_auto_load_cb);   // X-Chat Aqua
+	for_files (get_xdir_fs (), "*.so", plugin_auto_load_cb);
+ #else
 	for_files (XCHATLIBDIR"/plugins", "*.so", plugin_auto_load_cb);
 	for_files (get_xdir_fs (), "*.so", plugin_auto_load_cb);
 #endif

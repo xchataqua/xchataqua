@@ -1,0 +1,35 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+sub header {
+  my $file = shift;
+  open my $input, "<", $file or die "Couldn't open '$file':$!";
+  my @file = <$input>;
+  close $file;
+  return toc(@file);
+}
+
+sub toc {
+  my @lines = @_;
+  for( @lines ) {
+    if( /^\s*$/s ) { $_ = qq{"\\n"\n}; next; }
+    if( /^\s*#/ ) { $_ = qq{"\\n"\n}; next; }
+    s/\\/\\\\/g; # double the number of \'s
+    s/"/\\"/g;
+    s/^\s*/"/;
+    s/\n/\\n"\n/;
+  }
+  return @lines;
+}
+
+my $output = "xchat.pm.h";
+
+open my $header, ">", $output or die "Couldn't open '$output': $!";
+#select $header;
+print $header header( "Xchat.pm" );
+print $header "#ifdef OLD_PERL\n";
+print $header header( "IRC.pm" );
+print $header "#endif\n";
+close $header;

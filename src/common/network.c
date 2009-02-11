@@ -24,7 +24,11 @@
 #include <unistd.h>
 #include <glib.h>
 
-#include "../../config.h"				  /* grab USE_IPV6 and LOOKUPD defines */
+#ifdef FE_AQUA
+#include "../config.h"
+#else
+#include "../../config.h"
+#endif
 
 #define WANTSOCKET
 #define WANTARPA

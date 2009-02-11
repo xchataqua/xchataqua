@@ -1,0 +1,42 @@
+Notes to self:
+------------------
+o  When /list fails in chan list, refresh button never comes back
+    Same is true for banlist
+o  /list command does not grey out chan list refresh button
+    Same is true for banlist
+o  Channel list: saving (why?)
+o  makeFirstResponder call in chatWindow awake from nib may be the wrong
+    thing to do if a tab window is created, but is not popped up...?
+o  Why load all of the data in EditEvents:show every time?
+o  Utility views/controllers should probably get released when closed.
+    RawLogWin works this way now.. should we change them all this way?
+o  MyChatText -> RawLogWin
+o  menu_urlmenu does some encoding.. determine why exactly.. is it enough?
+o  Don't use 'target/action' for table views.  Use tableViewSelectionDidChange so
+    arrow keys work.  see serverlist.
+o  I don't think serverlist 'connect in new tab' should really be 'connect in new...'
+    We may not be in 'tab' mode.
+o  SGViews need to know about the fact that many views lie about their geometry
+o  fe_notify_update is used in 2 different ways.
+    1.  With a user arg.  Presumably to {de}hilight in the userlist but fe-gtk has
+        this code commented out.  Ask Peter about this some day.  Either way, we
+        should probably do the same thing some day too.
+    2.  With a NULL args.  Just update the notify list.
+o  Retrofit SGSelfPtr or remove it?
+o  Verify that all of the close buttons (tab and window) do 
+    the right thing (save, cleanup etc..)
+o  Ignore list sort button was removed because our gui is realtime.  Put it back?
+o  When editing in table views, grab 'enter' and do NOT go to the next field/line
+o  Window titles for other windows should be specific to server and/or session
+    (see banlist)
+o  ASCII Window is slow to create
+o  Fix the column spacing in windows (turn off auto resize columns?)
+o  rename xxx_list to xxx_table in windows.  Remove self->xxx_list.
+o  Look for [xxx autorelease].. make sure we NULL out our delegates a la PluginList
+o  Should the notify list tab change color ever?
+o  Peter supports quotes in handle_command.. this is good.  What if a plugin
+    had a path with a quote in it?  We should escape quotes and make sure handle_command
+    supports escapes?
+o  Changing fonts is too damn slow.  Do it as a thread?
+o  when resizing the window, the textarea scrolls up, so that the least lines are not visible anymore and have to be manualy scrolled down again.
+o  make user list size more leopard-aware.
