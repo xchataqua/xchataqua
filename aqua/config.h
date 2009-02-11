@@ -14,6 +14,8 @@
 
 #define XCHATLIBDIR "/usr/local/lib"
 
+#include "build_number.h"
+
 #define MYVERSION XCHAT_AQUA_VERSION
 
 #define HAVE_SNPRINTF  1

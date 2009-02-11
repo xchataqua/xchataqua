@@ -23,6 +23,17 @@
 			name = Release;
 			productName = Release;
 		};
+		B07C7A020F43905A00E11B58 /* GenerateBuildNumber */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B07C7A340F43908000E11B58 /* Build configuration list for PBXAggregateTarget "GenerateBuildNumber" */;
+			buildPhases = (
+				B07C7A010F43905A00E11B58 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = GenerateBuildNumber;
+			productName = GenerateBuildNumber;
+		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
@@ -288,6 +299,48 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0FC8F4AD0DEEE51700504F31;
 			remoteInfo = xchat;
+		};
+		B07C7A420F4392ED00E11B58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
+			remoteInfo = GenerateBuildNumber;
+		};
+		B07C7A440F4392F500E11B58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
+			remoteInfo = GenerateBuildNumber;
+		};
+		B07C7A460F43930700E11B58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
+			remoteInfo = GenerateBuildNumber;
+		};
+		B07C7A480F43930F00E11B58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
+			remoteInfo = GenerateBuildNumber;
+		};
+		B07C7A4A0F43931700E11B58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
+			remoteInfo = GenerateBuildNumber;
+		};
+		B07C7A4C0F43931E00E11B58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
+			remoteInfo = GenerateBuildNumber;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -709,6 +762,9 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D1107320486CEB800E47090 /* X-Chat Aqua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "X-Chat Aqua.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B07C7AB20F4395E200E11B58 /* BuildNumber.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = BuildNumber.xcconfig; sourceTree = "<group>"; };
+		B07C7AD60F4398FC00E11B58 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		B07C7AD70F4398FC00E11B58 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1297,6 +1353,9 @@
 				0F8EA3160CFAA342001AE9AE /* xchat common */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				B07C7AB20F4395E200E11B58 /* BuildNumber.xcconfig */,
+				B07C7AD60F4398FC00E11B58 /* Debug.xcconfig */,
+				B07C7AD70F4398FC00E11B58 /* Release.xcconfig */,
 				0F3062530D84958E0084F2CA /* xchat.strings */,
 				0FC8F3F50DEEDAB300504F31 /* Python.framework */,
 				0FC8F4860DEEE3EE00504F31 /* Cocoa.framework */,
@@ -1354,6 +1413,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B07C7A470F43930700E11B58 /* PBXTargetDependency */,
 			);
 			name = "python-leopard";
 			productName = "python-leopard";
@@ -1371,6 +1431,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B07C7A490F43930F00E11B58 /* PBXTargetDependency */,
 			);
 			name = "python-tiger";
 			productName = "python-leopard";
@@ -1388,6 +1449,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B07C7A4B0F43931700E11B58 /* PBXTargetDependency */,
 			);
 			name = "perl-leopard";
 			productName = "perl-leopard";
@@ -1405,6 +1467,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B07C7A4D0F43931E00E11B58 /* PBXTargetDependency */,
 			);
 			name = tcl;
 			productName = tcl;
@@ -1422,6 +1485,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B07C7A430F4392ED00E11B58 /* PBXTargetDependency */,
 			);
 			name = glib;
 			productName = glib;
@@ -1439,6 +1503,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B07C7A450F4392F500E11B58 /* PBXTargetDependency */,
 			);
 			name = xchat;
 			productName = xchat;
@@ -1519,6 +1584,7 @@
 				0F2FF0450E1FD15000DE4D41 /* python-tiger */,
 				0F8F06D60E1FDA8500359159 /* perl-leopard */,
 				0F8F08100E1FE00800359159 /* tcl */,
+				B07C7A020F43905A00E11B58 /* GenerateBuildNumber */,
 			);
 		};
 /* End PBXProject section */
@@ -1612,6 +1678,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B07C7A010F43905A00E11B58 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "#!/bin/bash\n\nsource ~/.bashrc\n\necho \"Generating build_number.h...\";\n\ncd \"$PROJECT_DIR\"\n\"tools/gen_buildnum_h.sh\" \"fe-aqua/build_number.h\" \"BuildNumber.xcconfig\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0F2FEF280E1FAB1500DE4D41 /* Sources */ = {
@@ -1836,6 +1918,36 @@
 			isa = PBXTargetDependency;
 			target = 0FC8F4AD0DEEE51700504F31 /* xchat */;
 			targetProxy = 0FC8F5C20DEEEA3B00504F31 /* PBXContainerItemProxy */;
+		};
+		B07C7A430F4392ED00E11B58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
+			targetProxy = B07C7A420F4392ED00E11B58 /* PBXContainerItemProxy */;
+		};
+		B07C7A450F4392F500E11B58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
+			targetProxy = B07C7A440F4392F500E11B58 /* PBXContainerItemProxy */;
+		};
+		B07C7A470F43930700E11B58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
+			targetProxy = B07C7A460F43930700E11B58 /* PBXContainerItemProxy */;
+		};
+		B07C7A490F43930F00E11B58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
+			targetProxy = B07C7A480F43930F00E11B58 /* PBXContainerItemProxy */;
+		};
+		B07C7A4B0F43931700E11B58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
+			targetProxy = B07C7A4A0F43931700E11B58 /* PBXContainerItemProxy */;
+		};
+		B07C7A4D0F43931E00E11B58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
+			targetProxy = B07C7A4C0F43931E00E11B58 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2223,6 +2335,27 @@
 			};
 			name = Release;
 		};
+		B07C7A030F43905A00E11B58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = GenerateBuildNumber;
+			};
+			name = Debug;
+		};
+		B07C7A040F43905A00E11B58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = GenerateBuildNumber;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2273,6 +2406,7 @@
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B07C7AD60F4398FC00E11B58 /* Debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
@@ -2280,10 +2414,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "fe-aqua";
 				GCC_DEBUGGING_SYMBOLS = full;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"XCHAT_AQUA_VERSION=\\\"$(XCHAT_AQUA_VERSION)\\\"",
-					FE_AQUA,
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = FE_AQUA;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -2294,34 +2425,29 @@
 				);
 				INFOPLIST_FILE = "Info devel.plist";
 				PREBINDING = NO;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
-				VALID_ARCHS = "i386 ppc ppc64 ppc7400 ppc970 x86_64";
-				XCHAT_AQUA_VERSION = 0.17.0b1;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B07C7AD70F4398FC00E11B58 /* Release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				FRAMEWORK_SEARCH_PATHS = "fe-aqua";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"XCHAT_AQUA_VERSION=\\\"$(XCHAT_AQUA_VERSION)\\\"",
-					FE_AQUA,
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = FE_AQUA;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"fe-aqua/Growl.framework/Versions/A/Headers",
-					"fe-aqua/ShortcutRecorder/ShortcutRecorder/Source",
-					"fe-aqua/",
+					"$(SRCROOT)/fe-aqua/Growl.framework/Versions/A/Headers",
+					"$(SRCROOT)/fe-aqua/ShortcutRecorder/ShortcutRecorder/Source",
+					"$(SRCROOT)/fe-aqua/",
 					.,
 				);
 				INFOPLIST_FILE = Info.plist;
 				PREBINDING = NO;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
-				XCHAT_AQUA_VERSION = 0.17.0;
 			};
 			name = Release;
 		};
@@ -2387,6 +2513,15 @@
 			buildConfigurations = (
 				0FC8F4AF0DEEE51700504F31 /* Debug */,
 				0FC8F4B00DEEE51700504F31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B07C7A340F43908000E11B58 /* Build configuration list for PBXAggregateTarget "GenerateBuildNumber" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B07C7A030F43905A00E11B58 /* Debug */,
+				B07C7A040F43905A00E11B58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
