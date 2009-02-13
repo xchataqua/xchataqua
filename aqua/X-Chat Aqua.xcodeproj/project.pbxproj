@@ -300,46 +300,53 @@
 			remoteGlobalIDString = 0FC8F4AD0DEEE51700504F31;
 			remoteInfo = xchat;
 		};
-		B07C7A420F4392ED00E11B58 /* PBXContainerItemProxy */ = {
+		0FE5DFFA0F4554B6000E0F91 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
+			remoteInfo = GenerateBuildNumber;
+		};
+		B07C7A420F4392ED00E11B58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B07C7A020F43905A00E11B58;
 			remoteInfo = GenerateBuildNumber;
 		};
 		B07C7A440F4392F500E11B58 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
+			remoteGlobalIDString = B07C7A020F43905A00E11B58;
 			remoteInfo = GenerateBuildNumber;
 		};
 		B07C7A460F43930700E11B58 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
+			remoteGlobalIDString = B07C7A020F43905A00E11B58;
 			remoteInfo = GenerateBuildNumber;
 		};
 		B07C7A480F43930F00E11B58 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
+			remoteGlobalIDString = B07C7A020F43905A00E11B58;
 			remoteInfo = GenerateBuildNumber;
 		};
 		B07C7A4A0F43931700E11B58 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
+			remoteGlobalIDString = B07C7A020F43905A00E11B58;
 			remoteInfo = GenerateBuildNumber;
 		};
 		B07C7A4C0F43931E00E11B58 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
+			remoteGlobalIDString = B07C7A020F43905A00E11B58;
 			remoteInfo = GenerateBuildNumber;
 		};
 /* End PBXContainerItemProxy section */
@@ -1524,6 +1531,7 @@
 			dependencies = (
 				0FC8F4470DEEE11100504F31 /* PBXTargetDependency */,
 				0FC8F5C30DEEEA3B00504F31 /* PBXTargetDependency */,
+				0FE5DFFB0F4554B6000E0F91 /* PBXTargetDependency */,
 			);
 			name = "X-Chat Aqua";
 			productInstallPath = "$(HOME)/Applications";
@@ -1691,7 +1699,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "#!/bin/bash\n\nsource ~/.bashrc\n\necho \"Generating build_number.h...\";\n\ncd \"$PROJECT_DIR\"\n\"tools/gen_buildnum_h.sh\" \"fe-aqua/build_number.h\" \"BuildNumber.xcconfig\"";
+			shellScript = "#!/bin/bash\n\n[ -f ~/.bashrc ] && source ~/.bashrc\n\necho \"Generating build_number.h...\";\n\ncd \"$PROJECT_DIR\"\n\"tools/gen_buildnum_h.sh\" \"fe-aqua/build_number.h\" \"BuildNumber.xcconfig\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1918,6 +1926,11 @@
 			isa = PBXTargetDependency;
 			target = 0FC8F4AD0DEEE51700504F31 /* xchat */;
 			targetProxy = 0FC8F5C20DEEEA3B00504F31 /* PBXContainerItemProxy */;
+		};
+		0FE5DFFB0F4554B6000E0F91 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
+			targetProxy = 0FE5DFFA0F4554B6000E0F91 /* PBXContainerItemProxy */;
 		};
 		B07C7A430F4392ED00E11B58 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
