@@ -1,5 +1,5 @@
 /* X-Chat Aqua
- * Copyright (C) 2005 Steve Green
+ * Copyright (C) 2005-2009 Steve Green
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,11 +20,9 @@
 
 @implementation SGHBoxViewInspector
 
-- (id) init
+- (NSString *)viewNibName
 {
-    self = [super init];
-    [NSBundle loadNibNamed:@"SGHBoxViewInspector" owner:self];
-    return self;
+    return @"SGHBoxViewInspector";
 }
 
 - (void) awakeFromNib
@@ -36,32 +34,55 @@
 
 - (void) doHJust:(id) sender
 {
-    SGHBoxView *view = [self object];
-    [view setHJustification:[[sender selectedItem] tag]];
-    [super ok:sender];
+    NSArray * objects = [self inspectedObjects];
+    NSInteger numObjects = [objects count], i;
+
+    for(i = 0; i < numObjects; ++i)
+    {
+        SGHBoxView *view = [objects objectAtIndex:i];
+        [view setHJustification:[[sender selectedItem] tag]];
+    }
 }
 
 - (void) doInner:(id) sender
 {
-    SGHBoxView *hbox = [self object];
-    [hbox setHInnerMargin:[inner_text intValue]];
-    [super ok:sender];
+    NSArray * objects = [self inspectedObjects];
+    NSInteger numObjects = [objects count], i;
+
+    for(i = 0; i < numObjects; ++i)
+    {
+        SGHBoxView *hbox = [objects objectAtIndex:i];
+        [hbox setHInnerMargin:[inner_text intValue]];
+    }
 }
 
 - (void) doOutter:(id) sender
 {
-    SGHBoxView *hbox = [self object];
-    [hbox setHOutterMargin:[outter_text intValue]];
-    [super ok:sender];
+    NSArray * objects = [self inspectedObjects];
+    NSInteger numObjects = [objects count], i;
+
+    for(i = 0; i < numObjects; ++i)
+    {
+        SGHBoxView *hbox = [objects objectAtIndex:i];
+        [hbox setHOutterMargin:[outter_text intValue]];
+    }
 }
 
-- (void) revert:(id) sender
+- (void) refresh
 {
-    SGHBoxView *hbox = [self object];
-    [HJustMenu selectItemWithTag:[hbox hJustification]];
-    [inner_text setIntValue:[hbox hInnerMargin]];
-    [outter_text setIntValue:[hbox hOutterMargin]];
-    [super revert:sender];
+    NSArray * objects = [self inspectedObjects];
+    NSInteger numObjects = [objects count];
+
+    if(numObjects == 1)
+    {
+        SGHBoxView *hbox = [objects objectAtIndex:0];
+        [HJustMenu selectItemWithTag:[hbox hJustification]];
+        [inner_text setIntValue:[hbox hInnerMargin]];
+        [outter_text setIntValue:[hbox hOutterMargin]];
+    }
+    [super refresh];
 }
+
 
 @end
+

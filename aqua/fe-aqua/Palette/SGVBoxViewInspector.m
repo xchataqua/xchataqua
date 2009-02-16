@@ -1,5 +1,5 @@
 /* X-Chat Aqua
- * Copyright (C) 2005 Steve Green
+ * Copyright (C) 2005-2009 Steve Green
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,11 +20,9 @@
 
 @implementation SGVBoxViewInspector
 
-- (id) init
+- (NSString *)viewNibName
 {
-    self = [super init];
-    [NSBundle loadNibNamed:@"SGVBoxViewInspector" owner:self];
-    return self;
+    return @"SGVBoxViewInspector";
 }
 
 - (void) awakeFromNib
@@ -41,40 +39,66 @@
 
 - (void) doVJust:(id) sender
 {
-    SGVBoxView *view = [self object];
-    [view setVJustification:[[sender selectedItem] tag]];
-    [super ok:sender];
+    NSArray * objects = [self inspectedObjects];
+    NSInteger count = [objects count], i;
+
+    for(i = 0; i < count; ++i)
+    {
+        SGVBoxView *view = [objects objectAtIndex:i];
+        [view setVJustification:[[sender selectedItem] tag]];
+    }
 }
 
 - (void) doHJust:(id) sender
 {
-    SGVBoxView *view = [self object];
-    [view setDefaultHJustification:[[sender selectedItem] tag]];
-    [super ok:sender];
+    NSArray * objects = [self inspectedObjects];
+    NSInteger count = [objects count], i;
+
+    for(i = 0; i < count; ++i)
+    {
+        SGVBoxView *view = [objects objectAtIndex:i];
+        [view setDefaultHJustification:[[sender selectedItem] tag]];
+    }
 }
 
 - (void) doInner:(id) sender
 {
-    SGVBoxView *VBox = [self object];
-    [VBox setVInnerMargin:[inner_text intValue]];
-    [super ok:sender];
+    NSArray * objects = [self inspectedObjects];
+    NSInteger count = [objects count], i;
+
+    for(i = 0; i < count; ++i)
+    {
+        SGVBoxView * view = [objects objectAtIndex:i];
+        [view setVInnerMargin:[inner_text intValue]];
+    }
 }
 
 - (void) doOutter:(id) sender
 {
-    SGVBoxView *VBox = [self object];
-    [VBox setVOutterMargin:[outter_text intValue]];
-    [super ok:sender];
+    NSArray * objects = [self inspectedObjects];
+    NSInteger count = [objects count], i;
+
+    for(i = 0; i < count; ++i)
+    {
+        SGVBoxView * view = [objects objectAtIndex:i];
+        [view setVOutterMargin:[outter_text intValue]];
+    }
 }
 
-- (void) revert:(id) sender
+- (void) refresh
 {
-    SGVBoxView *VBox = [self object];
-    [VJustMenu selectItemWithTag:[VBox vJustification]];
-    [HJustMenu selectItemWithTag:[VBox hJustification]];
-    [inner_text setIntValue:[VBox vInnerMargin]];
-    [outter_text setIntValue:[VBox vOutterMargin]];
-    [super revert:sender];
+    NSArray * objects = [self inspectedObjects];
+    NSInteger count = [objects count];
+
+    if(count == 1)
+    {
+        SGVBoxView *vbox = [objects objectAtIndex:0];
+        [VJustMenu selectItemWithTag:[vbox vJustification]];
+        [HJustMenu selectItemWithTag:[vbox hJustification]];
+        [inner_text setIntValue:[vbox vInnerMargin]];
+        [outter_text setIntValue:[vbox vOutterMargin]];
+    }
+    [super refresh];
 }
 
 @end
