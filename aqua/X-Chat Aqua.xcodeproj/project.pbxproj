@@ -37,8 +37,30 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0F00CB550F499AE300DC5527 /* alert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F00CB540F499AE300DC5527 /* alert.xib */; };
+		0F00CB580F499B0700DC5527 /* EditList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F00CB570F499B0700DC5527 /* EditList.xib */; };
+		0F00CB5C0F499B2400DC5527 /* ChatWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F00CB5A0F499B2400DC5527 /* ChatWindow.xib */; };
+		0F00CB600F49B1B000DC5527 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F00CB5E0F49B1B000DC5527 /* MainMenu.xib */; };
+		0F00CB670F49B1F800DC5527 /* UserCommands.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F00CB650F49B1F800DC5527 /* UserCommands.xib */; };
+		0F00CBEB0F49B5E800DC5527 /* ServerList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F00CBEA0F49B5E800DC5527 /* ServerList.xib */; };
+		0F00CBF40F49B60C00DC5527 /* ReleaseNotes.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F00CBF30F49B60C00DC5527 /* ReleaseNotes.xib */; };
+		0F00CBFB0F49B62C00DC5527 /* RawLog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F00CBFA0F49B62C00DC5527 /* RawLog.xib */; };
 		0F0BF9B40CFE2CE900B71E4D /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0BF9B30CFE2CE800B71E4D /* Growl.framework */; };
 		0F0BFA530CFE443000B71E4D /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F0BF9B30CFE2CE800B71E4D /* Growl.framework */; };
+		0F2011F60F49B83800948A4A /* Prefs.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F2011F50F49B83800948A4A /* Prefs.xib */; };
+		0F2012020F49B85700948A4A /* SGRequest.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F2012010F49B85700948A4A /* SGRequest.xib */; };
+		0F2012050F49B86600948A4A /* TabMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F2012040F49B86600948A4A /* TabMenu.xib */; };
+		0F20120F0F49B88000948A4A /* UrlGrabber.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F20120E0F49B88000948A4A /* UrlGrabber.xib */; };
+		0F2012160F49B89A00948A4A /* IgnoreList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F2012150F49B89A00948A4A /* IgnoreList.xib */; };
+		0F20121D0F49B8B800948A4A /* LogWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F20121C0F49B8B800948A4A /* LogWindow.xib */; };
+		0F2012240F49B8D600948A4A /* NotifyList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F2012230F49B8D600948A4A /* NotifyList.xib */; };
+		0F20122B0F49B90200948A4A /* PluginList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F20122A0F49B90200948A4A /* PluginList.xib */; };
+		0F2012310F49B92000948A4A /* BanList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F2012300F49B92000948A4A /* BanList.xib */; };
+		0F20123A0F49B98C00948A4A /* ChanList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F2012390F49B98C00948A4A /* ChanList.xib */; };
+		0F2012400F49B9A900948A4A /* DccChat.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F20123F0F49B9A900948A4A /* DccChat.xib */; };
+		0F2012430F49B9B500948A4A /* DccRecv.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F2012420F49B9B500948A4A /* DccRecv.xib */; };
+		0F2012460F49B9C100948A4A /* DccSend.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F2012450F49B9C100948A4A /* DccSend.xib */; };
+		0F20124B0F49B9DA00948A4A /* EditEvents.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F20124A0F49B9DA00948A4A /* EditEvents.xib */; };
 		0F2FEF340E1FAB9100DE4D41 /* python.c in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8F3E80DEEDA0C00504F31 /* python.c */; };
 		0F2FEF430E1FAC3200DE4D41 /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC8F3F50DEEDAB300504F31 /* Python.framework */; };
 		0F2FEF440E1FAC3700DE4D41 /* libglib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC8F4020DEEE00000504F31 /* libglib.a */; };
@@ -131,44 +153,22 @@
 		0F8EA7450CFB6B7A001AE9AE /* 2_on_high_fg.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA73E0CFB6B7A001AE9AE /* 2_on_high_fg.tiff */; };
 		0F8EA7460CFB6B7A001AE9AE /* 3_on_fg.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA73F0CFB6B7A001AE9AE /* 3_on_fg.tiff */; };
 		0F8EA7470CFB6B7A001AE9AE /* 4_on_bg.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7400CFB6B7A001AE9AE /* 4_on_bg.tiff */; };
-		0F8EA7480CFB6B7A001AE9AE /* alert.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7410CFB6B7A001AE9AE /* alert.nib */; };
 		0F8EA7490CFB6B7A001AE9AE /* alert.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7420CFB6B7A001AE9AE /* alert.tiff */; };
-		0F8EA7570CFB6BB7001AE9AE /* BanList.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA74A0CFB6BB7001AE9AE /* BanList.nib */; };
 		0F8EA7580CFB6BB7001AE9AE /* blue.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA74B0CFB6BB7001AE9AE /* blue.tiff */; };
-		0F8EA7590CFB6BB7001AE9AE /* ChanList.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA74C0CFB6BB7001AE9AE /* ChanList.nib */; };
 		0F8EA75A0CFB6BB7001AE9AE /* close.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA74D0CFB6BB7001AE9AE /* close.tiff */; };
 		0F8EA75B0CFB6BB7001AE9AE /* confirm.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA74E0CFB6BB7001AE9AE /* confirm.tiff */; };
 		0F8EA75C0CFB6BB7001AE9AE /* connect.tif in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA74F0CFB6BB7001AE9AE /* connect.tif */; };
-		0F8EA75D0CFB6BB7001AE9AE /* DccChat.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7500CFB6BB7001AE9AE /* DccChat.nib */; };
-		0F8EA75E0CFB6BB7001AE9AE /* DccRecv.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7510CFB6BB7001AE9AE /* DccRecv.nib */; };
-		0F8EA75F0CFB6BB7001AE9AE /* DccSend.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7520CFB6BB7001AE9AE /* DccSend.nib */; };
 		0F8EA7600CFB6BB7001AE9AE /* dimple.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7530CFB6BB7001AE9AE /* dimple.tiff */; };
 		0F8EA7610CFB6BB7001AE9AE /* down.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7540CFB6BB7001AE9AE /* down.tiff */; };
-		0F8EA7620CFB6BB7001AE9AE /* EditEvents.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7550CFB6BB7001AE9AE /* EditEvents.nib */; };
-		0F8EA7630CFB6BB7001AE9AE /* EditList.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7560CFB6BB7001AE9AE /* EditList.nib */; };
-		0F8EA76C0CFB6C1A001AE9AE /* ChatWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7640CFB6C1A001AE9AE /* ChatWindow.nib */; };
-		0F8EA76E0CFB6C1A001AE9AE /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7680CFB6C1A001AE9AE /* MainMenu.nib */; };
-		0F8EA76F0CFB6C1A001AE9AE /* UserCommands.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA76A0CFB6C1A001AE9AE /* UserCommands.nib */; };
 		0F8EA7800CFB6C9A001AE9AE /* green.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7700CFB6C9A001AE9AE /* green.tiff */; };
 		0F8EA7810CFB6C9A001AE9AE /* heart.tif in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7710CFB6C9A001AE9AE /* heart.tif */; };
-		0F8EA7820CFB6C9A001AE9AE /* IgnoreList.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7720CFB6C9A001AE9AE /* IgnoreList.nib */; };
 		0F8EA7830CFB6C9A001AE9AE /* link.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7730CFB6C9A001AE9AE /* link.tiff */; };
 		0F8EA7840CFB6C9A001AE9AE /* lock.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7740CFB6C9A001AE9AE /* lock.tiff */; };
-		0F8EA7850CFB6C9A001AE9AE /* LogWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7750CFB6C9A001AE9AE /* LogWindow.nib */; };
 		0F8EA7860CFB6C9A001AE9AE /* lr_cursor.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7760CFB6C9A001AE9AE /* lr_cursor.tiff */; };
 		0F8EA7870CFB6C9A001AE9AE /* notice.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7770CFB6C9A001AE9AE /* notice.tiff */; };
-		0F8EA7880CFB6C9A001AE9AE /* NotifyList.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7780CFB6C9A001AE9AE /* NotifyList.nib */; };
-		0F8EA7890CFB6C9A001AE9AE /* PluginList.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7790CFB6C9A001AE9AE /* PluginList.nib */; };
-		0F8EA78A0CFB6C9A001AE9AE /* Prefs.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA77A0CFB6C9A001AE9AE /* Prefs.nib */; };
 		0F8EA78B0CFB6C9A001AE9AE /* purple.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA77B0CFB6C9A001AE9AE /* purple.tiff */; };
-		0F8EA78C0CFB6C9A001AE9AE /* RawLog.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA77C0CFB6C9A001AE9AE /* RawLog.nib */; };
 		0F8EA78D0CFB6C9A001AE9AE /* red.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA77D0CFB6C9A001AE9AE /* red.tiff */; };
-		0F8EA78E0CFB6C9A001AE9AE /* ReleaseNotes.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA77E0CFB6C9A001AE9AE /* ReleaseNotes.nib */; };
-		0F8EA78F0CFB6C9A001AE9AE /* ServerList.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA77F0CFB6C9A001AE9AE /* ServerList.nib */; };
-		0F8EA79A0CFB6CF9001AE9AE /* SGRequest.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7900CFB6CF9001AE9AE /* SGRequest.nib */; };
-		0F8EA79B0CFB6CF9001AE9AE /* TabMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7910CFB6CF9001AE9AE /* TabMenu.nib */; };
 		0F8EA79C0CFB6CF9001AE9AE /* unlock.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7920CFB6CF9001AE9AE /* unlock.tiff */; };
-		0F8EA79D0CFB6CF9001AE9AE /* UrlGrabber.nib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7930CFB6CF9001AE9AE /* UrlGrabber.nib */; };
 		0F8EA79E0CFB6CF9001AE9AE /* warning.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7940CFB6CF9001AE9AE /* warning.tiff */; };
 		0F8EA79F0CFB6CF9001AE9AE /* X-Chat Aqua.scriptSuite in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7950CFB6CF9001AE9AE /* X-Chat Aqua.scriptSuite */; };
 		0F8EA7A00CFB6CF9001AE9AE /* X-Chat Aqua.scriptTerminology in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7960CFB6CF9001AE9AE /* X-Chat Aqua.scriptTerminology */; };
@@ -390,7 +390,29 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0F00CB540F499AE300DC5527 /* alert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = alert.xib; path = "fe-aqua/alert.xib"; sourceTree = "<group>"; };
+		0F00CB570F499B0700DC5527 /* EditList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = EditList.xib; path = "fe-aqua/EditList.xib"; sourceTree = "<group>"; };
+		0F00CB5B0F499B2400DC5527 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = "fe-aqua/English.lproj/ChatWindow.xib"; sourceTree = "<group>"; };
+		0F00CB5F0F49B1B000DC5527 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = "fe-aqua/English.lproj/MainMenu.xib"; sourceTree = "<group>"; };
+		0F00CB660F49B1F800DC5527 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = "fe-aqua/English.lproj/UserCommands.xib"; sourceTree = "<group>"; };
+		0F00CBEA0F49B5E800DC5527 /* ServerList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ServerList.xib; path = "fe-aqua/ServerList.xib"; sourceTree = "<group>"; };
+		0F00CBF30F49B60C00DC5527 /* ReleaseNotes.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ReleaseNotes.xib; path = "fe-aqua/ReleaseNotes.xib"; sourceTree = "<group>"; };
+		0F00CBFA0F49B62C00DC5527 /* RawLog.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = RawLog.xib; path = "fe-aqua/RawLog.xib"; sourceTree = "<group>"; };
 		0F0BF9B30CFE2CE800B71E4D /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = "fe-aqua/Growl.framework"; sourceTree = "<group>"; };
+		0F2011F50F49B83800948A4A /* Prefs.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Prefs.xib; path = "fe-aqua/Prefs.xib"; sourceTree = "<group>"; };
+		0F2012010F49B85700948A4A /* SGRequest.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SGRequest.xib; path = "fe-aqua/SGRequest.xib"; sourceTree = "<group>"; };
+		0F2012040F49B86600948A4A /* TabMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TabMenu.xib; path = "fe-aqua/TabMenu.xib"; sourceTree = "<group>"; };
+		0F20120E0F49B88000948A4A /* UrlGrabber.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = UrlGrabber.xib; path = "fe-aqua/UrlGrabber.xib"; sourceTree = "<group>"; };
+		0F2012150F49B89A00948A4A /* IgnoreList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = IgnoreList.xib; path = "fe-aqua/IgnoreList.xib"; sourceTree = "<group>"; };
+		0F20121C0F49B8B800948A4A /* LogWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LogWindow.xib; path = "fe-aqua/LogWindow.xib"; sourceTree = "<group>"; };
+		0F2012230F49B8D600948A4A /* NotifyList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NotifyList.xib; path = "fe-aqua/NotifyList.xib"; sourceTree = "<group>"; };
+		0F20122A0F49B90200948A4A /* PluginList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PluginList.xib; path = "fe-aqua/PluginList.xib"; sourceTree = "<group>"; };
+		0F2012300F49B92000948A4A /* BanList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BanList.xib; path = "fe-aqua/BanList.xib"; sourceTree = "<group>"; };
+		0F2012390F49B98C00948A4A /* ChanList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ChanList.xib; path = "fe-aqua/ChanList.xib"; sourceTree = "<group>"; };
+		0F20123F0F49B9A900948A4A /* DccChat.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DccChat.xib; path = "fe-aqua/DccChat.xib"; sourceTree = "<group>"; };
+		0F2012420F49B9B500948A4A /* DccRecv.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DccRecv.xib; path = "fe-aqua/DccRecv.xib"; sourceTree = "<group>"; };
+		0F2012450F49B9C100948A4A /* DccSend.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DccSend.xib; path = "fe-aqua/DccSend.xib"; sourceTree = "<group>"; };
+		0F20124A0F49B9DA00948A4A /* EditEvents.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = EditEvents.xib; path = "fe-aqua/EditEvents.xib"; sourceTree = "<group>"; };
 		0F2FEF2B0E1FAB1500DE4D41 /* python-leopard.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "python-leopard.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F2FEF2C0E1FAB1500DE4D41 /* python-leopard-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "python-leopard-Info.plist"; sourceTree = "<group>"; };
 		0F2FEF840E1FB5AE00DE4D41 /* bundle_loader_plugin.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = bundle_loader_plugin.mm; path = plugins/bundle_loader/bundle_loader_plugin.mm; sourceTree = "<group>"; };
@@ -705,44 +727,22 @@
 		0F8EA73E0CFB6B7A001AE9AE /* 2_on_high_fg.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = 2_on_high_fg.tiff; path = "fe-aqua/2_on_high_fg.tiff"; sourceTree = "<group>"; };
 		0F8EA73F0CFB6B7A001AE9AE /* 3_on_fg.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = 3_on_fg.tiff; path = "fe-aqua/3_on_fg.tiff"; sourceTree = "<group>"; };
 		0F8EA7400CFB6B7A001AE9AE /* 4_on_bg.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = 4_on_bg.tiff; path = "fe-aqua/4_on_bg.tiff"; sourceTree = "<group>"; };
-		0F8EA7410CFB6B7A001AE9AE /* alert.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = alert.nib; path = "fe-aqua/alert.nib"; sourceTree = "<group>"; };
 		0F8EA7420CFB6B7A001AE9AE /* alert.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = alert.tiff; path = "fe-aqua/alert.tiff"; sourceTree = "<group>"; };
-		0F8EA74A0CFB6BB7001AE9AE /* BanList.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = BanList.nib; path = "fe-aqua/BanList.nib"; sourceTree = "<group>"; };
 		0F8EA74B0CFB6BB7001AE9AE /* blue.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = blue.tiff; path = "fe-aqua/blue.tiff"; sourceTree = "<group>"; };
-		0F8EA74C0CFB6BB7001AE9AE /* ChanList.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = ChanList.nib; path = "fe-aqua/ChanList.nib"; sourceTree = "<group>"; };
 		0F8EA74D0CFB6BB7001AE9AE /* close.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = close.tiff; path = "fe-aqua/close.tiff"; sourceTree = "<group>"; };
 		0F8EA74E0CFB6BB7001AE9AE /* confirm.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = confirm.tiff; path = "fe-aqua/confirm.tiff"; sourceTree = "<group>"; };
 		0F8EA74F0CFB6BB7001AE9AE /* connect.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = connect.tif; path = "fe-aqua/connect.tif"; sourceTree = "<group>"; };
-		0F8EA7500CFB6BB7001AE9AE /* DccChat.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = DccChat.nib; path = "fe-aqua/DccChat.nib"; sourceTree = "<group>"; };
-		0F8EA7510CFB6BB7001AE9AE /* DccRecv.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = DccRecv.nib; path = "fe-aqua/DccRecv.nib"; sourceTree = "<group>"; };
-		0F8EA7520CFB6BB7001AE9AE /* DccSend.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = DccSend.nib; path = "fe-aqua/DccSend.nib"; sourceTree = "<group>"; };
 		0F8EA7530CFB6BB7001AE9AE /* dimple.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = dimple.tiff; path = "fe-aqua/dimple.tiff"; sourceTree = "<group>"; };
 		0F8EA7540CFB6BB7001AE9AE /* down.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = down.tiff; path = "fe-aqua/down.tiff"; sourceTree = "<group>"; };
-		0F8EA7550CFB6BB7001AE9AE /* EditEvents.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = EditEvents.nib; path = "fe-aqua/EditEvents.nib"; sourceTree = "<group>"; };
-		0F8EA7560CFB6BB7001AE9AE /* EditList.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = EditList.nib; path = "fe-aqua/EditList.nib"; sourceTree = "<group>"; };
-		0F8EA7650CFB6C1A001AE9AE /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = "fe-aqua/English.lproj/ChatWindow.nib"; sourceTree = "<group>"; };
-		0F8EA7690CFB6C1A001AE9AE /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = "fe-aqua/English.lproj/MainMenu.nib"; sourceTree = "<group>"; };
-		0F8EA76B0CFB6C1A001AE9AE /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = "fe-aqua/English.lproj/UserCommands.nib"; sourceTree = "<group>"; };
 		0F8EA7700CFB6C9A001AE9AE /* green.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = green.tiff; path = "fe-aqua/green.tiff"; sourceTree = "<group>"; };
 		0F8EA7710CFB6C9A001AE9AE /* heart.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = heart.tif; path = "fe-aqua/heart.tif"; sourceTree = "<group>"; };
-		0F8EA7720CFB6C9A001AE9AE /* IgnoreList.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = IgnoreList.nib; path = "fe-aqua/IgnoreList.nib"; sourceTree = "<group>"; };
 		0F8EA7730CFB6C9A001AE9AE /* link.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = link.tiff; path = "fe-aqua/link.tiff"; sourceTree = "<group>"; };
 		0F8EA7740CFB6C9A001AE9AE /* lock.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lock.tiff; path = "fe-aqua/lock.tiff"; sourceTree = "<group>"; };
-		0F8EA7750CFB6C9A001AE9AE /* LogWindow.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = LogWindow.nib; path = "fe-aqua/LogWindow.nib"; sourceTree = "<group>"; };
 		0F8EA7760CFB6C9A001AE9AE /* lr_cursor.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lr_cursor.tiff; path = "fe-aqua/lr_cursor.tiff"; sourceTree = "<group>"; };
 		0F8EA7770CFB6C9A001AE9AE /* notice.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = notice.tiff; path = "fe-aqua/notice.tiff"; sourceTree = "<group>"; };
-		0F8EA7780CFB6C9A001AE9AE /* NotifyList.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = NotifyList.nib; path = "fe-aqua/NotifyList.nib"; sourceTree = "<group>"; };
-		0F8EA7790CFB6C9A001AE9AE /* PluginList.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = PluginList.nib; path = "fe-aqua/PluginList.nib"; sourceTree = "<group>"; };
-		0F8EA77A0CFB6C9A001AE9AE /* Prefs.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Prefs.nib; path = "fe-aqua/Prefs.nib"; sourceTree = "<group>"; };
 		0F8EA77B0CFB6C9A001AE9AE /* purple.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = purple.tiff; path = "fe-aqua/purple.tiff"; sourceTree = "<group>"; };
-		0F8EA77C0CFB6C9A001AE9AE /* RawLog.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = RawLog.nib; path = "fe-aqua/RawLog.nib"; sourceTree = "<group>"; };
 		0F8EA77D0CFB6C9A001AE9AE /* red.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = red.tiff; path = "fe-aqua/red.tiff"; sourceTree = "<group>"; };
-		0F8EA77E0CFB6C9A001AE9AE /* ReleaseNotes.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = ReleaseNotes.nib; path = "fe-aqua/ReleaseNotes.nib"; sourceTree = "<group>"; };
-		0F8EA77F0CFB6C9A001AE9AE /* ServerList.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = ServerList.nib; path = "fe-aqua/ServerList.nib"; sourceTree = "<group>"; };
-		0F8EA7900CFB6CF9001AE9AE /* SGRequest.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = SGRequest.nib; path = "fe-aqua/SGRequest.nib"; sourceTree = "<group>"; };
-		0F8EA7910CFB6CF9001AE9AE /* TabMenu.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = TabMenu.nib; path = "fe-aqua/TabMenu.nib"; sourceTree = "<group>"; };
 		0F8EA7920CFB6CF9001AE9AE /* unlock.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = unlock.tiff; path = "fe-aqua/unlock.tiff"; sourceTree = "<group>"; };
-		0F8EA7930CFB6CF9001AE9AE /* UrlGrabber.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = UrlGrabber.nib; path = "fe-aqua/UrlGrabber.nib"; sourceTree = "<group>"; };
 		0F8EA7940CFB6CF9001AE9AE /* warning.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = warning.tiff; path = "fe-aqua/warning.tiff"; sourceTree = "<group>"; };
 		0F8EA7950CFB6CF9001AE9AE /* X-Chat Aqua.scriptSuite */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "X-Chat Aqua.scriptSuite"; path = "fe-aqua/X-Chat Aqua.scriptSuite"; sourceTree = "<group>"; };
 		0F8EA7960CFB6CF9001AE9AE /* X-Chat Aqua.scriptTerminology */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "X-Chat Aqua.scriptTerminology"; path = "fe-aqua/X-Chat Aqua.scriptTerminology"; sourceTree = "<group>"; };
@@ -987,10 +987,10 @@
 		0F8EA3650CFAA470001AE9AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0F8EA7900CFB6CF9001AE9AE /* SGRequest.nib */,
-				0F8EA7910CFB6CF9001AE9AE /* TabMenu.nib */,
+				0F2012010F49B85700948A4A /* SGRequest.xib */,
+				0F2012040F49B86600948A4A /* TabMenu.xib */,
 				0F8EA7920CFB6CF9001AE9AE /* unlock.tiff */,
-				0F8EA7930CFB6CF9001AE9AE /* UrlGrabber.nib */,
+				0F20120E0F49B88000948A4A /* UrlGrabber.xib */,
 				0F8EA7940CFB6CF9001AE9AE /* warning.tiff */,
 				0F8EA7950CFB6CF9001AE9AE /* X-Chat Aqua.scriptSuite */,
 				0F8EA7960CFB6CF9001AE9AE /* X-Chat Aqua.scriptTerminology */,
@@ -999,42 +999,42 @@
 				0F8EA7990CFB6CF9001AE9AE /* yellow.tiff */,
 				0F8EA7700CFB6C9A001AE9AE /* green.tiff */,
 				0F8EA7710CFB6C9A001AE9AE /* heart.tif */,
-				0F8EA7720CFB6C9A001AE9AE /* IgnoreList.nib */,
+				0F2012150F49B89A00948A4A /* IgnoreList.xib */,
 				0F8EA7730CFB6C9A001AE9AE /* link.tiff */,
 				0F8EA7740CFB6C9A001AE9AE /* lock.tiff */,
-				0F8EA7750CFB6C9A001AE9AE /* LogWindow.nib */,
+				0F20121C0F49B8B800948A4A /* LogWindow.xib */,
 				0F8EA7760CFB6C9A001AE9AE /* lr_cursor.tiff */,
 				0F8EA7770CFB6C9A001AE9AE /* notice.tiff */,
-				0F8EA7780CFB6C9A001AE9AE /* NotifyList.nib */,
-				0F8EA7790CFB6C9A001AE9AE /* PluginList.nib */,
-				0F8EA77A0CFB6C9A001AE9AE /* Prefs.nib */,
+				0F2012230F49B8D600948A4A /* NotifyList.xib */,
+				0F20122A0F49B90200948A4A /* PluginList.xib */,
+				0F2011F50F49B83800948A4A /* Prefs.xib */,
 				0F8EA77B0CFB6C9A001AE9AE /* purple.tiff */,
-				0F8EA77C0CFB6C9A001AE9AE /* RawLog.nib */,
+				0F00CBFA0F49B62C00DC5527 /* RawLog.xib */,
 				0F8EA77D0CFB6C9A001AE9AE /* red.tiff */,
-				0F8EA77E0CFB6C9A001AE9AE /* ReleaseNotes.nib */,
-				0F8EA77F0CFB6C9A001AE9AE /* ServerList.nib */,
-				0F8EA7640CFB6C1A001AE9AE /* ChatWindow.nib */,
-				0F8EA7680CFB6C1A001AE9AE /* MainMenu.nib */,
-				0F8EA76A0CFB6C1A001AE9AE /* UserCommands.nib */,
-				0F8EA74A0CFB6BB7001AE9AE /* BanList.nib */,
+				0F00CBF30F49B60C00DC5527 /* ReleaseNotes.xib */,
+				0F00CBEA0F49B5E800DC5527 /* ServerList.xib */,
+				0F00CB5A0F499B2400DC5527 /* ChatWindow.xib */,
+				0F00CB5E0F49B1B000DC5527 /* MainMenu.xib */,
+				0F00CB650F49B1F800DC5527 /* UserCommands.xib */,
+				0F2012300F49B92000948A4A /* BanList.xib */,
 				0F8EA74B0CFB6BB7001AE9AE /* blue.tiff */,
-				0F8EA74C0CFB6BB7001AE9AE /* ChanList.nib */,
+				0F2012390F49B98C00948A4A /* ChanList.xib */,
 				0F8EA74D0CFB6BB7001AE9AE /* close.tiff */,
 				0F8EA74E0CFB6BB7001AE9AE /* confirm.tiff */,
 				0F8EA74F0CFB6BB7001AE9AE /* connect.tif */,
-				0F8EA7500CFB6BB7001AE9AE /* DccChat.nib */,
-				0F8EA7510CFB6BB7001AE9AE /* DccRecv.nib */,
-				0F8EA7520CFB6BB7001AE9AE /* DccSend.nib */,
+				0F20123F0F49B9A900948A4A /* DccChat.xib */,
+				0F2012420F49B9B500948A4A /* DccRecv.xib */,
+				0F2012450F49B9C100948A4A /* DccSend.xib */,
 				0F8EA7530CFB6BB7001AE9AE /* dimple.tiff */,
 				0F8EA7540CFB6BB7001AE9AE /* down.tiff */,
-				0F8EA7550CFB6BB7001AE9AE /* EditEvents.nib */,
-				0F8EA7560CFB6BB7001AE9AE /* EditList.nib */,
+				0F20124A0F49B9DA00948A4A /* EditEvents.xib */,
+				0F00CB570F499B0700DC5527 /* EditList.xib */,
 				0F8EA73C0CFB6B7A001AE9AE /* 0_off.tiff */,
 				0F8EA73D0CFB6B7A001AE9AE /* 1_off_high_fg.tiff */,
 				0F8EA73E0CFB6B7A001AE9AE /* 2_on_high_fg.tiff */,
 				0F8EA73F0CFB6B7A001AE9AE /* 3_on_fg.tiff */,
 				0F8EA7400CFB6B7A001AE9AE /* 4_on_bg.tiff */,
-				0F8EA7410CFB6B7A001AE9AE /* alert.nib */,
+				0F00CB540F499AE300DC5527 /* alert.xib */,
 				0F8EA7420CFB6B7A001AE9AE /* alert.tiff */,
 				0F8EA3660CFAA49B001AE9AE /* Info.plist */,
 				0F7065530E1FA32E00FEA21C /* Changes */,
@@ -1760,44 +1760,22 @@
 				0F8EA7450CFB6B7A001AE9AE /* 2_on_high_fg.tiff in Resources */,
 				0F8EA7460CFB6B7A001AE9AE /* 3_on_fg.tiff in Resources */,
 				0F8EA7470CFB6B7A001AE9AE /* 4_on_bg.tiff in Resources */,
-				0F8EA7480CFB6B7A001AE9AE /* alert.nib in Resources */,
 				0F8EA7490CFB6B7A001AE9AE /* alert.tiff in Resources */,
-				0F8EA7570CFB6BB7001AE9AE /* BanList.nib in Resources */,
 				0F8EA7580CFB6BB7001AE9AE /* blue.tiff in Resources */,
-				0F8EA7590CFB6BB7001AE9AE /* ChanList.nib in Resources */,
 				0F8EA75A0CFB6BB7001AE9AE /* close.tiff in Resources */,
 				0F8EA75B0CFB6BB7001AE9AE /* confirm.tiff in Resources */,
 				0F8EA75C0CFB6BB7001AE9AE /* connect.tif in Resources */,
-				0F8EA75D0CFB6BB7001AE9AE /* DccChat.nib in Resources */,
-				0F8EA75E0CFB6BB7001AE9AE /* DccRecv.nib in Resources */,
-				0F8EA75F0CFB6BB7001AE9AE /* DccSend.nib in Resources */,
 				0F8EA7600CFB6BB7001AE9AE /* dimple.tiff in Resources */,
 				0F8EA7610CFB6BB7001AE9AE /* down.tiff in Resources */,
-				0F8EA7620CFB6BB7001AE9AE /* EditEvents.nib in Resources */,
-				0F8EA7630CFB6BB7001AE9AE /* EditList.nib in Resources */,
-				0F8EA76C0CFB6C1A001AE9AE /* ChatWindow.nib in Resources */,
-				0F8EA76E0CFB6C1A001AE9AE /* MainMenu.nib in Resources */,
-				0F8EA76F0CFB6C1A001AE9AE /* UserCommands.nib in Resources */,
 				0F8EA7800CFB6C9A001AE9AE /* green.tiff in Resources */,
 				0F8EA7810CFB6C9A001AE9AE /* heart.tif in Resources */,
-				0F8EA7820CFB6C9A001AE9AE /* IgnoreList.nib in Resources */,
 				0F8EA7830CFB6C9A001AE9AE /* link.tiff in Resources */,
 				0F8EA7840CFB6C9A001AE9AE /* lock.tiff in Resources */,
-				0F8EA7850CFB6C9A001AE9AE /* LogWindow.nib in Resources */,
 				0F8EA7860CFB6C9A001AE9AE /* lr_cursor.tiff in Resources */,
 				0F8EA7870CFB6C9A001AE9AE /* notice.tiff in Resources */,
-				0F8EA7880CFB6C9A001AE9AE /* NotifyList.nib in Resources */,
-				0F8EA7890CFB6C9A001AE9AE /* PluginList.nib in Resources */,
-				0F8EA78A0CFB6C9A001AE9AE /* Prefs.nib in Resources */,
 				0F8EA78B0CFB6C9A001AE9AE /* purple.tiff in Resources */,
-				0F8EA78C0CFB6C9A001AE9AE /* RawLog.nib in Resources */,
 				0F8EA78D0CFB6C9A001AE9AE /* red.tiff in Resources */,
-				0F8EA78E0CFB6C9A001AE9AE /* ReleaseNotes.nib in Resources */,
-				0F8EA78F0CFB6C9A001AE9AE /* ServerList.nib in Resources */,
-				0F8EA79A0CFB6CF9001AE9AE /* SGRequest.nib in Resources */,
-				0F8EA79B0CFB6CF9001AE9AE /* TabMenu.nib in Resources */,
 				0F8EA79C0CFB6CF9001AE9AE /* unlock.tiff in Resources */,
-				0F8EA79D0CFB6CF9001AE9AE /* UrlGrabber.nib in Resources */,
 				0F8EA79E0CFB6CF9001AE9AE /* warning.tiff in Resources */,
 				0F8EA79F0CFB6CF9001AE9AE /* X-Chat Aqua.scriptSuite in Resources */,
 				0F8EA7A00CFB6CF9001AE9AE /* X-Chat Aqua.scriptTerminology in Resources */,
@@ -1806,6 +1784,28 @@
 				0F8EA7A30CFB6CF9001AE9AE /* yellow.tiff in Resources */,
 				0F3062540D84958E0084F2CA /* xchat.strings in Resources */,
 				0F7065540E1FA32E00FEA21C /* Changes in Resources */,
+				0F00CB550F499AE300DC5527 /* alert.xib in Resources */,
+				0F00CB580F499B0700DC5527 /* EditList.xib in Resources */,
+				0F00CB5C0F499B2400DC5527 /* ChatWindow.xib in Resources */,
+				0F00CB600F49B1B000DC5527 /* MainMenu.xib in Resources */,
+				0F00CB670F49B1F800DC5527 /* UserCommands.xib in Resources */,
+				0F00CBEB0F49B5E800DC5527 /* ServerList.xib in Resources */,
+				0F00CBF40F49B60C00DC5527 /* ReleaseNotes.xib in Resources */,
+				0F00CBFB0F49B62C00DC5527 /* RawLog.xib in Resources */,
+				0F2011F60F49B83800948A4A /* Prefs.xib in Resources */,
+				0F2012020F49B85700948A4A /* SGRequest.xib in Resources */,
+				0F2012050F49B86600948A4A /* TabMenu.xib in Resources */,
+				0F20120F0F49B88000948A4A /* UrlGrabber.xib in Resources */,
+				0F2012160F49B89A00948A4A /* IgnoreList.xib in Resources */,
+				0F20121D0F49B8B800948A4A /* LogWindow.xib in Resources */,
+				0F2012240F49B8D600948A4A /* NotifyList.xib in Resources */,
+				0F20122B0F49B90200948A4A /* PluginList.xib in Resources */,
+				0F2012310F49B92000948A4A /* BanList.xib in Resources */,
+				0F20123A0F49B98C00948A4A /* ChanList.xib in Resources */,
+				0F2012400F49B9A900948A4A /* DccChat.xib in Resources */,
+				0F2012430F49B9B500948A4A /* DccRecv.xib in Resources */,
+				0F2012460F49B9C100948A4A /* DccSend.xib in Resources */,
+				0F20124B0F49B9DA00948A4A /* EditEvents.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2101,6 +2101,30 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		0F00CB5A0F499B2400DC5527 /* ChatWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0F00CB5B0F499B2400DC5527 /* English */,
+			);
+			name = ChatWindow.xib;
+			sourceTree = "<group>";
+		};
+		0F00CB5E0F49B1B000DC5527 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0F00CB5F0F49B1B000DC5527 /* English */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		0F00CB650F49B1F800DC5527 /* UserCommands.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0F00CB660F49B1F800DC5527 /* English */,
+			);
+			name = UserCommands.xib;
+			sourceTree = "<group>";
+		};
 		0F3062530D84958E0084F2CA /* xchat.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2132,30 +2156,6 @@
 				0F30626F0D8496120084F2CA /* zh_TW */,
 			);
 			name = xchat.strings;
-			sourceTree = "<group>";
-		};
-		0F8EA7640CFB6C1A001AE9AE /* ChatWindow.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0F8EA7650CFB6C1A001AE9AE /* English */,
-			);
-			name = ChatWindow.nib;
-			sourceTree = "<group>";
-		};
-		0F8EA7680CFB6C1A001AE9AE /* MainMenu.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0F8EA7690CFB6C1A001AE9AE /* English */,
-			);
-			name = MainMenu.nib;
-			sourceTree = "<group>";
-		};
-		0F8EA76A0CFB6C1A001AE9AE /* UserCommands.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0F8EA76B0CFB6C1A001AE9AE /* English */,
-			);
-			name = UserCommands.nib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
