@@ -562,7 +562,9 @@ const struct prefs vars[] = {
 	{"text_tint_red", P_OFFINT (tint_red), TYPE_INT},
 	{"text_transparent", P_OFFINT (transparent), TYPE_BOOL},
 	{"text_wordwrap", P_OFFINT (wordwrap), TYPE_BOOL},
-
+#ifdef FE_AQUA
+#   include "fe-aqua/XAVars.h"
+#endif
 	{0, 0, 0},
 };
 
@@ -681,6 +683,9 @@ load_config (void)
 	prefs.autodccsend = 2;	/* browse mode */
 #ifdef WIN32
 	prefs.identd = 1;
+#endif
+#ifdef FE_AQUA
+#   include "fe-aqua/XADefaults.h"
 #endif
 	strcpy (prefs.stamp_format, "[%H:%M] ");
 	strcpy (prefs.timestamp_log_format, "%b %d %H:%M:%S ");
