@@ -674,9 +674,7 @@ static NSImage *empty_image;
     l_button = [self make_mode_button:'l' selector:@selector (do_l_button:)];
     limit_text = [self make_mode_text:@selector (do_limit_text:)];
     k_button = [self make_mode_button:'k' selector:@selector (do_k_button:)];
-
-    
-	 key_text = [self make_mode_text:@selector (do_key_text:)];
+	key_text = [self make_mode_text:@selector (do_key_text:)];
 	
 	[top_box sizeToFit];
 }
@@ -866,7 +864,7 @@ static NSImage *empty_image;
         [self set_channel];
     else
         [chat_view setTabTitle:@"<none>"];
-
+	
     if (sess->type == SESS_DIALOG || prefs.hideuserlist)
         [middle_box set_split_pos:0];
 	else if (prefs.paned_pos > 0)
@@ -1243,8 +1241,11 @@ static NSImage *empty_image;
         [s replaceCharactersInRange:NSMakeRange (start, len)
                          withString:@".."];
     }
-    
     [chat_view setTabTitle:s];
+	
+	// FIXME: this is a trick to scroll down chatview when loaded scrollback
+	//       scrollong over height of chatview. proper place needed.
+	[chat_text scrollToEndOfDocument:chat_view];
 }
 
 - (void) set_nonchannel:(bool) state
@@ -1698,6 +1699,7 @@ static NSImage *empty_image;
 
 - (void) lastlogIntoWindow:(ChatWindow *)logWin key:(char *)ckey
 {
+
 	if ([[chat_text textStorage] length] == 0) {
 		[logWin print_text:"Search buffer is empty.\n"];
 		return;
@@ -1722,6 +1724,7 @@ static NSImage *empty_image;
 		[result release];
 		start = NSMaxRange(lineRange);
 	} while (1);
+
 }
 
 - (void) print_text:(const char *) text
