@@ -863,7 +863,7 @@ static NSImage *empty_image;
     if (sess->type == SESS_DIALOG)
         [self set_channel];
     else
-        [chat_view setTabTitle:@"<none>"];
+        [chat_view setTabTitle:NSLocalizedStringFromTable(@"<none>", @"xchat", @"")];
 	
     if (sess->type == SESS_DIALOG || prefs.hideuserlist)
         [middle_box set_split_pos:0];
@@ -1013,7 +1013,7 @@ static NSImage *empty_image;
         s = [NSString stringWithFormat:@"(%@)", s2];
     }
     else
-        s = @"<none>";
+        s = NSLocalizedStringFromTable(@"<none>", @"xchat", @"");
         
     [chat_view setTabTitle:s];
     [op_voice_icon setHidden:true];
@@ -1651,8 +1651,8 @@ static NSImage *empty_image;
     switch (type)
     {
         case SESS_DIALOG:
-            title = [NSString stringWithFormat:@"Dialog with %@ @ %s",
-                                    chan, sess->server->servername];
+			title = [NSString stringWithFormat:@"%@ %@", NSLocalizedStringFromTable(@"Dialog with", @"xchat", @""),
+			[NSString stringWithFormat:@"%@ @ %s", chan, sess->server->servername]];
             break;
             
         case SESS_CHANNEL:
@@ -1701,7 +1701,7 @@ static NSImage *empty_image;
 {
 
 	if ([[chat_text textStorage] length] == 0) {
-		[logWin print_text:"Search buffer is empty.\n"];
+		[logWin print_text:[NSLocalizedStringFromTable(@"Search buffer is empty.\n", @"xchat", @"") UTF8String]];
 		return;
 	}
 	NSTextStorage *sourceStorage = [chat_text textStorage];
@@ -1892,7 +1892,7 @@ static NSImage *empty_image;
         [userlist_menu release];
 	
 	if (count > 1) {
-		[[menu addItemWithTitle:[NSString stringWithFormat:@"%d users selected", count] action:nil keyEquivalent:@""] setEnabled:NO];
+		[[menu addItemWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTable(@"%d users selected", @"xchataqua", @"Popup menu message when you right-clicked userlist."), count] action:nil keyEquivalent:@""] setEnabled:NO];
 
         userlist_menu_curuser = NULL;
 	} else {

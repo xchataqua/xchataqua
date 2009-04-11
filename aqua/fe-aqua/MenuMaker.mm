@@ -183,16 +183,16 @@ static MenuMaker *defaultMenuMaker;
 
 - (MenuMaker *)init
 {
-	NSString *labels[] = {NSLocalizedStringFromTable(@"Real Name", @"xchat", @""), NSLocalizedStringFromTable(@"User", @"xchat", @""), NSLocalizedStringFromTable(@"Country", @"xchat", @""),
-						  NSLocalizedStringFromTable(@"Server", @"xchat", @""), NSLocalizedStringFromTable(@"Away Msg", @"xchat", @""), NSLocalizedStringFromTable(@"Last Msg", @"xchat", @"")};
+	NSString *labels[] = {NSLocalizedStringFromTable(@"Real Name:", @"xchat", @""), NSLocalizedStringFromTable(@"User:", @"xchat", @""), NSLocalizedStringFromTable(@"Country:", @"xchat", @""),
+						  NSLocalizedStringFromTable(@"Server:", @"xchat", @""), NSLocalizedStringFromTable(@"Away Msg:", @"xchat", @""), NSLocalizedStringFromTable(@"Last Msg:", @"xchat", @"")};
 	NSMutableAttributedString *test;
 	NSSize size;
 
 	self = [super init];
 	
 	for (unsigned i = 0; i < (sizeof(labels) / sizeof(labels[0])); i++) {
-		test = [[NSMutableAttributedString alloc] initWithString:[labels[i] stringByAppendingString:@":	"]
-													  attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont boldSystemFontOfSize:0], NSFontAttributeName, nil]];
+		test = [[NSMutableAttributedString alloc] initWithString:[labels[i] stringByAppendingString:@"	"]
+				attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont boldSystemFontOfSize:0], NSFontAttributeName, nil]];
 		size = [test size];
 		if (maxUserInfoLabelWidth < size.width) maxUserInfoLabelWidth = size.width;
 		[test dealloc];
@@ -208,7 +208,7 @@ static MenuMaker *defaultMenuMaker;
 
 - (NSMenuItem *)userInfoItemWithLabel:(NSString *)label value:(const char *)value
 {
-	NSMutableAttributedString *attrTitle = [[NSMutableAttributedString alloc] initWithString:[label stringByAppendingString:@":	"]
+	NSMutableAttributedString *attrTitle = [[NSMutableAttributedString alloc] initWithString:[label stringByAppendingString:@"	"]
 		attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont boldSystemFontOfSize:0], NSFontAttributeName, nil]];
 
 	do {
@@ -217,7 +217,7 @@ static MenuMaker *defaultMenuMaker;
 		[[attrTitle mutableString] appendString:@"	"];
 	} while (1);
 
-	NSAttributedString *attrValue = [[NSAttributedString alloc] initWithString:value ? [NSString stringWithUTF8String:value] : @"unknown"
+	NSAttributedString *attrValue = [[NSAttributedString alloc] initWithString:value ? [NSString stringWithUTF8String:value] : NSLocalizedStringFromTable(@"Unknown", @"xchat", @"")
 		attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont systemFontOfSize:0], NSFontAttributeName, nil]];
 	[attrTitle appendAttributedString:attrValue];
 	[attrValue release];
@@ -245,16 +245,16 @@ static MenuMaker *defaultMenuMaker;
 	NSMenu *userMenu = [[[NSMenu alloc] initWithTitle:@""] autorelease];
 	[userMenu setAutoenablesItems:false];
 
-	[userMenu addItem:[self userInfoItemWithLabel:NSLocalizedStringFromTable(@"Real Name", @"xchat", @"") value:user->realname]];
-	[userMenu addItem:[self userInfoItemWithLabel:NSLocalizedStringFromTable(@"User", @"xchat", @"") value:user->hostname]];
-	[userMenu addItem:[self userInfoItemWithLabel:NSLocalizedStringFromTable(@"Country", @"xchat", @"") value:user->hostname ? country(user->hostname) : NULL]];
-	[userMenu addItem:[self userInfoItemWithLabel:NSLocalizedStringFromTable(@"Server", @"xchat", @"") value:user->servername]];
+	[userMenu addItem:[self userInfoItemWithLabel:NSLocalizedStringFromTable(@"Real Name:", @"xchat", @"") value:user->realname]];
+	[userMenu addItem:[self userInfoItemWithLabel:NSLocalizedStringFromTable(@"User:", @"xchat", @"") value:user->hostname]];
+	[userMenu addItem:[self userInfoItemWithLabel:NSLocalizedStringFromTable(@"Country:", @"xchat", @"") value:user->hostname ? country(user->hostname) : NULL]];
+	[userMenu addItem:[self userInfoItemWithLabel:NSLocalizedStringFromTable(@"Server:", @"xchat", @"") value:user->servername]];
 
 	if (user->away) {
 		struct away_msg *away = server_away_find_message (sess->server, user->nick);
 		if (away) {
 			char *msg = away->message ? strip_color(away->message, -1, STRIP_ALL) : nil;
-			[userMenu addItem:[self userInfoItemWithLabel:NSLocalizedStringFromTable(@"Away Msg", @"xchat", @"") value:msg]];
+			[userMenu addItem:[self userInfoItemWithLabel:NSLocalizedStringFromTable(@"Away Msg:", @"xchat", @"") value:msg]];
 			if (msg) free(msg);
 		}else {
             // Creating a whois for away message
@@ -268,7 +268,7 @@ static MenuMaker *defaultMenuMaker;
 	if (user->lasttalk)
 		snprintf(min, sizeof(min), XALocalizeString("%u minutes ago"), (unsigned int) ((time (0) - user->lasttalk) / 60));
 	
-	[userMenu addItem:[self userInfoItemWithLabel:NSLocalizedStringFromTable(@"Last Msg", @"xchat", @"") value:user->lasttalk ? min : NULL]];
+	[userMenu addItem:[self userInfoItemWithLabel:NSLocalizedStringFromTable(@"Last Msg:", @"xchat", @"") value:user->lasttalk ? min : NULL]];
 
 	return userMenu;
 }

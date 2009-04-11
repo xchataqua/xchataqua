@@ -99,7 +99,7 @@ extern "C" {
     [window setReleasedWhenClosed:false];
     [window setContentView:v];
     [window setDelegate:self];
-    [window setTitle:@"ASCII Window"];
+    [window setTitle:NSLocalizedStringFromTable(@"Character Chart", @"xchat", @"")];
     [window center];
 
     return self;

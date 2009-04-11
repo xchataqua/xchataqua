@@ -90,7 +90,7 @@ void
 nick_command_parse (session *sess, const char *cmd, const char *nick, const char *allnick)
 {
         char *buf;
-        const char *host = _("Host unknown");
+        const char *host = [NSLocalizedStringFromTable(@"Host unknown", @"xchat", @"") UTF8String];
         struct User *user;
         int len;
 

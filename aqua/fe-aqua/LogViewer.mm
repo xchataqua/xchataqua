@@ -205,8 +205,8 @@ extern "C" {
 
 - (void) awakeFromNib
 {
-    [log_viewer_view setTitle:@"Log Viewer"];
-    [log_viewer_view setTabTitle:@"LogViewer"];
+    [log_viewer_view setTitle:NSLocalizedStringFromTable(@"XChat: Log Viewer", @"xchataqua", @"Title of Window: MainMenu->Window->Log List")];
+    [log_viewer_view setTabTitle:NSLocalizedStringFromTable(@"LogViewer", @"xchataqua", @"Title of Tab: MainMenu->Window->Log List")];
     
     for (int i = 0; i < [log_list numberOfColumns]; i ++)
         [[[log_list tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
@@ -301,7 +301,7 @@ extern "C" {
 // custom method
 - (void) tableViewRemoveRows:(NSTableView *) tableView
 {
-    if ([SGAlert confirmWithString:@"Are you sure you want to remove the selected log files?"])
+    if ([SGAlert confirmWithString:NSLocalizedStringFromTable(@"Are you sure you want to remove the selected log files?", @"xchataqua", @"Alert message at: MainMenu->Window->Log List")])
     {
         NSIndexSet *set = [log_list selectedRowIndexes];
         if (!set)

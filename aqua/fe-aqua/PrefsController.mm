@@ -265,7 +265,7 @@ static NSArray *root_items;
 {
     sounds = [[NSMutableArray arrayWithCapacity:0] retain];
 
-    [sounds addObject:@"<none>"];
+    [sounds addObject:NSLocalizedStringFromTable(@"<none>", @"xchat", @"")];
     
     NSString *bundle = [[NSBundle mainBundle] bundlePath];
     NSString *dir_name = [NSString stringWithFormat:@"%@/../Sounds", bundle];
@@ -430,15 +430,15 @@ static NSArray *root_items;
                                     leaf (NSLocalizedStringFromTable(@"Input box", @"xchat", @""), 1),
                                     leaf (NSLocalizedStringFromTable(@"User list", @"xchat", @""), 2),
                                     leaf (NSLocalizedStringFromTable(@"Tabs", @"xchat", @""), 3),
-                                    leaf (NSLocalizedStringFromTable(@"Other", @"xchat", @""), 4),
+                                    leaf (NSLocalizedStringFromTable(@"Other", @"xchataqua", @""), 4),
                                     leaf (NSLocalizedStringFromTable(@"Colors", @"xchat", @""), 5), NULL];
     NSArray *chatting = [NSArray arrayWithObjects:NSLocalizedStringFromTable(@"Chatting", @"xchat", @""),
                                     leaf (NSLocalizedStringFromTable(@"General", @"xchat", @""), 6),
                                     leaf (NSLocalizedStringFromTable(@"Logging", @"xchat", @""), 7),
-                                    leaf (NSLocalizedStringFromTable(@"Events/Sounds", @"xchat", @""), 8), NULL];
+                                    leaf (NSLocalizedStringFromTable(@"Events/Sounds", @"xchataqua", @""), 8), NULL];
     NSArray *network = [NSArray arrayWithObjects:NSLocalizedStringFromTable(@"Network", @"xchat", @""),
                                     leaf (NSLocalizedStringFromTable(@"Network setup", @"xchat", @""), 9),
-                                    leaf (NSLocalizedStringFromTable(@"DCC Settings", @"xchat", @""), 10), NULL];
+                                    leaf (NSLocalizedStringFromTable(@"DCC Settings", @"xchataqua", @""), 10), NULL];
     root_items = [[NSArray arrayWithObjects:interface, chatting, network, NULL] retain];
 
     [category_list setDataSource:self];

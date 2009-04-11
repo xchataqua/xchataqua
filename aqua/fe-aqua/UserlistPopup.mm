@@ -26,7 +26,7 @@ extern "C" {
 
 - (id) init
 {
-    [super initWithList:&popup_list fileName:@"popup.conf" title:NSLocalizedStringFromTable(@"User List Popup", @"xchataqua", @"")];
+    [super initWithList:&popup_list fileName:@"popup.conf" title:NSLocalizedStringFromTable(@"XChat: Userlist Popup menu", @"xchat", @"Title of Window: MainMenu->X-Chat Aqua->References Lists->Userlist Popup...")];
     return self;
 }
 

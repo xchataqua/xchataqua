@@ -26,7 +26,7 @@ extern "C" {
 
 - (id) init
 {
-    [super initWithList:&urlhandler_list fileName:@"urlhandlers.conf" title:NSLocalizedStringFromTable(@"URL Handlers", @"xchataqua", "")];
+    [super initWithList:&urlhandler_list fileName:@"urlhandlers.conf" title:NSLocalizedStringFromTable(@"XChat: URL Handlers", @"xchat", "Title of Window: MainMenu->X-Chat Aqua->References Lists->URL Handler...")];
     return self;
 }
 

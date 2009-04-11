@@ -81,8 +81,8 @@ static int do_add_url (const void *key, void *cbd)
     [self->url_list setTarget:self];
     [self->url_list setAction:@selector (item_selected:)];
 
-    [url_grabber_view setTitle:NSLocalizedStringFromTable(@"URL Grabber", @"xchataqua", @"")];
-    [url_grabber_view setTabTitle:@"UrlGrabber"];
+    [url_grabber_view setTitle:NSLocalizedStringFromTable(@"XChat: URL Grabber", @"xchat", @"Title of Window: MainMenu->Window->URL Grabber...")];
+    [url_grabber_view setTabTitle:NSLocalizedStringFromTable(@"UrlGrabber", @"xchataqua", @"")];
     [url_grabber_view setDelegate:self];
     
     tree_foreach ((tree *) url_tree, do_add_url, self);

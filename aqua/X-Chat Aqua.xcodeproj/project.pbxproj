@@ -23,6 +23,51 @@
 			name = Release;
 			productName = Release;
 		};
+		2D8DACCF0F8EFF8E00DA0BC2 /* LE_MESSAGES */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 2D8DACD30F8EFF9000DA0BC2 /* Build configuration list for PBXAggregateTarget "LE_MESSAGES" */;
+			buildPhases = (
+				2D8DACCE0F8EFF8E00DA0BC2 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = LE_MESSAGES;
+			productName = LE_MESSAGES;
+		};
+		2D8DACF30F8F19EA00DA0BC2 /* Enable Gettext */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 2D8DACF60F8F1A0F00DA0BC2 /* Build configuration list for PBXAggregateTarget "Enable Gettext" */;
+			buildPhases = (
+				2D8DACF20F8F19EA00DA0BC2 /* ShellScript */,
+			);
+			dependencies = (
+				2D8DACFD0F8F1ABB00DA0BC2 /* PBXTargetDependency */,
+			);
+			name = "Enable Gettext";
+			productName = "Enable Multilanguage Support";
+		};
+		2D8DACF80F8F1A7800DA0BC2 /* Disable Gettext */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 2D8DACFB0F8F1AA100DA0BC2 /* Build configuration list for PBXAggregateTarget "Disable Gettext" */;
+			buildPhases = (
+				2D8DACF70F8F1A7800DA0BC2 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Disable Gettext";
+			productName = "Disable Multilanguage Support";
+		};
+		2D8DAD3B0F8F20F800DA0BC2 /* Update nib l10n */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 2D8DAD3E0F8F211800DA0BC2 /* Build configuration list for PBXAggregateTarget "Update nib l10n" */;
+			buildPhases = (
+				2D8DAD3A0F8F20F800DA0BC2 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Update nib l10n";
+			productName = "Update nib l10n";
+		};
 		B07C7A020F43905A00E11B58 /* GenerateBuildNumber */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = B07C7A340F43908000E11B58 /* Build configuration list for PBXAggregateTarget "GenerateBuildNumber" */;
@@ -245,7 +290,9 @@
 		0FE5E0950F480B26000E0F91 /* SGView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6850CFB300B001AE9AE /* SGView.mm */; };
 		0FE5E0980F480B39000E0F91 /* SGBoxView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6610CFB300B001AE9AE /* SGBoxView.mm */; };
 		2D61F38C0F85F56200F5D30B /* alert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D61F38B0F85F56200F5D30B /* alert.xib */; };
-		2DEA2F350F8673BF00D6DC0D /* xchataqua.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F070F8673BF00D6DC0D /* xchataqua.strings */; };
+		2D8DA8F70F8E6B2400DA0BC2 /* xchataqua.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D8DA8F50F8E6B2400DA0BC2 /* xchataqua.strings */; };
+		2D8DA9140F8E6D3000DA0BC2 /* libintl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D8DA9130F8E6D3000DA0BC2 /* libintl.dylib */; };
+		2D8DAAF20F8EFE5300DA0BC2 /* locale in Resources */ = {isa = PBXBuildFile; fileRef = 2D8DAAF10F8EFE5300DA0BC2 /* locale */; };
 		2DEA2F360F8673BF00D6DC0D /* TabMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F090F8673BF00D6DC0D /* TabMenu.xib */; };
 		2DEA2F370F8673BF00D6DC0D /* UrlGrabber.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F0B0F8673BF00D6DC0D /* UrlGrabber.xib */; };
 		2DEA2F380F8673BF00D6DC0D /* ServerList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F0D0F8673BF00D6DC0D /* ServerList.xib */; };
@@ -320,6 +367,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0FC8F4AD0DEEE51700504F31;
 			remoteInfo = xchat;
+		};
+		2D8DACFC0F8F1ABB00DA0BC2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D8DACCF0F8EFF8E00DA0BC2 /* LE_MESSAGES */;
+			remoteInfo = LE_MESSAGES;
 		};
 		B07C7A420F4392ED00E11B58 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -781,8 +835,34 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		2D61F38B0F85F56200F5D30B /* alert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = alert.xib; path = "fe-aqua/alert.xib"; sourceTree = "<group>"; };
+		2D8DA8F60F8E6B2400DA0BC2 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = localization/en.lproj/xchataqua.strings; sourceTree = "<group>"; };
+		2D8DA8F80F8E6B3E00DA0BC2 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = localization/ko.lproj/xchataqua.strings; sourceTree = "<group>"; };
+		2D8DA9130F8E6D3000DA0BC2 /* libintl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libintl.dylib; path = usr/local/lib/libintl.dylib; sourceTree = SDKROOT; };
+		2D8DAAF10F8EFE5300DA0BC2 /* locale */ = {isa = PBXFileReference; lastKnownFileType = folder; path = locale; sourceTree = "<group>"; };
+		2D8DACD00F8EFF8E00DA0BC2 /* Info devel.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info devel.plist"; sourceTree = "<group>"; };
+		2D8DAEE80F905FC400DA0BC2 /* config.nls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.nls.h; sourceTree = "<group>"; };
+		2D8DAEF90F90633F00DA0BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fe-aqua/en.lproj/DccChat.xib.strings"; sourceTree = "<group>"; };
+		2D8DAEFA0F90633F00DA0BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fe-aqua/en.lproj/ChatWindow.xib.strings"; sourceTree = "<group>"; };
+		2D8DAEFB0F90633F00DA0BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fe-aqua/en.lproj/DccSend.xib.strings"; sourceTree = "<group>"; };
+		2D8DAEFC0F90633F00DA0BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fe-aqua/en.lproj/EditEvents.xib.strings"; sourceTree = "<group>"; };
+		2D8DAEFD0F90633F00DA0BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fe-aqua/en.lproj/BanList.xib.strings"; sourceTree = "<group>"; };
+		2D8DAEFE0F90633F00DA0BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fe-aqua/en.lproj/DccRecv.xib.strings"; sourceTree = "<group>"; };
+		2D8DAEFF0F90633F00DA0BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fe-aqua/en.lproj/EditList.xib.strings"; sourceTree = "<group>"; };
+		2D8DAF000F90633F00DA0BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fe-aqua/en.lproj/IgnoreList.xib.strings"; sourceTree = "<group>"; };
+		2D8DAF010F90633F00DA0BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fe-aqua/en.lproj/LogWindow.xib.strings"; sourceTree = "<group>"; };
+		2D8DAF020F90633F00DA0BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fe-aqua/en.lproj/MainMenu.xib.strings"; sourceTree = "<group>"; };
+		2D8DAF030F90633F00DA0BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fe-aqua/en.lproj/NotifyList.xib.strings"; sourceTree = "<group>"; };
+		2D8DAF040F90633F00DA0BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fe-aqua/en.lproj/PluginList.xib.strings"; sourceTree = "<group>"; };
+		2D8DAF050F90633F00DA0BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fe-aqua/en.lproj/Prefs.xib.strings"; sourceTree = "<group>"; };
+		2D8DAF060F90633F00DA0BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fe-aqua/en.lproj/RawLog.xib.strings"; sourceTree = "<group>"; };
+		2D8DAF070F90633F00DA0BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fe-aqua/en.lproj/ReleaseNotes.xib.strings"; sourceTree = "<group>"; };
+		2D8DAF080F90633F00DA0BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fe-aqua/en.lproj/ServerList.xib.strings"; sourceTree = "<group>"; };
+		2D8DAF090F90633F00DA0BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fe-aqua/en.lproj/SGPaletteLeopard.xib.strings"; sourceTree = "<group>"; };
+		2D8DAF0A0F90633F00DA0BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fe-aqua/en.lproj/SGRequest.xib.strings"; sourceTree = "<group>"; };
+		2D8DAF0B0F90633F00DA0BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fe-aqua/en.lproj/TabMenu.xib.strings"; sourceTree = "<group>"; };
+		2D8DAF0C0F90633F00DA0BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fe-aqua/en.lproj/UrlGrabber.xib.strings"; sourceTree = "<group>"; };
+		2D8DAF0D0F90633F00DA0BC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "fe-aqua/en.lproj/UserCommands.xib.strings"; sourceTree = "<group>"; };
 		2DEA2EE40F86715600D6DC0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = localization/en.lproj/xchat.strings; sourceTree = "<group>"; };
-		2DEA2F080F8673BF00D6DC0D /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = "fe-aqua/en.lproj/xchataqua.strings"; sourceTree = "<group>"; };
 		2DEA2F0A0F8673BF00D6DC0D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "fe-aqua/en.lproj/TabMenu.xib"; sourceTree = "<group>"; };
 		2DEA2F0C0F8673BF00D6DC0D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "fe-aqua/en.lproj/UrlGrabber.xib"; sourceTree = "<group>"; };
 		2DEA2F0E0F8673BF00D6DC0D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "fe-aqua/en.lproj/ServerList.xib"; sourceTree = "<group>"; };
@@ -827,7 +907,6 @@
 		2DEA2F5F0F8673ED00D6DC0D /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = "fe-aqua/ko.lproj/TabMenu.xib"; sourceTree = "<group>"; };
 		2DEA2F600F8673ED00D6DC0D /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = "fe-aqua/ko.lproj/UrlGrabber.xib"; sourceTree = "<group>"; };
 		2DEA2F610F8673ED00D6DC0D /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = "fe-aqua/ko.lproj/UserCommands.xib"; sourceTree = "<group>"; };
-		2DEA2F620F8673ED00D6DC0D /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = "fe-aqua/ko.lproj/xchataqua.strings"; sourceTree = "<group>"; };
 		2DEA2F770F87165600D6DC0D /* ko */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = ko; path = "fe-aqua/ko.lproj/ChatWindow.xib.strings"; sourceTree = "<group>"; };
 		2DEA2F790F87165600D6DC0D /* ko */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = ko; path = "fe-aqua/ko.lproj/BanList.xib.strings"; sourceTree = "<group>"; };
 		2DEA2F7B0F87165600D6DC0D /* ko */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = ko; path = "fe-aqua/ko.lproj/DccSend.xib.strings"; sourceTree = "<group>"; };
@@ -926,6 +1005,7 @@
 				0F0BF9B40CFE2CE900B71E4D /* Growl.framework in Frameworks */,
 				0FC8F4400DEEE0E400504F31 /* libglib.a in Frameworks */,
 				0FC8F5C40DEEEA3E00504F31 /* libxchat.a in Frameworks */,
+				2D8DA9140F8E6D3000DA0BC2 /* libintl.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1029,6 +1109,7 @@
 				0F8EA3CD0CFAF7AF001AE9AE /* Sources */,
 				0F8EA3650CFAA470001AE9AE /* Resources */,
 				0F8EA3830CFAA896001AE9AE /* config.h */,
+				2D8DAEE80F905FC400DA0BC2 /* config.nls.h */,
 			);
 			name = "fe-aqua";
 			sourceTree = "<group>";
@@ -1065,7 +1146,6 @@
 				0F8EA7960CFB6CF9001AE9AE /* X-Chat Aqua.scriptTerminology */,
 				0F8EA3660CFAA49B001AE9AE /* Info.plist */,
 				0F7065530E1FA32E00FEA21C /* Changes */,
-				2DEA2F070F8673BF00D6DC0D /* xchataqua.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1472,6 +1552,7 @@
 		29B97314FDCFA39411CA2CEA /* X-Chat Aqua */ = {
 			isa = PBXGroup;
 			children = (
+				2D8DAAF10F8EFE5300DA0BC2 /* locale */,
 				0FC8F3D10DEEC33D00504F31 /* plugins */,
 				0F8EA38D0CFAB411001AE9AE /* glib */,
 				0F8EA3640CFAA429001AE9AE /* fe-aqua */,
@@ -1483,6 +1564,7 @@
 				B07C7AD60F4398FC00E11B58 /* Debug.xcconfig */,
 				B07C7AD70F4398FC00E11B58 /* Release.xcconfig */,
 				0F3062530D84958E0084F2CA /* xchat.strings */,
+				2D8DA8F50F8E6B2400DA0BC2 /* xchataqua.strings */,
 				0FC8F3F50DEEDAB300504F31 /* Python.framework */,
 				0FC8F4860DEEE3EE00504F31 /* Cocoa.framework */,
 				0FC8F6DA0DEEF50100504F31 /* AppKit.framework */,
@@ -1494,6 +1576,8 @@
 				0F8F08170E1FE01800359159 /* Tcl.framework */,
 				0FDE6C820E2704F00010E0D9 /* TBD.rtf */,
 				0FE5E01E0F45576B000E0F91 /* SGPalette-Info.plist */,
+				2D8DA9130F8E6D3000DA0BC2 /* libintl.dylib */,
+				2D8DACD00F8EFF8E00DA0BC2 /* Info devel.plist */,
 			);
 			name = "X-Chat Aqua";
 			sourceTree = "<group>";
@@ -1780,6 +1864,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				2D8DACCF0F8EFF8E00DA0BC2 /* LE_MESSAGES */,
+				2D8DACF80F8F1A7800DA0BC2 /* Disable Gettext */,
+				2D8DACF30F8F19EA00DA0BC2 /* Enable Gettext */,
 				8D1107260486CEB800E47090 /* X-Chat Aqua */,
 				0FC8F4010DEEE00000504F31 /* glib */,
 				0FC8F4AD0DEEE51700504F31 /* xchat */,
@@ -1790,6 +1877,7 @@
 				0F8F08100E1FE00800359159 /* tcl */,
 				B07C7A020F43905A00E11B58 /* GenerateBuildNumber */,
 				0FE5E01C0F45576B000E0F91 /* SGPalette */,
+				2D8DAD3B0F8F20F800DA0BC2 /* Update nib l10n */,
 			);
 		};
 /* End PBXProject section */
@@ -1873,7 +1961,6 @@
 				0F3062540D84958E0084F2CA /* xchat.strings in Resources */,
 				0F7065540E1FA32E00FEA21C /* Changes in Resources */,
 				2D61F38C0F85F56200F5D30B /* alert.xib in Resources */,
-				2DEA2F350F8673BF00D6DC0D /* xchataqua.strings in Resources */,
 				2DEA2F360F8673BF00D6DC0D /* TabMenu.xib in Resources */,
 				2DEA2F370F8673BF00D6DC0D /* UrlGrabber.xib in Resources */,
 				2DEA2F380F8673BF00D6DC0D /* ServerList.xib in Resources */,
@@ -1896,12 +1983,66 @@
 				2DEA2F490F8673BF00D6DC0D /* DccChat.xib in Resources */,
 				2DEA2F4A0F8673BF00D6DC0D /* DccRecv.xib in Resources */,
 				2DEA2F4B0F8673BF00D6DC0D /* DccSend.xib in Resources */,
+				2D8DA8F70F8E6B2400DA0BC2 /* xchataqua.strings in Resources */,
+				2D8DAAF20F8EFE5300DA0BC2 /* locale in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2D8DACCE0F8EFF8E00DA0BC2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "#!/bin/bash\noutname=xchat\ncd \"$PROJECT_DIR\"\nsrcdir=../po\noutdirbase=../aqua/locale\nfor pofile in `ls $srcdir/*.po`; do\n\tlocale=`basename $pofile .po`\n\toutdir=$outdirbase/$locale/LC_MESSAGES\n\tmkdir -p $outdir\n\tmsgfmt -o $outdir/$outname.mo $srcdir/$locale.po\ndone\nexit 0";
+		};
+		2D8DACF20F8F19EA00DA0BC2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "#!/bin/bash\ncd \"$PROJECT_DIR\"\necho \"#define ENABLE_NLS 1\" > config.nls.h\ntouch config.h\nexit 0";
+		};
+		2D8DACF70F8F1A7800DA0BC2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "#!/bin/bash\ncd \"$PROJECT_DIR\"\necho \"\" > config.nls.h\ntouch config.h\nmkdir -p locale\nrm -rf locale/*\nexit 0";
+		};
+		2D8DAD3A0F8F20F800DA0BC2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "#!/bin/bash\nDEFXIBDIR=en.lproj\ncd \"$PROJECT_DIR\"/fe-aqua\nfor lproj in `ls -d *.lproj`; do\n  if [ $DEFXIBDIR = $lproj ]; then\n    continue;\n  fi\n  stringslist=`ls $lproj/*.xib.strings`\n  for strings in $stringslist; do\n    xib=`basename $strings .strings`\n    cmd=\"ibtool --strings-file $strings --write $lproj/$xib $DEFXIBDIR/$xib\"\n    echo \"$cmd\"\n    $cmd\n  done\ndone";
+		};
 		B07C7A010F43905A00E11B58 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2158,6 +2299,11 @@
 			target = 0FC8F4AD0DEEE51700504F31 /* xchat */;
 			targetProxy = 0FC8F5C20DEEEA3B00504F31 /* PBXContainerItemProxy */;
 		};
+		2D8DACFD0F8F1ABB00DA0BC2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D8DACCF0F8EFF8E00DA0BC2 /* LE_MESSAGES */;
+			targetProxy = 2D8DACFC0F8F1ABB00DA0BC2 /* PBXContainerItemProxy */;
+		};
 		B07C7A430F4392ED00E11B58 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
@@ -2225,11 +2371,11 @@
 			name = xchat.strings;
 			sourceTree = "<group>";
 		};
-		2DEA2F070F8673BF00D6DC0D /* xchataqua.strings */ = {
+		2D8DA8F50F8E6B2400DA0BC2 /* xchataqua.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2DEA2F080F8673BF00D6DC0D /* en */,
-				2DEA2F620F8673ED00D6DC0D /* ko */,
+				2D8DA8F60F8E6B2400DA0BC2 /* en */,
+				2D8DA8F80F8E6B3E00DA0BC2 /* ko */,
 			);
 			name = xchataqua.strings;
 			sourceTree = "<group>";
@@ -2436,6 +2582,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DEA2F770F87165600D6DC0D /* ko */,
+				2D8DAEFA0F90633F00DA0BC2 /* en */,
 			);
 			name = ChatWindow.xib.strings;
 			sourceTree = "<group>";
@@ -2444,6 +2591,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DEA2F790F87165600D6DC0D /* ko */,
+				2D8DAEFD0F90633F00DA0BC2 /* en */,
 			);
 			name = BanList.xib.strings;
 			sourceTree = "<group>";
@@ -2452,6 +2600,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DEA2F7B0F87165600D6DC0D /* ko */,
+				2D8DAEFB0F90633F00DA0BC2 /* en */,
 			);
 			name = DccSend.xib.strings;
 			sourceTree = "<group>";
@@ -2460,6 +2609,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DEA2F7D0F87165600D6DC0D /* ko */,
+				2D8DAEFE0F90633F00DA0BC2 /* en */,
 			);
 			name = DccRecv.xib.strings;
 			sourceTree = "<group>";
@@ -2468,6 +2618,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DEA2F7F0F87165600D6DC0D /* ko */,
+				2D8DAEFF0F90633F00DA0BC2 /* en */,
 			);
 			name = EditList.xib.strings;
 			sourceTree = "<group>";
@@ -2476,6 +2627,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DEA2F810F87165600D6DC0D /* ko */,
+				2D8DAF000F90633F00DA0BC2 /* en */,
 			);
 			name = IgnoreList.xib.strings;
 			sourceTree = "<group>";
@@ -2484,6 +2636,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DEA2F830F87165600D6DC0D /* ko */,
+				2D8DAEF90F90633F00DA0BC2 /* en */,
 			);
 			name = DccChat.xib.strings;
 			sourceTree = "<group>";
@@ -2492,6 +2645,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DEA2F850F87165600D6DC0D /* ko */,
+				2D8DAEFC0F90633F00DA0BC2 /* en */,
 			);
 			name = EditEvents.xib.strings;
 			sourceTree = "<group>";
@@ -2500,6 +2654,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DEA2F870F87165600D6DC0D /* ko */,
+				2D8DAF010F90633F00DA0BC2 /* en */,
 			);
 			name = LogWindow.xib.strings;
 			sourceTree = "<group>";
@@ -2508,6 +2663,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DEA2F890F87165600D6DC0D /* ko */,
+				2D8DAF030F90633F00DA0BC2 /* en */,
 			);
 			name = NotifyList.xib.strings;
 			sourceTree = "<group>";
@@ -2516,6 +2672,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DEA2F8B0F87165600D6DC0D /* ko */,
+				2D8DAF020F90633F00DA0BC2 /* en */,
 			);
 			name = MainMenu.xib.strings;
 			sourceTree = "<group>";
@@ -2524,6 +2681,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DEA2F8D0F87165600D6DC0D /* ko */,
+				2D8DAF040F90633F00DA0BC2 /* en */,
 			);
 			name = PluginList.xib.strings;
 			sourceTree = "<group>";
@@ -2532,6 +2690,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DEA2F8F0F87165600D6DC0D /* ko */,
+				2D8DAF050F90633F00DA0BC2 /* en */,
 			);
 			name = Prefs.xib.strings;
 			sourceTree = "<group>";
@@ -2540,6 +2699,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DEA2F910F87165600D6DC0D /* ko */,
+				2D8DAF060F90633F00DA0BC2 /* en */,
 			);
 			name = RawLog.xib.strings;
 			sourceTree = "<group>";
@@ -2548,6 +2708,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DEA2F930F87165600D6DC0D /* ko */,
+				2D8DAF070F90633F00DA0BC2 /* en */,
 			);
 			name = ReleaseNotes.xib.strings;
 			sourceTree = "<group>";
@@ -2556,6 +2717,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DEA2F950F87165600D6DC0D /* ko */,
+				2D8DAF080F90633F00DA0BC2 /* en */,
 			);
 			name = ServerList.xib.strings;
 			sourceTree = "<group>";
@@ -2564,6 +2726,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DEA2F970F87165600D6DC0D /* ko */,
+				2D8DAF090F90633F00DA0BC2 /* en */,
 			);
 			name = SGPaletteLeopard.xib.strings;
 			sourceTree = "<group>";
@@ -2572,6 +2735,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DEA2F990F87165600D6DC0D /* ko */,
+				2D8DAF0A0F90633F00DA0BC2 /* en */,
 			);
 			name = SGRequest.xib.strings;
 			sourceTree = "<group>";
@@ -2580,6 +2744,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DEA2F9B0F87165600D6DC0D /* ko */,
+				2D8DAF0B0F90633F00DA0BC2 /* en */,
 			);
 			name = TabMenu.xib.strings;
 			sourceTree = "<group>";
@@ -2588,6 +2753,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DEA2F9D0F87165600D6DC0D /* ko */,
+				2D8DAF0C0F90633F00DA0BC2 /* en */,
 			);
 			name = UrlGrabber.xib.strings;
 			sourceTree = "<group>";
@@ -2596,6 +2762,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DEA2F9F0F87165600D6DC0D /* ko */,
+				2D8DAF0D0F90633F00DA0BC2 /* en */,
 			);
 			name = UserCommands.xib.strings;
 			sourceTree = "<group>";
@@ -2986,6 +3153,90 @@
 			};
 			name = Release;
 		};
+		2D8DACD10F8EFF9000DA0BC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = LE_MESSAGES;
+			};
+			name = Debug;
+		};
+		2D8DACD20F8EFF9000DA0BC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = LE_MESSAGES;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		2D8DACF40F8F19EB00DA0BC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = "Enable Multilanguage Support";
+			};
+			name = Debug;
+		};
+		2D8DACF50F8F19EB00DA0BC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = "Enable Multilanguage Support";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		2D8DACF90F8F1A7900DA0BC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = "Disable Multilanguage Support";
+			};
+			name = Debug;
+		};
+		2D8DACFA0F8F1A7900DA0BC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = "Disable Multilanguage Support";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		2D8DAD3C0F8F20F900DA0BC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = "Update nib l10n";
+			};
+			name = Debug;
+		};
+		2D8DAD3D0F8F20F900DA0BC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = "Update nib l10n";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		B07C7A030F43905A00E11B58 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3059,8 +3310,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B07C7AD60F4398FC00E11B58 /* Debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				ARCHS = "$(ONLY_ACTIVE_ARCH_PRE_XCODE_3_1)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "fe-aqua";
@@ -3069,12 +3319,14 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
 					"$(SRCROOT)/fe-aqua/Growl.framework/Versions/A/Headers",
 					"$(SRCROOT)/fe-aqua/ShortcutRecorder/ShortcutRecorder/Source",
 					"$(SRCROOT)/fe-aqua/",
 					.,
 				);
 				INFOPLIST_FILE = "Info devel.plist";
+				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH)";
 				PREBINDING = NO;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
 			};
@@ -3091,6 +3343,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
 					"$(SRCROOT)/fe-aqua/Growl.framework/Versions/A/Headers",
 					"$(SRCROOT)/fe-aqua/ShortcutRecorder/ShortcutRecorder/Source",
 					"$(SRCROOT)/fe-aqua/",
@@ -3173,6 +3426,42 @@
 			buildConfigurations = (
 				0FE5E01F0F45576C000E0F91 /* Debug */,
 				0FE5E0200F45576C000E0F91 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8DACD30F8EFF9000DA0BC2 /* Build configuration list for PBXAggregateTarget "LE_MESSAGES" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D8DACD10F8EFF9000DA0BC2 /* Debug */,
+				2D8DACD20F8EFF9000DA0BC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8DACF60F8F1A0F00DA0BC2 /* Build configuration list for PBXAggregateTarget "Enable Gettext" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D8DACF40F8F19EB00DA0BC2 /* Debug */,
+				2D8DACF50F8F19EB00DA0BC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8DACFB0F8F1AA100DA0BC2 /* Build configuration list for PBXAggregateTarget "Disable Gettext" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D8DACF90F8F1A7900DA0BC2 /* Debug */,
+				2D8DACFA0F8F1A7900DA0BC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8DAD3E0F8F211800DA0BC2 /* Build configuration list for PBXAggregateTarget "Update nib l10n" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D8DAD3C0F8F20F900DA0BC2 /* Debug */,
+				2D8DAD3D0F8F20F900DA0BC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

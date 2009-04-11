@@ -1,5 +1,18 @@
 #ifndef _CONFIG_H
 #define _CONFIG_H
+
+#include "config.nls.h"
+
+#ifdef ENABLE_NLS
+/* Gettext package name */
+#  define GETTEXT_PACKAGE "xchat"
+#  define GLIB_LOCALE_DIR "/usr/local/share/locale"
+#  define HAVE_ALLOCA 1
+#  define HAVE_STDDEF_H 1
+#  define HAVE_STRING_H 1
+#  define HAVE_STDLIB_H 1
+#endif
+
 /* Define to the full name of this package. */
 #define PACKAGE_NAME "XChat"
 

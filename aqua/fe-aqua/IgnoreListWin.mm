@@ -176,8 +176,8 @@ extern "C" {
 
 - (void) awakeFromNib
 {
-    [ignore_list_view setTitle:@"Ignore List"];
-    [ignore_list_view setTabTitle:@"ignore"];
+    [ignore_list_view setTitle:NSLocalizedStringFromTable(@"XChat: Ignore list", @"xchat", @"")];
+    [ignore_list_view setTabTitle:NSLocalizedStringFromTable(@"ignore", @"xchataqua", @"")];
     
     for (int i = 0; i < [self->ignore_list_table numberOfColumns]; i ++)
         [[[self->ignore_list_table tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];

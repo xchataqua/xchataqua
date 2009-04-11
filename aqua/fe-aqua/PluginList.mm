@@ -106,7 +106,7 @@ extern GSList *plugin_list;
     if (len > 3 && strcasecmp ([item->file UTF8String] + len - 3, ".so") == 0)
     {
         if (plugin_kill ((char *) [item->name UTF8String], FALSE) == 2)
-            [SGAlert alertWithString:@"That plugin is refusing to unload." andWait:false];
+            [SGAlert alertWithString:NSLocalizedStringFromTable(@"That plugin is refusing to unload.\n", @"xchat", @"") andWait:false];
     }
     else
     {

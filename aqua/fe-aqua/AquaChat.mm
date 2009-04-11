@@ -309,7 +309,7 @@ EventInfo text_event_info[NUM_XP];
 //TODO sparkle here
 - (void) new_version_alert
 {
-    bool ok = [SGAlert confirmWithString:NSLocalizedStringFromTable(@"There is a new version of X-Chat aqua available for download.  Press OK to visit the download site.", @"xchat", "")];
+    bool ok = [SGAlert confirmWithString:NSLocalizedStringFromTable(@"There is a new version of X-Chat aqua available for download.  Press OK to visit the download site.", @"xchataqua", "")];
     if (ok)
         [self do_goto_download:self];
 }
@@ -404,7 +404,7 @@ EventInfo text_event_info[NUM_XP];
 
     if (prefs.autodccsend == 1 && !strcasecmp ((char *)g_get_home_dir (), prefs.dccdir))
     {
-         [SGAlert alertWithString:NSLocalizedStringFromTable(@"*WARNING*\nAuto accepting DCC to your home directory can be dangerous and is exploitable. Eg:Someone could send you a .bash_profile", @"xchat", @"") andWait:false];
+         [SGAlert alertWithString:NSLocalizedStringFromTable(@"*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile", @"xchat", @"") andWait:false];
     }
 
     // Fix existing windows
@@ -509,8 +509,8 @@ EventInfo text_event_info[NUM_XP];
 - (void) do_search_buffer:(id) sender
 {
     NSString *old_string = search_string;
-    search_string = 
-        [[SGRequest requestWithString:NSLocalizedStringFromTable(@"Search:", @"xchat", @"") defaultValue:search_string] retain];
+    search_string =
+        [[SGRequest requestWithString:NSLocalizedStringFromTable(@"XChat: Search", @"xchat", @"") defaultValue:search_string] retain];
     [old_string release];
     [self do_search_again:sender];
 }
@@ -679,16 +679,11 @@ EventInfo text_event_info[NUM_XP];
 {
 	NSApplicationTerminateReply reply = NSTerminateNow;
 	unsigned active = [self dcc_active_file_transfer_count];
-	if (active == 1) {
-		if (NSRunAlertPanel(NSLocalizedStringFromTable(@"A file transfer is in progess.", @"xchataqua", @""),
-			NSLocalizedStringFromTable(@"Are you sure you want to quit? If you quit now, the transfer will be interrupted.", @"xchataqua", @""),
-			NSLocalizedStringFromTable(@"Quit", @"xchat", @""), NSLocalizedStringFromTable(@"Cancel", @"xchat", @""), nil) != NSAlertDefaultReturn) reply = NSTerminateCancel;
-	} else if (active > 1) {
-		if (NSRunAlertPanel(NSLocalizedStringFromTable(@"File transfers are in progess.", @"xchataqua", @""),
-			NSLocalizedStringFromTable(@"Are you sure you want to quit? If you quit now, %d file transfers will be interrupted.", @"xchataqua", @""),
-			NSLocalizedStringFromTable(@"Quit", @"xchat", @""), NSLocalizedStringFromTable(@"Cancel", @"xchat", @""), nil, active) != NSAlertDefaultReturn) reply = NSTerminateCancel;
+	if (active > 0) {
+		if (NSRunAlertPanel(NSLocalizedStringFromTable(@"Some file transfers are still active.", @"xchat", @""),
+			NSLocalizedStringFromTable(@"Are you sure you want to quit?", @"xchat", @""),
+			NSLocalizedStringFromTable(@"Quit", @"xchataqua", @""), NSLocalizedStringFromTable(@"Cancel", @"xchataqua", @""), nil) != NSAlertDefaultReturn) reply = NSTerminateCancel;
 	}
-	
 	return reply;
 }
 

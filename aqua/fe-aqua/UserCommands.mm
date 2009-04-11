@@ -66,7 +66,7 @@ extern "C" {
     self->my_items = [[NSMutableArray arrayWithCapacity:0] retain];
     
     [NSBundle loadNibNamed:@"UserCommands" owner:self];
-    
+    [[cmd_list window] setTitle:NSLocalizedStringFromTable(@"XChat: User Defined Commands", @"xchat", @"")];
     return self;
 }
 

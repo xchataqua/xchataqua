@@ -236,7 +236,7 @@ strip_crap (const char *s)
 
 - (void) update_caption
 {
-    [caption_text setStringValue:[NSString stringWithFormat:@"User and Channel Statistics: %d/%d Users on %d/%d Channels",
+    [caption_text setStringValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"Displaying %d/%d users on %d/%d channels.", @"xchat", @""),
         users_shown_count, users_found_count, [items count], [all_items count]]];
 }
 
@@ -254,8 +254,8 @@ strip_crap (const char *s)
     
     arrow = [[NSImage imageNamed:@"down.tiff"] retain];
     
-    [channel_list_view setTitle:@"Channel List"];
-    [channel_list_view setTabTitle:@"ChanList"];
+    [channel_list_view setTitle:[NSString stringWithFormat:NSLocalizedStringFromTable(@"XChat: Channel List (%s)", @"xchat", @""), self->serv->servername]];
+    [channel_list_view setTabTitle:NSLocalizedStringFromTable(@"ChanList", @"xchataqua", @"")];
     
     for (int i = 0; i < [item_list numberOfColumns]; i ++)
         [[[item_list tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
@@ -407,7 +407,7 @@ strip_crap (const char *s)
         handle_command (serv->server_session, "list", FALSE);
     }
     else
-        [SGAlert alertWithString:@"Not connected." andWait:false];
+        [SGAlert alertWithString:NSLocalizedStringFromTable(@"Not connected.", @"xchat", @"") andWait:false];
 }
 
 - (void) chan_list_end

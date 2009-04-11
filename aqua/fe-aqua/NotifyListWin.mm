@@ -53,7 +53,7 @@ extern "C" {
 		  networks:(const char *) ntwk
 {
     user = [[NSString stringWithUTF8String:user_name ? user_name : ""] retain];
-    status = [[NSString stringWithUTF8String:online ? "Online" : "Offline"] retain];
+    status = [online ? NSLocalizedStringFromTable(@"Online", @"xchat", @"") : NSLocalizedStringFromTable(@"Offline", @"xchat", @"") retain];
 	self->networks = [[NSString stringWithUTF8String:ntwk ? ntwk : ""] retain];
     if (svr && svr->laston)
     {
@@ -63,7 +63,7 @@ extern "C" {
     else
     {
         self->server = [[NSString stringWithUTF8String:""] retain];
-        last = [[NSString stringWithUTF8String:"Never"] retain];
+        last = [NSLocalizedStringFromTable(@"Never", @"xchat", @"") retain];
     }
     
     return self;
@@ -151,8 +151,8 @@ extern "C" {
 
 - (void) awakeFromNib
 {
-    [notify_list_view setTitle:@"Notify List"];
-    [notify_list_view setTabTitle:@"notify"];
+    [notify_list_view setTitle:NSLocalizedStringFromTable(@"XChat: Friends List", @"xchat", @"")];
+    [notify_list_view setTabTitle:NSLocalizedStringFromTable(@"friends", @"xchataqua", @"")];
     
     for (int i = 0; i < [self->notify_list_table numberOfColumns]; i ++)
         [[[self->notify_list_table tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];

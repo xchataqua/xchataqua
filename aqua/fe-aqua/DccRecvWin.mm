@@ -109,8 +109,8 @@ extern int dcc_getcpssum;
 	cpssum = &dcc_getcpssum;
 	[super awakeFromNib];
 	
-    [dcc_list_view setTitle:@"File Recv List"];
-    [dcc_list_view setTabTitle:@"dccrecv"];
+    [dcc_list_view setTitle:NSLocalizedStringFromTable(@"XChat: File Recieve List", @"xchataqua", @"")];
+    [dcc_list_view setTabTitle:NSLocalizedStringFromTable(@"dccrecv", @"xchataqua", @"")];
 }
 
 - (void) do_reveal:(id) sender
@@ -172,7 +172,7 @@ extern int dcc_getcpssum;
 
         struct DCC *dcc = item->dcc;
 
-        NSString *msg = [NSString stringWithFormat:@"      File: %@\n      From: %s\n      Size: %"DCC_SIZE_FMT"\n      Port: %d\n IP Number: %s\nStart Time: %s",
+        NSString *msg = [NSString stringWithFormat:NSLocalizedStringFromTable(@"      File: %@\n      From: %s\n      Size: %"DCC_SIZE_FMT"\n      Port: %d\n IP Number: %s\nStart Time: %s", @"xchataqua", @""),
                                     item->file, dcc->nick, dcc->size, dcc->port,
                                     net_ip (dcc->addr), ctime (&dcc->starttime)];
 
@@ -182,9 +182,9 @@ extern int dcc_getcpssum;
 
 - (NSString *)activeString
 {
-	if (activeCount == 0) return @"No active downloads";
-	else if (activeCount == 1) return @"1 active download";
-	else return [NSString stringWithFormat:@"%d active downloads", activeCount];
+	if (activeCount == 0) return NSLocalizedStringFromTable(@"No active download", @"xchataqua", @"label of DCC Recv List: MainMenu->Window->DCC Recv List...");
+	else if (activeCount == 1) return NSLocalizedStringFromTable(@"1 active download", @"xchataqua", @"label of DCC Recv List: MainMenu->Window->DCC Recv List...");
+	else return [NSString stringWithFormat:NSLocalizedStringFromTable(@"%d active downloads", @"xchataqua", @"label of DCC Recv List: MainMenu->Window->DCC Recv List..."), activeCount];
 }
 
 - (NSNumber *)globalSpeedLimit
