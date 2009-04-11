@@ -108,8 +108,8 @@ extern int dcc_sendcpssum;
 	cpssum = &dcc_sendcpssum;
 	[super awakeFromNib];
 
-    [dcc_list_view setTitle:@"File Send List"];
-    [dcc_list_view setTabTitle:@"dccsend"];
+    [dcc_list_view setTitle:NSLocalizedStringFromTable(@"XChat: File Send List", @"xchataqua", @"")];
+    [dcc_list_view setTabTitle:NSLocalizedStringFromTable(@"dccsend", @"xchataqua", @"")];
 }
 
 - (void) do_info:(id) sender
@@ -121,7 +121,7 @@ extern int dcc_sendcpssum;
 
         struct DCC *dcc = item->dcc;
 
-        NSString *msg = [NSString stringWithFormat:@"      File: %s\n        To: %s\n      Size: %"DCC_SIZE_FMT"\n      Port: %d\n IP Number: %s\nStart Time: %s",
+        NSString *msg = [NSString stringWithFormat:NSLocalizedStringFromTable(@"      File: %s\n        To: %s\n      Size: %"DCC_SIZE_FMT"\n      Port: %d\n IP Number: %s\nStart Time: %s", @"xchataqua", @""),
                                     dcc->file, dcc->nick, dcc->size, dcc->port,
                                     net_ip (dcc->addr), ctime (&dcc->starttime)];
 
@@ -131,9 +131,9 @@ extern int dcc_sendcpssum;
 
 - (NSString *)activeString
 {
-	if (activeCount == 0) return @"No active uploads";
-	else if (activeCount == 1) return @"1 active upload";
-	else return [NSString stringWithFormat:@"%d active uploads", activeCount];
+	if (activeCount == 0) return NSLocalizedStringFromTable(@"No active upload", @"xchataqua", @"label of DCC Send List: MainMenu->Window->DCC Send List...");
+	else if (activeCount == 1) return NSLocalizedStringFromTable(@"1 active upload", @"xchataqua", @"label of DCC Send List: MainMenu->Window->DCC Send List...");
+	else return [NSString stringWithFormat:NSLocalizedStringFromTable(@"%d active uploads", @"xchataqua", @"label of DCC Send List: MainMenu->Window->DCC Send List..."), activeCount];
 }
 
 - (NSNumber *)globalSpeedLimit

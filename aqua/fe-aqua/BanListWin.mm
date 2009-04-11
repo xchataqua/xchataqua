@@ -81,8 +81,8 @@ extern "C" {
     my_items = [[NSMutableArray arrayWithCapacity:0] retain];
     
     [NSBundle loadNibNamed:@"BanList" owner:self];
-    
-    return self;
+	
+	return self;
 }
 
 - (void) dealloc
@@ -98,10 +98,14 @@ extern "C" {
 {
     [ban_list_view setServer:sess->server];
 
-    [ban_list_view setTitle:[NSString stringWithFormat:@"X-Chat: Ban List (%s, %s)",
-                                                sess->channel, sess->server->servername]];
-    [ban_list_view setTabTitle:@"banlist"];
+    [ban_list_view setTitle:[NSString stringWithFormat:
+							 [NSString stringWithFormat:
+							  NSLocalizedStringFromTable(@"XChat: Ban List (%s)", @"xchat", @""),
+							  "%s, %s"],
+							 sess->channel, sess->server->servername]];
+    [ban_list_view setTabTitle:NSLocalizedStringFromTable(@"banlist", @"xchataqua", @"Title of Tab: MainMenu->Window->Ban List...")];
     
+	
     for (int i = 0; i < [self->ban_list numberOfColumns]; i ++)
         [[[self->ban_list tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
 
@@ -138,7 +142,7 @@ extern "C" {
         handle_command (sess, "ban", FALSE);
     }
     else
-        [SGAlert alertWithString:@"Not connected." andWait:false];
+        [SGAlert alertWithString:NSLocalizedStringFromTable(@"Not connected.", @"xchat", @"") andWait:false];
 }
 
 - (void) perform_unban:(bool) all invert:(bool) invert

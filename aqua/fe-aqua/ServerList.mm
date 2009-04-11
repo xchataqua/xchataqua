@@ -620,7 +620,7 @@ static ServerList *instance;
 
 	oneNet *net = (oneNet *) [my_nets objectAtIndex:row];
 	
-	[net_title_text setStringValue:[NSString stringWithFormat:@"Servers for %@", net->name]];
+	[net_title_text setStringValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"Servers for %s", @"xchat", @""), net->name]];
 			
 	[self populateField:net_nick fromNet:net];
 	[self populateField:net_nick2 fromNet:net];
@@ -672,7 +672,7 @@ static ServerList *instance;
         
     oneNet *net = (oneNet *) [my_nets objectAtIndex:nrow];
 
-	oneChannel *chan = [[oneChannel alloc] initWithChannel:@"NEW CHANNEL"];
+	oneChannel *chan = [[oneChannel alloc] initWithChannel:NSLocalizedStringFromTable(@"NEW CHANNEL", @"xchataqua", @"Default channel name: MainMenu->File->Server List... => (Select server)->On Join->channels->'+'")];
 	[net->channels addObject:chan];
 	
 	[net_join_table reloadData];
@@ -711,7 +711,7 @@ static ServerList *instance;
         
     oneNet *net = (oneNet *) [my_nets objectAtIndex:nrow];
 
-	[net->connect_commands addObject:@"NEW COMMAND"];
+	[net->connect_commands addObject:NSLocalizedStringFromTable(@"NEW COMMAND", @"xchataqua", @"Default command: MainMenu->File->Server List... => (Select server)->On Join->commands->'+'")];
 	
 	[net_command_table reloadData];
 	
@@ -787,7 +787,7 @@ static ServerList *instance;
         return;
         
     oneNet *net = (oneNet *) [my_nets objectAtIndex:nrow];
-
+	
     ircserver *svr = servlist_server_add (net->net, "NewServer");
     
     [net addServer:svr];
@@ -823,7 +823,7 @@ static ServerList *instance;
     oneNet *net = (oneNet *) [my_nets objectAtIndex:row];
 
     if (![SGAlert confirmWithString:[NSString stringWithFormat:
-		NSLocalizedStringFromTable(@"Really remove network \"%@\" and all its servers?", @"xchataqua", @""), net->name]])
+		NSLocalizedStringFromTable(@"Really remove network \"%@\" and all its servers?", @"xchat", @"Dialog Message from clicking '-' of MainMenu->File->Server List..."), net->name]])
 		return;
     
     servlist_net_remove (net->net);

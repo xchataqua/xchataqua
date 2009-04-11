@@ -26,7 +26,7 @@ extern "C" {
 
 - (id) init
 {
-    [super initWithList:&ctcp_list fileName:@"ctcpreply.conf" title:@"CTCP Replies"];
+    [super initWithList:&ctcp_list fileName:@"ctcpreply.conf" title:NSLocalizedStringFromTable(@"XChat: CTCP Replies", @"xchat", @"Title of Window: MainMenu->X-Chat Aqua->Preference Lists->CTCP Replies...")];
     return self;
 }
 

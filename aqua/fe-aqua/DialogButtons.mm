@@ -27,7 +27,7 @@ extern "C" {
 
 - (id) init
 {
-    [super initWithList:&dlgbutton_list fileName:@"dlgbuttons.conf" title:NSLocalizedStringFromTable(@"Dialog Buttons", @"xchat", @"")];
+    [super initWithList:&dlgbutton_list fileName:@"dlgbuttons.conf" title:NSLocalizedStringFromTable(@"XChat: Dialog buttons", @"xchat", @"")];
     return self;
 }
 

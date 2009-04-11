@@ -666,11 +666,17 @@ static void setupAppSupport ()
 int
 fe_args (int argc, char *argv[])
 {
+	char buff [128];
+	
     setlocale (LC_ALL, "");
-
+#ifdef ENABLE_NLS
+	sprintf(buff, "%s/locale", [[[NSBundle mainBundle] resourcePath] UTF8String]);
+	bindtextdomain (GETTEXT_PACKAGE, buff);
+	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
+	textdomain (GETTEXT_PACKAGE);
+#endif
 	// Find the default charset pref.. 
 	// This is really gross but we need it really early!
-	char buff [128];
 	sprintf (buff, "%s/xchat.conf", get_xdir_fs());
     FILE *f = fopen (buff, "r");
 	if (f)
@@ -714,9 +720,10 @@ static void fix_log_files_and_pref ()
 	// If logging is off, fix the pref and log files.
 	// It's a little sneaky but is probably right for the vast majority ??
 	// Else we probably should ask first.
-	if (prefs.logging && ! [SGAlert confirmWithString:@"This version of X-Chat Aqua has spotlight searchable"
+	if (prefs.logging && ! [SGAlert confirmWithString:
+		NSLocalizedStringFromTable(@"This version of X-Chat Aqua has spotlight searchable"
 		@" log support but I have to change your log filename mask preference and rename your existing logs."
-		@"  Do you want me to do that?"])
+		@"  Do you want me to do that?", @"xchataqua", @"")])
 	{
 		return;
 	}

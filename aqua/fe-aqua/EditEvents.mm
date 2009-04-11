@@ -97,7 +97,7 @@ extern char *pntevts[];
     my_items = NULL;
 
     [NSBundle loadNibNamed:@"EditEvents" owner:self];
-    
+	[[event_list window] setTitle:NSLocalizedStringFromTable(@"Edit Events", @"xchat", @"")];
     return self;
 }
 
@@ -111,7 +111,7 @@ extern char *pntevts[];
 - (void) awakeFromNib
 {
     my_items = [[NSMutableArray arrayWithCapacity:NUM_XP] retain];
-        
+	
     for (int i = 0; i < [event_list numberOfColumns]; i ++)
         [[[event_list tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
 
@@ -299,14 +299,14 @@ extern char *pntevts[];
 				int m;
 				if (pevt_build_string (text, &out, &m) != 0)
 				{
-					[SGAlert alertWithString:@"There was an error parsing the string" andWait:false];
+					[SGAlert alertWithString:NSLocalizedStringFromTable(@"There was an error parsing the string", @"xchat", @"") andWait:false];
 					return;
 				}
 
 				if (m > te [rowIndex].num_args)
 				{
 					free (out);
-					[SGAlert alertWithString:[NSString stringWithFormat:@"This signal is only passed %d args, $%d is invalid", te [rowIndex].num_args, m] andWait:false];
+					[SGAlert alertWithString:[NSString stringWithFormat:NSLocalizedStringFromTable(@"This signal is only passed %d args, $%d is invalid", @"xchat", @""), te [rowIndex].num_args, m] andWait:false];
 					return;
 				}
 

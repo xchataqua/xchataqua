@@ -43,8 +43,8 @@ extern "C" {
     [NSBundle loadNibNamed:@"RawLog" owner:self];
 
     [raw_log_view setServer:serv];
-    [raw_log_view setTitle:@"Raw Log"];
-    [raw_log_view setTabTitle:@"rawlog"];
+    [raw_log_view setTitle:NSLocalizedStringFromTable(@"XChat: Rawlog (%s)", @"xchat", @"")];
+    [raw_log_view setTabTitle:NSLocalizedStringFromTable(@"rawlog", @"xchataqua", @"")];
     [raw_log_view setDelegate:self];
 
     return self;

@@ -56,7 +56,7 @@
 {
 	NSAlert *panel = [[[NSAlert alloc] init] autorelease];
 	[panel setAlertStyle:style];
-	[panel addButtonWithTitle:@"OK"];
+	[panel addButtonWithTitle:NSLocalizedStringFromTable(@"OK", @"libsg", @"button")];
 	[panel setMessageText:alert_text];
 
 	if (wait)
@@ -97,8 +97,8 @@
 + (bool) confirmWithString:(NSString *) alert_text
 {
 	NSAlert *panel = [[[NSAlert alloc] init] autorelease];
-	[panel addButtonWithTitle:@"No"];
-	[panel addButtonWithTitle:@"Yes"];
+	[panel addButtonWithTitle:NSLocalizedStringFromTable(@"No", @"libsg", @"button")];
+	[panel addButtonWithTitle:NSLocalizedStringFromTable(@"Yes",@"libsg", @"button")];
 	[panel setMessageText:alert_text];
 	[panel setAlertStyle:NSInformationalAlertStyle];
 
@@ -113,8 +113,8 @@
                     no_sel:(SEL) no_sel
 {
 	NSAlert *panel = [[[NSAlert alloc] init] autorelease];
-	[panel addButtonWithTitle:@"No"];
-	[panel addButtonWithTitle:@"Yes"];
+	[panel addButtonWithTitle:NSLocalizedStringFromTable(@"No" ,@"libsg", @"button")];
+	[panel addButtonWithTitle:NSLocalizedStringFromTable(@"Yes",@"libsg", @"button")];
 	[panel setMessageText:alert_text];
 	[panel setAlertStyle:NSInformationalAlertStyle];
 

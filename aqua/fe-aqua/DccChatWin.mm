@@ -106,8 +106,8 @@ extern "C" {
 {
 	[super awakeFromNib];
 
-    [dcc_list_view setTitle:@"DCC Chat List"];
-    [dcc_list_view setTabTitle:@"dccchat"];
+    [dcc_list_view setTitle:NSLocalizedStringFromTable(@"XChat: DCC Chat List", @"xchat", @"")];
+    [dcc_list_view setTabTitle:NSLocalizedStringFromTable(@"dccchat", @"xchataqua", @"Title of Tab: MainMenu->Window->DCC Chat...")];
 }
 
 - (void) do_accept:(id) sender
