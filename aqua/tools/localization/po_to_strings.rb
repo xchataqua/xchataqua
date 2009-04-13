@@ -18,7 +18,7 @@ class PoParser
      str += "/* nothing */\n#{key} = #{value};\n\n"
     end
     File.open(file, "w") do |f|
-      f.write Iconv.iconv('utf-16', 'utf-8', str).first
+      f.write Iconv.iconv('utf-8', 'utf-8', str).first
     end
   end
 private
@@ -60,5 +60,6 @@ private
 end
 
 Dir.glob("po/*.po") do |f|
+	puts f	
   PoParser.new(f).save_strings(f.gsub(/\.po$/, '.strings'))
 end
