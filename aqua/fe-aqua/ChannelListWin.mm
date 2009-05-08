@@ -255,7 +255,7 @@ strip_crap (const char *s)
     arrow = [[NSImage imageNamed:@"down.tiff"] retain];
     
     [channel_list_view setTitle:[NSString stringWithFormat:NSLocalizedStringFromTable(@"XChat: Channel List (%s)", @"xchat", @""), self->serv->servername]];
-    [channel_list_view setTabTitle:NSLocalizedStringFromTable(@"ChanList", @"xchataqua", @"")];
+    [channel_list_view setTabTitle:NSLocalizedStringFromTable(@"chanlist", @"xchataqua", @"")];
     
     for (int i = 0; i < [item_list numberOfColumns]; i ++)
         [[[item_list tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
