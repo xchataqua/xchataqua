@@ -30,6 +30,7 @@ use File::Basename ();
 use File::Glob ();
 use List::Util ();
 use Symbol();
+use Time::HiRes ();
 
 {
 package Xchat;
@@ -48,7 +49,7 @@ our %EXPORT_TAGS = (
 		qw(hook_server hook_command hook_print hook_timer hook_fd unhook),
 	],
 	util => [
-		qw(register nickcmp strip_code), # misc
+		qw(register nickcmp strip_code send_modes), # misc
 		qw(print prnt printf prntf command commandf emit_print), # output
 		qw(find_context get_context set_context), # context
 		qw(get_info get_prefs get_list context_info user_info), # input
@@ -246,7 +247,9 @@ sub unhook {
 	($package) = caller unless $package;
 	my $pkg_info = Xchat::Embed::pkg_info( $package );
 
-	if( $hook =~ /^\d+$/ && grep { $_ == $hook } @{$pkg_info->{hooks}} ) {
+	if( defined( $hook )
+		&& $hook =~ /^\d+$/
+		&& grep { $_ == $hook } @{$pkg_info->{hooks}} ) {
 		$pkg_info->{hooks} = [grep { $_ != $hook } @{$pkg_info->{hooks}}];
 		return Xchat::Internal::unhook( $hook );
 	}
@@ -426,7 +429,7 @@ sub strip_code {
 		$msg =~ s/$pattern//g;
 		return $msg;
 	} else {
-		$_[0] =~ s/$pattern//g;
+		$_[0] =~ s/$pattern//g if defined $_[0];
 	}
 }
 
@@ -486,7 +489,7 @@ sub load {
 		# this must come before the eval or the filename will not be found in
 		# Xchat::register
 		$scripts{$package}{filename} = $file;
-
+		$scripts{$package}{loaded_at} = Time::HiRes::time();
 		{
 			no strict; no warnings;
 			$source =~ s/^/{package $package;/;
@@ -498,18 +501,6 @@ sub load {
 				$source =~ s/\Z/}/;
 			}
 
-			# loading POE?
-			if( $source =~ /^\s*use\s+POE\b/m && !$Xchat::Embed::POE_Kernel_running ) {
-
-				eval { require POE::Kernel; };
-
-				unless( $@ ) {
-					POE::Kernel->run;
-					$Xchat::Embed::POE_Kernel_running = 1;
-					no warnings 'redefine';
-					*POE::Kernel::run = sub {};
-				}
-			}
 			eval $source;
 
 			unless( exists $scripts{$package}{gui_entry} ) {
@@ -601,14 +592,18 @@ sub reload {
 sub reload_all {
 	my $dir = Xchat::get_info( "xchatdirfs" ) || Xchat::get_info( "xchatdir" );
 	my $auto_load_glob = File::Spec->catfile( $dir, "*.pl" );
-	my @scripts = map { $_->{filename} } values %scripts;
+	my @scripts = map { $_->{filename} }
+		sort { $a->{loaded_at} <=> $b->{loaded_at} } values %scripts;
 	push @scripts, File::Glob::bsd_glob( $auto_load_glob );
 
-	my %loaded;
+	my %seen;
+	@scripts = grep { !$seen{ $_ }++ } @scripts;
+
+	unload_all();
 	for my $script ( @scripts ) {
-		next if $loaded{ $script };
-		reload( $script );
-		$loaded{ $script }++;
+		if( !pkg_info( file2pkg( $script ) ) ) {
+			load( $script );
+		}
 	}
 }
 #sub auto_load {
