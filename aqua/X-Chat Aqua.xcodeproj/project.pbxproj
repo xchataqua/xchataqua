@@ -23,50 +23,16 @@
 			name = Release;
 			productName = Release;
 		};
-		2D8DACCF0F8EFF8E00DA0BC2 /* LE_MESSAGES */ = {
+		B0A5F6CE0FFAB16E003F5A02 /* GenerateBuildNumber */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 2D8DACD30F8EFF9000DA0BC2 /* Build configuration list for PBXAggregateTarget "LE_MESSAGES" */;
+			buildConfigurationList = B0A5F6D40FFAB1AA003F5A02 /* Build configuration list for PBXAggregateTarget "GenerateBuildNumber" */;
 			buildPhases = (
-				2D8DACCE0F8EFF8E00DA0BC2 /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = LE_MESSAGES;
-			productName = LE_MESSAGES;
-		};
-		2D8DACF30F8F19EA00DA0BC2 /* Enable Gettext */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 2D8DACF60F8F1A0F00DA0BC2 /* Build configuration list for PBXAggregateTarget "Enable Gettext" */;
-			buildPhases = (
-				2D8DACF20F8F19EA00DA0BC2 /* ShellScript */,
-			);
-			dependencies = (
-				2D8DACFD0F8F1ABB00DA0BC2 /* PBXTargetDependency */,
-			);
-			name = "Enable Gettext";
-			productName = "Enable Multilanguage Support";
-		};
-		2D8DACF80F8F1A7800DA0BC2 /* Disable Gettext */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 2D8DACFB0F8F1AA100DA0BC2 /* Build configuration list for PBXAggregateTarget "Disable Gettext" */;
-			buildPhases = (
-				2D8DACF70F8F1A7800DA0BC2 /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = "Disable Gettext";
-			productName = "Disable Multilanguage Support";
-		};
-		B07C7A020F43905A00E11B58 /* GenerateBuildNumber */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = B07C7A340F43908000E11B58 /* Build configuration list for PBXAggregateTarget "GenerateBuildNumber" */;
-			buildPhases = (
-				B07C7A010F43905A00E11B58 /* ShellScript */,
+				B0A5F6CD0FFAB16E003F5A02 /* ShellScript */,
 			);
 			dependencies = (
 			);
 			name = GenerateBuildNumber;
-			productName = GenerateBuildNumber;
+			productName = "Generate Build Number";
 		};
 /* End PBXAggregateTarget section */
 
@@ -84,8 +50,6 @@
 		0F2FF04B0E1FD15000DE4D41 /* libglib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC8F4020DEEE00000504F31 /* libglib.a */; };
 		0F3062540D84958E0084F2CA /* xchat.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F3062530D84958E0084F2CA /* xchat.strings */; };
 		0F7065540E1FA32E00FEA21C /* Changes in Resources */ = {isa = PBXBuildFile; fileRef = 0F7065530E1FA32E00FEA21C /* Changes */; };
-		0F8EA3670CFAA49B001AE9AE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA3660CFAA49B001AE9AE /* Info.plist */; };
-		0F8EA5F60CFB24D4001AE9AE /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8EA5F50CFB24D4001AE9AE /* libiconv.2.dylib */; };
 		0F8EA62E0CFB2E0A001AE9AE /* AsciiWin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6250CFB2E0A001AE9AE /* AsciiWin.mm */; };
 		0F8EA62F0CFB2E0A001AE9AE /* BanListWin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6270CFB2E0A001AE9AE /* BanListWin.mm */; };
 		0F8EA6300CFB2E0A001AE9AE /* ChannelListWin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6290CFB2E0A001AE9AE /* ChannelListWin.mm */; };
@@ -158,8 +122,6 @@
 		0F8EA7200CFB3941001AE9AE /* SRRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA7180CFB3941001AE9AE /* SRRecorderCell.m */; };
 		0F8EA7210CFB3941001AE9AE /* SRRecorderControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA71A0CFB3941001AE9AE /* SRRecorderControl.m */; };
 		0F8EA7220CFB3941001AE9AE /* SRValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA71C0CFB3941001AE9AE /* SRValidator.m */; };
-		0F8EA7370CFB6B07001AE9AE /* libssl.0.9.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8EA7360CFB6B07001AE9AE /* libssl.0.9.7.dylib */; };
-		0F8EA7390CFB6B21001AE9AE /* libcrypto.0.9.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8EA7380CFB6B21001AE9AE /* libcrypto.0.9.7.dylib */; };
 		0F8EA7430CFB6B7A001AE9AE /* 0_off.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA73C0CFB6B7A001AE9AE /* 0_off.tiff */; };
 		0F8EA7440CFB6B7A001AE9AE /* 1_off_high_fg.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA73D0CFB6B7A001AE9AE /* 1_off_high_fg.tiff */; };
 		0F8EA7450CFB6B7A001AE9AE /* 2_on_high_fg.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA73E0CFB6B7A001AE9AE /* 2_on_high_fg.tiff */; };
@@ -257,7 +219,6 @@
 		0FC8F51A0DEEE9F200504F31 /* gatomic.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA4A90CFB0C99001AE9AE /* gatomic.c */; };
 		0FC8F5C40DEEEA3E00504F31 /* libxchat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC8F4AE0DEEE51700504F31 /* libxchat.a */; };
 		0FC8F6AF0DEEF3AC00504F31 /* AquaChat.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA5F80CFB2500001AE9AE /* AquaChat.mm */; };
-		0FC8F6E00DEEF54800504F31 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC8F6DF0DEEF54800504F31 /* libiconv.dylib */; };
 		0FC8F6ED0DEEF64200504F31 /* fe-aqua.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA3CE0CFAF7E2001AE9AE /* fe-aqua.mm */; };
 		0FE5E0230F4557A2000E0F91 /* InterfaceBuilderKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE5E0220F4557A2000E0F91 /* InterfaceBuilderKit.framework */; };
 		0FE5E0370F45595A000E0F91 /* SGFormView.classdescription in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5E02C0F45595A000E0F91 /* SGFormView.classdescription */; };
@@ -279,7 +240,6 @@
 		0FE5E0950F480B26000E0F91 /* SGView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6850CFB300B001AE9AE /* SGView.mm */; };
 		0FE5E0980F480B39000E0F91 /* SGBoxView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6610CFB300B001AE9AE /* SGBoxView.mm */; };
 		2D8DA8F70F8E6B2400DA0BC2 /* xchataqua.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D8DA8F50F8E6B2400DA0BC2 /* xchataqua.strings */; };
-		2D8DA9140F8E6D3000DA0BC2 /* libintl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D8DA9130F8E6D3000DA0BC2 /* libintl.dylib */; };
 		2D8DAAF20F8EFE5300DA0BC2 /* locale in Resources */ = {isa = PBXBuildFile; fileRef = 2D8DAAF10F8EFE5300DA0BC2 /* locale */; };
 		2DD3AD830F92911C0033FF55 /* alert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DD3AD6D0F92911C0033FF55 /* alert.xib */; };
 		2DEA2F360F8673BF00D6DC0D /* TabMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F090F8673BF00D6DC0D /* TabMenu.xib */; };
@@ -305,6 +265,10 @@
 		2DEA2F4A0F8673BF00D6DC0D /* DccRecv.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F310F8673BF00D6DC0D /* DccRecv.xib */; };
 		2DEA2F4B0F8673BF00D6DC0D /* DccSend.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F330F8673BF00D6DC0D /* DccSend.xib */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		B0D937EE0FFB0D1D009370B5 /* libintl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937EC0FFB0D1D009370B5 /* libintl.a */; };
+		B0D937F10FFB0D34009370B5 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */; };
+		B0D937F20FFB0D34009370B5 /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937F00FFB0D34009370B5 /* libssl.dylib */; };
+		B0D938370FFB1A08009370B5 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D938360FFB1A08009370B5 /* libiconv.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -357,54 +321,33 @@
 			remoteGlobalIDString = 0FC8F4AD0DEEE51700504F31;
 			remoteInfo = xchat;
 		};
-		2D8DACFC0F8F1ABB00DA0BC2 /* PBXContainerItemProxy */ = {
+		B0A5F6D10FFAB18C003F5A02 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 2D8DACCF0F8EFF8E00DA0BC2;
-			remoteInfo = LE_MESSAGES;
+			remoteGlobalIDString = B0A5F6CE0FFAB16E003F5A02;
+			remoteInfo = "Generate Build Number";
 		};
-		B07C7A420F4392ED00E11B58 /* PBXContainerItemProxy */ = {
+		B0A5F6D50FFAB32C003F5A02 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B07C7A020F43905A00E11B58;
-			remoteInfo = GenerateBuildNumber;
+			remoteGlobalIDString = B0A5F6CE0FFAB16E003F5A02;
+			remoteInfo = "Generate Build Number";
 		};
-		B07C7A440F4392F500E11B58 /* PBXContainerItemProxy */ = {
+		B0A5F6E00FFAB488003F5A02 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B07C7A020F43905A00E11B58;
-			remoteInfo = GenerateBuildNumber;
+			remoteGlobalIDString = 0FE5E01C0F45576B000E0F91;
+			remoteInfo = SGPalette;
 		};
-		B07C7A460F43930700E11B58 /* PBXContainerItemProxy */ = {
+		B0A5F7CA0FFABA30003F5A02 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B07C7A020F43905A00E11B58;
-			remoteInfo = GenerateBuildNumber;
-		};
-		B07C7A480F43930F00E11B58 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B07C7A020F43905A00E11B58;
-			remoteInfo = GenerateBuildNumber;
-		};
-		B07C7A4A0F43931700E11B58 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B07C7A020F43905A00E11B58;
-			remoteInfo = GenerateBuildNumber;
-		};
-		B07C7A4C0F43931E00E11B58 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B07C7A020F43905A00E11B58;
-			remoteInfo = GenerateBuildNumber;
+			remoteGlobalIDString = B0A5F6CE0FFAB16E003F5A02;
+			remoteInfo = "Generate Build Number";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -593,7 +536,6 @@
 		0F8EA53A0CFB23F9001AE9AE /* gunicodeprivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gunicodeprivate.h; sourceTree = "<group>"; };
 		0F8EA53B0CFB23F9001AE9AE /* gunidecomp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gunidecomp.c; sourceTree = "<group>"; };
 		0F8EA5F10CFB24A3001AE9AE /* gprintf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gprintf.c; sourceTree = "<group>"; };
-		0F8EA5F50CFB24D4001AE9AE /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = /usr/lib/libiconv.2.dylib; sourceTree = "<absolute>"; };
 		0F8EA5F80CFB2500001AE9AE /* AquaChat.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AquaChat.mm; path = "fe-aqua/AquaChat.mm"; sourceTree = "<group>"; };
 		0F8EA6240CFB2E0A001AE9AE /* AsciiWin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsciiWin.h; path = "fe-aqua/AsciiWin.h"; sourceTree = "<group>"; };
 		0F8EA6250CFB2E0A001AE9AE /* AsciiWin.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AsciiWin.mm; path = "fe-aqua/AsciiWin.mm"; sourceTree = "<group>"; };
@@ -743,8 +685,6 @@
 		0F8EA71C0CFB3941001AE9AE /* SRValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRValidator.m; path = "fe-aqua/ShortcutRecorder/ShortcutRecorder/Source/SRValidator.m"; sourceTree = "<group>"; };
 		0F8EA72D0CFB3D1A001AE9AE /* libcharset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libcharset.h; path = libcharset/libcharset.h; sourceTree = "<group>"; };
 		0F8EA72E0CFB3D1A001AE9AE /* localcharset.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = localcharset.c; path = libcharset/localcharset.c; sourceTree = "<group>"; };
-		0F8EA7360CFB6B07001AE9AE /* libssl.0.9.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.0.9.7.dylib; path = /usr/lib/libssl.0.9.7.dylib; sourceTree = "<absolute>"; };
-		0F8EA7380CFB6B21001AE9AE /* libcrypto.0.9.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.0.9.7.dylib; path = /usr/lib/libcrypto.0.9.7.dylib; sourceTree = "<absolute>"; };
 		0F8EA73C0CFB6B7A001AE9AE /* 0_off.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = 0_off.tiff; path = "fe-aqua/0_off.tiff"; sourceTree = "<group>"; };
 		0F8EA73D0CFB6B7A001AE9AE /* 1_off_high_fg.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = 1_off_high_fg.tiff; path = "fe-aqua/1_off_high_fg.tiff"; sourceTree = "<group>"; };
 		0F8EA73E0CFB6B7A001AE9AE /* 2_on_high_fg.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = 2_on_high_fg.tiff; path = "fe-aqua/2_on_high_fg.tiff"; sourceTree = "<group>"; };
@@ -797,7 +737,6 @@
 		0FC8F4E30DEEE6F200504F31 /* xalocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xalocalization.h; path = glib/xalocalization.h; sourceTree = "<group>"; };
 		0FC8F4E40DEEE6F200504F31 /* xalocalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = xalocalization.m; path = glib/xalocalization.m; sourceTree = "<group>"; };
 		0FC8F6DA0DEEF50100504F31 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		0FC8F6DF0DEEF54800504F31 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		0FDE6C820E2704F00010E0D9 /* TBD.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = TBD.rtf; sourceTree = "<group>"; };
 		0FE5E01D0F45576B000E0F91 /* SGPalette.ibplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SGPalette.ibplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FE5E01E0F45576B000E0F91 /* SGPalette-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SGPalette-Info.plist"; sourceTree = "<group>"; };
@@ -825,7 +764,6 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		2D8DA8F60F8E6B2400DA0BC2 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = localization/en.lproj/xchataqua.strings; sourceTree = "<group>"; };
 		2D8DA8F80F8E6B3E00DA0BC2 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = localization/ko.lproj/xchataqua.strings; sourceTree = "<group>"; };
-		2D8DA9130F8E6D3000DA0BC2 /* libintl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libintl.dylib; path = usr/local/lib/libintl.dylib; sourceTree = SDKROOT; };
 		2D8DAAF10F8EFE5300DA0BC2 /* locale */ = {isa = PBXFileReference; lastKnownFileType = folder; path = locale; sourceTree = "<group>"; };
 		2D8DACD00F8EFF8E00DA0BC2 /* Info devel.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info devel.plist"; sourceTree = "<group>"; };
 		2D8DAEE80F905FC400DA0BC2 /* config.nls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.nls.h; sourceTree = "<group>"; };
@@ -1775,6 +1713,10 @@
 		B07C7AB20F4395E200E11B58 /* BuildNumber.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = BuildNumber.xcconfig; sourceTree = "<group>"; };
 		B07C7AD60F4398FC00E11B58 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		B07C7AD70F4398FC00E11B58 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		B0D937EC0FFB0D1D009370B5 /* libintl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libintl.a; path = contrib/lib/libintl.a; sourceTree = "<group>"; };
+		B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = /usr/lib/libcrypto.dylib; sourceTree = "<absolute>"; };
+		B0D937F00FFB0D34009370B5 /* libssl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.dylib; path = /usr/lib/libssl.dylib; sourceTree = "<absolute>"; };
+		B0D938360FFB1A08009370B5 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1813,21 +1755,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0FC8F4000DEEE00000504F31 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0FC8F6E00DEEF54800504F31 /* libiconv.dylib in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0FC8F4AC0DEEE51700504F31 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		0FE5E01B0F45576B000E0F91 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1840,15 +1767,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
-				0F8EA5F60CFB24D4001AE9AE /* libiconv.2.dylib in Frameworks */,
-				0F8EA70B0CFB384A001AE9AE /* Carbon.framework in Frameworks */,
-				0F8EA7370CFB6B07001AE9AE /* libssl.0.9.7.dylib in Frameworks */,
-				0F8EA7390CFB6B21001AE9AE /* libcrypto.0.9.7.dylib in Frameworks */,
-				0F0BF9B40CFE2CE900B71E4D /* Growl.framework in Frameworks */,
-				0FC8F4400DEEE0E400504F31 /* libglib.a in Frameworks */,
 				0FC8F5C40DEEEA3E00504F31 /* libxchat.a in Frameworks */,
-				2D8DA9140F8E6D3000DA0BC2 /* libintl.dylib in Frameworks */,
+				0FC8F4400DEEE0E400504F31 /* libglib.a in Frameworks */,
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				0F8EA70B0CFB384A001AE9AE /* Carbon.framework in Frameworks */,
+				0F0BF9B40CFE2CE900B71E4D /* Growl.framework in Frameworks */,
+				B0D937EE0FFB0D1D009370B5 /* libintl.a in Frameworks */,
+				B0D937F10FFB0D34009370B5 /* libcrypto.dylib in Frameworks */,
+				B0D937F20FFB0D34009370B5 /* libssl.dylib in Frameworks */,
+				B0D938370FFB1A08009370B5 /* libiconv.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2356,11 +2283,16 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B0D938360FFB1A08009370B5 /* libiconv.dylib */,
+				B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */,
+				B0D937F00FFB0D34009370B5 /* libssl.dylib */,
+				B0D937EC0FFB0D1D009370B5 /* libintl.a */,
+				0F8F08170E1FE01800359159 /* Tcl.framework */,
+				0FC8F3F50DEEDAB300504F31 /* Python.framework */,
+				0FC8F4860DEEE3EE00504F31 /* Cocoa.framework */,
+				0FC8F6DA0DEEF50100504F31 /* AppKit.framework */,
 				0F0BF9B30CFE2CE800B71E4D /* Growl.framework */,
-				0F8EA7380CFB6B21001AE9AE /* libcrypto.0.9.7.dylib */,
-				0F8EA7360CFB6B07001AE9AE /* libssl.0.9.7.dylib */,
 				0F8EA70A0CFB384A001AE9AE /* Carbon.framework */,
-				0F8EA5F50CFB24D4001AE9AE /* libiconv.2.dylib */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
 			name = "Linked Frameworks";
@@ -2407,18 +2339,12 @@
 				B07C7AD70F4398FC00E11B58 /* Release.xcconfig */,
 				0F3062530D84958E0084F2CA /* xchat.strings */,
 				2D8DA8F50F8E6B2400DA0BC2 /* xchataqua.strings */,
-				0FC8F3F50DEEDAB300504F31 /* Python.framework */,
-				0FC8F4860DEEE3EE00504F31 /* Cocoa.framework */,
-				0FC8F6DA0DEEF50100504F31 /* AppKit.framework */,
-				0FC8F6DF0DEEF54800504F31 /* libiconv.dylib */,
 				0F2FEF2C0E1FAB1500DE4D41 /* python-leopard-Info.plist */,
 				0F2FF0520E1FD15000DE4D41 /* python-tiger-Info.plist */,
 				0F8F06D80E1FDA8500359159 /* perl-leopard-Info.plist */,
 				0F8F08120E1FE00800359159 /* tcl-Info.plist */,
-				0F8F08170E1FE01800359159 /* Tcl.framework */,
 				0FDE6C820E2704F00010E0D9 /* TBD.rtf */,
 				0FE5E01E0F45576B000E0F91 /* SGPalette-Info.plist */,
-				2D8DA9130F8E6D3000DA0BC2 /* libintl.dylib */,
 				2D8DACD00F8EFF8E00DA0BC2 /* Info devel.plist */,
 			);
 			name = "X-Chat Aqua";
@@ -2498,7 +2424,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				B07C7A470F43930700E11B58 /* PBXTargetDependency */,
 			);
 			name = "python-leopard";
 			productName = "python-leopard";
@@ -2516,7 +2441,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				B07C7A490F43930F00E11B58 /* PBXTargetDependency */,
 			);
 			name = "python-tiger";
 			productName = "python-leopard";
@@ -2534,7 +2458,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				B07C7A4B0F43931700E11B58 /* PBXTargetDependency */,
 			);
 			name = "perl-leopard";
 			productName = "perl-leopard";
@@ -2552,7 +2475,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				B07C7A4D0F43931E00E11B58 /* PBXTargetDependency */,
 			);
 			name = tcl;
 			productName = tcl;
@@ -2565,12 +2487,11 @@
 			buildPhases = (
 				0FC8F3FE0DEEE00000504F31 /* Headers */,
 				0FC8F3FF0DEEE00000504F31 /* Sources */,
-				0FC8F4000DEEE00000504F31 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B07C7A430F4392ED00E11B58 /* PBXTargetDependency */,
+				B0A5F6D60FFAB32C003F5A02 /* PBXTargetDependency */,
 			);
 			name = glib;
 			productName = glib;
@@ -2583,12 +2504,10 @@
 			buildPhases = (
 				0FC8F4AA0DEEE51700504F31 /* Headers */,
 				0FC8F4AB0DEEE51700504F31 /* Sources */,
-				0FC8F4AC0DEEE51700504F31 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B07C7A450F4392F500E11B58 /* PBXTargetDependency */,
 			);
 			name = xchat;
 			productName = xchat;
@@ -2606,6 +2525,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B0A5F7CB0FFABA30003F5A02 /* PBXTargetDependency */,
 			);
 			name = SGPalette;
 			productName = SGPalette;
@@ -2616,6 +2536,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "X-Chat Aqua" */;
 			buildPhases = (
+				B0A5F6B30FFAB04D003F5A02 /* Generate LE_MESSAGES */,
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
@@ -2624,8 +2545,10 @@
 			buildRules = (
 			);
 			dependencies = (
+				B0A5F6E10FFAB488003F5A02 /* PBXTargetDependency */,
 				0FC8F4470DEEE11100504F31 /* PBXTargetDependency */,
 				0FC8F5C30DEEEA3B00504F31 /* PBXTargetDependency */,
+				B0A5F6D20FFAB18C003F5A02 /* PBXTargetDependency */,
 			);
 			name = "X-Chat Aqua";
 			productInstallPath = "$(HOME)/Applications";
@@ -2694,9 +2617,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2D8DACCF0F8EFF8E00DA0BC2 /* LE_MESSAGES */,
-				2D8DACF80F8F1A7800DA0BC2 /* Disable Gettext */,
-				2D8DACF30F8F19EA00DA0BC2 /* Enable Gettext */,
 				8D1107260486CEB800E47090 /* X-Chat Aqua */,
 				0FC8F4010DEEE00000504F31 /* glib */,
 				0FC8F4AD0DEEE51700504F31 /* xchat */,
@@ -2705,8 +2625,8 @@
 				0F2FF0450E1FD15000DE4D41 /* python-tiger */,
 				0F8F06D60E1FDA8500359159 /* perl-leopard */,
 				0F8F08100E1FE00800359159 /* tcl */,
-				B07C7A020F43905A00E11B58 /* GenerateBuildNumber */,
 				0FE5E01C0F45576B000E0F91 /* SGPalette */,
+				B0A5F6CE0FFAB16E003F5A02 /* GenerateBuildNumber */,
 			);
 		};
 /* End PBXProject section */
@@ -2759,7 +2679,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F8EA3670CFAA49B001AE9AE /* Info.plist in Resources */,
 				0F8EA7430CFB6B7A001AE9AE /* 0_off.tiff in Resources */,
 				0F8EA7440CFB6B7A001AE9AE /* 1_off_high_fg.tiff in Resources */,
 				0F8EA7450CFB6B7A001AE9AE /* 2_on_high_fg.tiff in Resources */,
@@ -2820,20 +2739,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2D8DACCE0F8EFF8E00DA0BC2 /* ShellScript */ = {
+		B0A5F6B30FFAB04D003F5A02 /* Generate LE_MESSAGES */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Generate LE_MESSAGES";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "#!/bin/bash\noutname=xchat\ncd \"$PROJECT_DIR\"\nsrcdir=../po\noutdirbase=../aqua/locale\nfor pofile in `ls $srcdir/*.po`; do\n\tlocale=`basename $pofile .po`\n\toutdir=$outdirbase/$locale/LC_MESSAGES\n\tmkdir -p $outdir\n\tmsgfmt -o $outdir/$outname.mo $srcdir/$locale.po\ndone\ncd \"$PROJECT_DIR/tools/localization\"\n#ruby po_to_strings.rb\n#ruby copy_strings.rb\nexit 0";
+			shellScript = "#!/bin/bash\n\nexport PATH=\"$PATH:$PROJECT_DIR/contrib/bin:/opt/local/bin:/sw/bin:/usr/local/bin\"\nexport DYLD_LIBRARY_PATH=\"$DYLD_LIBRARY_PATH:$PROJECT_DIR/contrib/lib\"\n\noutname=xchat\ncd \"$PROJECT_DIR\"\nsrcdir=../po\noutdirbase=../aqua/locale\nfor pofile in `ls $srcdir/*.po`; do\n\tlocale=`basename $pofile .po`\n\toutdir=$outdirbase/$locale/LC_MESSAGES\n\tmkdir -p $outdir\n\tmsgfmt -o $outdir/$outname.mo $srcdir/$locale.po\ndone\ncd \"$PROJECT_DIR/tools/localization\"\n#ruby po_to_strings.rb\n#ruby copy_strings.rb\nexit 0";
 		};
-		2D8DACF20F8F19EA00DA0BC2 /* ShellScript */ = {
+		B0A5F6CD0FFAB16E003F5A02 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2844,33 +2764,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "#!/bin/bash\ncd \"$PROJECT_DIR\"\necho \"#define ENABLE_NLS 1\" > config.nls.h\ntouch config.h\nexit 0";
-		};
-		2D8DACF70F8F1A7800DA0BC2 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "#!/bin/bash\ncd \"$PROJECT_DIR\"\necho \"\" > config.nls.h\ntouch config.h\nmkdir -p locale\nrm -rf locale/*\nexit 0";
-		};
-		B07C7A010F43905A00E11B58 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "#!/bin/bash\n\n[ -f ~/.bashrc ] && source ~/.bashrc\n\necho \"Generating build_number.h...\";\n\ncd \"$PROJECT_DIR\"\n\"tools/gen_buildnum_h.sh\" \"fe-aqua/build_number.h\" \"BuildNumber.xcconfig\"";
+			shellScript = "#!/bin/bash\n\n[ -f ~/.bashrc ] && source ~/.bashrc\n\necho \"Generating build_number.h...\";\n\ncd \"$PROJECT_DIR\"\n\"tools/gen_buildnum_h.sh\" \"fe-aqua/build_number.h\" \"BuildNumber.xcconfig\"\n\n# Update the 'date modified' timestamps so Xcode realizes they've changed\ntouch Release.xcconfig\ntouch Debug.xcconfig";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -3115,40 +3009,25 @@
 			target = 0FC8F4AD0DEEE51700504F31 /* xchat */;
 			targetProxy = 0FC8F5C20DEEEA3B00504F31 /* PBXContainerItemProxy */;
 		};
-		2D8DACFD0F8F1ABB00DA0BC2 /* PBXTargetDependency */ = {
+		B0A5F6D20FFAB18C003F5A02 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D8DACCF0F8EFF8E00DA0BC2 /* LE_MESSAGES */;
-			targetProxy = 2D8DACFC0F8F1ABB00DA0BC2 /* PBXContainerItemProxy */;
+			target = B0A5F6CE0FFAB16E003F5A02 /* GenerateBuildNumber */;
+			targetProxy = B0A5F6D10FFAB18C003F5A02 /* PBXContainerItemProxy */;
 		};
-		B07C7A430F4392ED00E11B58 /* PBXTargetDependency */ = {
+		B0A5F6D60FFAB32C003F5A02 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
-			targetProxy = B07C7A420F4392ED00E11B58 /* PBXContainerItemProxy */;
+			target = B0A5F6CE0FFAB16E003F5A02 /* GenerateBuildNumber */;
+			targetProxy = B0A5F6D50FFAB32C003F5A02 /* PBXContainerItemProxy */;
 		};
-		B07C7A450F4392F500E11B58 /* PBXTargetDependency */ = {
+		B0A5F6E10FFAB488003F5A02 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
-			targetProxy = B07C7A440F4392F500E11B58 /* PBXContainerItemProxy */;
+			target = 0FE5E01C0F45576B000E0F91 /* SGPalette */;
+			targetProxy = B0A5F6E00FFAB488003F5A02 /* PBXContainerItemProxy */;
 		};
-		B07C7A470F43930700E11B58 /* PBXTargetDependency */ = {
+		B0A5F7CB0FFABA30003F5A02 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
-			targetProxy = B07C7A460F43930700E11B58 /* PBXContainerItemProxy */;
-		};
-		B07C7A490F43930F00E11B58 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
-			targetProxy = B07C7A480F43930F00E11B58 /* PBXContainerItemProxy */;
-		};
-		B07C7A4B0F43931700E11B58 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
-			targetProxy = B07C7A4A0F43931700E11B58 /* PBXContainerItemProxy */;
-		};
-		B07C7A4D0F43931E00E11B58 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B07C7A020F43905A00E11B58 /* GenerateBuildNumber */;
-			targetProxy = B07C7A4C0F43931E00E11B58 /* PBXContainerItemProxy */;
+			target = B0A5F6CE0FFAB16E003F5A02 /* GenerateBuildNumber */;
+			targetProxy = B0A5F7CA0FFABA30003F5A02 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -4557,13 +4436,10 @@
 		0FC8F4030DEEE00100504F31 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				INSTALL_PATH = /usr/local/lib;
 				PREBINDING = NO;
 				PRODUCT_NAME = glib;
 			};
@@ -4572,12 +4448,9 @@
 		0FC8F4040DEEE00100504F31 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
-				INSTALL_PATH = /usr/local/lib;
 				PREBINDING = NO;
 				PRODUCT_NAME = glib;
 				ZERO_LINK = NO;
@@ -4587,13 +4460,14 @@
 		0FC8F4AF0DEEE51700504F31 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				INSTALL_PATH = /usr/local/lib;
+				OTHER_CFLAGS = (
+					"-I",
+					"$(SDK_DIR)/usr/include",
+				);
 				PREBINDING = NO;
 				PRODUCT_NAME = xchat;
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
@@ -4603,16 +4477,16 @@
 		0FC8F4B00DEEE51700504F31 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
-				INSTALL_PATH = /usr/local/lib;
+				OTHER_CFLAGS = (
+					"-I",
+					"$(SDK_DIR)/usr/include",
+				);
 				PREBINDING = NO;
 				PRODUCT_NAME = xchat;
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
-				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -4676,86 +4550,23 @@
 			};
 			name = Release;
 		};
-		2D8DACD10F8EFF9000DA0BC2 /* Debug */ = {
+		B0A5F6CF0FFAB16F003F5A02 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = LE_MESSAGES;
+				PRODUCT_NAME = "Generate Build Number";
 			};
 			name = Debug;
 		};
-		2D8DACD20F8EFF9000DA0BC2 /* Release */ = {
+		B0A5F6D00FFAB16F003F5A02 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				PRODUCT_NAME = LE_MESSAGES;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		2D8DACF40F8F19EB00DA0BC2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = "Enable Multilanguage Support";
-			};
-			name = Debug;
-		};
-		2D8DACF50F8F19EB00DA0BC2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				PRODUCT_NAME = "Enable Multilanguage Support";
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		2D8DACF90F8F1A7900DA0BC2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = "Disable Multilanguage Support";
-			};
-			name = Debug;
-		};
-		2D8DACFA0F8F1A7900DA0BC2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				PRODUCT_NAME = "Disable Multilanguage Support";
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		B07C7A030F43905A00E11B58 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = GenerateBuildNumber;
-			};
-			name = Debug;
-		};
-		B07C7A040F43905A00E11B58 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				PRODUCT_NAME = GenerateBuildNumber;
+				PRODUCT_NAME = "Generate Build Number";
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -4764,25 +4575,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/fe-aqua\"",
-				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "X-Chat Aqua_Prefix.pch";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/build/Debug\"",
+					libs,
+					"\"$(SRCROOT)/contrib/lib\"",
 				);
 				PRODUCT_NAME = "X-Chat Aqua";
 				WRAPPER_EXTENSION = app;
-				ZERO_LINK = YES;
 			};
 			name = Debug;
 		};
@@ -4790,18 +4595,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/fe-aqua\"",
-				);
-				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "X-Chat Aqua_Prefix.pch";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/build/Debug\"",
+					libs,
+					"\"$(SRCROOT)/contrib/lib\"",
 				);
 				PRODUCT_NAME = "X-Chat Aqua";
 				WRAPPER_EXTENSION = app;
@@ -4821,13 +4621,12 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					/usr/local/include,
-					"$(SRCROOT)/fe-aqua/Growl.framework/Versions/A/Headers",
-					"$(SRCROOT)/fe-aqua/ShortcutRecorder/ShortcutRecorder/Source",
-					"$(SRCROOT)/fe-aqua/",
+					"fe-aqua",
 					.,
+					contrib/include,
 				);
 				INFOPLIST_FILE = "Info devel.plist";
+				LIBRARY_SEARCH_PATHS = contrib/lib;
 				ONLY_ACTIVE_ARCH_PRE_XCODE_3_1 = "$(NATIVE_ARCH)";
 				PREBINDING = NO;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
@@ -4845,13 +4644,12 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					/usr/local/include,
-					"$(SRCROOT)/fe-aqua/Growl.framework/Versions/A/Headers",
-					"$(SRCROOT)/fe-aqua/ShortcutRecorder/ShortcutRecorder/Source",
-					"$(SRCROOT)/fe-aqua/",
+					"fe-aqua",
 					.,
+					contrib/include,
 				);
 				INFOPLIST_FILE = Info.plist;
+				LIBRARY_SEARCH_PATHS = contrib/lib;
 				PREBINDING = NO;
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
 			};
@@ -4932,38 +4730,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D8DACD30F8EFF9000DA0BC2 /* Build configuration list for PBXAggregateTarget "LE_MESSAGES" */ = {
+		B0A5F6D40FFAB1AA003F5A02 /* Build configuration list for PBXAggregateTarget "GenerateBuildNumber" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2D8DACD10F8EFF9000DA0BC2 /* Debug */,
-				2D8DACD20F8EFF9000DA0BC2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2D8DACF60F8F1A0F00DA0BC2 /* Build configuration list for PBXAggregateTarget "Enable Gettext" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2D8DACF40F8F19EB00DA0BC2 /* Debug */,
-				2D8DACF50F8F19EB00DA0BC2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2D8DACFB0F8F1AA100DA0BC2 /* Build configuration list for PBXAggregateTarget "Disable Gettext" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2D8DACF90F8F1A7900DA0BC2 /* Debug */,
-				2D8DACFA0F8F1A7900DA0BC2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B07C7A340F43908000E11B58 /* Build configuration list for PBXAggregateTarget "GenerateBuildNumber" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B07C7A030F43905A00E11B58 /* Debug */,
-				B07C7A040F43905A00E11B58 /* Release */,
+				B0A5F6CF0FFAB16F003F5A02 /* Debug */,
+				B0A5F6D00FFAB16F003F5A02 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

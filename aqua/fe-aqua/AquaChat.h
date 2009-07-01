@@ -24,7 +24,7 @@ extern "C" {
 #include "../common/fe.h"
 }
 
-#import <GrowlApplicationBridge.h>
+#import <Growl/GrowlApplicationBridge.h>
 
 @class PrefsController;
 @class ColorPalette;
