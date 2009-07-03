@@ -183,8 +183,14 @@ static MenuMaker *defaultMenuMaker;
 
 - (MenuMaker *)init
 {
-	NSString *labels[] = {NSLocalizedStringFromTable(@"Real Name:", @"xchat", @""), NSLocalizedStringFromTable(@"User:", @"xchat", @""), NSLocalizedStringFromTable(@"Country:", @"xchat", @""),
-						  NSLocalizedStringFromTable(@"Server:", @"xchat", @""), NSLocalizedStringFromTable(@"Away Msg:", @"xchat", @""), NSLocalizedStringFromTable(@"Last Msg:", @"xchat", @"")};
+	NSString *labels[] = {
+		NSLocalizedStringFromTable(@"Real Name:", @"xchat", @""),
+		NSLocalizedStringFromTable(@"User:", @"xchat", @""), 
+		NSLocalizedStringFromTable(@"Country:", @"xchat", @""),
+		NSLocalizedStringFromTable(@"Server:", @"xchat", @""),
+		NSLocalizedStringFromTable(@"Away Msg:", @"xchat", @""),
+		NSLocalizedStringFromTable(@"Last Msg:", @"xchat", @"")
+	};
 	NSMutableAttributedString *test;
 	NSSize size;
 
