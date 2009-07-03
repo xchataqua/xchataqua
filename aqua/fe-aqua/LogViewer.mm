@@ -206,7 +206,7 @@ extern "C" {
 - (void) awakeFromNib
 {
     [log_viewer_view setTitle:NSLocalizedStringFromTable(@"XChat: Log Viewer", @"xchataqua", @"Title of Window: MainMenu->Window->Log List")];
-    [log_viewer_view setTabTitle:NSLocalizedStringFromTable(@"LogViewer", @"xchataqua", @"Title of Tab: MainMenu->Window->Log List")];
+    [log_viewer_view setTabTitle:NSLocalizedStringFromTable(@"logviewer", @"xchataqua", @"Title of Tab: MainMenu->Window->Log List")];
     
     for (int i = 0; i < [log_list numberOfColumns]; i ++)
         [[[log_list tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
