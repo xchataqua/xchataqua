@@ -668,7 +668,7 @@ static ServerList *instance;
 {
 	int nrow = [net_list selectedRow];
     if (nrow < 0)
-        return;
+		return;
         
     oneNet *net = (oneNet *) [my_nets objectAtIndex:nrow];
 
