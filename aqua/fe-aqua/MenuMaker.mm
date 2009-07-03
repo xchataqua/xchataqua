@@ -453,7 +453,12 @@ static MenuMaker *defaultMenuMaker;
 - (NSString *)stripImageFromTitle:(NSString *)title icon:(NSString **)icon
 {
     int length;
-    title = [title stringByReplacingOccurrencesOfString:@"_" withString:@""];
+    // stringByReplacingOccurrencesOfString is not available on 10.4.
+    //    title = [title stringByReplacingOccurrencesOfString:@"_" withString:@""];
+    NSMutableString *mTitle = [title mutableCopy];
+    [mTitle replaceOccurrencesOfString:@"_" withString:@"" options:NSCaseInsensitiveSearch range:(NSRange){0,[mTitle length]}];
+    title = [NSString stringWithString: [mTitle autorelease]];
+
     length = [title length];
     if([[title substringFromIndex:length-1] isEqualToString:@"~"])
     {
