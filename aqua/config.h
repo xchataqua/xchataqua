@@ -29,7 +29,7 @@
 
 #include "build_number.h"
 
-#define MYVERSION XCHAT_AQUA_VERSION
+#define MYVERSION XCHAT_AQUA_VERSION_STRING
 
 #define HAVE_SNPRINTF  1
 #define HAVE_VSNPRINTF 1
