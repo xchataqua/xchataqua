@@ -100,7 +100,7 @@ my $internal_build = `git rev-list --all | wc -l | sed 's/[ ]//g'`;
 open OUT, ">", "$xcconfig" or die $!;
 print OUT <<__eof__;
 
-${prefix}_VERSION = ${major}.${minor}.${revis}${pre}
+${prefix}_VERSION = ${verstring}
 ${prefix}_VERSION_INTERNAL = ${major}.${minor}.${revis}.${internal_build}
 __eof__
 close OUT or die $!;
