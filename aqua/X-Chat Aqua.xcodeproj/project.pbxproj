@@ -38,7 +38,7 @@
 
 /* Begin PBXBuildFile section */
 		0F0BF9B40CFE2CE900B71E4D /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0BF9B30CFE2CE800B71E4D /* Growl.framework */; };
-		0F0BFA530CFE443000B71E4D /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F0BF9B30CFE2CE800B71E4D /* Growl.framework */; };
+		0F0BFA530CFE443000B71E4D /* Growl.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0BF9B30CFE2CE800B71E4D /* Growl.framework */; };
 		0F2FEF340E1FAB9100DE4D41 /* python.c in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8F3E80DEEDA0C00504F31 /* python.c */; };
 		0F2FEF430E1FAC3200DE4D41 /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC8F3F50DEEDAB300504F31 /* Python.framework */; };
 		0F2FEF440E1FAC3700DE4D41 /* libglib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC8F4020DEEE00000504F31 /* libglib.a */; };
@@ -87,7 +87,6 @@
 		0F8EA6990CFB300B001AE9AE /* SGTabView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA67D0CFB300B001AE9AE /* SGTabView.mm */; };
 		0F8EA69A0CFB300B001AE9AE /* SGTokenizer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA67F0CFB300B001AE9AE /* SGTokenizer.mm */; };
 		0F8EA69B0CFB300B001AE9AE /* SGVBoxView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6810CFB300B001AE9AE /* SGVBoxView.mm */; };
-		0F8EA69C0CFB300B001AE9AE /* SGVersionCheck.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6830CFB300B001AE9AE /* SGVersionCheck.mm */; };
 		0F8EA69D0CFB300B001AE9AE /* SGView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6850CFB300B001AE9AE /* SGView.mm */; };
 		0F8EA69E0CFB300B001AE9AE /* SGWrapView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6870CFB300B001AE9AE /* SGWrapView.mm */; };
 		0F8EA6B10CFB3398001AE9AE /* ChatWindow.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6AC0CFB3398001AE9AE /* ChatWindow.mm */; };
@@ -269,6 +268,9 @@
 		B0D937F10FFB0D34009370B5 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */; };
 		B0D937F20FFB0D34009370B5 /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937F00FFB0D34009370B5 /* libssl.dylib */; };
 		B0D938370FFB1A08009370B5 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D938360FFB1A08009370B5 /* libiconv.dylib */; };
+		B0E85A7F0FFFB3040064D049 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0E85A7E0FFFB3040064D049 /* Sparkle.framework */; };
+		B0E85A820FFFB3120064D049 /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B0E85A7E0FFFB3040064D049 /* Sparkle.framework */; };
+		B0E85AC20FFFC0AF0064D049 /* sparkle.pem in Resources */ = {isa = PBXBuildFile; fileRef = B0E85AC10FFFC0AF0064D049 /* sparkle.pem */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -365,14 +367,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0F8EA7C40CFB6EC9001AE9AE /* CopyFiles */ = {
+		0F8EA7C40CFB6EC9001AE9AE /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0F0BFA530CFE443000B71E4D /* Growl.framework in CopyFiles */,
+				B0E85A820FFFB3120064D049 /* Sparkle.framework in Copy Frameworks */,
+				0F0BFA530CFE443000B71E4D /* Growl.framework in Copy Frameworks */,
 			);
+			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -612,8 +616,6 @@
 		0F8EA67F0CFB300B001AE9AE /* SGTokenizer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SGTokenizer.mm; path = "fe-aqua/SGTokenizer.mm"; sourceTree = "<group>"; };
 		0F8EA6800CFB300B001AE9AE /* SGVBoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGVBoxView.h; path = "fe-aqua/SGVBoxView.h"; sourceTree = "<group>"; };
 		0F8EA6810CFB300B001AE9AE /* SGVBoxView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SGVBoxView.mm; path = "fe-aqua/SGVBoxView.mm"; sourceTree = "<group>"; };
-		0F8EA6820CFB300B001AE9AE /* SGVersionCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGVersionCheck.h; path = "fe-aqua/SGVersionCheck.h"; sourceTree = "<group>"; };
-		0F8EA6830CFB300B001AE9AE /* SGVersionCheck.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SGVersionCheck.mm; path = "fe-aqua/SGVersionCheck.mm"; sourceTree = "<group>"; };
 		0F8EA6840CFB300B001AE9AE /* SGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGView.h; path = "fe-aqua/SGView.h"; sourceTree = "<group>"; };
 		0F8EA6850CFB300B001AE9AE /* SGView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SGView.mm; path = "fe-aqua/SGView.mm"; sourceTree = "<group>"; };
 		0F8EA6860CFB300B001AE9AE /* SGWrapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGWrapView.h; path = "fe-aqua/SGWrapView.h"; sourceTree = "<group>"; };
@@ -1717,6 +1719,8 @@
 		B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = /usr/lib/libcrypto.dylib; sourceTree = "<absolute>"; };
 		B0D937F00FFB0D34009370B5 /* libssl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.dylib; path = /usr/lib/libssl.dylib; sourceTree = "<absolute>"; };
 		B0D938360FFB1A08009370B5 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		B0E85A7E0FFFB3040064D049 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Sparkle/Sparkle.framework; sourceTree = "<group>"; };
+		B0E85AC10FFFC0AF0064D049 /* sparkle.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sparkle.pem; path = "fe-aqua/sparkle.pem"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1776,6 +1780,7 @@
 				B0D937F10FFB0D34009370B5 /* libcrypto.dylib in Frameworks */,
 				B0D937F20FFB0D34009370B5 /* libssl.dylib in Frameworks */,
 				B0D938370FFB1A08009370B5 /* libiconv.dylib in Frameworks */,
+				B0E85A7F0FFFB3040064D049 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1887,6 +1892,7 @@
 		0F8EA3650CFAA470001AE9AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B0E85AC10FFFC0AF0064D049 /* sparkle.pem */,
 				2DEA303D0F87235400D6DC0D /* images */,
 				2DD3AD6D0F92911C0033FF55 /* alert.xib */,
 				2DEA2F290F8673BF00D6DC0D /* BanList.xib */,
@@ -1913,7 +1919,6 @@
 				2DEA2F210F8673BF00D6DC0D /* PluginList.xib */,
 				0F8EA7950CFB6CF9001AE9AE /* X-Chat Aqua.scriptSuite */,
 				0F8EA7960CFB6CF9001AE9AE /* X-Chat Aqua.scriptTerminology */,
-				0F8EA3660CFAA49B001AE9AE /* Info.plist */,
 				0F7065530E1FA32E00FEA21C /* Changes */,
 			);
 			name = Resources;
@@ -2162,8 +2167,6 @@
 				0F8EA67F0CFB300B001AE9AE /* SGTokenizer.mm */,
 				0F8EA6800CFB300B001AE9AE /* SGVBoxView.h */,
 				0F8EA6810CFB300B001AE9AE /* SGVBoxView.mm */,
-				0F8EA6820CFB300B001AE9AE /* SGVersionCheck.h */,
-				0F8EA6830CFB300B001AE9AE /* SGVersionCheck.mm */,
 				0F8EA6840CFB300B001AE9AE /* SGView.h */,
 				0F8EA6850CFB300B001AE9AE /* SGView.mm */,
 				0F8EA6860CFB300B001AE9AE /* SGWrapView.h */,
@@ -2283,6 +2286,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B0E85A7E0FFFB3040064D049 /* Sparkle.framework */,
 				B0D938360FFB1A08009370B5 /* libiconv.dylib */,
 				B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */,
 				B0D937F00FFB0D34009370B5 /* libssl.dylib */,
@@ -2345,6 +2349,7 @@
 				0F8F08120E1FE00800359159 /* tcl-Info.plist */,
 				0FDE6C820E2704F00010E0D9 /* TBD.rtf */,
 				0FE5E01E0F45576B000E0F91 /* SGPalette-Info.plist */,
+				0F8EA3660CFAA49B001AE9AE /* Info.plist */,
 				2D8DACD00F8EFF8E00DA0BC2 /* Info devel.plist */,
 			);
 			name = "X-Chat Aqua";
@@ -2539,8 +2544,8 @@
 				B0A5F6B30FFAB04D003F5A02 /* Generate LE_MESSAGES */,
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
+				0F8EA7C40CFB6EC9001AE9AE /* Copy Frameworks */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
-				0F8EA7C40CFB6EC9001AE9AE /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -2733,6 +2738,7 @@
 				2D8DA8F70F8E6B2400DA0BC2 /* xchataqua.strings in Resources */,
 				2D8DAAF20F8EFE5300DA0BC2 /* locale in Resources */,
 				2DD3AD830F92911C0033FF55 /* alert.xib in Resources */,
+				B0E85AC20FFFC0AF0064D049 /* sparkle.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2764,7 +2770,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "#!/bin/bash\n\n[ -f ~/.bashrc ] && source ~/.bashrc\n\necho \"Generating build_number.h...\";\n\ncd \"$PROJECT_DIR\"\n\"tools/gen_buildnum_h.sh\" \"fe-aqua/build_number.h\" \"BuildNumber.xcconfig\"\n\n# Update the 'date modified' timestamps so Xcode realizes they've changed\ntouch Release.xcconfig\ntouch Debug.xcconfig";
+			shellScript = "#!/bin/bash\n\n[ -f ~/.bashrc ] && source ~/.bashrc\n\necho \"Generating build_number.h...\";\n\ncd \"$PROJECT_DIR\"\n\"tools/gen_buildnum_h.sh\" \"fe-aqua/build_number.h\" \"BuildNumber.xcconfig\"\n\n# Update the 'date modified' timestamps so Xcode realizes they've changed\ntouch Release.xcconfig\ntouch Debug.xcconfig\n\nrm -f \"$TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/Info.plist\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2929,7 +2935,6 @@
 				0F8EA6990CFB300B001AE9AE /* SGTabView.mm in Sources */,
 				0F8EA69A0CFB300B001AE9AE /* SGTokenizer.mm in Sources */,
 				0F8EA69B0CFB300B001AE9AE /* SGVBoxView.mm in Sources */,
-				0F8EA69C0CFB300B001AE9AE /* SGVersionCheck.mm in Sources */,
 				0F8EA69D0CFB300B001AE9AE /* SGView.mm in Sources */,
 				0F8EA69E0CFB300B001AE9AE /* SGWrapView.mm in Sources */,
 				0F8EA6B10CFB3398001AE9AE /* ChatWindow.mm in Sources */,
@@ -4575,6 +4580,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Sparkle\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -4595,6 +4604,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Sparkle\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "X-Chat Aqua_Prefix.pch";
 				INFOPLIST_FILE = Info.plist;

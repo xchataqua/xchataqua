@@ -508,18 +508,13 @@ one_time_work_phase2()
 
 	plugin_add (current_sess, NULL, NULL, (void *) my_plugin_init, NULL, NULL, FALSE);
     plugin_add (current_sess, NULL, NULL, (void *) bundle_loader_init, NULL, NULL, FALSE);
-		
+
+	// TODO: Disable the version check here if the user has set that preference.
+	/*
 	if (prefs.checkvers)
 	{
-		PrintTextf (current_sess, "Checking for new version of X-Chat Aqua (%g)", 
-			NSAppKitVersionNumber);
-
-		[SGVersionCheck checkForNewVersion:[NSString stringWithUTF8String:prefs.xchat_aqua_version]
-					fromUrl:@"http://xchataqua.sourceforge.net/vers"
-					 prefix:@"XCHATVERSION: "
-				   callback:@selector (new_version_alert)
-						 to:[AquaChat sharedAquaChat]];
 	}
+	*/
 
 	done = true;
 }
@@ -761,18 +756,6 @@ static void fix_log_files_and_pref ()
 	}
 }
 
-static void one_time_work_phase1 ()
-{
-    // One-time things to do when we run a new version for the first time
-    // This stuff is done early.
-    if (prefs.xchat_aqua_version [0] == 0 ||
-		[SGVersionCheck version:MYVERSION isNewerThan:prefs.xchat_aqua_version])
-    {
-		fix_log_files_and_pref ();
-        strcpy (prefs.xchat_aqua_version, MYVERSION);
-    }
-}
-
 void
 fe_init (void)
 {
@@ -787,8 +770,6 @@ fe_init (void)
 		        
     NSString *bundle = [[NSBundle mainBundle] bundlePath];
     chdir ([[NSString stringWithFormat:@"%@/..", bundle] fileSystemRepresentation]);
-
-    one_time_work_phase1 ();
 }
 
 #import <Foundation/NSDebug.h>
