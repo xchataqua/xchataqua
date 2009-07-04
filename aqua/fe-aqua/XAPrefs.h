@@ -1,6 +1,5 @@
 int spell_check;
 int hide_tab_close_buttons;
-char xchat_aqua_version[64];
 char nickcommand[256];
 char urlcommand[256];
 char channelcommand[256];
