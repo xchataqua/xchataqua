@@ -31,7 +31,6 @@
 #import "SGGuiUtil.h"
 #import "SGTableView.h"
 #import "NStimerAdditions.h"
-#import "SGVersionCheck.h"
 #import "SGSoundUtil.h"
 #import "SGRegex.h"
 #import "SGFileUtil.h"

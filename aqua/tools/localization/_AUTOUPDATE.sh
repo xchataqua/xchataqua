@@ -7,4 +7,4 @@ ruby copy_strings.rb
 for script in `ls 00?*.sh`; do
 	bash $script
 done
-bash copy_lproj.sh
+bash 004_copy_lproj.sh
