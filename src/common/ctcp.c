@@ -132,7 +132,7 @@ ctcp_handle (session *sess, char *to, char *nick,
 	{
 #ifdef FE_AQUA
 		snprintf (outbuf, sizeof (outbuf), "VERSION X-Chat Aqua %s (xchat "PACKAGE_VERSION") %s",
-                  XCHAT_AQUA_VERSION, get_cpu_str ());
+                  MYVERSION, get_cpu_str ());
 #else
 		snprintf (outbuf, sizeof (outbuf), "VERSION xchat "PACKAGE_VERSION" %s",
 					 get_cpu_str ());
