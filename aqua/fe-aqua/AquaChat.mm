@@ -296,9 +296,7 @@ EventInfo text_event_info[NUM_XP];
 
 - (void) do_release_notes:(id) sender
 {
-	if(!release_notes_window)
-		release_notes_window=[[ReleaseNotesWindow alloc] init];
-	[release_notes_window show];
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.uplinklabs.net/~tycho/projects/xchat-aqua/sparkle/rnotes.html"]];
 }
 
 - (void) do_goto_download:(id) sender
