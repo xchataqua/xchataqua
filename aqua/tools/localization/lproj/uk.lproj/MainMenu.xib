@@ -2,9 +2,9 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.03">
 	<data>
 		<int key="IBDocument.SystemTarget">1030</int>
-		<string key="IBDocument.SystemVersion">9L20</string>
+		<string key="IBDocument.SystemVersion">9J61</string>
 		<string key="IBDocument.InterfaceBuilderVersion">677</string>
-		<string key="IBDocument.AppKitVersion">949.54</string>
+		<string key="IBDocument.AppKitVersion">949.46</string>
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -161,6 +161,14 @@
 										</object>
 										<bool key="NSNoAutoenable">YES</bool>
 									</object>
+								</object>
+								<object class="NSMenuItem" id="935292016">
+									<reference key="NSMenu" ref="596487960"/>
+									<string key="NSTitle">Check for updates...</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="42437661"/>
+									<reference key="NSMixedImage" ref="1054068937"/>
 								</object>
 								<object class="NSMenuItem" id="239289093">
 									<reference key="NSMenu" ref="596487960"/>
@@ -1447,6 +1455,14 @@ Li4</string>
 					</object>
 					<int key="connectionID">1406</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">checkForUpdates:</string>
+						<reference key="source" ref="474046388"/>
+						<reference key="destination" ref="935292016"/>
+					</object>
+					<int key="connectionID">1410</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1518,6 +1534,7 @@ Li4</string>
 							<reference ref="963197502"/>
 							<reference ref="42391752"/>
 							<reference ref="899041711"/>
+							<reference ref="935292016"/>
 						</object>
 						<reference key="parent" ref="353751178"/>
 					</object>
@@ -2143,6 +2160,11 @@ Li4</string>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">SparkleUpdater</string>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1409</int>
+						<reference key="object" ref="935292016"/>
+						<reference key="parent" ref="596487960"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -2255,6 +2277,7 @@ Li4</string>
 					<string>1404.IBPluginDependency</string>
 					<string>1404.ImportedFromIB2</string>
 					<string>1408.IBPluginDependency</string>
+					<string>1409.IBPluginDependency</string>
 					<string>143.IBPluginDependency</string>
 					<string>143.ImportedFromIB2</string>
 					<string>144.IBPluginDependency</string>
@@ -2416,7 +2439,7 @@ Li4</string>
 					<reference ref="5"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="5"/>
-					<string>{{238, 522}, {194, 163}}</string>
+					<string>{{243, 522}, {194, 163}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="5"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2470,6 +2493,7 @@ Li4</string>
 					<reference ref="5"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="5"/>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="5"/>
@@ -2556,7 +2580,7 @@ Li4</string>
 					<reference ref="5"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="5"/>
-					<string>{{12, 532}, {226, 193}}</string>
+					<string>{{12, 512}, {231, 213}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="5"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2600,7 +2624,7 @@ Li4</string>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">1408</int>
+			<int key="maxID">1410</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
