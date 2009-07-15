@@ -1,6 +1,6 @@
 #!/bin/bash
-BASESED=002.sed
-BASELOCALE="en"
+BASESED='002.sed'
+BASELOCALE='en'
 
 for locale in `ls -d po/*.strings`; do
 	locale=`basename $locale .strings`
