@@ -1,23 +1,31 @@
 #!/bin/bash
-BASELOCALE=en
-DEFXIBDIR=../../fe-aqua/en.lproj
+BASELOCALE='en'
+RECDIR='../../fe-aqua'
+DEFXIBDIR="$RECDIR/en.lproj"
 
 for locale in `ls -d lproj/*`; do
   locale=`basename $locale`
 	if [ $locale != `basename $locale .lproj` ]; then
-		continue;
+		continue;	# FIXME: tweak to avoid locale / locale.lproj
 	fi
 	if [ $BASELOCALE = $locale ]; then
-    continue;
+    continue;	# pass base locale
   fi
+
 	echo -n $locale
 	for strings in `ls lproj/$locale/*.xib.strings`; do
+		# strings: generated one
     xib=`basename $strings .strings`
 		if [ ! -e lproj/$locale.lproj ]; then
 			mkdir lproj/$locale.lproj
 		fi
-		if [ $strings -ot lproj/$locale.lproj/$xib ]; then
-			if [ $DEFXIBDIR/$xib -ot lproj/$locale.lproj/$xib ]; then
+		if [ $DEFXIBDIR/$xib -ot lproj/$locale.lproj/$xib ]; then # base is older
+			if [ $strings -ot lproj/$locale.lproj/$xib ]; then
+				continue
+			fi
+		fi
+		if [ $DEFXIBDIR/$xib -ot $RECDIR/$locale.lproj/$xib ]; then
+			if [ strings/$locale.strings -ot $RECDIR/$locale.lproj/$xib ]; then
 				continue
 			fi
 		fi
