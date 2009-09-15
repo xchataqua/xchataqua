@@ -1,1 +1,1 @@
-#define ENABLE_NLS 1
+#define ENABLE_NLS 0
