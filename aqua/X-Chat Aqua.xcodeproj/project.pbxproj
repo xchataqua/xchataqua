@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 44;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -16,7 +16,6 @@
 			dependencies = (
 				0F70656D0E1FA5C700FEA21C /* PBXTargetDependency */,
 				0F2FEF7E0E1FB1BD00DE4D41 /* PBXTargetDependency */,
-				0F8F06700E1FD28200359159 /* PBXTargetDependency */,
 				0F8F06EC0E1FDB0C00359159 /* PBXTargetDependency */,
 				0F8F08350E1FE08700359159 /* PBXTargetDependency */,
 			);
@@ -44,8 +43,6 @@
 		0F2FEF790E1FB1A900DE4D41 /* python-leopard.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F2FEF2B0E1FAB1500DE4D41 /* python-leopard.bundle */; };
 		0F2FEF850E1FB5AE00DE4D41 /* bundle_loader_plugin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F2FEF840E1FB5AE00DE4D41 /* bundle_loader_plugin.mm */; };
 		0F2FEFBD0E1FC8E900DE4D41 /* SystemVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F2FEFB70E1FC5A800DE4D41 /* SystemVersion.m */; };
-		0F2FF0480E1FD15000DE4D41 /* python.c in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8F3E80DEEDA0C00504F31 /* python.c */; };
-		0F2FF04A0E1FD15000DE4D41 /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC8F3F50DEEDAB300504F31 /* Python.framework */; };
 		0F3062540D84958E0084F2CA /* xchat.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F3062530D84958E0084F2CA /* xchat.strings */; };
 		0F7065540E1FA32E00FEA21C /* Changes in Resources */ = {isa = PBXBuildFile; fileRef = 0F7065530E1FA32E00FEA21C /* Changes */; };
 		0F8EA62E0CFB2E0A001AE9AE /* AsciiWin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6250CFB2E0A001AE9AE /* AsciiWin.mm */; };
@@ -145,7 +142,6 @@
 		0F8EA7A20CFB6CF9001AE9AE /* xchat.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7980CFB6CF9001AE9AE /* xchat.tiff */; };
 		0F8EA7A30CFB6CF9001AE9AE /* yellow.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7990CFB6CF9001AE9AE /* yellow.tiff */; };
 		0F8EA7C90CFB7094001AE9AE /* SGRowColView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA7C80CFB7094001AE9AE /* SGRowColView.mm */; };
-		0F8F066B0E1FD27900359159 /* python-tiger.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F2FF04F0E1FD15000DE4D41 /* python-tiger.bundle */; };
 		0F8F06DD0E1FDAA100359159 /* perl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F06C10E1FDA5E00359159 /* perl.c */; };
 		0F8F06E50E1FDB0300359159 /* perl-leopard.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F8F06D70E1FDA8500359159 /* perl-leopard.bundle */; };
 		0F8F07CF0E1FDDBF00359159 /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8F07CE0E1FDDBF00359159 /* libperl.dylib */; };
@@ -249,13 +245,6 @@
 			remoteGlobalIDString = 8D1107260486CEB800E47090;
 			remoteInfo = "X-Chat Aqua";
 		};
-		0F8F066F0E1FD28200359159 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0F2FF0450E1FD15000DE4D41;
-			remoteInfo = "python-tiger";
-		};
 		0F8F06EB0E1FDB0C00359159 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -309,7 +298,6 @@
 			files = (
 				0F8F08330E1FE07C00359159 /* tcl.bundle in CopyFiles */,
 				0F8F06E50E1FDB0300359159 /* perl-leopard.bundle in CopyFiles */,
-				0F8F066B0E1FD27900359159 /* python-tiger.bundle in CopyFiles */,
 				0F2FEF790E1FB1A900DE4D41 /* python-leopard.bundle in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,8 +324,6 @@
 		0F2FEF9D0E1FC30E00DE4D41 /* bundle_loader_plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bundle_loader_plugin.h; path = plugins/bundle_loader/bundle_loader_plugin.h; sourceTree = "<group>"; };
 		0F2FEFB60E1FC5A800DE4D41 /* SystemVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SystemVersion.h; path = utils/SystemVersion.h; sourceTree = "<group>"; };
 		0F2FEFB70E1FC5A800DE4D41 /* SystemVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SystemVersion.m; path = utils/SystemVersion.m; sourceTree = "<group>"; };
-		0F2FF04F0E1FD15000DE4D41 /* python-tiger.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "python-tiger.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F2FF0520E1FD15000DE4D41 /* python-tiger-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "python-tiger-Info.plist"; sourceTree = "<group>"; };
 		0F30611F0D83C5830084F2CA /* AquaChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AquaChat.h; path = "fe-aqua/AquaChat.h"; sourceTree = "<group>"; };
 		0F3062560D8495A20084F2CA /* be */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = be; path = localization/be.lproj/xchat.strings; sourceTree = "<group>"; };
 		0F3062570D8495AC0084F2CA /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = localization/ca.lproj/xchat.strings; sourceTree = "<group>"; };
@@ -1563,14 +1549,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0F2FF0490E1FD15000DE4D41 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0F2FF04A0E1FD15000DE4D41 /* Python.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		0F8F06D50E1FDA8500359159 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2043,7 +2021,6 @@
 				8D1107320486CEB800E47090 /* X-Chat Aqua.app */,
 				0FC8F4AE0DEEE51700504F31 /* libxchat.a */,
 				0F2FEF2B0E1FAB1500DE4D41 /* python-leopard.bundle */,
-				0F2FF04F0E1FD15000DE4D41 /* python-tiger.bundle */,
 				0F8F06D70E1FDA8500359159 /* perl-leopard.bundle */,
 				0F8F08110E1FE00800359159 /* tcl.bundle */,
 				0FE5E01D0F45576B000E0F91 /* SGPalette.ibplugin */,
@@ -2067,7 +2044,6 @@
 				0F3062530D84958E0084F2CA /* xchat.strings */,
 				2D8DA8F50F8E6B2400DA0BC2 /* xchataqua.strings */,
 				0F2FEF2C0E1FAB1500DE4D41 /* python-leopard-Info.plist */,
-				0F2FF0520E1FD15000DE4D41 /* python-tiger-Info.plist */,
 				0F8F06D80E1FDA8500359159 /* perl-leopard-Info.plist */,
 				0F8F08120E1FE00800359159 /* tcl-Info.plist */,
 				0FDE6C820E2704F00010E0D9 /* TBD.rtf */,
@@ -2146,23 +2122,6 @@
 			name = "python-leopard";
 			productName = "python-leopard";
 			productReference = 0F2FEF2B0E1FAB1500DE4D41 /* python-leopard.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
-		0F2FF0450E1FD15000DE4D41 /* python-tiger */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0F2FF04C0E1FD15000DE4D41 /* Build configuration list for PBXNativeTarget "python-tiger" */;
-			buildPhases = (
-				0F2FF0460E1FD15000DE4D41 /* Resources */,
-				0F2FF0470E1FD15000DE4D41 /* Sources */,
-				0F2FF0490E1FD15000DE4D41 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "python-tiger";
-			productName = "python-leopard";
-			productReference = 0F2FF04F0E1FD15000DE4D41 /* python-tiger.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		0F8F06D60E1FDA8500359159 /* perl-leopard */ = {
@@ -2262,7 +2221,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "X-Chat Aqua" */;
-			compatibilityVersion = "Xcode 3.0";
+			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -2321,7 +2280,6 @@
 				0FC8F4AD0DEEE51700504F31 /* xchat */,
 				0F7065690E1FA5C100FEA21C /* Release */,
 				0F2FEF2A0E1FAB1500DE4D41 /* python-leopard */,
-				0F2FF0450E1FD15000DE4D41 /* python-tiger */,
 				0F8F06D60E1FDA8500359159 /* perl-leopard */,
 				0F8F08100E1FE00800359159 /* tcl */,
 				0FE5E01C0F45576B000E0F91 /* SGPalette */,
@@ -2332,13 +2290,6 @@
 
 /* Begin PBXResourcesBuildPhase section */
 		0F2FEF270E1FAB1500DE4D41 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0F2FF0460E1FD15000DE4D41 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2471,14 +2422,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F2FEF340E1FAB9100DE4D41 /* python.c in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0F2FF0470E1FD15000DE4D41 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0F2FF0480E1FD15000DE4D41 /* python.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2640,11 +2583,6 @@
 			isa = PBXTargetDependency;
 			target = 8D1107260486CEB800E47090 /* X-Chat Aqua */;
 			targetProxy = 0F70656C0E1FA5C700FEA21C /* PBXContainerItemProxy */;
-		};
-		0F8F06700E1FD28200359159 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0F2FF0450E1FD15000DE4D41 /* python-tiger */;
-			targetProxy = 0F8F066F0E1FD28200359159 /* PBXContainerItemProxy */;
 		};
 		0F8F06EC0E1FDB0C00359159 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3830,68 +3768,6 @@
 			};
 			name = Release;
 		};
-		0F2FF04D0E1FD15000DE4D41 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				HEADER_SEARCH_PATHS = (
-					/System/Library/Frameworks/Python.framework/Versions/Current/Headers,
-					"fe-aqua/Growl.framework/Versions/A/Headers",
-					"fe-aqua/ShortcutRecorder/ShortcutRecorder/Source",
-					"fe-aqua/",
-					.,
-				);
-				INFOPLIST_FILE = "python-tiger-Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				OTHER_LDFLAGS = (
-					"-undefined",
-					dynamic_lookup,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = "python-tiger";
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		0F2FF04E0E1FD15000DE4D41 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				HEADER_SEARCH_PATHS = (
-					/System/Library/Frameworks/Python.framework/Versions/Current/Headers,
-					"fe-aqua/Growl.framework/Versions/A/Headers",
-					"fe-aqua/ShortcutRecorder/ShortcutRecorder/Source",
-					"fe-aqua/",
-					.,
-				);
-				INFOPLIST_FILE = "python-tiger-Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				OTHER_LDFLAGS = (
-					"-undefined",
-					dynamic_lookup,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = "python-tiger";
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
-				WRAPPER_EXTENSION = bundle;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
 		0F70656A0E1FA5C100FEA21C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -4002,7 +3878,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = tcl;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
+				SDKROOT = macosx10.4;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -4025,7 +3901,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = tcl;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
+				SDKROOT = macosx10.4;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -4089,7 +3965,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = SGPalette;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				SDKROOT = macosx10.5;
 				WRAPPER_EXTENSION = ibplugin;
 			};
 			name = Debug;
@@ -4118,7 +3994,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = SGPalette;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				SDKROOT = macosx10.5;
 				WRAPPER_EXTENSION = ibplugin;
 				ZERO_LINK = NO;
 			};
@@ -4214,7 +4090,8 @@
 				LIBRARY_SEARCH_PATHS = contrib/lib;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				SDKROOT = macosx10.5;
+				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
 			};
 			name = Debug;
 		};
@@ -4222,11 +4099,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B07C7AD70F4398FC00E11B58 /* Release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				FRAMEWORK_SEARCH_PATHS = "fe-aqua";
 				GCC_PREPROCESSOR_DEFINITIONS = FE_AQUA;
-				GCC_VERSION = 4.0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -4237,7 +4113,8 @@
 				INFOPLIST_FILE = Info.plist;
 				LIBRARY_SEARCH_PATHS = contrib/lib;
 				PREBINDING = NO;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				SDKROOT = macosx10.5;
+				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
 			};
 			name = Release;
 		};
@@ -4249,15 +4126,6 @@
 			buildConfigurations = (
 				0F2FEF2E0E1FAB1500DE4D41 /* Debug */,
 				0F2FEF2F0E1FAB1500DE4D41 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0F2FF04C0E1FD15000DE4D41 /* Build configuration list for PBXNativeTarget "python-tiger" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0F2FF04D0E1FD15000DE4D41 /* Debug */,
-				0F2FF04E0E1FD15000DE4D41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
