@@ -414,10 +414,13 @@ EventInfo text_event_info[NUM_XP];
     }
     
 	// Tab key shortcuts
-	[prev_window_menu setKeyEquivalent:SRStringForKeyCode(prefs.tab_left_key)];
+	// FIXME: setting shortcut is unavailable now. linker cannot
+	//	find SRSTringForKeyCode symbol though it is obviously exists in
+	//	SRCommon.m and built already.
+	//[prev_window_menu setKeyEquivalent:SRStringForKeyCode(prefs.tab_left_key)];
 	[prev_window_menu setKeyEquivalentModifierMask:prefs.tab_left_modifiers];
 
-	[next_window_menu setKeyEquivalent:SRStringForKeyCode(prefs.tab_right_key)];
+	//[next_window_menu setKeyEquivalent:SRStringForKeyCode(prefs.tab_right_key)];
 	[next_window_menu setKeyEquivalentModifierMask:prefs.tab_right_modifiers];
 	
     if (prefs.identd)
