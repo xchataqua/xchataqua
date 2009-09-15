@@ -36,6 +36,5 @@
 #define USE_IPV6 1
 #define USE_PLUGIN 1
 #define USE_OPENSSL 1
-#include "glibconfig.h"
 #include <stdio.h>
 #endif
