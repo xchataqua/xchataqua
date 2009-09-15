@@ -5,16 +5,16 @@
 # It is necessary for linking the library.
 
 # The name that we can dlopen(3).
-dlname=''
+dlname='libintl.8.dylib'
 
 # Names of this library.
-library_names=''
+library_names='libintl.8.0.2.dylib libintl.8.dylib libintl.dylib'
 
 # The name of the static archive.
 old_library='libintl.a'
 
 # Libraries that this one depends upon.
-dependency_libs=' /usr/lib/libiconv.la -lc'
+dependency_libs=' -lc'
 
 # Version information for libintl.
 current=8
@@ -32,4 +32,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/opt/gettext/lib'
+libdir='/usr/local/lib'
