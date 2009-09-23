@@ -21,15 +21,19 @@
 #import "PrefsController.h"
 #import "TabOrWindowView.h"
 #import "ChatWindow.h"
-#import "SRRecorderCell.h"
 
+#ifdef __cplusplus
 extern "C" {
+#endif
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
 #include "../common/text.h"
 #undef TYPE_BOOL
 #include "../common/cfgfiles.h"
+#import "ShortcutRecorder/ShortcutRecorder.h"
+#ifdef __cplusplus
 }
+#endif
 
 extern char *sound_files[];
 extern struct text_event te[];
