@@ -109,12 +109,6 @@
 		0F8EA6F80CFB347B001AE9AE /* UserlistPopup.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6E30CFB347B001AE9AE /* UserlistPopup.mm */; };
 		0F8EA6F90CFB347B001AE9AE /* UserMenus.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6E50CFB347B001AE9AE /* UserMenus.mm */; };
 		0F8EA70B0CFB384A001AE9AE /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8EA70A0CFB384A001AE9AE /* Carbon.framework */; };
-		0F8EA71D0CFB3941001AE9AE /* CTGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA7120CFB3941001AE9AE /* CTGradient.m */; };
-		0F8EA71E0CFB3941001AE9AE /* SRCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA7140CFB3941001AE9AE /* SRCommon.m */; };
-		0F8EA71F0CFB3941001AE9AE /* SRKeyCodeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA7160CFB3941001AE9AE /* SRKeyCodeTransformer.m */; };
-		0F8EA7200CFB3941001AE9AE /* SRRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA7180CFB3941001AE9AE /* SRRecorderCell.m */; };
-		0F8EA7210CFB3941001AE9AE /* SRRecorderControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA71A0CFB3941001AE9AE /* SRRecorderControl.m */; };
-		0F8EA7220CFB3941001AE9AE /* SRValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA71C0CFB3941001AE9AE /* SRValidator.m */; };
 		0F8EA7430CFB6B7A001AE9AE /* 0_off.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA73C0CFB6B7A001AE9AE /* 0_off.tiff */; };
 		0F8EA7440CFB6B7A001AE9AE /* 1_off_high_fg.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA73D0CFB6B7A001AE9AE /* 1_off_high_fg.tiff */; };
 		0F8EA7450CFB6B7A001AE9AE /* 2_on_high_fg.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA73E0CFB6B7A001AE9AE /* 2_on_high_fg.tiff */; };
@@ -200,6 +194,8 @@
 		2D8DAAF20F8EFE5300DA0BC2 /* locale in Resources */ = {isa = PBXBuildFile; fileRef = 2D8DAAF10F8EFE5300DA0BC2 /* locale */; };
 		2DC4307F105F608B00782AAD /* xalocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC4307E105F608B00782AAD /* xalocalization.m */; };
 		2DC430A4105F6B9000782AAD /* chanopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F94E9AF0E1F92E3003CA262 /* chanopt.c */; };
+		2DC44ED61069BA1200AD2340 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC44ED51069BA1200AD2340 /* ShortcutRecorder.framework */; };
+		2DC44F4B1069BC6800AD2340 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC44ED51069BA1200AD2340 /* ShortcutRecorder.framework */; };
 		2DEA2F360F8673BF00D6DC0D /* TabMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F090F8673BF00D6DC0D /* TabMenu.xib */; };
 		2DEA2F370F8673BF00D6DC0D /* UrlGrabber.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F0B0F8673BF00D6DC0D /* UrlGrabber.xib */; };
 		2DEA2F380F8673BF00D6DC0D /* ServerList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F0D0F8673BF00D6DC0D /* ServerList.xib */; };
@@ -307,6 +303,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				2DC44ED61069BA1200AD2340 /* ShortcutRecorder.framework in Copy Frameworks */,
 				B0E85A820FFFB3120064D049 /* Sparkle.framework in Copy Frameworks */,
 				0F0BFA530CFE443000B71E4D /* Growl.framework in Copy Frameworks */,
 			);
@@ -536,18 +533,6 @@
 		0F8EA6E40CFB347B001AE9AE /* UserMenus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserMenus.h; path = "fe-aqua/UserMenus.h"; sourceTree = "<group>"; };
 		0F8EA6E50CFB347B001AE9AE /* UserMenus.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = UserMenus.mm; path = "fe-aqua/UserMenus.mm"; sourceTree = "<group>"; };
 		0F8EA70A0CFB384A001AE9AE /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
-		0F8EA7110CFB3941001AE9AE /* CTGradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CTGradient.h; path = "fe-aqua/ShortcutRecorder/ShortcutRecorder/Source/CTGradient.h"; sourceTree = "<group>"; };
-		0F8EA7120CFB3941001AE9AE /* CTGradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CTGradient.m; path = "fe-aqua/ShortcutRecorder/ShortcutRecorder/Source/CTGradient.m"; sourceTree = "<group>"; };
-		0F8EA7130CFB3941001AE9AE /* SRCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRCommon.h; path = "fe-aqua/ShortcutRecorder/ShortcutRecorder/Source/SRCommon.h"; sourceTree = "<group>"; };
-		0F8EA7140CFB3941001AE9AE /* SRCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRCommon.m; path = "fe-aqua/ShortcutRecorder/ShortcutRecorder/Source/SRCommon.m"; sourceTree = "<group>"; };
-		0F8EA7150CFB3941001AE9AE /* SRKeyCodeTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRKeyCodeTransformer.h; path = "fe-aqua/ShortcutRecorder/ShortcutRecorder/Source/SRKeyCodeTransformer.h"; sourceTree = "<group>"; };
-		0F8EA7160CFB3941001AE9AE /* SRKeyCodeTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRKeyCodeTransformer.m; path = "fe-aqua/ShortcutRecorder/ShortcutRecorder/Source/SRKeyCodeTransformer.m"; sourceTree = "<group>"; };
-		0F8EA7170CFB3941001AE9AE /* SRRecorderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRRecorderCell.h; path = "fe-aqua/ShortcutRecorder/ShortcutRecorder/Source/SRRecorderCell.h"; sourceTree = "<group>"; };
-		0F8EA7180CFB3941001AE9AE /* SRRecorderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRRecorderCell.m; path = "fe-aqua/ShortcutRecorder/ShortcutRecorder/Source/SRRecorderCell.m"; sourceTree = "<group>"; };
-		0F8EA7190CFB3941001AE9AE /* SRRecorderControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRRecorderControl.h; path = "fe-aqua/ShortcutRecorder/ShortcutRecorder/Source/SRRecorderControl.h"; sourceTree = "<group>"; };
-		0F8EA71A0CFB3941001AE9AE /* SRRecorderControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRRecorderControl.m; path = "fe-aqua/ShortcutRecorder/ShortcutRecorder/Source/SRRecorderControl.m"; sourceTree = "<group>"; };
-		0F8EA71B0CFB3941001AE9AE /* SRValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRValidator.h; path = "fe-aqua/ShortcutRecorder/ShortcutRecorder/Source/SRValidator.h"; sourceTree = "<group>"; };
-		0F8EA71C0CFB3941001AE9AE /* SRValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRValidator.m; path = "fe-aqua/ShortcutRecorder/ShortcutRecorder/Source/SRValidator.m"; sourceTree = "<group>"; };
 		0F8EA73C0CFB6B7A001AE9AE /* 0_off.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = 0_off.tiff; path = "fe-aqua/0_off.tiff"; sourceTree = "<group>"; };
 		0F8EA73D0CFB6B7A001AE9AE /* 1_off_high_fg.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = 1_off_high_fg.tiff; path = "fe-aqua/1_off_high_fg.tiff"; sourceTree = "<group>"; };
 		0F8EA73E0CFB6B7A001AE9AE /* 2_on_high_fg.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = 2_on_high_fg.tiff; path = "fe-aqua/2_on_high_fg.tiff"; sourceTree = "<group>"; };
@@ -629,6 +614,7 @@
 		2D8DAEE80F905FC400DA0BC2 /* config.nls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.nls.h; sourceTree = "<group>"; };
 		2DC4307D105F608B00782AAD /* xalocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xalocalization.h; path = "fe-aqua/xalocalization.h"; sourceTree = "<group>"; };
 		2DC4307E105F608B00782AAD /* xalocalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = xalocalization.m; path = "fe-aqua/xalocalization.m"; sourceTree = "<group>"; };
+		2DC44ED51069BA1200AD2340 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShortcutRecorder.framework; path = "fe-aqua/ShortcutRecorder.framework"; sourceTree = "<group>"; };
 		2DD3AAFE0F9290070033FF55 /* sr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sr; path = "fe-aqua/sr.lproj/BanList.xib"; sourceTree = "<group>"; };
 		2DD3AAFF0F9290070033FF55 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_CN; path = "fe-aqua/zh_CN.lproj/BanList.xib"; sourceTree = "<group>"; };
 		2DD3AB000F9290070033FF55 /* pt_BR */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = pt_BR; path = "fe-aqua/pt_BR.lproj/BanList.xib"; sourceTree = "<group>"; };
@@ -1576,6 +1562,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DC44F4B1069BC6800AD2340 /* ShortcutRecorder.framework in Frameworks */,
 				0FC8F5C40DEEEA3E00504F31 /* libxchat.a in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				0F8EA70B0CFB384A001AE9AE /* Carbon.framework in Frameworks */,
@@ -1682,7 +1669,6 @@
 			children = (
 				0F2FEFB50E1FC57800DE4D41 /* Utilities */,
 				0F2FEF830E1FB52500DE4D41 /* Internal Plugins */,
-				0F8EA7100CFB38C2001AE9AE /* ShortcutRecorder */,
 				0F8EA6580CFB2F71001AE9AE /* libSG */,
 				0F8EA6230CFB2D92001AE9AE /* Utility window */,
 				0F8EA3CD0CFAF7AF001AE9AE /* Sources */,
@@ -1883,25 +1869,6 @@
 			name = libSG;
 			sourceTree = "<group>";
 		};
-		0F8EA7100CFB38C2001AE9AE /* ShortcutRecorder */ = {
-			isa = PBXGroup;
-			children = (
-				0F8EA7110CFB3941001AE9AE /* CTGradient.h */,
-				0F8EA7120CFB3941001AE9AE /* CTGradient.m */,
-				0F8EA7130CFB3941001AE9AE /* SRCommon.h */,
-				0F8EA7140CFB3941001AE9AE /* SRCommon.m */,
-				0F8EA7150CFB3941001AE9AE /* SRKeyCodeTransformer.h */,
-				0F8EA7160CFB3941001AE9AE /* SRKeyCodeTransformer.m */,
-				0F8EA7170CFB3941001AE9AE /* SRRecorderCell.h */,
-				0F8EA7180CFB3941001AE9AE /* SRRecorderCell.m */,
-				0F8EA7190CFB3941001AE9AE /* SRRecorderControl.h */,
-				0F8EA71A0CFB3941001AE9AE /* SRRecorderControl.m */,
-				0F8EA71B0CFB3941001AE9AE /* SRValidator.h */,
-				0F8EA71C0CFB3941001AE9AE /* SRValidator.m */,
-			);
-			name = ShortcutRecorder;
-			sourceTree = "<group>";
-		};
 		0F8F06BE0E1FD99400359159 /* perl */ = {
 			isa = PBXGroup;
 			children = (
@@ -1985,6 +1952,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2DC44ED51069BA1200AD2340 /* ShortcutRecorder.framework */,
 				2D2EE87110613EF8000FDDED /* libintl.8.0.2.dylib */,
 				2D2EE86F10613ED5000FDDED /* libglib-2.0.0.dylib */,
 				B0E85A7E0FFFB3040064D049 /* Sparkle.framework */,
@@ -2552,12 +2520,6 @@
 				0F8EA6F70CFB347B001AE9AE /* UserlistButtons.mm in Sources */,
 				0F8EA6F80CFB347B001AE9AE /* UserlistPopup.mm in Sources */,
 				0F8EA6F90CFB347B001AE9AE /* UserMenus.mm in Sources */,
-				0F8EA71D0CFB3941001AE9AE /* CTGradient.m in Sources */,
-				0F8EA71E0CFB3941001AE9AE /* SRCommon.m in Sources */,
-				0F8EA71F0CFB3941001AE9AE /* SRKeyCodeTransformer.m in Sources */,
-				0F8EA7200CFB3941001AE9AE /* SRRecorderCell.m in Sources */,
-				0F8EA7210CFB3941001AE9AE /* SRRecorderControl.m in Sources */,
-				0F8EA7220CFB3941001AE9AE /* SRValidator.m in Sources */,
 				0F8EA7C90CFB7094001AE9AE /* SGRowColView.mm in Sources */,
 				0FC8F6AF0DEEF3AC00504F31 /* AquaChat.mm in Sources */,
 				0FC8F6ED0DEEF64200504F31 /* fe-aqua.mm in Sources */,
@@ -4025,6 +3987,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Sparkle\"",
+					"\"$(SRCROOT)/fe-aqua\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -4050,6 +4013,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Sparkle\"",
+					"\"$(SRCROOT)/fe-aqua\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "X-Chat Aqua_Prefix.pch";
@@ -4069,7 +4033,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B07C7AD60F4398FC00E11B58 /* Debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "fe-aqua";

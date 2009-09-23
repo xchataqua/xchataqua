@@ -11,7 +11,6 @@
 //      Jesper
 
 #import <ShortcutRecorder/SRCommon.h>
-#import <ShortcutRecorder/CTGradient.h>
 #import <ShortcutRecorder/SRKeyCodeTransformer.h>
 #import <ShortcutRecorder/SRValidator.h>
 #import <ShortcutRecorder/SRRecorderCell.h>

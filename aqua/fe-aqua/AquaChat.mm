@@ -31,6 +31,7 @@ extern "C" {
 #include "../common/util.h"
 #include "../common/text.h"
 #include "../common/dcc.h"
+#import <ShortcutRecorder/ShortcutRecorder.h>
 #ifdef __cplusplus
 }
 #endif
@@ -68,7 +69,6 @@ extern "C" {
 #import "PluginList.h"
 #import "MenuMaker.h"
 #import "ServerList.h"
-#import "SRCommon.h"
 #import "AutoAwayController.h"
 
 extern struct text_event te[];
@@ -413,15 +413,18 @@ EventInfo text_event_info[NUM_XP];
 		[sess->gui->cw prefsChanged];
     }
     
-	// Tab key shortcuts
-	// FIXME: setting shortcut is unavailable now. linker cannot
-	//	find SRSTringForKeyCode symbol though it is obviously exists in
-	//	SRCommon.m and built already.
-	//[prev_window_menu setKeyEquivalent:SRStringForKeyCode(prefs.tab_left_key)];
-	[prev_window_menu setKeyEquivalentModifierMask:prefs.tab_left_modifiers];
-
-	//[next_window_menu setKeyEquivalent:SRStringForKeyCode(prefs.tab_right_key)];
-	[next_window_menu setKeyEquivalentModifierMask:prefs.tab_right_modifiers];
+	NSString* s;
+	s = SRStringForKeyCode(prefs.tab_left_key);
+	if ( s != nil ) {
+		[prev_window_menu setKeyEquivalent:s];
+		[prev_window_menu setKeyEquivalentModifierMask:prefs.tab_left_modifiers];
+	}
+	
+	s = SRStringForKeyCode(prefs.tab_right_key);
+	if ( s != nil ) {
+		[next_window_menu setKeyEquivalent:s];
+		[next_window_menu setKeyEquivalentModifierMask:prefs.tab_right_modifiers];
+	}
 	
     if (prefs.identd)
         identd_start ();
