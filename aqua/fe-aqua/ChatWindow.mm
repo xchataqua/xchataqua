@@ -1244,7 +1244,7 @@ static NSImage *empty_image;
     [chat_view setTabTitle:s];
 	
 	// FIXME: this is a trick to scroll down chatview when loaded scrollback
-	//       scrollong over height of chatview. proper place needed.
+	//       scrollong over height of chatview. replacing to proper place is required.
 	[chat_text scrollToEndOfDocument:chat_view];
 }
 
