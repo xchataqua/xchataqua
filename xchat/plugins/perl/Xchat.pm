@@ -28,7 +28,9 @@ BEGIN {
 use File::Spec ();
 use File::Basename ();
 use File::Glob ();
+use List::Util ();
 use Symbol();
+use Time::HiRes ();
 
 {
 package Xchat;
@@ -44,10 +46,10 @@ our %EXPORT_TAGS = (
 		qw(KEEP REMOVE), # timers
 	],
 	hooks => [
-		qw(hook_server hook_command hook_print hook_timer unhook),
+		qw(hook_server hook_command hook_print hook_timer hook_fd unhook),
 	],
 	util => [
-		qw(register nickcmp strip_code), # misc
+		qw(register nickcmp strip_code send_modes), # misc
 		qw(print prnt printf prntf command commandf emit_print), # output
 		qw(find_context get_context set_context), # context
 		qw(get_info get_prefs get_list context_info user_info), # input
@@ -63,9 +65,21 @@ sub register {
 	my $pkg_info = Xchat::Embed::pkg_info( $package );
 	my $filename = $pkg_info->{filename};
 	my ($name, $version, $description, $callback) = @_;
+	
+	if( defined $pkg_info->{gui_entry} ) {
+		Xchat::print( "Xchat::register called more than once in "
+			. $pkg_info->{filename} );
+		return ();
+	}
+	
 	$description = "" unless defined $description;
 	$pkg_info->{shutdown} = $callback;
-	
+	unless( $name && $name =~ /[[:print:]\w]/ ) {
+		$name = "Not supplied";
+	}
+	unless( $version && $version =~ /\d+(?:\.\d+)?/ ) {
+		$version = "NaN";
+	}
 	$pkg_info->{gui_entry} =
 		Xchat::Internal::register( $name, $version, $description, $filename );
 	# keep with old behavior
@@ -181,7 +195,7 @@ sub hook_timer {
 	}
 	
 	my $pkg_info = Xchat::Embed::pkg_info( $package );
-	my $hook = Xchat::Internal::hook_timer( $timeout, $callback, $data );
+	my $hook = Xchat::Internal::hook_timer( $timeout, $callback, $data, $package );
 	push @{$pkg_info->{hooks}}, $hook if defined $hook;
 	return $hook;
 }
@@ -233,7 +247,9 @@ sub unhook {
 	($package) = caller unless $package;
 	my $pkg_info = Xchat::Embed::pkg_info( $package );
 
-	if( $hook =~ /^\d+$/ && grep { $_ == $hook } @{$pkg_info->{hooks}} ) {
+	if( defined( $hook )
+		&& $hook =~ /^\d+$/
+		&& grep { $_ == $hook } @{$pkg_info->{hooks}} ) {
 		$pkg_info->{hooks} = [grep { $_ != $hook } @{$pkg_info->{hooks}}];
 		return Xchat::Internal::unhook( $hook );
 	}
@@ -243,21 +259,25 @@ sub unhook {
 sub do_for_each {
 	my ($cb, $channels, $servers) = @_;
 
-	# if neither is provided then we execute the callback in the current
-	# context
-	unless( $channels or $servers ) {
+	# not specifying any channels or servers is not the same as specifying
+	# undef for both
+	# - not specifying either results in calling the callback inthe current ctx
+	# - specifying undef for for both results in calling the callback in the
+	#   front/currently selected tab
+	if( @_ == 3 && !($channels || $servers) ) { 
+		$channels = [ undef ];
+		$servers = [ undef ];
+	} elsif( !($channels || $servers) ) {
 		$cb->();
 		return 1;
 	}
 
 	$channels = [ $channels ] unless ref( $channels ) eq 'ARRAY';
 
-	# if no server is specified then we execute the callback in
-	# each of the channels on the current context's server
 	if( $servers ) {
 		$servers = [ $servers ] unless ref( $servers ) eq 'ARRAY';
 	} else {
-		$servers = [ Xchat::get_info( "server" ) ];
+		$servers = [ undef ];
 	}
 
 	my $num_done;
@@ -372,9 +392,9 @@ sub context_info {
 	my $ctx = shift @_ || Xchat::get_context;
 	my $old_ctx = Xchat::get_context;
 	my @fields = (
-		qw(away channel charset host id inputbox libdirfs network),
-		qw(nick nickserv server topic version win_status xchatdir xchatdirfs),
-		qw(state_cursor),
+		qw(away channel charset host id inputbox libdirfs modes network),
+		qw(nick nickserv server topic version win_ptr win_status),
+		qw(xchatdir xchatdirfs state_cursor),
 	);
 
 	if( Xchat::set_context( $ctx ) ) {
@@ -409,7 +429,7 @@ sub strip_code {
 		$msg =~ s/$pattern//g;
 		return $msg;
 	} else {
-		$_[0] =~ s/$pattern//g;
+		$_[0] =~ s/$pattern//g if defined $_[0];
 	}
 }
 
@@ -469,21 +489,31 @@ sub load {
 		# this must come before the eval or the filename will not be found in
 		# Xchat::register
 		$scripts{$package}{filename} = $file;
-
+		$scripts{$package}{loaded_at} = Time::HiRes::time();
 		{
 			no strict; no warnings;
-			eval "package $package; $source;";
+			$source =~ s/^/{package $package;/;
+
+			# make sure we add the closing } even if the last line is a comment
+			if( $source =~ /^#.*\Z/m ) {
+				$source =~ s/^(?=#.*\Z)/}/m;
+			} else {
+				$source =~ s/\Z/}/;
+			}
+
+			eval $source;
 
 			unless( exists $scripts{$package}{gui_entry} ) {
 				$scripts{$package}{gui_entry} =
 					Xchat::Internal::register(
-						"???", "???", "This script did not call register()", $file
+						"", "unknown", "", $file
 					);
 			}
 		}
 		
 		if( $@ ) {
 			# something went wrong
+			$@ =~ s/\(eval \d+\)/$file/g;
 			Xchat::print( "Error loading '$file':\n$@\n" );
 			# make sure the script list doesn't contain false information
 			unload( $scripts{$package}{filename} );
@@ -562,14 +592,18 @@ sub reload {
 sub reload_all {
 	my $dir = Xchat::get_info( "xchatdirfs" ) || Xchat::get_info( "xchatdir" );
 	my $auto_load_glob = File::Spec->catfile( $dir, "*.pl" );
-	my @scripts = map { $_->{filename} } values %scripts;
+	my @scripts = map { $_->{filename} }
+		sort { $a->{loaded_at} <=> $b->{loaded_at} } values %scripts;
 	push @scripts, File::Glob::bsd_glob( $auto_load_glob );
 
-	my %loaded;
+	my %seen;
+	@scripts = grep { !$seen{ $_ }++ } @scripts;
+
+	unload_all();
 	for my $script ( @scripts ) {
-		next if $loaded{ $script };
-		reload( $script );
-		$loaded{ $script }++;
+		if( !pkg_info( file2pkg( $script ) ) ) {
+			load( $script );
+		}
 	}
 }
 #sub auto_load {
