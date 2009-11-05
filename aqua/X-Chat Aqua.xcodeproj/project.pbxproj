@@ -2376,7 +2376,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "#!/bin/bash\n\n[ -f ~/.bashrc ] && source ~/.bashrc\n\necho \"Generating build_number.h...\";\n\ncd \"$PROJECT_DIR\"\n\"tools/gen_buildnum_h.pl\" \"fe-aqua/build_number.h\" \"BuildNumber.xcconfig\"\n\n# Update the 'date modified' timestamps so Xcode realizes they've changed\ntouch Release.xcconfig\ntouch Debug.xcconfig\n\nrm -f \"$TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/Info.plist\"";
+			shellScript = "#!/bin/bash\n\n[ -f ~/.bashrc ] && source ~/.bashrc\n[ -f ~/.profile ] && source ~/.profile\n\necho \"Generating build_number.h...\";\n\ncd \"$PROJECT_DIR\"\n\"tools/gen_buildnum_h.pl\" \"fe-aqua/build_number.h\" \"BuildNumber.xcconfig\"\n\n# Update the 'date modified' timestamps so Xcode realizes they've changed\ntouch Release.xcconfig\ntouch Debug.xcconfig\n\nrm -f \"$TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/Info.plist\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
