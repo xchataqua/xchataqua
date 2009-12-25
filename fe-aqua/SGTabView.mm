@@ -1137,12 +1137,12 @@ HIThemeSegmentPosition positionTable[2][2] =
 	}
 }
 
-- (SGTabViewItem *) tabViewItemAtIndex:(int) index
+- (SGTabViewItem *) tabViewItemAtIndex:(NSInteger) index
 {
     return (unsigned) index < [tabs count] ? [tabs objectAtIndex:index] : NULL;
 }
 
-- (int) numberOfTabViewItems
+- (NSInteger) numberOfTabViewItems
 {
     return [tabs count];
 }
@@ -1228,7 +1228,7 @@ HIThemeSegmentPosition positionTable[2][2] =
         [self selectTabViewItemAtIndex:n];
 }
 
-- (void) selectTabViewItemAtIndex:(int) index
+- (void) selectTabViewItemAtIndex:(NSInteger) index
 {
     [self selectTabViewItem:[self tabViewItemAtIndex:index]];
 }
@@ -1482,7 +1482,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 //////////////////////////////////////////////////////
 
-- (id)outlineView:(NSOutlineView *)outlineView child:(int)index ofItem:(id)item
+- (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item
 {
 	if (item == NULL)
 		return [groups objectAtIndex:index];
@@ -1500,7 +1500,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 	return is;
 }
 
-- (int)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
+- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
 {
 	if (item == NULL)
 		return [groups count];

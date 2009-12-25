@@ -197,14 +197,14 @@ extern "C" {
 
 ////////////
 
-- (int) numberOfRowsInTableView:(NSTableView *) aTableView
+- (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
     return [my_items count];
 }
 
 - (id) tableView:(NSTableView *) aTableView
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
-    row:(int) rowIndex
+    row:(NSInteger) rowIndex
 {
     one_item *item = [my_items objectAtIndex:rowIndex];
     
@@ -220,7 +220,7 @@ extern "C" {
 - (void) tableView:(NSTableView *) aTableView
     setObjectValue:(id) anObject
     forTableColumn:(NSTableColumn *) aTableColumn 
-               row:(int)rowIndex
+               row:(NSInteger)rowIndex
 {
     one_item *item = [my_items objectAtIndex:rowIndex];
 

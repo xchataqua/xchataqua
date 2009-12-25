@@ -139,14 +139,14 @@ static int do_add_url (const void *key, void *cbd)
     [self->url_list reloadData];
 }
 
-- (int) numberOfRowsInTableView:(NSTableView *) aTableView
+- (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
     return [my_items count];
 }
 
 - (id) tableView:(NSTableView *) aTableView
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
-    row:(int) rowIndex
+    row:(NSInteger) rowIndex
 {
     return [my_items objectAtIndex:rowIndex];
 }

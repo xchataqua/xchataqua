@@ -191,20 +191,20 @@ extern "C" {
 //////////////
 //
 
-- (int) numberOfRowsInTableView:(NSTableView *) aTableView
+- (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
     return [my_items count];
 }
 
 - (id) tableView:(NSTableView *) aTableView
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
-    row:(int) rowIndex
+    row:(NSInteger) rowIndex
 {
 	// subclasses must implement this
     return @"";
 }
 
-- (void)tableView:(NSTableView *)aTableView willDisplayCell:(id)aCell forTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex
+- (void)tableView:(NSTableView *)aTableView willDisplayCell:(id)aCell forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
     DCCItem *item = [my_items objectAtIndex:rowIndex];
 	NSColor *color = [[[AquaChat sharedAquaChat] getPalette] getColor:dccstat[item->dcc->dccstat].color];

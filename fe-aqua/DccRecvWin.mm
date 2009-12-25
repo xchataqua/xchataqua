@@ -204,7 +204,7 @@ extern int dcc_getcpssum;
 
 - (id) tableView:(NSTableView *) aTableView
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
-    row:(int) rowIndex
+    row:(NSInteger) rowIndex
 {
     oneDccRecv *item = [my_items objectAtIndex:rowIndex];
 

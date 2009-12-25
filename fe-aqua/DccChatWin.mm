@@ -133,7 +133,7 @@ extern "C" {
 
 - (id) tableView:(NSTableView *) aTableView
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
-    row:(int) rowIndex
+    row:(NSInteger) rowIndex
 {
     oneDccChat *item = [my_items objectAtIndex:rowIndex];
 

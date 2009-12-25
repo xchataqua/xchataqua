@@ -43,16 +43,16 @@
 - (void) addTabViewItem:(SGTabViewItem *) tabViewItem;
 - (void) removeTabViewItem:(SGTabViewItem *) tabViewItem;
 - (void) selectTabViewItem:(SGTabViewItem *) tabViewItem;
-- (void) selectTabViewItemAtIndex:(int) index;
+- (void) selectTabViewItemAtIndex:(NSInteger) index;
 - (void) selectNextTabViewItem:(id) sender;
 - (void) selectPreviousTabViewItem:(id) sender;
-- (SGTabViewItem *) tabViewItemAtIndex:(int) index;
+- (SGTabViewItem *) tabViewItemAtIndex:(NSInteger) index;
 - (SGTabViewItem *) selectedTabViewItem;
 - (NSArray *) tabViewItems;
 - (id) delegate;
 - (void) setDelegate:(id) anObject;
 - (void) setTabViewType:(NSTabViewType) tabViewType;
-- (int) numberOfTabViewItems;
+- (NSInteger) numberOfTabViewItems;
 - (int) indexOfTabViewItem:(SGTabViewItem *) tabViewItem;
 
 // SGTabView only methods

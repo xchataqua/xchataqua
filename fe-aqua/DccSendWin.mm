@@ -153,7 +153,7 @@ extern int dcc_sendcpssum;
 
 - (id) tableView:(NSTableView *) aTableView
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
-    row:(int) rowIndex
+    row:(NSInteger) rowIndex
 {
     oneDccSend *item = [my_items objectAtIndex:rowIndex];
 
