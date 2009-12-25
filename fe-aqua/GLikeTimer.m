@@ -64,9 +64,8 @@
 
 + (gboolean)removeTimerWithTag:(guint)tag
 {
-	//FIXME: remove next line to eleminate 64bit reconnect bad memory access
-	//	error. is this line really needed?
-	//[(NSTimer *)tag invalidate];
+	//FIXME: 32bit only
+	[(NSTimer *)tag invalidate];
 	return true;
 }
 
