@@ -26,12 +26,12 @@
     [super dealloc];
 }
 
-- (unsigned) count
+- (NSUInteger) count
 {
     return count;
 }
 
-- (id) objectAtIndex:(unsigned) index
+- (id) objectAtIndex:(NSUInteger) index
 {
     return (id) items [index];
 }

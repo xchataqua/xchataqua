@@ -230,7 +230,7 @@ extern char *pntevts[];
 ////////////
 // Data Source
 
-- (int) numberOfRowsInTableView:(NSTableView *) aTableView
+- (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
     if (aTableView == event_list)
 	return [my_items count];
@@ -246,7 +246,7 @@ extern char *pntevts[];
 
 - (id) tableView:(NSTableView *) aTableView
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
-    row:(int) rowIndex
+    row:(NSInteger) rowIndex
 {
     if (aTableView == event_list)
     {
@@ -281,7 +281,7 @@ extern char *pntevts[];
 - (void) tableView:(NSTableView *) aTableView
     setObjectValue:(id) anObject
     forTableColumn:(NSTableColumn *) aTableColumn 
-               row:(int)rowIndex
+               row:(NSInteger)rowIndex
 {
     if (aTableView == event_list)
     {

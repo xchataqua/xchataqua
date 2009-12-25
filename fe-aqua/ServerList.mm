@@ -1015,7 +1015,7 @@ static ServerList *instance;
 	}
 }
 
-- (int) numberOfRowsInTableView:(NSTableView *) aTableView
+- (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
     if (aTableView == net_list)
         return [my_nets count];
@@ -1055,7 +1055,7 @@ static ServerList *instance;
 
 - (id) tableView:(NSTableView *) aTableView
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
-    row:(int) rowIndex
+    row:(NSInteger) rowIndex
 {
 	int col = [[aTableColumn identifier] intValue];
 	
@@ -1120,7 +1120,7 @@ static ServerList *instance;
 - (void) tableView:(NSTableView *) aTableView
     setObjectValue:(id) anObject
     forTableColumn:(NSTableColumn *) aTableColumn 
-               row:(int)rowIndex
+               row:(NSInteger)rowIndex
 {
 	int col = [[aTableColumn identifier] intValue];
 	
