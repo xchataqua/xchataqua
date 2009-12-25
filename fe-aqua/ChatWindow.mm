@@ -1834,14 +1834,14 @@ static NSImage *empty_image;
 /////
 // User table data source methods
 
-- (int) numberOfRowsInTableView:(NSTableView *) aTableView
+- (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
     return [userlist count];
 }
 
 - (id) tableView:(NSTableView *) aTableView
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
-    row:(int) rowIndex
+    row:(NSInteger) rowIndex
 {
     OneUser *u = (OneUser *) [userlist objectAtIndex:rowIndex];
     
@@ -1860,7 +1860,7 @@ static NSImage *empty_image;
 
 - (NSDragOperation) tableView:(NSTableView *) tv
                  validateDrop:(id <NSDraggingInfo>) info
-                  proposedRow:(int) row
+                  proposedRow:(NSInteger) row
         proposedDropOperation:(NSTableViewDropOperation) op
 {
     if (row < 0 || op == NSTableViewDropAbove /* || [tv isHiddenOrHasHiddenAncestor] */)
@@ -1871,7 +1871,7 @@ static NSImage *empty_image;
 
 - (BOOL) tableView:(NSTableView*) tv
         acceptDrop:(id <NSDraggingInfo>) info
-               row:(int) row
+               row:(NSInteger) row
      dropOperation:(NSTableViewDropOperation) op
 {
     NSAttributedString *nick = [[tv dataSource] tableView:tv

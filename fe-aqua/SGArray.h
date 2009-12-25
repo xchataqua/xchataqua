@@ -30,7 +30,7 @@
 
 - (void) addObject:(id) object;
 - (void) removeObject:(id) object;
-- (unsigned) count;
-- (id) objectAtIndex:(unsigned) index;
+- (NSUInteger) count;
+- (id) objectAtIndex:(NSUInteger) index;
 
 @end

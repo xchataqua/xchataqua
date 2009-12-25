@@ -547,7 +547,7 @@ static NSArray *root_items;
 
 /////////////////////
 
-- (id)outlineView:(NSOutlineView *)outlineView child:(int)index ofItem:(id)item
+- (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item
 {
     id xx = item ? [item objectAtIndex:index + 1] : [root_items objectAtIndex:index];
     return xx;
@@ -558,7 +558,7 @@ static NSArray *root_items;
     return item ? [item isKindOfClass:[NSArray class]] ? true : false : true;
 }
 
-- (int)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
+- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
 {
     return item ? [item count] - 1 : [root_items count];
 }
@@ -572,14 +572,14 @@ static NSArray *root_items;
 ////////////
 // Sounds Data Source
 
-- (int) numberOfRowsInTableView:(NSTableView *) aTableView
+- (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
 	return [sound_events count];
 }
 
 - (id) tableView:(NSTableView *) aTableView
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
-    row:(int) rowIndex
+    row:(NSInteger) rowIndex
 {
 	sound_event *item = [sound_events objectAtIndex:rowIndex];
 
@@ -598,7 +598,7 @@ static NSArray *root_items;
 - (void) tableView:(NSTableView *) aTableView
     setObjectValue:(id) anObject
     forTableColumn:(NSTableColumn *) aTableColumn 
-               row:(int)rowIndex
+               row:(NSInteger)rowIndex
 {
 	sound_event *item = [sound_events objectAtIndex:rowIndex];
 
