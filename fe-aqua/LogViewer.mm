@@ -235,7 +235,7 @@ extern "C" {
     if (!set)
         return;
     
-    unsigned row = [set firstIndex];
+    NSInteger row = [set firstIndex];
     while (row != NSNotFound)
     {
         OneLog *log = [my_items objectAtIndex:row];
@@ -307,7 +307,7 @@ extern "C" {
         if (!set)
             return;
         
-        unsigned row = [set firstIndex];
+        NSInteger row = [set firstIndex];
         while (row != NSNotFound)
         {
             OneLog *log = [my_items objectAtIndex:row];
