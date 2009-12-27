@@ -191,6 +191,7 @@
 		2D2EE87210613EF8000FDDED /* libintl.8.0.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2EE87110613EF8000FDDED /* libintl.8.0.2.dylib */; };
 		2D78138A10E77CC700C71AF8 /* perl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F06C10E1FDA5E00359159 /* perl.c */; };
 		2D78138E10E77E4E00C71AF8 /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D78138B10E77D1A00C71AF8 /* libperl.dylib */; };
+		2D78143710E78FBE00C71AF8 /* perl-snowleopard.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */; };
 		2D8DA8F70F8E6B2400DA0BC2 /* xchataqua.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D8DA8F50F8E6B2400DA0BC2 /* xchataqua.strings */; };
 		2DAAE54E10E4ACFC00DBBFD0 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54C10E4ACFC00DBBFD0 /* Growl.framework */; };
 		2DAAE54F10E4ACFC00DBBFD0 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54D10E4ACFC00DBBFD0 /* ShortcutRecorder.framework */; };
@@ -268,7 +269,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 2D78137F10E77C6400C71AF8 /* perl-snowleopard */;
+			remoteGlobalIDString = 2D78137F10E77C6400C71AF8;
 			remoteInfo = "perl-snowleopard";
 		};
 		B0A5F6D10FFAB18C003F5A02 /* PBXContainerItemProxy */ = {
@@ -295,6 +296,7 @@
 			dstSubfolderSpec = 16;
 			files = (
 				0F8F08330E1FE07C00359159 /* tcl.bundle in CopyFiles */,
+				2D78143710E78FBE00C71AF8 /* perl-snowleopard.bundle in CopyFiles */,
 				0F8F06E50E1FDB0300359159 /* perl-leopard.bundle in CopyFiles */,
 				0F2FEF790E1FB1A900DE4D41 /* python-leopard.bundle in CopyFiles */,
 			);
@@ -607,7 +609,7 @@
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		2D2EE86F10613ED5000FDDED /* libglib-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libglib-2.0.0.dylib"; path = "contrib/lib/libglib-2.0.0.dylib"; sourceTree = "<group>"; };
+		2D2EE86F10613ED5000FDDED /* libglib-2.0.0.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; name = "libglib-2.0.0.dylib"; path = "contrib/lib/libglib-2.0.0.dylib"; sourceTree = "<group>"; };
 		2D2EE87110613EF8000FDDED /* libintl.8.0.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libintl.8.0.2.dylib; path = contrib/lib/libintl.8.0.2.dylib; sourceTree = "<group>"; };
 		2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-snowleopard.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D78138110E77C6500C71AF8 /* perl-snowleopard-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "perl-snowleopard-Info.plist"; sourceTree = "<group>"; };
@@ -1604,6 +1606,7 @@
 		0F2FEF860E1FB5BF00DE4D41 /* python */ = {
 			isa = PBXGroup;
 			children = (
+				0F2FEF2C0E1FAB1500DE4D41 /* python-leopard-Info.plist */,
 				0FC8F3E80DEEDA0C00504F31 /* python.c */,
 			);
 			name = python;
@@ -1886,6 +1889,8 @@
 		0F8F06BE0E1FD99400359159 /* perl */ = {
 			isa = PBXGroup;
 			children = (
+				0F8F06D80E1FDA8500359159 /* perl-leopard-Info.plist */,
+				2D78138110E77C6500C71AF8 /* perl-snowleopard-Info.plist */,
 				0F8F07DA0E1FDEFF00359159 /* DynaLoader.a */,
 				0F8F06C10E1FDA5E00359159 /* perl.c */,
 				0F8F07CE0E1FDDBF00359159 /* libperl.dylib */,
@@ -1898,6 +1903,7 @@
 		0F8F08260E1FE04C00359159 /* tcl */ = {
 			isa = PBXGroup;
 			children = (
+				0F8F08120E1FE00800359159 /* tcl-Info.plist */,
 				0F8F08270E1FE06800359159 /* printevents.h */,
 				0F8F08280E1FE06800359159 /* tclplugin.c */,
 				0F8F08290E1FE06800359159 /* tclplugin.h */,
@@ -1925,6 +1931,7 @@
 				0FE5E0310F45595A000E0F91 /* SGPalette.m */,
 				0FE5E0320F45595A000E0F91 /* SGPalette.xib */,
 				0FE5E0330F45595A000E0F91 /* SGPaletteIntegration.m */,
+				0FE5E01E0F45576B000E0F91 /* SGPalette-Info.plist */,
 			);
 			name = Palette;
 			sourceTree = "<group>";
@@ -2023,14 +2030,9 @@
 				B07C7AD70F4398FC00E11B58 /* Release.xcconfig */,
 				0F3062530D84958E0084F2CA /* xchat.strings */,
 				2D8DA8F50F8E6B2400DA0BC2 /* xchataqua.strings */,
-				0F2FEF2C0E1FAB1500DE4D41 /* python-leopard-Info.plist */,
-				0F8F06D80E1FDA8500359159 /* perl-leopard-Info.plist */,
-				0F8F08120E1FE00800359159 /* tcl-Info.plist */,
 				0FDE6C820E2704F00010E0D9 /* TBD.rtf */,
-				0FE5E01E0F45576B000E0F91 /* SGPalette-Info.plist */,
 				0F8EA3660CFAA49B001AE9AE /* Info.plist */,
 				2D8DACD00F8EFF8E00DA0BC2 /* Info devel.plist */,
-				2D78138110E77C6500C71AF8 /* perl-snowleopard-Info.plist */,
 			);
 			name = "X-Chat Aqua";
 			sourceTree = "<group>";
