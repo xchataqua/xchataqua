@@ -54,7 +54,7 @@
 	XCA, you'll probably want to set POINTERS_ARE_TAGS to 0.
 */
 
-#define POINTERS_ARE_TAGS 1
+#define POINTERS_ARE_TAGS 0
 #if POINTERS_ARE_TAGS
 
 + (guint)addTaggedTimerWithMSInterval:(guint)ms callback:(GSourceFunc)function userData:(gpointer)data
