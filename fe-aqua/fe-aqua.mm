@@ -165,7 +165,7 @@ static int input_seq = 1;
 
 /////////////////////////////////////////////////////////////////////////////
 
-#define USE_GLIKE_TIMER 1
+#define USE_GLIKE_TIMER 0
 #if USE_GLIKE_TIMER
 #import "GLikeTimer.h"
 #else
@@ -846,7 +846,7 @@ fe_main (void)
 	putenv("CFZombieLevel=3");
 	
 #endif
-
+	
     [[AquaChat sharedAquaChat] post_init];
 	
     [initPool release];

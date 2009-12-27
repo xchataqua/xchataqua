@@ -54,8 +54,8 @@
 	XCA, you'll probably want to set POINTERS_ARE_TAGS to 0.
 */
 
-#define POINTERS_ARE_TAGS 0
-#if POINTERS_ARE_TAGS
+#define GLIKETIMER_32BIT_ONLY 0
+#if GLIKETIMER_32BIT_ONLY
 
 + (guint)addTaggedTimerWithMSInterval:(guint)ms callback:(GSourceFunc)function userData:(gpointer)data
 {
@@ -78,11 +78,6 @@
 #else
 
 NSMutableDictionary *gTimers;
-
-+ (void)initialize
-{
-	gTimers = [NSMutableDictionary dictionaryWithCapacity:5];
-}
 
 + (guint)addTaggedTimerWithMSInterval:(guint)ms callback:(GSourceFunc)function userData:(gpointer)data
 {
@@ -110,5 +105,13 @@ NSMutableDictionary *gTimers;
 }												// with double-removes, but we need to save the tag.
 
 #endif
+
++ (void)initialize
+{
+#if GLIKETIMER_32BIT_ONLY
+#else
+	gTimers = [NSMutableDictionary dictionaryWithCapacity:5];
+#endif
+}
 
 @end
