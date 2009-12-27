@@ -441,9 +441,9 @@ my_plugin_init (xchat_plugin *plugin_handle, char **plugin_name,
 	/* we need to save this for use with any xchat_* functions */
 	my_plugin_handle = plugin_handle;
 
-	*plugin_name = "X-Chat Aqua Internal Plugin";
-	*plugin_desc = "Does stuff";
-	*plugin_version = "";
+	*plugin_name = (char*)"X-Chat Aqua Internal Plugin";
+	*plugin_desc = (char*)"Does stuff";
+	*plugin_version = (char*)"";
 
 	xchat_hook_command (plugin_handle, "APPLESCRIPT", XCHAT_PRI_NORM, 
 		applescript_cb, APPLESCRIPT_HELP, plugin_handle);

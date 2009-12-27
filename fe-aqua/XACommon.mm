@@ -102,9 +102,9 @@ nick_command_parse (session *sess, const char *cmd, const char *nick, const char
         len = strlen (cmd) + strlen (nick) + strlen (allnick) + 512;
         buf = (char *) malloc (len);
 
-        auto_insert (buf, len, (unsigned char *) cmd, 0, 0, (char *)allnick, sess->channel, "",
-					 server_get_network (sess->server, TRUE), (char*)host,
-                     sess->server->nick, (char *)nick);
+        auto_insert (buf, len, (unsigned char *) cmd, 0, 0, (const char *)allnick, sess->channel, "",
+					 server_get_network (sess->server, TRUE), (const char*)host,
+                     sess->server->nick, (const char *)nick);
 
         nick_command (sess, buf);
 

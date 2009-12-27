@@ -760,7 +760,7 @@ servlist_net_find (char *name, int *pos, int (*cmpfunc) (const char *, const cha
 }
 
 ircserver *
-servlist_server_add (ircnet *net, char *name)
+servlist_server_add (ircnet *net, const char *name)
 {
 	ircserver *serv;
 
@@ -863,7 +863,7 @@ servlist_net_remove (ircnet *net)
 }
 
 ircnet *
-servlist_net_add (char *name, char *comment, int prepend)
+servlist_net_add (const char *name, const char *comment, int prepend)
 {
 	ircnet *net;
 

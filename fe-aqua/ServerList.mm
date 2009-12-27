@@ -216,7 +216,7 @@ static NSString *charsets [] =
 	//
 	//		<channel>{,<channel>} [<key>{,<key>}]
 	
-	SGTokenizer *tok = [[SGTokenizer alloc] initWithString:[NSString stringWithCString:autojoin]];
+	SGTokenizer *tok = [[SGTokenizer alloc] initWithString:[NSString stringWithCString:autojoin encoding:NSASCIIStringEncoding]];
 
 	NSString *chans = [tok getNextToken:" \t\n"];
 	NSString *keys = [tok getNextToken:" \t\n"];
@@ -249,7 +249,7 @@ static NSString *charsets [] =
 	if (!command || command[0] == 0)
 		return;
 	
-	SGTokenizer *tok = [[SGTokenizer alloc] initWithString:[NSString stringWithCString:command]];
+	SGTokenizer *tok = [[SGTokenizer alloc] initWithString:[NSString stringWithCString:command encoding:NSASCIIStringEncoding]];
 	
 	for (NSString *s; s = [tok getNextToken:"\n"]; )
 		[connect_commands addObject:s];

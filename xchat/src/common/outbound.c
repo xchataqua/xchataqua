@@ -3735,8 +3735,8 @@ help (session *sess, char *tbuf, char *helpcmd, int quiet)
 
 int
 auto_insert (char *dest, int destlen, unsigned char *src, char *word[],
-				 char *word_eol[], char *a, char *c, char *d, char *e, char *h,
-				 char *n, char *s)
+				 char *word_eol[], const char *a, const char *c, const char *d, const char *e, const char *h,
+				 const char *n, const char *s)
 {
 	int num;
 	char buf[32];
@@ -4196,7 +4196,7 @@ xit:
 /* handle a command, without the '/' prefix */
 
 int
-handle_command (session *sess, char *cmd, int check_spch)
+handle_command (session *sess, const char *cmd, int check_spch)
 {
 	struct popup *pop;
 	int user_cmd = FALSE;

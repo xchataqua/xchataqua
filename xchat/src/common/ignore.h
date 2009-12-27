@@ -25,7 +25,7 @@ struct ignore
 };
 
 struct ignore *ignore_exists (char *mask);
-int ignore_add (char *mask, int type);
+int ignore_add (const char *mask, int type);
 void ignore_showlist (session *sess);
 int ignore_del (char *mask, struct ignore *ig);
 int ignore_check (char *mask, int type);
