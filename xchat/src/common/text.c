@@ -821,7 +821,7 @@ text_validate (char **text, int *len)
 }
 
 void
-PrintText (session *sess, char *text)
+PrintText (session *sess, const char *text)
 {
 	char *conv;
 
