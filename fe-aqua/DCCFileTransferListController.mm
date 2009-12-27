@@ -99,7 +99,7 @@ extern "C" {
 	[pb setString:copyString forType:NSStringPboardType];
 }
 
-- (BOOL) validateMenuItem:(id <NSMenuItem>)menuItem
+- (BOOL) validateMenuItem:(NSMenuItem*)menuItem
 {
 	if ([menuItem action] == @selector(copy:)) {
 		return ([item_list numberOfSelectedRows] > 0);
