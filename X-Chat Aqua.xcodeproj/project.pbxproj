@@ -18,6 +18,7 @@
 				0F2FEF7E0E1FB1BD00DE4D41 /* PBXTargetDependency */,
 				0F8F08350E1FE08700359159 /* PBXTargetDependency */,
 				2D2EE90810614809000FDDED /* PBXTargetDependency */,
+				2D7813DD10E783C100C71AF8 /* PBXTargetDependency */,
 			);
 			name = Release;
 			productName = Release;
@@ -188,6 +189,8 @@
 		0FE5E0980F480B39000E0F91 /* SGBoxView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6610CFB300B001AE9AE /* SGBoxView.mm */; };
 		2D2EE87010613ED5000FDDED /* libglib-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2EE86F10613ED5000FDDED /* libglib-2.0.0.dylib */; };
 		2D2EE87210613EF8000FDDED /* libintl.8.0.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2EE87110613EF8000FDDED /* libintl.8.0.2.dylib */; };
+		2D78138A10E77CC700C71AF8 /* perl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F06C10E1FDA5E00359159 /* perl.c */; };
+		2D78138E10E77E4E00C71AF8 /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D78138B10E77D1A00C71AF8 /* libperl.dylib */; };
 		2D8DA8F70F8E6B2400DA0BC2 /* xchataqua.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D8DA8F50F8E6B2400DA0BC2 /* xchataqua.strings */; };
 		2DAAE54E10E4ACFC00DBBFD0 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54C10E4ACFC00DBBFD0 /* Growl.framework */; };
 		2DAAE54F10E4ACFC00DBBFD0 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54D10E4ACFC00DBBFD0 /* ShortcutRecorder.framework */; };
@@ -260,6 +263,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0F8F06D60E1FDA8500359159;
 			remoteInfo = "perl-leopard";
+		};
+		2D7813DC10E783C100C71AF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D78137F10E77C6400C71AF8 /* perl-snowleopard */;
+			remoteInfo = "perl-snowleopard";
 		};
 		B0A5F6D10FFAB18C003F5A02 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -557,7 +567,7 @@
 		0F8F06C20E1FDA5E00359159 /* xchat.pm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xchat.pm.h; path = plugins/perl/xchat.pm.h; sourceTree = "<group>"; };
 		0F8F06D70E1FDA8500359159 /* perl-leopard.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-leopard.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F8F06D80E1FDA8500359159 /* perl-leopard-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "perl-leopard-Info.plist"; sourceTree = "<group>"; };
-		0F8F07CE0E1FDDBF00359159 /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = "/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib"; sourceTree = "<absolute>"; };
+		0F8F07CE0E1FDDBF00359159 /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = /System/Library/Perl/lib/5.8/libperl.dylib; sourceTree = "<absolute>"; };
 		0F8F07DA0E1FDEFF00359159 /* DynaLoader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = DynaLoader.a; path = "/System/Library/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a"; sourceTree = "<absolute>"; };
 		0F8F08110E1FE00800359159 /* tcl.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tcl.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F8F08120E1FE00800359159 /* tcl-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "tcl-Info.plist"; sourceTree = "<group>"; };
@@ -599,6 +609,9 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		2D2EE86F10613ED5000FDDED /* libglib-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libglib-2.0.0.dylib"; path = "contrib/lib/libglib-2.0.0.dylib"; sourceTree = "<group>"; };
 		2D2EE87110613EF8000FDDED /* libintl.8.0.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libintl.8.0.2.dylib; path = contrib/lib/libintl.8.0.2.dylib; sourceTree = "<group>"; };
+		2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-snowleopard.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D78138110E77C6500C71AF8 /* perl-snowleopard-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "perl-snowleopard-Info.plist"; sourceTree = "<group>"; };
+		2D78138B10E77D1A00C71AF8 /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = /System/Library/Perl/lib/5.10/libperl.dylib; sourceTree = "<absolute>"; };
 		2D8DA8F60F8E6B2400DA0BC2 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = localization/en.lproj/xchataqua.strings; sourceTree = "<group>"; };
 		2D8DA8F80F8E6B3E00DA0BC2 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = localization/ko.lproj/xchataqua.strings; sourceTree = "<group>"; };
 		2D8DACD00F8EFF8E00DA0BC2 /* Info devel.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info devel.plist"; sourceTree = "<group>"; };
@@ -1551,6 +1564,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2D78137E10E77C6400C71AF8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D78138E10E77E4E00C71AF8 /* libperl.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D11072E0486CEB800E47090 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1708,27 +1729,32 @@
 		0F8EA3CD0CFAF7AF001AE9AE /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				0F8EA3CE0CFAF7E2001AE9AE /* fe-aqua.mm */,
+				0F8EA6C10CFB347B001AE9AE /* identd.cc */,
 				2DC4307D105F608B00782AAD /* xalocalization.h */,
 				2DC4307E105F608B00782AAD /* xalocalization.m */,
 				0F30611F0D83C5830084F2CA /* AquaChat.h */,
+				0F8EA5F80CFB2500001AE9AE /* AquaChat.mm */,
+				0F8EA6B40CFB33AF001AE9AE /* AutoAwayController.h */,
+				0F8EA6B50CFB33AF001AE9AE /* AutoAwayController.mm */,
+				0F8EA6AB0CFB3398001AE9AE /* ChatWindow.h */,
+				0F8EA6AC0CFB3398001AE9AE /* ChatWindow.mm */,
+				0F8EA6B70CFB33C9001AE9AE /* ColorPalette.h */,
+				0F8EA6B80CFB33C9001AE9AE /* ColorPalette.mm */,
+				0F8EA6AD0CFB3398001AE9AE /* CLLevelIndicator.h */,
+				0F8EA6AE0CFB3398001AE9AE /* CLLevelIndicator.m */,
+				0F8EA6AF0CFB3398001AE9AE /* CLLevelIndicatorCell.h */,
+				0F8EA6B00CFB3398001AE9AE /* CLLevelIndicatorCell.m */,
+				0F8EA6BA0CFB33E4001AE9AE /* DialogButtons.h */,
+				0F8EA6BB0CFB33E4001AE9AE /* DialogButtons.mm */,
 				0F8EA6BD0CFB347B001AE9AE /* EncodedString.h */,
 				0F8EA6BE0CFB347B001AE9AE /* EncodedString.mm */,
 				0F8EA6BF0CFB347B001AE9AE /* GLikeTimer.h */,
 				0F8EA6C00CFB347B001AE9AE /* GLikeTimer.m */,
-				0F8EA6C10CFB347B001AE9AE /* identd.cc */,
 				0F8EA6C30CFB347B001AE9AE /* MenuMaker.h */,
 				0F8EA6C40CFB347B001AE9AE /* MenuMaker.mm */,
 				0F8EA6C50CFB347B001AE9AE /* mIRCString.h */,
 				0F8EA6C60CFB347B001AE9AE /* mIRCString.mm */,
-				0F8EA6C70CFB347B001AE9AE /* XAChatText.h */,
-				0F8EA6C80CFB347B001AE9AE /* XAChatText.mm */,
-				0F8EA6C90CFB347B001AE9AE /* XACommon.h */,
-				0F8EA6CA0CFB347B001AE9AE /* XACommon.mm */,
-				0F8EA6CB0CFB347B001AE9AE /* XADefaults.h */,
-				0F8EA6CC0CFB347B001AE9AE /* XAPrefs.h */,
-				0F8EA6CD0CFB347B001AE9AE /* XATabView.h */,
-				0F8EA6CE0CFB347B001AE9AE /* XATabView.mm */,
-				0F8EA6CF0CFB347B001AE9AE /* XAVars.h */,
 				0F8EA6D00CFB347B001AE9AE /* NSTimerAdditions.h */,
 				0F8EA6D10CFB347B001AE9AE /* NSTimerAdditions.m */,
 				0F8EA6D20CFB347B001AE9AE /* PrefsController.h */,
@@ -1751,20 +1777,15 @@
 				0F8EA6E30CFB347B001AE9AE /* UserlistPopup.mm */,
 				0F8EA6E40CFB347B001AE9AE /* UserMenus.h */,
 				0F8EA6E50CFB347B001AE9AE /* UserMenus.mm */,
-				0F8EA6BA0CFB33E4001AE9AE /* DialogButtons.h */,
-				0F8EA6BB0CFB33E4001AE9AE /* DialogButtons.mm */,
-				0F8EA6B70CFB33C9001AE9AE /* ColorPalette.h */,
-				0F8EA6B80CFB33C9001AE9AE /* ColorPalette.mm */,
-				0F8EA6B40CFB33AF001AE9AE /* AutoAwayController.h */,
-				0F8EA6B50CFB33AF001AE9AE /* AutoAwayController.mm */,
-				0F8EA6AB0CFB3398001AE9AE /* ChatWindow.h */,
-				0F8EA6AC0CFB3398001AE9AE /* ChatWindow.mm */,
-				0F8EA6AD0CFB3398001AE9AE /* CLLevelIndicator.h */,
-				0F8EA6AE0CFB3398001AE9AE /* CLLevelIndicator.m */,
-				0F8EA6AF0CFB3398001AE9AE /* CLLevelIndicatorCell.h */,
-				0F8EA6B00CFB3398001AE9AE /* CLLevelIndicatorCell.m */,
-				0F8EA5F80CFB2500001AE9AE /* AquaChat.mm */,
-				0F8EA3CE0CFAF7E2001AE9AE /* fe-aqua.mm */,
+				0F8EA6C70CFB347B001AE9AE /* XAChatText.h */,
+				0F8EA6C80CFB347B001AE9AE /* XAChatText.mm */,
+				0F8EA6C90CFB347B001AE9AE /* XACommon.h */,
+				0F8EA6CA0CFB347B001AE9AE /* XACommon.mm */,
+				0F8EA6CB0CFB347B001AE9AE /* XADefaults.h */,
+				0F8EA6CC0CFB347B001AE9AE /* XAPrefs.h */,
+				0F8EA6CD0CFB347B001AE9AE /* XATabView.h */,
+				0F8EA6CE0CFB347B001AE9AE /* XATabView.mm */,
+				0F8EA6CF0CFB347B001AE9AE /* XAVars.h */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -1869,6 +1890,7 @@
 				0F8F06C10E1FDA5E00359159 /* perl.c */,
 				0F8F07CE0E1FDDBF00359159 /* libperl.dylib */,
 				0F8F06C20E1FDA5E00359159 /* xchat.pm.h */,
+				2D78138B10E77D1A00C71AF8 /* libperl.dylib */,
 			);
 			name = perl;
 			sourceTree = "<group>";
@@ -1981,6 +2003,7 @@
 				0F8F06D70E1FDA8500359159 /* perl-leopard.bundle */,
 				0F8F08110E1FE00800359159 /* tcl.bundle */,
 				0FE5E01D0F45576B000E0F91 /* SGPalette.ibplugin */,
+				2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2007,6 +2030,7 @@
 				0FE5E01E0F45576B000E0F91 /* SGPalette-Info.plist */,
 				0F8EA3660CFAA49B001AE9AE /* Info.plist */,
 				2D8DACD00F8EFF8E00DA0BC2 /* Info devel.plist */,
+				2D78138110E77C6500C71AF8 /* perl-snowleopard-Info.plist */,
 			);
 			name = "X-Chat Aqua";
 			sourceTree = "<group>";
@@ -2149,6 +2173,23 @@
 			productReference = 0FE5E01D0F45576B000E0F91 /* SGPalette.ibplugin */;
 			productType = "com.apple.product-type.bundle";
 		};
+		2D78137F10E77C6400C71AF8 /* perl-snowleopard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D78138410E77C6600C71AF8 /* Build configuration list for PBXNativeTarget "perl-snowleopard" */;
+			buildPhases = (
+				2D78137C10E77C6400C71AF8 /* Resources */,
+				2D78137D10E77C6400C71AF8 /* Sources */,
+				2D78137E10E77C6400C71AF8 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "perl-snowleopard";
+			productName = "perl-snowleopard";
+			productReference = 2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 		8D1107260486CEB800E47090 /* X-Chat Aqua */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "X-Chat Aqua" */;
@@ -2237,6 +2278,7 @@
 				0F7065690E1FA5C100FEA21C /* Release */,
 				0F2FEF2A0E1FAB1500DE4D41 /* python-leopard */,
 				0F8F06D60E1FDA8500359159 /* perl-leopard */,
+				2D78137F10E77C6400C71AF8 /* perl-snowleopard */,
 				0F8F08100E1FE00800359159 /* tcl */,
 				0FE5E01C0F45576B000E0F91 /* SGPalette */,
 				B0A5F6CE0FFAB16E003F5A02 /* GenerateBuildNumber */,
@@ -2278,6 +2320,13 @@
 				0FE5E03E0F45595A000E0F91 /* SGVBoxView.classdescription in Resources */,
 				0FE5E03F0F45595A000E0F91 /* SGVBoxViewInspector.xib in Resources */,
 				0FE5E0400F45595A000E0F91 /* SGView.classdescription in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D78137C10E77C6400C71AF8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2445,6 +2494,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2D78137D10E77C6400C71AF8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D78138A10E77CC700C71AF8 /* perl.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D11072C0486CEB800E47090 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2548,6 +2605,11 @@
 			isa = PBXTargetDependency;
 			target = 0F8F06D60E1FDA8500359159 /* perl-leopard */;
 			targetProxy = 2D2EE90710614809000FDDED /* PBXContainerItemProxy */;
+		};
+		2D7813DD10E783C100C71AF8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D78137F10E77C6400C71AF8 /* perl-snowleopard */;
+			targetProxy = 2D7813DC10E783C100C71AF8 /* PBXContainerItemProxy */;
 		};
 		B0A5F6D20FFAB18C003F5A02 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3658,6 +3720,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "fe-aqua";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -3666,10 +3729,9 @@
 				GCC_PREFIX_HEADER = "";
 				HEADER_SEARCH_PATHS = (
 					/System/Library/Frameworks/Python.framework/Versions/Current/Headers,
-					"fe-aqua/Growl.framework/Versions/A/Headers",
-					"fe-aqua/ShortcutRecorder/ShortcutRecorder/Source",
 					"fe-aqua/",
 					.,
+					contrib/include,
 				);
 				INFOPLIST_FILE = "python-leopard-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
@@ -3689,14 +3751,13 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "fe-aqua";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				HEADER_SEARCH_PATHS = (
 					/System/Library/Frameworks/Python.framework/Versions/Current/Headers,
-					"fe-aqua/Growl.framework/Versions/A/Headers",
-					"fe-aqua/ShortcutRecorder/ShortcutRecorder/Source",
 					"fe-aqua/",
 					.,
 					contrib/include,
@@ -3757,8 +3818,8 @@
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SYSTEM_LIBRARY_DIR)/Perl/5.8.8/darwin-thread-multi-2level/CORE\"",
-					"\"$(SYSTEM_LIBRARY_DIR)/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader\"",
+					"\"$(SYSTEM_LIBRARY_DIR)/Perl/lib/5.8\"",
+					"\"$(SYSTEM_LIBRARY_DIR)/Perl/lib/5.8\"",
 				);
 				OTHER_LDFLAGS = (
 					"-undefined",
@@ -3791,8 +3852,8 @@
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SYSTEM_LIBRARY_DIR)/Perl/5.8.8/darwin-thread-multi-2level/CORE\"",
-					"\"$(SYSTEM_LIBRARY_DIR)/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader\"",
+					"\"$(SYSTEM_LIBRARY_DIR)/Perl/lib/5.8\"",
+					"\"$(SYSTEM_LIBRARY_DIR)/Perl/lib/5.8\"",
 				);
 				OTHER_LDFLAGS = (
 					"-undefined",
@@ -3809,6 +3870,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -3824,7 +3886,6 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = tcl;
-				SDKROOT = macosx10.4;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -3833,6 +3894,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -3847,7 +3909,6 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = tcl;
-				SDKROOT = macosx10.5;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -3946,6 +4007,72 @@
 			};
 			name = Release;
 		};
+		2D78138210E77C6600C71AF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				HEADER_SEARCH_PATHS = (
+					"/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE",
+					"fe-aqua",
+					.,
+					contrib/include,
+				);
+				INFOPLIST_FILE = "perl-snowleopard-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_LIBRARY_DIR)/Perl/lib/5.10\"",
+				);
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "perl-snowleopard";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		2D78138310E77C6600C71AF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				HEADER_SEARCH_PATHS = (
+					"/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE",
+					"fe-aqua",
+					.,
+					contrib/include,
+				);
+				INFOPLIST_FILE = "perl-snowleopard-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_LIBRARY_DIR)/Perl/lib/5.10\"",
+				);
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "perl-snowleopard";
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		B0A5F6CF0FFAB16F003F5A02 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3973,10 +4100,8 @@
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Sparkle\"",
 					"\"$(SRCROOT)/fe-aqua\"",
-					"\"$(SRCROOT)/Frameworks\"",
-					"\"$(SRCROOT)/Frameworks/Sparkle\"",
+					"\"$(SRCROOT)/Frameworks\"/**",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -3985,10 +4110,7 @@
 				GCC_PREFIX_HEADER = "X-Chat Aqua_Prefix.pch";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					libs,
-					"\"$(SRCROOT)/contrib/lib\"",
-				);
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/contrib/lib\"";
 				PRODUCT_NAME = "X-Chat Aqua";
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
 				WRAPPER_EXTENSION = app;
@@ -4001,19 +4123,14 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Sparkle\"",
 					"\"$(SRCROOT)/fe-aqua\"",
-					"\"$(SRCROOT)/Frameworks\"",
-					"\"$(SRCROOT)/Frameworks/Sparkle\"",
+					"\"$(SRCROOT)/Frameworks\"/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "X-Chat Aqua_Prefix.pch";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = (
-					libs,
-					"\"$(SRCROOT)/contrib/lib\"",
-				);
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/contrib/lib\"";
 				PRODUCT_NAME = "X-Chat Aqua";
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
 				WRAPPER_EXTENSION = app;
@@ -4123,6 +4240,15 @@
 			buildConfigurations = (
 				0FE5E01F0F45576C000E0F91 /* Debug */,
 				0FE5E0200F45576C000E0F91 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D78138410E77C6600C71AF8 /* Build configuration list for PBXNativeTarget "perl-snowleopard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D78138210E77C6600C71AF8 /* Debug */,
+				2D78138310E77C6600C71AF8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
