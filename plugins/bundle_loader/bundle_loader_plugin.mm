@@ -113,9 +113,9 @@ int bundle_loader_init (xchat_plugin *plugin_handle, char **plugin_name,
 	/* we need to save this for use with any xchat_* functions */
 	ph = plugin_handle;
     
-	*plugin_name = "Bundle loader";
-	*plugin_desc = "X-Chat Aqua Bundle loader";
-	*plugin_version = "";
+	*plugin_name = (char*)"Bundle loader";
+	*plugin_desc = (char*)"X-Chat Aqua Bundle loader";
+	*plugin_version = (char*)"";
     
 	xchat_hook_command (ph, "LOAD", XCHAT_PRI_NORM, bundle_loader_load, 0, 0);
     

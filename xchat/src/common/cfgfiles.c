@@ -101,7 +101,7 @@ list_load_from_data (GSList ** list, char *ibuf, int size)
 }
 
 void
-list_loadconf (char *file, GSList ** list, char *defaultconf)
+list_loadconf (const char *file, GSList ** list, const char *defaultconf)
 {
 	char filebuf[256];
 	char *ibuf;
