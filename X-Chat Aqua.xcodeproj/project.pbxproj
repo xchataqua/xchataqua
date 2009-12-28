@@ -192,6 +192,7 @@
 		2D78138A10E77CC700C71AF8 /* perl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F06C10E1FDA5E00359159 /* perl.c */; };
 		2D78138E10E77E4E00C71AF8 /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D78138B10E77D1A00C71AF8 /* libperl.dylib */; };
 		2D78143710E78FBE00C71AF8 /* perl-snowleopard.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */; };
+		2D7817CA10E872D200C71AF8 /* fe-aqua_utility.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D7817C910E872D200C71AF8 /* fe-aqua_utility.mm */; };
 		2D8DA8F70F8E6B2400DA0BC2 /* xchataqua.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D8DA8F50F8E6B2400DA0BC2 /* xchataqua.strings */; };
 		2DAAE54E10E4ACFC00DBBFD0 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54C10E4ACFC00DBBFD0 /* Growl.framework */; };
 		2DAAE54F10E4ACFC00DBBFD0 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54D10E4ACFC00DBBFD0 /* ShortcutRecorder.framework */; };
@@ -614,6 +615,8 @@
 		2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-snowleopard.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D78138110E77C6500C71AF8 /* perl-snowleopard-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "perl-snowleopard-Info.plist"; sourceTree = "<group>"; };
 		2D78138B10E77D1A00C71AF8 /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = /System/Library/Perl/lib/5.10/libperl.dylib; sourceTree = "<absolute>"; };
+		2D7817C810E872D200C71AF8 /* fe-aqua_utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "fe-aqua_utility.h"; path = "fe-aqua/fe-aqua_utility.h"; sourceTree = "<group>"; };
+		2D7817C910E872D200C71AF8 /* fe-aqua_utility.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "fe-aqua_utility.mm"; path = "fe-aqua/fe-aqua_utility.mm"; sourceTree = "<group>"; };
 		2D8DA8F60F8E6B2400DA0BC2 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = localization/en.lproj/xchataqua.strings; sourceTree = "<group>"; };
 		2D8DA8F80F8E6B3E00DA0BC2 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = localization/ko.lproj/xchataqua.strings; sourceTree = "<group>"; };
 		2D8DACD00F8EFF8E00DA0BC2 /* Info devel.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info devel.plist"; sourceTree = "<group>"; };
@@ -1733,6 +1736,8 @@
 			isa = PBXGroup;
 			children = (
 				0F8EA3CE0CFAF7E2001AE9AE /* fe-aqua.mm */,
+				2D7817C810E872D200C71AF8 /* fe-aqua_utility.h */,
+				2D7817C910E872D200C71AF8 /* fe-aqua_utility.mm */,
 				0F8EA6C10CFB347B001AE9AE /* identd.cc */,
 				2DC4307D105F608B00782AAD /* xalocalization.h */,
 				2DC4307E105F608B00782AAD /* xalocalization.m */,
@@ -2577,6 +2582,7 @@
 				0F2FEF850E1FB5AE00DE4D41 /* bundle_loader_plugin.mm in Sources */,
 				0F2FEFBD0E1FC8E900DE4D41 /* SystemVersion.m in Sources */,
 				2DC4307F105F608B00782AAD /* xalocalization.m in Sources */,
+				2D7817CA10E872D200C71AF8 /* fe-aqua_utility.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
