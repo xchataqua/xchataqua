@@ -3,7 +3,8 @@
 
 #include "config.nls.h"
 
-#ifdef ENABLE_NLS
+#define ENABLE_NLS 1
+#if ENABLE_NLS
 /* Gettext package name */
 #  define GETTEXT_PACKAGE "xchat"
 #  define GLIB_LOCALE_DIR "/usr/local/share/locale"
