@@ -17,8 +17,7 @@
 
 
 #import <Cocoa/Cocoa.h>
-
-@class SRRecorderCell;
+#import <ShortcutRecorder/ShortcutRecorder.h>
 
 enum
 {
