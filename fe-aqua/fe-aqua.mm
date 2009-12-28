@@ -37,7 +37,6 @@ extern "C" {
 #include "../common/plugin.h"
 #include "../common/xchat-plugin.h"
 #include "../common/cfgfiles.h"
-#include "../common/fe.h"
 #include "../common/text.h"
 #include "../common/servlist.h"
 #include "../common/server.h"
@@ -45,12 +44,12 @@ extern "C" {
 #undef TYPE_BOOL
 }
 
+#import "fe-aqua_utility.h"
 #import "aquachat.h"
 #import "ChatWindow.h"
 #import "ChannelListWin.h"
 #import "BanListWin.h"
 #import "RawLogWin.h"
-#import "SG.h"
 #import "MenuMaker.h"
 
 #include "plugins/bundle_loader/bundle_loader_plugin.h"
@@ -58,242 +57,6 @@ extern "C" {
 static NSAutoreleasePool *initPool;
 
 extern struct text_event te[];
-
-/////////////////////////////////////////////////////////////////////////////
-
-typedef int (*socket_callback) (void *source, int condition, void *user_data);
-
-static std::list<id> input_list;
-static int input_seq = 1;
-
-@interface InputThing : NSObject
-{
-    SGFileDescriptor *rf;
-    SGFileDescriptor *wf;
-    SGFileDescriptor *ef;
-    
-    socket_callback  func;
-    void	     *data;
-    
-    int		     tag;
-}
-
-+ (id) socketFromFD:(int) sok 
-              flags:(int) the_flags 
-               func:(socket_callback) the_func
-               data:(void *) the_data;
-
-+ (id)findTagged:(int)atag;
-
-- (void)disable;
-- (int)getTag;
-
-@end
-
-@implementation InputThing
-
-+ (id) socketFromFD:(int) sok 
-              flags:(int) the_flags
-               func:(socket_callback) the_func
-               data:(void *) the_data
-{
-    InputThing *thing = [[InputThing alloc] init];
-    
-    thing->func = the_func;
-    thing->data = the_data;
-    thing->rf = NULL;
-    thing->wf = NULL;
-    thing->ef = NULL;
-    thing->tag = input_seq ++;
-    
-    if (the_flags & FIA_READ)
-        thing->rf = [[SGFileDescriptor alloc] initWithFd:sok mode:SGFDRead
-                        target:thing selector:@selector (doit:) withObject:NULL];
-    if (the_flags & FIA_WRITE)
-        thing->wf = [[SGFileDescriptor alloc] initWithFd:sok mode:SGFDWrite
-                        target:thing selector:@selector (doit:) withObject:NULL];
-    if (the_flags & FIA_EX)
-        thing->ef = [[SGFileDescriptor alloc] initWithFd:sok mode:SGFDExcep
-                        target:thing selector:@selector (doit:) withObject:NULL];
-    
-    input_list.push_back (thing);
-    
-    return [thing autorelease];
-}
-
-+ (id)findTagged:(int)atag
-{
-    for (std::list<id>::iterator iter = input_list.begin(); iter != input_list.end(); )
-    {
-        id athing = *iter++;
-        if ([athing getTag] == atag)
-            return athing;
-    }
-    return NULL;
-}
-
-- (void)dealloc
-{
-	if(rf)
-		[rf release];
-	if(wf)
-		[wf release];
-	if(ef)
-		[ef release];
-    input_list.remove (self);
-    [super dealloc];
-}
-
-- (void)disable
-{
-    if (rf) [rf disable];
-    if (wf) [wf disable];
-    if (ef) [ef disable];
-}
-
-- (int)getTag
-{
-    return tag;
-}
-
-- (void)doit:(id)obj
-{
-    func (NULL, 0, data);
-}
-
-@end
-
-/////////////////////////////////////////////////////////////////////////////
-
-#define USE_GLIKE_TIMER 0
-#if USE_GLIKE_TIMER
-#import "GLikeTimer.h"
-#else
-
-typedef int (*timer_callback) (void *user_data);
-
-static std::list<id> timer_list;
-static int timer_seq = 1;
-
-@interface TimerThing : NSObject
-{
-    NSTimeInterval interval;
-    timer_callback callback;
-    void *userdata;
-    int tag;
-    
-    NSTimer *timer;
-}
-
-+ (id)timerFromInterval:(int)the_interval callback:(timer_callback)the_callback
-            userdata:(void *)the_userdata;
-+ (void)removeTimerWithTag:(int)atag;
-- (int)getTag;
-- (void)schedule;
-- (void)invalidate;
-
-@end
-
-@implementation TimerThing
-
-+ (id)timerFromInterval:(int)the_interval callback:(timer_callback)the_callback
-            userdata:(void *)the_userdata
-{
-    TimerThing *thing = [[TimerThing alloc] init];
-
-    thing->interval = (NSTimeInterval) the_interval / 1000;
-    thing->callback = the_callback;
-    thing->userdata = the_userdata;
-    thing->tag = timer_seq ++;
-    thing->timer = NULL;
-
-    timer_list.push_back (thing);
-    
-    [thing schedule];
-
-    return [thing autorelease];
-}
-
-+ (void)removeTimerWithTag:(int)atag
-{
-    for (std::list<id>::iterator iter = timer_list.begin(); iter != timer_list.end(); )
-    {
-        id atimer = *iter++;
-        if ([atimer getTag] == atag)
-        {
-            TimerThing *timer = (TimerThing *) atimer;
-            [timer invalidate];
-            timer->callback = NULL;     // We'll use this to detect released
-            [timer release];            // timers in [TimerThing fire]
-            return;
-        }
-    }
-}
-
-- (void)dealloc
-{    
-    timer_list.remove (self);
-    [self invalidate];
-    [super dealloc];
-    
-    //printf ("TimerThing dealloc\n");
-}
-
-- (void)invalidate
-{
-    if (timer)
-    {
-        [timer invalidate];
-        [timer release];
-        timer = NULL;
-    }
-}
-
-- (int)getTag
-{
-    return tag;
-}
-
-- (void)schedule
-{
-    timer = [[NSTimer scheduledTimerWithTimeInterval:(double) interval
-                            target:self
-                            selector:@selector(fire:)
-                            userInfo:nil
-                            repeats:NO
-                            retainArgs:NO] retain];
-}
-
-- (void)fire:(id)userInfo
-{
-    [timer invalidate];
-    [timer release];
-    timer = NULL;
-   
-    [self retain];	// Retain ourselvs just in case he decides
-    				// to release us in the callback.
-
-    if (callback (userdata) == 0)
-    {
-    	// Only honour his request to destroy this timer only if
-        // he did not already do it in the callback.  We NULL out
-        // the callback when he removes a timer to signal us here
-        // not to release.
-
-        if (callback != NULL)
-            [self release];
-    }
-    else
-    {
-        [self schedule];
-    }
-
-    [self release];
-}
-
-@end
-
-#endif
 
 /////////////////////////////////////////////////////////////////////////////
 
@@ -759,6 +522,9 @@ static void fix_log_files_and_pref ()
 void
 fe_init (void)
 {
+#if USE_GLIKE_TIMER
+	[GLikeTimer initialize];
+#endif
     [SGApplication sharedApplication];
     [NSBundle loadNibNamed:@"MainMenu" owner:NSApp];
 
