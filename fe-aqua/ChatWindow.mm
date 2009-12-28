@@ -324,7 +324,7 @@ static void location_prefs (NSWindow *w)
 {
 	int clickedRow = [self rowAtPoint:[self convertPoint:[theEvent locationInWindow] fromView:nil]];
 	if (![self isRowSelected:clickedRow])
-		[self selectRow:clickedRow byExtendingSelection:NO];
+		[self selectRowIndexes:[NSIndexSet indexSetWithIndex:clickedRow] byExtendingSelection:NO];
 	[super rightMouseDown:theEvent];
 }
 
