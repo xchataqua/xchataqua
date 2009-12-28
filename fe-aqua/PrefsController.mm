@@ -30,7 +30,6 @@ extern "C" {
 #include "../common/text.h"
 #undef TYPE_BOOL
 #include "../common/cfgfiles.h"
-#import "ShortcutRecorder/ShortcutRecorder.h"
 #ifdef __cplusplus
 }
 #endif
