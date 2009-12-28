@@ -187,8 +187,11 @@
 		0FE5E0940F480B26000E0F91 /* SGVBoxView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6810CFB300B001AE9AE /* SGVBoxView.mm */; };
 		0FE5E0950F480B26000E0F91 /* SGView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6850CFB300B001AE9AE /* SGView.mm */; };
 		0FE5E0980F480B39000E0F91 /* SGBoxView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6610CFB300B001AE9AE /* SGBoxView.mm */; };
-		2D2EE87010613ED5000FDDED /* libglib-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2EE86F10613ED5000FDDED /* libglib-2.0.0.dylib */; };
-		2D2EE87210613EF8000FDDED /* libintl.8.0.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2EE87110613EF8000FDDED /* libintl.8.0.2.dylib */; };
+		2D076D9410E9108200E4A9F1 /* libglib-2.0.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D076D9210E9105B00E4A9F1 /* libglib-2.0.0.dylib */; };
+		2D076D9510E9108600E4A9F1 /* libglib-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D076D9210E9105B00E4A9F1 /* libglib-2.0.0.dylib */; };
+		2D076DB510E919BE00E4A9F1 /* libiconv.2.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D076DB310E9195000E4A9F1 /* libiconv.2.dylib */; };
+		2D076DB610E919BE00E4A9F1 /* libintl.8.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D076DB410E919B900E4A9F1 /* libintl.8.dylib */; };
+		2D076DBA10E919F000E4A9F1 /* libintl.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D076DB410E919B900E4A9F1 /* libintl.8.dylib */; };
 		2D78138A10E77CC700C71AF8 /* perl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F06C10E1FDA5E00359159 /* perl.c */; };
 		2D78138E10E77E4E00C71AF8 /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D78138B10E77D1A00C71AF8 /* libperl.dylib */; };
 		2D78143710E78FBE00C71AF8 /* perl-snowleopard.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */; };
@@ -309,6 +312,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				2D076DB510E919BE00E4A9F1 /* libiconv.2.dylib in Copy Frameworks */,
+				2D076DB610E919BE00E4A9F1 /* libintl.8.dylib in Copy Frameworks */,
+				2D076D9410E9108200E4A9F1 /* libglib-2.0.0.dylib in Copy Frameworks */,
 				2DAAE57610E4AD7900DBBFD0 /* Sparkle.framework in Copy Frameworks */,
 				2DAAE56410E4AD4B00DBBFD0 /* Growl.framework in Copy Frameworks */,
 				2DAAE56510E4AD4B00DBBFD0 /* ShortcutRecorder.framework in Copy Frameworks */,
@@ -610,8 +616,9 @@
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		2D2EE86F10613ED5000FDDED /* libglib-2.0.0.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; name = "libglib-2.0.0.dylib"; path = "contrib/lib/libglib-2.0.0.dylib"; sourceTree = "<group>"; };
-		2D2EE87110613EF8000FDDED /* libintl.8.0.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libintl.8.0.2.dylib; path = contrib/lib/libintl.8.0.2.dylib; sourceTree = "<group>"; };
+		2D076D9210E9105B00E4A9F1 /* libglib-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libglib-2.0.0.dylib"; path = "contrib/lib/libglib-2.0.0.dylib"; sourceTree = "<group>"; };
+		2D076DB310E9195000E4A9F1 /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = contrib/lib/libiconv.2.dylib; sourceTree = "<group>"; };
+		2D076DB410E919B900E4A9F1 /* libintl.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libintl.8.dylib; path = contrib/lib/libintl.8.dylib; sourceTree = "<group>"; };
 		2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-snowleopard.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D78138110E77C6500C71AF8 /* perl-snowleopard-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "perl-snowleopard-Info.plist"; sourceTree = "<group>"; };
 		2D78138B10E77D1A00C71AF8 /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = /System/Library/Perl/lib/5.10/libperl.dylib; sourceTree = "<absolute>"; };
@@ -1581,6 +1588,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D076DBA10E919F000E4A9F1 /* libintl.8.dylib in Frameworks */,
+				2D076D9510E9108600E4A9F1 /* libglib-2.0.0.dylib in Frameworks */,
 				2DAAE54E10E4ACFC00DBBFD0 /* Growl.framework in Frameworks */,
 				2DAAE54F10E4ACFC00DBBFD0 /* ShortcutRecorder.framework in Frameworks */,
 				0FC8F5C40DEEEA3E00504F31 /* libxchat.a in Frameworks */,
@@ -1588,8 +1597,6 @@
 				0F8EA70B0CFB384A001AE9AE /* Carbon.framework in Frameworks */,
 				B0D937F10FFB0D34009370B5 /* libcrypto.dylib in Frameworks */,
 				B0D937F20FFB0D34009370B5 /* libssl.dylib in Frameworks */,
-				2D2EE87010613ED5000FDDED /* libglib-2.0.0.dylib in Frameworks */,
-				2D2EE87210613EF8000FDDED /* libintl.8.0.2.dylib in Frameworks */,
 				2DAAE56D10E4AD7300DBBFD0 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1982,8 +1989,6 @@
 				2DAAE56C10E4AD7300DBBFD0 /* Sparkle.framework */,
 				2DAAE54C10E4ACFC00DBBFD0 /* Growl.framework */,
 				2DAAE54D10E4ACFC00DBBFD0 /* ShortcutRecorder.framework */,
-				2D2EE87110613EF8000FDDED /* libintl.8.0.2.dylib */,
-				2D2EE86F10613ED5000FDDED /* libglib-2.0.0.dylib */,
 				B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */,
 				B0D937F00FFB0D34009370B5 /* libssl.dylib */,
 				0F8F08170E1FE01800359159 /* Tcl.framework */,
@@ -1992,6 +1997,9 @@
 				0FC8F6DA0DEEF50100504F31 /* AppKit.framework */,
 				0F8EA70A0CFB384A001AE9AE /* Carbon.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				2D076D9210E9105B00E4A9F1 /* libglib-2.0.0.dylib */,
+				2D076DB310E9195000E4A9F1 /* libiconv.2.dylib */,
+				2D076DB410E919B900E4A9F1 /* libintl.8.dylib */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
