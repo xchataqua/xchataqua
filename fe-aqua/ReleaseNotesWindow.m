@@ -28,6 +28,8 @@
 	
 	relnotes=[NSString stringWithContentsOfFile:
 			  [[NSBundle mainBundle] pathForResource:@"Changes" ofType:nil]
+									   encoding:NSASCIIStringEncoding
+										  error:nil
 			 ];
 	
 	[storage replaceCharactersInRange:NSMakeRange(0, [storage length])  withString:relnotes];
