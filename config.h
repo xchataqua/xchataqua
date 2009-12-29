@@ -1,8 +1,6 @@
 #ifndef _CONFIG_H
 #define _CONFIG_H
 
-#include "config.nls.h"
-
 #define ENABLE_NLS 1
 #if ENABLE_NLS
 /* Gettext package name */
