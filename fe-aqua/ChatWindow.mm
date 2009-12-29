@@ -864,13 +864,13 @@ static NSImage *empty_image;
         [self set_channel];
     else
         [chat_view setTabTitle:NSLocalizedStringFromTable(@"<none>", @"xchat", @"")];
-	
+    
     if (sess->type == SESS_DIALOG || prefs.hideuserlist)
         [middle_box set_split_pos:0];
-	else if (prefs.paned_pos > 0)
-		[middle_box set_split_pos:prefs.paned_pos];
-	else
-		[middle_box set_split_pos:150];
+    else if (prefs.paned_pos > 0)
+        [middle_box set_split_pos:prefs.paned_pos];
+    else
+        [middle_box set_split_pos:150];
 
     if (sess->type == SESS_DIALOG)
     {
@@ -1242,10 +1242,9 @@ static NSImage *empty_image;
                          withString:@".."];
     }
     [chat_view setTabTitle:s];
-	
-	// FIXME: this is a trick to scroll down chatview when loaded scrollback
-	//       scrollong over height of chatview. replacing to proper place is required.
-	[chat_text scrollToEndOfDocument:chat_view];
+    
+    // FIXME: rough solution to solve initialization with scrollToDocumentEnd 2/3
+    [chat_text scrollToEndOfDocument:chat_view];
 }
 
 - (void) set_nonchannel:(bool) state
@@ -1265,6 +1264,9 @@ static NSImage *empty_image;
     [limit_text setEnabled:state];
     [key_text setEnabled:state];
     [topic_text setEditable:state];
+    
+    // FIXME: rough solution to solve initialization with scrollToDocumentEnd 3/3
+    [chat_text scrollToEndOfDocument:chat_view];
 }
 
 - (void) set_nick

@@ -448,8 +448,9 @@ static NSCursor *lr_cursor;
 
 - (void) clear_text
 {
-	num_lines = 0;
-    [self setString:@""];
+	// FIXME: rough solution to solve initialization with scrollToDocumentEnd 1/3
+	num_lines = 50;
+    [self setString:@"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"];
 }
 
 - (void) layoutManager:(NSLayoutManager *) aLayoutManager 
