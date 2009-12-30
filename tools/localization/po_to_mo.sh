@@ -1,7 +1,7 @@
 #!/bin/bash
 outname=xchat
 srcdir=po
-outdirbase=../../fe-aqua/locale
+outdirbase=../../Localization/locale
 for pofile in `ls $srcdir/*.po`; do
 	locale=`basename $pofile .po`
 	outdir=$outdirbase/$locale/LC_MESSAGES
