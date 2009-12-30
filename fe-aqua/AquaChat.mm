@@ -31,7 +31,9 @@ extern "C" {
 #include "../common/util.h"
 #include "../common/text.h"
 #include "../common/dcc.h"
+#if __MAC_OS_X_VERSION_MIN_REQUIRED >= 1050
 #import <ShortcutRecorder/ShortcutRecorder.h>
+#endif
 #ifdef __cplusplus
 }
 #endif
@@ -413,6 +415,7 @@ EventInfo text_event_info[NUM_XP];
 		[sess->gui->cw prefsChanged];
     }
     
+	#if __MAC_OS_X_VERSION_MIN_REQUIRED >= 1050
 	NSString* s;
 	s = SRStringForKeyCode(prefs.tab_left_key);
 	if ( s != nil ) {
@@ -425,6 +428,7 @@ EventInfo text_event_info[NUM_XP];
 		[next_window_menu setKeyEquivalent:s];
 		[next_window_menu setKeyEquivalentModifierMask:prefs.tab_right_modifiers];
 	}
+	#endif
 	
     if (prefs.identd)
         identd_start ();
