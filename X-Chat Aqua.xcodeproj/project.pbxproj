@@ -2447,6 +2447,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D55EC8F10EB89ED00B4ECCB /* Build configuration list for PBXNativeTarget "X-Chat Aqua 10.4" */;
 			buildPhases = (
+				2D53960C10EBCCC800AD552F /* Generate LE_MESSAGES */,
 				2D55EC7F10EB89EC00B4ECCB /* Sources */,
 				2D55EC8010EB89EC00B4ECCB /* Frameworks */,
 				2D55EDB410EB915800B4ECCB /* Resources */,
@@ -2746,6 +2747,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2D53960C10EBCCC800AD552F /* Generate LE_MESSAGES */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate LE_MESSAGES";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"$PROJECT_DIR/tools/localization\"\n/bin/bash po_to_mo.sh";
+		};
 		2D55EF7410EBAE8D00B4ECCB /* Lagacy support script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2772,7 +2787,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "#!/bin/bash\n\n[ -f ~/.bashrc ] && source ~/.bashrc\n[ -f ~/.profile ] && source ~/.profile\n\nexport DYLD_LIBRARY_PATH=\"$DYLD_LIBRARY_PATH:$PROJECT_DIR/contrib/lib\"\n\ncd \"$PROJECT_DIR/tools/localization\"\n\n/bin/bash po_to_mo.sh\n\nexit 0";
+			shellScript = "cd \"$PROJECT_DIR/tools/localization\"\n/bin/bash po_to_mo.sh";
 		};
 		B0A5F6CD0FFAB16E003F5A02 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
