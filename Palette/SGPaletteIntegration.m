@@ -24,9 +24,9 @@
 #import "SGFormView.h"
 #import "SGHBoxView.h"
 #import "SGVBoxView.h"
-#import "fe-aqua/Palette/SGFormViewInspector.h"
-#import "fe-aqua/Palette/SGHBoxViewInspector.h"
-#import "fe-aqua/Palette/SGVBoxViewInspector.h"
+#import "Palette/SGFormViewInspector.h"
+#import "Palette/SGHBoxViewInspector.h"
+#import "Palette/SGVBoxViewInspector.h"
 
 @implementation SGFormView ( SGPalette )
 
