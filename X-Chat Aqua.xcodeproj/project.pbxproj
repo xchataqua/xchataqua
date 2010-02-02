@@ -338,6 +338,11 @@
 		2DC430A4105F6B9000782AAD /* chanopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F94E9AF0E1F92E3003CA262 /* chanopt.c */; };
 		2DD056F010A2C6D4002857E0 /* locale in Resources */ = {isa = PBXBuildFile; fileRef = 2DD0561C10A2C6D4002857E0 /* locale */; };
 		2DE5D56210EBE0310024D2A4 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54D10E4ACFC00DBBFD0 /* ShortcutRecorder.framework */; };
+		2DE5D5C110EBE2020024D2A4 /* SGPalette-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DE5D5C010EBE2020024D2A4 /* SGPalette-Info.plist */; };
+		2DE5D5C310EBE2260024D2A4 /* perl-leopard-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DE5D5C210EBE2260024D2A4 /* perl-leopard-Info.plist */; };
+		2DE5D5C510EBE2300024D2A4 /* perl-snowleopard-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DE5D5C410EBE2300024D2A4 /* perl-snowleopard-Info.plist */; };
+		2DE5D5C710EBE23E0024D2A4 /* python-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DE5D5C610EBE23E0024D2A4 /* python-Info.plist */; };
+		2DE5D5C910EBE24C0024D2A4 /* tcl-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DE5D5C810EBE24C0024D2A4 /* tcl-Info.plist */; };
 		2DEA2F360F8673BF00D6DC0D /* TabMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F090F8673BF00D6DC0D /* TabMenu.xib */; };
 		2DEA2F370F8673BF00D6DC0D /* UrlGrabber.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F0B0F8673BF00D6DC0D /* UrlGrabber.xib */; };
 		2DEA2F380F8673BF00D6DC0D /* ServerList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F0D0F8673BF00D6DC0D /* ServerList.xib */; };
@@ -512,7 +517,6 @@
 
 /* Begin PBXFileReference section */
 		0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = python.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F2FEF2C0E1FAB1500DE4D41 /* python-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "python-Info.plist"; sourceTree = "<group>"; };
 		0F2FEF840E1FB5AE00DE4D41 /* bundle_loader_plugin.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = bundle_loader_plugin.mm; path = plugins/bundle_loader/bundle_loader_plugin.mm; sourceTree = "<group>"; };
 		0F2FEF9D0E1FC30E00DE4D41 /* bundle_loader_plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bundle_loader_plugin.h; path = plugins/bundle_loader/bundle_loader_plugin.h; sourceTree = "<group>"; };
 		0F2FEFB60E1FC5A800DE4D41 /* SystemVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SystemVersion.h; path = utils/SystemVersion.h; sourceTree = "<group>"; };
@@ -735,11 +739,9 @@
 		0F8F06C10E1FDA5E00359159 /* perl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = perl.c; path = plugins/perl/perl.c; sourceTree = "<group>"; };
 		0F8F06C20E1FDA5E00359159 /* xchat.pm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xchat.pm.h; path = plugins/perl/xchat.pm.h; sourceTree = "<group>"; };
 		0F8F06D70E1FDA8500359159 /* perl-leopard.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-leopard.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F8F06D80E1FDA8500359159 /* perl-leopard-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "perl-leopard-Info.plist"; sourceTree = "<group>"; };
 		0F8F07CE0E1FDDBF00359159 /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = /System/Library/Perl/lib/5.8/libperl.dylib; sourceTree = "<absolute>"; };
 		0F8F07DA0E1FDEFF00359159 /* DynaLoader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = DynaLoader.a; path = "/System/Library/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a"; sourceTree = "<absolute>"; };
 		0F8F08110E1FE00800359159 /* tcl.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tcl.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F8F08120E1FE00800359159 /* tcl-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "tcl-Info.plist"; sourceTree = "<group>"; };
 		0F8F08170E1FE01800359159 /* Tcl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tcl.framework; path = System/Library/Frameworks/Tcl.framework; sourceTree = SDKROOT; };
 		0F8F08270E1FE06800359159 /* printevents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = printevents.h; path = plugins/tcl/printevents.h; sourceTree = "<group>"; };
 		0F8F08280E1FE06800359159 /* tclplugin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = tclplugin.c; path = plugins/tcl/tclplugin.c; sourceTree = "<group>"; };
@@ -748,12 +750,9 @@
 		0F94E9B00E1F92E3003CA262 /* chanopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = chanopt.h; path = common/chanopt.h; sourceTree = "<group>"; };
 		0FC8F3E80DEEDA0C00504F31 /* python.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = python.c; path = plugins/python/python.c; sourceTree = "<group>"; };
 		0FC8F3F50DEEDAB300504F31 /* Python.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Python.framework; path = System/Library/Frameworks/Python.framework; sourceTree = SDKROOT; };
-		0FC8F4860DEEE3EE00504F31 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0FC8F4AE0DEEE51700504F31 /* libxchat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxchat.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		0FC8F6DA0DEEF50100504F31 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		0FDE6C820E2704F00010E0D9 /* TBD.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = TBD.rtf; sourceTree = "<group>"; };
 		0FE5E01D0F45576B000E0F91 /* SGPalette.ibplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SGPalette.ibplugin; sourceTree = BUILT_PRODUCTS_DIR; };
-		0FE5E01E0F45576B000E0F91 /* SGPalette-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SGPalette-Info.plist"; sourceTree = "<group>"; };
 		0FE5E0220F4557A2000E0F91 /* InterfaceBuilderKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InterfaceBuilderKit.framework; path = Library/Frameworks/InterfaceBuilderKit.framework; sourceTree = DEVELOPER_DIR; };
 		0FE5E02C0F45595A000E0F91 /* SGFormView.classdescription */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SGFormView.classdescription; path = Palette/SGFormView.classdescription; sourceTree = "<group>"; };
 		0FE5E02D0F45595A000E0F91 /* SGFormViewInspector.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SGFormViewInspector.xib; path = Palette/SGFormViewInspector.xib; sourceTree = "<group>"; };
@@ -824,7 +823,6 @@
 		2D55F02610EBB99E00B4ECCB /* az */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = az; path = Localization/az.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
 		2D55F02710EBB99E00B4ECCB /* am */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = am; path = Localization/am.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
 		2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-snowleopard.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D78138110E77C6500C71AF8 /* perl-snowleopard-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "perl-snowleopard-Info.plist"; sourceTree = "<group>"; };
 		2D78138B10E77D1A00C71AF8 /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = /System/Library/Perl/lib/5.10/libperl.dylib; sourceTree = "<absolute>"; };
 		2D7817C810E872D200C71AF8 /* fe-aqua_utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "fe-aqua_utility.h"; path = "fe-aqua/fe-aqua_utility.h"; sourceTree = "<group>"; };
 		2D7817C910E872D200C71AF8 /* fe-aqua_utility.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "fe-aqua_utility.mm"; path = "fe-aqua/fe-aqua_utility.mm"; sourceTree = "<group>"; };
@@ -1675,6 +1673,11 @@
 		2DDDC7A60F928C9C00322675 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = Localization/fr.lproj/TabMenu.xib; sourceTree = "<group>"; };
 		2DDDC7A70F928C9C00322675 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = Localization/fr.lproj/UrlGrabber.xib; sourceTree = "<group>"; };
 		2DDDC7A80F928C9C00322675 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = Localization/fr.lproj/UserCommands.xib; sourceTree = "<group>"; };
+		2DE5D5C010EBE2020024D2A4 /* SGPalette-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SGPalette-Info.plist"; path = "Palette/SGPalette-Info.plist"; sourceTree = "<group>"; };
+		2DE5D5C210EBE2260024D2A4 /* perl-leopard-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "perl-leopard-Info.plist"; path = "plugins/perl/perl-leopard-Info.plist"; sourceTree = "<group>"; };
+		2DE5D5C410EBE2300024D2A4 /* perl-snowleopard-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "perl-snowleopard-Info.plist"; path = "plugins/perl/perl-snowleopard-Info.plist"; sourceTree = "<group>"; };
+		2DE5D5C610EBE23E0024D2A4 /* python-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "python-Info.plist"; path = "plugins/python/python-Info.plist"; sourceTree = "<group>"; };
+		2DE5D5C810EBE24C0024D2A4 /* tcl-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "tcl-Info.plist"; path = "plugins/tcl/tcl-Info.plist"; sourceTree = "<group>"; };
 		2DEA2F0A0F8673BF00D6DC0D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Localization/en.lproj/TabMenu.xib; sourceTree = "<group>"; };
 		2DEA2F0C0F8673BF00D6DC0D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Localization/en.lproj/UrlGrabber.xib; sourceTree = "<group>"; };
 		2DEA2F0E0F8673BF00D6DC0D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Localization/en.lproj/ServerList.xib; sourceTree = "<group>"; };
@@ -1815,8 +1818,8 @@
 		0F2FEF860E1FB5BF00DE4D41 /* python */ = {
 			isa = PBXGroup;
 			children = (
+				2DE5D5C610EBE23E0024D2A4 /* python-Info.plist */,
 				0FC8F3F50DEEDAB300504F31 /* Python.framework */,
-				0F2FEF2C0E1FAB1500DE4D41 /* python-Info.plist */,
 				0FC8F3E80DEEDA0C00504F31 /* python.c */,
 			);
 			name = python;
@@ -2100,11 +2103,11 @@
 		0F8F06BE0E1FD99400359159 /* perl */ = {
 			isa = PBXGroup;
 			children = (
+				2DE5D5C210EBE2260024D2A4 /* perl-leopard-Info.plist */,
+				2DE5D5C410EBE2300024D2A4 /* perl-snowleopard-Info.plist */,
 				0F8F07DA0E1FDEFF00359159 /* DynaLoader.a */,
 				0F8F07CE0E1FDDBF00359159 /* libperl.dylib */,
 				2D78138B10E77D1A00C71AF8 /* libperl.dylib */,
-				0F8F06D80E1FDA8500359159 /* perl-leopard-Info.plist */,
-				2D78138110E77C6500C71AF8 /* perl-snowleopard-Info.plist */,
 				0F8F06C10E1FDA5E00359159 /* perl.c */,
 				0F8F06C20E1FDA5E00359159 /* xchat.pm.h */,
 			);
@@ -2115,10 +2118,10 @@
 			isa = PBXGroup;
 			children = (
 				0F8F08170E1FE01800359159 /* Tcl.framework */,
-				0F8F08120E1FE00800359159 /* tcl-Info.plist */,
 				0F8F08270E1FE06800359159 /* printevents.h */,
 				0F8F08280E1FE06800359159 /* tclplugin.c */,
 				0F8F08290E1FE06800359159 /* tclplugin.h */,
+				2DE5D5C810EBE24C0024D2A4 /* tcl-Info.plist */,
 			);
 			name = tcl;
 			sourceTree = "<group>";
@@ -2143,7 +2146,7 @@
 				0FE5E0310F45595A000E0F91 /* SGPalette.m */,
 				0FE5E0320F45595A000E0F91 /* SGPalette.xib */,
 				0FE5E0330F45595A000E0F91 /* SGPaletteIntegration.m */,
-				0FE5E01E0F45576B000E0F91 /* SGPalette-Info.plist */,
+				2DE5D5C010EBE2020024D2A4 /* SGPalette-Info.plist */,
 			);
 			name = Palette;
 			sourceTree = "<group>";
@@ -2191,8 +2194,6 @@
 				2DAAE54D10E4ACFC00DBBFD0 /* ShortcutRecorder.framework */,
 				B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */,
 				B0D937F00FFB0D34009370B5 /* libssl.dylib */,
-				0FC8F4860DEEE3EE00504F31 /* Cocoa.framework */,
-				0FC8F6DA0DEEF50100504F31 /* AppKit.framework */,
 				0F8EA70A0CFB384A001AE9AE /* Carbon.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				2D076D9210E9105B00E4A9F1 /* libglib-2.0.0.dylib */,
@@ -2215,6 +2216,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				2D55EC8210EB89EC00B4ECCB /* X-Chat Aqua 10.4.app */,
 				8D1107320486CEB800E47090 /* X-Chat Aqua.app */,
 				0FC8F4AE0DEEE51700504F31 /* libxchat.a */,
 				0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */,
@@ -2222,7 +2224,6 @@
 				0F8F08110E1FE00800359159 /* tcl.bundle */,
 				0FE5E01D0F45576B000E0F91 /* SGPalette.ibplugin */,
 				2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */,
-				2D55EC8210EB89EC00B4ECCB /* X-Chat Aqua 10.4.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2538,6 +2539,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DE5D5C710EBE23E0024D2A4 /* python-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2545,6 +2547,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DE5D5C310EBE2260024D2A4 /* perl-leopard-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2552,6 +2555,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DE5D5C910EBE24C0024D2A4 /* tcl-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2567,6 +2571,7 @@
 				0FE5E03E0F45595A000E0F91 /* SGVBoxView.classdescription in Resources */,
 				0FE5E03F0F45595A000E0F91 /* SGVBoxViewInspector.xib in Resources */,
 				0FE5E0400F45595A000E0F91 /* SGView.classdescription in Resources */,
+				2DE5D5C110EBE2020024D2A4 /* SGPalette-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2631,6 +2636,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DE5D5C510EBE2300024D2A4 /* perl-snowleopard-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
