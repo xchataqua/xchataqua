@@ -1,6 +1,6 @@
 #!/bin/bash
 BASELOCALE='en'
-RECDIR='../../fe-aqua'
+RECDIR='../../Localization'
 DEFXIBDIR="$RECDIR/en.lproj"
 
 for locale in `ls -d lproj/*`; do
