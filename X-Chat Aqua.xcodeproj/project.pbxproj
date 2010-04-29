@@ -339,10 +339,6 @@
 		2DD056F010A2C6D4002857E0 /* locale in Resources */ = {isa = PBXBuildFile; fileRef = 2DD0561C10A2C6D4002857E0 /* locale */; };
 		2DE5D56210EBE0310024D2A4 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54D10E4ACFC00DBBFD0 /* ShortcutRecorder.framework */; };
 		2DE5D5C110EBE2020024D2A4 /* SGPalette-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DE5D5C010EBE2020024D2A4 /* SGPalette-Info.plist */; };
-		2DE5D5C310EBE2260024D2A4 /* perl-leopard-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DE5D5C210EBE2260024D2A4 /* perl-leopard-Info.plist */; };
-		2DE5D5C510EBE2300024D2A4 /* perl-snowleopard-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DE5D5C410EBE2300024D2A4 /* perl-snowleopard-Info.plist */; };
-		2DE5D5C710EBE23E0024D2A4 /* python-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DE5D5C610EBE23E0024D2A4 /* python-Info.plist */; };
-		2DE5D5C910EBE24C0024D2A4 /* tcl-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DE5D5C810EBE24C0024D2A4 /* tcl-Info.plist */; };
 		2DEA2F360F8673BF00D6DC0D /* TabMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F090F8673BF00D6DC0D /* TabMenu.xib */; };
 		2DEA2F370F8673BF00D6DC0D /* UrlGrabber.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F0B0F8673BF00D6DC0D /* UrlGrabber.xib */; };
 		2DEA2F380F8673BF00D6DC0D /* ServerList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F0D0F8673BF00D6DC0D /* ServerList.xib */; };
@@ -2548,7 +2544,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DE5D5C710EBE23E0024D2A4 /* python-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2556,7 +2551,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DE5D5C310EBE2260024D2A4 /* perl-leopard-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2564,7 +2558,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DE5D5C910EBE24C0024D2A4 /* tcl-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2645,7 +2638,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DE5D5C510EBE2300024D2A4 /* perl-snowleopard-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4188,7 +4180,7 @@
 					.,
 					contrib/include,
 				);
-				INFOPLIST_FILE = "python-Info.plist";
+				INFOPLIST_FILE = "plugins/python/python-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				OTHER_LDFLAGS = (
 					"-undefined",
@@ -4217,7 +4209,7 @@
 					.,
 					contrib/include,
 				);
-				INFOPLIST_FILE = "python-Info.plist";
+				INFOPLIST_FILE = "plugins/python/python-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				OTHER_LDFLAGS = (
 					"-undefined",
@@ -4269,7 +4261,7 @@
 					"fe-aqua/",
 					.,
 				);
-				INFOPLIST_FILE = "perl-leopard-Info.plist";
+				INFOPLIST_FILE = "plugins/perl/perl-leopard-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4303,7 +4295,7 @@
 					"fe-aqua/",
 					.,
 				);
-				INFOPLIST_FILE = "perl-leopard-Info.plist";
+				INFOPLIST_FILE = "plugins/perl/perl-leopard-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4332,7 +4324,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
-				INFOPLIST_FILE = "tcl-Info.plist";
+				INFOPLIST_FILE = "plugins/tcl/tcl-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				OTHER_LDFLAGS = (
 					"-undefined",
@@ -4354,7 +4346,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
-				INFOPLIST_FILE = "tcl-Info.plist";
+				INFOPLIST_FILE = "plugins/tcl/tcl-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				OTHER_LDFLAGS = (
 					"-undefined",
@@ -4640,7 +4632,7 @@
 					.,
 					contrib/include,
 				);
-				INFOPLIST_FILE = "python-Info.plist";
+				INFOPLIST_FILE = "plugins/python/python-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				OTHER_LDFLAGS = (
 					"-undefined",
@@ -4670,7 +4662,7 @@
 					"fe-aqua/",
 					.,
 				);
-				INFOPLIST_FILE = "perl-leopard-Info.plist";
+				INFOPLIST_FILE = "plugins/perl/perl-leopard-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4704,7 +4696,7 @@
 					.,
 					contrib/include,
 				);
-				INFOPLIST_FILE = "perl-snowleopard-Info.plist";
+				INFOPLIST_FILE = "plugins/perl/perl-snowleopard-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4731,7 +4723,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
-				INFOPLIST_FILE = "tcl-Info.plist";
+				INFOPLIST_FILE = "plugins/tcl/tcl-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				OTHER_LDFLAGS = (
 					"-undefined",
@@ -4801,7 +4793,7 @@
 					.,
 					contrib/include,
 				);
-				INFOPLIST_FILE = "perl-snowleopard-Info.plist";
+				INFOPLIST_FILE = "plugins/perl/perl-snowleopard-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4833,7 +4825,7 @@
 					.,
 					contrib/include,
 				);
-				INFOPLIST_FILE = "perl-snowleopard-Info.plist";
+				INFOPLIST_FILE = "plugins/perl/perl-snowleopard-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
