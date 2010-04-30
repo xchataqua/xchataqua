@@ -11,7 +11,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 0F7065760E1FA5E400FEA21C /* Build configuration list for PBXAggregateTarget "Release" */;
 			buildPhases = (
-				0F2FEF770E1FB16600DE4D41 /* CopyFiles */,
+				0F2FEF770E1FB16600DE4D41 /* Copy Plugins */,
 			);
 			dependencies = (
 				0F70656D0E1FA5C700FEA21C /* PBXTargetDependency */,
@@ -39,7 +39,7 @@
 /* Begin PBXBuildFile section */
 		0F2FEF340E1FAB9100DE4D41 /* python.c in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8F3E80DEEDA0C00504F31 /* python.c */; };
 		0F2FEF430E1FAC3200DE4D41 /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC8F3F50DEEDAB300504F31 /* Python.framework */; };
-		0F2FEF790E1FB1A900DE4D41 /* python.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */; };
+		0F2FEF790E1FB1A900DE4D41 /* python.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */; };
 		0F2FEF850E1FB5AE00DE4D41 /* bundle_loader_plugin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F2FEF840E1FB5AE00DE4D41 /* bundle_loader_plugin.mm */; };
 		0F2FEFBD0E1FC8E900DE4D41 /* SystemVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F2FEFB70E1FC5A800DE4D41 /* SystemVersion.m */; };
 		0F7065540E1FA32E00FEA21C /* Changes in Resources */ = {isa = PBXBuildFile; fileRef = 0F7065530E1FA32E00FEA21C /* Changes */; };
@@ -135,12 +135,12 @@
 		0F8EA7A30CFB6CF9001AE9AE /* yellow.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7990CFB6CF9001AE9AE /* yellow.tiff */; };
 		0F8EA7C90CFB7094001AE9AE /* SGRowColView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA7C80CFB7094001AE9AE /* SGRowColView.mm */; };
 		0F8F06DD0E1FDAA100359159 /* perl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F06C10E1FDA5E00359159 /* perl.c */; };
-		0F8F06E50E1FDB0300359159 /* perl-leopard.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F8F06D70E1FDA8500359159 /* perl-leopard.bundle */; };
+		0F8F06E50E1FDB0300359159 /* perl-leopard.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 0F8F06D70E1FDA8500359159 /* perl-leopard.bundle */; };
 		0F8F07CF0E1FDDBF00359159 /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8F07CE0E1FDDBF00359159 /* libperl.dylib */; };
 		0F8F07DB0E1FDEFF00359159 /* DynaLoader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8F07DA0E1FDEFF00359159 /* DynaLoader.a */; };
 		0F8F08180E1FE01800359159 /* Tcl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8F08170E1FE01800359159 /* Tcl.framework */; };
 		0F8F082A0E1FE06800359159 /* tclplugin.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F08280E1FE06800359159 /* tclplugin.c */; };
-		0F8F08330E1FE07C00359159 /* tcl.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F8F08110E1FE00800359159 /* tcl.bundle */; };
+		0F8F08330E1FE07C00359159 /* tcl.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 0F8F08110E1FE00800359159 /* tcl.bundle */; };
 		0FC8F4B20DEEE55000504F31 /* msproxy.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA3260CFAA3F2001AE9AE /* msproxy.c */; };
 		0FC8F4B30DEEE55000504F31 /* history.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA31E0CFAA3F2001AE9AE /* history.c */; };
 		0FC8F4B40DEEE55000504F31 /* tree.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA33E0CFAA3F2001AE9AE /* tree.c */; };
@@ -329,7 +329,7 @@
 		2D55F03110EBBA8E00B4ECCB /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE56C10E4AD7300DBBFD0 /* Sparkle.framework */; };
 		2D78138A10E77CC700C71AF8 /* perl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F06C10E1FDA5E00359159 /* perl.c */; };
 		2D78138E10E77E4E00C71AF8 /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D78138B10E77D1A00C71AF8 /* libperl.dylib */; };
-		2D78143710E78FBE00C71AF8 /* perl-snowleopard.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */; };
+		2D78143710E78FBE00C71AF8 /* perl-snowleopard.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */; };
 		2D7817CA10E872D200C71AF8 /* fe-aqua_utility.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2D7817C910E872D200C71AF8 /* fe-aqua_utility.mm */; };
 		2DAAE54E10E4ACFC00DBBFD0 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54C10E4ACFC00DBBFD0 /* Growl.framework */; };
 		2DAAE56510E4AD4B00DBBFD0 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54D10E4ACFC00DBBFD0 /* ShortcutRecorder.framework */; };
@@ -454,17 +454,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		0F2FEF770E1FB16600DE4D41 /* CopyFiles */ = {
+		0F2FEF770E1FB16600DE4D41 /* Copy Plugins */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "X-Chat Aqua.app/Contents/PlugIns";
 			dstSubfolderSpec = 16;
 			files = (
-				0F8F08330E1FE07C00359159 /* tcl.bundle in CopyFiles */,
-				2D78143710E78FBE00C71AF8 /* perl-snowleopard.bundle in CopyFiles */,
-				0F8F06E50E1FDB0300359159 /* perl-leopard.bundle in CopyFiles */,
-				0F2FEF790E1FB1A900DE4D41 /* python.bundle in CopyFiles */,
+				0F8F08330E1FE07C00359159 /* tcl.bundle in Copy Plugins */,
+				2D78143710E78FBE00C71AF8 /* perl-snowleopard.bundle in Copy Plugins */,
+				0F8F06E50E1FDB0300359159 /* perl-leopard.bundle in Copy Plugins */,
+				0F2FEF790E1FB1A900DE4D41 /* python.bundle in Copy Plugins */,
 			);
+			name = "Copy Plugins";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		0F8EA7C40CFB6EC9001AE9AE /* Copy Frameworks */ = {
