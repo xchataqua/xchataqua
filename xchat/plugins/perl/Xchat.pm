@@ -2,41 +2,59 @@ BEGIN {
 	$INC{'Xchat.pm'} = 'DUMMY';
 }
 
-BEGIN {
-	$SIG{__WARN__} = sub {
-		my $message = shift @_;
-		my ($package) = caller;
-		my $pkg_info = Xchat::Embed::pkg_info( $package );
+$SIG{__WARN__} = sub {
+	my $message = shift @_;
+	my ($package) = caller;
+	
+	# redirect Gtk/Glib errors and warnings back to STDERR
+	my $message_levels =	qr/ERROR|CRITICAL|WARNING|MESSAGE|INFO|DEBUG/;
+	if( $message =~ /^(?:Gtk|GLib|Gdk)(?:-\w+)?-$message_levels/i ) {
+		print STDERR $message;
+	} else {
 
-		# redirect Gtk/Glib errors and warnings back to STDERR
-		if( $message =~ /^(?:Gtk|GLib|Gdk)(?:-\w+)?-(?:ERROR|CRITICAL|WARNING|MESSAGE|INFO|DEBUG)/i ) {
-			print STDERR $message;
-		} else {
-
-			if( $pkg_info ) {
-				if( $message =~ /\(eval 1\)/ ) {
-					$message =~ s/\(eval 1\)/(PERL PLUGIN CODE)/;
-				} else {
-					$message =~ s/\(eval \d+\)/$pkg_info->{filename}/;
-				}
-			}
-
+		if( defined &Xchat::Internal::print ) {
 			Xchat::print( $message );
+		} else {
+			warn $message;
 		}
-	};
-}
+	}
+};
+
 use File::Spec ();
 use File::Basename ();
 use File::Glob ();
 use List::Util ();
 use Symbol();
 use Time::HiRes ();
+use Carp ();
 
 {
 package Xchat;
 use base qw(Exporter);
 use strict;
 use warnings;
+
+sub PRI_HIGHEST ();
+sub PRI_HIGH ();
+sub PRI_NORM ();
+sub PRI_LOW ();
+sub PRI_LOWEST ();
+
+sub EAT_NONE ();
+sub EAT_XCHAT ();
+sub EAT_PLUIN ();
+sub EAT_ALL ();
+
+sub KEEP ();
+sub REMOVE ();
+sub FD_READ ();
+sub FD_WRITE ();
+sub FD_EXCEPTION ();
+sub FD_NOTSOCKET ();
+
+sub get_context;
+sub Xchat::Internal::context_info;
+sub Xchat::Internal::print;
 
 our %EXPORT_TAGS = (
 	constants => [
@@ -225,8 +243,7 @@ sub hook_fd {
 	
 	my $cb = sub {
 		my $userdata = shift;
-		no strict 'refs';
-		return &{$userdata->{CB}}(
+		return $userdata->{CB}->(
 			$userdata->{FD}, $userdata->{FLAGS}, $userdata->{DATA},
 		);
 	};
@@ -256,7 +273,7 @@ sub unhook {
 	return ();
 }
 
-sub do_for_each {
+sub _do_for_each {
 	my ($cb, $channels, $servers) = @_;
 
 	# not specifying any channels or servers is not the same as specifying
@@ -284,11 +301,7 @@ sub do_for_each {
 	my $old_ctx = Xchat::get_context();
 	for my $server ( @$servers ) {
 		for my $channel ( @$channels ) {
-			my $old_ctx = Xchat::get_context();
-			my $ctx = Xchat::find_context( $channel, $server );
-			
-			if( $ctx ) {
-				Xchat::set_context( $ctx );
+			if( Xchat::set_context( $channel, $server ) ) {
 				$cb->();
 				$num_done++
 			}
@@ -309,7 +322,7 @@ sub print {
 		}
 	}
 	
-	return do_for_each(
+	return _do_for_each(
 		sub { Xchat::Internal::print( $text ); },
 		@_
 	);
@@ -322,8 +335,13 @@ sub printf {
 
 # make Xchat::prnt() and Xchat::prntf() as aliases for Xchat::print() and 
 # Xchat::printf(), mainly useful when these functions are exported
-*Xchat::prnt = *Xchat::print{CODE};
-*Xchat::prntf = *Xchat::printf{CODE};
+sub prnt {
+	goto &Xchat::print;
+}
+
+sub prntf {
+	goto &Xchat::printf;
+}
 
 sub command {
 	my $command = shift;
@@ -336,7 +354,7 @@ sub command {
 		@commands = ($command);
 	}
 	
-	return do_for_each(
+	return _do_for_each(
 		sub { Xchat::Internal::command( $_ ) foreach @commands },
 		@_
 	);
@@ -358,6 +376,8 @@ sub set_context {
 		} else {
 			$context = Xchat::find_context( $_[0] );
 		}
+	} elsif( @_ == 0 ) {
+		$context = Xchat::find_context();
 	}
 	return $context ? Xchat::Internal::set_context( $context ) : 0;
 }
@@ -414,15 +434,27 @@ sub context_info {
 	}
 }
 
+sub get_list {
+	unless( grep { $_[0] eq $_ } qw(channels dcc ignore notify users networks) ) {
+		Carp::carp( "'$_[0]' does not appear to be a valid list name" );
+	}
+	if( $_[0] eq 'networks' ) {
+		return Xchat::List::Network->get();
+	} else {
+		return Xchat::Internal::get_list( $_[0] );
+	}
+}
+
 sub strip_code {
-	my $pattern = qr[
+	my $pattern = qr<
 		\cB| #Bold
 		\cC\d{0,2}(?:,\d{1,2})?| #Color
+		\e\[(?:\d{1,2}(?:;\d{1,2})*)?m| # ANSI color code
 		\cG| #Beep
 		\cO| #Reset
 		\cV| #Reverse
 		\c_  #Underline
-	]x;
+	>x;
 		
 	if( defined wantarray ) {
 		my $msg = shift;
@@ -449,8 +481,9 @@ sub load {
 	if( exists $scripts{$package} ) {
 		my $pkg_info = pkg_info( $package );
 		my $filename = File::Basename::basename( $pkg_info->{filename} );
-		Xchat::print(
-			qq{'$filename' already loaded from '$pkg_info->{filename}'.\n}
+		Xchat::printf(
+			qq{'%s' already loaded from '%s'.\n},
+			$filename, $pkg_info->{filename}
 		);
 		Xchat::print(
 			'If this is a different script then it rename and try '.
@@ -459,9 +492,9 @@ sub load {
 		return 2;
 	}
 	
-	if( open FH, $file ) {
-		my $source = do {local $/; <FH>};
-		close FH;
+	if( open my $source_handle, $file ) {
+		my $source = do {local $/; <$source_handle>};
+		close $source_handle;
 		# we shouldn't care about things after __END__
 		$source =~ s/^__END__.*//ms;
 		
@@ -490,25 +523,24 @@ sub load {
 		# Xchat::register
 		$scripts{$package}{filename} = $file;
 		$scripts{$package}{loaded_at} = Time::HiRes::time();
-		{
-			no strict; no warnings;
-			$source =~ s/^/{package $package;/;
 
-			# make sure we add the closing } even if the last line is a comment
-			if( $source =~ /^#.*\Z/m ) {
-				$source =~ s/^(?=#.*\Z)/}/m;
-			} else {
-				$source =~ s/\Z/}/;
-			}
+		my $full_path = File::Spec->rel2abs( $file );
+		$source =~ s/^/#line 1 "$full_path"\n\x7Bpackage $package;/;
 
-			eval $source;
+		# make sure we add the closing } even if the last line is a comment
+		if( $source =~ /^#.*\Z/m ) {
+			$source =~ s/^(?=#.*\Z)/\x7D/m;
+		} else {
+			$source =~ s/\Z/\x7D/;
+		}
 
-			unless( exists $scripts{$package}{gui_entry} ) {
-				$scripts{$package}{gui_entry} =
-					Xchat::Internal::register(
-						"", "unknown", "", $file
-					);
-			}
+		_do_eval( $source );
+
+		unless( exists $scripts{$package}{gui_entry} ) {
+			$scripts{$package}{gui_entry} =
+				Xchat::Internal::register(
+					"", "unknown", "", $file
+				);
 		}
 		
 		if( $@ ) {
@@ -525,6 +557,12 @@ sub load {
 	}
 
 	return 0;
+}
+
+sub _do_eval {
+	no strict;
+	no warnings;
+	eval $_[0];
 }
 
 sub unload {
@@ -590,19 +628,22 @@ sub reload {
 }
 
 sub reload_all {
-	my $dir = Xchat::get_info( "xchatdirfs" ) || Xchat::get_info( "xchatdir" );
-	my $auto_load_glob = File::Spec->catfile( $dir, "*.pl" );
-	my @scripts = map { $_->{filename} }
-		sort { $a->{loaded_at} <=> $b->{loaded_at} } values %scripts;
-	push @scripts, File::Glob::bsd_glob( $auto_load_glob );
+	my @dirs = Xchat::get_info( "xchatdirfs" ) || Xchat::get_info( "xchatdir" );
+	push @dirs, File::Spec->catdir( $dirs[0], "plugins" );
+	for my $dir ( @dirs ) {
+		my $auto_load_glob = File::Spec->catfile( $dir, "*.pl" );
+		my @scripts = map { $_->{filename} }
+			sort { $a->{loaded_at} <=> $b->{loaded_at} } values %scripts;
+		push @scripts, File::Glob::bsd_glob( $auto_load_glob );
 
-	my %seen;
-	@scripts = grep { !$seen{ $_ }++ } @scripts;
+		my %seen;
+		@scripts = grep { !$seen{ $_ }++ } @scripts;
 
-	unload_all();
-	for my $script ( @scripts ) {
-		if( !pkg_info( file2pkg( $script ) ) ) {
-			load( $script );
+		unload_all();
+		for my $script ( @scripts ) {
+			if( !pkg_info( file2pkg( $script ) ) ) {
+				load( $script );
+			}
 		}
 	}
 }
@@ -646,14 +687,36 @@ sub pkg_info {
 	return $scripts{$package};
 }
 
+sub find_external_pkg {
+	my $level = 1;
+
+	while( my @frame = caller( $level ) ) {
+		return @frame if $frame[0] !~ /^Xchat/;
+		$level++;
+	}
+
+}
+
 sub find_pkg {
 	my $level = 1;
-	my $package = (caller( $level ))[0];
-	while( $package !~ /^Xchat::Script::/ ) {
+
+	while( my ($package, $file, $line) = caller( $level ) ) {
+		return $package if $package =~ /^Xchat::Script::/;
 		$level++;
-		$package = (caller( $level ))[0];
 	}
-	return $package;
+
+	my @frame = find_external_pkg();
+	my $location;
+
+	if( $frame[0] or $frame[1] ) {
+		$location = $frame[1] ? $frame[1] : "package $frame[0]";
+		$location .= " line $frame[2]";
+	} else {
+		$location = "unknown location";
+	}
+
+	die "Unable to determine which script this hook belongs to. at $location\n";
+
 }
 
 sub fix_callback {
@@ -663,8 +726,237 @@ sub fix_callback {
 		# change the package to the correct one in case it was hardcoded
 		$callback =~ s/^.*:://;
 		$callback = qq[${package}::$callback];
+
+		no strict 'subs';
+		$callback = \&{$callback};
 	}
 	
 	return $callback;
 }
 } # end of Xchat::Embed package
+
+{
+package Xchat::List::Network;
+use strict;
+use warnings;
+use Storable qw(dclone);
+my $last_modified;
+my @servers;
+
+sub get {
+	my $server_file = Xchat::get_info( "xchatdirfs" ) . "/servlist_.conf";
+
+	# recreate the list only if the server list file has changed
+	if( -f $server_file && 
+			(!defined $last_modified || $last_modified != -M $server_file ) ) {
+		$last_modified = -M _;
+
+		if( open my $fh, "<", $server_file ) {
+			local $/ = "\n\n";
+			while( my $record = <$fh> ) {
+				chomp $record;
+				next if $record =~ /^v=/; # skip the version line
+				push @servers, Xchat::List::Network::Entry::parse( $record );
+			}
+		} else {
+			warn "Unable to open '$server_file': $!";
+		}
+	}
+
+	my $clone = dclone( \@servers );
+	return @$clone;
+}
+} # end of Xchat::List::Network
+
+{
+package Xchat::List::Network::Entry;
+use strict;
+use warnings;
+
+my %key_for = (
+	I => "irc_nick1",
+	i => "irc_nick2",
+	U => "irc_user_name",
+	R => "irc_real_name",
+	P => "server_password",
+	B => "nickserv_password",
+	N => "network",
+	D => "selected",
+	E => "encoding",
+);
+my $letter_key_re = join "|", keys %key_for;
+
+sub parse {
+	my $data  = shift;
+	my $entry = {
+		irc_nick1       => undef,
+		irc_nick2       => undef,
+		irc_user_name   => undef,
+		irc_real_name   => undef,
+		server_password => undef,
+
+		# the order of the channels need to be maintained
+		# list of { channel => .., key => ... }
+		autojoins         => Xchat::List::Network::AutoJoin->new( '' ),
+		connect_commands   => [],
+		flags             => {},
+		selected          => undef,
+		encoding          => undef,
+		servers           => [],
+		nickserv_password => undef,
+		network           => undef,
+	};
+
+	my @fields = split /\n/, $data;
+	chomp @fields;
+
+	for my $field ( @fields ) {
+	SWITCH: for ( $field ) {
+			/^($letter_key_re)=(.*)/ && do {
+				$entry->{ $key_for{ $1 } } = $2;
+				last SWITCH;
+			};
+
+			/^J.(.*)/ && do {
+				$entry->{ autojoins } =
+					Xchat::List::Network::AutoJoin->new( $1 );
+			};
+
+			/^F.(.*)/ && do {
+				$entry->{ flags } = parse_flags( $1 );
+			};
+
+			/^S.(.+)/ && do {
+				push @{$entry->{servers}}, parse_server( $1 );
+			};
+
+			/^C.(.+)/ && do {
+				push @{$entry->{connect_commands}}, $1;
+			};
+		}
+	}
+
+#	$entry->{ autojoins } = $entry->{ autojoin_channels };
+	return $entry;
+}
+
+sub parse_flags {
+	my $value = shift || 0;
+	my %flags;
+
+	$flags{ "cycle" }         = $value & 1  ? 1 : 0;
+	$flags{ "use_global" }    = $value & 2  ? 1 : 0;
+	$flags{ "use_ssl" }       = $value & 4  ? 1 : 0;
+	$flags{ "autoconnect" }   = $value & 8  ? 1 : 0;
+	$flags{ "use_proxy" }     = $value & 16 ? 1 : 0;
+	$flags{ "allow_invalid" } = $value & 32 ? 1 : 0;
+
+	return \%flags;
+}
+
+sub parse_server {
+	my $data = shift;
+	if( $data ) {
+		my ($host, $port) = split /\//, $data;
+		unless( $port ) {
+			my @parts = split /:/, $host;
+
+			# if more than 2 then we are probably dealing with a IPv6 address
+			# if less than 2 then no port was specified
+			if( @parts == 2 ) {
+				$port = $parts[1];
+			}
+		}
+
+		$port ||= 6667;
+		return { host => $host, port => $port };
+	}
+}
+
+} # end of Xchat::List::Network::Entry
+
+{
+package Xchat::List::Network::AutoJoin;
+use strict;
+use warnings;
+
+use overload
+#	'%{}' => \&as_hash,
+#	'@{}' => \&as_array,
+	'""'   => 'as_string',
+	'0+'   => 'as_bool';
+
+sub new {
+	my $class = shift;
+	my $line = shift;
+
+	my @autojoins;
+
+	if ( $line ) {
+		my ( $channels, $keys ) = split / /, $line, 2;
+		my @channels = split /,/, $channels;
+		my @keys     = split /,/, ($keys || '');
+
+		for my $channel ( @channels ) {
+			my $key = shift @keys;
+			$key = '' unless defined $key;
+
+			push @autojoins, {
+				channel => $channel,
+				key     => $key,
+				};
+		}
+	}
+	return bless \@autojoins, $class;
+}
+
+sub channels {
+	my $self = shift;
+
+	if( wantarray ) {
+		return map { $_->{channel} } @$self;
+	} else {
+		return scalar @$self;
+	}
+}
+
+sub keys {
+	my $self = shift;
+	return map { $_->{key} } @$self  ;
+
+}
+
+sub pairs {
+	my $self = shift;
+
+	my @channels = $self->channels;
+	my @keys = $self->keys;
+
+	my @pairs = map { $_ => shift @keys } @channels;
+}
+
+sub as_hash {
+	my $self = shift;
+	return +{ $self->pairs };
+}
+
+sub as_string {
+	my $self = shift;
+	return join " ",
+		join( ",", $self->channels ),
+		join( ",", $self->keys );
+}
+
+sub as_array {
+	my $self = shift;
+	return [ map { \%$_ } @$self ];
+}
+
+sub as_bool {
+	my $self = shift;
+	return $self->channels ? 1 : "";
+}
+
+} # end of Xchat::Server::AutoJoin
+
+1;

@@ -86,18 +86,37 @@ static int
 perl_auto_load (void *unused)
 {
 	const char *xdir;
+	char *sub_dir;
+#ifdef WIN32
+	int copied = 0;
+	char *slash = NULL;
+#endif
 
 	/* get the dir in local filesystem encoding (what opendir() expects!) */
 	xdir = xchat_get_info (ph, "xchatdirfs");
-	if (!xdir)						  /* xchatdirfs is new for 2.0.9, will fail on older */
+	if (!xdir)			/* xchatdirfs is new for 2.0.9, will fail on older */
 		xdir = xchat_get_info (ph, "xchatdir");
 
 	/* autoload from ~/.xchat2/ or ${APPDATA}\X-Chat 2\ on win32 */
 	perl_auto_load_from_path (xdir);
 
+	sub_dir = malloc (strlen (xdir) + 9);
+	strcpy (sub_dir, xdir);
+	strcat (sub_dir, "/plugins");
+	perl_auto_load_from_path (sub_dir);
+	free (sub_dir);
+
 #ifdef WIN32
 	/* autoload from  C:\program files\xchat\plugins\ */
-	perl_auto_load_from_path (XCHATLIBDIR"/plugins");
+	sub_dir = malloc (1025 + 9);
+	copied = GetModuleFileName( 0, sub_dir, 1024 );
+	sub_dir[copied] = '\0';
+	slash = strrchr( sub_dir, '\\' );
+	if( slash != NULL ) {
+		*slash = '\0';
+	}
+	perl_auto_load_from_path ( strncat (sub_dir, "\\plugins", 9));
+	free (sub_dir);
 #endif
 	return 0;
 }
@@ -435,7 +454,7 @@ command_cb (char *word[], char *word_eol[], void *userdata)
 	if (SvTRUE (ERRSV)) {
 		xchat_printf (ph, "Error in command callback %s", SvPV_nolen (ERRSV));
 		if (!SvOK (POPs)) {}		  /* remove undef from the top of the stack */
-		retVal = XCHAT_EAT_NONE;
+		retVal = XCHAT_EAT_XCHAT;
 	} else {
 		if (count != 1) {
 			xchat_print (ph, "Command handler should only return 1 value.");
@@ -677,6 +696,7 @@ XS (XS_Xchat_send_modes)
 		}
 
 		xchat_send_modes (ph, targets, target_count, modes_per_line, sign, mode);
+		free (targets);
 	}
 }
 static
@@ -1210,6 +1230,7 @@ xs_init (pTHX)
 	newXS ("Xchat::Internal::set_context", XS_Xchat_set_context, __FILE__);
 	newXS ("Xchat::Internal::get_info", XS_Xchat_get_info, __FILE__);
 	newXS ("Xchat::Internal::context_info", XS_Xchat_context_info, __FILE__);
+	newXS ("Xchat::Internal::get_list", XS_Xchat_get_list, __FILE__);
 	
 	newXS ("Xchat::find_context", XS_Xchat_find_context, __FILE__);
 	newXS ("Xchat::get_context", XS_Xchat_get_context, __FILE__);
@@ -1217,7 +1238,6 @@ xs_init (pTHX)
 	newXS ("Xchat::emit_print", XS_Xchat_emit_print, __FILE__);
 	newXS ("Xchat::send_modes", XS_Xchat_send_modes, __FILE__);
 	newXS ("Xchat::nickcmp", XS_Xchat_nickcmp, __FILE__);
-	newXS ("Xchat::get_list", XS_Xchat_get_list, __FILE__);
 
 	newXS ("Xchat::Embed::plugingui_remove", XS_Xchat_Embed_plugingui_remove,
 			 __FILE__);
@@ -1248,19 +1268,20 @@ xs_init (pTHX)
 static void
 perl_init (void)
 {
-	/*changed the name of the variable from load_file to
-	   perl_definitions since now it does much more than defining
-	   the load_file sub. Moreover, deplaced the initialisation to
-	   the xs_init function. (TheHobbit) */
 	int warn;
 	int arg_count;
 	char *perl_args[] = { "", "-e", "0", "-w" };
 	char *env[] = { "" };
-	static const char perl_definitions[] = {
+	static const char xchat_definitions[] = {
 		/* Redefine the $SIG{__WARN__} handler to have XChat
 		   printing warnings in the main window. (TheHobbit) */
 #include "xchat.pm.h"
 	};
+#ifdef OLD_PERL
+	static const char irc_definitions[] = {
+#include "irc.pm.h"
+	};
+#endif
 #ifdef ENABLE_NLS
 
 	/* Problem is, dynamicaly loaded modules check out the $]
@@ -1291,7 +1312,10 @@ perl_init (void)
 	   perl_definition array.
 	 */
 
-	eval_pv (perl_definitions, TRUE);
+	eval_pv (xchat_definitions, TRUE);
+#ifdef OLD_PERL
+	eval_pv (irc_definitions, TRUE);
+#endif
 
 }
 
