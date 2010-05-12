@@ -2740,7 +2740,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "cd \"$PROJECT_DIR/tools/localization\"\n/bin/bash po_to_mo.sh";
+			shellScript = "cd \"$PROJECT_DIR/tools/localization\"\n\n[ -f ~/.bashrc ] && source ~/.bashrc\n[ -f ~/.profile ] && source ~/.profile\n\n/bin/bash po_to_mo.sh";
 		};
 		B0A5F6CD0FFAB16E003F5A02 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
