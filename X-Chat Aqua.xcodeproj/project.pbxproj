@@ -14,6 +14,7 @@
 				0F2FEF770E1FB16600DE4D41 /* Copy Plugins */,
 			);
 			dependencies = (
+				2D036770119B51E800C0871D /* PBXTargetDependency */,
 				0F70656D0E1FA5C700FEA21C /* PBXTargetDependency */,
 				0F2FEF7E0E1FB1BD00DE4D41 /* PBXTargetDependency */,
 				0F8F08350E1FE08700359159 /* PBXTargetDependency */,
@@ -395,6 +396,13 @@
 			remoteGlobalIDString = 0FC8F4AD0DEEE51700504F31;
 			remoteInfo = xchat;
 		};
+		2D03676F119B51E800C0871D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B0A5F6CE0FFAB16E003F5A02 /* GenerateBuildNumber */;
+			remoteInfo = GenerateBuildNumber;
+		};
 		2D2EE90710614809000FDDED /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -436,13 +444,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2D78137F10E77C6400C71AF8;
 			remoteInfo = "perl-snowleopard";
-		};
-		B0A5F6D10FFAB18C003F5A02 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B0A5F6CE0FFAB16E003F5A02;
-			remoteInfo = "Generate Build Number";
 		};
 		B0A5F7CA0FFABA30003F5A02 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -2457,7 +2458,6 @@
 			);
 			dependencies = (
 				0FC8F5C30DEEEA3B00504F31 /* PBXTargetDependency */,
-				B0A5F6D20FFAB18C003F5A02 /* PBXTargetDependency */,
 			);
 			name = "X-Chat Aqua";
 			productInstallPath = "$(HOME)/Applications";
@@ -3017,6 +3017,11 @@
 			target = 0FC8F4AD0DEEE51700504F31 /* xchat */;
 			targetProxy = 0FC8F5C20DEEEA3B00504F31 /* PBXContainerItemProxy */;
 		};
+		2D036770119B51E800C0871D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B0A5F6CE0FFAB16E003F5A02 /* GenerateBuildNumber */;
+			targetProxy = 2D03676F119B51E800C0871D /* PBXContainerItemProxy */;
+		};
 		2D2EE90810614809000FDDED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0F8F06D60E1FDA8500359159 /* perl-leopard */;
@@ -3046,11 +3051,6 @@
 			isa = PBXTargetDependency;
 			target = 2D78137F10E77C6400C71AF8 /* perl-snowleopard */;
 			targetProxy = 2D7813DC10E783C100C71AF8 /* PBXContainerItemProxy */;
-		};
-		B0A5F6D20FFAB18C003F5A02 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B0A5F6CE0FFAB16E003F5A02 /* GenerateBuildNumber */;
-			targetProxy = B0A5F6D10FFAB18C003F5A02 /* PBXContainerItemProxy */;
 		};
 		B0A5F7CB0FFABA30003F5A02 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
