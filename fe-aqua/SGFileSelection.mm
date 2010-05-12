@@ -134,7 +134,7 @@ static NSString *fix_path (NSString *path)
 		if(flags & FRF_MULTIPLE)
 		{
 			NSArray * arr=[panel filenames];
-			for(int i=0;i<[arr count];++i)
+			for(unsigned int i=0;i<[arr count];++i)
 			{
 				callback(userdata, (char *) [[arr objectAtIndex:i] UTF8String]);
 			}
