@@ -339,7 +339,6 @@
 		2DC430A4105F6B9000782AAD /* chanopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F94E9AF0E1F92E3003CA262 /* chanopt.c */; };
 		2DD056F010A2C6D4002857E0 /* locale in Resources */ = {isa = PBXBuildFile; fileRef = 2DD0561C10A2C6D4002857E0 /* locale */; };
 		2DE5D56210EBE0310024D2A4 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54D10E4ACFC00DBBFD0 /* ShortcutRecorder.framework */; };
-		2DE5D5C110EBE2020024D2A4 /* SGPalette-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DE5D5C010EBE2020024D2A4 /* SGPalette-Info.plist */; };
 		2DEA2F360F8673BF00D6DC0D /* TabMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F090F8673BF00D6DC0D /* TabMenu.xib */; };
 		2DEA2F370F8673BF00D6DC0D /* UrlGrabber.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F0B0F8673BF00D6DC0D /* UrlGrabber.xib */; };
 		2DEA2F380F8673BF00D6DC0D /* ServerList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F0D0F8673BF00D6DC0D /* ServerList.xib */; };
@@ -2574,7 +2573,6 @@
 				0FE5E03E0F45595A000E0F91 /* SGVBoxView.classdescription in Resources */,
 				0FE5E03F0F45595A000E0F91 /* SGVBoxViewInspector.xib in Resources */,
 				0FE5E0400F45595A000E0F91 /* SGView.classdescription in Resources */,
-				2DE5D5C110EBE2020024D2A4 /* SGPalette-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4410,7 +4408,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "SGPalette-Info.plist";
+				INFOPLIST_FILE = "Palette/SGPalette-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -4439,7 +4437,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "SGPalette-Info.plist";
+				INFOPLIST_FILE = "Palette/SGPalette-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -4833,7 +4831,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "SGPalette-Info.plist";
+				INFOPLIST_FILE = "Palette/SGPalette-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				OTHER_LDFLAGS = (
 					"-framework",
