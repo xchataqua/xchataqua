@@ -21,4 +21,3 @@ for xib in `ls *.xib`; do
 	echo -n .
 done
 echo ""
-rm $PWDDIR/ChanList.xib.strings
