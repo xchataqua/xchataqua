@@ -1,5 +1,6 @@
 /* X-Chat Aqua
  * Copyright (C) 2006 Steve Green
+ * Copyright (C) 2010 Terje Bless
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +18,6 @@
 
 
 #import "AutoAwayController.h"
-#include <mach-o/dyld.h>
 
 extern "C" {
 #include "../common/xchat.h"
@@ -28,78 +28,76 @@ extern "C" {
 
 @implementation AutoAwayController
 
+@synthesize isAway;
+
+
 - (void) setAway:(BOOL) away
 {
+    // Get list of current servers from xchat and set the user away (or
+    // returned) on all connected server sessions.
 	for (GSList *list = serv_list; list; list = list->next)
-    {
-        struct server *svr = (struct server *) list->data;
+  {
+    struct server *srv = (struct server *) list->data;
 		
-		if (!svr->connected)
+		if (!srv->connected)
 			continue;
-			
-		if (away)
-			handle_command (svr->server_session, "away auto-away", false);
-		else
-			handle_command (svr->server_session, "away", false);
+
+		if (away) {
+			handle_command (srv->server_session, "away auto-away", false);
+      self.isAway = YES;
+    } else {
+			handle_command (srv->server_session, "back", false);
+      self.isAway = NO;
     }
+  }
 }
 
 - (void) check_idle_time:(NSTimer *) theTimer
 {
-	// This code uses an undocumented function for determining the idle time.
-	// Thanks to Evan Schoenberg for pioneering this.
-	//
-	// I don't like using extern to find the function.  If apple decides to remove
-	// that function, I don't want XCA to suddenly stop working.  Dynamically find the
-	// function instead.
-	
-	typedef CFTimeInterval (*CGSSecondsSinceLastInputEventProcPtr)(unsigned long);
-	static CGSSecondsSinceLastInputEventProcPtr proc;
-    
-    if (proc == NULL && NSIsSymbolNameDefined ("_CGSSecondsSinceLastInputEvent"))
-    {
-        proc = (CGSSecondsSinceLastInputEventProcPtr) 
-            NSAddressOfSymbol (NSLookupAndBindSymbol ("_CGSSecondsSinceLastInputEvent"));
-			
-		if (proc == NULL)
-		{
-			printf ("Unable to find CGSSecondsSinceLastInputEvent().  Auto-away disabled\n");
-			[theTimer invalidate];
-		}
-    } 
+    // Uses the Quartz Event Services to find time since the last user action
+    // (keyboard, mouse, etc. input). This is a bit hacky in that it's not
+    // documented to be for the purpose of determining whether the user is idle,
+    // and it requires a polling loop, but it serves the purpose well enough and
+    // the system call is documented.
+    //
+    // Doc: http://developer.apple.com/mac/library/documentation/Carbon/Reference/QuartzEventServicesRef/Reference/reference.html
+    //
 
-	CFTimeInterval idleTime = proc(-1);
-	if (idleTime >= 18446744000.0)
-		idleTime = 0.0;
-	
-	NSTimeInterval interval;
-		
-	if (prefs.auto_away && (idleTime / 60 >= prefs.auto_away_delay))
-	{
-		if (!wasIdle)
-		{
-			[self setAway:YES];
-			wasIdle = YES;
-		}
-		
-		interval = 1;
-	}
-	else
-	{
-		if (wasIdle)
-		{
-			[self setAway:NO];
-			wasIdle = NO;
-		}
-		
-		interval = 60;
-	}
-	
-	[NSTimer scheduledTimerWithTimeInterval:interval
-								     target:self
-								   selector:@selector (check_idle_time:)
-								   userInfo:nil
-								    repeats:NO];
+    // Only poll if the auto-away preference is set.
+	if (prefs.auto_away) {
+    CFTimeInterval idleTime;
+    NSTimeInterval interval;
+
+      // Filters for any input event for the current login session.
+    idleTime = CGEventSourceSecondsSinceLastEventType(
+                                                      kCGEventSourceStateCombinedSessionState,
+                                                      kCGAnyInputEventType
+                                                      );
+
+      // Delay pref is in minutes, idleTime in seconds.
+    if (idleTime / 60 >= prefs.auto_away_delay) {
+      if (!self.isAway) {
+        [self setAway:YES];
+      }
+      interval = 1;
+    } else {
+      if (self.isAway) {
+        [self setAway:NO];
+      }
+      interval = 10;
+    }
+
+      // Trigger another poll of the idle time on a timer.
+      //
+      // Every 1s when idle/away, every 10s otherwise. It's not important to
+      // detect an idle user immediately, but when the user returns we should
+      // detect it as soon as possible.
+    [NSTimer scheduledTimerWithTimeInterval:interval
+                                     target:self
+                                   selector:@selector(check_idle_time:)
+                                   userInfo:nil
+                                    repeats:NO];
+  }
 }
 
 + (void) start
