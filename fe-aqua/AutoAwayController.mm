@@ -100,10 +100,12 @@ extern "C" {
   }
 }
 
-+ (void) start
+- (id)init
 {
-	id x = [[AutoAwayController alloc] init];
-	[x check_idle_time:nil];
+	if ((self = [super init])) {
+		[self check_idle_time:nil];
+	}
+	return self;
 }
 
 @end
