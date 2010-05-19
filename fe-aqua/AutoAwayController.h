@@ -24,8 +24,6 @@
 	BOOL	isAway;
 }
 
-+ (void) start;
-
 @property (assign) BOOL isAway;
 
 @end

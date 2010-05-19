@@ -308,7 +308,7 @@ EventInfo text_event_info[NUM_XP];
     // Can't do this in awakeFromNib.. lists are not yet loaded..
     [self usermenu_update];
 	
-	[AutoAwayController start];
+	[[AutoAwayController alloc] init];
 }
     
 - (void) cleanup
