@@ -1,5 +1,5 @@
 #!/bin/bash
-TARGET=../../fe-aqua
+TARGET=../../Localization
 for lproj in `ls -d lproj/*.lproj`; do
 	if [ ! -e $TARGET/`basename $lproj` ]; then
 		mkdir $TARGET/`basename $lproj`

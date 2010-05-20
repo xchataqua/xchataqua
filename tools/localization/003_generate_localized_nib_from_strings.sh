@@ -1,6 +1,6 @@
 #!/bin/bash
 BASELOCALE='en'
-RECDIR='../../fe-aqua'
+RECDIR='../../Localization'
 DEFXIBDIR="$RECDIR/en.lproj"
 
 for locale in `ls -d lproj/*`; do
@@ -41,7 +41,6 @@ for locale in `ls -d lproj/*`; do
 		echo -n .
   done
 	echo ""
-	cp $DEFXIBDIR/ChanList.xib lproj/$locale.lproj/
 	wait $!
 done
 sleep 3
