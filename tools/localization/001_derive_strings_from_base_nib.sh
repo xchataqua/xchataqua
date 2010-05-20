@@ -1,7 +1,7 @@
 #!/bin/bash
 PWD=`pwd`
 BASELOCALE='en'
-WORKDIR="../../fe-aqua/$BASELOCALE.lproj"
+WORKDIR="../../Localization/$BASELOCALE.lproj"
 PWDDIR="$PWD/lproj/$BASELOCALE"
 
 mkdir -p $PWDDIR
@@ -21,4 +21,3 @@ for xib in `ls *.xib`; do
 	echo -n .
 done
 echo ""
-rm $PWDDIR/ChanList.xib.strings

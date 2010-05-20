@@ -17,7 +17,9 @@
 
 
 #import <Cocoa/Cocoa.h>
+#if __MAC_OS_X_VERSION_MIN_REQUIRED >= 1050
 #import <ShortcutRecorder/ShortcutRecorder.h>
+#endif
 
 enum
 {
@@ -36,8 +38,10 @@ struct my_pref
 @interface PrefsController : NSObject
 {
     NSTabView	*tab_view;
+#if __MAC_OS_X_VERSION_MIN_REQUIRED >= 1050
 	SRRecorderCell *tab_left_sr;
 	SRRecorderCell *tab_right_sr;
+#endif
     NSWindow *prefs_window;
     NSColorWell *colors [41];
 	NSMutableArray *sounds;

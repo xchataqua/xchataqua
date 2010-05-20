@@ -188,11 +188,13 @@ static NSArray *root_items;
         }
     }
 
+	#if __MAC_OS_X_VERSION_MIN_REQUIRED >= 1050
 	KeyCombo left_combo = { prefs.tab_left_modifiers, prefs.tab_left_key };
 	[tab_left_sr setKeyCombo:left_combo];
 
 	KeyCombo right_combo = { prefs.tab_right_modifiers, prefs.tab_right_key };
 	[tab_right_sr setKeyCombo:right_combo];
+	#endif
 	
     ColorPalette *palette = [[AquaChat sharedAquaChat] getPalette];
 
@@ -228,6 +230,7 @@ static NSArray *root_items;
         }
     }
 
+	#if __MAC_OS_X_VERSION_MIN_REQUIRED >= 1050
 	KeyCombo left_combo = [tab_left_sr keyCombo];
 	prefs.tab_left_modifiers = left_combo.flags;
 	prefs.tab_left_key = left_combo.code;
@@ -235,6 +238,7 @@ static NSArray *root_items;
 	KeyCombo right_combo = [tab_right_sr keyCombo];
 	prefs.tab_right_modifiers = right_combo.flags;
 	prefs.tab_right_key = right_combo.code;
+	#endif
 
     ColorPalette *palette = [[[ColorPalette alloc] init] autorelease];
     for (int i = 0; i < [palette nColors]; i ++)

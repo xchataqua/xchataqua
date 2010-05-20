@@ -426,6 +426,8 @@ fe_args (int argc, char *argv[])
 {
 	char buff [128];
 	
+    initPool = [[NSAutoreleasePool alloc] init];	
+	
     setlocale (LC_ALL, "");
 #ifdef ENABLE_NLS
 	sprintf(buff, "%s/locale", [[[NSBundle mainBundle] resourcePath] UTF8String]);
@@ -433,6 +435,7 @@ fe_args (int argc, char *argv[])
 	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
 #endif
+	
 	// Find the default charset pref.. 
 	// This is really gross but we need it really early!
 	sprintf (buff, "%s/xchat.conf", get_xdir_fs());
@@ -452,8 +455,6 @@ fe_args (int argc, char *argv[])
 		}
 		fclose (f);
 	}
-
-    initPool = [[NSAutoreleasePool alloc] init];
 
 	setupAppSupport();
 
