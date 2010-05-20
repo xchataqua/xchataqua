@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		0F7065690E1FA5C100FEA21C /* Release */ = {
+		0F7065690E1FA5C100FEA21C /* Release 10.6 */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 0F7065760E1FA5E400FEA21C /* Build configuration list for PBXAggregateTarget "Release" */;
+			buildConfigurationList = 0F7065760E1FA5E400FEA21C /* Build configuration list for PBXAggregateTarget "Release 10.6" */;
 			buildPhases = (
 				0F2FEF770E1FB16600DE4D41 /* Copy Plugins */,
 			);
@@ -18,10 +18,9 @@
 				0F70656D0E1FA5C700FEA21C /* PBXTargetDependency */,
 				0F2FEF7E0E1FB1BD00DE4D41 /* PBXTargetDependency */,
 				0F8F08350E1FE08700359159 /* PBXTargetDependency */,
-				2D2EE90810614809000FDDED /* PBXTargetDependency */,
 				2D7813DD10E783C100C71AF8 /* PBXTargetDependency */,
 			);
-			name = Release;
+			name = "Release 10.6";
 			productName = Release;
 		};
 		B0A5F6CE0FFAB16E003F5A02 /* GenerateBuildNumber */ = {
@@ -34,6 +33,37 @@
 			);
 			name = GenerateBuildNumber;
 			productName = "Generate Build Number";
+		};
+		DB5F9D4811A5C5BB005DF8FB /* Release 10.5 */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = DB5F9D5A11A5C5BB005DF8FB /* Build configuration list for PBXAggregateTarget "Release 10.5" */;
+			buildPhases = (
+				DB5F9D5511A5C5BB005DF8FB /* Copy Plugins */,
+			);
+			dependencies = (
+				DB5F9D4911A5C5BB005DF8FB /* PBXTargetDependency */,
+				DB5F9D4B11A5C5BB005DF8FB /* PBXTargetDependency */,
+				DB5F9D4D11A5C5BB005DF8FB /* PBXTargetDependency */,
+				DB5F9D4F11A5C5BB005DF8FB /* PBXTargetDependency */,
+				DB5F9D5111A5C5BB005DF8FB /* PBXTargetDependency */,
+			);
+			name = "Release 10.5";
+			productName = Release;
+		};
+		DB5F9D6C11A5C5C5005DF8FB /* Release 10.4 */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = DB5F9D7E11A5C5C5005DF8FB /* Build configuration list for PBXAggregateTarget "Release 10.4" */;
+			buildPhases = (
+				DB5F9D7911A5C5C5005DF8FB /* Copy Plugins */,
+			);
+			dependencies = (
+				DB5F9D6D11A5C5C5005DF8FB /* PBXTargetDependency */,
+				DB5F9D6F11A5C5C5005DF8FB /* PBXTargetDependency */,
+				DB5F9D7111A5C5C5005DF8FB /* PBXTargetDependency */,
+				DB5F9D7311A5C5C5005DF8FB /* PBXTargetDependency */,
+			);
+			name = "Release 10.4";
+			productName = Release;
 		};
 /* End PBXAggregateTarget section */
 
@@ -136,7 +166,6 @@
 		0F8EA7A30CFB6CF9001AE9AE /* yellow.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7990CFB6CF9001AE9AE /* yellow.tiff */; };
 		0F8EA7C90CFB7094001AE9AE /* SGRowColView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA7C80CFB7094001AE9AE /* SGRowColView.mm */; };
 		0F8F06DD0E1FDAA100359159 /* perl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F06C10E1FDA5E00359159 /* perl.c */; };
-		0F8F06E50E1FDB0300359159 /* perl-leopard.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 0F8F06D70E1FDA8500359159 /* perl-leopard.bundle */; };
 		0F8F07CF0E1FDDBF00359159 /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8F07CE0E1FDDBF00359159 /* libperl.dylib */; };
 		0F8F07DB0E1FDEFF00359159 /* DynaLoader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8F07DA0E1FDEFF00359159 /* DynaLoader.a */; };
 		0F8F08180E1FE01800359159 /* Tcl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8F08170E1FE01800359159 /* Tcl.framework */; };
@@ -364,6 +393,11 @@
 		B0D937F10FFB0D34009370B5 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */; };
 		B0D937F20FFB0D34009370B5 /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937F00FFB0D34009370B5 /* libssl.dylib */; };
 		B0E85AC20FFFC0AF0064D049 /* sparkle.pem in Resources */ = {isa = PBXBuildFile; fileRef = B0E85AC10FFFC0AF0064D049 /* sparkle.pem */; };
+		DB5F9D5611A5C5BB005DF8FB /* tcl.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 0F8F08110E1FE00800359159 /* tcl.bundle */; };
+		DB5F9D5811A5C5BB005DF8FB /* perl-leopard.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 0F8F06D70E1FDA8500359159 /* perl-leopard.bundle */; };
+		DB5F9D5911A5C5BB005DF8FB /* python.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */; };
+		DB5F9D7A11A5C5C5005DF8FB /* tcl.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 0F8F08110E1FE00800359159 /* tcl.bundle */; };
+		DB5F9D7D11A5C5C5005DF8FB /* python.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -399,15 +433,8 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B0A5F6CE0FFAB16E003F5A02 /* GenerateBuildNumber */;
+			remoteGlobalIDString = B0A5F6CE0FFAB16E003F5A02;
 			remoteInfo = GenerateBuildNumber;
-		};
-		2D2EE90710614809000FDDED /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0F8F06D60E1FDA8500359159;
-			remoteInfo = "perl-leopard";
 		};
 		2D55EC9810EB8A0A00B4ECCB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -451,6 +478,76 @@
 			remoteGlobalIDString = B0A5F6CE0FFAB16E003F5A02;
 			remoteInfo = "Generate Build Number";
 		};
+		DB5F9D4A11A5C5BB005DF8FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B0A5F6CE0FFAB16E003F5A02;
+			remoteInfo = GenerateBuildNumber;
+		};
+		DB5F9D4C11A5C5BB005DF8FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D1107260486CEB800E47090;
+			remoteInfo = "X-Chat Aqua";
+		};
+		DB5F9D4E11A5C5BB005DF8FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F2FEF2A0E1FAB1500DE4D41;
+			remoteInfo = "python-leopard";
+		};
+		DB5F9D5011A5C5BB005DF8FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F8F08100E1FE00800359159;
+			remoteInfo = tcl;
+		};
+		DB5F9D5211A5C5BB005DF8FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F8F06D60E1FDA8500359159;
+			remoteInfo = "perl-leopard";
+		};
+		DB5F9D6E11A5C5C5005DF8FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B0A5F6CE0FFAB16E003F5A02;
+			remoteInfo = GenerateBuildNumber;
+		};
+		DB5F9D7011A5C5C5005DF8FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D1107260486CEB800E47090;
+			remoteInfo = "X-Chat Aqua";
+		};
+		DB5F9D7211A5C5C5005DF8FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F2FEF2A0E1FAB1500DE4D41;
+			remoteInfo = "python-leopard";
+		};
+		DB5F9D7411A5C5C5005DF8FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F8F08100E1FE00800359159;
+			remoteInfo = tcl;
+		};
+		DBA1A62611A5CCB2000B408C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F8F08100E1FE00800359159;
+			remoteInfo = tcl;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -462,7 +559,6 @@
 			files = (
 				0F8F08330E1FE07C00359159 /* tcl.bundle in Copy Plugins */,
 				2D78143710E78FBE00C71AF8 /* perl-snowleopard.bundle in Copy Plugins */,
-				0F8F06E50E1FDB0300359159 /* perl-leopard.bundle in Copy Plugins */,
 				0F2FEF790E1FB1A900DE4D41 /* python.bundle in Copy Plugins */,
 			);
 			name = "Copy Plugins";
@@ -508,6 +604,31 @@
 				2D55EEFB10EB9DD500B4ECCB /* libintl.8.dylib in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB5F9D5511A5C5BB005DF8FB /* Copy Plugins */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "X-Chat Aqua.app/Contents/PlugIns";
+			dstSubfolderSpec = 16;
+			files = (
+				DB5F9D5611A5C5BB005DF8FB /* tcl.bundle in Copy Plugins */,
+				DB5F9D5811A5C5BB005DF8FB /* perl-leopard.bundle in Copy Plugins */,
+				DB5F9D5911A5C5BB005DF8FB /* python.bundle in Copy Plugins */,
+			);
+			name = "Copy Plugins";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB5F9D7911A5C5C5005DF8FB /* Copy Plugins */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "X-Chat Aqua.app/Contents/PlugIns";
+			dstSubfolderSpec = 16;
+			files = (
+				DB5F9D7A11A5C5C5005DF8FB /* tcl.bundle in Copy Plugins */,
+				DB5F9D7D11A5C5C5005DF8FB /* python.bundle in Copy Plugins */,
+			);
+			name = "Copy Plugins";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -1724,6 +1845,8 @@
 		B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = /usr/lib/libcrypto.dylib; sourceTree = "<absolute>"; };
 		B0D937F00FFB0D34009370B5 /* libssl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.dylib; path = /usr/lib/libssl.dylib; sourceTree = "<absolute>"; };
 		B0E85AC10FFFC0AF0064D049 /* sparkle.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sparkle.pem; sourceTree = "<group>"; };
+		DB5F9D6711A5C5BB005DF8FB /* Info devel copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info devel copy.plist"; sourceTree = "<group>"; };
+		DB5F9D8211A5C5C5005DF8FB /* Info devel copy 2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info devel copy 2.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2092,6 +2215,8 @@
 				0FDE6C820E2704F00010E0D9 /* TBD.rtf */,
 				0F8EA3660CFAA49B001AE9AE /* Info.plist */,
 				2D8DACD00F8EFF8E00DA0BC2 /* Info devel.plist */,
+				DB5F9D6711A5C5BB005DF8FB /* Info devel copy.plist */,
+				DB5F9D8211A5C5C5005DF8FB /* Info devel copy 2.plist */,
 			);
 			name = "X-Chat Aqua";
 			sourceTree = "<group>";
@@ -2327,6 +2452,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DBA1A62711A5CCB2000B408C /* PBXTargetDependency */,
 			);
 			name = python;
 			productName = "python-leopard";
@@ -2525,16 +2651,18 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				B0A5F6CE0FFAB16E003F5A02 /* GenerateBuildNumber */,
+				DB5F9D6C11A5C5C5005DF8FB /* Release 10.4 */,
+				DB5F9D4811A5C5BB005DF8FB /* Release 10.5 */,
+				0F7065690E1FA5C100FEA21C /* Release 10.6 */,
 				8D1107260486CEB800E47090 /* X-Chat Aqua */,
 				2D55EC8110EB89EC00B4ECCB /* X-Chat Aqua 10.4 */,
-				0FE5E01C0F45576B000E0F91 /* SGPalette */,
 				0FC8F4AD0DEEE51700504F31 /* xchat */,
-				0F7065690E1FA5C100FEA21C /* Release */,
+				0FE5E01C0F45576B000E0F91 /* SGPalette */,
+				0F8F08100E1FE00800359159 /* tcl */,
 				0F2FEF2A0E1FAB1500DE4D41 /* python */,
 				0F8F06D60E1FDA8500359159 /* perl-leopard */,
 				2D78137F10E77C6400C71AF8 /* perl-snowleopard */,
-				0F8F08100E1FE00800359159 /* tcl */,
-				B0A5F6CE0FFAB16E003F5A02 /* GenerateBuildNumber */,
 			);
 		};
 /* End PBXProject section */
@@ -3020,11 +3148,6 @@
 			target = B0A5F6CE0FFAB16E003F5A02 /* GenerateBuildNumber */;
 			targetProxy = 2D03676F119B51E800C0871D /* PBXContainerItemProxy */;
 		};
-		2D2EE90810614809000FDDED /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0F8F06D60E1FDA8500359159 /* perl-leopard */;
-			targetProxy = 2D2EE90710614809000FDDED /* PBXContainerItemProxy */;
-		};
 		2D55EC9910EB8A0A00B4ECCB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0FC8F4AD0DEEE51700504F31 /* xchat */;
@@ -3054,6 +3177,56 @@
 			isa = PBXTargetDependency;
 			target = B0A5F6CE0FFAB16E003F5A02 /* GenerateBuildNumber */;
 			targetProxy = B0A5F7CA0FFABA30003F5A02 /* PBXContainerItemProxy */;
+		};
+		DB5F9D4911A5C5BB005DF8FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B0A5F6CE0FFAB16E003F5A02 /* GenerateBuildNumber */;
+			targetProxy = DB5F9D4A11A5C5BB005DF8FB /* PBXContainerItemProxy */;
+		};
+		DB5F9D4B11A5C5BB005DF8FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D1107260486CEB800E47090 /* X-Chat Aqua */;
+			targetProxy = DB5F9D4C11A5C5BB005DF8FB /* PBXContainerItemProxy */;
+		};
+		DB5F9D4D11A5C5BB005DF8FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F2FEF2A0E1FAB1500DE4D41 /* python */;
+			targetProxy = DB5F9D4E11A5C5BB005DF8FB /* PBXContainerItemProxy */;
+		};
+		DB5F9D4F11A5C5BB005DF8FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F8F08100E1FE00800359159 /* tcl */;
+			targetProxy = DB5F9D5011A5C5BB005DF8FB /* PBXContainerItemProxy */;
+		};
+		DB5F9D5111A5C5BB005DF8FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F8F06D60E1FDA8500359159 /* perl-leopard */;
+			targetProxy = DB5F9D5211A5C5BB005DF8FB /* PBXContainerItemProxy */;
+		};
+		DB5F9D6D11A5C5C5005DF8FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B0A5F6CE0FFAB16E003F5A02 /* GenerateBuildNumber */;
+			targetProxy = DB5F9D6E11A5C5C5005DF8FB /* PBXContainerItemProxy */;
+		};
+		DB5F9D6F11A5C5C5005DF8FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D1107260486CEB800E47090 /* X-Chat Aqua */;
+			targetProxy = DB5F9D7011A5C5C5005DF8FB /* PBXContainerItemProxy */;
+		};
+		DB5F9D7111A5C5C5005DF8FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F2FEF2A0E1FAB1500DE4D41 /* python */;
+			targetProxy = DB5F9D7211A5C5C5005DF8FB /* PBXContainerItemProxy */;
+		};
+		DB5F9D7311A5C5C5005DF8FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F8F08100E1FE00800359159 /* tcl */;
+			targetProxy = DB5F9D7411A5C5C5005DF8FB /* PBXContainerItemProxy */;
+		};
+		DBA1A62711A5CCB2000B408C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F8F08100E1FE00800359159 /* tcl */;
+			targetProxy = DBA1A62611A5CCB2000B408C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -4974,6 +5147,76 @@
 			};
 			name = Release;
 		};
+		DB5F9D5B11A5C5BB005DF8FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = "Info devel copy.plist";
+				PRODUCT_NAME = Release;
+			};
+			name = Debug;
+		};
+		DB5F9D5C11A5C5BB005DF8FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				INFOPLIST_FILE = "Info devel 10.5.plist";
+				PRODUCT_NAME = Release;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		DB5F9D5D11A5C5BB005DF8FB /* Release 10.4 */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				INFOPLIST_FILE = "Info devel copy.plist";
+				PRODUCT_NAME = Release;
+				ZERO_LINK = NO;
+			};
+			name = "Release 10.4";
+		};
+		DB5F9D7F11A5C5C5005DF8FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = "Info devel copy 2.plist";
+				PRODUCT_NAME = Release;
+			};
+			name = Debug;
+		};
+		DB5F9D8011A5C5C5005DF8FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				INFOPLIST_FILE = "Info devel 10.4.plist";
+				PRODUCT_NAME = Release;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		DB5F9D8111A5C5C5005DF8FB /* Release 10.4 */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				INFOPLIST_FILE = "Info devel copy 2.plist";
+				PRODUCT_NAME = Release;
+				ZERO_LINK = NO;
+			};
+			name = "Release 10.4";
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -4987,7 +5230,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0F7065760E1FA5E400FEA21C /* Build configuration list for PBXAggregateTarget "Release" */ = {
+		0F7065760E1FA5E400FEA21C /* Build configuration list for PBXAggregateTarget "Release 10.6" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0F70656A0E1FA5C100FEA21C /* Debug */,
@@ -5083,6 +5326,26 @@
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
 				2DC6B18A118A72B50048B7C7 /* Release 10.4 */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB5F9D5A11A5C5BB005DF8FB /* Build configuration list for PBXAggregateTarget "Release 10.5" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB5F9D5B11A5C5BB005DF8FB /* Debug */,
+				DB5F9D5C11A5C5BB005DF8FB /* Release */,
+				DB5F9D5D11A5C5BB005DF8FB /* Release 10.4 */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB5F9D7E11A5C5C5005DF8FB /* Build configuration list for PBXAggregateTarget "Release 10.4" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB5F9D7F11A5C5C5005DF8FB /* Debug */,
+				DB5F9D8011A5C5C5005DF8FB /* Release */,
+				DB5F9D8111A5C5C5005DF8FB /* Release 10.4 */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
