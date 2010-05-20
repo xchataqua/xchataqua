@@ -31,7 +31,9 @@ extern "C" {
 #include "../common/util.h"
 #include "../common/text.h"
 #include "../common/dcc.h"
+#if __MAC_OS_X_VERSION_MIN_REQUIRED >= 1050
 #import <ShortcutRecorder/ShortcutRecorder.h>
+#endif
 #ifdef __cplusplus
 }
 #endif
@@ -299,19 +301,6 @@ EventInfo text_event_info[NUM_XP];
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.uplinklabs.net/~tycho/projects/xchat-aqua/sparkle/rnotes.html"]];
 }
 
-- (void) do_goto_download:(id) sender
-{
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://sourceforge.net/project/showfiles.php?group_id=62257"]];
-}
-
-//TODO sparkle here
-- (void) new_version_alert
-{
-    bool ok = [SGAlert confirmWithString:NSLocalizedStringFromTable(@"There is a new version of X-Chat aqua available for download.  Press OK to visit the download site.", @"xchataqua", "")];
-    if (ok)
-        [self do_goto_download:self];
-}
-
 - (void) post_init
 {
     [NSApp setDelegate:self];
@@ -319,7 +308,7 @@ EventInfo text_event_info[NUM_XP];
     // Can't do this in awakeFromNib.. lists are not yet loaded..
     [self usermenu_update];
 	
-	[AutoAwayController start];
+	[[AutoAwayController alloc] init];
 }
     
 - (void) cleanup
@@ -413,6 +402,7 @@ EventInfo text_event_info[NUM_XP];
 		[sess->gui->cw prefsChanged];
     }
     
+	#if __MAC_OS_X_VERSION_MIN_REQUIRED >= 1050
 	NSString* s;
 	s = SRStringForKeyCode(prefs.tab_left_key);
 	if ( s != nil ) {
@@ -425,6 +415,7 @@ EventInfo text_event_info[NUM_XP];
 		[next_window_menu setKeyEquivalent:s];
 		[next_window_menu setKeyEquivalentModifierMask:prefs.tab_right_modifiers];
 	}
+	#endif
 	
     if (prefs.identd)
         identd_start ();

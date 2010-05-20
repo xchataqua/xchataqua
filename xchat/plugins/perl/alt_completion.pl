@@ -1,14 +1,26 @@
 use strict;
 use warnings;
+use Xchat ();
+use File::Spec ();
+use File::Basename qw(fileparse);
 
 # if the last time you addressed someone was greater than this many minutes
 # ago, ignore it
 # this avoids having people you have talked to a long time ago coming up too
 # early in the completion list
+# Setting this to 0 will disable the check which is effectively the same as
+# setting it to infinity
 my $last_use_threshold = 10; # 10 minutes
 
+# added to the front of a completion the same way as a suffix, only if
+# the word is at the beginning of the line
+my $prefix = '';
+
+my $path_completion = 1;
+my $base_path = '';
+
 Xchat::register(
-	"Tab Completion", "1.0302", "Alternative tab completion behavior"
+	"Tab Completion", "1.0303_01", "Alternative tab completion behavior"
 );
 Xchat::hook_print( "Key Press", \&complete );
 Xchat::hook_print( "Close Context", \&close_context );
@@ -56,7 +68,7 @@ sub complete {
 	return Xchat::EAT_NONE if $_[0][0] == 0xFF09 && $_[0][1] & (CTRL|ALT|SHIFT);
 	
 	# we also don't care about other kinds of tabs besides channel tabs
-	return Xchat::EAT_NONE unless Xchat::context_info()->{type} == 2;
+#	return Xchat::EAT_NONE unless Xchat::context_info()->{type} == 2;
 	
 	# In case some other script decides to be stupid and alter the base index
 	local $[ = 0;
@@ -68,7 +80,7 @@ sub complete {
 	
 	my $completions = $completions{$context};
 	$completions->{pos} ||= -1;
-	
+
 	my $suffix = Xchat::get_prefs( "completion_suffix" );
 	$suffix =~ s/^\s+//;
 	
@@ -92,17 +104,23 @@ sub complete {
 
 	my $command_char = Xchat::get_prefs( "input_command_char" );
 	# ignore commands
-	if( $word !~ m{^[${command_char}]} ) {
+	if( ($word !~ m{^[${command_char}]})
+		or ( $word =~ m{^[${command_char}]} and $word_start != 0 ) ) {
+
 		if( $cursor_pos == length $input # end of input box
-#			&& $input =~ /(?<!\w|$escapes)$/ # not a valid nick char
+			# not a valid nick char
 			&& $input =~ /(?<![\x41-\x5A\x61-\x7A\x30-\x39\x5B-\x60\x7B-\x7D-])$/
 			&& $cursor_pos != $completions->{pos} # not continuing a completion
-			&& $word !~ /^[&#]/ ) { # not a channel
+			&& $word !~ m{^(?:[&#/~]|[[:alpha:]]:\\)} ) { # not a channel or path
 			$word_start = $cursor_pos;
 			$left = $input;
 			$length = length $length;
 			$right = "";
 			$word = "";
+		}
+
+		if( $word_start == 0 && $prefix && $word =~ /^\Q$prefix/ ) {
+			$word =~ s/^\Q$prefix//;
 		}
 
 		my $completed; # this is going to be the "completed" word
@@ -128,8 +146,14 @@ sub complete {
 		} else {
 
 			if( $word =~ /^[&#]/ ) {
+			# channel name completion
 				$completions->{matches} = [ matching_channels( $word ) ];
+			} elsif( $word =~ m{^(?:~|/|[[:alpha:]]:\\)} ) {
+			# file name completion
+				$completions->{matches} = [ matching_files( $word ) ];
+				$skip_suffix = 1;
 			} else {
+			# nick completion
 				# fix $word so { equals [, ] equals }, \ equals |
 				# and escape regex metacharacters
 				$word =~ s/($escapes)/$escape_map{$1}/g;
@@ -163,8 +187,8 @@ sub complete {
 			
 			if( $word_start == 0 && !$skip_suffix ) {
 				# at the start of the line append completion suffix
-				Xchat::command( "settext $completed$suffix$right");
-				$completions->{pos} = length( "$completed$suffix" );
+				Xchat::command( "settext $prefix$completed$suffix$right");
+				$completions->{pos} = length( "$prefix$completed$suffix" );
 			} else {
 				Xchat::command( "settext $left$completed$right" );
 				$completions->{pos} = length( "$left$completed" );
@@ -172,23 +196,26 @@ sub complete {
 			
 			Xchat::command( "setcursor $completions->{pos}" );
 		}
+
+=begin
 # debugging stuff
-#		local $, = " ";
-#		my $input_length = length $input;
-#		Xchat::print [
-#			qq{[input:$input]},
-#			qq{[input_length:$input_length]},				
-#			qq{[cursor:$cursor_pos]},
-#			qq{[start:$word_start]},
-#			qq{[length:$length]},
-#			qq{[left:$left]},
-#			qq{[word:$word]}, qq{[right:$right]},
-#			qq{[completed:$completed]},
-#			qq{[pos:$completions->{pos}]},
-#		];
-#		use Data::Dumper;
-#		local $Data::Dumper::Indent = 0;
-#		Xchat::print Dumper $completions->{matches};
+		local $, = " ";
+		my $input_length = length $input;
+		Xchat::print [
+			qq{input[$input]},
+			qq{input_length[$input_length]},
+			qq{cursor[$cursor_pos]},
+			qq{start[$word_start]},
+			qq{length[$length]},
+			qq{left[$left]},
+			qq{word[$word]}, qq{[right[$right]},
+			qq{completed[$completed]},
+			qq{pos[$completions->{pos}]},
+		];
+		use Data::Dumper;
+		local $Data::Dumper::Indent = 0;
+		Xchat::print Dumper $completions->{matches};
+=cut
 
 		return Xchat::EAT_ALL;
 	} else {
@@ -260,36 +287,78 @@ sub matching_nicks {
 
 }
 
+sub max {
+	return unless @_;
+	my $max = shift;
+	for(@_) {
+		$max = $_ if $_ > $max;
+	}
+	return $max;
+}
+
+sub compare_times {
+	# package variables set in matching_nicks()
+	our $selections;
+	our $now;
+	
+	for my $nick ( $a->{nick}, $b->{nick} ) {
+		# turn off the warnings that get generated from users who have yet
+		# to speak since the script was loaded
+		no warnings "uninitialized";
+
+		if( $last_use_threshold
+			&& (( $now - $selections->{$nick}) > ($last_use_threshold * 60)) ) {
+			delete $selections->{ $nick }
+		}
+	}
+	my $a_time = $selections->{ $a->{nick} } || 0 ;
+	my $b_time = $selections->{ $b->{nick} } || 0 ;
+	
+	if( $a_time || $b_time ) {
+		return $b_time <=> $a_time;
+	} elsif( !$a_time && !$b_time ) {
+		return $b->{lasttalk} <=> $a->{lasttalk};
+	}
+
+}
+
 sub compare_nicks {
 	# more package variables, value set in matching_nicks()
 	our $my_nick;
-	our $selections;
-	our $now;
-
-	# turn off the warnings that get generated from users who have yet to speak
-	# since the script was loaded
-	no warnings "uninitialized";
-	
-	my $a_time
-		= ($now - $selections->{ $a->{nick} }) < ($last_use_threshold * 60) ?
-		$selections->{ $a->{nick} } :
-		$a->{lasttalk};
-	my $b_time
-		= ($now - $selections->{ $b->{nick} }) < ($last_use_threshold * 60) ?
-		$selections->{ $b->{nick} } :
-		$b->{lasttalk};
 
 	# our own nick is always last, then ordered by the people we spoke to most
 	# recently and the people who were speaking most recently
 	return 
 		$a->{nick} eq $my_nick ? 1 :
 		$b->{nick} eq $my_nick ? -1 :
-		$b_time <=> $a_time
+		compare_times()
 		|| Xchat::nickcmp( $a->{nick}, $b->{nick} );
 
 #		$selections->{ $b->{nick} } <=> $selections->{ $a->{nick} }
 #		||	$b->{lasttalk} <=> $a->{lasttalk}
 
+}
+
+sub matching_files {
+	my $word = shift;
+
+	my $path = expand_tilde( $word );
+	my ($file, $dir) = fileparse( $path );
+
+	if( opendir my $dir_handle, $dir ) {
+		my @files;
+
+		if( $file ) {
+			@files = grep { /^\Q$file/ } readdir $dir_handle;
+		} else {
+			@files = readdir $dir_handle;
+		}
+
+		return sort map { File::Spec->catfile( $dir, $_ ) }
+			grep { !/^\.{1,2}$/ } @files;
+	} else {
+		return ();
+	}
 }
 
 # Remove completion related data for tabs that are closed
@@ -310,7 +379,8 @@ sub focus_tab {
 # by the completion suffix
 sub track_selected {
 	my $input = $_[1][0];
-	
+	return Xchat::EAT_NONE unless defined $input;
+
 	my $suffix = Xchat::get_prefs( "completion_suffix" );
 	for( grep defined, $input =~ /^(.+)\Q$suffix/, $_[0][0] ) {
 		if( in_channel( $_ ) ) {
@@ -373,4 +443,21 @@ sub common_string {
 	
 	
 	return substr( $nick1, 0, $index );
+}
+
+sub expand_tilde {
+	my $file = shift;
+
+	$file =~ s/^~/home_dir()/e;
+	return $file;
+}
+
+sub home_dir {
+	return $base_path if $base_path;
+
+	if ( $^O eq "MSWin32" ) {
+		return $ENV{USERPROFILE};
+	} else {
+		return ((getpwuid($>))[7] ||  $ENV{HOME} || $ENV{LOGDIR});
+	}
 }

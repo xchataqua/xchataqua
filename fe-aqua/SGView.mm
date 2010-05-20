@@ -15,6 +15,9 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
+#ifndef FE_AQUA_TIGER
+	#import <objc/runtime.h>
+#endif
 #import "SGView.h"
 
 //////////////////////////////////////////////////////////////////////
@@ -80,6 +83,26 @@
 
 //////////////////////////////////////////////////////////////////////
 
+@interface NSView (sgview)
+@end
+
+@implementation NSView (sgview)
+
+- (void) setOriginalHidden:(BOOL) flag {
+	assert(NO);
+}
+
+- (void) setSGHidden:(BOOL) flag
+{
+	[self setOriginalHidden:flag];
+    if ([[[self superview] class] isSubclassOfClass:[SGView class]])
+        [(SGView *) [self superview] queue_layout];
+}
+
+@end
+
+//////////////////////////////////////////////////////////////////////
+#ifdef FE_AQUA_TIGER
 @interface NSViewOverride : NSView
 @end
 
@@ -87,14 +110,13 @@
 
 - (void) setHidden:(BOOL) flag
 {
-    [super setHidden:flag];
-    
+	[super setHidden:flag];
     if ([[[self superview] class] isSubclassOfClass:[SGView class]])
         [(SGView *) [self superview] queue_layout];
 }
 
 @end
-
+#endif
 //////////////////////////////////////////////////////////////////////
 
 @implementation SGMetaView
@@ -163,8 +185,20 @@
 
 + (void) initialize
 {
-    if (self == [SGView class])
-        [NSViewOverride poseAsClass:[NSView class]];
+	#ifdef FE_AQUA_TIGER
+	if (self == [SGView class]) {
+		[NSViewOverride poseAsClass:[NSView class]];
+	}
+	#else
+	Method originalMethod = class_getInstanceMethod([NSView class], @selector(setHidden:));
+	Method overrideMethod = class_getInstanceMethod([NSView class], @selector(setSGHidden:));
+	IMP originalImplementation = method_getImplementation(originalMethod);
+	IMP overrideImplementation = method_getImplementation(overrideMethod);
+	if ( originalImplementation	!= overrideImplementation ) {
+		method_setImplementation(class_getInstanceMethod([NSView class], @selector(setOriginalHidden:)), originalImplementation);
+		method_setImplementation(originalMethod, overrideImplementation);
+	}
+	#endif
 }
 
 - (void) SGViewPrivateInit
