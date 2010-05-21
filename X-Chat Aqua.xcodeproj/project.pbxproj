@@ -1845,8 +1845,8 @@
 		B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = /usr/lib/libcrypto.dylib; sourceTree = "<absolute>"; };
 		B0D937F00FFB0D34009370B5 /* libssl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.dylib; path = /usr/lib/libssl.dylib; sourceTree = "<absolute>"; };
 		B0E85AC10FFFC0AF0064D049 /* sparkle.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sparkle.pem; sourceTree = "<group>"; };
-		DB5F9D6711A5C5BB005DF8FB /* Info devel copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info devel copy.plist"; sourceTree = "<group>"; };
-		DB5F9D8211A5C5C5005DF8FB /* Info devel copy 2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info devel copy 2.plist"; sourceTree = "<group>"; };
+		DB85332C11A6FB04006FE10F /* Info devel 10.4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info devel 10.4.plist"; sourceTree = "<group>"; };
+		DB85332D11A6FB04006FE10F /* Info devel 10.5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info devel 10.5.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2214,9 +2214,9 @@
 				B07C7AD70F4398FC00E11B58 /* Release.xcconfig */,
 				0FDE6C820E2704F00010E0D9 /* TBD.rtf */,
 				0F8EA3660CFAA49B001AE9AE /* Info.plist */,
+				DB85332C11A6FB04006FE10F /* Info devel 10.4.plist */,
+				DB85332D11A6FB04006FE10F /* Info devel 10.5.plist */,
 				2D8DACD00F8EFF8E00DA0BC2 /* Info devel.plist */,
-				DB5F9D6711A5C5BB005DF8FB /* Info devel copy.plist */,
-				DB5F9D8211A5C5C5005DF8FB /* Info devel copy 2.plist */,
 			);
 			name = "X-Chat Aqua";
 			sourceTree = "<group>";
@@ -2531,7 +2531,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D55EC8F10EB89ED00B4ECCB /* Build configuration list for PBXNativeTarget "X-Chat Aqua 10.4" */;
 			buildPhases = (
-				2D53960C10EBCCC800AD552F /* Generate LE_MESSAGES */,
+				2D53960C10EBCCC800AD552F /* Generate LC_MESSAGES */,
 				2D55EC7F10EB89EC00B4ECCB /* Sources */,
 				2D55EC8010EB89EC00B4ECCB /* Frameworks */,
 				2D55EDB410EB915800B4ECCB /* Resources */,
@@ -2573,7 +2573,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "X-Chat Aqua" */;
 			buildPhases = (
-				B0A5F6B30FFAB04D003F5A02 /* Generate LE_MESSAGES */,
+				B0A5F6B30FFAB04D003F5A02 /* Generate LC_MESSAGES */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				8D1107290486CEB800E47090 /* Resources */,
@@ -2828,14 +2828,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2D53960C10EBCCC800AD552F /* Generate LE_MESSAGES */ = {
+		2D53960C10EBCCC800AD552F /* Generate LC_MESSAGES */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Generate LE_MESSAGES";
+			name = "Generate LC_MESSAGES";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2856,14 +2856,14 @@
 			shellPath = /bin/sh;
 			shellScript = "cd \"$TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/Resources\"\nfor lproj in *.lproj; do\n\tcp \"$lproj/Prefs.Tiger.nib\" \"$lproj/Prefs.nib\"\ndone";
 		};
-		B0A5F6B30FFAB04D003F5A02 /* Generate LE_MESSAGES */ = {
+		B0A5F6B30FFAB04D003F5A02 /* Generate LC_MESSAGES */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Generate LE_MESSAGES";
+			name = "Generate LC_MESSAGES";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
