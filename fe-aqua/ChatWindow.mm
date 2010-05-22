@@ -1468,7 +1468,9 @@ static NSImage *empty_image;
 			j = 0;
 			do {
 				if (sess->server->p_cmp (user->nick, names[j]) == 0) {
-					[userlist_table selectRow:i byExtendingSelection:YES];
+					[userlist_table
+           selectRowIndexes:[NSIndexSet indexSetWithIndex:i]
+           byExtendingSelection:YES];
 					if (scroll_to) [userlist_table scrollRowToVisible:i];
 				}
 			} while (*names[++j]);
@@ -1498,18 +1500,22 @@ static NSImage *empty_image;
 	[self updateUserTableLayoutForInsert: u];
 /* CL end */
     
-    if (row < 0)
-        [userlist addObject:u];
-    else
-    {
-        int srow = [userlist_table selectedRow];
-        [userlist insertObject:u atIndex:row];
-        if (srow >= 0 && row <= srow)
-            [userlist_table selectRow:srow + 1 byExtendingSelection:false];
-    }
+  if (row < 0)
+    [userlist addObject:u];
+  else
+  {
+    int srow = [userlist_table selectedRow];
+    [userlist insertObject:u atIndex:row];
+    if (srow >= 0 && row <= srow)
+      [userlist_table
+       selectRowIndexes:[NSIndexSet indexSetWithIndex:srow + 1]
+       byExtendingSelection:NO];
+  }
 
-    if (select)
-        [userlist_table selectRow:row byExtendingSelection:false];
+  if (select)
+    [userlist_table
+     selectRowIndexes:[NSIndexSet indexSetWithIndex:row]
+     byExtendingSelection:NO];
 
     [userlist_table reloadData]; 
 
@@ -1531,23 +1537,25 @@ static NSImage *empty_image;
 {
 /* CL */
 	OneUser *u;
-    int idx = [self findUser:user returnObject:&u];
+    NSInteger idx = [self findUser:user returnObject:&u];
     if (idx < 0)
         return false;
         
-    int srow = [userlist_table selectedRow];
+  NSInteger srow = [userlist_table selectedRow];
 	[u retain];
     [userlist removeObjectAtIndex:idx];
 	[self updateUserTableLayoutForRemove: u];
 	[u release];
 /* CL end */
     if (idx < srow)
-        [userlist_table selectRow:srow - 1 byExtendingSelection:false];
+      [userlist_table
+       selectRowIndexes:[NSIndexSet indexSetWithIndex:srow - 1]
+       byExtendingSelection:NO];
     else if (idx == srow)
-        [userlist_table deselectAll:self];
-    [userlist_table reloadData]; 
+      [userlist_table deselectAll:self];
+  [userlist_table reloadData]; 
 
-    return srow == idx;
+  return srow == idx;
 }
 
 - (void) userlist_move:(struct User *) user
@@ -1564,13 +1572,15 @@ static NSImage *empty_image;
 		[userlist insertObject:u atIndex:row];
 		[u release];	//<--
 
-		int srow = [userlist_table selectedRow];
+		NSInteger srow = [userlist_table selectedRow];
 		if (i == srow) srow = row;
 		else {
 			if (i < srow) srow--;
 			if (row <= srow) srow++;
 		}
-		[userlist_table selectRow:srow byExtendingSelection:false];
+		[userlist_table
+     selectRowIndexes:[NSIndexSet indexSetWithIndex:srow]
+     byExtendingSelection:NO];
 	}
 	
 	[self rehashUserAndUpdateLayout: u];
