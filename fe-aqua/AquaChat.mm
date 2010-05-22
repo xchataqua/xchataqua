@@ -45,7 +45,6 @@ extern "C" {
 
 #import "AquaChat.h"
 #import "PrefsController.h"
-#import "ReleaseNotesWindow.h"
 #import "ChatWindow.h"
 #import "SGAlert.h"
 #import "UserCommands.h"
