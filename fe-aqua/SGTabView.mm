@@ -206,7 +206,7 @@ static NSButtonCell *makeCloseCell ()
 		if ([item isKindOfClass:[SGTabViewItem class]])
 		{
 			NSTableColumn *tableColumn = [[self tableColumns] objectAtIndex:col];
-			NSCell *cell = [tableColumn dataCell];
+			SGTabViewOutlineCell *cell = [tableColumn dataCell];
 			
 			if ([cell isKindOfClass:[SGTabViewOutlineCell class]])
 			{
