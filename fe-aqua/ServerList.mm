@@ -639,7 +639,7 @@ static ServerList *instance;
 
 	[self use_global_toggled:net_use_global];
 	
-	int selected = net->net->selected;
+	NSInteger selected = net->net->selected;
 
 	[net_join_table reloadData];
 	[net_command_table reloadData];
@@ -647,7 +647,9 @@ static ServerList *instance;
 
 	if (selected < [self numberOfRowsInTableView:net_server_list])
 	{
-		[net_server_list selectRow:selected byExtendingSelection:false];
+		[net_server_list
+     selectRowIndexes:[NSIndexSet indexSetWithIndex:selected]
+     byExtendingSelection:NO];
 		[net_server_list scrollRowToVisible:selected];
 	}
 }
@@ -667,19 +669,19 @@ static ServerList *instance;
 - (void) do_new_channel:(id) sender
 {
 	int nrow = [net_list selectedRow];
-    if (nrow < 0)
-		return;
+  if (nrow < 0)
+    return;
         
-    oneNet *net = (oneNet *) [my_nets objectAtIndex:nrow];
+  oneNet *net = (oneNet *) [my_nets objectAtIndex:nrow];
 
 	oneChannel *chan = [[oneChannel alloc] initWithChannel:NSLocalizedStringFromTable(@"NEW CHANNEL", @"xchataqua", @"Default channel name: MainMenu->File->Server List... => (Select server)->On Join->channels->'+'")];
 	[net->channels addObject:chan];
 	
 	[net_join_table reloadData];
 	
-	int last = [net->channels count] - 1;    
-    [net_join_table selectRow:last byExtendingSelection:false];
-    [net_join_table scrollRowToVisible:last];
+	NSInteger last = [net->channels count] - 1;    
+  [net_join_table selectRowIndexes:[NSIndexSet indexSetWithIndex:last] byExtendingSelection:NO];
+  [net_join_table scrollRowToVisible:last];
 	[net_join_table editColumn:0 row:last withEvent:NULL select:YES];
 }
 
@@ -706,18 +708,20 @@ static ServerList *instance;
 - (void) do_new_command:(id) sender
 {
 	int nrow = [net_list selectedRow];
-    if (nrow < 0)
-        return;
+  if (nrow < 0)
+    return;
         
-    oneNet *net = (oneNet *) [my_nets objectAtIndex:nrow];
+  oneNet *net = (oneNet *) [my_nets objectAtIndex:nrow];
 
 	[net->connect_commands addObject:NSLocalizedStringFromTable(@"NEW COMMAND", @"xchataqua", @"Default command: MainMenu->File->Server List... => (Select server)->On Join->commands->'+'")];
 	
 	[net_command_table reloadData];
 	
-	int last = [net->connect_commands count] - 1;    
-    [net_command_table selectRow:last byExtendingSelection:false];
-    [net_command_table scrollRowToVisible:last];
+	NSInteger last = [net->connect_commands count] - 1;    
+  [net_command_table
+   selectRowIndexes:[NSIndexSet indexSetWithIndex:last]
+   byExtendingSelection:NO];
+  [net_command_table scrollRowToVisible:last];
 	[net_command_table editColumn:0 row:last withEvent:NULL select:YES];
 }
 
@@ -768,48 +772,54 @@ static ServerList *instance;
 
 - (void) do_edit_server:(id) sender
 {
-    int sel = [net_server_list selectedRow];
+  NSInteger sel = [net_server_list selectedRow];
 	if (sel >= 0)
 	{
-		[net_server_list selectRow:sel byExtendingSelection:false];
+		[net_server_list
+     selectRowIndexes:[NSIndexSet indexSetWithIndex:sel]
+     byExtendingSelection:NO];
 		[net_server_list editColumn:0 row:sel withEvent:NULL select:YES];
 	}
 }
 
 - (void) do_new_server:(id) sender
 {
-    int nrow = [net_list selectedRow];
-    if (nrow < 0)
-        return;
+  int nrow = [net_list selectedRow];
+  if (nrow < 0)
+    return;
 
-    int srow = [net_server_list selectedRow];
-    if (srow < 0)
-        return;
+  int srow = [net_server_list selectedRow];
+  if (srow < 0)
+    return;
         
-    oneNet *net = (oneNet *) [my_nets objectAtIndex:nrow];
+  oneNet *net = (oneNet *) [my_nets objectAtIndex:nrow];
 	
-    ircserver *svr = servlist_server_add (net->net, "NewServer");
+  ircserver *svr = servlist_server_add (net->net, "NewServer");
     
-    [net addServer:svr];
-    [net_server_list reloadData];
+  [net addServer:svr];
+  [net_server_list reloadData];
     
-    int last = [net->servers count] - 1;    
-    [net_server_list selectRow:last byExtendingSelection:false];
-    [net_server_list scrollRowToVisible:last];
+  NSInteger last = [net->servers count] - 1;    
+  [net_server_list
+   selectRowIndexes:[NSIndexSet indexSetWithIndex:last]
+   byExtendingSelection:NO];
+  [net_server_list scrollRowToVisible:last];
 	
 	[self do_edit_server:sender];
 }
 
 - (void) do_new_network:(id) sender
 {
-    ircnet *net = servlist_net_add ((char*)XALocalizeString("New Network"), "", false);
-    servlist_server_add (net, "NewServer");
-    [my_nets addObject:[[oneNet alloc] initWithIrcnet:net]];
-    [net_list reloadData];
+  ircnet *net = servlist_net_add ((char*)XALocalizeString("New Network"), "", false);
+  servlist_server_add (net, "NewServer");
+  [my_nets addObject:[[oneNet alloc] initWithIrcnet:net]];
+  [net_list reloadData];
    
-    int last = [self numberOfRowsInTableView:net_list] - 1;
-	[net_list selectRow:last byExtendingSelection:false];
-    [net_list editColumn:2 row:last withEvent:NULL select:YES];
+  NSInteger last = [self numberOfRowsInTableView:net_list] - 1;
+	[net_list
+   selectRowIndexes:[NSIndexSet indexSetWithIndex:last]
+   byExtendingSelection:NO];
+  [net_list editColumn:2 row:last withEvent:NULL select:YES];
 }
 
 - (void) do_remove_network:(id) sender
@@ -918,17 +928,17 @@ static ServerList *instance;
 		}
 	}
 	
-    for (int i = 0; i < [net_server_list numberOfColumns]; i ++)
-    {
-        id col = [[net_server_list tableColumns] objectAtIndex:i];
-        [col setIdentifier:[NSNumber numberWithInt:i]];
-    }
+  for (int i = 0; i < [net_server_list numberOfColumns]; i ++)
+  {
+    id col = [[net_server_list tableColumns] objectAtIndex:i];
+    [col setIdentifier:[NSNumber numberWithInt:i]];
+  }
 
-    for (int i = 0; i < [net_join_table numberOfColumns]; i ++)
-    {
-        id col = [[net_join_table tableColumns] objectAtIndex:i];
-        [col setIdentifier:[NSNumber numberWithInt:i]];
-    }
+  for (int i = 0; i < [net_join_table numberOfColumns]; i ++)
+  {
+    id col = [[net_join_table tableColumns] objectAtIndex:i];
+    [col setIdentifier:[NSNumber numberWithInt:i]];
+  }
 
 	NSTableColumn *fav_col = [[net_list tableColumns] objectAtIndex:0];
 	NSTableHeaderCell *heart_cell = [fav_col headerCell];
@@ -938,19 +948,19 @@ static ServerList *instance;
 	NSTableHeaderCell *conn_cell = [conn_col headerCell];
 	[conn_cell setImage:[NSImage imageNamed:@"connect.tif"]];
 	
-    [[nick1 window] setDelegate:self];
+  [[nick1 window] setDelegate:self];
     
-    [self->net_server_list setDataSource:self];
-    [self->net_server_list setDelegate:self];
+  [self->net_server_list setDataSource:self];
+  [self->net_server_list setDelegate:self];
 
-    [self->net_join_table setDataSource:self];
-    [self->net_join_table setDelegate:self];
+  [self->net_join_table setDataSource:self];
+  [self->net_join_table setDelegate:self];
 
-    [self->net_command_table setDataSource:self];
-    [self->net_command_table setDelegate:self];
+  [self->net_command_table setDataSource:self];
+  [self->net_command_table setDelegate:self];
     
-    [self->net_list setDataSource:self];
-    [self->net_list setDelegate:self];
+  [self->net_list setDataSource:self];
+  [self->net_list setDelegate:self];
 	[self->net_list setAutosaveTableColumns:YES];
     
 	[net_auto setTag:FLAG_AUTO_CONNECT];
@@ -973,21 +983,23 @@ static ServerList *instance;
     // save the value of prefs.slist_select now, and reset the selection after
     // the first reloadData.
     
-    int slist_select = prefs.slist_select;
+  NSInteger slist_select = prefs.slist_select;
     
-    [self make_charset_menu];
-    [self populate];
+  [self make_charset_menu];
+  [self populate];
 
 	[my_nets sortUsingDescriptors:[net_list sortDescriptors]];
 	[net_list reloadData];
 
-    if (slist_select < [self numberOfRowsInTableView:net_list])
-    {
-        [net_list selectRow:slist_select byExtendingSelection:false];
-        [net_list scrollRowToVisible:slist_select];
-    }
+  if (slist_select < [self numberOfRowsInTableView:net_list])
+  {
+    [net_list
+     selectRowIndexes:[NSIndexSet indexSetWithIndex:slist_select]
+     byExtendingSelection:NO];
+    [net_list scrollRowToVisible:slist_select];
+  }
 
-    [[nick1 window] center];
+  [[nick1 window] center];
 }
 
 //
