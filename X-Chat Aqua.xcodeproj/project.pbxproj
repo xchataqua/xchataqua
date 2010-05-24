@@ -60,6 +60,7 @@
 		0F8EA6540CFB2F5C001AE9AE /* NotifyListWin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6450CFB2F5C001AE9AE /* NotifyListWin.mm */; };
 		0F8EA6550CFB2F5C001AE9AE /* PluginList.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6470CFB2F5C001AE9AE /* PluginList.mm */; };
 		0F8EA6560CFB2F5C001AE9AE /* RawLogWin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6490CFB2F5C001AE9AE /* RawLogWin.mm */; };
+		0F8EA6570CFB2F5C001AE9AE /* ReleaseNotesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA64B0CFB2F5C001AE9AE /* ReleaseNotesWindow.m */; };
 		0F8EA6880CFB300B001AE9AE /* SGAlert.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA65B0CFB300B001AE9AE /* SGAlert.mm */; };
 		0F8EA6890CFB300B001AE9AE /* SGApplication.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA65D0CFB300B001AE9AE /* SGApplication.mm */; };
 		0F8EA68A0CFB300B001AE9AE /* SGArray.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA65F0CFB300B001AE9AE /* SGArray.mm */; };
@@ -272,6 +273,7 @@
 		2D55EDF710EB9CC600B4ECCB /* PluginList.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6470CFB2F5C001AE9AE /* PluginList.mm */; };
 		2D55EDF810EB9CC600B4ECCB /* PrefsController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6D30CFB347B001AE9AE /* PrefsController.mm */; };
 		2D55EDF910EB9CC600B4ECCB /* RawLogWin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6490CFB2F5C001AE9AE /* RawLogWin.mm */; };
+		2D55EDFA10EB9CC600B4ECCB /* ReleaseNotesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA64B0CFB2F5C001AE9AE /* ReleaseNotesWindow.m */; };
 		2D55EDFB10EB9CC600B4ECCB /* ReplacePopup.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6D50CFB347B001AE9AE /* ReplacePopup.mm */; };
 		2D55EDFC10EB9CC600B4ECCB /* ServerList.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6D70CFB347B001AE9AE /* ServerList.mm */; };
 		2D55EDFD10EB9CC600B4ECCB /* SGAlert.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA65B0CFB300B001AE9AE /* SGAlert.mm */; };
@@ -610,6 +612,8 @@
 		0F8EA6470CFB2F5C001AE9AE /* PluginList.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PluginList.mm; path = "fe-aqua/PluginList.mm"; sourceTree = "<group>"; };
 		0F8EA6480CFB2F5C001AE9AE /* RawLogWin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RawLogWin.h; path = "fe-aqua/RawLogWin.h"; sourceTree = "<group>"; };
 		0F8EA6490CFB2F5C001AE9AE /* RawLogWin.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = RawLogWin.mm; path = "fe-aqua/RawLogWin.mm"; sourceTree = "<group>"; };
+		0F8EA64A0CFB2F5C001AE9AE /* ReleaseNotesWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReleaseNotesWindow.h; path = "fe-aqua/ReleaseNotesWindow.h"; sourceTree = "<group>"; };
+		0F8EA64B0CFB2F5C001AE9AE /* ReleaseNotesWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReleaseNotesWindow.m; path = "fe-aqua/ReleaseNotesWindow.m"; sourceTree = "<group>"; };
 		0F8EA6590CFB300B001AE9AE /* SG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SG.h; sourceTree = "<group>"; };
 		0F8EA65A0CFB300B001AE9AE /* SGAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAlert.h; sourceTree = "<group>"; };
 		0F8EA65B0CFB300B001AE9AE /* SGAlert.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SGAlert.mm; sourceTree = "<group>"; };
@@ -2151,6 +2155,8 @@
 				0F8EA6470CFB2F5C001AE9AE /* PluginList.mm */,
 				0F8EA6480CFB2F5C001AE9AE /* RawLogWin.h */,
 				0F8EA6490CFB2F5C001AE9AE /* RawLogWin.mm */,
+				0F8EA64A0CFB2F5C001AE9AE /* ReleaseNotesWindow.h */,
+				0F8EA64B0CFB2F5C001AE9AE /* ReleaseNotesWindow.m */,
 			);
 			name = "Utility window";
 			path = ..;
@@ -2899,6 +2905,7 @@
 				2D55EDF710EB9CC600B4ECCB /* PluginList.mm in Sources */,
 				2D55EDF810EB9CC600B4ECCB /* PrefsController.mm in Sources */,
 				2D55EDF910EB9CC600B4ECCB /* RawLogWin.mm in Sources */,
+				2D55EDFA10EB9CC600B4ECCB /* ReleaseNotesWindow.m in Sources */,
 				2D55EDFB10EB9CC600B4ECCB /* ReplacePopup.mm in Sources */,
 				2D55EDFC10EB9CC600B4ECCB /* ServerList.mm in Sources */,
 				2D55EDFD10EB9CC600B4ECCB /* SGAlert.mm in Sources */,
@@ -2966,6 +2973,7 @@
 				0F8EA6540CFB2F5C001AE9AE /* NotifyListWin.mm in Sources */,
 				0F8EA6550CFB2F5C001AE9AE /* PluginList.mm in Sources */,
 				0F8EA6560CFB2F5C001AE9AE /* RawLogWin.mm in Sources */,
+				0F8EA6570CFB2F5C001AE9AE /* ReleaseNotesWindow.m in Sources */,
 				0F8EA6880CFB300B001AE9AE /* SGAlert.mm in Sources */,
 				0F8EA6890CFB300B001AE9AE /* SGApplication.mm in Sources */,
 				0F8EA68A0CFB300B001AE9AE /* SGArray.mm in Sources */,
