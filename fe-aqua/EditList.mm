@@ -132,14 +132,12 @@ extern "C" {
 
 - (void) do_down:(id) sender
 {
-  NSUInteger row = [cmd_list selectedRow];
-  if (row < 0 || row >= [my_items count] - 1)
+    unsigned int row = [cmd_list selectedRow];
+    if (row < 0 || row >= [my_items count] - 1)
 		return;
-  [my_items exchangeObjectAtIndex:row withObjectAtIndex:row + 1];
-  [cmd_list reloadData];
-  [cmd_list
-   selectRowIndexes:[NSIndexSet indexSetWithIndex:row + 1]
-   byExtendingSelection:NO];
+    [my_items exchangeObjectAtIndex:row withObjectAtIndex:row + 1];
+    [cmd_list reloadData];
+    [cmd_list selectRow:row + 1 byExtendingSelection:false];
 }
 
 - (void) do_help:(id) sender
@@ -149,13 +147,12 @@ extern "C" {
 
 - (void) do_new:(id) sender
 {
-  one_item *item = [[one_item alloc] initWithName:"*NEW*" cmd:"EDIT ME"];
-  [my_items insertObject:item atIndex:0];
-  [cmd_list reloadData];
-  [cmd_list
-   selectRowIndexes:[NSIndexSet indexSetWithIndex:0]
-   byExtendingSelection:NO];
-  [cmd_list editColumn:0 row:0 withEvent:NULL select:true];
+    one_item *item = [[one_item alloc] initWithName:"*NEW*"
+					        cmd:"EDIT ME"];
+    [my_items insertObject:item atIndex:0];
+    [cmd_list reloadData];
+    [cmd_list selectRow:0 byExtendingSelection:false];
+    [cmd_list editColumn:0 row:0 withEvent:NULL select:true];
 }
 
 - (void) do_save:(id) sender
@@ -190,14 +187,12 @@ extern "C" {
 
 - (void) do_up:(id) sender
 {
-  NSInteger row = [cmd_list selectedRow];
-  if (row < 1)
-    return;
-  [my_items exchangeObjectAtIndex:row withObjectAtIndex:row - 1];
-  [cmd_list reloadData];
-  [cmd_list
-   selectRowIndexes:[NSIndexSet indexSetWithIndex:row - 1]
-   byExtendingSelection:NO];
+    int row = [cmd_list selectedRow];
+    if (row < 1)
+		return;
+    [my_items exchangeObjectAtIndex:row withObjectAtIndex:row - 1];
+    [cmd_list reloadData];
+    [cmd_list selectRow:row - 1 byExtendingSelection:false];
 }
 
 ////////////

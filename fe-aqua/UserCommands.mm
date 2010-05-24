@@ -135,30 +135,30 @@ extern "C" {
 - (void) show
 {
 	[self load_items];
-  [self tableViewSelectionDidChange:NULL];	// TBD: NULL ok?
-  [cmd_list selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
-  [[cmd_list window] makeKeyAndOrderFront:self];
+    [self tableViewSelectionDidChange:NULL];	// TBD: NULL ok?
+    [cmd_list selectRow:0 byExtendingSelection:false];
+    [[cmd_list window] makeKeyAndOrderFront:self];
 }
 
 - (void) do_delete:(id) sender
 {
 	[cmd_list abortEditing];
-  int row = [cmd_list selectedRow];
-  if (row < 0) return;
-  [my_items removeObjectAtIndex:row];
-  [cmd_list reloadData];
-  [self tableViewSelectionDidChange:NULL];	// TBD: NULL ok?
+    int row = [cmd_list selectedRow];
+    if (row < 0) return;
+    [my_items removeObjectAtIndex:row];
+    [cmd_list reloadData];
+    [self tableViewSelectionDidChange:NULL];	// TBD: NULL ok?
 }
 
 - (void) do_add:(id) sender
 {
-  oneUserCommand *item = [[oneUserCommand alloc] initWithName:"*NEW*"
-                                                          cmd:"EDIT ME"];
-  [my_items insertObject:item atIndex:0];
-  [cmd_list reloadData];
-  [cmd_list selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
-  [cmd_list editColumn:0 row:0 withEvent:NULL select:true];
-  [self tableViewSelectionDidChange:NULL];	// TBD: NULL ok?
+    oneUserCommand *item = [[oneUserCommand alloc] initWithName:"*NEW*"
+					        cmd:"EDIT ME"];
+    [my_items insertObject:item atIndex:0];
+    [cmd_list reloadData];
+    [cmd_list selectRow:0 byExtendingSelection:false];
+    [cmd_list editColumn:0 row:0 withEvent:NULL select:true];
+    [self tableViewSelectionDidChange:NULL];	// TBD: NULL ok?
 }
 
 - (void) do_ok:(id) sender

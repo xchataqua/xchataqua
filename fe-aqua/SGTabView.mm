@@ -1066,10 +1066,8 @@ HIThemeSegmentPosition positionTable[2][2] =
 		for (unsigned i = 0; i < [groups count]; i ++)
 			[outline expandItem:[groups objectAtIndex:i]];
 
-		NSInteger row = [outline rowForItem:selected_tab];
-		[outline
-     selectRowIndexes:[NSIndexSet indexSetWithIndex:row]
-     byExtendingSelection:NO];
+		int row = [outline rowForItem:selected_tab];
+		[outline selectRow:row byExtendingSelection:NO];
 	}
 }
 
@@ -1202,10 +1200,8 @@ HIThemeSegmentPosition positionTable[2][2] =
 	{
 		[outline reloadData];
 		// Removing items above the current item muck up the selected item in the outline
-		NSInteger row = [outline rowForItem:selected_tab];
-		[outline
-     selectRowIndexes:[NSIndexSet indexSetWithIndex:row]
-     byExtendingSelection:NO];
+		int row = [outline rowForItem:selected_tab];
+		[outline selectRow:row byExtendingSelection:NO];
 	}
 
     [self setCaps];
@@ -1258,10 +1254,8 @@ HIThemeSegmentPosition positionTable[2][2] =
 	
 	if (outline)
 	{
-		NSInteger row = [outline rowForItem:tabViewItem];
-		[outline
-     selectRowIndexes:[NSIndexSet indexSetWithIndex:row]
-     byExtendingSelection:NO];
+		int row = [outline rowForItem:tabViewItem];
+		[outline selectRow:row byExtendingSelection:NO];
 	}
     
     if (selected_tab->view)
