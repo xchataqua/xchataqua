@@ -320,11 +320,6 @@ EventInfo text_event_info[NUM_XP];
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.uplinklabs.net/~tycho/projects/xchat-aqua/sparkle/rnotes.html"]];
 }
 
-- (void) do_goto_download:(id) sender
-{
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://sourceforge.net/project/showfiles.php?group_id=62257"]];
-}
-
 //TODO sparkle here
 - (void) new_version_alert
 {
