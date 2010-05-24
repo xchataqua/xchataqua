@@ -45,6 +45,7 @@ extern "C" {
 @class PluginList;
 @class PrefsController;
 @class LogViewer;
+@class ReleaseNotesWindow;
 
 struct session;
 
@@ -112,6 +113,7 @@ extern EventInfo text_event_info[];
     AsciiWin	*ascii_window;
     PluginList	*plugin_list_win;
     PrefsController *prefs_controller;
+	ReleaseNotesWindow * release_notes_window;
     LogViewer       *log_viewer;
 	
     NSMutableDictionary *sound_cache;
