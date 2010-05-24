@@ -320,10 +320,17 @@ EventInfo text_event_info[NUM_XP];
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.uplinklabs.net/~tycho/projects/xchat-aqua/sparkle/rnotes.html"]];
 }
 
-  // Open the X-Chat Aqua online documentation.
-- (void) do_online_docs:(id) sender
+- (void) do_goto_download:(id) sender
 {
-  [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://xchataqua.sourceforge.net/docs/"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://sourceforge.net/project/showfiles.php?group_id=62257"]];
+}
+
+//TODO sparkle here
+- (void) new_version_alert
+{
+    bool ok = [SGAlert confirmWithString:NSLocalizedStringFromTable(@"There is a new version of X-Chat aqua available for download.  Press OK to visit the download site.", @"xchataqua", "")];
+    if (ok)
+        [self do_goto_download:self];
 }
 
 - (void) post_init
