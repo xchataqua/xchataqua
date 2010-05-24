@@ -47,7 +47,6 @@ static NSString *fix_path (NSString *path)
     [p setResolvesAliases:NO];
     [p setCanChooseDirectories:NO];
     [p setAllowsMultipleSelection:NO];
-    [p setPrompt:@"Select"];
 
     dir = fix_path (dir);
     
