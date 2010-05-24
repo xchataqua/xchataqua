@@ -737,7 +737,7 @@
 		0F8F06C10E1FDA5E00359159 /* perl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = perl.c; sourceTree = "<group>"; };
 		0F8F06C20E1FDA5E00359159 /* xchat.pm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xchat.pm.h; sourceTree = "<group>"; };
 		0F8F06D70E1FDA8500359159 /* perl-leopard.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-leopard.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F8F07CE0E1FDDBF00359159 /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = /System/Library/Perl/lib/5.8/libperl.dylib; sourceTree = "<absolute>"; };
+		0F8F07CE0E1FDDBF00359159 /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = "/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib"; sourceTree = "<absolute>"; };
 		0F8F07DA0E1FDEFF00359159 /* DynaLoader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = DynaLoader.a; path = "/System/Library/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a"; sourceTree = "<absolute>"; };
 		0F8F08110E1FE00800359159 /* tcl.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tcl.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F8F08170E1FE01800359159 /* Tcl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tcl.framework; path = System/Library/Frameworks/Tcl.framework; sourceTree = SDKROOT; };
@@ -821,7 +821,7 @@
 		2D55F02610EBB99E00B4ECCB /* az */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = az; path = Localization/az.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
 		2D55F02710EBB99E00B4ECCB /* am */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = am; path = Localization/am.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
 		2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-snowleopard.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D78138B10E77D1A00C71AF8 /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = /System/Library/Perl/lib/5.10/libperl.dylib; sourceTree = "<absolute>"; };
+		2D78138B10E77D1A00C71AF8 /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = "/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib"; sourceTree = "<absolute>"; };
 		2D7817C810E872D200C71AF8 /* fe-aqua_utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "fe-aqua_utility.h"; path = "fe-aqua/fe-aqua_utility.h"; sourceTree = "<group>"; };
 		2D7817C910E872D200C71AF8 /* fe-aqua_utility.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "fe-aqua_utility.mm"; path = "fe-aqua/fe-aqua_utility.mm"; sourceTree = "<group>"; };
 		2D8DACD00F8EFF8E00DA0BC2 /* Info devel.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info devel.plist"; sourceTree = "<group>"; };
@@ -2339,7 +2339,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F8F06DC0E1FDA8600359159 /* Build configuration list for PBXNativeTarget "perl-leopard" */;
 			buildPhases = (
-				2DCBED2C11AA140E00388F47 /* ShellScript */,
+				2DCBED2C11AA140E00388F47 /* Install Leopard Perl Library */,
 				0F8F06D30E1FDA8500359159 /* Resources */,
 				0F8F06D40E1FDA8500359159 /* Sources */,
 				0F8F06D50E1FDA8500359159 /* Frameworks */,
@@ -2433,6 +2433,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D78138410E77C6600C71AF8 /* Build configuration list for PBXNativeTarget "perl-snowleopard" */;
 			buildPhases = (
+				2D324F6F11AA31250081A855 /* Install Snowleopard Perl Library */,
 				2D78137C10E77C6400C71AF8 /* Resources */,
 				2D78137D10E77C6400C71AF8 /* Sources */,
 				2D78137E10E77C6400C71AF8 /* Frameworks */,
@@ -2703,6 +2704,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2D324F6F11AA31250081A855 /* Install Snowleopard Perl Library */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Install Snowleopard Perl Library";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "if [ -e '/System/Library/Perl/5.10.0/' ]; then\n\texit\nfi\n\necho 'input password for sudo to install leopard library to user system'\n\n/usr/bin/osascript > /dev/null <<ASCPT\ntell application \"Terminal\"\n\tactivate\n\tdo script with command \"sudo tar xvf \\\"$PROJECT_DIR/contrib/systemlib/Perl-Snowleopard.tar\\\" -P\"\nend tell\nASCPT\n\necho 'after running script, redo build please.'\n\nexit 1";
+		};
 		2D53960C10EBCCC800AD552F /* Generate LC_MESSAGES */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2731,13 +2746,14 @@
 			shellPath = /bin/sh;
 			shellScript = "cd \"$TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/Resources\"\nfor lproj in *.lproj; do\n\tcp \"$lproj/Prefs.Tiger.nib\" \"$lproj/Prefs.nib\"\ndone";
 		};
-		2DCBED2C11AA140E00388F47 /* ShellScript */ = {
+		2DCBED2C11AA140E00388F47 /* Install Leopard Perl Library */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Install Leopard Perl Library";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4631,6 +4647,7 @@
 				PREBINDING = NO;
 				SDKROOT = macosx10.4;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
+				VALID_ARCHS = "i386 ppc x86_64";
 			};
 			name = "Release 10.4";
 		};
@@ -4647,6 +4664,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "X-Chat Aqua_Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "ENABLE_NLS=0";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -4946,6 +4964,7 @@
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
+				VALID_ARCHS = "i386 ppc x86_64";
 			};
 			name = Debug;
 		};
@@ -4969,6 +4988,7 @@
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
+				VALID_ARCHS = "i386 ppc x86_64";
 			};
 			name = Release;
 		};
