@@ -87,10 +87,9 @@ extern "C" {
 	NSPasteboard *pb = [NSPasteboard generalPasteboard];
 	NSMutableString *copyString = [NSMutableString stringWithCapacity:200];
 	
-	NSEnumerator *rowEnum = [item_list selectedRowEnumerator];
-	NSNumber *rowIndex;
-	while (rowIndex = [rowEnum nextObject]) {
-		DCCFileItem *item = [my_items objectAtIndex:[rowIndex intValue]];
+	NSIndexSet *rowIndexSet = [item_list selectedRowIndexes];
+	for ( NSUInteger rowIndex = [rowIndexSet firstIndex]; rowIndex != NSNotFound; rowIndex = [rowIndexSet indexGreaterThanIndex:rowIndex]) {
+		DCCFileItem *item = [my_items objectAtIndex:rowIndex];
 		[copyString appendFormat:@"%@ (%"DCC_SIZE_FMT" bytes)\n", item->file, item->dcc->size];
 	}
 	[copyString deleteCharactersInRange:NSMakeRange([copyString length] - 1, 1)];	//chop off last \n
