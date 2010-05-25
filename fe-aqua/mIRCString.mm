@@ -142,15 +142,15 @@ int append_text (NSMutableAttributedString *msgString,
 }
 
 + (id) stringWithUTF8String:(const char *) text
-                        len:(int) len
+                        len:(NSInteger) len
                     palette:(ColorPalette *) palette
                        font:(NSFont *) font
                    boldFont:(NSFont *) bold_font;
 {
     mIRCString *msgString = [[[NSMutableAttributedString alloc] init] autorelease];
  
-    int fg = -1;
-    int bg = -1;
+    NSInteger fg = -1;
+    NSInteger bg = -1;
     bool reverse = false;
     bool under = false;
     bool bold = false;
@@ -191,7 +191,7 @@ int append_text (NSMutableAttributedString *msgString,
                 }
                 else if (peek_next_char (&text, stop_at) == ',')
                 {
-					int new_bg;
+					NSInteger new_bg;
                     get_next_char (&text, stop_at);		// Toss out the ','
                     new_bg = get_mirc_value (&text, stop_at);
 					if(new_bg >= 0)

@@ -23,7 +23,7 @@
 }
 
 + (id) stringWithUTF8String:(const char *) string
-                        len:(int) len
+                        len:(NSInteger) len
                     palette:(ColorPalette *) palette
                        font:(NSFont *) font
                    boldFont:(NSFont *) bold_font;
