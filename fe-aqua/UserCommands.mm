@@ -26,7 +26,7 @@ extern "C" {
 
 //////////////////////////////////////////////////////////////////////
 
-@interface oneUserCommand : NSObject
+@interface OneUserCommand : NSObject
 {
   @public
     NSMutableString	*name;
@@ -34,7 +34,7 @@ extern "C" {
 }
 @end
 
-@implementation oneUserCommand
+@implementation OneUserCommand
 
 - (id) initWithName:(const char *) the_name
 		cmd:(const char *) the_cmd
@@ -83,7 +83,7 @@ extern "C" {
 {
     [my_items removeAllObjects];
 
-    oneUserCommand *prev = nil;
+    OneUserCommand *prev = nil;
     for (GSList *list = command_list; list; list = list->next)
     {
 		struct popup *pop = (struct popup *) list->data;
@@ -95,7 +95,7 @@ extern "C" {
         }
         else
         {
-            oneUserCommand *item = [[[oneUserCommand alloc] 
+            OneUserCommand *item = [[[OneUserCommand alloc] 
                             initWithName:pop->name cmd:pop->cmd] autorelease];
             [my_items addObject:item];
             prev = item;
@@ -152,7 +152,7 @@ extern "C" {
 
 - (void) do_add:(id) sender
 {
-	oneUserCommand *item = [[oneUserCommand alloc] initWithName:"*NEW*" cmd:"EDIT ME"];
+	OneUserCommand *item = [[OneUserCommand alloc] initWithName:"*NEW*" cmd:"EDIT ME"];
 	[my_items insertObject:item atIndex:0];
 	[cmd_list reloadData];
 	[cmd_list selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
@@ -173,7 +173,7 @@ extern "C" {
 
     for (unsigned int i = 0; i < [my_items count]; i ++)
     {
-        oneUserCommand *item = [my_items objectAtIndex:i];
+        OneUserCommand *item = [my_items objectAtIndex:i];
 
         const char *cmd = [item->cmd UTF8String];
         while (*cmd)
@@ -205,7 +205,7 @@ extern "C" {
     int row = [cmd_list selectedRow];
     if (row >= 0)
     {
-        oneUserCommand *item = [my_items objectAtIndex:row];
+        OneUserCommand *item = [my_items objectAtIndex:row];
         [item->cmd setString:[cmd_text string]];
     }
     return YES;
@@ -216,7 +216,7 @@ extern "C" {
     int row = [cmd_list selectedRow];
     if (row >= 0)
     {
-        oneUserCommand *item = [my_items objectAtIndex:row];
+        OneUserCommand *item = [my_items objectAtIndex:row];
         [cmd_text setString:item->cmd];
     }
     else
@@ -234,7 +234,7 @@ extern "C" {
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
     row:(NSInteger) rowIndex
 {
-    oneUserCommand *item = [my_items objectAtIndex:rowIndex];
+    OneUserCommand *item = [my_items objectAtIndex:rowIndex];
     return item->name;
 }
 
@@ -243,7 +243,7 @@ extern "C" {
     forTableColumn:(NSTableColumn *) aTableColumn 
                row:(NSInteger)rowIndex
 {
-    oneUserCommand *item = [my_items objectAtIndex:rowIndex];
+    OneUserCommand *item = [my_items objectAtIndex:rowIndex];
     [item->name setString:anObject];
 }
 
