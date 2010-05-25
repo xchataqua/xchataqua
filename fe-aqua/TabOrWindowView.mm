@@ -238,12 +238,14 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 
 + (void) prefsChanged
 {	
-    tab_type = prefs._tabs_position == 0 ? NSBottomTabsBezelBorder :
-			   prefs._tabs_position == 1 ? NSTopTabsBezelBorder :
-               prefs._tabs_position == 2 ? NSRightTabsBezelBorder :
-               prefs._tabs_position == 3 ? NSLeftTabsBezelBorder :
-               prefs._tabs_position == 4 ? SGOutlineTabs :
-                                          NSTopTabsBezelBorder;
+	switch ( prefs._tabs_position ) {
+		case 0: tab_type = NSBottomTabsBezelBorder; break;
+		case 1: tab_type = NSTopTabsBezelBorder; break;
+		case 2: tab_type = NSRightTabsBezelBorder; break;
+		case 3: tab_type = NSLeftTabsBezelBorder; break;
+		case 4: tab_type = SGOutlineTabs; break;
+		default:tab_type = NSTopTabsBezelBorder; break;
+	}
 
     if (tab_window)
 	{
