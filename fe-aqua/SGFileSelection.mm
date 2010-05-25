@@ -36,44 +36,44 @@ static NSString *fix_path (NSString *path)
 
 + (NSString *) selectWithWindow:(NSWindow *) win
 {
-    return [self selectWithWindow:win inDir:NULL];
+    return [self selectWithWindow:win inDir:nil];
 }
 
 + (NSString *) selectWithWindow:(NSWindow *) win inDir:(NSString *) dir
 {
-    NSOpenPanel *p = [NSOpenPanel openPanel];
-    
-    [p setCanChooseFiles:YES];
-    [p setResolvesAliases:NO];
-    [p setCanChooseDirectories:NO];
-    [p setAllowsMultipleSelection:NO];
+	NSOpenPanel *p = [NSOpenPanel openPanel];
 
-    dir = fix_path (dir);
-    
-    int sts;
-    
-    if (win)
-    {
-        [p beginSheetForDirectory:dir file:nil types:nil
-            modalForWindow:win modalDelegate:nil didEndSelector:nil
-            contextInfo:nil];
-    
-        sts = [NSApp runModalForWindow:p];
-    
-        [NSApp endSheet:p];
-    }
-    else
-    	sts = [p runModalForDirectory:dir file:NULL types:NULL] == NSOKButton;
-    
-    [p orderOut:self];
+	[p setCanChooseFiles:YES];
+	[p setResolvesAliases:NO];
+	[p setCanChooseDirectories:NO];
+	[p setAllowsMultipleSelection:NO];
+	dir = fix_path (dir);
 
-    if (sts)
-    {
-        NSArray *a = [p filenames];
-        return [a objectAtIndex:0];
-    }
+	NSInteger sts;
+
+	if (win)
+	{
+		sts = [p runModalForDirectory:dir file:nil types:nil] == NSOKButton; // newcode
+		/* original code that show pretty modal
+		[p beginSheetForDirectory:dir file:nil types:nil modalForWindow:win
+					modalDelegate:nil didEndSelector:nil contextInfo:nil];
+		sts = [NSApp runModalForWindow:p];
+		//FIXME: this code stuck HERE!
+		[NSApp endSheet:p];
+		 */
+	}
+	else
+		sts = [p runModalForDirectory:dir file:NULL types:NULL] == NSOKButton;
     
-    return NULL;
+	[p orderOut:self];
+
+	if (sts)
+	{
+		NSArray *a = [p filenames];
+		return [a objectAtIndex:0];
+	}
+
+	return nil;
 }
 
 + (NSString *) saveWithWindow:(NSWindow *) win
