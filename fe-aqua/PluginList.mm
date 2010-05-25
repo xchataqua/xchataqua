@@ -88,7 +88,7 @@ extern GSList *plugin_list;
 
 - (void) dealloc
 {
-    [self->plugin_list_table setDataSource:NULL];
+    [self->plugin_list_table setDataSource:nil];
     [[self->plugin_list_table window] autorelease];
     [my_items release];
     [super dealloc];

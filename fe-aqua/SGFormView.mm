@@ -67,7 +67,7 @@ struct SGFormConstraint
 
 - (void) initPrivate
 {
-	identifier = NULL;
+	identifier = nil;
 	
     for (int i = 0; i < 4; i ++)
     {
@@ -76,7 +76,7 @@ struct SGFormConstraint
 		self->constraints[i].offset = 0;
 		self->constraints[i].factor = i < 2 ? 1 : -1;
 		self->constraints[i].state = STATE_RESET;
-		self->constraints[i].child = NULL;
+		self->constraints[i].child = nil;
     }
 }
 
@@ -200,8 +200,8 @@ struct SGFormConstraint
 - (NSString *) identifierForView:(NSView *) view
 {
     SGFormMetaView *form_child = (SGFormMetaView *) [self find_view:view];
-    if (!form_child)
-        return NULL;
+    if (!form_child) 
+		return nil;
 	return [form_child identifier];
 }
 
@@ -219,7 +219,7 @@ struct SGFormConstraint
 	*offset_return = form_child->constraints[edge].offset;
 
 	SGFormMetaView *relative_child = form_child->constraints[edge].child;
-	*view_return = relative_child ? relative_child->view : NULL;
+	*view_return = relative_child ? relative_child->view : nil;
 	
 	return YES;
 }
@@ -365,7 +365,7 @@ recompute_our_size:(bool) recompute_our_size
 				{
 					int center;
 
-					if (ec->child == NULL)	// Center on form
+					if (ec->child == nil)	// Center on form
 					{
 						center = (my_bounds [edge ^ 2] -
 							  my_bounds [edge]) / 2;

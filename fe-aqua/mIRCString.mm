@@ -130,9 +130,9 @@ int append_text (NSMutableAttributedString *msgString,
 
 + (NSFont *) hiddenFont
 {
-	static NSFont *hidden_font = NULL;
+	static NSFont *hidden_font = nil;
 	
-	if (hidden_font == NULL) 
+	if (hidden_font == nil) 
 	{
 		hidden_font = [NSFont userFontOfSize:0.01];
 		[hidden_font retain];
