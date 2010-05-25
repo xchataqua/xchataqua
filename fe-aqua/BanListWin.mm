@@ -30,7 +30,7 @@ extern "C" {
 
 //////////////////////////////////////////////////////////////////////
 
-@interface oneBan : NSObject
+@interface OneBan : NSObject
 {
   @public
     NSString	*mask;
@@ -44,7 +44,7 @@ extern "C" {
 
 @end
 
-@implementation oneBan
+@implementation OneBan
 
 - (id) initWithMask:(const char *) the_mask
                 who:(const char *) the_who
@@ -156,7 +156,7 @@ extern "C" {
             unban_this_one = !unban_this_one;
         
         if (unban_this_one)
-            [nicks addObject:((oneBan *) [my_items objectAtIndex:i])->mask];
+            [nicks addObject:((OneBan *) [my_items objectAtIndex:i])->mask];
     }
     
     const char **masks = (const char **) malloc ([nicks count] * sizeof (const char *));
@@ -202,7 +202,7 @@ extern "C" {
 	if (is_exemption)
 		return;
 		
-    [my_items addObject:[[oneBan alloc] initWithMask:mask who:who when:when]];
+    [my_items addObject:[[OneBan alloc] initWithMask:mask who:who when:when]];
 
     if (!timer)
         timer = [[NSTimer scheduledTimerWithTimeInterval:1
@@ -230,7 +230,7 @@ extern "C" {
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
     row:(NSInteger) rowIndex
 {
-    oneBan *item = [my_items objectAtIndex:rowIndex];
+    OneBan *item = [my_items objectAtIndex:rowIndex];
 
     switch ([[aTableColumn identifier] intValue])
     {
