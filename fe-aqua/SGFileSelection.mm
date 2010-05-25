@@ -53,14 +53,15 @@ static NSString *fix_path (NSString *path)
 
 	if (win)
 	{
+		#if __MAC_OS_X_VERSION_MIN_REQUIRED >= __MAC_OS_X_VERSION_10_6
 		sts = [p runModalForDirectory:dir file:nil types:nil] == NSOKButton; // newcode
-		/* original code that show pretty modal
+		#else 
 		[p beginSheetForDirectory:dir file:nil types:nil modalForWindow:win
 					modalDelegate:nil didEndSelector:nil contextInfo:nil];
 		sts = [NSApp runModalForWindow:p];
-		//FIXME: this code stuck HERE!
+		// FIXME: this code stuck HERE on snow leopard
 		[NSApp endSheet:p];
-		 */
+		#endif
 	}
 	else
 		sts = [p runModalForDirectory:dir file:nil types:nil] == NSOKButton;
