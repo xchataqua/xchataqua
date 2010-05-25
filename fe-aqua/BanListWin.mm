@@ -192,7 +192,7 @@ extern "C" {
 - (void) redraw:(id) sender
 {
     [timer release];
-    timer = NULL;
+    timer = nil;
     [ban_list reloadData];
 }
 
