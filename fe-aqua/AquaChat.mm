@@ -319,6 +319,13 @@ EventInfo text_event_info[NUM_XP];
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.uplinklabs.net/~tycho/projects/xchat-aqua/sparkle/rnotes.html"]];
 }
 
+  // Open the X-Chat Aqua Online docs.
+- (void) do_online_docs:(id) sender
+{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://xchataqua.sourceforge.net/docs/"]];
+}
+
+
 //TODO sparkle here
 - (void) new_version_alert
 {
