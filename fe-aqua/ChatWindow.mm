@@ -930,11 +930,10 @@ static NSImage *empty_image;
     char *first_nick = nil;
     bool using_allnicks = strstr (cmd, "%a");
     
-    NSEnumerator *e = [userlist_table selectedRowEnumerator];
-    for (id r; r = [e nextObject]; )
+    NSIndexSet *rowIndexSet = [userlist_table selectedRowIndexes];
+    for (NSUInteger rowIndex = [rowIndexSet firstIndex]; rowIndex != NSNotFound; rowIndex = [rowIndexSet indexGreaterThanIndex:rowIndex] )
     {
-        int row = [r intValue];
-        OneUser *u = (OneUser *) [userlist objectAtIndex:row];
+        OneUser *u = (OneUser *) [userlist objectAtIndex:rowIndex];
 		struct User *user = u->user;
 
         if (using_allnicks)
