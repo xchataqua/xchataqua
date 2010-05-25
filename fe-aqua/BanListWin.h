@@ -25,7 +25,7 @@
     TabOrWindowView	*ban_list_view;
     NSButton		*refresh_button;
     NSMutableArray	*my_items;
-    NSTimer		*timer;
+    NSTimer			*timer;
     struct session	*sess;
 }
 

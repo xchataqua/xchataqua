@@ -30,11 +30,11 @@ static int getFileMode (const char *fname)
 {
 	FSRef ref;
 	if (FSFindFolder(kUserDomain, kApplicationSupportFolderType, false, &ref) != noErr)
-		return NULL;
+		return nil;
 		
 	UInt8 path[PATH_MAX];    
 	if (FSRefMakePath(&ref, path, sizeof (path)) != noErr)
-		return NULL;
+		return nil;
 		
 	NSMutableString *dir = [NSMutableString stringWithUTF8String:(const char *)path];
 	[dir appendString:@"/"];

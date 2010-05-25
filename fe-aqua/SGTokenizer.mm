@@ -45,12 +45,12 @@
 - (NSString *) getNextToken:(const char *) delimit
 {
     if (!tmp)
-        return NULL;
+        return nil;
 
 	int slen = [tmp length];
 	
 	if (slen == 0 || ptr >= slen)
-		return NULL;
+		return nil;
 
     while (ptr < slen && strchr (delimit, [tmp characterAtIndex:ptr])) ptr++;       // Skip leading tokens
     int start = ptr;
@@ -59,7 +59,7 @@
     int len = ptr - start;
 
     if (len == 0)
-        return NULL;
+        return nil;
 
     if (ptr < slen) ptr++;		// Eat the delimiter
 

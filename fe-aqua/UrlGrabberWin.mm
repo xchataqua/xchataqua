@@ -111,7 +111,7 @@ static int do_add_url (const void *key, void *cbd)
                         [url substringWithRange:NSMakeRange (0, 49)]];
         else
             title = url;
-        NSMenuItem *item = [menu addItemWithTitle:title action:NULL keyEquivalent:@""];
+        NSMenuItem *item = [menu addItemWithTitle:title action:nil keyEquivalent:@""];
         [item setEnabled:false];
 		[[MenuMaker defaultMenuMaker] appendItemList:urlhandler_list toMenu:menu withTarget:url inSession:NULL];
     }

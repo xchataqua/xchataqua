@@ -259,7 +259,7 @@ static MenuMaker *defaultMenuMaker;
 	if (user->away) {
 		struct away_msg *away = server_away_find_message (sess->server, user->nick);
 		if (away) {
-			char *msg = away->message ? strip_color(away->message, -1, STRIP_ALL) : nil;
+			char *msg = away->message ? strip_color(away->message, -1, STRIP_ALL) : NULL;
 			[userMenu addItem:[self userInfoItemWithLabel:NSLocalizedStringFromTable(@"Away Msg:", @"xchat", @"") value:msg]];
 			if (msg) free(msg);
 		}else {
@@ -311,7 +311,7 @@ static MenuMaker *defaultMenuMaker;
 	[menu addItem:[NSMenuItem separatorItem]];
 	if (find_channel(sess->server, (char *)[chan UTF8String])) {
 		[menu addItem:[self commandItemWithName:XALocalizeString("Part Channel") command:"part %s" target:chan session:sess]];
-		[menu addItem:[self commandItemWithName:XALocalizeString("Cycle Channel") command:"cycle" target:NULL session:sess]];
+		[menu addItem:[self commandItemWithName:XALocalizeString("Cycle Channel") command:"cycle" target:nil session:sess]];
 	} else {
 		[menu addItem:[self commandItemWithName:XALocalizeString("Join Channel") command:"join %s" target:chan session:sess]];
 	}
@@ -322,7 +322,7 @@ static MenuMaker *defaultMenuMaker;
 {
     NSString * icon = nil;
 	NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:[self stripImageFromTitle:[NSString stringWithUTF8String:name]  icon:&icon] action:@selector(execute:) keyEquivalent:@""];
-	CommandHandler *handler = [CommandHandler handlerWithCommand:cmd target:(target ? [target UTF8String] : NULL) session:sess];
+	CommandHandler *handler = [CommandHandler handlerWithCommand:cmd target:(target ? [target UTF8String] : nil) session:sess];
 	[item setRepresentedObject:handler];
 	[item setTarget:handler];
     if(icon)
@@ -427,7 +427,7 @@ static MenuMaker *defaultMenuMaker;
 			[item setTarget:handler];
 			[item setState:entry->state ? NSOnState : NSOffState];
 		} else if (entry->cmd) {	/* regular item */
-			CommandHandler *handler = [CommandHandler handlerWithCommand:entry->cmd target:NULL session:NULL];
+			CommandHandler *handler = [CommandHandler handlerWithCommand:entry->cmd target:nil session:NULL];
 			[item setAction:@selector(execute:)];
 			[item setRepresentedObject:handler];
 			[item setTarget:handler];
