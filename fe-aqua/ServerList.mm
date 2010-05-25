@@ -223,7 +223,7 @@ static NSString *charsets [] =
 
 	// Parse out the channel names
 	[tok setString:chans];
-	for (NSString *s; s = [tok getNextToken:","]; )
+	for (NSString *s = [tok getNextToken:","]; s != nil; s = [tok getNextToken:","] )
 	{
 		oneChannel *chan = [[oneChannel alloc] initWithChannel:s];
 		[channels addObject:chan];
@@ -251,7 +251,7 @@ static NSString *charsets [] =
 	
 	SGTokenizer *tok = [[SGTokenizer alloc] initWithString:[NSString stringWithCString:command encoding:NSASCIIStringEncoding]];
 	
-	for (NSString *s; s = [tok getNextToken:"\n"]; )
+	for (NSString *s = [tok getNextToken:"\n"]; s != nil; s = [tok getNextToken:"\n"])
 		[connect_commands addObject:s];
 		
 	[tok release];

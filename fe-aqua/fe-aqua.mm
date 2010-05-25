@@ -499,7 +499,7 @@ static void fix_log_files_and_pref ()
     NSFileManager *fm = [NSFileManager defaultManager];
     NSDirectoryEnumerator *enumerator = [fm enumeratorAtPath:dir];
     
-    for (NSString *fname; fname = [enumerator nextObject]; )
+    for (NSString *fname = [enumerator nextObject]; fname != nil; fname = [enumerator nextObject] )
     {
 		if ([fname hasPrefix:@"."] || [fname hasSuffix:@".txt"])
 			continue;
