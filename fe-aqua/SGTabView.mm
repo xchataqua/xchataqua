@@ -162,7 +162,7 @@ static NSButtonCell *makeCloseCell ()
 	[close_cell setTarget:closeTarget];
 		
 	NSPoint point = [theEvent locationInWindow];
-    NSPoint where = [controlView convertPoint:point fromView:NULL];
+    NSPoint where = [controlView convertPoint:point fromView:nil];
 	NSRect closeRect = [self calcCloseRectWithFrame:cellFrame inView:controlView];
 		
     if (NSPointInRect (where, closeRect))
@@ -195,7 +195,7 @@ static NSButtonCell *makeCloseCell ()
 // (if it has one).
 - (void) mouseDown:(NSEvent *) theEvent
 {
-    NSPoint where = [self convertPoint:[theEvent locationInWindow] fromView:NULL];
+    NSPoint where = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 	int row = [self rowAtPoint:where];
 	int col = [self columnAtPoint:where];
 	
@@ -228,7 +228,7 @@ static NSButtonCell *makeCloseCell ()
 
 - (NSMenu *) menuForEvent:(NSEvent *) theEvent
 {
-    NSPoint where = [self convertPoint:[theEvent locationInWindow] fromView:NULL];
+    NSPoint where = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 	int row = [self rowAtPoint:where];
 	int col = [self columnAtPoint:where];
 	
@@ -263,11 +263,11 @@ static NSButtonCell *makeCloseCell ()
 - (id) init
 {
 	self = [super init];
-	
+			
 	group = 0;
-	name = NULL;
+	name = nil;
 	tabs = [[NSMutableArray arrayWithCapacity:0] retain];
-	
+
 	return self;
 }
 
@@ -666,10 +666,10 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 - (id) initWithIdentifier:(id) identifier
 {
-    parent = NULL;
-    view = NULL;
-	button = NULL;
-	label = NULL;
+	parent = nil;
+	view = nil;
+	button = nil;
+	label = nil;
 
 	if (!lr_cursor)
 		lr_cursor = [[NSCursor alloc] initWithImage:[NSImage imageNamed:@"lr_cursor.tiff"]
@@ -679,7 +679,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 	
 	[getTabMenuNib() instantiateNibWithOwner:self topLevelObjects:nil];
 
-    return self;
+	return self;
 }
 
 - (void) dealloc
@@ -716,7 +716,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 	{
 		[button removeFromSuperview];
 		[button release];
-		button = NULL;
+		button = nil;
 	}
 }
 
@@ -856,13 +856,13 @@ HIThemeSegmentPosition positionTable[2][2] =
 {
     [super initWithFrame:frameRect];
 
-    self->selected_tab = NULL;
+    self->selected_tab = nil;
     self->tabs = [[NSMutableArray arrayWithCapacity:0] retain];
-    self->delegate = NULL;
+    self->delegate = nil;
     self->tabViewType = NSTopTabsBezelBorder;
     self->hide_close = false;
-	self->hbox = NULL;
-	self->outline = NULL;
+	self->hbox = nil;
+	self->outline = nil;
 	self->outline_width = 150;
 	self->groups = [[NSMutableArray arrayWithCapacity:5] retain];
 	
@@ -904,7 +904,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 - (SGTabViewGroupInfo *) getGroupInfo:(int) group
 {
-	SGTabViewGroupInfo *info = NULL;
+	SGTabViewGroupInfo *info = nil;
 	for (unsigned i = 0; i < [groups count]; i ++)
 	{
 		SGTabViewGroupInfo *this_info = [groups objectAtIndex:i];
@@ -971,7 +971,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 	if (!hbox)
 		return;
 		
-    SGTabViewItem *last_tab = NULL;
+    SGTabViewItem *last_tab = nil;
     for (unsigned i = 0; i < [tabs count]; i ++)
     {
         SGTabViewItem *this_tab = [tabs objectAtIndex:i];
@@ -990,8 +990,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 	if (outline)
 	{
 		[[outline enclosingScrollView] removeFromSuperview];
-		//[outline release];
-		outline = NULL;
+		outline = nil;
 	}
 	
 	if (!hbox)
@@ -1024,8 +1023,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 		}
 
 		[hbox removeFromSuperview];
-		//[hbox release];
-		hbox = NULL;
+		hbox = nil;
 	}
 	
 	if (!outline)
@@ -1141,7 +1139,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 - (SGTabViewItem *) tabViewItemAtIndex:(NSInteger) index
 {
-    return (unsigned) index < [tabs count] ? [tabs objectAtIndex:index] : NULL;
+    return (NSUInteger) index < [tabs count] ? [tabs objectAtIndex:index] : nil;
 }
 
 - (NSInteger) numberOfTabViewItems
@@ -1166,11 +1164,11 @@ HIThemeSegmentPosition positionTable[2][2] =
     
     [tabViewItem->view removeFromSuperview];
     [tabViewItem noButton];
-    tabViewItem->parent = NULL;
+    tabViewItem->parent = nil;
 
     if (selected_tab == tabViewItem)
     {
-		selected_tab = NULL;
+		selected_tab = nil;
 
 		if ([tabs count] > 1)
 		{
@@ -1316,7 +1314,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 	}
 	
     NSPoint point = [theEvent locationInWindow];
-    NSPoint where = [self convertPoint:point fromView:NULL];
+    NSPoint where = [self convertPoint:point fromView:nil];
 	NSRect line_rect = [self dragAreaRect];
 	
     if (!NSPointInRect (where, line_rect))
@@ -1490,14 +1488,14 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item
 {
-	if (item == NULL)
+	if (item == nil)
 		return [groups objectAtIndex:index];
 		
 	if ([item isKindOfClass:[SGTabViewGroupInfo class]])
 		return [item tabAtIndex:index];
 		
 	// Not possible
-	return NULL;
+	return nil;
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item
@@ -1508,7 +1506,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
 {
-	if (item == NULL)
+	if (item == nil)
 		return [groups count];
 		
 	if ([item isKindOfClass:[SGTabViewGroupInfo class]])

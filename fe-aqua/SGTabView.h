@@ -56,11 +56,9 @@
 - (int) indexOfTabViewItem:(SGTabViewItem *) tabViewItem;
 
 // SGTabView only methods
-- (void) addTabViewItem:(SGTabViewItem *) tabViewItem
-                toGroup:(int) group;
+- (void) addTabViewItem:(SGTabViewItem *) tabViewItem toGroup:(int) group;
 - (void) setHideCloseButtons:(bool) hidem;
-- (void) setName:(NSString *) name
-		forGroup:(int) group;
+- (void) setName:(NSString *) name forGroup:(int) group;
 - (NSString *) groupName:(int) group;
 - (void) setOutlineWidth:(int) width;
 

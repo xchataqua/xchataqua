@@ -38,11 +38,11 @@
     struct server	*serv;
     NSMutableArray	*all_items;
     NSMutableArray	*items;
-    NSTimer		*timer;
-    bool                added;
+    NSTimer			*timer;
+    bool			added;
     int			users_found_count;
     int			users_shown_count;
-    bool                topic_checked;
+    bool			topic_checked;
     bool                channel_checked;
     int                 filter_min;
     int                 filter_max;

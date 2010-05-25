@@ -91,7 +91,7 @@ static NSMutableDictionary *label_dict;
     }
     
     close_rect.size = [close_image size];
-    color = NULL;
+    color = nil;
     
     return self;
 }

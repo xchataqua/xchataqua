@@ -142,9 +142,9 @@ EventInfo text_event_info[NUM_XP];
 - (NSDictionary *) registrationDictionaryForGrowl
 {
 	return [NSDictionary dictionaryWithObjectsAndKeys:
-		[NSArray arrayWithObjects:@"X-Chat", NULL], GROWL_NOTIFICATIONS_ALL,
-		[NSArray arrayWithObjects:@"X-Chat", NULL], GROWL_NOTIFICATIONS_DEFAULT,
-		NULL];
+			[NSArray arrayWithObjects:@"X-Chat", nil], GROWL_NOTIFICATIONS_ALL,
+			[NSArray arrayWithObjects:@"X-Chat", nil], GROWL_NOTIFICATIONS_DEFAULT,
+			nil];
 }
 
 - (void) load_event_info
@@ -210,9 +210,9 @@ EventInfo text_event_info[NUM_XP];
 	
 	[self load_event_info];
 	
-    my_image = [[NSApp applicationIconImage] copyWithZone:NULL];
+    my_image = [[NSApp applicationIconImage] copyWithZone:nil];
     NSImage *msg_badge = [NSImage imageNamed:@"warning.tiff"];
-    alert_image = [my_image copyWithZone:NULL];
+    alert_image = [my_image copyWithZone:nil];
     NSSize sz = [alert_image size];
     NSSize sz2 = [msg_badge size];
     [alert_image lockFocus];
@@ -224,31 +224,31 @@ EventInfo text_event_info[NUM_XP];
 
     self->sound_cache = [[NSMutableDictionary dictionaryWithCapacity:0] retain];
     
-    self->server_list = NULL;
+    self->server_list = nil;
 
-    self->user_commands = NULL;
-    self->ctcp_replies = NULL;
-    self->userlist_buttons = NULL;
-    self->userlist_popup = NULL;
-    self->dialog_buttons = NULL;
-    self->replace_popup = NULL;
-    self->url_handlers = NULL;
-    self->user_menus = NULL;
-    self->edit_events = NULL;
+    self->user_commands = nil;
+    self->ctcp_replies = nil;
+    self->userlist_buttons = nil;
+    self->userlist_popup = nil;
+    self->dialog_buttons = nil;
+    self->replace_popup = nil;
+    self->url_handlers = nil;
+    self->user_menus = nil;
+    self->edit_events = nil;
 
-    self->dcc_send_window = NULL;
-    self->dcc_recv_window = NULL;
-    self->dcc_chat_window = NULL;
-    self->url_grabber = NULL;
-    self->notify_list = NULL;
-    self->ignore_window = NULL;
-    self->ascii_window = NULL;
-    self->plugin_list_win = NULL;
+    self->dcc_send_window = nil;
+    self->dcc_recv_window = nil;
+    self->dcc_chat_window = nil;
+    self->url_grabber = nil;
+    self->notify_list = nil;
+    self->ignore_window = nil;
+    self->ascii_window = nil;
+    self->plugin_list_win = nil;
 
-    self->search_string = NULL;
+    self->search_string = nil;
     
-    self->font = NULL;
-    self->bold_font = NULL;
+    self->font = nil;
+    self->bold_font = nil;
     
     self->palette = [[ColorPalette alloc] init];
     [self->palette load];
@@ -260,8 +260,7 @@ EventInfo text_event_info[NUM_XP];
     
     [self prefsChanged];
     
-    [NSApp requestEvents:NSKeyDown forWindow:NULL forView:NULL
-        selector:@selector (myKeyDown:) object:self];
+    [NSApp requestEvents:NSKeyDown forWindow:nil forView:nil selector:@selector (myKeyDown:) object:self];
 }
 
 + (AquaChat *) sharedAquaChat
@@ -346,7 +345,7 @@ EventInfo text_event_info[NUM_XP];
 
 - (void) set_font:(const char *) font_name
 {
-    NSFont *f = NULL;
+    NSFont *f = nil;
     
     // "Font Name <space> Font Size"
     const char *space = strrchr (font_name, ' ');
@@ -429,7 +428,7 @@ EventInfo text_event_info[NUM_XP];
 		[sess->gui->cw prefsChanged];
     }
     
-	#if __MAC_OS_X_VERSION_MIN_REQUIRED >= 1050
+	#if __MAC_OS_X_VERSION_MIN_REQUIRED >= __MAC_OS_X_VERSION_10_5
 	NSString* s;
 	s = SRStringForKeyCode(prefs.tab_left_key);
 	if ( s != nil ) {
@@ -452,7 +451,7 @@ EventInfo text_event_info[NUM_XP];
 
 - (void) do_load_plugin:(id) sender
 {
-    NSString *f = [SGFileSelection selectWithWindow:NULL inDir:@"Plugins"];
+    NSString *f = [SGFileSelection selectWithWindow:nil inDir:@"Plugins"];
     if (f)
     {
         NSString *cmd = [NSString stringWithFormat:@"LOAD \"%@\"", f];
@@ -632,7 +631,7 @@ EventInfo text_event_info[NUM_XP];
 
 - (int) dcc_open_send_win:(bool) passive
 {
-    bool is_new = dcc_send_window != NULL;
+    bool is_new = dcc_send_window != nil;
     
     if (!dcc_send_window)
         dcc_send_window = [[DccSendWin alloc] init];
@@ -644,7 +643,7 @@ EventInfo text_event_info[NUM_XP];
 
 - (int) dcc_open_recv_win:(bool) passive
 {
-    bool is_new = dcc_recv_window != NULL;
+    bool is_new = dcc_recv_window != nil;
 
     if (!dcc_recv_window)
         dcc_recv_window = [[DccRecvWin alloc] init];
@@ -656,7 +655,7 @@ EventInfo text_event_info[NUM_XP];
 
 - (int) dcc_open_chat_win:(bool) passive
 {
-    bool is_new = dcc_chat_window != NULL;
+    bool is_new = dcc_chat_window != nil;
 
     if (!dcc_chat_window)
         dcc_chat_window = [[DccChatWin alloc] init];
