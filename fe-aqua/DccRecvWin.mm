@@ -32,7 +32,7 @@ extern int dcc_getcpssum;
 
 //////////////////////////////////////////////////////////////////////
 
-@interface oneDccRecv : DCCFileItem
+@interface OneDccRecv : DCCFileItem
 {
   @public
     //struct DCC 		*dcc;
@@ -54,7 +54,7 @@ extern int dcc_getcpssum;
 
 @end
 
-@implementation oneDccRecv
+@implementation OneDccRecv
 
 - (id) initWithDCC:(struct DCC *) the_dcc
 {
@@ -101,7 +101,7 @@ extern int dcc_getcpssum;
 - (DCCItem *)itemWithDCC:(struct DCC *) dcc
 {
 	if (dcc->type != TYPE_RECV) return nil;
-	else return [[[oneDccRecv alloc] initWithDCC:dcc] autorelease];
+	else return [[[OneDccRecv alloc] initWithDCC:dcc] autorelease];
 }
 
 - (void) awakeFromNib
@@ -118,7 +118,7 @@ extern int dcc_getcpssum;
     int row = [item_list selectedRow];
     if (row >= 0)
     {
-        oneDccRecv *item = [my_items objectAtIndex:row];
+        OneDccRecv *item = [my_items objectAtIndex:row];
 		
 		// Reveal the proper file
 		NSString *fileToReveal;
@@ -144,7 +144,7 @@ extern int dcc_getcpssum;
     int row = [item_list selectedRow];
     if (row >= 0)
     {
-        oneDccRecv *item = [my_items objectAtIndex:row];
+        OneDccRecv *item = [my_items objectAtIndex:row];
         struct DCC *dcc = item->dcc;
         dcc_get (dcc);
     }
@@ -155,7 +155,7 @@ extern int dcc_getcpssum;
     int row = [item_list selectedRow];
     if (row >= 0)
     {
-        oneDccRecv *item = [my_items objectAtIndex:row];
+        OneDccRecv *item = [my_items objectAtIndex:row];
         struct DCC *dcc = item->dcc;
         dcc_resume (dcc);
     }
@@ -166,7 +166,7 @@ extern int dcc_getcpssum;
     int row = [item_list selectedRow];
     if (row >= 0)
     {
-        oneDccRecv *item = [my_items objectAtIndex:row];
+        OneDccRecv *item = [my_items objectAtIndex:row];
 
         struct DCC *dcc = item->dcc;
 
@@ -204,7 +204,7 @@ extern int dcc_getcpssum;
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
     row:(NSInteger) rowIndex
 {
-    oneDccRecv *item = [my_items objectAtIndex:rowIndex];
+    OneDccRecv *item = [my_items objectAtIndex:rowIndex];
 
     switch ([[aTableColumn identifier] intValue])
     {
