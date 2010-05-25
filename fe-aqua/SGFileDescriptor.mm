@@ -285,7 +285,7 @@ static void sgfd_remove (SGFileDescriptor *sgfd)
 - (SGFileDescriptor *)initWithFd:(int)fd mode:(int)the_mode target:(id)the_target 
                         selector:(SEL)s withObject:(id)obj;
 {
-    return NULL;
+    return nil;
 }
 
 - (void)disable

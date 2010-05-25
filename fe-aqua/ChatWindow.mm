@@ -200,7 +200,7 @@ static void location_prefs (NSWindow *w)
 - (void) mouseDown:(NSEvent *) theEvent
 {
 	NSPoint where = [theEvent locationInWindow];
-	where = [self convertPoint:where fromView:NULL];
+	where = [self convertPoint:where fromView:nil];
 	if (! NSPointInRect(where, [self dividerRect]))
 	{		
 		[super mouseDown:theEvent];
@@ -369,8 +369,8 @@ static void location_prefs (NSWindow *w)
 - (id) initWithUser:(struct User *) u
 {
     self->user = u;
-    nick = NULL;
-    host = NULL;
+    nick = nil;
+    host = nil;
 /* CL */
 	nickSize = NSZeroSize;
 	hostSize = NSZeroSize;
@@ -566,21 +566,21 @@ static NSImage *empty_image;
             [view removeFromSuperviewWithoutNeedingDisplay];
     }
 
-    // This is just to be safe
-    t_button = NULL;
-    n_button = NULL;
-    s_button = NULL;
-    i_button = NULL;
-    p_button = NULL;
-    m_button = NULL;
-    b_button = NULL;
-    l_button = NULL;
-    k_button = NULL;
-	C_button = NULL;
-	N_button = NULL;
-	u_button = NULL;
-    limit_text = NULL;
-    key_text = NULL;
+	// This is just to be safe
+	t_button = nil;
+	n_button = nil;
+	s_button = nil;
+	i_button = nil;
+	p_button = nil;
+	m_button = nil;
+	b_button = nil;
+	l_button = nil;
+	k_button = nil;
+	C_button = nil;
+	N_button = nil;
+	u_button = nil;
+	limit_text = nil;
+	key_text = nil;
 }
 
 - (void) do_dialog_button:(id) sender
@@ -809,7 +809,7 @@ static NSImage *empty_image;
 	
     if (prefs.showhostname_in_userlist)
     {
-        NSTableColumn *c = [[NSTableColumn alloc] initWithIdentifier:NULL];
+        NSTableColumn *c = [[NSTableColumn alloc] initWithIdentifier:nil];
         [c setEditable:false];
         //[c setMaxWidth:250];
         //[c setMinWidth:250];
@@ -927,7 +927,7 @@ static NSImage *empty_image;
     }
     
     NSMutableString *allnicks = [NSMutableString stringWithCapacity:0];
-    char *first_nick = nil;
+    char *first_nick = NULL;
     bool using_allnicks = strstr (cmd, "%a");
     
     NSIndexSet *rowIndexSet = [userlist_table selectedRowIndexes];
@@ -1183,10 +1183,9 @@ static NSImage *empty_image;
     }
 }
 
-- (void) mode_buttons:(char) mode
-				 sign:(char) sign
+- (void) mode_buttons:(char) mode sign:(char) sign
 {
-    NSButton *b = NULL;
+    NSButton *b = nil;
     
     switch (mode)
     {
@@ -1217,16 +1216,16 @@ static NSImage *empty_image;
 
 - (void) set_topic:(const char *) topic
 {
-    ColorPalette *p = [[[[AquaChat sharedAquaChat] getPalette] clone] autorelease];
-    
-    [p setColor:AC_FGCOLOR color:[NSColor blackColor]];
-    [p setColor:AC_BGCOLOR color:[NSColor whiteColor]];
-    
-    [topic_text setStringValue:[mIRCString stringWithUTF8String:topic 
-                                                    len:-1 
-                                                palette:p
-                                                   font:NULL
-                                               boldFont:NULL]];
+	ColorPalette *p = [[[[AquaChat sharedAquaChat] getPalette] clone] autorelease];
+
+	[p setColor:AC_FGCOLOR color:[NSColor blackColor]];
+	[p setColor:AC_BGCOLOR color:[NSColor whiteColor]];
+
+	[topic_text setStringValue:[mIRCString stringWithUTF8String:topic 
+															len:-1 
+														palette:p
+															font:nil
+														boldFont:nil]];
 }
 
 - (void) set_channel
@@ -1294,7 +1293,7 @@ static NSImage *empty_image;
 			return i;
 		}
 	}
-	*userObject = NULL;
+	*userObject = nil;
 	return -1;
 }
 /* CL end */
@@ -1996,7 +1995,7 @@ static int find_common (NSArray *list)
 	{
 		int this_len = strlen (sess->channel);
 		if (len > this_len || rfc_ncasecmp ((char *) utf, sess->channel, len) != 0)
-			return NULL;
+			return nil;
 		[match_list addObject:[OneCompletion completionWithValue:sess->channel]];
 	}
 	else

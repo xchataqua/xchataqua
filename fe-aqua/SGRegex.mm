@@ -25,7 +25,7 @@
     {
         me->n_sub_expr = 0;
         flags |= REG_NOSUB;
-        me->pmatch = NULL;
+        me->pmatch = nil;
     }
 
     memset (&me->preg, 0, sizeof (me->preg));

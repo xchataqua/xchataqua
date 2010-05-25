@@ -63,7 +63,7 @@
 {
     oneCustomer *cust = [[[oneCustomer alloc] init] autorelease];
     cust->type = the_type;
-    cust->win = the_win ? the_win : the_view ? [the_view window] : NULL;
+    cust->win = the_win ? the_win : the_view ? [the_view window] : nil;
     cust->view = the_view;
     cust->sel = the_sel;
     cust->object = the_object;
@@ -96,7 +96,7 @@
         inView:(NSView *) v
 {
     // TBD: Is locationInWindow only good for mouse events?
-    NSPoint p = [v convertPoint:[e locationInWindow] fromView:NULL];
+    NSPoint p = [v convertPoint:[e locationInWindow] fromView:nil];
     return [v mouse:p inRect:[v bounds]];
 }
 

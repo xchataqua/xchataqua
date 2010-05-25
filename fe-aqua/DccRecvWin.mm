@@ -135,9 +135,7 @@ extern int dcc_getcpssum;
 			fileToReveal = [NSString stringWithUTF8String:item->dcc->destfile];
 		}
 		
-        [[NSWorkspace sharedWorkspace] 
-            selectFile:fileToReveal
-			inFileViewerRootedAtPath:NULL];
+        [[NSWorkspace sharedWorkspace] selectFile:fileToReveal inFileViewerRootedAtPath:nil];
     }
 }
 

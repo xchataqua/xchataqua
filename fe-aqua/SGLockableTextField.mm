@@ -122,7 +122,7 @@ static NSImage *getUnlockImage()
 	else
 	{
 		[lock_cell release];
-		lock_cell = NULL;
+		lock_cell = nil;
 	}
 	
 	[(NSControl *)[self controlView] calcSize];
@@ -171,7 +171,7 @@ static NSImage *getUnlockImage()
 	   controlView:(NSView *) controlView
 {
 	NSPoint point = [theEvent locationInWindow];
-    NSPoint where = [controlView convertPoint:point fromView:NULL];
+    NSPoint where = [controlView convertPoint:point fromView:nil];
 
     NSRect textFrame, lockFrame;
 	[self computeTextFrame:&textFrame andLockFrame:&lockFrame fromCellFrame:cellFrame];
@@ -270,7 +270,7 @@ static NSImage *getUnlockImage()
 		
 	int ret =
 		NSRunAlertPanel(@"Confirm", @"You have uncommited changes.  Do you want to save the changes?",
-		@"Cancel", @"Yes", @"No", NULL);
+		@"Cancel", @"Yes", @"No", nil);
 
 	// If he doesn't want to save his changes, we need to put the old value in place, and then
 	// let whatever key press action take effect (tab vs shift-tab vs mouse press, etc..).
