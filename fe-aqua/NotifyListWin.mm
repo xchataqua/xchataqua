@@ -28,7 +28,7 @@ extern "C" {
 
 //////////////////////////////////////////////////////////////////////
 
-@interface oneNotify : NSObject
+@interface OneNotify : NSObject
 {
   @public
     NSString	*user;
@@ -45,7 +45,7 @@ extern "C" {
 
 @end
 
-@implementation oneNotify
+@implementation OneNotify
 
 - (id) initWithUser:(const char *) user_name 
              online:(bool) online
@@ -120,7 +120,7 @@ extern "C" {
     {
         notify_per_server *lastsvr = NULL;
         bool online = false;
-        oneNotify * n;
+        OneNotify * n;
 		
         struct notify *user = (struct notify *) list->data;
         
@@ -138,7 +138,7 @@ extern "C" {
             }               
         }
 
-		n = [[oneNotify alloc] initWithUser:user->name
+		n = [[OneNotify alloc] initWithUser:user->name
 									 online:online
 										svr:lastsvr
 								   networks:user->networks];
@@ -175,7 +175,7 @@ extern "C" {
     if (row < 0)
     	return;
 
-    oneNotify *notif = (oneNotify *) [my_items objectAtIndex:row];
+    OneNotify *notif = (OneNotify *) [my_items objectAtIndex:row];
     notify_deluser ((char *) [notif->user UTF8String]);
 }
 
@@ -213,7 +213,7 @@ extern "C" {
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
     row:(NSInteger) rowIndex
 {
-    oneNotify *item = [my_items objectAtIndex:rowIndex];
+    OneNotify *item = [my_items objectAtIndex:rowIndex];
 
     switch ([[aTableColumn identifier] intValue])
     {

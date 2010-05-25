@@ -38,7 +38,7 @@ extern char *pntevts[];
 
 //////////////////////////////////////////////////////////////////////
 
-@interface oneEvent : NSObject
+@interface OneEvent : NSObject
 {
   @public
     NSMutableString	*name;
@@ -51,7 +51,7 @@ extern char *pntevts[];
 
 @end
 
-@implementation oneEvent
+@implementation OneEvent
 
 - (id) initWithEvent:(struct text_event *) event
 		text:(const char *) the_text
@@ -138,7 +138,7 @@ extern char *pntevts[];
 
     for (int i = 0; i < NUM_XP; i ++)                      
     {
-		oneEvent *item = [[[oneEvent alloc] initWithEvent:&te [i]
+		OneEvent *item = [[[OneEvent alloc] initWithEvent:&te [i]
 												     text:pntevts_text [i]] autorelease];
 		[my_items addObject:item];
     }
@@ -250,7 +250,7 @@ extern char *pntevts[];
 {
     if (aTableView == event_list)
     {
-		oneEvent *item = [my_items objectAtIndex:rowIndex];
+		OneEvent *item = [my_items objectAtIndex:rowIndex];
 		
 		switch ([[aTableColumn identifier] intValue])
 		{
@@ -287,7 +287,7 @@ extern char *pntevts[];
     {
 		prefs.save_pevents = true;
 		
-		oneEvent *item = [my_items objectAtIndex:rowIndex];
+		OneEvent *item = [my_items objectAtIndex:rowIndex];
 
 		switch ([[aTableColumn identifier] intValue])
 		{

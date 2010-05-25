@@ -29,7 +29,7 @@ extern "C" {
 
 //////////////////////////////////////////////////////////////////////
 
-@interface oneDccChat : DCCItem
+@interface OneDccChat : DCCItem
 {
   @public
     //struct DCC 		*dcc;
@@ -46,7 +46,7 @@ extern "C" {
 
 @end
 
-@implementation oneDccChat
+@implementation OneDccChat
 
 - (id) initWithDCC:(struct DCC *) the_dcc
 {
@@ -99,7 +99,7 @@ extern "C" {
 - (DCCItem *)itemWithDCC:(struct DCC *) dcc
 {
 	if (dcc->type != TYPE_CHATSEND && dcc->type != TYPE_CHATRECV) return nil;
-	else return [[[oneDccChat alloc] initWithDCC:dcc] autorelease];
+	else return [[[OneDccChat alloc] initWithDCC:dcc] autorelease];
 }
 
 - (void) awakeFromNib
@@ -115,7 +115,7 @@ extern "C" {
     int row = [item_list selectedRow];
     if (row >= 0)
     {
-        oneDccChat *item = [my_items objectAtIndex:row];
+        OneDccChat *item = [my_items objectAtIndex:row];
         struct DCC *dcc = item->dcc;
         dcc_get (dcc);
     }
@@ -123,7 +123,7 @@ extern "C" {
 
 - (void) add:(struct DCC *) dcc
 {
-    oneDccChat *item = [[[oneDccChat alloc] initWithDCC:dcc] autorelease];
+    OneDccChat *item = [[[OneDccChat alloc] initWithDCC:dcc] autorelease];
     [my_items addObject:item];
     [item_list reloadData];
 }
@@ -135,7 +135,7 @@ extern "C" {
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
     row:(NSInteger) rowIndex
 {
-    oneDccChat *item = [my_items objectAtIndex:rowIndex];
+    OneDccChat *item = [my_items objectAtIndex:rowIndex];
 
     switch ([[aTableColumn identifier] intValue])
     {

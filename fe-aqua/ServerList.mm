@@ -53,7 +53,7 @@ static NSString *charsets [] =
 
 //////////////////////////////////////////////////////////////////////
 
-@interface oneChannel : NSObject
+@interface OneChannel : NSObject
 {
   @public
 	NSString	*chan;
@@ -62,7 +62,7 @@ static NSString *charsets [] =
 
 @end
 
-@implementation oneChannel
+@implementation OneChannel
 
 - (id) initWithChannel:(NSString *) s
 {
@@ -96,7 +96,7 @@ static NSString *charsets [] =
 
 //////////////////////////////////////////////////////////////////////
 
-@interface oneServer : NSObject
+@interface OneServer : NSObject
 {
   @public
     ircserver	*svr;
@@ -112,7 +112,7 @@ static NSString *charsets [] =
 
 @end
 
-@implementation oneServer
+@implementation OneServer
 
 - (id) initWithServer:(ircserver *) the_svr
 {
@@ -189,7 +189,7 @@ static NSString *charsets [] =
 
 //////////////////////////////////////////////////////////////////////
 
-@interface oneNet : NSObject
+@interface OneNetwork : NSObject
 {
   @public
     NSMutableString	*name;
@@ -204,7 +204,7 @@ static NSString *charsets [] =
 
 @end
 
-@implementation oneNet
+@implementation OneNetwork
 
 - (void) parseAutojoin
 {
@@ -225,7 +225,7 @@ static NSString *charsets [] =
 	[tok setString:chans];
 	for (NSString *s = [tok getNextToken:","]; s != nil; s = [tok getNextToken:","] )
 	{
-		oneChannel *chan = [[oneChannel alloc] initWithChannel:s];
+		OneChannel *chan = [[OneChannel alloc] initWithChannel:s];
 		[channels addObject:chan];
 		[chan release];
 	}	
@@ -317,7 +317,7 @@ static NSString *charsets [] =
 	// First, the channels with keys
 	for (unsigned i = 0; i < [channels count]; i++)
 	{
-		oneChannel *chan = (oneChannel *) [channels objectAtIndex:i];
+		OneChannel *chan = (OneChannel *) [channels objectAtIndex:i];
 		
 		NSString *key = chan->key;
 		if (key && [key length])
@@ -336,7 +336,7 @@ static NSString *charsets [] =
 	// and then the channels without keys
 	for (unsigned i = 0; i < [channels count]; i++)
 	{
-		oneChannel *chan = (oneChannel *) [channels objectAtIndex:i];
+		OneChannel *chan = (OneChannel *) [channels objectAtIndex:i];
 		
 		NSString *key = chan->key;
 		if (!key || [key length] == 0)
@@ -359,7 +359,7 @@ static NSString *charsets [] =
 
 - (void) addServer:(ircserver *) svr
 {
-    [servers addObject:[[oneServer alloc] initWithServer:svr]];
+    [servers addObject:[[OneServer alloc] initWithServer:svr]];
 }
 
 - (NSString *) name
@@ -465,7 +465,7 @@ static ServerList *instance;
 
     [self savegui];
 
-    oneNet *net = (oneNet *) [my_nets objectAtIndex:row];
+    OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
 
     if (sender == connect_new_button || !is_session (servlist_sess))
         servlist_sess = NULL;
@@ -483,7 +483,7 @@ static ServerList *instance;
     int row = [net_list selectedRow];
     if (row >= 0)
 	{
-		oneNet *net = (oneNet *) [my_nets objectAtIndex:row];
+		OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
 
 		bool val = [sender intValue];
 
@@ -507,7 +507,7 @@ static ServerList *instance;
     int row = [net_list selectedRow];
     if (row >= 0)
 	{
-		oneNet *net = (oneNet *) [my_nets objectAtIndex:row];
+		OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
 
 		int offset = [sender tag];
 		char **f = (char **)(((char *) net->net) + offset);
@@ -524,7 +524,7 @@ static ServerList *instance;
     int row = [net_list selectedRow];
     if (row >= 0)
     {
-		oneNet *net = (oneNet *) [my_nets objectAtIndex:row];
+		OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
 
 		//set_text_value (net_join, &net->net->autojoin);
 		
@@ -585,7 +585,7 @@ static ServerList *instance;
 }
 
 - (void) populateFlag:(id) check
-			  fromNet:(oneNet *) net
+			  fromNet:(OneNetwork *) net
 {
 	int flag = [check tag];
 	bool invert = flag < 0;
@@ -601,7 +601,7 @@ static ServerList *instance;
 }
 
 - (void) populateField:(id) field
-			   fromNet:(oneNet *) net
+			   fromNet:(OneNetwork *) net
 {
 	int offset = [field tag];
 	char **f = (char **)(((char *) net->net) + offset);
@@ -618,7 +618,7 @@ static ServerList *instance;
     if (row < 0)
 		return;
 
-	oneNet *net = (oneNet *) [my_nets objectAtIndex:row];
+	OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
 	
 	[net_title_text setStringValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"Servers for %s", @"xchat", @""), net->name]];
 			
@@ -672,9 +672,9 @@ static ServerList *instance;
 	if (nrow < 0)
 	return;
         
-	oneNet *net = (oneNet *) [my_nets objectAtIndex:nrow];
+	OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:nrow];
 
-	oneChannel *chan = [[oneChannel alloc] initWithChannel:NSLocalizedStringFromTable(@"NEW CHANNEL", @"xchataqua", @"Default channel name: MainMenu->File->Server List... => (Select server)->On Join->channels->'+'")];
+	OneChannel *chan = [[OneChannel alloc] initWithChannel:NSLocalizedStringFromTable(@"NEW CHANNEL", @"xchataqua", @"Default channel name: MainMenu->File->Server List... => (Select server)->On Join->channels->'+'")];
 	[net->channels addObject:chan];
 	
 	[net_join_table reloadData];
@@ -693,7 +693,7 @@ static ServerList *instance;
     if (nrow < 0)
         return;
 
-    oneNet *net = (oneNet *) [my_nets objectAtIndex:nrow];
+    OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:nrow];
 
     int crow = [net_join_table selectedRow];
     if (crow < 0)
@@ -710,7 +710,7 @@ static ServerList *instance;
 	NSInteger nrow = [net_list selectedRow];
 	if (nrow < 0) return;
         
-	oneNet *net = (oneNet *) [my_nets objectAtIndex:nrow];
+	OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:nrow];
 
 	[net->connect_commands addObject:NSLocalizedStringFromTable(@"NEW COMMAND", @"xchataqua", @"Default command: MainMenu->File->Server List... => (Select server)->On Join->commands->'+'")];
 	
@@ -730,7 +730,7 @@ static ServerList *instance;
     if (nrow < 0)
         return;
 
-    oneNet *net = (oneNet *) [my_nets objectAtIndex:nrow];
+    OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:nrow];
 
     int crow = [net_command_table selectedRow];
     if (crow < 0)
@@ -754,7 +754,7 @@ static ServerList *instance;
     if (srow < 0)
         return;
         
-    oneNet *net = (oneNet *) [my_nets objectAtIndex:nrow];
+    OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:nrow];
     
     if (g_slist_length (net->net->servlist) < 2)
         return;
@@ -787,7 +787,7 @@ static ServerList *instance;
   if (srow < 0)
     return;
         
-  oneNet *net = (oneNet *) [my_nets objectAtIndex:nrow];
+  OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:nrow];
 	
   ircserver *svr = servlist_server_add (net->net, "NewServer");
     
@@ -807,7 +807,7 @@ static ServerList *instance;
 {
 	ircnet *net = servlist_net_add ((char*)XALocalizeString("New Network"), "", false);
 	servlist_server_add (net, "NewServer");
-	[my_nets addObject:[[oneNet alloc] initWithIrcnet:net]];
+	[my_nets addObject:[[OneNetwork alloc] initWithIrcnet:net]];
 	[net_list reloadData];
 	
 	NSInteger last = [self numberOfRowsInTableView:net_list] - 1;
@@ -823,7 +823,7 @@ static ServerList *instance;
     if (row < 0)
         return;
     
-    oneNet *net = (oneNet *) [my_nets objectAtIndex:row];
+    OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
 
     if (![SGAlert confirmWithString:[NSString stringWithFormat:
 		NSLocalizedStringFromTable(@"Really remove network \"%@\" and all its servers?", @"xchat", @"Dialog Message from clicking '-' of MainMenu->File->Server List..."), net->name]])
@@ -851,7 +851,7 @@ static ServerList *instance;
 
 		for (unsigned i = 0; i < [all_nets count]; i ++)
 		{
-			oneNet *net = [all_nets objectAtIndex:i];
+			OneNetwork *net = [all_nets objectAtIndex:i];
 			
 			if (strcasestr (net->net->name, cfilter))
 				[my_nets addObject:net];
@@ -875,7 +875,7 @@ static ServerList *instance;
     for (GSList *list = network_list; list; list = list->next)
     {
         ircnet *net = (ircnet *) list->data;
-		[my_nets addObject:[[oneNet alloc] initWithIrcnet:net]];
+		[my_nets addObject:[[OneNetwork alloc] initWithIrcnet:net]];
     }
     
     [net_list reloadData];
@@ -1015,7 +1015,7 @@ static ServerList *instance;
 	}
 	else if ([notification object] == net_server_list)
 	{
-	    oneNet *net = (oneNet *) [my_nets objectAtIndex:row];
+	    OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
 		net->net->selected = [net_server_list selectedRow];
 	}
 }
@@ -1031,7 +1031,7 @@ static ServerList *instance;
 		if (row < 0)
 			return 0;
 			
-		oneNet *net = (oneNet *) [my_nets objectAtIndex:row];
+		OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
 		return [net->servers count];
 	}
 	
@@ -1041,7 +1041,7 @@ static ServerList *instance;
 		if (row < 0)
 			return 0;
 			
-		oneNet *net = (oneNet *) [my_nets objectAtIndex:row];
+		OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
 		return [net->channels count];
 	}
 	
@@ -1051,7 +1051,7 @@ static ServerList *instance;
 		if (row < 0)
 			return 0;
 			
-		oneNet *net = (oneNet *) [my_nets objectAtIndex:row];
+		OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
 		return [net->connect_commands count];
 	}
 	
@@ -1066,7 +1066,7 @@ static ServerList *instance;
 	
     if (aTableView == net_list)
 	{
-		oneNet *net =[my_nets objectAtIndex:rowIndex];
+		OneNetwork *net =[my_nets objectAtIndex:rowIndex];
 		
 		switch (col)
 		{
@@ -1084,8 +1084,8 @@ static ServerList *instance;
 		if (row < 0)
 			return @"";
 
-		oneNet *net = (oneNet *) [my_nets objectAtIndex:row];
-		oneServer *svr = (oneServer *) [net->servers objectAtIndex:rowIndex];
+		OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
+		OneServer *svr = (OneServer *) [net->servers objectAtIndex:rowIndex];
 		
 		switch (col)
 		{
@@ -1100,8 +1100,8 @@ static ServerList *instance;
 		if (row < 0)
 			return @"";
 			
-		oneNet *net = (oneNet *) [my_nets objectAtIndex:row];
-		oneChannel *chan = (oneChannel *) [net->channels objectAtIndex:rowIndex];
+		OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
+		OneChannel *chan = (OneChannel *) [net->channels objectAtIndex:rowIndex];
 		
 		switch (col)
 		{
@@ -1115,7 +1115,7 @@ static ServerList *instance;
 		if (row < 0)
 			return @"";
 			
-		oneNet *net = (oneNet *) [my_nets objectAtIndex:row];
+		OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
 		return [net->connect_commands objectAtIndex:rowIndex];
 	}
     
@@ -1131,7 +1131,7 @@ static ServerList *instance;
 	
     if (aTableView == net_list)
     {
-		oneNet *net =[my_nets objectAtIndex:rowIndex];
+		OneNetwork *net =[my_nets objectAtIndex:rowIndex];
 
 		switch (col)
 		{
@@ -1150,8 +1150,8 @@ static ServerList *instance;
 		if ([net_list selectedRow] < 0)
 			return;
 
-        oneNet *net = (oneNet *) [my_nets objectAtIndex:[net_list selectedRow]];
-        oneServer *svr = (oneServer *) [net->servers objectAtIndex:rowIndex];
+        OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:[net_list selectedRow]];
+        OneServer *svr = (OneServer *) [net->servers objectAtIndex:rowIndex];
         switch (col)
         {
             case 0: 
@@ -1174,8 +1174,8 @@ static ServerList *instance;
 		if ([net_list selectedRow] < 0)
 			return;
 
-        oneNet *net = (oneNet *) [my_nets objectAtIndex:[net_list selectedRow]];
-		oneChannel *chan = (oneChannel *) [net->channels objectAtIndex:rowIndex];
+        OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:[net_list selectedRow]];
+		OneChannel *chan = (OneChannel *) [net->channels objectAtIndex:rowIndex];
         switch (col)
         {
             case 0: 
@@ -1192,7 +1192,7 @@ static ServerList *instance;
 		if ([net_list selectedRow] < 0)
 			return;
 
-        oneNet *net = (oneNet *) [my_nets objectAtIndex:[net_list selectedRow]];
+        OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:[net_list selectedRow]];
 		[net->connect_commands replaceObjectAtIndex:rowIndex withObject:anObject];
 		[net resetCommands];
     }
