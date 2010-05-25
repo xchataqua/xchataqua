@@ -158,7 +158,6 @@ static int timer_seq = 1;
     if (timer)
     {
         [timer invalidate];
-        [timer release];
         timer = nil;
     }
 }
@@ -170,18 +169,17 @@ static int timer_seq = 1;
 
 - (void)schedule
 {
-    timer = [[NSTimer scheduledTimerWithTimeInterval:(double) interval
+    timer = [NSTimer scheduledTimerWithTimeInterval:(double) interval
 											  target:self
 											selector:@selector(fire:)
 											userInfo:nil
 											 repeats:NO
-										  retainArgs:NO] retain];
+										  retainArgs:NO];
 }
 
 - (void)fire:(id)userInfo
 {
     [timer invalidate];
-    [timer release];
     timer = nil;
 	
     [self retain];	// Retain ourselvs just in case he decides
