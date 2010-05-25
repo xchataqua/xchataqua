@@ -207,7 +207,7 @@ extern "C" {
     [self release];
 }
 
-- (int) find:(const char *) mask
+- (NSInteger) find:(const char *) mask
 {
     for (oneIgnore *ignoreItem in my_items)
     {
@@ -225,7 +225,7 @@ extern "C" {
 	if ([self find:"new!new@new.com"] < 0)
 		ignore_add ("new!new@new.com", 0); // Calls me back to create my list
   
-	NSUInteger row = [self find:"new!new@new.com"];
+	NSInteger row = [self find:"new!new@new.com"];
 
 	if (row >= 0)		// It should always be 0
 	{
