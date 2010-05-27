@@ -44,7 +44,7 @@ extern EventInfo text_event_info[];
 
 //////////////////////////////////////////////////////////////////////
 
-@interface pref_leaf : NSObject
+@interface PrefLeaf : NSObject
 {
   @public
     NSString	*label;
@@ -52,12 +52,12 @@ extern EventInfo text_event_info[];
 }
 @end
 
-@implementation pref_leaf
+@implementation PrefLeaf
 @end
 
-pref_leaf *leaf (NSString *label, int pane)
+PrefLeaf *leaf (NSString *label, int pane)
 {
-    pref_leaf *l = [[pref_leaf alloc] init];
+    PrefLeaf *l = [[PrefLeaf alloc] init];
     l->label = label;
     l->pane = pane;
     return l;
@@ -67,7 +67,7 @@ static NSArray *root_items;
 
 //////////////////////////////////////////////////////////////////////
 
-@interface sound_event : NSObject
+@interface SoundEvent : NSObject
 {
   @public
 	NSString     *name;
@@ -78,7 +78,7 @@ static NSArray *root_items;
 }
 @end
 
-@implementation sound_event
+@implementation SoundEvent
 
 - (id) initWithEvent:(int) event
               sounds:(NSArray *) sounds
@@ -91,7 +91,7 @@ static NSArray *root_items;
     
     if (sound_files && sound_files [event])
     {
-        for (unsigned int i = 1; i < [sounds count]; i ++)
+        for (NSUInteger i = 1; i < [sounds count]; i ++)
         {
             if (strcasecmp (sound_files [event], [[sounds objectAtIndex:i] UTF8String]) == 0)
             {
@@ -163,32 +163,32 @@ static NSArray *root_items;
 
 - (void) populate
 {
-    int n = sizeof (my_prefs) / sizeof (my_prefs [0]);
-    
-    for (int i = 0; i < n; i ++)
-    {
-        switch (my_prefs [i].type)
-        {
-            case MYPREF_INT:
-                [my_prefs [i].item setIntValue: * (int *) my_prefs [i].pref];
-                break;
-                
-            case MYPREF_STRING:
-            {
-                const char *v = (const char *) my_prefs [i].pref;
-                if (!v) v = "";
-                NSString *tmp = [NSString stringWithUTF8String:v];
-                [my_prefs [i].item setStringValue:tmp];    
-                break;
-            }
+	NSUInteger n = sizeof (my_prefs) / sizeof (my_prefs [0]);
 
+	for (NSUInteger i = 0; i < n; i ++)
+	{
+		switch (my_prefs[i].type)
+		{
+			case MYPREF_INT:
+				[my_prefs[i].item setIntValue: * (int *) my_prefs [i].pref];
+				break;
+                
+			case MYPREF_STRING:
+			{
+				const char *v = (const char *) my_prefs[i].pref;
+				if (!v) v = "";
+				NSString *tmp = [NSString stringWithUTF8String:v];
+				[my_prefs[i].item setStringValue:tmp];    
+				break;
+			}
+				
 			case MYPREF_MENU:
 				[my_prefs [i].item selectItemAtIndex: * (int *) my_prefs [i].pref];
 				break;
         }
     }
-
-	#if __MAC_OS_X_VERSION_MIN_REQUIRED >= 1050
+	
+	#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_4
 	KeyCombo left_combo = { prefs.tab_left_modifiers, prefs.tab_left_key };
 	[tab_left_sr setKeyCombo:left_combo];
 
@@ -196,41 +196,41 @@ static NSArray *root_items;
 	[tab_right_sr setKeyCombo:right_combo];
 	#endif
 	
-    ColorPalette *palette = [[AquaChat sharedAquaChat] getPalette];
-
-	if ([palette nColors] != (sizeof(colors)/sizeof(colors[0])))
+	ColorPalette *palette = [[AquaChat sharedAquaChat] getPalette];
+	
+	if ([palette numberOfColors] != (sizeof(colors)/sizeof(colors[0])))
 		NSLog(@"COLOR MAP OUT OF SYNC\n");
-
-    for (int i = 0; i < [palette nColors]; i ++)
-    	[colors [i] setColor:[palette getColor:i]];
+	
+	for (NSUInteger i = 0; i < [palette numberOfColors]; i ++)
+		[colors [i] setColor:[palette getColor:i]];
 }
 
 - (void) set
 {
-    int n = sizeof (my_prefs) / sizeof (my_prefs [0]);
-    
-    for (int i = 0; i < n; i ++)
-    {
-        switch (my_prefs [i].type)
-        {
-            case MYPREF_INT:
-                * (int *) my_prefs [i].pref = [my_prefs [i].item intValue];
-                break;
+	NSUInteger n = sizeof (my_prefs) / sizeof (my_prefs [0]);
+	
+	for (NSUInteger i = 0; i < n; i ++)
+	{
+		switch (my_prefs[i].type)
+		{
+			case MYPREF_INT:
+				* (int *) my_prefs [i].pref = [my_prefs [i].item intValue];
+				break;
                 
-            case MYPREF_STRING:
-            {
-                NSString *s = [my_prefs [i].item stringValue];    
-                strcpy ((char *) my_prefs [i].pref, [s UTF8String]);
-                break;
-            }
+			case MYPREF_STRING:
+			{
+				NSString *s = [my_prefs [i].item stringValue];    
+				strcpy ((char *) my_prefs [i].pref, [s UTF8String]);
+				break;
+			}
 
 			case MYPREF_MENU:
 				* (int *) my_prefs [i].pref = [my_prefs [i].item indexOfSelectedItem];
 				break;
-        }
-    }
+		}
+	}
 
-	#if __MAC_OS_X_VERSION_MIN_REQUIRED >= 1050
+	#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_4
 	KeyCombo left_combo = [tab_left_sr keyCombo];
 	prefs.tab_left_modifiers = left_combo.flags;
 	prefs.tab_left_key = left_combo.code;
@@ -240,71 +240,72 @@ static NSArray *root_items;
 	prefs.tab_right_key = right_combo.code;
 	#endif
 
-    ColorPalette *palette = [[[ColorPalette alloc] init] autorelease];
-    for (int i = 0; i < [palette nColors]; i ++)
-    	[palette setColor:i color:[colors [i] color]];
-    [[AquaChat sharedAquaChat] setPalette:palette];
-    
+	ColorPalette *palette = [[[ColorPalette alloc] init] autorelease];
+	for (NSUInteger i = 0; i < [palette numberOfColors]; i ++)
+		[palette setColor:i color:[colors [i] color]];
+	[[AquaChat sharedAquaChat] setPalette:palette];
+	
     [[AquaChat sharedAquaChat] prefsChanged];
 }
 
 - (void) find_colors
 {
-    // TBD: Magic number here!!!! '5'
-
-    NSTabViewItem *color_pane = [tab_view tabViewItemAtIndex:5];
-    NSView *pane_view = [color_pane view];
-    NSArray *subviews = [pane_view subviews];
-
-    for (unsigned int i = 0; i < [subviews count]; i ++)
-    {
-        NSView *view = (NSView *) [subviews objectAtIndex:i];
-
+	// TBD: Magic number here!!!! '5'
+	
+	NSTabViewItem *color_pane = [tab_view tabViewItemAtIndex:5];
+	NSView *pane_view = [color_pane view];
+	NSArray *subviews = [pane_view subviews];
+	
+	for (NSUInteger i = 0; i < [subviews count]; i ++)
+	{
+		NSView *view = (NSView *) [subviews objectAtIndex:i];
+		
 		if ([view isKindOfClass:[NSColorWell class]])
 		{
-			int color_index = [view tag];
-			colors [color_index] = (NSColorWell *) view;
+			NSInteger color_index = [view tag];
+			colors[color_index] = (NSColorWell *)view;
 		}
-    }
+	}
 }
 
 - (void) load_sounds
 {
-    sounds = [[NSMutableArray arrayWithCapacity:0] retain];
+	sounds = [[NSMutableArray arrayWithCapacity:0] retain];
+	
+	[sounds addObject:NSLocalizedStringFromTable(@"<none>", @"xchat", @"")];
+	
+	NSString *bundle = [[NSBundle mainBundle] bundlePath];
+	NSString *dir_name = [NSString stringWithFormat:@"%@/../Sounds", bundle];
+	NSFileManager *manager = [NSFileManager defaultManager];
+	#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_4
+	NSArray *files = [manager contentsOfDirectoryAtPath:dir_name error:NULL];
+	#else
+	NSArray *files = [manager directoryContentsAtPath:dir_name];
+	#endif
+	
+	for (NSUInteger i = 0; i < [files count]; i ++)
+	{
+		NSString *sound = (NSString *) [files objectAtIndex:i];
+		NSString *full_path = [dir_name stringByAppendingFormat:@"/%@", sound];
+		BOOL isDir;
+		if ([manager fileExistsAtPath:full_path isDirectory:&isDir] && !isDir)
+			[sounds addObject:sound];
+	}
 
-    [sounds addObject:NSLocalizedStringFromTable(@"<none>", @"xchat", @"")];
-    
-    NSString *bundle = [[NSBundle mainBundle] bundlePath];
-    NSString *dir_name = [NSString stringWithFormat:@"%@/../Sounds", bundle];
-    NSFileManager *manager = [NSFileManager defaultManager];
-    NSArray *files = [manager directoryContentsAtPath:dir_name];
-    
-    for (unsigned i = 0; i < [files count]; i ++)
-    {
-        NSString *sound = (NSString *) [files objectAtIndex:i];
-        NSString *full_path = [dir_name stringByAppendingFormat:@"/%@", sound];
-        BOOL isDir;
-        if ([manager fileExistsAtPath:full_path isDirectory:&isDir] && !isDir)
-            [sounds addObject:sound];
-    }
-
-    //if ([sounds count])
-        //[sounds addObject:@"/"];        // NOTE: "/" is a marker
-    
-    NSArray *system_sounds = [SGSoundUtil systemSounds];
-
-    for (unsigned i = 0; i < [system_sounds count]; i ++)
-    {
-        NSString *sound = (NSString *) [system_sounds objectAtIndex:i];
-        [sounds addObject:sound];
-    }
+	NSArray *system_sounds = [SGSoundUtil systemSounds];
+	
+	for (NSUInteger i = 0; i < [system_sounds count]; i ++)
+	{
+		NSString *sound = (NSString *) [system_sounds objectAtIndex:i];
+		[sounds addObject:sound];
+	}
 }
 
 - (void) make_sound_menu
 {
 	NSPopUpButtonCell *cell = [[[NSPopUpButtonCell alloc] initTextCell:@"" pullsDown:false] autorelease];
 	[cell setBordered:false];
-	for (unsigned int i = 0; i < [sounds count]; i ++)
+	for (NSUInteger i = 0; i < [sounds count]; i ++)
 	{
 		NSString *sound = (NSString *) [sounds objectAtIndex:i];
 		NSRange r = [sound rangeOfString:@"/" options:NSBackwardsSearch];
@@ -317,16 +318,15 @@ static NSArray *root_items;
 
 - (void) get_sound_events
 {
-    sound_events = [[NSMutableArray arrayWithCapacity:0] retain];
-
-    for (int i = 0; i < NUM_XP; i ++)                      
-    {
-        sound_event *item = 
-			[[[sound_event alloc] initWithEvent:i sounds:sounds] autorelease];
-        [sound_events addObject:item];
-    }
-
-    [sounds_table reloadData];
+	sound_events = [[NSMutableArray arrayWithCapacity:0] retain];
+	
+	for (NSUInteger i = 0; i < NUM_XP; i ++)                      
+	{
+		SoundEvent *item = [[[SoundEvent alloc] initWithEvent:i sounds:sounds] autorelease];
+		[sound_events addObject:item];
+	}
+	
+	[sounds_table reloadData];
 }
 
 - (void) awakeFromNib
@@ -419,15 +419,15 @@ static NSArray *root_items;
 		{ auto_away_check, &prefs.auto_away, MYPREF_INT },
 		{ save_nicknames_check, &prefs.dccwithnick, MYPREF_INT },
 		{ nick_complete_sort_menu, &prefs.completion_sort, MYPREF_MENU },
-    };
-
+	};
+	
 	// I was using #assert totally wrong.. this is the next best thing
 	// to get a compile time error if the array sizes are different.
 	// Credit where credit is due:
 	//    http://www.jaggersoft.com/pubs/CVu11_3.html
 	switch (0) { case 0: case (sizeof (xx) == sizeof (my_prefs)):; };
 	
-	for (unsigned i = 0; i < sizeof (xx) / sizeof (xx [0]); i ++)
+	for (NSUInteger i = 0; i < sizeof (xx) / sizeof (xx [0]); i ++)
 	{
 		my_prefs [i] = xx [i];
 	}
@@ -460,7 +460,7 @@ static NSArray *root_items;
 	[category_list expandItem:network expandChildren:true];
 
 	[sounds_table setDataSource:self];
-	for (int i = 0; i < [sounds_table numberOfColumns]; i ++)
+	for (NSUInteger i = 0; i < [sounds_table numberOfColumns]; i ++)
 		[[[sounds_table tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
 
 	[self find_colors];
@@ -490,12 +490,12 @@ static NSArray *root_items;
 
 - (void) outlineViewSelectionDidChange:(NSNotification *) notification
 {
-    int row = [category_list selectedRow];
+    NSInteger row = [category_list selectedRow];
     id item = [category_list itemAtRow:row];
     
-    if ([item isKindOfClass:[pref_leaf class]])
+    if ([item isKindOfClass:[PrefLeaf class]])
     {
-        pref_leaf *l = (pref_leaf *) item;
+        PrefLeaf *l = (PrefLeaf *) item;
         
         [content_box setTitle:l->label];
         [tab_view selectTabViewItemAtIndex:l->pane];
@@ -539,7 +539,7 @@ static NSArray *root_items;
 
 - (void) changeFont:(id) fontManager
 {
-    NSFont *font = [fontManager convertFont:[[AquaChat sharedAquaChat] getFont]];
+    NSFont *font = [fontManager convertFont:[[AquaChat sharedAquaChat] font]];
     sprintf (prefs.font_normal, "%s %.1f", [[font fontName] UTF8String], [font pointSize]);
     [font_text setStringValue:[NSString stringWithUTF8String:prefs.font_normal]];
 }
@@ -572,24 +572,22 @@ static NSArray *root_items;
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
 {
     return [item isKindOfClass:[NSArray class]] ? 
-        [item objectAtIndex:0] : ((pref_leaf *)item)->label;
+        [item objectAtIndex:0] : ((PrefLeaf *)item)->label;
 }
 
 ////////////
 // Sounds Data Source
 
-- (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
 	return [sound_events count];
 }
 
-- (id) tableView:(NSTableView *) aTableView
-    objectValueForTableColumn:(NSTableColumn *) aTableColumn
-    row:(NSInteger) rowIndex
+- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-	sound_event *item = [sound_events objectAtIndex:rowIndex];
+	SoundEvent *item = [sound_events objectAtIndex:row];
 
-	switch ([[aTableColumn identifier] intValue])
+	switch ([[tableColumn identifier] intValue])
 	{
 		case 0: return item->name;
 		case 1: return item->sound;
@@ -601,31 +599,28 @@ static NSArray *root_items;
     return @"";
 }
 
-- (void) tableView:(NSTableView *) aTableView
-    setObjectValue:(id) anObject
-    forTableColumn:(NSTableColumn *) aTableColumn 
-               row:(NSInteger)rowIndex
+- (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-	sound_event *item = [sound_events objectAtIndex:rowIndex];
+	SoundEvent *item = [sound_events objectAtIndex:row];
 
-	switch ([[aTableColumn identifier] intValue])
+	switch ([[tableColumn identifier] intValue])
 	{
 		case 1:
 		{
 			[item->sound release];
-			item->sound = [anObject retain];
+			item->sound = [object retain];
 							
-			if (sound_files [rowIndex])
+			if (sound_files [row])
 			{
-				free (sound_files [rowIndex]);
-				sound_files [rowIndex] = NULL;
+				free (sound_files [row]);
+				sound_files [row] = NULL;
 			}
 				
-			int num = [anObject intValue];
+			NSInteger num = [object integerValue];
 			if (num)
 			{
-				sound_files [rowIndex] = strdup ([[sounds objectAtIndex:num] UTF8String]);
-				[[AquaChat sharedAquaChat] play_wave:sound_files [rowIndex]];
+				sound_files [row] = strdup ([[sounds objectAtIndex:num] UTF8String]);
+				[[AquaChat sharedAquaChat] play_wave:sound_files [row]];
 			}
 				
 			break;
@@ -633,20 +628,20 @@ static NSArray *root_items;
 		
 		case 2:
 			[item->growl release];
-			item->growl = [anObject retain];
-			text_event_info[rowIndex].growl = [item->growl intValue];
+			item->growl = [object retain];
+			text_event_info[row].growl = [item->growl intValue];
 			break;
 				
 		case 3:
 			[item->bounce release];
-			item->bounce = [anObject retain];
-			text_event_info[rowIndex].bounce = [item->bounce intValue];
+			item->bounce = [object retain];
+			text_event_info[row].bounce = [item->bounce intValue];
 			break;
 
 		case 4:
 			[item->show release];
-			item->show = [anObject retain];
-			text_event_info[rowIndex].show = [item->show intValue];
+			item->show = [object retain];
+			text_event_info[row].show = [item->show intValue];
 			break;
     }
 }

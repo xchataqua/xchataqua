@@ -22,6 +22,9 @@
 #import <regex.h>
 
 @interface ChannelListWin : NSObject
+#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
+<NSTableViewDataSource,NSTableViewDelegate>
+#endif
 {    
     TabOrWindowView	*channel_list_view;
     NSButton		*refresh_button;

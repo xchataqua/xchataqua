@@ -160,7 +160,7 @@
 
 - (void) setFrame:(NSRect) frame
 {
-	//NSLog (@"%x %f %f %f %f", meta_view, frame.origin.x,
+	//NSLog (@"%x %f %f %f %f", metaView, frame.origin.x,
 	//	frame.origin.y, frame.size.width, frame.size.height);
 		
     frame = NSIntegralRect (frame);
@@ -205,7 +205,7 @@
 {
 	[self setAutoresizesSubviews:YES];
 	
-	meta_views = [[NSMutableArray alloc] init];
+	metaViews = [[NSMutableArray alloc] init];
     self->first_layout = true;
     self->pending_layout = false;
     self->in_my_layout = false;
@@ -224,17 +224,17 @@
 	self = [super initWithCoder:decoder];
 	[self SGViewPrivateInit];
 	self->first_layout = false;	// This feels right
-	[meta_views release];
-	meta_views = [[NSMutableArray alloc] initWithCoder:decoder];
-    for (unsigned i = 0; i < [meta_views count]; i ++)
-        [self didAddSubview:[[meta_views objectAtIndex:i] view]];
+	[metaViews release];
+	metaViews = [[NSMutableArray alloc] initWithCoder:decoder];
+    for (unsigned i = 0; i < [metaViews count]; i ++)
+        [self didAddSubview:[[metaViews objectAtIndex:i] view]];
     return self;
 }
 
 - (void) encodeWithCoder:(NSCoder *) encoder
 {
 	[super encodeWithCoder:encoder];
-	[meta_views encodeWithCoder:encoder];
+	[metaViews encodeWithCoder:encoder];
 }
 
 - (void) dealloc
@@ -243,7 +243,7 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    [meta_views release];
+    [metaViews release];
     [super dealloc];
 }
 
@@ -325,38 +325,37 @@ static void noDisplay (NSView *v)
 
 - (SGMetaView *) find_view:(NSView *) the_view
 {
-    unsigned int i = [self viewOrder:the_view];
-    if (i == ~ (unsigned) 0)
+    NSUInteger i = [self viewOrder:the_view];
+    if (i == NSNotFound)
         return nil;
-    return [meta_views objectAtIndex:i];
+    return [metaViews objectAtIndex:i];
 }
 
-- (void) setOrder:(unsigned) order
-          forView:(NSView *) the_view
+- (void) setOrder:(NSUInteger)order forView:(NSView *) the_view
 {
-    unsigned int i = [self viewOrder:the_view];
-    if (i == ~ (unsigned) 0)
+    NSUInteger i = [self viewOrder:the_view];
+    if (i == NSNotFound)
         return;
-    id metaview = [meta_views objectAtIndex:i];
+    id metaview = [metaViews objectAtIndex:i];
     [metaview retain];
-    [meta_views removeObjectAtIndex:i];
-    if (order > [meta_views count])
-        [meta_views addObject:metaview];
+    [metaViews removeObjectAtIndex:i];
+    if (order > [metaViews count])
+        [metaViews addObject:metaview];
     else
-        [meta_views insertObject:metaview atIndex:order];
+        [metaViews insertObject:metaview atIndex:order];
     [metaview release];
     [self queue_layout];
 }
 
-- (unsigned) viewOrder:(NSView *) the_view
+- (NSUInteger) viewOrder:(NSView *) the_view
 {
-    for (unsigned int i = 0; i < [meta_views count]; i ++)
+    for (NSUInteger i = 0; i < [metaViews count]; i ++)
     {
-        id meta_view = [meta_views objectAtIndex:i];
-        if ([meta_view view] == the_view)
+        id metaView = [metaViews objectAtIndex:i];
+        if ([metaView view] == the_view)
             return i;
     }
-    return ~0;
+    return NSNotFound;
 }
 
 //- (void) resizeSubviewsWithOldSize:(NSSize) oldBoundsSize Broken with rotation!
@@ -409,16 +408,16 @@ static void noDisplay (NSView *v)
         //return;
         
     NSView *subview = (NSView *) [notification object];
-    SGMetaView *meta_view = [self find_view:subview];
+    SGMetaView *metaView = [self find_view:subview];
     
     if (in_my_layout && (
-        NSEqualRects (meta_view->last_size, [subview frame]) ||
-        NSEqualRects (meta_view->pref_size, [subview frame])))
+        NSEqualRects (metaView->last_size, [subview frame]) ||
+        NSEqualRects (metaView->pref_size, [subview frame])))
     {
         return;
     }
 
-    [meta_view reset_pref_size];
+    [metaView reset_pref_size];
     
     if (auto_size_to_fit)
         needs_size_to_fit = true;
@@ -433,7 +432,7 @@ static void noDisplay (NSView *v)
 
 - (NSArray *) metaViews
 {
-    return meta_views;
+    return metaViews;
 }
 
 - (void) didAddSubview:(NSView *) subview
@@ -441,7 +440,7 @@ static void noDisplay (NSView *v)
     [super didAddSubview:subview];
 
     if ([self find_view:subview] == nil)
-        [meta_views addObject:[self newMetaView:subview]];
+        [metaViews addObject:[self newMetaView:subview]];
 
     [subview setPostsFrameChangedNotifications:true];
     [[NSNotificationCenter defaultCenter] addObserver:self 
@@ -464,8 +463,8 @@ static void noDisplay (NSView *v)
     if (in_dtor)
         return;
             
-    id meta_view = [self find_view:subview];
-    [meta_views removeObject:meta_view];
+    id metaView = [self find_view:subview];
+    [metaViews removeObject:metaView];
     
     if (auto_size_to_fit)
         needs_size_to_fit = true;
@@ -473,16 +472,15 @@ static void noDisplay (NSView *v)
     [self queue_layout];
 }
 
-- (void) replaceSubview:(NSView *)oldView 
-				   with:(NSView *)newView
+- (void) replaceSubview:(NSView *)oldView with:(NSView *)newView
 {
 	// We are about to remove oldView and add newView.
 	// We'll need to stuff our metadata back in
 	
-	SGMetaView *meta_view = [self find_view:oldView];
+	SGMetaView *metaView = [self find_view:oldView];
 
-	if (meta_view)
-        [meta_view setView:newView];
+	if (metaView)
+        [metaView setView:newView];
     
     [super replaceSubview:oldView with:newView];
 }

@@ -38,61 +38,60 @@
 
 - (void) sizeFixups:(id) sender
 {
-    [timer release];
-    timer = nil;
-
-    id col = [[self tableColumns] lastObject];
-    id cell = [col dataCell];
-    
-    float width = 0;
-    float height = 16;
-    
-    id datasource = [self dataSource];
-    bool do_hints = [datasource respondsToSelector:@selector(tableView:sizeHintForTableColumn:row:)];
-    
-    for (int i = 0; i < [self numberOfRows]; i ++)
-    {
-        NSSize sz = NSZeroSize;
-        
-        if (do_hints)
-            sz = [datasource tableView:self sizeHintForTableColumn:nil row:i];
-            
-        if (sz.width == 0 && sz.height == 0)
-        {
-            id val = [[self dataSource] tableView:self objectValueForTableColumn:col row:i];
-            [cell setObjectValue:val];
-            sz = [cell cellSize];
-            
-            if (do_hints)
-                [datasource tableView:self sizeHintForTableColumn:nil row:i size:sz];
-        }
-        
-        if (sz.width > width)
-            width = sz.width;
-        if (sz.height > height)
-            height = sz.height;
-    }
-    
-    [col setWidth:width];
-    if (height != [self rowHeight])
-        [self setRowHeight:height];
+	[timer release];
+	timer = nil;
+	
+	id col = [[self tableColumns] lastObject];
+	id cell = [col dataCell];
+	
+	CGFloat width = 0;
+	CGFloat height = 16;
+	
+	id datasource = [self dataSource];
+	bool do_hints = [datasource respondsToSelector:@selector(tableView:sizeHintForTableColumn:row:)];
+	
+	for (NSInteger i = 0; i < [self numberOfRows]; i ++)
+	{
+		NSSize size = NSZeroSize;
+		
+		if (do_hints)
+			size = [datasource tableView:self sizeHintForTableColumn:nil row:i];
+		
+		if (size.width == 0 && size.height == 0)
+		{
+			id val = [[self dataSource] tableView:self objectValueForTableColumn:col row:i];
+			[cell setObjectValue:val];
+			size = [cell cellSize];
+			
+			if (do_hints)
+				[datasource tableView:self sizeHintForTableColumn:nil row:i size:size];
+		}
+		
+		if (size.width > width)
+			width = size.width;
+		if (size.height > height)
+			height = size.height;
+	}
+	
+	[col setWidth:width];
+	if (height != [self rowHeight])
+		[self setRowHeight:height];
 }
 
 - (void) startTimer
 {
-    id datasource = [self dataSource];
-    bool do_fixups = [datasource respondsToSelector:@selector(shouldDoSizeFixupsForTableView:)] &&
+	id datasource = [self dataSource];
+	bool do_fixups = [datasource respondsToSelector:@selector(shouldDoSizeFixupsForTableView:)] &&
 		[datasource performSelector:@selector(shouldDoSizeFixupsForTableView:) withObject:self];
-	if (!do_fixups)
-		return;
+	if (!do_fixups) return;
 
     if (!timer)
-        timer = [[NSTimer scheduledTimerWithTimeInterval:1
-                            target:self
-                            selector:@selector(sizeFixups:)
-                            userInfo:nil
-                            repeats:NO
-                            retainArgs:NO] retain];
+		timer = [[NSTimer scheduledTimerWithTimeInterval:1.0
+												  target:self
+												selector:@selector(sizeFixups:)
+												userInfo:nil
+												 repeats:NO
+											  retainArgs:NO] retain];
 }
 
 - (void) reloadData

@@ -19,43 +19,33 @@
 
 typedef enum
 {
-    SGFormView_ATTACH_NONE,
-    SGFormView_ATTACH_FORM,
-    SGFormView_ATTACH_VIEW,
-    SGFormView_ATTACH_OPPOSITE_VIEW,
-    SGFormView_ATTACH_CENTER
-} SGFormViewAttachment;
+	SGFormViewAttachNone,
+	SGFormViewAttachForm,
+	SGFormViewAttachView,
+	SGFormViewAttachOppositeView,
+	SGFormViewAttachCenter,
+}	SGFormViewAttachment;
 
 typedef enum
 {
-    /* N O T E:  These numbers ARE NOT ARBITRARY!! */
-    SGFormView_EDGE_BOTTOM = 0,
-    SGFormView_EDGE_LEFT = 1,
-    SGFormView_EDGE_TOP = 2,
-    SGFormView_EDGE_RIGHT = 3
-} SGFormViewEdge;
+	/* N O T E:  These numbers ARE NOT ARBITRARY!! */
+	SGFormViewEdgeBottom = 0,
+	SGFormViewEdgeLeft = 1,
+	SGFormViewEdgeTop = 2,
+	SGFormViewEdgeRight = 3,
+}	SGFormViewEdge;
+#define SGFormViewEdgeCount 4
 
 @interface SGFormView : SGView
-{
-}
 
-- (void) constrain:(NSView *)		      child
-              edge:(SGFormViewEdge) 	  edge
-        attachment:(SGFormViewAttachment) attachment
-        relativeTo:(NSView *)             view
-            offset:(int)                  offset;
+- (void) constrain:(NSView *)child edge:(SGFormViewEdge)edge attachment:(SGFormViewAttachment)attachment relativeTo:(NSView *)view offset:(int)offset;
 
 // These methods are used to assign a string identifier to subviews.
 // This is used only in the interface builder palette.
-- (void) setIdentifier:(NSString *) identifier
-			   forView:(NSView *) view;
-- (NSString *) identifierForView:(NSView *) view;
+- (void) setIdentifier:(NSString *)identifier forView:(NSView *)view;
+- (NSString *) identifierForView:(NSView *)view;
 
-- (BOOL) constraintsForEdge:(NSView *)			     child
-					   edge:(SGFormViewEdge)	     edge
-				 attachment:(SGFormViewAttachment *) attachment_return
-				 relativeTo:(NSView **)              view_return
-					 offset:(int *)                  offset_return;
+- (BOOL) constraintsForEdge:(NSView *)child edge:(SGFormViewEdge)edge attachment:(SGFormViewAttachment *)attachment_return relativeTo:(NSView **)view_return offset:(int *)offset_return;
 
 // This function exists to bootstrap the contraints for all of the views
 // such that the view remains relative to 'view'.  When/if I write an interface

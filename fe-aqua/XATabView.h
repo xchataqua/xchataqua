@@ -28,6 +28,7 @@
 
 @end
 
+@protocol XATabViewDelegate;
 @interface XATabView : NSTabView
 {
     XATabViewItem	*in_close_item;
@@ -35,8 +36,10 @@
 
 - (XATabViewItem *) mouseInClose:(NSEvent *) e;
 
+@property (nonatomic, assign) id<XATabViewDelegate> delegate;
+
 @end
 
-@interface NSObject (MyTabViewDelegateAdditions)
+@protocol XATabViewDelegate
 - (void) tabWantsToClose:(XATabViewItem *) item;
 @end

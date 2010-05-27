@@ -31,8 +31,8 @@ extern "C" {
 }
 
 @interface MenuMaker : NSObject {
-	float maxUserInfoLabelWidth;
-	float userInfoTabWidth;
+	CGFloat maxUserInfoLabelWidth;
+	CGFloat userInfoTabWidth;
 }
 
 + (MenuMaker *)defaultMenuMaker;

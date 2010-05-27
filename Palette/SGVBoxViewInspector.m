@@ -27,14 +27,14 @@
 
 - (void) awakeFromNib
 {
-    [[VJustMenu itemWithTitle:@"Top"] setTag:SGVBoxTopVJustification];
-    [[VJustMenu itemWithTitle:@"Center"] setTag:SGVBoxCenterVJustification];
-    [[VJustMenu itemWithTitle:@"Bottom"] setTag:SGVBoxBottomVJustification];
+    [[VJustMenu itemWithTitle:@"Top"] setTag:SGVBoxVJustificationTop];
+    [[VJustMenu itemWithTitle:@"Center"] setTag:SGVBoxVJustificationCenter];
+    [[VJustMenu itemWithTitle:@"Bottom"] setTag:SGVBoxVJustificationBottom];
 
-    [[HJustMenu itemWithTitle:@"Left"] setTag:SGVBoxLeftHJustification];
-    [[HJustMenu itemWithTitle:@"Center"] setTag:SGVBoxCenterHJustification];
-    [[HJustMenu itemWithTitle:@"Right"] setTag:SGVBoxRightHJustification];
-    [[HJustMenu itemWithTitle:@"Full"] setTag:SGVBoxFullHJustification];
+    [[HJustMenu itemWithTitle:@"Left"] setTag:SGVBoxHJustificationLeft];
+    [[HJustMenu itemWithTitle:@"Center"] setTag:SGVBoxHJustificationCenter];
+    [[HJustMenu itemWithTitle:@"Right"] setTag:SGVBoxHJustificationRight];
+    [[HJustMenu itemWithTitle:@"Full"] setTag:SGVBoxHJustificationFull];
 }
 
 - (void) doVJust:(id) sender

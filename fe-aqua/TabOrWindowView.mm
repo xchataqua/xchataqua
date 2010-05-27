@@ -97,8 +97,9 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 //////////////////////////////////////////////////////////////////////
 
 @interface TabOrWindowViewTabDelegate : NSObject
-{
-}
+#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
+<NSWindowDelegate>
+#endif
 @end
 
 @implementation TabOrWindowViewTabDelegate
@@ -161,8 +162,7 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
     }
 }
 
-- (void) tabView:(TABVIEW *) tabView
-    didSelectTabViewItem:(TABVIEWITEM *) tabViewItem
+- (void) tabView:(TABVIEW *)tabView didSelectTabViewItem:(TABVIEWITEM *)tabViewItem
 {
     NSString *title = [[tabViewItem view] title];
     if (title)
@@ -283,7 +283,7 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 	}
 }
 
-+ (void) setTransparency:(int) new_trans
++ (void) setTransparency:(NSInteger) new_trans
 {
     trans = (float) new_trans / 255;
         
