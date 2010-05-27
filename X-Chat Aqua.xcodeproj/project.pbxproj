@@ -177,7 +177,7 @@
 		0FE5E03E0F45595A000E0F91 /* SGVBoxView.classdescription in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5E0340F45595A000E0F91 /* SGVBoxView.classdescription */; };
 		0FE5E03F0F45595A000E0F91 /* SGVBoxViewInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5E0350F45595A000E0F91 /* SGVBoxViewInspector.xib */; };
 		0FE5E0400F45595A000E0F91 /* SGView.classdescription in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5E0360F45595A000E0F91 /* SGView.classdescription */; };
-		0FE5E0470F455A07000E0F91 /* SGFormViewInspector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0FE5E0420F455A07000E0F91 /* SGFormViewInspector.mm */; };
+		0FE5E0470F455A07000E0F91 /* SGFormViewInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE5E0420F455A07000E0F91 /* SGFormViewInspector.m */; };
 		0FE5E0480F455A07000E0F91 /* SGHBoxViewInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE5E0440F455A07000E0F91 /* SGHBoxViewInspector.m */; };
 		0FE5E0490F455A07000E0F91 /* SGVBoxViewInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE5E0460F455A07000E0F91 /* SGVBoxViewInspector.m */; };
 		0FE5E0920F480B26000E0F91 /* SGFormView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA66B0CFB300B001AE9AE /* SGFormView.mm */; };
@@ -577,7 +577,7 @@
 		0FE5E0350F45595A000E0F91 /* SGVBoxViewInspector.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SGVBoxViewInspector.xib; path = Palette/SGVBoxViewInspector.xib; sourceTree = "<group>"; };
 		0FE5E0360F45595A000E0F91 /* SGView.classdescription */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SGView.classdescription; path = Palette/SGView.classdescription; sourceTree = "<group>"; };
 		0FE5E0410F455A07000E0F91 /* SGFormViewInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGFormViewInspector.h; path = Palette/SGFormViewInspector.h; sourceTree = "<group>"; };
-		0FE5E0420F455A07000E0F91 /* SGFormViewInspector.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SGFormViewInspector.mm; path = Palette/SGFormViewInspector.mm; sourceTree = "<group>"; };
+		0FE5E0420F455A07000E0F91 /* SGFormViewInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGFormViewInspector.m; path = Palette/SGFormViewInspector.m; sourceTree = "<group>"; };
 		0FE5E0430F455A07000E0F91 /* SGHBoxViewInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGHBoxViewInspector.h; path = Palette/SGHBoxViewInspector.h; sourceTree = "<group>"; };
 		0FE5E0440F455A07000E0F91 /* SGHBoxViewInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGHBoxViewInspector.m; path = Palette/SGHBoxViewInspector.m; sourceTree = "<group>"; };
 		0FE5E0450F455A07000E0F91 /* SGVBoxViewInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGVBoxViewInspector.h; path = Palette/SGVBoxViewInspector.h; sourceTree = "<group>"; };
@@ -1811,7 +1811,7 @@
 			children = (
 				0FE5E0BC0F480F1A000E0F91 /* Resources */,
 				0FE5E0410F455A07000E0F91 /* SGFormViewInspector.h */,
-				0FE5E0420F455A07000E0F91 /* SGFormViewInspector.mm */,
+				0FE5E0420F455A07000E0F91 /* SGFormViewInspector.m */,
 				0FE5E0430F455A07000E0F91 /* SGHBoxViewInspector.h */,
 				0FE5E0440F455A07000E0F91 /* SGHBoxViewInspector.m */,
 				0FE5E0450F455A07000E0F91 /* SGVBoxViewInspector.h */,
@@ -2534,7 +2534,7 @@
 			files = (
 				0FE5E03B0F45595A000E0F91 /* SGPalette.m in Sources */,
 				0FE5E03D0F45595A000E0F91 /* SGPaletteIntegration.m in Sources */,
-				0FE5E0470F455A07000E0F91 /* SGFormViewInspector.mm in Sources */,
+				0FE5E0470F455A07000E0F91 /* SGFormViewInspector.m in Sources */,
 				0FE5E0480F455A07000E0F91 /* SGHBoxViewInspector.m in Sources */,
 				0FE5E0490F455A07000E0F91 /* SGVBoxViewInspector.m in Sources */,
 				0FE5E0920F480B26000E0F91 /* SGFormView.mm in Sources */,

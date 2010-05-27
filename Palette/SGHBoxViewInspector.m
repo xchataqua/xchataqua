@@ -35,9 +35,9 @@
 - (void) doHJust:(id) sender
 {
     NSArray * objects = [self inspectedObjects];
-    NSInteger numObjects = [objects count], i;
+    NSUInteger numObjects = [objects count];
 
-    for (i = 0; i < numObjects; ++i)
+    for (NSUInteger i = 0; i < numObjects; ++i)
     {
         SGHBoxView *view = [objects objectAtIndex:i];
         [view setHJustification:[[sender selectedItem] tag]];
@@ -47,9 +47,9 @@
 - (void) doInner:(id) sender
 {
     NSArray * objects = [self inspectedObjects];
-    NSInteger numObjects = [objects count], i;
+    NSUInteger numObjects = [objects count];
 
-    for(i = 0; i < numObjects; ++i)
+    for(NSUInteger i = 0; i < numObjects; ++i)
     {
         SGHBoxView *hbox = [objects objectAtIndex:i];
         [hbox setHInnerMargin:[inner_text intValue]];
@@ -59,9 +59,9 @@
 - (void) doOutter:(id) sender
 {
     NSArray * objects = [self inspectedObjects];
-    NSInteger numObjects = [objects count], i;
+    NSUInteger numObjects = [objects count];
 
-    for(i = 0; i < numObjects; ++i)
+    for(NSUInteger i = 0; i < numObjects; ++i)
     {
         SGHBoxView *hbox = [objects objectAtIndex:i];
         [hbox setHOutterMargin:[outter_text intValue]];
@@ -71,9 +71,8 @@
 - (void) refresh
 {
     NSArray * objects = [self inspectedObjects];
-    NSInteger numObjects = [objects count];
 
-    if(numObjects == 1)
+    if([objects count] == 1)
     {
         SGHBoxView *hbox = [objects objectAtIndex:0];
         [HJustMenu selectItemWithTag:[hbox hJustification]];
