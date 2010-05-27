@@ -64,7 +64,7 @@
     [NSApp endModalSession:session];     
     [[label window] close];
     
-    return ret ? [text stringValue] : NULL;
+    return ret ? [text stringValue] : nil;
 }
 
 - (void) do_cancel:(id) sender

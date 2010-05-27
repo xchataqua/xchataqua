@@ -96,7 +96,7 @@ applescript_cb (char *word[], char *word_eol[], void *userdata)
         options:0 range:NSMakeRange(0, [script length])];
     NSAppleScript *s = [[[NSAppleScript alloc] initWithSource:script] autorelease];
     
-    NSDictionary *errors = NULL;
+    NSDictionary *errors = nil;
     NSAppleEventDescriptor *d = [s executeAndReturnError:&errors];
 
     if (d)
@@ -177,7 +177,7 @@ browser_cb (char *word[], char *word_eol[], void *userdata)
 			[NSString stringWithFormat:
 				@"tell application \"%s\" to «event WWW!OURL» (\"%@\")", browser, new_url];
 		NSAppleScript *s = [[[NSAppleScript alloc] initWithSource:command] autorelease];
-		NSDictionary *errors = NULL;
+		NSDictionary *errors = nil;
 		[s executeAndReturnError:&errors];
 	}
 	else
@@ -287,13 +287,13 @@ fe_new_window (struct session *sess, int focus)
 {
     sess->gui = (session_gui *) malloc (sizeof (session_gui));
     sess->gui->cw = [[ChatWindow alloc] initWithSession:sess];
-    sess->gui->ban_list = NULL;
+    sess->gui->ban_list = nil;
 
 	if (!current_sess)
 		current_sess = sess;
 		
 	if (focus)
-		[[sess->gui->cw view] makeKeyAndOrderFront:NULL];
+		[[sess->gui->cw view] makeKeyAndOrderFront:nil];
 
     // XChat waits until a session is created before installing plugins.. we
     // do the same thing..
@@ -759,7 +759,7 @@ fe_update_channel_limit (struct session *sess)
 int
 fe_is_chanwindow (struct server *serv)
 {
-    return serv->gui->clc != NULL;
+    return serv->gui->clc != nil;
 }
 
 void

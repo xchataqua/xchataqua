@@ -76,7 +76,7 @@ extern "C" {
     [super initWithSelfPtr:self_ptr];
     
     self->sess = the_sess;
-    self->timer = NULL;
+    self->timer = nil;
     
     my_items = [[NSMutableArray arrayWithCapacity:0] retain];
     

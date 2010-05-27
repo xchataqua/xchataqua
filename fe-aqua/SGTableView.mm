@@ -22,7 +22,7 @@
 - (id) initWithFrame:(NSRect) frameRect
 {
     [super initWithFrame:frameRect];
-    timer = NULL;
+    timer = nil;
     return self;
 }
 
@@ -39,7 +39,7 @@
 - (void) sizeFixups:(id) sender
 {
     [timer release];
-    timer = NULL;
+    timer = nil;
 
     id col = [[self tableColumns] lastObject];
     id cell = [col dataCell];
@@ -55,7 +55,7 @@
         NSSize sz = NSZeroSize;
         
         if (do_hints)
-            sz = [datasource tableView:self sizeHintForTableColumn:NULL row:i];
+            sz = [datasource tableView:self sizeHintForTableColumn:nil row:i];
             
         if (sz.width == 0 && sz.height == 0)
         {
@@ -64,7 +64,7 @@
             sz = [cell cellSize];
             
             if (do_hints)
-                [datasource tableView:self sizeHintForTableColumn:NULL row:i size:sz];
+                [datasource tableView:self sizeHintForTableColumn:nil row:i size:sz];
         }
         
         if (sz.width > width)

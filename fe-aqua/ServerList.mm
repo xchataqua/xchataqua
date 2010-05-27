@@ -435,7 +435,7 @@ static ServerList *instance;
 
 - (void) dealloc
 {
-    [AquaChat sharedAquaChat]->server_list = NULL;
+    [AquaChat sharedAquaChat]->server_list = nil;
     
     [[nick1 window] release];
     [my_nets release];
@@ -666,21 +666,28 @@ static ServerList *instance;
 
 - (void) do_new_channel:(id) sender
 {
-	int nrow = [net_list selectedRow];
-    if (nrow < 0)
-		return;
+	NSInteger nrow = [net_list selectedRow];
+	if (nrow < 0)
+	return;
         
-    oneNet *net = (oneNet *) [my_nets objectAtIndex:nrow];
+	oneNet *net = (oneNet *) [my_nets objectAtIndex:nrow];
 
 	oneChannel *chan = [[oneChannel alloc] initWithChannel:NSLocalizedStringFromTable(@"NEW CHANNEL", @"xchataqua", @"Default channel name: MainMenu->File->Server List... => (Select server)->On Join->channels->'+'")];
 	[net->channels addObject:chan];
 	
 	[net_join_table reloadData];
 	
+<<<<<<< HEAD:fe-aqua/ServerList.mm
 	int last = [net->channels count] - 1;    
     [net_join_table selectRow:last byExtendingSelection:false];
     [net_join_table scrollRowToVisible:last];
 	[net_join_table editColumn:0 row:last withEvent:NULL select:YES];
+=======
+	NSInteger last = [net->channels count] - 1;    
+	[net_join_table selectRowIndexes:[NSIndexSet indexSetWithIndex:last] byExtendingSelection:NO];
+	[net_join_table scrollRowToVisible:last];
+	[net_join_table editColumn:0 row:last withEvent:nil select:YES];
+>>>>>>> cfe98f2... 'nil' for objc object and 'NULL' for pointer:fe-aqua/ServerList.mm
 }
 
 - (void) do_remove_channel:(id) sender
@@ -705,20 +712,34 @@ static ServerList *instance;
 
 - (void) do_new_command:(id) sender
 {
+<<<<<<< HEAD:fe-aqua/ServerList.mm
 	int nrow = [net_list selectedRow];
     if (nrow < 0)
         return;
         
     oneNet *net = (oneNet *) [my_nets objectAtIndex:nrow];
+=======
+	NSInteger nrow = [net_list selectedRow];
+	if (nrow < 0) return;
+        
+	oneNet *net = (oneNet *) [my_nets objectAtIndex:nrow];
+>>>>>>> cfe98f2... 'nil' for objc object and 'NULL' for pointer:fe-aqua/ServerList.mm
 
 	[net->connect_commands addObject:NSLocalizedStringFromTable(@"NEW COMMAND", @"xchataqua", @"Default command: MainMenu->File->Server List... => (Select server)->On Join->commands->'+'")];
 	
 	[net_command_table reloadData];
 	
+<<<<<<< HEAD:fe-aqua/ServerList.mm
 	int last = [net->connect_commands count] - 1;    
     [net_command_table selectRow:last byExtendingSelection:false];
     [net_command_table scrollRowToVisible:last];
 	[net_command_table editColumn:0 row:last withEvent:NULL select:YES];
+=======
+	NSInteger last = [net->connect_commands count] - 1;    
+	[net_command_table selectRowIndexes:[NSIndexSet indexSetWithIndex:last] byExtendingSelection:NO];
+	[net_command_table scrollRowToVisible:last];
+	[net_command_table editColumn:0 row:last withEvent:nil select:YES];
+>>>>>>> cfe98f2... 'nil' for objc object and 'NULL' for pointer:fe-aqua/ServerList.mm
 }
 
 - (void) do_remove_command:(id) sender
@@ -768,11 +789,19 @@ static ServerList *instance;
 
 - (void) do_edit_server:(id) sender
 {
+<<<<<<< HEAD:fe-aqua/ServerList.mm
     int sel = [net_server_list selectedRow];
 	if (sel >= 0)
 	{
 		[net_server_list selectRow:sel byExtendingSelection:false];
 		[net_server_list editColumn:0 row:sel withEvent:NULL select:YES];
+=======
+	NSInteger sel = [net_server_list selectedRow];
+	if (sel >= 0)
+	{
+		[net_server_list selectRowIndexes:[NSIndexSet indexSetWithIndex:sel] byExtendingSelection:NO];
+		[net_server_list editColumn:0 row:sel withEvent:nil select:YES];
+>>>>>>> cfe98f2... 'nil' for objc object and 'NULL' for pointer:fe-aqua/ServerList.mm
 	}
 }
 
@@ -802,6 +831,7 @@ static ServerList *instance;
 
 - (void) do_new_network:(id) sender
 {
+<<<<<<< HEAD:fe-aqua/ServerList.mm
     ircnet *net = servlist_net_add ((char*)XALocalizeString("New Network"), "", false);
     servlist_server_add (net, "NewServer");
     [my_nets addObject:[[oneNet alloc] initWithIrcnet:net]];
@@ -810,6 +840,16 @@ static ServerList *instance;
     int last = [self numberOfRowsInTableView:net_list] - 1;
 	[net_list selectRow:last byExtendingSelection:false];
     [net_list editColumn:2 row:last withEvent:NULL select:YES];
+=======
+	ircnet *net = servlist_net_add ((char*)XALocalizeString("New Network"), "", false);
+	servlist_server_add (net, "NewServer");
+	[my_nets addObject:[[oneNet alloc] initWithIrcnet:net]];
+	[net_list reloadData];
+	
+	NSInteger last = [self numberOfRowsInTableView:net_list] - 1;
+	[net_list selectRowIndexes:[NSIndexSet indexSetWithIndex:last] byExtendingSelection:NO];
+	[net_list editColumn:2 row:last withEvent:nil select:YES];
+>>>>>>> cfe98f2... 'nil' for objc object and 'NULL' for pointer:fe-aqua/ServerList.mm
 }
 
 - (void) do_remove_network:(id) sender

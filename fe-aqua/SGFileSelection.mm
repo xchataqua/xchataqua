@@ -20,7 +20,7 @@
 static NSString *fix_path (NSString *path)
 {
     if (!path)
-        return NULL;
+        return nil;
         
     if ([path isAbsolutePath])
         return path;
@@ -63,7 +63,7 @@ static NSString *fix_path (NSString *path)
 		 */
 	}
 	else
-		sts = [p runModalForDirectory:dir file:NULL types:NULL] == NSOKButton;
+		sts = [p runModalForDirectory:dir file:nil types:nil] == NSOKButton;
     
 	[p orderOut:self];
 
@@ -95,7 +95,7 @@ static NSString *fix_path (NSString *path)
     if (sts)
         return [p filename];
     
-    return NULL;
+    return nil;
 }
 
 + (void) getFile:(const char *)title initial:(const char*)initial callback:(callback_t)callback userdata:(void *)userdata flags:(int)flags

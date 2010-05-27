@@ -271,7 +271,7 @@ static NSRect flip (NSRect r)
     
     bool will_stretch = majorjust != SGBoxMajorCenterJustification &&
                         majorjust != SGBoxMajorFullJustification &&
-                        stretch != NULL;
+                        stretch != nil;
                       
     float lx = r.origin.x;
     
