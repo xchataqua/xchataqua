@@ -29,11 +29,14 @@
 
 @class TABVIEWITEM;
 
-@interface TabOrWindowView : NSView 
+@interface TabOrWindowView : NSView
+#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
+<NSWindowDelegate>
+#endif
 {
     NSWindow		*window;
     TABVIEWITEM		*this_item;
-    NSObject		*delegate;
+    id				delegate;
     NSString		*title;
     NSString		*tab_title;
     NSView			*ifr;
@@ -48,7 +51,7 @@
 //+ (void) setTabPosition:(NSTabViewType) type;
 //+ (void) setHideCloseButtons:(bool) hidem;
 + (void) prefsChanged;
-+ (void) setTransparency:(int) trans;
++ (void) setTransparency:(NSInteger) trans;
 //+ (NSArray *) views;
 
 - (void) link_delink:(id) sender;
@@ -74,7 +77,7 @@
 
 @end
 
-@interface NSObject (TabOrWindowViewDelegate)
+@protocol TabOrWindowViewDelegate
 - (void) windowWillClose:(NSNotification *) notification;
 - (void) windowDidBecomeKey:(NSNotification *) notification;
 @end

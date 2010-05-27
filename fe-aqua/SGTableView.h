@@ -24,17 +24,10 @@
 
 @end
 
-@interface NSObject(SGTableDataSource)
 
-- (NSSize) tableView:(NSTableView *) aTableView
-    sizeHintForTableColumn:(NSTableColumn *) aTableColumn
-        row:(int) rowIndex;
-
-- (void) tableView:(NSTableView *) aTableView
-    sizeHintForTableColumn:(NSTableColumn *) aTableColumn
-        row:(int) rowIndex
-        size:(NSSize) size;
-
+//@interface NSObject(SGTableDataSource)
+@protocol SGTableDataSource
+- (NSSize) tableView:(NSTableView *) aTableView sizeHintForTableColumn:(NSTableColumn *) aTableColumn row:(int) rowIndex;
+- (void) tableView:(NSTableView *) aTableView sizeHintForTableColumn:(NSTableColumn *) aTableColumn row:(int) rowIndex size:(NSSize) size;
 - (BOOL) shouldDoSizeFixupsForTableView:(NSTableView *) aTableView;
-
 @end

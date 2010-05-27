@@ -19,7 +19,10 @@
 #import "SG.h"
 #import "TabOrWindowView.h"
 
-@interface BanListWin : SGSelfPtr 
+@interface BanListWin : SGSelfPtr
+#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
+<NSTableViewDataSource>
+#endif
 {
     NSTableView		*ban_list;
     TabOrWindowView	*ban_list_view;

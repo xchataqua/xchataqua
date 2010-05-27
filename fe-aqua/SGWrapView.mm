@@ -59,53 +59,51 @@
     return [[[SGWrapViewMetaView alloc] initWithView:view] autorelease];
 }
 
-- (void) shift:(unsigned) start
-            to:(unsigned) stop
-            by:(unsigned) by
+- (void) shift:(NSUInteger)start to:(NSUInteger)stop by:(NSUInteger)unit
 {
-    for (unsigned i = start; i <= stop; i ++)
+    for (NSUInteger i = start; i <= stop; i++)
     {
-        SGWrapViewMetaView *meta_view = [meta_views objectAtIndex:i];
-        if (! [[meta_view view] isHidden])
-            meta_view->pending_frame.origin.x += by;
+        SGWrapViewMetaView *metaView = [metaViews objectAtIndex:i];
+        if (! [[metaView view] isHidden])
+            metaView->pending_frame.origin.x += unit;
     }
 }
 
 - (void) do_wrap_layout
 {
-    NSRect r = [self bounds];
+	NSRect rect = [self bounds];
+	
+	CGFloat lx = rect.origin.x;
+	CGFloat ly = rect.origin.y;
+	
+	rows = 0;
+	
+	NSUInteger this_row = 0;
+	CGFloat maxHeight = 0;
 
-    float lx = r.origin.x;
-    float ly = r.origin.y;
-
-    rows = 0;
+	rect.size.height = 0;
     
-    unsigned this_row = 0;
-    float max_h = 0;
-
-    r.size.height = 0;
-    
-    if ([meta_views count])
+    if ([metaViews count])
     {
         rows = 1;
         
-        for (unsigned i = 0; i < [meta_views count]; i ++)
+        for (NSUInteger i = 0; i < [metaViews count]; i ++)
         {
-            SGWrapViewMetaView *meta_view = [meta_views objectAtIndex:i];
+            SGWrapViewMetaView *metaView = [metaViews objectAtIndex:i];
      
-            if ([[meta_view view] isHidden])
+            if ([[metaView view] isHidden])
                 continue;
 
-            NSRect b = [meta_view prefSize];
+            NSRect b = [metaView prefSize];
         
-            if (i != this_row && lx + b.size.width > r.origin.x + r.size.width)
+            if (i != this_row && lx + b.size.width > rect.origin.x + rect.size.width)
             {
-                [self shift:this_row to:i - 1 by:floor((r.size.width - (lx - r.origin.x)) / 2)];
+                [self shift:this_row to:i - 1 by:floor((rect.size.width - (lx - rect.origin.x)) / 2)];
                 this_row = i;
-                ly += max_h;
-                lx = r.origin.x;
-                r.size.height += max_h;
-                max_h = 0;
+                ly += maxHeight;
+                lx = rect.origin.x;
+                rect.size.height += maxHeight;
+                maxHeight = 0;
                 rows ++;
             }
             
@@ -114,22 +112,22 @@
             
             lx += b.size.width;
             
-            if (b.size.height > max_h)
-                max_h = b.size.height;
+            if (b.size.height > maxHeight)
+                maxHeight = b.size.height;
                 
-            meta_view->pending_frame = b;
+            metaView->pending_frame = b;
         }
         
-        [self shift:this_row to:[meta_views count] - 1 by:floor((r.size.width - (lx - r.origin.x)) / 2)];
+        [self shift:this_row to:[metaViews count]-1 by:floor( (rect.size.width - (lx-rect.origin.x))/2 )];
 
-        for (unsigned i = 0; i < [meta_views count]; i ++)
+        for (NSUInteger i = 0; i < [metaViews count]; i ++)
         {
-            SGWrapViewMetaView *meta_view = [meta_views objectAtIndex:i];
-            if (![[meta_view view] isHidden])
-                [meta_view setFrame:meta_view->pending_frame];
+            SGWrapViewMetaView *metaView = [metaViews objectAtIndex:i];
+            if (![[metaView view] isHidden])
+                [metaView setFrame:metaView->pending_frame];
         }
         
-        r.size.height += max_h;
+        rect.size.height += maxHeight;
     }
 
     // Set our frame size to accomodate the child views.
@@ -138,12 +136,12 @@
     
     if ([self boundsRotation] != 0)
     {
-        float x = r.size.width;
-        r.size.width = r.size.height;
-        r.size.height = x;
+        CGFloat x = rect.size.width;
+        rect.size.width = rect.size.height;
+        rect.size.height = x;
     }
     
-    [self setFrameSize:r.size];
+    [self setFrameSize:rect.size];
 }
 
 - (void) do_layout
@@ -156,7 +154,7 @@
     return YES;
 }
 
-- (unsigned) rowCount
+- (NSUInteger) rowCount
 {
     return rows;
 }

@@ -19,7 +19,10 @@
 #import "SG.h"
 #import "TabOrWindowView.h"
 
-@interface IgnoreListWin : SGSelfPtr 
+@interface IgnoreListWin : SGSelfPtr
+#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
+<NSTableViewDataSource>
+#endif
 {
     NSTableView		*ignore_list_table;
     TabOrWindowView	*ignore_list_view;

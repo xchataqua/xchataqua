@@ -33,8 +33,8 @@ enum
 }
 
 - (NSColor *) getColor:(int) n;
-- (void) setColor:(int) n color:(NSColor *) color;
-- (int) nColors;
+- (void) setColor:(NSUInteger) n color:(NSColor *) color;
+- (NSUInteger) numberOfColors;
 - (void) load;
 - (void) save;
 - (id) clone;

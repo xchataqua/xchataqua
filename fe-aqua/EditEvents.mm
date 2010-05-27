@@ -124,8 +124,8 @@ extern char *pntevts[];
     [help_list setDataSource:self];
 
     [test_text setPalette:[[AquaChat sharedAquaChat] getPalette]];
-    [test_text setFont:[[AquaChat sharedAquaChat] getFont]
-	      boldFont:[[AquaChat sharedAquaChat] getBoldFont]];
+    [test_text setFont:[[AquaChat sharedAquaChat] font]
+	      boldFont:[[AquaChat sharedAquaChat] bold_font]];
 
     [[event_list window] center];
 }

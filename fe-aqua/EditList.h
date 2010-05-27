@@ -19,6 +19,9 @@
 #include <glib/gslist.h>
 
 @interface EditList : NSObject
+#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
+<NSTableViewDataSource,NSTableViewDelegate>
+#endif
 {
     GSList 	**slist;
     NSString 	*fname;
