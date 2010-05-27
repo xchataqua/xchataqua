@@ -39,7 +39,7 @@ static SEL sort_funcs [] =
 
 //////////////////////////////////////////////////////////////////////
 
-@interface one_entry : NSObject
+@interface OneEntry : NSObject
 {
   @public
     NSString	*chan;
@@ -58,12 +58,12 @@ static SEL sort_funcs [] =
 - (NSString *) nusers;
 - (mIRCString *) topic;
 - (int) nusers_val;
-- (NSComparisonResult) sort_by_chan:(one_entry *) other;
-- (NSComparisonResult) sort_by_nusers:(one_entry *) other;
-- (NSComparisonResult) sort_by_topic:(one_entry *) other;
-- (NSComparisonResult) sort_by_chan_reverse:(one_entry *) other;
-- (NSComparisonResult) sort_by_nusers_reverse:(one_entry *) other;
-- (NSComparisonResult) sort_by_topic_reverse:(one_entry *) other;
+- (NSComparisonResult) sort_by_chan:(OneEntry *) other;
+- (NSComparisonResult) sort_by_nusers:(OneEntry *) other;
+- (NSComparisonResult) sort_by_topic:(OneEntry *) other;
+- (NSComparisonResult) sort_by_chan_reverse:(OneEntry *) other;
+- (NSComparisonResult) sort_by_nusers_reverse:(OneEntry *) other;
+- (NSComparisonResult) sort_by_topic_reverse:(OneEntry *) other;
 
 @end
 
@@ -99,14 +99,14 @@ strip_crap (const char *s)
 }
 
 
-@implementation one_entry
+@implementation OneEntry
 
 + (id) entryWithChan:(const char *) the_chan
               nusers:(const char *) the_nusers
                topic:(const char *) the_topic
              palette:(ColorPalette *) palette
 {
-	one_entry *e = [[[one_entry alloc] init] autorelease];
+	OneEntry *e = [[[OneEntry alloc] init] autorelease];
     e->chan = [[NSString stringWithUTF8String:the_chan] retain];
     e->nusers = [[NSString stringWithUTF8String:the_nusers] retain];
     e->size = NSZeroSize;
@@ -132,36 +132,36 @@ strip_crap (const char *s)
     [super dealloc];
 }
 
-- (NSComparisonResult) sort_by_chan:(one_entry *) other
+- (NSComparisonResult) sort_by_chan:(OneEntry *) other
 {
     return [chan compare:other->chan];
 }
 
-- (NSComparisonResult) sort_by_nusers:(one_entry *) other
+- (NSComparisonResult) sort_by_nusers:(OneEntry *) other
 {
     if (nusers_val < other->nusers_val) return NSOrderedAscending;
     if (nusers_val > other->nusers_val) return NSOrderedDescending;
     return NSOrderedSame;
 }
 
-- (NSComparisonResult) sort_by_topic:(one_entry *) other
+- (NSComparisonResult) sort_by_topic:(OneEntry *) other
 {
     return [[topic string] compare:[other->topic string]];
 }
 
-- (NSComparisonResult) sort_by_chan_reverse:(one_entry *) other
+- (NSComparisonResult) sort_by_chan_reverse:(OneEntry *) other
 {
     return [other->chan compare:chan];
 }
 
-- (NSComparisonResult) sort_by_nusers_reverse:(one_entry *) other
+- (NSComparisonResult) sort_by_nusers_reverse:(OneEntry *) other
 {
     if (other->nusers_val < nusers_val) return NSOrderedAscending;
     if (other->nusers_val > nusers_val) return NSOrderedDescending;
     return NSOrderedSame;
 }
 
-- (NSComparisonResult) sort_by_topic_reverse:(one_entry *) other
+- (NSComparisonResult) sort_by_topic_reverse:(OneEntry *) other
 {
     return [[other->topic string] compare:[topic string]];
 }
@@ -317,7 +317,7 @@ strip_crap (const char *s)
     }
 }
 
-- (bool) filter:(one_entry *) entry
+- (bool) filter:(OneEntry *) entry
 {
     int num = [entry nusers_val];
     
@@ -438,7 +438,7 @@ strip_crap (const char *s)
     if (row < 0)
         return;
     
-    one_entry *e = [items objectAtIndex:row];
+    OneEntry *e = [items objectAtIndex:row];
 
     if (serv->connected && ![[e chan] isEqualToString:@"*"])
     {
@@ -452,7 +452,7 @@ strip_crap (const char *s)
                  users:(const char *) users 
                  topic:(const char *) topic
 {
-    one_entry *new_item = [one_entry entryWithChan:chan nusers:users
+    OneEntry *new_item = [OneEntry entryWithChan:chan nusers:users
                                     topic:topic palette:palette];
     
     [all_items addObject:new_item];
@@ -479,7 +479,7 @@ strip_crap (const char *s)
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
     row:(NSInteger) rowIndex
 {
-    one_entry *e = [items objectAtIndex:rowIndex];
+    OneEntry *e = [items objectAtIndex:rowIndex];
     
     switch ([[aTableColumn identifier] intValue])
     {
@@ -530,7 +530,7 @@ strip_crap (const char *s)
         row:(int) rowIndex
 {
     // This only supports the last column, for now
-    one_entry *e = [items objectAtIndex:rowIndex];
+    OneEntry *e = [items objectAtIndex:rowIndex];
     return e->size;
 }
 
@@ -540,7 +540,7 @@ strip_crap (const char *s)
         size:(NSSize) size
 {
     // This only supports the last column, for now
-    one_entry *e = [items objectAtIndex:rowIndex];
+    OneEntry *e = [items objectAtIndex:rowIndex];
     e->size = size;
 }
 

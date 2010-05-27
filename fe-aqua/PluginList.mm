@@ -35,7 +35,7 @@ extern GSList *plugin_list;
 
 //////////////////////////////////////////////////////////////////////
 
-@interface onePlugin : NSObject
+@interface OnePlugin : NSObject
 {
   @public
     NSString	*name;
@@ -48,7 +48,7 @@ extern GSList *plugin_list;
 
 @end
 
-@implementation onePlugin
+@implementation OnePlugin
 
 - (id) initWithPlugin:(xchat_plugin *) plugin
 {
@@ -100,7 +100,7 @@ extern GSList *plugin_list;
     if (row < 0)
         return;
     
-    onePlugin *item = [my_items objectAtIndex:row];
+    OnePlugin *item = [my_items objectAtIndex:row];
 
     int len = [item->file length];
     if (len > 3 && strcasecmp ([item->file UTF8String] + len - 3, ".so") == 0)
@@ -128,7 +128,7 @@ extern GSList *plugin_list;
     {
     	xchat_plugin *pl = (xchat_plugin *) list->data;
         if (pl->version && pl->version [0])
-            [my_items addObject:[[onePlugin alloc] initWithPlugin:pl]];
+            [my_items addObject:[[OnePlugin alloc] initWithPlugin:pl]];
     }
 
     [self->plugin_list_table reloadData];
@@ -177,7 +177,7 @@ extern GSList *plugin_list;
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
     row:(NSInteger) rowIndex
 {
-    onePlugin *item = [my_items objectAtIndex:rowIndex];
+    OnePlugin *item = [my_items objectAtIndex:rowIndex];
 
     switch ([[aTableColumn identifier] intValue])
     {

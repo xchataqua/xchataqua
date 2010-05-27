@@ -38,7 +38,7 @@
 
 //////////////////////////////////////////////////////////////////////
 
-@interface oneCustomer : ObjSel
+@interface OneCustomer : ObjSel
 {
     NSEventType type;
     NSWindow *win;
@@ -53,7 +53,7 @@
 
 @end
 
-@implementation oneCustomer
+@implementation OneCustomer
 
 + (id) customerWithType:(NSEventType) the_type
               forWindow:(NSWindow *) the_win
@@ -61,7 +61,7 @@
                     sel:(SEL) the_sel
                     obj:(id) the_object
 {
-    oneCustomer *cust = [[[oneCustomer alloc] init] autorelease];
+    OneCustomer *cust = [[[OneCustomer alloc] init] autorelease];
     cust->type = the_type;
     cust->win = the_win ? the_win : the_view ? [the_view window] : nil;
     cust->view = the_view;
@@ -114,7 +114,7 @@
             selector:(SEL) sel
               object:(id) obj
 {
-    oneCustomer *cust = [oneCustomer customerWithType:type
+    OneCustomer *cust = [OneCustomer customerWithType:type
 					    forWindow:win
 					      forView:view
 					          sel:sel
