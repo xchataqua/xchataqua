@@ -157,7 +157,7 @@ static void addMenuItem (NSMenu *menu, NSString *title, SEL sel, id target, int 
             SGFormViewAttachment conn = (SGFormViewAttachment)
             [[connectionMenus[edge] selectedItem] tag];
             int offset = [offsetTexts[edge] intValue];
-            NSView *relative = NULL;
+            NSView *relative = nil;
 
             if ([relativeMenus[edge] indexOfSelectedItem] > 0)
             {
@@ -179,7 +179,7 @@ static void addMenuItem (NSMenu *menu, NSString *title, SEL sel, id target, int 
             //NSLog (@"%x %d %d %d", view, edge, conn, offset);
 
             if ((conn == SGFormView_ATTACH_VIEW ||
-                 conn == SGFormView_ATTACH_OPPOSITE_VIEW) && relative == NULL)
+                 conn == SGFormView_ATTACH_OPPOSITE_VIEW) && relative == nil)
             {
                 conn = SGFormView_ATTACH_NONE;
             }

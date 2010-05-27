@@ -52,7 +52,7 @@ extern "C" {
 
 - (void) dealloc
 {
-    [raw_log_view setDelegate:NULL];
+    [raw_log_view setDelegate:nil];
     [raw_log_view close];
     [raw_log_view autorelease];
     [super dealloc];
@@ -64,7 +64,7 @@ extern "C" {
 
 - (void) windowWillClose:(NSNotification *) xx
 {
-    serv->gui->rawlog = NULL;
+    serv->gui->rawlog = nil;
     [self release];
 }
 

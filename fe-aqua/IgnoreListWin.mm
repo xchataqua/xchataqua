@@ -221,18 +221,18 @@ extern "C" {
 
 - (void) do_new:(id) sender
 {
-    [[ignore_list_table window] makeFirstResponder:ignore_list_table];
+	[[ignore_list_table window] makeFirstResponder:ignore_list_table];
 
-    if ([self find:"new!new@new.com"] < 0)
-	ignore_add ("new!new@new.com", 0); // Calls me back to create my list
+	if ([self find:"new!new@new.com"] < 0)
+		ignore_add ("new!new@new.com", 0); // Calls me back to create my list
+  
+	NSUInteger row = [self find:"new!new@new.com"];
 
-    int row = [self find:"new!new@new.com"];
-
-    if (row >= 0)		// It should always be 0
-    {
-    	[ignore_list_table selectRow:row byExtendingSelection:false];
-		[ignore_list_table editColumn:0 row:row withEvent:NULL select:true];
-    }
+	if (row >= 0)		// It should always be 0
+	{
+		[ignore_list_table selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+		[ignore_list_table editColumn:0 row:row withEvent:nil select:YES];
+	}
 }
 
 - (void) do_delete:(id) sender

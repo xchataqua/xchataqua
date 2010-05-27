@@ -49,7 +49,7 @@
     {
 #if 1
         [[NSRunLoop currentRunLoop] performSelector:@selector (do_layouts)
-            target:self argument:NULL order:0
+            target:self argument:nil order:0
             modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]];
 #else
         [NSApp addAfterEvent:self sel:@selector (do_layouts)];
@@ -327,7 +327,7 @@ static void noDisplay (NSView *v)
 {
     unsigned int i = [self viewOrder:the_view];
     if (i == ~ (unsigned) 0)
-        return NULL;
+        return nil;
     return [meta_views objectAtIndex:i];
 }
 
@@ -440,7 +440,7 @@ static void noDisplay (NSView *v)
 {
     [super didAddSubview:subview];
 
-    if ([self find_view:subview] == NULL)
+    if ([self find_view:subview] == nil)
         [meta_views addObject:[self newMetaView:subview]];
 
     [subview setPostsFrameChangedNotifications:true];

@@ -68,13 +68,13 @@ static NSCursor *lr_cursor;
                                 hotSpot:NSMakePoint (8,8)];
     }
     
-    palette = NULL;
-    normal_font = NULL;
-    bold_font = NULL;
+    palette = nil;
+    normal_font = nil;
+    bold_font = nil;
 	word_range = NSMakeRange(NSNotFound, 0);
     word_type = 0;
-    word = NULL;
-    m_event_req_id = NULL;
+    word = nil;
+    m_event_req_id = nil;
     shows_sep = true;
     font_width = 10;
         
@@ -282,7 +282,7 @@ static NSCursor *lr_cursor;
         NSFont *of = [attr objectForKey:NSFontAttributeName];
         NSFont *nf = of == old_bold_font ? bold_font : normal_font;
         
-        NSMutableDictionary *nattr = [attr mutableCopyWithZone:NULL];
+        NSMutableDictionary *nattr = [attr mutableCopyWithZone:nil];
         [nattr setObject:nf forKey:NSFontAttributeName];
  
         //if ([attr objectForKey:NSParagraphStyleAttributeName])
@@ -494,7 +494,7 @@ static NSCursor *lr_cursor;
 
     m_event_req_id = [NSApp requestEvents:NSMouseMoved
 			      forWindow:[self window]
-                                forView:NULL
+                                forView:nil
                                selector:@selector (myMouseMoved:)
                                  object:self];
 
@@ -514,7 +514,7 @@ static NSCursor *lr_cursor;
 			[stg removeAttribute:NSUnderlineStyleAttributeName 
 				   range:word_range];
 		[word release];
-		word = NULL;
+		word = nil;
 		word_range = NSMakeRange(NSNotFound, 0);
     }
 }
@@ -570,7 +570,7 @@ static NSCursor *lr_cursor;
 - (void) mouseDown:(NSEvent *) theEvent
 {
     NSPoint point = [theEvent locationInWindow];
-    NSPoint where = [self convertPoint:point fromView:NULL];
+    NSPoint where = [self convertPoint:point fromView:nil];
 
     if (!NSPointInRect (where, line_rect))
     {
@@ -610,19 +610,17 @@ static NSCursor *lr_cursor;
     NSRange sel = [self selectedRange];
     if (sel.location != NSNotFound && sel.length > 0)
     {
-        NSMenu *m = [[super menuForEvent:theEvent] copyWithZone:NULL];
+        NSMenu *m = [[super menuForEvent:theEvent] copyWithZone:nil];
 
         NSString *text = [[[self textStorage] string] substringWithRange:sel];
 
         NSMenu *url_menu = [[MenuMaker defaultMenuMaker] menuForURL:text inSession:sess];
-        NSMenuItem *i = [[NSMenuItem alloc] initWithTitle:@"URL Actions" action:NULL
-                            keyEquivalent:@""];
+        NSMenuItem *i = [[NSMenuItem alloc] initWithTitle:@"URL Actions" action:nil keyEquivalent:@""];
         [i setSubmenu:url_menu];
         [m addItem:i];
 
         NSMenu *nick_menu = [[MenuMaker defaultMenuMaker] menuForNick:text inSession:sess];
-        i = [[NSMenuItem alloc] initWithTitle:@"Nick Actions" action:NULL
-                            keyEquivalent:@""];
+        i = [[NSMenuItem alloc] initWithTitle:@"Nick Actions" action:nil keyEquivalent:@""];
         [i setSubmenu:nick_menu];
         [m addItem:i];
 
@@ -632,8 +630,8 @@ static NSCursor *lr_cursor;
     if (word)
     {
         [[NSRunLoop currentRunLoop] performSelector:@selector (clear_hot_word)
-            target:self argument:NULL order:1
-            modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]];
+											 target:self argument:nil order:1
+											  modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]];
 
         switch (word_type)
         {

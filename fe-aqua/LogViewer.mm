@@ -86,7 +86,7 @@ extern "C" {
 
 - (bool) filter:(NSString *) filter
 {
-    if (filter == NULL || [filter length] == 0)
+    if (filter == nil || [filter length] == 0)
         return true;    
     NSRange where = [fname rangeOfString:filter options:NSCaseInsensitiveSearch];
     return where.location != NSNotFound;
@@ -200,7 +200,7 @@ extern "C" {
         [log release];
     }
 
-    [self do_filter:NULL];
+    [self do_filter:nil];
 }
 
 - (void) awakeFromNib

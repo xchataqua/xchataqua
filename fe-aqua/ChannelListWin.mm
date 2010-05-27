@@ -114,11 +114,8 @@ strip_crap (const char *s)
     //e->topic = [[NSString stringWithUTF8String:the_topic] retain];
     const char *t = strip_crap (the_topic);
     
-    e->topic = [[mIRCString stringWithUTF8String:t
-                                             len:-1
-                                         palette:palette
-                                            font:NULL
-                                        boldFont:NULL] retain];
+    e->topic = [[mIRCString stringWithUTF8String:t len:-1 palette:palette
+                                            font:nil boldFont:nil] retain];
 		
     e->nusers_val = [e->nusers intValue];
     
@@ -184,9 +181,9 @@ strip_crap (const char *s)
 {
     [super init];
 
-    self->arrow = NULL;
+    self->arrow = nil;
     self->serv = server;
-    self->timer = NULL;
+    self->timer = nil;
     self->added = false;
     self->items = [[NSMutableArray arrayWithCapacity:0] retain];
     self->all_items = [[NSMutableArray arrayWithCapacity:0] retain];
@@ -215,8 +212,8 @@ strip_crap (const char *s)
 
 - (void) dealloc
 {
-    [item_list setDelegate:NULL];
-    [channel_list_view setDelegate:NULL];
+    [item_list setDelegate:nil];
+    [channel_list_view setDelegate:nil];
     [channel_list_view close];
     [channel_list_view autorelease];
     [arrow release];
@@ -271,7 +268,7 @@ strip_crap (const char *s)
     [top_box constrain:apply_button
                   edge:SGFormView_EDGE_LEFT
             attachment:SGFormView_ATTACH_CENTER
-            relativeTo:NULL
+            relativeTo:nil
                 offset:0];
     
     [top_box bootstrapRelativeTo:apply_button];
@@ -279,7 +276,7 @@ strip_crap (const char *s)
     [bottom_box constrain:save_button
                      edge:SGFormView_EDGE_LEFT
                attachment:SGFormView_ATTACH_CENTER
-               relativeTo:NULL
+               relativeTo:nil
                    offset:0];
     
     [bottom_box bootstrapRelativeTo:save_button];
@@ -302,7 +299,7 @@ strip_crap (const char *s)
 
 - (void) windowWillClose:(NSNotification *) xx
 {
-    serv->gui->clc = NULL;
+    serv->gui->clc = nil;
     [self release];
 }
 
@@ -418,7 +415,7 @@ strip_crap (const char *s)
 - (void) redraw:(id) sender
 {
     [timer release];
-    timer = NULL;
+    timer = nil;
     
     [self update_caption];
     
@@ -515,7 +512,7 @@ strip_crap (const char *s)
     else
     {
         [aTableView setIndicatorImage:arrow inTableColumn:aTableColumn];
-        [aTableView setIndicatorImage:NULL inTableColumn:[aTableView highlightedTableColumn]];
+        [aTableView setIndicatorImage:nil inTableColumn:[aTableView highlightedTableColumn]];
         [aTableView setHighlightedTableColumn:aTableColumn];
     }
 
