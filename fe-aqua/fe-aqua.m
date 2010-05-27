@@ -27,9 +27,10 @@
 #include <unistd.h>
 #include <ctype.h>
 #include <unistd.h>
-#include <list>
 
+#ifdef __cplusplus
 extern "C" {
+#endif
 #undef TYPE_BOOL
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
@@ -42,7 +43,9 @@ extern "C" {
 #include "../common/server.h"
 #include "outbound.h"
 #undef TYPE_BOOL
+#ifdef __cplusplus
 }
+#endif
 
 #import "fe-aqua_utility.h"
 #import "aquachat.h"
@@ -214,7 +217,7 @@ my_plugin_init (xchat_plugin *plugin_handle, char **plugin_name,
 	xchat_hook_command (plugin_handle, "BROWSER", XCHAT_PRI_NORM, 
 		browser_cb, BROWSER_HELP, plugin_handle);
 
-	for (int i = 0; i < NUM_XP; i ++)
+	for (NSInteger i = 0; i < NUM_XP; i ++)
 		xchat_hook_print (plugin_handle, te[i].name, XCHAT_PRI_NORM, event_cb, (void *) i);
 
 	return 1;       /* return 1 for success */
@@ -552,11 +555,11 @@ static void bar (NSException *e)
 }
 #endif
 
-static bool fix_field (char *&field)
+static bool fix_field (char **field)
 {
-	if (field && field[0] == 0)
+	if (*field && (*field)[0] == 0)
 	{
-		field = NULL;
+		*field = NULL;
 		return true;
 	}
 	return false;
@@ -573,12 +576,12 @@ static void USER_not_enough_parameters_bug ()
     for (GSList *list = network_list; list; list = list->next)
     {
         ircnet *net = (ircnet *) list->data;
-		found_any |= fix_field (net->command);
-		found_any |= fix_field (net->autojoin);
-		found_any |= fix_field (net->nick);
-		found_any |= fix_field (net->pass);
-		found_any |= fix_field (net->real);
-		found_any |= fix_field (net->user);
+		found_any |= fix_field (&net->command);
+		found_any |= fix_field (&net->autojoin);
+		found_any |= fix_field (&net->nick);
+		found_any |= fix_field (&net->pass);
+		found_any |= fix_field (&net->real);
+		found_any |= fix_field (&net->user);
     }
 
 	if (found_any)
@@ -1053,7 +1056,11 @@ fe_serverlist_open (session *sess)
     [[AquaChat sharedAquaChat] open_serverlist_for:sess];
 }
 
-extern "C" void
+extern
+#ifdef __cplusplus
+"C" 
+#endif
+void
 fe_play_wave (const char *fname)
 {
     [[AquaChat sharedAquaChat] play_wave:fname];
@@ -1172,7 +1179,11 @@ fe_userlist_set_selected (struct session *sess)
 
 // This should be called fe_joind()!  Sending mail to peter.
 // This function is supposed to bring up a join channels dialog box.
-extern "C" void joind (int action, server *serv)
+extern
+#ifdef __cplusplus
+"C"
+#endif
+void joind (int action, server *serv)
 {
 }
 
