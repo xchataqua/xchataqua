@@ -65,7 +65,7 @@
     
     NSMutableArray *userlist;
     NSMenuItem * userlist_menu;
-    User * userlist_menu_curuser;
+    struct User * userlist_menu_curuser;
 /* CL */
 	CGFloat maxNickWidth;
 	CGFloat maxHostWidth;

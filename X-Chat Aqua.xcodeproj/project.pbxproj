@@ -41,7 +41,7 @@
 		0F2FEF340E1FAB9100DE4D41 /* python.c in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8F3E80DEEDA0C00504F31 /* python.c */; };
 		0F2FEF430E1FAC3200DE4D41 /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC8F3F50DEEDAB300504F31 /* Python.framework */; };
 		0F2FEF790E1FB1A900DE4D41 /* python.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */; };
-		0F2FEF850E1FB5AE00DE4D41 /* bundle_loader_plugin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F2FEF840E1FB5AE00DE4D41 /* bundle_loader_plugin.mm */; };
+		0F2FEF850E1FB5AE00DE4D41 /* bundle_loader_plugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F2FEF840E1FB5AE00DE4D41 /* bundle_loader_plugin.m */; };
 		0F2FEFBD0E1FC8E900DE4D41 /* SystemVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F2FEFB70E1FC5A800DE4D41 /* SystemVersion.m */; };
 		0F7065540E1FA32E00FEA21C /* Changes in Resources */ = {isa = PBXBuildFile; fileRef = 0F7065530E1FA32E00FEA21C /* Changes */; };
 		0F8EA62E0CFB2E0A001AE9AE /* AsciiWin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6250CFB2E0A001AE9AE /* AsciiWin.mm */; };
@@ -165,7 +165,7 @@
 		0FC8F4C80DEEE55000504F31 /* outbound.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA32C0CFAA3F2001AE9AE /* outbound.c */; };
 		0FC8F5C40DEEEA3E00504F31 /* libxchat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC8F4AE0DEEE51700504F31 /* libxchat.a */; };
 		0FC8F6AF0DEEF3AC00504F31 /* AquaChat.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA5F80CFB2500001AE9AE /* AquaChat.mm */; };
-		0FC8F6ED0DEEF64200504F31 /* fe-aqua.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA3CE0CFAF7E2001AE9AE /* fe-aqua.mm */; };
+		0FC8F6ED0DEEF64200504F31 /* fe-aqua.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA3CE0CFAF7E2001AE9AE /* fe-aqua.m */; };
 		0FE5E0230F4557A2000E0F91 /* InterfaceBuilderKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE5E0220F4557A2000E0F91 /* InterfaceBuilderKit.framework */; };
 		0FE5E0370F45595A000E0F91 /* SGFormView.classdescription in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5E02C0F45595A000E0F91 /* SGFormView.classdescription */; };
 		0FE5E0380F45595A000E0F91 /* SGFormViewInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5E02D0F45595A000E0F91 /* SGFormViewInspector.xib */; };
@@ -330,7 +330,7 @@
 
 /* Begin PBXFileReference section */
 		0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = python.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F2FEF840E1FB5AE00DE4D41 /* bundle_loader_plugin.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = bundle_loader_plugin.mm; sourceTree = "<group>"; };
+		0F2FEF840E1FB5AE00DE4D41 /* bundle_loader_plugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bundle_loader_plugin.m; sourceTree = "<group>"; };
 		0F2FEF9D0E1FC30E00DE4D41 /* bundle_loader_plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bundle_loader_plugin.h; sourceTree = "<group>"; };
 		0F2FEFB60E1FC5A800DE4D41 /* SystemVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemVersion.h; sourceTree = "<group>"; };
 		0F2FEFB70E1FC5A800DE4D41 /* SystemVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemVersion.m; sourceTree = "<group>"; };
@@ -389,7 +389,7 @@
 		0F8EA3490CFAA3F2001AE9AE /* xchatc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xchatc.h; path = ../../../common/xchatc.h; sourceTree = "<group>"; };
 		0F8EA3660CFAA49B001AE9AE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F8EA3830CFAA896001AE9AE /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = ../config.h; sourceTree = "<group>"; };
-		0F8EA3CE0CFAF7E2001AE9AE /* fe-aqua.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "fe-aqua.mm"; path = "fe-aqua/fe-aqua.mm"; sourceTree = "<group>"; };
+		0F8EA3CE0CFAF7E2001AE9AE /* fe-aqua.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "fe-aqua.m"; path = "fe-aqua/fe-aqua.m"; sourceTree = "<group>"; };
 		0F8EA5F80CFB2500001AE9AE /* AquaChat.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AquaChat.mm; path = "fe-aqua/AquaChat.mm"; sourceTree = "<group>"; };
 		0F8EA6240CFB2E0A001AE9AE /* AsciiWin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsciiWin.h; path = "fe-aqua/AsciiWin.h"; sourceTree = "<group>"; };
 		0F8EA6250CFB2E0A001AE9AE /* AsciiWin.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AsciiWin.mm; path = "fe-aqua/AsciiWin.mm"; sourceTree = "<group>"; };
@@ -1604,7 +1604,7 @@
 		0F2FEF830E1FB52500DE4D41 /* Internal Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				0F2FEF840E1FB5AE00DE4D41 /* bundle_loader_plugin.mm */,
+				0F2FEF840E1FB5AE00DE4D41 /* bundle_loader_plugin.m */,
 				0F2FEF9D0E1FC30E00DE4D41 /* bundle_loader_plugin.h */,
 			);
 			name = "Internal Plugins";
@@ -1953,7 +1953,7 @@
 		2DC6ACE6118776D40048B7C7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				0F8EA3CE0CFAF7E2001AE9AE /* fe-aqua.mm */,
+				0F8EA3CE0CFAF7E2001AE9AE /* fe-aqua.m */,
 				2D7817C810E872D200C71AF8 /* fe-aqua_utility.h */,
 				2D7817C910E872D200C71AF8 /* fe-aqua_utility.mm */,
 				0F8EA6C10CFB347B001AE9AE /* identd.cc */,
@@ -2621,8 +2621,8 @@
 				0F8EA6F90CFB347B001AE9AE /* UserMenus.mm in Sources */,
 				0F8EA7C90CFB7094001AE9AE /* SGRowColView.mm in Sources */,
 				0FC8F6AF0DEEF3AC00504F31 /* AquaChat.mm in Sources */,
-				0FC8F6ED0DEEF64200504F31 /* fe-aqua.mm in Sources */,
-				0F2FEF850E1FB5AE00DE4D41 /* bundle_loader_plugin.mm in Sources */,
+				0FC8F6ED0DEEF64200504F31 /* fe-aqua.m in Sources */,
+				0F2FEF850E1FB5AE00DE4D41 /* bundle_loader_plugin.m in Sources */,
 				0F2FEFBD0E1FC8E900DE4D41 /* SystemVersion.m in Sources */,
 				2DC4307F105F608B00782AAD /* xalocalization.m in Sources */,
 				2D7817CA10E872D200C71AF8 /* fe-aqua_utility.mm in Sources */,

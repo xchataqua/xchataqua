@@ -23,7 +23,7 @@ extern "C" {
 }
 
 #import "fe-aqua_utility.h"
-
+#include <list>
 static std::list<id> input_list;
 static int input_seq = 1;
 
