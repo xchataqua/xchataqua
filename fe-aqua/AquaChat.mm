@@ -45,7 +45,6 @@ extern "C" {
 
 #import "AquaChat.h"
 #import "PrefsController.h"
-#import "ReleaseNotesWindow.h"
 #import "ChatWindow.h"
 #import "SGAlert.h"
 #import "UserCommands.h"
@@ -292,9 +291,44 @@ EventInfo text_event_info[NUM_XP];
 	[prefs_controller show];
 }
 
+/*
+ * These four methods are hooked up to menu entries in the Help menu and are
+ * used to open various relevant URLs (docs, homepage, etc.) in the default
+ * web browser.
+ *
+ */
+
+  // Open the X-Chat Aqua home page.
+- (void) do_homepage:(id) sender
+{
+  [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://xchataqua.sourceforge.net/"]];
+}
+
+  // Open the X-Chat Aqua download page (same as homepage for now).
+- (void) do_goto_download:(id) sender
+{
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.uplinklabs.net/~tycho/projects/xchat-aqua/"]];
+}
+
+  // Open the X-Chat Aqua Release Notes.
 - (void) do_release_notes:(id) sender
 {
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.uplinklabs.net/~tycho/projects/xchat-aqua/sparkle/rnotes.html"]];
+}
+
+  // Open the X-Chat Aqua Online docs.
+- (void) do_online_docs:(id) sender
+{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://xchataqua.sourceforge.net/docs/"]];
+}
+
+
+//TODO sparkle here
+- (void) new_version_alert
+{
+    bool ok = [SGAlert confirmWithString:NSLocalizedStringFromTable(@"There is a new version of X-Chat aqua available for download.  Press OK to visit the download site.", @"xchataqua", "")];
+    if (ok)
+        [self do_goto_download:self];
 }
 
 - (void) post_init
@@ -417,16 +451,6 @@ EventInfo text_event_info[NUM_XP];
         identd_start ();
     else
         identd_stop ();
-}
-
-- (void) do_online_docs:(id) sender
-{
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://xchataqua.sourceforge.net/docs/"]];
-}
-
-- (void) do_homepage:(id) sender
-{
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://xchataqua.sourceforge.net/"]];
 }
 
 - (void) do_load_plugin:(id) sender
