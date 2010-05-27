@@ -15,12 +15,9 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#import <AppKit/AppKit.h>
 #import "DCCFileTransferListController.h"
 
 @interface DccRecvWin : DCCFileTransferListController
-{
-}
 
 - (IBAction)do_reveal:(id) sender;
 - (IBAction)do_accept:(id) sender;
