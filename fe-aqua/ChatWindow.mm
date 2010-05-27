@@ -2150,6 +2150,7 @@ static int find_common (NSArray *list)
 		{
 			[textView insertNewlineIgnoringFieldEditor:control];
 		}
+		else return false;
 	}
 	else if (commandSelector == @selector (moveUp:))
     {
