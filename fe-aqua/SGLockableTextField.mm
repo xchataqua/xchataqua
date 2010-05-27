@@ -267,9 +267,9 @@ static NSImage *getUnlockImage()
 	if (!prevValue || [[self objectValue] isEqual:prevValue])
 		return YES;
 		
-	NSInteger ret = NSRunAlertPanel(NSLocalizedStringFromTable(@"Confirm",@"sgpallete",@""),
-									NSLocalizedStringFromTable(@"You have uncommited changes.  Do you want to save the changes?",@"sgpallete",@""),
-									NSLocalizedStringFromTable(@"Cancel",@"sgpallete",@""), NSLocalizedStringFromTable(@"Yes",@"sgpallete",@""), NSLocalizedStringFromTable(@"No",@"sgpallete",@""), nil);
+	NSInteger ret = NSRunAlertPanel(NSLocalizedStringFromTable(@"Confirm",@"xchataqua",@""),
+									NSLocalizedStringFromTable(@"You have uncommited changes. Do you want to save the changes?",@"xchataqua",@""),
+									NSLocalizedStringFromTable(@"Cancel",@"xchataqua",@""), NSLocalizedStringFromTable(@"Yes",@"xchataqua",@""), NSLocalizedStringFromTable(@"No",@"xchataqua",@""), nil);
 
 	// If he doesn't want to save his changes, we need to put the old value in place, and then
 	// let whatever key press action take effect (tab vs shift-tab vs mouse press, etc..).
