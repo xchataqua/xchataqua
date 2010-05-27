@@ -32,7 +32,7 @@ extern int dcc_sendcpssum;
 
 //////////////////////////////////////////////////////////////////////
 
-@interface oneDccSend : DCCFileItem
+@interface OneDccSend : DCCFileItem
 {
   @public
     //struct DCC 		*dcc;
@@ -55,7 +55,7 @@ extern int dcc_sendcpssum;
 
 @end
 
-@implementation oneDccSend
+@implementation OneDccSend
 
 - (id) initWithDCC:(struct DCC *) the_dcc
 {
@@ -100,7 +100,7 @@ extern int dcc_sendcpssum;
 - (DCCItem *)itemWithDCC:(struct DCC *) dcc
 {
 	if (dcc->type != TYPE_SEND) return nil;
-	else return [[[oneDccSend alloc] initWithDCC:dcc] autorelease];
+	else return [[[OneDccSend alloc] initWithDCC:dcc] autorelease];
 }
 
 - (void) awakeFromNib
@@ -117,7 +117,7 @@ extern int dcc_sendcpssum;
     int row = [item_list selectedRow];
     if (row >= 0)
     {
-        oneDccSend *item = [my_items objectAtIndex:row];
+        OneDccSend *item = [my_items objectAtIndex:row];
 
         struct DCC *dcc = item->dcc;
 
@@ -155,7 +155,7 @@ extern int dcc_sendcpssum;
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
     row:(NSInteger) rowIndex
 {
-    oneDccSend *item = [my_items objectAtIndex:rowIndex];
+    OneDccSend *item = [my_items objectAtIndex:rowIndex];
 
     switch ([[aTableColumn identifier] intValue])
     {

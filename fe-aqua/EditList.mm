@@ -26,7 +26,7 @@ extern "C" {
 
 //////////////////////////////////////////////////////////////////////
 
-@interface one_item : NSObject
+@interface OneItem : NSObject
 {
   @public
     NSMutableString	*name;
@@ -34,7 +34,7 @@ extern "C" {
 }
 @end
 
-@implementation one_item
+@implementation OneItem
 
 - (id) initWithName:(const char *) the_name
 		cmd:(const char *) the_cmd
@@ -53,7 +53,7 @@ extern "C" {
     [super dealloc];
 }
 
-- (NSComparisonResult) sort:(one_item *) other
+- (NSComparisonResult) sort:(OneItem *) other
 {
     return [name compare:other->name];
 }
@@ -107,7 +107,7 @@ extern "C" {
     for (GSList *list = *slist; list; list = list->next)
     {
 		struct popup *pop = (struct popup *) list->data;
-		one_item *item = [[[one_item alloc] 
+		OneItem *item = [[[OneItem alloc] 
 								initWithName:pop->name cmd:pop->cmd] autorelease];
 		[my_items addObject:item];
     }
@@ -147,7 +147,7 @@ extern "C" {
 
 - (void) do_new:(id) sender
 {
-  one_item *item = [[one_item alloc] initWithName:"*NEW*" cmd:"EDIT ME"];
+  OneItem *item = [[OneItem alloc] initWithName:"*NEW*" cmd:"EDIT ME"];
   [my_items insertObject:item atIndex:0];
   [cmd_list reloadData];
   [cmd_list
@@ -168,7 +168,7 @@ extern "C" {
 
     for (unsigned int i = 0; i < [my_items count]; i ++)
     {
-        one_item *item = [my_items objectAtIndex:i];
+        OneItem *item = [my_items objectAtIndex:i];
         fprintf (f, "NAME %s\nCMD %s\n\n", [item->name UTF8String], [item->cmd UTF8String]);
     }
     
@@ -207,7 +207,7 @@ extern "C" {
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
     row:(NSInteger) rowIndex
 {
-    one_item *item = [my_items objectAtIndex:rowIndex];
+    OneItem *item = [my_items objectAtIndex:rowIndex];
     
     switch ([[aTableColumn identifier] intValue])
     {
@@ -223,7 +223,7 @@ extern "C" {
     forTableColumn:(NSTableColumn *) aTableColumn 
                row:(NSInteger)rowIndex
 {
-    one_item *item = [my_items objectAtIndex:rowIndex];
+    OneItem *item = [my_items objectAtIndex:rowIndex];
 
     switch ([[aTableColumn identifier] intValue])
     {

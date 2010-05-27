@@ -29,7 +29,7 @@ extern "C" {
 
 //////////////////////////////////////////////////////////////////////
 
-@interface oneIgnore : NSObject
+@interface OneIgnore : NSObject
 {
   @public
     ignore		*ign;
@@ -47,7 +47,7 @@ extern "C" {
 
 @end
 
-@implementation oneIgnore
+@implementation OneIgnore
 
 - (id) initWithIgnore:(ignore *) the_ign
 {
@@ -166,7 +166,7 @@ extern "C" {
     for (GSList *list = ignore_list; list; list = list->next)
     {
         struct ignore *ign = (struct ignore *) list->data;
-	[my_items addObject:[[oneIgnore alloc] initWithIgnore:ign]];
+	[my_items addObject:[[OneIgnore alloc] initWithIgnore:ign]];
     }
 
     [self->ignore_list_table reloadData];
@@ -209,7 +209,7 @@ extern "C" {
 
 - (NSInteger) find:(const char *) mask
 {
-    for (unsigned int i = 0; i < [my_items count]; i ++)
+    for (OneIgnore *ignoreItem in my_items)
     {
         oneIgnore *item = (oneIgnore *) [my_items objectAtIndex:i];
 	if (rfc_casecmp (mask, item->ign->mask) == 0)
@@ -243,7 +243,7 @@ extern "C" {
 
     [[ignore_list_table window] makeFirstResponder:ignore_list_table];
 
-    oneIgnore *item = (oneIgnore *) [my_items objectAtIndex:row];
+    OneIgnore *item = (OneIgnore *) [my_items objectAtIndex:row];
 
     ignore_del (NULL, item->ign);	// This will call me back
 
@@ -278,7 +278,7 @@ extern "C" {
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
     row:(NSInteger) rowIndex
 {
-    oneIgnore *item = [my_items objectAtIndex:rowIndex];
+    OneIgnore *item = [my_items objectAtIndex:rowIndex];
 
     switch ([[aTableColumn identifier] intValue])
     {
