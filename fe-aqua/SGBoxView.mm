@@ -33,7 +33,7 @@ static void DP (const char *fmt, ...)
 
 //////////////////////////////////////////////////////////////////////
 
-@interface sgbox_meta_view : SGMetaView
+@interface SGBoxMetaView : SGMetaView
 {
     short	just;
 }
@@ -46,7 +46,7 @@ static void DP (const char *fmt, ...)
 
 @end
 
-@implementation sgbox_meta_view
+@implementation SGBoxMetaView
 
 - (id)initWithView:(NSView *) the_view;
 {
@@ -82,7 +82,7 @@ static void DP (const char *fmt, ...)
 
 - (NSComparisonResult) less_than_x:(id) other
 {
-    sgbox_meta_view *ov = (sgbox_meta_view *) other;
+    SGBoxMetaView *ov = (SGBoxMetaView *) other;
     
     NSRect me = [view frame];
     NSRect him = [ov->view frame];
@@ -94,7 +94,7 @@ static void DP (const char *fmt, ...)
 
 - (NSComparisonResult) less_than_y:(id) other
 {
-    sgbox_meta_view *ov = (sgbox_meta_view *) other;
+    SGBoxMetaView *ov = (SGBoxMetaView *) other;
     
     NSRect me = [view frame];
     NSRect him = [ov->view frame];
@@ -207,7 +207,7 @@ static NSRect flip (NSRect r)
 
 - (id) newMetaView:(NSView *) view
 {
-    return [[[sgbox_meta_view alloc] initWithView:view] autorelease];
+    return [[[SGBoxMetaView alloc] initWithView:view] autorelease];
 }
 
 - (void) justify:(NSRect *) b inMe:(NSRect *) r with:(short) justification
@@ -451,7 +451,7 @@ static NSRect flip (NSRect r)
 
 - (void) setMinorJustificationFor:(NSView *) view to:(short) new_just
 {
-    sgbox_meta_view *mv = (sgbox_meta_view *) [self find_view:view];
+    SGBoxMetaView *mv = (SGBoxMetaView *) [self find_view:view];
     if (mv)
         [mv set_justification:new_just];
     [self queue_layout];
