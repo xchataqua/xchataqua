@@ -17,9 +17,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SGAlert : NSObject 
-{
-}
+@interface SGAlert : NSObject
 
 + (void) alertWithString:(NSString *) alert_text andWait:(bool) wait;
 + (void) noticeWithString:(NSString *) alert_text andWait:(bool) wait;

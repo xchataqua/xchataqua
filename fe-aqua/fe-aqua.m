@@ -331,7 +331,7 @@ fe_timeout_add (int interval, void *callback, void *userdata)
 
     [timer schedule];
 
-    return [timer getTag];
+    return [timer tag];
 #endif
 }
 
@@ -356,7 +356,7 @@ fe_input_add (int sok, int flags, void *func, void *data)
                                             flags:flags 
                                              func:(socket_callback)func 
                                              data:data] retain];
-    return [thing getTag];
+    return [thing tag];
 }
 
 //					|  AS Dir Exists	|	!AS Dir Exists	  |

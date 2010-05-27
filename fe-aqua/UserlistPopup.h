@@ -18,7 +18,5 @@
 #import "EditList.h"
 
 @interface UserlistPopup : EditList
-{
-}
 
 @end
