@@ -17,10 +17,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "SGTabView.h"
+#import "SG.h"
 
-@class TABVIEWITEM;
-
+@class SGTabViewItem;
 @interface TabOrWindowView : NSView
 #if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
 <NSWindowDelegate>

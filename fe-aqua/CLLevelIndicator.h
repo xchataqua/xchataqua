@@ -24,9 +24,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface CLLevelIndicator : NSControl {
-
-}
+@interface CLLevelIndicator : NSControl
 
 - (void) setKind:(UInt16)kind;
 - (UInt16) kind;

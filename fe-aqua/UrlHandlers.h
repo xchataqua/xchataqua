@@ -18,7 +18,5 @@
 #import "EditList.h"
 
 @interface UrlHandlers : EditList
-{
-}
 
 @end

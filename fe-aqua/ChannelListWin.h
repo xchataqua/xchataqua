@@ -18,7 +18,6 @@
 #import <Cocoa/Cocoa.h>
 #import "TabOrWindowView.h"
 #import "ColorPalette.h"
-#import "SG.h"
 #import <regex.h>
 
 @interface ChannelListWin : NSObject
