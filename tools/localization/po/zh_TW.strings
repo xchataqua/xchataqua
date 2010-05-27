@@ -1,5 +1,5 @@
 /* nothing */
-"" = "Project-Id-Version: xchat 2.6.3\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2007-07-01 14:32+1000\nPO-Revision-Date: 2006-06-01 15:10+0800\nLast-Translator: Wei-Lun Chao <chaoweilun@pcmail.com.tw>\nLanguage-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\n";
+"" = "Project-Id-Version: xchat 2.6.3\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2006-05-19 00:25+1000\nPO-Revision-Date: 2006-06-01 15:10+0800\nLast-Translator: Wei-Lun Chao <chaoweilun@pcmail.com.tw>\nLanguage-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\n";
 
 /* nothing */
 "Cannot create ~/.xchat2" = "無法建立~/.xchat2";
@@ -35,9 +35,6 @@
 "Cannot access %s\n" = "無法存取 %s\n";
 
 /* nothing */
-"Error" = "錯誤";
-
-/* nothing */
 "%s is offering \"%s\". Do you want to accept?" = "%s 正在提供 \"%s\"。您要接收碼？";
 
 /* nothing */
@@ -66,12 +63,6 @@
 
 /* nothing */
 "Not connected. Try /server <host> [<port>]\n" = "還未連接伺服器。請嘗試 /server <host> [<port>]\n";
-
-/* nothing */
-"Already marked away: %s\n" = "";
-
-/* nothing */
-"Already marked back.\n" = "";
 
 /* nothing */
 "I need /bin/sh to run!\n" = "使用 /bin/sh 才能執行本程式！\n";
@@ -113,16 +104,10 @@
 "AWAY [<reason>], sets you away" = "AWAY [<reason>]，設定您為暫離狀態";
 
 /* nothing */
-"BACK, sets you back (not away)" = "";
-
-/* nothing */
 "BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "BAN <mask> [<bantype>]，禁止所有符合 mask 的使用者進入目前的聊天室。如果他們已在該聊天室，這個命令不會把他們踢出去(需要有 chanop 身分)";
 
 /* nothing */
-"Set per channel options\nCHANOPT CONFMODE ON|OFF - Toggle conf mode/showing of join and part messages\nCHANOPT COLORPASTE ON|OFF - Toggle color paste\nCHANOPT BEEP ON|OFF - Toggle beep on message\nCHANOPT TRAY ON|OFF - Toggle tray blink on message" = "";
-
-/* nothing */
-"CLEAR [ALL|HISTORY], Clears the current text window or command history" = "CLEAR，清空目前文字視窗";
+"CLEAR, Clears the current text window" = "CLEAR，清空目前文字視窗";
 
 /* nothing */
 "CLOSE, Closes the current window/tab" = "CLOSE，關閉目前視窗/分頁";
@@ -134,7 +119,7 @@
 "CTCP <nick> <message>, send the CTCP message to nick, common messages are VERSION and USERINFO" = "CTCP <nick> <message>，給暱稱為 <nick> 者發送 CTCP 訊息，常用訊息是 VERSION 和 USERINFO";
 
 /* nothing */
-"CYCLE [<channel>], parts the current or given channel and immediately rejoins" = "CYCLE，離開目前聊天室並立即重新加入";
+"CYCLE, parts current channel and immediately rejoins" = "CYCLE，離開目前聊天室並立即重新加入";
 
 /* nothing */
 "\nDCC GET <nick>                      - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file]  - send a file to someone\nDCC PSEND [-maxcps=#] <nick> [file] - send a file using passive mode\nDCC LIST                            - show DCC list\nDCC CHAT <nick>                     - offer DCC CHAT to someone\nDCC PCHAT <nick>                    - offer DCC CHAT using passive mode\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "\nDCC GET <nick>                     - 接收暱稱為 <nick> 者發送給您的檔案\nDCC SEND [-maxcps=#] <nick> [file] - 發送檔案給某人\nDCC PSEND [-maxcps=#] <nick> [file] - 使用被動模式發送檔案給某人\nDCC LIST                           - 顯示 DCC 清單\nDCC CHAT <nick>                    - 與某人密談\nDCC PCHAT <nick>                    - 使用被動模式與某人密談\nDCC CLOSE <type> <nick> <file>         例如：\n         /dcc close send johnsmith file.tar.gz";
@@ -248,7 +233,7 @@
 "NOTICE <nick/channel> <message>, sends a notice. Notices are a type of message that should be auto reacted to" = "NOTICE <nick/channel> <message>，發送一則通知。通知是一種能被自動回應的訊息";
 
 /* nothing */
-"NOTIFY [-n network1[,network2,...]] [<nick>], displays your notify list or adds someone to it" = "NOTIFY [<nick>]，列出您的通知清單，或在清單中添加某人";
+"NOTIFY [<nick>], lists your notify list or adds someone to it" = "NOTIFY [<nick>]，列出您的通知清單，或在清單中添加某人";
 
 /* nothing */
 "OP <nick>, gives chanop status to the nick (needs chanop)" = "OP <nick>，給予暱稱為 <nick> 者 chanop 身分 (需要有 chanop 身分)";
@@ -260,7 +245,7 @@
 "PING <nick | channel>, CTCP pings nick or channel" = "PING <nick | channel>，CTCP ping 某位使用者或聊天室";
 
 /* nothing */
-"QUERY [-nofocus] <nick>, opens up a new privmsg window to someone" = "QUERY <nick>，跟某人打開一個悄悄話視窗";
+"QUERY <nick>, opens up a new privmsg window to someone" = "QUERY <nick>，跟某人打開一個悄悄話視窗";
 
 /* nothing */
 "QUIT [<reason>], disconnects from the current server" = "QUIT [<reason>]，切斷與目前伺服器的連接";
@@ -296,16 +281,13 @@
 "SERVER <host> [<port>] [<password>], connects to a server, the default port is 6667" = "SERVER <host> [<port>] [<password>]，連接伺服器。預設輸出入埠為 6667";
 
 /* nothing */
-"SET [-e] [-or] [-quiet] <variable> [<value>]" = "SET [-quiet] <variable> [<value>]";
+"SET [-quiet] <variable> [<value>]" = "SET [-quiet] <variable> [<value>]";
 
 /* nothing */
 "SETCURSOR [-|+]<position>" = "SETCURSOR [-|+]<position>";
 
 /* nothing */
 "TOPIC [<topic>], sets the topic if one is given, else shows the current topic" = "TOPIC [<topic>]，設定話題為指定話題，如果未指定則顯示目前話題";
-
-/* nothing */
-"\nTRAY -f <timeout> <file1> [<file2>] Blink tray between two icons.\nTRAY -f <filename>                  Set tray to a fixed icon.\nTRAY -i <number>                    Blink tray with an internal icon.\nTRAY -t <text>                      Set the tray tooltip.\nTRAY -b <title> <text>              Set the tray balloon." = "";
 
 /* nothing */
 "UNBAN <mask> [<mask>...], unbans the specified masks." = "UNBAN <mask> [<mask>...]，解禁指定的遮罩。";
@@ -380,6 +362,12 @@
 "%C22*%O$t$1 is now known as $2" = "%C22*%O$t$1 改名為 $2";
 
 /* nothing */
+"%C18*$t$1%O $2" = "%C18*$t$1%O $2";
+
+/* nothing */
+"%C21*%O$t%C21%B$1%O%C21 $2" = "%C21*%O$t%C21%B$1%O%C21 $2";
+
+/* nothing */
 "%C22*%O$t$1 sets ban on $2" = "%C22*%O$t$1 封禁了 $2";
 
 /* nothing */
@@ -407,10 +395,19 @@
 "%UChannel          Users   Topic" = "%U 聊天室          使用者     話題";
 
 /* nothing */
+"%C18%H<%H$4$1%H>%H%O$t$2" = "%C18%H<%H$4$1%H>%H%O$t$2";
+
+/* nothing */
 "%C22*%O$t$1 sets mode $2$3 $4" = "%C22*%O$t$1 設定 $2$3 $4 模式";
 
 /* nothing */
 "%C22*%O$t%C22Channel $1 modes: $2" = "%C22*%O$t%C22聊天室 $1 模式：$2";
+
+/* nothing */
+"$4%C21%B%H<%H$1%H>%H%O%C21$t$2" = "$4%C21%B%H<%H$1%H>%H%O%C21$t$2";
+
+/* nothing */
+"%C28-%C29$1/$2%C28-%O$t$3" = "%C28-%C29$1/$2%C28-%O$t$3";
 
 /* nothing */
 "%C22*%O$t%C26$1%O gives channel operator status to%C26 $2" = "%C22*%O$t%C26$1%O 委任 %C26$2 為聊天室管理員";
@@ -551,6 +548,9 @@
 "%C22*%O$tFound your IP: [$1]" = "%C22*%O$t找到您的 IP：[$1]";
 
 /* nothing */
+"$1$t$2" = "$1$t$2";
+
+/* nothing */
 "%O%C26$1%O added to ignore list." = "%O%C26$1%O 添加到忽略清單。";
 
 /* nothing */
@@ -587,6 +587,12 @@
 "%C22*%O$tYou have been killed by $1 ($2%O%C22)" = "%C22*%O$t您被 $1 踢出了聊天室 ($2%O%C22)";
 
 /* nothing */
+"%C19>%O$1%C19<%O$t$2" = "%C19>%O$1%C19<%O$t$2";
+
+/* nothing */
+"%C16*%O$t$1%O" = "%C16*%O$t$1%O";
+
+/* nothing */
 "%C22*%O$t%C22MOTD Skipped." = "%C22*%O$t%C22MOTD 被跳過。";
 
 /* nothing */
@@ -602,6 +608,9 @@
 "%C22*%O$tNo process is currently running" = "%C22*%O$t目前沒有任何行程在執行";
 
 /* nothing */
+"%C28-%C29$1%C28-%O$t$2" = "%C28-%C29$1%C28-%O$t$2";
+
+/* nothing */
 "$tNotify list is empty." = "$t上線通知清單是空的。";
 
 /* nothing */
@@ -611,10 +620,10 @@
 "%C22*%O$t$1 users in notify list." = "%C22*%O$t$1通知清單中有 $1 名使用者。";
 
 /* nothing */
-"%C22*%O$tNotify: $1 is offline ($3)." = "%C22*%O$t通知：$1 離線了 ($2)。";
+"%C22*%O$tNotify: $1 is offline ($2)." = "%C22*%O$t通知：$1 離線了 ($2)。";
 
 /* nothing */
-"%C22*%O$tNotify: $1 is online ($3)." = "%C22*%O$t通知：$1 上線了 ($2)。";
+"%C22*%O$tNotify: $1 is online ($2)." = "%C22*%O$t通知：$1 上線了 ($2)。";
 
 /* nothing */
 "%C23*%O$t%C23$1 (%O%C23$2) has left $3" = "%C23*%O$t%C23$1 (%O%C23$2) 離開了 $3";
@@ -627,6 +636,12 @@
 
 /* nothing */
 "%C22*%O$tNo ping reply for $1 seconds, disconnecting." = "%C22*%O$t在 %1 秒內沒有收到 ping 回應，正在切斷連接。";
+
+/* nothing */
+"%C28*%C29$3$1%C28*$t%O$2" = "%C28*%C29$3$1%C28*$t%O$2";
+
+/* nothing */
+"%C18%H<%H$3$1%H>%H%O$t$2" = "%C18%H<%H$3$1%H>%H%O$t$2";
 
 /* nothing */
 "%C22*%O$tA process is already running" = "%C22*%O$t一個行程已在執行";
@@ -645,6 +660,9 @@
 
 /* nothing */
 "%C22*%O$t%C22Connected." = "%C22*%O$t%C22已連接。";
+
+/* nothing */
+"%C22*%O$t$1" = "%C22*%O$t$1";
 
 /* nothing */
 "%C22*%O$t%C22Looking up $1" = "%C22*%O$t%C22正在查詢 $1";
@@ -710,10 +728,10 @@
 "%C22*%O$tYou've invited%C26 $1%O to%C26 $2%O (%C26$3%O)" = "%C22*%O$t您已邀請%C26 $1%O 加入%C26 $2%O (%C26$3%O)";
 
 /* nothing */
-"%C22*%O$tYou are now known as $2" = "%C22*%O$t您已改名為$2";
+"%C31%H<%H$4$1%H>%H%O%C30$t$2" = "%C31%H<%H$4$1%H>%H%O%C30$t$2";
 
 /* nothing */
-"Loaded log from" = "";
+"%C22*%O$tYou are now known as $2" = "%C22*%O$t您已改名為$2";
 
 /* nothing */
 "**** ENDING LOGGING AT %s\n" = "**** %s 結束日誌紀錄\n";
@@ -968,13 +986,16 @@
 "Nick being tried" = "已試用過的暱稱";
 
 /* nothing */
+"Error" = "錯誤";
+
+/* nothing */
 "IP" = "IP 位址";
 
 /* nothing */
 "Port" = "輸出入埠";
 
 /* nothing */
-"Network" = "網路";
+"PID" = "行程代號";
 
 /* nothing */
 "Modes string" = "模式字串";
@@ -1793,6 +1814,9 @@
 "United Kingdom" = "英國";
 
 /* nothing */
+"US Minor Outlying Islands" = "美國周邊島嶼";
+
+/* nothing */
 "United States of America" = "美國";
 
 /* nothing */
@@ -2012,27 +2036,6 @@
 "Clear" = "清除";
 
 /* nothing */
-"Couldn't connect to session bus" = "無法連接到執行階段匯流排";
-
-/* nothing */
-"Failed to complete NameHasOwner" = "完成命令失敗";
-
-/* nothing */
-"Failed to complete Command" = "完成命令失敗";
-
-/* nothing */
-"remote access" = "xchat 遠端存取";
-
-/* nothing */
-"plugin for remote access using DBUS" = "使用 DBUS 做為遠端存取外掛程式";
-
-/* nothing */
-"Couldn't connect to session bus: %s\n" = "無法連接到執行階段匯流排: %s\n";
-
-/* nothing */
-"Failed to acquire %s: %s\n" = "取得 %s 失敗: %s\n";
-
-/* nothing */
 "About XChat" = "關於 XChat";
 
 /* nothing */
@@ -2046,9 +2049,6 @@
 
 /* nothing */
 "You must select some bans." = "您必須選擇一些被封禁者。";
-
-/* nothing */
-"Are you sure you want to remove all bans in %s?" = "";
 
 /* nothing */
 "Mask" = "遮罩";
@@ -2066,7 +2066,7 @@
 "XChat: Ban List (%s)" = "XChat： 封禁清單 (%s)";
 
 /* nothing */
-"Remove" = "刪除";
+"Unban" = "解禁";
 
 /* nothing */
 "Crop" = "剪切";
@@ -2075,67 +2075,67 @@
 "Refresh" = "刷新";
 
 /* nothing */
-"Displaying %d/%d users on %d/%d channels." = "使用者及聊天室統計：%d/%d 名使用者在 %d/%d 個聊天室中";
+"User and Channel Statistics: %d/%d Users on %d/%d Channels" = "使用者及聊天室統計：%d/%d 名使用者在 %d/%d 個聊天室中";
+
+/* nothing */
+"I can't save an empty list!" = "無法儲存空清單！";
 
 /* nothing */
 "Select an output filename" = "選擇輸出檔名";
 
 /* nothing */
-"_Join Channel" = "加入聊天室";
-
-/* nothing */
-"_Copy Channel Name" = "聊天室名";
-
-/* nothing */
-"Copy _Topic Text" = "";
-
-/* nothing */
 "XChat: Channel List (%s)" = "XChat：聊天室清單 (%s)";
 
 /* nothing */
-"_Search" = "XChat： 搜索";
+"List display options:" = "列舉顯示選項：";
 
 /* nothing */
-"_Download List" = "下載";
+"Minimum Users:" = "最少使用者數：";
 
 /* nothing */
-"Save _List..." = "伺服器清單(_S)...";
+"Maximum Users:" = "最多使用者數：";
 
 /* nothing */
-"Show only:" = "";
+"Pattern Match:" = "模樣符合：";
 
 /* nothing */
-"channels with" = "聊天室";
+"Regex Match:" = "正規表示式符合：";
 
 /* nothing */
-"to" = "";
+"Apply Match to:" = "套用符合到：";
 
 /* nothing */
-"users." = "使用者";
+"Apply" = "套用";
 
 /* nothing */
-"Look in:" = "";
+"Refresh the list" = "刷新清單";
 
 /* nothing */
-"Channel name" = "聊天室名";
+"Save the list" = "儲存清單";
 
 /* nothing */
-"Search type:" = "搜索文字...";
-
-/* nothing */
-"Simple Search" = "";
-
-/* nothing */
-"Pattern Match (Wildcards)" = "模樣符合：";
-
-/* nothing */
-"Regular Expression" = "";
-
-/* nothing */
-"Find:" = "尋找：";
+"Join Channel" = "加入聊天室";
 
 /* nothing */
 "Send file to %s" = "給 %s 發送檔案";
+
+/* nothing */
+"None" = "無";
+
+/* nothing */
+"File" = "檔案";
+
+/* nothing */
+"To" = "發到";
+
+/* nothing */
+"Address" = "位址";
+
+/* nothing */
+"Started" = "已開始";
+
+/* nothing */
+"Speed limit" = "速度限制";
 
 /* nothing */
 "That file is not resumable." = "該檔案不可續傳。";
@@ -2150,34 +2150,13 @@
 "Cannot resume the same file from two people." = "不能從兩人那裡續傳同一檔案";
 
 /* nothing */
-"XChat: Uploads and Downloads" = "XChat：上傳與下載";
-
-/* nothing */
 "Status" = "狀態";
-
-/* nothing */
-"File" = "檔案";
 
 /* nothing */
 "ETA" = "ETA";
 
 /* nothing */
-"Both" = "兩者";
-
-/* nothing */
-"Uploads" = "上傳";
-
-/* nothing */
-"Downloads" = "下載";
-
-/* nothing */
-"Details" = "詳細資訊";
-
-/* nothing */
-"File:" = "檔案：";
-
-/* nothing */
-"Address:" = "位址";
+"XChat: File Receive List" = "XChat： 檔案接收清單";
 
 /* nothing */
 "Abort" = "中止";
@@ -2189,10 +2168,31 @@
 "Resume" = "續傳";
 
 /* nothing */
+"Open" = "開啟";
+
+/* nothing */
+"Ack" = "Ack";
+
+/* nothing */
+"XChat: Uploads und Downloads" = "XChat：上傳與下載";
+
+/* nothing */
+"Downloads" = "下載";
+
+/* nothing */
+"Uploads" = "上傳";
+
+/* nothing */
+"Details" = "詳細資訊";
+
+/* nothing */
 "Open Folder..." = "開啟文件夾...";
 
 /* nothing */
-"XChat: DCC Chat List" = "XChat： DCC 交談清單";
+"XChat: File Send List" = "XChat： 檔案發送清單";
+
+/* nothing */
+"To/From" = "到/從";
 
 /* nothing */
 "Recv" = "接收";
@@ -2202,6 +2202,9 @@
 
 /* nothing */
 "Start Time" = "開始時間";
+
+/* nothing */
+"XChat: DCC Chat List" = "XChat： DCC 交談清單";
 
 /* nothing */
 "*NEW*" = "*新增*";
@@ -2256,15 +2259,6 @@
 
 /* nothing */
 "Open an irc://server:port/channel URL" = "開啟一個 irc://server:port/channel URL";
-
-/* nothing */
-"Open URL in an existing XChat" = "";
-
-/* nothing */
-"Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "";
-
-/* nothing */
-"level" = "從不";
 
 /* nothing */
 "Show version information" = "顯示版本資訊";
@@ -2474,22 +2468,7 @@
 "This server still has %d channels or dialogs associated with it. Close them all?" = "這台伺服器仍然有 %d 個與它相關的聊天室或對話。要全部關閉它們嗎？";
 
 /* nothing */
-"Quit XChat?" = "關於 XChat";
-
-/* nothing */
-"Don't ask next time." = "";
-
-/* nothing */
-"You are connected to %i IRC networks." = "啟動時自動連接到此網路";
-
-/* nothing */
-"Are you sure you want to quit?" = "";
-
-/* nothing */
-"Some file transfers are still active." = "某些檔案傳輸仍在進行，要離開 xchat 嗎？";
-
-/* nothing */
-"_Minimize to Tray" = "";
+"No other tabs open, quit xchat?" = "沒有其它打開的分頁，要離開 xchat 嗎？";
 
 /* nothing */
 "Insert Attribute or Color Code" = "插入屬性或顏色代碼";
@@ -2513,19 +2492,22 @@
 "Beep on message" = "有訊息時響鈴提示";
 
 /* nothing */
-"Blink tray on message" = "有訊息時響鈴提示";
-
-/* nothing */
 "Show join/part messages" = "顯示加入/離開訊息";
 
 /* nothing */
 "Color paste" = "彩色貼上";
 
 /* nothing */
+"Go to" = "前往";
+
+/* nothing */
 "_Close Tab" = "關閉分頁(_C)";
 
 /* nothing */
 "_Detach Tab" = "分離分頁(_D)";
+
+/* nothing */
+"Some file transfers still active, quit xchat?" = "某些檔案傳輸仍在進行，要離開 xchat 嗎？";
 
 /* nothing */
 "User limit must be a number!\n" = "使用者限額必須是數字！\n";
@@ -2600,9 +2582,6 @@
 "Copy Selected Link" = "複製選取的連結";
 
 /* nothing */
-"Join Channel" = "加入聊天室";
-
-/* nothing */
 "Part Channel" = "離開聊天室";
 
 /* nothing */
@@ -2618,16 +2597,16 @@
 "Retrieve channel list..." = "取回聊天室清單...";
 
 /* nothing */
-"User Commands - Special codes:\n\n%c  =  current channel\n%e  =  current network name\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "使用者命令 - 特殊編碼：\n\n%c  =  目前聊天室\n%m  =  機器資訊\n%n  =  您的暱稱\n%t  =  時間/日期\n%v  =  xchat 版本\n%2  =  第 2 個詞\n%3  =  第 3 個詞\n&2  =  從第 2 個詞到列尾\n&3  =  從第 3 個詞到列尾\n\n如：\n/cmd john hello\n\n%2 會是「john」\n&2 會是「john hello」。";
+"User Commands - Special codes:\n\n%c  =  current channel\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "使用者命令 - 特殊編碼：\n\n%c  =  目前聊天室\n%m  =  機器資訊\n%n  =  您的暱稱\n%t  =  時間/日期\n%v  =  xchat 版本\n%2  =  第 2 個詞\n%3  =  第 3 個詞\n&2  =  從第 2 個詞到列尾\n&3  =  從第 3 個詞到列尾\n\n如：\n/cmd john hello\n\n%2 會是「john」\n&2 會是「john hello」。";
 
 /* nothing */
-"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "使用者清單按鈕 - 特殊編碼：\n\n%a  =  所有選取的使用者\n%c  =  目前聊天室\n%h  =  選取使用者的主機名\n%m  =  機器資訊\n%n  =  您的暱稱\n%s  =  選取的使用者\n%t  =  時間/日期\n";
+"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "使用者清單按鈕 - 特殊編碼：\n\n%a  =  所有選取的使用者\n%c  =  目前聊天室\n%h  =  選取使用者的主機名\n%m  =  機器資訊\n%n  =  您的暱稱\n%s  =  選取的使用者\n%t  =  時間/日期\n";
 
 /* nothing */
-"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "對話按鈕 - 特殊編碼：\n\n%a  =  所有選取的使用者\n%c  =  目前聊天室\n%h  =  選取使用者的主機名\n%m  =  機器資訊\n%n  =  您的暱稱\n%s  =  選取的使用者\n%t  =  時間/日期\n";
+"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "對話按鈕 - 特殊編碼：\n\n%a  =  所有選取的使用者\n%c  =  目前聊天室\n%h  =  選取使用者的主機名\n%m  =  機器資訊\n%n  =  您的暱稱\n%s  =  選取的使用者\n%t  =  時間/日期\n";
 
 /* nothing */
-"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%e  =  current network name\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "CTCP 回應 - 特殊編碼：\n\n%d  =  資料 (全部 ctcp)\n%m  =  機器資訊\n%s  =  發送 ctcp 的使用者\n%t  =  時間/日期\n%2  =  第 2 個詞\n%3  =  第 3 個詞\n&2  =  從第 2 個詞到列尾\n&3  =  從第 3 個詞到列尾\n\n";
+"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "CTCP 回應 - 特殊編碼：\n\n%d  =  資料 (全部 ctcp)\n%m  =  機器資訊\n%s  =  發送 ctcp 的使用者\n%t  =  時間/日期\n%2  =  第 2 個詞\n%3  =  第 3 個詞\n&2  =  從第 2 個詞到列尾\n&3  =  從第 3 個詞到列尾\n\n";
 
 /* nothing */
 "URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of XChat" = "URL 處理程式 - 特殊編碼：\n\n%s  =  URL 字串\n\n在命令前加一個「!」表示\n該命令應被發送到 shell 而\n非 XChat";
@@ -2687,22 +2666,19 @@
 "_View" = "檢視(_V)";
 
 /* nothing */
-"_Menu Bar" = "選單欄(_M)";
+"_Menubar" = "選單欄(_M)";
 
 /* nothing */
-"_Topic Bar" = "話題欄(_T)";
+"_Topicbar" = "話題欄(_T)";
 
 /* nothing */
-"_User List" = "使用者清單";
-
-/* nothing */
-"U_serlist Buttons" = "使用者清單按鈕(_U)...";
+"_Userlist Buttons" = "使用者清單按鈕(_U)...";
 
 /* nothing */
 "M_ode Buttons" = "模式按鈕(_O)";
 
 /* nothing */
-"_Channel Switcher" = "聊天室";
+"_Layout" = "佈局(_L)";
 
 /* nothing */
 "_Tabs" = "分頁(_T)";
@@ -2718,6 +2694,9 @@
 
 /* nothing */
 "Graph" = "圖形";
+
+/* nothing */
+"Both" = "兩者";
 
 /* nothing */
 "_Server" = "伺服器(_S)";
@@ -2834,6 +2813,9 @@
 "User" = "使用者";
 
 /* nothing */
+"Server" = "伺服器";
+
+/* nothing */
 "Last Seen" = "最後一次看到";
 
 /* nothing */
@@ -2843,73 +2825,19 @@
 "Never" = "從不";
 
 /* nothing */
-"%d minutes ago" = "%u 分鐘之前";
-
-/* nothing */
 "Online" = "上線";
 
 /* nothing */
 "Enter nickname to add:" = "輸入要新增的暱稱：";
 
 /* nothing */
-"Notify on these networks:" = "";
-
-/* nothing */
-"Comma separated list of networks is accepted." = "";
-
-/* nothing */
 "XChat: Notify List" = "XChat： 通知清單";
 
 /* nothing */
+"Remove" = "刪除";
+
+/* nothing */
 "Open Dialog" = "打開對話視窗";
-
-/* nothing */
-"Cannot find 'notify-send' to open balloon alerts.\nPlease install libnotify." = "";
-
-/* nothing */
-"XChat: Connected to %u networks and %u channels" = "";
-
-/* nothing */
-"_Restore" = "";
-
-/* nothing */
-"_Hide" = "隱藏";
-
-/* nothing */
-"_Blink on" = "";
-
-/* nothing */
-"Channel Message" = "聊天室名";
-
-/* nothing */
-"Private Message" = "有悄悄話時響鈴提示";
-
-/* nothing */
-"Highlighted Message" = "高亮度顯示訊息時響鈴提示";
-
-/* nothing */
-"XChat: Highlighted message from: %s (%s)" = "高亮度顯示訊息時響鈴提示";
-
-/* nothing */
-"XChat: %u highlighted messages, latest from: %s (%s)" = "";
-
-/* nothing */
-"XChat: New public message from: %s (%s)" = "";
-
-/* nothing */
-"XChat: %u new public messages." = "";
-
-/* nothing */
-"XChat: Private message from: %s (%s)" = "";
-
-/* nothing */
-"XChat: %u private messages, latest from: %s (%s)" = "";
-
-/* nothing */
-"XChat: File offer from: %s (%s)" = "";
-
-/* nothing */
-"XChat: %u file offers, latest from: %s (%s)" = "";
 
 /* nothing */
 "Description" = "描述";
@@ -2946,6 +2874,9 @@
 
 /* nothing */
 "XChat: Search" = "XChat： 搜索";
+
+/* nothing */
+"Find:" = "尋找：";
 
 /* nothing */
 "_Match case" = "符合大小寫(_M)";
@@ -3062,9 +2993,6 @@
 "_Sort" = "排序(_S)";
 
 /* nothing */
-"Sorts the network list in alphabetical order. Use SHIFT-UP and SHIFT-DOWN keys to move a row." = "";
-
-/* nothing */
 "C_onnect" = "連接(_O)";
 
 /* nothing */
@@ -3125,12 +3053,6 @@
 "See strftime manpage for details." = "查看 strftime 手冊頁以獲取詳細資訊。";
 
 /* nothing */
-"A-Z" = "A-Z";
-
-/* nothing */
-"Last-spoke order" = "";
-
-/* nothing */
 "Input box" = "輸入框";
 
 /* nothing */
@@ -3149,9 +3071,6 @@
 "Nick completion suffix:" = "暱稱自動補齊後綴：";
 
 /* nothing */
-"Nick completion sorted:" = "暱稱自動補齊後綴：";
-
-/* nothing */
 "Input Box Codes" = "輸入框編碼";
 
 /* nothing */
@@ -3164,6 +3083,9 @@
 "A-Z, Ops first" = "A-Z, Op 最先";
 
 /* nothing */
+"A-Z" = "A-Z";
+
+/* nothing */
 "Z-A, Ops last" = "Z-A, Op 最後";
 
 /* nothing */
@@ -3173,37 +3095,16 @@
 "Unsorted" = "未排序";
 
 /* nothing */
-"Left (Upper)" = "";
-
-/* nothing */
-"Left (Lower)" = "";
-
-/* nothing */
-"Right (Upper)" = "";
-
-/* nothing */
-"Right (Lower)" = "";
-
-/* nothing */
-"Top" = "頂部";
-
-/* nothing */
-"Bottom" = "底部";
-
-/* nothing */
-"Hidden" = "隱藏";
-
-/* nothing */
 "User List" = "使用者清單";
 
 /* nothing */
 "Show hostnames in user list" = "在使用者清單中顯示主機名";
 
 /* nothing */
-"User list sorted by:" = "使用者清單排列方式：";
+"Resizable user list" = "使用者清單可調整大小";
 
 /* nothing */
-"Show user list at:" = "顯示/隱藏使用者清單";
+"User list sorted by:" = "使用者清單排列方式：";
 
 /* nothing */
 "Away tracking" = "記錄離開資訊";
@@ -3227,25 +3128,31 @@
 "Tabs" = "分頁";
 
 /* nothing */
+"Bottom" = "底部";
+
+/* nothing */
+"Top" = "頂部";
+
+/* nothing */
+"Left" = "左側";
+
+/* nothing */
+"Right" = "右側";
+
+/* nothing */
+"Hidden" = "隱藏";
+
+/* nothing */
 "Always" = "總是";
 
 /* nothing */
 "Only requested tabs" = "只有請求的分頁";
 
 /* nothing */
-"Tree" = "樹狀圖(_R)";
-
-/* nothing */
-"Switcher type:" = "搜索文字...";
-
-/* nothing */
 "Open an extra tab for server messages" = "打開額外的分頁存放伺服器訊息";
 
 /* nothing */
 "Open an extra tab for server notices" = "打開額外的分頁存放伺服器通知";
-
-/* nothing */
-"Open a new tab when you receive a private message" = "打開額外的分頁存放伺服器訊息";
 
 /* nothing */
 "Sort tabs in alphabetical order" = "按字母表順序排序分頁";
@@ -3257,13 +3164,16 @@
 "Focus new tabs:" = "聚焦到新分頁：";
 
 /* nothing */
-"Show channel switcher at:" = "聊天室";
-
-/* nothing */
 "Shorten tab labels to:" = "縮短分頁標籤至：";
 
 /* nothing */
 "letters." = "字母。";
+
+/* nothing */
+"Tabs Location" = "分頁位置";
+
+/* nothing */
+"Show tabs at:" = "顯示分頁於：";
 
 /* nothing */
 "Tabs or Windows" = "分頁或視窗";
@@ -3350,42 +3260,6 @@
 "All downloads combined:" = "所有下載";
 
 /* nothing */
-"Alerts" = "警報";
-
-/* nothing */
-"Show tray balloons on:" = "顯示分頁於：";
-
-/* nothing */
-"Blink tray icon on:" = "有訊息時響鈴提示";
-
-/* nothing */
-"Blink task bar on:" = "";
-
-/* nothing */
-"Make a beep sound on:" = "";
-
-/* nothing */
-"Enable system tray icon" = "";
-
-/* nothing */
-"Highlighted Messages" = "高亮度顯示訊息時響鈴提示";
-
-/* nothing */
-"Highlighted messages are ones where your nickname is mentioned, but also:" = "";
-
-/* nothing */
-"Extra words to highlight:" = "需要高亮度顯示的其它詞組：";
-
-/* nothing */
-"Nick names not to highlight:" = "不要高亮度顯示的暱稱：";
-
-/* nothing */
-"Nick names to always highlight:" = "不要高亮度顯示的暱稱：";
-
-/* nothing */
-"Separate multiple words with commas." = "請用逗號分隔多個詞組。";
-
-/* nothing */
 "Default Messages" = "預設訊息";
 
 /* nothing */
@@ -3417,6 +3291,36 @@
 
 /* nothing */
 "Unmark yourself as away before sending messages" = "發送訊息前取消您的暫離狀態";
+
+/* nothing */
+"(Can be a text file relative to ~/.xchat2/)." = "(可以是一個相對路徑為 ~/.xchat2/ 的文字檔案)。";
+
+/* nothing */
+"(Can be a text file relative to config dir)." = "(可以是一個相對路徑為配置目錄的文字檔案)。";
+
+/* nothing */
+"Alerts" = "警報";
+
+/* nothing */
+"Flash taskbar on highlighted messages" = "高亮度顯示訊息時閃動工作列";
+
+/* nothing */
+"Beep on highlighted messages" = "高亮度顯示訊息時響鈴提示";
+
+/* nothing */
+"Beep on private messages" = "有悄悄話時響鈴提示";
+
+/* nothing */
+"Beep on channel messages" = "聊天室中出現新訊息時響鈴";
+
+/* nothing */
+"Extra words to highlight on:" = "需要高亮度顯示的其它詞組：";
+
+/* nothing */
+"Nicks not to highlight on:" = "不要高亮度顯示的暱稱：";
+
+/* nothing */
+"Separate multiple words with commas." = "請用逗號分隔多個詞組。";
 
 /* nothing */
 "Advanced Settings" = "進階設定";
@@ -3554,9 +3458,6 @@
 "Mark not-identified users with:" = "標記未驗證過的使用者為：";
 
 /* nothing */
-"Open Data Folder" = "開啟文件夾...";
-
-/* nothing */
 "Select color" = "選擇顏色";
 
 /* nothing */
@@ -3638,9 +3539,6 @@
 "User list" = "使用者清單";
 
 /* nothing */
-"Channel switcher" = "聊天室";
-
-/* nothing */
 "Colors" = "顏色";
 
 /* nothing */
@@ -3653,6 +3551,9 @@
 "Sound" = "音效";
 
 /* nothing */
+"Network" = "網路";
+
+/* nothing */
 "Network setup" = "網路設定";
 
 /* nothing */
@@ -3660,9 +3561,6 @@
 
 /* nothing */
 "Categories" = "類別";
-
-/* nothing */
-"You cannot place the tree on the top or bottom!\nPlease change to the <b>Tabs</b> layout in the <b>View</b> menu first." = "";
 
 /* nothing */
 "Some settings were changed that require a restart to take full effect." = "有些設定需要重新啟動 xchat 才會生效。";
@@ -3714,4 +3612,85 @@
 
 /* nothing */
 "%d ops, %d total" = "%d 個管理員，共 %d 人";
+
+/* nothing */
+"Open an irc:// url" = "開啟一個 irc:// URL";
+
+/* nothing */
+"irc://server:port/channel" = "irc://server:port/channel";
+
+/* nothing */
+"Execute a xchat command" = "執行 xchat 命令：";
+
+/* nothing */
+"\"Command to execute\"" = "\"要執行的命令\"";
+
+/* nothing */
+"Prints some text to the current tab/window" = "印出一些文字到目前的分頁/視窗";
+
+/* nothing */
+"\"Text to print\"" = "\"要印出的文字\"";
+
+/* nothing */
+"Change the context to the channel" = "變更上下文至聊天室";
+
+/* nothing */
+"channel" = "聊天室";
+
+/* nothing */
+"Change the context to the server" = "變更上下文至伺服器";
+
+/* nothing */
+"server" = "伺服器";
+
+/* nothing */
+"Get some informations from xchat" = "從 xchat 擷取一些資訊";
+
+/* nothing */
+"id" = "id";
+
+/* nothing */
+"Get settings from xchat" = "從 xchat 擷取設定";
+
+/* nothing */
+"name" = "名稱";
+
+/* nothing */
+"xchat-remote: %s\nTry `xchat-remote --help' for more information\n" = "xchat-remote: %s\n試試 `xchat-remote --help' 以獲得更多資訊\n";
+
+/* nothing */
+"Couldn't connect to session bus" = "無法連接到執行階段匯流排";
+
+/* nothing */
+"Failed to complete command" = "完成命令失敗";
+
+/* nothing */
+"Failed to complete SetContext" = "完成設定上下文失敗";
+
+/* nothing */
+"Failed to complete print" = "完成列印失敗";
+
+/* nothing */
+"Failed to complete GetInfo" = "完成擷取資訊失敗";
+
+/* nothing */
+"Failed to complete GetPrefs" = "完成擷取偏好失敗";
+
+/* nothing */
+"%s doesn't exist\n" = "%s 不存在\n";
+
+/* nothing */
+"xchat remote access" = "xchat 遠端存取";
+
+/* nothing */
+"plugin for remote access using DBUS" = "使用 DBUS 做為遠端存取外掛程式";
+
+/* nothing */
+"Couldn't connect to session bus : %s\n" = "無法連接到執行階段匯流排: %s\n";
+
+/* nothing */
+"Failed to acquire %s: %s\n" = "取得 %s 失敗: %s\n";
+
+/* nothing */
+"%s loaded successfully!\n" = "已成功載入 %s！\n";
 

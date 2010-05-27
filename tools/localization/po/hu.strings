@@ -1,8 +1,8 @@
 /* nothing */
-"" = "Project-Id-Version: xchat 2.8.0\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2007-06-29 09:52+0200\nPO-Revision-Date: 2007-06-29 09:52+0200\nLast-Translator: Gabor Kelemen <kelemeng@gnome.hu>\nLanguage-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nX-Generator: KBabel 1.11.4\nPlural-Forms:  nplurals=2; plural=(n != 1);\n";
+"" = "Project-Id-Version: xchat 2.8.6\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2009-08-25 09:31+0200\nPO-Revision-Date: 2009-08-25 12:11+0100\nLast-Translator: rezso <rezso@rezso.net>\nLanguage-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nX-Generator: KBabel 1.11.4\nPlural-Forms: nplurals=2; plural=(n != 1);\n";
 
 /* nothing */
-"Cannot create ~/.xchat2" = "Nem lehet létrehozni a ~/.xchat2 fájlt";
+"Cannot create ~/.xchat2" = "Nem lehet létrehozni a ~/.xchat2 könyvtárat";
 
 /* nothing */
 "I'm busy" = "Elfoglalt vagyok";
@@ -59,7 +59,7 @@
 "  %-20s online\n" = "  %-20s online\n";
 
 /* nothing */
-"  %-20s offline\n" = " %-20s offline\n";
+"  %-20s offline\n" = "  %-20s offline\n";
 
 /* nothing */
 "No channel joined. Try /join #<channel>\n" = "Nincs benn egy csatornán sem. Próbálja meg a /join #<csatorna> parancsot.\n";
@@ -119,7 +119,7 @@
 "BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "BAN <maszk> [<kitiltástípus>], kitilt mindenkit, akire illik a maszk az adott csatornán. Ha már benn vannak a csatornán, nem rúgja ki őket (ehhez chanop-jog kell)";
 
 /* nothing */
-"Set per channel options\nCHANOPT CONFMODE ON|OFF - Toggle conf mode/showing of join and part messages\nCHANOPT COLORPASTE ON|OFF - Toggle color paste\nCHANOPT BEEP ON|OFF - Toggle beep on message\nCHANOPT TRAY ON|OFF - Toggle tray blink on message" = "Csatornánkénti kapcsolók beállítása\nCHANOPT CONFMODE ON|OFF - Konferenciamód / csatlakozási és kilépési üzenetek megjelenítésének átváltása\nCHANOPT COLORPASTE ON|OFF - Színek beillesztésének átváltása\nCHANOPT BEEP ON|OFF - Üzenetkor csipogás átváltása\nCHANOPT TRAY ON|OFF - Üzenetkor villogjon a tálcán";
+"CHANOPT [-quiet] <variable> [<value>]" = "CHANOPT [-quiet] <változó> [<érték>]";
 
 /* nothing */
 "CLEAR [ALL|HISTORY], Clears the current text window or command history" = "CLEAR, [ALL|HISTORY] törli az aktuális szövegablakot vagy a parancstörténetet";
@@ -1850,16 +1850,19 @@
 "Unknown" = "Ismeretlen";
 
 /* nothing */
-"Open Dialog Window" = "Párbeszédablak nyitása";
+"_Open Dialog Window" = "Párbeszédablak _nyitása";
 
 /* nothing */
-"Send a File" = "Fájl küldése";
+"_Send a File" = "_Fájl küldése";
 
 /* nothing */
-"User Info (WHOIS)" = "Felhasználóinformációk (WHOIS)";
+"_User Info (WhoIs)" = "Felhasz_nálóinformációk (WHOIS)";
 
 /* nothing */
-"Operator Actions" = "Operátori műveletek";
+"_Add to Friends List" = "Hozzá_adás a barátok listájához";
+
+/* nothing */
+"O_perator Actions" = "O_perátori műveletek";
 
 /* nothing */
 "Give Ops" = "Op-jog adása";
@@ -1884,87 +1887,6 @@
 
 /* nothing */
 "KickBan" = "Kirúgás és kitiltás";
-
-/* nothing */
-"Direct client-to-client" = "Közvetlen kliens-kliens kapcsolat (DCC)";
-
-/* nothing */
-"Send File" = "Fájl küldése";
-
-/* nothing */
-"Offer Chat" = "Csevegési ajánlat";
-
-/* nothing */
-"Abort Chat" = "Csevegés megszakítása";
-
-/* nothing */
-"Version" = "Verzió";
-
-/* nothing */
-"Userinfo" = "Felhasználói infó";
-
-/* nothing */
-"Clientinfo" = "Kliens infó";
-
-/* nothing */
-"Ping" = "Ping";
-
-/* nothing */
-"Time" = "Idő";
-
-/* nothing */
-"Finger" = "Finger";
-
-/* nothing */
-"Oper" = "Oper";
-
-/* nothing */
-"Kill this user" = "Ezen felhasználó kilövése";
-
-/* nothing */
-"Mode" = "Mód";
-
-/* nothing */
-"Give Half-Ops" = "Fél-op jog adása";
-
-/* nothing */
-"Take Half-Ops" = "Fél-op jog elvétele";
-
-/* nothing */
-"Ignore" = "Mellőzés";
-
-/* nothing */
-"Ignore User" = "Felhasználó mellőzése";
-
-/* nothing */
-"UnIgnore User" = "Felhasználó mellőzésének megszüntetése";
-
-/* nothing */
-"Info" = "Információk";
-
-/* nothing */
-"Who" = "Ki";
-
-/* nothing */
-"WhoIs" = "WhoIs";
-
-/* nothing */
-"DNS Lookup" = "DNS kikeresés";
-
-/* nothing */
-"Trace" = "Nyomkövetés";
-
-/* nothing */
-"UserHost" = "Felhasználókiszolgáló";
-
-/* nothing */
-"External" = "Külső programok";
-
-/* nothing */
-"Traceroute" = "Útvonal-nyomkövetés";
-
-/* nothing */
-"Telnet" = "Telnet";
 
 /* nothing */
 "Leave Channel" = "Csatorna elhagyása";
@@ -2003,6 +1925,9 @@
 "Dialog" = "Párbeszéd";
 
 /* nothing */
+"WhoIs" = "WhoIs";
+
+/* nothing */
 "Send" = "Küldés";
 
 /* nothing */
@@ -2010,6 +1935,9 @@
 
 /* nothing */
 "Clear" = "Összes törlése";
+
+/* nothing */
+"Ping" = "Ping";
 
 /* nothing */
 "Couldn't connect to session bus" = "Nem lehet csatlakozni a munkamenet buszhoz";
@@ -2033,7 +1961,7 @@
 "Failed to acquire %s: %s\n" = "A(z) %s lekérése nem sikerült: %s\n";
 
 /* nothing */
-"About XChat" = "Az XChat névjegye";
+"About " = "Névjegy";
 
 /* nothing */
 "A multiplatform IRC Client" = "Többplatformos IRC-kliens";
@@ -2066,7 +1994,7 @@
 "XChat: Ban List (%s)" = "XChat: Kitiltáslista (%s)";
 
 /* nothing */
-"Unban" = "Kitiltás visszavonása";
+"Remove" = "Eltávolítás";
 
 /* nothing */
 "Crop" = "Levágás";
@@ -2258,7 +2186,10 @@
 "Open an irc://server:port/channel URL" = "Egy irc://kiszolgáló:port/csatorna URL megnyitása";
 
 /* nothing */
-"Open URL in an existing XChat" = "URL megnyitása meglévő XChatben";
+"Execute command:" = "Parancs végrehajtása:";
+
+/* nothing */
+"Open URL or execute command in an existing XChat" = "URL megnyitása vagy parancs végrehajtása meglévő XChatben";
 
 /* nothing */
 "Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "Indítás minimalizálva. Lehetséges értékek: 0=normál, 0=ikonméret 2=tálca";
@@ -2510,22 +2441,34 @@
 "Colors 8-15" = "Színek 8-15";
 
 /* nothing */
-"Beep on message" = "Üzenetkor csipog";
+"_Settings" = "_Beállítások";
 
 /* nothing */
-"Blink tray on message" = "Tálca villogtatása üzenetkor";
+"_Log to Disk" = "_Naplózás";
 
 /* nothing */
-"Show join/part messages" = "Mutassa a csatlakozás/kilépés üzeneteket";
+"_Reload Scrollback" = "Visszatekintés új_ratöltése";
 
 /* nothing */
-"Color paste" = "Szín beillesztése";
+"_Hide Join/Part Messages" = "A csatlakozási/távozási üzenetek elre_jtése";
 
 /* nothing */
-"_Close Tab" = "Fül _bezárása";
+"_Extra Alerts" = "_Extra figyelmeztetések";
 
 /* nothing */
-"_Detach Tab" = "_Fül leválasztása";
+"Beep on _Message" = "Üzenetkor _csipog";
+
+/* nothing */
+"Blink Tray _Icon" = "_Tálcaikon villogtatása";
+
+/* nothing */
+"Blink Task _Bar" = "_Feladatsáv villogtatása";
+
+/* nothing */
+"_Detach" = "_Leválasztás";
+
+/* nothing */
+"_Close" = "Be_zárás";
 
 /* nothing */
 "User limit must be a number!\n" = "A felhasználó-limit egy szám legyen!\n";
@@ -2582,13 +2525,16 @@
 "Server:" = "Kiszolgáló:";
 
 /* nothing */
-"Away Msg:" = "Távol üzenet:";
-
-/* nothing */
 "%u minutes ago" = "%u perccel ezelőtt";
 
 /* nothing */
 "Last Msg:" = "Utolsó üzenet:";
+
+/* nothing */
+"Away Msg:" = "Távol üzenet:";
+
+/* nothing */
+"%d nicks selected." = "%d becenév kiválasztva.";
 
 /* nothing */
 "The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "A menüsáv most rejtett. Újra megjelenítheti az F9 megnyomásával vagy a fő szövegterület egy üres részén való jobbkattintással.";
@@ -2607,6 +2553,12 @@
 
 /* nothing */
 "Cycle Channel" = "Ki- és belépés a csatornára";
+
+/* nothing */
+"_Remove from Favorites" = "_Eltávolítás a Kedvencek közül";
+
+/* nothing */
+"_Add to Favorites" = "Hozzá_adás a Kedvencekhez";
 
 /* nothing */
 "XChat: User menu" = "XChat: Felhasználói menü";
@@ -2729,6 +2681,12 @@
 "_Reconnect" = "Ú_jrakapcsolódás";
 
 /* nothing */
+"Join a Channel..." = "Belépés csatornára...";
+
+/* nothing */
+"List of Channels..." = "Csatornák listája...";
+
+/* nothing */
 "Marked Away" = "Nem vagyok itt";
 
 /* nothing */
@@ -2771,13 +2729,10 @@
 "Userlist Popup..." = "Felhasználólista helyi menü...";
 
 /* nothing */
-"_Window" = "Abla_k";
+"_Window" = "_Ablak";
 
 /* nothing */
 "Ban List..." = "Kitiltáslista...";
-
-/* nothing */
-"Channel List..." = "Csatornalista...";
 
 /* nothing */
 "Character Chart..." = "Karaktertábla...";
@@ -2789,10 +2744,10 @@
 "File Transfers..." = "Fájlátvitelek...";
 
 /* nothing */
-"Ignore List..." = "Mellőzési lista...";
+"Friends List..." = "Barátok listája...";
 
 /* nothing */
-"Notify List..." = "Értesítési lista...";
+"Ignore List..." = "Mellőzési lista...";
 
 /* nothing */
 "Plugins and Scripts..." = "Bővítmények és parancsfájlok...";
@@ -2822,16 +2777,13 @@
 "_Contents" = "_Tartalom";
 
 /* nothing */
+"Check for updates" = "Frissítések keresése";
+
+/* nothing */
 "_About" = "_Névjegy";
 
 /* nothing */
-"_Attach Window" = "_Ablak csatlakoztatása";
-
-/* nothing */
-"_Close Window" = "Ablak _bezárása";
-
-/* nothing */
-"User" = "Felhasználó";
+"_Attach" = "_Csatolás";
 
 /* nothing */
 "Last Seen" = "Utolsó jelenléte";
@@ -2858,10 +2810,7 @@
 "Comma separated list of networks is accepted." = "Hálózatok vesszőkkel elválasztott listája adható meg.";
 
 /* nothing */
-"XChat: Notify List" = "XChat: Értesítési lista";
-
-/* nothing */
-"Remove" = "Eltávolítás";
+"XChat: Friends List" = "XChat: Barátok listája";
 
 /* nothing */
 "Open Dialog" = "Megnyitás párbeszédablak";
@@ -2891,6 +2840,15 @@
 "Highlighted Message" = "Kiemelt üzenet esetén";
 
 /* nothing */
+"_Change status" = "Álla_pot módosítása";
+
+/* nothing */
+"_Away" = "_Távol";
+
+/* nothing */
+"_Back" = "_Vissza";
+
+/* nothing */
 "XChat: Highlighted message from: %s (%s)" = "XChat: Kiemelt üzenet a következőtől: %s (%s)";
 
 /* nothing */
@@ -2915,6 +2873,9 @@
 "XChat: %u file offers, latest from: %s (%s)" = "XChat: %u fájlajánlat, a legutolsó a következőtől: %s (%s)";
 
 /* nothing */
+"Version" = "Verzió";
+
+/* nothing */
 "Description" = "Leírás";
 
 /* nothing */
@@ -2928,9 +2889,6 @@
 
 /* nothing */
 "_UnLoad" = "_Eltávolítás";
-
-/* nothing */
-"_Close" = "Be_zárás";
 
 /* nothing */
 "Save As..." = "Mentés másként...";
@@ -2960,64 +2918,34 @@
 "_Find" = "_Keresés";
 
 /* nothing */
-"UTF-8 (Unicode)" = "UTF-8 (Unicode)";
-
-/* nothing */
-"IRC (Latin-1/UTF-8 Hybrid)" = "IRC (Latin-1/UTF-8 hibrid)";
-
-/* nothing */
-"ISO-8859-15 (Western Europe)" = "ISO-8859-15 (nyugat-európai)";
-
-/* nothing */
-"ISO-8859-2 (Central Europe)" = "ISO-8859-2 (közép-európai)";
-
-/* nothing */
-"ISO-8859-7 (Greek)" = "ISO-8859-7 (görög)";
-
-/* nothing */
-"ISO-8859-8 (Hebrew)" = "ISO-8859-8 (héber)";
-
-/* nothing */
-"ISO-8859-9 (Turkish)" = "ISO-8859-9 (török)";
-
-/* nothing */
-"ISO-2022-JP (Japanese)" = "ISO-2022-JP (japán)";
-
-/* nothing */
-"SJIS (Japanese)" = "SJIS (japán)";
-
-/* nothing */
-"CP949 (Korean)" = "CP949 (koreai)";
-
-/* nothing */
-"KOI8-R (Cyrillic)" = "KOI8-R (cirill)";
-
-/* nothing */
-"CP1251 (Cyrillic)" = "CP1251 (cirill)";
-
-/* nothing */
-"CP1256 (Arabic)" = "CP1256 (arab)";
-
-/* nothing */
-"CP1257 (Baltic)" = "CP1257 (balti)";
-
-/* nothing */
-"GB18030 (Chinese)" = "GB18030 (kínai)";
-
-/* nothing */
-"TIS-620 (Thai)" = "TIS-620 (thai)";
-
-/* nothing */
 "New Network" = "Új hálózat";
 
 /* nothing */
 "Really remove network \"%s\" and all its servers?" = "Valóban törli a(z) \"%s\" hálózatot és összes kiszolgálóját?";
 
 /* nothing */
-"User name and Real name cannot be left blank." = "A Felhasználónév és a Valódi név mezőket nem hagyhatja üresen.";
+"#channel" = "#csatorna";
 
 /* nothing */
-"System default" = "Rendszer alapértelmezése";
+"XChat: Favorite Channels (Auto-Join List)" = "XChat: Kedvenc csatornák (Automatikus csatlakozási lista)";
+
+/* nothing */
+"These channels will be joined whenever you connect to %s." = "E csatornákra fog belépni, amikor csatlakozik ide: %s.";
+
+/* nothing */
+"Key (Password)" = "Kulcs (Jelszó)";
+
+/* nothing */
+"_Edit" = "_Szerkesztés";
+
+/* nothing */
+"%s has been removed." = "%s eltávolítva.";
+
+/* nothing */
+"%s has been added." = "%s hozzáadva.";
+
+/* nothing */
+"User name and Real name cannot be left blank." = "A Felhasználónév és a Valódi név mezőket nem hagyhatja üresen.";
 
 /* nothing */
 "XChat: Edit %s" = "XChat: %s szerkesztése";
@@ -3056,7 +2984,7 @@
 "Auto connect to this network at startup" = "Induláskor automatikusan kapcsolódjon ehhez a kiszolgálóhoz";
 
 /* nothing */
-"Use a proxy server" = "Proxy kiszolgáló használata";
+"Bypass proxy server" = "Proxy kiszolgáló használata";
 
 /* nothing */
 "Use SSL for all the servers on this network" = "SSL használata a hálózat összes kiszolgálójához";
@@ -3065,7 +2993,7 @@
 "Accept invalid SSL certificate" = "Érvénytelen SSL tanúsítvány elfogadása";
 
 /* nothing */
-"C_hannels to join:" = "Ka_pcsolódás a következő csatornákhoz:";
+"_Favorite channels:" = "_Kedvenc csatornák:";
 
 /* nothing */
 "Channels to join, separated by commas, but not spaces!" = "Kapcsolódás e csatornákhoz, a felsorolást vesszővel válassza el egymástól, ne szóközzel!";
@@ -3090,9 +3018,6 @@
 
 /* nothing */
 "Character set:" = "Karakterkészlet:";
-
-/* nothing */
-"_Edit" = "_Szerkesztés";
 
 /* nothing */
 "XChat: Network List" = "XChat: Hálózatlista";
@@ -3272,9 +3197,6 @@
 "Action Upon Double Click" = "Művelet kettős kattintáskor";
 
 /* nothing */
-"Execute command:" = "Parancs végrehajtása:";
-
-/* nothing */
 "Windows" = "Ablakok";
 
 /* nothing */
@@ -3287,7 +3209,10 @@
 "Only requested tabs" = "Csak a kívánt fülek";
 
 /* nothing */
-"Channel Switcher" = "Csatornaváltó";
+"Tree" = "Fastruktúra";
+
+/* nothing */
+"Switcher type:" = "Csatornaváltó típusa:";
 
 /* nothing */
 "Open an extra tab for server messages" = "Nyisson új fület a kiszolgáló üzeneteihez";
@@ -3302,7 +3227,7 @@
 "Sort tabs in alphabetical order" = "Fülek rendezése betűrendbe";
 
 /* nothing */
-"Small tabs" = "Kis fülek";
+"Smaller text" = "Kisebb szöveg";
 
 /* nothing */
 "Focus new tabs:" = "Új fül fókuszt kap:";
@@ -3434,7 +3359,7 @@
 "Nick names to always highlight:" = "Mindig kiemelendő becenevek:";
 
 /* nothing */
-"Separate multiple words with commas." = "Több szót vesszőkkel választhat el egymástól.";
+"Separate multiple words with commas.\nWildcards are accepted." = "Több szót vesszőkkel választhat el egymástól.\nHelyettesítő karakterek használhatók.";
 
 /* nothing */
 "Default Messages" = "Alapértelmezett üzenetek";
@@ -3506,7 +3431,10 @@
 "Logging" = "Naplózás";
 
 /* nothing */
-"Enable logging of conversations" = "Csevegések naplózásának engedélyezése";
+"Display scrollback from previous session" = "Visszatekintés megjelenítése az előző folyamatból";
+
+/* nothing */
+"Enable logging of conversations to disk" = "Csevegések naplózásának engedélyezése";
 
 /* nothing */
 "Log filename:" = "Naplófájl neve:";
@@ -3548,7 +3476,7 @@
 "DCC Get Only" = "Csak DCC letöltés";
 
 /* nothing */
-"Your Address" = "A címe";
+"Your Address" = "Saját cím";
 
 /* nothing */
 "Bind to:" = "Kötés:";
