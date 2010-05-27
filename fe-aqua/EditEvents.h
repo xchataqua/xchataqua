@@ -20,6 +20,9 @@
 #import "XAChatText.h"
 
 @interface EditEvents : NSObject
+#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
+<NSTableViewDataSource,NSTableViewDelegate>
+#endif
 {
     NSTableView    *event_list;
     NSTableView    *help_list;

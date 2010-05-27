@@ -117,6 +117,8 @@ extern EventInfo text_event_info[];
     NSMutableDictionary *sound_cache;
 }
 
+@property (nonatomic, readonly) NSFont *font, *bold_font;
+
 + (AquaChat *) sharedAquaChat;
 
 + (void) forEachSessionOnServer:(struct server *) serv
@@ -126,8 +128,6 @@ extern EventInfo text_event_info[];
                 performSelector:(SEL) sel
 		     withObject:(id) obj;
 
-- (NSFont *) getFont;
-- (NSFont *) getBoldFont;
 - (ColorPalette *) getPalette;
 - (void) setPalette:(ColorPalette *) palette;
 - (void) prefsChanged;

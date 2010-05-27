@@ -42,10 +42,10 @@ extern "C" {
 - (void) keyDown:(NSEvent *) event 
 { 
     unichar key = [[event charactersIgnoringModifiers] characterAtIndex:0]; 
-    unsigned int flags = [event modifierFlags] & NSDeviceIndependentModifierFlagsMask; 
+    NSUInteger flags = [event modifierFlags] & NSDeviceIndependentModifierFlagsMask; 
     if (key == NSDeleteCharacter && flags == 0 && [self selectedRow] != -1) 
     { 
-        [[self delegate] tableViewRemoveRows:self];
+        [(LogViewer *)[self delegate] tableViewRemoveRows:self];
     }
     else
     { 

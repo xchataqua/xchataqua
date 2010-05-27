@@ -13,7 +13,7 @@
     {
         NSString *lib_name = (NSString *) [dirs objectAtIndex:i];
         NSString *dir_name = [NSString stringWithFormat:@"%@/Sounds", lib_name];
-        NSArray *files = [[NSFileManager defaultManager] directoryContentsAtPath:dir_name];
+        NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:dir_name error:NULL];
         
         for (unsigned j = 0; j < [files count]; j ++)
         {

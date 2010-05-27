@@ -25,7 +25,11 @@
 
 #define SGOutlineTabs ((NSTabViewType) 99)
 
+@protocol SGTabViewDelegate;
 @interface SGTabView : SGBoxView
+#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
+<NSOutlineViewDelegate,NSOutlineViewDataSource>
+#endif
 {
   @public	// TODO - fix this
     SGWrapView		*hbox;
@@ -34,9 +38,9 @@
     SGTabViewItem	*selected_tab;
     NSMutableArray	*tabs;
 	NSMutableArray	*groups;	// For outline view only
-    id				delegate;
+    id<NSObject,SGTabViewDelegate> delegate;
     NSTabViewType	tabViewType;
-    bool			hide_close;
+    bool			hideClose;
 }
 
 // NSTabView emulation methods
@@ -53,7 +57,7 @@
 - (void) setDelegate:(id) anObject;
 - (void) setTabViewType:(NSTabViewType) tabViewType;
 - (NSInteger) numberOfTabViewItems;
-- (int) indexOfTabViewItem:(SGTabViewItem *) tabViewItem;
+- (NSInteger) indexOfTabViewItem:(SGTabViewItem *) tabViewItem;
 
 // SGTabView only methods
 - (void) addTabViewItem:(SGTabViewItem *) tabViewItem toGroup:(int) group;
@@ -64,7 +68,7 @@
 
 @end
 
-@interface NSObject (SGTabViewDelegate)
+@protocol SGTabViewDelegate
 - (void) tabWantsToClose:(SGTabViewItem *) item;
 - (void) tabView:(SGTabView *)tabView didSelectTabViewItem:(SGTabViewItem *)tabViewItem;
 - (void) tabViewDidResizeOutlne:(int) width;
@@ -78,7 +82,7 @@
 {
   @public	// TODO - fix this
     SGTabViewButton *button;
-	NSColor		*color;
+	NSColor		*titleColor;
 	NSString	*label;
     NSView      *view;
     SGTabView   *parent;
@@ -87,10 +91,11 @@
 	NSMenu		*ctxMenu;
 }
 
+@property (nonatomic,retain,setter=setTitleColor:) NSColor *titleColor;
+
 - (id) initWithIdentifier:(id) identifier;
 - (void) setLabel:(NSString *) label;
 - (NSString *) label;
-- (void) setTitleColor:(NSColor *) c;
 - (NSColor *) titleColor;
 - (void) setView:(NSView *) view;
 - (id) view;

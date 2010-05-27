@@ -20,6 +20,9 @@
 #import "TabOrWindowView.h"
 
 @interface AddNotifyWindow : NSPanel
+#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
+<NSWindowDelegate>
+#endif
 {
 	NSPanel     * add_notify_window;
 	NSTextField * add_notify_nick;
@@ -30,7 +33,10 @@
 
 /****************************************************************************/
 
-@interface NotifyListWin : SGSelfPtr 
+@interface NotifyListWin : SGSelfPtr
+#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
+<NSTableViewDataSource>
+#endif
 {
     NSTableView		*notify_list_table;
     TabOrWindowView	*notify_list_view;

@@ -24,6 +24,9 @@
 @class MySplitView;
 
 @interface ChatWindow : NSObject
+#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
+<NSTextViewDelegate,NSTextFieldDelegate,NSTableViewDataSource,NSTableViewDelegate,NSSplitViewDelegate>
+#endif
 {
     TabOrWindowView	*chat_view;
     XAChatText	*chat_text;
@@ -64,9 +67,9 @@
     NSMenuItem * userlist_menu;
     User * userlist_menu_curuser;
 /* CL */
-	float maxNickWidth;
-	float maxHostWidth;
-	float maxRowHeight;
+	CGFloat maxNickWidth;
+	CGFloat maxHostWidth;
+	CGFloat maxRowHeight;
 /* CL end */
     
 	int		circular_completion_idx;

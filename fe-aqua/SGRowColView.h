@@ -27,7 +27,7 @@
     bool shrinkv;
 }
 
-- (void)setCols:(int)cols rows:(int)rows;		// rows = 0 means dynamic rows 
+- (void)setCols:(NSInteger)cols rows:(NSInteger)rows;		// rows = 0 means dynamic rows 
 - (void)setShrinkHoriz:(bool)shrinkh vert:(bool)shrinkv;
 
 @end
