@@ -20,7 +20,9 @@
 #include <CoreFoundation/CoreFoundation.h>
 #import "Cocoa/Cocoa.h"
 #import "SystemVersion.h"
+#ifdef __cplusplus
 extern "C" {
+#endif
 #include "xchat.h"
 #include "outbound.h"
 #include "xchatc.h"
@@ -29,7 +31,9 @@ typedef struct session xchat_context;
 #include "xchat-plugin.h"
 #include "plugin.h"
 #include <dirent.h>
+#ifdef __cplusplus
 }
+#endif
 static xchat_plugin *ph;
 
 static void bundle_loader_load_bundle( char * word[], char * word_eol[])
@@ -91,7 +95,7 @@ void bundle_loader_auto_load(int pass)
     dir = opendir([plugins_dir UTF8String]);
     if(!dir)
         return;
-    for ( dirent *de=readdir(dir); de!=NULL; de=readdir(dir)) {
+    for ( struct dirent *de=readdir(dir); de!=NULL; de=readdir(dir)) {
         if((de->d_namlen < 3 && de->d_name[0] == '.') || (de->d_namlen == 2 && de->d_name[1] == 0))
             continue;
         
