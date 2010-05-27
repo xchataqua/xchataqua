@@ -23,7 +23,7 @@
 */
 
 #import <Cocoa/Cocoa.h>
-#include <Carbon/Carbon.h>
+#import <Carbon/Carbon.h>
 
 #define CLLevelIndicatorFlat	0xFFFF
 

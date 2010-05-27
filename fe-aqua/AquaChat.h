@@ -16,13 +16,16 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 /* AquaChat */
 
-#import <AppKit/AppKit.h>
 #include <glib/gslist.h>
 
+#ifdef __cplusplus
 extern "C" {
+#endif
 #include "../common/xchat.h"
 #include "../common/fe.h"
+#ifdef __cplusplus
 }
+#endif
 
 #import <Growl/GrowlApplicationBridge.h>
 
@@ -48,25 +51,28 @@ extern "C" {
 
 struct session;
 
+typedef
 struct session_gui
 {
     ChatWindow     	*cw;
     BanListWin		*ban_list;
-};
+} session_gui;
  
+typedef
 struct server_gui
 {
     ChannelListWin	*clc;
     RawLogWin		*rawlog;
     int				tab_group;
-};
+} server_gui;
 
+typedef
 struct EventInfo
 {
 	int	growl;
 	int show;
 	int bounce;
-};
+} EventInfo;
 
 extern EventInfo text_event_info[];
 
