@@ -2,7 +2,7 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1050</int>
-		<string key="IBDocument.SystemVersion">10D573</string>
+		<string key="IBDocument.SystemVersion">10D2094</string>
 		<string key="IBDocument.InterfaceBuilderVersion">762</string>
 		<string key="IBDocument.AppKitVersion">1038.29</string>
 		<string key="IBDocument.HIToolboxVersion">460.00</string>
@@ -143,7 +143,7 @@
 												<object class="NSTableHeaderCell" key="NSHeaderCell">
 													<int key="NSCellFlags">75628096</int>
 													<int key="NSCellFlags2">2048</int>
-													<string key="NSContents">ਚੈਨਲ</string>
+													<string key="NSContents">Channel</string>
 													<reference key="NSSupport" ref="26"/>
 													<object class="NSColor" key="NSBackgroundColor" id="17712153">
 														<int key="NSColorSpace">6</int>
@@ -190,7 +190,7 @@
 												<object class="NSTableHeaderCell" key="NSHeaderCell">
 													<int key="NSCellFlags">75628096</int>
 													<int key="NSCellFlags2">2048</int>
-													<string key="NSContents">ਉਪਭੋਗੀ</string>
+													<string key="NSContents">Users</string>
 													<reference key="NSSupport" ref="26"/>
 													<reference key="NSBackgroundColor" ref="17712153"/>
 													<reference key="NSTextColor" ref="391022412"/>
@@ -215,7 +215,7 @@
 												<object class="NSTableHeaderCell" key="NSHeaderCell">
 													<int key="NSCellFlags">75628096</int>
 													<int key="NSCellFlags2">2048</int>
-													<string key="NSContents">ਵਿਸ਼ਾ</string>
+													<string key="NSContents">Topic</string>
 													<reference key="NSSupport" ref="26"/>
 													<reference key="NSBackgroundColor" ref="17712153"/>
 													<reference key="NSTextColor" ref="391022412"/>
@@ -328,7 +328,7 @@
 										<object class="NSTextFieldCell" key="NSCell" id="1007952725">
 											<int key="NSCellFlags">67239424</int>
 											<int key="NSCellFlags2">71303168</int>
-											<string key="NSContents">ਘੱਟੋ-ਘੱਟ ਉਪਭੋਗੀ:</string>
+											<string key="NSContents">Minimum Users:</string>
 											<reference key="NSSupport" ref="26"/>
 											<reference key="NSControlView" ref="847917005"/>
 											<reference key="NSBackgroundColor" ref="69134198"/>
@@ -344,7 +344,7 @@
 										<object class="NSTextFieldCell" key="NSCell" id="57761602">
 											<int key="NSCellFlags">67239424</int>
 											<int key="NSCellFlags2">71303168</int>
-											<string key="NSContents">ਵੱਧੋ-ਵੱਧ ਉਪਭੋਗੀ:</string>
+											<string key="NSContents">Maximum Users:</string>
 											<reference key="NSSupport" ref="26"/>
 											<reference key="NSControlView" ref="537337516"/>
 											<reference key="NSBackgroundColor" ref="69134198"/>
@@ -404,15 +404,11 @@
 										<object class="NSButtonCell" key="NSCell" id="134638487">
 											<int key="NSCellFlags">-2080244224</int>
 											<int key="NSCellFlags2">131072</int>
-											<string key="NSContents">ਚੈਨਲ</string>
+											<string key="NSContents">Channel</string>
 											<reference key="NSSupport" ref="26"/>
 											<reference key="NSControlView" ref="1013393904"/>
 											<int key="NSButtonFlags">1211912703</int>
 											<int key="NSButtonFlags2">2</int>
-											<object class="NSCustomResource" key="NSNormalImage" id="2128608">
-												<string key="NSClassName">NSImage</string>
-												<string key="NSResourceName">NSSwitch</string>
-											</object>
 											<object class="NSButtonImageSource" key="NSAlternateImage" id="653546454">
 												<string key="NSImageName">NSSwitch</string>
 											</object>
@@ -431,12 +427,15 @@
 										<object class="NSButtonCell" key="NSCell" id="148550478">
 											<int key="NSCellFlags">67239424</int>
 											<int key="NSCellFlags2">131072</int>
-											<string key="NSContents">ਵਿਸ਼ਾ</string>
+											<string key="NSContents">Topic</string>
 											<reference key="NSSupport" ref="26"/>
 											<reference key="NSControlView" ref="606716204"/>
 											<int key="NSButtonFlags">1211912703</int>
 											<int key="NSButtonFlags2">2</int>
-											<reference key="NSNormalImage" ref="2128608"/>
+											<object class="NSCustomResource" key="NSNormalImage">
+												<string key="NSClassName">NSImage</string>
+												<string key="NSResourceName">NSSwitch</string>
+											</object>
 											<reference key="NSAlternateImage" ref="653546454"/>
 											<string key="NSAlternateContents"/>
 											<string key="NSKeyEquivalent"/>
@@ -559,7 +558,9 @@
 										<double key="NSSize">13</double>
 										<int key="NSfFlags">16</int>
 									</object>
-									<string key="NSAlternateContents"/>
+									<object class="NSMutableString" key="NSAlternateContents">
+										<characters key="NS.bytes"/>
+									</object>
 									<object class="NSMutableString" key="NSKeyEquivalent">
 										<characters key="NS.bytes"/>
 									</object>
@@ -576,13 +577,15 @@
 								<object class="NSButtonCell" key="NSCell" id="769232357">
 									<int key="NSCellFlags">67239424</int>
 									<int key="NSCellFlags2">137887744</int>
-									<string key="NSContents">ਚੈਨਲ ਵਿੱਚ ਦਾਖਲਲ</string>
+									<string key="NSContents">Join Channel</string>
 									<reference key="NSSupport" ref="41763331"/>
 									<reference key="NSControlView" ref="927495107"/>
 									<int key="NSButtonFlags">-2038284033</int>
 									<int key="NSButtonFlags2">1</int>
 									<reference key="NSAlternateImage" ref="262660360"/>
-									<string key="NSAlternateContents"/>
+									<object class="NSMutableString" key="NSAlternateContents">
+										<characters key="NS.bytes"/>
+									</object>
 									<object class="NSMutableString" key="NSKeyEquivalent">
 										<characters key="NS.bytes"/>
 									</object>
@@ -605,7 +608,9 @@
 									<int key="NSButtonFlags">-2038284033</int>
 									<int key="NSButtonFlags2">1</int>
 									<reference key="NSAlternateImage" ref="262660360"/>
-									<string key="NSAlternateContents"/>
+									<object class="NSMutableString" key="NSAlternateContents">
+										<characters key="NS.bytes"/>
+									</object>
 									<object class="NSMutableString" key="NSKeyEquivalent">
 										<characters key="NS.bytes"/>
 									</object>
