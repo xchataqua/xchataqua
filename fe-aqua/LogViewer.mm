@@ -190,7 +190,7 @@ extern "C" {
     NSFileManager *fm = [NSFileManager defaultManager];
     NSDirectoryEnumerator *enumerator = [fm enumeratorAtPath:dir];
     
-    for (NSString *fname; fname = [enumerator nextObject]; )
+    for (NSString *fname = [enumerator nextObject]; fname != nil; fname = [enumerator nextObject])
     {
 		if ([fname compare:@".DS_Store"] == NSOrderedSame)
 			continue;
@@ -222,11 +222,10 @@ extern "C" {
 
 - (void) do_reveal:(id) sender
 {
-    unsigned row = [log_list selectedRow];
-    if (row < 0)
-        return;
-    OneLog *log = [my_items objectAtIndex:row];
-    [log reveal];
+	NSInteger row = [log_list selectedRow];
+	if (row < 0) return;
+	OneLog *log = [my_items objectAtIndex:row];
+	[log reveal];
 }
 
 - (void) do_edit:(id) sender

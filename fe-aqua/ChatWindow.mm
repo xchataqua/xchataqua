@@ -1338,13 +1338,12 @@ static NSImage *empty_image;
 - (void) recalculateUserTableLayout
 {
 	NSTableColumn *column;
-	NSEnumerator *enumerator = [userlist objectEnumerator];
-	OneUser * u;
 	maxNickWidth = 0.0;
 	maxHostWidth = 0.0;
 	maxRowHeight = 16.0;
 
-	while (u = (OneUser *) [enumerator nextObject]) {
+	NSEnumerator *enumerator = [userlist objectEnumerator];
+	for ( OneUser * u = [enumerator nextObject]; u != nil; u = [enumerator nextObject]) {
 		if (u->nickSize.width > maxNickWidth) maxNickWidth = u->nickSize.width;
 		if ((prefs.showhostname_in_userlist) && (u->hostSize.width > maxHostWidth)) maxHostWidth = u->hostSize.width;
 		if (u->nickSize.height > maxRowHeight) maxRowHeight = u->nickSize.height;
@@ -1923,7 +1922,7 @@ static NSImage *empty_image;
 static int ncommon (const char *a, const char *b)
 {
     int n;
-    for (n = 0; *a && *b && rfc_tolower (*a++) == rfc_tolower (*b++); n ++);
+    for (n = 0; *a && *b && rfc_tolower (*a++) == rfc_tolower (*b++); n ++) ;
     return n;
 }
 
@@ -2037,7 +2036,7 @@ static int find_common (NSArray *list)
     //  else if the word starts with '#', do channel completion
     //  else just do nick completion
 		
-	long insertionPoint;
+	NSUInteger insertionPoint;
 	if ([view hasMarkedText])
 	{
 		// If we have a marked range, remove it now and let
@@ -2115,14 +2114,14 @@ static int find_common (NSArray *list)
 	
 	match_list = [match_list sortedArrayUsingSelector:@selector(compare:)];
 
-    int n = find_common (match_list);
+    NSUInteger n = find_common (match_list);
 
 	// If there's only 1 possible match, then we're done.
 	// If were doing the old style (bash style), and the common chars
 	// exceed what we typed, we'll complete up to the ambiguity.
     if ([match_list count] == 1 || (!prefs.scrolling_completion && n > range.length))
     {
-    	id first = [[match_list objectAtIndex:0] stringValue];
+    	NSString *first = [[match_list objectAtIndex:0] stringValue];
 		NSMutableString *r = [NSMutableString stringWithString:[first substringToIndex:n]];
 		if ([match_list count] == 1)
 		{

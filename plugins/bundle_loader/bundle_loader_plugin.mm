@@ -87,12 +87,11 @@ void bundle_loader_auto_load(int pass)
 {
     NSString * plugins_dir = [[NSBundle mainBundle] builtInPlugInsPath];
     DIR * dir;
-    dirent * de;
     
     dir = opendir([plugins_dir UTF8String]);
     if(!dir)
         return;
-    while(de=readdir(dir)) {
+    for ( dirent *de=readdir(dir); de!=NULL; de=readdir(dir)) {
         if((de->d_namlen < 3 && de->d_name[0] == '.') || (de->d_namlen == 2 && de->d_name[1] == 0))
             continue;
         

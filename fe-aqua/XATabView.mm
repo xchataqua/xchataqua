@@ -38,7 +38,7 @@
 
     NSArray *items = [self tabViewItems];
     
-    for (unsigned int i = 0; i < [items count]; i ++)
+    for (NSUInteger i = 0; i < [items count]; i++ )
     {
         XATabViewItem *item = [items objectAtIndex:i];
         
@@ -130,8 +130,7 @@ static NSMutableDictionary *label_dict;
     return sz;
 }
 
-- (void) drawLabel:(BOOL) shouldTruncateLabel
-            inRect:(NSRect) tabRect
+- (void) drawLabel:(BOOL) shouldTruncateLabel inRect:(NSRect) tabRect
 {
     close_rect.origin = tabRect.origin;
     
@@ -150,8 +149,7 @@ static NSMutableDictionary *label_dict;
     p.y = tabRect.origin.y;    
     p.x += [close_image size].width + 5;
 
-    [label_dict setObject:color ? color : [NSColor blackColor]
-		 forKey:NSForegroundColorAttributeName];
+    [label_dict setObject:(color?color:[NSColor blackColor]) forKey:NSForegroundColorAttributeName];
 
     [[self label] drawAtPoint:p withAttributes:label_dict];
 }
