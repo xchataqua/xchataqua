@@ -21,6 +21,14 @@
 
 @implementation XATabView
 
+- (id<XATabViewDelegate>) delegate {
+	return (id<XATabViewDelegate>)[super delegate];
+}
+
+- (void) setDelegate:(id<XATabViewDelegate>)delegate {
+	[super setDelegate:(id)delegate];
+}
+
 - (id) initWithFrame:(NSRect) frameRect
 {
     [super initWithFrame:frameRect];
@@ -121,8 +129,8 @@ static NSMutableDictionary *label_dict;
 
 - (NSSize) sizeOfLabel:(BOOL) shouldTruncateLabel
 {
-    float width = [[self label] sizeWithAttributes:label_dict].width;
-    float height = [@"X" sizeWithAttributes:label_dict].height;
+    CGFloat width = [[self label] sizeWithAttributes:label_dict].width;
+    CGFloat height = [@"X" sizeWithAttributes:label_dict].height;
     width += [close_image size].width + 3;
     if (height < [close_image size].height)
         height = [close_image size].height;

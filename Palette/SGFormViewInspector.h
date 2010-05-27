@@ -16,11 +16,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
 #import <Cocoa/Cocoa.h>
-#ifdef __MAC_OS_X_VERSION_10_5
+#ifdef MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_5
 #import <InterfaceBuilderKit/InterfaceBuilderKit.h>
 #else
 #import <InterfaceBuilder/InterfaceBuilder.h>
 #endif
+
+#import "SGFormView.h"
 
 @interface SGFormViewInspector : IBInspector
 {
@@ -38,9 +40,9 @@
     IBOutlet NSTextField *topOffsetText;
     IBOutlet NSPopUpButton *topRelativeMenu;
 	
-	NSPopUpButton *connectionMenus [4];
-	NSPopUpButton *relativeMenus [4];
-	NSTextField   *offsetTexts [4];
+	NSPopUpButton *connectionMenus [SGFormViewEdgeCount];
+	NSPopUpButton *relativeMenus [SGFormViewEdgeCount];
+	NSTextField   *offsetTexts [SGFormViewEdgeCount];
 }
 - (IBAction)doConstrain:(id)sender;
 - (IBAction)doIdentifier:(id)sender;

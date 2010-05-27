@@ -39,6 +39,9 @@
 @end
 
 @interface DCCListController : NSResponder
+#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
+<NSTableViewDataSource,NSTableViewDelegate>
+#endif
 {
 	IBOutlet NSTableView		*item_list;
 	IBOutlet TabOrWindowView	*dcc_list_view;

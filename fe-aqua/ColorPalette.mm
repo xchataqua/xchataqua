@@ -99,55 +99,52 @@ static int color_remap [] =
 
 - (void) load
 {
-    // Initialize defaults
+	// Initialize defaults
 
-    for (int i = 0; i < cn; i ++)
-    {
-		[colors [i] release];
-        color_def *def = &def_color_vals [i];
-        colors [i] = [[NSColor colorWithDeviceRed:(float) def->r / 0xffff
-					    green:(float) def->g / 0xffff
-					     blue:(float) def->b / 0xffff
-					    alpha:1] retain];
+	for (NSUInteger i = 0; i < cn; i ++)
+	{
+		[colors[i] release];
+		color_def *def = &def_color_vals[i];
+		colors[i] = [[NSColor colorWithDeviceRed:(CGFloat)def->r / 0xffff
+										   green:(CGFloat)def->g / 0xffff
+											blue:(CGFloat)def->b / 0xffff
+										   alpha:1] retain];
     }
 
     // Load saved value
 
-    NSString *fn = [NSString stringWithFormat:@"%s/palette.conf", get_xdir_fs ()];
+    NSString *fn = [NSString stringWithFormat:@"%s/palette.conf", get_xdir_fs()];
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:fn];
 
-    if (!dict)
-    	return;
+    if (!dict) return;
 
 	// If there are only 24 colors, then we'll need to move things around
 	// to map into the new color palette.
 	// 24 * 4 = 96
-	bool remap = [dict count] == 96;
+	bool remap = [dict count] == 24 * 4;
 	
-    for (int i = 0; i < cn; i++)
+    for (NSUInteger i = 0; i < cn; i++)
     {
-		int x = remap ? color_remap [i] : i;
+		NSUInteger x = remap ? color_remap [i] : i;
 
 		id rid = [dict objectForKey:[NSString stringWithFormat:@"color_%d_red", x]];
 		id gid = [dict objectForKey:[NSString stringWithFormat:@"color_%d_green", x]];
 		id bid = [dict objectForKey:[NSString stringWithFormat:@"color_%d_blue", x]];
 		id aid = [dict objectForKey:[NSString stringWithFormat:@"color_%d_alpha", x]];
 			
-		if (!rid || !gid || !bid || !aid)
-			continue;
+		if (!rid || !gid || !bid || !aid) continue;
 				
-		float r = [rid floatValue];
-		float g = [gid floatValue];
-		float b = [bid floatValue];
-		float a = [aid floatValue];
+		CGFloat r = [rid floatValue];
+		CGFloat g = [gid floatValue];
+		CGFloat b = [bid floatValue];
+		CGFloat a = [aid floatValue];
 
-		NSColor *c = [[NSColor colorWithDeviceRed:r green:g blue:b
-							alpha:a] retain];
+		NSColor *color = [[NSColor colorWithDeviceRed:r green:g blue:b alpha:a] retain];
 
-		if (c)
+		if (color)
 		{			
-			[colors [i] release];
-			colors [i] = [c retain];
+			[colors[i] release];
+			colors[i] = [color retain]; // isn't this duplicated retain?
 		}
     }
 }
@@ -155,19 +152,15 @@ static int color_remap [] =
 - (void) save
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:cn];
-    for (int i = 0; i < cn; i++)
+    for (NSUInteger i = 0; i < cn; i++)
     {
         NSColor *color = colors[i];
         NSColor *c = [color colorUsingColorSpaceName:NSDeviceRGBColorSpace];
         
-    	[dict setObject:[NSNumber numberWithFloat:[c redComponent]]
-		 forKey:[NSString stringWithFormat:@"color_%d_red", i]];
-    	[dict setObject:[NSNumber numberWithFloat:[c greenComponent]]
-		 forKey:[NSString stringWithFormat:@"color_%d_green", i]];
-    	[dict setObject:[NSNumber numberWithFloat:[c blueComponent]]
-		 forKey:[NSString stringWithFormat:@"color_%d_blue", i]];
-    	[dict setObject:[NSNumber numberWithFloat:[c alphaComponent]]
-		 forKey:[NSString stringWithFormat:@"color_%d_alpha", i]];
+    	[dict setObject:[NSNumber numberWithFloat:[c redComponent]]   forKey:[NSString stringWithFormat:@"color_%d_red",   i]];
+    	[dict setObject:[NSNumber numberWithFloat:[c greenComponent]] forKey:[NSString stringWithFormat:@"color_%d_green", i]];
+    	[dict setObject:[NSNumber numberWithFloat:[c blueComponent]]  forKey:[NSString stringWithFormat:@"color_%d_blue",  i]];
+    	[dict setObject:[NSNumber numberWithFloat:[c alphaComponent]] forKey:[NSString stringWithFormat:@"color_%d_alpha", i]];
     }
     NSString *fn = [NSString stringWithFormat:@"%s/palette.conf", get_xdir_fs ()];
     [dict writeToFile:fn atomically:true];
@@ -175,44 +168,44 @@ static int color_remap [] =
 
 - (id) init
 {
-    colors = (NSColor **) malloc (cn * sizeof(NSColor *));
+	colors = (NSColor **) malloc (cn * sizeof(NSColor *));
 
-    for (int i = 0; i < cn; i++)
-    	colors [i] = nil;
-   
-    return self;
+	for (NSUInteger i = 0; i < cn; i++)
+		colors[i] = nil;
+
+	return self;
 }
 
 - (id) clone
 {
-    ColorPalette *copy = [[ColorPalette alloc] init];
-    for (int i = 0; i < cn; i++)
-    	copy->colors [i] = [colors [i] retain];
-    return copy;
+	ColorPalette *copy = [[ColorPalette alloc] init];
+	for (NSUInteger i = 0; i < cn; i++)
+		copy->colors[i] = [colors[i] retain];
+	return copy;
 }
 
 - (void) dealloc
 {
-    for (int i = 0; i < cn; i ++)
-        [colors [i] release];
-    free (colors);
+	for (NSUInteger i = 0; i < cn; i ++)
+		[colors[i] release];
+	free (colors);
 	[super dealloc];
 }
 
 - (NSColor *) getColor:(int) color
 {
-    return colors [color % cn];
+	return colors[color % cn];
 }
 
-- (int) nColors
+- (NSUInteger) numberOfColors
 {
-    return cn;
+	return cn;
 }
 
-- (void) setColor:(int) n color:(NSColor *) color
+- (void) setColor:(NSUInteger) n color:(NSColor *) color
 {
-    [colors [n] release];
-    colors [n] = [color retain];
+	[colors [n] release];
+	colors [n] = [color retain];
 }
 
 @end

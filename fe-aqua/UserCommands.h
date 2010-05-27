@@ -18,6 +18,9 @@
 #import <Cocoa/Cocoa.h>
 
 @interface UserCommands : NSObject
+#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
+<NSTableViewDelegate>
+#endif
 {
     NSTableView  *cmd_list;
     NSTextView   *cmd_text;

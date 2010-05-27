@@ -1,7 +1,7 @@
 /* SGVBoxViewInspector */
 
 #import <Cocoa/Cocoa.h>
-#ifdef __MAC_OS_X_VERSION_10_5
+#ifdef MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_5
 # import <InterfaceBuilderKit/InterfaceBuilderKit.h>
 #else
 # import <InterfaceBuilder/InterfaceBuilder.h>

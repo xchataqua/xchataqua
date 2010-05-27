@@ -25,21 +25,21 @@
 {
     [super initWithFrame:frameRect];
     
-    [self setOrientation:SGBoxVertical];
-    [self setVJustification:SGVBoxTopVJustification];
-    [self setDefaultHJustification:SGVBoxCenterHJustification];
+    [self setOrientation:SGBoxOrientationVertical];
+    [self setVJustification:SGVBoxVJustificationTop];
+    [self setDefaultHJustification:SGVBoxHJustificationCenter];
     
     return self;
 }
 
-- (void) setVJustification:(short) new_just
+- (void) setVJustification:(SGVBoxVJustification) new_just
 {
-    [self setMajorJustification:new_just];
+    [self setMajorJustification:(SGBoxMajorJustification)new_just];
 }
 
-- (void) setDefaultHJustification:(short) new_just
+- (void) setDefaultHJustification:(SGVBoxHJustification) new_just
 {
-    [self setMinorDefaultJustification:new_just];
+    [self setMinorDefaultJustification:(SGBoxMinorJustification)new_just];
 }
 
 - (short) hJustification
@@ -47,9 +47,9 @@
     return [self minorJustification];
 }
 
-- (void) setHJustificationFor:(NSView *) view to:(short) new_just
+- (void) setHJustificationFor:(NSView *) view to:(SGVBoxHJustification) new_just
 {
-    [self setMinorJustificationFor:view to:new_just];
+    [self setMinorJustificationFor:view to:(SGBoxMinorJustification)new_just];
 }
 
 - (void) setHMargin:(short) v

@@ -91,7 +91,7 @@ static NSImage *getUnlockImage()
 		NSTextView *resp = (NSTextView *) [win firstResponder];
 		if ([resp isKindOfClass:[NSTextView class]] &&
 			[win fieldEditor:NO forObject:nil] &&
-			[resp delegate] == [self controlView])
+			(NSView *)[resp delegate] == [self controlView])
 		{
 			[win selectKeyViewFollowingView:[self controlView]];
 		}
@@ -250,8 +250,7 @@ static NSImage *getUnlockImage()
 	[super textDidBeginEditing:aNotification];
 }
 
-- (BOOL) textView:(NSTextView *) textView 
-         doCommandBySelector:(SEL) command
+- (BOOL) textView:(NSTextView *) textView doCommandBySelector:(SEL) command
 {
 	// If the user presses return, we'll don't want the prev value
 	if (command == @selector (insertNewline:))
@@ -260,7 +259,7 @@ static NSImage *getUnlockImage()
 		prevValue = nil;
 	}
 	
-    return [super textView:textView doCommandBySelector:command];
+    return NO; // why this should be NO ?
 }
 
 - (BOOL) textShouldEndEditing:(NSText *) aTextObject
@@ -268,29 +267,26 @@ static NSImage *getUnlockImage()
 	if (!prevValue || [[self objectValue] isEqual:prevValue])
 		return YES;
 		
-	int ret =
-		NSRunAlertPanel(@"Confirm", @"You have uncommited changes.  Do you want to save the changes?",
-		@"Cancel", @"Yes", @"No", nil);
+	NSInteger ret = NSRunAlertPanel(NSLocalizedStringFromTable(@"Confirm",@"sgpallete",@""),
+									NSLocalizedStringFromTable(@"You have uncommited changes.  Do you want to save the changes?",@"sgpallete",@""),
+									NSLocalizedStringFromTable(@"Cancel",@"sgpallete",@""), NSLocalizedStringFromTable(@"Yes",@"sgpallete",@""), NSLocalizedStringFromTable(@"No",@"sgpallete",@""), nil);
 
 	// If he doesn't want to save his changes, we need to put the old value in place, and then
 	// let whatever key press action take effect (tab vs shift-tab vs mouse press, etc..).
-	if (ret == -1)			// No
-	{
-		// Can't use abortEditing.. it seems to break the notifiction action.
-		// i.e. Tab key doesn't move the next responder.
-		//[self abortEditing];
-		[self setObjectValue:prevValue];
-		return YES;
+	switch (ret) {
+		case NSAlertOtherReturn: // No
+			// Can't use abortEditing.. it seems to break the notifiction action.
+			// i.e. Tab key doesn't move the next responder.
+			//[self abortEditing];
+			[self setObjectValue:prevValue];
+			return YES;
+		case NSAlertAlternateReturn: // YES
+			return YES;	
+		case NSAlertDefaultReturn: // Cancel
+		default:
+			[[self cell] setLocked:NO];
 	}
-	else if (ret == 0)		// Yes
-	{
-		return YES;
-	}
-	else					// Cancel
-	{
-		[[self cell] setLocked:NO];
-		return NO;
-	}
+	return NO;
 }
 
 - (void) textDidEndEditing:(NSNotification *) notif
@@ -329,7 +325,7 @@ static NSImage *getUnlockImage()
 	
 	return ! ([resp isKindOfClass:[NSTextView class]] &&
 		      [[self window] fieldEditor:NO forObject:nil] &&
-		      [resp delegate] == self);
+		      (SGLockableTextField *)[resp delegate] == self);
 }
 
 - (BOOL) becomeFirstResponder
