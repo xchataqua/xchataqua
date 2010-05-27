@@ -16,7 +16,6 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
  */
 
-#import <Cocoa/Cocoa.h>
 #import "XAChatText.h"
 #import "TabOrWindowView.h"
 #import "SG.h"
@@ -65,7 +64,7 @@
     
     NSMutableArray *userlist;
     NSMenuItem * userlist_menu;
-    User * userlist_menu_curuser;
+    struct User * userlist_menu_curuser;
 /* CL */
 	CGFloat maxNickWidth;
 	CGFloat maxHostWidth;

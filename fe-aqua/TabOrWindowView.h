@@ -17,25 +17,16 @@
 
 #import <Cocoa/Cocoa.h>
 
-#if 0
-#define TABVIEW MyTabView
-#define TABVIEWITEM MyTabViewItem
-#import "MyTabView.h"
-#else
-#define TABVIEW SGTabView
-#define TABVIEWITEM SGTabViewItem
-#import "SGTabView.h"
-#endif
+#import "SG.h"
 
-@class TABVIEWITEM;
-
+@class SGTabViewItem;
 @interface TabOrWindowView : NSView
 #if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
 <NSWindowDelegate>
 #endif
 {
     NSWindow		*window;
-    TABVIEWITEM		*this_item;
+    SGTabViewItem	*this_item;
     id				delegate;
     NSString		*title;
     NSString		*tab_title;

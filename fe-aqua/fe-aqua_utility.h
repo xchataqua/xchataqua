@@ -15,11 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#include <list>
-
-#import <Cocoa/Cocoa.h>
 #import <SG.h>
-
 
 typedef int (*socket_callback) (void *source, int condition, void *user_data);
 
@@ -30,10 +26,12 @@ typedef int (*socket_callback) (void *source, int condition, void *user_data);
     SGFileDescriptor *ef;
     
     socket_callback  func;
-    void	     *data;
+    void			*data;
     
-    int		     tag;
+    int		tag;
 }
+
+@property (nonatomic,readonly) int tag;
 
 + (id) socketFromFD:(int) sok 
               flags:(int) the_flags 
@@ -41,11 +39,10 @@ typedef int (*socket_callback) (void *source, int condition, void *user_data);
                data:(void *) the_data;
 
 + (id)findTagged:(int)atag;
-
 - (void)disable;
-- (int)getTag;
 
 @end
+
 
 /////////////////////////////////////////////////////////////////////////////
 
@@ -66,10 +63,11 @@ typedef int (*timer_callback) (void *user_data);
     NSTimer *timer;
 }
 
+@property (nonatomic, readonly) int tag;
+
 + (id)timerFromInterval:(int)the_interval callback:(timer_callback)the_callback
 			   userdata:(void *)the_userdata;
 + (void)removeTimerWithTag:(int)atag;
-- (int)getTag;
 - (void)schedule;
 - (void)invalidate;
 

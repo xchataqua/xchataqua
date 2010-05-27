@@ -24,11 +24,15 @@
 
 #import <Cocoa/Cocoa.h>
 
+#ifdef __cplusplus
 extern "C" {
+#endif
 #include "../common/xchat.h"
 #include "../common/userlist.h"	/* why don't these headers include their dependencies? */
 #include "../common/fe.h"	/* why is there a typedef menu_entry, but no typedef User? */
+#ifdef __cplusplus
 }
+#endif
 
 @interface MenuMaker : NSObject {
 	CGFloat maxUserInfoLabelWidth;

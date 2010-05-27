@@ -87,7 +87,7 @@ struct menu_pref
 
 //////////////////////////////////////////////////////////////////////
 
-static menu_pref menu_prefs [3];
+static struct menu_pref menu_prefs [3];
 static AquaChat *aquachat;
 static NSImage  *my_image;
 static NSImage  *alert_image;
@@ -121,7 +121,7 @@ EventInfo text_event_info[NUM_XP];
 
 - (void) setup_menu_prefs
 {
-    menu_pref tmp_prefs [] = 
+    struct menu_pref tmp_prefs [] = 
     {
         { invisible_menu, &prefs.invisible },
         { receive_notices_menu, &prefs.servernotice },
@@ -131,7 +131,7 @@ EventInfo text_event_info[NUM_XP];
     for (NSUInteger i = 0; i < sizeof(menu_prefs) / sizeof(menu_prefs[0]); i ++)
     {
 		menu_prefs [i] = tmp_prefs [i];
-        menu_pref *pref = &menu_prefs [i];
+        struct menu_pref *pref = &menu_prefs [i];
         [pref->menu setState:*pref->pref ? NSOnState : NSOffState];
         [pref->menu setTag:i];
     }
@@ -813,7 +813,7 @@ EventInfo text_event_info[NUM_XP];
 
 - (void) do_menu_toggle:(id) sender
 {
-    menu_pref *pref = &menu_prefs[[sender tag]];
+    struct menu_pref *pref = &menu_prefs[[sender tag]];
     *pref->pref = !*pref->pref;
     [sender setState:*pref->pref ? NSOnState : NSOffState];
 }
