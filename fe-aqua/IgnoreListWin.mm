@@ -211,9 +211,8 @@ extern "C" {
 {
     for (OneIgnore *ignoreItem in my_items)
     {
-        oneIgnore *item = (oneIgnore *) [my_items objectAtIndex:i];
-	if (rfc_casecmp (mask, item->ign->mask) == 0)
-	    return i;
+      if (rfc_casecmp (mask, ignoreItem->ign->mask) == 0)
+        return [my_items indexOfObject:ignoreItem];
     }
 
     return -1;

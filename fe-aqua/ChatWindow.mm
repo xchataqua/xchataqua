@@ -1450,7 +1450,9 @@ static NSImage *empty_image;
 			NSUInteger j = 0;
 			do {
 				if (sess->server->p_cmp (user->nick, names[j]) == 0) {
-					[userlist_table selectRow:i byExtendingSelection:YES];
+					[userlist_table
+           selectRowIndexes:[NSIndexSet indexSetWithIndex:i]
+           byExtendingSelection:YES];
 					if (scroll_to) [userlist_table scrollRowToVisible:i];
 				}
 			} while (*names[++j]);
@@ -1544,7 +1546,7 @@ static NSImage *empty_image;
 		[userlist insertObject:u atIndex:row];
 		[u release];	//<--
 
-		int srow = [userlist_table selectedRow];
+		NSInteger srow = [userlist_table selectedRow];
 		if (i == srow) srow = row;
 		else {
 			if (i < srow) srow--;

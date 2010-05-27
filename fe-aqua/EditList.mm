@@ -188,12 +188,14 @@ extern "C" {
 
 - (void) do_up:(id) sender
 {
-    int row = [cmd_list selectedRow];
-    if (row < 1)
-		return;
-    [my_items exchangeObjectAtIndex:row withObjectAtIndex:row - 1];
-    [cmd_list reloadData];
-    [cmd_list selectRow:row - 1 byExtendingSelection:false];
+  NSInteger row = [cmd_list selectedRow];
+  if (row < 1)
+    return;
+  [my_items exchangeObjectAtIndex:row withObjectAtIndex:row - 1];
+  [cmd_list reloadData];
+  [cmd_list
+   selectRowIndexes:[NSIndexSet indexSetWithIndex:row - 1]
+   byExtendingSelection:NO];
 }
 
 ////////////
