@@ -175,10 +175,10 @@ static int color_remap [] =
 
 - (id) init
 {
-    colors = (NSColor **) malloc (cn * sizeof (colors [0]));
+    colors = (NSColor **) malloc (cn * sizeof(NSColor *));
 
     for (int i = 0; i < cn; i++)
-    	colors [i] = NULL;
+    	colors [i] = nil;
    
     return self;
 }

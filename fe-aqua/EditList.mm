@@ -64,15 +64,15 @@ extern "C" {
 
 @implementation EditList
 
-- (id) initWithList:(GSList **) the_slist
-           fileName:(NSString *) the_fname
+- (id) initWithList:(GSList **) the_slist 
+		   fileName:(NSString *) the_fname
               title:(NSString *) the_title
 {
     [super init];
      
     self->slist = the_slist;
-    self->fname = [the_fname copyWithZone:NULL];
-    self->title = [the_title copyWithZone:NULL];
+    self->fname = [the_fname copyWithZone:nil];
+    self->title = [the_title copyWithZone:nil];
     self->my_items = [[NSMutableArray arrayWithCapacity:0] retain];
     
     [NSBundle loadNibNamed:@"EditList" owner:self];
@@ -147,12 +147,13 @@ extern "C" {
 
 - (void) do_new:(id) sender
 {
-    one_item *item = [[one_item alloc] initWithName:"*NEW*"
-					        cmd:"EDIT ME"];
-    [my_items insertObject:item atIndex:0];
-    [cmd_list reloadData];
-    [cmd_list selectRow:0 byExtendingSelection:false];
-    [cmd_list editColumn:0 row:0 withEvent:NULL select:true];
+  one_item *item = [[one_item alloc] initWithName:"*NEW*" cmd:"EDIT ME"];
+  [my_items insertObject:item atIndex:0];
+  [cmd_list reloadData];
+  [cmd_list
+   selectRowIndexes:[NSIndexSet indexSetWithIndex:0]
+   byExtendingSelection:NO];
+  [cmd_list editColumn:0 row:0 withEvent:nil select:true];
 }
 
 - (void) do_save:(id) sender

@@ -38,20 +38,20 @@ static int input_seq = 1;
     
     thing->func = the_func;
     thing->data = the_data;
-    thing->rf = NULL;
-    thing->wf = NULL;
-    thing->ef = NULL;
+    thing->rf = nil;
+    thing->wf = nil;
+    thing->ef = nil;
     thing->tag = input_seq ++;
     
     if (the_flags & FIA_READ)
         thing->rf = [[SGFileDescriptor alloc] initWithFd:sok mode:SGFDRead
-												  target:thing selector:@selector (doit:) withObject:NULL];
+												  target:thing selector:@selector (doit:) withObject:nil];
     if (the_flags & FIA_WRITE)
         thing->wf = [[SGFileDescriptor alloc] initWithFd:sok mode:SGFDWrite
-												  target:thing selector:@selector (doit:) withObject:NULL];
+												  target:thing selector:@selector (doit:) withObject:nil];
     if (the_flags & FIA_EX)
         thing->ef = [[SGFileDescriptor alloc] initWithFd:sok mode:SGFDExcep
-												  target:thing selector:@selector (doit:) withObject:NULL];
+												  target:thing selector:@selector (doit:) withObject:nil];
     
     input_list.push_back (thing);
     
@@ -66,7 +66,7 @@ static int input_seq = 1;
         if ([athing getTag] == atag)
             return athing;
     }
-    return NULL;
+    return nil;
 }
 
 - (void)dealloc
@@ -119,7 +119,7 @@ static int timer_seq = 1;
     thing->callback = the_callback;
     thing->userdata = the_userdata;
     thing->tag = timer_seq ++;
-    thing->timer = NULL;
+    thing->timer = nil;
 	
     timer_list.push_back (thing);
     
@@ -159,7 +159,7 @@ static int timer_seq = 1;
     {
         [timer invalidate];
         [timer release];
-        timer = NULL;
+        timer = nil;
     }
 }
 
@@ -182,7 +182,7 @@ static int timer_seq = 1;
 {
     [timer invalidate];
     [timer release];
-    timer = NULL;
+    timer = nil;
 	
     [self retain];	// Retain ourselvs just in case he decides
 	// to release us in the callback.

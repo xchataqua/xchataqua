@@ -299,7 +299,7 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 - (id) initWithFrame:(NSRect) frameRect
 {
     [super initWithFrame:frameRect];
-    
+
     self->window = nil;
     self->this_item = nil;
     self->delegate = nil;
@@ -529,7 +529,7 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
     
     if (!window)
     {
-		[self make_view_window:NULL];
+		[self make_view_window:nil];
     }
     
     if (show)
@@ -557,7 +557,7 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
     {
         [window orderOut:self];
         [window autorelease];
-        window = NULL;
+        window = nil;
     }
     
     if (!tab_window)
@@ -574,7 +574,7 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
         [tab_view setHideCloseButtons:prefs.hide_tab_close_buttons];
 		[tab_view setOutlineWidth:prefs.outline_width];
 
-		[TabOrWindowView make_tab_window:tab_view where:NULL];
+		[TabOrWindowView make_tab_window:tab_view where:nil];
     }
     
     if (!this_item)
@@ -592,7 +592,7 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 
         [tv addTabViewItem:this_item toGroup:this_group];
 
-		if ([tv groupName:this_group] == NULL)
+		if ([tv groupName:this_group] == nil)
 		{
 			NSString *group_name;
 			
@@ -624,7 +624,7 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
     {
 		[self retain];
 		[(TABVIEW *)[tab_window contentView] removeTabViewItem:this_item];
-		this_item = NULL;
+		this_item = nil;
 		if ([[[tab_window contentView] tabViewItems] count] == 0)
 		{
 			[tab_window orderOut:self];		// TODO - Should this be [tab_window close]?

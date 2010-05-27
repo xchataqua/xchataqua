@@ -94,7 +94,7 @@ extern char *pntevts[];
 {
     [super init];
      
-    my_items = NULL;
+    my_items = nil;
 
     [NSBundle loadNibNamed:@"EditEvents" owner:self];
 	[[event_list window] setTitle:NSLocalizedStringFromTable(@"Edit Events", @"xchat", @"")];

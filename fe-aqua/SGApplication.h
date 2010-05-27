@@ -33,10 +33,10 @@
 // else NO, and the event is allowed to continue.
 
 - (id) requestEvents:(NSEventType) type
-	   forWindow:(NSWindow *) win
-	     forView:(NSView *) view
-            selector:(SEL) sel
-              object:(id) obj;
+		   forWindow:(NSWindow *) win
+			 forView:(NSView *) view
+			selector:(SEL) sel
+			  object:(id) obj;
 
 - (void) cancelRequestEvents:(id) req_id;
 

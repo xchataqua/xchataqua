@@ -432,39 +432,42 @@ static NSArray *root_items;
 		my_prefs [i] = xx [i];
 	}
 
-    NSArray *interface = [NSArray arrayWithObjects:NSLocalizedStringFromTable(@"Interface", @"xchat", @""),
-                                    leaf (NSLocalizedStringFromTable(@"Text box", @"xchat", @""), 0),
-                                    leaf (NSLocalizedStringFromTable(@"Input box", @"xchat", @""), 1),
-                                    leaf (NSLocalizedStringFromTable(@"User list", @"xchat", @""), 2),
-                                    leaf (NSLocalizedStringFromTable(@"Tabs", @"xchat", @""), 3),
-                                    leaf (NSLocalizedStringFromTable(@"Other", @"xchataqua", @""), 4),
-                                    leaf (NSLocalizedStringFromTable(@"Colors", @"xchat", @""), 5), NULL];
-    NSArray *chatting = [NSArray arrayWithObjects:NSLocalizedStringFromTable(@"Chatting", @"xchat", @""),
-                                    leaf (NSLocalizedStringFromTable(@"General", @"xchat", @""), 6),
-                                    leaf (NSLocalizedStringFromTable(@"Logging", @"xchat", @""), 7),
-                                    leaf (NSLocalizedStringFromTable(@"Events/Sounds", @"xchataqua", @""), 8), NULL];
-    NSArray *network = [NSArray arrayWithObjects:NSLocalizedStringFromTable(@"Network", @"xchat", @""),
-                                    leaf (NSLocalizedStringFromTable(@"Network setup", @"xchat", @""), 9),
-                                    leaf (NSLocalizedStringFromTable(@"DCC Settings", @"xchataqua", @""), 10), NULL];
-    root_items = [[NSArray arrayWithObjects:interface, chatting, network, NULL] retain];
+	NSArray *interface= [NSArray arrayWithObjects:NSLocalizedStringFromTable(@"Interface", @"xchat", @""),
+						 leaf (NSLocalizedStringFromTable(@"Text box", @"xchat", @""), 0),
+						 leaf (NSLocalizedStringFromTable(@"Input box", @"xchat", @""), 1),
+						 leaf (NSLocalizedStringFromTable(@"User list", @"xchat", @""), 2),
+						 leaf (NSLocalizedStringFromTable(@"Tabs", @"xchat", @""), 3),
+						 leaf (NSLocalizedStringFromTable(@"Other", @"xchataqua", @""), 4),
+						 leaf (NSLocalizedStringFromTable(@"Colors", @"xchat", @""), 5),
+						 nil];
+	NSArray *chatting = [NSArray arrayWithObjects:NSLocalizedStringFromTable(@"Chatting", @"xchat", @""),
+						 leaf (NSLocalizedStringFromTable(@"General", @"xchat", @""), 6),
+						 leaf (NSLocalizedStringFromTable(@"Logging", @"xchat", @""), 7),
+						 leaf (NSLocalizedStringFromTable(@"Events/Sounds", @"xchataqua", @""), 8),
+						 nil];
+	NSArray  *network = [NSArray arrayWithObjects:NSLocalizedStringFromTable(@"Network", @"xchat", @""),
+						 leaf (NSLocalizedStringFromTable(@"Network setup", @"xchat", @""), 9),
+						 leaf (NSLocalizedStringFromTable(@"DCC Settings", @"xchataqua", @""), 10),
+						 nil];
+	root_items = [[NSArray arrayWithObjects:interface, chatting, network, nil] retain];
 
-    [category_list setDataSource:self];
-    [category_list setDelegate:self];
-    [category_list setIndentationPerLevel:15];
-	
+	[category_list setDataSource:self];
+	[category_list setDelegate:self];
+	[category_list setIndentationPerLevel:15];
+
 	[category_list expandItem:interface expandChildren:true];
 	[category_list expandItem:chatting expandChildren:true];
 	[category_list expandItem:network expandChildren:true];
-	
+
 	[sounds_table setDataSource:self];
-    for (int i = 0; i < [sounds_table numberOfColumns]; i ++)
-        [[[sounds_table tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
-		
-    [self find_colors];
+	for (int i = 0; i < [sounds_table numberOfColumns]; i ++)
+		[[[sounds_table tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
+
+	[self find_colors];
 	[self load_sounds];
 	[self make_sound_menu];
 	[self get_sound_events];
-	
+
 	NSButtonCell *bcell = [[MyButtonCell alloc] initTextCell:@""];
 	[bcell setButtonType:NSSwitchButton];
 	[bcell setControlSize:NSMiniControlSize];
@@ -478,11 +481,11 @@ static NSArray *root_items;
 	[bcell setControlSize:NSMiniControlSize];
 	[[[sounds_table tableColumns] objectAtIndex:4] setDataCell:bcell];
 	[bcell release];
-	
+
 	[perform_always_check setIntValue:-1];
-	
-    [prefs_window setDelegate:self];
-    [prefs_window center];
+
+	[prefs_window setDelegate:self];
+	[prefs_window center];
 }
 
 - (void) outlineViewSelectionDidChange:(NSNotification *) notification

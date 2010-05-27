@@ -43,7 +43,7 @@
 	return [NSTimer scheduledTimerWithTimeInterval:(NSTimeInterval)ms/1000.0
 					target:gt
 					selector:@selector(doCallback:)
-					userInfo:NULL
+					userInfo:nil
 					repeats:YES];
 }
 
