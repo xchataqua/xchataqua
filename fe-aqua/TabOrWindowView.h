@@ -17,15 +17,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-#if 0
-#define TABVIEW MyTabView
-#define TABVIEWITEM MyTabViewItem
-#import "MyTabView.h"
-#else
-#define TABVIEW SGTabView
-#define TABVIEWITEM SGTabViewItem
 #import "SGTabView.h"
-#endif
 
 @class TABVIEWITEM;
 
@@ -35,7 +27,7 @@
 #endif
 {
     NSWindow		*window;
-    TABVIEWITEM		*this_item;
+    SGTabViewItem	*this_item;
     id				delegate;
     NSString		*title;
     NSString		*tab_title;
