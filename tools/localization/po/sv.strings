@@ -1,5 +1,5 @@
 /* nothing */
-"" = "Project-Id-Version: xchat-2.8.4\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2007-06-24 13:05+1000\nPO-Revision-Date: 2007-06-24 09:08+0200\nLast-Translator: Daniel Nylander <po@danielnylander.se>\nLanguage-Team: Swedish <tp-sv@listor.tp-sv.se>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nX-Generator: KBabel 1.11.4\nPlural-Forms:  nplurals=2; plural=(n != 1);\n";
+"" = "Project-Id-Version: xchat 2.8.6\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2008-06-12 18:39+1000\nPO-Revision-Date: 2010-04-24 23:27+0100\nLast-Translator: Daniel Nylander <po@danielnylander.se>\nLanguage-Team: Swedish <tp-sv@listor.tp-sv.se>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n";
 
 /* nothing */
 "Cannot create ~/.xchat2" = "Kan inte skapa ~/.xchat2";
@@ -119,7 +119,7 @@
 "BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "BAN <mask> [<bannlysningstyp>], bannlyser alla som matchar masken från den aktuella kanalen. Om de redan är på kanalen kommer detta inte att sparka ut dem (kräver kanaloperatörsstatus)";
 
 /* nothing */
-"Set per channel options\nCHANOPT CONFMODE ON|OFF - Toggle conf mode/showing of join and part messages\nCHANOPT COLORPASTE ON|OFF - Toggle color paste\nCHANOPT BEEP ON|OFF - Toggle beep on message\nCHANOPT TRAY ON|OFF - Toggle tray blink on message" = "Ställ in alternativ per kanal\nCHANOPT CONFMODE ON|OFF - Växla konfläge/visa meddelanden för ingång och lämnande\nCHANOPT COLORPASTE ON|OFF - Växla färginklistring\nCHANOPT BEEP ON|OFF - Växla ljudsignal vid meddelande\nCHANOPT TRAY ON|OFF - Växla lådblinkning vid meddelande";
+"CHANOPT [-quiet] <variable> [<value>]" = "CHANOPT [-quiet] <variabel> [<värde>]";
 
 /* nothing */
 "CLEAR [ALL|HISTORY], Clears the current text window or command history" = "CLEAR [ALL|HISTORY], tömmer aktuellt textfönster eller kommandohistorik";
@@ -134,7 +134,7 @@
 "CTCP <nick> <message>, send the CTCP message to nick, common messages are VERSION and USERINFO" = "CTCP <smeknamn> <meddelande>, skickar CTCP-meddelandet till smeknamn, vanliga meddelanden är VERSION och USERINFO";
 
 /* nothing */
-"CYCLE [<channel>], parts the current or given channel and immediately rejoins" = "CYCLE [<kanal>], lämnar aktuell kanal och går omedelbart in i den igen";
+"CYCLE [<channel>], parts the current or given channel and immediately rejoins" = "CYCLE [<kanal>], lämnar aktuell eller angiven kanal och går omedelbart in i den igen";
 
 /* nothing */
 "\nDCC GET <nick>                      - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file]  - send a file to someone\nDCC PSEND [-maxcps=#] <nick> [file] - send a file using passive mode\nDCC LIST                            - show DCC list\nDCC CHAT <nick>                     - offer DCC CHAT to someone\nDCC PCHAT <nick>                    - offer DCC CHAT using passive mode\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "\nDCC GET <smeknamn>                     - ta emot en erbjuden fil\nDCC SEND [-maxcps=#] <smeknamn> [fil]  - skicka en fil till någon\nDCC PSEND [-maxcps=#] <smeknamn> [fil] - skicka en fil i passivt läge\nDCC LIST                               - visa DCC-lista\nDCC CHAT <smeknamn>                    - erbjud någon DCC-chatt\nDCC PCHAT <smeknamn>                   - erbjud DCC-chatt i passivt läge\nDCC CLOSE <typ> <smeknamn> <fil>         exempel:\n         /dcc close send nisse fil.tar.gz";
@@ -611,7 +611,7 @@
 "%C22*%O$t$1 users in notify list." = "%C22*%O$t$1 användare på notifieringslistan.";
 
 /* nothing */
-"%C22*%O$tNotify: $1 is offline ($3)." = "%C22*%O$tNotifiering: $1 är ansluten ($3).";
+"%C22*%O$tNotify: $1 is offline ($3)." = "%C22*%O$tNotifiering: $1 är frånkopplad ($3).";
 
 /* nothing */
 "%C22*%O$tNotify: $1 is online ($3)." = "%C22*%O$tNotifiering: $1 är ansluten ($3).";
@@ -1850,16 +1850,19 @@
 "Unknown" = "Okänd";
 
 /* nothing */
-"Open Dialog Window" = "Öppna dialogfönster";
+"_Open Dialog Window" = "_Öppna dialogfönster";
 
 /* nothing */
-"Send a File" = "Skicka en fil";
+"_Send a File" = "_Skicka en fil";
 
 /* nothing */
-"User Info (WHOIS)" = "Användarinfo (WHOIS)";
+"_User Info (WhoIs)" = "An_vändarinfo (Whois)";
 
 /* nothing */
-"Operator Actions" = "Operatörsåtgärder";
+"_Add to Friends List" = "_Lägg till i vännerlista";
+
+/* nothing */
+"O_perator Actions" = "O_peratörsåtgärder";
 
 /* nothing */
 "Give Ops" = "Ge kanaloperatörsstatus";
@@ -1884,87 +1887,6 @@
 
 /* nothing */
 "KickBan" = "Sparka ut och bannlys";
-
-/* nothing */
-"Direct client-to-client" = "Direkt klient-till-klient";
-
-/* nothing */
-"Send File" = "Skicka fil";
-
-/* nothing */
-"Offer Chat" = "Erbjud chatt";
-
-/* nothing */
-"Abort Chat" = "Avbryt chatt";
-
-/* nothing */
-"Version" = "Version";
-
-/* nothing */
-"Userinfo" = "Användarinformation";
-
-/* nothing */
-"Clientinfo" = "Klientinformation";
-
-/* nothing */
-"Ping" = "Ping";
-
-/* nothing */
-"Time" = "Tid";
-
-/* nothing */
-"Finger" = "Finger";
-
-/* nothing */
-"Oper" = "Serveroperatör";
-
-/* nothing */
-"Kill this user" = "Döda denna användare";
-
-/* nothing */
-"Mode" = "Läge";
-
-/* nothing */
-"Give Half-Ops" = "Ge halv-operatörsstatus";
-
-/* nothing */
-"Take Half-Ops" = "Ta halv-operatörsstatus";
-
-/* nothing */
-"Ignore" = "Ignorera";
-
-/* nothing */
-"Ignore User" = "Ignorera användare";
-
-/* nothing */
-"UnIgnore User" = "Avignorera användare";
-
-/* nothing */
-"Info" = "Info";
-
-/* nothing */
-"Who" = "Vem";
-
-/* nothing */
-"WhoIs" = "VemÄr";
-
-/* nothing */
-"DNS Lookup" = "DNS-uppslagning";
-
-/* nothing */
-"Trace" = "Spårning";
-
-/* nothing */
-"UserHost" = "AnvändareVärd";
-
-/* nothing */
-"External" = "Extern";
-
-/* nothing */
-"Traceroute" = "Traceroute";
-
-/* nothing */
-"Telnet" = "Telnet";
 
 /* nothing */
 "Leave Channel" = "Lämna kanal";
@@ -2003,6 +1925,9 @@
 "Dialog" = "Dialog";
 
 /* nothing */
+"WhoIs" = "VemÄr";
+
+/* nothing */
 "Send" = "Skicka";
 
 /* nothing */
@@ -2010,6 +1935,9 @@
 
 /* nothing */
 "Clear" = "Töm";
+
+/* nothing */
+"Ping" = "Ping";
 
 /* nothing */
 "Couldn't connect to session bus" = "Kunde inte ansluta till sessionsbuss";
@@ -2033,7 +1961,7 @@
 "Failed to acquire %s: %s\n" = "Misslyckades med att ta över %s: %s\n";
 
 /* nothing */
-"About XChat" = "Om XChat";
+"About " = "Om";
 
 /* nothing */
 "A multiplatform IRC Client" = "En IRC-klient för flera plattformar";
@@ -2066,7 +1994,7 @@
 "XChat: Ban List (%s)" = "XChat: Bannlysningslista (%s)";
 
 /* nothing */
-"Unban" = "Ta bort bannlysning";
+"Remove" = "Ta bort";
 
 /* nothing */
 "Crop" = "Kapa";
@@ -2258,10 +2186,13 @@
 "Open an irc://server:port/channel URL" = "Öppna en irc://server:port/kanal URL";
 
 /* nothing */
-"Open URL in an existing XChat" = "Öppna url i en existerande XChat";
+"Execute command:" = "Startkommando:";
 
 /* nothing */
-"Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "Börja minimerad. Nivå 0=Normal 1=Ikonifierad 2=Låda";
+"Open URL or execute command in an existing XChat" = "Öppna url eller kör kommando i en befintlig XChat";
+
+/* nothing */
+"Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "Starta minimerad. Nivå 0=Normal 1=Ikonifierad 2=Aktivitetsfält";
 
 /* nothing */
 "level" = "nivå";
@@ -2489,7 +2420,7 @@
 "Some file transfers are still active." = "En del filöverföringar är fortfarande aktiva.";
 
 /* nothing */
-"_Minimize to Tray" = "_Minimera till systemlåda";
+"_Minimize to Tray" = "_Minimera till aktivitetsfält";
 
 /* nothing */
 "Insert Attribute or Color Code" = "Infoga attribut eller färgkod";
@@ -2510,22 +2441,34 @@
 "Colors 8-15" = "Färgerna 8-15";
 
 /* nothing */
-"Beep on message" = "Pip vid meddelande";
+"_Settings" = "_Inställningar";
 
 /* nothing */
-"Blink tray on message" = "Blinka lådan vid meddelande";
+"_Log to Disk" = "_Logga till disk";
 
 /* nothing */
-"Show join/part messages" = "Visa meddelanden om ingång/lämnande";
+"_Reload Scrollback" = "_Läs om historik";
 
 /* nothing */
-"Color paste" = "Färginklistring";
+"_Hide Join/Part Messages" = "_Dölj meddelanden om ingång/utgång";
 
 /* nothing */
-"_Close Tab" = "_Stäng flik";
+"_Extra Alerts" = "Ytterligare _larm";
 
 /* nothing */
-"_Detach Tab" = "_Frigör flik";
+"Beep on _Message" = "Pip vid _meddelande";
+
+/* nothing */
+"Blink Tray _Icon" = "Blinka låd_ikonen";
+
+/* nothing */
+"Blink Task _Bar" = "Blinka _verktygsraden";
+
+/* nothing */
+"_Detach" = "_Frigör";
+
+/* nothing */
+"_Close" = "S_täng";
 
 /* nothing */
 "User limit must be a number!\n" = "Användargränsen måste vara en siffra!\n";
@@ -2582,13 +2525,16 @@
 "Server:" = "Server:";
 
 /* nothing */
-"Away Msg:" = "Frånvaromedd:";
-
-/* nothing */
 "%u minutes ago" = "%u minuter sedan";
 
 /* nothing */
 "Last Msg:" = "Senaste medd:";
+
+/* nothing */
+"Away Msg:" = "Frånvaromedd:";
+
+/* nothing */
+"%d nicks selected." = "%d smeknamn markerade.";
 
 /* nothing */
 "The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "Menyraden är nu dold. Du kan visa den igen genom att trycka F9 eller högerklicka på en tom del av huvudtextrutan.";
@@ -2607,6 +2553,12 @@
 
 /* nothing */
 "Cycle Channel" = "Rotera kanal";
+
+/* nothing */
+"_Remove from Favorites" = "_Ta bort från favoriter";
+
+/* nothing */
+"_Add to Favorites" = "_Lägg till i favoriter";
 
 /* nothing */
 "XChat: User menu" = "XChat: Användarmeny";
@@ -2693,7 +2645,7 @@
 "_Topic Bar" = "Ämn_esrad";
 
 /* nothing */
-"_User List" = "A_nvändarlista";
+"_User List" = "An_vändarlista";
 
 /* nothing */
 "U_serlist Buttons" = "_Knappar i användarlista";
@@ -2727,6 +2679,12 @@
 
 /* nothing */
 "_Reconnect" = "Återa_nslut";
+
+/* nothing */
+"Join a Channel..." = "Gå in i en kanal...";
+
+/* nothing */
+"List of Channels..." = "Kanallista...";
 
 /* nothing */
 "Marked Away" = "Märk som frånvarande";
@@ -2777,9 +2735,6 @@
 "Ban List..." = "Bannlysningslista...";
 
 /* nothing */
-"Channel List..." = "Kanallista...";
-
-/* nothing */
 "Character Chart..." = "Teckentabell...";
 
 /* nothing */
@@ -2789,10 +2744,10 @@
 "File Transfers..." = "Filöverföringar...";
 
 /* nothing */
-"Ignore List..." = "Ignoreringslista...";
+"Friends List..." = "Vännerlista...";
 
 /* nothing */
-"Notify List..." = "Notifieringslista...";
+"Ignore List..." = "Ignoreringslista...";
 
 /* nothing */
 "Plugins and Scripts..." = "Insticksmoduler och skript...";
@@ -2804,7 +2759,7 @@
 "URL Grabber..." = "URL-fångare...";
 
 /* nothing */
-"Reset Marker Line" = "Återställ markörlinje";
+"Reset Marker Line" = "Återställ markörsrad";
 
 /* nothing */
 "C_lear Text" = "T_öm text";
@@ -2822,16 +2777,13 @@
 "_Contents" = "_Innehåll";
 
 /* nothing */
+"Check for updates" = "Leta efter uppdateringar";
+
+/* nothing */
 "_About" = "_Om";
 
 /* nothing */
-"_Attach Window" = "Fä_st fönster";
-
-/* nothing */
-"_Close Window" = "_Stäng fönster";
-
-/* nothing */
-"User" = "Användare";
+"_Attach" = "Fä_st";
 
 /* nothing */
 "Last Seen" = "Sågs senast";
@@ -2858,10 +2810,7 @@
 "Comma separated list of networks is accepted." = "Kommaseparerad lista över nätverken tillåts.";
 
 /* nothing */
-"XChat: Notify List" = "XChat: Notifieringslista";
-
-/* nothing */
-"Remove" = "Ta bort";
+"XChat: Friends List" = "XChat: Vännerlista";
 
 /* nothing */
 "Open Dialog" = "Öppna dialog";
@@ -2891,6 +2840,15 @@
 "Highlighted Message" = "Färgmarkerat meddelande";
 
 /* nothing */
+"_Change status" = "_Ändra status";
+
+/* nothing */
+"_Away" = "_Borta";
+
+/* nothing */
+"_Back" = "_Bakåt";
+
+/* nothing */
 "XChat: Highlighted message from: %s (%s)" = "XChat: Färgmarkerat meddelande från: %s (%s)";
 
 /* nothing */
@@ -2915,6 +2873,9 @@
 "XChat: %u file offers, latest from: %s (%s)" = "XChat: %u filerbjudanden, senaste från: %s (%s)";
 
 /* nothing */
+"Version" = "Version";
+
+/* nothing */
 "Description" = "Beskrivning";
 
 /* nothing */
@@ -2928,9 +2889,6 @@
 
 /* nothing */
 "_UnLoad" = "_Glöm";
-
-/* nothing */
-"_Close" = "S_täng";
 
 /* nothing */
 "Save As..." = "Spara som...";
@@ -2964,6 +2922,27 @@
 
 /* nothing */
 "Really remove network \"%s\" and all its servers?" = "Vill du verkligen ta bort nätverket \"%s\" och alla dess servrar?";
+
+/* nothing */
+"#channel" = "#kanal";
+
+/* nothing */
+"XChat: Favorite Channels (Auto-Join List)" = "XChat: Favoritkanaler (gå automatiskt in i)";
+
+/* nothing */
+"These channels will be joined whenever you connect to %s." = "Dessa kanaler kommer att du gå in i när du ansluter till %s.";
+
+/* nothing */
+"Key (Password)" = "Nyckel (Lösenord)";
+
+/* nothing */
+"_Edit" = "_Redigera";
+
+/* nothing */
+"%s has been removed." = "%s har tagits bort.";
+
+/* nothing */
+"%s has been added." = "%s har lagts till.";
 
 /* nothing */
 "User name and Real name cannot be left blank." = "Användarnamn och verkligt namn kan inte lämnas blanka.";
@@ -3005,7 +2984,7 @@
 "Auto connect to this network at startup" = "Anslut automatiskt till detta nätverk vid uppstart";
 
 /* nothing */
-"Use a proxy server" = "Använd en proxyserver";
+"Bypass proxy server" = "Kringgå proxyserver";
 
 /* nothing */
 "Use SSL for all the servers on this network" = "Använd SSL för alla servrar på detta nätverk";
@@ -3014,7 +2993,7 @@
 "Accept invalid SSL certificate" = "Acceptera ogiltigt SSL-certifikat";
 
 /* nothing */
-"C_hannels to join:" = "_Kanaler att gå in i:";
+"_Favorite channels:" = "_Favoritkanaler:";
 
 /* nothing */
 "Channels to join, separated by commas, but not spaces!" = "Kanaler att gå in i, åtskilda med kommatecken men inte med blanksteg!";
@@ -3039,9 +3018,6 @@
 
 /* nothing */
 "Character set:" = "Teckentabell:";
-
-/* nothing */
-"_Edit" = "_Redigera";
 
 /* nothing */
 "XChat: Network List" = "XChat: Nätverkslista";
@@ -3098,10 +3074,10 @@
 "Transparent background" = "Genomskinlig bakgrund";
 
 /* nothing */
-"Show marker line" = "Visa markörlinje";
+"Show marker line" = "Visa markörrad";
 
 /* nothing */
-"Insert a red line after the last read text." = "Infoga en röd linje efter den senaste lästa texten.";
+"Insert a red line after the last read text." = "Infoga en röd rad efter den senaste lästa texten.";
 
 /* nothing */
 "Transparency Settings" = "Inställningar för genomskinlighet";
@@ -3206,7 +3182,7 @@
 "User list sorted by:" = "Användarlistan sorteras efter:";
 
 /* nothing */
-"Show user list at:" = "Visa användarlista till:";
+"Show user list at:" = "Visa användarlista:";
 
 /* nothing */
 "Away tracking" = "Frånvarospårning";
@@ -3221,9 +3197,6 @@
 "Action Upon Double Click" = "Åtgärd vid dubbelklick";
 
 /* nothing */
-"Execute command:" = "Startkommando:";
-
-/* nothing */
 "Windows" = "Fönster";
 
 /* nothing */
@@ -3236,7 +3209,10 @@
 "Only requested tabs" = "Endast begärda flikar";
 
 /* nothing */
-"Channel Switcher" = "Kanalväxlare";
+"Tree" = "Träd";
+
+/* nothing */
+"Switcher type:" = "Växlartyp:";
 
 /* nothing */
 "Open an extra tab for server messages" = "Öppna en extra flik för servermeddelanden";
@@ -3251,13 +3227,13 @@
 "Sort tabs in alphabetical order" = "Sortera flikar i alfabetisk ordning";
 
 /* nothing */
-"Small tabs" = "Små flikar";
+"Smaller text" = "Mindre text";
 
 /* nothing */
 "Focus new tabs:" = "Fokusera nya flikar:";
 
 /* nothing */
-"Show channel switcher at:" = "Visa kanalväxlaren till:";
+"Show channel switcher at:" = "Visa kanalväxlare:";
 
 /* nothing */
 "Shorten tab labels to:" = "Korta ner fliketiketter till:";
@@ -3383,7 +3359,7 @@
 "Nick names to always highlight:" = "Smeknamn att alltid färgmarkera:";
 
 /* nothing */
-"Separate multiple words with commas." = "Separera flera ord med kommatecken.";
+"Separate multiple words with commas.\nWildcards are accepted." = "Separera flera ord med kommatecken.\nJokertecken accepteras.";
 
 /* nothing */
 "Default Messages" = "Standardmeddelanden";
@@ -3455,7 +3431,10 @@
 "Logging" = "Loggning";
 
 /* nothing */
-"Enable logging of conversations" = "Aktivera loggning av konversationer";
+"Display scrollback from previous session" = "Visa historik från tidigare session";
+
+/* nothing */
+"Enable logging of conversations to disk" = "Aktivera loggning av konversationer till disk";
 
 /* nothing */
 "Log filename:" = "Loggfilsnamn:";
