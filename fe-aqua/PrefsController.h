@@ -141,7 +141,7 @@ struct my_pref
 	id  auto_away_text;
 	id  nick_complete_sort_menu;
 	
-    my_pref     my_prefs [86];
+    struct my_pref     my_prefs [86];
 }
 
 - (void) show;

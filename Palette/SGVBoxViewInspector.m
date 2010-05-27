@@ -40,9 +40,9 @@
 - (void) doVJust:(id) sender
 {
     NSArray * objects = [self inspectedObjects];
-    NSInteger count = [objects count], i;
+    NSUInteger count = [objects count];
 
-    for(i = 0; i < count; ++i)
+    for(NSUInteger i = 0; i < count; ++i)
     {
         SGVBoxView *view = [objects objectAtIndex:i];
         [view setVJustification:[[sender selectedItem] tag]];
@@ -52,9 +52,9 @@
 - (void) doHJust:(id) sender
 {
     NSArray * objects = [self inspectedObjects];
-    NSInteger count = [objects count], i;
+    NSInteger count = [objects count];
 
-    for(i = 0; i < count; ++i)
+    for(NSUInteger i = 0; i < count; ++i)
     {
         SGVBoxView *view = [objects objectAtIndex:i];
         [view setDefaultHJustification:[[sender selectedItem] tag]];
@@ -64,9 +64,9 @@
 - (void) doInner:(id) sender
 {
     NSArray * objects = [self inspectedObjects];
-    NSInteger count = [objects count], i;
+    NSInteger count = [objects count];
 
-    for(i = 0; i < count; ++i)
+    for(NSUInteger i = 0; i < count; ++i)
     {
         SGVBoxView * view = [objects objectAtIndex:i];
         [view setVInnerMargin:[inner_text intValue]];
@@ -76,9 +76,9 @@
 - (void) doOutter:(id) sender
 {
     NSArray * objects = [self inspectedObjects];
-    NSInteger count = [objects count], i;
+    NSInteger count = [objects count];
 
-    for(i = 0; i < count; ++i)
+    for(NSUInteger i = 0; i < count; ++i)
     {
         SGVBoxView * view = [objects objectAtIndex:i];
         [view setVOutterMargin:[outter_text intValue]];
@@ -88,9 +88,8 @@
 - (void) refresh
 {
     NSArray * objects = [self inspectedObjects];
-    NSInteger count = [objects count];
 
-    if(count == 1)
+    if([objects count] == 1)
     {
         SGVBoxView *vbox = [objects objectAtIndex:0];
         [VJustMenu selectItemWithTag:[vbox vJustification]];
