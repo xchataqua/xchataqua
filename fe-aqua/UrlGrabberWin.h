@@ -18,7 +18,10 @@
 #import <AppKit/AppKit.h>
 #import "TabOrWindowView.h"
 
-@interface UrlGrabberWin : NSObject 
+@interface UrlGrabberWin : NSObject
+#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
+<NSTableViewDataSource>
+#endif
 {
     NSTableView		*url_list;
     TabOrWindowView	*url_grabber_view;

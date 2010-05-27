@@ -49,15 +49,15 @@
     if (shrinkh)
     {
         r.size.width = 0;
-        float thisw = 0;
+        CGFloat thisw = 0;
         
-        for (unsigned int i = 0; i < [meta_views count]; i ++)
+        for (NSUInteger i = 0; i < [metaViews count]; i ++)
         {
             if (i % cols == 0)
                 thisw = 0;
             
-            id meta_view = [meta_views objectAtIndex:i];
-            NSRect b = [meta_view prefSize];
+            id metaView = [metaViews objectAtIndex:i];
+            NSRect b = [metaView prefSize];
             
             thisw += b.size.width;
             
@@ -66,29 +66,28 @@
         }
     }
     
-    int actual_rows = rows;
+    NSUInteger actualRows = rows;
 
-    if (actual_rows == 0)
-        actual_rows = ([meta_views count] + cols - 1) / cols;
+    if (actualRows == 0)
+        actualRows = ([metaViews count] + cols - 1) / cols;
     
     // And now for vertical
     
     if (shrinkv)
     {
-        r.size.height = 0;
-        float thish = 0;
+        r.size.height = 0.0f;
+        CGFloat thish = 0.0f;
         
-        for (unsigned int i = 0; i < [meta_views count]; i ++)
+        for (NSUInteger i = 0; i < [metaViews count]; i ++)
         {
-            if (i % actual_rows == 0)
-                thish = 0;
+            if (i % actualRows == 0) 
+				thish = 0.0f;
             
-            unsigned int ii = (i * cols) % actual_rows;
-            if (ii >= [meta_views count])
-                continue;
+            NSUInteger ii = (i * cols) % actualRows;
+            if (ii >= [metaViews count]) continue;
 
-            id meta_view = [meta_views objectAtIndex:ii];
-            NSRect b = [meta_view prefSize];
+            id metaView = [metaViews objectAtIndex:ii];
+            NSRect b = [metaView prefSize];
 
             thish += b.size.height;
             
@@ -97,12 +96,12 @@
         }
     }
 
-    float vh = r.size.height / actual_rows;
-    float vw = r.size.width / cols;
+    CGFloat vh = r.size.height / actualRows;
+    CGFloat vw = r.size.width / cols;
     
-    for (unsigned int i = 0; i < [meta_views count]; i ++)
+    for (NSUInteger i = 0; i < [metaViews count]; i ++)
     {
-        id meta_view = [meta_views objectAtIndex:i];
+        id metaView = [metaViews objectAtIndex:i];
         
         NSRect b;
     
@@ -111,13 +110,13 @@
         b.size.width = floor (vw);
         b.size.height = floor (vh);
 
-        [meta_view setFrame:b];
+        [metaView setFrame:b];
     }
     
     [self setFrameSize:r.size];
 }
 
-- (void)setCols:(int)new_cols rows:(int)new_rows
+- (void)setCols:(NSInteger)new_cols rows:(NSInteger)new_rows
 {
     self->rows = new_rows;
     self->cols = new_cols;

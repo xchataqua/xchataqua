@@ -222,7 +222,7 @@ my_plugin_init (xchat_plugin *plugin_handle, char **plugin_name,
 
 /////////////////////////////////////////////////////////////////////////////
 
-@interface confirm_obj : NSObject
+@interface ConfirmObject : NSObject
 {
   @public
     void (*yesproc)(void *);
@@ -231,7 +231,7 @@ my_plugin_init (xchat_plugin *plugin_handle, char **plugin_name,
 }
 @end
 
-@implementation confirm_obj
+@implementation ConfirmObject
 
 - (void) do_yes
 {
@@ -250,7 +250,7 @@ my_plugin_init (xchat_plugin *plugin_handle, char **plugin_name,
 void
 confirm_wrapper (const char *message, void (*yesproc)(void *), void (*noproc)(void *), void *ud)
 {
-    confirm_obj *o = [[confirm_obj alloc] init];
+    ConfirmObject *o = [[ConfirmObject alloc] init];
     o->yesproc = yesproc;
     o->noproc = noproc;
     o->ud = ud;
@@ -429,7 +429,7 @@ fe_args (int argc, char *argv[])
     initPool = [[NSAutoreleasePool alloc] init];	
 	
     setlocale (LC_ALL, "");
-#ifdef ENABLE_NLS
+#if ENABLE_NLS
 	sprintf(buff, "%s/locale", [[[NSBundle mainBundle] resourcePath] UTF8String]);
 	bindtextdomain (GETTEXT_PACKAGE, buff);
 	bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");

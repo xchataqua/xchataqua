@@ -33,21 +33,24 @@
 @class ChatWindow;
 
 @interface XAChatText : NSTextView
+#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
+<NSLayoutManagerDelegate>
+#endif
 {
-    ColorPalette           *palette;
-    NSFont             *normal_font;
-    NSFont               *bold_font;
-    NSMutableParagraphStyle  *style;
-    NSRect	              line_rect;
-    NSRange		         word_range;
-    int		              word_type;
-    NSString	              *word;
-    id		         m_event_req_id;
-    ChatWindow	      *drop_handler;
-    bool	              shows_sep;
-    float	             font_width;
-    bool                  at_bottom;
-	int			          num_lines;
+    ColorPalette			*palette;
+    NSFont					*normal_font;
+    NSFont					*bold_font;
+    NSMutableParagraphStyle	*style;
+    NSRect					line_rect;
+    NSRange					word_range;
+    int						word_type;
+    NSString				*word;
+    id						m_event_req_id;
+    ChatWindow				*drop_handler;
+    bool					shows_sep;
+    CGFloat					font_width;
+    bool					at_bottom;
+	int						num_lines;
 }
 
 - (void) print_text:(const char *) text;

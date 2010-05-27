@@ -266,16 +266,16 @@ strip_crap (const char *s)
 
 #if 0    
     [top_box constrain:apply_button
-                  edge:SGFormView_EDGE_LEFT
-            attachment:SGFormView_ATTACH_CENTER
+                  edge:SGFormViewEdgeLeft
+            attachment:SGFormViewAttachCenter
             relativeTo:nil
                 offset:0];
     
     [top_box bootstrapRelativeTo:apply_button];
 
     [bottom_box constrain:save_button
-                     edge:SGFormView_EDGE_LEFT
-               attachment:SGFormView_ATTACH_CENTER
+                     edge:SGFormViewEdgeLeft
+               attachment:SGFormViewAttachCenter
                relativeTo:nil
                    offset:0];
     

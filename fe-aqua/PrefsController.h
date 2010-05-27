@@ -17,7 +17,7 @@
 
 
 #import <Cocoa/Cocoa.h>
-#if __MAC_OS_X_VERSION_MIN_REQUIRED >= 1050
+#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_4
 #import <ShortcutRecorder/ShortcutRecorder.h>
 #endif
 
@@ -36,9 +36,12 @@ struct my_pref
 };
 
 @interface PrefsController : NSObject
+#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
+<NSWindowDelegate,NSComboBoxDataSource>
+#endif
 {
     NSTabView	*tab_view;
-#if __MAC_OS_X_VERSION_MIN_REQUIRED >= 1050
+#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_4
 	SRRecorderCell *tab_left_sr;
 	SRRecorderCell *tab_right_sr;
 #endif
