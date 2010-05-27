@@ -27,9 +27,9 @@
 
 - (void) awakeFromNib
 {
-    [[HJustMenu itemWithTitle:@"Left"] setTag:SGHBoxLeftHJustification];
-    [[HJustMenu itemWithTitle:@"Center"] setTag:SGHBoxCenterHJustification];
-    [[HJustMenu itemWithTitle:@"Right"] setTag:SGHBoxRightHJustification];
+    [[HJustMenu itemWithTitle:@"Left"]   setTag:SGHBoxHJustificationLeft];
+    [[HJustMenu itemWithTitle:@"Center"] setTag:SGHBoxHJustificationCenter];
+    [[HJustMenu itemWithTitle:@"Right"]  setTag:SGHBoxHJustificationRight];
 }
 
 - (void) doHJust:(id) sender
@@ -37,7 +37,7 @@
     NSArray * objects = [self inspectedObjects];
     NSInteger numObjects = [objects count], i;
 
-    for(i = 0; i < numObjects; ++i)
+    for (i = 0; i < numObjects; ++i)
     {
         SGHBoxView *view = [objects objectAtIndex:i];
         [view setHJustification:[[sender selectedItem] tag]];

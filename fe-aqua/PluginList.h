@@ -18,7 +18,10 @@
 #import <AppKit/AppKit.h>
 #import "SG.h"
 
-@interface PluginList : SGSelfPtr 
+@interface PluginList : SGSelfPtr
+#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
+<NSWindowDelegate,NSTableViewDataSource>
+#endif
 {
     NSMutableArray *my_items;
     NSTableView	*plugin_list_table;

@@ -214,7 +214,7 @@ static NSCursor *lr_cursor;
 
 - (void) setup_margin
 {
-    float x = prefs.text_manual_indent_chars * font_width;
+    CGFloat x = prefs.text_manual_indent_chars * font_width;
     NSMutableAttributedString *s = [self textStorage];
 	NSRange whole = NSMakeRange (0, [s length]);
     
@@ -233,7 +233,7 @@ static NSCursor *lr_cursor;
     x += font_width;
 
     [style setHeadIndent:x];
-    for (int i = 0; i < 30; i ++)
+    for (NSInteger i = 0; i < 30; i ++)
     {
         [style addTabStop:[[[NSTextTab alloc] 
             initWithType:NSLeftTabStopType location:x] autorelease]];
@@ -272,7 +272,7 @@ static NSCursor *lr_cursor;
 #if 0
 // This is too damn slow!!
     NSMutableAttributedString *s = [self textStorage];
-    for (unsigned int i = 0; i < [s length]; )
+    for (NSUInteger i = 0; i < [s length]; )
     {
         NSRange r;
         NSRange limit = NSMakeRange (i, [s length] - i);
@@ -321,7 +321,7 @@ static NSCursor *lr_cursor;
 	if (prefs.max_lines == 0)
 		return;
 
-	int threshhold = prefs.max_lines + prefs.max_lines * 0.1;
+	NSInteger threshhold = prefs.max_lines + prefs.max_lines * 0.1;
 	if (num_lines < threshhold)
 		return;
 	
@@ -477,8 +477,8 @@ static NSCursor *lr_cursor;
 	NSRect document_rect = [clip_view documentRect];
 	NSRect clip_rect = [clip_view documentVisibleRect];
 	
-	float dmax = NSMaxY(document_rect);
-	float cmax = NSMaxY(clip_rect);
+	CGFloat dmax = NSMaxY(document_rect);
+	CGFloat cmax = NSMaxY(clip_rect);
 
 	at_bottom = dmax == cmax;
 
@@ -533,7 +533,7 @@ static NSCursor *lr_cursor;
 /* CL: use our real session if possible, otherwise fall back on current_sess */
 - (session *)currentSession
 {
-	ChatWindow *chatWindow = [self delegate];
+	ChatWindow *chatWindow = (ChatWindow *)[self delegate];
 	if (![chatWindow isKindOfClass:[ChatWindow class]]) chatWindow = nil;
 	return (chatWindow ? [chatWindow session] : current_sess);
 }
@@ -737,7 +737,7 @@ static NSCursor *lr_cursor;
 
     NSPoint point = [theEvent locationInWindow];
     NSPoint where = [[theEvent window] convertBaseToScreen:point];
-    unsigned int idx = [self characterIndexForPoint:where];
+    NSUInteger idx = [self characterIndexForPoint:where];
 
     NSTextStorage *stg = [self textStorage];
 
@@ -749,7 +749,7 @@ static NSCursor *lr_cursor;
     }
 
     NSString *s = [stg string];
-    unsigned int slen = [s length];
+    NSUInteger slen = [s length];
 
     if (slen == 0)
         return NO;

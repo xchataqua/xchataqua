@@ -322,7 +322,7 @@ static void location_prefs (NSWindow *w)
 
 - (void)rightMouseDown:(NSEvent *)theEvent
 {
-	int clickedRow = [self rowAtPoint:[self convertPoint:[theEvent locationInWindow] fromView:nil]];
+	NSInteger clickedRow = [self rowAtPoint:[self convertPoint:[theEvent locationInWindow] fromView:nil]];
 	if (![self isRowSelected:clickedRow])
 		[self selectRowIndexes:[NSIndexSet indexSetWithIndex:clickedRow] byExtendingSelection:NO];
 	[super rightMouseDown:theEvent];
@@ -510,11 +510,9 @@ static NSImage *empty_image;
         
     from.length = [[chat_text textStorage] length] - from.location;
     
-    unsigned mask = NSCaseInsensitiveSearch;
+    NSStringCompareOptions mask = NSCaseInsensitiveSearch;
     
-    NSRange where = [[[chat_text textStorage] string] rangeOfString:string 
-                                                            options:mask 
-                                                              range:from];
+    NSRange where = [[[chat_text textStorage] string] rangeOfString:string options:mask range:from];
     
     if (where.location == NSNotFound)
     {
@@ -522,9 +520,7 @@ static NSImage *empty_image;
             return;
         from.length = from.location;
         from.location = 0;
-        where = [[[chat_text textStorage] string] rangeOfString:string 
-                                                        options:mask 
-                                                          range:from];
+        where = [[[chat_text textStorage] string] rangeOfString:string options:mask range:from];
 
         if (where.location == NSNotFound)
             return;
@@ -555,7 +551,7 @@ static NSImage *empty_image;
     // The dialog and channel mode buttons share the top box with the
     // topic text.  Remove everything but the topic text and the spacer.
 
-    float x = [topic_text frame].origin.x;
+    CGFloat x = [topic_text frame].origin.x;
     
     for (unsigned int i = 0; i < [[top_box subviews] count]; )
     {
@@ -681,12 +677,11 @@ static NSImage *empty_image;
 
 - (void) prefsChanged
 {
-    [chat_text setFont:[[AquaChat sharedAquaChat] getFont]
-	      boldFont:[[AquaChat sharedAquaChat] getBoldFont]];
+    [chat_text setFont:[[AquaChat sharedAquaChat] font] boldFont:[[AquaChat sharedAquaChat] bold_font]];
               
     if (prefs.style_inputbox)
     {
-        [input_text setFont:[[AquaChat sharedAquaChat] getFont]];
+        [input_text setFont:[[AquaChat sharedAquaChat] font]];
         [input_text sizeToFit];
     }
 
@@ -714,7 +709,7 @@ static NSImage *empty_image;
 
 - (void) do_mirc_color:(id) sender
 {
-    int val = [sender tag];
+    NSInteger val = [sender tag];
     
     // The value will contain the ascii code to send.  If it's <=0, the value
     // represents a color value.
@@ -748,7 +743,7 @@ static NSImage *empty_image;
     
     NSRect rect = NSMakeRect (0,0,100,14);
     ColorPalette *p = [[AquaChat sharedAquaChat] getPalette];
-    for (int i = 0; i < 16; i ++)
+    for (NSInteger i = 0; i < 16; i ++)
     {
         NSImage *im = [[NSImage alloc] initWithSize:rect.size];
         [im lockFocus];
@@ -797,7 +792,7 @@ static NSImage *empty_image;
     [input_text setDelegate:self];
     [input_text setAction:@selector (do_command:)];
     if (prefs.style_inputbox)
-        [input_text setFont:[[AquaChat sharedAquaChat] getFont]];
+        [input_text setFont:[[AquaChat sharedAquaChat] font]];
  
     [userlist_table setDoubleAction:@selector (do_doubleclick:)];
     [userlist_table setTarget:self];
@@ -818,23 +813,23 @@ static NSImage *empty_image;
         [c release];
     }
     
-    for (int i = 0; i < [userlist_table numberOfColumns]; i ++)
+    for (NSInteger i = 0; i < [userlist_table numberOfColumns]; i ++)
     {
-        id col = [[userlist_table tableColumns] objectAtIndex:i];
+        NSTableColumn *col = [[userlist_table tableColumns] objectAtIndex:i];
         [col setIdentifier:[NSNumber numberWithInt:i]];
     }
 
     NSArray *cols = [userlist_table tableColumns];
-    id col_zero = (NSTableColumn *) [cols objectAtIndex:0];
+    NSTableColumn *col_zero = [cols objectAtIndex:0];
     [col_zero setDataCell:[[[NSImageCell alloc] init] autorelease]];
-    id col_one = (NSTableColumn *) [cols objectAtIndex:1];
+    NSTableColumn *col_one  = [cols objectAtIndex:1];
     [col_one setDataCell:[[[NSTextFieldCell alloc] init] autorelease]];
-    [(NSCell *) [col_one dataCell] setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
+    [[col_one dataCell] setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
 	if (prefs.showhostname_in_userlist)
 	{
-		id col_two = (NSTableColumn *) [cols objectAtIndex:2];
+		NSTableColumn *col_two = [cols objectAtIndex:2];
 		[col_two setDataCell:[[[NSTextFieldCell alloc] init] autorelease]];
-		[(NSCell *) [col_two dataCell] setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
+		[[col_two dataCell] setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
 	}
 	
 	[lag_indicator sizeToFit];
@@ -901,7 +896,7 @@ static NSImage *empty_image;
 	if ([res isKindOfClass:[NSTextView class]])
 	{
 		NSTextView *tview = (NSTextView *) res;
-		if ([tview delegate] == input_text)
+		if ((NSTextField *)[tview delegate] == input_text)
 			[tview moveToEndOfParagraph:self];
 	}
 }
@@ -1185,27 +1180,27 @@ static NSImage *empty_image;
 
 - (void) mode_buttons:(char) mode sign:(char) sign
 {
-    NSButton *b = nil;
-    
-    switch (mode)
-    {
-        case 't': b = t_button; break;
-        case 'n': b = n_button; break;
-        case 's': b = s_button; break;
-        case 'i': b = i_button; break;
-        case 'p': b = p_button; break;
-        case 'm': b = m_button; break;
-        case 'b': b = b_button; break;
-        case 'l': b = l_button; break;
-        case 'k': b = k_button; break;
-		case 'C': b = C_button; break;
-		case 'N': b = N_button; break;
-		case 'u': b = u_button; break;
+	NSButton *button = nil;
+	
+	switch (mode)
+	{
+		case 't': button = t_button; break;
+		case 'n': button = n_button; break;
+		case 's': button = s_button; break;
+		case 'i': button = i_button; break;
+		case 'p': button = p_button; break;
+		case 'm': button = m_button; break;
+		case 'b': button = b_button; break;
+		case 'l': button = l_button; break;
+		case 'k': button = k_button; break;
+		case 'C': button = C_button; break;
+		case 'N': button = N_button; break;
+		case 'u': button = u_button; break;
         default: return;
-    }
+	}
    
-    if (b)
-		[b setState:sign == '+' ? NSOnState : NSOffState];
+    if ( nil != button )
+		[button setState:sign == '+' ? NSOnState : NSOffState];
 	
 	// Can't do this..  We really need to know if our user mode allows
 	// us to edit the topic.. can we know that for sure given the various
@@ -1216,33 +1211,32 @@ static NSImage *empty_image;
 
 - (void) set_topic:(const char *) topic
 {
-	ColorPalette *p = [[[[AquaChat sharedAquaChat] getPalette] clone] autorelease];
+	ColorPalette *palette = [[[[AquaChat sharedAquaChat] getPalette] clone] autorelease];
 
-	[p setColor:AC_FGCOLOR color:[NSColor blackColor]];
-	[p setColor:AC_BGCOLOR color:[NSColor whiteColor]];
+	[palette setColor:AC_FGCOLOR color:[NSColor blackColor]];
+	[palette setColor:AC_BGCOLOR color:[NSColor whiteColor]];
 
-	[topic_text setStringValue:[mIRCString stringWithUTF8String:topic 
-															len:-1 
-														palette:p
+	[topic_text setStringValue:[mIRCString stringWithUTF8String:topic
+															len:-1
+														palette:palette
 															font:nil
 														boldFont:nil]];
 }
 
 - (void) set_channel
 {
-    NSMutableString *s = [NSMutableString stringWithUTF8String:sess->channel];
-    
-    if (prefs.truncchans && [s length] > prefs.truncchans)
-    {
-        unsigned int start = prefs.truncchans - 2;
-        unsigned int len = [s length] - start;
-        [s replaceCharactersInRange:NSMakeRange (start, len)
-                         withString:@".."];
-    }
-    [chat_view setTabTitle:s];
-    
-    // FIXME: rough solution to solve initialization with scrollToDocumentEnd 2/3
-    [chat_text scrollToEndOfDocument:chat_view];
+	NSMutableString *channelString = [NSMutableString stringWithUTF8String:sess->channel];
+
+	if (prefs.truncchans && [channelString length] > prefs.truncchans)
+	{
+		NSUInteger start = prefs.truncchans - 2;
+		NSUInteger len = [channelString length] - start;
+		[channelString replaceCharactersInRange:NSMakeRange (start, len) withString:@".."];
+	}
+	[chat_view setTabTitle:channelString];
+
+	// FIXME: rough solution to solve initialization with scrollToDocumentEnd 2/3
+	[chat_text scrollToEndOfDocument:chat_view];
 }
 
 - (void) set_nonchannel:(bool) state
@@ -1275,7 +1269,7 @@ static NSImage *empty_image;
 
 - (int) find_user:(struct User *) user
 {
-    for (unsigned int i = 0; i < [userlist count]; i ++)
+    for (NSUInteger i = 0; i < [userlist count]; i ++)
         if ([[userlist objectAtIndex:i] getUser] == user)
             return i;
     return -1;
@@ -1284,11 +1278,9 @@ static NSImage *empty_image;
 /* CL */
 - (int) findUser:(struct User *) user returnObject:(OneUser **) userObject
 {
-	int i, n;
-	OneUser *u;
-    for (i = 0, n = [userlist count]; i < n; i++) {
-		u = (OneUser *) [userlist objectAtIndex:i];
-        if ([u getUser] == user) {
+	for (NSUInteger i = 0, n = [userlist count]; i < n; i++) {
+		OneUser *u = (OneUser *) [userlist objectAtIndex:i];
+		if ([u getUser] == user) {
 			*userObject = u;
 			return i;
 		}
@@ -1300,44 +1292,42 @@ static NSImage *empty_image;
 
 - (NSImage *) get_user_image:(struct User *) user
 {
-    switch (user->prefix [0])
-    {
-        case '@': return green_image;
-        case '%': return blue_image;
-        case '+': return yellow_image;
-    }
+	switch (user->prefix [0])
+	{
+		case '@': return green_image;
+		case '%': return blue_image;
+		case '+': return yellow_image;
+	}
 
-    /* find out how many levels above Op this user is */
-    char *pre = strchr (sess->server->nick_prefixes, '@');
-    if (pre && pre != sess->server->nick_prefixes)
-    {
-        pre--;
-        int level = 0;
-        while (1)
-        {
-            if (pre[0] == user->prefix[0])
-            {
-                switch (level)
-                {
-                    case 0: return red_image; 		/* 1 level above op */
-                    case 1: return purple_image;       	/* 2 levels above op */
-                }
-                break;  				/* 3+, no icons */
-            }
-            level++;
-            if (pre == sess->server->nick_prefixes)
-                    break;
-            pre--;
-        }
-    }
-
-    return empty_image;
+	/* find out how many levels above Op this user is */
+	char *pre = strchr (sess->server->nick_prefixes, '@');
+	if (pre && pre != sess->server->nick_prefixes)
+	{
+		pre--;
+		NSInteger level = 0;
+		while (1)
+		{
+			if (pre[0] == user->prefix[0])
+			{
+				switch (level)
+				{
+					case 0: return red_image;		/* 1 level above op */
+					case 1: return purple_image;	/* 2 levels above op */
+				}
+				break;								/* 3+, no icons */
+			}
+			level++;
+			if (pre == sess->server->nick_prefixes)
+				break;
+			pre--;
+		}
+	}
+	return empty_image;
 }
 
 /* CL */
 - (void) recalculateUserTableLayout
 {
-	NSTableColumn *column;
 	maxNickWidth = 0.0;
 	maxHostWidth = 0.0;
 	maxRowHeight = 16.0;
@@ -1349,8 +1339,7 @@ static NSImage *empty_image;
 		if (u->nickSize.height > maxRowHeight) maxRowHeight = u->nickSize.height;
 	}
 	
-	
-	column = [[userlist_table tableColumns] objectAtIndex:1];
+	NSTableColumn *column = [[userlist_table tableColumns] objectAtIndex:1];
 	[column sizeToFit];
 	if (maxNickWidth != [column width]) [column setWidth: maxNickWidth];
 	if (prefs.showhostname_in_userlist) {
@@ -1360,12 +1349,12 @@ static NSImage *empty_image;
 	if (maxRowHeight != [userlist_table rowHeight]) [userlist_table setRowHeight: maxRowHeight];
 }
 
-- (void) updateUserTableLayoutForInsert:(OneUser *) u
+- (void) updateUserTableLayoutForInsert:(OneUser *) user
 {
 	NSArray *columns = [userlist_table tableColumns];
 	/* nickname column */
 	NSTableColumn *column = [columns objectAtIndex:1];
-	float width = u->nickSize.width;
+	CGFloat width = user->nickSize.width;
 	if (width > maxNickWidth) {
 		maxNickWidth = width+0.5; // Leopard fix :) Where this 0.25 come from?
 		[column setWidth: maxNickWidth];
@@ -1373,42 +1362,41 @@ static NSImage *empty_image;
 	/* host column */
     if (prefs.showhostname_in_userlist) {
 		column = [columns objectAtIndex:2];
-		float width = u->hostSize.width;
+		CGFloat width = user->hostSize.width;
 		if (width > maxHostWidth) {
 			maxHostWidth = width;
 			[column setWidth: width];
 		}
 	}
 	/* row height */
-	float height = (u->nickSize.height > u->hostSize.height ? u->nickSize.height: u->hostSize.height);
+	CGFloat height = (user->nickSize.height > user->hostSize.height ? user->nickSize.height: user->hostSize.height);
 	if (height > maxRowHeight) {
 		maxRowHeight = height;
 		[userlist_table setRowHeight: height];
 	}
 }
 
-- (void) updateUserTableLayoutForRemove:(OneUser *) u
+- (void) updateUserTableLayoutForRemove:(OneUser *) user
 {
 	/* nickname column */
-	if (u->nickSize.width == maxNickWidth) [self recalculateUserTableLayout];
+	if (user->nickSize.width == maxNickWidth) [self recalculateUserTableLayout];
 	/* host column */
-	else if ((prefs.showhostname_in_userlist) && (u->hostSize.width == maxHostWidth)) [self recalculateUserTableLayout];
+	else if ((prefs.showhostname_in_userlist) && (user->hostSize.width == maxHostWidth)) [self recalculateUserTableLayout];
 	/* row height */
 	else {
-		float height = (u->nickSize.height > u->hostSize.height ? u->nickSize.height: u->hostSize.height);
+		CGFloat height = (user->nickSize.height > user->hostSize.height ? user->nickSize.height: user->hostSize.height);
 		if ((height == maxRowHeight) && (height > 16.0)) [self recalculateUserTableLayout];	/* in this case, a stricter condition should be added, as (oldHeight == [userlist_table rowHeight]) will be true for most users */
 	}
 }
 
-- (void) updateUserTableLayoutForRehash:(OneUser *) u
-							oldNickSize:(NSSize) ons
-							oldHostSize:(NSSize) ohs
+- (void) updateUserTableLayoutForRehash:(OneUser *)user
+							oldNickSize:(NSSize)oldNickSize oldHostSize:(NSSize)oldHostSize
 {
 	NSArray *columns = [userlist_table tableColumns];
 	/* nickname column */
 	NSTableColumn *column = [columns objectAtIndex:1];
-	float width = u->nickSize.width;
-	if ((width < ons.width) && (ons.width == maxNickWidth)) {
+	CGFloat width = user->nickSize.width;
+	if ((width < oldNickSize.width) && (oldNickSize.width == maxNickWidth)) {
 		[self recalculateUserTableLayout];
 		return;
 	}
@@ -1419,8 +1407,8 @@ static NSImage *empty_image;
 	/* host column */
     if (prefs.showhostname_in_userlist) {
 		column = [columns objectAtIndex:2];
-		float width = u->hostSize.width;
-		if ((width < ohs.width) && (ohs.width == maxHostWidth)) {
+		CGFloat width = user->hostSize.width;
+		if ((width < oldHostSize.width) && (oldHostSize.width == maxHostWidth)) {
 			[self recalculateUserTableLayout];
 			return;
 		}
@@ -1430,8 +1418,8 @@ static NSImage *empty_image;
 		}
 	}
 	/* row height */
-	float height = (u->nickSize.height > u->hostSize.height ? u->nickSize.height: u->hostSize.height);
-	float oldHeight = (ons.height > ohs.height ? ons.height: ohs.height);
+	CGFloat height = (user->nickSize.height > user->hostSize.height ? user->nickSize.height: user->hostSize.height);
+	CGFloat oldHeight = (oldNickSize.height > oldHostSize.height ? oldNickSize.height: oldHostSize.height);
 	if ((height < oldHeight) && (oldHeight == maxRowHeight) && (oldHeight > 16.0)) {	/* in this case, a stricter condition should be added, as (oldHeight == [userlist_table rowHeight]) will be true for most users */
 		[self recalculateUserTableLayout];
 		return;
@@ -1442,13 +1430,13 @@ static NSImage *empty_image;
 	}
 }
 
-- (void) rehashUserAndUpdateLayout:(OneUser *) u
+- (void) rehashUserAndUpdateLayout:(OneUser *)user
 {
-	NSSize ons = u->nickSize;
-	NSSize ohs = u->hostSize;
-    [u rehash];
-	[u cacheSizesForTable: userlist_table];
-	[self updateUserTableLayoutForRehash: u oldNickSize: ons oldHostSize: ohs];
+	NSSize oldNickSize = user->nickSize;
+	NSSize oldHostSize = user->hostSize;
+    [user rehash];
+	[user cacheSizesForTable: userlist_table];
+	[self updateUserTableLayoutForRehash:user oldNickSize:oldNickSize oldHostSize:oldHostSize];
     [userlist_table reloadData];
 }
 
@@ -1457,12 +1445,9 @@ static NSImage *empty_image;
 	if (clear) [userlist_table deselectAll:self];
 	
 	if (*names[0]) {
-		int i, n, j;
-		struct User *user;
-
-		for (i = 0, n = [userlist count]; i < n; i++) {
-			user = [[userlist objectAtIndex:i] getUser];
-			j = 0;
+		for (NSUInteger i = 0, n = [userlist count]; i < n; i++) {
+			struct User *user = [[userlist objectAtIndex:i] getUser];
+			NSUInteger j = 0;
 			do {
 				if (sess->server->p_cmp (user->nick, names[j]) == 0) {
 					[userlist_table selectRow:i byExtendingSelection:YES];
@@ -1478,49 +1463,48 @@ static NSImage *empty_image;
 {
 /* CL */
 	OneUser *u;
-	int idx = [self findUser:user returnObject:&u];
+	NSInteger idx = [self findUser:user returnObject:&u];
     if (idx < 0)
         return;
-	[self rehashUserAndUpdateLayout: u];
+	[self rehashUserAndUpdateLayout:u];
 /* CL end */
 }
 
-- (void) userlist_insert:(struct User *) user 
-                     row:(int) row
-                  select:(bool) select
+- (void) userlist_insert:(struct User *)user row:(int)row select:(bool) select
 {
-    OneUser *u = [(OneUser *) [OneUser alloc] initWithUser:user];
-/* CL */
+	OneUser *u = [(OneUser *) [OneUser alloc] initWithUser:user];
+	/* CL */
 	[u cacheSizesForTable: userlist_table];
 	[self updateUserTableLayoutForInsert: u];
-/* CL end */
-    
-    if (row < 0)
-        [userlist addObject:u];
-    else
-    {
-        int srow = [userlist_table selectedRow];
-        [userlist insertObject:u atIndex:row];
-        if (srow >= 0 && row <= srow)
-            [userlist_table selectRow:srow + 1 byExtendingSelection:false];
-    }
+	/* CL end */
 
-    if (select)
-        [userlist_table selectRow:row byExtendingSelection:false];
+	if (row < 0) {
+		[userlist addObject:u];
+	} else
+	{
+		NSInteger srow = [userlist_table selectedRow];
+		[userlist insertObject:u atIndex:row];
+		if (srow >= 0 && row <= srow)
+			[userlist_table selectRowIndexes:[NSIndexSet indexSetWithIndex:srow+1] byExtendingSelection:NO];
+	}
 
-    [userlist_table reloadData]; 
+	if (select)
+		[userlist_table selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
 
-    if (user->me)
-    {
-        NSImage *img = [self get_user_image:user];
-        if (img == empty_image)
-            [op_voice_icon setHidden:true];
-        else
-        {
-            [op_voice_icon setImage:img];
-            [op_voice_icon setHidden:false];
-        }
-    }
+    [userlist_table reloadData];
+
+	if (user->me)
+	{
+		NSImage *img = [self get_user_image:user];
+		if (img == empty_image) {
+			[op_voice_icon setHidden:true];
+		}
+		else
+		{
+			[op_voice_icon setImage:img];
+			[op_voice_icon setHidden:false];
+		}
+	}
 	[u release];
 }
 
@@ -1528,31 +1512,30 @@ static NSImage *empty_image;
 {
 /* CL */
 	OneUser *u;
-    int idx = [self findUser:user returnObject:&u];
-    if (idx < 0)
-        return false;
-        
-    int srow = [userlist_table selectedRow];
+	NSInteger idx = [self findUser:user returnObject:&u];
+	if (idx < 0)
+		return false;
+
+	NSInteger srow = [userlist_table selectedRow];
 	[u retain];
-    [userlist removeObjectAtIndex:idx];
+	[userlist removeObjectAtIndex:idx];
 	[self updateUserTableLayoutForRemove: u];
 	[u release];
 /* CL end */
-    if (idx < srow)
-        [userlist_table selectRow:srow - 1 byExtendingSelection:false];
+	if (idx < srow)
+		[userlist_table selectRowIndexes:[NSIndexSet indexSetWithIndex:srow-1] byExtendingSelection:NO];
     else if (idx == srow)
-        [userlist_table deselectAll:self];
-    [userlist_table reloadData]; 
+		[userlist_table deselectAll:self];
+	[userlist_table reloadData]; 
 
-    return srow == idx;
+	return srow == idx;
 }
 
-- (void) userlist_move:(struct User *) user
-                   row:(int) row
+- (void) userlist_move:(struct User *)user row:(int) row
 {
 /* CL */
 	OneUser *u;
-	int i = [self findUser:user returnObject:&u];
+	NSInteger i = [self findUser:user returnObject:&u];
 	if (i < 0) return;
 
 	if (i != row) {
@@ -1567,7 +1550,7 @@ static NSImage *empty_image;
 			if (i < srow) srow--;
 			if (row <= srow) srow++;
 		}
-		[userlist_table selectRow:srow byExtendingSelection:false];
+		[userlist_table selectRowIndexes:[NSIndexSet indexSetWithIndex:srow] byExtendingSelection:NO];
 	}
 	
 	[self rehashUserAndUpdateLayout: u];
@@ -1641,43 +1624,42 @@ static NSImage *empty_image;
 
 - (void) set_title
 {
-    NSString *title;
-    
-    int type = sess->type;
+	NSString *title;
 
-    NSString *chan = [NSString stringWithUTF8String:sess->channel];
+	int type = sess->type;
+
+	NSString *chan = [NSString stringWithUTF8String:sess->channel];
     
-    switch (type)
-    {
-        case SESS_DIALOG:
-			title = [NSString stringWithFormat:@"%@ %@", NSLocalizedStringFromTable(@"Dialog with", @"xchat", @""),
-			[NSString stringWithFormat:@"%@ @ %s", chan, sess->server->servername]];
+	switch (type)
+	{
+		case SESS_DIALOG:
+			title = [NSString stringWithFormat:@"%@ %@",
+					 NSLocalizedStringFromTable(@"Dialog with", @"xchat", @""),
+					 [NSString stringWithFormat:@"%@ @ %s", chan, sess->server->servername]];
             break;
-            
-        case SESS_CHANNEL:
-            if (sess->channel [0])
-            {
-                title = [NSString stringWithFormat:@"%s / %@", 
-                                        sess->server->servername, chan];
-                break;
-            }
-            // else fall through
-            
-        case SESS_SERVER:
-        case SESS_NOTICES:
-        case SESS_SNOTICES:
-            if (sess->server->servername [0])
-            {
-                title = [NSString stringWithFormat:@"%s", sess->server->servername];
-                break;
-            }
-            // else fall through
-            
-        default:
-            title = [NSString stringWithFormat:@"X-Chat [%s/%s]", MYVERSION, PACKAGE_VERSION];
-    }
 
-    [chat_view setTitle:title];
+		case SESS_CHANNEL:
+			if (sess->channel[0])
+			{
+				title = [NSString stringWithFormat:@"%s / %@", sess->server->servername, chan];
+				break;
+			}
+			// else fall through
+
+		case SESS_SERVER:
+		case SESS_NOTICES:
+		case SESS_SNOTICES:
+			if (sess->server->servername [0])
+			{
+				title = [NSString stringWithFormat:@"%s", sess->server->servername];
+				break;
+			}
+			// else fall through
+
+		default:
+			title = [NSString stringWithFormat:@"X-Chat [%s/%s]", MYVERSION, PACKAGE_VERSION];
+	}
+	[chat_view setTitle:title];
 }
 
 - (void) do_command:(id) sender
@@ -1707,9 +1689,9 @@ static NSImage *empty_image;
 	NSTextStorage *destStorage = [logWin->chat_text textStorage];
 	NSString *text = [sourceStorage string];
 	NSString *key = [NSString stringWithUTF8String:ckey];
-	unsigned length = [text length];
-	unsigned start = 0;
-	do {
+	NSUInteger length = [text length];
+	NSUInteger start = 0;
+	while (true) {
 		NSRange keyRange = [text rangeOfString:key options:NSCaseInsensitiveSearch range:NSMakeRange(start, length - start)];
 		if (keyRange.location == NSNotFound) break;
 
@@ -1722,7 +1704,7 @@ static NSImage *empty_image;
 		[destStorage appendAttributedString:result];
 		[result release];
 		start = NSMaxRange(lineRange);
-	} while (1);
+	}
 
 }
 
@@ -1733,15 +1715,15 @@ static NSImage *empty_image;
 
 - (void) print_text:(const char *) text stamp:(time_t)stamp
 {
-    [chat_text print_text:text stamp:stamp];
+	[chat_text print_text:text stamp:stamp];
 
-    if (!sess->new_data && sess != current_tab && !sess->nick_said)
-    {
-        if (sess->msg_said)		// Channel message
-            [self set_tab_color:2 flash:false];
-        else				// Server message?  Not sure..?
-            [self set_tab_color:1 flash:false];
-    }
+	if (!sess->new_data && sess != current_tab && !sess->nick_said)
+	{
+		if (sess->msg_said)	// Channel message
+			[self set_tab_color:2 flash:false];
+		else				// Server message?  Not sure..?
+			[self set_tab_color:1 flash:false];
+	}
 }
 
 - (BOOL) processFileDrop:(id <NSDraggingInfo>) info forUser:(const char *) nick
@@ -1767,10 +1749,9 @@ static NSImage *empty_image;
     }
     
     NSArray *files = [pboard propertyListForType:NSFilenamesPboardType];
-    for (unsigned int i = 0; i < [files count]; i ++)
+    for (NSUInteger i = 0; i < [files count]; i ++)
     {
-        dcc_send (sess, (char *) nick, 
-					(char *) [[files objectAtIndex:i] UTF8String], prefs.dcc_max_send_cps, 0);
+        dcc_send (sess, (char *)nick, (char *)[[files objectAtIndex:i] UTF8String], prefs.dcc_max_send_cps, 0);
     }
 	return YES;
 }
@@ -1780,12 +1761,11 @@ static NSImage *empty_image;
 	return [[input_text stringValue] UTF8String];
 }
 
-- (void) setInputText:(const char *) xx
+- (void) setInputText:(const char *)text
 {
-    if (!xx)
-        return;
+    if (!text) return;
         
-    [input_text setStringValue:[NSString stringWithUTF8String:xx]];
+    [input_text setStringValue:[NSString stringWithUTF8String:text]];
     [[[input_text window] firstResponder] moveToEndOfParagraph:self];
 }
 
@@ -1793,10 +1773,9 @@ static NSImage *empty_image;
 {
     NSWindow *win = [input_text window];
 	NSTextView *view = (NSTextView*)[win firstResponder];
-    if ([view isKindOfClass:[NSTextView class]] &&
-		[view delegate] == input_text)
+    if ([view isKindOfClass:[NSTextView class]] && (NSTextField *)[view delegate] == input_text)
 	{
-	    int loc = [view selectedRange].location;
+	    NSUInteger loc = [view selectedRange].location;
 		return loc;
 	}
 	return 0;
@@ -1806,8 +1785,7 @@ static NSImage *empty_image;
 {
     NSWindow *win = [input_text window];
 	NSTextView *view = (NSTextView*)[win firstResponder];
-    if ([view isKindOfClass:[NSTextView class]] &&
-		[view delegate] == input_text)
+    if ([view isKindOfClass:[NSTextView class]] && (NSTextField *)[view delegate] == input_text)
 	{
 		if (delta)
 		{
@@ -1822,11 +1800,10 @@ static NSImage *empty_image;
 
 - (void) userlist_set_selected
 {
-    for (unsigned row = 0; row < [userlist count]; row++)
+    for (NSUInteger row = 0; row < [userlist count]; row++)
     {
-        OneUser *u = (OneUser *) [userlist objectAtIndex:row];
-		struct User *user = u->user;
-		user->selected = [userlist_table isRowSelected:row];
+        OneUser *u = [userlist objectAtIndex:row];
+		u->user->selected = [userlist_table isRowSelected:row];
     }
 }
 
@@ -1838,51 +1815,35 @@ static NSImage *empty_image;
     return [userlist count];
 }
 
-- (id) tableView:(NSTableView *) aTableView
-    objectValueForTableColumn:(NSTableColumn *) aTableColumn
-    row:(NSInteger) rowIndex
+- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
 {
-    OneUser *u = (OneUser *) [userlist objectAtIndex:rowIndex];
-    
-    switch ([[aTableColumn identifier] intValue])
+    OneUser *u = [userlist objectAtIndex:row];
+    switch ([[tableColumn identifier] intValue])
     {
-        case 0:
-            return [self get_user_image:u->user];
-        case 1:
-            return u->nick;
-        case 2:
-            return u->host;
+        case 0: return [self get_user_image:u->user];
+        case 1: return u->nick;
+        case 2: return u->host;
     }
-    
     return @"";
 }
 
-- (NSDragOperation) tableView:(NSTableView *) tv
-                 validateDrop:(id <NSDraggingInfo>) info
-                  proposedRow:(NSInteger) row
-        proposedDropOperation:(NSTableViewDropOperation) op
+- (NSDragOperation)tableView:(NSTableView *)tableView validateDrop:(id <NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation
 {
-    if (row < 0 || op == NSTableViewDropAbove /* || [tv isHiddenOrHasHiddenAncestor] */)
+    if (row < 0 || dropOperation == NSTableViewDropAbove /* || [tv isHiddenOrHasHiddenAncestor] */)
         return NSDragOperationNone;
-
+	
     return NSDragOperationCopy;
 }
 
-- (BOOL) tableView:(NSTableView*) tv
-        acceptDrop:(id <NSDraggingInfo>) info
-               row:(NSInteger) row
-     dropOperation:(NSTableViewDropOperation) op
+- (BOOL)tableView:(NSTableView *)tableView acceptDrop:(id <NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation
 {
-    NSAttributedString *nick = [[tv dataSource] tableView:tv
-                      objectValueForTableColumn:[[tv tableColumns] objectAtIndex:1]
-                                            row:row];
-
+    NSAttributedString *nick = [[tableView dataSource] tableView:tableView objectValueForTableColumn:[[tableView tableColumns] objectAtIndex:1] row:row];
     return [self processFileDrop:info forUser:[[nick string] UTF8String]];
 }
 
 - (NSMenu *)menuForEvent:(NSEvent *)theEvent rowIndexes:(NSIndexSet *)rows
 {
-	unsigned count = [rows count];
+	NSUInteger count = [rows count];
 	NSMenu *menu = [[[NSMenu alloc] initWithTitle:@""] autorelease];
 	NSString *nick = nil;
 	
@@ -1892,7 +1853,6 @@ static NSImage *empty_image;
 	
 	if (count > 1) {
 		[[menu addItemWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTable(@"%d users selected", @"xchataqua", @"Popup menu message when you right-clicked userlist."), count] action:nil keyEquivalent:@""] setEnabled:NO];
-
         userlist_menu_curuser = NULL;
 	} else {
 		OneUser *userObject = (OneUser *) [userlist objectAtIndex:[rows firstIndex]];
@@ -1921,22 +1881,21 @@ static NSImage *empty_image;
 
 static int ncommon (const char *a, const char *b)
 {
-    int n;
+	int n;
     for (n = 0; *a && *b && rfc_tolower (*a++) == rfc_tolower (*b++); n ++) ;
     return n;
 }
 
 static int find_common (NSArray *list)
 {
-    if ([list count] < 1)
-    	return 0;
+    if ([list count] < 1) return 0;
 
     NSString *xx = (NSString *) [[list objectAtIndex:0] stringValue];
-    int n = [xx length];
+    NSInteger n = [xx length];
 
-    for (unsigned int i = 1; i < [list count]; i ++)
+    for (NSUInteger i = 1; i < [list count]; i ++)
     {
-    	int this_n = ncommon ([xx UTF8String], [[[list objectAtIndex:i] stringValue] UTF8String]);
+    	NSInteger this_n = ncommon ([xx UTF8String], [[[list objectAtIndex:i] stringValue] UTF8String]);
 		if (this_n < n)
 			n = this_n;
     }
@@ -1944,21 +1903,20 @@ static int find_common (NSArray *list)
     return n;
 }
 
-- (NSArray *) command_complete:(NSTextView *) view
-		       start:(NSString *) start
+- (NSArray *) command_complete:(NSTextView *) view start:(NSString *) start
 {
 	const char *utf = [start UTF8String];
 	int len = strlen (utf);
 	
 	// Use a set because stupid user commands appear multiple times!
-    NSMutableSet *match_list = [NSMutableSet setWithCapacity:0];
+    NSMutableSet *matchArray = [NSMutableSet setWithCapacity:0];
 
     for (GSList *list = command_list; list; list = list->next)
     {
         struct popup *pop = (struct popup *) list->data;
 		int this_len = strlen (pop->name);
 		if (len <= this_len && strncasecmp (utf, pop->name, len) == 0)
-			[match_list addObject:[OneCompletion completionWithValue:pop->name]];
+			[matchArray addObject:[OneCompletion completionWithValue:pop->name]];
     }
 
     for (int i = 0; xc_cmds[i].name; i ++)
@@ -1966,10 +1924,10 @@ static int find_common (NSArray *list)
         char *cmd = xc_cmds[i].name;
 		int this_len = strlen (cmd);
 		if (len <= this_len && strncasecmp (utf, cmd, len) == 0)
-			[match_list addObject:[OneCompletion completionWithValue:cmd]];
+			[matchArray addObject:[OneCompletion completionWithValue:cmd]];
     }
     
-	return [match_list allObjects];
+	return [matchArray allObjects];
 }
 
 - (NSArray *) nick_complete:(NSTextView *) view
@@ -1978,14 +1936,14 @@ static int find_common (NSArray *list)
 	const char *utf = [start UTF8String];
 	int len = strlen (utf);
 
-    NSMutableArray *match_list = [NSMutableArray arrayWithCapacity:0];
+    NSMutableArray *matchArray = [NSMutableArray arrayWithCapacity:0];
 
 	if (sess->type == SESS_DIALOG)
 	{
 		int this_len = strlen (sess->channel);
 		if (len > this_len || rfc_ncasecmp ((char *) utf, sess->channel, len) != 0)
 			return nil;
-		[match_list addObject:[OneCompletion completionWithValue:sess->channel]];
+		[matchArray addObject:[OneCompletion completionWithValue:sess->channel]];
 	}
 	else
 	{
@@ -1995,11 +1953,11 @@ static int find_common (NSArray *list)
 			struct User *user = u->user;
 			int this_len = strlen (user->nick);
 			if (len <= this_len && rfc_ncasecmp ((char *) utf, user->nick, len) == 0)
-				[match_list addObject:[OneNickCompletion nickWithNick:user->nick lasttalk:user->lasttalk]];
+				[matchArray addObject:[OneNickCompletion nickWithNick:user->nick lasttalk:user->lasttalk]];
 		}
 	}
 
-	return match_list;
+	return matchArray;
 }
 
 - (NSArray *) channel_complete:(NSTextView *) view
@@ -2008,7 +1966,7 @@ static int find_common (NSArray *list)
 	const char *utf = [start UTF8String];
 	int len = strlen (utf);
 
-    NSMutableArray *match_list = [NSMutableArray arrayWithCapacity:0];
+    NSMutableArray *matchArray = [NSMutableArray arrayWithCapacity:0];
 
     for (GSList *list = sess_list; list; list = list->next)
     {
@@ -2018,11 +1976,11 @@ static int find_common (NSArray *list)
         {
             int this_len = strlen (tmp_sess->channel);
             if (len <= this_len && strncasecmp (utf, tmp_sess->channel, len) == 0)
-                [match_list addObject:[OneCompletion completionWithValue:tmp_sess->channel]];
+                [matchArray addObject:[OneCompletion completionWithValue:tmp_sess->channel]];
         }
     }
 
-	return match_list;
+	return matchArray;
 }
 
 - (void) tab_complete:(NSTextView *) view
@@ -2057,8 +2015,7 @@ static int find_common (NSArray *list)
 	}
 	
 	// Anything less than 1 char to the left of the insertion point is useless
-    if (insertionPoint < 1)
-    	return;
+    if (insertionPoint == 0) return;
 
 	//////////
 	//
@@ -2073,8 +2030,7 @@ static int find_common (NSArray *list)
 	
 	NSRange range = NSMakeRange(insertionPoint - 1, 1);
 	
-    if ([str characterAtIndex:range.location] == ' ')
-    	return;
+    if ([str characterAtIndex:range.location] == ' ') return;
 
     while (range.location > 0 && [str characterAtIndex:range.location - 1] != ' ')
     {
@@ -2084,7 +2040,7 @@ static int find_common (NSArray *list)
 
 	//////////
 	
-	NSArray *match_list;
+	NSArray *matchArray;
 	bool add_suffix = false;
 	
     if (range.location == 0)
@@ -2093,37 +2049,36 @@ static int find_common (NSArray *list)
         {
             range.location ++;
             range.length --;
-			match_list = [self command_complete:view start:[str substringWithRange:range]];
+			matchArray = [self command_complete:view start:[str substringWithRange:range]];
         }
 		else
 		{
-			match_list = [self nick_complete:view start:[str substringWithRange:range]];
+			matchArray = [self nick_complete:view start:[str substringWithRange:range]];
 			add_suffix = true;
 		}
     }
     else
     {
         if ([str characterAtIndex:range.location] == '#')
-            match_list = [self channel_complete:view start:[str substringWithRange:range]];
+            matchArray = [self channel_complete:view start:[str substringWithRange:range]];
         else
-            match_list = [self nick_complete:view start:[str substringWithRange:range]];
+            matchArray = [self nick_complete:view start:[str substringWithRange:range]];
     }
 
-    if (!match_list || [match_list count] < 1)
-    	return;
+    if (!matchArray || [matchArray count] < 1) return;
 	
-	match_list = [match_list sortedArrayUsingSelector:@selector(compare:)];
+	matchArray = [matchArray sortedArrayUsingSelector:@selector(compare:)];
 
-    NSUInteger n = find_common (match_list);
+    NSUInteger n = find_common (matchArray);
 
 	// If there's only 1 possible match, then we're done.
 	// If were doing the old style (bash style), and the common chars
 	// exceed what we typed, we'll complete up to the ambiguity.
-    if ([match_list count] == 1 || (!prefs.scrolling_completion && n > range.length))
+    if ([matchArray count] == 1 || (!prefs.scrolling_completion && n > range.length))
     {
-    	NSString *first = [[match_list objectAtIndex:0] stringValue];
+    	NSString *first = [[matchArray objectAtIndex:0] stringValue];
 		NSMutableString *r = [NSMutableString stringWithString:[first substringToIndex:n]];
-		if ([match_list count] == 1)
+		if ([matchArray count] == 1)
 		{
 			if (add_suffix && prefs.nick_suffix[0])
                 [r appendString:[NSString stringWithUTF8String:prefs.nick_suffix]];
@@ -2135,7 +2090,7 @@ static int find_common (NSArray *list)
 	
 	if (prefs.scrolling_completion)
 	{
-		NSString *item = [[match_list objectAtIndex:circular_completion_idx] stringValue];
+		NSString *item = [[matchArray objectAtIndex:circular_completion_idx] stringValue];
 
 		// Replace the part he typed, just so the case will match
 		NSString *left = [item substringToIndex:range.length];
@@ -2149,18 +2104,18 @@ static int find_common (NSArray *list)
 		[r appendString:@" "];
 		[view setMarkedText:r selectedRange:NSMakeRange(0, [r length])];
 		[view setSelectedRange:NSMakeRange(range.location + range.length + [r length], 0)];
-		circular_completion_idx = (circular_completion_idx + 1) % [match_list count];
+		circular_completion_idx = (circular_completion_idx + 1) % [matchArray count];
 	}
 	else
 	{
-		[self print_text:[[match_list componentsJoinedByString:@" "] UTF8String]];
+		[self print_text:[[matchArray componentsJoinedByString:@" "] UTF8String]];
 	}
 }
 
 //////////
 // input_text delegate and helper funcs
 
-- (BOOL) control:(NSControl *) control textShouldBeginEditing:(NSText *) fieldEditor
+- (BOOL)control:(NSControl *)control textShouldBeginEditing:(NSText *)fieldEditor
 {
     if (prefs.spell_check)
         [(NSTextView *)fieldEditor setContinuousSpellCheckingEnabled:YES];
@@ -2168,16 +2123,14 @@ static int find_common (NSArray *list)
     return YES;
 }
 
-- (BOOL) control:(NSControl *) control textShouldEndEditing:(NSText *) fieldEditor
+- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor
 {
     prefs.spell_check = [(NSTextView *)fieldEditor isContinuousSpellCheckingEnabled];
     [(NSTextView *)fieldEditor setContinuousSpellCheckingEnabled:NO];
     return YES;
 }
 
-- (BOOL) control:(NSControl *) control
-         textView:(NSTextView *) textView 
-         doCommandBySelector:(SEL) command
+- (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector
 {
     //NSArray *xx = [input_text registeredDraggedTypes];
     //if (xx)
@@ -2188,57 +2141,52 @@ static int find_common (NSArray *list)
 
     //printf ("->%s\n", [NSStringFromSelector (command) UTF8String]);
 
-	if (command == @selector (insertNewline:))
+	if (commandSelector == @selector (insertNewline:))
 	{
 		NSEvent *theEvent = [NSApp currentEvent];
 		if ([theEvent type] == NSKeyDown && ([theEvent modifierFlags] & NSShiftKeyMask))
 		{
 			[textView insertNewlineIgnoringFieldEditor:control];
-			return true;
 		}
 	}
-	else if (command == @selector (moveUp:))
+	else if (commandSelector == @selector (moveUp:))
     {
         const char *xx = history_up (&sess->history, (char *) [[input_text stringValue] UTF8String]);
         [self setInputText:xx];
-        return true;
     }
-    else if (command == @selector (moveDown:))
+    else if (commandSelector == @selector (moveDown:))
     {
         const char *xx = history_down (&sess->history);
         [self setInputText:xx];
-        return true;
     }
-    else if (command == @selector (scrollPageDown:))
+    else if (commandSelector == @selector (scrollPageDown:))
     {
         [chat_text scrollPageDown:textView];
-        return true;
     }
-    else if (command == @selector (scrollPageUp:))
+    else if (commandSelector == @selector (scrollPageUp:))
     {
         [chat_text scrollPageUp:textView];
-        return true;
     }
-    else if (command == @selector (scrollToBeginningOfDocument:))
+    else if (commandSelector == @selector (scrollToBeginningOfDocument:))
     {
         [chat_text scrollToBeginningOfDocument:textView];
-        return true;
     }
-    else if (command == @selector (scrollToEndOfDocument:))
+    else if (commandSelector == @selector (scrollToEndOfDocument:))
     {
         [chat_text scrollToEndOfDocument:textView];
-        return true;
     }
-    else if (command == @selector (insertTab:))
+    else if (commandSelector == @selector (insertTab:))
     {
         if (prefs.tab_completion)
             [self tab_complete:textView];
         else
             [textView insertTab:textView];
-        return true;
     }
+	else {
+		return false;
+	}
 
-    return false;
+    return true;
 }
 
 @end

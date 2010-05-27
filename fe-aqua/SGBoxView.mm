@@ -35,24 +35,25 @@ static void DP (const char *fmt, ...)
 
 @interface SGBoxMetaView : SGMetaView
 {
-    short	just;
+    SGBoxMinorJustification	justification;
 }
 
+@property (nonatomic, assign) SGBoxMinorJustification justification;
+
 - (id) initWithView:(NSView *) view;
-- (void) set_justification:(short) new_just;
-- (short) justification;
 - (NSComparisonResult) less_than_x:(id) other;
 - (NSComparisonResult) less_than_y:(id) other;
 
 @end
 
 @implementation SGBoxMetaView
+@synthesize justification;
 
 - (id)initWithView:(NSView *) the_view;
 {
     [super initWithView:the_view];
     
-    just = SGBoxMinorDefaultJustification;
+    justification = SGBoxMinorJustificationDefault;
     
     return self;
 }
@@ -60,24 +61,14 @@ static void DP (const char *fmt, ...)
 - (id) initWithCoder:(NSCoder *) decoder
 {
 	self = [super initWithCoder:decoder];
-    self->just = [decoder decodeIntForKey:@"justification"];
+	self->justification = (SGBoxMinorJustification)[decoder decodeIntForKey:@"justification"];
 	return self;
 }
 
 - (void) encodeWithCoder:(NSCoder *) encoder
 {
 	[super encodeWithCoder:encoder];
-    [encoder encodeInt:self->just forKey:@"justification"];
-}
-
-- (void) set_justification:(short) new_just
-{
-    just = new_just;
-}
-
-- (short) justification
-{
-    return just;
+    [encoder encodeInt:self->justification forKey:@"justification"];
 }
 
 - (NSComparisonResult) less_than_x:(id) other
@@ -107,16 +98,19 @@ static void DP (const char *fmt, ...)
 @end
 
 @implementation SGBoxView
+@synthesize stretchView,orientation,order;
+@synthesize majorJustification,minorJustification;
+@synthesize minorMargin,majorInnerMargin,majorOutterMargin;
 
 - (void) SGBoxViewPrivateInit
 {
-    self->minorjust = SGBoxMinorCenterJustification;
-    self->majorjust = SGBoxMajorFirstJustification;
-    self->minormargin = 0;
-    self->majorinnermargin = 0;
-    self->majorouttermargin = 0;
-    self->orient = SGBoxHorizontal;
-    self->order = SGBoxFIFO;
+    self->minorJustification = SGBoxMinorJustificationCenter;
+    self->majorJustification = SGBoxMajorJustificationFirst;
+    self->minorMargin = 0;
+    self->majorInnerMargin = 0;
+    self->majorOutterMargin = 0;
+    self->orientation = SGBoxOrientationHorizontal;
+    self->order = SGBoxOrderFIFO;
 }
 
 - (id) initWithFrame:(NSRect) frameRect
@@ -130,14 +124,14 @@ static void DP (const char *fmt, ...)
 {
 	self = [super initWithCoder:decoder];
 
-    self->minorjust = [decoder decodeIntForKey:@"minorjust"];
-    self->majorjust = [decoder decodeIntForKey:@"majorjust"];
-    self->minormargin = [decoder decodeIntForKey:@"minormargin"];
-    self->majorinnermargin = [decoder decodeIntForKey:@"majorinnermargin"];
-    self->majorouttermargin = [decoder decodeIntForKey:@"majorouttermargin"];
-    self->orient = [decoder decodeIntForKey:@"orient"];
-    self->order = [decoder decodeIntForKey:@"order"];
-    self->stretch = [decoder decodeObjectForKey:@"stretch"];
+    self->minorJustification = (SGBoxMinorJustification)[decoder decodeIntForKey:@"minorjust"];
+    self->majorJustification = (SGBoxMajorJustification)[decoder decodeIntForKey:@"majorjust"];
+    self->minorMargin = [decoder decodeIntForKey:@"minormargin"];
+    self->majorInnerMargin= [decoder decodeIntForKey:@"majorinnermargin"];
+    self->majorOutterMargin = [decoder decodeIntForKey:@"majorouttermargin"];
+    self->orientation = (SGBoxOrientation)[decoder decodeIntForKey:@"orient"];
+    self->order = (SGBoxOrder)[decoder decodeIntForKey:@"order"];
+    self->stretchView = [decoder decodeObjectForKey:@"stretch"];
     
     [self queue_layout];
     
@@ -147,24 +141,19 @@ static void DP (const char *fmt, ...)
 - (void) encodeWithCoder:(NSCoder *) encoder
 {
 	[super encodeWithCoder:encoder];
-    [encoder encodeInt:self->minorjust forKey:@"minorjust"];
-    [encoder encodeInt:self->majorjust forKey:@"majorjust"];
-    [encoder encodeInt:self->minormargin forKey:@"minormargin"];
-    [encoder encodeInt:self->majorinnermargin forKey:@"majorinnermargin"];
-    [encoder encodeInt:self->majorouttermargin forKey:@"majorouttermargin"];
-    [encoder encodeInt:self->orient forKey:@"orient"];
-    [encoder encodeInt:self->order forKey:@"order"];
-    [encoder encodeConditionalObject:self->stretch forKey:@"stretch"];
+    [encoder encodeInt:self->minorJustification forKey:@"minorjust"];
+    [encoder encodeInt:self->majorJustification forKey:@"majorjust"];
+    [encoder encodeInt:self->minorMargin		forKey:@"minormargin"];
+    [encoder encodeInt:self->majorInnerMargin	forKey:@"majorinnermargin"];
+    [encoder encodeInt:self->majorOutterMargin	forKey:@"majorouttermargin"];
+    [encoder encodeInt:self->orientation forKey:@"orient"];
+    [encoder encodeInt:self->order  forKey:@"order"];
+    [encoder encodeConditionalObject:self->stretchView forKey:@"stretch"];
 }
 
 static NSRect flip (NSRect r)
 {
-    NSRect rr;
-    rr.origin.x = r.origin.y;
-    rr.origin.y = r.origin.x;
-    rr.size.width = r.size.height;
-    rr.size.height = r.size.width;
-    return rr;
+	return NSMakeRect(r.origin.y,r.origin.x,r.size.height,r.size.width);
 }
 
 - (void) sizeToFit
@@ -173,27 +162,27 @@ static NSRect flip (NSRect r)
     
     NSSize sz;
     sz.height = 0;
-    sz.width = majorouttermargin + majorouttermargin;
+    sz.width = majorOutterMargin+majorOutterMargin;
     
-    for (unsigned int i = 0; i < [meta_views count]; i ++)
+    for (NSUInteger i = 0; i < [metaViews count]; i ++)
     {
-        SGMetaView *meta_view = [meta_views objectAtIndex:i];
-        NSRect r = [meta_view prefSize];
-        if (orient == SGBoxVertical)
+        SGMetaView *metaView = [metaViews objectAtIndex:i];
+        NSRect r = [metaView prefSize];
+        if (orientation == SGBoxOrientationVertical)
             r = flip (r);
         sz.width += r.size.width;
         if (r.size.height > sz.height)
             sz.height = r.size.height;
     }
     
-    if ([meta_views count] > 1)
-        sz.width += [meta_views count] * majorinnermargin;
+    if ([metaViews count] > 1)
+        sz.width += [metaViews count] * majorInnerMargin;
         
-    sz.height += minormargin + minormargin;
+    sz.height += minorMargin + minorMargin;
 
-    if (orient == SGBoxVertical)
+    if (orientation == SGBoxOrientationVertical)
     {
-        float xx = sz.width;
+        CGFloat xx = sz.width;
         sz.width = sz.height;
         sz.height = xx;
     }
@@ -210,26 +199,26 @@ static NSRect flip (NSRect r)
     return [[[SGBoxMetaView alloc] initWithView:view] autorelease];
 }
 
-- (void) justify:(NSRect *) b inMe:(NSRect *) r with:(short) justification
+- (void) justify:(NSRect *) b inMe:(NSRect *) r with:(SGBoxMinorJustification) justification
 {
-    if (justification == SGBoxMinorDefaultJustification)
-        justification = minorjust;
+    if (justification == SGBoxMinorJustificationDefault)
+        justification = minorJustification;
         
     switch (justification)
     {
-        case SGBoxMinorCenterJustification:
+        case SGBoxMinorJustificationCenter:
             b->origin.y = floor (r->origin.y + (r->size.height - b->size.height) / 2 + .5);
             break;
 
-        case SGBoxMinorLastJustification:
+        case SGBoxMinorJustificationLast:
             b->origin.y = r->origin.y + r->size.height - b->size.height;
             break;
             
-        case SGBoxMinorFirstJustification:
+        case SGBoxMinorJustificationFirst:
             b->origin.y = r->origin.y;
             break;
             
-        case SGBoxMinorFullJustification:
+        case SGBoxMinorJustificationFull:
             b->origin.y = r->origin.y;
             b->size.height = r->size.height;
             break;
@@ -240,8 +229,7 @@ static NSRect flip (NSRect r)
 {
 	DP ("Layout box view 0x%x\n", self);
 	
-    if ([meta_views count] < 1)
-        return;
+    if ([metaViews count] < 1) return;
         
     //
     // Keep the "x" order of the object as layed out in IB.  On the first layout,
@@ -249,100 +237,99 @@ static NSRect flip (NSRect r)
     // views will always be at the end
     //
     //if (first_layout)
-    //    [meta_views sortUsingSelector:orient == SGBoxHorizontal ? 
+    //    [metaViews sortUsingSelector:orientation == SGBoxOrientationHorizontal ? 
     //        @selector (less_than_x:) : @selector (less_than_y:)];   
 
     NSRect r = [self bounds];
     
 	DP ("I am %f %f %f %f 0x%x\n", r.origin.x, r.origin.y, r.size.width, r.size.height, self);
-    DP ("I have %d children\n", [meta_views count]);
+    DP ("I have %d children\n", [metaViews count]);
     
-    if (orient == SGBoxVertical)
-        r = flip (r);
+    if (orientation == SGBoxOrientationVertical)
+        r = flip(r);
 
-    r.origin.x += majorouttermargin;
-    r.origin.y += minormargin;
-    r.size.width -= majorouttermargin + majorouttermargin;
-    r.size.height -= minormargin + minormargin;
+    r.origin.x += majorOutterMargin;
+    r.origin.y += minorMargin;
+    r.size.width -= majorOutterMargin + majorOutterMargin;
+    r.size.height-= minorMargin + minorMargin;
 
     // Start from the left.. go until the end or we hit the "stretch" view.
     // If our majorjust is center or full, stretch makes no sense..
     // TBD: Clean this crap up..  Too much repeated code!!
     
-    bool will_stretch = majorjust != SGBoxMajorCenterJustification &&
-                        majorjust != SGBoxMajorFullJustification &&
-                        stretch != nil;
+    bool will_stretch = majorJustification != SGBoxMajorJustificationCenter &&
+                        majorJustification != SGBoxMajorJustificationFull &&
+                        stretchView != nil;
                       
-    float lx = r.origin.x;
+    CGFloat lx = r.origin.x;
     
-    int first;
-    int stop;
-    int incr;
+    NSInteger first;
+    NSInteger stop;
+    NSInteger incr;
     
-    if (order == SGBoxFIFO)
+    if (order == SGBoxOrderFIFO)
     {
         first = 0;
-        stop = [meta_views count];
+        stop = [metaViews count];
         incr = 1;
     }
     else
     {
-        first = [meta_views count] - 1;
+        first = [metaViews count] - 1;
         stop = -1;
         incr = -1;
     }
-    
-    int i;    
+	
+	NSInteger i;
     for (i = first; i != stop; i += incr)
     {
-        id meta_view = [meta_views objectAtIndex:i];
+        id metaView = [metaViews objectAtIndex:i];
         
-        if (will_stretch && stretch == [meta_view view])
+        if (will_stretch && stretchView == [metaView view])
             break;
             
-        if (![[meta_view view] isHidden])
+        if (![[metaView view] isHidden])
         {
-            NSRect b = [meta_view prefSize];
+            NSRect b = [metaView prefSize];
         
-            if (orient == SGBoxVertical)
+            if (orientation == SGBoxOrientationVertical)
                 b = flip (b);
     
             b.origin.x = lx;
-            [self justify:&b inMe:&r with:[meta_view justification]];
+            [self justify:&b inMe:&r with:[metaView justification]];
             
-            lx += b.size.width + majorinnermargin;
+            lx += b.size.width + majorInnerMargin;
 
-            if (orient == SGBoxVertical)
+            if (orientation == SGBoxOrientationVertical)
                 b = flip (b);
     
             DP ("Setting 0x%x to %f %f %f %f\n",
-                meta_view, b.origin.x, b.origin.y, b.size.width, b.size.height);
+                metaView, b.origin.x, b.origin.y, b.size.width, b.size.height);
                 
-            [meta_view setFrame:b];
+            [metaView setFrame:b];
         }
     }
     
-    if (!will_stretch && majorjust == SGBoxMinorCenterJustification)
+    if (!will_stretch && majorJustification == SGBoxMajorJustificationCenter)
     {
-        int leftovers = (int) (r.origin.x + r.size.width - lx + majorinnermargin);
-        int shift = leftovers / 2;
+        CGFloat shift = (r.origin.x + r.size.width - lx + majorInnerMargin) / 2;
         
-        for (unsigned int i = 0; i < [meta_views count]; i ++)
+        for (NSUInteger i = 0; i < [metaViews count]; i ++)
         {
-            id meta_view = [meta_views objectAtIndex:i];
-            if (![[meta_view view] isHidden])
+            id metaView = [metaViews objectAtIndex:i];
+            if (![[metaView view] isHidden])
             {
-                NSRect b = [[meta_view view] frame];
-                if (orient == SGBoxVertical)
+                NSRect b = [[metaView view] frame];
+                if (orientation	== SGBoxOrientationVertical)
                     b = flip (b);
                 b.origin.x += shift;
-                if (orient == SGBoxVertical)
+                if (orientation == SGBoxOrientationVertical)
                     b = flip (b);
 
                 DP ("Setting 0x%x to %f %f %f %f\n",
-                    meta_view, b.origin.x, b.origin.y, b.size.width, b.size.height);
+                    metaView, b.origin.x, b.origin.y, b.size.width, b.size.height);
 
-                [meta_view setFrame:b];
+                [metaView setFrame:b];
             }
         }
         
@@ -351,35 +338,35 @@ static NSRect flip (NSRect r)
     
     // and then from the right
 
-    float rx = r.origin.x + r.size.width;
+    CGFloat rx = r.origin.x + r.size.width;
 
     if (i != stop)
-    for (int j = stop - incr; j != i; j -= incr)
+    for (NSInteger j = stop - incr; j != i; j -= incr)
     {
-        id meta_view = [meta_views objectAtIndex:j];
+        id metaView = [metaViews objectAtIndex:j];
         
-        if (stretch == [meta_view view])
+        if (stretchView == [metaView view])
             break;
             
-        if (![[meta_view view] isHidden])
+        if (![[metaView view] isHidden])
         {
-            NSRect b = [meta_view prefSize];
+            NSRect b = [metaView prefSize];
 
-            if (orient == SGBoxVertical)
+            if (orientation == SGBoxOrientationVertical)
                 b = flip (b);
         
             b.origin.x = rx - b.size.width;
-            [self justify:&b inMe:&r with:[meta_view justification]];
+            [self justify:&b inMe:&r with:[metaView justification]];
             
-            rx -= b.size.width + majorinnermargin;
+            rx -= b.size.width + majorInnerMargin;
 
-            if (orient == SGBoxVertical)
+            if (orientation == SGBoxOrientationVertical)
                 b = flip (b);
 
             DP ("Setting 0x%x to %f %f %f %f\n",
-                meta_view, b.origin.x, b.origin.y, b.size.width, b.size.height);
+                metaView, b.origin.x, b.origin.y, b.size.width, b.size.height);
 
-            [meta_view setFrame:b];
+            [metaView setFrame:b];
         }
     }
     
@@ -389,116 +376,81 @@ static NSRect flip (NSRect r)
     {
         // We do this one.. visible or not.  Is this a good idea?
         
-        id meta_view = [meta_views objectAtIndex:i];
+        id metaView = [metaViews objectAtIndex:i];
         
-        NSRect b = [meta_view prefSize];
+        NSRect b = [metaView prefSize];
 
-        if (orient == SGBoxVertical)
+        if (orientation == SGBoxOrientationVertical)
             b = flip (b);
 
         b.origin.x = lx;
-        [self justify:&b inMe:&r with:[meta_view justification]];
+        [self justify:&b inMe:&r with:[metaView justification]];
         b.size.width = rx - lx;
         
-        if (orient == SGBoxVertical)
+        if (orientation == SGBoxOrientationVertical)
             b = flip (b);
 
         DP ("Setting 0x%x to %f %f %f %f\n",
-            meta_view, b.origin.x, b.origin.y, b.size.width, b.size.height);
+            metaView, b.origin.x, b.origin.y, b.size.width, b.size.height);
 
-        [meta_view setFrame:b];
+        [metaView setFrame:b];
     }
-}
-
-- (void) setOrientation:(int) new_orient
-{
-    self->orient = new_orient;
-    [self queue_layout];
 }
     
 - (void) setStretchView:(NSView *) view
 {
-    self->stretch = view;
+    self->stretchView = view;
     [self queue_layout];
 }
 
-- (NSView *) stretchView
+- (void) setMajorJustification:(SGBoxMajorJustification) new_just
 {
-    return stretch;
-}
-
-- (void) setMajorJustification:(short) new_just
-{
-    majorjust = new_just;
+    majorJustification = new_just;
     [self queue_layout];
 }
 
-- (short) majorJustification;
+- (void) setMinorDefaultJustification:(SGBoxMinorJustification) new_just
 {
-    return majorjust;
-}
-
-- (void) setMinorDefaultJustification:(short) new_just
-{
-    minorjust = new_just;
+    minorJustification = new_just;
     [self queue_layout];
 }
 
-- (short) minorJustification
-{
-    return minorjust;
-}
-
-- (void) setMinorJustificationFor:(NSView *) view to:(short) new_just
+- (void) setMinorJustificationFor:(NSView *) view to:(SGBoxMinorJustification) new_just
 {
     SGBoxMetaView *mv = (SGBoxMetaView *) [self find_view:view];
     if (mv)
-        [mv set_justification:new_just];
+        [mv setJustification:new_just];
     [self queue_layout];
 }
 
-- (void) setMinorMargin:(short) v
+- (void) setMinorMargin:(SGBoxMargin) v
 {
-    self->minormargin = v;
+    self->minorMargin = v;
     [self queue_layout];
 }
 
-- (void) setMajorInnerMargin:(short) h
+- (void) setMajorInnerMargin:(SGBoxMargin) h
 {
-    self->majorinnermargin = h;
+    self->majorInnerMargin = h;
     [self queue_layout];
 }
 
-- (short) majorInnerMargin
+- (void) setMajorOutterMargin:(SGBoxMargin) h
 {
-    return majorinnermargin;
-}
-
-- (void) setMajorOutterMargin:(short) h
-{
-    self->majorouttermargin = h;
+    self->majorOutterMargin = h;
     [self queue_layout];
 }
 
-- (short) majorOutterMargin
+- (void) setOrientation:(SGBoxOrientation)newOrientation
 {
-    return majorouttermargin;
-}
-
-- (void) setOrder:(int) new_order
-{
-    self->order = new_order;
+    self->orientation = newOrientation;
     [self queue_layout];
 }
 
-- (int) orientation
+- (void) setOrder:(SGBoxOrder)newOrder
 {
-    return orient;
-}
-
-- (int) order
-{
-    return order;
+    self->order = order;
+    [self queue_layout];
 }
 
 @end

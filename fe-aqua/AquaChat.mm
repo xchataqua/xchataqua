@@ -31,7 +31,7 @@ extern "C" {
 #include "../common/util.h"
 #include "../common/text.h"
 #include "../common/dcc.h"
-#if __MAC_OS_X_VERSION_MIN_REQUIRED >= 1050
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5
 #import <ShortcutRecorder/ShortcutRecorder.h>
 #endif
 #ifdef __cplusplus
@@ -98,9 +98,9 @@ EventInfo text_event_info[NUM_XP];
 //////////////////////////////////////////////////////////////////////
 
 @implementation AquaChat
+@synthesize font, bold_font;
 
-+ (void) forEachSessionOnServer:(struct server *) serv
-		performSelector:(SEL) sel
++ (void) forEachSessionOnServer:(struct server *)serv performSelector:(SEL)sel
 {
     for (GSList *list = sess_list; list; list = list->next)
     {
@@ -110,9 +110,7 @@ EventInfo text_event_info[NUM_XP];
     }
 }
 
-+ (void) forEachSessionOnServer:(struct server *) serv
-		performSelector:(SEL) sel
-		     withObject:(id) obj
++ (void) forEachSessionOnServer:(struct server *)serv performSelector:(SEL)sel withObject:(id) obj
 {
     for (GSList *list = sess_list; list; list = list->next)
     {
@@ -131,7 +129,7 @@ EventInfo text_event_info[NUM_XP];
         { receive_wallops_menu, &prefs.wallops },
     };
     
-    for (unsigned int i = 0; i < sizeof (menu_prefs) / sizeof (menu_prefs [0]); i ++)
+    for (NSUInteger i = 0; i < sizeof(menu_prefs) / sizeof(menu_prefs[0]); i ++)
     {
 		menu_prefs [i] = tmp_prefs [i];
         menu_pref *pref = &menu_prefs [i];
@@ -283,8 +281,7 @@ EventInfo text_event_info[NUM_XP];
     if (text[0] < '1' || text[0] > '9')
         return NO;
         
-    unsigned num = text [0] - '1';
-    
+    NSUInteger num = text[0] - '1';
     return [TabOrWindowView selectTab:num];
 }
 
@@ -324,7 +321,7 @@ EventInfo text_event_info[NUM_XP];
     const char *space = strrchr (font_name, ' ');
     if (space)
     {
-        float sz = atof (space + 1);
+        CGFloat sz = atof (space + 1);
         if (sz)
         {
             NSString *nm = [[NSString alloc] initWithBytes:prefs.font_normal
@@ -401,7 +398,7 @@ EventInfo text_event_info[NUM_XP];
 		[sess->gui->cw prefsChanged];
     }
     
-	#if __MAC_OS_X_VERSION_MIN_REQUIRED >= __MAC_OS_X_VERSION_10_5
+	#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_5
 	NSString* s;
 	s = SRStringForKeyCode(prefs.tab_left_key);
 	if ( s != nil ) {

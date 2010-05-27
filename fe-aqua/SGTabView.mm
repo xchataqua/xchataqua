@@ -66,12 +66,12 @@ static NSNib *getTabMenuNib ()
 
 static NSButtonCell *makeCloseCell ()
 {
-    NSButtonCell *close_cell = [[NSButtonCell alloc] initImageCell:getCloseImage()];
-    [close_cell setButtonType:NSMomentaryLightButton];
-    [close_cell setImagePosition:NSImageOnly];
-    [close_cell setBordered:false];
-    [close_cell setHighlightsBy:NSContentsCellMask];
-	return close_cell;
+    NSButtonCell *closeCell = [[NSButtonCell alloc] initImageCell:getCloseImage()];
+    [closeCell setButtonType:NSMomentaryLightButton];
+    [closeCell setImagePosition:NSImageOnly];
+    [closeCell setBordered:false];
+    [closeCell setHighlightsBy:NSContentsCellMask];
+	return closeCell;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -79,47 +79,42 @@ static NSButtonCell *makeCloseCell ()
 @interface SGTabViewOutlineCell : NSTextFieldCell
 {
 	BOOL hasClose;
-	NSButtonCell *close_cell;
+	NSButtonCell *closeCell;
 }
 
-- (void) setHasClose:(BOOL) hasClose;
+@property (nonatomic, assign) BOOL hasClose;
 
 @end
 
 @implementation SGTabViewOutlineCell
+@synthesize hasClose;
 
 - (id) initTextCell:(NSString *) aString
 {
 	self = [super initTextCell:aString];
-	close_cell = makeCloseCell();
+	closeCell = makeCloseCell();
 	return self;
 }
 
 - (void) dealloc
 {
-	[close_cell release];
+	[closeCell release];
 	[super dealloc];
 }
 
 - (id) copyWithZone:(NSZone *) zone
 {
 	SGTabViewOutlineCell *copy = [super copyWithZone:zone];
-	copy->close_cell = [close_cell copyWithZone:zone];
+	copy->closeCell = [closeCell copyWithZone:zone];
 	return copy;
 }
 
 - (void) doClose:(id) sender
 {
-	[[close_cell target] performSelector:[close_cell action]];
+	[[closeCell target] performSelector:[closeCell action]];
 }
 
-- (void) setHasClose:(BOOL) newHasClose
-{
-	hasClose = newHasClose;
-}
-
-- (NSRect) calcCloseRectWithFrame:(NSRect) cellFrame
-						   inView:(NSView *) controlView
+- (NSRect) calculateCloseRectWithFrame:(NSRect)cellFrame inView:(NSView *)controlView
 {
 	NSRect r;
 	
@@ -130,14 +125,13 @@ static NSButtonCell *makeCloseCell ()
 	return r;
 }
 
-- (void) drawInteriorWithFrame:(NSRect) cellFrame
-						inView:(NSView *) controlView
+- (void) drawInteriorWithFrame:(NSRect) cellFrame inView:(NSView *) controlView
 {
 	NSRect closeRect;
 
 	if (hasClose)
 	{
-		closeRect = [self calcCloseRectWithFrame:cellFrame inView:controlView];
+		closeRect = [self calculateCloseRectWithFrame:cellFrame inView:controlView];
 		cellFrame.origin.x += closeRect.size.width + 5;
 	}
 
@@ -146,7 +140,7 @@ static NSButtonCell *makeCloseCell ()
 	// Gotta draw the icon last because highlighted cells have a
 	// blue background which will cover the image otherwise.                  
 	if (hasClose)
-		[close_cell drawInteriorWithFrame:closeRect inView:controlView];
+		[closeCell drawInteriorWithFrame:closeRect inView:controlView];
 }
 
 - (BOOL) mouseDown:(NSEvent *) theEvent
@@ -158,16 +152,16 @@ static NSButtonCell *makeCloseCell ()
 	if (!hasClose)
 		return NO;
 
-	[close_cell setAction:closeAction];
-	[close_cell setTarget:closeTarget];
+	[closeCell setAction:closeAction];
+	[closeCell setTarget:closeTarget];
 		
 	NSPoint point = [theEvent locationInWindow];
     NSPoint where = [controlView convertPoint:point fromView:nil];
-	NSRect closeRect = [self calcCloseRectWithFrame:cellFrame inView:controlView];
+	NSRect closeRect = [self calculateCloseRectWithFrame:cellFrame inView:controlView];
 		
     if (NSPointInRect (where, closeRect))
 	{
-		[SGGuiUtil trackButtonCell:close_cell withEvent:theEvent inRect:closeRect controlView:controlView];
+		[SGGuiUtil trackButtonCell:closeCell withEvent:theEvent inRect:closeRect controlView:controlView];
 		return YES;
 	}
 	
@@ -196,8 +190,8 @@ static NSButtonCell *makeCloseCell ()
 - (void) mouseDown:(NSEvent *) theEvent
 {
     NSPoint where = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-	int row = [self rowAtPoint:where];
-	int col = [self columnAtPoint:where];
+	NSInteger row = [self rowAtPoint:where];
+	NSInteger col = [self columnAtPoint:where];
 	
 	if (row >= 0 && col >= 0)
 	{
@@ -214,7 +208,7 @@ static NSButtonCell *makeCloseCell ()
 				if ([cell mouseDown:theEvent 
 						  cellFrame:[self frameOfCellAtColumn:col row:row]
 						controlView:self
-						closeAction:@selector (do_close:)
+						closeAction:@selector (doClose:)
 						closeTarget:item])
 				{
 					return;
@@ -317,18 +311,18 @@ HIThemeSegmentPosition positionTable[2][2] =
 {
 	//							No right cap					right cap
 	/* No left cap */	{ kHIThemeSegmentPositionMiddle, kHIThemeSegmentPositionLast },
-	/* Left cap	   */   { kHIThemeSegmentPositionFirst, kHIThemeSegmentPositionOnly },
+	/* Left cap	   */   { kHIThemeSegmentPositionFirst,  kHIThemeSegmentPositionOnly },
 };
 
 @interface SGTabViewButtonCell : NSButtonCell
 {
     NSColor *color;
-    bool     hide_close;
+    bool     hideClose;
     bool     left_cap;
     bool     right_cap;
     NSRect   close_rect;
-    NSPoint  text_pt;
-    NSButtonCell *close_cell;
+    NSPoint  textPoint;
+    NSButtonCell *closeCell;
 	NSSize	size;
 	HIThemeSegmentDrawInfo drawInfo;
 }
@@ -404,15 +398,15 @@ HIThemeSegmentPosition positionTable[2][2] =
 - (id) initTextCell:(NSString *) aString
 {
     self = [super initTextCell:aString];
-    close_cell = makeCloseCell();
-    self->hide_close = false;
+    closeCell = makeCloseCell();
+    self->hideClose = false;
     return self;
 }
 
 - (void) dealloc
 {
     [color release];
-    [close_cell release];
+    [closeCell release];
     [super dealloc];
 }
 
@@ -424,7 +418,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 - (void) setHideCloseButton:(bool) hideit
 {
-    self->hide_close = hideit;
+    self->hideClose = hideit;
     [self calcDrawInfo:NSMakeRect(0, 0, 1, 1)];
 }
 
@@ -448,17 +442,17 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 - (void) setCloseAction:(SEL) act
 {
-    [close_cell setAction:act];
+    [closeCell setAction:act];
 }
 
 - (void) setCloseTarget:(id) targ
 {
-    [close_cell setTarget:targ];
+    [closeCell setTarget:targ];
 }
 
 - (void) doClose:(id) sender
 {
-	[[close_cell target] performSelector:[close_cell action]];
+	[[closeCell target] performSelector:[closeCell action]];
 }
 
 - (NSSize) cellSize
@@ -475,32 +469,32 @@ HIThemeSegmentPosition positionTable[2][2] =
 - (void) calcDrawInfo:(NSRect) aRect
 {
 	// [super init] calls us before we are ready
-	if (!close_cell)
+	if (!closeCell)
 		return;
 
 	size.height = MySegmentHeight;
 	
     NSSize sz = [[self title] sizeWithAttributes:label_dict];
 
-    if (hide_close)
+    if (hideClose)
     {
         close_rect = NSMakeRect(0,0,1,1);
-        text_pt.x = 7 + 2;
-        text_pt.y = floor (size.height - sz.height) / 2;
+        textPoint.x = 7 + 2;
+        textPoint.y = floor (size.height - sz.height) / 2;
     }
     else
     {
-		NSSize close_size = [close_cell cellSize];
+		NSSize close_size = [closeCell cellSize];
 
         close_rect.size = close_size;
         close_rect.origin.x = 7;
         close_rect.origin.y = floor (size.height - close_rect.size.height) / 2;
 
-        text_pt.x = close_rect.origin.x + close_size.width + 3;
-        text_pt.y = floor (size.height - sz.height) / 2;
+        textPoint.x = close_rect.origin.x + close_size.width + 3;
+        textPoint.y = floor (size.height - sz.height) / 2;
     }
 
-    size.width = floor (sz.width + text_pt.x + 7 + 2);
+    size.width = floor (sz.width + textPoint.x + 7 + 2);
 	
 	drawInfo.version = 1;
 	drawInfo.value = kThemeButtonOn;
@@ -551,13 +545,13 @@ HIThemeSegmentPosition positionTable[2][2] =
 {
 	[self drawCellBodyWithFrame:cellFrame inView:controlView];
 	
-    if (!hide_close)
-        [close_cell drawWithFrame:close_rect inView:controlView];
+    if (!hideClose)
+        [closeCell drawWithFrame:close_rect inView:controlView];
     
     [label_dict setObject:color ? color : [NSColor blackColor]
 		 forKey:NSForegroundColorAttributeName];
 
-    [[self title] drawAtPoint:text_pt withAttributes:label_dict];
+    [[self title] drawAtPoint:textPoint withAttributes:label_dict];
 }
 
 - (void) mouseDown:(NSEvent *) e
@@ -569,9 +563,9 @@ HIThemeSegmentPosition positionTable[2][2] =
     NSPoint p = [controlView convertPoint:[e locationInWindow] fromView:nil];
     BOOL mouseIn = NSMouseInRect (p, close_rect, [controlView isFlipped]);
     
-    if (!hide_close && mouseIn)
+    if (!hideClose && mouseIn)
     {
-        track_cell = close_cell;
+        track_cell = closeCell;
         track_rect = close_rect;
     }
     else
@@ -663,6 +657,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 //////////////////////////////////////////////////////////////////////
 
 @implementation SGTabViewItem
+@synthesize titleColor;
 
 - (id) initWithIdentifier:(id) identifier
 {
@@ -686,7 +681,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 {
 	[label release];
     [button release];
-    [color release];
+    [titleColor release];
     [view release];
 	[ctxMenu release];
     [super dealloc];
@@ -699,7 +694,7 @@ HIThemeSegmentPosition positionTable[2][2] =
     button = [[SGTabViewButton alloc] init];
     [button setAction:@selector (doit:)];
     [button setTarget:self];
-    [button setCloseAction:@selector (do_close:)];
+    [button setCloseAction:@selector (doClose:)];
     [button setCloseTarget:self];
 	[button setHideCloseButton:!with_close];
 	[[button cell] setMenu:ctxMenu];
@@ -740,22 +735,17 @@ HIThemeSegmentPosition positionTable[2][2] =
 	[button setHideCloseButton:hidem];
 }
 
-- (void) setTitleColor:(NSColor *) c
+- (void) setTitleColor:(NSColor *) color
 {
-	[color release];
-	color = [c retain];
+	[titleColor release];
+	titleColor = [color retain];
 	if (button)
-	    [button setTitleColor:c];
+	    [button setTitleColor:color];
 	if (parent && parent->outline)
 		[parent->outline reloadData];
 }
 
-- (NSColor *) titleColor
-{
-	return color;
-}
-
-- (void) do_close:(id) sender
+- (void) doClose:(id) sender
 {
 	// TODO
 	// This method shoud probably close the tab
@@ -860,14 +850,14 @@ HIThemeSegmentPosition positionTable[2][2] =
     self->tabs = [[NSMutableArray arrayWithCapacity:0] retain];
     self->delegate = nil;
     self->tabViewType = NSTopTabsBezelBorder;
-    self->hide_close = false;
+    self->hideClose = false;
 	self->hbox = nil;
 	self->outline = nil;
 	self->outline_width = 150;
 	self->groups = [[NSMutableArray arrayWithCapacity:5] retain];
 	
-    [self setOrientation:SGBoxVertical];
-    [self setMinorDefaultJustification:SGBoxMinorFullJustification];
+    [self setOrientation:SGBoxOrientationVertical];
+    [self setMinorDefaultJustification:SGBoxMinorJustificationFull];
     [self setMajorInnerMargin:0];
     [self setMajorOutterMargin:0];
     [self setMinorMargin:0];
@@ -942,12 +932,12 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 - (void) setHideCloseButtons:(bool) hidem
 {
-    self->hide_close = hidem;
+    self->hideClose = hidem;
     
     for (unsigned int i = 0; i < [tabs count]; i ++)
     {
         SGTabViewItem *tab = [tabs objectAtIndex:i];
-		[tab setHideCloseButton:hide_close];
+		[tab setHideCloseButton:hideClose];
     }
 }
 
@@ -1003,7 +993,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 		for (unsigned i = 0; i < [tabs count]; i ++)
 		{
 			SGTabViewItem *this_tab = [tabs objectAtIndex:i];
-			[this_tab makeButton:hbox where:i withClose:!hide_close];
+			[this_tab makeButton:hbox where:i withClose:!hideClose];
 		}
 		
 		[self setCaps];
@@ -1073,55 +1063,55 @@ HIThemeSegmentPosition positionTable[2][2] =
 {
     self->tabViewType = new_tabViewType;
     
-    int new_orientation;
-    int new_order;
-    int box_order;
+    SGBoxOrientation newOrientation;
+    SGBoxOrder newOrder;
+    SGBoxOrder boxOrder;
 	//short margin = 0;
-	short imargin = 0;
+	SGBoxMargin imargin = 0;
     float rotation;
 
     switch (tabViewType)
     {
 		case SGOutlineTabs:
-            new_orientation = SGBoxVertical;
-            new_order = SGBoxFIFO;
-            box_order = SGBoxLIFO;
+            newOrientation = SGBoxOrientationVertical;
+            newOrder = SGBoxOrderFIFO;
+            boxOrder = SGBoxOrderLIFO;
             rotation = 0;
 			imargin = 10;
 			break;
 			
         case NSBottomTabsBezelBorder:
-            new_orientation = SGBoxHorizontal;
-            new_order = SGBoxFIFO;
-            box_order = SGBoxFIFO;
+            newOrientation = SGBoxOrientationHorizontal;
+            newOrder = SGBoxOrderFIFO;
+            boxOrder = SGBoxOrderFIFO;
             rotation = 0;
             break;
             
         case NSRightTabsBezelBorder:
-            new_orientation = SGBoxVertical;
-            new_order = SGBoxLIFO;
-            box_order = SGBoxLIFO;
+            newOrientation = SGBoxOrientationVertical;
+            newOrder = SGBoxOrderLIFO;
+            boxOrder = SGBoxOrderLIFO;
             rotation = 90;
             break;
             
         case NSLeftTabsBezelBorder:
-            new_orientation = SGBoxVertical;
-            new_order = SGBoxFIFO;
-            box_order = SGBoxLIFO;
+            newOrientation = SGBoxOrientationVertical;
+            newOrder = SGBoxOrderFIFO;
+            boxOrder = SGBoxOrderLIFO;
             rotation = -90;
             break;
 
         case NSTopTabsBezelBorder:
         default:
-            new_orientation = SGBoxHorizontal;
-            new_order = SGBoxLIFO;
-            box_order = SGBoxFIFO;
+            newOrientation = SGBoxOrientationHorizontal;
+            newOrder = SGBoxOrderLIFO;
+            boxOrder = SGBoxOrderFIFO;
             rotation = 0;
             break;
     }
     
-    [self setOrientation:1 - new_orientation];
-    [self setOrder:new_order];
+    [self setOrientation:SGBoxOrientationVertical==newOrientation?SGBoxOrientationHorizontal:SGBoxOrientationVertical];
+    [self setOrder:newOrder];
     [self setMajorInnerMargin:imargin];
 	//[self setMinorMargin:margin];
 
@@ -1145,7 +1135,7 @@ HIThemeSegmentPosition positionTable[2][2] =
     return [tabs count];
 }
 
-- (int) indexOfTabViewItem:(SGTabViewItem *) tabViewItem
+- (NSInteger) indexOfTabViewItem:(SGTabViewItem *) tabViewItem
 {
     return [tabs indexOfObject:tabViewItem];
 }
@@ -1174,9 +1164,9 @@ HIThemeSegmentPosition positionTable[2][2] =
 			// Else, if there is another tab on the left of the tab being closed, and it's in the same group, choose it;
 			// Else, choose the tab on the right unless it's the last tab;
 			// Else, choose the tab on the left.
-			int tab_num = [tabs indexOfObject:tabViewItem];
-			int last_tab = [tabs count] - 1;
-			int tab_to_select;
+			NSUInteger tab_num = [tabs indexOfObject:tabViewItem];
+			NSUInteger last_tab = [tabs count] - 1;
+			NSUInteger tab_to_select;
 			if (tab_num < last_tab && ((SGTabViewItem *)[tabs objectAtIndex:tab_num + 1])->group == tabViewItem->group)
 				tab_to_select = tab_num + 1;
 			else if (tab_num > 0 && ((SGTabViewItem *)[tabs objectAtIndex:tab_num - 1])->group == tabViewItem->group)
@@ -1198,8 +1188,8 @@ HIThemeSegmentPosition positionTable[2][2] =
 	{
 		[outline reloadData];
 		// Removing items above the current item muck up the selected item in the outline
-		int row = [outline rowForItem:selected_tab];
-		[outline selectRow:row byExtendingSelection:NO];
+		NSInteger row = [outline rowForItem:selected_tab];
+		[outline selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
 	}
 
     [self setCaps];
@@ -1212,16 +1202,14 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 - (void) selectNextTabViewItem:(id) sender
 {
-    int n = [self indexOfTabViewItem:[self selectedTabViewItem]];
-    n ++;
+    NSInteger n = [self indexOfTabViewItem:[self selectedTabViewItem]] +1;
     if (n < [self numberOfTabViewItems])
         [self selectTabViewItemAtIndex:n];
 }
 
 - (void) selectPreviousTabViewItem:(id) sender
 {
-    int n = [self indexOfTabViewItem:[self selectedTabViewItem]];
-    n --;
+    NSInteger n = [self indexOfTabViewItem:[self selectedTabViewItem]] - 1;
     if (n >= 0)
         [self selectTabViewItemAtIndex:n];
 }
@@ -1237,14 +1225,12 @@ HIThemeSegmentPosition positionTable[2][2] =
     {
 		if (tabViewItem == selected_tab)
 			return;
-		//[selected_tab->view setHidden:true];      27-aug-04
-		[selected_tab->view removeFromSuperview]; //27-aug-04
+		[selected_tab->view removeFromSuperview];
 		[selected_tab setSelected:false];
     }
 
     [self setStretchView:tabViewItem->view];
-    //[tabViewItem->view setHidden:false];  27-aug-04
-	[self addSubview:tabViewItem->view]; // 27-aug-04
+	[self addSubview:tabViewItem->view];
 
     selected_tab = tabViewItem;
 	
@@ -1252,8 +1238,8 @@ HIThemeSegmentPosition positionTable[2][2] =
 	
 	if (outline)
 	{
-		int row = [outline rowForItem:tabViewItem];
-		[outline selectRow:row byExtendingSelection:NO];
+		NSInteger row = [outline rowForItem:tabViewItem];
+		[outline selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
 	}
     
     if (selected_tab->view)
@@ -1279,13 +1265,12 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 - (NSRect) dragAreaRect
 {
-	if (!outline || !selected_tab)
-		return NSMakeRect(0,0,0,0);
+	if (!outline || !selected_tab) return NSZeroRect;
 		
 	NSScrollView *outlineScroll = [outline enclosingScrollView];
 	NSRect outline_frame = [outlineScroll frame];
 	NSRect view_frame = [selected_tab->view frame];
-	float margin = view_frame.origin.x - outline_frame.origin.x - outline_frame.size.width + 1;
+	CGFloat margin = view_frame.origin.x - outline_frame.origin.x - outline_frame.size.width + 1;
 	NSRect line_rect = NSMakeRect(outline_frame.origin.x + outline_frame.size.width,
 		outline_frame.origin.y, margin, outline_frame.size.height);
 
@@ -1329,7 +1314,7 @@ HIThemeSegmentPosition positionTable[2][2] =
         
         NSPoint mouseLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 		
-		int width = (int)(mouseLoc.x - where.x + outline_frame.size.width);
+		CGFloat width = mouseLoc.x - where.x + outline_frame.size.width;
 		[self setOutlineWidth:width];
 
 		[[self delegate] tabViewDidResizeOutlne:outline_width];
@@ -1406,11 +1391,10 @@ HIThemeSegmentPosition positionTable[2][2] =
 - (void) drawDivider
 {
 	NSRect line_rect = [self dragAreaRect];
-	NSSize dimple_size = [dimple size];
-	NSPoint pt;
-	pt.x = line_rect.origin.x + floor ((line_rect.size.width - dimple_size.width) / 2);
-	pt.y = line_rect.origin.y + floor ((line_rect.size.height - dimple_size.height) / 2);
-	[dimple compositeToPoint:pt operation:NSCompositeSourceOver];
+	NSPoint point;
+	point.x = line_rect.origin.x + ((line_rect.size.width  - [dimple size].width ) / 2);
+	point.y = line_rect.origin.y + ((line_rect.size.height - [dimple size].height) / 2);
+	[dimple compositeToPoint:point operation:NSCompositeSourceOver];
 }
 
 - (void) drawRect:(NSRect) aRect
@@ -1424,17 +1408,15 @@ HIThemeSegmentPosition positionTable[2][2] =
 		[self drawBackground];
 }
 
-- (void) setupItem:(SGTabViewItem *) item
-			 where:(int) where
+- (void) setupItem:(SGTabViewItem *) item where:(int) where
 {
 	if (hbox)
 	{
-		[item makeButton:hbox where:where withClose:!hide_close];
+		[item makeButton:hbox where:where withClose:!hideClose];
 	}
 }
 
-- (void) addTabViewItem:(SGTabViewItem *) tabViewItem
-                toGroup:(int) group
+- (void) addTabViewItem:(SGTabViewItem *) tabViewItem toGroup:(int) group
 {
     if (tabViewItem->parent)
     	return;
@@ -1445,7 +1427,7 @@ HIThemeSegmentPosition positionTable[2][2] =
     // In order for selectNext and selectPrevious to work, we need to add this item
     // in the correct order.  We'll also insert the tab button at the same position.
     
-    unsigned where = 0;
+    NSUInteger where = 0;
     for (; where < [tabs count]; where ++)
     {
         SGTabViewItem *this_tab = [tabs objectAtIndex:where];
@@ -1534,7 +1516,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 		NSColor *c = [item titleColor];
 		if (c)
 			color = c;
-		[cell setHasClose:!hide_close];
+		[cell setHasClose:!hideClose];
 	}
 	else
 		[cell setHasClose:NO];
