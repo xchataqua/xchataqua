@@ -19,30 +19,30 @@
 
 //////////////////////////////////////////////////////////////////////
 
-enum
+typedef enum
 {
-    SGHBoxCenterVJustification = SGBoxMinorCenterJustification,
-    SGHBoxTopVJustification = SGBoxMinorFirstJustification,
-    SGHBoxBottomVJustification = SGBoxMinorLastJustification,
-    SGHBoxFullVJustification = SGBoxMinorFullJustification,
-    SGHBoxDefaultVJustification = SGBoxMinorDefaultJustification,
-};
+    SGHBoxVJustificationCenter	= SGBoxMinorJustificationCenter,
+    SGHBoxVJustificationTop		= SGBoxMinorJustificationFirst,
+    SGHBoxVJustificationBottom	= SGBoxMinorJustificationLast,
+    SGHBoxVJustificationFull	= SGBoxMinorJustificationFull,
+    SGHBoxVJustificationDefault	= SGBoxMinorJustificationDefault,
+}	SGHBoxVJustification;
 
-enum
+typedef enum
 {
-    SGHBoxCenterHJustification = SGBoxMajorCenterJustification,
-    SGHBoxRightHJustification = SGBoxMajorLastJustification,
-    SGHBoxLeftHJustification = SGBoxMajorFirstJustification,
-    SGHBoxFullHJustification = SGBoxMajorFullJustification,
-};
+    SGHBoxHJustificationCenter	= SGBoxMajorJustificationCenter,
+    SGHBoxHJustificationRight	= SGBoxMajorJustificationLast,
+    SGHBoxHJustificationLeft	= SGBoxMajorJustificationFirst,
+    SGHBoxHJustificationFull	= SGBoxMajorJustificationFull,
+}	SGHBoxHJustification;
 
 @interface SGHBoxView : SGBoxView
 {
 }
 
-- (void) setHJustification:(short) just;
-- (void) setDefaultVJustification:(short) just;
-- (void) setVJustificationFor:(NSView *) view to:(short) just;
+- (void) setHJustification:(SGHBoxHJustification)just;
+- (void) setDefaultVJustification:(SGHBoxVJustification)just;
+- (void) setVJustificationFor:(NSView *)view to:(SGHBoxVJustification)just;
 - (void) setVMargin:(short) v;
 - (void) setHInnerMargin:(short) h;
 - (short) hInnerMargin;

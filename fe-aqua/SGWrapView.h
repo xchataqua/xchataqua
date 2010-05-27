@@ -11,9 +11,9 @@
 
 @interface SGWrapView : SGView 
 {
-    unsigned rows;
+    NSUInteger rows;
 }
 
-- (unsigned) rowCount;
+- (NSUInteger)rowCount;
 
 @end

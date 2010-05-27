@@ -25,7 +25,7 @@
 @interface SGView : NSView
 {
   @protected
-    NSMutableArray  *meta_views;
+    NSMutableArray  *metaViews;
     bool	    first_layout;
     bool	    pending_layout;
     bool 	    in_my_layout;
@@ -44,8 +44,8 @@
 - (void) layout_maybe;                  // Layout only if queued
 - (NSArray *)    metaViews;
 - (SGMetaView *) find_view:(NSView *) the_view;
-- (void) setOrder:(unsigned)order forView:(NSView *) the_view;
-- (unsigned) viewOrder:(NSView *) the_view;
+- (void) setOrder:(NSUInteger)order forView:(NSView *) the_view;
+- (NSUInteger) viewOrder:(NSView *) the_view;
 - (void) setAutoSizeToFit:(bool) sf;
 
 // Override these if needed

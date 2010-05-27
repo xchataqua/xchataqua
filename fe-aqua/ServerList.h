@@ -18,7 +18,10 @@
 #import <AppKit/AppKit.h>
 #import "SG.h"
 
-@interface ServerList : NSObject 
+@interface ServerList : NSObject
+#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
+<NSWindowDelegate,NSTableViewDataSource,NSTableViewDelegate>
+#endif
 {
     NSComboBox		*charset_combo;
     NSButton		*connect_new_button;

@@ -38,31 +38,31 @@ static void addMenuItem (NSMenu *menu, NSString *title, SEL sel, id target, int 
 
 - (void) awakeFromNib
 {
-    connectionMenus[SGFormView_EDGE_LEFT] = leftConnectionMenu;
-    connectionMenus[SGFormView_EDGE_TOP] = topConnectionMenu;
-    connectionMenus[SGFormView_EDGE_RIGHT] = rightConnectionMenu;
-    connectionMenus[SGFormView_EDGE_BOTTOM] = bottomConnectionMenu;
+    connectionMenus[SGFormViewEdgeLeft] = leftConnectionMenu;
+    connectionMenus[SGFormViewEdgeTop] = topConnectionMenu;
+    connectionMenus[SGFormViewEdgeRight] = rightConnectionMenu;
+    connectionMenus[SGFormViewEdgeBottom] = bottomConnectionMenu;
 
-    relativeMenus[SGFormView_EDGE_LEFT] = leftRelativeMenu;
-    relativeMenus[SGFormView_EDGE_TOP] = topRelativeMenu;
-    relativeMenus[SGFormView_EDGE_RIGHT] = rightRelativeMenu;
-    relativeMenus[SGFormView_EDGE_BOTTOM] = bottomRelativeMenu;
+    relativeMenus[SGFormViewEdgeLeft] = leftRelativeMenu;
+    relativeMenus[SGFormViewEdgeTop] = topRelativeMenu;
+    relativeMenus[SGFormViewEdgeRight] = rightRelativeMenu;
+    relativeMenus[SGFormViewEdgeBottom] = bottomRelativeMenu;
 
-    offsetTexts[SGFormView_EDGE_LEFT] = leftOffsetText;
-    offsetTexts[SGFormView_EDGE_TOP] = topOffsetText;
-    offsetTexts[SGFormView_EDGE_RIGHT] = rightOffsetText;
-    offsetTexts[SGFormView_EDGE_BOTTOM] = bottomOffsetText;
+    offsetTexts[SGFormViewEdgeLeft] = leftOffsetText;
+    offsetTexts[SGFormViewEdgeTop] = topOffsetText;
+    offsetTexts[SGFormViewEdgeRight] = rightOffsetText;
+    offsetTexts[SGFormViewEdgeBottom] = bottomOffsetText;
 
-    for (int i = 0; i < 4; ++i)
+    for (int edge = 0; edge < SGFormViewEdgeCount; ++edge)
     {
         // This order matches the value of the Enum
         NSMenu *conn_menu = [[[NSMenu alloc] initWithTitle:@""] autorelease];
-        addMenuItem (conn_menu, @"None", @selector(doConstrain:), self, SGFormView_ATTACH_NONE);
-        addMenuItem (conn_menu, @"Form", @selector(doConstrain:), self, SGFormView_ATTACH_FORM);
-        addMenuItem (conn_menu, @"View", @selector(doConstrain:), self, SGFormView_ATTACH_VIEW);
-        addMenuItem (conn_menu, @"Opposite", @selector(doConstrain:), self, SGFormView_ATTACH_OPPOSITE_VIEW);
-        addMenuItem (conn_menu, @"Center", @selector(doConstrain:), self, SGFormView_ATTACH_CENTER);
-        [connectionMenus[i] setMenu:conn_menu];
+        addMenuItem (conn_menu, @"None", @selector(doConstrain:), self, SGFormViewAttachNone);
+        addMenuItem (conn_menu, @"Form", @selector(doConstrain:), self, SGFormViewAttachForm);
+        addMenuItem (conn_menu, @"View", @selector(doConstrain:), self, SGFormViewAttachView);
+        addMenuItem (conn_menu, @"Opposite", @selector(doConstrain:), self, SGFormViewAttachOppositeView);
+        addMenuItem (conn_menu, @"Center", @selector(doConstrain:), self, SGFormViewAttachCenter);
+        [connectionMenus[edge] setMenu:conn_menu];
     }
 }
 
@@ -70,8 +70,8 @@ static void addMenuItem (NSMenu *menu, NSString *title, SEL sel, id target, int 
 {
     NSMenu *menu = [[[NSMenu alloc] initWithTitle:@""] autorelease];
     addMenuItem (menu, @"None", @selector(doConstrain:), self, 0);
-    NSArray *views = [form subviews];
-    for (unsigned i = 0; i < [views count]; i ++)
+    NSArray *views = form.subviews;
+    for (NSUInteger i = 0; i < [views count]; i ++)
     {
         NSView *view = [views objectAtIndex:i];
         NSString *ident = [form identifierForView:view];
@@ -85,17 +85,17 @@ static void addMenuItem (NSMenu *menu, NSString *title, SEL sel, id target, int 
 - (void)refresh
 {
     NSArray * objects = [self inspectedObjects];
-    NSInteger numObjects = [objects count];
+    NSUInteger numObjects = [objects count];
 
     if (numObjects == 1)
     {
         NSView *view = [objects objectAtIndex:0];
-        SGFormView *form = (SGFormView*)[view superview];
+        SGFormView *form = (SGFormView *)[view superview];
 
         NSString *ident = [form identifierForView:view];
         [identifierText setStringValue:ident ? ident : @""];
 
-        for (int edge = 0; edge < 4; ++edge)
+        for (int edge = 0; edge < SGFormViewEdgeCount; ++edge)
         {
             SGFormViewAttachment attachment_return;
             NSView *view_return;
@@ -127,14 +127,14 @@ static void addMenuItem (NSMenu *menu, NSString *title, SEL sel, id target, int 
             else
             {
                 [offsetTexts[edge] setStringValue:@""];
-                [connectionMenus[edge] selectItemWithTag:SGFormView_ATTACH_NONE];
+                [connectionMenus[edge] selectItemWithTag:SGFormViewAttachNone];
             }
         }
     }
     else
     {
         [identifierText setStringValue:@""];
-        for(int edge = 0; edge < 4; ++edge)
+        for (int edge = 0; edge < SGFormViewEdgeCount; ++edge)
         {
             [relativeMenus[edge] selectItemAtIndex:0];
         }
@@ -152,11 +152,11 @@ static void addMenuItem (NSMenu *menu, NSString *title, SEL sel, id target, int 
         NSView *view = [objects objectAtIndex:i];
         SGFormView *form = (SGFormView*)[view superview];
 
-        for (int edge = 0; edge < 4; edge ++)
+        for (int edge = 0; edge < SGFormViewEdgeCount; edge ++)
         {
             SGFormViewAttachment conn = (SGFormViewAttachment)
             [[connectionMenus[edge] selectedItem] tag];
-            int offset = [offsetTexts[edge] intValue];
+            NSInteger offset = [offsetTexts[edge] integerValue];
             NSView *relative = nil;
 
             if ([relativeMenus[edge] indexOfSelectedItem] > 0)
@@ -164,7 +164,7 @@ static void addMenuItem (NSMenu *menu, NSString *title, SEL sel, id target, int 
                 NSString *relative_ident = [relativeMenus[edge] titleOfSelectedItem];
 
                 NSArray *views = [form subviews];
-                for (unsigned i = 0; i < [views count]; i ++)
+                for (NSUInteger i = 0; i < [views count]; i ++)
                 {
                     NSView *view = [views objectAtIndex:i];
                     NSString *ident = [form identifierForView:view];
@@ -178,10 +178,10 @@ static void addMenuItem (NSMenu *menu, NSString *title, SEL sel, id target, int 
 
             //NSLog (@"%x %d %d %d", view, edge, conn, offset);
 
-            if ((conn == SGFormView_ATTACH_VIEW ||
-                 conn == SGFormView_ATTACH_OPPOSITE_VIEW) && relative == nil)
+            if ((conn == SGFormViewAttachView ||
+                 conn == SGFormViewAttachOppositeView) && relative == nil)
             {
-                conn = SGFormView_ATTACH_NONE;
+                conn = SGFormViewAttachNone;
             }
 
             [form constrain:view

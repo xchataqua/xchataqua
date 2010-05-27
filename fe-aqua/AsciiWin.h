@@ -18,7 +18,10 @@
 #import <AppKit/AppKit.h>
 #import "SG.h"
 
-@interface AsciiWin : SGSelfPtr 
+@interface AsciiWin : SGSelfPtr
+#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
+<NSWindowDelegate>
+#endif
 {
     NSWindow	*window;
 }
