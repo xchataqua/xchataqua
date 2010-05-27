@@ -1054,8 +1054,10 @@ HIThemeSegmentPosition positionTable[2][2] =
 		for (unsigned i = 0; i < [groups count]; i ++)
 			[outline expandItem:[groups objectAtIndex:i]];
 
-		int row = [outline rowForItem:selected_tab];
-		[outline selectRow:row byExtendingSelection:NO];
+		NSInteger row = [outline rowForItem:selected_tab];
+		[outline
+     selectRowIndexes:[NSIndexSet indexSetWithIndex:row]
+     byExtendingSelection:NO];
 	}
 }
 
