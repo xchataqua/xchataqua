@@ -11,7 +11,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-static int getFileMode (const char *fname)
+static mode_t getFileMode (const char *fname)
 {
 	struct stat sb;
 	int sts = lstat (fname, &sb);
@@ -33,7 +33,7 @@ static int getFileMode (const char *fname)
 		return nil;
 		
 	UInt8 path[PATH_MAX];    
-	if (FSRefMakePath(&ref, path, sizeof (path)) != noErr)
+	if (FSRefMakePath(&ref, path, sizeof(path)) != noErr)
 		return nil;
 		
 	NSMutableString *dir = [NSMutableString stringWithUTF8String:(const char *)path];
@@ -50,13 +50,13 @@ static int getFileMode (const char *fname)
 
 + (BOOL) isDir:(NSString *) fname
 {
-	int mode = getFileMode ([fname UTF8String]);
+	mode_t mode = getFileMode ([fname UTF8String]);
 	return mode > 0 ? (mode & S_IFDIR) != 0 : NO;
 }
 
 + (BOOL) isSymLink:(NSString *) fname
 {
-	int mode = getFileMode ([fname UTF8String]);
+	mode_t mode = getFileMode ([fname UTF8String]);
 	return mode > 0 ? (mode & S_IFLNK) != 0 : NO;
 }
 

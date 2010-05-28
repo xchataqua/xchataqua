@@ -18,32 +18,38 @@
 #import "SGFormView.h"
 
 //////////////////////////////////////////////////////////////////////
+@interface NSView (SGFormViewAdditions)
+- (NSPoint) pointOfCenter;
+@end
 
-NSPoint center_of (NSView *view)
+@implementation NSView (SGFormViewAdditions)
+
+- (NSPoint) pointOfCenter
 {
-    NSRect r = [view frame];
-    return NSMakePoint (r.origin.x + r.size.width / 2,
-                        r.origin.y + r.size.height / 2);
+	NSRect frame = [self frame];
+    return NSMakePoint (frame.origin.x + frame.size.width / 2,
+                        frame.origin.y + frame.size.height/ 2);
 }
 
+@end
 //////////////////////////////////////////////////////////////////////
 
-enum
+typedef enum
 {
-    STATE_RESET,
-    STATE_VISITED,
-    STATE_DONE
-};
+    SGFormMetaViewStateReset,
+    SGFormMetaViewStateVisited,
+    SGFormMetaViewStateDone
+}	SGFormMetaViewState;
 
 @class SGFormMetaView;
 
 typedef struct SGFormConstraint
 {
     int location;
-    int attachment;
+    SGFormViewAttachment attachment;
     int offset;
     int factor;
-    int state;
+    SGFormMetaViewState state;
     SGFormMetaView *child;
 }	SGFormConstraint;
 
@@ -58,8 +64,8 @@ typedef struct SGFormConstraint
 
 @property (nonatomic, retain) NSString *identifier;
 
-- (void) set_final_bounds:(SGFormView *) sender;
-- (void) get_initial_bounds;
+- (void) setFinalBounds:(SGFormView *) sender;
+- (void) getInitialBounds;
 
 @end
 
@@ -73,10 +79,10 @@ typedef struct SGFormConstraint
     for (NSInteger i = 0; i < SGFormViewEdgeCount; i ++)
     {
 		self->constraints[i].location = 0;
-		self->constraints[i].attachment = SGFormViewAttachNone;
+		self->constraints[i].attachment = SGFormViewAttachmentNone;
 		self->constraints[i].offset = 0;
 		self->constraints[i].factor = i < 2 ? 1 : -1;
-		self->constraints[i].state = STATE_RESET;
+		self->constraints[i].state = SGFormMetaViewStateReset;
 		self->constraints[i].child = nil;
     }
 }
@@ -122,7 +128,7 @@ typedef struct SGFormConstraint
     }
 }
 
-- (void) set_final_bounds:(SGFormView *) sender
+- (void) setFinalBounds:(SGFormView *) sender
 {
     NSRect rect;
     
@@ -134,14 +140,14 @@ typedef struct SGFormConstraint
     [self setFrame:rect];
 }
 
-- (void) get_initial_bounds
+- (void) getInitialBounds
 {
     NSRect r = [self prefSize];
     
-    constraints[SGFormViewEdgeBottom].location	= (NSInteger)r.origin.y;
-    constraints[SGFormViewEdgeLeft].location		= (NSInteger)r.origin.x;
-    constraints[SGFormViewEdgeTop].location		= (NSInteger)(r.origin.y+r.size.height-1);
-    constraints[SGFormViewEdgeRight].location	= (NSInteger)(r.origin.x+r.size.width -1);
+    constraints[SGFormViewEdgeBottom].location	= (int)r.origin.y;
+    constraints[SGFormViewEdgeLeft].location	= (int)r.origin.x;
+    constraints[SGFormViewEdgeTop].location		= (int)(r.origin.y+r.size.height-1);
+    constraints[SGFormViewEdgeRight].location	= (int)(r.origin.x+r.size.width -1);
 }
 
 @end
@@ -196,7 +202,7 @@ typedef struct SGFormConstraint
 
 - (void) bootstrapRelativeTo:(NSView *) relative_view
 {
-    NSPoint rc = center_of (relative_view);
+    NSPoint rc = [relative_view pointOfCenter];
     
     NSArray *mviews = [self metaViews];
     
@@ -207,17 +213,17 @@ typedef struct SGFormConstraint
         if ([view view] == relative_view)
             continue;
      
-        NSPoint op = center_of ([view view]);
+        NSPoint op = [(NSView *)view pointOfCenter];
         
         [self constrain:[view view]
 				   edge:SGFormViewEdgeLeft
-			 attachment:SGFormViewAttachCenter
+			 attachment:SGFormViewAttachmentCenter
 			 relativeTo:relative_view
 				 offset:(int) (op.x - rc.x)];
         
         [self constrain:[view view]
 				   edge:SGFormViewEdgeTop
-			 attachment:SGFormViewAttachCenter
+			 attachment:SGFormViewAttachmentCenter
 			 relativeTo:relative_view
 				 offset:(int) (op.y - rc.y)];
     }
@@ -228,7 +234,7 @@ typedef struct SGFormConstraint
     return [[[SGFormMetaView alloc] initWithView:view] autorelease];
 }
 
-- (bool) edge_should_move_too:(SGFormMetaView *)fc edge:(int) edge
+- (bool) edge_should_move_too:(SGFormMetaView *)fc edge:(SGFormViewEdge) edge
 {
     // Should edge move if the opposite edge moves.  e.g. If the LEFT
     // edge moves 10 pixels, should the RIGHT edge move too?
@@ -237,23 +243,23 @@ typedef struct SGFormConstraint
     // that edge or the constraints for that edge are relative to itself
     // (specifies a width) or the edge has not been layed out yet.
 
-    int attachment = fc->constraints[edge].attachment;
+    SGFormViewAttachment attachment = fc->constraints[edge].attachment;
 
-    return (attachment == SGFormViewAttachNone)
-		|| (fc->constraints [edge].state != STATE_DONE)
-		|| (attachment == SGFormViewAttachView && fc->constraints [edge].child == fc);
+    return (attachment == SGFormViewAttachmentNone)
+		|| (fc->constraints[edge].state != SGFormMetaViewStateDone)
+		|| (attachment == SGFormViewAttachmentView && fc->constraints[edge].child == fc);
 }
 
 - (void) move_edge:(jmp_buf) env
                 fc:(SGFormMetaView *) fc
-              edge:(int) edge
+              edge:(SGFormViewEdge) edge
              where:(int) where
          my_bounds:(int *) my_bounds
 recompute_our_size:(bool) recompute_our_size
 {
     int diff = where - fc->constraints [edge].location;
 
-    int opposite_edge = edge ^ 2;
+    SGFormViewEdge opposite_edge = edge ^ 2;
 
     if ([self edge_should_move_too:fc edge:opposite_edge])
 		fc->constraints [opposite_edge].location += diff;
@@ -265,42 +271,42 @@ recompute_our_size:(bool) recompute_our_size
 
 		if (recompute_our_size)
 		{
-			int delta = diff * fc->constraints [opposite_edge].factor;
+			int delta = diff * fc->constraints[opposite_edge].factor;
 
 			if (delta < 0)
 			{
 				if (edge == SGFormViewEdgeTop || edge == SGFormViewEdgeBottom)
-					my_bounds [SGFormViewEdgeBottom] += -delta;
+					my_bounds[SGFormViewEdgeBottom]-= delta;
 				else
-					my_bounds [SGFormViewEdgeRight] += -delta;
+					my_bounds[SGFormViewEdgeRight] -= delta;
 				
 				longjmp (env, 1);
 			}
 		}
     }
 
-    fc->constraints [edge].location += diff;
+    fc->constraints[edge].location += diff;
 }
 
 - (int) layout_edge:(jmp_buf) env
                  fc:(SGFormMetaView *) fc
-               edge:(int) edge
+               edge:(SGFormViewEdge) edge
           my_bounds:(int *) my_bounds
  recompute_our_size:(bool) recompute_our_size
 {
-    SGFormConstraint *ec = &fc->constraints [edge];
+    SGFormConstraint *ec = &fc->constraints[edge];
 
 	//NSLog (@"%d", ec->attachment);
 	
-    if (ec->attachment != SGFormViewAttachNone && ec->state != STATE_DONE)
+    if (ec->attachment != SGFormViewAttachmentNone && ec->state != SGFormMetaViewStateDone)
     {
-		if (ec->state == STATE_VISITED)
+		if (ec->state == SGFormMetaViewStateVisited)
 			printf ("FormLayout.layout: Circular dependency!\n");
 		else
 		{
 			int location = 0;
 
-			ec->state = STATE_VISITED;
+			ec->state = SGFormMetaViewStateVisited;
 
 			//
 			// At this point, we can do the work.
@@ -308,11 +314,11 @@ recompute_our_size:(bool) recompute_our_size
 
 			switch (ec->attachment)
 			{
-				case SGFormViewAttachForm:
-					location = my_bounds [edge];
+				case SGFormViewAttachmentForm:
+					location = my_bounds[edge];
 					break;
 
-				case SGFormViewAttachView:
+				case SGFormViewAttachmentView:
 					location = ec->factor +	// This IS correct
 						   [self layout_edge:env
 										  fc:ec->child
@@ -321,7 +327,7 @@ recompute_our_size:(bool) recompute_our_size
 						  recompute_our_size:recompute_our_size];
 					break;
 
-				case SGFormViewAttachOppositeView:
+				case SGFormViewAttachmentOppositeView:
 					location = [self layout_edge:env
 											  fc:ec->child
 											edge:edge
@@ -329,7 +335,7 @@ recompute_our_size:(bool) recompute_our_size
 							  recompute_our_size:recompute_our_size];
 					break;
 
-				case SGFormViewAttachCenter:
+				case SGFormViewAttachmentCenter:
 				{
 					int center;
 
@@ -359,11 +365,10 @@ recompute_our_size:(bool) recompute_our_size
 						 * layout_edge may move the first edge.
 						 */
 
-						int edge1 = ec->child->constraints [edge^2].location;
-						int edge2 = ec->child->constraints [edge].location;
+						int edge1 = ec->child->constraints[edge^2].location;
+						int edge2 = ec->child->constraints[edge].location;
 						int half = (edge1 - edge2) / 2;
-						center = ec->child->constraints [edge].location +
-							 half;
+						center = ec->child->constraints[edge].location + half;
 					}
 
 					// We depend on the opposite edge so lets lay him out
@@ -396,7 +401,7 @@ recompute_our_size:(bool) recompute_our_size
 				  my_bounds:my_bounds
 		 recompute_our_size:recompute_our_size];
 
-			ec->state = STATE_DONE;
+			ec->state = SGFormMetaViewStateDone;
 		}
     }
 
@@ -409,18 +414,18 @@ recompute_our_size:(bool) recompute_our_size
    recompute_our_size:(bool) recompute_our_size
 {
     for (NSInteger edge = 0; edge < SGFormViewEdgeCount; edge ++)
-	[self layout_edge:env 
-				   fc:fc
-				 edge:edge
-			my_bounds:my_bounds
-   recompute_our_size:recompute_our_size];
+		[self layout_edge:env 
+					   fc:fc
+					 edge:edge
+				my_bounds:my_bounds
+	   recompute_our_size:recompute_our_size];
 }
 
 - (void) do_layout:(int *) my_bounds recompute_our_size:(bool) recompute_our_size
 {
     for (NSInteger count = 0; count < 10000; )
     {
-		bool it_worked = 1;
+		BOOL worked = YES;
 
 		// 
 		// Reset the state of all edges.
@@ -433,7 +438,7 @@ recompute_our_size:(bool) recompute_our_size
 			SGFormMetaView *view = [mviews objectAtIndex:i];
 
 			for (NSInteger edge = 0; edge < SGFormViewEdgeCount; edge ++)
-				view->constraints [edge].state = STATE_RESET;
+				view->constraints [edge].state = SGFormMetaViewStateReset;
 		}
 
 		for (NSUInteger i = 0; i < [mviews count]; i ++)
@@ -457,13 +462,13 @@ recompute_our_size:(bool) recompute_our_size
 				recompute_our_size:recompute_our_size];
 			else
 			{
-				it_worked = 0;
+				worked = NO;
 				count ++;
 				break;
 			}
 		}
 
-		if (it_worked)
+		if (worked)
 			break;
     }
 }
@@ -487,7 +492,7 @@ recompute_our_size:(bool) recompute_our_size
     for (NSUInteger i = 0; i < [mviews count]; i ++)
     {
         SGFormMetaView *view = [mviews objectAtIndex:i];
-        [view get_initial_bounds];
+        [view getInitialBounds];
     }
 
     [self do_layout:my_bounds recompute_our_size:false];
@@ -495,7 +500,7 @@ recompute_our_size:(bool) recompute_our_size
     for (NSUInteger i = 0; i < [mviews count]; i ++)
     {
         SGFormMetaView *view = [mviews objectAtIndex:i];
-        [view set_final_bounds:self];
+        [view setFinalBounds:self];
     }
 }
 
