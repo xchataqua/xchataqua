@@ -59,11 +59,11 @@
     {
         // This order matches the value of the Enum
         NSMenu *connectionMenu = [[[NSMenu alloc] initWithTitle:@""] autorelease];
-		[connectionMenu addSGFormViewInspectorMenuItem:@"None"     selector:@selector(doConstrain:) target:self tag:SGFormViewAttachNone];
-		[connectionMenu addSGFormViewInspectorMenuItem:@"Form"     selector:@selector(doConstrain:) target:self tag:SGFormViewAttachForm];
-		[connectionMenu addSGFormViewInspectorMenuItem:@"View"     selector:@selector(doConstrain:) target:self tag:SGFormViewAttachView];
-		[connectionMenu addSGFormViewInspectorMenuItem:@"Opposite" selector:@selector(doConstrain:) target:self tag:SGFormViewAttachOppositeView];
-		[connectionMenu addSGFormViewInspectorMenuItem:@"Center"   selector:@selector(doConstrain:) target:self tag:SGFormViewAttachCenter];
+		[connectionMenu addSGFormViewInspectorMenuItem:@"None"     selector:@selector(doConstrain:) target:self tag:SGFormViewAttachmentNone];
+		[connectionMenu addSGFormViewInspectorMenuItem:@"Form"     selector:@selector(doConstrain:) target:self tag:SGFormViewAttachmentForm];
+		[connectionMenu addSGFormViewInspectorMenuItem:@"View"     selector:@selector(doConstrain:) target:self tag:SGFormViewAttachmentView];
+		[connectionMenu addSGFormViewInspectorMenuItem:@"Opposite" selector:@selector(doConstrain:) target:self tag:SGFormViewAttachmentOppositeView];
+		[connectionMenu addSGFormViewInspectorMenuItem:@"Center"   selector:@selector(doConstrain:) target:self tag:SGFormViewAttachmentCenter];
         [connectionMenus[edge] setMenu:connectionMenu];
     }
 }
@@ -129,7 +129,7 @@
             else
             {
                 [offsetTexts[edge] setStringValue:@""];
-                [connectionMenus[edge] selectItemWithTag:SGFormViewAttachNone];
+                [connectionMenus[edge] selectItemWithTag:SGFormViewAttachmentNone];
             }
         }
     }
@@ -180,10 +180,10 @@
 
             //NSLog (@"%x %d %d %d", view, edge, conn, offset);
 
-            if ((conn == SGFormViewAttachView ||
-				 conn == SGFormViewAttachOppositeView) && relative == nil)
+            if ((conn == SGFormViewAttachmentView ||
+				 conn == SGFormViewAttachmentOppositeView) && relative == nil)
             {
-                conn = SGFormViewAttachNone;
+                conn = SGFormViewAttachmentNone;
             }
 
             [form constrain:view

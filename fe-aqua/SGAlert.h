@@ -19,15 +19,15 @@
 
 @interface SGAlert : NSObject
 
-+ (void) alertWithString:(NSString *) alert_text andWait:(bool) wait;
-+ (void) noticeWithString:(NSString *) alert_text andWait:(bool) wait;
-+ (void) errorWithString:(NSString *) alert_text andWait:(bool) wait;
++ (void)  alertWithString:(NSString *)alertText andWait:(BOOL)wait;
++ (void) noticeWithString:(NSString *)alertText andWait:(BOOL)wait;
++ (void)  errorWithString:(NSString *)alertText andWait:(BOOL)wait;
 
-+ (bool) confirmWithString:(NSString *) alert_text;
++ (BOOL)confirmWithString:(NSString *)alertText;
 
-+ (void) confirmWithString:(NSString *) alert_text
-                    inform:(id) obj
-                   yes_sel:(SEL) yes_sel
-                    no_sel:(SEL) no_sel;
++ (void)confirmWithString:(NSString *)alertText
+				   inform:(id)obj
+				   yesSel:(SEL)yesSel
+					noSel:(SEL)noSel;
                   
 @end
