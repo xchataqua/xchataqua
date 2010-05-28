@@ -19,11 +19,11 @@
 
 typedef enum
 {
-	SGFormViewAttachNone,
-	SGFormViewAttachForm,
-	SGFormViewAttachView,
-	SGFormViewAttachOppositeView,
-	SGFormViewAttachCenter,
+	SGFormViewAttachmentNone,
+	SGFormViewAttachmentForm,
+	SGFormViewAttachmentView,
+	SGFormViewAttachmentOppositeView,
+	SGFormViewAttachmentCenter,
 }	SGFormViewAttachment;
 
 typedef enum

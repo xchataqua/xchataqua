@@ -258,9 +258,9 @@ confirm_wrapper (const char *message, void (*yesproc)(void *), void (*noproc)(vo
     o->noproc = noproc;
     o->ud = ud;
     [SGAlert confirmWithString:[NSString stringWithUTF8String:message]
-                    inform:o
-                   yes_sel:@selector (do_yes)
-                    no_sel:@selector (do_no)];
+						inform:o
+						yesSel:@selector (do_yes)
+						 noSel:@selector (do_no)];
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -1202,7 +1202,9 @@ void fe_get_file (const char *title, char *initial,
 				  void (*callback) (void *userdata, char *file), void *userdata,
 				  int flags)
 {
-	[SGFileSelection getFile:title initial:initial callback:callback userdata:userdata flags:flags];
+	[SGFileSelection getFile:[NSString stringWithUTF8String:title]
+					 initial:[NSString stringWithUTF8String:initial]
+					callback:callback userdata:userdata flags:flags];
 }
 
 void fe_tray_set_flash (const char *filename1, const char *filename2, int timeout)
