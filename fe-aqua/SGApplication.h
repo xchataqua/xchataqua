@@ -20,7 +20,7 @@
 @interface SGApplication : NSApplication
 {
     NSMutableArray	*customers;
-    NSMutableArray	*after_events;
+    //NSMutableArray	*after_events;
 }
 
 ///////
@@ -35,13 +35,12 @@
 - (id) requestEvents:(NSEventType) type
 		   forWindow:(NSWindow *) win
 			 forView:(NSView *) view
-			selector:(SEL) sel
-			  object:(id) obj;
+			selector:(SEL)selector
+			  object:(id)object;
 
-- (void) cancelRequestEvents:(id) req_id;
+- (void) cancelRequestEvents:(id)requestId;
 
 // TBD: This should probably be an extension to NSEvent
-+ (bool) event:(NSEvent *) e
-	inView:(NSView *) v;
++ (BOOL) event:(NSEvent *)event inView:(NSView *)view;
 
 @end

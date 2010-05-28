@@ -24,11 +24,9 @@
 #define SGFDExcep 2
 
 @interface SGFileDescriptor : NSObject
-{
-}
 
-- (SGFileDescriptor *)initWithFd:(int)fd mode:(int)the_mode target:(id)the_target 
-                        selector:(SEL)s withObject:(id)obj;
+- (SGFileDescriptor *)initWithFd:(int)fd mode:(NSInteger)mode target:(id)target 
+                        selector:(SEL)selector withObject:(id)object;
 - (void)disable;
 
 @end

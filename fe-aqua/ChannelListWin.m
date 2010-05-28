@@ -262,7 +262,7 @@ strip_crap (const char *s)
 #if 0    
     [top_box constrain:apply_button
                   edge:SGFormViewEdgeLeft
-            attachment:SGFormViewAttachCenter
+            attachment:SGFormViewAttachmentCenter
             relativeTo:nil
                 offset:0];
     
@@ -270,7 +270,7 @@ strip_crap (const char *s)
 
     [bottom_box constrain:save_button
                      edge:SGFormViewEdgeLeft
-               attachment:SGFormViewAttachCenter
+               attachment:SGFormViewAttachmentCenter
                relativeTo:nil
                    offset:0];
     
