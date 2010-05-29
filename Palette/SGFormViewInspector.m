@@ -101,7 +101,7 @@
         {
             SGFormViewAttachment attachment_return;
             NSView *view_return;
-            int offset_return;
+            CGFloat offset_return;
 
             BOOL got_it = [form constraintsForEdge:view
                                               edge:(SGFormViewEdge)edge
