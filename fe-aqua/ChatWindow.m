@@ -2098,9 +2098,12 @@ static int find_common (NSArray *list)
 	}
 }
 
-//////////
-// inputTextField delegate and helper funcs
-
+/*
+ * MARK: -
+ * MARK: Handle command keys
+ *
+ * input_text delegate and helper functions.
+ */
 - (BOOL)control:(NSControl *)control textShouldBeginEditing:(NSText *)fieldEditor
 {
     if (prefs.spell_check)
@@ -2116,64 +2119,98 @@ static int find_common (NSArray *list)
     return YES;
 }
 
+/*
+ * Called by the NSControlTextEditingDelegate Protocol when a “command” key is
+ * pressed (tab, return, escape, etc.) and passed a selector. Returns a BOOL
+ * indicating whether we handled the selector or not.
+ *
+ * - See also the «NSControlTextEditingDelegate Protocol Reference»:
+ * http://developer.apple.com/mac/library/documentation/cocoa/reference/NSControlTextEditingDelegate_Protocol/Reference/Reference.html
+ *
+ * - See also the «Cocoa Event Architecture»:
+ * http://developer.apple.com/mac/library/documentation/cocoa/conceptual/EventOverview/EventArchitecture/EventArchitecture.html
+ *
+ * - See also the «Class Hierarchy of the Cocoa Text System»:
+ * http://developer.apple.com/mac/library/documentation/cocoa/Conceptual/TextArchitecture/Concepts/TextSysClassHier.html
+ *
+ */
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector
 {
-    //NSArray *xx = [inputTextField registeredDraggedTypes];
-    //if (xx)
-    //{
-    //    for (unsigned i = 0; i < [xx count]; i ++)
-    //        printf ("%d %s\n", i, [[xx objectAtIndex:i] UTF8String]);
-    //}
+    // By default we do not handle the selector.
+  BOOL didHandleSelector = NO;
 
-    //printf ("->%s\n", [NSStringFromSelector (command) UTF8String]);
+  /*
+   * Check the passed in selector against the ones we have handlers for.
+   */
 
-	if (commandSelector == @selector (insertNewline:))
-	{
-		NSEvent *theEvent = [NSApp currentEvent];
-		if ([theEvent type] == NSKeyDown && ([theEvent modifierFlags] & NSShiftKeyMask))
-		{
-			[textView insertNewlineIgnoringFieldEditor:control];
-		}
-		else return FALSE;
-	}
-	else if (commandSelector == @selector (moveUp:))
+    // Shift+Return inserts a literal newline.
+  if (commandSelector == @selector(insertNewline:))
+  {
+    NSEvent *theEvent = [NSApp currentEvent];
+    if ([theEvent type] == NSKeyDown && ([theEvent modifierFlags] & NSShiftKeyMask))
     {
-        const char *xx = history_up (&sess->history, (char *) [[inputTextField stringValue] UTF8String]);
-        [self setInputText:[NSString stringWithUTF8String:xx]];
+      [textView insertNewlineIgnoringFieldEditor:control];
+      didHandleSelector = YES;
     }
-    else if (commandSelector == @selector (moveDown:))
-    {
-        const char *xx = history_down (&sess->history);
-        [self setInputText:[NSString stringWithUTF8String:xx]];
-    }
-    else if (commandSelector == @selector (scrollPageDown:))
-    {
-        [chatTextView scrollPageDown:textView];
-    }
-    else if (commandSelector == @selector (scrollPageUp:))
-    {
-        [chatTextView scrollPageUp:textView];
-    }
-    else if (commandSelector == @selector (scrollToBeginningOfDocument:))
-    {
-        [chatTextView scrollToBeginningOfDocument:textView];
-    }
-    else if (commandSelector == @selector (scrollToEndOfDocument:))
-    {
-        [chatTextView scrollToEndOfDocument:textView];
-    }
-    else if (commandSelector == @selector (insertTab:))
-    {
-        if (prefs.tab_completion)
-            [self tab_complete:textView];
-        else
-            [textView insertTab:textView];
-    }
-	else {
-		return FALSE;
-	}
+  }
 
-    return TRUE;
+    // Up/down-arrow scroll through your input history.
+  else if (commandSelector == @selector(moveUp:))
+  {
+    const char *prevInput = history_up(&sess->history, (char *) [[input_text stringValue] UTF8String]);
+    [self setInputText:prevInput];
+    didHandleSelector = YES;
+  }
+  else if (commandSelector == @selector(moveDown:))
+  {
+    const char *nextInput = history_down(&sess->history);
+    [self setInputText:nextInput];
+    didHandleSelector = YES;
+  }
+
+    // Handle Page-Up / Page-Down / Home / End
+    // (scroll channel window the appropriate direction).
+  else if (commandSelector == @selector(scrollPageDown:))
+  {
+    [chat_text scrollPageDown:textView];
+    didHandleSelector = YES;
+  }
+  else if (commandSelector == @selector(scrollPageUp:))
+  {
+    [chat_text scrollPageUp:textView];
+    didHandleSelector = YES;
+  }
+  else if (commandSelector == @selector(scrollToBeginningOfDocument:))
+  {
+    [chat_text scrollToBeginningOfDocument:textView];
+    didHandleSelector = YES;
+  }
+  else if (commandSelector == @selector(scrollToEndOfDocument:))
+  {
+    [chat_text scrollToEndOfDocument:textView];
+    didHandleSelector = YES;
+  }
+
+    // Tab key auto-completes nicks, channels, and commands (if enabled in prefs).
+  else if (commandSelector == @selector(insertTab:))
+  {
+    if (prefs.tab_completion) {
+      [self tab_complete:textView];
+      didHandleSelector = YES;
+    }
+    else
+    {
+      /*
+       * FIXME: This shouldn't be needed.
+       *
+       * If we return NO, NSResponder will handle the original insertTab: selector.
+       */
+      [textView insertTab:textView];
+      didHandleSelector = YES;
+    }
+  }
+
+  return didHandleSelector;
 }
 
 @end
