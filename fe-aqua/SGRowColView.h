@@ -21,13 +21,13 @@
 
 @interface SGRowColView : SGView
 {
-    int  rows;
-    int  cols;
-    bool shrinkh;
-    bool shrinkv;
+    NSInteger  rows;
+    NSInteger  cols;
+    BOOL shrinkh;
+    BOOL shrinkv;
 }
 
 - (void)setCols:(NSInteger)cols rows:(NSInteger)rows;		// rows = 0 means dynamic rows 
-- (void)setShrinkHoriz:(bool)shrinkh vert:(bool)shrinkv;
+- (void)setShrinkHoriz:(BOOL)shrinkh vert:(BOOL)shrinkv;
 
 @end
