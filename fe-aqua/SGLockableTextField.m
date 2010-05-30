@@ -20,40 +20,36 @@
 #import "SGAlert.h"
 #import "SGLockableTextField.h"
 
-/////////////////////////////////////////////////////////////////////////////
-
-static NSImage *getLockImage()
-{
-	static NSImage *lock_image;
-	if (!lock_image)
-	    lock_image = [NSImage imageNamed:@"lock.tiff"];
-	return lock_image;
-}
-
-static NSImage *getUnlockImage()
-{
-	static NSImage *unlock_image;
-	if (!unlock_image)
-	    unlock_image = [NSImage imageNamed:@"unlock.tiff"];
-	return unlock_image;
-}
-
-/////////////////////////////////////////////////////////////////////////////
-
 @interface SGLockableTextFieldCell : NSTextFieldCell
 {
-	NSButtonCell *lock_cell;
+	NSButtonCell *lockCell;
 	BOOL		  tracking_lock;
 }
 
-- (void) setLocked:(BOOL) isLocked;
-- (BOOL) isLocked;
+@property (nonatomic, assign) BOOL locked;
+@property (nonatomic, readonly) NSImage *lockImage, *unlockImage;
 
 @end
 
 /////////////////////////////////////////////////////////////////////////////
 
 @implementation SGLockableTextFieldCell
+
+- (NSImage *) lockImage
+{
+	static NSImage *lockImage;
+	if (!lockImage)
+	    lockImage = [NSImage imageNamed:@"lock.tiff"];
+	return lockImage;
+}
+
+- (NSImage *) unlockImage
+{
+	static NSImage *unlockImage;
+	if (!unlockImage)
+	    unlockImage = [NSImage imageNamed:@"unlock.tiff"];
+	return unlockImage;
+}
 
 - (id)initTextCell:(NSString *)aString
 {
@@ -64,34 +60,34 @@ static NSImage *getUnlockImage()
 
 - (void) dealloc 
 {
-    [lock_cell release];
+    [lockCell release];
     [super dealloc];
 }
 
-- copyWithZone:(NSZone *) zone
+-(SGLockableTextFieldCell *) copyWithZone:(NSZone *) zone
 {
     SGLockableTextFieldCell *cell = [super copyWithZone:zone];
-    cell->lock_cell = [lock_cell copyWithZone:zone];
+    cell->lockCell = [lockCell copyWithZone:zone];
     return cell;
 }
 
-- (BOOL) isLocked
+- (BOOL) locked
 {
-	return lock_cell && [lock_cell intValue] == 0;
+	return lockCell && [lockCell integerValue] == 0;
 }
 
 - (void) doLock:(id) sender
 {
-	if ([self isLocked])
+	if ([self locked])
 	{
 		// If the field editor has focus, and the field editor is for us,
 		// then commit our changes and move to the next field.
 		
 		NSWindow *win = [[self controlView] window];
-		NSTextView *resp = (NSTextView *) [win firstResponder];
-		if ([resp isKindOfClass:[NSTextView class]] &&
+		NSTextView *responder = (NSTextView *)[win firstResponder];
+		if ([responder isKindOfClass:[NSTextView class]] &&
 			[win fieldEditor:NO forObject:nil] &&
-			(NSView *)[resp delegate] == [self controlView])
+			(NSView *)[responder delegate] == [self controlView])
 		{
 			[win selectKeyViewFollowingView:[self controlView]];
 		}
@@ -107,43 +103,43 @@ static NSImage *getUnlockImage()
 {
 	if (isEditable)
 	{
-		if (!lock_cell)
+		if (!lockCell)
 		{
-			lock_cell = [[NSButtonCell alloc] initImageCell:getLockImage()];
-			[lock_cell setAlternateImage:getUnlockImage()];
-			[lock_cell setButtonType:NSToggleButton];
-			[lock_cell setImagePosition:NSImageOnly];
-			[lock_cell setBordered:false];
-			[lock_cell setHighlightsBy:NSContentsCellMask];
-			[lock_cell setTarget:self];
-			[lock_cell setAction:@selector(doLock:)];
+			lockCell = [[NSButtonCell alloc] initImageCell:self.lockImage];
+			[lockCell setAlternateImage:self.unlockImage];
+			[lockCell setButtonType:NSToggleButton];
+			[lockCell setImagePosition:NSImageOnly];
+			[lockCell setBordered:NO];
+			[lockCell setHighlightsBy:NSContentsCellMask];
+			[lockCell setTarget:self];
+			[lockCell setAction:@selector(doLock:)];
 		}
 	}
 	else
 	{
-		[lock_cell release];
-		lock_cell = nil;
+		[lockCell release];
+		lockCell = nil;
 	}
 	
 	[(NSControl *)[self controlView] calcSize];
 	[[self controlView] setNeedsDisplay:YES];
 	
-	[super setEditable:isEditable && ![self isLocked]];
+	[super setEditable:isEditable && ![self locked]];
 }
 
 - (void) computeTextFrame:(NSRect *) textFrame
 			 andLockFrame:(NSRect *) lockFrame
 			fromCellFrame:(NSRect) aRect
 {
-	if (!lock_cell)
+	if (!lockCell)
 	{
 		*textFrame = aRect;
 		return;
 	}
 		
-	NSSize lockSize = [lock_cell cellSize];
+	NSSize lockSize = [lockCell cellSize];
     NSDivideRect (aRect, lockFrame, textFrame, 3 + lockSize.width, NSMinXEdge);
-	lockFrame->origin.x += 3;
+	lockFrame->origin.x += 3.0f;
 	lockFrame->origin.y += floor ((aRect.size.height - lockSize.height) / 2);
 	lockFrame->size = lockSize;
 }
@@ -155,15 +151,14 @@ static NSImage *getUnlockImage()
 	return [super drawingRectForBounds:textFrame];
 }
 
-- (void) drawWithFrame:(NSRect) cellFrame
-			    inView:(NSView *) controlView 
+- (void) drawWithFrame:(NSRect) cellFrame inView:(NSView *) controlView 
 {
     NSRect textFrame, lockFrame;
 	[self computeTextFrame:&textFrame andLockFrame:&lockFrame fromCellFrame:cellFrame];
 	
 	[super drawWithFrame:cellFrame inView:controlView];
 
-	[lock_cell drawWithFrame:lockFrame inView:controlView];
+	[lockCell drawWithFrame:lockFrame inView:controlView];
 }
 
 - (BOOL) mouseDown:(NSEvent *) theEvent
@@ -178,16 +173,16 @@ static NSImage *getUnlockImage()
 		
     if (NSPointInRect (where, lockFrame))
 	{
-		[SGGuiUtil trackButtonCell:lock_cell withEvent:theEvent inRect:lockFrame controlView:controlView];
+		[SGGuiUtil trackButtonCell:lockCell withEvent:theEvent inRect:lockFrame controlView:controlView];
 		return YES;
 	}
 	
 	return NO;
 }
 
-- (void) setLocked:(BOOL) isLocked
+- (void) setLocked:(BOOL)locked
 {
-	[lock_cell setIntValue:!isLocked];
+	[lockCell setIntValue:!locked];
 	
 	// This may not actually set us as editable.
 	// We just need it to add/remove the lock icon
@@ -297,14 +292,14 @@ static NSImage *getUnlockImage()
 	[super textDidEndEditing:notif];
 }
 
-- (void) mouseDown:(NSEvent *) e
+- (void) mouseDown:(NSEvent *)event
 {
 	// Track the lock
-    if ([[self cell] mouseDown:e cellFrame:[self frame] controlView:self])
+    if ([[self cell] mouseDown:event cellFrame:[self frame] controlView:self])
 		return;
 	
 	// else...
-	[super mouseDown:e];
+	[super mouseDown:event];
 }
 
 - (BOOL) acceptsFirstResponder
@@ -330,7 +325,7 @@ static NSImage *getUnlockImage()
 
 - (BOOL) becomeFirstResponder
 {
-	return ! [[self cell] isLocked];
+	return ! [[self cell] locked];
 }
 
 @end

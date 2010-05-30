@@ -17,9 +17,7 @@
 
 #import <AppKit/AppKit.h>
 
-@interface SGSoundUtil : NSObject 
-{
-}
+@interface SGSoundUtil : NSObject
 
 + (NSArray *) systemSounds;
 

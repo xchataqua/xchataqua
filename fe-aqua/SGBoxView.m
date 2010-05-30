@@ -371,23 +371,23 @@ NSRect NSRectFlip (NSRect rect)
     [self queue_layout];
 }
 
-- (void) setMajorJustification:(SGBoxMajorJustification) new_just
+- (void) setMajorJustification:(SGBoxMajorJustification) aJustification
 {
-    majorJustification = new_just;
+    majorJustification = aJustification;
     [self queue_layout];
 }
 
-- (void) setMinorDefaultJustification:(SGBoxMinorJustification) new_just
+- (void) setMinorDefaultJustification:(SGBoxMinorJustification) aJustification
 {
-    minorJustification = new_just;
+    minorJustification = aJustification;
     [self queue_layout];
 }
 
-- (void) setMinorJustificationFor:(NSView *) view to:(SGBoxMinorJustification) new_just
+- (void) setMinorJustificationFor:(NSView *) view to:(SGBoxMinorJustification) aJustification
 {
     SGBoxMetaView *mv = (SGBoxMetaView *) [self find_view:view];
     if (mv)
-        [mv setJustification:new_just];
+        [mv setJustification:aJustification];
     [self queue_layout];
 }
 
