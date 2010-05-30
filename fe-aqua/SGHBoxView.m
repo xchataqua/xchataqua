@@ -26,55 +26,20 @@
     [super initWithFrame:frameRect];
     
     [self setOrientation:SGBoxOrientationHorizontal];
-    [self setHJustification:SGHBoxHJustificationLeft];
+    self.hJustification = SGHBoxHJustificationLeft;
     [self setDefaultVJustification:SGHBoxVJustificationCenter];
     
     return self;
 }
 
-- (void) setHJustification:(SGHBoxHJustification) new_just
+- (void) setDefaultVJustification:(SGHBoxVJustification) aJustification
 {
-    [self setMajorJustification:(SGBoxMajorJustification)new_just];
+    [self setMinorDefaultJustification:(SGBoxMinorJustification)aJustification];
 }
 
-- (short) hJustification
+- (void) setVJustificationFor:(NSView *) view to:(SGHBoxVJustification) aJustification
 {
-    return [self majorJustification];
-}
-
-- (void) setDefaultVJustification:(SGHBoxVJustification) new_just
-{
-    [self setMinorDefaultJustification:(SGBoxMinorJustification)new_just];
-}
-
-- (void) setVJustificationFor:(NSView *) view to:(SGHBoxVJustification) new_just
-{
-    [self setMinorJustificationFor:view to:(SGBoxMinorJustification)new_just];
-}
-
-- (void) setVMargin:(short) v
-{
-    [self setMinorMargin:v];
-}
-
-- (void) setHInnerMargin:(short) h
-{
-    [self setMajorInnerMargin:h];
-}
-
-- (short) hInnerMargin
-{
-    return [self majorInnerMargin];
-}
-
-- (void) setHOutterMargin:(short) h
-{
-    [self setMajorOutterMargin:h];
-}
-
-- (short) hOutterMargin
-{
-    return [self majorOutterMargin];
+    [self setMinorJustificationFor:view to:(SGBoxMinorJustification)aJustification];
 }
 
 #if 0

@@ -43,14 +43,9 @@
 
 @implementation SGWrapView
 
-- (void) SGWrapViewPrivateInit
-{
-}
-
 - (id) initWithFrame:(NSRect) frameRect
 {
     [super initWithFrame:frameRect];
-    [self SGWrapViewPrivateInit];    
     return self;
 }
 
