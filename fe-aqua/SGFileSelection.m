@@ -48,16 +48,17 @@ static NSString *fixPath (NSString *path)
 
 	if (win)
 	{
-		#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-		// this preprocess should be runtime checking
-		sts = [p runModalForDirectory:dir file:nil types:nil] == NSOKButton; // newcode
-		#else 
-		[p beginSheetForDirectory:dir file:nil types:nil modalForWindow:win
-					modalDelegate:nil didEndSelector:nil contextInfo:nil];
-		sts = [NSApp runModalForWindow:p];
-		// FIXME: this code stuck HERE on snow leopard. working well on leopard
-		[NSApp endSheet:p];
-		#endif
+		SInt32 version = 0;
+		Gestalt(gestaltSystemVersion, &version);
+		if ( version > 0x1050 ) {
+			sts = [p runModalForDirectory:dir file:nil types:nil] == NSOKButton; // newcode
+		} else {
+			[p beginSheetForDirectory:dir file:nil types:nil modalForWindow:win
+						modalDelegate:nil didEndSelector:nil contextInfo:nil];
+			sts = [NSApp runModalForWindow:p];
+			// FIXME: this code stuck HERE on snow leopard. working well on leopard
+			[NSApp endSheet:p];
+		}
 	}
 	else
 		sts = [p runModalForDirectory:dir file:nil types:nil] == NSOKButton;

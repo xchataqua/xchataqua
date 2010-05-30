@@ -123,7 +123,7 @@
     [self queue_layout];
 }
 
-- (void)setShrinkHoriz:(bool)new_shrinkh vert:(bool)new_shrinkv
+- (void)setShrinkHoriz:(BOOL)new_shrinkh vert:(BOOL)new_shrinkv
 {
     self->shrinkh = new_shrinkh;
     self->shrinkv = new_shrinkv;

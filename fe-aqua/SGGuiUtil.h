@@ -18,18 +18,16 @@
 #import <AppKit/AppKit.h>
 
 @interface SGGuiUtil : NSObject 
-{
-}
-
+/*
 + (NSPoint) centerRect:(NSRect) r
                 onRect:(NSRect) rr
-                   inX:(bool) inX
-                   inY:(bool) inY;
-
-+ (BOOL) trackButtonCell:(NSButtonCell *) cell
-			   withEvent:(NSEvent *) e
-				  inRect:(NSRect) track_rect
-			 controlView:(NSView *) controlView;
+                   inX:(BOOL) inX
+                   inY:(BOOL) inY;
+*/
++ (BOOL) trackButtonCell:(NSButtonCell *)cell
+			   withEvent:(NSEvent *)event
+				  inRect:(NSRect)trackRect
+			 controlView:(NSView *)controlView;
 
 + (void) fixSquareButtonsInView:(NSView *) view;
 

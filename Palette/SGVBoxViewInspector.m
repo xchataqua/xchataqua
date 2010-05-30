@@ -45,7 +45,7 @@
     for(NSUInteger i = 0; i < count; ++i)
     {
         SGVBoxView *view = [objects objectAtIndex:i];
-        [view setVJustification:[[sender selectedItem] tag]];
+        view.vJustification = [[sender selectedItem] tag];
     }
 }
 
@@ -69,7 +69,7 @@
     for(NSUInteger i = 0; i < count; ++i)
     {
         SGVBoxView * view = [objects objectAtIndex:i];
-        [view setVInnerMargin:[inner_text intValue]];
+        view.vInnerMargin = [inner_text intValue];
     }
 }
 
@@ -81,7 +81,7 @@
     for(NSUInteger i = 0; i < count; ++i)
     {
         SGVBoxView * view = [objects objectAtIndex:i];
-        [view setVOutterMargin:[outter_text intValue]];
+        view.vOutterMargin= [outter_text intValue];
     }
 }
 
@@ -92,10 +92,10 @@
     if([objects count] == 1)
     {
         SGVBoxView *vbox = [objects objectAtIndex:0];
-        [VJustMenu selectItemWithTag:[vbox vJustification]];
-        [HJustMenu selectItemWithTag:[vbox hJustification]];
-        [inner_text setIntValue:[vbox vInnerMargin]];
-        [outter_text setIntValue:[vbox vOutterMargin]];
+        [VJustMenu selectItemWithTag:vbox.vJustification];
+        [HJustMenu selectItemWithTag:vbox.hJustification];
+        [inner_text  setIntegerValue:vbox.vInnerMargin];
+        [outter_text setIntegerValue:vbox.vOutterMargin];
     }
     [super refresh];
 }

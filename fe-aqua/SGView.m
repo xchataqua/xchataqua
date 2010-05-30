@@ -88,6 +88,7 @@
 
 @implementation NSView (sgview)
 
+// replace deprecated -poseAsClass:
 - (void) setOriginalHidden:(BOOL) flag {
 	assert(NO);
 }
@@ -166,7 +167,7 @@
     frame = NSIntegralRect (frame);
     self->last_size = frame;
     [self->view setFrame:frame];
-    [self->view setNeedsDisplay:true];            
+    [self->view setNeedsDisplay:YES];
 }
 
 - (void) reset_pref_size
@@ -185,11 +186,7 @@
 
 + (void) initialize
 {
-	#ifdef FE_AQUA_TIGER
-	if (self == [SGView class]) {
-		[NSViewOverride poseAsClass:[NSView class]];
-	}
-	#else
+	// swap original -setHidden: to new one
 	Method originalMethod = class_getInstanceMethod([NSView class], @selector(setHidden:));
 	Method overrideMethod = class_getInstanceMethod([NSView class], @selector(setSGHidden:));
 	IMP originalImplementation = method_getImplementation(originalMethod);
@@ -198,7 +195,6 @@
 		method_setImplementation(class_getInstanceMethod([NSView class], @selector(setOriginalHidden:)), originalImplementation);
 		method_setImplementation(originalMethod, overrideImplementation);
 	}
-	#endif
 }
 
 - (void) SGViewPrivateInit
@@ -206,10 +202,10 @@
 	[self setAutoresizesSubviews:YES];
 	
 	metaViews = [[NSMutableArray alloc] init];
-    self->first_layout = true;
-    self->pending_layout = false;
-    self->in_my_layout = false;
-    self->in_dtor = false;
+    self->first_layout = YES;
+    self->pending_layout = NO;
+    self->in_my_layout = NO;
+    self->in_dtor = NO;
 }
 
 - (id) initWithFrame:(NSRect)frameRect
@@ -223,10 +219,10 @@
 {
 	self = [super initWithCoder:decoder];
 	[self SGViewPrivateInit];
-	self->first_layout = false;	// This feels right
+	self->first_layout = NO;	// This feels right
 	[metaViews release];
 	metaViews = [[NSMutableArray alloc] initWithCoder:decoder];
-    for (unsigned i = 0; i < [metaViews count]; i ++)
+    for (NSUInteger i = 0; i < [metaViews count]; i ++)
         [self didAddSubview:[[metaViews objectAtIndex:i] view]];
     return self;
 }
@@ -239,7 +235,7 @@
 
 - (void) dealloc
 {
-    in_dtor = true;
+    in_dtor = YES;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
@@ -251,29 +247,29 @@
 {
 }
 
-- (void) setAutoSizeToFit:(bool) sf
+- (void) setAutoSizeToFit:(BOOL) sf
 {
     auto_size_to_fit = sf;
 }
 
 - (void) sizeToFit
 {
-    needs_size_to_fit = false;
+    needs_size_to_fit = NO;
 }
 
 - (void) layoutNow
 {    
-    pending_layout = false;
-    in_my_layout = true;
+    pending_layout = NO;
+    in_my_layout = YES;
     
     if (needs_size_to_fit)
         [self sizeToFit];
         
     [self do_layout];
-    [self setNeedsDisplay:true];
+    [self setNeedsDisplay:YES];
 
-    in_my_layout = false;
-    first_layout = false;
+    in_my_layout = NO;
+    first_layout = NO;
 }
 
 - (void) layout_maybe
@@ -287,7 +283,7 @@ static void noDisplay (NSView *v)
 {
     [v setNeedsDisplay:NO];
     NSArray *sub = [v subviews];
-    for (unsigned i = 0; i < [sub count]; i ++)
+    for (NSUInteger i = 0; i < [sub count]; i ++)
         noDisplay ([sub objectAtIndex:i]);
 }
 #endif
@@ -316,7 +312,7 @@ static void noDisplay (NSView *v)
 
 #if 0
     [[NSColor redColor] set];
-    [[NSGraphicsContext currentContext] setShouldAntialias:false];
+    [[NSGraphicsContext currentContext] setShouldAntialias:NO];
     NSBezierPath *p = [NSBezierPath bezierPathWithRect:[self bounds]];
     [p setLineWidth:5];
     [p stroke];
@@ -420,7 +416,7 @@ static void noDisplay (NSView *v)
     [metaView reset_pref_size];
     
     if (auto_size_to_fit)
-        needs_size_to_fit = true;
+        needs_size_to_fit = YES;
         
     [self queue_layout];
 }
@@ -448,7 +444,7 @@ static void noDisplay (NSView *v)
         name:NSViewFrameDidChangeNotification object:subview];
     
     if (auto_size_to_fit)
-        needs_size_to_fit = true;
+        needs_size_to_fit = YES;
 
     [self queue_layout];
 }
@@ -467,7 +463,7 @@ static void noDisplay (NSView *v)
     [metaViews removeObject:metaView];
     
     if (auto_size_to_fit)
-        needs_size_to_fit = true;
+        needs_size_to_fit = YES;
 
     [self queue_layout];
 }

@@ -135,20 +135,20 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 
 - (void) windowDidBecomeKey:(NSNotification *) notification
 {
-    TabOrWindowView *the_view = [[(SGTabView *)[tab_window contentView] selectedTabViewItem] view];
+    TabOrWindowView *the_view = (TabOrWindowView *)[[(SGTabView *)[tab_window contentView] selectedTabViewItem] view];
     [[the_view delegate] windowDidBecomeKey:notification];
 }
 
 // NOTE: This func closes the tab
 - (void) tabWantsToClose:(SGTabViewItem *) item
 {
-    TabOrWindowView *me = [item view];
+    TabOrWindowView *me = (TabOrWindowView *)[item view];
 	[me close];
 }
 
 - (void) link_delink:(SGTabViewItem *) item
 {
-    TabOrWindowView *me = [item view];
+    TabOrWindowView *me = (TabOrWindowView *)[item view];
 	[me link_delink:item];
 }
 
@@ -163,7 +163,7 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 
 - (void) tabView:(SGTabView *)tabView didSelectTabViewItem:(SGTabViewItem *)tabViewItem
 {
-    NSString *title = [[tabViewItem view] title];
+    NSString *title = [(TabOrWindowView *)[tabViewItem view] title];
     if (title)
         [tab_window setTitle:title];
 
@@ -173,7 +173,7 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
     // Someone selected a new tab view.  Phony up a 'windowDidBecomeKey'
     // notification.  Let's hope they don't need the NSNotification object.
 
-    [[[tabViewItem view] delegate] windowDidBecomeKey:nil];
+    [[(TabOrWindowView *)[tabViewItem view] delegate] windowDidBecomeKey:nil];
 }
 
 - (void) tabViewDidResizeOutlne:(int) width
@@ -408,7 +408,7 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 	if (win == tab_window)
 	{
 		SGTabViewItem *item = [(SGTabView *)[tab_window contentView] selectedTabViewItem];
-		TabOrWindowView *view = [item view];
+		TabOrWindowView *view = (TabOrWindowView *)[item view];
 		[view link_delink:self];
 	}
 	else
