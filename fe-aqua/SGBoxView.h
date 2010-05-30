@@ -46,7 +46,7 @@ typedef enum
     SGBoxOrderLIFO,
 }	SGBoxOrder;
 
-typedef short SGBoxMargin;
+typedef CGFloat SGBoxMargin;
 
 @interface SGBoxView : SGView
 {
