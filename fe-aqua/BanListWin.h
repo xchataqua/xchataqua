@@ -23,18 +23,22 @@
 <NSTableViewDataSource>
 #endif
 {
-    NSTableView		*ban_list;
-    TabOrWindowView	*ban_list_view;
-    NSButton		*refresh_button;
-    NSMutableArray	*my_items;
-    NSTimer			*timer;
-    struct session	*sess;
+	IBOutlet NSTableView		*banList;
+	IBOutlet TabOrWindowView	*banListView;
+	IBOutlet NSButton			*refreshButton;
+	NSMutableArray	*myItems;
+	NSTimer			*timer;
+	struct session	*sess;
 }
 
-- (id) initWithSelfPtr:(id *) self_ptr session:(session *) sess;
+- (id) initWithSelfPtr:(id *)selfPtr session:(struct session *)session;
 - (void) show;
-- (void) add_ban_list:(const char *)mask who:(const char *) who 
-	when:(const char *) when is_exemption:(bool) is_exemption;
-- (void) ban_list_end;
+- (void) addBanList:(NSString *)mask who:(NSString *)who when:(NSString *)when isExemption:(BOOL)isExemption;
+- (void) banListEnd;
+
+- (IBAction) onUnban:(id)sender;
+- (IBAction) onCrop:(id)sender;
+- (IBAction) onWipe:(id)sender;
+- (IBAction) onRefresh:(id)sender;
 
 @end
