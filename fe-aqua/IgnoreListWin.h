@@ -22,18 +22,21 @@
 <NSTableViewDataSource>
 #endif
 {
-    NSTableView		*ignore_list_table;
-    TabOrWindowView	*ignore_list_view;
-    NSTextField		*ignored_ctcp_text;
-    NSTextField		*ignored_noti_text;
-    NSTextField		*ignored_chan_text;
-    NSTextField		*ignored_invi_text;
-    NSTextField		*ignored_priv_text;
-    NSMutableArray	*my_items;
+	IBOutlet NSTableView		*ignoreListTableView;
+	IBOutlet TabOrWindowView	*ignoreListView;
+	IBOutlet NSTextField		*ignoredCtcpTextField;
+	IBOutlet NSTextField		*ignoredNoticeTextField;
+	IBOutlet NSTextField		*ignoredChannelTextField;
+	IBOutlet NSTextField		*ignoredInviteTextField;
+	IBOutlet NSTextField		*ignoredPrivateTextField;
+    NSMutableArray	*myItems;
 }
 
-- (id) initWithSelfPtr:(id *) self_ptr;
+- (IBAction) doNew:(id) sender;
+- (IBAction) doDelete:(id) sender;
+
+- (id) initWithSelfPtr:(id *)selfPtr;
 - (void) show;
-- (void) update:(int) level;
+- (void) update:(int)level;
 
 @end

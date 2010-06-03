@@ -34,68 +34,69 @@
 {
     [super initWithSelfPtr:self_ptr];
     
-#define AWBWidth 30
-#define AWBHeight 30
-#define AWLWidth 30
-#define AWMargin 20
+	#define AWBWidth  30.0f
+	#define AWBHeight 30.0f
+	#define AWLWidth  30.0f
+	#define AWMargin  20.0f
+	#define AWColCount 16
 
-    NSRect wr = NSMakeRect (0, 0, 16 * AWBWidth + AWMargin + AWMargin + AWLWidth,
-                                  16 * AWBHeight + AWMargin + AWMargin);
+    NSRect wr = NSMakeRect (0.0f, 0.0f,
+							AWColCount * AWBWidth + AWMargin + AWMargin + AWLWidth,
+							AWColCount * AWBHeight + AWMargin + AWMargin);
 
-    NSView *v = [[[NSView alloc] initWithFrame:wr] autorelease];
+    NSView *asciiView = [[[NSView alloc] initWithFrame:wr] autorelease];
     
-    for (int y = 0; y < 16; y ++)
+    for (NSInteger y = 0; y < AWColCount; y ++)
     {
-        NSTextField *l = [[[NSTextField alloc] init] autorelease];
-        [l setEditable:false];
-        [l setBezeled:false];
-        [l setBordered:false];
-        [l setDrawsBackground:false];
-        [l setAlignment:NSRightTextAlignment];
-        [l setTitleWithMnemonic:[NSString stringWithFormat:@"%3.3d", y * 16]];
-        [l sizeToFit];
+        NSTextField *lineTextField = [[[NSTextField alloc] init] autorelease];
+        [lineTextField setEditable:NO];
+        [lineTextField setBezeled:NO];
+        [lineTextField setBordered:NO];
+        [lineTextField setDrawsBackground:NO];
+        [lineTextField setAlignment:NSRightTextAlignment];
+        [lineTextField setTitleWithMnemonic:[NSString stringWithFormat:@"%3.3d", y * AWColCount]];
+        [lineTextField sizeToFit];
         
-        NSRect r = [l frame];
-        NSPoint p = NSMakePoint (AWMargin + AWLWidth - r.size.width - 5, 
-            wr.size.height - AWMargin - y * AWBHeight - AWBHeight + (AWBHeight - r.size.height) / 2);
-        [l setFrameOrigin:p];
+        NSRect lineRect = [lineTextField frame];
+        [lineTextField setFrameOrigin:NSMakePoint (AWMargin + AWLWidth - lineRect.size.width - 5.0f, 
+												   wr.size.height - AWMargin - y * AWBHeight - AWBHeight + (AWBHeight - lineRect.size.height) / 2)];
 
-        [v addSubview:l];
+        [asciiView addSubview:lineTextField];
             
-        for (int x = 0; x < 16; x ++)
+        for (NSInteger x = 0; x < AWColCount; x ++)
         {
-			unsigned char c = y * 16 + x;
+			unsigned char character = y * AWColCount + x;
             
-            NSButton *b = [[[NSButton alloc] init] autorelease];
-            [b setButtonType:NSMomentaryPushButton];
-            [b setTitle:[NSString stringWithFormat:@"%c", c]];
-            [b setBezelStyle:NSShadowlessSquareBezelStyle];
-            [b setAction:@selector (do_button:)];
-            [b setTarget:self];
-            [b setTag:c];
-            [b setImagePosition:NSNoImage];
+            NSButton *characterButton = [[[NSButton alloc] init] autorelease];
+            [characterButton setButtonType:NSMomentaryPushButton];
+            [characterButton setTitle:[NSString stringWithFormat:@"%c", character]];
+            [characterButton setBezelStyle:NSShadowlessSquareBezelStyle];
+            [characterButton setAction:@selector(onInput:)];
+            [characterButton setTarget:self];
+            [characterButton setTag:character];
+            [characterButton setImagePosition:NSNoImage];
         
-            NSRect r = NSMakeRect (AWMargin + AWLWidth + x * AWBWidth, 
-                wr.size.height - AWMargin - y * AWBHeight - AWBHeight, AWBWidth, AWBHeight);
+            NSRect characterRect = NSMakeRect (AWMargin + AWLWidth + x * AWBWidth, 
+											   wr.size.height - AWMargin - y * AWBHeight - AWBHeight, AWBWidth, AWBHeight);
                 
-            [b setFrame:r];
+            [characterButton setFrame:characterRect];
     
-            [v addSubview:b];
+            [asciiView addSubview:characterButton];
             
-            if (c == 255)
+            if (character == 255)
                 break;
         }
     }
     
-    window = [[NSWindow alloc] initWithContentRect:[v frame]
+    window = [[NSWindow alloc] initWithContentRect:[asciiView frame]
                                 styleMask: NSTitledWindowMask | 
                                            NSClosableWindowMask | 
                                            NSMiniaturizableWindowMask
                                    backing:NSBackingStoreBuffered
                                      defer:NO];
 
-    [window setReleasedWhenClosed:false];
-    [window setContentView:v];
+    [window setReleasedWhenClosed:NO];
+    [window setContentView:asciiView];
     [window setDelegate:self];
     [window setTitle:NSLocalizedStringFromTable(@"Character Chart", @"xchat", @"")];
     [window center];
@@ -109,7 +110,7 @@
     [super dealloc];
 }
 
-- (void) do_button:(id) sender
+- (void) onInput:(id) sender
 {
     if (current_sess)
         [current_sess->gui->cw insertText:[sender title]];

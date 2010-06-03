@@ -101,9 +101,9 @@ typedef struct SGFormConstraint
 	[self setIdentifier:[decoder decodeObjectForKey:@"identifier"]];
 	for (NSInteger i = 0; i < SGFormViewEdgeCount; i ++)
     {
-		self->constraints[i].location	= [decoder decodeFloatForKey:[NSString stringWithFormat:@"location_%f", i]];
+		self->constraints[i].location	= [decoder decodeFloatForKey:[NSString stringWithFormat:@"location_%d", i]];
 		self->constraints[i].attachment = [decoder decodeIntForKey:[NSString stringWithFormat:@"attachment_%d", i]];
-		self->constraints[i].offset		= [decoder decodeFloatForKey:[NSString stringWithFormat:@"offset_%f", i]];
+		self->constraints[i].offset		= [decoder decodeFloatForKey:[NSString stringWithFormat:@"offset_%d", i]];
 		self->constraints[i].child		= [decoder decodeObjectForKey:[NSString stringWithFormat:@"child_%d", i]];
     }
 	return self;
@@ -121,9 +121,9 @@ typedef struct SGFormConstraint
 	[encoder encodeObject:identifier forKey:@"identifier"];
 	for (NSInteger i = 0; i < SGFormViewEdgeCount; i ++)
     {
-		[encoder encodeFloat:self->constraints[i].location			forKey:[NSString stringWithFormat:@"location_%f", i]];
+		[encoder encodeFloat:self->constraints[i].location			forKey:[NSString stringWithFormat:@"location_%d", i]];
 		[encoder encodeInt:self->constraints[i].attachment			forKey:[NSString stringWithFormat:@"attachment_%d", i]];
-		[encoder encodeInt:self->constraints[i].offset				forKey:[NSString stringWithFormat:@"offset_%f", i]];
+		[encoder encodeInt:self->constraints[i].offset				forKey:[NSString stringWithFormat:@"offset_%d", i]];
 		[encoder encodeConditionalObject:self->constraints[i].child	forKey:[NSString stringWithFormat:@"child_%d", i]];
     }
 }

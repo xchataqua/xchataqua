@@ -41,7 +41,7 @@ extern "C" {
 @class DccChatWin;
 @class RawLogWin;
 @class UrlGrabberWin;
-@class NotifyListWin;
+@class FriendListWin;
 @class IgnoreListWin;
 @class BanListWin;
 @class AsciiWin;
@@ -51,30 +51,27 @@ extern "C" {
 
 struct session;
 
-typedef
 struct session_gui
 {
     ChatWindow     	*cw;
     BanListWin		*ban_list;
-} session_gui;
- 
-typedef
+};
+
 struct server_gui
 {
     ChannelListWin	*clc;
     RawLogWin		*rawlog;
     int				tab_group;
-} server_gui;
+};
 
-typedef
-struct EventInfo
+struct event_info
 {
 	int	growl;
 	int show;
 	int bounce;
-} EventInfo;
+};
 
-extern EventInfo text_event_info[];
+extern struct event_info text_event_info[];
 
 @interface AquaChat : NSObject <GrowlApplicationBridgeDelegate>
 {
@@ -113,7 +110,7 @@ extern EventInfo text_event_info[];
     DccRecvWin	*dcc_recv_window;
     DccChatWin	*dcc_chat_window;
     UrlGrabberWin *url_grabber;
-    NotifyListWin *notify_list;
+    FriendListWin *notify_list;
     IgnoreListWin *ignore_window;
     AsciiWin	*ascii_window;
     PluginList	*plugin_list_win;
@@ -124,18 +121,13 @@ extern EventInfo text_event_info[];
 }
 
 @property (nonatomic, readonly) NSFont *font, *bold_font;
+@property (nonatomic, retain) ColorPalette *palette;
 
 + (AquaChat *) sharedAquaChat;
 
-+ (void) forEachSessionOnServer:(struct server *) serv
-                performSelector:(SEL) sel;
++ (void) forEachSessionOnServer:(struct server *)serv performSelector:(SEL)sel;
++ (void) forEachSessionOnServer:(struct server *)serv performSelector:(SEL)sel withObject:(id) obj;
 
-+ (void) forEachSessionOnServer:(struct server *) serv
-                performSelector:(SEL) sel
-		     withObject:(id) obj;
-
-- (ColorPalette *) getPalette;
-- (void) setPalette:(ColorPalette *) palette;
 - (void) prefsChanged;
 
 - (void) post_init;
@@ -158,6 +150,6 @@ extern EventInfo text_event_info[];
 - (void) event:(int) event args:(char **) args session:(session *) sess;
 - (void) ctrl_gui:(session *) sess action:(int) action arg:(int) arg;
 - (void) server_event:(server *)server event_type:(int)type arg:(int)arg;
-- (void ) growl:(const char *)text title:(const char *)title;
-- (void ) growl:(const char *)text;
+- (void) growl:(const char *)text title:(const char *)title;
+- (void) growl:(const char *)text;
 @end

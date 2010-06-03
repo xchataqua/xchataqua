@@ -118,10 +118,10 @@
         [banListView becomeTabAndShow:YES];
     else
         [banListView becomeWindowAndShow:YES];
-	[self onRefresh:nil]; // load list when window showed-up
+	[self doRefresh:nil]; // load list when window showed-up
 }
 
-- (void) onRefresh:(id) sender
+- (void) doRefresh:(id) sender
 {
     if (sess->server->connected)
     {
@@ -158,22 +158,22 @@
     
     free (masks);
     
-    [self onRefresh:nil];
+    [self doRefresh:nil];
 }
 
-- (void) onUnban:(id) sender
+- (void) doUnban:(id) sender
 {
     // Unban selected
     [self performUnban:NO invert:NO];
 }
 
-- (void) onCrop:(id) sender
+- (void) doCrop:(id) sender
 {
     // Unban not-selected
     [self performUnban:NO invert:YES];
 }
 
-- (void) onWipe:(id) sender
+- (void) doWipe:(id) sender
 {
     // Unban all
     [self performUnban:YES invert:NO];

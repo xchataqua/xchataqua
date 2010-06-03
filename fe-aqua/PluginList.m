@@ -52,7 +52,7 @@ extern GSList *plugin_list;
 {
     name = [[NSString stringWithUTF8String:plugin->name] retain];
     vers = [[NSString stringWithUTF8String:plugin->version] retain];
-    file = [[NSString stringWithUTF8String:file_part (plugin->filename)] retain];
+    file = [[NSString stringWithUTF8String:file_part(plugin->filename)] retain];
     desc = [[NSString stringWithUTF8String:plugin->desc] retain];
     
     return self;
@@ -73,11 +73,11 @@ extern GSList *plugin_list;
 
 @implementation PluginList
 
-- (id) initWithSelfPtr:(id *) self_ptr
+- (id) initWithSelfPtr:(id *)self_ptr
 {
-    [super initWithSelfPtr:self_ptr];
+    self = [super initWithSelfPtr:self_ptr];
    
-    self->my_items = [[NSMutableArray arrayWithCapacity:0] retain];
+    self->myItems = [[NSMutableArray arrayWithCapacity:0] retain];
 
     [NSBundle loadNibNamed:@"PluginList" owner:self];
 
@@ -86,62 +86,62 @@ extern GSList *plugin_list;
 
 - (void) dealloc
 {
-    [self->plugin_list_table setDataSource:nil];
-    [[self->plugin_list_table window] autorelease];
-    [my_items release];
+    [self->pluginListTableView setDataSource:nil];
+    [[self->pluginListTableView window] autorelease];
+    [myItems release];
     [super dealloc];
 }
 
-- (void) do_unload:(id) sender
+- (void) doUnload:(id) sender
 {
-    int row = [self->plugin_list_table selectedRow];
+    NSInteger row = [self->pluginListTableView selectedRow];
     if (row < 0)
         return;
     
-    OnePlugin *item = [my_items objectAtIndex:row];
+    OnePlugin *item = [myItems objectAtIndex:row];
 
-    int len = [item->file length];
+    NSUInteger len = [item->file length];
     if (len > 3 && strcasecmp ([item->file UTF8String] + len - 3, ".so") == 0)
     {
-        if (plugin_kill ((char *) [item->name UTF8String], FALSE) == 2)
+        if (plugin_kill ((char *) [item->name UTF8String], false) == 2)
             [SGAlert alertWithString:NSLocalizedStringFromTable(@"That plugin is refusing to unload.\n", @"xchat", @"") andWait:false];
     }
     else
     {
         NSString *cmd = [NSString stringWithFormat:@"UNLOAD \"%@\"", item->file];
-        handle_command (current_sess, (char *) [cmd UTF8String], FALSE);
+        handle_command (current_sess, (char *)[cmd UTF8String], false);
     }
 }
 
-- (void) do_load:(id) sender
+- (void) doLoad:(id) sender
 {
     [[AquaChat sharedAquaChat] do_load_plugin:sender];
 }
 
-- (void) load_data
+- (void) loadData
 {
-    [my_items removeAllObjects];
+    [myItems removeAllObjects];
 
     for (GSList *list = plugin_list; list; list = list->next)
     {
     	xchat_plugin *pl = (xchat_plugin *) list->data;
         if (pl->version && pl->version [0])
-            [my_items addObject:[[OnePlugin alloc] initWithPlugin:pl]];
+            [myItems addObject:[[OnePlugin alloc] initWithPlugin:pl]];
     }
 
-    [self->plugin_list_table reloadData];
+    [self->pluginListTableView reloadData];
 }
 
 - (void) awakeFromNib
 {
-    for (int i = 0; i < [self->plugin_list_table numberOfColumns]; i ++)
-        [[[self->plugin_list_table tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
+    for (NSUInteger i = 0; i < [self->pluginListTableView numberOfColumns]; i ++)
+        [[[self->pluginListTableView tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
 
-    [self->plugin_list_table setDataSource:self];
-    [[self->plugin_list_table window] setDelegate:self];
-    [[self->plugin_list_table window] center];
+    [self->pluginListTableView setDataSource:self];
+    [[self->pluginListTableView window] setDelegate:self];
+    [[self->pluginListTableView window] center];
 
-    [self load_data];
+    [self loadData];
 }
 
 - (void) windowDidBecomeKey:(NSNotification *) xx
@@ -155,12 +155,12 @@ extern GSList *plugin_list;
 
 - (void) show
 {
-    [[self->plugin_list_table window] makeKeyAndOrderFront:self];
+    [[self->pluginListTableView window] makeKeyAndOrderFront:self];
 }
 
 - (void) update
 {
-    [self load_data];
+    [self loadData];
 }
 
 //////////////
@@ -168,16 +168,16 @@ extern GSList *plugin_list;
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
-    return [my_items count];
+    return [myItems count];
 }
 
 - (id) tableView:(NSTableView *) aTableView
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
     row:(NSInteger) rowIndex
 {
-    OnePlugin *item = [my_items objectAtIndex:rowIndex];
+    OnePlugin *item = [myItems objectAtIndex:rowIndex];
 
-    switch ([[aTableColumn identifier] intValue])
+    switch ([[aTableColumn identifier] integerValue])
     {
         case 0: return item->name;
         case 1: return item->vers;

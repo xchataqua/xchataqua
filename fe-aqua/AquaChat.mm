@@ -62,7 +62,7 @@ extern "C" {
 #import "DccChatWin.h"
 #import "ChannelListWin.h"
 #import "RawLogWin.h"
-#import "NotifyListWin.h"
+#import "FriendListWin.h"
 #import "IgnoreListWin.h"
 #import "BanListWin.h"
 #import "AsciiWin.h"
@@ -92,12 +92,12 @@ static AquaChat *aquachat;
 static NSImage  *my_image;
 static NSImage  *alert_image;
 
-EventInfo text_event_info[NUM_XP];
+event_info text_event_info[NUM_XP];
 
 //////////////////////////////////////////////////////////////////////
 
 @implementation AquaChat
-@synthesize font, bold_font;
+@synthesize font, bold_font, palette;
 
 + (void) forEachSessionOnServer:(struct server *)serv performSelector:(SEL)sel
 {
@@ -155,7 +155,7 @@ EventInfo text_event_info[NUM_XP];
 	
     for (int i = 0; i < NUM_XP; i++)
     {
-        EventInfo *event = &text_event_info[i];
+        event_info *event = &text_event_info[i];
 		char *name = te[i].name;
 
 		id gval = [dict objectForKey:[NSString stringWithFormat:@"%s_growl", name]];
@@ -176,7 +176,7 @@ EventInfo text_event_info[NUM_XP];
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:NUM_XP];
     for (int i = 0; i < NUM_XP; i++)
     {
-        EventInfo *event = &text_event_info[i];
+        event_info *event = &text_event_info[i];
 		char *name = te[i].name;
 		
 		if (event->growl)
@@ -388,27 +388,6 @@ EventInfo text_event_info[NUM_XP];
     sprintf (prefs.font_normal, "%s %.1f", [[font fontName] UTF8String], [font pointSize]);
 }
 
-- (NSFont *) getFont
-{
-    return font;
-}
-
-- (NSFont *) getBoldFont
-{
-    return bold_font;
-}
-
-- (ColorPalette *) getPalette
-{
-    return palette;
-}
-
-- (void) setPalette:(ColorPalette *) new_palette
-{
-    [palette release];
-    palette = [new_palette retain];
-}
-
 - (void) prefsChanged
 {
     [self set_font:prefs.font_normal];
@@ -550,7 +529,7 @@ EventInfo text_event_info[NUM_XP];
 - (void) add_url:(const char *) url
 {
     if (url_grabber)
-        [url_grabber add_url:url];
+        [url_grabber addUrl:[NSString stringWithUTF8String:url]];
 }
 
 - (void) dcc_update:(struct DCC *) dcc
@@ -768,7 +747,7 @@ EventInfo text_event_info[NUM_XP];
 - (void) do_notify_list_window:(id) sender
 {
     if (!notify_list)
-        [[NotifyListWin alloc] initWithSelfPtr:&notify_list];
+        [[FriendListWin alloc] initWithSelfPtr:&notify_list];
     [notify_list show];
 }
 
@@ -969,7 +948,7 @@ EventInfo text_event_info[NUM_XP];
 	      args:(char **) args
 	   session:(session *) sess
 {
-	EventInfo *info = text_event_info + event;
+	event_info *info = text_event_info + event;
 	bool bg = ![NSApp isActive];
 	
 	// Pref can be
