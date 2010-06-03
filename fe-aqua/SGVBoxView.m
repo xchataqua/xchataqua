@@ -32,14 +32,58 @@
     return self;
 }
 
+- (void) setVJustification:(SGVBoxVJustification) aJustification
+{
+    [self setMajorJustification:(SGBoxMajorJustification)aJustification];
+}
+
 - (void) setDefaultHJustification:(SGVBoxHJustification) aJustification
 {
     [self setMinorDefaultJustification:(SGBoxMinorJustification)aJustification];
 }
 
+- (SGVBoxHJustification) hJustification
+{
+    return [self minorJustification];
+}
+
 - (void) setHJustificationFor:(NSView *) view to:(SGVBoxHJustification) aJustification
 {
     [self setMinorJustificationFor:view to:(SGBoxMinorJustification)aJustification];
+}
+
+- (void) setHMargin:(SGBoxMargin) v
+{
+    [self setMinorMargin:v];
+}
+
+- (SGBoxMargin) hMargin {
+	return minorMargin;
+}
+
+- (void) setVInnerMargin:(SGBoxMargin) h
+{
+    [self setMajorInnerMargin:h];
+}
+
+- (SGBoxMargin) vInnerMargin
+{
+    return [self majorInnerMargin];
+}
+
+- (void) setVOutterMargin:(SGBoxMargin) h
+{
+    [self setMajorOutterMargin:h];
+}
+
+- (SGBoxMargin) vOutterMargin
+{
+    return [self majorOutterMargin];
+}
+
+- (SGVBoxVJustification) vJustification
+{
+    return [self majorJustification];
 }
 
 @end

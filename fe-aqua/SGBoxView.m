@@ -96,12 +96,12 @@ static void DP (const char *fmt, ...)
 
     self->minorJustification = (SGBoxMinorJustification)[decoder decodeIntForKey:@"minorjust"];
     self->majorJustification = (SGBoxMajorJustification)[decoder decodeIntForKey:@"majorjust"];
-    self->minorMargin = [decoder decodeIntForKey:@"minormargin"];
-    self->majorInnerMargin= [decoder decodeIntForKey:@"majorinnermargin"];
-    self->majorOutterMargin = [decoder decodeIntForKey:@"majorouttermargin"];
-    self->orientation = (SGBoxOrientation)[decoder decodeIntForKey:@"orient"];
-    self->order = (SGBoxOrder)[decoder decodeIntForKey:@"order"];
-    self->stretchView = [decoder decodeObjectForKey:@"stretch"];
+    self->minorMargin		 = [decoder decodeFloatForKey:@"minormargin"];
+    self->majorInnerMargin	 = [decoder decodeFloatForKey:@"majorinnermargin"];
+    self->majorOutterMargin	 = [decoder decodeFloatForKey:@"majorouttermargin"];
+    self->orientation		 = (SGBoxOrientation)[decoder decodeIntForKey:@"orient"];
+    self->order				 = (SGBoxOrder)[decoder decodeIntForKey:@"order"];
+    self->stretchView		 = [decoder decodeObjectForKey:@"stretch"];
     
     [self queue_layout];
     
@@ -111,11 +111,11 @@ static void DP (const char *fmt, ...)
 - (void) encodeWithCoder:(NSCoder *) encoder
 {
 	[super encodeWithCoder:encoder];
-    [encoder encodeInt:self->minorJustification forKey:@"minorjust"];
-    [encoder encodeInt:self->majorJustification forKey:@"majorjust"];
-    [encoder encodeInt:self->minorMargin		forKey:@"minormargin"];
-    [encoder encodeInt:self->majorInnerMargin	forKey:@"majorinnermargin"];
-    [encoder encodeInt:self->majorOutterMargin	forKey:@"majorouttermargin"];
+    [encoder encodeInt:self->minorJustification		forKey:@"minorjust"];
+    [encoder encodeInt:self->majorJustification		forKey:@"majorjust"];
+    [encoder encodeFloat:self->minorMargin			forKey:@"minormargin"];
+    [encoder encodeFloat:self->majorInnerMargin		forKey:@"majorinnermargin"];
+    [encoder encodeFloat:self->majorOutterMargin	forKey:@"majorouttermargin"];
     [encoder encodeInt:self->orientation forKey:@"orient"];
     [encoder encodeInt:self->order  forKey:@"order"];
     [encoder encodeConditionalObject:self->stretchView forKey:@"stretch"];

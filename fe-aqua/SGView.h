@@ -61,8 +61,8 @@
 {
   @public
     NSView *view;
-    NSRect  pref_size;
-    NSRect  last_size;
+    NSRect  prefSize;
+    NSRect  lastSize;
 }
 
 - (id)initWithView:(NSView *) the_view;
@@ -75,6 +75,6 @@
 
 // Private stuff
 
-- (void) reset_pref_size;
+- (void) reset_prefSize;
 
 @end

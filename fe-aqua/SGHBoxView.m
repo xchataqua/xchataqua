@@ -32,9 +32,24 @@
     return self;
 }
 
+- (void) setHJustification:(SGHBoxHJustification) aJustification
+{
+    [self setMajorJustification:(SGBoxMajorJustification)aJustification];
+}
+
+- (SGHBoxHJustification) hJustification
+{
+    return [self majorJustification];
+}
+
 - (void) setDefaultVJustification:(SGHBoxVJustification) aJustification
 {
     [self setMinorDefaultJustification:(SGBoxMinorJustification)aJustification];
+}
+
+- (SGHBoxVJustification) vJustification
+{
+	return minorJustification;
 }
 
 - (void) setVJustificationFor:(NSView *) view to:(SGHBoxVJustification) aJustification
@@ -42,11 +57,40 @@
     [self setMinorJustificationFor:view to:(SGBoxMinorJustification)aJustification];
 }
 
+- (void) setVMargin:(SGBoxMargin) v
+{
+    [self setMinorMargin:v];
+}
+
+- (SGBoxMargin) vMargin {
+	return minorMargin;
+}
+
+- (void) setHInnerMargin:(SGBoxMargin) h
+{
+    [self setMajorInnerMargin:h];
+}
+
+- (SGBoxMargin) hInnerMargin
+{
+    return [self majorInnerMargin];
+}
+
+- (void) setHOutterMargin:(SGBoxMargin) h
+{
+    [self setMajorOutterMargin:h];
+}
+
+- (SGBoxMargin) hOutterMargin
+{
+    return [self majorOutterMargin];
+}
+
 #if 0
 - (void) drawRect:(NSRect) aRect
 {
     [super drawRect:aRect];
-
+	
     [[NSColor redColor] set];
     [[NSGraphicsContext currentContext] setShouldAntialias:false];
     NSBezierPath *p = [NSBezierPath bezierPathWithRect:[self bounds]];
