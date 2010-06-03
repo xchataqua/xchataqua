@@ -288,7 +288,7 @@ one_time_work_phase2()
 void
 fe_new_window (struct session *sess, int focus)
 {
-    sess->gui = (session_gui *) malloc (sizeof (session_gui));
+    sess->gui = (struct session_gui *) malloc (sizeof (struct session_gui));
     sess->gui->cw = [[ChatWindow alloc] initWithSession:sess];
     sess->gui->ban_list = nil;
 
@@ -636,7 +636,7 @@ fe_new_server (struct server *serv)
     
 	//server_set_encoding (serv, prefs.default_charset);
 	
-    serv->gui = (server_gui *) malloc (sizeof (server_gui));
+    serv->gui = (struct server_gui *) malloc (sizeof (struct server_gui));
     memset (serv->gui, 0, sizeof (*serv->gui));
     serv->gui->tab_group = ++server_num;
 }
@@ -769,14 +769,14 @@ void
 fe_add_chan_list (struct server *serv, char *chan, char *users, char *topic)
 {
     if (serv->gui->clc)
-        [serv->gui->clc add_chan_list:chan users:users topic:topic];
+        [serv->gui->clc addChannelList:[NSString stringWithUTF8String:chan] numberOfUsers:[NSString stringWithUTF8String:users] topic:[NSString stringWithUTF8String:topic]];
 }
 
 void
 fe_chan_list_end (struct server *serv)
 {
     if (serv->gui->clc)
-        [serv->gui->clc chan_list_end];
+        [serv->gui->clc chanListEnd];
 }
 
 int
@@ -789,14 +789,14 @@ void
 fe_add_ban_list (struct session *sess, char *mask, char *who, char *when, int is_exemption)
 {
     if (sess->gui->ban_list)
-        [sess->gui->ban_list add_ban_list:mask who:who when:when is_exemption:is_exemption];
+        [sess->gui->ban_list addBanList:[NSString stringWithUTF8String:mask] who:[NSString stringWithUTF8String:who] when:[NSString stringWithUTF8String:when] isExemption:is_exemption];
 }     
           
 void
 fe_ban_list_end (struct session *sess, int is_exemption)
 {
     if (sess->gui->ban_list)
-        [sess->gui->ban_list ban_list_end];
+        [sess->gui->ban_list banListEnd];
 }
 
 void

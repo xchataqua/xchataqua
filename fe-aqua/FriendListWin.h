@@ -17,32 +17,39 @@
 
 #import "TabOrWindowView.h"
 
-@interface AddNotifyWindow : NSPanel
+@interface FriendAddWindow : NSPanel
 #if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
 <NSWindowDelegate>
 #endif
 {
-	NSPanel     * add_notify_window;
-	NSTextField * add_notify_nick;
-	NSTextField * add_notify_network;	
+	NSPanel     *friendAddPanel;
+	IBOutlet NSTextField *friendAddNickTextField;
+	IBOutlet NSTextField *friendAddNetworkTextField;	
 }
--(void) do_it;
+
+- (void) doAdd;
+- (IBAction) doOk:(id) sender;
+- (IBAction) doCancel:(id) sender;
+
 @end
 
 /****************************************************************************/
 
-@interface NotifyListWin : SGSelfPtr
+@interface FriendListWin : SGSelfPtr
 #if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
 <NSTableViewDataSource>
 #endif
 {
-    NSTableView		*notify_list_table;
-    TabOrWindowView	*notify_list_view;
-    NSMutableArray	*my_items;
-	AddNotifyWindow *add_notify_window;
+	IBOutlet NSTableView		*friendListTableView;
+	IBOutlet TabOrWindowView	*friendListView;
+	IBOutlet FriendAddWindow	*friendAddWindow;
+    NSMutableArray	*myItems;
 }
 
-- (id) initWithSelfPtr:(id *) self_ptr;
+- (IBAction) doAdd:(id)sender;
+- (IBAction) doRemove:(id)sender;
+
+- (id) initWithSelfPtr:(id *)selfPtr;
 - (void) show;
 - (void) update;
 

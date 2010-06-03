@@ -24,7 +24,7 @@
 
 - (id) init
 {
-    [super initWithList:&replace_list fileName:@"replace.conf" title:NSLocalizedStringFromTable(@"XChat: Replace", @"xchat", @"")];
+    [super initWithList:&replace_list filename:@"replace.conf" title:NSLocalizedStringFromTable(@"XChat: Replace", @"xchat", @"")];
     return self;
 }
 

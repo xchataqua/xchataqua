@@ -26,14 +26,14 @@
 
 @interface DCCItem : NSObject
 {
-  @public
-    struct DCC 		*dcc;
-	unsigned char prev_dccstat;
-    
-    NSMutableString	*status;
+	@public
+	struct DCC		*dcc;
+	unsigned char	prevDccStat;
+	
+	NSMutableString	*status;
 }
 
-- (id) initWithDCC:(struct DCC *) the_dcc;
+- (id) initWithDCC:(struct DCC *)dcc;
 - (void) update;
 
 @end
@@ -43,22 +43,24 @@
 <NSTableViewDataSource,NSTableViewDelegate>
 #endif
 {
-	IBOutlet NSTableView		*item_list;
-	IBOutlet TabOrWindowView	*dcc_list_view;
-    NSMutableArray	*my_items;
+	IBOutlet NSTableView		*itemTableView;
+	IBOutlet TabOrWindowView	*dccListView;
+	NSMutableArray	*myItems;
 	BOOL			hasSelection;
 	unsigned char	lastDCCStatus;
 	unsigned		activeCount;
 }
 
+@property (nonatomic, assign) BOOL hasSelection;
+
+- (IBAction) doAbort:(id) sender;
+
 - (id) initWithNibNamed:(NSString *)nibName;
 - (DCCItem *)itemWithDCC:(struct DCC *) dcc;
-- (void) show:(bool) and_bring_to_front;
+- (void) show:(BOOL)bringToFront;
 - (void) update:(struct DCC *) dcc;
 - (void) add:(struct DCC *) dcc;
 - (void) remove:(struct DCC *) dcc;
-- (void)setHasSelection:(BOOL)value;
-- (void)setTabColorWithStatus:(unsigned char)dcc_status;
-- (void) do_abort:(id) sender;
+- (void)setTabColorWithStatus:(unsigned char)status;
 
 @end

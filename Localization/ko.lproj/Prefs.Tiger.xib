@@ -2,7 +2,7 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1050</int>
-		<string key="IBDocument.SystemVersion">10D573</string>
+		<string key="IBDocument.SystemVersion">10D2094</string>
 		<string key="IBDocument.InterfaceBuilderVersion">762</string>
 		<string key="IBDocument.AppKitVersion">1038.29</string>
 		<string key="IBDocument.HIToolboxVersion">460.00</string>
@@ -47,7 +47,7 @@
 				<object class="NSMutableString" key="NSViewClass">
 					<characters key="NS.bytes">View</characters>
 				</object>
-				<string key="NSWindowContentMaxSize">{3.40282e+38, 3.40282e+38}</string>
+				<string key="NSWindowContentMaxSize">{1.79769e+308, 1.79769e+308}</string>
 				<string key="NSWindowContentMinSize">{213, 107}</string>
 				<object class="NSView" key="NSWindowView" id="812753686">
 					<nil key="NSNextResponder"/>
@@ -155,7 +155,7 @@
 											<object class="NSMutableArray" key="NSTableColumns">
 												<bool key="EncodedWithXMLCoder">YES</bool>
 												<object class="NSTableColumn" id="833634636">
-													<double key="NSWidth">121.95999908447266</double>
+													<double key="NSWidth">121.95999999999999</double>
 													<double key="NSMinWidth">16</double>
 													<double key="NSMaxWidth">1000</double>
 													<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -202,7 +202,7 @@
 															<string key="NSColorName">controlBackgroundColor</string>
 															<object class="NSColor" key="NSColor" id="630532811">
 																<int key="NSColorSpace">3</int>
-																<bytes key="NSWhite">MC42NjY2NjY2ODY1AA</bytes>
+																<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
 															</object>
 														</object>
 														<object class="NSColor" key="NSTextColor" id="725989266">
@@ -253,7 +253,7 @@
 									<int key="NSsFlags">256</int>
 									<reference key="NSTarget" ref="977242452"/>
 									<string key="NSAction">_doScroller:</string>
-									<double key="NSPercent">0.99624061584472656</double>
+									<double key="NSPercent">0.99624060000000003</double>
 								</object>
 								<object class="NSScroller" id="424564569">
 									<reference key="NSNextResponder" ref="977242452"/>
@@ -263,7 +263,7 @@
 									<int key="NSsFlags">257</int>
 									<reference key="NSTarget" ref="977242452"/>
 									<string key="NSAction">_doScroller:</string>
-									<double key="NSPercent">0.89285707473754883</double>
+									<double key="NSPercent">0.89285709999999996</double>
 								</object>
 								<object class="NSClipView" id="331051200">
 									<reference key="NSNextResponder" ref="977242452"/>
@@ -388,7 +388,7 @@
 																<object class="NSTextFieldCell" key="NSCell" id="429483781">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">71303168</int>
-																	<string key="NSContents">표시할 시간 형태:</string>
+																	<string key="NSContents">표시할 시각 형태:</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="713131109"/>
 																	<reference key="NSBackgroundColor" ref="1007130360"/>
@@ -476,7 +476,7 @@
 																<object class="NSButtonCell" key="NSCell" id="470434084">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">131072</int>
-																	<string key="NSContents">시간표시</string>
+																	<string key="NSContents">시각 표시</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="40697488"/>
 																	<int key="NSButtonFlags">1211912703</int>
@@ -498,7 +498,7 @@
 																<object class="NSButtonCell" key="NSCell" id="377830616">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">131072</int>
-																	<string key="NSContents">대화명 자동완성</string>
+																	<string key="NSContents">대화명 자동 완성</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="206913966"/>
 																	<int key="NSButtonFlags">1211912703</int>
@@ -542,7 +542,7 @@
 																<object class="NSTextFieldCell" key="NSCell" id="182722506">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">71303168</int>
-																	<string key="NSContents">스크롤할 줄수:</string>
+																	<string key="NSContents">스크롤할 줄 개수:</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="1017938941"/>
 																	<reference key="NSBackgroundColor" ref="1007130360"/>
@@ -791,7 +791,7 @@
 																<object class="NSTextFieldCell" key="NSCell" id="186711920">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">71303168</int>
-																	<string key="NSContents">자동구성에 추가할 문자:</string>
+																	<string key="NSContents">자동 구성에 추가할 문자:</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="1068694386"/>
 																	<reference key="NSBackgroundColor" ref="1007130360"/>
@@ -807,7 +807,7 @@
 																<object class="NSButtonCell" key="NSCell" id="522132494">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">131072</int>
-																	<string key="NSContents">자동구성에 추가할 문자:</string>
+																	<string key="NSContents">자동 구성에 추가할 문자:</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="534115331"/>
 																	<int key="NSButtonFlags">1211912703</int>
@@ -851,7 +851,7 @@
 																<object class="NSButtonCell" key="NSCell" id="938351969">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">131072</int>
-																	<string key="NSContents">입력상자에 지정 글꼴과 색상 사용</string>
+																	<string key="NSContents">입력 상자에 지정 글꼴과 색상 사용</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="625485372"/>
 																	<int key="NSButtonFlags">1211912703</int>
@@ -1136,7 +1136,7 @@
 																			<bool key="EncodedWithXMLCoder">YES</bool>
 																			<object class="NSMenuItem" id="54656864">
 																				<reference key="NSMenu" ref="215914061"/>
-																				<string key="NSTitle">이름순, 관리자먼저</string>
+																				<string key="NSTitle">이름순(관리자 먼저)</string>
 																				<string key="NSKeyEquiv"/>
 																				<int key="NSKeyEquivModMask">1048576</int>
 																				<int key="NSMnemonicLoc">2147483647</int>
@@ -1158,7 +1158,7 @@
 																			</object>
 																			<object class="NSMenuItem" id="230994184">
 																				<reference key="NSMenu" ref="215914061"/>
-																				<string key="NSTitle">이름역순, 관리자 나중에</string>
+																				<string key="NSTitle">이름역순(관리자 나중)</string>
 																				<string key="NSKeyEquiv"/>
 																				<int key="NSKeyEquivModMask">1048576</int>
 																				<int key="NSMnemonicLoc">2147483647</int>
@@ -1170,7 +1170,7 @@
 																			<reference ref="131388204"/>
 																			<object class="NSMenuItem" id="361965654">
 																				<reference key="NSMenu" ref="215914061"/>
-																				<string key="NSTitle">정렬안됨</string>
+																				<string key="NSTitle">정렬 안 함</string>
 																				<string key="NSKeyEquiv"/>
 																				<int key="NSKeyEquivModMask">1048576</int>
 																				<int key="NSMnemonicLoc">2147483647</int>
@@ -1275,7 +1275,7 @@
 																<object class="NSTextFieldCell" key="NSCell" id="557873526">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">71303168</int>
-																	<string key="NSContents">대화방 표시:</string>
+																	<string key="NSContents">대화방:</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="1055300200"/>
 																	<reference key="NSBackgroundColor" ref="1007130360"/>
@@ -1349,7 +1349,7 @@
 																<object class="NSTextFieldCell" key="NSCell" id="46483213">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">71303168</int>
-																	<string key="NSContents">귓속말 위치:</string>
+																	<string key="NSContents">귓속말:</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="754076012"/>
 																	<reference key="NSBackgroundColor" ref="1007130360"/>
@@ -1423,7 +1423,7 @@
 																<object class="NSTextFieldCell" key="NSCell" id="200405955">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">71303168</int>
-																	<string key="NSContents">도구 표시:</string>
+																	<string key="NSContents">도구:</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="1021883353"/>
 																	<reference key="NSBackgroundColor" ref="1007130360"/>
@@ -1603,7 +1603,7 @@
 																<object class="NSButtonCell" key="NSCell" id="284031237">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">131072</int>
-																	<string key="NSContents">서버 메세지를 탭으로 표시합니다.</string>
+																	<string key="NSContents">서버 메시지를 탭으로 표시</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="647588713"/>
 																	<int key="NSButtonFlags">1211912703</int>
@@ -1625,7 +1625,7 @@
 																<object class="NSButtonCell" key="NSCell" id="702610801">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">131072</int>
-																	<string key="NSContents">서버 알림을 탭으로 표시합니다.</string>
+																	<string key="NSContents">서버 알림을 탭으로 표시</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="446924427"/>
 																	<int key="NSButtonFlags">1211912703</int>
@@ -1779,7 +1779,7 @@
 																	<reference key="NSBackgroundColor" ref="265355499"/>
 																	<object class="NSColor" key="NSTextColor">
 																		<int key="NSColorSpace">3</int>
-																		<bytes key="NSWhite">MCAwLjgwMDAwMDAxMTkAA</bytes>
+																		<bytes key="NSWhite">MCAwLjgwMDAwMDAxAA</bytes>
 																	</object>
 																</object>
 																<int key="NSBorderType">3</int>
@@ -1840,7 +1840,7 @@
 																<object class="NSTextFieldCell" key="NSCell" id="917059312">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">4194304</int>
-																	<string key="NSContents">글씨 색</string>
+																	<string key="NSContents">글자 색</string>
 																	<object class="NSFont" key="NSSupport" id="29">
 																		<string key="NSName">LucidaGrande-Bold</string>
 																		<double key="NSSize">12</double>
@@ -1876,7 +1876,7 @@
 																<object class="NSTextFieldCell" key="NSCell" id="1036308174">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">4194304</int>
-																	<string key="NSContents">사용자환경 색상</string>
+																	<string key="NSContents">사용자 환경 색상</string>
 																	<reference key="NSSupport" ref="29"/>
 																	<reference key="NSControlView" ref="1031955050"/>
 																	<reference key="NSBackgroundColor" ref="1007130360"/>
@@ -1892,7 +1892,7 @@
 																<object class="NSTextFieldCell" key="NSCell" id="991339367">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">71303168</int>
-																	<string key="NSContents">글씨:</string>
+																	<string key="NSContents">글자:</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="193332999"/>
 																	<reference key="NSBackgroundColor" ref="1007130360"/>
@@ -1924,7 +1924,7 @@
 																<object class="NSTextFieldCell" key="NSCell" id="881833546">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">71303168</int>
-																	<string key="NSContents">글씨:</string>
+																	<string key="NSContents">글자:</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="638265677"/>
 																	<reference key="NSBackgroundColor" ref="1007130360"/>
@@ -1965,7 +1965,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="1038163933">
@@ -1987,7 +1987,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="824992908">
@@ -2009,7 +2009,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="511299136">
@@ -2031,7 +2031,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="271561416">
@@ -2053,7 +2053,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="727596136">
@@ -2075,7 +2075,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="163181294">
@@ -2097,7 +2097,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="772434347">
@@ -2119,7 +2119,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="960025613">
@@ -2141,7 +2141,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="1055210306">
@@ -2163,7 +2163,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="532978015">
@@ -2185,7 +2185,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="854857905">
@@ -2207,7 +2207,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="161554151">
@@ -2229,7 +2229,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="958081887">
@@ -2251,7 +2251,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="504661049">
@@ -2273,7 +2273,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="748452430">
@@ -2295,7 +2295,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="118049744">
@@ -2317,7 +2317,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="180153678">
@@ -2339,7 +2339,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="43449478">
@@ -2361,7 +2361,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="1063522251">
@@ -2383,7 +2383,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSTextField" id="155506199">
@@ -2665,7 +2665,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSTextField" id="686202698">
@@ -2693,7 +2693,7 @@
 																<object class="NSTextFieldCell" key="NSCell" id="708814508">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">71303168</int>
-																	<string key="NSContents">새 메세지:</string>
+																	<string key="NSContents">새 메시지:</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="690043882"/>
 																	<reference key="NSBackgroundColor" ref="1007130360"/>
@@ -2719,7 +2719,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="409264205">
@@ -2741,7 +2741,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSTextField" id="513306894">
@@ -2779,7 +2779,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSTextField" id="44557163">
@@ -2791,7 +2791,7 @@
 																<object class="NSTextFieldCell" key="NSCell" id="511391313">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">71303168</int>
-																	<string key="NSContents">자리비운 사용자:</string>
+																	<string key="NSContents">자리 비움 사용자:</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="44557163"/>
 																	<reference key="NSBackgroundColor" ref="1007130360"/>
@@ -2817,7 +2817,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="350511929">
@@ -2839,7 +2839,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="1026900652">
@@ -2861,7 +2861,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="258665417">
@@ -2883,7 +2883,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="78293204">
@@ -2905,7 +2905,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="576768000">
@@ -2927,7 +2927,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="489144235">
@@ -2949,7 +2949,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSTextField" id="925310567">
@@ -2987,7 +2987,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="282776959">
@@ -3009,7 +3009,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="840033143">
@@ -3031,7 +3031,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="350197855">
@@ -3053,7 +3053,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="44841208">
@@ -3075,7 +3075,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="782529362">
@@ -3097,7 +3097,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="233102631">
@@ -3119,7 +3119,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="216298000">
@@ -3141,7 +3141,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 															<object class="NSColorWell" id="968109138">
@@ -3163,7 +3163,7 @@
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
 																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTkgMC4wNTU1NDE4OTkgMQA</bytes>
 																</object>
 															</object>
 														</object>
@@ -3220,7 +3220,7 @@
 																<object class="NSTextFieldCell" key="NSCell" id="886433215">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">272629760</int>
-																	<string key="NSContents">기본  메세지</string>
+																	<string key="NSContents">기본 메시지</string>
 																	<object class="NSFont" key="NSSupport" id="60143749">
 																		<string key="NSName">LucidaGrande-Bold</string>
 																		<double key="NSSize">13</double>
@@ -3290,7 +3290,7 @@
 																<object class="NSTextFieldCell" key="NSCell" id="293992041">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">71303168</int>
-																	<string key="NSContents">자리비움:</string>
+																	<string key="NSContents">자리 비움:</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="107180245"/>
 																	<reference key="NSBackgroundColor" ref="1007130360"/>
@@ -3339,7 +3339,7 @@
 																<object class="NSButtonCell" key="NSCell" id="480489821">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">131072</int>
-																	<string key="NSContents">자리비움 메세지 알림</string>
+																	<string key="NSContents">자리 비움 메시지 알림</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="262685444"/>
 																	<int key="NSButtonFlags">1211912703</int>
@@ -3361,7 +3361,7 @@
 																<object class="NSButtonCell" key="NSCell" id="943369683">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">131072</int>
-																	<string key="NSContents">자리비움 한번만 표시</string>
+																	<string key="NSContents">자리 비움 한 번만 표시</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="1055673271"/>
 																	<int key="NSButtonFlags">1211912703</int>
@@ -3383,7 +3383,7 @@
 																<object class="NSButtonCell" key="NSCell" id="38837654">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">131072</int>
-																	<string key="NSContents">자동으로 자리비움 해제</string>
+																	<string key="NSContents">자동으로 자리 비움 해제</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="123971144"/>
 																	<int key="NSButtonFlags">1211912703</int>
@@ -3493,7 +3493,7 @@
 																<object class="NSButtonCell" key="NSCell" id="211574183">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">131072</int>
-																	<string key="NSContents">입장/퇴장 메세지 숨김</string>
+																	<string key="NSContents">입장/퇴장 메시지 숨김</string>
 																	<reference key="NSSupport" ref="867044200"/>
 																	<reference key="NSControlView" ref="845315337"/>
 																	<int key="NSButtonFlags">1211912703</int>
@@ -3537,7 +3537,7 @@
 																<object class="NSButtonCell" key="NSCell" id="210024465">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">131072</int>
-																	<string key="NSContents">개인 메세지를 받으면 새 탭을 열기</string>
+																	<string key="NSContents">개인 메시지를 받으면 새 탭 열기</string>
 																	<reference key="NSSupport" ref="867044200"/>
 																	<reference key="NSControlView" ref="309106554"/>
 																	<int key="NSButtonFlags">1211912703</int>
@@ -3682,7 +3682,7 @@
 																<object class="NSTextFieldCell" key="NSCell" id="192041138">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">71303168</int>
-																	<string key="NSContents">기록 파일 이름:</string>
+																	<string key="NSContents">로그 파일 이름:</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="288449918"/>
 																	<reference key="NSBackgroundColor" ref="1007130360"/>
@@ -3715,7 +3715,7 @@
 																<object class="NSTextFieldCell" key="NSCell" id="573470832">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">71303168</int>
-																	<string key="NSContents">기록에 사용할 시간형태:</string>
+																	<string key="NSContents">로그에 사용할 시각 형태:</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="102143362"/>
 																	<reference key="NSBackgroundColor" ref="1007130360"/>
@@ -3748,7 +3748,7 @@
 																<object class="NSButtonCell" key="NSCell" id="85520379">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">131072</int>
-																	<string key="NSContents">기록에 시간 삽입</string>
+																	<string key="NSContents">로그에 시각 삽입</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="367266019"/>
 																	<int key="NSButtonFlags">1211912703</int>
@@ -3770,7 +3770,7 @@
 																<object class="NSButtonCell" key="NSCell" id="242317460">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">131072</int>
-																	<string key="NSContents">대화 내용을 기록합니다</string>
+																	<string key="NSContents">Enable logging of conversations</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="325970917"/>
 																	<int key="NSButtonFlags">1211912703</int>
@@ -3837,7 +3837,7 @@
 																							<reference key="NSSupport" ref="26"/>
 																							<object class="NSColor" key="NSBackgroundColor" id="453432565">
 																								<int key="NSColorSpace">3</int>
-																								<bytes key="NSWhite">MC4zMzMzMzI5ODU2AA</bytes>
+																								<bytes key="NSWhite">MC4zMzMzMzI5OQA</bytes>
 																							</object>
 																							<reference key="NSTextColor" ref="106531208"/>
 																						</object>
@@ -3855,7 +3855,7 @@
 																						<reference key="NSTableView" ref="932713766"/>
 																					</object>
 																					<object class="NSTableColumn" id="514204815">
-																						<double key="NSWidth">119.26999664306641</double>
+																						<double key="NSWidth">119.27</double>
 																						<double key="NSMinWidth">8</double>
 																						<double key="NSMaxWidth">1000</double>
 																						<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -3984,7 +3984,7 @@
 																		<reference key="NSSuperview" ref="825536519"/>
 																		<reference key="NSTarget" ref="825536519"/>
 																		<string key="NSAction">_doScroller:</string>
-																		<double key="NSPercent">0.99473690986633301</double>
+																		<double key="NSPercent">0.99473690000000003</double>
 																	</object>
 																	<object class="NSScroller" id="1011610652">
 																		<reference key="NSNextResponder" ref="825536519"/>
@@ -3994,7 +3994,7 @@
 																		<int key="NSsFlags">1</int>
 																		<reference key="NSTarget" ref="825536519"/>
 																		<string key="NSAction">_doScroller:</string>
-																		<double key="NSPercent">0.99240511655807495</double>
+																		<double key="NSPercent">0.99240510000000004</double>
 																	</object>
 																	<object class="NSClipView" id="470130271">
 																		<reference key="NSNextResponder" ref="825536519"/>
@@ -4172,7 +4172,7 @@
 																<object class="NSTextFieldCell" key="NSCell" id="27860998">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">71303168</int>
-																	<string key="NSContents">주소가 여러 개인 컴퓨터에서만 쓸모가 있습니다.</string>
+																	<string key="NSContents">여러 개의 주소를 사용하는 컴퓨터에서만 사용합니다.</string>
 																	<reference key="NSSupport" ref="867044200"/>
 																	<reference key="NSControlView" ref="922446711"/>
 																	<reference key="NSBackgroundColor" ref="1007130360"/>
@@ -4318,7 +4318,7 @@
 																	<int key="NSPeriodicInterval">75</int>
 																	<object class="NSMenuItem" key="NSMenuItem" id="659020466">
 																		<reference key="NSMenu" ref="736055343"/>
-																		<string key="NSTitle">(사용안함)</string>
+																		<string key="NSTitle">(사용 안 함)</string>
 																		<string key="NSKeyEquiv"/>
 																		<int key="NSKeyEquivModMask">1048576</int>
 																		<int key="NSMnemonicLoc">2147483647</int>
@@ -4530,7 +4530,7 @@
 																<object class="NSTextFieldCell" key="NSCell" id="33394425">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">71303168</int>
-																	<string key="NSContents">DCC보내기에 사용할 처음 포트:</string>
+																	<string key="NSContents">DCC 보내기에 사용할 처음 포트:</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="100091316"/>
 																	<reference key="NSBackgroundColor" ref="1007130360"/>
@@ -4613,7 +4613,7 @@
 																<object class="NSTextFieldCell" key="NSCell" id="19692194">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">71303168</int>
-																	<string key="NSContents">받을 파일 위치:</string>
+																	<string key="NSContents">다음 위치에 받은 파일 저장:</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="298337413"/>
 																	<reference key="NSBackgroundColor" ref="1007130360"/>
@@ -4629,7 +4629,7 @@
 																<object class="NSTextFieldCell" key="NSCell" id="58983848">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">71303168</int>
-																	<string key="NSContents">DCC보내기에 사용할 마지막 포트:</string>
+																	<string key="NSContents">DCC 보내기에 사용할 마지막 포트:</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="615357857"/>
 																	<reference key="NSBackgroundColor" ref="1007130360"/>
@@ -4662,7 +4662,7 @@
 																<object class="NSButtonCell" key="NSCell" id="208818602">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">131072</int>
-																	<string key="NSContents">파일 이름에 대화명을 포함해서 저장</string>
+																	<string key="NSContents">파일 이름에 대화명을 포함하여 저장</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="713833474"/>
 																	<int key="NSButtonFlags">1211912703</int>
@@ -4979,7 +4979,7 @@
 																<object class="NSTextFieldCell" key="NSCell" id="1006168066">
 																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">71303168</int>
-																	<string key="NSContents">완료된 파일을 이동:</string>
+																	<string key="NSContents">다음 위치에 받기가 완료된 파일 이동:</string>
 																	<reference key="NSSupport" ref="26"/>
 																	<reference key="NSControlView" ref="409395540"/>
 																	<reference key="NSBackgroundColor" ref="1007130360"/>
@@ -5018,7 +5018,7 @@
 								<reference key="NSBackgroundColor" ref="265355499"/>
 								<object class="NSColor" key="NSTextColor">
 									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MCAwLjgwMDAwMDAxMTkAA</bytes>
+									<bytes key="NSWhite">MCAwLjgwMDAwMDAxAA</bytes>
 								</object>
 							</object>
 							<reference key="NSContentView" ref="27621534"/>
@@ -5055,7 +5055,7 @@
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
 				<string key="NSMinSize">{213, 129}</string>
-				<string key="NSMaxSize">{3.40282e+38, 3.40282e+38}</string>
+				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -10028,7 +10028,7 @@
 					<string>{{302, 386}, {631, 370}}</string>
 					<boolean value="YES"/>
 					<boolean value="YES"/>
-					<string>{3.40282e+38, 3.40282e+38}</string>
+					<string>{1.79769e+308, 1.79769e+308}</string>
 					<string>{213, 107}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>

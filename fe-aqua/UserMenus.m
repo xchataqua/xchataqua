@@ -25,13 +25,13 @@
 
 - (id) init
 {
-    [super initWithList:&usermenu_list fileName:@"usermenu.conf" title:NSLocalizedStringFromTable(@"XChat: User menu", @"xchat", @"Title of Window: MainMenu->User Menu->Edit This Menu...")];
+    [super initWithList:&usermenu_list filename:@"usermenu.conf" title:NSLocalizedStringFromTable(@"XChat: User menu", @"xchat", @"Title of Window: MainMenu->User Menu->Edit This Menu...")];
     return self;
 }
 
-- (void) do_save:(id) sender
+- (void) doSave:(id) sender
 {
-    [super do_save:sender];
+    [super doSave:sender];
     [[AquaChat sharedAquaChat] usermenu_update];
 }
 
