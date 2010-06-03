@@ -16,7 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
 #import "AquaChat.h"
-#import "XAChatText.h"
+#import "XAChatTextView.h"
 #import "ChatWindow.h"
 #import "mIRCString.h"
 #import "SG.h"
@@ -46,7 +46,7 @@ static NSCursor *lr_cursor;
 
 //////////////////////////////////////////////////////////////////////
 
-@implementation XAChatText
+@implementation XAChatTextView
 
 - (id) initWithFrame:(NSRect) frameRect
 {

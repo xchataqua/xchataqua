@@ -16,7 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
  */
 
-#import "XAChatText.h"
+#import "XAChatTextView.h"
 #import "TabOrWindowView.h"
 #import "SG.h"
 
@@ -28,7 +28,7 @@
 #endif
 {
     TabOrWindowView	*chat_view;
-    XAChatText	*chat_text;
+    XAChatTextView	*chat_text;
     NSTextField	*input_text;
     NSTextField	*nick_text;
     NSTableView	*userlist_table;

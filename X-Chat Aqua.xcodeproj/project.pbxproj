@@ -92,7 +92,7 @@
 		0F8EA6E80CFB347B001AE9AE /* identd.cc in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6C10CFB347B001AE9AE /* identd.cc */; };
 		0F8EA6EA0CFB347B001AE9AE /* MenuMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6C40CFB347B001AE9AE /* MenuMaker.m */; };
 		0F8EA6EB0CFB347B001AE9AE /* mIRCString.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6C60CFB347B001AE9AE /* mIRCString.m */; };
-		0F8EA6EC0CFB347B001AE9AE /* XAChatText.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6C80CFB347B001AE9AE /* XAChatText.m */; };
+		0F8EA6EC0CFB347B001AE9AE /* XAChatTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6C80CFB347B001AE9AE /* XAChatTextView.m */; };
 		0F8EA6ED0CFB347B001AE9AE /* XACommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6CA0CFB347B001AE9AE /* XACommon.m */; };
 		0F8EA6EE0CFB347B001AE9AE /* XATabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6CE0CFB347B001AE9AE /* XATabView.m */; };
 		0F8EA6EF0CFB347B001AE9AE /* NSTimerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6D10CFB347B001AE9AE /* NSTimerAdditions.m */; };
@@ -489,8 +489,8 @@
 		0F8EA6C40CFB347B001AE9AE /* MenuMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuMaker.m; path = "fe-aqua/MenuMaker.m"; sourceTree = "<group>"; };
 		0F8EA6C50CFB347B001AE9AE /* mIRCString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mIRCString.h; path = "fe-aqua/mIRCString.h"; sourceTree = "<group>"; };
 		0F8EA6C60CFB347B001AE9AE /* mIRCString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = mIRCString.m; path = "fe-aqua/mIRCString.m"; sourceTree = "<group>"; };
-		0F8EA6C70CFB347B001AE9AE /* XAChatText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XAChatText.h; path = "fe-aqua/XAChatText.h"; sourceTree = "<group>"; };
-		0F8EA6C80CFB347B001AE9AE /* XAChatText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XAChatText.m; path = "fe-aqua/XAChatText.m"; sourceTree = "<group>"; };
+		0F8EA6C70CFB347B001AE9AE /* XAChatTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XAChatTextView.h; path = "fe-aqua/XAChatTextView.h"; sourceTree = "<group>"; };
+		0F8EA6C80CFB347B001AE9AE /* XAChatTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XAChatTextView.m; path = "fe-aqua/XAChatTextView.m"; sourceTree = "<group>"; };
 		0F8EA6C90CFB347B001AE9AE /* XACommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XACommon.h; path = "fe-aqua/XACommon.h"; sourceTree = "<group>"; };
 		0F8EA6CA0CFB347B001AE9AE /* XACommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XACommon.m; path = "fe-aqua/XACommon.m"; sourceTree = "<group>"; };
 		0F8EA6CB0CFB347B001AE9AE /* XADefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XADefaults.h; path = "fe-aqua/XADefaults.h"; sourceTree = "<group>"; };
@@ -591,49 +591,6 @@
 		2D076D9210E9105B00E4A9F1 /* libglib-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libglib-2.0.0.dylib"; path = "contrib/lib/libglib-2.0.0.dylib"; sourceTree = "<group>"; };
 		2D076DB310E9195000E4A9F1 /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = contrib/lib/libiconv.2.dylib; sourceTree = "<group>"; };
 		2D076DB410E919B900E4A9F1 /* libintl.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libintl.8.dylib; path = contrib/lib/libintl.8.dylib; sourceTree = "<group>"; };
-		2D55EF9510EBB6D100B4ECCB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Localization/en.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55EFFE10EBB99E00B4ECCB /* sl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sl; path = Localization/sl.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55EFFF10EBB99E00B4ECCB /* wa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = wa; path = Localization/wa.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00010EBB99E00B4ECCB /* vi */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = vi; path = Localization/vi.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00110EBB99E00B4ECCB /* sv */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sv; path = Localization/sv.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00210EBB99E00B4ECCB /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_CN; path = Localization/zh_CN.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00310EBB99E00B4ECCB /* uk */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = uk; path = Localization/uk.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00410EBB99E00B4ECCB /* sr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sr; path = Localization/sr.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00510EBB99E00B4ECCB /* th */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = th; path = Localization/th.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00610EBB99E00B4ECCB /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = Localization/zh_TW.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00710EBB99E00B4ECCB /* sq */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sq; path = Localization/sq.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00810EBB99E00B4ECCB /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = Localization/ru.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00910EBB99E00B4ECCB /* nb */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nb; path = Localization/nb.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00A10EBB99E00B4ECCB /* lt */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = lt; path = Localization/lt.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00B10EBB99E00B4ECCB /* sk */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sk; path = Localization/sk.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00C10EBB99E00B4ECCB /* pt */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = pt; path = Localization/pt.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00D10EBB99E00B4ECCB /* no */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = no; path = Localization/no.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00E10EBB99E00B4ECCB /* lv */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = lv; path = Localization/lv.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00F10EBB99E00B4ECCB /* pa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = pa; path = Localization/pa.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01010EBB99E00B4ECCB /* pt_BR */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = pt_BR; path = Localization/pt_BR.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01110EBB99E00B4ECCB /* mk */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = mk; path = Localization/mk.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01210EBB99E00B4ECCB /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = Localization/nl.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01310EBB99E00B4ECCB /* ms */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ms; path = Localization/ms.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01410EBB99E00B4ECCB /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = Localization/ko.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01510EBB99E00B4ECCB /* hu */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = hu; path = Localization/hu.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01610EBB99E00B4ECCB /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = Localization/ja.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01710EBB99E00B4ECCB /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = Localization/it.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01810EBB99E00B4ECCB /* hi */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = hi; path = Localization/hi.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01910EBB99E00B4ECCB /* fi */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fi; path = Localization/fi.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01A10EBB99E00B4ECCB /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = Localization/fr.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01B10EBB99E00B4ECCB /* eu */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = eu; path = Localization/eu.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01C10EBB99E00B4ECCB /* gl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = gl; path = Localization/gl.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01D10EBB99E00B4ECCB /* et */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = et; path = Localization/et.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01E10EBB99E00B4ECCB /* en_GB */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en_GB; path = Localization/en_GB.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01F10EBB99E00B4ECCB /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = Localization/es.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F02010EBB99E00B4ECCB /* el */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = el; path = Localization/el.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F02110EBB99E00B4ECCB /* cs */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = cs; path = Localization/cs.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F02210EBB99E00B4ECCB /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = Localization/de.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F02310EBB99E00B4ECCB /* ca */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ca; path = Localization/ca.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F02410EBB99E00B4ECCB /* bg */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = bg; path = Localization/bg.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F02510EBB99E00B4ECCB /* be */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = be; path = Localization/be.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F02610EBB99E00B4ECCB /* az */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = az; path = Localization/az.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F02710EBB99E00B4ECCB /* am */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = am; path = Localization/am.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
 		2D5C951511AF35FA0062F4C0 /* wa */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = wa; path = Localization/wa.lproj/xchat.strings; sourceTree = SOURCE_ROOT; };
 		2D5C951611AF35FA0062F4C0 /* zh_CN */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = zh_CN; path = Localization/zh_CN.lproj/xchat.strings; sourceTree = SOURCE_ROOT; };
 		2D5C951711AF35FA0062F4C0 /* uk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = uk; path = Localization/uk.lproj/xchat.strings; sourceTree = SOURCE_ROOT; };
@@ -689,7 +646,7 @@
 		2DAAE56C10E4AD7300DBBFD0 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle/Sparkle.framework; sourceTree = "<group>"; };
 		2DC4307D105F608B00782AAD /* xalocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xalocalization.h; path = "fe-aqua/xalocalization.h"; sourceTree = "<group>"; };
 		2DC4307E105F608B00782AAD /* xalocalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = xalocalization.m; path = "fe-aqua/xalocalization.m"; sourceTree = "<group>"; };
-		2DD0561C10A2C6D4002857E0 /* locale */ = {isa = PBXFileReference; lastKnownFileType = folder; name = locale; path = Localization/locale; sourceTree = "<group>"; };
+		2DD0561C10A2C6D4002857E0 /* locale */ = {isa = PBXFileReference; lastKnownFileType = folder; name = locale; path = ../Localization/locale; sourceTree = "<group>"; };
 		2DD3AAFE0F9290070033FF55 /* sr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sr; path = Localization/sr.lproj/BanList.xib; sourceTree = "<group>"; };
 		2DD3AAFF0F9290070033FF55 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_CN; path = Localization/zh_CN.lproj/BanList.xib; sourceTree = "<group>"; };
 		2DD3AB000F9290070033FF55 /* pt_BR */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = pt_BR; path = Localization/pt_BR.lproj/BanList.xib; sourceTree = "<group>"; };
@@ -1922,14 +1879,12 @@
 		29B97314FDCFA39411CA2CEA /* X-Chat Aqua */ = {
 			isa = PBXGroup;
 			children = (
-				2DD0561C10A2C6D4002857E0 /* locale */,
 				0FC8F3D10DEEC33D00504F31 /* plugins */,
 				0F8EA3640CFAA429001AE9AE /* fe-aqua */,
 				0F8EA3160CFAA342001AE9AE /* xchat common */,
 				2DC6AD1E118777750048B7C7 /* Palette */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				2D55EF9F10EBB6DC00B4ECCB /* Tiger Supports */,
 				B07C7AB20F4395E200E11B58 /* BuildNumber.xcconfig */,
 				B07C7AD60F4398FC00E11B58 /* Debug.xcconfig */,
 				B07C7AD70F4398FC00E11B58 /* Release.xcconfig */,
@@ -1947,14 +1902,6 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		2D55EF9F10EBB6DC00B4ECCB /* Tiger Supports */ = {
-			isa = PBXGroup;
-			children = (
-				2D55EF9410EBB6D100B4ECCB /* Prefs.Tiger.xib */,
-			);
-			name = "Tiger Supports";
 			sourceTree = "<group>";
 		};
 		2DC6AC8F118774E60048B7C7 /* Utility window */ = {
@@ -2050,8 +1997,8 @@
 				0F8EA6E30CFB347B001AE9AE /* UserlistPopup.m */,
 				0F8EA6E40CFB347B001AE9AE /* UserMenus.h */,
 				0F8EA6E50CFB347B001AE9AE /* UserMenus.m */,
-				0F8EA6C70CFB347B001AE9AE /* XAChatText.h */,
-				0F8EA6C80CFB347B001AE9AE /* XAChatText.m */,
+				0F8EA6C70CFB347B001AE9AE /* XAChatTextView.h */,
+				0F8EA6C80CFB347B001AE9AE /* XAChatTextView.m */,
 				0F8EA6C90CFB347B001AE9AE /* XACommon.h */,
 				0F8EA6CA0CFB347B001AE9AE /* XACommon.m */,
 				0F8EA6CB0CFB347B001AE9AE /* XADefaults.h */,
@@ -2069,6 +2016,7 @@
 			children = (
 				2DEA303D0F87235400D6DC0D /* images */,
 				B0E85AC10FFFC0AF0064D049 /* sparkle.pem */,
+				2DD0561C10A2C6D4002857E0 /* locale */,
 				2D5C951411AF35FA0062F4C0 /* xchat.strings */,
 				2D5C951B11AF35FA0062F4C0 /* xchataqua.strings */,
 				2DEA2F290F8673BF00D6DC0D /* BanList.xib */,
@@ -2656,7 +2604,7 @@
 				0F8EA6E80CFB347B001AE9AE /* identd.cc in Sources */,
 				0F8EA6EA0CFB347B001AE9AE /* MenuMaker.m in Sources */,
 				0F8EA6EB0CFB347B001AE9AE /* mIRCString.m in Sources */,
-				0F8EA6EC0CFB347B001AE9AE /* XAChatText.m in Sources */,
+				0F8EA6EC0CFB347B001AE9AE /* XAChatTextView.m in Sources */,
 				0F8EA6ED0CFB347B001AE9AE /* XACommon.m in Sources */,
 				0F8EA6EE0CFB347B001AE9AE /* XATabView.m in Sources */,
 				0F8EA6EF0CFB347B001AE9AE /* NSTimerAdditions.m in Sources */,
@@ -2731,56 +2679,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2D55EF9410EBB6D100B4ECCB /* Prefs.Tiger.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2D55EF9510EBB6D100B4ECCB /* en */,
-				2D55EFFE10EBB99E00B4ECCB /* sl */,
-				2D55EFFF10EBB99E00B4ECCB /* wa */,
-				2D55F00010EBB99E00B4ECCB /* vi */,
-				2D55F00110EBB99E00B4ECCB /* sv */,
-				2D55F00210EBB99E00B4ECCB /* zh_CN */,
-				2D55F00310EBB99E00B4ECCB /* uk */,
-				2D55F00410EBB99E00B4ECCB /* sr */,
-				2D55F00510EBB99E00B4ECCB /* th */,
-				2D55F00610EBB99E00B4ECCB /* zh_TW */,
-				2D55F00710EBB99E00B4ECCB /* sq */,
-				2D55F00810EBB99E00B4ECCB /* ru */,
-				2D55F00910EBB99E00B4ECCB /* nb */,
-				2D55F00A10EBB99E00B4ECCB /* lt */,
-				2D55F00B10EBB99E00B4ECCB /* sk */,
-				2D55F00C10EBB99E00B4ECCB /* pt */,
-				2D55F00D10EBB99E00B4ECCB /* no */,
-				2D55F00E10EBB99E00B4ECCB /* lv */,
-				2D55F00F10EBB99E00B4ECCB /* pa */,
-				2D55F01010EBB99E00B4ECCB /* pt_BR */,
-				2D55F01110EBB99E00B4ECCB /* mk */,
-				2D55F01210EBB99E00B4ECCB /* nl */,
-				2D55F01310EBB99E00B4ECCB /* ms */,
-				2D55F01410EBB99E00B4ECCB /* ko */,
-				2D55F01510EBB99E00B4ECCB /* hu */,
-				2D55F01610EBB99E00B4ECCB /* ja */,
-				2D55F01710EBB99E00B4ECCB /* it */,
-				2D55F01810EBB99E00B4ECCB /* hi */,
-				2D55F01910EBB99E00B4ECCB /* fi */,
-				2D55F01A10EBB99E00B4ECCB /* fr */,
-				2D55F01B10EBB99E00B4ECCB /* eu */,
-				2D55F01C10EBB99E00B4ECCB /* gl */,
-				2D55F01D10EBB99E00B4ECCB /* et */,
-				2D55F01E10EBB99E00B4ECCB /* en_GB */,
-				2D55F01F10EBB99E00B4ECCB /* es */,
-				2D55F02010EBB99E00B4ECCB /* el */,
-				2D55F02110EBB99E00B4ECCB /* cs */,
-				2D55F02210EBB99E00B4ECCB /* de */,
-				2D55F02310EBB99E00B4ECCB /* ca */,
-				2D55F02410EBB99E00B4ECCB /* bg */,
-				2D55F02510EBB99E00B4ECCB /* be */,
-				2D55F02610EBB99E00B4ECCB /* az */,
-				2D55F02710EBB99E00B4ECCB /* am */,
-			);
-			name = Prefs.Tiger.xib;
-			sourceTree = "<group>";
-		};
 		2D5C951411AF35FA0062F4C0 /* xchat.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
