@@ -20,15 +20,17 @@
 #import "XAChatText.h"
 
 @interface EditEvents : NSObject
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSTableViewDataSource,NSTableViewDelegate>
-#endif
 {
-    NSTableView    *event_list;
-    NSTableView    *help_list;
-    XAChatText	   *test_text;
-    NSMutableArray *my_items;
+	IBOutlet NSTableView	*eventTableView;
+	IBOutlet NSTableView	*helpTableView;
+	IBOutlet XAChatText		*testText;
+	NSMutableArray *myItems;
 }
+
+- (IBAction) doOk:(id)sender;
+- (IBAction) doSaveAs:(id)sender;
+- (IBAction) doLoad:(id)sender;
+- (IBAction) doTestAll:(id)sender;
 
 - (void) show;
 

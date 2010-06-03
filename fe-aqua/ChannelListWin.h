@@ -25,41 +25,44 @@
 <NSTableViewDataSource,NSTableViewDelegate>
 #endif
 {    
-    TabOrWindowView	*channel_list_view;
-    NSButton		*refresh_button;
-    NSButton		*apply_button;
-    NSButton		*save_button;
-    NSTableView		*item_list;
-    NSTextField		*caption_text;
-    NSTextField		*regex_text;
-    NSTextField		*min_text;
-    NSTextField		*max_text;
-    NSButton		*regex_channel;
-    NSButton		*regex_topic;
-    
-    struct server	*serv;
-    NSMutableArray	*all_items;
-    NSMutableArray	*items;
-    NSTimer			*timer;
-    bool			added;
-    int			users_found_count;
-    int			users_shown_count;
-    bool			topic_checked;
-    bool                channel_checked;
-    int                 filter_min;
-    int                 filter_max;
-    regex_t		match_regex;
-    bool		regex_valid;
-    NSImage		*arrow;
-    bool		sort_dir [3];
-    ColorPalette	*palette;
+	IBOutlet TabOrWindowView	*channelListView;
+	IBOutlet NSButton			*refreshButton;
+	IBOutlet NSButton			*applyButton;
+	IBOutlet NSButton			*saveButton;
+	IBOutlet NSTableView		*itemTableView;
+	IBOutlet NSTextField		*captionTextField;
+	IBOutlet NSTextField		*regexTextField;
+	IBOutlet NSTextField		*minTextField;
+	IBOutlet NSTextField		*maxTextField;
+	IBOutlet NSButton			*regexChannelButton;
+	IBOutlet NSButton			*regexTopicButton;
+	
+	struct server	*serv;
+	NSMutableArray	*allItems;
+	NSMutableArray	*items;
+	NSTimer			*timer;
+	BOOL			added;
+	NSInteger		numberOfFoundUsers;
+	NSInteger		numberOfShownUsers;
+	BOOL			topicChecked;
+	BOOL			channelChecked;
+	NSInteger		filterMin;
+	NSInteger		filterMax;
+	regex_t			matchRegex;
+	BOOL			regexValid;
+	NSImage			*arrow;
+	BOOL			sortDir [3];
+	ColorPalette	*colorPalette;
 }
 
-- (id) initWithServer:(struct server *) server;
+- (IBAction) doApply:(id)sender;
+- (IBAction) doRefresh:(id)sender;
+- (IBAction) doSave:(id)sender;
+- (IBAction) doJoin:(id)sender;
+
+- (id) initWithServer:(struct server *)server;
 - (void) show;
-- (void) add_chan_list:(const char *) chan
-                 users:(const char *) users 
-                 topic:(const char *) topic;
-- (void) chan_list_end;
+- (void) addChannelList:(NSString *)chan numberOfUsers:(NSString *)users topic:(NSString *)topic;
+- (void) chanListEnd;
 
 @end

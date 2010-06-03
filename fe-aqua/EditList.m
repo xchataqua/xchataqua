@@ -28,17 +28,16 @@
 {
   @public
     NSMutableString	*name;
-    NSMutableString	*cmd;
+    NSMutableString	*command;
 }
 @end
 
 @implementation OneItem
 
-- (id) initWithName:(const char *) the_name
-		cmd:(const char *) the_cmd
+- (id) initWithName:(const char *)aName command:(const char *)aCommand
 {
-    name = [[NSMutableString stringWithUTF8String:the_name] retain];
-    cmd = [[NSMutableString stringWithUTF8String:the_cmd] retain];
+    name = [[NSMutableString stringWithUTF8String:aName] retain];
+    command = [[NSMutableString stringWithUTF8String:aCommand] retain];
     
     return self;
 }
@@ -46,7 +45,7 @@
 - (void) dealloc
 {
     [name release];
-    [cmd release];
+    [command release];
 
     [super dealloc];
 }
@@ -62,16 +61,14 @@
 
 @implementation EditList
 
-- (id) initWithList:(GSList **) the_slist 
-		   fileName:(NSString *) the_fname
-              title:(NSString *) the_title
+- (id) initWithList:(GSList **)aSlist filename:(NSString *)aFilename title:(NSString *)aTitle
 {
-    [super init];
+    self = [super init];
      
-    self->slist = the_slist;
-    self->fname = [the_fname copyWithZone:nil];
-    self->title = [the_title copyWithZone:nil];
-    self->my_items = [[NSMutableArray arrayWithCapacity:0] retain];
+    self->slist = aSlist;
+    self->filename = [aFilename copyWithZone:nil];
+    self->title = [aTitle copyWithZone:nil];
+    self->myItems = [[NSMutableArray arrayWithCapacity:0] retain];
     
     [NSBundle loadNibNamed:@"EditList" owner:self];
     
@@ -80,139 +77,132 @@
 
 - (void) dealloc
 {
-    [[cmd_list window] release];
-    [fname release];
+    [[commandTableView window] release];
+    [filename release];
     [title release];
-    [my_items release];
+    [myItems release];
 	[super dealloc];
 }
 
 - (void) awakeFromNib
 {
-    for (int i = 0; i < [cmd_list numberOfColumns]; i ++)
-        [[[cmd_list tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
+    for (NSUInteger i = 0; i < [commandTableView numberOfColumns]; i ++)
+        [[[commandTableView tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
 
-    [cmd_list setDelegate:self];
-    [cmd_list setDataSource:self];
-    [[cmd_list window] setTitle:title];
-    [[cmd_list window] center];
+    [commandTableView setDelegate:self];
+    [commandTableView setDataSource:self];
+    [[commandTableView window] setTitle:title];
+    [[commandTableView window] center];
 }
 
-- (void) load_items
+- (void) loadItems
 {
-    [my_items removeAllObjects];
+    [myItems removeAllObjects];
 
     for (GSList *list = *slist; list; list = list->next)
     {
 		struct popup *pop = (struct popup *) list->data;
-		OneItem *item = [[[OneItem alloc] 
-								initWithName:pop->name cmd:pop->cmd] autorelease];
-		[my_items addObject:item];
+		OneItem *item = [[[OneItem alloc] initWithName:pop->name command:pop->cmd] autorelease];
+		[myItems addObject:item];
     }
 
-    [cmd_list reloadData];
+    [commandTableView reloadData];
 }
 
 - (void) show
 {
-    [self load_items];
-    [[cmd_list window] makeKeyAndOrderFront:self];
+    [self loadItems];
+    [[commandTableView window] makeKeyAndOrderFront:self];
 }
 
-- (void) do_delete:(id) sender
+- (void) doDelete:(id)sender
 {
-	[cmd_list abortEditing];
-    int row = [cmd_list selectedRow];
+	[commandTableView abortEditing];
+    NSInteger row = [commandTableView selectedRow];
     if (row < 0) return;
-    [my_items removeObjectAtIndex:row];
-    [cmd_list reloadData];
+    [myItems removeObjectAtIndex:row];
+    [commandTableView reloadData];
 }
 
-- (void) do_down:(id) sender
+- (void) doDown:(id) sender
 {
-	NSInteger row = [cmd_list selectedRow];
-	if (row < 0 || row >= (NSInteger)[my_items count] - 1) return;
+	NSInteger row = [commandTableView selectedRow];
+	if (row < 0 || row >= (NSInteger)[myItems count] - 1) return;
 
-	[my_items exchangeObjectAtIndex:row withObjectAtIndex:row + 1];
-	[cmd_list reloadData];
-	[cmd_list selectRowIndexes:[NSIndexSet indexSetWithIndex:row + 1] byExtendingSelection:NO];
+	[myItems exchangeObjectAtIndex:row withObjectAtIndex:row + 1];
+	[commandTableView reloadData];
+	[commandTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row + 1] byExtendingSelection:NO];
 }
 
-- (void) do_help:(id) sender
+- (void) doHelp:(id) sender
 {
-    [SGAlert alertWithString:@"Not implemented (yet)" andWait:false];
+    [SGAlert alertWithString:NSLocalizedStringFromTable(@"Not implemented (yet)",@"xchataqua",@"Alert message when a feature not implemented yet is tried") andWait:false];
 }
 
-- (void) do_new:(id) sender
+- (void) doNew:(id) sender
 {
-  OneItem *item = [[OneItem alloc] initWithName:"*NEW*" cmd:"EDIT ME"];
-  [my_items insertObject:item atIndex:0];
-  [cmd_list reloadData];
-  [cmd_list
-   selectRowIndexes:[NSIndexSet indexSetWithIndex:0]
-   byExtendingSelection:NO];
-  [cmd_list editColumn:0 row:0 withEvent:nil select:true];
+	OneItem *item = [[OneItem alloc] initWithName:"*NEW*" command:"EDIT ME"];
+	[myItems insertObject:item atIndex:0];
+	[commandTableView reloadData];
+	[commandTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
+	[commandTableView editColumn:0 row:0 withEvent:nil select:YES];
 }
 
-- (void) do_save:(id) sender
+- (void) doSave:(id) sender
 {
     [[sender window] makeFirstResponder:sender];
 
-    NSString *buf = [NSString stringWithFormat:@"%s/%s", get_xdir_fs (), [fname UTF8String]];
+    NSString *buf = [NSString stringWithFormat:@"%s/%s", get_xdir_fs(), [filename UTF8String]];
     
     FILE *f = fopen ([buf UTF8String], "w");
-    if (!f)
-        return;
+    if (f == NULL) return;
 
-    for (unsigned int i = 0; i < [my_items count]; i ++)
+    for (NSUInteger i = 0; i < [myItems count]; i ++)
     {
-        OneItem *item = [my_items objectAtIndex:i];
-        fprintf (f, "NAME %s\nCMD %s\n\n", [item->name UTF8String], [item->cmd UTF8String]);
+        OneItem *item = [myItems objectAtIndex:i];
+        fprintf (f, "NAME %s\ncommand %s\n\n", [item->name UTF8String], [item->command UTF8String]);
     }
-    
     fclose (f);
 
-    list_free (slist);
-    list_loadconf ((char *) [fname UTF8String], slist, 0);
+    list_free(slist);
+    list_loadconf((char *)[filename UTF8String], slist, 0);
     
     [[sender window] orderOut:sender];
 }
 
-- (void) do_sort:(id) sender
+- (void) doSort:(id) sender
 {
-    [my_items sortUsingSelector:@selector (sort:)];
-    [cmd_list reloadData];
+    [myItems sortUsingSelector:@selector(sort:)];
+    [commandTableView reloadData];
 }
 
-- (void) do_up:(id) sender
+- (void) doUp:(id) sender
 {
-  NSInteger row = [cmd_list selectedRow];
-  if (row < 1)
-    return;
-  [my_items exchangeObjectAtIndex:row withObjectAtIndex:row - 1];
-  [cmd_list reloadData];
-  [cmd_list
-   selectRowIndexes:[NSIndexSet indexSetWithIndex:row - 1]
-   byExtendingSelection:NO];
+	NSInteger row = [commandTableView selectedRow];
+	if (row < 1)
+		return;
+	[myItems exchangeObjectAtIndex:row withObjectAtIndex:row - 1];
+	[commandTableView reloadData];
+	[commandTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row-1] byExtendingSelection:NO];
 }
 
 ////////////
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
-    return [my_items count];
+    return [myItems count];
 }
 
 - (id) tableView:(NSTableView *) aTableView
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
     row:(NSInteger) rowIndex
 {
-    OneItem *item = [my_items objectAtIndex:rowIndex];
+    OneItem *item = [myItems objectAtIndex:rowIndex];
     
     switch ([[aTableColumn identifier] intValue])
     {
 		case 0: return item->name;
-		case 1: return item->cmd;
+		case 1: return item->command;
     }
 
     return @"";
@@ -223,12 +213,12 @@
     forTableColumn:(NSTableColumn *) aTableColumn 
                row:(NSInteger)rowIndex
 {
-    OneItem *item = [my_items objectAtIndex:rowIndex];
+    OneItem *item = [myItems objectAtIndex:rowIndex];
 
     switch ([[aTableColumn identifier] intValue])
     {
 		case 0: [item->name setString:anObject]; break;
-		case 1: [item->cmd setString:anObject]; break;
+		case 1: [item->command setString:anObject]; break;
     }
 }
 

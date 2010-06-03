@@ -19,15 +19,10 @@
 #import "ChannelListWin.h"
 #import "mIRCString.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
 #include "../common/outbound.h"
-#ifdef __cplusplus
-}
-#endif
+
 //////////////////////////////////////////////////////////////////////
 
 SEL *sort_funcs; // defined in +initialize
@@ -37,41 +32,38 @@ SEL *sort_funcs; // defined in +initialize
 @interface OneEntry : NSObject
 {
   @public
-    NSString	*chan;
-    NSString	*nusers;
+    NSString	*channel;
+    NSString	*numberOfUsersString;
     mIRCString	*topic;
-    int		nusers_val;		// For sorting.. is it really helping?
+    NSInteger	numberOfUsers;		// For sorting.. is it really helping?
     NSSize      size;
 }
 
-+ (id) entryWithChan:(const char *) the_chan
-              nusers:(const char *) the_nusers
-               topic:(const char *) the_topic
-             palette:(ColorPalette *) palette;
+@property (nonatomic, readonly) NSString *channel, *numberOfUsersString;
+@property (nonatomic, readonly) mIRCString *topic;
+@property (nonatomic, readonly) NSInteger numberOfUsers;
 
-- (NSString *) chan;
-- (NSString *) nusers;
-- (mIRCString *) topic;
-- (int) nusers_val;
-- (NSComparisonResult) sort_by_chan:(OneEntry *) other;
-- (NSComparisonResult) sort_by_nusers:(OneEntry *) other;
-- (NSComparisonResult) sort_by_topic:(OneEntry *) other;
-- (NSComparisonResult) sort_by_chan_reverse:(OneEntry *) other;
-- (NSComparisonResult) sort_by_nusers_reverse:(OneEntry *) other;
-- (NSComparisonResult) sort_by_topic_reverse:(OneEntry *) other;
++ (id) entryWithChannel:(NSString *)channel numberOfUsers:(NSString *)user topic:(NSString *)topic colorPalette:(ColorPalette *)palette;
+
+- (NSComparisonResult) sortByChannel:(OneEntry *)other;
+- (NSComparisonResult) sortByNumberOfUsers:(OneEntry *)other;
+- (NSComparisonResult) sortByTopic:(OneEntry *)other;
+- (NSComparisonResult) sortByChannelReverse:(OneEntry *)other;
+- (NSComparisonResult) sortByNumberOfUsersReverse:(OneEntry *)other;
+- (NSComparisonResult) sortByTopicReverse:(OneEntry *)other;
 
 @end
 
 // For some reason, the Mac does not like UTF8 0xc2 '< 0xa0'
 // We'll also strip tabs.. anything else?
-static const char *
-strip_crap (const char *s)
+static const char * strip_crap (const char *s)
 {
     static char buff [512];
     
     char *eob = buff + sizeof (buff) - 1;
     
     char *d = buff;
+
     while (*s && d < eob)
     {
         if (*s == (char) 0xc2 && s[1] < (char) 0xa0)
@@ -95,76 +87,64 @@ strip_crap (const char *s)
 
 
 @implementation OneEntry
+@synthesize channel, numberOfUsersString, topic, numberOfUsers;
 
-+ (id) entryWithChan:(const char *) the_chan
-              nusers:(const char *) the_nusers
-               topic:(const char *) the_topic
-             palette:(ColorPalette *) palette
++ (id) entryWithChannel:(NSString *)channel numberOfUsers:(NSString *)user topic:(NSString *)aTopic colorPalette:(ColorPalette *)palette
 {
-	OneEntry *e = [[[OneEntry alloc] init] autorelease];
-    e->chan = [[NSString stringWithUTF8String:the_chan] retain];
-    e->nusers = [[NSString stringWithUTF8String:the_nusers] retain];
-    e->size = NSZeroSize;
+	OneEntry *entry = [[[OneEntry alloc] init] autorelease];
+    entry->channel = [channel retain];
+    entry->numberOfUsersString = [user retain];
+    entry->size = NSZeroSize;
     
-    //e->topic = [[NSString stringWithUTF8String:the_topic] retain];
-    const char *t = strip_crap (the_topic);
+    entry->topic = [[mIRCString stringWithUTF8String:strip_crap([aTopic UTF8String]) len:-1 palette:palette font:nil boldFont:nil] retain];
+    		
+    entry->numberOfUsers = [entry->numberOfUsersString integerValue];
     
-    e->topic = [[mIRCString stringWithUTF8String:t len:-1 palette:palette
-                                            font:nil boldFont:nil] retain];
-		
-    e->nusers_val = [e->nusers intValue];
-    
-	// Some of the UTF8
-    return e;
+    return entry;
 }
 
 - (void) dealloc
 {
-    [chan release];
-    [nusers release];
+    [channel release];
+    [numberOfUsersString release];
     [topic release];
 
     [super dealloc];
 }
 
-- (NSComparisonResult) sort_by_chan:(OneEntry *) other
+- (NSComparisonResult) sortByChannel:(OneEntry *)other
 {
-    return [chan compare:other->chan];
+    return [channel compare:other->channel];
 }
 
-- (NSComparisonResult) sort_by_nusers:(OneEntry *) other
+- (NSComparisonResult) sortByNumberOfUsers:(OneEntry *)other
 {
-    if (nusers_val < other->nusers_val) return NSOrderedAscending;
-    if (nusers_val > other->nusers_val) return NSOrderedDescending;
+    if (numberOfUsers < other->numberOfUsers) return NSOrderedAscending;
+    if (numberOfUsers > other->numberOfUsers) return NSOrderedDescending;
     return NSOrderedSame;
 }
 
-- (NSComparisonResult) sort_by_topic:(OneEntry *) other
+- (NSComparisonResult) sortByTopic:(OneEntry *)other
 {
     return [[topic string] compare:[other->topic string]];
 }
 
-- (NSComparisonResult) sort_by_chan_reverse:(OneEntry *) other
+- (NSComparisonResult) sortByChannelReverse:(OneEntry *)other
 {
-    return [other->chan compare:chan];
+    return [other->channel compare:channel];
 }
 
-- (NSComparisonResult) sort_by_nusers_reverse:(OneEntry *) other
+- (NSComparisonResult) sortByNumberOfUsersReverse:(OneEntry *)other
 {
-    if (other->nusers_val < nusers_val) return NSOrderedAscending;
-    if (other->nusers_val > nusers_val) return NSOrderedDescending;
+    if (other->numberOfUsers < numberOfUsers) return NSOrderedAscending;
+    if (other->numberOfUsers > numberOfUsers) return NSOrderedDescending;
     return NSOrderedSame;
 }
 
-- (NSComparisonResult) sort_by_topic_reverse:(OneEntry *) other
+- (NSComparisonResult) sortByTopicReverse:(OneEntry *)other;
 {
     return [[other->topic string] compare:[topic string]];
 }
-
-- (NSString *) chan { return chan; }
-- (NSString *) nusers { return nusers; }
-- (mIRCString *) topic { return topic; }
-- (int) nusers_val { return nusers_val; }
 
 @end
 
@@ -172,24 +152,24 @@ strip_crap (const char *s)
 
 @implementation ChannelListWin
 
-- (id) initWithServer:(struct server *) server
+- (id) initWithServer:(struct server *)aServer
 {
     [super init];
 
     self->arrow = nil;
-    self->serv = server;
+    self->serv = aServer;
     self->timer = nil;
-    self->added = false;
+    self->added = NO;
     self->items = [[NSMutableArray arrayWithCapacity:0] retain];
-    self->all_items = [[NSMutableArray arrayWithCapacity:0] retain];
-    self->palette = [[[AquaChat sharedAquaChat] getPalette] clone];
+    self->allItems = [[NSMutableArray arrayWithCapacity:0] retain];
+    self->colorPalette = [[[AquaChat sharedAquaChat] palette] clone];
     
-    [self->palette setColor:AC_FGCOLOR color:[NSColor blackColor]];
-    [self->palette setColor:AC_BGCOLOR color:[NSColor whiteColor]];
+    [self->colorPalette setColor:AC_FGCOLOR color:[NSColor blackColor]];
+    [self->colorPalette setColor:AC_BGCOLOR color:[NSColor whiteColor]];
 
-    sort_dir [0] = false;
-    sort_dir [1] = false;
-    sort_dir [2] = false;
+    sortDir[0] = NO;
+    sortDir[1] = NO;
+    sortDir[2] = NO;
 
     [NSBundle loadNibNamed:@"ChanList" owner:self];
 
@@ -198,24 +178,24 @@ strip_crap (const char *s)
 
 - (void) no_regex
 {
-    if (regex_valid)
+    if (regexValid)
     {
-        regfree (&match_regex);
-        regex_valid = false;
+        regfree (&matchRegex);
+        regexValid = NO;
     }
 }
 
 - (void) dealloc
 {
-    [item_list setDelegate:nil];
-    [channel_list_view setDelegate:nil];
-    [channel_list_view close];
-    [channel_list_view autorelease];
+    [itemTableView setDelegate:nil];
+    [channelListView setDelegate:nil];
+    [channelListView close];
+    [channelListView autorelease];
     [arrow release];
     [self no_regex];
     [items release];
-    [palette release];
-    [all_items release];
+    [colorPalette release];
+    [allItems release];
     
     if (timer)
     {
@@ -226,66 +206,48 @@ strip_crap (const char *s)
     [super dealloc];
 }
 
-- (void) update_caption
+- (void) updateCaption
 {
-    [caption_text setStringValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"Displaying %d/%d users on %d/%d channels.", @"xchat", @""),
-        users_shown_count, users_found_count, [items count], [all_items count]]];
+    [captionTextField setStringValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"Displaying %d/%d users on %d/%d channels.", @"xchat", @""),
+        numberOfShownUsers, numberOfFoundUsers, [items count], [allItems count]]];
 }
 
-- (void) reset_counters
+- (void) resetCounters
 {
-    users_found_count = 0;
-    users_shown_count = 0;
+    numberOfFoundUsers = 0;
+    numberOfShownUsers = 0;
     
-    [self update_caption];
+    [self updateCaption];
 }
 
 - (void) awakeFromNib
 {
-    [channel_list_view setServer:serv];
+    [channelListView setServer:serv];
     
     arrow = [[NSImage imageNamed:@"down.tiff"] retain];
     
-    [channel_list_view setTitle:[NSString stringWithFormat:NSLocalizedStringFromTable(@"XChat: Channel List (%s)", @"xchat", @""), self->serv->servername]];
-    [channel_list_view setTabTitle:NSLocalizedStringFromTable(@"chanlist", @"xchataqua", @"")];
+    [channelListView setTitle:[NSString stringWithFormat:NSLocalizedStringFromTable(@"XChat: Channel List (%s)", @"xchat", @""), self->serv->servername]];
+    [channelListView setTabTitle:NSLocalizedStringFromTable(@"chanlist", @"xchataqua", @"")];
     
-    for (int i = 0; i < [item_list numberOfColumns]; i ++)
-        [[[item_list tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
+    for (NSInteger i = 0; i < [itemTableView numberOfColumns]; i++ )
+        [[[itemTableView tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
 
-    [self reset_counters];
+    [self resetCounters];
     
-    [item_list setDataSource:self];
-    [item_list setTarget:self];
-    [item_list setDoubleAction:@selector (do_join:)];
-    [item_list setDelegate:self];
+    [itemTableView setDataSource:self];
+    [itemTableView setTarget:self];
+    [itemTableView setDoubleAction:@selector(onJoin:)];
+    [itemTableView setDelegate:self];
 
-#if 0    
-    [top_box constrain:apply_button
-                  edge:SGFormViewEdgeLeft
-            attachment:SGFormViewAttachmentCenter
-            relativeTo:nil
-                offset:0];
-    
-    [top_box bootstrapRelativeTo:apply_button];
-
-    [bottom_box constrain:save_button
-                     edge:SGFormViewEdgeLeft
-               attachment:SGFormViewAttachmentCenter
-               relativeTo:nil
-                   offset:0];
-    
-    [bottom_box bootstrapRelativeTo:save_button];
-#endif
-
-    [channel_list_view setDelegate:self];
+    [channelListView setDelegate:self];
 }
 
 - (void) show
 {
     if (prefs.windows_as_tabs)
-        [channel_list_view becomeTabAndShow:true];
+        [channelListView becomeTabAndShow:YES];
     else
-        [channel_list_view becomeWindowAndShow:true];
+        [channelListView becomeWindowAndShow:YES];
 }
 
 - (void) windowDidBecomeKey:(NSNotification *) xx
@@ -298,113 +260,112 @@ strip_crap (const char *s)
     [self release];
 }
 
-- (void) get_regex
+- (void) getRegex
 {
     [self no_regex];
     
-    NSString *s = [regex_text stringValue];
+    NSString *s = [regexTextField stringValue];
     
-    if ([s length])
+    if ([s length] > 0)
     {
-        int sts = regcomp (&match_regex, [s UTF8String],
-                        REG_ICASE | REG_EXTENDED | REG_NOSUB);
-        regex_valid = sts == 0;
+        int sts = regcomp (&matchRegex, [s UTF8String], REG_ICASE | REG_EXTENDED | REG_NOSUB);
+        regexValid = sts == 0;
     }
 }
 
-- (bool) filter:(OneEntry *) entry
+- (BOOL) filter:(OneEntry *) entry
 {
-    int num = [entry nusers_val];
+    NSInteger num = [entry numberOfUsers];
     
-    users_found_count += num;
+    numberOfFoundUsers += num;
     
-    if (filter_min && num < filter_min)
-        return false;
+    if (filterMin && num < filterMin)
+        return NO;
 
-    if (filter_max && num > filter_max)
-        return false;
+    if (filterMax && num > filterMax)
+        return NO;
     
-    if (regex_valid)
+    if (regexValid)
     {        
 		const char *topic = [[[entry topic] string] UTF8String];
 		if (!topic) topic = "";
-		const char *chan = [[entry chan] UTF8String];
+		const char *chan = [[entry channel] UTF8String];
 		if (!chan) chan = "";
 		
-        if (topic_checked && channel_checked && 
-            regexec (&match_regex, topic, 0, 0, REG_NOTBOL) != 0 &&
-            regexec (&match_regex, chan, 0, 0, REG_NOTBOL) != 0)
+        if (topicChecked && channelChecked && 
+            regexec (&matchRegex, topic, 0, 0, REG_NOTBOL) != 0 &&
+            regexec (&matchRegex, chan, 0, 0, REG_NOTBOL) != 0)
         {
-            return false;
+            return NO;
         }
-        else if (topic_checked && !channel_checked &&
-            regexec (&match_regex, topic, 0, 0, REG_NOTBOL) != 0)
+        else if (topicChecked && !channelChecked &&
+            regexec (&matchRegex, topic, 0, 0, REG_NOTBOL) != 0)
         {
-            return false;
+            return NO;
         }
-        else if (!topic_checked && channel_checked && 
-            regexec (&match_regex, chan, 0, 0, REG_NOTBOL) != 0)
+        else if (!topicChecked && channelChecked && 
+            regexec (&matchRegex, chan, 0, 0, REG_NOTBOL) != 0)
         {
-            return false;
+            return NO;
         }
     }
     
-    users_shown_count += num;
+    numberOfShownUsers += num;
     
     [items addObject:entry];
     
-    return true;
+    return YES;
 }
 
 - (void) sort
 {
-    NSTableColumn *col = [item_list highlightedTableColumn];
-    if (col)
+    NSTableColumn *col = [itemTableView highlightedTableColumn];
+    if ( col != nil )
     {
-        int colnum = [[col identifier] intValue];
-        [items sortUsingSelector:sort_funcs [(colnum << 1) + sort_dir [colnum]]];
+        NSInteger colnum = [[col identifier] integerValue];
+        [items sortUsingSelector:sort_funcs [(colnum << 1) + sortDir[colnum]]];
     }
 }
 
-- (void) do_apply:(id) sender
+- (void) doApply:(id) sender
 {
     [items removeAllObjects];
 
-    [self reset_counters];
-    [self get_regex];
+    [self resetCounters];
+    [self getRegex];
 
-    filter_min = [min_text intValue];
-    filter_max = [max_text intValue];
+    filterMin = [minTextField integerValue];
+    filterMax = [maxTextField integerValue];
 
-    topic_checked = [regex_topic intValue];
-    channel_checked = [regex_channel intValue];
+    topicChecked = [regexTopicButton integerValue];
+    channelChecked = [regexChannelButton integerValue];
 
-    for (unsigned int i = 0; i < [all_items count]; i ++)
-        [self filter:[all_items objectAtIndex:i]];
+    for (NSUInteger i = 0; i < [allItems count]; i ++)
+        [self filter:[allItems objectAtIndex:i]];
 
-    [self update_caption];
+    [self updateCaption];
     [self sort];
-    [item_list reloadData];
+    [itemTableView reloadData];
 }
 
-- (void) do_refresh:(id) sender
+- (void) doRefresh:(id) sender
 {
     if (serv->connected)
     {
-        [all_items removeAllObjects];
-        [self do_apply:sender];
+        [allItems removeAllObjects];
+        [self doApply:sender];
         
-        [refresh_button setEnabled:false];
+        [refreshButton setEnabled:NO];
         
-        handle_command (serv->server_session, "list", FALSE);
+        handle_command(serv->server_session, "list", false);
     }
     else
-        [SGAlert alertWithString:NSLocalizedStringFromTable(@"Not connected.", @"xchat", @"") andWait:false];
+        [SGAlert alertWithString:NSLocalizedStringFromTable(@"Not connected.", @"xchat", @"") andWait:NO];
 }
 
-- (void) chan_list_end
+- (void) chanListEnd
 {
-    [refresh_button setEnabled:true];
+    [refreshButton setEnabled:YES];
 }
 
 - (void) redraw:(id) sender
@@ -412,55 +373,51 @@ strip_crap (const char *s)
     [timer release];
     timer = nil;
     
-    [self update_caption];
+    [self updateCaption];
     
     if (added)
     {
         [self sort];
-        [item_list reloadData];
-        added = false;
+        [itemTableView reloadData];
+        added = NO;
     }
 }
 
-- (void) do_save:(id) sender
+- (void) doSave:(id) sender
 {
 }
 
-- (void) do_join:(id) sender
+- (void) doJoin:(id) sender
 {
-    int row = [item_list selectedRow];
+    NSInteger row = [itemTableView selectedRow];
     
-    if (row < 0)
-        return;
+    if (row < 0) return;
     
-    OneEntry *e = [items objectAtIndex:row];
+    OneEntry *entry = [items objectAtIndex:row];
 
-    if (serv->connected && ![[e chan] isEqualToString:@"*"])
+    if (serv->connected && ![[entry channel] isEqualToString:@"*"])
     {
         char tbuf [512];
-        snprintf (tbuf, sizeof (tbuf), "join %s", [[e chan] UTF8String]);
-        handle_command (serv->server_session, tbuf, FALSE);
+        snprintf (tbuf, sizeof (tbuf), "join %s", [[entry channel] UTF8String]);
+        handle_command(serv->server_session, tbuf, false);
     }
 }
 
-- (void) add_chan_list:(const char *) chan
-                 users:(const char *) users 
-                 topic:(const char *) topic
+- (void) addChannelList:(NSString *)channel numberOfUsers:(NSString *)users topic:(NSString *)topic
 {
-    OneEntry *new_item = [OneEntry entryWithChan:chan nusers:users
-                                    topic:topic palette:palette];
+    OneEntry *newItem = [OneEntry entryWithChannel:channel numberOfUsers:users topic:topic colorPalette:colorPalette];
     
-    [all_items addObject:new_item];
+    [allItems addObject:newItem];
         
-    added |= [self filter:new_item];
+    added |= [self filter:newItem];
     
     if (!timer)
-        timer = [[NSTimer scheduledTimerWithTimeInterval:1
-                            target:self
-                            selector:@selector(redraw:)
-                            userInfo:nil
-                            repeats:NO
-                            retainArgs:NO] retain];
+        timer = [[NSTimer scheduledTimerWithTimeInterval:1.0
+												  target:self
+												selector:@selector(redraw:)
+												userInfo:nil
+												 repeats:NO
+											  retainArgs:NO] retain];
 }
 
 // Table View Data Source Methods
@@ -470,17 +427,15 @@ strip_crap (const char *s)
     return [items count];
 }
 
-- (id) tableView:(NSTableView *) aTableView
-    objectValueForTableColumn:(NSTableColumn *) aTableColumn
-    row:(NSInteger) rowIndex
+- (id) tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
-    OneEntry *e = [items objectAtIndex:rowIndex];
+    OneEntry *entry = [items objectAtIndex:rowIndex];
     
     switch ([[aTableColumn identifier] intValue])
     {
-        case 0: return [e chan];
-        case 1: return [e nusers];
-        case 2: return [e topic];
+        case 0: return [entry channel];
+        case 1: return [entry numberOfUsersString];
+        case 2: return [entry topic];
     }
     
     return @"";
@@ -493,16 +448,15 @@ strip_crap (const char *s)
 
 // Table delegate functions
 
-- (BOOL) tableView:(NSTableView *) aTableView
-    shouldSelectTableColumn:(NSTableColumn *) aTableColumn
+- (BOOL) tableView:(NSTableView *) aTableView shouldSelectTableColumn:(NSTableColumn *) aTableColumn
 {
-    bool flip = [aTableView highlightedTableColumn] == aTableColumn;
+    BOOL flip = [aTableView highlightedTableColumn] == aTableColumn;
     
-    int col = [[aTableColumn identifier] intValue];
+    NSInteger col = [[aTableColumn identifier] integerValue];
     
     if (flip)
     {
-        sort_dir [col] = !sort_dir [col];
+        sortDir [col] = !sortDir [col];
     }
     else
     {
@@ -511,32 +465,32 @@ strip_crap (const char *s)
         [aTableView setHighlightedTableColumn:aTableColumn];
     }
 
-    [arrow setFlipped:sort_dir [col]];
+    [arrow setFlipped:sortDir [col]];
     
-    [items sortUsingSelector:sort_funcs [(col << 1) + sort_dir [col]]];
+    [items sortUsingSelector:sort_funcs [(col << 1) + sortDir [col]]];
 
-    [item_list reloadData];
+    [itemTableView reloadData];
     
-    return false;
+    return NO;
 }
 
 - (NSSize) tableView:(NSTableView *) aTableView
     sizeHintForTableColumn:(NSTableColumn *) aTableColumn
-        row:(int) rowIndex
+        row:(NSInteger) rowIndex
 {
     // This only supports the last column, for now
-    OneEntry *e = [items objectAtIndex:rowIndex];
-    return e->size;
+	OneEntry *entry = [items objectAtIndex:rowIndex];
+    return entry->size;
 }
 
 - (void) tableView:(NSTableView *) aTableView
     sizeHintForTableColumn:(NSTableColumn *) aTableColumn
-        row:(int) rowIndex
+        row:(NSInteger) rowIndex
         size:(NSSize) size
 {
     // This only supports the last column, for now
-    OneEntry *e = [items objectAtIndex:rowIndex];
-    e->size = size;
+	OneEntry *entry = [items objectAtIndex:rowIndex];
+    entry->size = size;
 }
 
 - (BOOL) shouldDoSizeFixupsForTableView
@@ -547,12 +501,12 @@ strip_crap (const char *s)
 + (void) initialize {
 	sort_funcs = (SEL*)malloc(7*sizeof(SEL));
 	sort_funcs = (SEL[]) {
-		@selector (sort_by_chan_reverse:),
-		@selector (sort_by_chan:),
-		@selector (sort_by_nusers_reverse:),
-		@selector (sort_by_nusers:),
-		@selector (sort_by_topic_reverse:),
-		@selector (sort_by_topic:),
+		@selector (sortByChannelReverse:),
+		@selector (sortByChannel:),
+		@selector (sortByNumberOfUsersReverse:),
+		@selector (sortByNumberOfUsers:),
+		@selector (sortByTopicReverse:),
+		@selector (sortByTopic:),
 		NULL
 	};
 }
