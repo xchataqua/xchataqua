@@ -36,7 +36,7 @@ extern "C" {
 
 extern char *sound_files[];
 extern struct text_event te[];
-extern EventInfo text_event_info[];
+extern struct event_info text_event_info[];
 
 //////////////////////////////////////////////////////////////////////
 
@@ -101,7 +101,7 @@ static NSArray *root_items;
         }
     }
 	
-	EventInfo *info = &text_event_info[event];
+	struct event_info *info = &text_event_info[event];
 
     sound = [[NSNumber numberWithInt:xx] retain];
 	growl = [[NSNumber numberWithInt:info->growl] retain];
@@ -196,7 +196,7 @@ static NSArray *root_items;
 	[tab_right_sr setKeyCombo:right_combo];
 	#endif
 	
-	ColorPalette *palette = [[AquaChat sharedAquaChat] getPalette];
+	ColorPalette *palette = [[AquaChat sharedAquaChat] palette];
 	
 	if ([palette numberOfColors] != (sizeof(colors)/sizeof(colors[0])))
 		NSLog(@"COLOR MAP OUT OF SYNC\n");
@@ -242,7 +242,7 @@ static NSArray *root_items;
 
 	ColorPalette *palette = [[[ColorPalette alloc] init] autorelease];
 	for (NSUInteger i = 0; i < [palette numberOfColors]; i ++)
-		[palette setColor:i color:[colors [i] color]];
+		[palette setColor:i color:[colors[i] color]];
 	[[AquaChat sharedAquaChat] setPalette:palette];
 	
     [[AquaChat sharedAquaChat] prefsChanged];

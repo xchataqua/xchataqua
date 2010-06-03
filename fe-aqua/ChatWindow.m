@@ -392,7 +392,7 @@ static void location_prefs (NSWindow *w)
 
     if (user->away)
     {
-        ColorPalette *p = [[AquaChat sharedAquaChat] getPalette];
+        ColorPalette *p = [[AquaChat sharedAquaChat] palette];
         NSDictionary *attr = [NSDictionary 
             dictionaryWithObject:[p getColor:AC_AWAY_USER]
             forKey:NSForegroundColorAttributeName];
@@ -682,7 +682,7 @@ static NSImage *empty_image;
         [input_text sizeToFit];
     }
 
-    [chat_text setPalette:[[AquaChat sharedAquaChat] getPalette]];
+    [chat_text setPalette:[[AquaChat sharedAquaChat] palette]];
 
     [button_box setHidden:!prefs.userlistbuttons];
 	[self setup_userlist_buttons];
@@ -739,7 +739,7 @@ static NSImage *empty_image;
     [[m itemAtIndex:0] setState:sess->text_hidejoinpart ? NSOnState : NSOffState];
     
     NSRect rect = NSMakeRect (0,0,100,14);
-    ColorPalette *p = [[AquaChat sharedAquaChat] getPalette];
+    ColorPalette *p = [[AquaChat sharedAquaChat] palette];
     for (NSInteger i = 0; i < 16; i ++)
     {
         NSImage *im = [[NSImage alloc] initWithSize:rect.size];
@@ -1086,7 +1086,7 @@ static NSImage *empty_image;
 
 - (void) set_tab_color:(int) col flash:(bool) flash
 {
-    ColorPalette *palette = [[AquaChat sharedAquaChat] getPalette];
+    ColorPalette *palette = [[AquaChat sharedAquaChat] palette];
 
     if (col == 0 || sess != current_tab)
     {
@@ -1208,7 +1208,7 @@ static NSImage *empty_image;
 
 - (void) set_topic:(const char *) topic
 {
-	ColorPalette *palette = [[[[AquaChat sharedAquaChat] getPalette] clone] autorelease];
+	ColorPalette *palette = [[[[AquaChat sharedAquaChat] palette] clone] autorelease];
 
 	[palette setColor:AC_FGCOLOR color:[NSColor blackColor]];
 	[palette setColor:AC_BGCOLOR color:[NSColor whiteColor]];

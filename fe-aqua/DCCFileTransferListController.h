@@ -13,9 +13,6 @@
 @interface DCCFileItem : DCCItem
 {
   @public
-    //struct DCC 		*dcc;
-	//unsigned char prev_dccstat;
-    
     //NSMutableString	*status;
     NSMutableString	*file;
     NSMutableString	*size;

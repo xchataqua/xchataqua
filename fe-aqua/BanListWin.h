@@ -36,9 +36,9 @@
 - (void) addBanList:(NSString *)mask who:(NSString *)who when:(NSString *)when isExemption:(BOOL)isExemption;
 - (void) banListEnd;
 
-- (IBAction) onUnban:(id)sender;
-- (IBAction) onCrop:(id)sender;
-- (IBAction) onWipe:(id)sender;
-- (IBAction) onRefresh:(id)sender;
+- (IBAction) doUnban:(id)sender;
+- (IBAction) doCrop:(id)sender;
+- (IBAction) doWipe:(id)sender;
+- (IBAction) doRefresh:(id)sender;
 
 @end

@@ -21,7 +21,7 @@
 #include "../common/network.h"
 #include "../common/notify.h"
 
-#import "NotifyListWin.h"
+#import "FriendListWin.h"
 
 //////////////////////////////////////////////////////////////////////
 
@@ -35,23 +35,23 @@
 	NSString    *networks;
 }
 
-- (id) initWithUser:(const char *) user_name 
-             online:(bool) online
-                svr:(struct notify_per_server *) svr
-		   networks:(const char*)networks;
+- (id) initWithUser:(NSString *)user 
+             online:(BOOL) online
+			 server:(struct notify_per_server *)server
+		   networks:(NSString *)networks;
 
 @end
 
 @implementation OneNotify
 
-- (id) initWithUser:(const char *) user_name 
-             online:(bool) online
-                svr:(struct notify_per_server *) svr
-		  networks:(const char *) ntwk
+- (id) initWithUser:(NSString *)user_name
+             online:(BOOL) online
+			 server:(struct notify_per_server *)svr
+		   networks:(NSString *)ntwk;
 {
-    user = [[NSString stringWithUTF8String:user_name ? user_name : ""] retain];
+    user = [user_name retain];
     status = [online ? NSLocalizedStringFromTable(@"Online", @"xchat", @"") : NSLocalizedStringFromTable(@"Offline", @"xchat", @"") retain];
-	self->networks = [[NSString stringWithUTF8String:ntwk ? ntwk : ""] retain];
+	self->networks = [ntwk retain];
     if (svr && svr->laston)
     {
         self->server = [[NSString stringWithUTF8String:svr->server->servername] retain];
@@ -59,7 +59,7 @@
     }
     else
     {
-        self->server = [[NSString stringWithUTF8String:""] retain];
+        self->server = [@"" retain];
         last = [NSLocalizedStringFromTable(@"Never", @"xchat", @"") retain];
     }
     
@@ -82,28 +82,28 @@
 
 /****************************************************************************/
 
-@implementation NotifyListWin
+@implementation FriendListWin
 
-- (id) initWithSelfPtr:(id *) self_ptr;
+- (id) initWithSelfPtr:(id *)selfPtr;
 {
-    [super initWithSelfPtr:self_ptr];
+    [super initWithSelfPtr:selfPtr];
     
-    my_items = [[NSMutableArray arrayWithCapacity:0] retain];
+    myItems = [[NSMutableArray arrayWithCapacity:0] retain];
     
-    [NSBundle loadNibNamed:@"NotifyList" owner:self];
+    [NSBundle loadNibNamed:@"FriendList" owner:self];
     
     return self;
 }
 
 - (void) dealloc
 {
-    [notify_list_view release];
-    [my_items release];
-	[add_notify_window release];
+    [friendListTableView release];
+    [myItems release];
+	[friendAddWindow release];
     [super dealloc];
 }
 
-- (void) load_data
+- (void) loadData
 {
     // Each "user" could exist on multiple servers.
     // notify_list is a list of "users" and a list of all servers he is on
@@ -111,13 +111,12 @@
     // For each user that is online, we add one 1 per online server
     // For each user that is not online on any server, we just add the 'lastseen' line
     
-    [my_items removeAllObjects];
+    [myItems removeAllObjects];
 
     for (GSList *list = notify_list; list; list = list->next)
     {
         struct notify_per_server *lastsvr = NULL;
-        bool online = false;
-        OneNotify * n;
+        BOOL online = NO;
 		
         struct notify *user = (struct notify *) list->data;
         
@@ -130,48 +129,48 @@
                 
             if (svr->ison)
             {
-                online = true;
+                online = YES;
 				break;
             }               
         }
 
-		n = [[OneNotify alloc] initWithUser:user->name
+		OneNotify *oneNotify = [[OneNotify alloc] initWithUser:[NSString stringWithUTF8String:user->name]
 									 online:online
-										svr:lastsvr
-								   networks:user->networks];
-		[my_items addObject:n];
-		[n release];
+									 server:lastsvr
+								   networks:user->networks ? [NSString stringWithUTF8String:user->networks] : @""];
+		[myItems addObject:oneNotify];
+		[oneNotify release];
     }
 
-    [self->notify_list_table reloadData];
+    [self->friendListTableView reloadData];
 }
 
 - (void) awakeFromNib
 {
-    [notify_list_view setTitle:NSLocalizedStringFromTable(@"XChat: Friends List", @"xchat", @"")];
-    [notify_list_view setTabTitle:NSLocalizedStringFromTable(@"friends", @"xchataqua", @"")];
+    [friendListView setTitle:NSLocalizedStringFromTable(@"XChat: Friends List", @"xchat", @"")];
+    [friendListView setTabTitle:NSLocalizedStringFromTable(@"friends", @"xchataqua", @"")];
     
-    for (int i = 0; i < [self->notify_list_table numberOfColumns]; i ++)
-        [[[self->notify_list_table tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
+    for (NSUInteger i = 0; i < [self->friendListTableView numberOfColumns]; i ++)
+        [[[self->friendListTableView tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
 
-    [self->notify_list_table setDataSource:self];
-    [self->notify_list_view setDelegate:self];
+    [self->friendListTableView setDataSource:self];
+    [self->friendListView setDelegate:self];
     
-    [self load_data];
+    [self loadData];
 }
 
-- (void) do_add:(id) sender
+- (void) doAdd:(id) sender
 {
-	[add_notify_window do_it];
+	[friendAddWindow doAdd];
 }
 
-- (void) do_remove:(id) sender
+- (void) doRemove:(id) sender
 {
-    int row = [self->notify_list_table selectedRow];
+    NSInteger row = [self->friendListTableView selectedRow];
     if (row < 0)
     	return;
 
-    OneNotify *notif = (OneNotify *) [my_items objectAtIndex:row];
+    OneNotify *notif = (OneNotify *) [myItems objectAtIndex:row];
     notify_deluser ((char *) [notif->user UTF8String]);
 }
 
@@ -187,14 +186,14 @@
 - (void) show
 {
     if (prefs.windows_as_tabs)
-        [notify_list_view becomeTabAndShow:true];
+        [friendListView becomeTabAndShow:YES];
     else
-        [notify_list_view becomeWindowAndShow:true];
+        [friendListView becomeWindowAndShow:YES];
 }
 
 - (void) update
 {
-    [self load_data];
+    [self loadData];
 }
 
 //////////////
@@ -202,14 +201,12 @@
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
-    return [my_items count];
+    return [myItems count];
 }
 
-- (id) tableView:(NSTableView *) aTableView
-    objectValueForTableColumn:(NSTableColumn *) aTableColumn
-    row:(NSInteger) rowIndex
+- (id) tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger) row
 {
-    OneNotify *item = [my_items objectAtIndex:rowIndex];
+    OneNotify *item = [myItems objectAtIndex:row];
 
     switch ([[aTableColumn identifier] intValue])
     {
@@ -226,33 +223,33 @@
 @end
 
 
-@implementation AddNotifyWindow
+@implementation FriendAddWindow
 
--(void) do_it
+-(void) doAdd
 {
-	[add_notify_window setDelegate:self];
+	[friendAddPanel setDelegate:self];
 	
-	[add_notify_nick setStringValue:@""];
-	[add_notify_network setStringValue:@"ALL"];
+	[friendAddNickTextField setStringValue:@""];
+	[friendAddNetworkTextField setStringValue:@"ALL"];
 	
-	[add_notify_window makeKeyAndOrderFront:self];
+	[friendAddPanel makeKeyAndOrderFront:self];
     NSModalSession session = [NSApp beginModalSessionForWindow:self];
-    int ret;
+    NSInteger ret;
     while ((ret = [NSApp runModalSession:session]) == NSRunContinuesResponse)
 		;
     [NSApp endModalSession:session];     
     [self close];
 	
-    if (ret && [[add_notify_nick stringValue] length])
-        notify_adduser ((char *) [[add_notify_nick stringValue] UTF8String], (char*)[[add_notify_network stringValue] UTF8String]); // TODO: Networks arg	
+    if (ret && [[friendAddNickTextField stringValue] length])
+        notify_adduser ((char *) [[friendAddNickTextField stringValue] UTF8String], (char*)[[friendAddNickTextField stringValue] UTF8String]); // TODO: Networks arg	
 }
 
--(void) do_ok:(id) sender
+-(void) doOk:(id) sender
 {
 	[NSApp stopModalWithCode:1];
 }
 
--(void) do_cancel:(id) sender
+-(void) doCancel:(id) sender
 {
 	[NSApp stopModalWithCode:0];
 }

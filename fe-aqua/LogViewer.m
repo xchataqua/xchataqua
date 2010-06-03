@@ -22,11 +22,7 @@
 #import "SG.h"
 #import "LogViewer.h"
 
-#include <sys/types.h>
 #include <sys/stat.h>
-#include <sys/types.h>
-#include <sys/uio.h>
-#include <unistd.h>
 
 //////////////////////////////////////////////////////////////////////
 
@@ -57,47 +53,48 @@
 @interface OneLog : NSObject
 {
   @public
-    NSString    *fname;
+    NSString    *filename;
 }
 
-- (id) initWithFile:(NSString *) fname;
+@property (nonatomic, readonly) NSString *path;
+
+- (id) initWithFilename:(NSString *)filename;
 
 @end
 
 @implementation OneLog
 
-- (id) initWithFile:(NSString *) theFname
+- (id) initWithFilename:(NSString *)aFilename
 {
     self = [super init];
     
-    fname = [theFname retain];
+    filename = [aFilename retain];
     
     return self;
 }
 
 - (void) dealloc
 {
-    [fname release];
+    [filename release];
     [super dealloc];
 }
 
-- (bool) filter:(NSString *) filter
+- (BOOL) filter:(NSString *) filter
 {
     if (filter == nil || [filter length] == 0)
-        return true;    
-    NSRange where = [fname rangeOfString:filter options:NSCaseInsensitiveSearch];
+        return YES;    
+    NSRange where = [filename rangeOfString:filter options:NSCaseInsensitiveSearch];
     return where.location != NSNotFound;
 }
 
-- (NSString *) getPath
+- (NSString *) path
 {
-    NSString *path = [NSString stringWithFormat:@"%s/xchatlogs/%@", get_xdir_fs (), fname];
-    return path;
+	return [NSString stringWithFormat:@"%s/xchatlogs/%@", get_xdir_fs (), filename];
 }
 
 - (NSString *) contents
 {
-    NSString *path = [self getPath];
+    NSString *path = [self path];
     
     int fd = open ([path fileSystemRepresentation], O_RDONLY);
     
@@ -109,31 +106,31 @@
     char *ptr = buff;
     ssize_t len;
     while ((len = read (fd, ptr, sb.st_size - (ptr - buff))) > 0)
-        ;
+		;
     buff[sb.st_size] = 0;
     
     NSString *contents = [NSString stringWithUTF8String:buff];
     
-    free (buff);
+    free(buff);
     
     return contents;
 }
 
 - (void) reveal
 {
-    NSString *path = [NSString stringWithFormat:@"%s/xchatlogs/%@", get_xdir_fs (), fname];
+    NSString *path = [NSString stringWithFormat:@"%s/xchatlogs/%@", get_xdir_fs (), filename];
     [[NSWorkspace sharedWorkspace] selectFile:path inFileViewerRootedAtPath:@""];
 }
 
 - (void) edit
 {
-    NSString *path = [NSString stringWithFormat:@"%s/xchatlogs/%@", get_xdir_fs (), fname];
+    NSString *path = [NSString stringWithFormat:@"%s/xchatlogs/%@", get_xdir_fs (), filename];
     [[NSWorkspace sharedWorkspace] openFile:path withApplication:@"/Applications/TextEdit.app"];
 }
 
 - (void) delete
 {
-    NSString *path = [NSString stringWithFormat:@"%s/xchatlogs/%@", get_xdir_fs (), fname];
+    NSString *path = [NSString stringWithFormat:@"%s/xchatlogs/%@", get_xdir_fs (), filename];
     unlink ([path fileSystemRepresentation]);
 }
 
@@ -147,8 +144,8 @@
 {
     self = [super init];
     
-    my_items = [[NSMutableArray arrayWithCapacity:0] retain];
-    all_items = [[NSMutableArray arrayWithCapacity:0] retain];
+    myItems = [[NSMutableArray arrayWithCapacity:0] retain];
+    allItems = [[NSMutableArray arrayWithCapacity:0] retain];
 
     [NSBundle loadNibNamed:@"LogWindow" owner:self];
     
@@ -157,104 +154,104 @@
 
 - (void) dealloc
 {
-    [log_viewer_view release];
-    [my_items release];
-    [all_items release];
+    [logView release];
+    [myItems release];
+    [allItems release];
     [super dealloc];
 }
 
-- (void) do_filter:(id) sender
+- (void) doFilter:(id) sender
 {
-    [my_items removeAllObjects];
+    [myItems removeAllObjects];
 
-    NSString *filter = [filter_text stringValue];
+    NSString *filter = [filterSearchField stringValue];
     
-    for (unsigned i = 0; i < [all_items count]; i ++)
+    for (NSUInteger i = 0; i < [allItems count]; i ++)
     {
-        OneLog *row = [all_items objectAtIndex:i];
+        OneLog *row = [allItems objectAtIndex:i];
         if ([row filter:filter])
-            [my_items addObject:row];
+            [myItems addObject:row];
     }
     
-    [log_list reloadData];
+    [logTableView reloadData];
 }
 
-- (void) load_data
+- (void) loadData
 {
-    [all_items removeAllObjects];
+    [allItems removeAllObjects];
 
     NSString *dir = [NSString stringWithFormat:@"%s/xchatlogs", get_xdir_fs ()];
     NSFileManager *fm = [NSFileManager defaultManager];
     NSDirectoryEnumerator *enumerator = [fm enumeratorAtPath:dir];
     
-    for (NSString *fname = [enumerator nextObject]; fname != nil; fname = [enumerator nextObject])
+    for (NSString *filename = [enumerator nextObject]; filename != nil; filename = [enumerator nextObject])
     {
-		if ([fname compare:@".DS_Store"] == NSOrderedSame)
+		if ([filename compare:@".DS_Store"] == NSOrderedSame)
 			continue;
 			
-        OneLog *log = [[OneLog alloc] initWithFile:fname];
-        [all_items addObject:log];
+        OneLog *log = [[OneLog alloc] initWithFilename:filename];
+        [allItems addObject:log];
         [log release];
     }
 
-    [self do_filter:nil];
+    [self doFilter:nil];
 }
 
 - (void) awakeFromNib
 {
-    [log_viewer_view setTitle:NSLocalizedStringFromTable(@"XChat: Log Viewer", @"xchataqua", @"Title of Window: MainMenu->Window->Log List")];
-    [log_viewer_view setTabTitle:NSLocalizedStringFromTable(@"logviewer", @"xchataqua", @"Title of Tab: MainMenu->Window->Log List")];
+    [logView setTitle:NSLocalizedStringFromTable(@"XChat: Log Viewer", @"xchataqua", @"Title of Window: MainMenu->Window->Log List")];
+    [logView setTabTitle:NSLocalizedStringFromTable(@"logviewer", @"xchataqua", @"Title of Tab: MainMenu->Window->Log List")];
     
-    for (int i = 0; i < [log_list numberOfColumns]; i ++)
-        [[[log_list tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
+    for (NSUInteger i = 0; i < [logTableView numberOfColumns]; i ++)
+        [[[logTableView tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
 
 #if 0
-    [log_text setPalette:[[AquaChat sharedAquaChat] getPalette]];
-    [log_text setFont:[[AquaChat sharedAquaChat] getFont]
-              boldFont:[[AquaChat sharedAquaChat] getBoldFont]];
+    [logTextView setPalette:[[AquaChat sharedAquaChat] palette]];
+    [logTextView setFont:[[AquaChat sharedAquaChat] font]
+              boldFont:[[AquaChat sharedAquaChat] boldFont]];
 #endif
 
-    [self load_data];
+    [self loadData];
 }
 
-- (void) do_reveal:(id) sender
+- (void) doReveal:(id) sender
 {
-	NSInteger row = [log_list selectedRow];
+	NSInteger row = [logTableView selectedRow];
 	if (row < 0) return;
-	OneLog *log = [my_items objectAtIndex:row];
+	OneLog *log = [myItems objectAtIndex:row];
 	[log reveal];
 }
 
-- (void) do_edit:(id) sender
+- (void) doEdit:(id) sender
 {
-    NSIndexSet *set = [log_list selectedRowIndexes];
+    NSIndexSet *set = [logTableView selectedRowIndexes];
     if (!set)
         return;
     
     NSInteger row = [set firstIndex];
     while (row != NSNotFound)
     {
-        OneLog *log = [my_items objectAtIndex:row];
+        OneLog *log = [myItems objectAtIndex:row];
         [log edit];
         row = [set indexGreaterThanIndex:row];
     }
 }
 
-- (void) do_refresh:(id) sender
+- (void) doRefresh:(id) sender
 {
-    [self load_data];
+    [self loadData];
 }
 
-- (void) do_delete:(id) sender
+- (void) doDelete:(id) sender
 {
 }
 
 - (void) show
 {
     if (prefs.windows_as_tabs)
-        [log_viewer_view becomeTabAndShow:true];
+        [logView becomeTabAndShow:YES];
     else
-        [log_viewer_view becomeWindowAndShow:true];
+        [logView becomeWindowAndShow:YES];
 }
 
 //////////////
@@ -263,18 +260,18 @@
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
-    return [my_items count];
+    return [myItems count];
 }
 
 - (id) tableView:(NSTableView *) aTableView
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
     row:(NSInteger) rowIndex
 {
-    OneLog *item = [my_items objectAtIndex:rowIndex];
+    OneLog *item = [myItems objectAtIndex:rowIndex];
 
-    switch ([[aTableColumn identifier] intValue])
+    switch ([[aTableColumn identifier] integerValue])
     {
-        case 0: return item->fname;
+        case 0: return item->filename;
     }
     
     return @"";
@@ -284,14 +281,14 @@
 {
     NSString *contents = @"";
     
-    int row = [log_list selectedRow];
-    if (row >= 0 && [log_list numberOfSelectedRows] == 1)
+    NSInteger row = [logTableView selectedRow];
+    if (row >= 0 && [logTableView numberOfSelectedRows] == 1)
     {
-        OneLog *log = [my_items objectAtIndex:row];
+        OneLog *log = [myItems objectAtIndex:row];
         contents = [log contents];
     }
     
-    [log_text setString:contents];
+    [logTextView setString:contents];
 }
 
 // custom method
@@ -299,19 +296,19 @@
 {
     if ([SGAlert confirmWithString:NSLocalizedStringFromTable(@"Are you sure you want to remove the selected log files?", @"xchataqua", @"Alert message at: MainMenu->Window->Log List")])
     {
-        NSIndexSet *set = [log_list selectedRowIndexes];
+        NSIndexSet *set = [logTableView selectedRowIndexes];
         if (!set)
             return;
         
         NSInteger row = [set firstIndex];
         while (row != NSNotFound)
         {
-            OneLog *log = [my_items objectAtIndex:row];
+            OneLog *log = [myItems objectAtIndex:row];
             [log delete];
             row = [set indexGreaterThanIndex:row];
         }
         
-        [self load_data];
+        [self loadData];
     }
 }
 
