@@ -125,7 +125,7 @@
 - (id)initWithView:(NSView *) the_view;
 {
     self->view = the_view;
-    [self reset_pref_size];
+    [self reset_prefSize];
     [view retain];
     
     return self;
@@ -134,16 +134,16 @@
 - (id) initWithCoder:(NSCoder *) decoder
 {
 	view = [[decoder decodeObjectForKey:@"view"] retain];
-	last_size = [decoder decodeRectForKey:@"last_size"];
-	pref_size = [decoder decodeRectForKey:@"pref_size"];
+	lastSize = [decoder decodeRectForKey:@"lastSize"];
+	prefSize = [decoder decodeRectForKey:@"prefSize"];
 	return self;
 }
 
 - (void) encodeWithCoder:(NSCoder *) encoder
 {
 	[encoder encodeConditionalObject:view forKey:@"view"];
-	[encoder encodeRect:last_size forKey:@"last_size"];
-	[encoder encodeRect:pref_size forKey:@"pref_size"];
+	[encoder encodeRect:lastSize forKey:@"lastSize"];
+	[encoder encodeRect:prefSize forKey:@"prefSize"];
 }
 
 - (void) dealloc
@@ -165,18 +165,18 @@
 	//	frame.origin.y, frame.size.width, frame.size.height);
 		
     frame = NSIntegralRect (frame);
-    self->last_size = frame;
+    self->lastSize = frame;
     [self->view setFrame:frame];
     [self->view setNeedsDisplay:YES];
 }
 
-- (void) reset_pref_size
+- (void) reset_prefSize
 {
-    self->pref_size = [view frame];
+    self->prefSize = [view frame];
 }
 
 - (NSView *) view { return self->view; }
-- (NSRect) prefSize { return self->pref_size; }
+- (NSRect) prefSize { return self->prefSize; }
 
 @end
 
@@ -393,7 +393,7 @@ static void noDisplay (NSView *v)
 {
     // A child view just changed size.  If we are in layout, then we
     // can assume he's changed because we told him to.
-    // Sepcifically, we don't want to change the pref_size unless
+    // Sepcifically, we don't want to change the prefSize unless
     // someone other than us changed him.
     
     // in_my_layout is not enough info.. SGViews that change other
@@ -407,13 +407,13 @@ static void noDisplay (NSView *v)
     SGMetaView *metaView = [self find_view:subview];
     
     if (in_my_layout && (
-        NSEqualRects (metaView->last_size, [subview frame]) ||
-        NSEqualRects (metaView->pref_size, [subview frame])))
+        NSEqualRects (metaView->lastSize, [subview frame]) ||
+        NSEqualRects (metaView->prefSize, [subview frame])))
     {
         return;
     }
 
-    [metaView reset_pref_size];
+    [metaView reset_prefSize];
     
     if (auto_size_to_fit)
         needs_size_to_fit = YES;
