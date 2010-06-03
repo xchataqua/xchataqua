@@ -17,13 +17,13 @@
 
 #import <Cocoa/Cocoa.h>
 #include <glib/gslist.h>
-#import "XAChatText.h"
+#import "XAChatTextView.h"
 
 @interface EditEvents : NSObject
 {
 	IBOutlet NSTableView	*eventTableView;
 	IBOutlet NSTableView	*helpTableView;
-	IBOutlet XAChatText		*testText;
+	IBOutlet XAChatTextView		*testText;
 	NSMutableArray *myItems;
 }
 
