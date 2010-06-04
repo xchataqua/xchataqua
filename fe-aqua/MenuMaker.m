@@ -93,7 +93,7 @@ void decHandlerCount()
 	if (target)
 		nick_command_parse (targetSess, cmd, target, target);
 	else
-		[targetSess->gui->cw do_userlist_command:cmd];
+		[targetSess->gui->cw doUserlistCommand:cmd];
 }
 
 @end

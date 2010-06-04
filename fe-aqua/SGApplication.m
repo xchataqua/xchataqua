@@ -107,11 +107,11 @@
     return self;
 }
 
-- (id) requestEvents:(NSEventType) type
-		   forWindow:(NSWindow *) win
-             forView:(NSView *) view
-            selector:(SEL) sel
-              object:(id) obj
+- (id) requestEvents:(NSEventType)type
+		   forWindow:(NSWindow *)win
+             forView:(NSView *)view
+            selector:(SEL)sel
+              object:(id)obj
 {
     OneCustomer *customer = [OneCustomer customerWithType:type
 												forWindow:win

@@ -32,7 +32,7 @@
 - (void) doSave:(id) sender
 {
     [super doSave:sender];
-    [AquaChat forEachSessionOnServer:NULL performSelector:@selector (setup_userlist_buttons)];
+    [AquaChat forEachSessionOnServer:NULL performSelector:@selector (setupUserlistButtons)];
 }
 
 @end
