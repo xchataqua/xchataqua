@@ -1230,10 +1230,10 @@ HIThemeSegmentPosition positionTable[2][2] =
 	NSRect outline_frame = [outlineScroll frame];
 	NSRect view_frame = [selected_tab->view frame];
 	CGFloat margin = view_frame.origin.x - outline_frame.origin.x - outline_frame.size.width + 1;
-	NSRect line_rect = NSMakeRect(outline_frame.origin.x + outline_frame.size.width, outline_frame.origin.y,
+	NSRect lineRect = NSMakeRect(outline_frame.origin.x + outline_frame.size.width, outline_frame.origin.y,
 								  margin, outline_frame.size.height);
 
-	return line_rect;
+	return lineRect;
 }
 
 - (void) resetCursorRects
@@ -1253,9 +1253,9 @@ HIThemeSegmentPosition positionTable[2][2] =
 	
     NSPoint point = [theEvent locationInWindow];
     NSPoint where = [self convertPoint:point fromView:nil];
-	NSRect line_rect = [self dragAreaRect];
+	NSRect lineRect = [self dragAreaRect];
 	
-    if (!NSPointInRect (where, line_rect))
+    if (!NSPointInRect (where, lineRect))
     {
         [super mouseDown:theEvent];
 		return;
@@ -1349,10 +1349,10 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 - (void) drawDivider
 {
-	NSRect line_rect = [self dragAreaRect];
+	NSRect lineRect = [self dragAreaRect];
 	NSPoint point;
-	point.x = line_rect.origin.x + ((line_rect.size.width  - [dimple size].width ) / 2);
-	point.y = line_rect.origin.y + ((line_rect.size.height - [dimple size].height) / 2);
+	point.x = lineRect.origin.x + ((lineRect.size.width  - [dimple size].width ) / 2);
+	point.y = lineRect.origin.y + ((lineRect.size.height - [dimple size].height) / 2);
 	[dimple compositeToPoint:point operation:NSCompositeSourceOver];
 }
 

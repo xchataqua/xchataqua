@@ -51,22 +51,22 @@ static void location_prefs (NSWindow *w)
 	NSString *value;
 }
 
-+ (id) completionWithValue:(const char *) val;
-- (id) initWithValue:(const char *) val;
++ (id) completionWithValue:(NSString *) val;
+- (id) initWithValue:(NSString *) val;
 
 @end
 
 @implementation OneCompletion
 
-+ (id) completionWithValue:(const char *) val
++ (id) completionWithValue:(NSString *) val
 {
 	return [[[OneCompletion alloc] initWithValue:val] autorelease];
 }
 
-- (id) initWithValue:(const char *) val
+- (id) initWithValue:(NSString *) val
 {
 	self = [super init];
-	self->value = [[NSString stringWithUTF8String:val] retain];
+	self->value = [val retain];
 	return self;
 }
 
@@ -105,21 +105,21 @@ static void location_prefs (NSWindow *w)
 	time_t lasttalk;
 }
 
-+ (id) nickWithNick:(const char *) nick lasttalk:(time_t)lt;
-- (id) initWithNick:(const char *) nick lasttalk:(time_t)lt;
++ (id) nickWithNick:(NSString *)nick lasttalk:(time_t)lt;
+- (id) initWithNick:(NSString *)nick lasttalk:(time_t)lt;
 
 @end
 
 @implementation OneNickCompletion
 
-+ (id) nickWithNick:(const char *) the_nick lasttalk:(time_t)lt
++ (id) nickWithNick:(NSString *)nick lasttalk:(time_t)lt
 {
-	return [[[OneNickCompletion alloc] initWithNick:the_nick lasttalk:lt] autorelease];
+	return [[[OneNickCompletion alloc] initWithNick:nick lasttalk:lt] autorelease];
 }
 
-- (id) initWithNick:(const char *) the_nick lasttalk:(time_t) lt
+- (id) initWithNick:(NSString *)nick lasttalk:(time_t)lt
 {
-	self = [super initWithValue:the_nick];
+	self = [super initWithValue:nick];
 	self->lasttalk=lt;
 	return self;
 }
@@ -152,20 +152,21 @@ static void location_prefs (NSWindow *w)
 //////////////////////////////////////////////////////////////////////
 
 @interface MySplitView : NSSplitView
-{
-}
+
+@property (nonatomic, assign) int splitPosition;
+
 @end
 
 @implementation MySplitView
 
-- (int) get_split_pos
+- (int) splitPosition
 {
 	NSView *second = [[self subviews] objectAtIndex:1];
-	NSRect second_rect = [second frame];
-	return (int) second_rect.size.width;
+	NSRect secondFrame = [second frame];
+	return (int)secondFrame.size.width;
 }
 
-- (void) set_split_pos:(int) position
+- (void) setSplitPosition:(int) position
 {
 	NSView *first = [[self subviews] objectAtIndex:0];
 	NSView *second = [[self subviews] objectAtIndex:1];
@@ -174,9 +175,9 @@ static void location_prefs (NSWindow *w)
 	[second setPostsFrameChangedNotifications:NO];
 
 	NSView *ulist = [[self subviews] objectAtIndex:1];
-	NSRect ulist_rect = [ulist frame];
-	ulist_rect.size.width = position;
-	[ulist setFrame:ulist_rect];
+	NSRect ulistFrame = [ulist frame];
+	ulistFrame.size.width = position;
+	[ulist setFrame:ulistFrame];
 	
 	[self adjustSubviews];
 	
@@ -206,16 +207,16 @@ static void location_prefs (NSWindow *w)
 	
 	if ([theEvent clickCount] == 2)
 	{
-		if ([self get_split_pos] > 0)
-			[self set_split_pos:0];
+		if ([self splitPosition] > 0)
+			[self setSplitPosition:0];
 		else
-			[self set_split_pos:prefs.paned_pos];
+			[self setSplitPosition:prefs.paned_pos];
 	}
 	else
 	{
-		int old_pos = [self get_split_pos];
+		int old_pos = [self splitPosition];
 		[super mouseDown:theEvent];
-		int new_pos = [self get_split_pos];
+		int new_pos = [self splitPosition];
 
 		// Only set the pref if we moved.  Double click might have moved the pane
 		// but not changed the prefs.  Lets not muck the pref when we double click again.
@@ -225,7 +226,7 @@ static void location_prefs (NSWindow *w)
 			if (new_pos < 10 && new_pos > 0)
 			{
 				new_pos = 0;
-				[self set_split_pos:0];
+				[self setSplitPosition:0];
 				if (old_pos == 0)		// It didn't really move, so put it back
 					return;				// and don't change prefs.
 			}
@@ -249,10 +250,10 @@ static void location_prefs (NSWindow *w)
 	NSRect second_rect = [second frame];
 	
 	second_rect.origin.x = total_rect.size.width - second_rect.size.width;
-	second_rect.origin.y = 0;
+	second_rect.origin.y = 0.0f;
 	second_rect.size.height = total_rect.size.height;
-	first_rect.origin.x = 0;
-	first_rect.origin.y = 0;
+	first_rect.origin.x = 0.0f;
+	first_rect.origin.y = 0.0f;
 	first_rect.size.width = second_rect.origin.x - [self dividerThickness];
 	first_rect.size.height = total_rect.size.height;
 	
@@ -311,8 +312,6 @@ static void location_prefs (NSWindow *w)
 /* CL */
 @interface MyUserList : NSTableView
 /* CL end */
-{
-}
 @end
 
 @implementation MyUserList
@@ -352,9 +351,10 @@ static void location_prefs (NSWindow *w)
 /* CL end */
 }
 
-- (id) initWithUser:(struct User *) u;
+@property (nonatomic, readonly) struct User *user;
+
+- (id) initWithUser:(struct User *)user;
 - (void) rehash;
-- (struct User *) getUser;
 /* CL */
 - (void) cacheSizesForTable: (NSTableView *) table;
 /* CL end */
@@ -362,6 +362,7 @@ static void location_prefs (NSWindow *w)
 @end
 
 @implementation OneUser
+@synthesize user;
 
 - (id) initWithUser:(struct User *) u
 {
@@ -393,9 +394,7 @@ static void location_prefs (NSWindow *w)
     if (user->away)
     {
         ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-        NSDictionary *attr = [NSDictionary 
-            dictionaryWithObject:[p getColor:AC_AWAY_USER]
-            forKey:NSForegroundColorAttributeName];
+        NSDictionary *attr = [NSDictionary dictionaryWithObject:[p getColor:AC_AWAY_USER] forKey:NSForegroundColorAttributeName];
         nick = [[NSAttributedString alloc] initWithString:s attributes:attr];
     }
     else
@@ -411,11 +410,6 @@ static void location_prefs (NSWindow *w)
     [nick release];
     [host release];
     [super dealloc];
-}
-
-- (struct User *) getUser
-{
-    return user;
 }
 
 /* CL */
@@ -486,30 +480,30 @@ static NSImage *empty_image;
 
 - (void) dealloc
 {
-    [chat_view release];		// TBD: Anything else need to get released here?
+    [chatView release];		// TBD: Anything else need to get released here?
     [userlist release];
     [super dealloc];
 }
 
-- (void) save_buffer:(NSString *) fname
+- (void) saveBuffer:(NSString *) filename
 {
-    [[[chat_text textStorage] string] writeToFile:fname atomically:true encoding:NSUTF8StringEncoding error:NULL];
+    [[[chatTextView textStorage] string] writeToFile:filename atomically:YES encoding:NSUTF8StringEncoding error:NULL];
 }
 
 - (void) highlight:(NSString *) string
 {
-    NSRange from = [chat_text selectedRange];
+    NSRange from = [chatTextView selectedRange];
 
     if (from.location == NSNotFound)
         from.location = 0;
     else
         from.location += from.length;
         
-    from.length = [[chat_text textStorage] length] - from.location;
+    from.length = [[chatTextView textStorage] length] - from.location;
     
     NSStringCompareOptions mask = NSCaseInsensitiveSearch;
     
-    NSRange where = [[[chat_text textStorage] string] rangeOfString:string options:mask range:from];
+    NSRange where = [[[chatTextView textStorage] string] rangeOfString:string options:mask range:from];
     
     if (where.location == NSNotFound)
     {
@@ -517,25 +511,20 @@ static NSImage *empty_image;
             return;
         from.length = from.location;
         from.location = 0;
-        where = [[[chat_text textStorage] string] rangeOfString:string options:mask range:from];
+        where = [[[chatTextView textStorage] string] rangeOfString:string options:mask range:from];
 
         if (where.location == NSNotFound)
             return;
     }
     
-    [chat_text setSelectedRange:where];
-    [chat_text scrollRangeToVisible:where];
-	//[chat_text updateAtBottom];
+    [chatTextView setSelectedRange:where];
+    [chatTextView scrollRangeToVisible:where];
+	//[chatTextView updateAtBottom];
 }
 
 - (NSWindow *) window
 {
-    return [chat_view window];
-}
-
-- (TabOrWindowView *) view
-{
-	return chat_view;
+    return [chatView window];
 }
 
 - (session *)session
@@ -543,40 +532,40 @@ static NSImage *empty_image;
 	return sess;
 }
 
-- (void) clean_top_box
+- (void) cleanHeaderBoxView
 {
     // The dialog and channel mode buttons share the top box with the
     // topic text.  Remove everything but the topic text and the spacer.
 
-    CGFloat x = [topic_text frame].origin.x;
+    CGFloat x = [topicTextField frame].origin.x;
     
-    for (unsigned int i = 0; i < [[top_box subviews] count]; )
+    for (NSUInteger i = 0; i < [[headerBoxView subviews] count]; )
     {
-        NSView *view = [[top_box subviews] objectAtIndex:i];
-        if (view == topic_text || [view frame].origin.x < x)
+        NSView *view = [[headerBoxView subviews] objectAtIndex:i];
+        if (view == topicTextField || [view frame].origin.x < x)
             i ++;
         else
             [view removeFromSuperviewWithoutNeedingDisplay];
     }
 
 	// This is just to be safe
-	t_button = nil;
-	n_button = nil;
-	s_button = nil;
-	i_button = nil;
-	p_button = nil;
-	m_button = nil;
-	b_button = nil;
-	l_button = nil;
-	k_button = nil;
-	C_button = nil;
-	N_button = nil;
-	u_button = nil;
-	limit_text = nil;
-	key_text = nil;
+	tButton = nil;
+	nButton = nil;
+	sButton = nil;
+	iButton = nil;
+	pButton = nil;
+	mButton = nil;
+	bButton = nil;
+	lButton = nil;
+	kButton = nil;
+	CButton = nil;
+	NButton = nil;
+	uButton = nil;
+	limitTextField = nil;
+	keyTextField = nil;
 }
 
-- (void) do_dialog_button:(id) sender
+- (void) doDialogButton:(id) sender
 {
     /* the longest cmd is 12, and the longest nickname is 64 */
     char buf[128];
@@ -586,26 +575,24 @@ static NSImage *empty_image;
     handle_command (sess, buf, TRUE);
 }
 
-- (void) setup_dialog_buttons
+- (void) setupDialogButtons
 {
-    [self clean_top_box];
+    [self cleanHeaderBoxView];
 
     for (GSList *list = dlgbutton_list; list; list = list->next)
     {
         struct popup *p = (struct popup *) list->data;
         
-        UserlistButton *b =
-			[[[UserlistButton alloc] initWithPopup:p] autorelease];
+        UserlistButton *b = [[[UserlistButton alloc] initWithPopup:p] autorelease];
 
-        [b setAction:@selector (do_dialog_button:)];
+        [b setAction:@selector(setupChannelModeButtons:)];
         [b setTarget:self];
 
-        [top_box addSubview:b];
+        [headerBoxView addSubview:b];
     }
 }
 
-- (NSButton *) make_mode_button:(char) flag
-		       selector:(SEL) selector
+- (NSButton *)makeModeButton:(char)flag selector:(SEL) selector
 {
     NSButton *b = [[NSButton alloc] init];
 
@@ -624,15 +611,15 @@ static NSImage *empty_image;
     [b setTarget:self];
     
     NSSize sz = [b frame].size;
-    sz.height = [topic_text frame].size.height;
+    sz.height = [topicTextField frame].size.height;
     [b setFrameSize:sz];
 
-    [top_box addSubview:b];
+    [headerBoxView addSubview:b];
 
     return b;
 }
 
-- (NSTextField *) make_mode_text:(SEL) selector
+- (NSTextField *) makeModeText:(SEL) selector
 {
     NSTextField *b = [[NSTextField alloc] init];
 
@@ -643,68 +630,68 @@ static NSImage *empty_image;
     [b setStringValue:@""];
     [b setAction:selector];
     [b setTarget:self];
-    [b setNextKeyView:input_text];
+    [b setNextKeyView:inputTextField];
 
-    [top_box addSubview:b];
+    [headerBoxView addSubview:b];
     
     return b;
 }
 
-- (void) setup_channel_mode_buttons
+- (void) setupChannelModeButtons
 {
-    [self clean_top_box]; // Is this really needed?  Does it hurt?
+    [self cleanHeaderBoxView]; // Is this really needed?  Does it hurt?
 
-    t_button = [self make_mode_button:'t' selector:@selector (do_flag_button:)];
-    n_button = [self make_mode_button:'n' selector:@selector (do_flag_button:)];
-    s_button = [self make_mode_button:'s' selector:@selector (do_flag_button:)];
-    i_button = [self make_mode_button:'i' selector:@selector (do_flag_button:)];
-    p_button = [self make_mode_button:'p' selector:@selector (do_flag_button:)];
-    m_button = [self make_mode_button:'m' selector:@selector (do_flag_button:)];
-	C_button = [self make_mode_button:'C' selector:@selector (do_flag_button:)];
-	N_button = [self make_mode_button:'N' selector:@selector (do_flag_button:)];
-	u_button = [self make_mode_button:'u' selector:@selector (do_flag_button:)];
-    b_button = [self make_mode_button:'b' selector:@selector (do_b_button:)];
-    l_button = [self make_mode_button:'l' selector:@selector (do_l_button:)];
-    limit_text = [self make_mode_text:@selector (do_limit_text:)];
-    k_button = [self make_mode_button:'k' selector:@selector (do_k_button:)];
-	key_text = [self make_mode_text:@selector (do_key_text:)];
+    tButton = [self makeModeButton:'t' selector:@selector (doFlagButton:)];
+    nButton = [self makeModeButton:'n' selector:@selector (doFlagButton:)];
+    sButton = [self makeModeButton:'s' selector:@selector (doFlagButton:)];
+    iButton = [self makeModeButton:'i' selector:@selector (doFlagButton:)];
+    pButton = [self makeModeButton:'p' selector:@selector (doFlagButton:)];
+    mButton = [self makeModeButton:'m' selector:@selector (doFlagButton:)];
+	CButton = [self makeModeButton:'C' selector:@selector (doFlagButton:)];
+	NButton = [self makeModeButton:'N' selector:@selector (doFlagButton:)];
+	uButton = [self makeModeButton:'u' selector:@selector (doFlagButton:)];
+    bButton = [self makeModeButton:'b' selector:@selector (doBButton:)];
+    lButton = [self makeModeButton:'l' selector:@selector (doLButton:)];
+    limitTextField = [self makeModeText:@selector (doLimitTextField:)];
+    kButton = [self makeModeButton:'k' selector:@selector (doKButton:)];
+	keyTextField = [self makeModeText:@selector (doKeyTextField:)];
 	
-	[top_box sizeToFit];
+	[headerBoxView sizeToFit];
 }
 
 - (void) prefsChanged
 {
-    [chat_text setFont:[[AquaChat sharedAquaChat] font] boldFont:[[AquaChat sharedAquaChat] bold_font]];
+    [chatTextView setFont:[[AquaChat sharedAquaChat] font] boldFont:[[AquaChat sharedAquaChat] boldFont]];
               
     if (prefs.style_inputbox)
     {
-        [input_text setFont:[[AquaChat sharedAquaChat] font]];
-        [input_text sizeToFit];
+        [inputTextField setFont:[[AquaChat sharedAquaChat] font]];
+        [inputTextField sizeToFit];
     }
 
-    [chat_text setPalette:[[AquaChat sharedAquaChat] palette]];
+    [chatTextView setPalette:[[AquaChat sharedAquaChat] palette]];
 
-    [button_box setHidden:!prefs.userlistbuttons];
-	[self setup_userlist_buttons];
+    [buttonBoxView setHidden:!prefs.userlistbuttons];
+	[self setupUserlistButtons];
     
     if (prefs.chanmodebuttons)
     {
         if (sess->type == SESS_DIALOG)
-            [self setup_dialog_buttons];
+            [self setupDialogButtons];
         else
-            [self setup_channel_mode_buttons];
+            [self setupChannelModeButtons];
     }
     else
-        [self clean_top_box];
+        [self cleanHeaderBoxView];
 }
 
-- (void) do_conf_mode:(id) sender
+- (void) doConferenceMode:(id) sender
 {
     sess->text_hidejoinpart = !sess->text_hidejoinpart;
     [sender setState:sess->text_hidejoinpart ? NSOnState : NSOffState];
 }
 
-- (void) do_mirc_color:(id) sender
+- (void) doMircColor:(id) sender
 {
     NSInteger val = [sender tag];
     
@@ -730,9 +717,9 @@ static NSImage *empty_image;
     [self insertText:[NSString stringWithUTF8String:buff]];
 }
 
-- (void) setup_sess_menu
+- (void) setupSessMenuButton
 {
-    NSMenu *m = [sess_menu menu];
+    NSMenu *m = [sessMenuButton menu];
 
     // First item is the conference mode button
 
@@ -752,7 +739,7 @@ static NSImage *empty_image;
         NSMenuItem *mi = [[NSMenuItem alloc] init];
         [mi setTitle:@""];
         [mi setTarget:self];
-        [mi setAction:@selector (do_mirc_color:)];
+        [mi setAction:@selector (doMircColor:)];
         [mi setImage:im];
         [mi setTag:-i];		// See do_mirc_color
         
@@ -762,42 +749,42 @@ static NSImage *empty_image;
 
 - (void) awakeFromNib
 {
-	[chat_view setFrameSize:NSMakeSize (prefs.mainwindow_width, prefs.mainwindow_height)];
-	[chat_text setFrame:[chat_scroll documentVisibleRect]];
+	[chatView setFrameSize:NSMakeSize (prefs.mainwindow_width, prefs.mainwindow_height)];
+	[chatTextView setFrame:[chatScrollView documentVisibleRect]];
 
-    [top_box layoutNow];
+    [headerBoxView layoutNow];
     
     [self prefsChanged];
 
-    [chat_view setServer:sess->server];
-    [chat_view setInitialFirstResponder:input_text];
+    [chatView setServer:sess->server];
+    [chatView setInitialFirstResponder:inputTextField];
 
-    [chat_text setDropHandler:self];
-    [chat_text setNextKeyView:input_text];
-    [chat_text setDelegate:self];
+    [chatTextView setDropHandler:self];
+    [chatTextView setNextKeyView:inputTextField];
+    [chatTextView setDelegate:self];
     
 #if 0
-    NSScroller *right_scroll_bar = [chat_scroll verticalScroller];
+    NSScroller *right_scroll_bar = [chatScrollView verticalScroller];
     scroll_target = [right_scroll_bar target];
     scroll_sel = [right_scroll_bar action];
     [right_scroll_bar setTarget:self];
     [right_scroll_bar setAction:@selector (user_scrolled:)];
 #endif
 
-	//[input_text setAllowsEditingTextAttributes:true];
-    [input_text setTarget:self];
-    [input_text setDelegate:self];
-    [input_text setAction:@selector (do_command:)];
+	//[inputTextField setAllowsEditingTextAttributes:true];
+    [inputTextField setTarget:self];
+    [inputTextField setDelegate:self];
+    [inputTextField setAction:@selector (doCommand:)];
     if (prefs.style_inputbox)
-        [input_text setFont:[[AquaChat sharedAquaChat] font]];
+        [inputTextField setFont:[[AquaChat sharedAquaChat] font]];
  
-    [userlist_table setDoubleAction:@selector (do_doubleclick:)];
-    [userlist_table setTarget:self];
-    [userlist_table setDataSource:self];
-    [userlist_table setDelegate:self];
-    [userlist_table registerForDraggedTypes:[NSArray arrayWithObject:NSFilenamesPboardType]];
+    [userlistTableView setDoubleAction:@selector (doDoubleclick:)];
+    [userlistTableView setTarget:self];
+    [userlistTableView setDataSource:self];
+    [userlistTableView setDelegate:self];
+    [userlistTableView registerForDraggedTypes:[NSArray arrayWithObject:NSFilenamesPboardType]];
 
-    //[input_text registerForDraggedTypes:[NSArray arrayWithObject:NSStringPboardType]];
+    //[inputTextField registerForDraggedTypes:[NSArray arrayWithObject:NSStringPboardType]];
 	
     if (prefs.showhostname_in_userlist)
     {
@@ -806,17 +793,17 @@ static NSImage *empty_image;
         //[c setMaxWidth:250];
         //[c setMinWidth:250];
         //[c setWidth:250];
-        [userlist_table addTableColumn:c];
+        [userlistTableView addTableColumn:c];
         [c release];
     }
     
-    for (NSInteger i = 0; i < [userlist_table numberOfColumns]; i ++)
+    for (NSInteger i = 0; i < [userlistTableView numberOfColumns]; i ++)
     {
-        NSTableColumn *col = [[userlist_table tableColumns] objectAtIndex:i];
+        NSTableColumn *col = [[userlistTableView tableColumns] objectAtIndex:i];
         [col setIdentifier:[NSNumber numberWithInt:i]];
     }
 
-    NSArray *cols = [userlist_table tableColumns];
+    NSArray *cols = [userlistTableView tableColumns];
     NSTableColumn *col_zero = [cols objectAtIndex:0];
     [col_zero setDataCell:[[[NSImageCell alloc] init] autorelease]];
     NSTableColumn *col_one  = [cols objectAtIndex:1];
@@ -829,82 +816,82 @@ static NSImage *empty_image;
 		[[col_two dataCell] setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
 	}
 	
-	[lag_indicator sizeToFit];
-	[throttle_indicator sizeToFit];
+	[lagIndicator sizeToFit];
+	[throttleIndicator sizeToFit];
     
-    [progress_indicator setHidden:true];
-    [op_voice_icon setHidden:true];
+    [progressIndicator setHidden:YES];
+    [myOpOrVoiceIconImageView setHidden:YES];
 
-    [top_box setStretchView:topic_text];
-    [top_box layoutNow];	// This allows topic_text to keep it's place
-    [topic_text setAction:@selector (do_topic_text:)];
-    [topic_text setTarget:self];
+    [headerBoxView setStretchView:topicTextField];
+    [headerBoxView layoutNow];	// This allows topicTextField to keep it's place
+    [topicTextField setAction:@selector(doTopicTextField:)];
+    [topicTextField setTarget:self];
     
-    [button_box setCols:2 rows:0];
-    [button_box setShrinkHoriz:false vert:true];
-    [self setup_userlist_buttons];
+    [buttonBoxView setCols:2 rows:0];
+    [buttonBoxView setShrinkHoriz:NO vert:YES];
+    [self setupUserlistButtons];
 
-    [chat_view setDelegate:self];
+    [chatView setDelegate:self];
 
-    [self setup_sess_menu];
+    [self setupSessMenuButton];
     [self clear:0];
-    [self set_nick];
-    [self set_title];
-    [self set_nonchannel:false];
+    [self setNick];
+    [self setTitle];
+    [self setNonchannel:NO];
 
     if (sess->type == SESS_DIALOG)
-        [self set_channel];
+        [self setChannel];
     else
-        [chat_view setTabTitle:NSLocalizedStringFromTable(@"<none>", @"xchat", @"")];
+        [chatView setTabTitle:NSLocalizedStringFromTable(@"<none>", @"xchat", @"")];
     
     if (sess->type == SESS_DIALOG || prefs.hideuserlist)
-        [middle_box set_split_pos:0];
+        [bodyBoxView setSplitPosition:0];
     else if (prefs.paned_pos > 0)
-        [middle_box set_split_pos:prefs.paned_pos];
+        [bodyBoxView setSplitPosition:prefs.paned_pos];
     else
-        [middle_box set_split_pos:150];
+        [bodyBoxView setSplitPosition:150];
 
     if (sess->type == SESS_DIALOG)
     {
         if (prefs.privmsgtab)
-            [chat_view becomeTabAndShow:prefs.newtabstofront];
+            [chatView becomeTabAndShow:prefs.newtabstofront];
         else
-            [chat_view becomeWindowAndShow:true];
+            [chatView becomeWindowAndShow:true];
     }
     else
     {
         if (prefs.tabchannels)
-            [chat_view becomeTabAndShow:prefs.newtabstofront];
+            [chatView becomeTabAndShow:prefs.newtabstofront];
         else
-            [chat_view becomeWindowAndShow:true];
+            [chatView becomeWindowAndShow:true];
     }
     
-	[middle_box setDelegate:self];
-    //[[input_text window] makeFirstResponder:input_text];
+	[bodyBoxView setDelegate:self];
+    //[[inputTextField window] makeFirstResponder:inputTextField];
 }
 
 - (void) insertText:(NSString *) s
 {
-    NSMutableString *news = [NSMutableString stringWithString:[input_text stringValue]];
+    NSMutableString *news = [NSMutableString stringWithString:[inputTextField stringValue]];
     [news appendString:s];
-    [input_text setStringValue:news];
-    NSWindow *win = [input_text window];
+    [inputTextField setStringValue:news];
+    NSWindow *win = [inputTextField window];
 	NSResponder *res = [win firstResponder];
 	if ([res isKindOfClass:[NSTextView class]])
 	{
 		NSTextView *tview = (NSTextView *) res;
-		if ((NSTextField *)[tview delegate] == input_text)
+		if ((NSTextField *)[tview delegate] == inputTextField)
 			[tview moveToEndOfParagraph:self];
 	}
 }
 
-- (void) set_lag:(NSNumber *) percent
+- (void) setLag:(NSNumber *) percent
 {
-    [lag_indicator setDoubleValue:[percent floatValue]];
+    [lagIndicator setDoubleValue:[percent floatValue]];
 }
 
-/* CL: this is used for both buttons and menus, like userlist_button_cb in fe-gtk */
-- (void) do_userlist_command:(const char *) cmd
+/* CL: this is used for both buttons and menus, like userlistButton_cb in fe-gtk */
+- (void) doUserlistCommand:(const char *) cmd
 {
 	if (sess->type == SESS_DIALOG)
 	{
@@ -912,7 +899,7 @@ static NSImage *empty_image;
 		return;
 	}
 
-    if ([userlist_table numberOfSelectedRows] < 1)
+    if ([userlistTableView numberOfSelectedRows] < 1)
     {
         nick_command_parse (sess, cmd, "", "");
         return;
@@ -922,7 +909,7 @@ static NSImage *empty_image;
     char *first_nick = NULL;
     bool using_allnicks = strstr (cmd, "%a");
     
-    NSIndexSet *rowIndexSet = [userlist_table selectedRowIndexes];
+    NSIndexSet *rowIndexSet = [userlistTableView selectedRowIndexes];
     for (NSUInteger rowIndex = [rowIndexSet firstIndex]; rowIndex != NSNotFound; rowIndex = [rowIndexSet indexGreaterThanIndex:rowIndex] )
     {
         OneUser *u = (OneUser *) [userlist objectAtIndex:rowIndex];
@@ -947,16 +934,16 @@ static NSImage *empty_image;
         nick_command_parse (sess, cmd, first_nick ? first_nick : (char *)"", (char *) [allnicks UTF8String]);
 }
 
-- (void) do_userlist_button:(id) sender
+- (void) doUserlistButton:(id) sender
 {
     struct popup *p = [(UserlistButton *) sender getPopup];
-	[self do_userlist_command:p->cmd];
+	[self doUserlistCommand:p->cmd];
 }
 
-- (void) setup_userlist_buttons
+- (void) setupUserlistButtons
 {
-    while ([[button_box subviews] count])
-        [[[button_box subviews] objectAtIndex:0] removeFromSuperviewWithoutNeedingDisplay];
+    while ([[buttonBoxView subviews] count])
+        [[[buttonBoxView subviews] objectAtIndex:0] removeFromSuperviewWithoutNeedingDisplay];
     
     for (GSList *list = button_list; list; list = list->next)
     {
@@ -965,18 +952,18 @@ static NSImage *empty_image;
         UserlistButton *b =
 	    [[[UserlistButton alloc] initWithPopup:p] autorelease];
 
-        [b setAction:@selector (do_userlist_button:)];
+        [b setAction:@selector (doUserlistButton:)];
         [b setTarget:self];
 
-        [button_box addSubview:b];
+        [buttonBoxView addSubview:b];
     }
 }
 
-- (void) do_doubleclick:(id) sender
+- (void) doDoubleclick:(id) sender
 {
     if (prefs.doubleclickuser [0])
     {
-        int row = [sender selectedRow];
+        NSInteger row = [sender selectedRow];
         if (row >= 0)
         {
             OneUser *u = (OneUser *) [userlist objectAtIndex:row];
@@ -986,7 +973,7 @@ static NSImage *empty_image;
     }
 }
 
-- (void) clear_channel
+- (void) clearChannel
 {
     NSString *s;
     
@@ -1006,22 +993,22 @@ static NSImage *empty_image;
     else
         s = NSLocalizedStringFromTable(@"<none>", @"xchat", @"");
         
-    [chat_view setTabTitle:s];
-    [op_voice_icon setHidden:true];
-    [limit_text setStringValue:@""];
+    [chatView setTabTitle:s];
+    [myOpOrVoiceIconImageView setHidden:true];
+    [limitTextField setStringValue:@""];
 
-    [self set_topic:""];
+    [self setTopic:""];
 }
 
-- (void) clear:(int)lines
+- (void) clear:(NSUInteger)lines
 {
     //TODO: implement this
-    [chat_text clear_text];
+    [chatTextView clearText];
 }
 
-- (void) close_window
+- (void) closeWindow
 {
-    [chat_view close];
+    [chatView close];
 }
 
 - (void) windowDidResize:(NSNotification *) notification
@@ -1078,13 +1065,13 @@ static NSImage *empty_image;
 
     if (sess->new_data || sess->nick_said || sess->msg_said)
     {
-        [self set_tab_color:0 flash:false];
+        [self setTabColor:0 flash:false];
     }
 
     fe_set_away (sess->server);
 }
 
-- (void) set_tab_color:(int) col flash:(bool) flash
+- (void) setTabColor:(int)col flash:(BOOL)flash
 {
     ColorPalette *palette = [[AquaChat sharedAquaChat] palette];
 
@@ -1096,103 +1083,103 @@ static NSImage *empty_image;
                 sess->new_data = false;
                 sess->msg_said = false;
                 sess->nick_said = false;
-                [chat_view setTabTitleColor:[NSColor blackColor]];
+                [chatView setTabTitleColor:[NSColor blackColor]];
                 break;
                 
             case 1: /* new data has been displayed (dark red) */
                 sess->new_data = true;
                 sess->msg_said = false;
                 sess->nick_said = false;
-                [chat_view setTabTitleColor:[palette getColor:AC_NEW_DATA]];
+                [chatView setTabTitleColor:[palette getColor:AC_NEW_DATA]];
                 break;
                 
             case 2: /* new message arrived in channel (light red) */
                 sess->new_data = false;
                 sess->msg_said = true;
                 sess->nick_said = false;
-                [chat_view setTabTitleColor:[palette getColor:AC_MSG_SAID]];
+                [chatView setTabTitleColor:[palette getColor:AC_MSG_SAID]];
                 break;
                 
             case 3: /* your nick has been seen (blue) */
                 sess->new_data = false;
                 sess->msg_said = false;
                 sess->nick_said = true;
-                [chat_view setTabTitleColor:[palette getColor:AC_NICK_SAID]];
+                [chatView setTabTitleColor:[palette getColor:AC_NICK_SAID]];
                 break;
         }
     }
 }
 
-- (void) do_topic_text:(id) sender
+- (void) doTopicTextField:(id) sender
 {
     if (sess->channel[0] && sess->server->connected)
     {
-        const char *topic = [[topic_text stringValue] UTF8String];
+        const char *topic = [[topicTextField stringValue] UTF8String];
         sess->server->p_topic (sess->server, sess->channel, (char *) topic);
     }
     
-    [[input_text window] makeFirstResponder:input_text];
+    [[inputTextField window] makeFirstResponder:inputTextField];
 }
 
-- (void) do_l_button:(id) sender
+- (void) doLButton:(id) sender
 {
-    set_l_flag (sess, [sender state] == NSOnState, [limit_text intValue]);
+    set_l_flag (sess, [sender state] == NSOnState, [limitTextField intValue]);
 }
 
-- (void) do_k_button:(id) sender
+- (void) doKButton:(id) sender
 {
-    set_k_flag (sess, [sender state] == NSOnState, (char *) [[key_text stringValue] UTF8String]);
+    set_k_flag (sess, [sender state] == NSOnState, (char *) [[keyTextField stringValue] UTF8String]);
 }
 
 
 
-- (void) do_b_button:(id) sender
+- (void) doBButton:(id) sender
 {
     // TBD
     printf ("Open banlist\n");
 }
 
-- (void) do_flag_button:(id) sender
+- (void) doFlagButton:(id) sender
 {
     change_channel_flag (sess, [sender tag], [sender state] == NSOnState);
 }
 
-- (void) do_key_text:(id) sender
+- (void) doKeyTextField:(id) sender
 {
     if (sess->server->connected && sess->channel[0])
     {
-        [k_button setState:NSOnState];
-        [self do_k_button:k_button];
+        [kButton setState:NSOnState];
+        [self doKButton:kButton];
     }
 }
 
-- (void) do_limit_text:(id) sender
+- (void) doLimitTextField:(id) sender
 {
     if (sess->server->connected && sess->channel[0])
     {
-        [l_button setState:NSOnState];
-        [self do_l_button:l_button];
+        [lButton setState:NSOnState];
+        [self doLButton:lButton];
     }
 }
 
-- (void) mode_buttons:(char) mode sign:(char) sign
+- (void) modeButtons:(char) mode sign:(char) sign
 {
 	NSButton *button = nil;
 	
 	switch (mode)
 	{
-		case 't': button = t_button; break;
-		case 'n': button = n_button; break;
-		case 's': button = s_button; break;
-		case 'i': button = i_button; break;
-		case 'p': button = p_button; break;
-		case 'm': button = m_button; break;
-		case 'b': button = b_button; break;
-		case 'l': button = l_button; break;
-		case 'k': button = k_button; break;
-		case 'C': button = C_button; break;
-		case 'N': button = N_button; break;
-		case 'u': button = u_button; break;
+		case 't': button = tButton; break;
+		case 'n': button = nButton; break;
+		case 's': button = sButton; break;
+		case 'i': button = iButton; break;
+		case 'p': button = pButton; break;
+		case 'm': button = mButton; break;
+		case 'b': button = bButton; break;
+		case 'l': button = lButton; break;
+		case 'k': button = kButton; break;
+		case 'C': button = CButton; break;
+		case 'N': button = NButton; break;
+		case 'u': button = uButton; break;
         default: return;
 	}
    
@@ -1203,24 +1190,24 @@ static NSImage *empty_image;
 	// us to edit the topic.. can we know that for sure given the various
 	// operator levels that exist?
 	//if (mode == 't')
-	//	[topic_text setEditable:sign == '-'];
+	//	[topicTextField setEditable:sign == '-'];
 }
 
-- (void) set_topic:(const char *) topic
+- (void) setTopic:(const char *) topic
 {
 	ColorPalette *palette = [[[[AquaChat sharedAquaChat] palette] clone] autorelease];
 
 	[palette setColor:AC_FGCOLOR color:[NSColor blackColor]];
 	[palette setColor:AC_BGCOLOR color:[NSColor whiteColor]];
 
-	[topic_text setStringValue:[mIRCString stringWithUTF8String:topic
+	[topicTextField setStringValue:[mIRCString stringWithUTF8String:topic
 															len:-1
 														palette:palette
 															font:nil
 														boldFont:nil]];
 }
 
-- (void) set_channel
+- (void) setChannel
 {
 	NSMutableString *channelString = [NSMutableString stringWithUTF8String:sess->channel];
 
@@ -1230,44 +1217,44 @@ static NSImage *empty_image;
 		NSUInteger len = [channelString length] - start;
 		[channelString replaceCharactersInRange:NSMakeRange (start, len) withString:@".."];
 	}
-	[chat_view setTabTitle:channelString];
+	[chatView setTabTitle:channelString];
 
 	// FIXME: rough solution to solve initialization with scrollToDocumentEnd 2/3
-	[chat_text scrollToEndOfDocument:chat_view];
+	[chatTextView scrollToEndOfDocument:chatView];
 }
 
-- (void) set_nonchannel:(bool) state
+- (void) setNonchannel:(bool) state
 {
-    [t_button setEnabled:state];
-    [n_button setEnabled:state];
-    [s_button setEnabled:state];
-    [i_button setEnabled:state];
-    [p_button setEnabled:state];
-    [m_button setEnabled:state];
-    [b_button setEnabled:state];
-    [l_button setEnabled:state];
-    [k_button setEnabled:state];
-	[C_button setEnabled:state];
-	[N_button setEnabled:state];
-	[u_button setEnabled:state];
-    [limit_text setEnabled:state];
-    [key_text setEnabled:state];
-    [topic_text setEditable:state];
+    [tButton setEnabled:state];
+    [nButton setEnabled:state];
+    [sButton setEnabled:state];
+    [iButton setEnabled:state];
+    [pButton setEnabled:state];
+    [mButton setEnabled:state];
+    [bButton setEnabled:state];
+    [lButton setEnabled:state];
+    [kButton setEnabled:state];
+	[CButton setEnabled:state];
+	[NButton setEnabled:state];
+	[uButton setEnabled:state];
+    [limitTextField setEnabled:state];
+    [keyTextField setEnabled:state];
+    [topicTextField setEditable:state];
     
     // FIXME: rough solution to solve initialization with scrollToDocumentEnd 3/3
-    [chat_text scrollToEndOfDocument:chat_view];
+    [chatTextView scrollToEndOfDocument:chatView];
 }
 
-- (void) set_nick
+- (void) setNick
 {
-    [nick_text setStringValue:[NSString stringWithUTF8String:sess->server->nick]];
-    [nick_text sizeToFit];
+    [nickTextField setStringValue:[NSString stringWithUTF8String:sess->server->nick]];
+    [nickTextField sizeToFit];
 }
 
-- (int) find_user:(struct User *) user
+- (int) findUser:(struct User *) user
 {
     for (NSUInteger i = 0; i < [userlist count]; i ++)
-        if ([[userlist objectAtIndex:i] getUser] == user)
+        if ([(OneUser *)[userlist objectAtIndex:i] user] == user)
             return i;
     return -1;
 }
@@ -1277,7 +1264,7 @@ static NSImage *empty_image;
 {
 	for (NSUInteger i = 0, n = [userlist count]; i < n; i++) {
 		OneUser *u = (OneUser *) [userlist objectAtIndex:i];
-		if ([u getUser] == user) {
+		if ([u user] == user) {
 			*userObject = u;
 			return i;
 		}
@@ -1287,7 +1274,7 @@ static NSImage *empty_image;
 }
 /* CL end */
 
-- (NSImage *) get_user_image:(struct User *) user
+- (NSImage *) getUserImage:(struct User *) user
 {
 	switch (user->prefix [0])
 	{
@@ -1336,19 +1323,19 @@ static NSImage *empty_image;
 		if (u->nickSize.height > maxRowHeight) maxRowHeight = u->nickSize.height;
 	}
 	
-	NSTableColumn *column = [[userlist_table tableColumns] objectAtIndex:1];
+	NSTableColumn *column = [[userlistTableView tableColumns] objectAtIndex:1];
 	[column sizeToFit];
 	if (maxNickWidth != [column width]) [column setWidth: maxNickWidth];
 	if (prefs.showhostname_in_userlist) {
-		column = [[userlist_table tableColumns] objectAtIndex:2];
+		column = [[userlistTableView tableColumns] objectAtIndex:2];
 		if (maxHostWidth != [column width]) [column setWidth: maxHostWidth];
 	}
-	if (maxRowHeight != [userlist_table rowHeight]) [userlist_table setRowHeight: maxRowHeight];
+	if (maxRowHeight != [userlistTableView rowHeight]) [userlistTableView setRowHeight: maxRowHeight];
 }
 
 - (void) updateUserTableLayoutForInsert:(OneUser *) user
 {
-	NSArray *columns = [userlist_table tableColumns];
+	NSArray *columns = [userlistTableView tableColumns];
 	/* nickname column */
 	NSTableColumn *column = [columns objectAtIndex:1];
 	CGFloat width = user->nickSize.width;
@@ -1369,7 +1356,7 @@ static NSImage *empty_image;
 	CGFloat height = (user->nickSize.height > user->hostSize.height ? user->nickSize.height: user->hostSize.height);
 	if (height > maxRowHeight) {
 		maxRowHeight = height;
-		[userlist_table setRowHeight: height];
+		[userlistTableView setRowHeight: height];
 	}
 }
 
@@ -1382,14 +1369,14 @@ static NSImage *empty_image;
 	/* row height */
 	else {
 		CGFloat height = (user->nickSize.height > user->hostSize.height ? user->nickSize.height: user->hostSize.height);
-		if ((height == maxRowHeight) && (height > 16.0)) [self recalculateUserTableLayout];	/* in this case, a stricter condition should be added, as (oldHeight == [userlist_table rowHeight]) will be true for most users */
+		if ((height == maxRowHeight) && (height > 16.0)) [self recalculateUserTableLayout];	/* in this case, a stricter condition should be added, as (oldHeight == [userlistTableView rowHeight]) will be true for most users */
 	}
 }
 
 - (void) updateUserTableLayoutForRehash:(OneUser *)user
 							oldNickSize:(NSSize)oldNickSize oldHostSize:(NSSize)oldHostSize
 {
-	NSArray *columns = [userlist_table tableColumns];
+	NSArray *columns = [userlistTableView tableColumns];
 	/* nickname column */
 	NSTableColumn *column = [columns objectAtIndex:1];
 	CGFloat width = user->nickSize.width;
@@ -1417,13 +1404,13 @@ static NSImage *empty_image;
 	/* row height */
 	CGFloat height = (user->nickSize.height > user->hostSize.height ? user->nickSize.height: user->hostSize.height);
 	CGFloat oldHeight = (oldNickSize.height > oldHostSize.height ? oldNickSize.height: oldHostSize.height);
-	if ((height < oldHeight) && (oldHeight == maxRowHeight) && (oldHeight > 16.0)) {	/* in this case, a stricter condition should be added, as (oldHeight == [userlist_table rowHeight]) will be true for most users */
+	if ((height < oldHeight) && (oldHeight == maxRowHeight) && (oldHeight > 16.0)) {	/* in this case, a stricter condition should be added, as (oldHeight == [userlistTableView rowHeight]) will be true for most users */
 		[self recalculateUserTableLayout];
 		return;
 	}
 	else if (height > maxRowHeight) {
 		maxRowHeight = height;
-		[userlist_table setRowHeight: height];
+		[userlistTableView setRowHeight: height];
 	}
 }
 
@@ -1432,25 +1419,25 @@ static NSImage *empty_image;
 	NSSize oldNickSize = user->nickSize;
 	NSSize oldHostSize = user->hostSize;
     [user rehash];
-	[user cacheSizesForTable: userlist_table];
+	[user cacheSizesForTable: userlistTableView];
 	[self updateUserTableLayoutForRehash:user oldNickSize:oldNickSize oldHostSize:oldHostSize];
-    [userlist_table reloadData];
+    [userlistTableView reloadData];
 }
 
-- (void) userlist_select_names:(char **)names clear:(int)clear scroll_to:(int)scroll_to
+- (void) userlistSelectNames:(char **)names clear:(int)clear scrollTo:(int)scroll_to
 {
-	if (clear) [userlist_table deselectAll:self];
+	if (clear) [userlistTableView deselectAll:self];
 	
 	if (*names[0]) {
 		for (NSUInteger i = 0, n = [userlist count]; i < n; i++) {
-			struct User *user = [[userlist objectAtIndex:i] getUser];
+			struct User *user = [(OneUser *)[userlist objectAtIndex:i] user];
 			NSUInteger j = 0;
 			do {
 				if (sess->server->p_cmp (user->nick, names[j]) == 0) {
-					[userlist_table
+					[userlistTableView
            selectRowIndexes:[NSIndexSet indexSetWithIndex:i]
            byExtendingSelection:YES];
-					if (scroll_to) [userlist_table scrollRowToVisible:i];
+					if (scroll_to) [userlistTableView scrollRowToVisible:i];
 				}
 			} while (*names[++j]);
 		}
@@ -1458,7 +1445,7 @@ static NSImage *empty_image;
 }
 /* CL end */
 
-- (void) userlist_rehash:(struct User *) user
+- (void) userlistRehash:(struct User *) user
 {
 /* CL */
 	OneUser *u;
@@ -1469,11 +1456,11 @@ static NSImage *empty_image;
 /* CL end */
 }
 
-- (void) userlist_insert:(struct User *)user row:(int)row select:(bool) select
+- (void) userlistInsert:(struct User *)user row:(NSInteger)row select:(BOOL)select
 {
 	OneUser *u = [(OneUser *) [OneUser alloc] initWithUser:user];
 	/* CL */
-	[u cacheSizesForTable: userlist_table];
+	[u cacheSizesForTable: userlistTableView];
 	[self updateUserTableLayoutForInsert: u];
 	/* CL end */
 
@@ -1481,33 +1468,33 @@ static NSImage *empty_image;
 		[userlist addObject:u];
 	} else
 	{
-		NSInteger srow = [userlist_table selectedRow];
+		NSInteger selectedRow = [userlistTableView selectedRow];
 		[userlist insertObject:u atIndex:row];
-		if (srow >= 0 && row <= srow)
-			[userlist_table selectRowIndexes:[NSIndexSet indexSetWithIndex:srow+1] byExtendingSelection:NO];
+		if (selectedRow >= 0 && row <= selectedRow)
+			[userlistTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedRow+1] byExtendingSelection:NO];
 	}
 
 	if (select)
-		[userlist_table selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+		[userlistTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
 
-    [userlist_table reloadData];
+    [userlistTableView reloadData];
 
 	if (user->me)
 	{
-		NSImage *img = [self get_user_image:user];
+		NSImage *img = [self getUserImage:user];
 		if (img == empty_image) {
-			[op_voice_icon setHidden:true];
+			[myOpOrVoiceIconImageView setHidden:true];
 		}
 		else
 		{
-			[op_voice_icon setImage:img];
-			[op_voice_icon setHidden:false];
+			[myOpOrVoiceIconImageView setImage:img];
+			[myOpOrVoiceIconImageView setHidden:false];
 		}
 	}
 	[u release];
 }
 
-- (bool) userlist_remove:(struct User *) user
+- (BOOL) userlistRemove:(struct User *) user
 {
 /* CL */
 	OneUser *u;
@@ -1515,22 +1502,22 @@ static NSImage *empty_image;
 	if (idx < 0)
 		return false;
 
-	NSInteger srow = [userlist_table selectedRow];
+	NSInteger srow = [userlistTableView selectedRow];
 	[u retain];
 	[userlist removeObjectAtIndex:idx];
 	[self updateUserTableLayoutForRemove: u];
 	[u release];
 /* CL end */
 	if (idx < srow)
-		[userlist_table selectRowIndexes:[NSIndexSet indexSetWithIndex:srow-1] byExtendingSelection:NO];
+		[userlistTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:srow-1] byExtendingSelection:NO];
     else if (idx == srow)
-		[userlist_table deselectAll:self];
-	[userlist_table reloadData]; 
+		[userlistTableView deselectAll:self];
+	[userlistTableView reloadData]; 
 
 	return srow == idx;
 }
 
-- (void) userlist_move:(struct User *)user row:(int) row
+- (void) userlistMove:(struct User *)user row:(NSInteger) row
 {
 /* CL */
 	OneUser *u;
@@ -1543,85 +1530,88 @@ static NSImage *empty_image;
 		[userlist insertObject:u atIndex:row];
 		[u release];	//<--
 
-		NSInteger srow = [userlist_table selectedRow];
+		NSInteger srow = [userlistTableView selectedRow];
 		if (i == srow) srow = row;
 		else {
 			if (i < srow) srow--;
 			if (row <= srow) srow++;
 		}
-		[userlist_table selectRowIndexes:[NSIndexSet indexSetWithIndex:srow] byExtendingSelection:NO];
+		[userlistTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:srow] byExtendingSelection:NO];
 	}
 	
 	[self rehashUserAndUpdateLayout: u];
 	
 	if (user->me)
 	{
-		NSImage *img = [self get_user_image:user];
+		NSImage *img = [self getUserImage:user];
 		if (img == empty_image)
-			[op_voice_icon setHidden:true];
+			[myOpOrVoiceIconImageView setHidden:true];
 		else
 		{
-			[op_voice_icon setImage:img];
-			[op_voice_icon setHidden:false];
+			[myOpOrVoiceIconImageView setImage:img];
+			[myOpOrVoiceIconImageView setHidden:false];
 		}
 	}
 /* CL end */
 }
 
+- (TabOrWindowView *) view {
+	return chatView;
+}
+
 // Used only for updating menus
-- (void) userlist_update:(struct User *)user
+- (void) userlistUpdate:(struct User *)user
 {
-    if(userlist_menu_curuser && !strcmp(userlist_menu_curuser->nick, user->nick))
-        [userlist_menu setSubmenu:[[MenuMaker defaultMenuMaker] infoMenuForUser:user inSession:sess]];
+    if(userlistMenuItemCurrentUser && !strcmp(userlistMenuItemCurrentUser->nick, user->nick))
+        [userlistMenuItem setSubmenu:[[MenuMaker defaultMenuMaker] infoMenuForUser:user inSession:sess]];
 }
 
-- (void) userlist_numbers
+- (void) userlistNumbers
 {
-    [userlist_stats_text setStringValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"%d ops, %d total", @"xchat", nil),
-            sess->ops, sess->total]];
+    [userlistStatusTextField setStringValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"%d ops, %d total", @"xchat", @""), sess->ops, sess->total]];
 }
 
-- (void) progressbar_start
+- (void) progressbarStart
 {
-    [progress_indicator startAnimation:self];
-    [progress_indicator setHidden:false];
+    [progressIndicator startAnimation:self];
+    [progressIndicator setHidden:NO];
 }
 
-- (void) progressbar_end
+- (void) progressbarEnd
 {
-    [progress_indicator setHidden:true];
-    [progress_indicator stopAnimation:self];
+    [progressIndicator setHidden:YES];
+    [progressIndicator stopAnimation:self];
 }
 
-- (void) userlist_clear
+- (void) userlistClear
 {
     [userlist removeAllObjects];
 /* CL */
 	[self recalculateUserTableLayout];
 /* CL end */
-    [userlist_table reloadData]; 
+    [userlistTableView reloadData]; 
 }
 
-- (void) channel_limit
+- (void) channelLimit
 {
-    [limit_text setIntValue:sess->limit];
-    [self set_title];
+    [limitTextField setIntValue:sess->limit];
+    [self setTitle];
 }
 
-- (void) set_throttle
+- (void) setThrottle
 {
     double per = (double) sess->server->sendq_len / 1024.0;
     if (per > 1.0) per = 1.0;
 
-    [throttle_indicator setDoubleValue:per];
+    [throttleIndicator setDoubleValue:per];
 }
 
-- (void) set_hilight
+- (void) setHilight
 {
-    [self set_tab_color:3 flash:true];
+    [self setTabColor:3 flash:YES];
 }
 
-- (void) set_title
+- (void) setTitle
 {
 	NSString *title;
 
@@ -1658,19 +1648,19 @@ static NSImage *empty_image;
 		default:
 			title = [NSString stringWithFormat:@"X-Chat [%s/%s]", MYVERSION, PACKAGE_VERSION];
 	}
-	[chat_view setTitle:title];
+	[chatView setTitle:title];
 }
 
-- (void) do_command:(id) sender
+- (void) doCommand:(id) sender
 {
-    [[input_text window] makeFirstResponder:input_text];
+    [[inputTextField window] makeFirstResponder:inputTextField];
 
-    NSString* message = [[[input_text stringValue] retain] autorelease];
+    NSString* message = [[[inputTextField stringValue] retain] autorelease];
     
     if ([message length] < 1)
         return;
 
-    [input_text setStringValue:@""];
+    [inputTextField setStringValue:@""];
 
     handle_multiline (sess, (char *) [message UTF8String], TRUE, FALSE);
     
@@ -1680,12 +1670,12 @@ static NSImage *empty_image;
 - (void) lastlogIntoWindow:(ChatWindow *)logWin key:(char *)ckey
 {
 
-	if ([[chat_text textStorage] length] == 0) {
-		[logWin print_text:[NSLocalizedStringFromTable(@"Search buffer is empty.\n", @"xchat", @"") UTF8String]];
+	if ([[chatTextView textStorage] length] == 0) {
+		[logWin printText:NSLocalizedStringFromTable(@"Search buffer is empty.\n", @"xchat", @"")];
 		return;
 	}
-	NSTextStorage *sourceStorage = [chat_text textStorage];
-	NSTextStorage *destStorage = [logWin->chat_text textStorage];
+	NSTextStorage *sourceStorage = [chatTextView textStorage];
+	NSTextStorage *destStorage = [logWin->chatTextView textStorage];
 	NSString *text = [sourceStorage string];
 	NSString *key = [NSString stringWithUTF8String:ckey];
 	NSUInteger length = [text length];
@@ -1707,25 +1697,25 @@ static NSImage *empty_image;
 
 }
 
-- (void) print_text:(const char *) text
+- (void) printText:(NSString *)text
 {
-	[self print_text:text stamp:time(NULL)];
+	[self printText:text stamp:time(NULL)];
 }
 
-- (void) print_text:(const char *) text stamp:(time_t)stamp
+- (void) printText:(NSString *)text stamp:(time_t)stamp
 {
-	[chat_text print_text:text stamp:stamp];
+	[chatTextView printText:text stamp:stamp];
 
 	if (!sess->new_data && sess != current_tab && !sess->nick_said)
 	{
 		if (sess->msg_said)	// Channel message
-			[self set_tab_color:2 flash:false];
+			[self setTabColor:2 flash:NO];
 		else				// Server message?  Not sure..?
-			[self set_tab_color:1 flash:false];
+			[self setTabColor:1 flash:NO];
 	}
 }
 
-- (BOOL) processFileDrop:(id <NSDraggingInfo>) info forUser:(const char *) nick
+- (BOOL) processFileDrop:(id<NSDraggingInfo>)info forUser:(NSString *)nick
 {
     NSPasteboard *pboard = [info draggingPasteboard];
     
@@ -1735,44 +1725,44 @@ static NSImage *empty_image;
     if (!nick)
     {
         if (sess->type == SESS_DIALOG)
-            nick = sess->channel;
+            nick = [NSString stringWithUTF8String:sess->channel];
         else
         {
-            int row = [userlist_table selectedRow];
+            NSInteger row = [userlistTableView selectedRow];
             if (row < 0)
                 return NO;
-            nick = [[[userlist_table dataSource] tableView:userlist_table
-                      objectValueForTableColumn:[[userlist_table tableColumns] objectAtIndex:1]
-                                            row:row] UTF8String];
+            nick = [[userlistTableView dataSource] tableView:userlistTableView
+								   objectValueForTableColumn:[[userlistTableView tableColumns] objectAtIndex:1]
+														 row:row];
         }
     }
     
     NSArray *files = [pboard propertyListForType:NSFilenamesPboardType];
     for (NSUInteger i = 0; i < [files count]; i ++)
     {
-        dcc_send (sess, (char *)nick, (char *)[[files objectAtIndex:i] UTF8String], prefs.dcc_max_send_cps, 0);
+        dcc_send (sess, (char *)[nick UTF8String], (char *)[[files objectAtIndex:i] UTF8String], prefs.dcc_max_send_cps, 0);
     }
 	return YES;
 }
 
-- (const char *) getInputText
+- (NSString *) inputText
 {
-	return [[input_text stringValue] UTF8String];
+	return [inputTextField stringValue];
 }
 
-- (void) setInputText:(const char *)text
+- (void) setInputText:(NSString *)text
 {
-    if (!text) return;
-        
-    [input_text setStringValue:[NSString stringWithUTF8String:text]];
-    [[[input_text window] firstResponder] moveToEndOfParagraph:self];
+	if (!text) return;
+	
+	[inputTextField setStringValue:text];
+	[[[inputTextField window] firstResponder] moveToEndOfParagraph:self];
 }
 
-- (int) getInputTextPosition
+- (int) inputTextPosition
 {
-    NSWindow *win = [input_text window];
+    NSWindow *win = [inputTextField window];
 	NSTextView *view = (NSTextView*)[win firstResponder];
-    if ([view isKindOfClass:[NSTextView class]] && (NSTextField *)[view delegate] == input_text)
+    if ([view isKindOfClass:[NSTextView class]] && (NSTextField *)[view delegate] == inputTextField)
 	{
 	    NSUInteger loc = [view selectedRange].location;
 		return loc;
@@ -1782,13 +1772,13 @@ static NSImage *empty_image;
 
 - (void) setInputTextPosition:(int) pos delta:(bool) delta
 {
-    NSWindow *win = [input_text window];
+    NSWindow *win = [inputTextField window];
 	NSTextView *view = (NSTextView*)[win firstResponder];
-    if ([view isKindOfClass:[NSTextView class]] && (NSTextField *)[view delegate] == input_text)
+    if ([view isKindOfClass:[NSTextView class]] && (NSTextField *)[view delegate] == inputTextField)
 	{
 		if (delta)
 		{
-			pos += [self getInputTextPosition];
+			pos += [self inputTextPosition];
 		}
 	    NSRange range;
 		range.location = pos;
@@ -1797,12 +1787,12 @@ static NSImage *empty_image;
 	}
 }
 
-- (void) userlist_set_selected
+- (void) userlistSetSelected
 {
     for (NSUInteger row = 0; row < [userlist count]; row++)
     {
         OneUser *u = [userlist objectAtIndex:row];
-		u->user->selected = [userlist_table isRowSelected:row];
+		u->user->selected = [userlistTableView isRowSelected:row];
     }
 }
 
@@ -1817,9 +1807,9 @@ static NSImage *empty_image;
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
 {
     OneUser *u = [userlist objectAtIndex:row];
-    switch ([[tableColumn identifier] intValue])
+    switch ([[tableColumn identifier] integerValue])
     {
-        case 0: return [self get_user_image:u->user];
+        case 0: return [self getUserImage:u->user];
         case 1: return u->nick;
         case 2: return u->host;
     }
@@ -1837,7 +1827,7 @@ static NSImage *empty_image;
 - (BOOL)tableView:(NSTableView *)tableView acceptDrop:(id <NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation
 {
     NSAttributedString *nick = [[tableView dataSource] tableView:tableView objectValueForTableColumn:[[tableView tableColumns] objectAtIndex:1] row:row];
-    return [self processFileDrop:info forUser:[[nick string] UTF8String]];
+    return [self processFileDrop:info forUser:[nick string]];
 }
 
 - (NSMenu *)menuForEvent:(NSEvent *)theEvent rowIndexes:(NSIndexSet *)rows
@@ -1847,21 +1837,21 @@ static NSImage *empty_image;
 	NSString *nick = nil;
 	
 	[menu setAutoenablesItems:false];
-    if(userlist_menu)
-        [userlist_menu release];
+    if(userlistMenuItem)
+        [userlistMenuItem release];
 	
 	if (count > 1) {
 		[[menu addItemWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTable(@"%d users selected", @"xchataqua", @"Popup menu message when you right-clicked userlist."), count] action:nil keyEquivalent:@""] setEnabled:NO];
-        userlist_menu_curuser = NULL;
+        userlistMenuItemCurrentUser = NULL;
 	} else {
 		OneUser *userObject = (OneUser *) [userlist objectAtIndex:[rows firstIndex]];
-		struct User *user = [userObject getUser];
+		struct User *user = [userObject user];
 
 		nick = [userObject nick];
 		NSMenuItem *userItem = [menu addItemWithTitle:nick action:nil keyEquivalent:@""];
 
-        userlist_menu_curuser = user;
-        userlist_menu         = [userItem retain];
+        userlistMenuItemCurrentUser = user;
+        userlistMenuItem         = [userItem retain];
         
 		[userItem setSubmenu:[[MenuMaker defaultMenuMaker] infoMenuForUser:user inSession:sess]];
 
@@ -1915,7 +1905,7 @@ static int find_common (NSArray *list)
         struct popup *pop = (struct popup *) list->data;
 		int this_len = strlen (pop->name);
 		if (len <= this_len && strncasecmp (utf, pop->name, len) == 0)
-			[matchArray addObject:[OneCompletion completionWithValue:pop->name]];
+			[matchArray addObject:[OneCompletion completionWithValue:[NSString stringWithUTF8String:pop->name]]];
     }
 
     for (int i = 0; xc_cmds[i].name; i ++)
@@ -1923,14 +1913,13 @@ static int find_common (NSArray *list)
         char *cmd = xc_cmds[i].name;
 		int this_len = strlen (cmd);
 		if (len <= this_len && strncasecmp (utf, cmd, len) == 0)
-			[matchArray addObject:[OneCompletion completionWithValue:cmd]];
+			[matchArray addObject:[OneCompletion completionWithValue:[NSString stringWithUTF8String:cmd]]];
     }
     
 	return [matchArray allObjects];
 }
 
-- (NSArray *) nick_complete:(NSTextView *) view
-		       start:(NSString *) start
+- (NSArray *) nick_complete:(NSTextView *) view start:(NSString *) start
 {
 	const char *utf = [start UTF8String];
 	int len = strlen (utf);
@@ -1942,7 +1931,7 @@ static int find_common (NSArray *list)
 		int this_len = strlen (sess->channel);
 		if (len > this_len || rfc_ncasecmp ((char *) utf, sess->channel, len) != 0)
 			return nil;
-		[matchArray addObject:[OneCompletion completionWithValue:sess->channel]];
+		[matchArray addObject:[OneCompletion completionWithValue:[NSString stringWithUTF8String:sess->channel]]];
 	}
 	else
 	{
@@ -1952,15 +1941,14 @@ static int find_common (NSArray *list)
 			struct User *user = u->user;
 			int this_len = strlen (user->nick);
 			if (len <= this_len && rfc_ncasecmp ((char *) utf, user->nick, len) == 0)
-				[matchArray addObject:[OneNickCompletion nickWithNick:user->nick lasttalk:user->lasttalk]];
+				[matchArray addObject:[OneNickCompletion nickWithNick:[NSString stringWithUTF8String:user->nick] lasttalk:user->lasttalk]];
 		}
 	}
 
 	return matchArray;
 }
 
-- (NSArray *) channel_complete:(NSTextView *) view
-                          start:(NSString *) start
+- (NSArray *) channel_complete:(NSTextView *)view start:(NSString *) start
 {
 	const char *utf = [start UTF8String];
 	int len = strlen (utf);
@@ -1975,7 +1963,7 @@ static int find_common (NSArray *list)
         {
             int this_len = strlen (tmp_sess->channel);
             if (len <= this_len && strncasecmp (utf, tmp_sess->channel, len) == 0)
-                [matchArray addObject:[OneCompletion completionWithValue:tmp_sess->channel]];
+                [matchArray addObject:[OneCompletion completionWithValue:[NSString stringWithUTF8String:tmp_sess->channel]]];
         }
     }
 
@@ -2008,7 +1996,7 @@ static int find_common (NSArray *list)
 	}
 	else
 	{
-		circular_completion_idx = 0;
+		circularCompletionIndex = 0;
 		NSRange range = [view selectedRange];
 		insertionPoint = range.location;
 	}
@@ -2040,7 +2028,7 @@ static int find_common (NSArray *list)
 	//////////
 	
 	NSArray *matchArray;
-	bool add_suffix = false;
+	BOOL add_suffix = NO;
 	
     if (range.location == 0)
     {
@@ -2053,7 +2041,7 @@ static int find_common (NSArray *list)
 		else
 		{
 			matchArray = [self nick_complete:view start:[str substringWithRange:range]];
-			add_suffix = true;
+			add_suffix = YES;
 		}
     }
     else
@@ -2089,7 +2077,7 @@ static int find_common (NSArray *list)
 	
 	if (prefs.scrolling_completion)
 	{
-		NSString *item = [[matchArray objectAtIndex:circular_completion_idx] stringValue];
+		NSString *item = [[matchArray objectAtIndex:circularCompletionIndex] stringValue];
 
 		// Replace the part he typed, just so the case will match
 		NSString *left = [item substringToIndex:range.length];
@@ -2103,16 +2091,16 @@ static int find_common (NSArray *list)
 		[r appendString:@" "];
 		[view setMarkedText:r selectedRange:NSMakeRange(0, [r length])];
 		[view setSelectedRange:NSMakeRange(range.location + range.length + [r length], 0)];
-		circular_completion_idx = (circular_completion_idx + 1) % [matchArray count];
+		circularCompletionIndex = (circularCompletionIndex + 1) % [matchArray count];
 	}
 	else
 	{
-		[self print_text:[[matchArray componentsJoinedByString:@" "] UTF8String]];
+		[self printText:[matchArray componentsJoinedByString:@" "]];
 	}
 }
 
 //////////
-// input_text delegate and helper funcs
+// inputTextField delegate and helper funcs
 
 - (BOOL)control:(NSControl *)control textShouldBeginEditing:(NSText *)fieldEditor
 {
@@ -2131,7 +2119,7 @@ static int find_common (NSArray *list)
 
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector
 {
-    //NSArray *xx = [input_text registeredDraggedTypes];
+    //NSArray *xx = [inputTextField registeredDraggedTypes];
     //if (xx)
     //{
     //    for (unsigned i = 0; i < [xx count]; i ++)
@@ -2147,33 +2135,33 @@ static int find_common (NSArray *list)
 		{
 			[textView insertNewlineIgnoringFieldEditor:control];
 		}
-		else return false;
+		else return FALSE;
 	}
 	else if (commandSelector == @selector (moveUp:))
     {
-        const char *xx = history_up (&sess->history, (char *) [[input_text stringValue] UTF8String]);
-        [self setInputText:xx];
+        const char *xx = history_up (&sess->history, (char *) [[inputTextField stringValue] UTF8String]);
+        [self setInputText:[NSString stringWithUTF8String:xx]];
     }
     else if (commandSelector == @selector (moveDown:))
     {
         const char *xx = history_down (&sess->history);
-        [self setInputText:xx];
+        [self setInputText:[NSString stringWithUTF8String:xx]];
     }
     else if (commandSelector == @selector (scrollPageDown:))
     {
-        [chat_text scrollPageDown:textView];
+        [chatTextView scrollPageDown:textView];
     }
     else if (commandSelector == @selector (scrollPageUp:))
     {
-        [chat_text scrollPageUp:textView];
+        [chatTextView scrollPageUp:textView];
     }
     else if (commandSelector == @selector (scrollToBeginningOfDocument:))
     {
-        [chat_text scrollToBeginningOfDocument:textView];
+        [chatTextView scrollToBeginningOfDocument:textView];
     }
     else if (commandSelector == @selector (scrollToEndOfDocument:))
     {
-        [chat_text scrollToEndOfDocument:textView];
+        [chatTextView scrollToEndOfDocument:textView];
     }
     else if (commandSelector == @selector (insertTab:))
     {
@@ -2183,10 +2171,10 @@ static int find_common (NSArray *list)
             [textView insertTab:textView];
     }
 	else {
-		return false;
+		return FALSE;
 	}
 
-    return true;
+    return TRUE;
 }
 
 @end
