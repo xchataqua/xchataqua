@@ -121,7 +121,7 @@ extern char *pntevts[];
     [helpTableView setDataSource:self];
 
     [testText setPalette:[[AquaChat sharedAquaChat] palette]];
-    [testText setFont:[[AquaChat sharedAquaChat] font] boldFont:[[AquaChat sharedAquaChat] bold_font]];
+    [testText setFont:[[AquaChat sharedAquaChat] font] boldFont:[[AquaChat sharedAquaChat] boldFont]];
 
     [[eventTableView window] center];
 }
@@ -174,7 +174,7 @@ extern char *pntevts[];
 		y ++;
 	}
 	*y = 0;
-	[testText print_text:out];
+	[testText printText:[NSString stringWithUTF8String:out]];
 	free(out);
 }
 

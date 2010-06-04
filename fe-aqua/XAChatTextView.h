@@ -37,26 +37,25 @@
 #endif
 {
     ColorPalette			*palette;
-    NSFont					*normal_font;
-    NSFont					*bold_font;
+    NSFont					*normalFont;
+    NSFont					*boldFont;
     NSMutableParagraphStyle	*style;
-    NSRect					line_rect;
-    NSRange					word_range;
-    int						word_type;
+    NSRect					lineRect;
+    NSRange					wordRange;
+    int						wordType;
     NSString				*word;
-    id						m_event_req_id;
-    ChatWindow				*drop_handler;
-    bool					shows_sep;
-    CGFloat					font_width;
-    bool					at_bottom;
-	int						num_lines;
+    id						mouseEventRequestId;
+    ChatWindow				*dropHandler;
+    CGFloat					fontWidth;
+    BOOL					atBottom;
+	int						numberOfLines;
 }
 
-- (void) print_text:(const char *) text;
-- (void) print_text:(const char *) text stamp:(time_t)stamp;
-- (void) clear_text;
+- (void) printText:(NSString *)text;
+- (void) printText:(NSString *)text stamp:(time_t)stamp;
+- (void) clearText;
 - (void) setPalette:(ColorPalette *) palette;
-- (void) setFont:(NSFont *) font boldFont:(NSFont *) bold_font;
-- (void) setDropHandler:(id) drop_handler;
+- (void) setFont:(NSFont *)font boldFont:(NSFont *) boldFont;
+- (void) setDropHandler:(id)dropHandler;
 
 @end

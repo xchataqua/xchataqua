@@ -296,7 +296,7 @@ fe_new_window (struct session *sess, int focus)
 		current_sess = sess;
 		
 	if (focus)
-		[[sess->gui->cw view] makeKeyAndOrderFront:nil];
+		[sess->gui->cw.view makeKeyAndOrderFront:nil];
 
     // XChat waits until a session is created before installing plugins.. we
     // do the same thing..
@@ -307,7 +307,7 @@ fe_new_window (struct session *sess, int focus)
 void
 fe_print_text (struct session *sess, char *text, time_t stamp)
 {
-    [sess->gui->cw print_text:text stamp:stamp];
+    [sess->gui->cw printText:[NSString stringWithUTF8String:text] stamp:stamp];
 }
 
 void
@@ -707,7 +707,7 @@ fe_get_str (char *msg, char *def, void *callback, void *userdata)
 void
 fe_close_window (struct session *sess)
 {
-    [sess->gui->cw close_window];
+    [sess->gui->cw closeWindow];
 }
 
 void
@@ -726,7 +726,7 @@ fe_add_rawlog (struct server *serv, char *text, int len, int outbound)
 void
 fe_set_topic (struct session *sess, char *topic, char *stripped_topic)
 {
-    [sess->gui->cw set_topic:topic];
+    [sess->gui->cw setTopic:topic];
 }
 
 void
@@ -738,13 +738,13 @@ fe_cleanup (void)
 void
 fe_set_hilight (struct session *sess)
 {
-    [sess->gui->cw set_hilight];
+    [sess->gui->cw setHilight];
 }
 
 void
 fe_update_mode_buttons (struct session *sess, char mode, char sign)
 {
-    [sess->gui->cw mode_buttons:mode sign:sign];
+    [sess->gui->cw modeButtons:mode sign:sign];
 }
 
 void
@@ -756,7 +756,7 @@ fe_update_channel_key (struct session *sess)
 void
 fe_update_channel_limit (struct session *sess)
 {
-    [sess->gui->cw channel_limit];
+    [sess->gui->cw channelLimit];
 }
 
 int
@@ -824,51 +824,51 @@ fe_text_clear (struct session *sess, int lines)
 }
 
 void
-fe_progressbar_start (struct session *sess)
+fe_progressbarStart (struct session *sess)
 {
-    [sess->gui->cw progressbar_start];
+    [sess->gui->cw progressbarStart];
 }
 
 void
-fe_progressbar_end (struct server *serv)
+fe_progressbarEnd (struct server *serv)
 {
     [AquaChat forEachSessionOnServer:serv
-		     performSelector:@selector (progressbar_end)];
+		     performSelector:@selector (progressbarEnd)];
 }
 
 void
 fe_userlist_insert (struct session *sess, struct User *newuser, int row, int selected)
 {
-    [sess->gui->cw userlist_insert:newuser row:row select:selected];
+    [sess->gui->cw userlistInsert:newuser row:(NSInteger)row select:selected];
 }
 
 void fe_userlist_update (struct session *sess, struct User *user)
 {
-    [sess->gui->cw userlist_update:user];
+    [sess->gui->cw userlistUpdate:user];
 }
 
 int
 fe_userlist_remove (struct session *sess, struct User *user)
 {
-    return [sess->gui->cw userlist_remove:user];
+    return (int)[sess->gui->cw userlistRemove:user];
 }
 
 void
 fe_userlist_move (struct session *sess, struct User *user, int new_row)
 {
-    [sess->gui->cw userlist_move:user row:new_row];
+    [sess->gui->cw userlistMove:user row:(NSInteger)new_row];
 }
 
 void
 fe_userlist_numbers (struct session *sess)
 {
-    [sess->gui->cw userlist_numbers];
+    [sess->gui->cw userlistNumbers];
 }
 
 void
 fe_userlist_clear (struct session *sess)
 {
-    [sess->gui->cw userlist_clear];
+    [sess->gui->cw userlistClear];
 }
 
 void
@@ -892,7 +892,7 @@ fe_dcc_remove (struct DCC *dcc)
 void
 fe_clear_channel (struct session *sess)
 {
-    [sess->gui->cw clear_channel];
+    [sess->gui->cw clearChannel];
 }
 
 void
@@ -926,38 +926,38 @@ fe_pluginlist_update (void)
 void
 fe_buttons_update (struct session *sess)
 {
-    [sess->gui->cw setup_userlist_buttons];
+    [sess->gui->cw setupUserlistButtons];
 }
 
 void
 fe_dlgbuttons_update (struct session *sess)
 {
-    [sess->gui->cw setup_dialog_buttons];
+    [sess->gui->cw setupDialogButtons];
 }
 
 void
 fe_set_channel (struct session *sess)
 {
-    [sess->gui->cw set_channel];
+    [sess->gui->cw setChannel];
 }
 
 void
 fe_set_title (struct session *sess)
 {
-    [sess->gui->cw set_title];
+    [sess->gui->cw setTitle];
 }
 
 void
 fe_set_nonchannel (struct session *sess, int state)
 {
-    [sess->gui->cw set_nonchannel:state];
+    [sess->gui->cw setNonchannel:state];
 }
 
 void
 fe_set_nick (struct server *serv, char *newnick)
 {
     [AquaChat forEachSessionOnServer:serv
-		     performSelector:@selector (set_nick)];
+		     performSelector:@selector (setNick)];
 }
 
 void
@@ -1022,7 +1022,7 @@ fe_set_lag (server * serv, int lag)
         per = 1.0;
 
     [AquaChat forEachSessionOnServer:serv
-		     performSelector:@selector (set_lag:)
+		     performSelector:@selector (setLag:)
 		     withObject:[NSNumber numberWithFloat:per]];
 }
 
@@ -1030,7 +1030,7 @@ void
 fe_set_throttle (server *serv)
 {
     [AquaChat forEachSessionOnServer:serv
-		     performSelector:@selector (set_throttle)];
+		     performSelector:@selector (setThrottle)];
 }
 
 void
@@ -1075,7 +1075,7 @@ fe_ctrl_gui (session *sess, fe_gui_action action, int arg)
 void
 fe_userlist_rehash (struct session *sess, struct User *user)
 {
-    [sess->gui->cw userlist_rehash:user];
+    [sess->gui->cw userlistRehash:user];
 }
 
 void
@@ -1111,17 +1111,17 @@ fe_gui_info (session *sess, int info_type)
 
 char * fe_get_inputbox_contents (struct session *sess)
 {
-	return (char *) [sess->gui->cw getInputText];
+	return (char *) [[sess->gui->cw inputText] UTF8String];
 }
 
 void fe_set_inputbox_contents (struct session *sess, char *text)
 {
-	[sess->gui->cw setInputText:text];
+	[sess->gui->cw setInputText:[NSString stringWithUTF8String:text]];
 }
 
 int fe_get_inputbox_cursor (struct session *sess)
 {
-	return [sess->gui->cw getInputTextPosition];
+	return [sess->gui->cw inputTextPosition];
 }
 
 void fe_set_inputbox_cursor (struct session *sess, int delta, int pos)
@@ -1153,7 +1153,7 @@ void fe_menu_update (menu_entry *me)
 
 void fe_uselect (session *sess, char *word[], int do_clear, int scroll_to)
 {
-    [sess->gui->cw userlist_select_names:word clear:do_clear scroll_to:scroll_to];
+    [sess->gui->cw userlistSelectNames:word clear:do_clear scrollTo:scroll_to];
 }
 
 void fe_server_event (server *serv, int type, int arg)
@@ -1174,7 +1174,7 @@ void *fe_gui_info_ptr (session *sess, int info_type)
 void
 fe_userlist_set_selected (struct session *sess)
 {
-	[sess->gui->cw userlist_set_selected];
+	[sess->gui->cw userlistSetSelected];
 }
 
 // This should be called fe_joind()!  Sending mail to peter.
