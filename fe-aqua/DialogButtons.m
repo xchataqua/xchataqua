@@ -35,7 +35,7 @@
 {
     [super doSave:sender];
     [AquaChat forEachSessionOnServer:NULL
-		     performSelector:@selector (setup_userlist_buttons)];
+		     performSelector:@selector (setupUserlistButtons)];
 }
 
 @end

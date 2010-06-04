@@ -97,7 +97,7 @@ event_info text_event_info[NUM_XP];
 //////////////////////////////////////////////////////////////////////
 
 @implementation AquaChat
-@synthesize font, bold_font, palette;
+@synthesize font, boldFont, palette;
 
 + (void) forEachSessionOnServer:(struct server *)serv performSelector:(SEL)sel
 {
@@ -246,7 +246,7 @@ event_info text_event_info[NUM_XP];
     self->search_string = nil;
     
     self->font = nil;
-    self->bold_font = nil;
+    self->boldFont = nil;
     
     self->palette = [[ColorPalette alloc] init];
     [self->palette load];
@@ -375,15 +375,15 @@ event_info text_event_info[NUM_XP];
     NSFontManager *fontManager = [NSFontManager sharedFontManager];
     
     [self->font release];
-    [self->bold_font release];
+    [self->boldFont release];
     
     self->font = [[fontManager convertFont:f toHaveTrait:NSUnboldFontMask] retain];
-    self->bold_font = [[fontManager convertFont:f toHaveTrait:NSBoldFontMask] retain];
+    self->boldFont = [[fontManager convertFont:f toHaveTrait:NSBoldFontMask] retain];
 
     if (!self->font)
         self->font = [f retain];
-    if (!self->bold_font)
-        self->bold_font = [f retain];
+    if (!self->boldFont)
+        self->boldFont = [f retain];
     
     sprintf (prefs.font_normal, "%s %.1f", [[font fontName] UTF8String], [font pointSize]);
 }
@@ -509,11 +509,11 @@ event_info text_event_info[NUM_XP];
     [self do_search_again:sender];
 }
 
-- (void) do_save_buffer:(id) sender
+- (void) do_saveBuffer:(id) sender
 {
     NSString *fname = [SGFileSelection saveWithWindow:[current_sess->gui->cw window]];
     if (fname)
-        [current_sess->gui->cw save_buffer:fname];
+        [current_sess->gui->cw saveBuffer:fname];
 }
 
 - (void) do_serverlist:(id) sender
@@ -1020,7 +1020,7 @@ event_info text_event_info[NUM_XP];
         case 3:
             /*[[sess->gui->cw set_tab_color (sess, -1, TRUE);*/ break; /* flash */
         case 4:
-            [sess->gui->cw set_tab_color:arg flash:false]; break;
+            [sess->gui->cw setTabColor:arg flash:NO]; break;
         case 5:
             [[sess->gui->cw window] miniaturize:self]; break;
     }

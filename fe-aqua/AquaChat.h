@@ -92,7 +92,7 @@ extern struct event_info text_event_info[];
     ColorPalette *palette;
     
     NSFont	*font;
-    NSFont	*bold_font;
+    NSFont	*boldFont;
 
     ServerList	*server_list;
     
@@ -120,7 +120,7 @@ extern struct event_info text_event_info[];
     NSMutableDictionary *sound_cache;
 }
 
-@property (nonatomic, readonly) NSFont *font, *bold_font;
+@property (nonatomic, readonly) NSFont *font, *boldFont;
 @property (nonatomic, retain) ColorPalette *palette;
 
 + (AquaChat *) sharedAquaChat;
