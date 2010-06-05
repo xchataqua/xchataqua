@@ -116,9 +116,9 @@ struct event_info text_event_info[NUM_XP];
 {
     struct menu_pref tmp_prefs [] = 
     {
-        { invisible_menu, &prefs.invisible },
-        { receive_notices_menu, &prefs.servernotice },
-        { receive_wallops_menu, &prefs.wallops },
+        { invisibleMenuItem, &prefs.invisible },
+        { receiveNoticesMenuItem, &prefs.servernotice },
+        { receiveWallopsMenuItem, &prefs.wallops },
     };
     
     for (NSUInteger i = 0; i < sizeof(menu_prefs) / sizeof(menu_prefs[0]); i ++)
@@ -408,14 +408,14 @@ struct event_info text_event_info[NUM_XP];
 	NSString* s;
 	s = SRStringForKeyCode(prefs.tab_left_key);
 	if ( s != nil ) {
-		[prev_window_menu setKeyEquivalent:s];
-		[prev_window_menu setKeyEquivalentModifierMask:prefs.tab_left_modifiers];
+		[previousWindowMenuItem setKeyEquivalent:s];
+		[previousWindowMenuItem setKeyEquivalentModifierMask:prefs.tab_left_modifiers];
 	}
 	
 	s = SRStringForKeyCode(prefs.tab_right_key);
 	if ( s != nil ) {
-		[next_window_menu setKeyEquivalent:s];
-		[next_window_menu setKeyEquivalentModifierMask:prefs.tab_right_modifiers];
+		[nextWindowMenuItem setKeyEquivalent:s];
+		[nextWindowMenuItem setKeyEquivalentModifierMask:prefs.tab_right_modifiers];
 	}
 	#endif
 	
@@ -484,7 +484,7 @@ struct event_info text_event_info[NUM_XP];
 
 - (void) set_away:(bool) is_away
 {
-    [away_menu_item setState:is_away ? NSOnState : NSOffState];
+    [awayMenuItem setState:is_away ? NSOnState : NSOffState];
 }
 
 - (void) do_search_again:(id) sender
@@ -770,7 +770,7 @@ struct event_info text_event_info[NUM_XP];
 - (void) do_new_server:(id) sender
 {
     int old = prefs.tabchannels;
-    prefs.tabchannels = sender == new_server_tab_menu;
+    prefs.tabchannels = sender == newServerTabMenuItem;
     new_ircwindow (NULL, NULL, SESS_SERVER, true);
     prefs.tabchannels = old;
 }
@@ -778,7 +778,7 @@ struct event_info text_event_info[NUM_XP];
 - (void) do_new_channel:(id) sender
 {
     int old = prefs.tabchannels;
-    prefs.tabchannels = sender == new_channel_tab_menu;
+    prefs.tabchannels = sender == newChannelTabMenuItem;
     new_ircwindow (current_sess->server, NULL, SESS_CHANNEL, true);
     prefs.tabchannels = old;
 }
