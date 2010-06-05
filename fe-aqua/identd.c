@@ -26,14 +26,14 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-extern "C" {
+//extern "C" {
 #undef TYPE_BOOL
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
 #include "../common/text.h"
 #include "../common/fe.h"
 #undef TYPE_BOOL
-}
+//}
 
 static int ident_sok = -1;
 static int ident_tag = -1;
@@ -47,9 +47,9 @@ struct two_ints
     int tag;
 };
 
-static void identd_reply (void *, int, void *cbd)
+static void identd_reply (void *arg, int c, void *cbd)
 {
-    two_ints *x = (two_ints *) cbd;
+    struct two_ints *x = (struct two_ints *) cbd;
     
     char buf [256];
     recv (x->sock, buf, sizeof (buf) - 1, 0);
@@ -69,10 +69,10 @@ static void identd_reply (void *, int, void *cbd)
     
     close (x->sock);
     
-    delete x;
+    free(x);
 }
 
-static void identd (void *, int, void *)
+static void identd (void *arg, int c, void *cbd)
 {
     struct sockaddr_in addr;
     socklen_t len = sizeof (addr);
@@ -93,7 +93,7 @@ static void identd (void *, int, void *)
                                 inet_ntoa (addr.sin_addr));
     PrintText (current_sess, outbuf);
 
-    two_ints *x = new two_ints;
+    struct two_ints *x = (struct two_ints *)malloc(sizeof(struct two_ints));
     x->sock = read_sok;
     x->tag = fe_input_add (read_sok, FIA_READ, (void *) identd_reply, x);
 }
