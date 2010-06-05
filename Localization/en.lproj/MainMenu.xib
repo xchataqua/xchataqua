@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="424"/>
+			<integer value="169"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1004,14 +1004,6 @@
 					<int key="connectionID">806</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">away_menu_item</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="460894357"/>
-					</object>
-					<int key="connectionID">854</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">do_away_button:</string>
 						<reference key="source" ref="1009676812"/>
@@ -1052,22 +1044,6 @@
 					<int key="connectionID">907</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">new_server_tab_menu</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="789590668"/>
-					</object>
-					<int key="connectionID">908</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">new_channel_tab_menu</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="239048632"/>
-					</object>
-					<int key="connectionID">909</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">do_invisible_menu:</string>
 						<reference key="source" ref="1009676812"/>
@@ -1090,30 +1066,6 @@
 						<reference key="destination" ref="621176181"/>
 					</object>
 					<int key="connectionID">913</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">invisible_menu</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="446557098"/>
-					</object>
-					<int key="connectionID">920</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">receive_wallops_menu</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="281485293"/>
-					</object>
-					<int key="connectionID">921</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">receive_notices_menu</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="621176181"/>
-					</object>
-					<int key="connectionID">922</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -1428,22 +1380,6 @@
 					<int key="connectionID">1296</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">next_window_menu</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="230031632"/>
-					</object>
-					<int key="connectionID">1297</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">prev_window_menu</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="14035718"/>
-					</object>
-					<int key="connectionID">1298</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">undo:</string>
 						<reference key="source" ref="498682042"/>
@@ -1466,6 +1402,70 @@
 						<reference key="destination" ref="935292016"/>
 					</object>
 					<int key="connectionID">1411</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">awayMenuItem</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="460894357"/>
+					</object>
+					<int key="connectionID">1412</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">invisibleMenuItem</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="446557098"/>
+					</object>
+					<int key="connectionID">1413</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">newChannelTabMenuItem</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="239048632"/>
+					</object>
+					<int key="connectionID">1414</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">newServerTabMenuItem</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="789590668"/>
+					</object>
+					<int key="connectionID">1415</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">nextWindowMenuItem</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="230031632"/>
+					</object>
+					<int key="connectionID">1416</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">previousWindowMenuItem</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="14035718"/>
+					</object>
+					<int key="connectionID">1417</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">receiveNoticesMenuItem</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="621176181"/>
+					</object>
+					<int key="connectionID">1418</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">receiveWallopsMenuItem</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="281485293"/>
+					</object>
+					<int key="connectionID">1419</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2502,7 +2502,7 @@
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>{{209, 632}, {221, 93}}</string>
+					<string>{{408, 767}, {218, 93}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2522,7 +2522,7 @@
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>{{123, 582}, {247, 143}}</string>
+					<string>{{322, 717}, {244, 143}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2575,7 +2575,7 @@
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>{{12, 512}, {228, 213}}</string>
+					<string>{{211, 647}, {228, 213}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2590,7 +2590,7 @@
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>{{165, 502}, {186, 223}}</string>
+					<string>{{364, 637}, {183, 223}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2614,7 +2614,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">1411</int>
+			<int key="maxID">1419</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2630,17 +2630,27 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>invisible_menu</string>
-							<string>receive_notices_menu</string>
-							<string>receive_wallops_menu</string>
+							<string>awayMenuItem</string>
+							<string>invisibleMenuItem</string>
+							<string>newChannelTabMenuItem</string>
+							<string>newServerTabMenuItem</string>
+							<string>nextWindowMenuItem</string>
+							<string>previousWindowMenuItem</string>
+							<string>receiveNoticesMenuItem</string>
+							<string>receiveWallopsMenuItem</string>
 							<string>user_menu</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
+							<string>NSMenuItem</string>
+							<string>NSMenu</string>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -2759,25 +2769,8 @@
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>acprefs</string>
-							<string>away_menu_item</string>
-							<string>new_channel_tab_menu</string>
-							<string>new_server_tab_menu</string>
-							<string>next_window_menu</string>
-							<string>prev_window_menu</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>PrefsController</string>
-							<string>NSMenuItem</string>
-							<string>NSMenuItem</string>
-							<string>NSMenuItem</string>
-							<string>NSMenuItem</string>
-							<string>NSMenuItem</string>
-						</object>
+						<string key="NS.key.0">acprefs</string>
+						<string key="NS.object.0">PrefsController</string>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBUserSource</string>

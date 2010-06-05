@@ -1056,11 +1056,7 @@ fe_serverlist_open (session *sess)
     [[AquaChat sharedAquaChat] open_serverlist_for:sess];
 }
 
-extern
-#ifdef __cplusplus
-"C" 
-#endif
-void
+extern void
 fe_play_wave (const char *fname)
 {
     [[AquaChat sharedAquaChat] play_wave:fname];
@@ -1179,11 +1175,8 @@ fe_userlist_set_selected (struct session *sess)
 
 // This should be called fe_joind()!  Sending mail to peter.
 // This function is supposed to bring up a join channels dialog box.
-extern
-#ifdef __cplusplus
-"C"
-#endif
-void joind (int action, server *serv)
+extern void
+joind (int action, server *serv)
 {
 }
 
