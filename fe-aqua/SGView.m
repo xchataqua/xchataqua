@@ -88,6 +88,7 @@
 
 @implementation NSView (sgview)
 
+// replace deprecated -poseAsClass:
 - (void) setOriginalHidden:(BOOL) flag {
 	assert(NO);
 }
@@ -124,7 +125,7 @@
 - (id)initWithView:(NSView *) the_view;
 {
     self->view = the_view;
-    [self reset_pref_size];
+    [self reset_prefSize];
     [view retain];
     
     return self;
@@ -133,16 +134,16 @@
 - (id) initWithCoder:(NSCoder *) decoder
 {
 	view = [[decoder decodeObjectForKey:@"view"] retain];
-	last_size = [decoder decodeRectForKey:@"last_size"];
-	pref_size = [decoder decodeRectForKey:@"pref_size"];
+	lastSize = [decoder decodeRectForKey:@"lastSize"];
+	prefSize = [decoder decodeRectForKey:@"prefSize"];
 	return self;
 }
 
 - (void) encodeWithCoder:(NSCoder *) encoder
 {
 	[encoder encodeConditionalObject:view forKey:@"view"];
-	[encoder encodeRect:last_size forKey:@"last_size"];
-	[encoder encodeRect:pref_size forKey:@"pref_size"];
+	[encoder encodeRect:lastSize forKey:@"lastSize"];
+	[encoder encodeRect:prefSize forKey:@"prefSize"];
 }
 
 - (void) dealloc
@@ -164,18 +165,18 @@
 	//	frame.origin.y, frame.size.width, frame.size.height);
 		
     frame = NSIntegralRect (frame);
-    self->last_size = frame;
+    self->lastSize = frame;
     [self->view setFrame:frame];
-    [self->view setNeedsDisplay:true];            
+    [self->view setNeedsDisplay:YES];
 }
 
-- (void) reset_pref_size
+- (void) reset_prefSize
 {
-    self->pref_size = [view frame];
+    self->prefSize = [view frame];
 }
 
 - (NSView *) view { return self->view; }
-- (NSRect) prefSize { return self->pref_size; }
+- (NSRect) prefSize { return self->prefSize; }
 
 @end
 
@@ -185,11 +186,7 @@
 
 + (void) initialize
 {
-	#ifdef FE_AQUA_TIGER
-	if (self == [SGView class]) {
-		[NSViewOverride poseAsClass:[NSView class]];
-	}
-	#else
+	// swap original -setHidden: to new one
 	Method originalMethod = class_getInstanceMethod([NSView class], @selector(setHidden:));
 	Method overrideMethod = class_getInstanceMethod([NSView class], @selector(setSGHidden:));
 	IMP originalImplementation = method_getImplementation(originalMethod);
@@ -198,7 +195,6 @@
 		method_setImplementation(class_getInstanceMethod([NSView class], @selector(setOriginalHidden:)), originalImplementation);
 		method_setImplementation(originalMethod, overrideImplementation);
 	}
-	#endif
 }
 
 - (void) SGViewPrivateInit
@@ -206,10 +202,10 @@
 	[self setAutoresizesSubviews:YES];
 	
 	metaViews = [[NSMutableArray alloc] init];
-    self->first_layout = true;
-    self->pending_layout = false;
-    self->in_my_layout = false;
-    self->in_dtor = false;
+    self->first_layout = YES;
+    self->pending_layout = NO;
+    self->in_my_layout = NO;
+    self->in_dtor = NO;
 }
 
 - (id) initWithFrame:(NSRect)frameRect
@@ -223,10 +219,10 @@
 {
 	self = [super initWithCoder:decoder];
 	[self SGViewPrivateInit];
-	self->first_layout = false;	// This feels right
+	self->first_layout = NO;	// This feels right
 	[metaViews release];
 	metaViews = [[NSMutableArray alloc] initWithCoder:decoder];
-    for (unsigned i = 0; i < [metaViews count]; i ++)
+    for (NSUInteger i = 0; i < [metaViews count]; i ++)
         [self didAddSubview:[[metaViews objectAtIndex:i] view]];
     return self;
 }
@@ -239,7 +235,7 @@
 
 - (void) dealloc
 {
-    in_dtor = true;
+    in_dtor = YES;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
@@ -251,29 +247,29 @@
 {
 }
 
-- (void) setAutoSizeToFit:(bool) sf
+- (void) setAutoSizeToFit:(BOOL) sf
 {
     auto_size_to_fit = sf;
 }
 
 - (void) sizeToFit
 {
-    needs_size_to_fit = false;
+    needs_size_to_fit = NO;
 }
 
 - (void) layoutNow
 {    
-    pending_layout = false;
-    in_my_layout = true;
+    pending_layout = NO;
+    in_my_layout = YES;
     
     if (needs_size_to_fit)
         [self sizeToFit];
         
     [self do_layout];
-    [self setNeedsDisplay:true];
+    [self setNeedsDisplay:YES];
 
-    in_my_layout = false;
-    first_layout = false;
+    in_my_layout = NO;
+    first_layout = NO;
 }
 
 - (void) layout_maybe
@@ -287,7 +283,7 @@ static void noDisplay (NSView *v)
 {
     [v setNeedsDisplay:NO];
     NSArray *sub = [v subviews];
-    for (unsigned i = 0; i < [sub count]; i ++)
+    for (NSUInteger i = 0; i < [sub count]; i ++)
         noDisplay ([sub objectAtIndex:i]);
 }
 #endif
@@ -316,7 +312,7 @@ static void noDisplay (NSView *v)
 
 #if 0
     [[NSColor redColor] set];
-    [[NSGraphicsContext currentContext] setShouldAntialias:false];
+    [[NSGraphicsContext currentContext] setShouldAntialias:NO];
     NSBezierPath *p = [NSBezierPath bezierPathWithRect:[self bounds]];
     [p setLineWidth:5];
     [p stroke];
@@ -397,7 +393,7 @@ static void noDisplay (NSView *v)
 {
     // A child view just changed size.  If we are in layout, then we
     // can assume he's changed because we told him to.
-    // Sepcifically, we don't want to change the pref_size unless
+    // Sepcifically, we don't want to change the prefSize unless
     // someone other than us changed him.
     
     // in_my_layout is not enough info.. SGViews that change other
@@ -411,16 +407,16 @@ static void noDisplay (NSView *v)
     SGMetaView *metaView = [self find_view:subview];
     
     if (in_my_layout && (
-        NSEqualRects (metaView->last_size, [subview frame]) ||
-        NSEqualRects (metaView->pref_size, [subview frame])))
+        NSEqualRects (metaView->lastSize, [subview frame]) ||
+        NSEqualRects (metaView->prefSize, [subview frame])))
     {
         return;
     }
 
-    [metaView reset_pref_size];
+    [metaView reset_prefSize];
     
     if (auto_size_to_fit)
-        needs_size_to_fit = true;
+        needs_size_to_fit = YES;
         
     [self queue_layout];
 }
@@ -448,7 +444,7 @@ static void noDisplay (NSView *v)
         name:NSViewFrameDidChangeNotification object:subview];
     
     if (auto_size_to_fit)
-        needs_size_to_fit = true;
+        needs_size_to_fit = YES;
 
     [self queue_layout];
 }
@@ -467,7 +463,7 @@ static void noDisplay (NSView *v)
     [metaViews removeObject:metaView];
     
     if (auto_size_to_fit)
-        needs_size_to_fit = true;
+        needs_size_to_fit = YES;
 
     [self queue_layout];
 }

@@ -10,8 +10,6 @@
 
 
 @interface SGFileUtil : NSObject
-{
-}
 
 + (NSString *) findApplicationSupportFor:(NSString *) app;
 + (BOOL) exists:(NSString *) fname;

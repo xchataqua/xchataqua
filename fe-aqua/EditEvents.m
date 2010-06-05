@@ -44,22 +44,21 @@ extern char *pntevts[];
     NSMutableArray	*help;
 }
 
-- (int) help_count;
-- (id)  help_row:(int) row;
+- (NSUInteger) helpCount;
+- (id) helpRow:(NSInteger)row;
 
 @end
 
 @implementation OneEvent
 
-- (id) initWithEvent:(struct text_event *) event
-		text:(const char *) the_text
+- (id) initWithEvent:(struct text_event *)event text:(const char *)the_text
 {
     name = [[NSMutableString stringWithUTF8String:event->name] retain];
     text = [[NSMutableString stringWithUTF8String:the_text] retain];
     help = [[NSMutableArray arrayWithCapacity:(event->num_args & 0x7f)] retain];
 
-    for (int i = 0; i < (event->num_args & 0x7f); i ++)
-		[help addObject:[NSMutableString stringWithUTF8String:event->help [i]]];
+    for (NSInteger i = 0; i < (event->num_args & 0x7f); i ++)
+		[help addObject:[NSMutableString stringWithUTF8String:event->help[i]]];
     
     return self;
 }
@@ -72,12 +71,12 @@ extern char *pntevts[];
     [super dealloc];
 }
 
-- (int) help_count
+- (NSUInteger) helpCount
 {
     return [help count];
 }
 
-- (id)  help_row:(int) row
+- (id) helpRow:(NSInteger)row
 {
     return [help objectAtIndex:row];
 }
@@ -92,116 +91,114 @@ extern char *pntevts[];
 {
     [super init];
      
-    my_items = nil;
+    myItems = nil;
 
     [NSBundle loadNibNamed:@"EditEvents" owner:self];
-	[[event_list window] setTitle:NSLocalizedStringFromTable(@"Edit Events", @"xchat", @"")];
+	[[eventTableView window] setTitle:NSLocalizedStringFromTable(@"Edit Events", @"xchat", @"")];
     return self;
 }
 
 - (void) dealloc
 {
-    [[event_list window] release];
-    [my_items release];
+    [[eventTableView window] release];
+    [myItems release];
     [super dealloc];
 }
 
 - (void) awakeFromNib
 {
-    my_items = [[NSMutableArray arrayWithCapacity:NUM_XP] retain];
+    myItems = [[NSMutableArray arrayWithCapacity:NUM_XP] retain];
 	
-    for (int i = 0; i < [event_list numberOfColumns]; i ++)
-        [[[event_list tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
+    for (NSUInteger i = 0; i < [eventTableView numberOfColumns]; i ++)
+        [[[eventTableView tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInteger:i]];
 
-    for (int i = 0; i < [help_list numberOfColumns]; i ++)
-        [[[help_list tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
+    for (NSUInteger i = 0; i < [helpTableView numberOfColumns]; i ++)
+        [[[helpTableView tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInteger:i]];
     
-    [event_list setDataSource:self];
-    [event_list setDelegate:self];
+    [eventTableView setDataSource:self];
+    [eventTableView setDelegate:self];
 
-    [help_list setDataSource:self];
+    [helpTableView setDataSource:self];
 
-    [test_text setPalette:[[AquaChat sharedAquaChat] getPalette]];
-    [test_text setFont:[[AquaChat sharedAquaChat] font]
-	      boldFont:[[AquaChat sharedAquaChat] bold_font]];
+    [testText setPalette:[[AquaChat sharedAquaChat] palette]];
+    [testText setFont:[[AquaChat sharedAquaChat] font] boldFont:[[AquaChat sharedAquaChat] boldFont]];
 
-    [[event_list window] center];
+    [[eventTableView window] center];
 }
 
-- (void) load_items
+- (void) loadItems
 {
 	prefs.save_pevents = true;
 
-    [my_items removeAllObjects];
+    [myItems removeAllObjects];
 
     for (int i = 0; i < NUM_XP; i ++)                      
     {
-		OneEvent *item = [[[OneEvent alloc] initWithEvent:&te [i]
-												     text:pntevts_text [i]] autorelease];
-		[my_items addObject:item];
+		OneEvent *item = [[[OneEvent alloc] initWithEvent:&te[i] text:pntevts_text[i]] autorelease];
+		[myItems addObject:item];
     }
 
-    [event_list reloadData];
+    [eventTableView reloadData];
 }
 
 - (void) show
 {
-    [self load_items];
-    [[event_list window] makeKeyAndOrderFront:self];
+    [self loadItems];
+    [[eventTableView window] makeKeyAndOrderFront:self];
 }
 
-- (void) do_ok:(id) sender
+- (void) doOk:(id)sender
 {
-    pevent_save (NULL);
+    pevent_save(NULL);
     [[sender window] orderOut:sender];
 }
 
-- (void) test_one:(int) row
+- (void) testOne:(int) row
 {
-    const char *text = pntevts_text[row];
-    char *out = strdup (text);
-    check_special_chars (out, TRUE);
-    // Events have $t which need to be converted to tabs.. stupid design :)
-    char *x = out;
-    char *y = out;
-    while (*x)
-    {
-        if (x[0] == '$' && x[1] == 't')
-        {
-            *y = '\t';
-            x ++;
-        }
-        else
-            *y = *x;
-        x ++;
-        y ++;
-    }
-    *y = 0;
-    [test_text print_text:out];
-    free (out);
+	const char *text = pntevts_text[row];
+	char *out = strdup(text);
+	check_special_chars(out, true);
+	// Events have $t which need to be converted to tabs.. stupid design :)
+	char *x = out;
+	char *y = out;
+	while (*x)
+	{
+		if (x[0] == '$' && x[1] == 't') {
+			*y = '\t';
+			x ++;
+		}
+		else {
+			*y = *x;
+		}
+		x ++;
+		y ++;
+	}
+	*y = 0;
+	[testText printText:[NSString stringWithUTF8String:out]];
+	free(out);
 }
 
-- (void) do_test_all:(id) sender
+- (void) doTestAll:(id) sender
 {
-    [test_text setString:@""];
+    [testText setString:@""];
     for (int i = 0; i < NUM_XP; i ++)                      
-        [self test_one:i];
+        [self testOne:i];
 }
 
-- (void) do_load:(id) sender
+- (void) doLoad:(id) sender
 {
     NSString *fname = [SGFileSelection selectWithWindow:[sender window]];
     if (fname)
     {
         pevent_load ((char *) [fname UTF8String]);
         pevent_make_pntevts ();
-        [self load_items];
-        [event_list reloadData];
-        [help_list reloadData];
+        [self loadItems];
+        [eventTableView reloadData];
+        [helpTableView reloadData];
     }
 }
 
-- (void) do_save_as:(id) sender
+- (void) doSaveAs:(id) sender
 {
     NSString *fname = [SGFileSelection saveWithWindow:[sender window]];
     if (fname)
@@ -210,7 +207,7 @@ extern char *pntevts[];
 
 - (void) windowWillClose:(NSNotification *) xx
 {
-    [self do_ok:self];
+    [self doOk:self];
 }
 
 ////////////
@@ -218,11 +215,11 @@ extern char *pntevts[];
 
 - (void) tableViewSelectionDidChange:(NSNotification *) aNotification
 {
-    [help_list reloadData];
-    [test_text setString:@""];
-    int row = [event_list selectedRow];
+    [helpTableView reloadData];
+    [testText setString:@""];
+    NSInteger row = [eventTableView selectedRow];
     if (row >= 0)
-        [self test_one:row];
+        [self testOne:row];
 }
 
 ////////////
@@ -230,13 +227,13 @@ extern char *pntevts[];
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
-    if (aTableView == event_list)
-	return [my_items count];
+    if (aTableView == eventTableView)
+	return [myItems count];
 
-    if (aTableView == help_list)
+    if (aTableView == helpTableView)
     {
-        int row = [event_list selectedRow];
-		return row < 0 ? 0 : [[my_items objectAtIndex:row] help_count];
+        NSInteger row = [eventTableView selectedRow];
+		return row < 0 ? 0 : [[myItems objectAtIndex:row] helpCount];
     }
 
     return 0;
@@ -246,29 +243,26 @@ extern char *pntevts[];
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
     row:(NSInteger) rowIndex
 {
-    if (aTableView == event_list)
+    if (aTableView == eventTableView)
     {
-		OneEvent *item = [my_items objectAtIndex:rowIndex];
+		OneEvent *item = [myItems objectAtIndex:rowIndex];
 		
-		switch ([[aTableColumn identifier] intValue])
+		switch ([[aTableColumn identifier] integerValue])
 		{
 			case 0: return item->name;
 			case 1: return item->text;
 		}
     }
 
-    if (aTableView == help_list)
+    if (aTableView == helpTableView)
     {
-		switch ([[aTableColumn identifier] intValue])
+		switch ([[aTableColumn identifier] integerValue])
 		{
-			case 0:
-				return [NSNumber numberWithInt:rowIndex + 1];
-
+			case 0: return [NSNumber numberWithInt:rowIndex + 1];
 			case 1:
 			{
-				int row = [event_list selectedRow];
-				return row < 0 ? @"" :
-					[[my_items objectAtIndex:row] help_row:rowIndex];
+				NSInteger row = [eventTableView selectedRow];
+				return row < 0 ? @"" : [[myItems objectAtIndex:row] helpRow:rowIndex];
 			}
 		}
     }
@@ -281,13 +275,13 @@ extern char *pntevts[];
     forTableColumn:(NSTableColumn *) aTableColumn 
                row:(NSInteger)rowIndex
 {
-    if (aTableView == event_list)
+    if (aTableView == eventTableView)
     {
 		prefs.save_pevents = true;
 		
-		OneEvent *item = [my_items objectAtIndex:rowIndex];
+		OneEvent *item = [myItems objectAtIndex:rowIndex];
 
-		switch ([[aTableColumn identifier] intValue])
+		switch ([[aTableColumn identifier] integerValue])
 		{
 			case 1:
 			{
@@ -301,24 +295,24 @@ extern char *pntevts[];
 					return;
 				}
 
-				if (m > te [rowIndex].num_args)
+				if (m > te[rowIndex].num_args)
 				{
 					free (out);
-					[SGAlert alertWithString:[NSString stringWithFormat:NSLocalizedStringFromTable(@"This signal is only passed %d args, $%d is invalid", @"xchat", @""), te [rowIndex].num_args, m] andWait:false];
+					[SGAlert alertWithString:[NSString stringWithFormat:NSLocalizedStringFromTable(@"This signal is only passed %d args, $%d is invalid", @"xchat", @""), te[rowIndex].num_args, m] andWait:false];
 					return;
 				}
 
 				[item->text setString:anObject];
 			
-				if (pntevts_text [rowIndex])
-					free (pntevts_text [rowIndex]);
-				if (pntevts [rowIndex])
-					free (pntevts [rowIndex]);
+				if (pntevts_text[rowIndex])
+					free(pntevts_text[rowIndex]);
+				if (pntevts[rowIndex])
+					free(pntevts[rowIndex]);
 
 				int len = strlen (text);
-				pntevts_text [rowIndex] = (char *) malloc (len + 1);
-				memcpy (pntevts_text [rowIndex], text, len + 1);
-				pntevts [rowIndex] = out;
+				pntevts_text[rowIndex] = (char *) malloc (len + 1);
+				memcpy(pntevts_text[rowIndex], text, len + 1);
+				pntevts[rowIndex] = out;
 
 				break;
 			}

@@ -37,7 +37,7 @@
     [super init];
     
     self->pointer = the_pointer;
-    self->my_items = [[NSMutableArray arrayWithCapacity:0] retain];
+    self->myItems = [[NSMutableArray arrayWithCapacity:0] retain];
     
     [NSBundle loadNibNamed:@"UrlGrabber" owner:self];
     
@@ -49,8 +49,8 @@
 - (void) dealloc
 {
     *pointer = NULL;
-    [url_grabber_view release];
-    [my_items release];
+    [urlGrabberView release];
+    [myItems release];
     [super dealloc];
 }
 
@@ -66,22 +66,22 @@
 
 static int do_add_url (const void *key, void *cbd)
 {
-    [(UrlGrabberWin *) cbd add_url:(const char *) key];
+    [(UrlGrabberWin *)cbd addUrl:[NSString stringWithUTF8String:(const char *)key]];
 	return true;
 }
 
 - (void) awakeFromNib
 {
-    for (int i = 0; i < [self->url_list numberOfColumns]; i ++)
-        [[[self->url_list tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
+    for (NSUInteger i = 0; i < [self->urlTableView numberOfColumns]; i ++)
+        [[[self->urlTableView tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
 
-    [self->url_list setDataSource:self];
-    [self->url_list setTarget:self];
-    [self->url_list setAction:@selector (item_selected:)];
+    [self->urlTableView setDataSource:self];
+    [self->urlTableView setTarget:self];
+    [self->urlTableView setAction:@selector (item_selected:)];
 
-    [url_grabber_view setTitle:NSLocalizedStringFromTable(@"XChat: URL Grabber", @"xchat", @"Title of Window: MainMenu->Window->URL Grabber...")];
-    [url_grabber_view setTabTitle:NSLocalizedStringFromTable(@"urlgrabber", @"xchataqua", @"")];
-    [url_grabber_view setDelegate:self];
+    [urlGrabberView setTitle:NSLocalizedStringFromTable(@"XChat: URL Grabber", @"xchat", @"Title of Window: MainMenu->Window->URL Grabber...")];
+    [urlGrabberView setTabTitle:NSLocalizedStringFromTable(@"urlgrabber", @"xchataqua", @"")];
+    [urlGrabberView setDelegate:self];
     
     tree_foreach ((tree *) url_tree, do_add_url, self);
 }
@@ -89,64 +89,63 @@ static int do_add_url (const void *key, void *cbd)
 - (void) show
 {
     if (prefs.windows_as_tabs)
-        [url_grabber_view becomeTabAndShow:true];
+        [urlGrabberView becomeTabAndShow:YES];
     else
-        [url_grabber_view becomeWindowAndShow:true];
+        [urlGrabberView becomeWindowAndShow:YES];
 }
 
 - (void) item_selected:(id) sender
 {
     NSMenu *menu = [[NSMenu alloc] initWithTitle:@""];
     
-    int row = [self->url_list selectedRow];
+    NSInteger row = [self->urlTableView selectedRow];
     if (row >= 0)
     {
-        NSString *url = [my_items objectAtIndex:row];
+        NSString *url = [myItems objectAtIndex:row];
         NSString *title;
         // TBD: encode 'url' like menu_urlmenu??
         if ([url length] > 50)
-            title = [NSString stringWithFormat:@"%@...",
-                        [url substringWithRange:NSMakeRange (0, 49)]];
+            title = [NSString stringWithFormat:@"%@...", [url substringWithRange:NSMakeRange (0, 49)]];
         else
             title = url;
         NSMenuItem *item = [menu addItemWithTitle:title action:nil keyEquivalent:@""];
-        [item setEnabled:false];
+        [item setEnabled:NO];
 		[[MenuMaker defaultMenuMaker] appendItemList:urlhandler_list toMenu:menu withTarget:url inSession:NULL];
     }
     
-    [self->url_list setMenu:menu];
+    [self->urlTableView setMenu:menu];
 }
 
-- (void) add_url:(const char *) msg
+- (void) addUrl:(NSString *) msg
 {
-    [my_items addObject:[NSString stringWithUTF8String:msg]];
-    [self->url_list reloadData];
+    [myItems addObject:msg];
+    [self->urlTableView reloadData];
 }
 
-- (void) do_save:(id) sender
+- (void) doSave:(id) sender
 {
     NSString *fname = [SGFileSelection saveWithWindow:[sender window]];
     if (fname)
-        url_save ([fname UTF8String], "w", true);
+        url_save([fname UTF8String], "w", true);
 }
 
-- (void) do_clear:(id) sender
+- (void) doClear:(id) sender
 {
-    url_clear ();
-    [my_items removeAllObjects];
-    [self->url_list reloadData];
+    url_clear();
+    [myItems removeAllObjects];
+    [self->urlTableView reloadData];
 }
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
-    return [my_items count];
+    return [myItems count];
 }
 
 - (id) tableView:(NSTableView *) aTableView
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
     row:(NSInteger) rowIndex
 {
-    return [my_items objectAtIndex:rowIndex];
+    return [myItems objectAtIndex:rowIndex];
 }
 
 @end

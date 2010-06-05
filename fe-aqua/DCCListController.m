@@ -34,7 +34,7 @@
 - (id) initWithDCC:(struct DCC *) the_dcc
 {
     dcc = the_dcc;
-	prev_dccstat = dcc->dccstat;
+	prevDccStat = dcc->dccstat;
     
     status = [[NSMutableString stringWithCapacity:0] retain];
    
@@ -50,8 +50,8 @@
 
 - (void) update
 {
-    [status setString:[NSString stringWithUTF8String:dccstat[(int) dcc->dccstat].name]];
-	prev_dccstat = dcc->dccstat;
+    [status setString:[NSString stringWithUTF8String:dccstat[dcc->dccstat].name]];
+	prevDccStat = dcc->dccstat;
 }
 
 @end
@@ -59,12 +59,13 @@
 //////////////////////////////////////////////////////////////////////
 
 @implementation DCCListController
+@synthesize hasSelection;
 
 - (id) initWithNibNamed:(NSString *)nibName
 {
     [super init];
 
-    my_items = [[NSMutableArray arrayWithCapacity:0] retain];	// this must be done before loading the nib
+    myItems = [[NSMutableArray arrayWithCapacity:0] retain];	// this must be done before loading the nib
 	
 	hasSelection = NO;
 	lastDCCStatus = 0xFF;
@@ -76,8 +77,8 @@
 
 - (void) dealloc
 {
-    [dcc_list_view dealloc];
-    [my_items release];
+    [dccListView dealloc];
+    [myItems release];
     [super dealloc];
 }
 
@@ -92,9 +93,9 @@
 	activeCount = count;
 }
 
-- (void) load_data
+- (void) loadData
 {
-    [my_items removeAllObjects];
+    [myItems removeAllObjects];
 
 	[self setActiveCount:0];
     for (GSList *list = dcc_list; list; list = list->next)
@@ -104,41 +105,41 @@
 		[self add:dcc];	/* itemWithDCC will determine if the item is the right type */
     }
 
-    [item_list reloadData];
+    [itemTableView reloadData];
 }
 
 - (void) awakeFromNib
 {
-    for (int i = 0; i < [item_list numberOfColumns]; i ++)
-        [[[item_list tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
+    for (NSInteger i = 0; i < [itemTableView numberOfColumns]; i ++)
+        [[[itemTableView tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
 
-    [item_list setDataSource:self];
-    [item_list setDelegate:self];
-	[self setNextResponder: [item_list nextResponder]];
-    [item_list setNextResponder:self];
+    [itemTableView setDataSource:self];
+    [itemTableView setDelegate:self];
+	[self setNextResponder: [itemTableView nextResponder]];
+    [itemTableView setNextResponder:self];
 	
-	[dcc_list_view setDelegate:self];
+	[dccListView setDelegate:self];
 
-    [self load_data];
+    [self loadData];
 }
 
-- (void) show:(bool) and_bring_to_front
+- (void) show:(BOOL) and_bring_to_front
 {
     if (prefs.windows_as_tabs)
-        [dcc_list_view becomeTabAndShow:and_bring_to_front];
+        [dccListView becomeTabAndShow:and_bring_to_front];
     else
-        [dcc_list_view becomeWindowAndShow:and_bring_to_front];
+        [dccListView becomeWindowAndShow:and_bring_to_front];
 }
 
 - (void) update:(struct DCC *) dcc
 {
-    for (unsigned int i = 0; i < [my_items count]; i ++)
+    for (unsigned int i = 0; i < [myItems count]; i ++)
     {
-        DCCItem *item = [my_items objectAtIndex:i];
+        DCCItem *item = [myItems objectAtIndex:i];
         if (item->dcc == dcc)
         {
-			if (item->prev_dccstat != dcc->dccstat) {
-				if (item->prev_dccstat == STAT_ACTIVE) [self setActiveCount:activeCount - 1];
+			if (item->prevDccStat != dcc->dccstat) {
+				if (item->prevDccStat == STAT_ACTIVE) [self setActiveCount:activeCount - 1];
 				else if (dcc->dccstat == STAT_ACTIVE) [self setActiveCount:activeCount + 1];
 			}
             [item update];
@@ -146,7 +147,7 @@
         }
     }
     
-    [item_list reloadData];
+    [itemTableView reloadData];
 	[self setTabColorWithStatus:dcc->dccstat];
 }
 
@@ -154,33 +155,33 @@
 {
     DCCItem *item = [self itemWithDCC:dcc];
 	if (item == nil) return;
-    [my_items addObject:item];
+    [myItems addObject:item];
 	if (dcc->dccstat == STAT_ACTIVE) [self setActiveCount:activeCount + 1];
-    [item_list reloadData];
+    [itemTableView reloadData];
 }
 
 - (void) remove:(struct DCC *) dcc
 {
-    for (unsigned int i = 0; i < [my_items count]; i ++)
+    for (NSInteger i = 0; i < [myItems count]; i ++)
     {
-        DCCItem *item = [my_items objectAtIndex:i];
+        DCCItem *item = [myItems objectAtIndex:i];
         if (item->dcc == dcc)
         {
 			if (dcc->dccstat == STAT_ACTIVE) [self setActiveCount:activeCount - 1];
-            [my_items removeObjectAtIndex:i];
+            [myItems removeObjectAtIndex:i];
             break;
         }
     }
 
-    [item_list reloadData];
+    [itemTableView reloadData];
 }
 
-- (void) do_abort:(id) sender
+- (void) doAbort:(id) sender
 {
-    int row = [item_list selectedRow];
+    NSInteger row = [itemTableView selectedRow];
     if (row >= 0)
     {
-        DCCItem *item = [my_items objectAtIndex:row];
+        DCCItem *item = [myItems objectAtIndex:row];
         struct DCC *dcc = item->dcc;
         dcc_abort (dcc->serv->front_session, dcc);
     }
@@ -191,7 +192,7 @@
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
-    return [my_items count];
+    return [myItems count];
 }
 
 - (id) tableView:(NSTableView *) aTableView
@@ -204,36 +205,31 @@
 
 - (void)tableView:(NSTableView *)aTableView willDisplayCell:(id)aCell forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
-    DCCItem *item = [my_items objectAtIndex:rowIndex];
-	NSColor *color = [[[AquaChat sharedAquaChat] getPalette] getColor:dccstat[item->dcc->dccstat].color];
+    DCCItem *item = [myItems objectAtIndex:rowIndex];
+	NSColor *color = [[[AquaChat sharedAquaChat] palette] getColor:dccstat[item->dcc->dccstat].color];
 	[aCell setTextColor:color];
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification
 {
-	[self setHasSelection:([item_list numberOfSelectedRows] > 0)];
+	[self setHasSelection:([itemTableView numberOfSelectedRows] > 0)];
 }
 
-- (void)setHasSelection:(BOOL)value	// this accessor method triggers KVO notifications
+- (void)setTabColorWithStatus:(unsigned char)status
 {
-	hasSelection = value;
-}
-
-- (void)setTabColorWithStatus:(unsigned char)dcc_status
-{
-	if (lastDCCStatus == dcc_status) return;
-	lastDCCStatus = dcc_status;
-	if ([dcc_list_view isFrontTab]) return;
+	if (lastDCCStatus == status) return;
+	lastDCCStatus = status;
+	if ([dccListView isFrontTab]) return;
 	
-	int dcc_status_color = dccstat[dcc_status].color;
+	int dcc_status_color = dccstat[status].color;
 	if (dcc_status_color == 1) dcc_status_color = 8; /* we still want to show that something new happened */
-	NSColor *color = [[[AquaChat sharedAquaChat] getPalette] getColor:dcc_status_color];
-    [dcc_list_view setTabTitleColor:color];
+	NSColor *color = [[[AquaChat sharedAquaChat] palette] getColor:dcc_status_color];
+    [dccListView setTabTitleColor:color];
 }
 
 - (void)windowDidBecomeKey:(NSNotification *)aNotification
 {
-	[dcc_list_view setTabTitleColor:[NSColor blackColor]];
+	[dccListView setTabTitleColor:[NSColor blackColor]];
 }
 
 @end

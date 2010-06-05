@@ -20,44 +20,59 @@
 <NSWindowDelegate,NSTableViewDataSource,NSTableViewDelegate>
 #endif
 {
-    NSComboBox		*charset_combo;
-    NSButton		*connect_new_button;
-    NSButton 		*net_accept_invalid;
-    NSButton 		*net_auto;
-    NSTableView 	*net_command_table;
-	NSButton		*net_connect_selected;
-    NSTableView 	*net_join_table;
-    NSTableView 	*net_list;
-    NSTextField 	*net_nick;
-    NSTextField 	*net_nick2;
-	NSTextField		*net_nickserv_passwd;
-    NSTextField 	*net_pass;
-    NSTextField 	*net_real;
-    NSTableView 	*net_server_list;
-	NSTextField		*net_title_text;
-    NSButton 		*net_use_global;
-    NSButton		*net_use_proxy;
-    NSButton 		*net_use_ssl;
-    NSTextField 	*net_user;
-    NSTextField 	*nick1;
-    NSTextField 	*nick2;
-    NSTextField 	*nick3;
-    NSTextField 	*realname;
-    NSButton		*skip_serverlist_button;
-    NSTextField 	*username;
-	NSButton		*my_servers_check;
-	NSButton		*show_details_button;
+	IBOutlet NSComboBox		*charsetComboBox;
+	IBOutlet NSButton		*connectNewButton;
+	IBOutlet NSButton		*networkSelectedOnlyToggleButton;
+	IBOutlet NSTableView 	*networkCommandTableView;
+	IBOutlet NSTableView 	*networkJoinTableView;
+	IBOutlet NSTableView 	*networkTableView;
+	IBOutlet NSTextField 	*networkNicknameTextField;
+	IBOutlet NSTextField 	*networkNickname2TextField;
+	IBOutlet NSTextField	*networkNickservPasswordTextField;
+	IBOutlet NSTextField 	*networkPasswordTextField;
+	IBOutlet NSTextField 	*networkRealnameTextField;
+	IBOutlet NSTableView 	*networkServerTableView;
+	IBOutlet NSTextField	*networkTitleTextField;
+	IBOutlet NSButton 		*networkUseCustomInformationToggleButton;
+	IBOutlet NSButton 		*networkAutoConnectToggleButton;
+	IBOutlet NSButton		*networkUseProxyToggleButton;
+	IBOutlet NSButton 		*networkUseSslToggleButton;
+	IBOutlet NSButton 		*networkAcceptInvalidCertificationToggleButton;
+	IBOutlet NSTextField 	*networkUsernameTextField;
+	IBOutlet NSTextField 	*nick1TextField;
+	IBOutlet NSTextField 	*nick2TextField;
+	IBOutlet NSTextField 	*nick3TextField;
+	IBOutlet NSTextField 	*realnameTextField;
+	IBOutlet NSButton		*showWhenStartupToggleButton;
+	IBOutlet NSTextField 	*usernameTextField;
+	IBOutlet NSButton		*showDetailButton;
 	
-	NSDrawer		*drawer;
+	IBOutlet NSDrawer		*drawer;
 	
-    NSMutableArray	*all_nets;
-    NSMutableArray	*my_nets;
-    struct session	*servlist_sess;
+    NSMutableArray	*allNetworks;
+    NSMutableArray	*myNetworks;
+    struct session	*servlistSession;
 }
 
-+ (void) show_for_session:(session *) sess;
++ (void) showForSession:(session *) sess;
 
-//
-- (void) do_drawer:(id) sender;
+- (IBAction) doConnect:(id) sender;
+- (IBAction) doSetFlag:(id) sender;
+- (IBAction) doSetField:(id) sender;
+- (IBAction) doDoneEdit:(id) sender;
+- (IBAction) toggleShowWhenStartup:(id) sender;
+- (IBAction) doClose:(id) sender;
+- (IBAction) showDetail:(id) sender;
+- (IBAction) doNewChannel:(id) sender;
+- (IBAction) doRemoveChannel:(id) sender;
+- (IBAction) doNewCommand:(id) sender;
+- (IBAction) doRemoveCommand:(id) sender;
+- (IBAction) doRemoveServer:(id) sender;
+- (IBAction) doEditServer:(id) sender;
+- (IBAction) doNewServer:(id) sender;
+- (IBAction) doNewNetwork:(id) sender;
+- (IBAction) doRemoveNetwork:(id) sender;
+- (IBAction) doFilter:(id) sender;
+- (IBAction) toggleCustomUserInformation:(id) sender;
 
 @end

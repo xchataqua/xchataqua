@@ -32,16 +32,18 @@
 #endif
 {
   @public	// TODO - fix this
-    SGWrapView		*hbox;
+	SGWrapView		*hbox;
 	NSOutlineView	*outline;
-	int				outline_width;
-    SGTabViewItem	*selected_tab;
-    NSMutableArray	*tabs;
+	CGFloat			outline_width;
+	SGTabViewItem	*selected_tab;
+	NSMutableArray	*tabs;
 	NSMutableArray	*groups;	// For outline view only
-    id<NSObject,SGTabViewDelegate> delegate;
-    NSTabViewType	tabViewType;
-    bool			hideClose;
+	id<NSObject,SGTabViewDelegate> delegate;
+	NSTabViewType	tabViewType;
+	bool			hideClose;
 }
+
+@property (nonatomic, assign) id delegate;
 
 // NSTabView emulation methods
 - (void) addTabViewItem:(SGTabViewItem *) tabViewItem;
@@ -53,18 +55,16 @@
 - (SGTabViewItem *) tabViewItemAtIndex:(NSInteger) index;
 - (SGTabViewItem *) selectedTabViewItem;
 - (NSArray *) tabViewItems;
-- (id) delegate;
-- (void) setDelegate:(id) anObject;
 - (void) setTabViewType:(NSTabViewType) tabViewType;
 - (NSInteger) numberOfTabViewItems;
 - (NSInteger) indexOfTabViewItem:(SGTabViewItem *) tabViewItem;
 
 // SGTabView only methods
-- (void) addTabViewItem:(SGTabViewItem *) tabViewItem toGroup:(int) group;
-- (void) setHideCloseButtons:(bool) hidem;
-- (void) setName:(NSString *) name forGroup:(int) group;
-- (NSString *) groupName:(int) group;
-- (void) setOutlineWidth:(int) width;
+- (void) addTabViewItem:(SGTabViewItem *) tabViewItem toGroup:(NSInteger) group;
+- (void) setHideCloseButtons:(BOOL) hidem;
+- (void) setName:(NSString *) name forGroup:(NSInteger) group;
+- (NSString *) groupName:(NSInteger) group;
+- (void) setOutlineWidth:(CGFloat) width;
 
 @end
 
@@ -81,28 +81,25 @@
 @interface SGTabViewItem : NSObject
 {
   @public	// TODO - fix this
-    SGTabViewButton *button;
-	NSColor		*titleColor;
-	NSString	*label;
-    NSView      *view;
-    SGTabView   *parent;
-    int         group;
-    id		    initial_first_responder;
-	NSMenu		*ctxMenu;
+	SGTabViewButton	*button;
+	NSColor			*titleColor;
+	NSString		*label;
+	NSView			*view;
+	SGTabView		*parent;
+	NSInteger		group;
+	id				initial_first_responder;
+	NSMenu			*ctxMenu;
 }
 
-@property (nonatomic,retain,setter=setTitleColor:) NSColor *titleColor;
+@property (nonatomic, retain) NSColor *titleColor;
+@property (nonatomic, retain) NSString *label;
+@property (nonatomic, retain) NSView *view;
+@property (nonatomic, readonly) SGTabView *tabView;
 
 - (id) initWithIdentifier:(id) identifier;
-- (void) setLabel:(NSString *) label;
-- (NSString *) label;
-- (NSColor *) titleColor;
-- (void) setView:(NSView *) view;
-- (id) view;
 - (id) initialFirstResponder;
 - (void) setInitialFirstResponder:(NSView *) view;
-- (void) setHideCloseButton:(bool) hidem;
-- (SGTabView *) tabView;
+- (void) setHideCloseButton:(BOOL) hidem;
 - (BOOL) isFrontTab;
 
 @end

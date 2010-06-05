@@ -37,18 +37,14 @@ typedef enum
 }	SGVBoxVJustification;
 
 @interface SGVBoxView : SGBoxView
-{
-}
 
-- (void) setVJustification:(SGVBoxVJustification) just;
-- (void) setDefaultHJustification:(SGVBoxHJustification) just;
-- (short) hJustification;
-- (void) setHJustificationFor:(NSView *) view to:(SGVBoxHJustification) just;
-- (void) setHMargin:(short) v;
-- (void) setVInnerMargin:(short) h;
-- (short) vInnerMargin;
-- (void) setVOutterMargin:(short) h;
-- (short) vOutterMargin;
-- (short) vJustification;
+@property (nonatomic, assign)	SGVBoxVJustification vJustification;
+@property (nonatomic, readonly)	SGVBoxHJustification hJustification;
+@property (nonatomic, assign)	SGBoxMargin hMargin;
+@property (nonatomic, assign)	SGBoxMargin vInnerMargin;
+@property (nonatomic, assign)	SGBoxMargin vOutterMargin;
+
+- (void) setDefaultHJustification:(SGVBoxHJustification) justification;
+- (void) setHJustificationFor:(NSView *) view to:(SGVBoxHJustification) justification;
 
 @end

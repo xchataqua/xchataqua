@@ -19,16 +19,21 @@
 
 @interface LogViewer : NSObject 
 {
-    NSTableView		*log_list;
-    TabOrWindowView	*log_viewer_view;
-    NSTextView      *log_text;
-    NSSearchField   *filter_text;
-    NSMutableArray	*all_items;
-    NSMutableArray	*my_items;
+	IBOutlet NSTableView		*logTableView;
+	IBOutlet TabOrWindowView	*logView;
+	IBOutlet NSTextView			*logTextView;
+	IBOutlet NSSearchField		*filterSearchField;
+	NSMutableArray	*allItems;
+	NSMutableArray	*myItems;
 }
 
-- (void) show;
+- (IBAction) doReveal:(id)sender;
+- (IBAction) doEdit:(id)sender;
+- (IBAction) doRefresh:(id)sender;
+- (IBAction) doDelete:(id)sender;
+- (IBAction) doFilter:(id)sender;
 
-////
-- (void) tableViewRemoveRows:(NSTableView *) tableView;
+- (void) show;
+- (void) tableViewRemoveRows:(NSTableView *)tableView;
+
 @end
