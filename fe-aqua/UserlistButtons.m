@@ -25,15 +25,14 @@
 
 - (id) init
 {
-    [super initWithList:&button_list fileName:@"buttons.conf"
-				  title:NSLocalizedStringFromTable(@"XChat: Userlist buttons", @"xchat", "Title of Window: MainMenu->X-Chat Aqua->References Lists->Userlist Buttons...")];
+    [super initWithList:&button_list filename:@"buttons.conf" title:NSLocalizedStringFromTable(@"XChat: Userlist buttons", @"xchat", "Title of Window: MainMenu->X-Chat Aqua->References Lists->Userlist Buttons...")];
     return self;
 }
 
-- (void) do_save:(id) sender
+- (void) doSave:(id) sender
 {
-    [super do_save:sender];
-    [AquaChat forEachSessionOnServer:NULL performSelector:@selector (setup_userlist_buttons)];
+    [super doSave:sender];
+    [AquaChat forEachSessionOnServer:NULL performSelector:@selector (setupUserlistButtons)];
 }
 
 @end

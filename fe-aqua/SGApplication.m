@@ -48,8 +48,8 @@
 + (id) customerWithType:(NSEventType) the_type
               forWindow:(NSWindow *) the_win
                 forView:(NSView *) the_view
-                    sel:(SEL) the_sel
-                    obj:(id) the_object;
+			   selector:(SEL) the_sel
+				 object:(id) the_object;
 
 @end
 
@@ -58,8 +58,8 @@
 + (id) customerWithType:(NSEventType) the_type
               forWindow:(NSWindow *) the_win
                 forView:(NSView *) the_view
-                    sel:(SEL) the_sel
-                    obj:(id) the_object
+			   selector:(SEL) the_sel
+				 object:(id) the_object
 {
     OneCustomer *cust = [[[OneCustomer alloc] init] autorelease];
     cust->type = the_type;
@@ -92,35 +92,34 @@
 
 @implementation SGApplication
 
-+ (bool) event:(NSEvent *) e
-        inView:(NSView *) v
++ (BOOL) event:(NSEvent *)event inView:(NSView *)view
 {
     // TBD: Is locationInWindow only good for mouse events?
-    NSPoint p = [v convertPoint:[e locationInWindow] fromView:nil];
-    return [v mouse:p inRect:[v bounds]];
+    NSPoint point = [view convertPoint:[event locationInWindow] fromView:nil];
+    return [view mouse:point inRect:[view bounds]];
 }
 
 - (id) init
 {
     [super init];
     customers = [[NSMutableArray arrayWithCapacity:0] retain];
-    after_events = [[NSMutableArray arrayWithCapacity:0] retain];
+    //after_events = [[NSMutableArray arrayWithCapacity:0] retain];
     return self;
 }
 
-- (id) requestEvents:(NSEventType) type
-	   forWindow:(NSWindow *) win
-             forView:(NSView *) view
-            selector:(SEL) sel
-              object:(id) obj
+- (id) requestEvents:(NSEventType)type
+		   forWindow:(NSWindow *)win
+             forView:(NSView *)view
+            selector:(SEL)sel
+              object:(id)obj
 {
-    OneCustomer *cust = [OneCustomer customerWithType:type
-					    forWindow:win
-					      forView:view
-					          sel:sel
-					          obj:obj];
-    [customers addObject:cust];
-    return cust;
+    OneCustomer *customer = [OneCustomer customerWithType:type
+												forWindow:win
+												  forView:view
+												 selector:sel
+												   object:obj];
+    [customers addObject:customer];
+    return customer;
 }
 
 - (void) cancelRequestEvents:(id) req_id
@@ -130,7 +129,7 @@
 
 - (void) sendEvent:(NSEvent *) anEvent
 {
-    for (unsigned int i = 0; i < [customers count]; i ++)
+    for (NSUInteger i = 0; i < [customers count]; i ++)
         if ([[customers objectAtIndex:i] sendCopy:anEvent])
             return;
     

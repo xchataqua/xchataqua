@@ -26,16 +26,16 @@
 #endif
 {
     NSWindow		*window;
-    SGTabViewItem	*this_item;
+    SGTabViewItem	*tabViewItem;
     id				delegate;
     NSString		*title;
-    NSString		*tab_title;
-    NSView			*ifr;
+    NSString		*tabTitle;
+    NSView			*initialFirstResponder;
     struct server	*server;
 }
 
 + (void) cycleWindow:(int) direction;
-+ (bool) selectTab:(unsigned) n;
++ (BOOL) selectTab:(NSUInteger) n;
 + (void) link_delink;		// Frontmost view
 + (void) updateGroupNameForServer:(struct server *) server;
 

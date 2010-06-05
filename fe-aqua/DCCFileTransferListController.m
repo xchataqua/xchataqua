@@ -11,15 +11,15 @@
 #include "../common/outbound.h"
 #include "../common/network.h"
 #include "../common/dcc.h"
-#import "XACommon.h"
 
+#import "XACommon.h"
 #import "DCCFileTransferListController.h"
 
 @implementation DCCFileItem
 
-- (id) initWithDCC:(struct DCC *) the_dcc
+- (id) initWithDCC:(struct DCC *)aDcc
 {
-	[super initWithDCC:the_dcc];
+	[super initWithDCC:aDcc];
 
     file = [[NSMutableString stringWithCapacity:0] retain];
     size = [[NSMutableString stringWithCapacity:0] retain];
@@ -51,14 +51,13 @@
     [position setString:[NSString stringWithFormat:@"%@", formatNumber (dcc->pos)]];
     [per setString:[NSString stringWithFormat:@"%.0f%%", floor((float) dcc->pos / dcc->size * 100.00)]];	// the floor is to ensure that the percent does not display 100% until the file is really finished
     [kbs setString:[NSString stringWithFormat:@"%.1f", (float) dcc->cps / 1024]];
-    if (dcc->cps)
-    {
+    if (dcc->cps) {
         int to_go = (dcc->size - dcc->ack) / dcc->cps;
-        [eta setString:[NSString stringWithFormat:@"%.2d:%.2d:%.2d",
-                                to_go / 3600, (to_go / 60) % 60, to_go % 60]];
+        [eta setString:[NSString stringWithFormat:@"%.2d:%.2d:%.2d", to_go / 3600, (to_go / 60) % 60, to_go % 60]];
     }
-    else
+    else {
         [eta setString:@"--:--:--"];
+	}
 }
 
 @end
@@ -84,9 +83,9 @@
 	NSPasteboard *pb = [NSPasteboard generalPasteboard];
 	NSMutableString *copyString = [NSMutableString stringWithCapacity:200];
 	
-	NSIndexSet *rowIndexSet = [item_list selectedRowIndexes];
+	NSIndexSet *rowIndexSet = [itemTableView selectedRowIndexes];
 	for ( NSUInteger rowIndex = [rowIndexSet firstIndex]; rowIndex != NSNotFound; rowIndex = [rowIndexSet indexGreaterThanIndex:rowIndex]) {
-		DCCFileItem *item = [my_items objectAtIndex:rowIndex];
+		DCCFileItem *item = [myItems objectAtIndex:rowIndex];
 		[copyString appendFormat:@"%@ (%"DCC_SIZE_FMT" bytes)\n", item->file, item->dcc->size];
 	}
 	[copyString deleteCharactersInRange:NSMakeRange([copyString length] - 1, 1)];	//chop off last \n
@@ -98,7 +97,7 @@
 - (BOOL) validateMenuItem:(NSMenuItem*)menuItem
 {
 	if ([menuItem action] == @selector(copy:)) {
-		return ([item_list numberOfSelectedRows] > 0);
+		return ([itemTableView numberOfSelectedRows] > 0);
 	}
 	return [super validateMenuItem:menuItem];
 }
