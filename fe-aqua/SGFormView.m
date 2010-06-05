@@ -123,7 +123,7 @@ typedef struct SGFormConstraint
     {
 		[encoder encodeFloat:self->constraints[i].location			forKey:[NSString stringWithFormat:@"location_%d", i]];
 		[encoder encodeInt:self->constraints[i].attachment			forKey:[NSString stringWithFormat:@"attachment_%d", i]];
-		[encoder encodeInt:self->constraints[i].offset				forKey:[NSString stringWithFormat:@"offset_%d", i]];
+		[encoder encodeFloat:self->constraints[i].offset				forKey:[NSString stringWithFormat:@"offset_%d", i]];
 		[encoder encodeConditionalObject:self->constraints[i].child	forKey:[NSString stringWithFormat:@"child_%d", i]];
     }
 }
