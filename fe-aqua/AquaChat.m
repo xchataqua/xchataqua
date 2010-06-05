@@ -17,10 +17,6 @@
 
 #include <unistd.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-	
 #include <stdio.h>
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
@@ -33,9 +29,6 @@ extern "C" {
 #include "../common/dcc.h"
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5
 #import <ShortcutRecorder/ShortcutRecorder.h>
-#endif
-#ifdef __cplusplus
-}
 #endif
 
 #include "XACommon.h"
@@ -92,7 +85,7 @@ static AquaChat *aquachat;
 static NSImage  *my_image;
 static NSImage  *alert_image;
 
-event_info text_event_info[NUM_XP];
+struct event_info text_event_info[NUM_XP];
 
 //////////////////////////////////////////////////////////////////////
 
@@ -155,7 +148,7 @@ event_info text_event_info[NUM_XP];
 	
     for (int i = 0; i < NUM_XP; i++)
     {
-        event_info *event = &text_event_info[i];
+        struct event_info *event = &text_event_info[i];
 		char *name = te[i].name;
 
 		id gval = [dict objectForKey:[NSString stringWithFormat:@"%s_growl", name]];
@@ -176,7 +169,7 @@ event_info text_event_info[NUM_XP];
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:NUM_XP];
     for (int i = 0; i < NUM_XP; i++)
     {
-        event_info *event = &text_event_info[i];
+        struct event_info *event = &text_event_info[i];
 		char *name = te[i].name;
 		
 		if (event->growl)
@@ -948,8 +941,8 @@ event_info text_event_info[NUM_XP];
 	      args:(char **) args
 	   session:(session *) sess
 {
-	event_info *info = text_event_info + event;
-	bool bg = ![NSApp isActive];
+	struct event_info *info = text_event_info + event;
+	BOOL bg = ![NSApp isActive];
 	
 	// Pref can be
 	//	0 - Don't do it
