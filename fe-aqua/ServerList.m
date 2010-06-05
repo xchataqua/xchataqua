@@ -21,8 +21,6 @@
 #include "../common/network.h"
 #include "../common/servlist.h"
 #include "../common/cfgfiles.h"
-	
-const char * XALocalizeString(const char *);
 
 #import "AquaChat.h"
 #import "ServerList.h"
@@ -30,7 +28,7 @@ const char * XALocalizeString(const char *);
 
 //////////////////////////////////////////////////////////////////////
 
-static NSString *charsets [] =
+static NSString *charsets[] =
 {
 	@"UTF-8",
 	@"ISO-8859-15 (Western Europe)",
@@ -100,13 +98,13 @@ static NSString *charsets [] =
     ircserver	*svr;
     NSString	*server;
     NSString	*port;
-	bool		ssl;
+	BOOL		ssl;
 }
 
 - (id) initWithServer:(ircserver *) server;
 - (void) setServer:(NSString *) new_name;
 - (void) setPort:(NSString *) new_port;
-- (bool) setSSL:(NSNumber *) new_ssl;
+- (BOOL) setSSL:(NSNumber *) new_ssl;
 
 @end
 
@@ -117,15 +115,14 @@ static NSString *charsets [] =
     svr = the_svr;
 	
     const char *the_server = svr->hostname;
-    const char *slash = strchr (the_server, '/');
+    const char *slash = strchr(the_server, '/');
     
     const char *the_port;
     
     if (slash)
     {
         int len = slash - the_server;
-		self->server = [[NSString alloc] initWithBytes:the_server
-				length:len encoding:NSUTF8StringEncoding];
+		self->server = [[NSString alloc] initWithBytes:the_server length:len encoding:NSUTF8StringEncoding];
         the_port = slash + 1;
 	}
     else
@@ -136,7 +133,7 @@ static NSString *charsets [] =
 
 	if (ssl = (*the_port == '+'))
 	{
-		the_port ++;
+		the_port++;
 	}
     
     self->port = [[NSString stringWithUTF8String:the_port] retain];
@@ -153,10 +150,11 @@ static NSString *charsets [] =
 
 - (void) setServerHost
 {
-    free (svr->hostname);
-    NSString *s = [port length] ? 
-        [NSString stringWithFormat:@"%@/%@%@", self->server, ssl ? @"+" : @"", self->port] : self->server;
-    svr->hostname = strdup ([s UTF8String]);
+	free (svr->hostname);
+	NSString *hostName = self->server;
+	if ( [port length] > 0 )
+		[hostName stringByAppendingFormat:@"/%@%@", ssl ? @"+" : @"", self->port];
+    svr->hostname = strdup ([hostName UTF8String]);
 }
 
 - (void) setServer:(NSString *) new_name
@@ -173,10 +171,10 @@ static NSString *charsets [] =
     [self setServerHost];
 }
 
-- (bool) setSSL:(NSNumber *) new_ssl
+- (BOOL) setSSL:(NSNumber *) new_ssl
 {
 	ssl = [new_ssl boolValue];
-	bool willSetPort = ssl && [port length] == 0;
+	BOOL willSetPort = ssl && [port length] == 0;
 	if (willSetPort)
 		[self setPort:@"6667"];
 	[self setServerHost];
@@ -193,12 +191,12 @@ static NSString *charsets [] =
     NSMutableString	*name;
     NSMutableArray	*servers;
 	NSMutableArray	*channels;
-	NSMutableArray	*connect_commands;
+	NSMutableArray	*connectCommands;
     ircnet			*net;
 }
 
-- (id) initWithIrcnet:(ircnet *) ircnet;
-- (void) addServer:(ircserver *) svr;
+- (id) initWithIrcnet:(ircnet *)ircnet;
+- (void) addServer:(ircserver *)svr;
 
 @end
 
@@ -230,7 +228,7 @@ static NSString *charsets [] =
 
 	// Then assign any keys..
 	[tok setString:keys];
-	for (unsigned i = 0; i < [channels count]; i ++)
+	for (NSUInteger i = 0; i < [channels count]; i ++)
 	{
 		NSString *s = [tok getNextToken:","];
 		if (!s)
@@ -250,7 +248,7 @@ static NSString *charsets [] =
 	SGTokenizer *tok = [[SGTokenizer alloc] initWithString:[NSString stringWithCString:command encoding:NSASCIIStringEncoding]];
 	
 	for (NSString *s = [tok getNextToken:"\n"]; s != nil; s = [tok getNextToken:"\n"])
-		[connect_commands addObject:s];
+		[connectCommands addObject:s];
 		
 	[tok release];
 }
@@ -262,7 +260,7 @@ static NSString *charsets [] =
     name = [[NSMutableString stringWithUTF8String:ircnet->name] retain];
     servers = [[NSMutableArray arrayWithCapacity:0] retain];
 	channels = [[NSMutableArray arrayWithCapacity:0] retain];
-	connect_commands = [[NSMutableArray arrayWithCapacity:0] retain];
+	connectCommands = [[NSMutableArray arrayWithCapacity:0] retain];
 
     for (GSList *list = net->servlist; list; list = list->next)
     {
@@ -281,7 +279,7 @@ static NSString *charsets [] =
     [name release];
     [servers release];
 	[channels release];
-	[connect_commands release];
+	[connectCommands release];
     [super dealloc];
 }
 
@@ -291,11 +289,11 @@ static NSString *charsets [] =
 	
 	NSMutableString *cmds = [NSMutableString stringWithCapacity:100];
 
-	for (unsigned i = 0; i < [connect_commands count]; i++)
+	for (NSUInteger i = 0; i < [connectCommands count]; i++)
 	{
 		if ([cmds length])
 			[cmds appendString:@"\n"];
-		[cmds appendString:[connect_commands objectAtIndex:i]];
+		[cmds appendString:[connectCommands objectAtIndex:i]];
 	}
 	
 	net->command = strdup([cmds UTF8String]);
@@ -313,7 +311,7 @@ static NSString *charsets [] =
 	// way to do this is to do it in 2 passes.
 	
 	// First, the channels with keys
-	for (unsigned i = 0; i < [channels count]; i++)
+	for (NSUInteger i = 0; i < [channels count]; i++)
 	{
 		OneChannel *chan = (OneChannel *) [channels objectAtIndex:i];
 		
@@ -332,7 +330,7 @@ static NSString *charsets [] =
 	}
 
 	// and then the channels without keys
-	for (unsigned i = 0; i < [channels count]; i++)
+	for (NSUInteger i = 0; i < [channels count]; i++)
 	{
 		OneChannel *chan = (OneChannel *) [channels objectAtIndex:i];
 		
@@ -365,12 +363,12 @@ static NSString *charsets [] =
 	return name;
 }
 
-- (void) setName:(NSString *) new_name
+- (void) setName:(NSString *)aName
 {
     [name release];
-    name = [new_name retain];
-    free (net->name);
-    net->name = strdup ([new_name UTF8String]);
+    name = [aName retain];
+    free(net->name);
+    net->name = strdup([aName UTF8String]);
 }
 
 - (void) setAutoconnect:(BOOL) new_val
@@ -407,19 +405,19 @@ static ServerList *instance;
 
 @implementation ServerList
 
-- (void) show_for_session:(session *) sess
+- (void) showForSession:(session *) sess
 {
-    self->servlist_sess = sess;
+    self->servlistSession = sess;
     
-    [[nick1 window] makeKeyAndOrderFront:self];
+    [[nick1TextField window] makeKeyAndOrderFront:self];
 }
 
-+ (void) show_for_session:(session *) sess
++ (void) showForSession:(session *) sess
 {
 	if (!instance)
 		instance = [[ServerList alloc] init];
 	
-	[instance show_for_session:sess];
+	[instance showForSession:sess];
 }
 
 - (id) init
@@ -435,57 +433,57 @@ static ServerList *instance;
 {
     [AquaChat sharedAquaChat]->server_list = nil;
     
-    [[nick1 window] release];
-    [my_nets release];
-    [all_nets release];
+    [[nick1TextField window] release];
+    [myNetworks release];
+    [allNetworks release];
     
     [super dealloc];
 }
 
 - (void) savegui
 {
-    [[nick1 window] makeFirstResponder:nick1];
+    [[nick1TextField window] makeFirstResponder:nick1TextField];
     
-    strcpy (prefs.nick1, [[nick1 stringValue] UTF8String]);
-    strcpy (prefs.nick2, [[nick2 stringValue] UTF8String]);
-    strcpy (prefs.nick3, [[nick3 stringValue] UTF8String]);
-    strcpy (prefs.username, [[username stringValue] UTF8String]);
-    strcpy (prefs.realname, [[realname stringValue] UTF8String]);
+    strcpy (prefs.nick1, [[nick1TextField stringValue] UTF8String]);
+    strcpy (prefs.nick2, [[nick2TextField stringValue] UTF8String]);
+    strcpy (prefs.nick3, [[nick3TextField stringValue] UTF8String]);
+    strcpy (prefs.username, [[usernameTextField stringValue] UTF8String]);
+    strcpy (prefs.realname, [[realnameTextField stringValue] UTF8String]);
 
     servlist_save ();
 }
 
-- (void) do_connect:(id) sender
+- (void) doConnect:(id) sender
 {
-    int row = [net_list selectedRow];
+    NSInteger row = [networkTableView selectedRow];
     if (row < 0)
         return;
 
     [self savegui];
 
-    OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
+    OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
 
-    if (sender == connect_new_button || !is_session (servlist_sess))
-        servlist_sess = NULL;
+    if (sender == connectNewButton || !is_session (servlistSession))
+        servlistSession = NULL;
 
-    net->net->selected = [net_server_list selectedRow];	// This kinda stinks. Boo Peter!
+    net->net->selected = [networkServerTableView selectedRow];	// This kinda stinks. Boo Peter!
                                                         // Why can't it be an arg to
                                                         // servlist_connect!?
-    servlist_connect (servlist_sess, net->net, true);
+    servlist_connect (servlistSession, net->net, true);
 
-    [[nick1 window] orderOut:sender];
+    [[nick1TextField window] orderOut:sender];
 }
 
-- (void) do_set_flag:(id) sender
+- (void) doSetFlag:(id) sender
 {
-    int row = [net_list selectedRow];
+    NSInteger row = [networkTableView selectedRow];
     if (row >= 0)
 	{
-		OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
+		OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
 
-		bool val = [sender intValue];
+		BOOL val = [sender intValue];
 
-		int flag = [sender tag];
+		NSInteger flag = [sender tag];
 		if (flag < 0)
 		{
 			flag = ~flag;
@@ -500,14 +498,14 @@ static ServerList *instance;
 	}
 }
 
-- (void) do_set_field:(id) sender
+- (void) doSetField:(id) sender
 {
-    int row = [net_list selectedRow];
+    NSInteger row = [networkTableView selectedRow];
     if (row >= 0)
 	{
-		OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
+		OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
 
-		int offset = [sender tag];
+		NSInteger offset = [sender tag];
 		char **f = (char **)(((char *) net->net) + offset);
 		free (*f);
 		const char *v = [[sender stringValue] UTF8String];
@@ -515,14 +513,14 @@ static ServerList *instance;
 	}
 }
 
-- (void) do_done_edit:(id) sender
+- (void) doDoneEdit:(id) sender
 {
 	// Grab values from the GUI and replace in struct ircnet.
 	// NOTE: struct ircserver is still edited in real time.
-    int row = [net_list selectedRow];
+    NSInteger row = [networkTableView selectedRow];
     if (row >= 0)
     {
-		OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
+		OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
 
 		//set_text_value (net_join, &net->net->autojoin);
 		
@@ -549,48 +547,47 @@ static ServerList *instance;
 {
 	// Close the drawer.  If we leave it open and then try to cycle
 	// the windows, we'll find it even though it's not really visible!
-	[show_details_button setIntValue:0];
-	[self do_drawer:show_details_button];
+	[showDetailButton setIntValue:0];
+	[self showDetail:showDetailButton];
 	
     [self savegui];
 }
 
-- (void) do_serverlist_toggle:(id) sender
+- (void) toggleShowWhenStartup:(id) sender
 {
     prefs.slist_skip = ![sender intValue];
 }
 
-- (void) do_close:(id) sender
+- (void) doClose:(id) sender
 {
-	[[nick1 window] close];
+	[[nick1TextField window] close];
 }
 
-- (void) use_global_toggled:(id) sender
+- (void) toggleCustomUserInformation:(id) sender
 {
     bool doit = [sender intValue];
     
-    [net_nick setEnabled:doit];
-    [net_nick2 setEnabled:doit];
-    [net_real setEnabled:doit];
-    [net_user setEnabled:doit];
+    [networkNicknameTextField setEnabled:doit];
+    [networkNickname2TextField setEnabled:doit];
+    [networkRealnameTextField setEnabled:doit];
+    [networkUsernameTextField setEnabled:doit];
 	
-	[self do_set_flag:net_use_global];
+	[self doSetFlag:networkUseCustomInformationToggleButton];
 }
 
 - (void) comboBoxSelectionDidChange:(NSNotification *) notification
 {
-	[charset_combo setObjectValue:[charset_combo objectValueOfSelectedItem]];
+	[charsetComboBox setObjectValue:[charsetComboBox objectValueOfSelectedItem]];
 }
 
-- (void) populateFlag:(id) check
-			  fromNet:(OneNetwork *) net
+- (void) populateFlag:(id)check fromNetwork:(OneNetwork *) net
 {
-	int flag = [check tag];
-	bool invert = flag < 0;
+	NSInteger flag = [check tag];
+	BOOL invert = flag < 0;
 	if (invert)
 		flag = ~flag;
 
-	bool val = (net->net->flags & flag) != 0;
+	BOOL	val = (net->net->flags & flag) != 0;
 	
 	if (invert)
 		val = !val;
@@ -598,10 +595,9 @@ static ServerList *instance;
 	[check setIntValue:val];
 }
 
-- (void) populateField:(id) field
-			   fromNet:(OneNetwork *) net
+- (void) populateField:(id)field fromNetwork:(OneNetwork *) net
 {
-	int offset = [field tag];
+	NSInteger offset = [field tag];
 	char **f = (char **)(((char *) net->net) + offset);
 	char *str = *f;
 	
@@ -612,47 +608,45 @@ static ServerList *instance;
 
 - (void) populate_editor
 {
-    int row = [self->net_list selectedRow];
+    NSInteger row = [self->networkTableView selectedRow];
     if (row < 0)
 		return;
 
-	OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
+	OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
 	
-	[net_title_text setStringValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"Servers for %s", @"xchat", @""), net->name]];
+	[networkTitleTextField setStringValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"Servers for %s", @"xchat", @""), net->name]];
 			
-	[self populateField:net_nick fromNet:net];
-	[self populateField:net_nick2 fromNet:net];
-	[self populateField:net_pass fromNet:net];
-	[self populateField:net_real fromNet:net];
-	[self populateField:net_user fromNet:net];
-	[self populateField:net_nickserv_passwd fromNet:net];
-	[self populateField:charset_combo fromNet:net];
+	[self populateField:networkNicknameTextField fromNetwork:net];
+	[self populateField:networkNickname2TextField fromNetwork:net];
+	[self populateField:networkPasswordTextField fromNetwork:net];
+	[self populateField:networkRealnameTextField fromNetwork:net];
+	[self populateField:networkUsernameTextField fromNetwork:net];
+	[self populateField:networkNickservPasswordTextField fromNetwork:net];
+	[self populateField:charsetComboBox fromNetwork:net];
 
-	[self populateFlag:net_auto fromNet:net];
-	[self populateFlag:net_connect_selected fromNet:net];
-	[self populateFlag:net_use_global fromNet:net];
-	[self populateFlag:net_use_proxy fromNet:net];
-	[self populateFlag:net_use_ssl fromNet:net];
-	[self populateFlag:net_accept_invalid fromNet:net];
+	[self populateFlag:networkAutoConnectToggleButton fromNetwork:net];
+	[self populateFlag:networkSelectedOnlyToggleButton fromNetwork:net];
+	[self populateFlag:networkUseCustomInformationToggleButton fromNetwork:net];
+	[self populateFlag:networkUseProxyToggleButton fromNetwork:net];
+	[self populateFlag:networkUseSslToggleButton fromNetwork:net];
+	[self populateFlag:networkAcceptInvalidCertificationToggleButton fromNetwork:net];
 
-	[self use_global_toggled:net_use_global];
+	[self toggleCustomUserInformation:networkUseCustomInformationToggleButton];
 	
 	NSInteger selected = net->net->selected;
 
-	[net_join_table reloadData];
-	[net_command_table reloadData];
-	[net_server_list reloadData];
+	[networkJoinTableView reloadData];
+	[networkCommandTableView reloadData];
+	[networkServerTableView reloadData];
 
-	if (selected < [self numberOfRowsInTableView:net_server_list])
+	if (selected < [self numberOfRowsInTableView:networkServerTableView])
 	{
-		[net_server_list
-     selectRowIndexes:[NSIndexSet indexSetWithIndex:selected]
-     byExtendingSelection:NO];
-		[net_server_list scrollRowToVisible:selected];
+		[networkServerTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:selected] byExtendingSelection:NO];
+		[networkServerTableView scrollRowToVisible:selected];
 	}
 }
 
-- (void) do_drawer:(id) sender
+- (void) showDetail:(id) sender
 {
 	if ([sender intValue])
 	{
@@ -664,95 +658,95 @@ static ServerList *instance;
 	}
 }
 
-- (void) do_new_channel:(id) sender
+- (void) doNewChannel:(id) sender
 {
-	NSInteger nrow = [net_list selectedRow];
+	NSInteger nrow = [networkTableView selectedRow];
 	if (nrow < 0)
-	return;
+		return;
         
-	OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:nrow];
+	OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:nrow];
 
 	OneChannel *chan = [[OneChannel alloc] initWithChannel:NSLocalizedStringFromTable(@"NEW CHANNEL", @"xchataqua", @"Default channel name: MainMenu->File->Server List... => (Select server)->On Join->channels->'+'")];
 	[net->channels addObject:chan];
 	
-	[net_join_table reloadData];
+	[networkJoinTableView reloadData];
 	
 	NSInteger last = [net->channels count] - 1;    
-	[net_join_table selectRowIndexes:[NSIndexSet indexSetWithIndex:last] byExtendingSelection:NO];
-	[net_join_table scrollRowToVisible:last];
-	[net_join_table editColumn:0 row:last withEvent:nil select:YES];
+	[networkJoinTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:last] byExtendingSelection:NO];
+	[networkJoinTableView scrollRowToVisible:last];
+	[networkJoinTableView editColumn:0 row:last withEvent:nil select:YES];
 }
 
-- (void) do_remove_channel:(id) sender
+- (void) doRemoveChannel:(id) sender
 {
-	[net_join_table abortEditing];
+	[networkJoinTableView abortEditing];
 
-    int nrow = [net_list selectedRow];
+    NSInteger nrow = [networkTableView selectedRow];
     if (nrow < 0)
         return;
 
-    OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:nrow];
+    OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:nrow];
 
-    int crow = [net_join_table selectedRow];
+    NSInteger crow = [networkJoinTableView selectedRow];
     if (crow < 0)
         return;
 
 	[net->channels removeObjectAtIndex:crow];
-	[net_join_table reloadData];
+	[networkJoinTableView reloadData];
 	
 	[net resetAutojoin];
 }
 
-- (void) do_new_command:(id) sender
+- (void) doNewCommand:(id) sender
 {
-	NSInteger nrow = [net_list selectedRow];
+	NSInteger nrow = [networkTableView selectedRow];
 	if (nrow < 0) return;
         
-	OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:nrow];
+	OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:nrow];
 
-	[net->connect_commands addObject:NSLocalizedStringFromTable(@"NEW COMMAND", @"xchataqua", @"Default command: MainMenu->File->Server List... => (Select server)->On Join->commands->'+'")];
+	[net->connectCommands addObject:NSLocalizedStringFromTable(@"NEW COMMAND", @"xchataqua", @"Default command: MainMenu->File->Server List... => (Select server)->On Join->commands->'+'")];
 	
-	[net_command_table reloadData];
+	[networkCommandTableView reloadData];
 	
-	NSInteger last = [net->connect_commands count] - 1;    
-	[net_command_table selectRowIndexes:[NSIndexSet indexSetWithIndex:last] byExtendingSelection:NO];
-	[net_command_table scrollRowToVisible:last];
-	[net_command_table editColumn:0 row:last withEvent:nil select:YES];
+	NSInteger last = [net->connectCommands count] - 1;    
+	[networkCommandTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:last] byExtendingSelection:NO];
+	[networkCommandTableView scrollRowToVisible:last];
+	[networkCommandTableView editColumn:0 row:last withEvent:nil select:YES];
 }
 
-- (void) do_remove_command:(id) sender
+- (void) doRemoveCommand:(id) sender
 {
-	[net_command_table abortEditing];
+	[networkCommandTableView abortEditing];
 
-    int nrow = [net_list selectedRow];
+    NSInteger nrow = [networkTableView selectedRow];
     if (nrow < 0)
         return;
 
-    OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:nrow];
+    OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:nrow];
 
-    int crow = [net_command_table selectedRow];
+    NSInteger crow = [networkCommandTableView selectedRow];
     if (crow < 0)
         return;
 
-	[net->connect_commands removeObjectAtIndex:crow];
-	[net_command_table reloadData];
+	[net->connectCommands removeObjectAtIndex:crow];
+	[networkCommandTableView reloadData];
 	
 	[net resetCommands];
 }
 
-- (void) do_remove_server:(id) sender
+- (void) doRemoveServer:(id) sender
 {
-	[net_server_list abortEditing];
+	[networkServerTableView abortEditing];
 
-    int nrow = [net_list selectedRow];
+    NSInteger nrow = [networkTableView selectedRow];
     if (nrow < 0)
         return;
 
-    int srow = [net_server_list selectedRow];
+    NSInteger srow = [networkServerTableView selectedRow];
     if (srow < 0)
         return;
         
-    OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:nrow];
+    OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:nrow];
     
     if (g_slist_length (net->net->servlist) < 2)
         return;
@@ -762,132 +756,130 @@ static ServerList *instance;
     ircserver *serv = (ircserver *) g_slist_nth (net->net->servlist, srow)->data;
     servlist_server_remove (net->net, serv);
     
-    [net_server_list reloadData];
+    [networkServerTableView reloadData];
 }
 
-- (void) do_edit_server:(id) sender
+- (void) doEditServer:(id) sender
 {
-	NSInteger sel = [net_server_list selectedRow];
+	NSInteger sel = [networkServerTableView selectedRow];
 	if (sel >= 0)
 	{
-		[net_server_list selectRowIndexes:[NSIndexSet indexSetWithIndex:sel] byExtendingSelection:NO];
-		[net_server_list editColumn:0 row:sel withEvent:nil select:YES];
+		[networkServerTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:sel] byExtendingSelection:NO];
+		[networkServerTableView editColumn:0 row:sel withEvent:nil select:YES];
 	}
 }
 
-- (void) do_new_server:(id) sender
+- (void) doNewServer:(id) sender
 {
-  int nrow = [net_list selectedRow];
+  NSInteger nrow = [networkTableView selectedRow];
   if (nrow < 0)
     return;
 
-  int srow = [net_server_list selectedRow];
+  NSInteger srow = [networkServerTableView selectedRow];
   if (srow < 0)
     return;
         
-  OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:nrow];
+  OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:nrow];
 	
   ircserver *svr = servlist_server_add (net->net, "NewServer");
     
   [net addServer:svr];
-  [net_server_list reloadData];
+  [networkServerTableView reloadData];
     
   NSInteger last = [net->servers count] - 1;    
-  [net_server_list
-   selectRowIndexes:[NSIndexSet indexSetWithIndex:last]
-   byExtendingSelection:NO];
-  [net_server_list scrollRowToVisible:last];
+  [networkServerTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:last] byExtendingSelection:NO];
+  [networkServerTableView scrollRowToVisible:last];
 	
-	[self do_edit_server:sender];
+	[self doEditServer:sender];
 }
 
-- (void) do_new_network:(id) sender
+- (void) doNewNetwork:(id) sender
 {
-	ircnet *net = servlist_net_add ((char*)XALocalizeString("New Network"), "", false);
+	ircnet *net = servlist_net_add ((char*)[NSLocalizedStringFromTable(@"New Network", @"xchat", @"") UTF8String], "", false);
 	servlist_server_add (net, "NewServer");
-	[my_nets addObject:[[OneNetwork alloc] initWithIrcnet:net]];
-	[net_list reloadData];
+	[myNetworks addObject:[[OneNetwork alloc] initWithIrcnet:net]];
+	[networkTableView reloadData];
 	
-	NSInteger last = [self numberOfRowsInTableView:net_list] - 1;
-	[net_list selectRowIndexes:[NSIndexSet indexSetWithIndex:last] byExtendingSelection:NO];
-	[net_list editColumn:2 row:last withEvent:nil select:YES];
+	NSInteger last = [self numberOfRowsInTableView:networkTableView] - 1;
+	[networkTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:last] byExtendingSelection:NO];
+	[networkTableView editColumn:2 row:last withEvent:nil select:YES];
 }
 
-- (void) do_remove_network:(id) sender
+- (void) doRemoveNetwork:(id) sender
 {
-	[net_list abortEditing];
+	[networkTableView abortEditing];
 
-    int row = [net_list selectedRow];
+    NSInteger row = [networkTableView selectedRow];
     if (row < 0)
         return;
     
-    OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
+    OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
 
     if (![SGAlert confirmWithString:[NSString stringWithFormat:
 		NSLocalizedStringFromTable(@"Really remove network \"%@\" and all its servers?", @"xchat", @"Dialog Message from clicking '-' of MainMenu->File->Server List..."), net->name]])
 		return;
     
     servlist_net_remove (net->net);
-    [my_nets removeObjectAtIndex:row];
-    [net_list reloadData];
+    [myNetworks removeObjectAtIndex:row];
+    [networkTableView reloadData];
 }
 
-- (void) do_filter:(id) sender
+- (void) doFilter:(id) sender
 {
 	NSString *filter = [[sender stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 	const char *cfilter = [filter UTF8String];
 	
-	[my_nets release];
+	[myNetworks release];
 	
 	if (!cfilter || !cfilter[0])
 	{
-		my_nets = [all_nets retain];
+		myNetworks = [allNetworks retain];
 	}
 	else
 	{
-		my_nets = [[NSMutableArray arrayWithCapacity:0] retain];
+		myNetworks = [[NSMutableArray arrayWithCapacity:0] retain];
 
-		for (unsigned i = 0; i < [all_nets count]; i ++)
+		for (NSUInteger i = 0; i < [allNetworks count]; i ++)
 		{
-			OneNetwork *net = [all_nets objectAtIndex:i];
+			OneNetwork *net = [allNetworks objectAtIndex:i];
 			
 			if (strcasestr (net->net->name, cfilter))
-				[my_nets addObject:net];
+				[myNetworks addObject:net];
 		}
 	}
     
-    [net_list reloadData];
+    [networkTableView reloadData];
 	
 	// Simulate new selection
-	[self tableViewSelectionDidChange:[NSNotification notificationWithName:@"dummy" object:net_list]];
+	[self tableViewSelectionDidChange:[NSNotification notificationWithName:@"dummy" object:networkTableView]];
 }
 
 - (void) populate_nets
 {
-	[my_nets release];
-	[all_nets release];
+	[myNetworks release];
+	[allNetworks release];
 	
-    all_nets = [[NSMutableArray arrayWithCapacity:0] retain];
-	my_nets = [all_nets retain];
+    allNetworks = [[NSMutableArray arrayWithCapacity:0] retain];
+	myNetworks = [allNetworks retain];
 
     for (GSList *list = network_list; list; list = list->next)
     {
         ircnet *net = (ircnet *) list->data;
-		[my_nets addObject:[[OneNetwork alloc] initWithIrcnet:net]];
+		[myNetworks addObject:[[OneNetwork alloc] initWithIrcnet:net]];
     }
     
-    [net_list reloadData];
+    [networkTableView reloadData];
 }
 
 - (void) populate
 {
-    [nick1 setStringValue:[NSString stringWithUTF8String:prefs.nick1]];
-    [nick2 setStringValue:[NSString stringWithUTF8String:prefs.nick2]];
-    [nick3 setStringValue:[NSString stringWithUTF8String:prefs.nick3]];
-    [realname setStringValue:[NSString stringWithUTF8String:prefs.realname]];
-    [username setStringValue:[NSString stringWithUTF8String:prefs.username]];
+    [nick1TextField setStringValue:[NSString stringWithUTF8String:prefs.nick1]];
+    [nick2TextField setStringValue:[NSString stringWithUTF8String:prefs.nick2]];
+    [nick3TextField setStringValue:[NSString stringWithUTF8String:prefs.nick3]];
+    [realnameTextField setStringValue:[NSString stringWithUTF8String:prefs.realname]];
+    [usernameTextField setStringValue:[NSString stringWithUTF8String:prefs.username]];
 
-    [skip_serverlist_button setIntValue:!prefs.slist_skip];
+    [showWhenStartupToggleButton setIntValue:!prefs.slist_skip];
 	
 	[self populate_nets];
 }    
@@ -896,7 +888,7 @@ static ServerList *instance;
 {
     for (NSString **c = charsets; *c; c ++)
     {
-        [charset_combo addItemWithObjectValue:*c];
+        [charsetComboBox addItemWithObjectValue:*c];
     }
 }
 
@@ -904,93 +896,89 @@ static ServerList *instance;
 {
 	// 10.3 doesn't support small square buttons.
 	// This is the next best thing
-	[SGGuiUtil fixSquareButtonsInView:[skip_serverlist_button superview]];
-	[SGGuiUtil fixSquareButtonsInView:[net_nick superview]];
-	[SGGuiUtil fixSquareButtonsInView:[[[net_join_table superview] superview] superview]];
+	[SGGuiUtil fixSquareButtonsInView:[showWhenStartupToggleButton superview]];
+	[SGGuiUtil fixSquareButtonsInView:[networkNicknameTextField superview]];
+	[SGGuiUtil fixSquareButtonsInView:[[[networkJoinTableView superview] superview] superview]];
 	
-	NSFont *font = [skip_serverlist_button font];
-	NSArray *views = [[[net_list window] contentView] subviews];
-	for (unsigned i = 0; i < [views count]; i ++)
+	NSFont *font = [showWhenStartupToggleButton font];
+	for (NSView *view in [[[networkTableView window] contentView] subviews])
 	{
-		NSView *view = [views objectAtIndex:i];
 		if ([view isKindOfClass:[NSButton class]])
 		{
 			[(NSButton *) view setFont:font];
 		}
 	}
 	
-  for (int i = 0; i < [net_server_list numberOfColumns]; i ++)
-  {
-    id col = [[net_server_list tableColumns] objectAtIndex:i];
-    [col setIdentifier:[NSNumber numberWithInt:i]];
-  }
+	for (NSUInteger i = 0; i < [networkServerTableView numberOfColumns]; i ++)
+	{
+		id col = [[networkServerTableView tableColumns] objectAtIndex:i];
+		[col setIdentifier:[NSNumber numberWithInt:i]];
+	}
 
-  for (int i = 0; i < [net_join_table numberOfColumns]; i ++)
-  {
-    id col = [[net_join_table tableColumns] objectAtIndex:i];
-    [col setIdentifier:[NSNumber numberWithInt:i]];
-  }
-
-	NSTableColumn *fav_col = [[net_list tableColumns] objectAtIndex:0];
+	for (NSUInteger i = 0; i < [networkJoinTableView numberOfColumns]; i ++)
+	{
+		id col = [[networkJoinTableView tableColumns] objectAtIndex:i];
+		[col setIdentifier:[NSNumber numberWithInt:i]];
+	}
+	
+	NSTableColumn *fav_col = [[networkTableView tableColumns] objectAtIndex:0];
 	NSTableHeaderCell *heart_cell = [fav_col headerCell];
 	[heart_cell setImage:[NSImage imageNamed:@"heart.tif"]];
-
-	NSTableColumn *conn_col = [[net_list tableColumns] objectAtIndex:1];
+	
+	NSTableColumn *conn_col = [[networkTableView tableColumns] objectAtIndex:1];
 	NSTableHeaderCell *conn_cell = [conn_col headerCell];
 	[conn_cell setImage:[NSImage imageNamed:@"connect.tif"]];
 	
-  [[nick1 window] setDelegate:self];
+	[[nick1TextField window] setDelegate:self];
+	
+	[self->networkServerTableView setDataSource:self];
+	[self->networkServerTableView setDelegate:self];
+	
+	[self->networkJoinTableView setDataSource:self];
+	[self->networkJoinTableView setDelegate:self];
+	
+	[self->networkCommandTableView setDataSource:self];
+	[self->networkCommandTableView setDelegate:self];
+	
+	[self->networkTableView setDataSource:self];
+	[self->networkTableView setDelegate:self];
+	[self->networkTableView setAutosaveTableColumns:YES];
     
-  [self->net_server_list setDataSource:self];
-  [self->net_server_list setDelegate:self];
+	[networkAutoConnectToggleButton setTag:FLAG_AUTO_CONNECT];
+	[networkUseCustomInformationToggleButton setTag:~FLAG_USE_GLOBAL];
+	[networkUseProxyToggleButton setTag:~FLAG_USE_PROXY];
+	[networkUseSslToggleButton setTag:FLAG_USE_SSL];
+	[networkAcceptInvalidCertificationToggleButton setTag:FLAG_ALLOW_INVALID];
+	[networkSelectedOnlyToggleButton setTag:~FLAG_CYCLE];
 
-  [self->net_join_table setDataSource:self];
-  [self->net_join_table setDelegate:self];
-
-  [self->net_command_table setDataSource:self];
-  [self->net_command_table setDelegate:self];
-    
-  [self->net_list setDataSource:self];
-  [self->net_list setDelegate:self];
-	[self->net_list setAutosaveTableColumns:YES];
-    
-	[net_auto setTag:FLAG_AUTO_CONNECT];
-	[net_use_global setTag:~FLAG_USE_GLOBAL];
-	[net_use_proxy setTag:~FLAG_USE_PROXY];
-	[net_use_ssl setTag:FLAG_USE_SSL];
-	[net_accept_invalid setTag:FLAG_ALLOW_INVALID];
-	[net_connect_selected setTag:~FLAG_CYCLE];
-
-	[net_nick setTag:STRUCT_OFFSET_STR(ircnet, nick)];
-	[net_nick2 setTag:STRUCT_OFFSET_STR(ircnet, nick2)];
-	[net_pass setTag:STRUCT_OFFSET_STR(ircnet, pass)];
-	[net_real setTag:STRUCT_OFFSET_STR(ircnet, real)];
-	[net_user setTag:STRUCT_OFFSET_STR(ircnet, user)];
-	[net_nickserv_passwd setTag:STRUCT_OFFSET_STR(ircnet, nickserv)];
-	[charset_combo setTag:STRUCT_OFFSET_STR(ircnet, encoding)];
+	[networkNicknameTextField setTag:STRUCT_OFFSET_STR(ircnet, nick)];
+	[networkNickname2TextField setTag:STRUCT_OFFSET_STR(ircnet, nick2)];
+	[networkPasswordTextField setTag:STRUCT_OFFSET_STR(ircnet, pass)];
+	[networkRealnameTextField setTag:STRUCT_OFFSET_STR(ircnet, real)];
+	[networkUsernameTextField setTag:STRUCT_OFFSET_STR(ircnet, user)];
+	[networkNickservPasswordTextField setTag:STRUCT_OFFSET_STR(ircnet, nickserv)];
+	[charsetComboBox setTag:STRUCT_OFFSET_STR(ircnet, encoding)];
 
     // We gotta do a reloadData in order to change the selection, but reload
     // data will call selectionDidChange and thus set prefs.slist_select.  We'll
     // save the value of prefs.slist_select now, and reset the selection after
     // the first reloadData.
     
-  NSInteger slist_select = prefs.slist_select;
+	NSInteger slist_select = prefs.slist_select;
     
-  [self make_charset_menu];
-  [self populate];
+	[self make_charset_menu];
+	[self populate];
 
-	[my_nets sortUsingDescriptors:[net_list sortDescriptors]];
-	[net_list reloadData];
+	[myNetworks sortUsingDescriptors:[networkTableView sortDescriptors]];
+	[networkTableView reloadData];
 
-  if (slist_select < [self numberOfRowsInTableView:net_list])
-  {
-    [net_list
-     selectRowIndexes:[NSIndexSet indexSetWithIndex:slist_select]
-     byExtendingSelection:NO];
-    [net_list scrollRowToVisible:slist_select];
-  }
+	if (slist_select < [self numberOfRowsInTableView:networkTableView])
+	{
+		[networkTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:slist_select] byExtendingSelection:NO];
+		[networkTableView scrollRowToVisible:slist_select];
+	}
 
-  [[nick1 window] center];
+	[[nick1TextField window] center];
 }
 
 //
@@ -999,72 +987,70 @@ static ServerList *instance;
 
 - (void) tableViewSelectionDidChange:(NSNotification *) notification
 {
-	int row = [self->net_list selectedRow];
+	NSInteger row = [self->networkTableView selectedRow];
 	if (row < 0)
 		return;
 		
-    if ([notification object] == net_list)
+    if ([notification object] == networkTableView)
 	{
-		// Figure out what was selected from the all_nets
-		id selected = [my_nets objectAtIndex:row];
-		row = [all_nets indexOfObject:selected];
+		// Figure out what was selected from the allNetworks
+		id selected = [myNetworks objectAtIndex:row];
+		row = [allNetworks indexOfObject:selected];
 		prefs.slist_select = row;
 		[self populate_editor];
 	}
-	else if ([notification object] == net_server_list)
+	else if ([notification object] == networkServerTableView)
 	{
-	    OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
-		net->net->selected = [net_server_list selectedRow];
+	    OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
+		net->net->selected = [networkServerTableView selectedRow];
 	}
 }
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
-    if (aTableView == net_list)
-        return [my_nets count];
+    if (aTableView == networkTableView)
+        return [myNetworks count];
     
-	if (aTableView == net_server_list)
+	if (aTableView == networkServerTableView)
 	{
-		int row = [self->net_list selectedRow];
+		NSInteger row = [self->networkTableView selectedRow];
 		if (row < 0)
 			return 0;
 			
-		OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
+		OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
 		return [net->servers count];
 	}
 	
-	if (aTableView == net_join_table)
+	if (aTableView == networkJoinTableView)
 	{
-		int row = [self->net_list selectedRow];
+		NSInteger row = [self->networkTableView selectedRow];
 		if (row < 0)
 			return 0;
 			
-		OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
+		OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
 		return [net->channels count];
 	}
 	
-	if (aTableView == net_command_table)
+	if (aTableView == networkCommandTableView)
 	{
-		int row = [self->net_list selectedRow];
+		NSInteger row = [self->networkTableView selectedRow];
 		if (row < 0)
 			return 0;
 			
-		OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
-		return [net->connect_commands count];
+		OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
+		return [net->connectCommands count];
 	}
 	
 	return 0;
 }
 
-- (id) tableView:(NSTableView *) aTableView
-    objectValueForTableColumn:(NSTableColumn *) aTableColumn
-    row:(NSInteger) rowIndex
+- (id) tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger) rowIndex
 {
-	int col = [[aTableColumn identifier] intValue];
+	NSInteger col = [[aTableColumn identifier] integerValue];
 	
-    if (aTableView == net_list)
+    if (aTableView == networkTableView)
 	{
-		OneNetwork *net =[my_nets objectAtIndex:rowIndex];
+		OneNetwork *net =[myNetworks objectAtIndex:rowIndex];
 		
 		switch (col)
 		{
@@ -1076,13 +1062,13 @@ static ServerList *instance;
 				return [net name];
 		}
 	}
-	else if (aTableView == net_server_list)
+	else if (aTableView == networkServerTableView)
 	{
-		int row = [self->net_list selectedRow];
+		NSInteger row = [self->networkTableView selectedRow];
 		if (row < 0)
 			return @"";
 
-		OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
+		OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
 		OneServer *svr = (OneServer *) [net->servers objectAtIndex:rowIndex];
 		
 		switch (col)
@@ -1092,13 +1078,13 @@ static ServerList *instance;
 			case 2: return [NSNumber numberWithBool:svr->ssl];
 		}
 	}
-	else if (aTableView == net_join_table)
+	else if (aTableView == networkJoinTableView)
 	{
-		int row = [self->net_list selectedRow];
+		NSInteger row = [self->networkTableView selectedRow];
 		if (row < 0)
 			return @"";
 			
-		OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
+		OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
 		OneChannel *chan = (OneChannel *) [net->channels objectAtIndex:rowIndex];
 		
 		switch (col)
@@ -1107,14 +1093,14 @@ static ServerList *instance;
 			case 1: return chan->key;
 		}
 	}
-	else if (aTableView == net_command_table)
+	else if (aTableView == networkCommandTableView)
 	{
-		int row = [self->net_list selectedRow];
+		NSInteger row = [self->networkTableView selectedRow];
 		if (row < 0)
 			return @"";
 			
-		OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:row];
-		return [net->connect_commands objectAtIndex:rowIndex];
+		OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
+		return [net->connectCommands objectAtIndex:rowIndex];
 	}
     
     return @"";
@@ -1125,11 +1111,11 @@ static ServerList *instance;
     forTableColumn:(NSTableColumn *) aTableColumn 
                row:(NSInteger)rowIndex
 {
-	int col = [[aTableColumn identifier] intValue];
+	NSInteger col = [[aTableColumn identifier] integerValue];
 	
-    if (aTableView == net_list)
+    if (aTableView == networkTableView)
     {
-		OneNetwork *net =[my_nets objectAtIndex:rowIndex];
+		OneNetwork *net =[myNetworks objectAtIndex:rowIndex];
 
 		switch (col)
 		{
@@ -1143,12 +1129,12 @@ static ServerList *instance;
 				[net setName:anObject];
 		}
     }
-    else if (aTableView == net_server_list)
+    else if (aTableView == networkServerTableView)
     {
-		if ([net_list selectedRow] < 0)
+		if ([networkTableView selectedRow] < 0)
 			return;
 
-        OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:[net_list selectedRow]];
+        OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:[networkTableView selectedRow]];
         OneServer *svr = (OneServer *) [net->servers objectAtIndex:rowIndex];
         switch (col)
         {
@@ -1162,17 +1148,17 @@ static ServerList *instance;
 			{
                 bool needReload = [svr setSSL:anObject];
 				if (needReload)
-					[net_server_list reloadData];
+					[networkServerTableView reloadData];
                 break;
 			}
         }
     }
-    else if (aTableView == net_join_table)
+    else if (aTableView == networkJoinTableView)
     {
-		if ([net_list selectedRow] < 0)
+		if ([networkTableView selectedRow] < 0)
 			return;
 
-        OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:[net_list selectedRow]];
+        OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:[networkTableView selectedRow]];
 		OneChannel *chan = (OneChannel *) [net->channels objectAtIndex:rowIndex];
         switch (col)
         {
@@ -1185,13 +1171,13 @@ static ServerList *instance;
         }
 		[net resetAutojoin];
     }
-    else if (aTableView == net_command_table)
+    else if (aTableView == networkCommandTableView)
     {
-		if ([net_list selectedRow] < 0)
+		if ([networkTableView selectedRow] < 0)
 			return;
 
-        OneNetwork *net = (OneNetwork *) [my_nets objectAtIndex:[net_list selectedRow]];
-		[net->connect_commands replaceObjectAtIndex:rowIndex withObject:anObject];
+        OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:[networkTableView selectedRow]];
+		[net->connectCommands replaceObjectAtIndex:rowIndex withObject:anObject];
 		[net resetCommands];
     }
 }
@@ -1199,12 +1185,12 @@ static ServerList *instance;
 - (void) tableView:(NSTableView *) aTableView
 	didClickTableColumn:(NSTableColumn *) aTableColumn
 {
-    if (aTableView == net_list)
+    if (aTableView == networkTableView)
 	{
 		NSArray *descs = [aTableView sortDescriptors];
-		[my_nets sortUsingDescriptors:descs];
-		[net_list reloadData];
-		[self tableViewSelectionDidChange:[NSNotification notificationWithName:@"" object:net_list]];
+		[myNetworks sortUsingDescriptors:descs];
+		[networkTableView reloadData];
+		[self tableViewSelectionDidChange:[NSNotification notificationWithName:@"" object:networkTableView]];
 	}
 }
 

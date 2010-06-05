@@ -951,7 +951,7 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 									<characters key="NS.bytes">1</characters>
 								</object>
 								<object class="NSView" key="NSView" id="577103459">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder" ref="967528376"/>
 									<int key="NSvFlags">256</int>
 									<object class="NSMutableArray" key="NSSubviews">
 										<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1383,6 +1383,7 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 										</object>
 									</object>
 									<string key="NSFrame">{{10, 25}, {378, 362}}</string>
+									<reference key="NSSuperview" ref="967528376"/>
 								</object>
 								<string key="NSLabel">Djenerå</string>
 								<reference key="NSColor" ref="778715521"/>
@@ -1655,7 +1656,7 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 							</object>
 							<object class="NSTabViewItem" id="680586920">
 								<object class="NSView" key="NSView" id="450961682">
-									<reference key="NSNextResponder" ref="967528376"/>
+									<nil key="NSNextResponder"/>
 									<int key="NSvFlags">256</int>
 									<object class="NSMutableArray" key="NSSubviews">
 										<bool key="EncodedWithXMLCoder">YES</bool>
@@ -2056,21 +2057,20 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 										</object>
 									</object>
 									<string key="NSFrame">{{10, 25}, {378, 362}}</string>
-									<reference key="NSSuperview" ref="967528376"/>
 								</object>
 								<string key="NSLabel">On Join</string>
 								<reference key="NSColor" ref="778715521"/>
 								<reference key="NSTabView" ref="967528376"/>
 							</object>
 						</object>
-						<reference key="NSSelectedTabViewItem" ref="680586920"/>
+						<reference key="NSSelectedTabViewItem" ref="922651090"/>
 						<reference key="NSFont" ref="26"/>
 						<int key="NSTvFlags">134217728</int>
 						<bool key="NSAllowTruncatedLabels">YES</bool>
 						<bool key="NSDrawsBackground">YES</bool>
 						<object class="NSMutableArray" key="NSSubviews">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="450961682"/>
+							<reference ref="577103459"/>
 						</object>
 					</object>
 					<object class="NSTextField" id="272121521">
@@ -2139,110 +2139,6 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 			<object class="NSMutableArray" key="connectionRecords">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_connect:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="668880231"/>
-					</object>
-					<int key="connectionID">54</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_connect:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="144125443"/>
-					</object>
-					<int key="connectionID">92</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">connect_new_button</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="144125443"/>
-					</object>
-					<int key="connectionID">113</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_serverlist_toggle:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="179703680"/>
-					</object>
-					<int key="connectionID">121</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">skip_serverlist_button</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="179703680"/>
-					</object>
-					<int key="connectionID">122</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">nick1</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="1025740005"/>
-					</object>
-					<int key="connectionID">191</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">nick2</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="919100024"/>
-					</object>
-					<int key="connectionID">192</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">nick3</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="954287723"/>
-					</object>
-					<int key="connectionID">193</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">username</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="210376716"/>
-					</object>
-					<int key="connectionID">194</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">realname</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="736195001"/>
-					</object>
-					<int key="connectionID">195</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">net_list</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="454280019"/>
-					</object>
-					<int key="connectionID">209</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_new_network:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="597186148"/>
-					</object>
-					<int key="connectionID">215</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_remove_network:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="259637326"/>
-					</object>
-					<int key="connectionID">218</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">contentView</string>
 						<reference key="source" ref="324573534"/>
@@ -2259,14 +2155,6 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 					<int key="connectionID">275</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_drawer:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="839206675"/>
-					</object>
-					<int key="connectionID">335</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">drawer</string>
 						<reference key="source" ref="992574243"/>
@@ -2276,307 +2164,419 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">net_use_global</string>
+						<string key="label">nick1TextField</string>
 						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="261223322"/>
+						<reference key="destination" ref="1025740005"/>
 					</object>
-					<int key="connectionID">337</int>
+					<int key="connectionID">448</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">net_nick</string>
+						<string key="label">nick2TextField</string>
 						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="1055149299"/>
+						<reference key="destination" ref="919100024"/>
 					</object>
-					<int key="connectionID">338</int>
+					<int key="connectionID">449</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">net_real</string>
+						<string key="label">nick3TextField</string>
 						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="681225418"/>
+						<reference key="destination" ref="954287723"/>
 					</object>
-					<int key="connectionID">339</int>
+					<int key="connectionID">450</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">net_user</string>
+						<string key="label">realnameTextField</string>
 						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="715710602"/>
+						<reference key="destination" ref="736195001"/>
 					</object>
-					<int key="connectionID">340</int>
+					<int key="connectionID">451</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">net_connect_selected</string>
+						<string key="label">usernameTextField</string>
 						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="134316608"/>
+						<reference key="destination" ref="210376716"/>
 					</object>
-					<int key="connectionID">341</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">net_title_text</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="166926767"/>
-					</object>
-					<int key="connectionID">342</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">net_auto</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="976571231"/>
-					</object>
-					<int key="connectionID">343</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">net_use_proxy</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="498781926"/>
-					</object>
-					<int key="connectionID">344</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">net_use_ssl</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="78246012"/>
-					</object>
-					<int key="connectionID">345</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">net_accept_invalid</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="870355784"/>
-					</object>
-					<int key="connectionID">346</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">net_nickserv_passwd</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="2141562"/>
-					</object>
-					<int key="connectionID">347</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">net_pass</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="238043819"/>
-					</object>
-					<int key="connectionID">348</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">charset_combo</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="1032032604"/>
-					</object>
-					<int key="connectionID">349</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">net_server_list</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="793989784"/>
-					</object>
-					<int key="connectionID">350</int>
+					<int key="connectionID">453</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">do_set_flag:</string>
+						<string key="label">doConnect:</string>
 						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="976571231"/>
+						<reference key="destination" ref="668880231"/>
 					</object>
-					<int key="connectionID">351</int>
+					<int key="connectionID">454</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">do_set_flag:</string>
+						<string key="label">doConnect:</string>
 						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="498781926"/>
+						<reference key="destination" ref="144125443"/>
 					</object>
-					<int key="connectionID">352</int>
+					<int key="connectionID">455</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">do_set_flag:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="78246012"/>
-					</object>
-					<int key="connectionID">354</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_set_flag:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="870355784"/>
-					</object>
-					<int key="connectionID">355</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_set_flag:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="134316608"/>
-					</object>
-					<int key="connectionID">356</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">use_global_toggled:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="261223322"/>
-					</object>
-					<int key="connectionID">357</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_set_field:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="1055149299"/>
-					</object>
-					<int key="connectionID">358</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_set_field:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="918365630"/>
-					</object>
-					<int key="connectionID">359</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_set_field:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="715710602"/>
-					</object>
-					<int key="connectionID">360</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_set_field:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="681225418"/>
-					</object>
-					<int key="connectionID">361</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_set_field:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="2141562"/>
-					</object>
-					<int key="connectionID">362</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_set_field:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="238043819"/>
-					</object>
-					<int key="connectionID">363</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">net_nick2</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="918365630"/>
-					</object>
-					<int key="connectionID">364</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_set_field:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="1032032604"/>
-					</object>
-					<int key="connectionID">365</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">net_join_table</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="632521232"/>
-					</object>
-					<int key="connectionID">366</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_new_channel:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="538082299"/>
-					</object>
-					<int key="connectionID">368</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_remove_channel:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="981624514"/>
-					</object>
-					<int key="connectionID">369</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">net_command_table</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="480705023"/>
-					</object>
-					<int key="connectionID">370</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_new_command:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="607346301"/>
-					</object>
-					<int key="connectionID">371</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_remove_command:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="776125119"/>
-					</object>
-					<int key="connectionID">372</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_filter:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="606536425"/>
-					</object>
-					<int key="connectionID">373</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_new_server:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="544677917"/>
-					</object>
-					<int key="connectionID">374</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_remove_server:</string>
-						<reference key="source" ref="992574243"/>
-						<reference key="destination" ref="276373594"/>
-					</object>
-					<int key="connectionID">375</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">show_details_button</string>
+						<string key="label">showDetail:</string>
 						<reference key="source" ref="992574243"/>
 						<reference key="destination" ref="839206675"/>
 					</object>
-					<int key="connectionID">376</int>
+					<int key="connectionID">457</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">connectNewButton</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="144125443"/>
+					</object>
+					<int key="connectionID">458</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">charsetComboBox</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="1032032604"/>
+					</object>
+					<int key="connectionID">459</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doFilter:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="606536425"/>
+					</object>
+					<int key="connectionID">460</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doRemoveNetwork:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="259637326"/>
+					</object>
+					<int key="connectionID">461</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doRemoveServer:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="276373594"/>
+					</object>
+					<int key="connectionID">462</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doNewServer:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="544677917"/>
+					</object>
+					<int key="connectionID">463</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doNewNetwork:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="597186148"/>
+					</object>
+					<int key="connectionID">464</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doNewChannel:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="538082299"/>
+					</object>
+					<int key="connectionID">465</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doNewCommand:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="607346301"/>
+					</object>
+					<int key="connectionID">466</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doRemoveChannel:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="981624514"/>
+					</object>
+					<int key="connectionID">467</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doRemoveCommand:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="776125119"/>
+					</object>
+					<int key="connectionID">468</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doSetField:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="1055149299"/>
+					</object>
+					<int key="connectionID">469</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doSetField:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="918365630"/>
+					</object>
+					<int key="connectionID">470</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doSetField:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="715710602"/>
+					</object>
+					<int key="connectionID">471</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doSetField:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="681225418"/>
+					</object>
+					<int key="connectionID">472</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doSetField:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="2141562"/>
+					</object>
+					<int key="connectionID">473</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doSetField:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="238043819"/>
+					</object>
+					<int key="connectionID">474</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doSetField:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="1032032604"/>
+					</object>
+					<int key="connectionID">475</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">toggleShowWhenStartup:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="179703680"/>
+					</object>
+					<int key="connectionID">476</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doSetFlag:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="976571231"/>
+					</object>
+					<int key="connectionID">477</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doSetFlag:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="498781926"/>
+					</object>
+					<int key="connectionID">478</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doSetFlag:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="78246012"/>
+					</object>
+					<int key="connectionID">479</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doSetFlag:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="870355784"/>
+					</object>
+					<int key="connectionID">480</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doSetFlag:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="134316608"/>
+					</object>
+					<int key="connectionID">481</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">toggleCustomUserInformation:</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="261223322"/>
+					</object>
+					<int key="connectionID">482</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">networkAcceptInvalidCertificationToggleButton</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="870355784"/>
+					</object>
+					<int key="connectionID">483</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">networkAutoConnectToggleButton</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="976571231"/>
+					</object>
+					<int key="connectionID">484</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">networkCommandTableView</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="480705023"/>
+					</object>
+					<int key="connectionID">485</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">networkJoinTableView</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="632521232"/>
+					</object>
+					<int key="connectionID">486</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">networkNickname2TextField</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="918365630"/>
+					</object>
+					<int key="connectionID">487</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">networkNicknameTextField</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="1055149299"/>
+					</object>
+					<int key="connectionID">488</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">networkNickservPasswordTextField</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="2141562"/>
+					</object>
+					<int key="connectionID">489</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">networkPasswordTextField</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="238043819"/>
+					</object>
+					<int key="connectionID">490</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">networkRealnameTextField</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="681225418"/>
+					</object>
+					<int key="connectionID">491</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">networkSelectedOnlyToggleButton</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="134316608"/>
+					</object>
+					<int key="connectionID">492</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">networkServerTableView</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="793989784"/>
+					</object>
+					<int key="connectionID">493</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">networkTableView</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="454280019"/>
+					</object>
+					<int key="connectionID">494</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">networkTitleTextField</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="166926767"/>
+					</object>
+					<int key="connectionID">495</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">networkUseCustomInformationToggleButton</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="261223322"/>
+					</object>
+					<int key="connectionID">496</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">networkUseProxyToggleButton</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="498781926"/>
+					</object>
+					<int key="connectionID">497</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">networkUsernameTextField</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="715710602"/>
+					</object>
+					<int key="connectionID">498</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">networkUseSslToggleButton</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="78246012"/>
+					</object>
+					<int key="connectionID">499</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">showDetailButton</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="839206675"/>
+					</object>
+					<int key="connectionID">500</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">showWhenStartupToggleButton</string>
+						<reference key="source" ref="992574243"/>
+						<reference key="destination" ref="179703680"/>
+					</object>
+					<int key="connectionID">501</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -4150,7 +4150,7 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>{{495, 645}, {389, 462}}</string>
+					<string>{{558, 544}, {389, 462}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -4384,7 +4384,7 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">447</int>
+			<int key="maxID">501</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4395,34 +4395,6 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBUserSource</string>
 						<string key="minorKey"/>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">fe-aqua/SGTabView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="354510032">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">fe-aqua/SGTableView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">fe-aqua/TabOrWindowView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">fe-aqua/XATabView.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -4448,7 +4420,10 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 				<object class="IBPartialClassDescription">
 					<string key="className">SGTableView</string>
 					<string key="superclassName">NSTableView</string>
-					<reference key="sourceIdentifier" ref="354510032"/>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">fe-aqua/SGTableView.h</string>
+					</object>
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">SGTableView</string>
@@ -4462,50 +4437,30 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 					<string key="className">ServerList</string>
 					<string key="superclassName">NSObject</string>
 					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">do_drawer:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">fe-aqua/ServerList.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ServerList</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="actions">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>charset_selected:</string>
-							<string>do_cancel_edit:</string>
-							<string>do_close:</string>
-							<string>do_connect:</string>
-							<string>do_done_edit:</string>
-							<string>do_edit:</string>
-							<string>do_edit_server:</string>
-							<string>do_expand_channels:</string>
-							<string>do_expand_command:</string>
-							<string>do_filter:</string>
-							<string>do_new_channel:</string>
-							<string>do_new_command:</string>
-							<string>do_new_network:</string>
-							<string>do_new_server:</string>
-							<string>do_remove_channel:</string>
-							<string>do_remove_command:</string>
-							<string>do_remove_network:</string>
-							<string>do_remove_server:</string>
-							<string>do_serverlist_toggle:</string>
-							<string>do_set_field:</string>
-							<string>do_set_flag:</string>
-							<string>use_global_toggled:</string>
+							<string>doClose:</string>
+							<string>doConnect:</string>
+							<string>doDoneEdit:</string>
+							<string>doEditServer:</string>
+							<string>doFilter:</string>
+							<string>doNewChannel:</string>
+							<string>doNewCommand:</string>
+							<string>doNewNetwork:</string>
+							<string>doNewServer:</string>
+							<string>doRemoveChannel:</string>
+							<string>doRemoveCommand:</string>
+							<string>doRemoveNetwork:</string>
+							<string>doRemoveServer:</string>
+							<string>doSetField:</string>
+							<string>doSetFlag:</string>
+							<string>showDetail:</string>
+							<string>toggleCustomUserInformation:</string>
+							<string>toggleShowWhenStartup:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -4530,63 +4485,90 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>charset_combo</string>
-							<string>connect_new_button</string>
+							<string>charsetComboBox</string>
+							<string>connectNewButton</string>
 							<string>drawer</string>
-							<string>net_accept_invalid</string>
-							<string>net_auto</string>
-							<string>net_command_table</string>
-							<string>net_connect_selected</string>
-							<string>net_join_table</string>
-							<string>net_list</string>
-							<string>net_nick</string>
-							<string>net_nick2</string>
-							<string>net_nickserv_passwd</string>
-							<string>net_pass</string>
-							<string>net_real</string>
-							<string>net_server_list</string>
-							<string>net_title_text</string>
-							<string>net_use_global</string>
-							<string>net_use_proxy</string>
-							<string>net_use_ssl</string>
-							<string>net_user</string>
-							<string>nick1</string>
-							<string>nick2</string>
-							<string>nick3</string>
-							<string>realname</string>
-							<string>show_details_button</string>
-							<string>skip_serverlist_button</string>
-							<string>username</string>
+							<string>networkAcceptInvalidCertificationToggleButton</string>
+							<string>networkAutoConnectToggleButton</string>
+							<string>networkCommandTableView</string>
+							<string>networkJoinTableView</string>
+							<string>networkNickname2TextField</string>
+							<string>networkNicknameTextField</string>
+							<string>networkNickservPasswordTextField</string>
+							<string>networkPasswordTextField</string>
+							<string>networkRealnameTextField</string>
+							<string>networkSelectedOnlyToggleButton</string>
+							<string>networkServerTableView</string>
+							<string>networkTableView</string>
+							<string>networkTitleTextField</string>
+							<string>networkUseCustomInformationToggleButton</string>
+							<string>networkUseProxyToggleButton</string>
+							<string>networkUseSslToggleButton</string>
+							<string>networkUsernameTextField</string>
+							<string>nick1TextField</string>
+							<string>nick2TextField</string>
+							<string>nick3TextField</string>
+							<string>realnameTextField</string>
+							<string>showDetailButton</string>
+							<string>showWhenStartupToggleButton</string>
+							<string>usernameTextField</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSComboBox</string>
 							<string>NSButton</string>
+							<string>NSDrawer</string>
+							<string>NSButton</string>
+							<string>NSButton</string>
+							<string>NSTableView</string>
+							<string>NSTableView</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
+							<string>NSButton</string>
+							<string>NSTableView</string>
+							<string>NSTableView</string>
+							<string>NSTextField</string>
+							<string>NSButton</string>
+							<string>NSButton</string>
+							<string>NSButton</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
+							<string>NSTextField</string>
+							<string>NSButton</string>
+							<string>NSButton</string>
+							<string>NSTextField</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">fe-aqua/ServerList.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">ServerList</string>
+					<string key="superclassName">NSObject</string>
+					<object class="NSMutableDictionary" key="actions">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>charset_selected:</string>
+							<string>do_cancel_edit:</string>
+							<string>do_edit:</string>
+							<string>do_expand_channels:</string>
+							<string>do_expand_command:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>id</string>
-							<string>NSButton</string>
-							<string>NSButton</string>
-							<string>NSTableView</string>
-							<string>NSButton</string>
-							<string>NSTableView</string>
-							<string>NSTableView</string>
-							<string>NSTextField</string>
-							<string>NSTextField</string>
-							<string>NSTextField</string>
-							<string>NSTextField</string>
-							<string>NSTextField</string>
-							<string>NSTableView</string>
-							<string>NSTextField</string>
-							<string>NSButton</string>
-							<string>NSButton</string>
-							<string>NSButton</string>
-							<string>NSTextField</string>
-							<string>NSTextField</string>
-							<string>NSTextField</string>
-							<string>NSTextField</string>
-							<string>NSTextField</string>
-							<string>NSButton</string>
-							<string>NSButton</string>
-							<string>NSTextField</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

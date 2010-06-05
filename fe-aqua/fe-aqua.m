@@ -824,13 +824,13 @@ fe_text_clear (struct session *sess, int lines)
 }
 
 void
-fe_progressbarStart (struct session *sess)
+fe_progressbar_start (struct session *sess)
 {
     [sess->gui->cw progressbarStart];
 }
 
 void
-fe_progressbarEnd (struct server *serv)
+fe_progressbar_end (struct server *serv)
 {
     [AquaChat forEachSessionOnServer:serv
 		     performSelector:@selector (progressbarEnd)];
