@@ -23,15 +23,23 @@
 <NSTableViewDataSource,NSTableViewDelegate>
 #endif
 {
-    GSList 	**slist;
-    NSString 	*fname;
+    GSList		**slist;
+    NSString 	*filename;
     NSString 	*title;
-    NSTableView *cmd_list;
-    NSMutableArray *my_items;
+    NSMutableArray *myItems;
+	IBOutlet NSTableView *commandTableView;
 }
 
-- (id) initWithList:(GSList **) slist fileName:(NSString *) fname title:(NSString *) title;
+- (IBAction) doDelete:(id)sender;
+- (IBAction) doDown:(id)sender;
+- (IBAction) doHelp:(id)sender;
+- (IBAction) doNew:(id)sender;
+- (IBAction) doSort:(id)sender;
+- (IBAction) doUp:(id)sender;
+
+- (IBAction) doSave:(id)sender;
+
+- (id) initWithList:(GSList **)slist filename:(NSString *)filename title:(NSString *)title;
 - (void) show;
-- (void) do_save:(id) sender;
 
 @end

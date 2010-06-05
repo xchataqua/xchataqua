@@ -34,8 +34,7 @@
 
 @implementation OneUserCommand
 
-- (id) initWithName:(const char *) the_name
-		cmd:(const char *) the_cmd
+- (id) initWithName:(const char *)the_name cmd:(const char *) the_cmd
 {
     name = [[NSMutableString stringWithUTF8String:the_name] retain];
     cmd = [[NSMutableString stringWithUTF8String:the_cmd] retain];
@@ -61,25 +60,25 @@
 {
     [super init];
      
-    self->my_items = [[NSMutableArray arrayWithCapacity:0] retain];
+    self->myItems = [[NSMutableArray arrayWithCapacity:0] retain];
     
     [NSBundle loadNibNamed:@"UserCommands" owner:self];
-    [[cmd_list window] setTitle:NSLocalizedStringFromTable(@"XChat: User Defined Commands", @"xchat", @"")];
+    [[commandTableView window] setTitle:NSLocalizedStringFromTable(@"XChat: User Defined Commands", @"xchat", @"")];
     return self;
 }
 
 - (void) dealloc
 {
-    [cmd_list setDelegate:nil];
-    [[cmd_list window] close];
-    [[cmd_list window] release];
-    [my_items release];
+    [commandTableView setDelegate:nil];
+    [[commandTableView window] close];
+    [[commandTableView window] release];
+    [myItems release];
     [super dealloc];
 }
 
-- (void) load_items
+- (void) loadItems
 {
-    [my_items removeAllObjects];
+    [myItems removeAllObjects];
 
     OneUserCommand *prev = nil;
     for (GSList *list = command_list; list; list = list->next)
@@ -93,75 +92,72 @@
         }
         else
         {
-            OneUserCommand *item = [[[OneUserCommand alloc] 
-                            initWithName:pop->name cmd:pop->cmd] autorelease];
-            [my_items addObject:item];
+            OneUserCommand *item = [[[OneUserCommand alloc] initWithName:pop->name cmd:pop->cmd] autorelease];
+            [myItems addObject:item];
             prev = item;
         }
     }
 
-    [cmd_list reloadData];
+    [commandTableView reloadData];
 }
 
 - (void) awakeFromNib
 {
 	// 10.3 doesn't support small square buttons.
 	// This is the next best thing
-	NSFont *font = [[[[cmd_list tableColumns] objectAtIndex:0] dataCell] font];
-	NSArray *views = [[[cmd_list window] contentView] subviews];
-	for (unsigned i = 0; i < [views count]; i ++)
+	NSFont *font = [[[[commandTableView tableColumns] objectAtIndex:0] dataCell] font];
+	for (NSView *view in [[[commandTableView window] contentView] subviews])
 	{
-		NSView *view = [views objectAtIndex:i];
 		if ([view isKindOfClass:[NSButton class]])
 		{
-			NSButton *b = (NSButton *) view;
-			if ([[b cell] bezelStyle] == NSShadowlessSquareBezelStyle)
-				[b setFont:font];
+			NSButton *button = (NSButton *) view;
+			if ([[button cell] bezelStyle] == NSShadowlessSquareBezelStyle)
+				[button setFont:font];
 		}
 	}
 
 	// Not sure why IB can't do this!
-	[[cmd_text enclosingScrollView] setHasHorizontalScroller:YES];
-	[cmd_text setHorizontallyResizable:YES];
-	[cmd_text setMaxSize:NSMakeSize(FLT_MAX, FLT_MAX)];
-	[[cmd_text textContainer] setContainerSize:NSMakeSize(FLT_MAX, FLT_MAX)];
-	[[cmd_text textContainer] setWidthTracksTextView:NO];
+	[[commandTextView enclosingScrollView] setHasHorizontalScroller:YES];
+	[commandTextView setHorizontallyResizable:YES];
+	[commandTextView setMaxSize:NSMakeSize(FLT_MAX, FLT_MAX)];
+	[[commandTextView textContainer] setContainerSize:NSMakeSize(FLT_MAX, FLT_MAX)];
+	[[commandTextView textContainer] setWidthTracksTextView:NO];
 
-    [[cmd_list window] center];
+    [[commandTableView window] center];
 }
 
 - (void) show
 {
-	[self load_items];
+	[self loadItems];
 	[self tableViewSelectionDidChange:nil];	// TBD: NULL ok?
-	[cmd_list selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
-	[[cmd_list window] makeKeyAndOrderFront:self];
+	[commandTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
+	[[commandTableView window] makeKeyAndOrderFront:self];
 }
 
-- (void) do_delete:(id) sender
+- (void) doDelete:(id) sender
 {
-	[cmd_list abortEditing];
-	int row = [cmd_list selectedRow];
+	[commandTableView abortEditing];
+	NSInteger row = [commandTableView selectedRow];
 	if (row < 0) return;
-	[my_items removeObjectAtIndex:row];
-	[cmd_list reloadData];
+	[myItems removeObjectAtIndex:row];
+	[commandTableView reloadData];
 	[self tableViewSelectionDidChange:nil];	// TBD: NULL ok?
 }
 
-- (void) do_add:(id) sender
+- (void) doAdd:(id) sender
 {
 	OneUserCommand *item = [[OneUserCommand alloc] initWithName:"*NEW*" cmd:"EDIT ME"];
-	[my_items insertObject:item atIndex:0];
-	[cmd_list reloadData];
-	[cmd_list selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
-	[cmd_list editColumn:0 row:0 withEvent:nil select:true];
+	[myItems insertObject:item atIndex:0];
+	[commandTableView reloadData];
+	[commandTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
+	[commandTableView editColumn:0 row:0 withEvent:nil select:true];
 	[self tableViewSelectionDidChange:nil];	// TBD: NULL ok?
 }
 
-- (void) do_ok:(id) sender
+- (void) doOk:(id) sender
 {
     // Make sure the current value gets saved
-    [self selectionShouldChangeInTableView:cmd_list];
+    [self selectionShouldChangeInTableView:commandTableView];
     
     NSString *buf = [NSString stringWithFormat:@"%s/commands.conf", get_xdir_fs ()];
     
@@ -169,9 +165,9 @@
     if (!f)
         return;
 
-    for (unsigned int i = 0; i < [my_items count]; i ++)
+    for (NSUInteger i = 0; i < [myItems count]; i ++)
     {
-        OneUserCommand *item = [my_items objectAtIndex:i];
+        OneUserCommand *item = [myItems objectAtIndex:i];
 
         const char *cmd = [item->cmd UTF8String];
         while (*cmd)
@@ -193,46 +189,46 @@
     [[sender window] orderOut:sender];
 }
 
-- (void) do_cancel:(id) sender
+- (void) doCancel:(id) sender
 {
     [[sender window] orderOut:sender];
 }
 
 - (BOOL) selectionShouldChangeInTableView:(NSTableView *) aTableView
 {
-    int row = [cmd_list selectedRow];
+    NSInteger row = [commandTableView selectedRow];
     if (row >= 0)
     {
-        OneUserCommand *item = [my_items objectAtIndex:row];
-        [item->cmd setString:[cmd_text string]];
+        OneUserCommand *item = [myItems objectAtIndex:row];
+        [item->cmd setString:[commandTextView string]];
     }
     return YES;
 }
 
 - (void) tableViewSelectionDidChange:(NSNotification *) aNotification
 {
-    int row = [cmd_list selectedRow];
+    NSInteger row = [commandTableView selectedRow];
     if (row >= 0)
     {
-        OneUserCommand *item = [my_items objectAtIndex:row];
-        [cmd_text setString:item->cmd];
+        OneUserCommand *item = [myItems objectAtIndex:row];
+        [commandTextView setString:item->cmd];
     }
     else
-        [cmd_text setString:@""];
+        [commandTextView setString:@""];
 }
 
 ////////////
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
-    return [my_items count];
+    return [myItems count];
 }
 
 - (id) tableView:(NSTableView *) aTableView
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
     row:(NSInteger) rowIndex
 {
-    OneUserCommand *item = [my_items objectAtIndex:rowIndex];
+    OneUserCommand *item = [myItems objectAtIndex:rowIndex];
     return item->name;
 }
 
@@ -241,7 +237,7 @@
     forTableColumn:(NSTableColumn *) aTableColumn 
                row:(NSInteger)rowIndex
 {
-    OneUserCommand *item = [my_items objectAtIndex:rowIndex];
+    OneUserCommand *item = [myItems objectAtIndex:rowIndex];
     [item->name setString:anObject];
 }
 

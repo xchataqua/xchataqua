@@ -22,14 +22,17 @@
 <NSTableViewDataSource>
 #endif
 {
-    NSTableView		*url_list;
-    TabOrWindowView	*url_grabber_view;
-    id			*pointer;
-    NSMutableArray	*my_items;
+	IBOutlet NSTableView		*urlTableView;
+	IBOutlet TabOrWindowView	*urlGrabberView;
+	id				*pointer;
+	NSMutableArray	*myItems;
 }
+
+- (IBAction) doClear:(id)sender;
+- (IBAction) doSave:(id)sender;
 
 - (id) initWithObjPtr:(id *) pointer;
 - (void) show;
-- (void) add_url:(const char *) msg;
+- (void) addUrl:(NSString *) msg;
 
 @end
