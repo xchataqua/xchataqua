@@ -523,7 +523,7 @@ event_info text_event_info[NUM_XP];
 
 - (void) open_serverlist_for:(session *) sess
 {
-	[ServerList show_for_session:sess];
+	[ServerList showForSession:sess];
 }
 
 - (void) add_url:(const char *) url
