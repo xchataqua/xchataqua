@@ -55,7 +55,7 @@ static int get_mirc_value (const char **x, const char *stop_at)
 int append_text (NSMutableAttributedString *msgString,
             const char *text, int len,
             int fg, int bg, bool reverse, bool under, bool bold, bool hidden,
-            ColorPalette *palette, NSFont *font,  NSFont *bold_font)
+            ColorPalette *palette, NSFont *font,  NSFont *boldFont)
 {
     if (len < 0)
         len = strlen (text);
@@ -104,14 +104,14 @@ int append_text (NSMutableAttributedString *msgString,
 		[attr setObject:[mIRCString hiddenFont] forKey:NSFontAttributeName];
 		[attr setObject:[NSColor colorWithDeviceWhite:1.0 alpha:0.0] forKey:NSForegroundColorAttributeName];
 	}
-	else if (bold && bold_font)
+	else if (bold && boldFont)
 	{
-		if([bold_font isEqual:font])
+		if([boldFont isEqual:font])
 		{
 			/* emulate bold */
 			[attr setObject:[NSNumber numberWithFloat:-3.0f] forKey:NSStrokeWidthAttributeName];
 		}
-		[attr setObject:bold_font forKey:NSFontAttributeName];
+		[attr setObject:boldFont forKey:NSFontAttributeName];
 	}
     else if (font)
 		[attr setObject:font forKey:NSFontAttributeName];
@@ -145,7 +145,7 @@ int append_text (NSMutableAttributedString *msgString,
                         len:(NSInteger) len
                     palette:(ColorPalette *) palette
                        font:(NSFont *) font
-                   boldFont:(NSFont *) bold_font;
+                   boldFont:(NSFont *) boldFont;
 {
     mIRCString *msgString = [[[NSMutableAttributedString alloc] init] autorelease];
  
@@ -175,7 +175,7 @@ int append_text (NSMutableAttributedString *msgString,
             {
                 append_text (msgString, start, text - start - 1,
                              fg, bg, reverse, under, bold, hidden,
-                             palette, font, bold_font);
+                             palette, font, boldFont);
                 
                 // Control-c starts a mIRC color protocol sequence.
                 // Read as many as 2 digits, optional comma, and as
@@ -206,7 +206,7 @@ int append_text (NSMutableAttributedString *msgString,
             case 22:				  /* REVERSE */
                 append_text (msgString, start, text - start - 1,
                              fg, bg, reverse, under, bold, hidden,
-                             palette, font, bold_font);
+                             palette, font, boldFont);
                 reverse = !reverse;
                 start = text;
                 break;
@@ -214,7 +214,7 @@ int append_text (NSMutableAttributedString *msgString,
             case 31:				  /* underline */
                 append_text (msgString, start, text - start - 1,
                              fg, bg, reverse, under, bold, hidden,
-                             palette, font, bold_font);
+                             palette, font, boldFont);
                 under = !under;
                 start = text;
                 break;
@@ -222,7 +222,7 @@ int append_text (NSMutableAttributedString *msgString,
             case 2:				  /* bold */
                 append_text (msgString, start, text - start - 1,
                              fg, bg, reverse, under, bold, hidden,
-                             palette, font, bold_font);
+                             palette, font, boldFont);
                 bold = !bold;
                 start = text;
                 break;
@@ -230,7 +230,7 @@ int append_text (NSMutableAttributedString *msgString,
             case 15:				  /* reset all */
                 append_text (msgString, start, text - start - 1,
                              fg, bg, reverse, under, bold, hidden,
-                             palette, font, bold_font);
+                             palette, font, boldFont);
                 reverse = false;
                 bold = false;
                 under = false;
@@ -244,7 +244,7 @@ int append_text (NSMutableAttributedString *msgString,
             case 8:		  /* CL: invisible text code */
                 append_text (msgString, start, text - start - 1,
                              fg, bg, reverse, under, bold, hidden,
-                             palette, font, bold_font);
+                             palette, font, boldFont);
                 hidden = !hidden;
                 start = text;
                 break;
@@ -253,7 +253,7 @@ int append_text (NSMutableAttributedString *msgString,
 
     append_text (msgString, start, text - start,
                     fg, bg, reverse, under, bold, hidden,
-                    palette, font, bold_font);
+                    palette, font, boldFont);
 
     return msgString;
 }

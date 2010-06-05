@@ -26,53 +26,62 @@
     [super initWithFrame:frameRect];
     
     [self setOrientation:SGBoxOrientationHorizontal];
-    [self setHJustification:SGHBoxHJustificationLeft];
+    self.hJustification = SGHBoxHJustificationLeft;
     [self setDefaultVJustification:SGHBoxVJustificationCenter];
     
     return self;
 }
 
-- (void) setHJustification:(SGHBoxHJustification) new_just
+- (void) setHJustification:(SGHBoxHJustification) aJustification
 {
-    [self setMajorJustification:(SGBoxMajorJustification)new_just];
+    [self setMajorJustification:(SGBoxMajorJustification)aJustification];
 }
 
-- (short) hJustification
+- (SGHBoxHJustification) hJustification
 {
     return [self majorJustification];
 }
 
-- (void) setDefaultVJustification:(SGHBoxVJustification) new_just
+- (void) setDefaultVJustification:(SGHBoxVJustification) aJustification
 {
-    [self setMinorDefaultJustification:(SGBoxMinorJustification)new_just];
+    [self setMinorDefaultJustification:(SGBoxMinorJustification)aJustification];
 }
 
-- (void) setVJustificationFor:(NSView *) view to:(SGHBoxVJustification) new_just
+- (SGHBoxVJustification) vJustification
 {
-    [self setMinorJustificationFor:view to:(SGBoxMinorJustification)new_just];
+	return minorJustification;
 }
 
-- (void) setVMargin:(short) v
+- (void) setVJustificationFor:(NSView *) view to:(SGHBoxVJustification) aJustification
+{
+    [self setMinorJustificationFor:view to:(SGBoxMinorJustification)aJustification];
+}
+
+- (void) setVMargin:(SGBoxMargin) v
 {
     [self setMinorMargin:v];
 }
 
-- (void) setHInnerMargin:(short) h
+- (SGBoxMargin) vMargin {
+	return minorMargin;
+}
+
+- (void) setHInnerMargin:(SGBoxMargin) h
 {
     [self setMajorInnerMargin:h];
 }
 
-- (short) hInnerMargin
+- (SGBoxMargin) hInnerMargin
 {
     return [self majorInnerMargin];
 }
 
-- (void) setHOutterMargin:(short) h
+- (void) setHOutterMargin:(SGBoxMargin) h
 {
     [self setMajorOutterMargin:h];
 }
 
-- (short) hOutterMargin
+- (SGBoxMargin) hOutterMargin
 {
     return [self majorOutterMargin];
 }
@@ -81,7 +90,7 @@
 - (void) drawRect:(NSRect) aRect
 {
     [super drawRect:aRect];
-
+	
     [[NSColor redColor] set];
     [[NSGraphicsContext currentContext] setShouldAntialias:false];
     NSBezierPath *p = [NSBezierPath bezierPathWithRect:[self bounds]];

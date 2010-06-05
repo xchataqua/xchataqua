@@ -22,11 +22,14 @@
 <NSWindowDelegate,NSTableViewDataSource>
 #endif
 {
-    NSMutableArray *my_items;
-    NSTableView	*plugin_list_table;
+	IBOutlet NSTableView *pluginListTableView;
+	NSMutableArray *myItems;
 }
 
-- (id) initWithSelfPtr:(id *) self_ptr;
+- (IBAction) doLoad:(id) sender;
+- (IBAction) doUnload:(id) sender;
+
+- (id) initWithSelfPtr:(id *)selfPtr;
 - (void) show;
 - (void) update;
 

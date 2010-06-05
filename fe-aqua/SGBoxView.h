@@ -46,19 +46,19 @@ typedef enum
     SGBoxOrderLIFO,
 }	SGBoxOrder;
 
-typedef short SGBoxMargin;
+typedef CGFloat SGBoxMargin;
 
 @interface SGBoxView : SGView
 {
-    NSView	*stretchView;
+    NSView					*stretchView;
     SGBoxMinorJustification	minorJustification;
     SGBoxMajorJustification	majorJustification;
-    SGBoxMargin	minorMargin;
-    SGBoxMargin	majorInnerMargin;
-    SGBoxMargin	majorOutterMargin;
-    SGBoxOrientation	orientation;
-    SGBoxOrder			order;
-    bool    wrap;
+    SGBoxMargin				minorMargin;
+    SGBoxMargin				majorInnerMargin;
+    SGBoxMargin				majorOutterMargin;
+    SGBoxOrientation		orientation;
+    SGBoxOrder				order;
+    BOOL					wrap;
 }
 
 @property (nonatomic,assign,setter=setStretchView:)			NSView *stretchView;

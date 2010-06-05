@@ -26,58 +26,62 @@
     [super initWithFrame:frameRect];
     
     [self setOrientation:SGBoxOrientationVertical];
-    [self setVJustification:SGVBoxVJustificationTop];
+    self.vJustification = SGVBoxVJustificationTop;
     [self setDefaultHJustification:SGVBoxHJustificationCenter];
     
     return self;
 }
 
-- (void) setVJustification:(SGVBoxVJustification) new_just
+- (void) setVJustification:(SGVBoxVJustification) aJustification
 {
-    [self setMajorJustification:(SGBoxMajorJustification)new_just];
+    [self setMajorJustification:(SGBoxMajorJustification)aJustification];
 }
 
-- (void) setDefaultHJustification:(SGVBoxHJustification) new_just
+- (void) setDefaultHJustification:(SGVBoxHJustification) aJustification
 {
-    [self setMinorDefaultJustification:(SGBoxMinorJustification)new_just];
+    [self setMinorDefaultJustification:(SGBoxMinorJustification)aJustification];
 }
 
-- (short) hJustification
+- (SGVBoxHJustification) hJustification
 {
     return [self minorJustification];
 }
 
-- (void) setHJustificationFor:(NSView *) view to:(SGVBoxHJustification) new_just
+- (void) setHJustificationFor:(NSView *) view to:(SGVBoxHJustification) aJustification
 {
-    [self setMinorJustificationFor:view to:(SGBoxMinorJustification)new_just];
+    [self setMinorJustificationFor:view to:(SGBoxMinorJustification)aJustification];
 }
 
-- (void) setHMargin:(short) v
+- (void) setHMargin:(SGBoxMargin) v
 {
     [self setMinorMargin:v];
 }
 
-- (void) setVInnerMargin:(short) h
+- (SGBoxMargin) hMargin {
+	return minorMargin;
+}
+
+- (void) setVInnerMargin:(SGBoxMargin) h
 {
     [self setMajorInnerMargin:h];
 }
 
-- (short) vInnerMargin
+- (SGBoxMargin) vInnerMargin
 {
     return [self majorInnerMargin];
 }
 
-- (void) setVOutterMargin:(short) h
+- (void) setVOutterMargin:(SGBoxMargin) h
 {
     [self setMajorOutterMargin:h];
 }
 
-- (short) vOutterMargin
+- (SGBoxMargin) vOutterMargin
 {
     return [self majorOutterMargin];
 }
 
-- (short) vJustification
+- (SGVBoxVJustification) vJustification
 {
     return [self majorJustification];
 }

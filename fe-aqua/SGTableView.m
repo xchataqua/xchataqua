@@ -48,7 +48,7 @@
 	CGFloat height = 16;
 	
 	id datasource = [self dataSource];
-	bool do_hints = [datasource respondsToSelector:@selector(tableView:sizeHintForTableColumn:row:)];
+	BOOL do_hints = [datasource respondsToSelector:@selector(tableView:sizeHintForTableColumn:row:)];
 	
 	for (NSInteger i = 0; i < [self numberOfRows]; i ++)
 	{
@@ -81,7 +81,7 @@
 - (void) startTimer
 {
 	id datasource = [self dataSource];
-	bool do_fixups = [datasource respondsToSelector:@selector(shouldDoSizeFixupsForTableView:)] &&
+	BOOL do_fixups = [datasource respondsToSelector:@selector(shouldDoSizeFixupsForTableView:)] &&
 		[datasource performSelector:@selector(shouldDoSizeFixupsForTableView:) withObject:self];
 	if (!do_fixups) return;
 

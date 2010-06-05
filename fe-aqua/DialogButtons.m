@@ -27,15 +27,15 @@
 
 - (id) init
 {
-    [super initWithList:&dlgbutton_list fileName:@"dlgbuttons.conf" title:NSLocalizedStringFromTable(@"XChat: Dialog buttons", @"xchat", @"")];
+    [super initWithList:&dlgbutton_list filename:@"dlgbuttons.conf" title:NSLocalizedStringFromTable(@"XChat: Dialog buttons", @"xchat", @"")];
     return self;
 }
 
-- (void) do_save:(id) sender
+- (void) doSave:(id) sender
 {
-    [super do_save:sender];
+    [super doSave:sender];
     [AquaChat forEachSessionOnServer:NULL
-		     performSelector:@selector (setup_userlist_buttons)];
+		     performSelector:@selector (setupUserlistButtons)];
 }
 
 @end

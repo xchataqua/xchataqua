@@ -26,12 +26,12 @@
 {
   @protected
     NSMutableArray  *metaViews;
-    bool	    first_layout;
-    bool	    pending_layout;
-    bool 	    in_my_layout;
-    bool	    in_dtor;
-    bool        auto_size_to_fit;
-    bool        needs_size_to_fit;
+    BOOL	    first_layout;
+    BOOL	    pending_layout;
+    BOOL 	    in_my_layout;
+    BOOL	    in_dtor;
+    BOOL        auto_size_to_fit;
+    BOOL        needs_size_to_fit;
 }
 
 - (id) initWithFrame:(NSRect) frameRect;
@@ -46,7 +46,7 @@
 - (SGMetaView *) find_view:(NSView *) the_view;
 - (void) setOrder:(NSUInteger)order forView:(NSView *) the_view;
 - (NSUInteger) viewOrder:(NSView *) the_view;
-- (void) setAutoSizeToFit:(bool) sf;
+- (void) setAutoSizeToFit:(BOOL) sf;
 
 // Override these if needed
 
@@ -61,8 +61,8 @@
 {
   @public
     NSView *view;
-    NSRect  pref_size;
-    NSRect  last_size;
+    NSRect  prefSize;
+    NSRect  lastSize;
 }
 
 - (id)initWithView:(NSView *) the_view;
@@ -75,6 +75,6 @@
 
 // Private stuff
 
-- (void) reset_pref_size;
+- (void) reset_prefSize;
 
 @end

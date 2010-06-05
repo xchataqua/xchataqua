@@ -17,19 +17,14 @@
 
 #import "SGFileSelection.h"
 
-static NSString *fix_path (NSString *path)
+static NSString *fixPath (NSString *path)
 {
-    if (!path)
-        return nil;
+    if (!path) return nil;
         
-    if ([path isAbsolutePath])
-        return path;
+    if ([path isAbsolutePath]) return path;
     
     // Assume it's relative to the dir with the app bundle
-    
-    NSString *bundle = [[NSBundle mainBundle] bundlePath];
-    
-    return [NSString stringWithFormat:@"%@/../%@", bundle, path];
+    return [NSString stringWithFormat:@"%@/../%@", [[NSBundle mainBundle] bundlePath], path];
 }
 
 @implementation SGFileSelection
@@ -47,22 +42,23 @@ static NSString *fix_path (NSString *path)
 	[p setResolvesAliases:NO];
 	[p setCanChooseDirectories:NO];
 	[p setAllowsMultipleSelection:NO];
-	dir = fix_path (dir);
+	dir = fixPath (dir);
 
 	NSInteger sts;
 
 	if (win)
 	{
-		#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-		// this preprocess should be runtime checking
-		sts = [p runModalForDirectory:dir file:nil types:nil] == NSOKButton; // newcode
-		#else 
-		[p beginSheetForDirectory:dir file:nil types:nil modalForWindow:win
-					modalDelegate:nil didEndSelector:nil contextInfo:nil];
-		sts = [NSApp runModalForWindow:p];
-		// FIXME: this code stuck HERE on snow leopard. working well on leopard
-		[NSApp endSheet:p];
-		#endif
+		SInt32 version = 0;
+		Gestalt(gestaltSystemVersion, &version);
+		if ( version > 0x1050 ) {
+			sts = [p runModalForDirectory:dir file:nil types:nil] == NSOKButton; // newcode
+		} else {
+			[p beginSheetForDirectory:dir file:nil types:nil modalForWindow:win
+						modalDelegate:nil didEndSelector:nil contextInfo:nil];
+			sts = [NSApp runModalForWindow:p];
+			// FIXME: this code stuck HERE on snow leopard. working well on leopard
+			[NSApp endSheet:p];
+		}
 	}
 	else
 		sts = [p runModalForDirectory:dir file:nil types:nil] == NSOKButton;
@@ -88,7 +84,7 @@ static NSString *fix_path (NSString *path)
        modalForWindow:win modalDelegate:nil didEndSelector:nil
        contextInfo:nil];
 
-    int sts = [NSApp runModalForWindow:p];
+    NSInteger sts = [NSApp runModalForWindow:p];
 
     [NSApp endSheet:p];
     
@@ -100,7 +96,7 @@ static NSString *fix_path (NSString *path)
     return nil;
 }
 
-+ (void) getFile:(const char *)title initial:(const char*)initial callback:(callback_t)callback userdata:(void *)userdata flags:(int)flags
++ (void) getFile:(NSString *)title initial:(NSString *)initial callback:(callback_t)callback userdata:(void *)userdata flags:(int)flags
 {
 	id panel;
 	BOOL dir=NO;
@@ -110,9 +106,9 @@ static NSString *fix_path (NSString *path)
 	else
 		panel=[NSOpenPanel openPanel];
 	
-	[panel setTitle:[NSString stringWithUTF8String:title]];
+	[panel setTitle:title];
 	if(initial)
-		[panel setDirectory:[NSString stringWithUTF8String:initial]];
+		[panel setDirectory:initial];
 	if(flags & FRF_MULTIPLE)
 		[panel setAllowsMultipleSelection:YES];
 	if(flags & FRF_CHOOSEFOLDER)
@@ -121,10 +117,10 @@ static NSString *fix_path (NSString *path)
 	[panel setCanChooseFiles:!dir];
 	
 	[panel beginSheetForDirectory:nil file:nil
-			   modalForWindow:nil modalDelegate:nil didEndSelector:nil
-				  contextInfo:nil];
+				   modalForWindow:nil modalDelegate:nil didEndSelector:nil
+					  contextInfo:nil];
 	
-    int sts = [NSApp runModalForWindow:panel];
+    NSInteger sts = [NSApp runModalForWindow:panel];
 	
     [NSApp endSheet:panel];
     
@@ -134,10 +130,10 @@ static NSString *fix_path (NSString *path)
 	{
 		if(flags & FRF_MULTIPLE)
 		{
-			NSArray * arr=[panel filenames];
-			for(unsigned int i=0;i<[arr count];++i)
+			NSArray *filenames=[panel filenames];
+			for(NSUInteger i=0;i<[filenames count];++i)
 			{
-				callback(userdata, (char *) [[arr objectAtIndex:i] UTF8String]);
+				callback(userdata, (char *) [[filenames objectAtIndex:i] UTF8String]);
 			}
 			callback(userdata, 0);
 		}else

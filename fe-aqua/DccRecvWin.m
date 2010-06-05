@@ -33,17 +33,6 @@ extern int dcc_getcpssum;
 @interface OneDccRecv : DCCFileItem
 {
   @public
-    //struct DCC 		*dcc;
-	//unsigned char prev_dccstat;
-    
-    //NSMutableString	*status;
-    //NSMutableString	*file;
-    //NSMutableString	*size;
-    //NSMutableString	*position;
-    //NSMutableString	*per;
-    //NSMutableString	*kbs;
-    //NSMutableString	*eta;
-
     NSMutableString	*from;
 }
 
@@ -107,16 +96,16 @@ extern int dcc_getcpssum;
 	cpssum = &dcc_getcpssum;
 	[super awakeFromNib];
 	
-    [dcc_list_view setTitle:NSLocalizedStringFromTable(@"XChat: File Recieve List", @"xchataqua", @"")];
-    [dcc_list_view setTabTitle:NSLocalizedStringFromTable(@"dccrecv", @"xchataqua", @"")];
+    [dccListView setTitle:NSLocalizedStringFromTable(@"XChat: File Recieve List", @"xchataqua", @"")];
+    [dccListView setTabTitle:NSLocalizedStringFromTable(@"dccrecv", @"xchataqua", @"")];
 }
 
-- (void) do_reveal:(id) sender
+- (void) doReveal:(id) sender
 {
-    int row = [item_list selectedRow];
+    NSInteger row = [itemTableView selectedRow];
     if (row >= 0)
     {
-        OneDccRecv *item = [my_items objectAtIndex:row];
+        OneDccRecv *item = [myItems objectAtIndex:row];
 		
 		// Reveal the proper file
 		NSString *fileToReveal;
@@ -137,50 +126,52 @@ extern int dcc_getcpssum;
     }
 }
 
-- (void) do_accept:(id) sender
+- (void) doAccept:(id) sender
 {
-    int row = [item_list selectedRow];
+    NSInteger row = [itemTableView selectedRow];
     if (row >= 0)
     {
-        OneDccRecv *item = [my_items objectAtIndex:row];
+        OneDccRecv *item = [myItems objectAtIndex:row];
         struct DCC *dcc = item->dcc;
         dcc_get (dcc);
     }
 }
 
-- (void) do_resume:(id) sender
+- (void) doResume:(id) sender
 {
-    int row = [item_list selectedRow];
+    NSInteger row = [itemTableView selectedRow];
     if (row >= 0)
     {
-        OneDccRecv *item = [my_items objectAtIndex:row];
+        OneDccRecv *item = [myItems objectAtIndex:row];
         struct DCC *dcc = item->dcc;
         dcc_resume (dcc);
     }
 }
 
-- (void) do_info:(id) sender
+- (void) doInfo:(id) sender
 {
-    int row = [item_list selectedRow];
+    NSInteger row = [itemTableView selectedRow];
     if (row >= 0)
     {
-        OneDccRecv *item = [my_items objectAtIndex:row];
+        OneDccRecv *item = [myItems objectAtIndex:row];
 
         struct DCC *dcc = item->dcc;
 
         NSString *msg = [NSString stringWithFormat:NSLocalizedStringFromTable(@"      File: %@\n      From: %s\n      Size: %"DCC_SIZE_FMT"\n      Port: %d\n IP Number: %s\nStart Time: %s", @"xchataqua", @""),
-                                    item->file, dcc->nick, dcc->size, dcc->port,
-                                    net_ip (dcc->addr), ctime (&dcc->starttime)];
+						 item->file, dcc->nick, dcc->size, dcc->port,
+						 net_ip (dcc->addr), ctime (&dcc->starttime)];
 
-        [SGAlert noticeWithString:msg andWait:false];
+        [SGAlert noticeWithString:msg andWait:NO];
     }
 }
 
 - (NSString *)activeString
 {
-	if (activeCount == 0) return NSLocalizedStringFromTable(@"No active download", @"xchataqua", @"label of DCC Recv List: MainMenu->Window->DCC Recv List...");
-	else if (activeCount == 1) return NSLocalizedStringFromTable(@"1 active download", @"xchataqua", @"label of DCC Recv List: MainMenu->Window->DCC Recv List...");
-	else return [NSString stringWithFormat:NSLocalizedStringFromTable(@"%d active downloads", @"xchataqua", @"label of DCC Recv List: MainMenu->Window->DCC Recv List..."), activeCount];
+	switch (activeCount) {
+		case 0: return NSLocalizedStringFromTable(@"No active download", @"xchataqua", @"label of DCC Recv List: MainMenu->Window->DCC Recv List...");
+		case 1: return NSLocalizedStringFromTable(@"1 active download", @"xchataqua", @"label of DCC Recv List: MainMenu->Window->DCC Recv List...");
+		default:return [NSString stringWithFormat:NSLocalizedStringFromTable(@"%d active downloads", @"xchataqua", @"label of DCC Recv List: MainMenu->Window->DCC Recv List..."), activeCount];
+	}
 }
 
 - (NSNumber *)globalSpeedLimit
@@ -202,7 +193,7 @@ extern int dcc_getcpssum;
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
     row:(NSInteger) rowIndex
 {
-    OneDccRecv *item = [my_items objectAtIndex:rowIndex];
+    OneDccRecv *item = [myItems objectAtIndex:rowIndex];
 
     switch ([[aTableColumn identifier] intValue])
     {
