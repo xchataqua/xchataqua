@@ -1,4 +1,5 @@
 #!/bin/bash
+msgfmt=../../contrib/bin/msgfmt
 outname=xchat
 srcdir=po
 outdirbase=../../Localization/locale
@@ -14,7 +15,7 @@ for pofile in `ls $srcdir/*.po`; do
 	mkdir -p $outdir
 #	rm $srcdir/$locale.po
 #	ln -s ../../../xchat/po/$locale.po $srcdir/$locale.po
-	cmd="msgfmt -o $outfile $srcfile"
+	cmd="$msgfmt -o $outfile $srcfile"
 	echo $cmd
 	$cmd
 done
