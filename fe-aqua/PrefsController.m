@@ -190,10 +190,10 @@ static NSArray *root_items;
 	
 	#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_4
 	KeyCombo left_combo = { prefs.tab_left_modifiers, prefs.tab_left_key };
-	[tab_left_sr setKeyCombo:left_combo];
+	[tabLeftRecorderCell setKeyCombo:left_combo];
 
 	KeyCombo right_combo = { prefs.tab_right_modifiers, prefs.tab_right_key };
-	[tab_right_sr setKeyCombo:right_combo];
+	[tabRightRecorderCell setKeyCombo:right_combo];
 	#endif
 	
 	ColorPalette *palette = [[AquaChat sharedAquaChat] palette];
@@ -231,11 +231,11 @@ static NSArray *root_items;
 	}
 
 	#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_4
-	KeyCombo left_combo = [tab_left_sr keyCombo];
+	KeyCombo left_combo = [tabLeftRecorderCell keyCombo];
 	prefs.tab_left_modifiers = left_combo.flags;
 	prefs.tab_left_key = left_combo.code;
 
-	KeyCombo right_combo = [tab_right_sr keyCombo];
+	KeyCombo right_combo = [tabRightRecorderCell keyCombo];
 	prefs.tab_right_modifiers = right_combo.flags;
 	prefs.tab_right_key = right_combo.code;
 	#endif
@@ -484,8 +484,8 @@ static NSArray *root_items;
 
 	[perform_always_check setIntValue:-1];
 
-	[prefs_window setDelegate:self];
-	[prefs_window center];
+	[preferencesWindow setDelegate:self];
+	[preferencesWindow center];
 }
 
 - (void) outlineViewSelectionDidChange:(NSNotification *) notification
@@ -521,18 +521,18 @@ static NSArray *root_items;
 - (void) do_ok:(id) sender
 {
     [self do_apply:sender];
-    [prefs_window close];
+    [preferencesWindow close];
 }
 
 - (void) do_cancel:(id) sender
 {
     [TabOrWindowView setTransparency:prefs.transparent ? prefs.tint_red : 255];
-    [prefs_window close];
+    [preferencesWindow close];
 }
 
 - (void) do_font:(id) sender
 {
-    [prefs_window makeFirstResponder:prefs_window];
+    [preferencesWindow makeFirstResponder:preferencesWindow];
     NSFontManager *fontManager = [NSFontManager sharedFontManager];
     [fontManager orderFrontFontPanel:self];
 }
@@ -548,7 +548,7 @@ static NSArray *root_items;
 {
     [[NSFontManager sharedFontManager] setDelegate:self];
     [self populate];
-    [prefs_window makeKeyAndOrderFront:self];
+    [preferencesWindow makeKeyAndOrderFront:self];
 }
 
 /////////////////////

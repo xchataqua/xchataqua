@@ -76,15 +76,15 @@ extern struct event_info text_event_info[];
 @interface AquaChat : NSObject <GrowlApplicationBridgeDelegate>
 {
   @public
-    NSMenuItem 	*away_menu_item;
-    id 		invisible_menu;
-    NSMenuItem *new_channel_tab_menu;
-    NSMenuItem *new_server_tab_menu;
-	NSMenuItem *next_window_menu;
-	NSMenuItem *prev_window_menu;
-    id 		receive_notices_menu;
-    id 		receive_wallops_menu;
-    id		user_menu;
+    IBOutlet NSMenuItem *awayMenuItem;
+    IBOutlet NSMenuItem *invisibleMenuItem;
+    IBOutlet NSMenuItem *newChannelTabMenuItem;
+    IBOutlet NSMenuItem *newServerTabMenuItem;
+    IBOutlet NSMenuItem *nextWindowMenuItem;
+    IBOutlet NSMenuItem *previousWindowMenuItem;
+    IBOutlet NSMenuItem *receiveNoticesMenuItem;
+    IBOutlet NSMenuItem *receiveWallopsMenuItem;
+    IBOutlet NSMenu *user_menu;
    
     NSString	*search_string;
     

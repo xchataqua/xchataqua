@@ -201,7 +201,6 @@
 		2DAAE54E10E4ACFC00DBBFD0 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54C10E4ACFC00DBBFD0 /* Growl.framework */; };
 		2DAAE56510E4AD4B00DBBFD0 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54D10E4ACFC00DBBFD0 /* ShortcutRecorder.framework */; };
 		2DAAE56D10E4AD7300DBBFD0 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE56C10E4AD7300DBBFD0 /* Sparkle.framework */; };
-		2DC4307F105F608B00782AAD /* xalocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC4307E105F608B00782AAD /* xalocalization.m */; };
 		2DC430A4105F6B9000782AAD /* chanopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F94E9AF0E1F92E3003CA262 /* chanopt.c */; };
 		2DD056F010A2C6D4002857E0 /* locale in Resources */ = {isa = PBXBuildFile; fileRef = 2DD0561C10A2C6D4002857E0 /* locale */; };
 		2DE5D56210EBE0310024D2A4 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54D10E4ACFC00DBBFD0 /* ShortcutRecorder.framework */; };
@@ -644,8 +643,6 @@
 		2DAAE54C10E4ACFC00DBBFD0 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Frameworks/Growl.framework; sourceTree = "<group>"; };
 		2DAAE54D10E4ACFC00DBBFD0 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShortcutRecorder.framework; path = Frameworks/ShortcutRecorder.framework; sourceTree = "<group>"; };
 		2DAAE56C10E4AD7300DBBFD0 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle/Sparkle.framework; sourceTree = "<group>"; };
-		2DC4307D105F608B00782AAD /* xalocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xalocalization.h; path = "fe-aqua/xalocalization.h"; sourceTree = "<group>"; };
-		2DC4307E105F608B00782AAD /* xalocalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = xalocalization.m; path = "fe-aqua/xalocalization.m"; sourceTree = "<group>"; };
 		2DD0561C10A2C6D4002857E0 /* locale */ = {isa = PBXFileReference; lastKnownFileType = folder; name = locale; path = ../Localization/locale; sourceTree = "<group>"; };
 		2DD3AAFE0F9290070033FF55 /* sr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sr; path = Localization/sr.lproj/BanList.xib; sourceTree = "<group>"; };
 		2DD3AAFF0F9290070033FF55 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_CN; path = Localization/zh_CN.lproj/BanList.xib; sourceTree = "<group>"; };
@@ -1955,8 +1952,6 @@
 				2D7817C810E872D200C71AF8 /* fe-aqua_utility.h */,
 				2D7817C910E872D200C71AF8 /* fe-aqua_utility.m */,
 				0F8EA6C10CFB347B001AE9AE /* identd.c */,
-				2DC4307D105F608B00782AAD /* xalocalization.h */,
-				2DC4307E105F608B00782AAD /* xalocalization.m */,
 				0F30611F0D83C5830084F2CA /* AquaChat.h */,
 				0F8EA5F80CFB2500001AE9AE /* AquaChat.m */,
 				0F8EA6B40CFB33AF001AE9AE /* AutoAwayController.h */,
@@ -2623,7 +2618,6 @@
 				0FC8F6ED0DEEF64200504F31 /* fe-aqua.m in Sources */,
 				0F2FEF850E1FB5AE00DE4D41 /* bundle_loader_plugin.m in Sources */,
 				0F2FEFBD0E1FC8E900DE4D41 /* SystemVersion.m in Sources */,
-				2DC4307F105F608B00782AAD /* xalocalization.m in Sources */,
 				2D7817CA10E872D200C71AF8 /* fe-aqua_utility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
