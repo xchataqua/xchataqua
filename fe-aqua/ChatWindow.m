@@ -982,10 +982,9 @@ static NSImage *empty_image;
         NSMutableString *s2 = [NSMutableString stringWithUTF8String:sess->waitchannel];
         if (prefs.truncchans && [s2 length] > prefs.truncchans)
         {
-            unsigned int start = prefs.truncchans - 4;
-            unsigned int len = [s2 length] - start;
-            [s2 replaceCharactersInRange:NSMakeRange (start, len)
-                            withString:@".."];
+            NSUInteger start = prefs.truncchans - 4;
+            NSUInteger len = [s2 length] - start;
+            [s2 replaceCharactersInRange:NSMakeRange(start, len) withString:@".."];
 			s = s2;
         }
         s = [NSString stringWithFormat:@"(%@)", s2];
