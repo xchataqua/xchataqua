@@ -270,7 +270,7 @@ static MenuMaker *defaultMenuMaker;
 	}
 	
 	if (user->lasttalk)
-		snprintf(min, sizeof(min), XALocalizeString("%u minutes ago"), (unsigned int) ((time (0) - user->lasttalk) / 60));
+		snprintf(min, sizeof(min), [NSLocalizedStringFromTable(@"%u minutes ago", @"xchat", @"") UTF8String], (unsigned int) ((time (0) - user->lasttalk) / 60));
 	
 	[userMenu addItem:[self userInfoItemWithLabel:NSLocalizedStringFromTable(@"Last Msg:", @"xchat", @"") value:user->lasttalk ? min : NULL]];
 
@@ -281,7 +281,7 @@ static MenuMaker *defaultMenuMaker;
 {
 	NSMenu *menu = [[[NSMenu alloc] initWithTitle:@""] autorelease];
 	[menu setAutoenablesItems:false];
-	[menu addItem:[self commandItemWithName:[url UTF8String] command:"url %s" target:url session:sess]];
+	[menu addItem:[self commandItemWithName:url command:"url %s" target:url session:sess]];
 	[menu addItem:[NSMenuItem separatorItem]];
 	[self appendItemList:urlhandler_list toMenu:menu withTarget:url inSession:NULL];
     return menu;
@@ -305,21 +305,21 @@ static MenuMaker *defaultMenuMaker;
 {
 	NSMenu *menu = [[[NSMenu alloc] initWithTitle:@""] autorelease];
 	[menu setAutoenablesItems:false];
-	[menu addItem:[self commandItemWithName:[chan UTF8String] command:"join %s" target:chan session:sess]];
+	[menu addItem:[self commandItemWithName:chan command:"join %s" target:chan session:sess]];
 	[menu addItem:[NSMenuItem separatorItem]];
 	if (find_channel(sess->server, (char *)[chan UTF8String])) {
-		[menu addItem:[self commandItemWithName:XALocalizeString("Part Channel") command:"part %s" target:chan session:sess]];
-		[menu addItem:[self commandItemWithName:XALocalizeString("Cycle Channel") command:"cycle" target:nil session:sess]];
+		[menu addItem:[self commandItemWithName:NSLocalizedStringFromTable(@"Part Channel", @"xchat", @"") command:"part %s" target:chan session:sess]];
+		[menu addItem:[self commandItemWithName:NSLocalizedStringFromTable(@"Cycle Channel", @"xchat", @"") command:"cycle" target:nil session:sess]];
 	} else {
-		[menu addItem:[self commandItemWithName:XALocalizeString("Join Channel") command:"join %s" target:chan session:sess]];
+		[menu addItem:[self commandItemWithName:NSLocalizedStringFromTable(@"Join Channel", @"xchat", @"") command:"join %s" target:chan session:sess]];
 	}
 	return menu;
 }
 
-- (NSMenuItem *)commandItemWithName:(const char *)name command:(const char *)cmd target:(NSString *)target session:(session *)sess
+- (NSMenuItem *)commandItemWithName:(NSString *)name command:(const char *)cmd target:(NSString *)target session:(session *)sess
 {
     NSString * icon = nil;
-	NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:[self stripImageFromTitle:[NSString stringWithUTF8String:name]  icon:&icon] action:@selector(execute:) keyEquivalent:@""];
+	NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:[self stripImageFromTitle:name  icon:&icon] action:@selector(execute:) keyEquivalent:@""];
 	CommandHandler *handler = [CommandHandler handlerWithCommand:cmd target:(target ? [target UTF8String] : nil) session:sess];
 	[item setRepresentedObject:handler];
 	[item setTarget:handler];
@@ -332,9 +332,9 @@ static MenuMaker *defaultMenuMaker;
 	return [item autorelease];
 }
 
-- (NSMenuItem *)togglerItemWithName:(const char *)name option:(const char *)opt
+- (NSMenuItem *)togglerItemWithName:(NSString *)name option:(const char *)opt
 {
-	NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:[NSString stringWithUTF8String:name] action:@selector(execute:) keyEquivalent:@""];
+	NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:name action:@selector(execute:) keyEquivalent:@""];
 	TogglerHandler *handler = [TogglerHandler togglerWithOption:opt];
 	[item setRepresentedObject:handler];
 	[item setTarget:handler];
@@ -358,7 +358,7 @@ static MenuMaker *defaultMenuMaker;
 			[item setSubmenu:currentMenu];
 		}
 		else if (!strncasecmp (pop->name, "TOGGLE", 6)) {
-			[currentMenu addItem:[self togglerItemWithName:pop->name + 7 option:pop->cmd]];
+			[currentMenu addItem:[self togglerItemWithName:[NSString stringWithUTF8String:pop->name+7] option:pop->cmd]];
 		}
 		else if (!strncasecmp (pop->name, "ENDSUB", 6)) {
 			if (currentMenu != menu)
@@ -368,7 +368,7 @@ static MenuMaker *defaultMenuMaker;
 			[currentMenu addItem:[NSMenuItem separatorItem]];
 		}
 		else {
-			[currentMenu addItem:[self commandItemWithName:pop->name command:pop->cmd target:target session:sess]];
+			[currentMenu addItem:[self commandItemWithName:[NSString stringWithUTF8String:pop->name] command:pop->cmd target:target session:sess]];
 		}
 		list = list->next;
 	}
