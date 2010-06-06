@@ -41,86 +41,92 @@ static void location_prefs (NSWindow *w)
 {
     NSRect r = [w frame];
     prefs.mainwindow_left = (int) r.origin.x;
-    prefs.mainwindow_top = (int) r.origin.y;		// It's really the bottom?
+    prefs.mainwindow_top = (int) r.origin.y;		// ???: It's really the bottom?
 }
 
 //////////////////////////////////////////////////////////////////////
+/*
+ * MARK: -
+ * MARK: Objects for tab auto-complete
+ */
 
-@interface OneCompletion : NSObject
-{
-	NSString *value;
-}
+/*
+ * Superclass for a single auto-completion object.
+ *
+ * Used for commands and channels; nicks have a specific subclass.
+ *
+ */
+@implementation OneCompletion;
 
-+ (id) completionWithValue:(NSString *) val;
-- (id) initWithValue:(NSString *) val;
+@synthesize stringValue; // NSString where we stash the actual text value.
 
-@end
-
-@implementation OneCompletion
-
-+ (id) completionWithValue:(NSString *) val
+/*
+ * Designated initializer for OneCompletion objects.
+ *
+ * Takes a const char* from C land and stashes it in self.value as NSString.
+ * ???: Is const char* really directly interchangeable with NSString?
+ *
+ */
++ (id) completionWithValue:(const char *) val
 {
 	return [[[OneCompletion alloc] initWithValue:val] autorelease];
 }
 
-- (id) initWithValue:(NSString *) val
+/*
+ * Actual initializer for OneCompletion objects.
+ *
+ * Takes the const char*, calls super's init, and stashes the NSString in .value.
+ *
+ */
+- (id) initWithValue:(const char *) val
 {
 	self = [super init];
-	self->value = [val retain];
+	self.stringValue = [NSString stringWithUTF8String:val];
 	return self;
 }
 
-- (void) dealloc
-{
-	[value release];
-	[super dealloc];
-}
 
-- (NSString *) stringValue
-{
-	return value;
-}
-
-- (NSString *) description
-{
-	return value;
-}
-
+/*
+ * Selector called by NSarray when sorting OneCompletion objects.
+ *
+ * Essentially just compares NSString objects alphabetically (case insensitive).
+ *
+ * Needs to specify its argument as id because OneNickCompletion's compare:
+ * calls super's (our) compare: with a OneNickCompletion argument in some cases;
+ * which in turn means we have to cast to OneCompletion.
+ *
+ */
 - (NSComparisonResult) compare:(id) aCompletion
 {
 	OneCompletion *other = (OneCompletion *) aCompletion;
 	
-	//TODO rfc compare
-	// for me it's not important (bug is around [ { and others symbols which in RFC interprented as one)
-	// i think it's slow convert to utf8 compare with xchat's one and revert to ucs2
-	return [self->value compare:other->value options:NSCaseInsensitiveSearch];
+    // TODO: rfc compare
+    // For me it's not important (bug is around [ { and others symbols which in
+    // RFC interprented as one). I think it's slow convert to utf8 compare with
+    // xchat's one and revert to ucs2.
+    // TODO: Could use NSCharacterSet?
+	return [self.stringValue compare:other.stringValue options:NSCaseInsensitiveSearch];
 }
 
 @end
 
-//////////////////////////////////////////////////////////////////////
-
-@interface OneNickCompletion : OneCompletion
-{
-	time_t lasttalk;
-}
-
-+ (id) nickWithNick:(NSString *)nick lasttalk:(time_t)lt;
-- (id) initWithNick:(NSString *)nick lasttalk:(time_t)lt;
-
-@end
-
+/*
+ * Subclass of OneCompletion specifically for nicks.
+ *
+ */
 @implementation OneNickCompletion
 
-+ (id) nickWithNick:(NSString *)nick lasttalk:(time_t)lt
+@synthesize lasttalk;
+
++ (id) nickWithNick:(const char *)the_nick lasttalk:(time_t)lt
 {
 	return [[[OneNickCompletion alloc] initWithNick:nick lasttalk:lt] autorelease];
 }
 
-- (id) initWithNick:(NSString *)nick lasttalk:(time_t)lt
+- (id) initWithNick:(const char *)the_nick lasttalk:(time_t)lt
 {
-	self = [super initWithValue:nick];
-	self->lasttalk=lt;
+	self = [super initWithValue:the_nick];
+	self.lasttalk = lt;
 	return self;
 }
 
@@ -128,28 +134,26 @@ static void location_prefs (NSWindow *w)
 {
 	OneNickCompletion *other = (OneNickCompletion *) aNick;
 	
-	switch (prefs.completion_sort)
-	{
-		case 1:
-		{
-			if (other->lasttalk == self->lasttalk)
-				return NSOrderedSame;
-				
-			if (other->lasttalk < self->lasttalk)
-				return NSOrderedAscending;
-				
-			return NSOrderedDescending;
-		}
-		
-		case 0:
-		default:
-			return [super compare:aNick];
-	}
+	if (prefs.completion_sort == 1) {
+    if (other.lasttalk == self.lasttalk) {
+      return NSOrderedSame;
+    } else if (other.lasttalk < self.lasttalk) {
+      return NSOrderedAscending;
+    } else {
+      return NSOrderedDescending;
+    }
+  } else {
+    return [super compare:aNick];
+  }
 }
 
 @end
 
 //////////////////////////////////////////////////////////////////////
+/*
+ * MARK: -
+ * MARK: Various utility objects
+ */
 
 @interface MySplitView : NSSplitView
 
@@ -452,7 +456,12 @@ static NSImage *blue_image;
 static NSImage *yellow_image;
 static NSImage *empty_image;
 
+
 //////////////////////////////////////////////////////////////////////
+/*
+ * MARK: -
+ * MARK: Main class definition for the ChatWindow
+ */
 
 @implementation ChatWindow
 
@@ -480,7 +489,7 @@ static NSImage *empty_image;
 
 - (void) dealloc
 {
-    [chatView release];		// TBD: Anything else need to get released here?
+    [chat_view release];		// ???: Anything else need to get released here?
     [userlist release];
     [super dealloc];
 }
@@ -1862,34 +1871,33 @@ static NSImage *empty_image;
     return menu;
 }
 
-//////////////////////////////////////////////////////////////////////
-// 
-// Tab completion
-//
 
-static int ncommon (const char *a, const char *b)
+/*
+ * MARK: -
+ * MARK: Tab completion
+ */
+
+  // Accessor for the completionIndex instance variable.
+@synthesize completionIndex;
+
+  // Takes an NSArray of NSString and returns the shortest common prefix length.
+- (NSInteger) shortestCommonPrefixLength:(NSArray *)matches
 {
-	int n;
-    for (n = 0; *a && *b && rfc_tolower (*a++) == rfc_tolower (*b++); n ++) ;
-    return n;
-}
+  if ([matches count] < 1) return 0;
 
-static int find_common (NSArray *list)
-{
-    if ([list count] < 1) return 0;
+  NSString *shortestPrefix = [[matches objectAtIndex:0] stringValue];
 
-    NSString *xx = (NSString *) [[list objectAtIndex:0] stringValue];
-    NSInteger n = [xx length];
-
-    for (NSUInteger i = 1; i < [list count]; i ++)
-    {
-    	NSInteger this_n = ncommon ([xx UTF8String], [[[list objectAtIndex:i] stringValue] UTF8String]);
-		if (this_n < n)
-			n = this_n;
+  for (OneCompletion *thisItem in matches) {
+    NSString *commonPrefix = [thisItem.stringValue commonPrefixWithString:shortestPrefix options:NSCaseInsensitiveSearch];
+    if ([commonPrefix length] < [shortestPrefix length]) {
+      NSLog(@"sCPL: commonPrefix == %d, shortestPrefix == %d", [commonPrefix length], [shortestPrefix length]);
+      shortestPrefix = commonPrefix;
     }
-
-    return n;
+  }
+  NSLog(@"%@", [matches componentsJoinedByString:@" "]);
+  return [shortestPrefix length];
 }
+
 
 - (NSArray *) command_complete:(NSTextView *) view start:(NSString *) start
 {
@@ -1969,128 +1977,162 @@ static int find_common (NSArray *list)
 	return matchArray;
 }
 
-- (void) tab_complete:(NSTextView *) view
+/*
+ * Autocomplete Nicks, Commands, and Channels when TAB key is pressed.
+ *
+ */
+- (void) tabComplete:(NSTextView *) view
 {
-    // Strategy:
-    //  Find the word to the left (or under) the insertion point and
-    //  tab complete it.
-    //  If it starts in column zero:
-    //	  If it starts with '/', do command completion
-    //    else do nick completion but add the nick completion suffix (:)
-    //  else if the word starts with '#', do channel completion
-    //  else just do nick completion
-		
-	NSUInteger insertionPoint;
-	if ([view hasMarkedText])
-	{
-		// If we have a marked range, remove it now and let
-		// the reset of this code work as if it's the first time.
-		// This was necessary, as it appears there is a bug when
-		// marking/replacing text that's already marked.
-		// Just adding unmarkText didn't seem to help by itself.
-		NSRange range = [view markedRange];
-		[view unmarkText];
-		[view replaceCharactersInRange:range withString:@""];
-		insertionPoint = range.location;
-	}
-	else
-	{
-		circularCompletionIndex = 0;
-		NSRange range = [view selectedRange];
-		insertionPoint = range.location;
-	}
-	
-	// Anything less than 1 char to the left of the insertion point is useless
-    if (insertionPoint == 0) return;
+    // Get the NSTextField's underlying NSTextStorage and its string value.
+	NSTextStorage *textFieldStorage = [view textStorage];
 
-	//////////
-	//
-	// Find the text to lookup.
-	// So now we have
-	//		abc|
- 	// Location is the number of chars to our left.  Subtract 1 so we're
-	// pointing to the 'c' and not the tailing NULL.
-	
-	NSTextStorage *stg = [view textStorage];
-	NSString *str = [stg string];
-	
-	NSRange range = NSMakeRange(insertionPoint - 1, 1);
-	
-    if ([str characterAtIndex:range.location] == ' ') return;
+    // NSRange to hold the actual text we'll be completing against, within the
+    // whole string, and excluding any words before a space character etc.
+    // We init with the whole string.
+	NSRange completionTextRange = NSMakeRange(0, 0);
 
-    while (range.location > 0 && [str characterAtIndex:range.location - 1] != ' ')
-    {
-		range.location --;
-		range.length ++;
-	}
+    // Get the selected range and the position of the insertion point.
+  NSRange selectedRange = [view selectedRange];
 
-	//////////
-	
+    // There's no selection at all so something is wrong: bail out!
+  if (selectedRange.location == NSNotFound)
+    return;
+
+    // If selected length is 0 there's no selection, just an insertion point.
+  if (selectedRange.length == 0) {
+    self.completionIndex = 0;
+    completionTextRange.location = selectedRange.location;
+    completionTextRange.length = 0;
+  } else {
+      // Nuke selected text; it's what we completed on last tab.
+    [textFieldStorage replaceCharactersInRange:selectedRange withString:@""];
+    selectedRange = [view selectedRange]; // Get updated selectionRange.
+  }
+	NSString *textFieldString = [textFieldStorage string];
+
+    // Return if there's nothing to the left of the insertion point because
+    // then we have nothing to complete.
+  if (selectedRange.location == 0)
+    return;
+
+    // Return if the character before the insertion point is a space because
+    // then we have nothing to complete.
+  if ([textFieldString characterAtIndex:(selectedRange.location - 1)] == ' ')
+    return;
+
+    // Find the location of the last space character in the string, and then
+    // grab its following characters as the completion string.
+  NSCharacterSet *spaceCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
+  NSRange spaceRange = [textFieldString
+    rangeOfCharacterFromSet:spaceCharacterSet
+                    options:NSBackwardsSearch
+                      range:NSMakeRange(0, selectedRange.location)];
+
+
+  if (spaceRange.location == NSNotFound) {
+      // No space characters in the string. Complete on whole string up to selection.
+    completionTextRange.location = 0;
+    completionTextRange.length = selectedRange.location;
+  } else {
+      // Found a space character, and spaceRange has the NSRange for it.
+      //
+      // Our prefix to complete will be at the location given by spaceRange
+      // plus one, because we don't want to include the actual space character.
+      // Its length will be given by the total length of the string, minus the
+      // position of the spaceRange; and minus one because we're excluding the
+      // actual space character.
+    completionTextRange.location = spaceRange.location + 1;
+    completionTextRange.length = (textFieldString.length - spaceRange.location) - 1;
+  }
+
 	NSArray *matchArray;
-	BOOL add_suffix = NO;
-	
-    if (range.location == 0)
+	BOOL shouldAddSuffix = NO;
+
+    // If we're in column 0 we're completing either a nick or a command.
+  if (completionTextRange.location == 0)
+  {
+      // If the first char is the command char (/), it's a command.
+    if ([textFieldString characterAtIndex:0] == prefs.cmdchar[0])
     {
-        if ([str characterAtIndex:0] == prefs.cmdchar[0])
-        {
-            range.location ++;
-            range.length --;
-			matchArray = [self command_complete:view start:[str substringWithRange:range]];
-        }
+        // Don't include the command char (/) in the prefix to complete.
+      completionTextRange.location++;
+      completionTextRange.length--;
+      matchArray = [self command_complete:view start:[textFieldString substringWithRange:completionTextRange]];
+    }
+      // Otherwise it's a nick.
 		else
 		{
-			matchArray = [self nick_complete:view start:[str substringWithRange:range]];
-			add_suffix = YES;
+      matchArray = [self nick_complete:view start:[textFieldString substringWithRange:completionTextRange]];
+      shouldAddSuffix = YES; // When we're in column 0, nicks get a ": " at the end.
 		}
+  }
+    // If we're not in column 0 we're completing either a nick or a channel.
+  else
+  {
+      // If the first char is a '#', it's a channel.
+    if ([textFieldString characterAtIndex:(completionTextRange.location - 1)] == '#') {
+      matchArray = [self channel_complete:view start:[textFieldString substringWithRange:completionTextRange]];
+    } else {
+      matchArray = [self nick_complete:view start:[textFieldString substringWithRange:completionTextRange]];
     }
-    else
-    {
-        if ([str characterAtIndex:range.location] == '#')
-            matchArray = [self channel_complete:view start:[str substringWithRange:range]];
-        else
-            matchArray = [self nick_complete:view start:[str substringWithRange:range]];
-    }
+  }
 
-    if (!matchArray || [matchArray count] < 1) return;
+    // If there are no completions we bail out.
+  if (!matchArray || [matchArray count] < 1) return;
 	
 	matchArray = [matchArray sortedArrayUsingSelector:@selector(compare:)];
 
-    NSUInteger n = find_common (matchArray);
+
+    // Get the position and length of the common prefix.
+  NSInteger shortestPrefix = [self shortestCommonPrefixLength:matchArray];
 
 	// If there's only 1 possible match, then we're done.
 	// If were doing the old style (bash style), and the common chars
 	// exceed what we typed, we'll complete up to the ambiguity.
-    if ([matchArray count] == 1 || (!prefs.scrolling_completion && n > range.length))
-    {
-    	NSString *first = [[matchArray objectAtIndex:0] stringValue];
-		NSMutableString *r = [NSMutableString stringWithString:[first substringToIndex:n]];
+  if ([matchArray count] == 1 || (!prefs.scrolling_completion && shortestPrefix > completionTextRange.length))
+  {
+    NSString *first = [[matchArray objectAtIndex:0] stringValue];
+    NSMutableString *rightMutableString = [NSMutableString stringWithString:[first substringToIndex:shortestPrefix]];
 		if ([matchArray count] == 1)
 		{
-			if (add_suffix && prefs.nick_suffix[0])
-                [r appendString:[NSString stringWithUTF8String:prefs.nick_suffix]];
-            [r appendString:@" "];
+      if (shouldAddSuffix && prefs.nick_suffix[0]) {
+        [rightMutableString appendString:[NSString stringWithUTF8String:prefs.nick_suffix]]; 
+      }
+      [rightMutableString appendString:@" "];
 		}
-		[stg replaceCharactersInRange:range withString:r];
+    [textFieldStorage replaceCharactersInRange:completionTextRange withString:rightMutableString];
 		return;
-    }
+  }
 	
 	if (prefs.scrolling_completion)
 	{
-		NSString *item = [[matchArray objectAtIndex:circularCompletionIndex] stringValue];
+    NSString *completionItem = [[matchArray objectAtIndex:self.completionIndex] stringValue];
 
-		// Replace the part he typed, just so the case will match
-		NSString *left = [item substringToIndex:range.length];
-		[view replaceCharactersInRange:range withString:left];
+      // Final string to insert.
+    NSMutableString *replacementString = [NSMutableString stringWithString:@""];
 
-		// Now add the completion part as a "marked" area.
-		NSString *right = [item substringFromIndex:range.length];
-		NSMutableString *r = [NSMutableString stringWithString:right];
-		if (add_suffix && prefs.nick_suffix[0])
-			[r appendString:[NSString stringWithUTF8String:prefs.nick_suffix]];
-		[r appendString:@" "];
-		[view setMarkedText:r selectedRange:NSMakeRange(0, [r length])];
-		[view setSelectedRange:NSMakeRange(range.location + range.length + [r length], 0)];
-		circularCompletionIndex = (circularCompletionIndex + 1) % [matchArray count];
+      // Replace the part he typed, just so the case will match
+		NSString *leftString = [completionItem substringToIndex:completionTextRange.length];
+      //		[view replaceCharactersInRange:completionTextRange withString:leftString];
+    [replacementString appendString:leftString];
+
+      // Now add the completion part as a "marked" area.
+		NSString *rightString = [completionItem substringFromIndex:completionTextRange.length];
+		NSMutableString *rightMutableString = [NSMutableString stringWithString:rightString];
+
+      // Tack on the nick suffix if set.
+		if (shouldAddSuffix && prefs.nick_suffix[0]) {
+      [rightMutableString appendString:[NSString stringWithUTF8String:prefs.nick_suffix]]; 
+    }
+		[rightMutableString appendString:@" "];
+
+    [replacementString appendString:rightMutableString];
+
+    [textFieldStorage replaceCharactersInRange:completionTextRange withString:replacementString];
+    NSUInteger insertAt = (completionTextRange.location + leftString.length);
+    NSUInteger insertTo = [rightMutableString length];
+    [view setSelectedRange:NSMakeRange(insertAt, insertTo)];
+		self.completionIndex = (self.completionIndex + 1) % [matchArray count];
 	}
 	else
 	{
@@ -2195,7 +2237,7 @@ static int find_common (NSArray *list)
   else if (commandSelector == @selector(insertTab:))
   {
     if (prefs.tab_completion) {
-      [self tab_complete:textView];
+      [self tabComplete:textView];
       didHandleSelector = YES;
     }
     else
