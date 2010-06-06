@@ -67,7 +67,7 @@ static void location_prefs (NSWindow *w)
  * ???: Is const char* really directly interchangeable with NSString?
  *
  */
-+ (id) completionWithValue:(const char *) val
++ (id) completionWithValue:(NSString *) val
 {
 	return [[[OneCompletion alloc] initWithValue:val] autorelease];
 }
@@ -78,10 +78,10 @@ static void location_prefs (NSWindow *w)
  * Takes the const char*, calls super's init, and stashes the NSString in .value.
  *
  */
-- (id) initWithValue:(const char *) val
+- (id) initWithValue:(NSString *) val
 {
 	self = [super init];
-	self.stringValue = [NSString stringWithUTF8String:val];
+	self.stringValue = val;
 	return self;
 }
 
@@ -118,14 +118,14 @@ static void location_prefs (NSWindow *w)
 
 @synthesize lasttalk;
 
-+ (id) nickWithNick:(const char *)the_nick lasttalk:(time_t)lt
++ (id) nickWithNick:(NSString *)nick lasttalk:(time_t)lt
 {
 	return [[[OneNickCompletion alloc] initWithNick:nick lasttalk:lt] autorelease];
 }
 
-- (id) initWithNick:(const char *)the_nick lasttalk:(time_t)lt
+- (id) initWithNick:(NSString *)nick lasttalk:(time_t)lt
 {
-	self = [super initWithValue:the_nick];
+	self = [super initWithValue:nick];
 	self.lasttalk = lt;
 	return self;
 }
@@ -489,7 +489,7 @@ static NSImage *empty_image;
 
 - (void) dealloc
 {
-    [chat_view release];		// ???: Anything else need to get released here?
+    [chatView release];		// ???: Anything else need to get released here?
     [userlist release];
     [super dealloc];
 }
@@ -2144,7 +2144,7 @@ static NSImage *empty_image;
  * MARK: -
  * MARK: Handle command keys
  *
- * input_text delegate and helper functions.
+ * inputTextField delegate and helper functions.
  */
 - (BOOL)control:(NSControl *)control textShouldBeginEditing:(NSText *)fieldEditor
 {
@@ -2199,14 +2199,14 @@ static NSImage *empty_image;
     // Up/down-arrow scroll through your input history.
   else if (commandSelector == @selector(moveUp:))
   {
-    const char *prevInput = history_up(&sess->history, (char *) [[input_text stringValue] UTF8String]);
-    [self setInputText:prevInput];
+    const char *prevInput = history_up(&sess->history, (char *) [[inputTextField stringValue] UTF8String]);
+    [self setInputText:[NSString stringWithUTF8String:prevInput]];
     didHandleSelector = YES;
   }
   else if (commandSelector == @selector(moveDown:))
   {
     const char *nextInput = history_down(&sess->history);
-    [self setInputText:nextInput];
+    [self setInputText:[NSString stringWithUTF8String:nextInput]];
     didHandleSelector = YES;
   }
 
@@ -2214,22 +2214,22 @@ static NSImage *empty_image;
     // (scroll channel window the appropriate direction).
   else if (commandSelector == @selector(scrollPageDown:))
   {
-    [chat_text scrollPageDown:textView];
+    [chatTextView scrollPageDown:textView];
     didHandleSelector = YES;
   }
   else if (commandSelector == @selector(scrollPageUp:))
   {
-    [chat_text scrollPageUp:textView];
+    [chatTextView scrollPageUp:textView];
     didHandleSelector = YES;
   }
   else if (commandSelector == @selector(scrollToBeginningOfDocument:))
   {
-    [chat_text scrollToBeginningOfDocument:textView];
+    [chatTextView scrollToBeginningOfDocument:textView];
     didHandleSelector = YES;
   }
   else if (commandSelector == @selector(scrollToEndOfDocument:))
   {
-    [chat_text scrollToEndOfDocument:textView];
+    [chatTextView scrollToEndOfDocument:textView];
     didHandleSelector = YES;
   }
 
