@@ -131,8 +131,8 @@
 	NSString *stringValue;
 }
 
-+ (id) completionWithValue:(const char *) val;
-- (id) initWithValue:(const char *) val;
++ (id) completionWithValue:(NSString *) val;
+- (id) initWithValue:(NSString *) val;
 
 @property (retain) NSString* stringValue;
 @end
@@ -142,8 +142,8 @@
 	time_t lasttalk;
 }
 
-+ (id) nickWithNick:(const char *)nick lasttalk:(time_t)lt;
-- (id) initWithNick:(const char *)nick lasttalk:(time_t)lt;
++ (id) nickWithNick:(NSString *)nick lasttalk:(time_t)lt;
+- (id) initWithNick:(NSString *)nick lasttalk:(time_t)lt;
 
 @property time_t lasttalk;
 
