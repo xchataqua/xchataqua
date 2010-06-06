@@ -105,16 +105,16 @@ extern int dcc_sendcpssum;
 	cpssum = &dcc_sendcpssum;
 	[super awakeFromNib];
 
-    [dcc_list_view setTitle:NSLocalizedStringFromTable(@"XChat: File Send List", @"xchataqua", @"")];
-    [dcc_list_view setTabTitle:NSLocalizedStringFromTable(@"dccsend", @"xchataqua", @"")];
+    [dccListView setTitle:NSLocalizedStringFromTable(@"XChat: File Send List", @"xchataqua", @"")];
+    [dccListView setTabTitle:NSLocalizedStringFromTable(@"dccsend", @"xchataqua", @"")];
 }
 
-- (void) do_info:(id) sender
+- (void) doInfo:(id) sender
 {
-    int row = [item_list selectedRow];
+    int row = [itemTableView selectedRow];
     if (row >= 0)
     {
-        OneDccSend *item = [my_items objectAtIndex:row];
+        OneDccSend *item = [myItems objectAtIndex:row];
 
         struct DCC *dcc = item->dcc;
 
@@ -152,7 +152,7 @@ extern int dcc_sendcpssum;
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
     row:(NSInteger) rowIndex
 {
-    OneDccSend *item = [my_items objectAtIndex:rowIndex];
+    OneDccSend *item = [myItems objectAtIndex:rowIndex];
 
     switch ([[aTableColumn identifier] intValue])
     {

@@ -31,28 +31,28 @@
 
 @implementation RawLogWin
 
-- (id) initWithServer:(struct server *) the_serv
+- (id) initWithServer:(struct server *)aServ
 {
     [super init];
 
-    self->serv = the_serv;
+    self->serv = aServ;
 	self->serv->gui->rawlog = self;
     
     [NSBundle loadNibNamed:@"RawLog" owner:self];
 
-    [raw_log_view setServer:serv];
-    [raw_log_view setTitle:[NSString stringWithFormat:NSLocalizedStringFromTable(@"XChat: Rawlog (%s)", @"xchat", @""), self->serv->servername]];
-    [raw_log_view setTabTitle:NSLocalizedStringFromTable(@"rawlog", @"xchataqua", @"")];
-    [raw_log_view setDelegate:self];
+    [rawLogView setServer:serv];
+    [rawLogView setTitle:[NSString stringWithFormat:NSLocalizedStringFromTable(@"XChat: Rawlog (%s)", @"xchat", @""), self->serv->servername]];
+    [rawLogView setTabTitle:NSLocalizedStringFromTable(@"rawlog", @"xchataqua", @"")];
+    [rawLogView setDelegate:self];
 
     return self;
 }
 
 - (void) dealloc
 {
-    [raw_log_view setDelegate:nil];
-    [raw_log_view close];
-    [raw_log_view autorelease];
+    [rawLogView setDelegate:nil];
+    [rawLogView close];
+    [rawLogView autorelease];
     [super dealloc];
 }
 
@@ -69,12 +69,12 @@
 - (void) show
 {
     if (prefs.windows_as_tabs)
-        [raw_log_view becomeTabAndShow:true];
+        [rawLogView becomeTabAndShow:YES];
     else
-        [raw_log_view becomeWindowAndShow:true];
+        [rawLogView becomeWindowAndShow:YES];
 }
 
-- (void) log:(const char *) msg len:(int) len outbound:(bool) outbound
+- (void) log:(const char *) msg len:(NSInteger) len outbound:(BOOL) outbound
 {
 	NSString * s, * str;
 	if(msg[len-1]=='\n')
@@ -84,12 +84,8 @@
 	str = [NSString stringWithFormat:@"%c %@\n", outbound ? '>' : '<', s];
 	[s release];
 
-    [log_text replaceCharactersInRange:NSMakeRange([[log_text textStorage] length], 0) withString:str];
-    [log_text scrollRangeToVisible:NSMakeRange([[log_text textStorage] length], 0)];
-}
-
-- (void) do_save:(id) sender
-{
+    [logTextView replaceCharactersInRange:NSMakeRange([[logTextView textStorage] length], 0) withString:str];
+    [logTextView scrollRangeToVisible:NSMakeRange([[logTextView textStorage] length], 0)];
 }
 
 @end

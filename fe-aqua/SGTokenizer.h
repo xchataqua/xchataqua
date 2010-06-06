@@ -12,7 +12,7 @@
 @interface SGTokenizer : NSObject
 {
 	NSString		*tmp;
-	int				ptr;
+	NSInteger		ptr;
 }
 
 - (id) initWithString:(NSString *) stringToTokenize;

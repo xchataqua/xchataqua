@@ -26,7 +26,7 @@
                         len:(NSInteger) len
                     palette:(ColorPalette *) palette
                        font:(NSFont *) font
-                   boldFont:(NSFont *) bold_font;
+                   boldFont:(NSFont *) boldFont;
 
 + (NSFont *) hiddenFont;
 

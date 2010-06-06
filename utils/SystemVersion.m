@@ -32,7 +32,7 @@ static SystemVersion * shared_instance;
     return shared_instance;
 }
 
-- init {
+- (id) init {
     self = [super init];
     if(shared_instance != 0) {
         [self dealloc];
