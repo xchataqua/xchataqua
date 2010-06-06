@@ -60,7 +60,7 @@
 	CGFloat maxRowHeight;
 /* CL end */
     
-	NSInteger	circularCompletionIndex;
+	NSInteger completionIndex; // Current index when cycling through tab-completions.
 	
     struct session *sess;
 }
@@ -115,5 +115,36 @@
 - (void) userlistSetSelected;
 - (void) doUserlistCommand:(const char *)cmd;
 - (void) lastlogIntoWindow:(ChatWindow *)logWin key:(char *)ckey;
+
+@property NSInteger completionIndex; // Current index when cycling through tab-completions.
+
+@end
+
+/*
+ * MARK: -
+ * MARK: Objects for tab auto-complete
+ *
+ */
+ 
+@interface OneCompletion : NSObject
+{
+	NSString *stringValue;
+}
+
++ (id) completionWithValue:(const char *) val;
+- (id) initWithValue:(const char *) val;
+
+@property (retain) NSString* stringValue;
+@end
+
+@interface OneNickCompletion : OneCompletion
+{
+	time_t lasttalk;
+}
+
++ (id) nickWithNick:(const char *)nick lasttalk:(time_t)lt;
+- (id) initWithNick:(const char *)nick lasttalk:(time_t)lt;
+
+@property time_t lasttalk;
 
 @end
