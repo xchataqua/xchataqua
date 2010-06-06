@@ -30,30 +30,27 @@
 @interface OneDccChat : DCCItem
 {
   @public
-    //struct DCC 		*dcc;
-    
-    //NSMutableString	*status;
-    NSMutableString	*to_from;
+    NSMutableString	*toFrom;
     NSMutableString	*recv;
     NSMutableString	*sent;
-    NSMutableString	*start_time;
+    NSMutableString	*startTime;
 }
 
-- (id) initWithDCC:(struct DCC *) the_dcc;
+- (id) initWithDCC:(struct DCC *)dcc;
 - (void) update;
 
 @end
 
 @implementation OneDccChat
 
-- (id) initWithDCC:(struct DCC *) the_dcc
+- (id) initWithDCC:(struct DCC *)aDcc
 {
-	[super initWithDCC:the_dcc];
+	[super initWithDCC:aDcc];
 
-    to_from = [[NSMutableString stringWithCapacity:0] retain];
+    toFrom = [[NSMutableString stringWithCapacity:0] retain];
     recv = [[NSMutableString stringWithCapacity:0] retain];
     sent = [[NSMutableString stringWithCapacity:0] retain];
-    start_time = [[NSMutableString stringWithCapacity:0] retain];
+    startTime = [[NSMutableString stringWithCapacity:0] retain];
     
     [self update];
    
@@ -62,10 +59,10 @@
 
 - (void) dealloc
 {
-    [to_from release];
+    [toFrom release];
     [recv release];
     [sent release];
-    [start_time release];
+    [startTime release];
 
     [super dealloc];
 }
@@ -73,12 +70,10 @@
 - (void) update
 {
     [super update];
-    [to_from setString:[NSString stringWithUTF8String:dcc->nick]];
+    [toFrom setString:[NSString stringWithUTF8String:dcc->nick]];
     [recv setString:[NSString stringWithFormat:@"%"DCC_SIZE_FMT, dcc->pos]];
     [sent setString:[NSString stringWithFormat:@"%"DCC_SIZE_FMT, dcc->size]];
-    [start_time setString:[NSString stringWithUTF8String:ctime(&dcc->starttime)]];
-    //int end = [start_time length] - 1;
-    //[start_time deleteCharactersInRange:NSMakeRange (end, end)];
+    [startTime setString:[NSString stringWithUTF8String:ctime(&dcc->starttime)]];
 }
 
 @end
@@ -104,26 +99,26 @@
 {
 	[super awakeFromNib];
 
-    [dcc_list_view setTitle:NSLocalizedStringFromTable(@"XChat: DCC Chat List", @"xchat", @"")];
-    [dcc_list_view setTabTitle:NSLocalizedStringFromTable(@"dccchat", @"xchataqua", @"Title of Tab: MainMenu->Window->DCC Chat...")];
+    [dccListView setTitle:NSLocalizedStringFromTable(@"XChat: DCC Chat List", @"xchat", @"")];
+    [dccListView setTabTitle:NSLocalizedStringFromTable(@"dccchat", @"xchataqua", @"Title of Tab: MainMenu->Window->DCC Chat...")];
 }
 
-- (void) do_accept:(id) sender
+- (void) doAccept:(id) sender
 {
-    int row = [item_list selectedRow];
+    NSInteger row = [itemTableView selectedRow];
     if (row >= 0)
     {
-        OneDccChat *item = [my_items objectAtIndex:row];
+        OneDccChat *item = [myItems objectAtIndex:row];
         struct DCC *dcc = item->dcc;
-        dcc_get (dcc);
+        dcc_get(dcc);
     }
 }
 
 - (void) add:(struct DCC *) dcc
 {
     OneDccChat *item = [[[OneDccChat alloc] initWithDCC:dcc] autorelease];
-    [my_items addObject:item];
-    [item_list reloadData];
+    [myItems addObject:item];
+    [itemTableView reloadData];
 }
 
 //////////////
@@ -133,15 +128,15 @@
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
     row:(NSInteger) rowIndex
 {
-    OneDccChat *item = [my_items objectAtIndex:rowIndex];
+    OneDccChat *item = [myItems objectAtIndex:rowIndex];
 
-    switch ([[aTableColumn identifier] intValue])
+    switch ([[aTableColumn identifier] integerValue])
     {
         case 0: return item->status;
-        case 1: return item->to_from;
+        case 1: return item->toFrom;
         case 2: return item->recv;
         case 3: return item->sent;
-        case 4: return item->start_time;
+        case 4: return item->startTime;
     }
     
     return @"";

@@ -41,8 +41,6 @@ static void DP (const char *fmt, ...)
 @property (nonatomic, assign) SGBoxMinorJustification justification;
 
 - (id) initWithView:(NSView *) view;
-- (NSComparisonResult) less_than_x:(id) other;
-- (NSComparisonResult) less_than_y:(id) other;
 
 @end
 
@@ -71,29 +69,6 @@ static void DP (const char *fmt, ...)
     [encoder encodeInt:self->justification forKey:@"justification"];
 }
 
-- (NSComparisonResult) less_than_x:(id) other
-{
-    SGBoxMetaView *ov = (SGBoxMetaView *) other;
-    
-    NSRect me = [view frame];
-    NSRect him = [ov->view frame];
-
-    return me.origin.x < him.origin.x ? NSOrderedAscending :
-           me.origin.x > him.origin.x ? NSOrderedDescending :
-                                        NSOrderedSame;
-}
-
-- (NSComparisonResult) less_than_y:(id) other
-{
-    SGBoxMetaView *ov = (SGBoxMetaView *) other;
-    
-    NSRect me = [view frame];
-    NSRect him = [ov->view frame];
-    
-    return me.origin.y < him.origin.y ? NSOrderedAscending :
-           me.origin.y > him.origin.y ? NSOrderedDescending :
-                                        NSOrderedSame;
-}
 
 @end
 
@@ -102,8 +77,9 @@ static void DP (const char *fmt, ...)
 @synthesize majorJustification,minorJustification;
 @synthesize minorMargin,majorInnerMargin,majorOutterMargin;
 
-- (void) SGBoxViewPrivateInit
+- (id) initWithFrame:(NSRect) frameRect
 {
+    self = [super initWithFrame:frameRect];
     self->minorJustification = SGBoxMinorJustificationCenter;
     self->majorJustification = SGBoxMajorJustificationFirst;
     self->minorMargin = 0;
@@ -111,12 +87,6 @@ static void DP (const char *fmt, ...)
     self->majorOutterMargin = 0;
     self->orientation = SGBoxOrientationHorizontal;
     self->order = SGBoxOrderFIFO;
-}
-
-- (id) initWithFrame:(NSRect) frameRect
-{
-    [super initWithFrame:frameRect];
-    [self SGBoxViewPrivateInit];    
     return self;
 }
 
@@ -126,12 +96,12 @@ static void DP (const char *fmt, ...)
 
     self->minorJustification = (SGBoxMinorJustification)[decoder decodeIntForKey:@"minorjust"];
     self->majorJustification = (SGBoxMajorJustification)[decoder decodeIntForKey:@"majorjust"];
-    self->minorMargin = [decoder decodeIntForKey:@"minormargin"];
-    self->majorInnerMargin= [decoder decodeIntForKey:@"majorinnermargin"];
-    self->majorOutterMargin = [decoder decodeIntForKey:@"majorouttermargin"];
-    self->orientation = (SGBoxOrientation)[decoder decodeIntForKey:@"orient"];
-    self->order = (SGBoxOrder)[decoder decodeIntForKey:@"order"];
-    self->stretchView = [decoder decodeObjectForKey:@"stretch"];
+    self->minorMargin		 = [decoder decodeFloatForKey:@"minormargin"];
+    self->majorInnerMargin	 = [decoder decodeFloatForKey:@"majorinnermargin"];
+    self->majorOutterMargin	 = [decoder decodeFloatForKey:@"majorouttermargin"];
+    self->orientation		 = (SGBoxOrientation)[decoder decodeIntForKey:@"orient"];
+    self->order				 = (SGBoxOrder)[decoder decodeIntForKey:@"order"];
+    self->stretchView		 = [decoder decodeObjectForKey:@"stretch"];
     
     [self queue_layout];
     
@@ -141,19 +111,19 @@ static void DP (const char *fmt, ...)
 - (void) encodeWithCoder:(NSCoder *) encoder
 {
 	[super encodeWithCoder:encoder];
-    [encoder encodeInt:self->minorJustification forKey:@"minorjust"];
-    [encoder encodeInt:self->majorJustification forKey:@"majorjust"];
-    [encoder encodeInt:self->minorMargin		forKey:@"minormargin"];
-    [encoder encodeInt:self->majorInnerMargin	forKey:@"majorinnermargin"];
-    [encoder encodeInt:self->majorOutterMargin	forKey:@"majorouttermargin"];
+    [encoder encodeInt:self->minorJustification		forKey:@"minorjust"];
+    [encoder encodeInt:self->majorJustification		forKey:@"majorjust"];
+    [encoder encodeFloat:self->minorMargin			forKey:@"minormargin"];
+    [encoder encodeFloat:self->majorInnerMargin		forKey:@"majorinnermargin"];
+    [encoder encodeFloat:self->majorOutterMargin	forKey:@"majorouttermargin"];
     [encoder encodeInt:self->orientation forKey:@"orient"];
     [encoder encodeInt:self->order  forKey:@"order"];
     [encoder encodeConditionalObject:self->stretchView forKey:@"stretch"];
 }
 
-static NSRect flip (NSRect r)
+NSRect NSRectFlip (NSRect rect)
 {
-	return NSMakeRect(r.origin.y,r.origin.x,r.size.height,r.size.width);
+	return NSMakeRect(rect.origin.y,rect.origin.x,rect.size.height,rect.size.width);
 }
 
 - (void) sizeToFit
@@ -169,7 +139,7 @@ static NSRect flip (NSRect r)
         SGMetaView *metaView = [metaViews objectAtIndex:i];
         NSRect r = [metaView prefSize];
         if (orientation == SGBoxOrientationVertical)
-            r = flip (r);
+            r = NSRectFlip (r);
         sz.width += r.size.width;
         if (r.size.height > sz.height)
             sz.height = r.size.height;
@@ -246,7 +216,7 @@ static NSRect flip (NSRect r)
     DP ("I have %d children\n", [metaViews count]);
     
     if (orientation == SGBoxOrientationVertical)
-        r = flip(r);
+        r = NSRectFlip(r);
 
     r.origin.x += majorOutterMargin;
     r.origin.y += minorMargin;
@@ -263,9 +233,7 @@ static NSRect flip (NSRect r)
                       
     CGFloat lx = r.origin.x;
     
-    NSInteger first;
-    NSInteger stop;
-    NSInteger incr;
+    NSInteger first, stop, incr;
     
     if (order == SGBoxOrderFIFO)
     {
@@ -293,7 +261,7 @@ static NSRect flip (NSRect r)
             NSRect b = [metaView prefSize];
         
             if (orientation == SGBoxOrientationVertical)
-                b = flip (b);
+                b = NSRectFlip (b);
     
             b.origin.x = lx;
             [self justify:&b inMe:&r with:[metaView justification]];
@@ -301,7 +269,7 @@ static NSRect flip (NSRect r)
             lx += b.size.width + majorInnerMargin;
 
             if (orientation == SGBoxOrientationVertical)
-                b = flip (b);
+                b = NSRectFlip (b);
     
             DP ("Setting 0x%x to %f %f %f %f\n",
                 metaView, b.origin.x, b.origin.y, b.size.width, b.size.height);
@@ -321,10 +289,10 @@ static NSRect flip (NSRect r)
             {
                 NSRect b = [[metaView view] frame];
                 if (orientation	== SGBoxOrientationVertical)
-                    b = flip (b);
+                    b = NSRectFlip (b);
                 b.origin.x += shift;
                 if (orientation == SGBoxOrientationVertical)
-                    b = flip (b);
+                    b = NSRectFlip (b);
 
                 DP ("Setting 0x%x to %f %f %f %f\n",
                     metaView, b.origin.x, b.origin.y, b.size.width, b.size.height);
@@ -353,7 +321,7 @@ static NSRect flip (NSRect r)
             NSRect b = [metaView prefSize];
 
             if (orientation == SGBoxOrientationVertical)
-                b = flip (b);
+                b = NSRectFlip (b);
         
             b.origin.x = rx - b.size.width;
             [self justify:&b inMe:&r with:[metaView justification]];
@@ -361,7 +329,7 @@ static NSRect flip (NSRect r)
             rx -= b.size.width + majorInnerMargin;
 
             if (orientation == SGBoxOrientationVertical)
-                b = flip (b);
+                b = NSRectFlip (b);
 
             DP ("Setting 0x%x to %f %f %f %f\n",
                 metaView, b.origin.x, b.origin.y, b.size.width, b.size.height);
@@ -381,14 +349,14 @@ static NSRect flip (NSRect r)
         NSRect b = [metaView prefSize];
 
         if (orientation == SGBoxOrientationVertical)
-            b = flip (b);
+            b = NSRectFlip (b);
 
         b.origin.x = lx;
         [self justify:&b inMe:&r with:[metaView justification]];
         b.size.width = rx - lx;
         
         if (orientation == SGBoxOrientationVertical)
-            b = flip (b);
+            b = NSRectFlip (b);
 
         DP ("Setting 0x%x to %f %f %f %f\n",
             metaView, b.origin.x, b.origin.y, b.size.width, b.size.height);
@@ -403,23 +371,23 @@ static NSRect flip (NSRect r)
     [self queue_layout];
 }
 
-- (void) setMajorJustification:(SGBoxMajorJustification) new_just
+- (void) setMajorJustification:(SGBoxMajorJustification) aJustification
 {
-    majorJustification = new_just;
+    majorJustification = aJustification;
     [self queue_layout];
 }
 
-- (void) setMinorDefaultJustification:(SGBoxMinorJustification) new_just
+- (void) setMinorDefaultJustification:(SGBoxMinorJustification) aJustification
 {
-    minorJustification = new_just;
+    minorJustification = aJustification;
     [self queue_layout];
 }
 
-- (void) setMinorJustificationFor:(NSView *) view to:(SGBoxMinorJustification) new_just
+- (void) setMinorJustificationFor:(NSView *) view to:(SGBoxMinorJustification) aJustification
 {
     SGBoxMetaView *mv = (SGBoxMetaView *) [self find_view:view];
     if (mv)
-        [mv setJustification:new_just];
+        [mv setJustification:aJustification];
     [self queue_layout];
 }
 

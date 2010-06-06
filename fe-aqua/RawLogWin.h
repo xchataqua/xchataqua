@@ -19,13 +19,13 @@
 
 @interface RawLogWin : NSObject 
 {
-    NSTextView		*log_text;
-    TabOrWindowView	*raw_log_view;
-    struct server	*serv;
+	IBOutlet NSTextView			*logTextView;
+	IBOutlet TabOrWindowView	*rawLogView;
+	struct server *serv;
 }
 
 - (id) initWithServer:(struct server *) serv;
 - (void) show;
-- (void) log:(const char *) msg len:(int) len outbound:(bool) outbound;
+- (void) log:(const char *) msg len:(NSInteger) len outbound:(BOOL) outbound;
 
 @end

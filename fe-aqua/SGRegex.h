@@ -13,17 +13,17 @@
 @interface SGRegex : NSObject
 {
 	regex_t			preg;
-	int				n_sub_expr;
+	size_t			n_sub_expr;
 	regmatch_t		*pmatch;
 	NSMutableArray	*list;
-	bool			ok;
+	BOOL			ok;
 }
 
 + (SGRegex *) regexWithString:(NSString *) regex nSubExpr:(int) nSubExpr;
 
-- (bool) doitWithString:(NSString *) input;
-- (bool) doitWithUTF8String:(const char *) input;
-- (bool) doitWithCString:(const char *) input encoding:(NSStringEncoding) enc;
-- (NSString *) getNthMatch:(int) n;
+- (BOOL) doitWithString:(NSString *) input;
+- (BOOL) doitWithUTF8String:(const char *) input;
+- (BOOL) doitWithCString:(const char *) input encoding:(NSStringEncoding) enc;
+- (NSString *) getNthMatch:(NSInteger) n;
 
 @end

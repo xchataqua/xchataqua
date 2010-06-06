@@ -23,6 +23,9 @@
     id text;
 }
 
+- (IBAction) doCancel:(id)sender;
+- (IBAction) doOk:(id)sender;
+
 - (NSString *) doit;
 - (void) setValue:(NSString *) val;
 
@@ -67,12 +70,12 @@
     return ret ? [text stringValue] : nil;
 }
 
-- (void) do_cancel:(id) sender
+- (void) doCancel:(id)sender
 {
     [NSApp stopModalWithCode:0];
 }
 
-- (void) do_ok:(id) sender
+- (void) doOk:(id)sender
 {
     [NSApp stopModalWithCode:1];
 }

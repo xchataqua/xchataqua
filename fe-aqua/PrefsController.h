@@ -30,9 +30,9 @@ enum
 
 struct my_pref
 {
-    id	       item;
-    void      *pref;
-    int        type;
+    id		item;
+    void	*pref;
+    int		type;
 };
 
 @interface PrefsController : NSObject
@@ -40,15 +40,17 @@ struct my_pref
 <NSWindowDelegate,NSComboBoxDataSource>
 #endif
 {
-    NSTabView	*tab_view;
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_4
-	SRRecorderCell *tab_left_sr;
-	SRRecorderCell *tab_right_sr;
-#endif
-    NSWindow *prefs_window;
+	IBOutlet NSTabView	*tab_view;
+	#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_4
+	IBOutlet SRRecorderCell *tabLeftRecorderCell;
+	IBOutlet SRRecorderCell *tabRightRecorderCell;
+	#endif
+	IBOutlet NSWindow *preferencesWindow;
+	
     NSColorWell *colors [41];
 	NSMutableArray *sounds;
 	NSMutableArray *sound_events;
+	
 	id  perform_always_check;
 	id  sounds_table;
     id	category_list;
@@ -141,7 +143,7 @@ struct my_pref
 	id  auto_away_text;
 	id  nick_complete_sort_menu;
 	
-    struct my_pref     my_prefs [86];
+    struct my_pref my_prefs [86];
 }
 
 - (void) show;
