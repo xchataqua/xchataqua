@@ -18,11 +18,11 @@
 #import "SGGuiUtil.h"
 
 @implementation SGGuiUtil 
-
+/*
 + (NSPoint) centerRect:(NSRect) r
                 onRect:(NSRect) rr
-                   inX:(bool) inX
-                   inY:(bool) inY
+                   inX:(BOOL) inX
+                   inY:(BOOL) inY
 {
     if (inX)
         r.origin.x = rr.origin.x + floor (rr.size.width - r.size.width) / 2;
@@ -32,7 +32,7 @@
     
     return r.origin;
 }
-
+*/
 + (BOOL) trackButtonCell:(NSButtonCell *) cell
 			   withEvent:(NSEvent *) e
 				  inRect:(NSRect) track_rect
@@ -52,7 +52,7 @@
                 return YES;
         }
 
-        int event_mask = NSLeftMouseDownMask | NSLeftMouseUpMask
+        NSUInteger event_mask = NSLeftMouseDownMask | NSLeftMouseUpMask
                 | NSMouseMovedMask | NSLeftMouseDraggedMask | NSOtherMouseDraggedMask
                 | NSRightMouseDraggedMask;
     

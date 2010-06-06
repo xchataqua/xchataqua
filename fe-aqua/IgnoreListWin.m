@@ -41,23 +41,23 @@
     NSNumber		*unignore;
 }
 
-- (id) initWithIgnore:(struct ignore *) ign;
+- (id) initWithIgnore:(struct ignore *)ign;
 
 @end
 
 @implementation OneIgnore
 
-- (id) initWithIgnore:(struct ignore *) the_ign
+- (id) initWithIgnore:(struct ignore *)aIgn
 {
-    self->ign = the_ign;
+    self->ign = aIgn;
 
-    mask = [[NSMutableString stringWithUTF8String:ign->mask] retain];
-    ctcp = [[NSNumber numberWithBool:ign->type & IG_CTCP] retain];
-    priv = [[NSNumber numberWithBool:ign->type & IG_PRIV] retain];
-    chan = [[NSNumber numberWithBool:ign->type & IG_CHAN] retain];
-    notice = [[NSNumber numberWithBool:ign->type & IG_NOTI] retain];
-    invite = [[NSNumber numberWithBool:ign->type & IG_INVI] retain];
-    unignore = [[NSNumber numberWithBool:ign->type & IG_UNIG] retain];
+    mask	= [[NSMutableString stringWithUTF8String:ign->mask] retain];
+    ctcp	= [[NSNumber numberWithBool:ign->type & IG_CTCP] retain];
+    priv	= [[NSNumber numberWithBool:ign->type & IG_PRIV] retain];
+    chan	= [[NSNumber numberWithBool:ign->type & IG_CHAN] retain];
+    notice	= [[NSNumber numberWithBool:ign->type & IG_NOTI] retain];
+    invite	= [[NSNumber numberWithBool:ign->type & IG_INVI] retain];
+    unignore= [[NSNumber numberWithBool:ign->type & IG_UNIG] retain];
     
     return self;
 }
@@ -75,9 +75,7 @@
     [super dealloc];
 }
 
-- (void) set_bool:(bool) value
-	for_field:(id *) field
-	     type:(int) type
+- (void) setBool:(BOOL)value forField:(id *)field type:(int)type
 {
     [*field release];
     *field = [[NSNumber numberWithBool:value] retain];
@@ -87,40 +85,21 @@
     	ign->type &= ~type;
 }
 
-- (void) setValue:(id) value
-	 forField:(int) field
+- (void) setValue:(id)value forField:(int)field
 {
-    switch (field)
-    {
-        case 0:
-	    [mask setString:value];
-	    free (ign->mask);
-	    ign->mask = strdup ([mask UTF8String]);
-	    break;
-
-        case 1:
-	    [self set_bool:[value boolValue] for_field:&ctcp type:IG_CTCP];
-	    break;
-
-        case 2:
-	    [self set_bool:[value boolValue] for_field:&priv type:IG_PRIV];
-	    break;
-
-        case 3:
-	    [self set_bool:[value boolValue] for_field:&chan type:IG_CHAN];
-	    break;
-
-        case 4:
-	    [self set_bool:[value boolValue] for_field:&notice type:IG_NOTI];
-	    break;
-
-        case 5:
-	    [self set_bool:[value boolValue] for_field:&invite type:IG_INVI];
-	    break;
-
-        case 6:
-	    [self set_bool:[value boolValue] for_field:&unignore type:IG_UNIG];
-	    break;
+	switch (field)
+	{
+		case 0:
+			[mask setString:value];
+			free (ign->mask);
+			ign->mask = strdup ([mask UTF8String]);
+			break;			
+		case 1: [self setBool:[value boolValue] forField:&ctcp type:IG_CTCP]; break;
+		case 2: [self setBool:[value boolValue] forField:&priv type:IG_PRIV]; break;
+		case 3: [self setBool:[value boolValue] forField:&chan type:IG_CHAN]; break;
+		case 4: [self setBool:[value boolValue] forField:&notice type:IG_NOTI];break;
+		case 5: [self setBool:[value boolValue] forField:&invite type:IG_INVI];break;
+		case 6: [self setBool:[value boolValue] forField:&unignore type:IG_UNIG];break;
     }
 }
 
@@ -130,11 +109,11 @@
 
 @implementation IgnoreListWin
 
-- (id) initWithSelfPtr:(id *) self_ptr;
+- (id) initWithSelfPtr:(id *)self_ptr;
 {
     [super initWithSelfPtr:self_ptr];
     
-    my_items = [[NSMutableArray arrayWithCapacity:0] retain];
+    myItems = [[NSMutableArray arrayWithCapacity:0] retain];
     
     [NSBundle loadNibNamed:@"IgnoreList" owner:self];
     
@@ -143,55 +122,54 @@
 
 - (void) dealloc
 {
-    [ignore_list_view release];
-    [my_items release];
+    [ignoreListView release];
+    [myItems release];
     [super dealloc];
 }
 
-- (void) update_stats
+- (void) updateStats
 {
-    [ignored_ctcp_text setIntValue:ignored_ctcp];
-    [ignored_noti_text setIntValue:ignored_noti];
-    [ignored_chan_text setIntValue:ignored_chan];
-    [ignored_invi_text setIntValue:ignored_invi];
-    [ignored_priv_text setIntValue:ignored_priv];
+    [ignoredCtcpTextField setIntValue:ignored_ctcp];
+    [ignoredNoticeTextField setIntValue:ignored_noti];
+    [ignoredChannelTextField setIntValue:ignored_chan];
+    [ignoredInviteTextField setIntValue:ignored_invi];
+    [ignoredPrivateTextField setIntValue:ignored_priv];
 }
 
-- (void) load_data
+- (void) loadData
 {
-    [my_items removeAllObjects];
-
-    for (GSList *list = ignore_list; list; list = list->next)
-    {
-        struct ignore *ign = (struct ignore *) list->data;
-	[my_items addObject:[[OneIgnore alloc] initWithIgnore:ign]];
-    }
-
-    [self->ignore_list_table reloadData];
-
-    [self update_stats];
+	[myItems removeAllObjects];
+	
+	for (GSList *list = ignore_list; list; list = list->next)
+	{
+		struct ignore *ign = (struct ignore *) list->data;
+		[myItems addObject:[[OneIgnore alloc] initWithIgnore:ign]];
+	}
+	
+	[self->ignoreListTableView reloadData];
+	[self updateStats];
 }
 
 - (void) awakeFromNib
 {
-    [ignore_list_view setTitle:NSLocalizedStringFromTable(@"XChat: Ignore list", @"xchat", @"")];
-    [ignore_list_view setTabTitle:NSLocalizedStringFromTable(@"ignore", @"xchataqua", @"")];
-    
-    for (int i = 0; i < [self->ignore_list_table numberOfColumns]; i ++)
-        [[[self->ignore_list_table tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
-
-    NSButtonCell *b = [[NSButtonCell alloc] init];
-    [b setButtonType:NSSwitchButton];
-    [b setControlSize:NSSmallControlSize];
-    [b setTitle:@""];
-    for (int i = 1; i < [self->ignore_list_table numberOfColumns]; i ++)
-		[[[self->ignore_list_table tableColumns] objectAtIndex:i] setDataCell:b];
-	[b release];
-
-    [self->ignore_list_table setDataSource:self];
-    [self->ignore_list_view setDelegate:self];
-    
-    [self load_data];
+	[ignoreListView setTitle:NSLocalizedStringFromTable(@"XChat: Ignore list", @"xchat", @"")];
+	[ignoreListView setTabTitle:NSLocalizedStringFromTable(@"ignore", @"xchataqua", @"")];
+	
+	for (NSUInteger i = 0; i < [self->ignoreListTableView numberOfColumns]; i++)
+		[[[self->ignoreListTableView tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
+	
+	NSButtonCell *button = [[NSButtonCell alloc] init];
+	[button setButtonType:NSSwitchButton];
+	[button setControlSize:NSSmallControlSize];
+	[button setTitle:@""];
+	for (NSUInteger i = 1; i < [self->ignoreListTableView numberOfColumns]; i++)
+		[[[self->ignoreListTableView tableColumns] objectAtIndex:i] setDataCell:button];
+	[button release];
+	
+	[self->ignoreListTableView setDataSource:self];
+	[self->ignoreListView setDelegate:self];
+	
+	[self loadData];
 }
 
 - (void) windowDidBecomeKey:(NSNotification *) xx
@@ -200,25 +178,24 @@
 
 - (void) windowWillClose:(NSNotification *) xx
 {
-    ignore_save ();
+    ignore_save();
 
     [self release];
 }
 
-- (NSInteger) find:(const char *) mask
+- (NSInteger)find:(const char *)mask
 {
-    for (OneIgnore *ignoreItem in my_items)
-    {
-      if (rfc_casecmp (mask, ignoreItem->ign->mask) == 0)
-        return [my_items indexOfObject:ignoreItem];
+	for (OneIgnore *ignoreItem in myItems)
+	{
+		if (rfc_casecmp (mask, ignoreItem->ign->mask) == 0)
+			return [myItems indexOfObject:ignoreItem];
     }
-
     return -1;
 }
 
-- (void) do_new:(id) sender
+- (void) doNew:(id) sender
 {
-	[[ignore_list_table window] makeFirstResponder:ignore_list_table];
+	[[ignoreListTableView window] makeFirstResponder:ignoreListTableView];
 
 	if ([self find:"new!new@new.com"] < 0)
 		ignore_add ("new!new@new.com", 0); // Calls me back to create my list
@@ -227,20 +204,19 @@
 
 	if (row >= 0)		// It should always be 0
 	{
-		[ignore_list_table selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
-		[ignore_list_table editColumn:0 row:row withEvent:nil select:YES];
+		[ignoreListTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+		[ignoreListTableView editColumn:0 row:row withEvent:nil select:YES];
 	}
 }
 
-- (void) do_delete:(id) sender
+- (void) doDelete:(id) sender
 {
-    int row = [ignore_list_table selectedRow];
-    if (row < 0)
-    	return;
+    NSInteger row = [ignoreListTableView selectedRow];
+    if (row < 0) return;
 
-    [[ignore_list_table window] makeFirstResponder:ignore_list_table];
+    [[ignoreListTableView window] makeFirstResponder:ignoreListTableView];
 
-    OneIgnore *item = (OneIgnore *) [my_items objectAtIndex:row];
+    OneIgnore *item = [myItems objectAtIndex:row];
 
     ignore_del (NULL, item->ign);	// This will call me back
 
@@ -250,17 +226,17 @@
 - (void) show
 {
     if (prefs.windows_as_tabs)
-        [ignore_list_view becomeTabAndShow:true];
+        [ignoreListView becomeTabAndShow:YES];
     else
-        [ignore_list_view becomeWindowAndShow:true];
+        [ignoreListView becomeWindowAndShow:YES];
 }
 
-- (void) update:(int) level
+- (void) update:(int)level
 {
     if (level == 1)
-        [self load_data];
+        [self loadData];
     else if (level == 2)
-        [self update_stats];
+        [self updateStats];
 }
 
 //////////////
@@ -268,14 +244,14 @@
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
-    return [my_items count];
+    return [myItems count];
 }
 
 - (id) tableView:(NSTableView *) aTableView
     objectValueForTableColumn:(NSTableColumn *) aTableColumn
     row:(NSInteger) rowIndex
 {
-    OneIgnore *item = [my_items objectAtIndex:rowIndex];
+    OneIgnore *item = [myItems objectAtIndex:rowIndex];
 
     switch ([[aTableColumn identifier] intValue])
     {
@@ -296,8 +272,7 @@
     forTableColumn:(NSTableColumn *) aTableColumn
                row:(NSInteger)rowIndex
 {
-    id item = [my_items objectAtIndex:rowIndex];
-    [item setValue:anObject forField:[[aTableColumn identifier] intValue]];
+    [[myItems objectAtIndex:rowIndex] setValue:anObject forField:[[aTableColumn identifier] intValue]];
 }
 
 @end

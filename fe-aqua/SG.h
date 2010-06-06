@@ -17,7 +17,7 @@
 
 #import "SGAlert.h"
 #import "SGApplication.h"
-#import "SGArray.h"
+//#import "SGArray.h" not used in xca
 #import "SGBoxView.h"
 #import "SGFileDescriptor.h"
 #import "SGFileSelection.h"
