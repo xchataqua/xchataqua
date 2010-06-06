@@ -4,18 +4,18 @@ RECDIR='../../Localization'
 DEFXIBDIR="$RECDIR/en.lproj"
 
 for locale in `ls -d lproj/*`; do
-  locale=`basename $locale`
+	locale=`basename $locale`
 	if [ $locale != `basename $locale .lproj` ]; then
 		continue;	# FIXME: tweak to avoid locale / locale.lproj
 	fi
 	if [ $BASELOCALE = $locale ]; then
-    continue;	# pass base locale
-  fi
+	   continue;	# pass base locale
+	fi
 
-	echo -n $locale
+	echo -n "gen for $locale"
 	for strings in `ls lproj/$locale/*.xib.strings`; do
 		# strings: generated one
-    xib=`basename $strings .strings`
+		xib=`basename $strings .strings`
 		if [ ! -e lproj/$locale.lproj ]; then
 			mkdir lproj/$locale.lproj
 		fi
@@ -25,22 +25,22 @@ for locale in `ls -d lproj/*`; do
 			fi
 		fi
 		if [ $DEFXIBDIR/$xib -ot $RECDIR/$locale.lproj/$xib ]; then
-			if [ strings/$locale.strings -ot $RECDIR/$locale.lproj/$xib ]; then
+			if [ strings/$locale/xib.strings -ot $RECDIR/$locale.lproj/$xib ]; then
 				continue
 			fi
 		fi
-    cmd="ibtool --strings-file $strings --write lproj/$locale.lproj/$xib $DEFXIBDIR/$xib"
+		cmd="ibtool --strings-file $strings --write lproj/$locale.lproj/$xib $DEFXIBDIR/$xib"
 #		diff lproj/$locale/$xib lproj/$locale.lproj/$xib
 #		if [ $? ]; then
 #			cp lproj/$locale/$xib lproj/$locale.lproj/$xib
 #		fi
 		if [ $DEBUG ]; then
-	    echo "$cmd"
+			echo "$cmd"
 		fi
-    $cmd &
+		$cmd &
 		echo -n .
-  done
-	echo ""
+	done
+	echo " waiting syncronizing"
 	wait $!
 done
-sleep 3
+sleep 2

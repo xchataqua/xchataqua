@@ -116,8 +116,7 @@ int append_text (NSMutableAttributedString *msgString,
     else if (font)
 		[attr setObject:font forKey:NSFontAttributeName];
 
-    NSAttributedString *as = [[NSAttributedString alloc] initWithString:s
-                                                         attributes:attr];
+    NSAttributedString *as = [[NSAttributedString alloc] initWithString:s attributes:attr];
                     
     [msgString appendAttributedString:as];
         
