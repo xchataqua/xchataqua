@@ -194,7 +194,7 @@ static MenuMaker *defaultMenuMaker;
 
 	self = [super init];
 	
-	for (unsigned i = 0; i < (sizeof(labels) / sizeof(labels[0])); i++) {
+	for (NSUInteger i = 0; i < (sizeof(labels) / sizeof(labels[0])); i++) {
 		test = [[NSMutableAttributedString alloc] initWithString:[labels[i] stringByAppendingString:@"	"]
 				attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont boldSystemFontOfSize:0], NSFontAttributeName, nil]];
 		size = [test size];

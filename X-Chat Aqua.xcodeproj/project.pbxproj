@@ -2212,7 +2212,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "X-Chat Aqua" */;
 			buildPhases = (
-				B0A5F6B30FFAB04D003F5A02 /* Generate LC_MESSAGES */,
+				B0A5F6B30FFAB04D003F5A02 /* Generate Localizations */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				8D1107290486CEB800E47090 /* Resources */,
@@ -2437,19 +2437,19 @@
 			shellPath = /bin/bash;
 			shellScript = "if [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\necho 'input password for sudo to install leopard library to user system'\n\n/usr/bin/osascript > /dev/null <<ASCPT\ntell application \"Terminal\"\n\tactivate\n\tdo script with command \"sudo tar xvf \\\"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\\\" -P\"\nend tell\nASCPT\n\necho 'after running script, redo build please.'\n\nexit 1";
 		};
-		B0A5F6B30FFAB04D003F5A02 /* Generate LC_MESSAGES */ = {
+		B0A5F6B30FFAB04D003F5A02 /* Generate Localizations */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Generate LC_MESSAGES";
+			name = "Generate Localizations";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "cd \"$PROJECT_DIR/tools/localization\"\n\n[ -f ~/.bashrc ] && source ~/.bashrc\n[ -f ~/.profile ] && source ~/.profile\n\n/bin/bash po_to_mo.sh";
+			shellScript = "cd \"$PROJECT_DIR/tools/localization\"\n\n[ -f ~/.bashrc ] && source ~/.bashrc\n[ -f ~/.profile ] && source ~/.profile\n\n/bin/bash _AUTOUPDATE.sh";
 		};
 		B0A5F6CD0FFAB16E003F5A02 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
