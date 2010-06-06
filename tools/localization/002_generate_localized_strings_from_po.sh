@@ -12,8 +12,8 @@ for locale in `ls -d po/*.strings`; do
 		echo "generate $BASESED.$locale..."
 	fi
 	echo "#!/bin/sed" > $BASESED.$locale
-	if [ -e strings/$locale.strings ]; then
-		sed -f $BASESED strings/$locale.strings >> $BASESED.$locale
+	if [ -e strings/$locale/xib.strings ]; then
+		sed -f $BASESED strings/$locale/xib.strings >> $BASESED.$locale
 	fi
 	sed -f $BASESED po/$locale.strings >> $BASESED.$locale
 	if [ ! -e "lproj/$locale" ]; then
@@ -22,7 +22,7 @@ for locale in `ls -d po/*.strings`; do
 	for strings in `ls lproj/$BASELOCALE/*.xib.strings`; do
 		newstrings=lproj/$locale/`basename $strings`
 		if [ $newstrings -nt $strings ]; then
-			if [ $newstrings -nt strings/$locale.strings ]; then
+			if [ $newstrings -nt strings/$locale/xib.strings ]; then
 				if [ $newstrings -nt po/$locale.strings ]; then
 					continue
 				fi
