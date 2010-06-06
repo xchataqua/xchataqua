@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby -wKU
 require 'fileutils'
 
-base = "../../X-Chat Aqua/localization"
+base = "../../Localization"
 
 Dir.glob("po/*.strings") do |f|
   lang = $1 if f =~ /po\/(.+?)\.strings/

@@ -45,17 +45,17 @@
 	[super dealloc];
 }
 
-- (bool) doitWithString:(NSString *) input
+- (BOOL) doitWithString:(NSString *) input
 {
 	return [self doitWithUTF8String:[input UTF8String]];
 }
 
-- (bool) doitWithUTF8String:(const char *) input
+- (BOOL) doitWithUTF8String:(const char *) input
 {
 	return [self doitWithCString:input encoding:NSUTF8StringEncoding];
 }
 
-- (bool) doitWithCString:(const char *) input encoding:(NSStringEncoding) enc
+- (BOOL) doitWithCString:(const char *) input encoding:(NSStringEncoding) enc
 {
     [list release];
 	list = [[NSMutableArray arrayWithCapacity:n_sub_expr] retain];
@@ -63,13 +63,13 @@
     if (ok && regexec (&preg, input, n_sub_expr, pmatch, 0) == 0)
     {
         // Start at 1!!!
-        for (int i = 1; i < n_sub_expr; i ++)
+        for (size_t i = 1; i < n_sub_expr; i ++)
         {
             regmatch_t *match = &pmatch [i];
 
             if (match->rm_so != -1)
             {
-                int l = match->rm_eo - match->rm_so;
+                regoff_t l = match->rm_eo - match->rm_so;
                 [list addObject:[[[NSString alloc] initWithBytes:input + match->rm_so length:l encoding:enc] autorelease]];
             }
             else
@@ -82,9 +82,9 @@
     return false;
 }
 
-- (NSString *) getNthMatch:(int) n
+- (NSString *) getNthMatch:(NSInteger) n
 {
-	return (NSString *) [list objectAtIndex:n];
+	return [list objectAtIndex:n];
 }
 
 @end

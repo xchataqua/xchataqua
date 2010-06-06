@@ -40,7 +40,7 @@
     for (NSUInteger i = 0; i < numObjects; ++i)
     {
         SGHBoxView *view = [objects objectAtIndex:i];
-        [view setHJustification:[[sender selectedItem] tag]];
+        view.hJustification = [[sender selectedItem] tag];
     }
 }
 
@@ -52,7 +52,7 @@
     for(NSUInteger i = 0; i < numObjects; ++i)
     {
         SGHBoxView *hbox = [objects objectAtIndex:i];
-        [hbox setHInnerMargin:[inner_text intValue]];
+        hbox.hInnerMargin = [inner_text intValue];
     }
 }
 
@@ -64,7 +64,7 @@
     for(NSUInteger i = 0; i < numObjects; ++i)
     {
         SGHBoxView *hbox = [objects objectAtIndex:i];
-        [hbox setHOutterMargin:[outter_text intValue]];
+        hbox.hOutterMargin = [outter_text intValue];
     }
 }
 
@@ -75,9 +75,9 @@
     if([objects count] == 1)
     {
         SGHBoxView *hbox = [objects objectAtIndex:0];
-        [HJustMenu selectItemWithTag:[hbox hJustification]];
-        [inner_text setIntValue:[hbox hInnerMargin]];
-        [outter_text setIntValue:[hbox hOutterMargin]];
+        [HJustMenu selectItemWithTag:hbox.hJustification];
+        [inner_text setIntValue:hbox.hInnerMargin];
+        [outter_text setIntValue:hbox.hOutterMargin];
     }
     [super refresh];
 }

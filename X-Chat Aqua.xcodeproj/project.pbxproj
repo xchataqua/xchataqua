@@ -57,7 +57,7 @@
 		0F8EA6510CFB2F5C001AE9AE /* EditList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA63F0CFB2F5C001AE9AE /* EditList.m */; };
 		0F8EA6520CFB2F5C001AE9AE /* IgnoreListWin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6410CFB2F5C001AE9AE /* IgnoreListWin.m */; };
 		0F8EA6530CFB2F5C001AE9AE /* LogViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6430CFB2F5C001AE9AE /* LogViewer.m */; };
-		0F8EA6540CFB2F5C001AE9AE /* NotifyListWin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6450CFB2F5C001AE9AE /* NotifyListWin.m */; };
+		0F8EA6540CFB2F5C001AE9AE /* FriendListWin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6450CFB2F5C001AE9AE /* FriendListWin.m */; };
 		0F8EA6550CFB2F5C001AE9AE /* PluginList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6470CFB2F5C001AE9AE /* PluginList.m */; };
 		0F8EA6560CFB2F5C001AE9AE /* RawLogWin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6490CFB2F5C001AE9AE /* RawLogWin.m */; };
 		0F8EA6880CFB300B001AE9AE /* SGAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA65B0CFB300B001AE9AE /* SGAlert.m */; };
@@ -89,10 +89,10 @@
 		0F8EA6BC0CFB33E4001AE9AE /* DialogButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6BB0CFB33E4001AE9AE /* DialogButtons.m */; };
 		0F8EA6E60CFB347B001AE9AE /* EncodedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6BE0CFB347B001AE9AE /* EncodedString.m */; };
 		0F8EA6E70CFB347B001AE9AE /* GLikeTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6C00CFB347B001AE9AE /* GLikeTimer.m */; };
-		0F8EA6E80CFB347B001AE9AE /* identd.cc in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6C10CFB347B001AE9AE /* identd.cc */; };
+		0F8EA6E80CFB347B001AE9AE /* identd.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6C10CFB347B001AE9AE /* identd.c */; };
 		0F8EA6EA0CFB347B001AE9AE /* MenuMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6C40CFB347B001AE9AE /* MenuMaker.m */; };
 		0F8EA6EB0CFB347B001AE9AE /* mIRCString.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6C60CFB347B001AE9AE /* mIRCString.m */; };
-		0F8EA6EC0CFB347B001AE9AE /* XAChatText.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6C80CFB347B001AE9AE /* XAChatText.m */; };
+		0F8EA6EC0CFB347B001AE9AE /* XAChatTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6C80CFB347B001AE9AE /* XAChatTextView.m */; };
 		0F8EA6ED0CFB347B001AE9AE /* XACommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6CA0CFB347B001AE9AE /* XACommon.m */; };
 		0F8EA6EE0CFB347B001AE9AE /* XATabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6CE0CFB347B001AE9AE /* XATabView.m */; };
 		0F8EA6EF0CFB347B001AE9AE /* NSTimerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6D10CFB347B001AE9AE /* NSTimerAdditions.m */; };
@@ -164,7 +164,7 @@
 		0FC8F4C70DEEE55000504F31 /* dcc.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA31B0CFAA3F2001AE9AE /* dcc.c */; };
 		0FC8F4C80DEEE55000504F31 /* outbound.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA32C0CFAA3F2001AE9AE /* outbound.c */; };
 		0FC8F5C40DEEEA3E00504F31 /* libxchat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC8F4AE0DEEE51700504F31 /* libxchat.a */; };
-		0FC8F6AF0DEEF3AC00504F31 /* AquaChat.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA5F80CFB2500001AE9AE /* AquaChat.mm */; };
+		0FC8F6AF0DEEF3AC00504F31 /* AquaChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA5F80CFB2500001AE9AE /* AquaChat.m */; };
 		0FC8F6ED0DEEF64200504F31 /* fe-aqua.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA3CE0CFAF7E2001AE9AE /* fe-aqua.m */; };
 		0FE5E0230F4557A2000E0F91 /* InterfaceBuilderKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE5E0220F4557A2000E0F91 /* InterfaceBuilderKit.framework */; };
 		0FE5E0370F45595A000E0F91 /* SGFormView.classdescription in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5E02C0F45595A000E0F91 /* SGFormView.classdescription */; };
@@ -201,7 +201,6 @@
 		2DAAE54E10E4ACFC00DBBFD0 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54C10E4ACFC00DBBFD0 /* Growl.framework */; };
 		2DAAE56510E4AD4B00DBBFD0 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54D10E4ACFC00DBBFD0 /* ShortcutRecorder.framework */; };
 		2DAAE56D10E4AD7300DBBFD0 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE56C10E4AD7300DBBFD0 /* Sparkle.framework */; };
-		2DC4307F105F608B00782AAD /* xalocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC4307E105F608B00782AAD /* xalocalization.m */; };
 		2DC430A4105F6B9000782AAD /* chanopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F94E9AF0E1F92E3003CA262 /* chanopt.c */; };
 		2DD056F010A2C6D4002857E0 /* locale in Resources */ = {isa = PBXBuildFile; fileRef = 2DD0561C10A2C6D4002857E0 /* locale */; };
 		2DE5D56210EBE0310024D2A4 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54D10E4ACFC00DBBFD0 /* ShortcutRecorder.framework */; };
@@ -215,7 +214,7 @@
 		2DEA2F3E0F8673BF00D6DC0D /* SGRequest.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F190F8673BF00D6DC0D /* SGRequest.xib */; };
 		2DEA2F3F0F8673BF00D6DC0D /* LogWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F1B0F8673BF00D6DC0D /* LogWindow.xib */; };
 		2DEA2F400F8673BF00D6DC0D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F1D0F8673BF00D6DC0D /* MainMenu.xib */; };
-		2DEA2F410F8673BF00D6DC0D /* NotifyList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F1F0F8673BF00D6DC0D /* NotifyList.xib */; };
+		2DEA2F410F8673BF00D6DC0D /* FriendList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F1F0F8673BF00D6DC0D /* FriendList.xib */; };
 		2DEA2F420F8673BF00D6DC0D /* PluginList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F210F8673BF00D6DC0D /* PluginList.xib */; };
 		2DEA2F430F8673BF00D6DC0D /* EditEvents.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F230F8673BF00D6DC0D /* EditEvents.xib */; };
 		2DEA2F440F8673BF00D6DC0D /* EditList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F250F8673BF00D6DC0D /* EditList.xib */; };
@@ -392,7 +391,7 @@
 		0F8EA3660CFAA49B001AE9AE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F8EA3830CFAA896001AE9AE /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = ../config.h; sourceTree = "<group>"; };
 		0F8EA3CE0CFAF7E2001AE9AE /* fe-aqua.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "fe-aqua.m"; path = "fe-aqua/fe-aqua.m"; sourceTree = "<group>"; };
-		0F8EA5F80CFB2500001AE9AE /* AquaChat.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AquaChat.mm; path = "fe-aqua/AquaChat.mm"; sourceTree = "<group>"; };
+		0F8EA5F80CFB2500001AE9AE /* AquaChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AquaChat.m; path = "fe-aqua/AquaChat.m"; sourceTree = "<group>"; };
 		0F8EA6240CFB2E0A001AE9AE /* AsciiWin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsciiWin.h; path = "fe-aqua/AsciiWin.h"; sourceTree = "<group>"; };
 		0F8EA6250CFB2E0A001AE9AE /* AsciiWin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsciiWin.m; path = "fe-aqua/AsciiWin.m"; sourceTree = "<group>"; };
 		0F8EA6260CFB2E0A001AE9AE /* BanListWin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BanListWin.h; path = "fe-aqua/BanListWin.h"; sourceTree = "<group>"; };
@@ -419,8 +418,8 @@
 		0F8EA6410CFB2F5C001AE9AE /* IgnoreListWin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IgnoreListWin.m; path = "fe-aqua/IgnoreListWin.m"; sourceTree = "<group>"; };
 		0F8EA6420CFB2F5C001AE9AE /* LogViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogViewer.h; path = "fe-aqua/LogViewer.h"; sourceTree = "<group>"; };
 		0F8EA6430CFB2F5C001AE9AE /* LogViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogViewer.m; path = "fe-aqua/LogViewer.m"; sourceTree = "<group>"; };
-		0F8EA6440CFB2F5C001AE9AE /* NotifyListWin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotifyListWin.h; path = "fe-aqua/NotifyListWin.h"; sourceTree = "<group>"; };
-		0F8EA6450CFB2F5C001AE9AE /* NotifyListWin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotifyListWin.m; path = "fe-aqua/NotifyListWin.m"; sourceTree = "<group>"; };
+		0F8EA6440CFB2F5C001AE9AE /* FriendListWin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendListWin.h; path = "fe-aqua/FriendListWin.h"; sourceTree = "<group>"; };
+		0F8EA6450CFB2F5C001AE9AE /* FriendListWin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendListWin.m; path = "fe-aqua/FriendListWin.m"; sourceTree = "<group>"; };
 		0F8EA6460CFB2F5C001AE9AE /* PluginList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginList.h; path = "fe-aqua/PluginList.h"; sourceTree = "<group>"; };
 		0F8EA6470CFB2F5C001AE9AE /* PluginList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PluginList.m; path = "fe-aqua/PluginList.m"; sourceTree = "<group>"; };
 		0F8EA6480CFB2F5C001AE9AE /* RawLogWin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RawLogWin.h; path = "fe-aqua/RawLogWin.h"; sourceTree = "<group>"; };
@@ -484,13 +483,13 @@
 		0F8EA6BE0CFB347B001AE9AE /* EncodedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EncodedString.m; path = "fe-aqua/EncodedString.m"; sourceTree = "<group>"; };
 		0F8EA6BF0CFB347B001AE9AE /* GLikeTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLikeTimer.h; path = "fe-aqua/GLikeTimer.h"; sourceTree = "<group>"; };
 		0F8EA6C00CFB347B001AE9AE /* GLikeTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLikeTimer.m; path = "fe-aqua/GLikeTimer.m"; sourceTree = "<group>"; };
-		0F8EA6C10CFB347B001AE9AE /* identd.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = identd.cc; path = "fe-aqua/identd.cc"; sourceTree = "<group>"; };
+		0F8EA6C10CFB347B001AE9AE /* identd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = identd.c; path = "fe-aqua/identd.c"; sourceTree = "<group>"; };
 		0F8EA6C30CFB347B001AE9AE /* MenuMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuMaker.h; path = "fe-aqua/MenuMaker.h"; sourceTree = "<group>"; };
 		0F8EA6C40CFB347B001AE9AE /* MenuMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuMaker.m; path = "fe-aqua/MenuMaker.m"; sourceTree = "<group>"; };
 		0F8EA6C50CFB347B001AE9AE /* mIRCString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mIRCString.h; path = "fe-aqua/mIRCString.h"; sourceTree = "<group>"; };
 		0F8EA6C60CFB347B001AE9AE /* mIRCString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = mIRCString.m; path = "fe-aqua/mIRCString.m"; sourceTree = "<group>"; };
-		0F8EA6C70CFB347B001AE9AE /* XAChatText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XAChatText.h; path = "fe-aqua/XAChatText.h"; sourceTree = "<group>"; };
-		0F8EA6C80CFB347B001AE9AE /* XAChatText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XAChatText.m; path = "fe-aqua/XAChatText.m"; sourceTree = "<group>"; };
+		0F8EA6C70CFB347B001AE9AE /* XAChatTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XAChatTextView.h; path = "fe-aqua/XAChatTextView.h"; sourceTree = "<group>"; };
+		0F8EA6C80CFB347B001AE9AE /* XAChatTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XAChatTextView.m; path = "fe-aqua/XAChatTextView.m"; sourceTree = "<group>"; };
 		0F8EA6C90CFB347B001AE9AE /* XACommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XACommon.h; path = "fe-aqua/XACommon.h"; sourceTree = "<group>"; };
 		0F8EA6CA0CFB347B001AE9AE /* XACommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XACommon.m; path = "fe-aqua/XACommon.m"; sourceTree = "<group>"; };
 		0F8EA6CB0CFB347B001AE9AE /* XADefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XADefaults.h; path = "fe-aqua/XADefaults.h"; sourceTree = "<group>"; };
@@ -591,49 +590,6 @@
 		2D076D9210E9105B00E4A9F1 /* libglib-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libglib-2.0.0.dylib"; path = "contrib/lib/libglib-2.0.0.dylib"; sourceTree = "<group>"; };
 		2D076DB310E9195000E4A9F1 /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = contrib/lib/libiconv.2.dylib; sourceTree = "<group>"; };
 		2D076DB410E919B900E4A9F1 /* libintl.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libintl.8.dylib; path = contrib/lib/libintl.8.dylib; sourceTree = "<group>"; };
-		2D55EF9510EBB6D100B4ECCB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Localization/en.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55EFFE10EBB99E00B4ECCB /* sl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sl; path = Localization/sl.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55EFFF10EBB99E00B4ECCB /* wa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = wa; path = Localization/wa.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00010EBB99E00B4ECCB /* vi */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = vi; path = Localization/vi.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00110EBB99E00B4ECCB /* sv */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sv; path = Localization/sv.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00210EBB99E00B4ECCB /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_CN; path = Localization/zh_CN.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00310EBB99E00B4ECCB /* uk */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = uk; path = Localization/uk.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00410EBB99E00B4ECCB /* sr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sr; path = Localization/sr.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00510EBB99E00B4ECCB /* th */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = th; path = Localization/th.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00610EBB99E00B4ECCB /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = Localization/zh_TW.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00710EBB99E00B4ECCB /* sq */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sq; path = Localization/sq.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00810EBB99E00B4ECCB /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = Localization/ru.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00910EBB99E00B4ECCB /* nb */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nb; path = Localization/nb.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00A10EBB99E00B4ECCB /* lt */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = lt; path = Localization/lt.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00B10EBB99E00B4ECCB /* sk */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sk; path = Localization/sk.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00C10EBB99E00B4ECCB /* pt */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = pt; path = Localization/pt.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00D10EBB99E00B4ECCB /* no */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = no; path = Localization/no.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00E10EBB99E00B4ECCB /* lv */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = lv; path = Localization/lv.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F00F10EBB99E00B4ECCB /* pa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = pa; path = Localization/pa.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01010EBB99E00B4ECCB /* pt_BR */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = pt_BR; path = Localization/pt_BR.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01110EBB99E00B4ECCB /* mk */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = mk; path = Localization/mk.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01210EBB99E00B4ECCB /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = Localization/nl.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01310EBB99E00B4ECCB /* ms */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ms; path = Localization/ms.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01410EBB99E00B4ECCB /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = Localization/ko.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01510EBB99E00B4ECCB /* hu */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = hu; path = Localization/hu.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01610EBB99E00B4ECCB /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = Localization/ja.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01710EBB99E00B4ECCB /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = Localization/it.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01810EBB99E00B4ECCB /* hi */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = hi; path = Localization/hi.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01910EBB99E00B4ECCB /* fi */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fi; path = Localization/fi.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01A10EBB99E00B4ECCB /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = Localization/fr.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01B10EBB99E00B4ECCB /* eu */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = eu; path = Localization/eu.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01C10EBB99E00B4ECCB /* gl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = gl; path = Localization/gl.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01D10EBB99E00B4ECCB /* et */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = et; path = Localization/et.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01E10EBB99E00B4ECCB /* en_GB */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en_GB; path = Localization/en_GB.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F01F10EBB99E00B4ECCB /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = Localization/es.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F02010EBB99E00B4ECCB /* el */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = el; path = Localization/el.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F02110EBB99E00B4ECCB /* cs */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = cs; path = Localization/cs.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F02210EBB99E00B4ECCB /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = Localization/de.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F02310EBB99E00B4ECCB /* ca */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ca; path = Localization/ca.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F02410EBB99E00B4ECCB /* bg */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = bg; path = Localization/bg.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F02510EBB99E00B4ECCB /* be */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = be; path = Localization/be.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F02610EBB99E00B4ECCB /* az */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = az; path = Localization/az.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
-		2D55F02710EBB99E00B4ECCB /* am */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = am; path = Localization/am.lproj/Prefs.Tiger.xib; sourceTree = "<group>"; };
 		2D5C951511AF35FA0062F4C0 /* wa */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = wa; path = Localization/wa.lproj/xchat.strings; sourceTree = SOURCE_ROOT; };
 		2D5C951611AF35FA0062F4C0 /* zh_CN */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = zh_CN; path = Localization/zh_CN.lproj/xchat.strings; sourceTree = SOURCE_ROOT; };
 		2D5C951711AF35FA0062F4C0 /* uk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = uk; path = Localization/uk.lproj/xchat.strings; sourceTree = SOURCE_ROOT; };
@@ -687,9 +643,7 @@
 		2DAAE54C10E4ACFC00DBBFD0 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Frameworks/Growl.framework; sourceTree = "<group>"; };
 		2DAAE54D10E4ACFC00DBBFD0 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShortcutRecorder.framework; path = Frameworks/ShortcutRecorder.framework; sourceTree = "<group>"; };
 		2DAAE56C10E4AD7300DBBFD0 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle/Sparkle.framework; sourceTree = "<group>"; };
-		2DC4307D105F608B00782AAD /* xalocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xalocalization.h; path = "fe-aqua/xalocalization.h"; sourceTree = "<group>"; };
-		2DC4307E105F608B00782AAD /* xalocalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = xalocalization.m; path = "fe-aqua/xalocalization.m"; sourceTree = "<group>"; };
-		2DD0561C10A2C6D4002857E0 /* locale */ = {isa = PBXFileReference; lastKnownFileType = folder; name = locale; path = Localization/locale; sourceTree = "<group>"; };
+		2DD0561C10A2C6D4002857E0 /* locale */ = {isa = PBXFileReference; lastKnownFileType = folder; name = locale; path = ../Localization/locale; sourceTree = "<group>"; };
 		2DD3AAFE0F9290070033FF55 /* sr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sr; path = Localization/sr.lproj/BanList.xib; sourceTree = "<group>"; };
 		2DD3AAFF0F9290070033FF55 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_CN; path = Localization/zh_CN.lproj/BanList.xib; sourceTree = "<group>"; };
 		2DD3AB000F9290070033FF55 /* pt_BR */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = pt_BR; path = Localization/pt_BR.lproj/BanList.xib; sourceTree = "<group>"; };
@@ -821,20 +775,20 @@
 		2DD3AB860F9291180033FF55 /* sl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sl; path = Localization/sl.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		2DD3AB870F9291180033FF55 /* vi */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = vi; path = Localization/vi.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		2DD3AB880F9291180033FF55 /* sq */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sq; path = Localization/sq.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		2DD3AB890F9291180033FF55 /* wa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = wa; path = Localization/wa.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3AB8A0F9291180033FF55 /* pt */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = pt; path = Localization/pt.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3AB8B0F9291180033FF55 /* sr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sr; path = Localization/sr.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3AB8C0F9291180033FF55 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_CN; path = Localization/zh_CN.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3AB8D0F9291180033FF55 /* pt_BR */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = pt_BR; path = Localization/pt_BR.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3AB8E0F9291180033FF55 /* sv */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sv; path = Localization/sv.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3AB8F0F9291180033FF55 /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = Localization/zh_TW.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3AB900F9291180033FF55 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = Localization/ru.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3AB910F9291180033FF55 /* th */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = th; path = Localization/th.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3AB920F9291180033FF55 /* sk */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sk; path = Localization/sk.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3AB930F9291180033FF55 /* uk */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = uk; path = Localization/uk.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3AB940F9291180033FF55 /* sl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sl; path = Localization/sl.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3AB950F9291180033FF55 /* vi */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = vi; path = Localization/vi.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3AB960F9291180033FF55 /* sq */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sq; path = Localization/sq.lproj/NotifyList.xib; sourceTree = "<group>"; };
+		2DD3AB890F9291180033FF55 /* wa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = wa; path = Localization/wa.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3AB8A0F9291180033FF55 /* pt */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = pt; path = Localization/pt.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3AB8B0F9291180033FF55 /* sr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sr; path = Localization/sr.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3AB8C0F9291180033FF55 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_CN; path = Localization/zh_CN.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3AB8D0F9291180033FF55 /* pt_BR */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = pt_BR; path = Localization/pt_BR.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3AB8E0F9291180033FF55 /* sv */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sv; path = Localization/sv.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3AB8F0F9291180033FF55 /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = Localization/zh_TW.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3AB900F9291180033FF55 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = Localization/ru.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3AB910F9291180033FF55 /* th */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = th; path = Localization/th.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3AB920F9291180033FF55 /* sk */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sk; path = Localization/sk.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3AB930F9291180033FF55 /* uk */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = uk; path = Localization/uk.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3AB940F9291180033FF55 /* sl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sl; path = Localization/sl.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3AB950F9291180033FF55 /* vi */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = vi; path = Localization/vi.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3AB960F9291180033FF55 /* sq */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sq; path = Localization/sq.lproj/FriendList.xib; sourceTree = "<group>"; };
 		2DD3AB970F9291180033FF55 /* sq */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = sq; path = Localization/sq.lproj/PluginList.xib; sourceTree = "<group>"; };
 		2DD3AB980F9291180033FF55 /* wa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = wa; path = Localization/wa.lproj/PluginList.xib; sourceTree = "<group>"; };
 		2DD3AB990F9291180033FF55 /* pt */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = pt; path = Localization/pt.lproj/PluginList.xib; sourceTree = "<group>"; };
@@ -1100,19 +1054,19 @@
 		2DD3ACAB0F92911A0033FF55 /* hi */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = hi; path = Localization/hi.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		2DD3ACAC0F92911A0033FF55 /* lv */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = lv; path = Localization/lv.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		2DD3ACAD0F92911A0033FF55 /* pa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = pa; path = Localization/pa.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		2DD3ACAE0F92911A0033FF55 /* hu */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = hu; path = Localization/hu.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3ACAF0F92911A0033FF55 /* mk */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = mk; path = Localization/mk.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3ACB00F92911A0033FF55 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = Localization/it.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3ACB10F92911A0033FF55 /* ms */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ms; path = Localization/ms.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3ACB20F92911A0033FF55 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = Localization/ja.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3ACB30F92911A0033FF55 /* nb */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nb; path = Localization/nb.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3ACB40F92911A0033FF55 /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = Localization/nl.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3ACB50F92911A0033FF55 /* gl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = gl; path = Localization/gl.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3ACB60F92911A0033FF55 /* lt */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = lt; path = Localization/lt.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3ACB70F92911A0033FF55 /* no */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = no; path = Localization/no.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3ACB80F92911A0033FF55 /* hi */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = hi; path = Localization/hi.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3ACB90F92911A0033FF55 /* lv */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = lv; path = Localization/lv.lproj/NotifyList.xib; sourceTree = "<group>"; };
-		2DD3ACBA0F92911A0033FF55 /* pa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = pa; path = Localization/pa.lproj/NotifyList.xib; sourceTree = "<group>"; };
+		2DD3ACAE0F92911A0033FF55 /* hu */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = hu; path = Localization/hu.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3ACAF0F92911A0033FF55 /* mk */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = mk; path = Localization/mk.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3ACB00F92911A0033FF55 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = Localization/it.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3ACB10F92911A0033FF55 /* ms */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ms; path = Localization/ms.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3ACB20F92911A0033FF55 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = Localization/ja.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3ACB30F92911A0033FF55 /* nb */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nb; path = Localization/nb.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3ACB40F92911A0033FF55 /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = Localization/nl.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3ACB50F92911A0033FF55 /* gl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = gl; path = Localization/gl.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3ACB60F92911A0033FF55 /* lt */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = lt; path = Localization/lt.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3ACB70F92911A0033FF55 /* no */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = no; path = Localization/no.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3ACB80F92911A0033FF55 /* hi */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = hi; path = Localization/hi.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3ACB90F92911A0033FF55 /* lv */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = lv; path = Localization/lv.lproj/FriendList.xib; sourceTree = "<group>"; };
+		2DD3ACBA0F92911A0033FF55 /* pa */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = pa; path = Localization/pa.lproj/FriendList.xib; sourceTree = "<group>"; };
 		2DD3ACBB0F92911A0033FF55 /* hu */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = hu; path = Localization/hu.lproj/PluginList.xib; sourceTree = "<group>"; };
 		2DD3ACBC0F92911A0033FF55 /* mk */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = mk; path = Localization/mk.lproj/PluginList.xib; sourceTree = "<group>"; };
 		2DD3ACBD0F92911A0033FF55 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = Localization/it.lproj/PluginList.xib; sourceTree = "<group>"; };
@@ -1268,7 +1222,7 @@
 		2DDDC6290F928B9400322675 /* am */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = am; path = Localization/am.lproj/IgnoreList.xib; sourceTree = "<group>"; };
 		2DDDC62A0F928B9400322675 /* am */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = am; path = Localization/am.lproj/LogWindow.xib; sourceTree = "<group>"; };
 		2DDDC62B0F928B9400322675 /* am */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = am; path = Localization/am.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		2DDDC62C0F928B9400322675 /* am */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = am; path = Localization/am.lproj/NotifyList.xib; sourceTree = "<group>"; };
+		2DDDC62C0F928B9400322675 /* am */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = am; path = Localization/am.lproj/FriendList.xib; sourceTree = "<group>"; };
 		2DDDC62D0F928B9400322675 /* am */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = am; path = Localization/am.lproj/PluginList.xib; sourceTree = "<group>"; };
 		2DDDC62E0F928B9400322675 /* am */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = am; path = Localization/am.lproj/Prefs.xib; sourceTree = "<group>"; };
 		2DDDC62F0F928B9400322675 /* am */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = am; path = Localization/am.lproj/RawLog.xib; sourceTree = "<group>"; };
@@ -1289,7 +1243,7 @@
 		2DDDC6400F928BC900322675 /* az */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = az; path = Localization/az.lproj/IgnoreList.xib; sourceTree = "<group>"; };
 		2DDDC6410F928BC900322675 /* az */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = az; path = Localization/az.lproj/LogWindow.xib; sourceTree = "<group>"; };
 		2DDDC6420F928BC900322675 /* az */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = az; path = Localization/az.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		2DDDC6430F928BC900322675 /* az */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = az; path = Localization/az.lproj/NotifyList.xib; sourceTree = "<group>"; };
+		2DDDC6430F928BC900322675 /* az */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = az; path = Localization/az.lproj/FriendList.xib; sourceTree = "<group>"; };
 		2DDDC6440F928BC900322675 /* az */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = az; path = Localization/az.lproj/PluginList.xib; sourceTree = "<group>"; };
 		2DDDC6450F928BC900322675 /* az */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = az; path = Localization/az.lproj/Prefs.xib; sourceTree = "<group>"; };
 		2DDDC6460F928BC900322675 /* az */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = az; path = Localization/az.lproj/RawLog.xib; sourceTree = "<group>"; };
@@ -1309,7 +1263,7 @@
 		2DDDC6730F928BD800322675 /* be */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = be; path = Localization/be.lproj/EditList.xib; sourceTree = "<group>"; };
 		2DDDC6740F928BD800322675 /* be */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = be; path = Localization/be.lproj/IgnoreList.xib; sourceTree = "<group>"; };
 		2DDDC6750F928BD800322675 /* be */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = be; path = Localization/be.lproj/LogWindow.xib; sourceTree = "<group>"; };
-		2DDDC6760F928BD800322675 /* be */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = be; path = Localization/be.lproj/NotifyList.xib; sourceTree = "<group>"; };
+		2DDDC6760F928BD800322675 /* be */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = be; path = Localization/be.lproj/FriendList.xib; sourceTree = "<group>"; };
 		2DDDC6770F928BD800322675 /* be */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = be; path = Localization/be.lproj/PluginList.xib; sourceTree = "<group>"; };
 		2DDDC6780F928BD800322675 /* be */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = be; path = Localization/be.lproj/RawLog.xib; sourceTree = "<group>"; };
 		2DDDC67A0F928BD800322675 /* be */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = be; path = Localization/be.lproj/ServerList.xib; sourceTree = "<group>"; };
@@ -1330,7 +1284,7 @@
 		2DDDC6910F928BE500322675 /* bg */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = bg; path = Localization/bg.lproj/EditList.xib; sourceTree = "<group>"; };
 		2DDDC6920F928BE500322675 /* bg */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = bg; path = Localization/bg.lproj/IgnoreList.xib; sourceTree = "<group>"; };
 		2DDDC6930F928BE500322675 /* bg */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = bg; path = Localization/bg.lproj/LogWindow.xib; sourceTree = "<group>"; };
-		2DDDC6940F928BE500322675 /* bg */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = bg; path = Localization/bg.lproj/NotifyList.xib; sourceTree = "<group>"; };
+		2DDDC6940F928BE500322675 /* bg */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = bg; path = Localization/bg.lproj/FriendList.xib; sourceTree = "<group>"; };
 		2DDDC6950F928BE500322675 /* bg */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = bg; path = Localization/bg.lproj/PluginList.xib; sourceTree = "<group>"; };
 		2DDDC6960F928BE500322675 /* bg */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = bg; path = Localization/bg.lproj/RawLog.xib; sourceTree = "<group>"; };
 		2DDDC6980F928BE500322675 /* bg */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = bg; path = Localization/bg.lproj/ServerList.xib; sourceTree = "<group>"; };
@@ -1352,7 +1306,7 @@
 		2DDDC6B00F928BFD00322675 /* ca */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ca; path = Localization/ca.lproj/IgnoreList.xib; sourceTree = "<group>"; };
 		2DDDC6B10F928BFD00322675 /* ca */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ca; path = Localization/ca.lproj/LogWindow.xib; sourceTree = "<group>"; };
 		2DDDC6B20F928BFD00322675 /* ca */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ca; path = Localization/ca.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		2DDDC6B30F928BFD00322675 /* ca */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ca; path = Localization/ca.lproj/NotifyList.xib; sourceTree = "<group>"; };
+		2DDDC6B30F928BFD00322675 /* ca */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ca; path = Localization/ca.lproj/FriendList.xib; sourceTree = "<group>"; };
 		2DDDC6B40F928BFD00322675 /* ca */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ca; path = Localization/ca.lproj/PluginList.xib; sourceTree = "<group>"; };
 		2DDDC6B50F928BFD00322675 /* ca */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ca; path = Localization/ca.lproj/Prefs.xib; sourceTree = "<group>"; };
 		2DDDC6B60F928BFD00322675 /* ca */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ca; path = Localization/ca.lproj/RawLog.xib; sourceTree = "<group>"; };
@@ -1373,7 +1327,7 @@
 		2DDDC6CE0F928C0B00322675 /* cs */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = cs; path = Localization/cs.lproj/IgnoreList.xib; sourceTree = "<group>"; };
 		2DDDC6CF0F928C0B00322675 /* cs */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = cs; path = Localization/cs.lproj/LogWindow.xib; sourceTree = "<group>"; };
 		2DDDC6D00F928C0B00322675 /* cs */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = cs; path = Localization/cs.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		2DDDC6D10F928C0B00322675 /* cs */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = cs; path = Localization/cs.lproj/NotifyList.xib; sourceTree = "<group>"; };
+		2DDDC6D10F928C0B00322675 /* cs */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = cs; path = Localization/cs.lproj/FriendList.xib; sourceTree = "<group>"; };
 		2DDDC6D20F928C0B00322675 /* cs */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = cs; path = Localization/cs.lproj/PluginList.xib; sourceTree = "<group>"; };
 		2DDDC6D30F928C0B00322675 /* cs */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = cs; path = Localization/cs.lproj/Prefs.xib; sourceTree = "<group>"; };
 		2DDDC6D40F928C0B00322675 /* cs */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = cs; path = Localization/cs.lproj/RawLog.xib; sourceTree = "<group>"; };
@@ -1394,7 +1348,7 @@
 		2DDDC6EE0F928C1700322675 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = Localization/de.lproj/IgnoreList.xib; sourceTree = "<group>"; };
 		2DDDC6EF0F928C1700322675 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = Localization/de.lproj/LogWindow.xib; sourceTree = "<group>"; };
 		2DDDC6F00F928C1700322675 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = Localization/de.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		2DDDC6F10F928C1700322675 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = Localization/de.lproj/NotifyList.xib; sourceTree = "<group>"; };
+		2DDDC6F10F928C1700322675 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = Localization/de.lproj/FriendList.xib; sourceTree = "<group>"; };
 		2DDDC6F20F928C1700322675 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = Localization/de.lproj/PluginList.xib; sourceTree = "<group>"; };
 		2DDDC6F30F928C1700322675 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = Localization/de.lproj/Prefs.xib; sourceTree = "<group>"; };
 		2DDDC6F40F928C1700322675 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = Localization/de.lproj/RawLog.xib; sourceTree = "<group>"; };
@@ -1415,7 +1369,7 @@
 		2DDDC7050F928C2600322675 /* el */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = el; path = Localization/el.lproj/IgnoreList.xib; sourceTree = "<group>"; };
 		2DDDC7060F928C2600322675 /* el */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = el; path = Localization/el.lproj/LogWindow.xib; sourceTree = "<group>"; };
 		2DDDC7070F928C2600322675 /* el */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = el; path = Localization/el.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		2DDDC7080F928C2600322675 /* el */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = el; path = Localization/el.lproj/NotifyList.xib; sourceTree = "<group>"; };
+		2DDDC7080F928C2600322675 /* el */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = el; path = Localization/el.lproj/FriendList.xib; sourceTree = "<group>"; };
 		2DDDC7090F928C2600322675 /* el */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = el; path = Localization/el.lproj/PluginList.xib; sourceTree = "<group>"; };
 		2DDDC70A0F928C2600322675 /* el */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = el; path = Localization/el.lproj/Prefs.xib; sourceTree = "<group>"; };
 		2DDDC70B0F928C2600322675 /* el */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = el; path = Localization/el.lproj/RawLog.xib; sourceTree = "<group>"; };
@@ -1436,7 +1390,7 @@
 		2DDDC7230F928C3B00322675 /* en_GB */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en_GB; path = Localization/en_GB.lproj/IgnoreList.xib; sourceTree = "<group>"; };
 		2DDDC7240F928C3B00322675 /* en_GB */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en_GB; path = Localization/en_GB.lproj/LogWindow.xib; sourceTree = "<group>"; };
 		2DDDC7250F928C3B00322675 /* en_GB */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en_GB; path = Localization/en_GB.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		2DDDC7260F928C3B00322675 /* en_GB */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en_GB; path = Localization/en_GB.lproj/NotifyList.xib; sourceTree = "<group>"; };
+		2DDDC7260F928C3B00322675 /* en_GB */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en_GB; path = Localization/en_GB.lproj/FriendList.xib; sourceTree = "<group>"; };
 		2DDDC7270F928C3B00322675 /* en_GB */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en_GB; path = Localization/en_GB.lproj/PluginList.xib; sourceTree = "<group>"; };
 		2DDDC7280F928C3B00322675 /* en_GB */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en_GB; path = Localization/en_GB.lproj/Prefs.xib; sourceTree = "<group>"; };
 		2DDDC7290F928C3B00322675 /* en_GB */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en_GB; path = Localization/en_GB.lproj/RawLog.xib; sourceTree = "<group>"; };
@@ -1457,7 +1411,7 @@
 		2DDDC7410F928C4800322675 /* et */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = et; path = Localization/et.lproj/IgnoreList.xib; sourceTree = "<group>"; };
 		2DDDC7420F928C4800322675 /* et */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = et; path = Localization/et.lproj/LogWindow.xib; sourceTree = "<group>"; };
 		2DDDC7430F928C4800322675 /* et */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = et; path = Localization/et.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		2DDDC7440F928C4800322675 /* et */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = et; path = Localization/et.lproj/NotifyList.xib; sourceTree = "<group>"; };
+		2DDDC7440F928C4800322675 /* et */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = et; path = Localization/et.lproj/FriendList.xib; sourceTree = "<group>"; };
 		2DDDC7450F928C4800322675 /* et */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = et; path = Localization/et.lproj/PluginList.xib; sourceTree = "<group>"; };
 		2DDDC7460F928C4800322675 /* et */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = et; path = Localization/et.lproj/Prefs.xib; sourceTree = "<group>"; };
 		2DDDC7470F928C4800322675 /* et */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = et; path = Localization/et.lproj/RawLog.xib; sourceTree = "<group>"; };
@@ -1478,7 +1432,7 @@
 		2DDDC75F0F928C5600322675 /* eu */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = eu; path = Localization/eu.lproj/IgnoreList.xib; sourceTree = "<group>"; };
 		2DDDC7600F928C5600322675 /* eu */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = eu; path = Localization/eu.lproj/LogWindow.xib; sourceTree = "<group>"; };
 		2DDDC7610F928C5600322675 /* eu */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = eu; path = Localization/eu.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		2DDDC7620F928C5600322675 /* eu */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = eu; path = Localization/eu.lproj/NotifyList.xib; sourceTree = "<group>"; };
+		2DDDC7620F928C5600322675 /* eu */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = eu; path = Localization/eu.lproj/FriendList.xib; sourceTree = "<group>"; };
 		2DDDC7630F928C5600322675 /* eu */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = eu; path = Localization/eu.lproj/PluginList.xib; sourceTree = "<group>"; };
 		2DDDC7640F928C5600322675 /* eu */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = eu; path = Localization/eu.lproj/Prefs.xib; sourceTree = "<group>"; };
 		2DDDC7650F928C5600322675 /* eu */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = eu; path = Localization/eu.lproj/RawLog.xib; sourceTree = "<group>"; };
@@ -1499,7 +1453,7 @@
 		2DDDC77D0F928C7A00322675 /* fi */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fi; path = Localization/fi.lproj/IgnoreList.xib; sourceTree = "<group>"; };
 		2DDDC77E0F928C7A00322675 /* fi */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fi; path = Localization/fi.lproj/LogWindow.xib; sourceTree = "<group>"; };
 		2DDDC77F0F928C7A00322675 /* fi */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fi; path = Localization/fi.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		2DDDC7800F928C7A00322675 /* fi */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fi; path = Localization/fi.lproj/NotifyList.xib; sourceTree = "<group>"; };
+		2DDDC7800F928C7A00322675 /* fi */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fi; path = Localization/fi.lproj/FriendList.xib; sourceTree = "<group>"; };
 		2DDDC7810F928C7A00322675 /* fi */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fi; path = Localization/fi.lproj/PluginList.xib; sourceTree = "<group>"; };
 		2DDDC7820F928C7A00322675 /* fi */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fi; path = Localization/fi.lproj/Prefs.xib; sourceTree = "<group>"; };
 		2DDDC7830F928C7A00322675 /* fi */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fi; path = Localization/fi.lproj/RawLog.xib; sourceTree = "<group>"; };
@@ -1520,7 +1474,7 @@
 		2DDDC79B0F928C9C00322675 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = Localization/fr.lproj/IgnoreList.xib; sourceTree = "<group>"; };
 		2DDDC79C0F928C9C00322675 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = Localization/fr.lproj/LogWindow.xib; sourceTree = "<group>"; };
 		2DDDC79D0F928C9C00322675 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = Localization/fr.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		2DDDC79E0F928C9C00322675 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = Localization/fr.lproj/NotifyList.xib; sourceTree = "<group>"; };
+		2DDDC79E0F928C9C00322675 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = Localization/fr.lproj/FriendList.xib; sourceTree = "<group>"; };
 		2DDDC79F0F928C9C00322675 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = Localization/fr.lproj/PluginList.xib; sourceTree = "<group>"; };
 		2DDDC7A00F928C9C00322675 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = Localization/fr.lproj/Prefs.xib; sourceTree = "<group>"; };
 		2DDDC7A10F928C9C00322675 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = Localization/fr.lproj/RawLog.xib; sourceTree = "<group>"; };
@@ -1545,7 +1499,7 @@
 		2DEA2F1A0F8673BF00D6DC0D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Localization/en.lproj/SGRequest.xib; sourceTree = "<group>"; };
 		2DEA2F1C0F8673BF00D6DC0D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Localization/en.lproj/LogWindow.xib; sourceTree = "<group>"; };
 		2DEA2F1E0F8673BF00D6DC0D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Localization/en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		2DEA2F200F8673BF00D6DC0D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Localization/en.lproj/NotifyList.xib; sourceTree = "<group>"; };
+		2DEA2F200F8673BF00D6DC0D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Localization/en.lproj/FriendList.xib; sourceTree = "<group>"; };
 		2DEA2F220F8673BF00D6DC0D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Localization/en.lproj/PluginList.xib; sourceTree = "<group>"; };
 		2DEA2F240F8673BF00D6DC0D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Localization/en.lproj/EditEvents.xib; sourceTree = "<group>"; };
 		2DEA2F260F8673BF00D6DC0D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Localization/en.lproj/EditList.xib; sourceTree = "<group>"; };
@@ -1567,7 +1521,7 @@
 		2DEA2F540F8673ED00D6DC0D /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = Localization/ko.lproj/IgnoreList.xib; sourceTree = "<group>"; };
 		2DEA2F550F8673ED00D6DC0D /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = Localization/ko.lproj/LogWindow.xib; sourceTree = "<group>"; };
 		2DEA2F560F8673ED00D6DC0D /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = Localization/ko.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		2DEA2F570F8673ED00D6DC0D /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = Localization/ko.lproj/NotifyList.xib; sourceTree = "<group>"; };
+		2DEA2F570F8673ED00D6DC0D /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = Localization/ko.lproj/FriendList.xib; sourceTree = "<group>"; };
 		2DEA2F580F8673ED00D6DC0D /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = Localization/ko.lproj/PluginList.xib; sourceTree = "<group>"; };
 		2DEA2F590F8673ED00D6DC0D /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = Localization/ko.lproj/Prefs.xib; sourceTree = "<group>"; };
 		2DEA2F5A0F8673ED00D6DC0D /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = Localization/ko.lproj/RawLog.xib; sourceTree = "<group>"; };
@@ -1922,14 +1876,12 @@
 		29B97314FDCFA39411CA2CEA /* X-Chat Aqua */ = {
 			isa = PBXGroup;
 			children = (
-				2DD0561C10A2C6D4002857E0 /* locale */,
 				0FC8F3D10DEEC33D00504F31 /* plugins */,
 				0F8EA3640CFAA429001AE9AE /* fe-aqua */,
 				0F8EA3160CFAA342001AE9AE /* xchat common */,
 				2DC6AD1E118777750048B7C7 /* Palette */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				2D55EF9F10EBB6DC00B4ECCB /* Tiger Supports */,
 				B07C7AB20F4395E200E11B58 /* BuildNumber.xcconfig */,
 				B07C7AD60F4398FC00E11B58 /* Debug.xcconfig */,
 				B07C7AD70F4398FC00E11B58 /* Release.xcconfig */,
@@ -1947,14 +1899,6 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		2D55EF9F10EBB6DC00B4ECCB /* Tiger Supports */ = {
-			isa = PBXGroup;
-			children = (
-				2D55EF9410EBB6D100B4ECCB /* Prefs.Tiger.xib */,
-			);
-			name = "Tiger Supports";
 			sourceTree = "<group>";
 		};
 		2DC6AC8F118774E60048B7C7 /* Utility window */ = {
@@ -1986,12 +1930,16 @@
 				0F8EA6410CFB2F5C001AE9AE /* IgnoreListWin.m */,
 				0F8EA6420CFB2F5C001AE9AE /* LogViewer.h */,
 				0F8EA6430CFB2F5C001AE9AE /* LogViewer.m */,
-				0F8EA6440CFB2F5C001AE9AE /* NotifyListWin.h */,
-				0F8EA6450CFB2F5C001AE9AE /* NotifyListWin.m */,
+				0F8EA6440CFB2F5C001AE9AE /* FriendListWin.h */,
+				0F8EA6450CFB2F5C001AE9AE /* FriendListWin.m */,
 				0F8EA6460CFB2F5C001AE9AE /* PluginList.h */,
 				0F8EA6470CFB2F5C001AE9AE /* PluginList.m */,
 				0F8EA6480CFB2F5C001AE9AE /* RawLogWin.h */,
 				0F8EA6490CFB2F5C001AE9AE /* RawLogWin.m */,
+				0F8EA6DA0CFB347B001AE9AE /* UrlGrabberWin.h */,
+				0F8EA6DB0CFB347B001AE9AE /* UrlGrabberWin.m */,
+				0F8EA6DE0CFB347B001AE9AE /* UserCommands.h */,
+				0F8EA6DF0CFB347B001AE9AE /* UserCommands.m */,
 			);
 			name = "Utility window";
 			path = ..;
@@ -2003,11 +1951,9 @@
 				0F8EA3CE0CFAF7E2001AE9AE /* fe-aqua.m */,
 				2D7817C810E872D200C71AF8 /* fe-aqua_utility.h */,
 				2D7817C910E872D200C71AF8 /* fe-aqua_utility.m */,
-				0F8EA6C10CFB347B001AE9AE /* identd.cc */,
-				2DC4307D105F608B00782AAD /* xalocalization.h */,
-				2DC4307E105F608B00782AAD /* xalocalization.m */,
+				0F8EA6C10CFB347B001AE9AE /* identd.c */,
 				0F30611F0D83C5830084F2CA /* AquaChat.h */,
-				0F8EA5F80CFB2500001AE9AE /* AquaChat.mm */,
+				0F8EA5F80CFB2500001AE9AE /* AquaChat.m */,
 				0F8EA6B40CFB33AF001AE9AE /* AutoAwayController.h */,
 				0F8EA6B50CFB33AF001AE9AE /* AutoAwayController.m */,
 				0F8EA6AB0CFB3398001AE9AE /* ChatWindow.h */,
@@ -2038,20 +1984,16 @@
 				0F8EA6D70CFB347B001AE9AE /* ServerList.m */,
 				0F8EA6D80CFB347B001AE9AE /* TabOrWindowView.h */,
 				0F8EA6D90CFB347B001AE9AE /* TabOrWindowView.m */,
-				0F8EA6DA0CFB347B001AE9AE /* UrlGrabberWin.h */,
-				0F8EA6DB0CFB347B001AE9AE /* UrlGrabberWin.m */,
 				0F8EA6DC0CFB347B001AE9AE /* UrlHandlers.h */,
 				0F8EA6DD0CFB347B001AE9AE /* UrlHandlers.m */,
-				0F8EA6DE0CFB347B001AE9AE /* UserCommands.h */,
-				0F8EA6DF0CFB347B001AE9AE /* UserCommands.m */,
 				0F8EA6E00CFB347B001AE9AE /* UserlistButtons.h */,
 				0F8EA6E10CFB347B001AE9AE /* UserlistButtons.m */,
 				0F8EA6E20CFB347B001AE9AE /* UserlistPopup.h */,
 				0F8EA6E30CFB347B001AE9AE /* UserlistPopup.m */,
 				0F8EA6E40CFB347B001AE9AE /* UserMenus.h */,
 				0F8EA6E50CFB347B001AE9AE /* UserMenus.m */,
-				0F8EA6C70CFB347B001AE9AE /* XAChatText.h */,
-				0F8EA6C80CFB347B001AE9AE /* XAChatText.m */,
+				0F8EA6C70CFB347B001AE9AE /* XAChatTextView.h */,
+				0F8EA6C80CFB347B001AE9AE /* XAChatTextView.m */,
 				0F8EA6C90CFB347B001AE9AE /* XACommon.h */,
 				0F8EA6CA0CFB347B001AE9AE /* XACommon.m */,
 				0F8EA6CB0CFB347B001AE9AE /* XADefaults.h */,
@@ -2069,6 +2011,7 @@
 			children = (
 				2DEA303D0F87235400D6DC0D /* images */,
 				B0E85AC10FFFC0AF0064D049 /* sparkle.pem */,
+				2DD0561C10A2C6D4002857E0 /* locale */,
 				2D5C951411AF35FA0062F4C0 /* xchat.strings */,
 				2D5C951B11AF35FA0062F4C0 /* xchataqua.strings */,
 				2DEA2F290F8673BF00D6DC0D /* BanList.xib */,
@@ -2081,17 +2024,17 @@
 				2DEA2F250F8673BF00D6DC0D /* EditList.xib */,
 				2DEA2F270F8673BF00D6DC0D /* IgnoreList.xib */,
 				2DEA2F090F8673BF00D6DC0D /* TabMenu.xib */,
-				2DEA2F0B0F8673BF00D6DC0D /* UrlGrabber.xib */,
 				2DEA2F0D0F8673BF00D6DC0D /* ServerList.xib */,
 				2DEA2F0F0F8673BF00D6DC0D /* SGPaletteLeopard.xib */,
-				2DEA2F110F8673BF00D6DC0D /* UserCommands.xib */,
-				2DEA2F130F8673BF00D6DC0D /* Prefs.xib */,
-				2DEA2F150F8673BF00D6DC0D /* RawLog.xib */,
 				2DEA2F190F8673BF00D6DC0D /* SGRequest.xib */,
 				2DEA2F1B0F8673BF00D6DC0D /* LogWindow.xib */,
 				2DEA2F1D0F8673BF00D6DC0D /* MainMenu.xib */,
-				2DEA2F1F0F8673BF00D6DC0D /* NotifyList.xib */,
+				2DEA2F1F0F8673BF00D6DC0D /* FriendList.xib */,
 				2DEA2F210F8673BF00D6DC0D /* PluginList.xib */,
+				2DEA2F130F8673BF00D6DC0D /* Prefs.xib */,
+				2DEA2F150F8673BF00D6DC0D /* RawLog.xib */,
+				2DEA2F0B0F8673BF00D6DC0D /* UrlGrabber.xib */,
+				2DEA2F110F8673BF00D6DC0D /* UserCommands.xib */,
 				0F8EA7950CFB6CF9001AE9AE /* X-Chat Aqua.scriptSuite */,
 				0F8EA7960CFB6CF9001AE9AE /* X-Chat Aqua.scriptTerminology */,
 				0F7065530E1FA32E00FEA21C /* Changes */,
@@ -2269,7 +2212,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "X-Chat Aqua" */;
 			buildPhases = (
-				B0A5F6B30FFAB04D003F5A02 /* Generate LC_MESSAGES */,
+				B0A5F6B30FFAB04D003F5A02 /* Generate Localizations */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				8D1107290486CEB800E47090 /* Resources */,
@@ -2445,7 +2388,7 @@
 				2DEA2F3E0F8673BF00D6DC0D /* SGRequest.xib in Resources */,
 				2DEA2F3F0F8673BF00D6DC0D /* LogWindow.xib in Resources */,
 				2DEA2F400F8673BF00D6DC0D /* MainMenu.xib in Resources */,
-				2DEA2F410F8673BF00D6DC0D /* NotifyList.xib in Resources */,
+				2DEA2F410F8673BF00D6DC0D /* FriendList.xib in Resources */,
 				2DEA2F420F8673BF00D6DC0D /* PluginList.xib in Resources */,
 				2DEA2F430F8673BF00D6DC0D /* EditEvents.xib in Resources */,
 				2DEA2F440F8673BF00D6DC0D /* EditList.xib in Resources */,
@@ -2494,19 +2437,19 @@
 			shellPath = /bin/bash;
 			shellScript = "if [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\necho 'input password for sudo to install leopard library to user system'\n\n/usr/bin/osascript > /dev/null <<ASCPT\ntell application \"Terminal\"\n\tactivate\n\tdo script with command \"sudo tar xvf \\\"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\\\" -P\"\nend tell\nASCPT\n\necho 'after running script, redo build please.'\n\nexit 1";
 		};
-		B0A5F6B30FFAB04D003F5A02 /* Generate LC_MESSAGES */ = {
+		B0A5F6B30FFAB04D003F5A02 /* Generate Localizations */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Generate LC_MESSAGES";
+			name = "Generate Localizations";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "cd \"$PROJECT_DIR/tools/localization\"\n\n[ -f ~/.bashrc ] && source ~/.bashrc\n[ -f ~/.profile ] && source ~/.profile\n\n/bin/bash po_to_mo.sh";
+			shellScript = "cd \"$PROJECT_DIR/tools/localization\"\n\n[ -f ~/.bashrc ] && source ~/.bashrc\n[ -f ~/.profile ] && source ~/.profile\n\n/bin/bash _AUTOUPDATE.sh";
 		};
 		B0A5F6CD0FFAB16E003F5A02 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2621,7 +2564,7 @@
 				0F8EA6510CFB2F5C001AE9AE /* EditList.m in Sources */,
 				0F8EA6520CFB2F5C001AE9AE /* IgnoreListWin.m in Sources */,
 				0F8EA6530CFB2F5C001AE9AE /* LogViewer.m in Sources */,
-				0F8EA6540CFB2F5C001AE9AE /* NotifyListWin.m in Sources */,
+				0F8EA6540CFB2F5C001AE9AE /* FriendListWin.m in Sources */,
 				0F8EA6550CFB2F5C001AE9AE /* PluginList.m in Sources */,
 				0F8EA6560CFB2F5C001AE9AE /* RawLogWin.m in Sources */,
 				0F8EA6880CFB300B001AE9AE /* SGAlert.m in Sources */,
@@ -2653,10 +2596,10 @@
 				0F8EA6BC0CFB33E4001AE9AE /* DialogButtons.m in Sources */,
 				0F8EA6E60CFB347B001AE9AE /* EncodedString.m in Sources */,
 				0F8EA6E70CFB347B001AE9AE /* GLikeTimer.m in Sources */,
-				0F8EA6E80CFB347B001AE9AE /* identd.cc in Sources */,
+				0F8EA6E80CFB347B001AE9AE /* identd.c in Sources */,
 				0F8EA6EA0CFB347B001AE9AE /* MenuMaker.m in Sources */,
 				0F8EA6EB0CFB347B001AE9AE /* mIRCString.m in Sources */,
-				0F8EA6EC0CFB347B001AE9AE /* XAChatText.m in Sources */,
+				0F8EA6EC0CFB347B001AE9AE /* XAChatTextView.m in Sources */,
 				0F8EA6ED0CFB347B001AE9AE /* XACommon.m in Sources */,
 				0F8EA6EE0CFB347B001AE9AE /* XATabView.m in Sources */,
 				0F8EA6EF0CFB347B001AE9AE /* NSTimerAdditions.m in Sources */,
@@ -2671,11 +2614,10 @@
 				0F8EA6F80CFB347B001AE9AE /* UserlistPopup.m in Sources */,
 				0F8EA6F90CFB347B001AE9AE /* UserMenus.m in Sources */,
 				0F8EA7C90CFB7094001AE9AE /* SGRowColView.m in Sources */,
-				0FC8F6AF0DEEF3AC00504F31 /* AquaChat.mm in Sources */,
+				0FC8F6AF0DEEF3AC00504F31 /* AquaChat.m in Sources */,
 				0FC8F6ED0DEEF64200504F31 /* fe-aqua.m in Sources */,
 				0F2FEF850E1FB5AE00DE4D41 /* bundle_loader_plugin.m in Sources */,
 				0F2FEFBD0E1FC8E900DE4D41 /* SystemVersion.m in Sources */,
-				2DC4307F105F608B00782AAD /* xalocalization.m in Sources */,
 				2D7817CA10E872D200C71AF8 /* fe-aqua_utility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2731,56 +2673,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2D55EF9410EBB6D100B4ECCB /* Prefs.Tiger.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2D55EF9510EBB6D100B4ECCB /* en */,
-				2D55EFFE10EBB99E00B4ECCB /* sl */,
-				2D55EFFF10EBB99E00B4ECCB /* wa */,
-				2D55F00010EBB99E00B4ECCB /* vi */,
-				2D55F00110EBB99E00B4ECCB /* sv */,
-				2D55F00210EBB99E00B4ECCB /* zh_CN */,
-				2D55F00310EBB99E00B4ECCB /* uk */,
-				2D55F00410EBB99E00B4ECCB /* sr */,
-				2D55F00510EBB99E00B4ECCB /* th */,
-				2D55F00610EBB99E00B4ECCB /* zh_TW */,
-				2D55F00710EBB99E00B4ECCB /* sq */,
-				2D55F00810EBB99E00B4ECCB /* ru */,
-				2D55F00910EBB99E00B4ECCB /* nb */,
-				2D55F00A10EBB99E00B4ECCB /* lt */,
-				2D55F00B10EBB99E00B4ECCB /* sk */,
-				2D55F00C10EBB99E00B4ECCB /* pt */,
-				2D55F00D10EBB99E00B4ECCB /* no */,
-				2D55F00E10EBB99E00B4ECCB /* lv */,
-				2D55F00F10EBB99E00B4ECCB /* pa */,
-				2D55F01010EBB99E00B4ECCB /* pt_BR */,
-				2D55F01110EBB99E00B4ECCB /* mk */,
-				2D55F01210EBB99E00B4ECCB /* nl */,
-				2D55F01310EBB99E00B4ECCB /* ms */,
-				2D55F01410EBB99E00B4ECCB /* ko */,
-				2D55F01510EBB99E00B4ECCB /* hu */,
-				2D55F01610EBB99E00B4ECCB /* ja */,
-				2D55F01710EBB99E00B4ECCB /* it */,
-				2D55F01810EBB99E00B4ECCB /* hi */,
-				2D55F01910EBB99E00B4ECCB /* fi */,
-				2D55F01A10EBB99E00B4ECCB /* fr */,
-				2D55F01B10EBB99E00B4ECCB /* eu */,
-				2D55F01C10EBB99E00B4ECCB /* gl */,
-				2D55F01D10EBB99E00B4ECCB /* et */,
-				2D55F01E10EBB99E00B4ECCB /* en_GB */,
-				2D55F01F10EBB99E00B4ECCB /* es */,
-				2D55F02010EBB99E00B4ECCB /* el */,
-				2D55F02110EBB99E00B4ECCB /* cs */,
-				2D55F02210EBB99E00B4ECCB /* de */,
-				2D55F02310EBB99E00B4ECCB /* ca */,
-				2D55F02410EBB99E00B4ECCB /* bg */,
-				2D55F02510EBB99E00B4ECCB /* be */,
-				2D55F02610EBB99E00B4ECCB /* az */,
-				2D55F02710EBB99E00B4ECCB /* am */,
-			);
-			name = Prefs.Tiger.xib;
-			sourceTree = "<group>";
-		};
 		2D5C951411AF35FA0062F4C0 /* xchat.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -3340,7 +3232,7 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		2DEA2F1F0F8673BF00D6DC0D /* NotifyList.xib */ = {
+		2DEA2F1F0F8673BF00D6DC0D /* FriendList.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2DEA2F200F8673BF00D6DC0D /* en */,
@@ -3386,7 +3278,7 @@
 				2DD3ACB90F92911A0033FF55 /* lv */,
 				2DD3ACBA0F92911A0033FF55 /* pa */,
 			);
-			name = NotifyList.xib;
+			name = FriendList.xib;
 			path = ..;
 			sourceTree = "<group>";
 		};

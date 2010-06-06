@@ -22,10 +22,15 @@
 <NSTableViewDelegate>
 #endif
 {
-    NSTableView  *cmd_list;
-    NSTextView   *cmd_text;
-    
-    NSMutableArray *my_items;
+	IBOutlet NSTableView	*commandTableView;
+	IBOutlet NSTextView		*commandTextView;
+	
+	NSMutableArray *myItems;
 }
+
+- (IBAction) doDelete:(id)sender;
+- (IBAction) doAdd:(id)sender;
+- (IBAction) doOk:(id)sender;
+- (IBAction) doCancel:(id)sender;
 
 @end

@@ -47,16 +47,16 @@
     if (!tmp)
         return nil;
 
-	int slen = [tmp length];
+	NSUInteger slen = [tmp length];
 	
 	if (slen == 0 || ptr >= slen)
 		return nil;
 
     while (ptr < slen && strchr (delimit, [tmp characterAtIndex:ptr])) ptr++;       // Skip leading tokens
-    int start = ptr;
+    NSInteger start = ptr;
     while (ptr < slen && !strchr (delimit, [tmp characterAtIndex:ptr])) ptr++;      // find the end
 
-    int len = ptr - start;
+    NSInteger len = ptr - start;
 
     if (len == 0)
         return nil;
