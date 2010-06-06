@@ -1890,11 +1890,9 @@ static NSImage *empty_image;
   for (OneCompletion *thisItem in matches) {
     NSString *commonPrefix = [thisItem.stringValue commonPrefixWithString:shortestPrefix options:NSCaseInsensitiveSearch];
     if ([commonPrefix length] < [shortestPrefix length]) {
-      NSLog(@"sCPL: commonPrefix == %d, shortestPrefix == %d", [commonPrefix length], [shortestPrefix length]);
       shortestPrefix = commonPrefix;
     }
   }
-  NSLog(@"%@", [matches componentsJoinedByString:@" "]);
   return [shortestPrefix length];
 }
 
