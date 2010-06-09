@@ -108,6 +108,18 @@ static void location_prefs (NSWindow *w)
 	return [self.stringValue compare:other.stringValue options:NSCaseInsensitiveSearch];
 }
 
+/*
+ * Serialize ourself as text.
+ *
+ * -description: is what gets called when you ask Cocoa to treat an object as a
+ * string to serialize itself as text. For OneCompletion objects, that's just
+ * the nicks that match so we dump out the completion's stringValue.
+ */
+- (NSString *) description
+{
+	return stringValue;
+}
+
 @end
 
 /*
