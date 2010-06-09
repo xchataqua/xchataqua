@@ -62,7 +62,7 @@
     
 	NSInteger completionIndex; // Current index when cycling through tab-completions.
 	
-    struct session *sess;
+  struct session *sess;
 }
 
 @property (nonatomic, readonly) TabOrWindowView *view;

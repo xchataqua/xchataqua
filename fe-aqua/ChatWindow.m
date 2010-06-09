@@ -28,23 +28,6 @@
 #include "../common/fe.h"
 #include "XACommon.h"
 
-//////////////////////////////////////////////////////////////////////
-
-static void size_prefs (NSWindow *w)
-{
-    NSRect r = [w frame];
-    prefs.mainwindow_width = (int) r.size.width;
-    prefs.mainwindow_height = (int) r.size.height;
-}
-
-static void location_prefs (NSWindow *w)
-{
-    NSRect r = [w frame];
-    prefs.mainwindow_left = (int) r.origin.x;
-    prefs.mainwindow_top = (int) r.origin.y;		// ???: It's really the bottom?
-}
-
-//////////////////////////////////////////////////////////////////////
 /*
  * MARK: -
  * MARK: Objects for tab auto-complete
@@ -1031,14 +1014,36 @@ static NSImage *empty_image;
     [chatView close];
 }
 
-- (void) windowDidResize:(NSNotification *) notification
+/*
+ * MARK: -
+ * MARK: NSWindowDelegate Protocol methods
+ *
+ */
+
+/*
+ * Update xchat preferences with new sizes for the main window.
+ * TODO: Use Cocoa user defaults and live auto-save
+ */
+- (void) windowDidResize:(NSNotification *) resizeNotification
 {
-    size_prefs ([notification object]);
+  NSWindow *window = resizeNotification.object;
+  NSRect windowRectangle = window.frame;
+
+  prefs.mainwindow_width  = windowRectangle.size.width;
+  prefs.mainwindow_height = windowRectangle.size.height;
 }
 
-- (void) windowDidMove:(NSNotification *) notification
+/*
+ * Update xchat preferences with new positions for the main window.
+ * TODO: Use Cocoa user defaults and live auto-save
+ */
+- (void) windowDidMove:(NSNotification *) moveNotification
 {
-    location_prefs ([notification object]);
+  NSWindow *window = moveNotification.object;
+  NSRect windowRectangle = window.frame;
+
+  prefs.mainwindow_top  = windowRectangle.origin.y;
+  prefs.mainwindow_left = windowRectangle.origin.x;
 }
 
 - (void) windowWillClose:(NSNotification *) xx
