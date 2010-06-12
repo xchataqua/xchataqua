@@ -276,6 +276,9 @@
 			[self setObjectValue:prevValue];
 			return YES;
 		case NSAlertAlternateReturn: // YES
+      [prevValue release];
+      prevValue = nil;
+      [NSApp sendAction:@selector(doTopicTextField:) to:self.target from:self];
 			return YES;	
 		case NSAlertDefaultReturn: // Cancel
 		default:
