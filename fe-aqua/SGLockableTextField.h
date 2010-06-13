@@ -18,9 +18,24 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SGLockableTextField : NSTextField
+@interface SGLockableTextFieldCell : NSTextFieldCell
 {
-	id	prevValue;
+  NSImage *lockImage;
+  NSImage *unlockImage;
+
+  NSButtonCell *lockCell;
 }
 
+@property (retain) NSImage *lockImage;
+@property (retain) NSImage *unlockImage;
+@property (retain) NSButtonCell *lockCell;
+
+- (BOOL) isLocked;
+@end
+
+@interface SGLockableTextField : NSTextField
+{
+  id prevValue;
+}
+@property (retain) id prevValue;
 @end
