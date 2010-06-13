@@ -196,15 +196,16 @@
 
 - (void) privateInit
 {
-	NSTextFieldCell *cell = [[SGLockableTextFieldCell alloc] initTextCell:@""];
-	[cell setEditable:[self isEditable]];
-	[cell setDrawsBackground:[self drawsBackground]];
-	[cell setBordered:[self isBordered]];
-	[cell setBezeled:[self isBezeled]];
-	[cell setFont:[self font]];
-	[cell setScrollable:YES];
-	[self setCell:cell];
-	[cell release];
+  NSTextFieldCell *cell = [[SGLockableTextFieldCell alloc] initTextCell:@""];
+  [cell setEditable:[self isEditable]];
+  [cell setDrawsBackground:[self drawsBackground]];
+  [cell setBordered:[self isBordered]];
+  [cell setBezeled:[self isBezeled]];
+  [cell setFont:[self font]];
+  [cell setScrollable:YES];
+  [cell setPlaceholderString:@"(no topic set)"];
+  [self setCell:cell];
+  [cell release];
 }
 
 - (void) dealloc
