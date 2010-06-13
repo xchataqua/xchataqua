@@ -183,8 +183,9 @@
 
 @end
 
-/////////////////////////////////////////////////////////////////////////////
-
+/*
+ * MARK: -
+ */
 @implementation SGLockableTextField
 @synthesize prevValue;
 
@@ -208,7 +209,7 @@
 
 - (void) dealloc
 {
-	[super dealloc];
+	[super dealloc]; // ???: Do we really need to explicitly call super's dealloc?
 }
 
 - (id) initWithFrame:(NSRect)frameRect
@@ -219,8 +220,11 @@
 	return self;
 }
 
-// IB is going to try to stuff the wrong cell down our throats.
-// This is really sneaky, but short of creating a palette for this view, I don't know another way.
+/*
+ * IB is going to try to stuff the wrong cell down our throats.
+ * This is really sneaky, but short of creating a palette for this view,
+ * I don't know another way.
+ */
 - (id) initWithCoder:(NSCoder *) decoder
 {
 	self = [super initWithCoder:decoder];
@@ -229,54 +233,87 @@
 	return self;
 }
 
+/*
+ * Called when user (typically) sets focus in the text field.
+ */
 - (void) textDidBeginEditing:(NSNotification *) aNotification
 {
-	id currentVal = [self objectValue];
-	if (currentVal == nil)	// This is pure paranoia.  We depend on non-null prev values
-		currentVal = @"";	// below.  This guarantees it.
-	self.prevValue = [currentVal retain];
-	[super textDidBeginEditing:aNotification];
+  id currentVal = [self objectValue];
+  if (currentVal == nil)	// This is pure paranoia. We depend on non-null prev
+    currentVal = @"";   	// values below. This guarantees it.
+  self.prevValue = [currentVal retain];
+  [super textDidBeginEditing:aNotification];
 }
 
+/*
+ * NSTextField delegate selector to handle key-press events for “special” keys
+ * like insertNewline: (return), insertTab:, etc.
+ */
 - (BOOL) textView:(NSTextView *) textView doCommandBySelector:(SEL) command
 {
-	// If the user presses return, we'll don't want the prev value
-	if (command == @selector (insertNewline:))
-	{
-		[self.prevValue release];
-		self.prevValue = nil;
-	}
-	
-    return NO; // why this should be NO ?
+    // If the user presses return, we don't want the previous value anymore.
+  if (command == @selector (insertNewline:))
+  {
+    [self.prevValue release];
+    self.prevValue = nil;
+  }
+    // NO means we didn't handle the key pressed, so the field editor should
+    // keep passing it through the responder chain until something does. This
+    // means, from our point of view: “Give us the default behavior.”
+  return NO;
 }
 
+/*
+ * Called by NSAlert after the user dismisses the confirmation sheet.
+ *
+ * Sets topic, cancels the change, or returns the user to editing, depending on
+ * which button he pushed.
+ *
+ */
+- (void) alertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
+{
+  if (returnCode == NSAlertThirdButtonReturn) { // Don't Save.
+    [self setObjectValue:self.prevValue];
+    [self abortEditing];
+    [[self window] selectNextKeyView:self];
+    [[self cell] setLocked:YES];
+  } else if (returnCode == NSAlertFirstButtonReturn) { // OK
+    [self.prevValue release];
+    self.prevValue = nil;
+    [NSApp sendAction:self.action to:self.target from:self];
+    [[self window] selectNextKeyView:self];
+  } else if (returnCode == NSAlertSecondButtonReturn) { // Cancel.
+      // Cancel means to stay in the text field, and since we returned NO from
+      // the textShouldEndEditing: selector earlier, no action is needed here.
+  }
+}
+
+/*
+ * Invoked when a user action (typically) moves focus away from the text field.
+ *
+ * This is where we check what is entered, and possibly ask for confirmation
+ * that the user really wants to set the topic.
+ *
+ */
 - (BOOL) textShouldEndEditing:(NSText *) aTextObject
 {
+    // If it didn't change, just end editing.
 	if (!self.prevValue || [[self objectValue] isEqual:self.prevValue])
 		return YES;
-		
-	NSInteger ret = NSRunAlertPanel(NSLocalizedStringFromTable(@"Confirm",@"xchataqua",@""),
-									NSLocalizedStringFromTable(@"You have uncommited changes. Do you want to save the changes?",@"xchataqua",@""),
-									NSLocalizedStringFromTable(@"Cancel",@"xchataqua",@""), NSLocalizedStringFromTable(@"Yes",@"xchataqua",@""), NSLocalizedStringFromTable(@"No",@"xchataqua",@""), nil);
 
-	// If he doesn't want to save his changes, we need to put the old value in place, and then
-	// let whatever key press action take effect (tab vs shift-tab vs mouse press, etc..).
-	switch (ret) {
-		case NSAlertOtherReturn: // No
-			// Can't use abortEditing.. it seems to break the notifiction action.
-			// i.e. Tab key doesn't move the next responder.
-			//[self abortEditing];
-			[self setObjectValue:self.prevValue];
-			return YES;
-		case NSAlertAlternateReturn: // YES
-      [self.prevValue release];
-      self.prevValue = nil;
-      [NSApp sendAction:@selector(doTopicTextField:) to:self.target from:self];
-			return YES;	
-		case NSAlertDefaultReturn: // Cancel
-		default:
-      [[self cell] setLocked:NO];
-	}
+    // Otherwise, since the text changed but the user didn't hit return, put up
+    // a confirmation dialog to let him pick which action to take.
+  NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+  [alert addButtonWithTitle:NSLocalizedStringFromTable(@"OK", @"xchataqua", @"")];
+  [alert addButtonWithTitle:NSLocalizedStringFromTable(@"Cancel", @"xchataqua", @"")];
+  [alert addButtonWithTitle:NSLocalizedStringFromTable(@"Don't Save", @"xchataqua", @"")];
+  [alert setMessageText:NSLocalizedStringFromTable(@"Do you want to set the topic?", @"xchataqua", @"")];
+  [alert setInformativeText:NSLocalizedStringFromTable(@"You have changed the topic. Do you want to save the changes and set the topic for this channel?", @"xchataqua", @"")];
+  [alert setAlertStyle:NSWarningAlertStyle];
+  [alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+
+    // Return NO so the focus stays on the text field. We'll remove focus from
+    // the alertDidEnd:returnCode:contextInfo: selector if appropriate.
 	return NO;
 }
 
@@ -299,6 +336,9 @@
 }
 
 /*
+ * Selector called by the app delegate to check whether we accept First Responder
+ * status.
+ *
  * Seems like the answer should be YES, but it's a little more complicated.
  *
  * From inspection (i.e. guessing), it looks like the following is happening:
@@ -313,11 +353,11 @@
 */
 - (BOOL) acceptsFirstResponder
 {
-	NSTextView *resp = (NSTextView *) [[self window] firstResponder];
-	
-	return ! ([resp isKindOfClass:[NSTextView class]] &&
-		      [[self window] fieldEditor:NO forObject:nil] &&
-		      (SGLockableTextField *)[resp delegate] == self);
+  NSTextView *resp = (NSTextView *) [[self window] firstResponder];
+
+  return ! ([resp isKindOfClass:[NSTextView class]] &&
+            [[self window] fieldEditor:NO forObject:nil] &&
+            (SGLockableTextField *)[resp delegate] == self);
 }
 
 /*
