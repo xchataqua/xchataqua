@@ -17,7 +17,7 @@ void scrollback_close (session *sess);
 void scrollback_load (session *sess);
 
 int text_word_check (char *word, int len);
-void PrintText (session *sess, const char *text);
+void PrintText (session *sess, char *text);
 void PrintTextf (session *sess, char *format, ...);
 void log_close (session *sess);
 void log_open_or_close (session *sess);

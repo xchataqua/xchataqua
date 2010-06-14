@@ -42,11 +42,7 @@
 #include <glib/gmarkup.h>
 #include <ctype.h>
 #include "util.h"
-#ifdef FE_AQUA
-#include "../config.h"
-#else
 #include "../../config.h"
-#endif
 
 #define WANTSOCKET
 #include "inet.h"
