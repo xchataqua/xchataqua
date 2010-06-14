@@ -42,6 +42,7 @@
 #include <gtk/gtkcellrenderertext.h>
 #include <gtk/gtkcheckmenuitem.h>
 #include <gtk/gtkradiobutton.h>
+#include <gtk/gtkversion.h>
 
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
@@ -700,7 +701,11 @@ dcc_detail_label (char *text, GtkWidget *box, int num)
 static void
 dcc_exp_cb (GtkWidget *exp, GtkWidget *box)
 {
+#if GTK_CHECK_VERSION(2,20,0)
+	if (gtk_widget_get_visible (box))
+#else
 	if (GTK_WIDGET_VISIBLE (box))
+#endif
 		gtk_widget_hide (box);
 	else
 		gtk_widget_show (box);
