@@ -16,8 +16,6 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
  */
 
-#define GTK_DISABLE_DEPRECATED
-
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -819,7 +817,11 @@ fe_gui_info (session *sess, int info_type)
 	switch (info_type)
 	{
 	case 0:	/* window status */
+#if GTK_CHECK_VERSION(2,20,0)
+		if (!gtk_widget_get_visible (GTK_WINDOW (sess->gui->window)))
+#else
 		if (!GTK_WIDGET_VISIBLE (GTK_WINDOW (sess->gui->window)))
+#endif
 			return 2;	/* hidden (iconified or systray) */
 #if GTK_CHECK_VERSION(2,4,0)
 		if (gtk_window_is_active (GTK_WINDOW (sess->gui->window)))
