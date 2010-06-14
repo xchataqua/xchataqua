@@ -2505,7 +2505,7 @@ cmd_me (struct session *sess, char *tbuf, char *word[], char *word_eol[])
 	if (dcc_write_chat (sess->channel, tbuf))
 	{
 		/* print it to screen */
-		inbound_action (sess, sess->channel, sess->server->nick, act, TRUE, FALSE);
+		inbound_action (sess, sess->channel, sess->server->nick, "", act, TRUE, FALSE);
 	} else
 	{
 		/* DCC CHAT failed, try through server */
@@ -2513,7 +2513,7 @@ cmd_me (struct session *sess, char *tbuf, char *word[], char *word_eol[])
 		{
 			sess->server->p_action (sess->server, sess->channel, act);
 			/* print it to screen */
-			inbound_action (sess, sess->channel, sess->server->nick, act, TRUE, FALSE);
+			inbound_action (sess, sess->channel, sess->server->nick, "", act, TRUE, FALSE);
 		} else
 		{
 			notc_msg (sess);
@@ -3733,8 +3733,8 @@ help (session *sess, char *tbuf, char *helpcmd, int quiet)
 
 int
 auto_insert (char *dest, int destlen, unsigned char *src, char *word[],
-				 char *word_eol[], const char *a, const char *c, const char *d, const char *e, const char *h,
-				 const char *n, const char *s)
+				 char *word_eol[], char *a, char *c, char *d, char *e, char *h,
+				 char *n, char *s)
 {
 	int num;
 	char buf[32];
@@ -4194,7 +4194,7 @@ xit:
 /* handle a command, without the '/' prefix */
 
 int
-handle_command (session *sess, const char *cmd, int check_spch)
+handle_command (session *sess, char *cmd, int check_spch)
 {
 	struct popup *pop;
 	int user_cmd = FALSE;
