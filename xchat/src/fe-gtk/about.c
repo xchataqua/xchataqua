@@ -16,8 +16,6 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
  */
 
-#define GTK_DISABLE_DEPRECATED
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -129,7 +127,7 @@ menu_about (GtkWidget * wid, gpointer sess)
 				"<b>Renderer</b>: %s\n"
 #endif
 				"<b>Compiled</b>: "__DATE__"\n\n"
-				"<small>\302\251 1998-2008 Peter \305\275elezn\303\275 &lt;zed@xchat.org></small>",
+				"<small>\302\251 1998-2010 Peter \305\275elezn\303\275 &lt;zed@xchat.org></small>",
 					_("A multiplatform IRC Client"),
 					get_cpu_str(),
 					locale,

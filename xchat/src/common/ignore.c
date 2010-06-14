@@ -71,7 +71,7 @@ ignore_exists (char *mask)
  */
 
 int
-ignore_add (const char *mask, int type)
+ignore_add (char *mask, int type)
 {
 	struct ignore *ig = 0;
 	int change_only = FALSE;
