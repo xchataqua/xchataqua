@@ -18,14 +18,8 @@
 
 #include <glib/gslist.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 #include "../common/xchat.h"
 #include "../common/fe.h"
-#ifdef __cplusplus
-}
-#endif
 
 #import <Growl/GrowlApplicationBridge.h>
 
@@ -128,7 +122,7 @@ extern struct event_info text_event_info[];
 + (void) forEachSessionOnServer:(struct server *)serv performSelector:(SEL)sel;
 + (void) forEachSessionOnServer:(struct server *)serv performSelector:(SEL)sel withObject:(id) obj;
 
-- (void) prefsChanged;
+- (void) preferencesChanged;
 
 - (void) post_init;
 - (void) cleanup;

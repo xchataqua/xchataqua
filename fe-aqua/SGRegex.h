@@ -6,7 +6,6 @@
 //  Copyright 2005 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #include <sys/types.h>
 #include <regex.h>
 

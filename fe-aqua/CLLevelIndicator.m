@@ -33,16 +33,6 @@
 	return [CLLevelIndicatorCell class];
 }
 
-- (void) setKind:(UInt16)kind
-{
-	[[self cell] setKind:kind];
-}
-
-- (UInt16) kind
-{
-	return [(CLLevelIndicatorCell *)[self cell] kind];
-}
-
 /* undocumented method used to update the cell when the window is activated/deactivated */
 - (void) _windowChangedKeyState
 {
@@ -55,6 +45,16 @@
 	NSSize sz = [self frame].size;
 	sz.height = 10;
 	[self setFrameSize:sz];
+}
+
+- (void) setKind:(UInt16)kind
+{
+	[[self cell] setKind:kind];
+}
+
+- (UInt16) kind
+{
+	return [(CLLevelIndicatorCell *)[self cell] kind];
 }
 
 @end

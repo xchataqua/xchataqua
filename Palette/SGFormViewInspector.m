@@ -44,17 +44,17 @@
     connectionMenus[SGFormViewEdgeTop] = topConnectionMenu;
     connectionMenus[SGFormViewEdgeRight] = rightConnectionMenu;
     connectionMenus[SGFormViewEdgeBottom] = bottomConnectionMenu;
-
+	
     relativeMenus[SGFormViewEdgeLeft] = leftRelativeMenu;
     relativeMenus[SGFormViewEdgeTop] = topRelativeMenu;
     relativeMenus[SGFormViewEdgeRight] = rightRelativeMenu;
     relativeMenus[SGFormViewEdgeBottom] = bottomRelativeMenu;
-
+	
     offsetTexts[SGFormViewEdgeLeft] = leftOffsetText;
     offsetTexts[SGFormViewEdgeTop] = topOffsetText;
     offsetTexts[SGFormViewEdgeRight] = rightOffsetText;
     offsetTexts[SGFormViewEdgeBottom] = bottomOffsetText;
-
+	
     for (NSInteger edge = 0; edge < SGFormViewEdgeCount; ++edge)
     {
         // This order matches the value of the Enum
@@ -80,7 +80,7 @@
         if (ident && [ident length] > 0)
 			[menu addSGFormViewInspectorMenuItem:ident selector:@selector(doConstrain:) target:self tag:0];
     }
-
+	
     return menu;
 }
 
@@ -92,31 +92,31 @@
     {
         NSView *view = [objects objectAtIndex:0];
         SGFormView *form = (SGFormView *)[view superview];
-
+		
         NSString *ident = [form identifierForView:view];
 		if ( nil == ident ) ident = @"";
         [identifierText setStringValue:ident];
-
+		
         for (NSInteger edge = 0; edge < SGFormViewEdgeCount; ++edge)
         {
             SGFormViewAttachment attachment_return;
             NSView *view_return;
             CGFloat offset_return;
-
+			
             BOOL got_it = [form constraintsForEdge:view
                                               edge:(SGFormViewEdge)edge
                                         attachment:&attachment_return
                                         relativeTo:&view_return
                                             offset:&offset_return];
-
+			
             NSMenu *menu = [self makeRelativeMenu:form];
             [relativeMenus[edge] setMenu:menu];
-
+			
             if (got_it)
             {
                 [offsetTexts[edge] setIntValue:offset_return];
                 [connectionMenus[edge] selectItemWithTag:attachment_return];
-
+				
                 if (view_return)
                 {
                     NSString *relative = [form identifierForView:view_return];
@@ -148,23 +148,23 @@
 {
     NSArray * objects = [self inspectedObjects];
     NSUInteger numObjects = [objects count];
-
+	
     for(NSUInteger i = 0; i < numObjects; ++i)
     {
         NSView *view = [objects objectAtIndex:i];
         SGFormView *form = (SGFormView*)[view superview];
-
+		
         for (NSInteger edge = 0; edge < SGFormViewEdgeCount; edge ++)
         {
             SGFormViewAttachment conn = (SGFormViewAttachment)
             [[connectionMenus[edge] selectedItem] tag];
             NSInteger offset = [offsetTexts[edge] integerValue];
             NSView *relative = nil;
-
+			
             if ([relativeMenus[edge] indexOfSelectedItem] > 0)
             {
                 NSString *relative_ident = [relativeMenus[edge] titleOfSelectedItem];
-
+				
                 NSArray *views = [form subviews];
                 for (NSUInteger i = 0; i < [views count]; i ++)
                 {
@@ -177,15 +177,15 @@
                     }
                 }
             }
-
+			
             //NSLog (@"%x %d %d %d", view, edge, conn, offset);
-
+			
             if ((conn == SGFormViewAttachmentView ||
 				 conn == SGFormViewAttachmentOppositeView) && relative == nil)
             {
                 conn = SGFormViewAttachmentNone;
             }
-
+			
             [form constrain:view
                        edge:(SGFormViewEdge) edge
                  attachment:conn
@@ -199,12 +199,12 @@
 {
     NSArray * objects = [self inspectedObjects];
     NSInteger numObjects = [objects count];
-
+	
     for(NSInteger i = 0; i < numObjects; ++i)
     {
         NSView *view = [objects objectAtIndex:i];
         SGFormView *form = (SGFormView*)[view superview];
-
+		
         [form setIdentifier:[sender stringValue] forView:view];
     }
 }

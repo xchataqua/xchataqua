@@ -22,11 +22,8 @@
 	This control displays a non-animating level indicator in a variety of styles.
 */
 
-#import <Cocoa/Cocoa.h>
-
 @interface CLLevelIndicator : NSControl
 
-- (void) setKind:(UInt16)kind;
-- (UInt16) kind;
+@property (assign) UInt16 kind;
 
 @end

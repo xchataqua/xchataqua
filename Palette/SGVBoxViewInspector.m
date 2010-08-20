@@ -30,7 +30,7 @@
     [[VJustMenu itemWithTitle:@"Top"] setTag:SGVBoxVJustificationTop];
     [[VJustMenu itemWithTitle:@"Center"] setTag:SGVBoxVJustificationCenter];
     [[VJustMenu itemWithTitle:@"Bottom"] setTag:SGVBoxVJustificationBottom];
-
+	
     [[HJustMenu itemWithTitle:@"Left"] setTag:SGVBoxHJustificationLeft];
     [[HJustMenu itemWithTitle:@"Center"] setTag:SGVBoxHJustificationCenter];
     [[HJustMenu itemWithTitle:@"Right"] setTag:SGVBoxHJustificationRight];
@@ -41,7 +41,7 @@
 {
     NSArray * objects = [self inspectedObjects];
     NSUInteger count = [objects count];
-
+	
     for(NSUInteger i = 0; i < count; ++i)
     {
         SGVBoxView *view = [objects objectAtIndex:i];
@@ -53,7 +53,7 @@
 {
     NSArray * objects = [self inspectedObjects];
     NSInteger count = [objects count];
-
+	
     for(NSUInteger i = 0; i < count; ++i)
     {
         SGVBoxView *view = [objects objectAtIndex:i];
@@ -65,11 +65,11 @@
 {
     NSArray * objects = [self inspectedObjects];
     NSInteger count = [objects count];
-
+	
     for(NSUInteger i = 0; i < count; ++i)
     {
         SGVBoxView * view = [objects objectAtIndex:i];
-        view.vInnerMargin = [inner_text intValue];
+        view.vInnerMargin = [inner_text floatValue];
     }
 }
 
@@ -77,25 +77,25 @@
 {
     NSArray * objects = [self inspectedObjects];
     NSInteger count = [objects count];
-
+	
     for(NSUInteger i = 0; i < count; ++i)
     {
         SGVBoxView * view = [objects objectAtIndex:i];
-        view.vOutterMargin= [outter_text intValue];
+        view.vOutterMargin= [outter_text floatValue];
     }
 }
 
 - (void) refresh
 {
     NSArray * objects = [self inspectedObjects];
-
+	
     if([objects count] == 1)
     {
         SGVBoxView *vbox = [objects objectAtIndex:0];
         [VJustMenu selectItemWithTag:vbox.vJustification];
         [HJustMenu selectItemWithTag:vbox.hJustification];
-        [inner_text  setIntegerValue:vbox.vInnerMargin];
-        [outter_text setIntegerValue:vbox.vOutterMargin];
+        [inner_text  setFloatValue:vbox.vInnerMargin];
+        [outter_text setFloatValue:vbox.vOutterMargin];
     }
     [super refresh];
 }
