@@ -29,5 +29,5 @@
 				   inform:(id)obj
 				   yesSel:(SEL)yesSel
 					noSel:(SEL)noSel;
-                  
+
 @end

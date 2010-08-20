@@ -74,7 +74,7 @@
 
 - (id) initWithSession:(struct session *)sess;
 - (void) insertText:(NSString *)text;
-- (void) prefsChanged;
+- (void) preferencesChanged;
 - (void) saveBuffer:(NSString *)filename;
 - (void) highlight:(NSString *)string;
 - (NSWindow *) window;
@@ -110,8 +110,8 @@
 - (void) setupUserlistButtons;
 - (void) setupDialogButtons;
 - (void) setLag:(NSNumber *) percent;
-- (void) setTabColor:(int)col flash:(BOOL)flash;
-- (void) setInputTextPosition:(int) pos delta:(bool) delta;
+- (void) setTabColor:(int)color flash:(BOOL)flash;
+- (void) setInputTextPosition:(int)pos delta:(bool) delta;
 - (void) userlistSetSelected;
 - (void) doUserlistCommand:(const char *)cmd;
 - (void) lastlogIntoWindow:(ChatWindow *)logWin key:(char *)ckey;

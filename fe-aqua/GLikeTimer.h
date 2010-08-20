@@ -28,9 +28,9 @@
 #include <glib.h>
 
 @interface GLikeTimer : NSObject {
-@private
-	GSourceFunc		function;
-	gpointer		userdata;
+  @private
+	GSourceFunc	function;
+	gpointer	userData;
 }
 + (guint)addTaggedTimerWithMSInterval:(guint)ms callback:(GSourceFunc)function userData:(gpointer)data;
 + (gboolean)removeTimerWithTag:(guint)tag;

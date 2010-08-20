@@ -22,17 +22,11 @@
 #import "TabOrWindowView.h"
 #import "ChatWindow.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
 #include "../common/text.h"
 #undef TYPE_BOOL
 #include "../common/cfgfiles.h"
-#ifdef __cplusplus
-}
-#endif
 
 extern char *sound_files[];
 extern struct text_event te[];
@@ -245,14 +239,14 @@ static NSArray *root_items;
 		[palette setColor:i color:[colors[i] color]];
 	[[AquaChat sharedAquaChat] setPalette:palette];
 	
-    [[AquaChat sharedAquaChat] prefsChanged];
+    [[AquaChat sharedAquaChat] preferencesChanged];
 }
 
 - (void) find_colors
 {
 	// TBD: Magic number here!!!! '5'
 	
-	NSTabViewItem *color_pane = [tab_view tabViewItemAtIndex:5];
+	NSTabViewItem *color_pane = [tabView tabViewItemAtIndex:5];
 	NSView *pane_view = [color_pane view];
 	NSArray *subviews = [pane_view subviews];
 	
@@ -498,7 +492,7 @@ static NSArray *root_items;
         PrefLeaf *l = (PrefLeaf *) item;
         
         [content_box setTitle:l->label];
-        [tab_view selectTabViewItemAtIndex:l->pane];
+        [tabView selectTabViewItemAtIndex:l->pane];
     }
 }
 
