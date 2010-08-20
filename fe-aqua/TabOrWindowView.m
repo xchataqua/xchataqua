@@ -32,7 +32,7 @@
 
 @class TabOrWindowViewTabDelegate;
 
-static NSWindow  *tab_window;		// Window for the tab view
+static NSWindow  *tabWindow;		// Window for the tab view
 //static NSImage *link_delink_image;
 static TabOrWindowViewTabDelegate *tabDelegate;
 static NSTabViewType tabViewType = NSTopTabsBezelBorder;
@@ -40,9 +40,9 @@ static float trans = 1;
 
 //////////////////////////////////////////////////////////////////////
 
-static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *where)
+static NSWindow *makeWindowForView (Class nswindow, NSView *view, NSPoint *where)
 {
-	NSRect viewFrame = [view frame];
+	NSRect viewFrame = view.frame;
 
 	NSUInteger windowAttributes = NSTitledWindowMask | 
 								  NSClosableWindowMask | 
@@ -52,44 +52,44 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 	if (prefs.guimetal)
 		windowAttributes |= NSTexturedBackgroundWindowMask;
 	
-    NSWindow *w = [[nswindow alloc] initWithContentRect:viewFrame
-											  styleMask:windowAttributes
-												backing:NSBackingStoreBuffered
-												  defer:NO];
+    NSWindow *window = [[nswindow alloc] initWithContentRect:viewFrame
+												   styleMask:windowAttributes
+													 backing:NSBackingStoreBuffered
+													   defer:NO];
  	
 	if (where)
 	{
-		[w setFrameOrigin:*where];
+		[window setFrameOrigin:*where];
 	}
 	else
 	{
 		// Center the window over the preferred window size
-		NSPoint ws;
-		ws.x = prefs.mainwindow_left + (prefs.mainwindow_width - viewFrame.size.width) / 2;
-		ws.y = prefs.mainwindow_top + (prefs.mainwindow_height - viewFrame.size.height)/ 2;
-		[w setFrameOrigin:ws];
+		NSPoint windowOrigin;
+		windowOrigin.x = prefs.mainwindow_left + (prefs.mainwindow_width - viewFrame.size.width) / 2;
+		windowOrigin.y = prefs.mainwindow_top + (prefs.mainwindow_height - viewFrame.size.height)/ 2;
+		[window setFrameOrigin:windowOrigin];
 	}
 	
-    [w setAlphaValue:trans];
-    [w setReleasedWhenClosed:NO];
-	[w setShowsResizeIndicator:NO];
+    [window setAlphaValue:trans];
+    [window setReleasedWhenClosed:NO];
+	[window setShowsResizeIndicator:NO];
 
-    static BOOL first_time = YES;
-    if (first_time)
+    static BOOL firstTime = YES;
+    if (firstTime)
     {
-        NSRect to = [w frame];
+        NSRect to = window.frame;
         NSRect from = to;
         from.origin.y += from.size.height - 1;
         from.size.height = 1;
-        [w setFrame:from display:NO];
-        [w makeKeyAndOrderFront:w];
-        [w setFrame:to display:YES animate:YES];
-        first_time = NO;
+        [window setFrame:from display:NO];
+        [window makeKeyAndOrderFront:window];
+        [window setFrame:to display:YES animate:YES];
+        firstTime = NO;
     }
 
-    [w setContentView:view];
+    [window setContentView:view];
 
-    return w;
+    return window;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -105,11 +105,8 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 
 - (void) windowDidResize:(NSNotification *) notification
 {
-    NSArray *items = [(SGTabView *)[tab_window contentView] tabViewItems];
-    for (NSUInteger i = 0; i < [items count]; i ++)
-	{
-		TabOrWindowView *the_view = (TabOrWindowView *) [[items objectAtIndex:i] view];
-		id delegate = [the_view delegate];
+	for ( SGTabViewItem *item in [(SGTabView *)tabWindow.contentView tabViewItems] ) {
+		id delegate = ((TabOrWindowView *)item.view).delegate;
 		if ([delegate respondsToSelector:@selector (windowDidResize:)])
 			[delegate windowDidResize:notification];
 	}
@@ -117,11 +114,8 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 
 - (void) windowDidMove:(NSNotification *) notification
 {
-	NSArray *items = [(SGTabView *)[tab_window contentView] tabViewItems];
-	for (NSUInteger i = 0; i < [items count]; i ++)
-	{
-		TabOrWindowView *the_view = (TabOrWindowView *) [[items objectAtIndex:i] view];
-		id delegate = [the_view delegate];
+	for ( SGTabViewItem *item in [(SGTabView *)tabWindow.contentView tabViewItems] ) {
+		id delegate = ((TabOrWindowView *)item.view).delegate;
 		if ([delegate respondsToSelector:@selector (windowDidMove:)])
 			[delegate windowDidMove:notification];
 	}
@@ -129,13 +123,13 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 
 - (void) appleW
 {
-    SGTabViewItem *item = [(SGTabView *)[tab_window contentView] selectedTabViewItem];
+    SGTabViewItem *item = [(SGTabView *)[tabWindow contentView] selectedTabViewItem];
     [self tabWantsToClose:item];
 }
 
 - (void) windowDidBecomeKey:(NSNotification *) notification
 {
-    TabOrWindowView *the_view = (TabOrWindowView *)[[(SGTabView *)[tab_window contentView] selectedTabViewItem] view];
+    TabOrWindowView *the_view = (TabOrWindowView *)[[(SGTabView *)[tabWindow contentView] selectedTabViewItem] view];
     [[the_view delegate] windowDidBecomeKey:notification];
 }
 
@@ -154,9 +148,9 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 
 - (void) windowWillClose:(NSNotification *) notification
 {
-    while ([[tab_window contentView] numberOfTabViewItems])
+    while ([[tabWindow contentView] numberOfTabViewItems])
     {
-        SGTabViewItem *item = [(SGTabView *)[tab_window contentView] tabViewItemAtIndex:0];
+        SGTabViewItem *item = [(SGTabView *)[tabWindow contentView] tabViewItemAtIndex:0];
         [self tabWantsToClose:item];
     }
 }
@@ -165,7 +159,7 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 {
     NSString *title = [(TabOrWindowView *)[tabViewItem view] title];
     if (title)
-        [tab_window setTitle:title];
+        [tabWindow setTitle:title];
 
     current_tab = NULL;		// Set this to NULL.. the next line of code will
 							// do the right thing IF it's a chat window!!
@@ -204,8 +198,10 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 //////////////////////////////////////////////////////////////////////
 
 @implementation TabOrWindowView
+@synthesize delegate;
+@synthesize title, tabTitle;
 
-- (void) make_view_window:(NSPoint *) where
+- (void) makeViewWindow:(NSPoint *) where
 {
     if (window)
     {
@@ -213,7 +209,7 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
         [window autorelease];
     }
 
-	window = make_window_for_view ([NSWindow class], self, where);
+	window = makeWindowForView ([NSWindow class], self, where);
 	[window setDelegate:self];
 	if (initialFirstResponder)
 		[window setInitialFirstResponder:initialFirstResponder];
@@ -221,20 +217,20 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 		[window setTitle:title];
 }
 
-+ (void) make_tab_window:(NSView *) tab_view where:(NSPoint *) where
++ (void) makeTabWindow:(NSView *) tabView where:(NSPoint *) where
 {
-    if (tab_window)
+    if (tabWindow)
     {
-        [tab_window orderOut:self];
-        [tab_window autorelease];
+        [tabWindow orderOut:self];
+        [tabWindow autorelease];
     }
 
-	tab_window = make_window_for_view ([MyTabWindow class], tab_view, where);
-	[tab_window setDelegate:tabDelegate];
-	[tab_window makeKeyAndOrderFront:self];
+	tabWindow = makeWindowForView ([MyTabWindow class], tabView, where);
+	[tabWindow setDelegate:tabDelegate];
+	[tabWindow makeKeyAndOrderFront:self];
 }
 
-+ (void) prefsChanged
++ (void) preferencesChanged
 {	
 	switch ( prefs._tabs_position ) {
 		case 0: tabViewType = NSBottomTabsBezelBorder; break;
@@ -245,53 +241,45 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 		default:tabViewType = NSTopTabsBezelBorder; break;
 	}
 
-    if (tab_window)
+    if (tabWindow)
 	{
-        [[tab_window contentView] setTabViewType:tabViewType];
-        [[tab_window contentView] setHideCloseButtons:prefs.hide_tab_close_buttons];
-		[[tab_window contentView] setOutlineWidth:prefs.outline_width];
+        [[tabWindow contentView] setTabViewType:tabViewType];
+        [[tabWindow contentView] setHideCloseButtons:prefs.hide_tab_close_buttons];
+		[[tabWindow contentView] setOutlineWidth:prefs.outline_width];
 	}
 	
-	NSArray *windows = [NSApp windows];
-	
-	for (NSUInteger i = 0; i < [windows count]; i ++)
+	for ( NSWindow *win in [NSApp windows] )
 	{
-		NSWindow *w = [windows objectAtIndex:i];
-		NSView *v = [w contentView];
-		NSPoint where = [w frame].origin;
-		bool was_metal = [w styleMask] & NSTexturedBackgroundWindowMask;
+		NSPoint where = win.frame.origin;
+		bool windowWasMetal = win.styleMask & NSTexturedBackgroundWindowMask;
 		
-		if ([[v class] isSubclassOfClass:[TabOrWindowView class]])
+		if ([[win.contentView class] isSubclassOfClass:[TabOrWindowView class]])
 		{
-			TabOrWindowView *towv = (TabOrWindowView *) v;
-			if (towv->window)
+			TabOrWindowView *view = (TabOrWindowView *)win.contentView;
+			if (view->window)
 			{
-				if (prefs.guimetal == was_metal)
+				if (prefs.guimetal == windowWasMetal)
 					return;
-				[towv make_view_window:&where];
-				[towv->window makeKeyAndOrderFront:self];
+				[view makeViewWindow:&where];
+				[view->window makeKeyAndOrderFront:self];
 			}
 		}
-		else if (w == tab_window)
+		else if (win == tabWindow)
 		{
-			if (prefs.guimetal == was_metal)
+			if (prefs.guimetal == windowWasMetal)
 				return;
-			[TabOrWindowView make_tab_window:v where:&where];
+			[TabOrWindowView makeTabWindow:win.contentView where:&where];
 		}
 	}
 }
 
-+ (void) setTransparency:(NSInteger) new_trans
++ (void) setTransparency:(NSInteger)transparency
 {
-    trans = (float) new_trans / 255;
-        
-    NSArray *windows = [NSApp windows];
+    trans = (float) transparency / 255;
 
-    for (NSUInteger i = 0; i < [windows count]; i ++)
+    for ( NSWindow *win in [NSApp windows] )
     {
-        NSWindow *win = (NSWindow *) [windows objectAtIndex:i];
-        
-        if (win == tab_window || [[win contentView] isKindOfClass:[TabOrWindowView class]])
+        if (win == tabWindow || [[win contentView] isKindOfClass:[TabOrWindowView class]])
             [win setAlphaValue:trans];
     }
 }
@@ -333,17 +321,17 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
     [super dealloc];
 }
 
-+ (BOOL) selectTab:(NSUInteger) n
++ (BOOL) selectTabByIndex:(NSUInteger)index
 {
-    if (!tab_window)
+    if (!tabWindow)
         return FALSE;
    
-    NSTabViewItem *item = [[tab_window contentView] tabViewItemAtIndex:n];
+    NSTabViewItem *item = [[tabWindow contentView] tabViewItemAtIndex:index];
     
     if (!item)
         return FALSE;
     
-    [[tab_window contentView] selectTabViewItem:item];
+    [[tabWindow contentView] selectTabViewItem:item];
      
     return TRUE;
 }
@@ -352,15 +340,15 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 {
     NSWindow *win = [NSApp keyWindow];
 
-    if (win == tab_window)
+    if (win == tabWindow)
     {
-        NSTabView *tv = [tab_window contentView];
-        NSInteger tabItemIndex = [tv indexOfTabViewItem:[tv selectedTabViewItem]];
+        NSTabView *tabView = [tabWindow contentView];
+        NSInteger tabItemIndex = [tabView indexOfTabViewItem:[tabView selectedTabViewItem]];
         if (direction > 0)
         {
-            if (tabItemIndex < [tv numberOfTabViewItems] - 1)
+            if (tabItemIndex < [tabView numberOfTabViewItems] - 1)
             {
-                [tv selectNextTabViewItem:self];
+                [tabView selectNextTabViewItem:self];
                 return;
             }
         }
@@ -368,7 +356,7 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
         {
             if (tabItemIndex > 0)
             {
-                [tv selectPreviousTabViewItem:self];
+                [tabView selectPreviousTabViewItem:self];
                 return;
             }
         }
@@ -376,8 +364,8 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
     
     NSArray *windows = [NSApp windows];
     NSUInteger windowIndex = [windows indexOfObject:win];
+	
 	NSUInteger try_count = [windows count];
-    
     do
     {
         windowIndex = (windowIndex + direction + [windows count]) % [windows count];
@@ -390,13 +378,10 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
     
     [win makeKeyAndOrderFront:self];
     
-    if (win == tab_window)
+    if (win == tabWindow)
     {
-        NSTabView *tv = [tab_window contentView];
-        if (direction > 0)
-            [tv selectTabViewItemAtIndex:0];
-        else
-            [tv selectTabViewItemAtIndex:[tv numberOfTabViewItems] - 1];
+        NSTabView *tabView = [tabWindow contentView];
+		[tabView selectTabViewItemAtIndex:(direction>0) ? 0 : [tabView numberOfTabViewItems]-1];
     }
 }
 
@@ -404,9 +389,9 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 {
     NSWindow *win = [NSApp keyWindow];
 
-	if (win == tab_window)
+	if (win == tabWindow)
 	{
-		SGTabViewItem *item = [(SGTabView *)[tab_window contentView] selectedTabViewItem];
+		SGTabViewItem *item = [(SGTabView *)[tabWindow contentView] selectedTabViewItem];
 		TabOrWindowView *view = (TabOrWindowView *)[item view];
 		[view link_delink:self];
 	}
@@ -422,17 +407,17 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 
 + (void) updateGroupNameForServer:(struct server *) server
 {
-	if (tab_window)
+	if (tabWindow)
 	{
-        SGTabView *tv = [tab_window contentView];
-		NSString *group_name = [NSString stringWithUTF8String:server->servername];
-		[tv setName:group_name forGroup:server->gui->tab_group];
+        SGTabView *tabView = [tabWindow contentView];
+		NSString *groupName = [NSString stringWithUTF8String:server->servername];
+		[tabView setName:groupName forGroup:server->gui->tab_group];
 	}
 }
 
-- (void) setServer:(struct server *) the_server
+- (void) setServer:(struct server *)aServer
 {
-    self->server = the_server;
+    self->server = aServer;
 }
 
 - (void) link_delink:(id) sender
@@ -445,35 +430,28 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 
 - (void) setTitle:(NSString *) aTitle
 {
-    if (self->title)
-        [self->title release];
+	[self->title release];
     self->title = [aTitle retain];
 
     if (window)
         [window setTitle:title];
-    if (tab_window && [(SGTabView *)[tab_window contentView] selectedTabViewItem] == tabViewItem)
-        [tab_window setTitle:title];
+    if (tabWindow && [(SGTabView *)[tabWindow contentView] selectedTabViewItem] == tabViewItem)
+        [tabWindow setTitle:title];
 }
 
 - (void) setTabTitle:(NSString *) aTitle
 {
-    if (self->tabTitle)
-        [self->tabTitle release];
+	[self->tabTitle release];
     self->tabTitle = [aTitle retain];
     
     if (tabViewItem)
         [tabViewItem setLabel:tabTitle];
 }
 
-- (void) setDelegate:(id) new_delegate
-{
-    self->delegate = new_delegate;
-}
-
-- (void) setTabTitleColor:(NSColor *) c
+- (void) setTabTitleColor:(NSColor *) color
 {
     if (tabViewItem)
-    	[tabViewItem setTitleColor:c];
+    	[tabViewItem setTitleColor:color];
 }
 
 - (BOOL)isFrontTab
@@ -482,24 +460,14 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 	else return [tabViewItem isFrontTab];
 }
 
-- (id) delegate
+- (void) setInitialFirstResponder:(NSView *) responder
 {
-    return delegate;
-}
-
-- (NSString *) title
-{
-    return title;
-}
-
-- (void) setInitialFirstResponder:(NSView *) r
-{
-    self->initialFirstResponder = r;
+    self->initialFirstResponder = responder;
     
     if (tabViewItem)
-        [tabViewItem setInitialFirstResponder:r];
+        [tabViewItem setInitialFirstResponder:responder];
     if (window)
-        [window setInitialFirstResponder:r];
+        [window setInitialFirstResponder:responder];
 }
 
 - (void) becomeTab:(BOOL) tab andShow:(BOOL) show
@@ -514,21 +482,21 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
 {
     if (tabViewItem)
     {
-        [(SGTabView *)[tab_window contentView] removeTabViewItem:tabViewItem];
+        [(SGTabView *)[tabWindow contentView] removeTabViewItem:tabViewItem];
         
         tabViewItem = nil;
         
-        if ([[[tab_window contentView] tabViewItems] count] == 0)
+        if ([[[tabWindow contentView] tabViewItems] count] == 0)
         {
-            [tab_window orderOut:self];
-            [tab_window autorelease];
-            tab_window = nil;
+            [tabWindow orderOut:self];
+            [tabWindow autorelease];
+            tabWindow = nil;
         }
     }
     
     if (!window)
     {
-		[self make_view_window:nil];
+		[self makeViewWindow:nil];
     }
     
     if (show)
@@ -541,12 +509,12 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
     {
         [window makeKeyAndOrderFront:sender];
     }
-    else if (tab_window)
+    else if (tabWindow)
     {
-        [(SGTabView *)[tab_window contentView] selectTabViewItem:tabViewItem];
+        [(SGTabView *)[tabWindow contentView] selectTabViewItem:tabViewItem];
         
         // Don't order the tab window front.. just the tab itself.
-        //[tab_window makeKeyAndOrderFront:sender];
+        //[tabWindow makeKeyAndOrderFront:sender];
     }
 }
 
@@ -559,7 +527,7 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
         window = nil;
     }
     
-    if (!tab_window)
+    if (!tabWindow)
     {
         [self setFrameSize:NSMakeSize (prefs.mainwindow_width, prefs.mainwindow_height)];
 
@@ -567,13 +535,13 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
             tabDelegate = [[TabOrWindowViewTabDelegate alloc] init];
             
         NSRect frame = [self bounds];
-        SGTabView *tab_view = [[[SGTabView alloc] initWithFrame:frame] autorelease];
-        [tab_view setDelegate:tabDelegate];
-        [tab_view setTabViewType:tabViewType];
-        [tab_view setHideCloseButtons:prefs.hide_tab_close_buttons];
-		[tab_view setOutlineWidth:prefs.outline_width];
+        SGTabView *tabView = [[[SGTabView alloc] initWithFrame:frame] autorelease];
+        [tabView setDelegate:tabDelegate];
+        [tabView setTabViewType:tabViewType];
+        [tabView setHideCloseButtons:prefs.hide_tab_close_buttons];
+		[tabView setOutlineWidth:prefs.outline_width];
 
-		[TabOrWindowView make_tab_window:tab_view where:nil];
+		[TabOrWindowView makeTabWindow:tabView where:nil];
     }
     
     if (!tabViewItem)
@@ -585,27 +553,27 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
         if (tabTitle)
             [tabViewItem setLabel:tabTitle];
 		
-		SGTabView *tv = (SGTabView *)[tab_window contentView];
+		SGTabView *tabView = (SGTabView *)[tabWindow contentView];
 		
-		int this_group = self->server ? self->server->gui->tab_group : 0;
+		int tabGroup = self->server ? self->server->gui->tab_group : 0;
 
-        [tv addTabViewItem:tabViewItem toGroup:this_group];
+        [tabView addTabViewItem:tabViewItem toGroup:tabGroup];
 
-		if ([tv groupName:this_group] == nil)
+		if ([tabView groupName:tabGroup] == nil)
 		{
-			NSString *group_name;
+			NSString *groupName;
 			
 			if (self->server)
 			{
 				if (self->server->servername[0])		// Can this ever happen?
-					group_name = [NSString stringWithUTF8String:self->server->servername];
+					groupName = [NSString stringWithUTF8String:self->server->servername];
 				else
-					group_name = @"<Not Connected>";
+					groupName = NSLocalizedStringFromTable(@"<Not Connected>", @"xchataqua", @"tab group label when not connected yet");
 			}
 			else
-				group_name = @"Utility Views";
+				groupName = NSLocalizedStringFromTable(@"Utility Views", @"xchataqua", @"tab group label for utility windows");
 				
-			[tv setName:group_name forGroup:this_group];
+			[tabView setName:groupName forGroup:tabGroup];
 		}
     }
     
@@ -622,13 +590,13 @@ static NSWindow *make_window_for_view (Class nswindow, NSView *view, NSPoint *wh
     else if (tabViewItem)
     {
 		[self retain];
-		[(SGTabView *)[tab_window contentView] removeTabViewItem:tabViewItem];
+		[(SGTabView *)[tabWindow contentView] removeTabViewItem:tabViewItem];
 		tabViewItem = nil;
-		if ([[[tab_window contentView] tabViewItems] count] == 0)
+		if ([[[tabWindow contentView] tabViewItems] count] == 0)
 		{
-			[tab_window orderOut:self];		// TODO - Should this be [tab_window close]?
-			[tab_window autorelease];		// Must be autorelase because of 
-			tab_window = nil;				// windowWillClose below...
+			[tabWindow orderOut:self];		// TODO - Should this be [tabWindow close]?
+			[tabWindow autorelease];		// Must be autorelase because of 
+			tabWindow = nil;				// windowWillClose below...
 		}
 		[[NSNotificationCenter defaultCenter] postNotificationName:NSWindowWillCloseNotification object:self];
 		if ([delegate respondsToSelector:@selector (windowWillClose:)])

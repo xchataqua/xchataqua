@@ -663,7 +663,7 @@ static NSImage *empty_image;
 	[headerBoxView sizeToFit];
 }
 
-- (void) prefsChanged
+- (void) preferencesChanged
 {
     [chatTextView setFont:[[AquaChat sharedAquaChat] font] boldFont:[[AquaChat sharedAquaChat] boldFont]];
               
@@ -758,7 +758,7 @@ static NSImage *empty_image;
 
     [headerBoxView layoutNow];
     
-    [self prefsChanged];
+    [self preferencesChanged];
 
     [chatView setServer:sess->server];
     [chatView setInitialFirstResponder:inputTextField];

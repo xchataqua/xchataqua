@@ -246,10 +246,10 @@ struct event_info text_event_info[NUM_XP];
 
     [self setup_menu_prefs];
     
-    // See comment in prefsChanged
+    // See comment in preferencesChanged
     [TabOrWindowView setTransparency:prefs.transparent ? prefs.tint_red : 255];
     
-    [self prefsChanged];
+    [self preferencesChanged];
     
     [NSApp requestEvents:NSKeyDown forWindow:nil forView:nil selector:@selector (myKeyDown:) object:self];
 }
@@ -274,7 +274,7 @@ struct event_info text_event_info[NUM_XP];
         return NO;
         
     NSUInteger num = text[0] - '1';
-    return [TabOrWindowView selectTab:num];
+    return [TabOrWindowView selectTabByIndex:num];
 }
 
 - (void) do_prefs:(id) sender
@@ -381,11 +381,11 @@ struct event_info text_event_info[NUM_XP];
     sprintf (prefs.font_normal, "%s %.1f", [[font fontName] UTF8String], [font pointSize]);
 }
 
-- (void) prefsChanged
+- (void) preferencesChanged
 {
     [self set_font:prefs.font_normal];
 
-    [TabOrWindowView prefsChanged];
+    [TabOrWindowView preferencesChanged];
 
     // This is a real-time pref.. it's already set when we get here.. we just need to make
     // sure it get's set at startup too.
@@ -401,7 +401,7 @@ struct event_info text_event_info[NUM_XP];
     for (GSList *list = sess_list; list; list = list->next)
     {
         struct session *sess = (struct session *) list->data;
-		[sess->gui->cw prefsChanged];
+		[sess->gui->cw preferencesChanged];
     }
     
 	#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_5

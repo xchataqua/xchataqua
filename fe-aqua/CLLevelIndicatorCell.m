@@ -23,7 +23,6 @@
 */
 
 #import "CLLevelIndicatorCell.h"
-#include <Carbon/Carbon.h>
 
 static inline CGRect CGRectFromNSRect(NSRect nsRect)
 {
@@ -44,16 +43,6 @@ static inline CGRect CGRectFromNSRect(NSRect nsRect)
 	drawInfo.filler1 = 0;
 	drawInfo.trackInfo.progress.phase = 0;
 	return self;
-}
-
-- (void) setKind:(UInt16)kind
-{
-	drawInfo.kind = kind;
-}
-
-- (UInt16) kind
-{
-	return drawInfo.kind;
 }
 
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView
@@ -79,6 +68,16 @@ static inline CGRect CGRectFromNSRect(NSRect nsRect)
 		OSStatus err = HIThemeDrawTrack(&drawInfo, NULL, (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort], [controlView isFlipped] ? kHIThemeOrientationNormal : kHIThemeOrientationInverted);
 		if (err != noErr) [NSException raise:NSGenericException format:@"CLLevelIndicatorCell: HIThemeDrawTrack returned %d", err];
 	}
+}
+
+- (void) setKind:(UInt16)kind
+{
+	drawInfo.kind = kind;
+}
+
+- (UInt16) kind
+{
+	return drawInfo.kind;
 }
 
 @end

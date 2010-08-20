@@ -19,30 +19,34 @@
 
 #import "SG.h"
 
+@protocol TabOrWindowViewDelegate;
 @class SGTabViewItem;
 @interface TabOrWindowView : NSView
 #if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
 <NSWindowDelegate>
 #endif
 {
+	id               delegate;
     NSWindow		*window;
     SGTabViewItem	*tabViewItem;
-    id				delegate;
     NSString		*title;
     NSString		*tabTitle;
     NSView			*initialFirstResponder;
     struct server	*server;
 }
 
+@property (assign) id delegate;
+@property (retain) NSString *title, *tabTitle;
+
 + (void) cycleWindow:(int) direction;
-+ (BOOL) selectTab:(NSUInteger) n;
++ (BOOL) selectTabByIndex:(NSUInteger)index;
 + (void) link_delink;		// Frontmost view
 + (void) updateGroupNameForServer:(struct server *) server;
 
 //+ (void) setTabPosition:(NSTabViewType) type;
 //+ (void) setHideCloseButtons:(bool) hidem;
-+ (void) prefsChanged;
-+ (void) setTransparency:(NSInteger) trans;
++ (void) preferencesChanged;
++ (void) setTransparency:(NSInteger)transparency;
 //+ (NSArray *) views;
 
 - (void) link_delink:(id) sender;
@@ -56,15 +60,10 @@
 - (void) makeKeyAndOrderFront:(id) sender;
 
 - (void) close;
-- (void) setTitle:(NSString *) title;
-- (void) setTabTitle:(NSString *) title;
-- (void) setTabTitleColor:(NSColor *) c;
+- (void) setTabTitleColor:(NSColor *) color;
 - (BOOL) isFrontTab;
 
-- (void) setDelegate:(id) delegate;
-- (id)   delegate;
-- (NSString *) title;
-- (void) setInitialFirstResponder:(NSView *) r;
+- (void) setInitialFirstResponder:(NSView *) responder;
 
 @end
 

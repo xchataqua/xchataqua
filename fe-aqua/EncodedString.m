@@ -20,24 +20,22 @@
 @implementation EncodedString
 
 + (EncodedString *) stringWithCString:(const char *) text
-                                len:(int) len
-                           encoding:(NSStringEncoding) encoding
+								  len:(int) len
+							 encoding:(NSStringEncoding) encoding
 {
     //if (encoding == 0)
-        encoding = NSUTF8StringEncoding;
+	encoding = NSUTF8StringEncoding;
     NSData *data = [NSData dataWithBytesNoCopy:(char*)text length:len freeWhenDone:NO];
-    EncodedString *s = 
-        [[[NSString alloc] initWithData:data encoding:encoding] autorelease];
+    EncodedString *s = [[[NSString alloc] initWithData:data encoding:encoding] autorelease];
     if (!s)
-    	s = [[[NSString alloc] 
-            initWithData:data encoding:[NSString defaultCStringEncoding]] autorelease];
+    	s = [[[NSString alloc] initWithData:data encoding:[NSString defaultCStringEncoding]] autorelease];
     return s;
 }
 
 + (EncodedString *) stringWithCString:(const char *) text
-                           encoding:(NSStringEncoding) encoding
+							 encoding:(NSStringEncoding) encoding
 {
-    return [self stringWithCString:text len:strlen (text) encoding:encoding];
+    return [self stringWithCString:text len:strlen(text) encoding:encoding];
 }
 
 @end

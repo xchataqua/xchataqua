@@ -440,7 +440,7 @@ static ServerList *instance;
     [super dealloc];
 }
 
-- (void) savegui
+- (void) saveGUI
 {
     [[nick1TextField window] makeFirstResponder:nick1TextField];
     
@@ -459,7 +459,7 @@ static ServerList *instance;
     if (row < 0)
         return;
 
-    [self savegui];
+    [self saveGUI];
 
     OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
 
@@ -550,7 +550,7 @@ static ServerList *instance;
 	[showDetailButton setIntValue:0];
 	[self showDetail:showDetailButton];
 	
-    [self savegui];
+    [self saveGUI];
 }
 
 - (void) toggleShowWhenStartup:(id) sender
@@ -587,7 +587,7 @@ static ServerList *instance;
 	if (invert)
 		flag = ~flag;
 
-	BOOL	val = (net->net->flags & flag) != 0;
+	BOOL val = (net->net->flags & flag) != 0;
 	
 	if (invert)
 		val = !val;
@@ -606,7 +606,7 @@ static ServerList *instance;
 	[field setStringValue:val];
 }
 
-- (void) populate_editor
+- (void) populateEditor
 {
     NSInteger row = [self->networkTableView selectedRow];
     if (row < 0)
@@ -854,7 +854,7 @@ static ServerList *instance;
 	[self tableViewSelectionDidChange:[NSNotification notificationWithName:@"dummy" object:networkTableView]];
 }
 
-- (void) populate_nets
+- (void) populateNetworks
 {
 	[myNetworks release];
 	[allNetworks release];
@@ -881,10 +881,10 @@ static ServerList *instance;
 
     [showWhenStartupToggleButton setIntValue:!prefs.slist_skip];
 	
-	[self populate_nets];
+	[self populateNetworks];
 }    
 
-- (void) make_charset_menu
+- (void) makeCharsetMenu
 {
     for (NSString **c = charsets; *c; c ++)
     {
@@ -966,7 +966,7 @@ static ServerList *instance;
     
 	NSInteger slist_select = prefs.slist_select;
     
-	[self make_charset_menu];
+	[self makeCharsetMenu];
 	[self populate];
 
 	[myNetworks sortUsingDescriptors:[networkTableView sortDescriptors]];
@@ -997,7 +997,7 @@ static ServerList *instance;
 		id selected = [myNetworks objectAtIndex:row];
 		row = [allNetworks indexOfObject:selected];
 		prefs.slist_select = row;
-		[self populate_editor];
+		[self populateEditor];
 	}
 	else if ([notification object] == networkServerTableView)
 	{

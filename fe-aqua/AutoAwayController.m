@@ -47,7 +47,7 @@
 	}
 }
 
-- (void) check_idle_time:(NSTimer *) theTimer
+- (void) checkIdleTime:(NSTimer *) theTimer
 {
 	// Uses the Quartz Event Services to find time since the last user action
 	// (keyboard, mouse, etc. input). This is a bit hacky in that it's not
@@ -79,44 +79,43 @@
 			interval = 10;
 		}
 
-      // Trigger another poll of the idle time on a timer.
-      //
-      // Every 1s when idle/away, every 10s otherwise. It's not important to
-      // detect an idle user immediately, but when the user returns we should
-      // detect it as soon as possible.
+		// Trigger another poll of the idle time on a timer.
+		//
+		// Every 1s when idle/away, every 10s otherwise. It's not important to
+		// detect an idle user immediately, but when the user returns we should
+		// detect it as soon as possible.
 		[NSTimer scheduledTimerWithTimeInterval:interval
-                                     target:self
-                                   selector:@selector(check_idle_time:)
-                                   userInfo:nil
-                                    repeats:NO];
+										 target:self
+									   selector:@selector(checkIdleTime:)
+									   userInfo:nil
+										repeats:NO];
 	}
 }
 
-- (id)init
-{
-  if ((self = [super init])) {
-      // Init isAway to false.
-    self.isAway = NO;
+- (id) init {
+	if ((self = [super init])) {
+		// Init isAway to false.
+		self.isAway = NO;
 
-      // Start polling for idle time.
-    [self check_idle_time:nil];
+		// Start polling for idle time.
+		[self checkIdleTime:nil];
 
-      // Register for notification of ScreenSaver start and stop events.
-      //
-      // Note that these events are not documented so Apple might remove them or
-      // even change the semantics out from under us with no warning. Since the
-      // coupling is loose and all that breaks is /away when screensaver starts,
-      // this shouldn't be a problem.
-    [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                                        selector:@selector(screenSaverDidStart)
-                                                            name:@"com.apple.screensaver.didstart"
-                                                          object:nil];
-    [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                                        selector:@selector(screenSaverDidStop)
-                                                            name:@"com.apple.screensaver.didstop"
-                                                          object:nil];
-  }
-  return self;
+		// Register for notification of ScreenSaver start and stop events.
+		//
+		// Note that these events are not documented so Apple might remove them or
+		// even change the semantics out from under us with no warning. Since the
+		// coupling is loose and all that breaks is /away when screensaver starts,
+		// this shouldn't be a problem.
+		[[NSDistributedNotificationCenter defaultCenter] addObserver:self
+															selector:@selector(screenSaverDidStart)
+																name:@"com.apple.screensaver.didstart"
+															  object:nil];
+		[[NSDistributedNotificationCenter defaultCenter] addObserver:self
+															selector:@selector(screenSaverDidStop)
+																name:@"com.apple.screensaver.didstop"
+															  object:nil];
+	}
+	return self;
 }
 
 /*
@@ -124,13 +123,13 @@
  *
  * When the screen saver starts, we set ourself to away.
  */
-- (void)screenSaverDidStart
+- (void) screenSaverDidStart
 {
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-  if (!self.isAway && prefs.auto_away) { // Don't set /away if we're allready away.
-    [self setAway:YES];
-  }
-  [pool release];
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	if (!self.isAway && prefs.auto_away) { // Don't set /away if we're allready away.
+		[self setAway:YES];
+	}
+	[pool release];
 }
 
 /*
@@ -140,11 +139,11 @@
  */
 - (void)screenSaverDidStop
 {
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-  if (self.isAway && prefs.auto_away) { // Don't send /back if we're not /away.
-    [self setAway:NO];
-  }
-  [pool release];
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	if (self.isAway && prefs.auto_away) { // Don't send /back if we're not /away.
+		[self setAway:NO];
+	}
+	[pool release];
 }
 
 @end

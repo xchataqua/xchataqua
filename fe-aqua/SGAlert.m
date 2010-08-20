@@ -54,7 +54,7 @@
 	[panel setAlertStyle:style];
 	[panel addButtonWithTitle:NSLocalizedStringFromTable(@"OK", @"libsg", @"button")];
 	[panel setMessageText:alertText];
-
+	
 	if (wait)
 	{
 		[panel runModal];
@@ -91,7 +91,7 @@
 	[panel addButtonWithTitle:NSLocalizedStringFromTable(@"Yes",@"libsg", @"button")];
 	[panel setMessageText:alertText];
 	[panel setAlertStyle:NSInformationalAlertStyle];
-
+	
 	NSInteger ret = [panel runModal];
 	
 	return ret == NSAlertSecondButtonReturn;
@@ -107,7 +107,7 @@
 	[panel addButtonWithTitle:NSLocalizedStringFromTable(@"Yes",@"libsg", @"button")];
 	[panel setMessageText:alertText];
 	[panel setAlertStyle:NSInformationalAlertStyle];
-
+	
 	SGAlertConfirmDelegate *confirmDelegate = [[SGAlertConfirmDelegate alloc] init];
 	confirmDelegate->obj = obj;
 	confirmDelegate->yesSel = yesSel;
