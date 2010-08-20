@@ -3,6 +3,7 @@ BASELOCALE='en'
 RECDIR='../../Localization'
 DEFXIBDIR="$RECDIR/en.lproj"
 
+checkdone=''
 for locale in `ls -d lproj/*`; do
 	locale=`basename $locale`
 	if [ $locale != `basename $locale .lproj` ]; then
@@ -12,7 +13,7 @@ for locale in `ls -d lproj/*`; do
 	   continue;	# pass base locale
 	fi
 
-	echo -n "gen for $locale"
+	echo -n "$locale"
 	for strings in `ls lproj/$locale/*.xib.strings`; do
 		# strings: generated one
 		xib=`basename $strings .strings`
@@ -30,6 +31,7 @@ for locale in `ls -d lproj/*`; do
 			fi
 		fi
 		cmd="ibtool --strings-file $strings --write lproj/$locale.lproj/$xib $DEFXIBDIR/$xib"
+		checkdone=$checkdone'1'
 #		diff lproj/$locale/$xib lproj/$locale.lproj/$xib
 #		if [ $? ]; then
 #			cp lproj/$locale/$xib lproj/$locale.lproj/$xib
@@ -40,7 +42,9 @@ for locale in `ls -d lproj/*`; do
 		$cmd &
 		echo -n .
 	done
-	echo " waiting syncronizing"
+	echo " waiting sync"
 	wait $!
 done
-sleep 2
+if [ $checkdone ]; then
+	sleep 2
+fi
