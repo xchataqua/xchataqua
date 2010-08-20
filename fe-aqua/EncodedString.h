@@ -21,7 +21,7 @@
 
 + (EncodedString *) stringWithCString:(const char *) text
                                   len:(int) len
-                            encoding:(NSStringEncoding) encoding;
+							 encoding:(NSStringEncoding) encoding;
 
 + (EncodedString *) stringWithCString:(const char *) text
                              encoding:(NSStringEncoding) encoding;

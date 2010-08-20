@@ -53,9 +53,9 @@ static int get_mirc_value (const char **x, const char *stop_at)
 }
 
 int append_text (NSMutableAttributedString *msgString,
-            const char *text, int len,
-            int fg, int bg, bool reverse, bool under, bool bold, bool hidden,
-            ColorPalette *palette, NSFont *font,  NSFont *boldFont)
+				 const char *text, int len,
+				 int fg, int bg, bool reverse, bool under, bool bold, bool hidden,
+				 ColorPalette *palette, NSFont *font,  NSFont *boldFont)
 {
     if (len < 0)
         len = strlen (text);

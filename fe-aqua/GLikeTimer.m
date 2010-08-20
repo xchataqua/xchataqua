@@ -30,18 +30,19 @@
 
 - (id)initWithFunction:(GSourceFunc)func userData:(gpointer)data
 {
-	[super init];
-	self->function = func;
-	self->userdata = data;
+	if ((self = [super init])) {
+		self->function = func;
+		self->userData = data;
+	}
 	return self;
 }
 
 + (NSTimer *)scheduledTimerWithMSInterval:(guint)ms callback:(GSourceFunc)function userData:(gpointer)data
 {
-	GLikeTimer *gt = [[GLikeTimer alloc] initWithFunction:function userData:data];
-	[gt autorelease];	// NSTimer retains target and userInfo until it is invalidated
+	GLikeTimer *gTimer = [[GLikeTimer alloc] initWithFunction:function userData:data];
+	[gTimer autorelease];	// NSTimer retains target and userInfo until it is invalidated
 	return [NSTimer scheduledTimerWithTimeInterval:(NSTimeInterval)ms/1000.0
-					target:gt
+					target:gTimer
 					selector:@selector(doCallback:)
 					userInfo:nil
 					repeats:YES];
@@ -71,7 +72,7 @@
 
 - (void)doCallback:(NSTimer*)timer
 {
-	if ((function(userdata) == 0) && [timer isValid])	// note: glib allows callers to remove the timer
+	if ((function(userData) == 0) && [timer isValid])	// note: glib allows callers to remove the timer
 		[timer invalidate];								// explicitly from within the callback, and then
 }														// return 0. Guard against this by using isValid.
 
@@ -100,7 +101,7 @@ NSMutableDictionary *gTimers;
 - (void)doCallback:(NSTimer*)timer
 {
 	int tag = [timer hash];						// note: glib allows callers to remove the timer
-	if (function(userdata) == 0)				// explicitly from within the callback, and then
+	if (function(userData) == 0)				// explicitly from within the callback, and then
 		[GLikeTimer removeTimerWithTag:tag];	// return 0. removeTimerWithTag has no problem
 }												// with double-removes, but we need to save the tag.
 

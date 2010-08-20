@@ -22,7 +22,6 @@
 	This cell can draw a non-animating level indicator in a variety of styles.
 */
 
-#import <Cocoa/Cocoa.h>
 #import <Carbon/Carbon.h>
 
 #define CLLevelIndicatorFlat	0xFFFF
@@ -31,7 +30,6 @@
 	HIThemeTrackDrawInfo drawInfo;
 }
 
-- (void) setKind:(UInt16)kind;
-- (UInt16) kind;
+@property (assign) UInt16 kind;
 
 @end

@@ -32,9 +32,10 @@ enum
     NSColor	**colors;
 }
 
+@property (readonly) NSUInteger numberOfColors;
+
 - (NSColor *) getColor:(int) n;
 - (void) setColor:(NSUInteger) n color:(NSColor *) color;
-- (NSUInteger) numberOfColors;
 - (void) load;
 - (void) save;
 - (id) clone;
