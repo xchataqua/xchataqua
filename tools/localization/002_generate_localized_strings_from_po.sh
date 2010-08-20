@@ -2,6 +2,7 @@
 BASESED='002.sed'
 BASELOCALE='en'
 
+checkdone=''
 for locale in `ls -d po/*.strings`; do
 	locale=`basename $locale .strings`
 	echo -n $locale
@@ -21,9 +22,9 @@ for locale in `ls -d po/*.strings`; do
 	fi
 	for strings in `ls lproj/$BASELOCALE/*.xib.strings`; do
 		newstrings=lproj/$locale/`basename $strings`
-		if [ $newstrings -nt $strings ]; then
-			if [ $newstrings -nt strings/$locale/xib.strings ]; then
-				if [ $newstrings -nt po/$locale.strings ]; then
+		if [ $newstrings -nt $strings ]; then # original locale
+			if [ $newstrings -nt strings/$locale/xib.strings ]; then # generated one from 001
+				if [ $newstrings -nt po/$locale.strings ]; then # generated one from mo_to_po
 					continue
 				fi
 			fi
@@ -33,12 +34,15 @@ for locale in `ls -d po/*.strings`; do
 			echo $cmd
 		fi
 	 	$cmd > $newstrings &
+		checkdone=$checkdone'1'
 		echo -n .
 	done
 	echo ""
 	wait $!
 done
-sleep 1
+if [ $checkdone ]; then
+	sleep 1
+fi
 if [ $DEBUG ]; then
 	echo "to remove temporary files, 'rm $BASESED.*'"
 else
