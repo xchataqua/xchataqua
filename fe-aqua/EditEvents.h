@@ -24,7 +24,7 @@
 	IBOutlet NSTableView	*eventTableView;
 	IBOutlet NSTableView	*helpTableView;
 	IBOutlet XAChatTextView		*testText;
-	NSMutableArray *myItems;
+	NSMutableArray *eventsItems;
 }
 
 - (IBAction) doOk:(id)sender;
