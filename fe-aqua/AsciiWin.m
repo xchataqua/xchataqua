@@ -40,11 +40,11 @@
 	#define AWMargin  20.0f
 	#define AWColCount 16
 
-    NSRect wr = NSMakeRect (0.0f, 0.0f,
-							AWColCount * AWBWidth + AWMargin + AWMargin + AWLWidth,
-							AWColCount * AWBHeight + AWMargin + AWMargin);
+    NSRect viewFrame = NSMakeRect (0.0f, 0.0f,
+								   AWColCount * AWBWidth + AWMargin + AWMargin + AWLWidth,
+								   AWColCount * AWBHeight + AWMargin + AWMargin);
 
-    NSView *asciiView = [[[NSView alloc] initWithFrame:wr] autorelease];
+    NSView *asciiView = [[[NSView alloc] initWithFrame:viewFrame] autorelease];
     
     for (NSInteger y = 0; y < AWColCount; y ++)
     {
@@ -57,9 +57,10 @@
         [lineTextField setTitleWithMnemonic:[NSString stringWithFormat:@"%3.3d", y * AWColCount]];
         [lineTextField sizeToFit];
         
-        NSRect lineRect = [lineTextField frame];
-        [lineTextField setFrameOrigin:NSMakePoint (AWMargin + AWLWidth - lineRect.size.width - 5.0f, 
-												   wr.size.height - AWMargin - y * AWBHeight - AWBHeight + (AWBHeight - lineRect.size.height) / 2)];
+        NSRect lineFrame = [lineTextField frame];
+		NSPoint lineOrigin = NSMakePoint (AWMargin + AWLWidth - lineFrame.size.width - 5.0f, 
+										  viewFrame.size.height - AWMargin - y * AWBHeight - AWBHeight + (AWBHeight - lineFrame.size.height) / 2);
+        [lineTextField setFrameOrigin:lineOrigin];
 
         [asciiView addSubview:lineTextField];
             
@@ -77,23 +78,23 @@
             [characterButton setImagePosition:NSNoImage];
         
             NSRect characterRect = NSMakeRect (AWMargin + AWLWidth + x * AWBWidth, 
-											   wr.size.height - AWMargin - y * AWBHeight - AWBHeight, AWBWidth, AWBHeight);
+											   viewFrame.size.height - AWMargin - y * AWBHeight - AWBHeight, AWBWidth, AWBHeight);
                 
             [characterButton setFrame:characterRect];
     
             [asciiView addSubview:characterButton];
             
-            if (character == 255)
+            if (character == 255) // this check needed?
                 break;
         }
     }
     
     window = [[NSWindow alloc] initWithContentRect:[asciiView frame]
-                                styleMask: NSTitledWindowMask | 
-                                           NSClosableWindowMask | 
-                                           NSMiniaturizableWindowMask
-                                   backing:NSBackingStoreBuffered
-                                     defer:NO];
+										 styleMask: NSTitledWindowMask | 
+													NSClosableWindowMask | 
+													NSMiniaturizableWindowMask
+										   backing:NSBackingStoreBuffered
+											 defer:NO];
 
     [window setReleasedWhenClosed:NO];
     [window setContentView:asciiView];
@@ -110,12 +111,6 @@
     [super dealloc];
 }
 
-- (void) onInput:(id) sender
-{
-    if (current_sess)
-        [current_sess->gui->cw insertText:[sender title]];
-}
-
 - (void) windowDidBecomeKey:(NSNotification *) xx
 {
 }
@@ -128,6 +123,12 @@
 - (void) show
 {
     [window makeKeyAndOrderFront:self];
+}
+
+- (void) onInput:(id) sender
+{
+    if (current_sess)
+        [current_sess->gui->cw insertText:[sender title]];
 }
 
 @end
