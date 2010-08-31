@@ -20,13 +20,13 @@
 
 @interface EditList : NSObject
 #if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSTableViewDataSource,NSTableViewDelegate>
+<NSTableViewDataSource, NSTableViewDelegate>
 #endif
 {
     GSList		**slist;
     NSString 	*filename;
     NSString 	*title;
-    NSMutableArray *myItems;
+    NSMutableArray *listItems;
 	IBOutlet NSTableView *commandTableView;
 }
 
@@ -36,7 +36,6 @@
 - (IBAction) doNew:(id)sender;
 - (IBAction) doSort:(id)sender;
 - (IBAction) doUp:(id)sender;
-
 - (IBAction) doSave:(id)sender;
 
 - (id) initWithList:(GSList **)slist filename:(NSString *)filename title:(NSString *)title;
