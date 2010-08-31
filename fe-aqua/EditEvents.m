@@ -36,49 +36,39 @@ extern char *pntevts[];
 
 //////////////////////////////////////////////////////////////////////
 
-@interface OneEvent : NSObject
+@interface EditEventsItem : NSObject
 {
-  @public
-    NSMutableString	*name;
-    NSMutableString	*text;
-    NSMutableArray	*help;
+	NSString	*name;
+	NSString	*text;
+	NSMutableArray	*helps;
 }
 
-- (NSUInteger) helpCount;
-- (id) helpRow:(NSInteger)row;
+@property (nonatomic, retain) NSString *name, *text;
+@property (nonatomic, readonly) NSMutableArray *helps;
 
 @end
 
-@implementation OneEvent
+@implementation EditEventsItem
+@synthesize name, text, helps;
 
 - (id) initWithEvent:(struct text_event *)event text:(const char *)the_text
 {
-    name = [[NSMutableString stringWithUTF8String:event->name] retain];
-    text = [[NSMutableString stringWithUTF8String:the_text] retain];
-    help = [[NSMutableArray arrayWithCapacity:(event->num_args & 0x7f)] retain];
+    self.name = [NSMutableString stringWithUTF8String:event->name];
+    self.text = [NSMutableString stringWithUTF8String:the_text];
+    self->helps = [[NSMutableArray alloc] initWithCapacity:event->num_args & 0x7f];
 
     for (NSInteger i = 0; i < (event->num_args & 0x7f); i ++)
-		[help addObject:[NSMutableString stringWithUTF8String:event->help[i]]];
+		[helps addObject:[NSMutableString stringWithUTF8String:event->help[i]]];
     
     return self;
 }
 
 - (void) dealloc
 {
-    [name release];
-    [help release];
-
+    self.name = nil;
+	self.text = nil;
+    [self->helps release];
     [super dealloc];
-}
-
-- (NSUInteger) helpCount
-{
-    return [help count];
-}
-
-- (id) helpRow:(NSInteger)row
-{
-    return [help objectAtIndex:row];
 }
 
 @end
@@ -91,7 +81,7 @@ extern char *pntevts[];
 {
     [super init];
      
-    myItems = nil;
+    eventsItems = nil;
 
     [NSBundle loadNibNamed:@"EditEvents" owner:self];
 	[[eventTableView window] setTitle:NSLocalizedStringFromTable(@"Edit Events", @"xchat", @"")];
@@ -101,13 +91,13 @@ extern char *pntevts[];
 - (void) dealloc
 {
     [[eventTableView window] release];
-    [myItems release];
+    [eventsItems release];
     [super dealloc];
 }
 
 - (void) awakeFromNib
 {
-    myItems = [[NSMutableArray arrayWithCapacity:NUM_XP] retain];
+    eventsItems = [[NSMutableArray alloc] initWithCapacity:NUM_XP];
 	
     for (NSUInteger i = 0; i < [eventTableView numberOfColumns]; i ++)
         [[[eventTableView tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInteger:i]];
@@ -130,12 +120,12 @@ extern char *pntevts[];
 {
 	prefs.save_pevents = true;
 
-    [myItems removeAllObjects];
+    [eventsItems removeAllObjects];
 
     for (int i = 0; i < NUM_XP; i ++)                      
     {
-		OneEvent *item = [[[OneEvent alloc] initWithEvent:&te[i] text:pntevts_text[i]] autorelease];
-		[myItems addObject:item];
+		EditEventsItem *item = [[[EditEventsItem alloc] initWithEvent:&te[i] text:pntevts_text[i]] autorelease];
+		[eventsItems addObject:item];
     }
 
     [eventTableView reloadData];
@@ -156,11 +146,11 @@ extern char *pntevts[];
 - (void) testOne:(int) row
 {
 	const char *text = pntevts_text[row];
-	char *out = strdup(text);
-	check_special_chars(out, true);
+	char *output = strdup(text);
+	check_special_chars(output, true);
 	// Events have $t which need to be converted to tabs.. stupid design :)
-	char *x = out;
-	char *y = out;
+	char *x = output;
+	char *y = output;
 	while (*x)
 	{
 		if (x[0] == '$' && x[1] == 't') {
@@ -174,8 +164,8 @@ extern char *pntevts[];
 		y ++;
 	}
 	*y = 0;
-	[testText printText:[NSString stringWithUTF8String:out]];
-	free(out);
+	[testText printText:[NSString stringWithUTF8String:output]];
+	free(output);
 }
 
 - (void) doTestAll:(id) sender
@@ -228,12 +218,12 @@ extern char *pntevts[];
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
     if (aTableView == eventTableView)
-	return [myItems count];
+	return [eventsItems count];
 
     if (aTableView == helpTableView)
     {
         NSInteger row = [eventTableView selectedRow];
-		return row < 0 ? 0 : [[myItems objectAtIndex:row] helpCount];
+		return row < 0 ? 0 : [[[eventsItems objectAtIndex:row] helps] count];
     }
 
     return 0;
@@ -245,12 +235,12 @@ extern char *pntevts[];
 {
     if (aTableView == eventTableView)
     {
-		OneEvent *item = [myItems objectAtIndex:rowIndex];
+		EditEventsItem *item = [eventsItems objectAtIndex:rowIndex];
 		
 		switch ([[aTableColumn identifier] integerValue])
 		{
-			case 0: return item->name;
-			case 1: return item->text;
+			case 0: return [item name];
+			case 1: return [item text];
 		}
     }
 
@@ -258,11 +248,11 @@ extern char *pntevts[];
     {
 		switch ([[aTableColumn identifier] integerValue])
 		{
-			case 0: return [NSNumber numberWithInt:rowIndex + 1];
+			case 0: return [NSNumber numberWithInteger:rowIndex+1];
 			case 1:
 			{
-				NSInteger row = [eventTableView selectedRow];
-				return row < 0 ? @"" : [[myItems objectAtIndex:row] helpRow:rowIndex];
+				NSInteger row = [eventTableView selectedRow]; // diffrent to rowIndex?
+				return row < 0 ? @"" : [[[eventsItems objectAtIndex:row] helps] objectAtIndex:rowIndex];
 			}
 		}
     }
@@ -279,7 +269,7 @@ extern char *pntevts[];
     {
 		prefs.save_pevents = true;
 		
-		OneEvent *item = [myItems objectAtIndex:rowIndex];
+		EditEventsItem *item = [eventsItems objectAtIndex:rowIndex];
 
 		switch ([[aTableColumn identifier] integerValue])
 		{
@@ -287,9 +277,9 @@ extern char *pntevts[];
 			{
 				const char *text = [anObject UTF8String];
 
-				char *out;
+				char *output;
 				int m;
-				if (pevt_build_string (text, &out, &m) != 0)
+				if (pevt_build_string (text, &output, &m) != 0)
 				{
 					[SGAlert alertWithString:NSLocalizedStringFromTable(@"There was an error parsing the string", @"xchat", @"") andWait:false];
 					return;
@@ -297,12 +287,12 @@ extern char *pntevts[];
 
 				if (m > te[rowIndex].num_args)
 				{
-					free (out);
+					free (output);
 					[SGAlert alertWithString:[NSString stringWithFormat:NSLocalizedStringFromTable(@"This signal is only passed %d args, $%d is invalid", @"xchat", @""), te[rowIndex].num_args, m] andWait:false];
 					return;
 				}
 
-				[item->text setString:anObject];
+				[item setText:anObject];
 			
 				if (pntevts_text[rowIndex])
 					free(pntevts_text[rowIndex]);
@@ -312,7 +302,7 @@ extern char *pntevts[];
 				int len = strlen (text);
 				pntevts_text[rowIndex] = (char *) malloc (len + 1);
 				memcpy(pntevts_text[rowIndex], text, len + 1);
-				pntevts[rowIndex] = out;
+				pntevts[rowIndex] = output;
 
 				break;
 			}
