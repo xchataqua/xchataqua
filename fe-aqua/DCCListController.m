@@ -17,40 +17,35 @@
 
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
-#include "../common/outbound.h"
-#include "../common/network.h"
 #include "../common/dcc.h"
 
-#import "SG.h"
 #import "AquaChat.h"
 #import "ColorPalette.h"
 #import "DCCListController.h"
-#import "XACommon.h"
 
 //////////////////////////////////////////////////////////////////////
 
 @implementation DCCItem
+@synthesize status;
 
 - (id) initWithDCC:(struct DCC *) the_dcc
 {
 	dcc = the_dcc;
 	prevDccStat = dcc->dccstat;
-	
-	status = [[NSMutableString stringWithCapacity:0] retain];
    
 	return self;
 }
 
 - (void) dealloc
 {
-	[status release];
+	self.status = nil;
 
 	[super dealloc];
 }
 
 - (void) update
 {
-	[status setString:[NSString stringWithUTF8String:dccstat[dcc->dccstat].name]];
+	self.status = [NSString stringWithUTF8String:dccstat[dcc->dccstat].name];
 	prevDccStat = dcc->dccstat;
 }
 
@@ -65,7 +60,7 @@
 {
 	[super init];
 
-	myItems = [[NSMutableArray arrayWithCapacity:0] retain];	// this must be done before loading the nib
+	dccItems = [[NSMutableArray alloc] init]; // this must be done before loading the nib
 	
 	hasSelection = NO;
 	lastDCCStatus = 0xFF;
@@ -78,7 +73,8 @@
 - (void) dealloc
 {
 	[dccListView dealloc];
-	[myItems release];
+	[dccItems release];
+	
 	[super dealloc];
 }
 
@@ -95,7 +91,7 @@
 
 - (void) loadData
 {
-	[myItems removeAllObjects];
+	[dccItems removeAllObjects];
 
 	[self setActiveCount:0];
 	for (GSList *list = dcc_list; list; list = list->next)
@@ -133,9 +129,9 @@
 
 - (void) update:(struct DCC *) dcc
 {
-	for (unsigned int i = 0; i < [myItems count]; i ++)
+	for (NSUInteger i = 0; i < [dccItems count]; i ++)
 	{
-		DCCItem *item = [myItems objectAtIndex:i];
+		DCCItem *item = [dccItems objectAtIndex:i];
 		if (item->dcc == dcc)
 		{
 			if (item->prevDccStat != dcc->dccstat) {
@@ -155,20 +151,20 @@
 {
 	DCCItem *item = [self itemWithDCC:dcc];
 	if (item == nil) return;
-	[myItems addObject:item];
+	[dccItems addObject:item];
 	if (dcc->dccstat == STAT_ACTIVE) [self setActiveCount:activeCount + 1];
 	[itemTableView reloadData];
 }
 
 - (void) remove:(struct DCC *) dcc
 {
-	for (NSInteger i = 0; i < [myItems count]; i ++)
+	for (NSInteger i = 0; i < [dccItems count]; i ++)
 	{
-		DCCItem *item = [myItems objectAtIndex:i];
+		DCCItem *item = [dccItems objectAtIndex:i];
 		if (item->dcc == dcc)
 		{
 			if (dcc->dccstat == STAT_ACTIVE) [self setActiveCount:activeCount - 1];
-			[myItems removeObjectAtIndex:i];
+			[dccItems removeObjectAtIndex:i];
 			break;
 		}
 	}
@@ -181,7 +177,7 @@
 	NSInteger row = [itemTableView selectedRow];
 	if (row >= 0)
 	{
-		DCCItem *item = [myItems objectAtIndex:row];
+		DCCItem *item = [dccItems objectAtIndex:row];
 		struct DCC *dcc = item->dcc;
 		dcc_abort (dcc->serv->front_session, dcc);
 	}
@@ -192,7 +188,7 @@
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
-	return [myItems count];
+	return [dccItems count];
 }
 
 - (id) tableView:(NSTableView *) aTableView
@@ -205,7 +201,7 @@
 
 - (void)tableView:(NSTableView *)aTableView willDisplayCell:(id)aCell forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
-	DCCItem *item = [myItems objectAtIndex:rowIndex];
+	DCCItem *item = [dccItems objectAtIndex:rowIndex];
 	NSColor *color = [[[AquaChat sharedAquaChat] palette] getColor:dccstat[item->dcc->dccstat].color];
 	[aCell setTextColor:color];
 }

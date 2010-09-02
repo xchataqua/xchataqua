@@ -6,10 +6,10 @@
 //  Copyright 2005 __MyCompanyName__. All rights reserved.
 //
 
-#import "SGFileUtil.h"
-
 #include <sys/types.h>
 #include <sys/stat.h>
+
+#import "SGFileUtil.h"
 
 static mode_t getFileMode (const char *fname)
 {

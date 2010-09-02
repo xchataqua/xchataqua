@@ -15,55 +15,47 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#include <unistd.h>
-
-#include <stdio.h>
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
 #include "../common/outbound.h"
 #include "../common/server.h"
-#include "../common/userlist.h"
 #include "../common/cfgfiles.h"
 #include "../common/util.h"
 #include "../common/text.h"
-#include "../common/dcc.h"
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5
 #import <ShortcutRecorder/ShortcutRecorder.h>
 #endif
 
-#include "XACommon.h"
-
-#import <Cocoa/Cocoa.h>
-
-
 #import "AquaChat.h"
-#import "PrefsController.h"
-#import "ChatWindow.h"
-#import "SGAlert.h"
-#import "UserCommands.h"
+#import "AutoAwayController.h"
 #import "CtcpReplies.h"
-#import "UserlistButtons.h"
-#import "UserlistPopup.h"
 #import "DialogButtons.h"
+#import "MenuMaker.h"
 #import "ReplacePopup.h"
-#import "UrlHandlers.h"
-#import "UserMenus.h"
-#import "EditEvents.h"
-#import "UrlGrabberWin.h"
+
+#import "AsciiWin.h"
+#import "BanListWin.h"
+#import "ChannelListWin.h"
+#import "ColorPalette.h"
+#import "ChatWindow.h"
 #import "DccSendWin.h"
 #import "DccRecvWin.h"
 #import "DccChatWin.h"
-#import "ChannelListWin.h"
-#import "RawLogWin.h"
+#import "EditEvents.h"
 #import "FriendListWin.h"
 #import "IgnoreListWin.h"
-#import "BanListWin.h"
-#import "AsciiWin.h"
 #import "LogViewer.h"
 #import "PluginList.h"
-#import "MenuMaker.h"
+#import "PrefsController.h"
+#import "RawLogWin.h"
 #import "ServerList.h"
-#import "AutoAwayController.h"
+#import "UrlGrabberWin.h"
+
+#import "UserCommands.h"
+#import "UserlistButtons.h"
+#import "UserlistPopup.h"
+#import "UrlHandlers.h"
+#import "UserMenus.h"
 
 extern struct text_event te[];
 

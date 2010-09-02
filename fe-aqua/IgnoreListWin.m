@@ -17,13 +17,11 @@
 
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
-#include "../common/outbound.h"
-#include "../common/network.h"
 #include "../common/util.h"
 #include "../common/ignore.h"
 
-#import "SG.h"
 #import "IgnoreListWin.h"
+#import "TabOrWindowView.h"
 
 //////////////////////////////////////////////////////////////////////
 
@@ -115,7 +113,7 @@
 {
 	[super initWithSelfPtr:self_ptr];
 	
-	myItems = [[NSMutableArray arrayWithCapacity:0] retain];
+	ignoreItems = [[NSMutableArray arrayWithCapacity:0] retain];
 	
 	[NSBundle loadNibNamed:@"IgnoreList" owner:self];
 	
@@ -125,7 +123,7 @@
 - (void) dealloc
 {
 	[ignoreListView release];
-	[myItems release];
+	[ignoreItems release];
 	[super dealloc];
 }
 
@@ -140,12 +138,12 @@
 
 - (void) loadData
 {
-	[myItems removeAllObjects];
+	[ignoreItems removeAllObjects];
 	
 	for (GSList *list = ignore_list; list; list = list->next)
 	{
 		struct ignore *ign = (struct ignore *) list->data;
-		[myItems addObject:[[IgnoreListItem alloc] initWithIgnore:ign]];
+		[ignoreItems addObject:[[IgnoreListItem alloc] initWithIgnore:ign]];
 	}
 	
 	[self->ignoreListTableView reloadData];
@@ -187,10 +185,10 @@
 
 - (NSInteger)find:(const char *)mask
 {
-	for (IgnoreListItem *ignoreItem in myItems)
+	for (IgnoreListItem *ignoreItem in ignoreItems)
 	{
 		if (rfc_casecmp (mask, ignoreItem.ign->mask) == 0)
-			return [myItems indexOfObject:ignoreItem];
+			return [ignoreItems indexOfObject:ignoreItem];
 	}
 	return -1;
 }
@@ -218,7 +216,7 @@
 
 	[[ignoreListTableView window] makeFirstResponder:ignoreListTableView];
 
-	IgnoreListItem *item = [myItems objectAtIndex:row];
+	IgnoreListItem *item = [ignoreItems objectAtIndex:row];
 
 	ignore_del (NULL, item.ign);	// This will call me back
 
@@ -246,16 +244,16 @@
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
-	return [myItems count];
+	return [ignoreItems count];
 }
 
 - (id) tableView:(NSTableView *) aTableView
 	objectValueForTableColumn:(NSTableColumn *) aTableColumn
 	row:(NSInteger) rowIndex
 {
-	IgnoreListItem *item = [myItems objectAtIndex:rowIndex];
+	IgnoreListItem *item = [ignoreItems objectAtIndex:rowIndex];
 
-	switch ([[aTableColumn identifier] intValue])
+	switch ([[aTableColumn identifier] integerValue])
 	{
 		case 0: return item.mask;
 		case 1: return item.ctcp;
@@ -274,7 +272,7 @@
 	forTableColumn:(NSTableColumn *) aTableColumn
 			   row:(NSInteger)rowIndex
 {
-	[[myItems objectAtIndex:rowIndex] setValue:anObject forField:[[aTableColumn identifier] integerValue]];
+	[[ignoreItems objectAtIndex:rowIndex] setValue:anObject forField:[[aTableColumn identifier] integerValue]];
 }
 
 @end

@@ -21,7 +21,6 @@ typedef struct session xchat_context;
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
 #include "../common/outbound.h"
-#include "../common/network.h"
 #include "../common/xchat-plugin.h"
 #include "../common/plugin.h"
 #include "../common/util.h"
@@ -29,6 +28,7 @@ typedef struct session xchat_context;
 extern GSList *plugin_list;
 
 #import "AquaChat.h"
+#import "SGAlert.h"
 #import "PluginList.h"
 
 //////////////////////////////////////////////////////////////////////

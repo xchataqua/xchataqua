@@ -15,25 +15,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <sys/uio.h>
-#include <sys/wait.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
 #include <string.h>
 #include <unistd.h>
-#include <stdlib.h>
+#include <arpa/inet.h>
 
-//extern "C" {
-#undef TYPE_BOOL
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
 #include "../common/text.h"
 #include "../common/fe.h"
-#undef TYPE_BOOL
-//}
 
 static int ident_sok = -1;
 static int ident_tag = -1;

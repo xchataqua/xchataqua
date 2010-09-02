@@ -21,12 +21,12 @@
 
 ///////////////////////////////////////////////////////////////////////
 
-#import "SG.h"
-#import "TabOrWindowView.h"
-#import "AquaChat.h"
-
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
+
+#import "SG.h"
+#import "AquaChat.h"
+#import "TabOrWindowView.h"
 
 //////////////////////////////////////////////////////////////////////
 

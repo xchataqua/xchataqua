@@ -17,11 +17,10 @@
 
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
-#include "../common/outbound.h"
-#include "../common/network.h"
 #include "../common/notify.h"
 
 #import "FriendListWin.h"
+#import "TabOrWindowView.h"
 
 //////////////////////////////////////////////////////////////////////
 
@@ -88,7 +87,7 @@
 {
 	[super initWithSelfPtr:selfPtr];
 	
-	myItems = [[NSMutableArray alloc] init];
+	friendItems = [[NSMutableArray alloc] init];
 	
 	[NSBundle loadNibNamed:@"FriendList" owner:self];
 	
@@ -98,7 +97,7 @@
 - (void) dealloc
 {
 	[friendListTableView release];
-	[myItems release];
+	[friendItems release];
 	[friendAddWindow release];
 	[super dealloc];
 }
@@ -111,7 +110,7 @@
 	// For each user that is online, we add one 1 per online server
 	// For each user that is not online on any server, we just add the 'lastseen' line
 	
-	[myItems removeAllObjects];
+	[friendItems removeAllObjects];
 
 	for (GSList *list = notify_list; list; list = list->next)
 	{
@@ -138,7 +137,7 @@
 														   online:online
 														   server:lastsvr
 														 networks:user->networks ? [NSString stringWithUTF8String:user->networks] : @""];
-		[myItems addObject:friendItem];
+		[friendItems addObject:friendItem];
 		[friendItem release];
 	}
 
@@ -170,7 +169,7 @@
 	if (row < 0)
 		return;
 
-	FriendItem *notif = (FriendItem *) [myItems objectAtIndex:row];
+	FriendItem *notif = (FriendItem *) [friendItems objectAtIndex:row];
 	notify_deluser ((char *) [notif->user UTF8String]);
 }
 
@@ -201,14 +200,14 @@
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
-	return [myItems count];
+	return [friendItems count];
 }
 
 - (id) tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger) row
 {
-	FriendItem *item = [myItems objectAtIndex:row];
+	FriendItem *item = [friendItems objectAtIndex:row];
 
-	switch ([[aTableColumn identifier] intValue])
+	switch ([[aTableColumn identifier] integerValue])
 	{
 		case 0: return item->user;
 		case 1: return item->status;

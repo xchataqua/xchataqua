@@ -15,16 +15,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#import "SG.h"
 #import "AquaChat.h"
-#import "ColorPalette.h"
 #import "PrefsController.h"
-#import "TabOrWindowView.h"
+#import "ColorPalette.h"
 #import "ChatWindow.h"
 
-#include "../common/xchat.h"
-#include "../common/xchatc.h"
 #include "../common/text.h"
+#include "../common/xchatc.h"
 #undef TYPE_BOOL
 #include "../common/cfgfiles.h"
 
@@ -581,7 +578,7 @@ static NSArray *root_items;
 {
 	SoundEvent *item = [sound_events objectAtIndex:row];
 
-	switch ([[tableColumn identifier] intValue])
+	switch ([[tableColumn identifier] integerValue])
 	{
 		case 0: return item->name;
 		case 1: return item->sound;
@@ -597,7 +594,7 @@ static NSArray *root_items;
 {
 	SoundEvent *item = [sound_events objectAtIndex:row];
 
-	switch ([[tableColumn identifier] intValue])
+	switch ([[tableColumn identifier] integerValue])
 	{
 		case 1:
 		{
