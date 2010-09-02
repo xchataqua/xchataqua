@@ -22,7 +22,7 @@
 <NSWindowDelegate>
 #endif
 {
-	NSPanel     *friendAddPanel;
+	NSPanel	 *friendAddPanel;
 	IBOutlet NSTextField *friendAddNickTextField;
 	IBOutlet NSTextField *friendAddNetworkTextField;	
 }
@@ -43,7 +43,7 @@
 	IBOutlet NSTableView		*friendListTableView;
 	IBOutlet TabOrWindowView	*friendListView;
 	IBOutlet FriendAddWindow	*friendAddWindow;
-    NSMutableArray	*myItems;
+	NSMutableArray	*myItems;
 }
 
 - (IBAction) doAdd:(id)sender;
