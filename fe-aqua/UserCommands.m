@@ -24,30 +24,32 @@
 
 //////////////////////////////////////////////////////////////////////
 
-@interface OneUserCommand : NSObject
+@interface UserCommandItem : NSObject
 {
-  @public
-    NSMutableString	*name;
-    NSMutableString	*cmd;
+	NSString	*name;
+	NSString	*cmd;
 }
+
+@property (nonatomic, retain) NSString *name, *cmd;
+
 @end
 
-@implementation OneUserCommand
+@implementation UserCommandItem
 
 - (id) initWithName:(const char *)the_name cmd:(const char *) the_cmd
 {
-    name = [[NSMutableString stringWithUTF8String:the_name] retain];
-    cmd = [[NSMutableString stringWithUTF8String:the_cmd] retain];
-    
-    return self;
+	self.name = [NSString stringWithUTF8String:the_name];
+	self.cmd = [NSString stringWithUTF8String:the_cmd];
+	
+	return self;
 }
 
 - (void) dealloc
 {
-    [name release];
-    [cmd release];
+	self.name = nil;
+	self.cmd = nil;
 
-    [super dealloc];
+	[super dealloc];
 }
 
 @end
@@ -58,47 +60,47 @@
 
 - (id) init
 {
-    [super init];
-     
-    self->myItems = [[NSMutableArray arrayWithCapacity:0] retain];
-    
-    [NSBundle loadNibNamed:@"UserCommands" owner:self];
-    [[commandTableView window] setTitle:NSLocalizedStringFromTable(@"XChat: User Defined Commands", @"xchat", @"")];
-    return self;
+	[super init];
+	 
+	self->myItems = [[NSMutableArray alloc] init];
+	
+	[NSBundle loadNibNamed:@"UserCommands" owner:self];
+	[[commandTableView window] setTitle:NSLocalizedStringFromTable(@"XChat: User Defined Commands", @"xchat", @"")];
+	return self;
 }
 
 - (void) dealloc
 {
-    [commandTableView setDelegate:nil];
-    [[commandTableView window] close];
-    [[commandTableView window] release];
-    [myItems release];
-    [super dealloc];
+	[commandTableView setDelegate:nil];
+	[[commandTableView window] close];
+	[[commandTableView window] release];
+	[myItems release];
+	[super dealloc];
 }
 
 - (void) loadItems
 {
-    [myItems removeAllObjects];
+	[myItems removeAllObjects];
 
-    OneUserCommand *prev = nil;
-    for (GSList *list = command_list; list; list = list->next)
-    {
+	UserCommandItem *prev = nil;
+	for (GSList *list = command_list; list; list = list->next)
+	{
 		struct popup *pop = (struct popup *) list->data;
-        
-        if (prev && strcasecmp ([prev->name UTF8String], pop->name) == 0)
-        {
-            [prev->cmd appendString:@"\n"];
-            [prev->cmd appendString:[NSString stringWithUTF8String:pop->cmd]];
-        }
-        else
-        {
-            OneUserCommand *item = [[[OneUserCommand alloc] initWithName:pop->name cmd:pop->cmd] autorelease];
-            [myItems addObject:item];
-            prev = item;
-        }
-    }
+		
+		if (prev && strcasecmp ([prev->name UTF8String], pop->name) == 0)
+		{
+			[prev->cmd appendString:@"\n"];
+			[prev->cmd appendString:[NSString stringWithUTF8String:pop->cmd]];
+		}
+		else
+		{
+			UserCommandItem *item = [[[UserCommandItem alloc] initWithName:pop->name cmd:pop->cmd] autorelease];
+			[myItems addObject:item];
+			prev = item;
+		}
+	}
 
-    [commandTableView reloadData];
+	[commandTableView reloadData];
 }
 
 - (void) awakeFromNib
@@ -123,7 +125,7 @@
 	[[commandTextView textContainer] setContainerSize:NSMakeSize(FLT_MAX, FLT_MAX)];
 	[[commandTextView textContainer] setWidthTracksTextView:NO];
 
-    [[commandTableView window] center];
+	[[commandTableView window] center];
 }
 
 - (void) show
@@ -146,7 +148,7 @@
 
 - (void) doAdd:(id) sender
 {
-	OneUserCommand *item = [[OneUserCommand alloc] initWithName:"*NEW*" cmd:"EDIT ME"];
+	UserCommandItem *item = [[UserCommandItem alloc] initWithName:"*NEW*" cmd:"EDIT ME"];
 	[myItems insertObject:item atIndex:0];
 	[commandTableView reloadData];
 	[commandTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
@@ -156,89 +158,89 @@
 
 - (void) doOk:(id) sender
 {
-    // Make sure the current value gets saved
-    [self selectionShouldChangeInTableView:commandTableView];
-    
-    NSString *buf = [NSString stringWithFormat:@"%s/commands.conf", get_xdir_fs ()];
-    
-    FILE *f = fopen ([buf UTF8String], "w");
-    if (!f)
-        return;
+	// Make sure the current value gets saved
+	[self selectionShouldChangeInTableView:commandTableView];
+	
+	NSString *buf = [NSString stringWithFormat:@"%s/commands.conf", get_xdir_fs ()];
+	
+	FILE *f = fopen ([buf UTF8String], "w");
+	if (!f)
+		return;
 
-    for (NSUInteger i = 0; i < [myItems count]; i ++)
-    {
-        OneUserCommand *item = [myItems objectAtIndex:i];
+	for (NSUInteger i = 0; i < [myItems count]; i ++)
+	{
+		UserCommandItem *item = [myItems objectAtIndex:i];
 
-        const char *cmd = [item->cmd UTF8String];
-        while (*cmd)
-        {
-            const char *cr = strchr (cmd, '\n');
-            int len = cr ? cr - cmd : strlen (cmd);
-            if (len)
-                fprintf (f, "NAME %s\nCMD %.*s\n\n", [item->name UTF8String], len, cmd);
-            cmd += len;
-            if (cr) cmd++;
-        }
-    }
-    
-    fclose (f);
+		const char *cmd = [item->cmd UTF8String];
+		while (*cmd)
+		{
+			const char *cr = strchr (cmd, '\n');
+			int len = cr ? cr - cmd : strlen (cmd);
+			if (len)
+				fprintf (f, "NAME %s\nCMD %.*s\n\n", [item->name UTF8String], len, cmd);
+			cmd += len;
+			if (cr) cmd++;
+		}
+	}
+	
+	fclose (f);
 
-    list_free (&command_list);
-    list_loadconf ("commands.conf", &command_list, 0);
-    
-    [[sender window] orderOut:sender];
+	list_free (&command_list);
+	list_loadconf ("commands.conf", &command_list, 0);
+	
+	[[sender window] orderOut:sender];
 }
 
 - (void) doCancel:(id) sender
 {
-    [[sender window] orderOut:sender];
+	[[sender window] orderOut:sender];
 }
 
 - (BOOL) selectionShouldChangeInTableView:(NSTableView *) aTableView
 {
-    NSInteger row = [commandTableView selectedRow];
-    if (row >= 0)
-    {
-        OneUserCommand *item = [myItems objectAtIndex:row];
-        [item->cmd setString:[commandTextView string]];
-    }
-    return YES;
+	NSInteger row = [commandTableView selectedRow];
+	if (row >= 0)
+	{
+		UserCommandItem *item = [myItems objectAtIndex:row];
+		item.cmd = [commandTextView string];
+	}
+	return YES;
 }
 
 - (void) tableViewSelectionDidChange:(NSNotification *) aNotification
 {
-    NSInteger row = [commandTableView selectedRow];
-    if (row >= 0)
-    {
-        OneUserCommand *item = [myItems objectAtIndex:row];
-        [commandTextView setString:item->cmd];
-    }
-    else
-        [commandTextView setString:@""];
+	NSInteger row = [commandTableView selectedRow];
+	if (row >= 0)
+	{
+		UserCommandItem *item = [myItems objectAtIndex:row];
+		[commandTextView setString:item->cmd];
+	}
+	else
+		[commandTextView setString:@""];
 }
 
 ////////////
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
-    return [myItems count];
+	return [myItems count];
 }
 
 - (id) tableView:(NSTableView *) aTableView
-    objectValueForTableColumn:(NSTableColumn *) aTableColumn
-    row:(NSInteger) rowIndex
+	objectValueForTableColumn:(NSTableColumn *) aTableColumn
+	row:(NSInteger) rowIndex
 {
-    OneUserCommand *item = [myItems objectAtIndex:rowIndex];
-    return item->name;
+	UserCommandItem *item = [myItems objectAtIndex:rowIndex];
+	return item->name;
 }
 
 - (void) tableView:(NSTableView *) aTableView
-    setObjectValue:(id) anObject
-    forTableColumn:(NSTableColumn *) aTableColumn 
-               row:(NSInteger)rowIndex
+	setObjectValue:(id) anObject
+	forTableColumn:(NSTableColumn *) aTableColumn 
+			   row:(NSInteger)rowIndex
 {
-    OneUserCommand *item = [myItems objectAtIndex:rowIndex];
-    [item->name setString:anObject];
+	UserCommandItem *item = [myItems objectAtIndex:rowIndex];
+	item.name = anObject;
 }
 
 @end
