@@ -6,13 +6,10 @@
 //  Copyright 2006 __MyCompanyName__. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
-
-
 @interface SGTokenizer : NSObject
 {
-	NSString		*tmp;
-	NSInteger		ptr;
+	NSString	*tmp;
+	NSInteger	ptr;
 }
 
 - (id) initWithString:(NSString *) stringToTokenize;
