@@ -26,6 +26,6 @@
 
 - (id) initWithServer:(struct server *) serv;
 - (void) show;
-- (void) log:(const char *) msg len:(NSInteger) len outbound:(BOOL) outbound;
+- (void) log:(const char *) msg length:(NSInteger) len outbound:(BOOL) outbound;
 
 @end
