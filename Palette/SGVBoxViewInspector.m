@@ -22,82 +22,82 @@
 
 - (NSString *)viewNibName
 {
-    return @"SGVBoxViewInspector";
+	return @"SGVBoxViewInspector";
 }
 
 - (void) awakeFromNib
 {
-    [[VJustMenu itemWithTitle:@"Top"] setTag:SGVBoxVJustificationTop];
-    [[VJustMenu itemWithTitle:@"Center"] setTag:SGVBoxVJustificationCenter];
-    [[VJustMenu itemWithTitle:@"Bottom"] setTag:SGVBoxVJustificationBottom];
+	[[VJustMenu itemWithTitle:@"Top"] setTag:SGVBoxVJustificationTop];
+	[[VJustMenu itemWithTitle:@"Center"] setTag:SGVBoxVJustificationCenter];
+	[[VJustMenu itemWithTitle:@"Bottom"] setTag:SGVBoxVJustificationBottom];
 	
-    [[HJustMenu itemWithTitle:@"Left"] setTag:SGVBoxHJustificationLeft];
-    [[HJustMenu itemWithTitle:@"Center"] setTag:SGVBoxHJustificationCenter];
-    [[HJustMenu itemWithTitle:@"Right"] setTag:SGVBoxHJustificationRight];
-    [[HJustMenu itemWithTitle:@"Full"] setTag:SGVBoxHJustificationFull];
+	[[HJustMenu itemWithTitle:@"Left"] setTag:SGVBoxHJustificationLeft];
+	[[HJustMenu itemWithTitle:@"Center"] setTag:SGVBoxHJustificationCenter];
+	[[HJustMenu itemWithTitle:@"Right"] setTag:SGVBoxHJustificationRight];
+	[[HJustMenu itemWithTitle:@"Full"] setTag:SGVBoxHJustificationFull];
 }
 
 - (void) doVJust:(id) sender
 {
-    NSArray * objects = [self inspectedObjects];
-    NSUInteger count = [objects count];
+	NSArray * objects = [self inspectedObjects];
+	NSUInteger count = [objects count];
 	
-    for(NSUInteger i = 0; i < count; ++i)
-    {
-        SGVBoxView *view = [objects objectAtIndex:i];
-        view.vJustification = [[sender selectedItem] tag];
-    }
+	for(NSUInteger i = 0; i < count; ++i)
+	{
+		SGVBoxView *view = [objects objectAtIndex:i];
+		view.vJustification = [[sender selectedItem] tag];
+	}
 }
 
 - (void) doHJust:(id) sender
 {
-    NSArray * objects = [self inspectedObjects];
-    NSInteger count = [objects count];
+	NSArray * objects = [self inspectedObjects];
+	NSInteger count = [objects count];
 	
-    for(NSUInteger i = 0; i < count; ++i)
-    {
-        SGVBoxView *view = [objects objectAtIndex:i];
-        [view setDefaultHJustification:[[sender selectedItem] tag]];
-    }
+	for(NSUInteger i = 0; i < count; ++i)
+	{
+		SGVBoxView *view = [objects objectAtIndex:i];
+		[view setDefaultHJustification:[[sender selectedItem] tag]];
+	}
 }
 
 - (void) doInner:(id) sender
 {
-    NSArray * objects = [self inspectedObjects];
-    NSInteger count = [objects count];
+	NSArray * objects = [self inspectedObjects];
+	NSInteger count = [objects count];
 	
-    for(NSUInteger i = 0; i < count; ++i)
-    {
-        SGVBoxView * view = [objects objectAtIndex:i];
-        view.vInnerMargin = [inner_text floatValue];
-    }
+	for(NSUInteger i = 0; i < count; ++i)
+	{
+		SGVBoxView * view = [objects objectAtIndex:i];
+		view.vInnerMargin = [inner_text floatValue];
+	}
 }
 
 - (void) doOutter:(id) sender
 {
-    NSArray * objects = [self inspectedObjects];
-    NSInteger count = [objects count];
+	NSArray * objects = [self inspectedObjects];
+	NSInteger count = [objects count];
 	
-    for(NSUInteger i = 0; i < count; ++i)
-    {
-        SGVBoxView * view = [objects objectAtIndex:i];
-        view.vOutterMargin= [outter_text floatValue];
-    }
+	for(NSUInteger i = 0; i < count; ++i)
+	{
+		SGVBoxView * view = [objects objectAtIndex:i];
+		view.vOutterMargin= [outter_text floatValue];
+	}
 }
 
 - (void) refresh
 {
-    NSArray * objects = [self inspectedObjects];
+	NSArray * objects = [self inspectedObjects];
 	
-    if([objects count] == 1)
-    {
-        SGVBoxView *vbox = [objects objectAtIndex:0];
-        [VJustMenu selectItemWithTag:vbox.vJustification];
-        [HJustMenu selectItemWithTag:vbox.hJustification];
-        [inner_text  setFloatValue:vbox.vInnerMargin];
-        [outter_text setFloatValue:vbox.vOutterMargin];
-    }
-    [super refresh];
+	if([objects count] == 1)
+	{
+		SGVBoxView *vbox = [objects objectAtIndex:0];
+		[VJustMenu selectItemWithTag:vbox.vJustification];
+		[HJustMenu selectItemWithTag:vbox.hJustification];
+		[inner_text  setFloatValue:vbox.vInnerMargin];
+		[outter_text setFloatValue:vbox.vOutterMargin];
+	}
+	[super refresh];
 }
 
 @end

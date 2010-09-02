@@ -24,17 +24,15 @@ static SystemVersion * sharedSystemVersion;
 @end
 
 @implementation SystemVersion ( private )
-@synthesize systemVersion, buildVersion, systemBranch;
-@synthesize major, minor, micro;
 
 - (void)_load_system_version {
 	NSDictionary * dict = [[NSDictionary alloc] initWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"];
 	
-	build_version  = [[dict valueForKey:@"ProductBuildVersion"] retain];
-	system_version = [[dict valueForKey:@"ProductVersion"] retain];
+	buildVersion  = [[dict valueForKey:@"ProductBuildVersion"] retain];
+	systemVersion = [[dict valueForKey:@"ProductVersion"] retain];
 	
 	{
-		char * orig_buf, * buf = strdup([system_version UTF8String]);
+		char * orig_buf, * buf = strdup([systemVersion UTF8String]);
 		orig_buf = buf;
 		major = atoi(buf);
 		buf=strchr(buf, '.')+1;
@@ -49,7 +47,7 @@ static SystemVersion * sharedSystemVersion;
 		free(orig_buf);
 	}
 	
-	system_branch = [[NSString alloc] initWithFormat:@"%d.%d", major, minor];
+	systemBranch = [[NSString alloc] initWithFormat:@"%d.%d", major, minor];
 	
 	[dict release];
 }
@@ -57,6 +55,8 @@ static SystemVersion * sharedSystemVersion;
 @end
 
 @implementation SystemVersion
+@synthesize systemVersion, buildVersion, systemBranch;
+@synthesize major, minor, micro;
 
 + (void) initialize {
 	sharedSystemVersion = [[SystemVersion alloc] init];	

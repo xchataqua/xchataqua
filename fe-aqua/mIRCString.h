@@ -18,8 +18,6 @@
 #import "ColorPalette.h"
 
 @interface mIRCString : NSMutableAttributedString
-{
-}
 
 + (id) stringWithUTF8String:(const char *) string
 					 length:(NSInteger) len

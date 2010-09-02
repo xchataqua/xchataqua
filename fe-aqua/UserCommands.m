@@ -27,19 +27,21 @@
 @interface UserCommandItem : NSObject
 {
 	NSString	*name;
-	NSString	*cmd;
+	NSMutableString	*cmd;
 }
 
-@property (nonatomic, retain) NSString *name, *cmd;
+@property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSMutableString *cmd;
 
 @end
 
 @implementation UserCommandItem
+@synthesize name, cmd;
 
 - (id) initWithName:(const char *)the_name cmd:(const char *) the_cmd
 {
 	self.name = [NSString stringWithUTF8String:the_name];
-	self.cmd = [NSString stringWithUTF8String:the_cmd];
+	self.cmd = [NSMutableString stringWithUTF8String:the_cmd];
 	
 	return self;
 }
@@ -87,10 +89,10 @@
 	{
 		struct popup *pop = (struct popup *) list->data;
 		
-		if (prev && strcasecmp ([prev->name UTF8String], pop->name) == 0)
+		if (prev && strcasecmp ([[prev name] UTF8String], pop->name) == 0)
 		{
-			[prev->cmd appendString:@"\n"];
-			[prev->cmd appendString:[NSString stringWithUTF8String:pop->cmd]];
+			[[prev cmd] appendString:@"\n"];
+			[[prev cmd] appendString:[NSString stringWithUTF8String:pop->cmd]];
 		}
 		else
 		{
@@ -171,13 +173,13 @@
 	{
 		UserCommandItem *item = [myItems objectAtIndex:i];
 
-		const char *cmd = [item->cmd UTF8String];
+		const char *cmd = [[item cmd] UTF8String];
 		while (*cmd)
 		{
 			const char *cr = strchr (cmd, '\n');
 			int len = cr ? cr - cmd : strlen (cmd);
 			if (len)
-				fprintf (f, "NAME %s\nCMD %.*s\n\n", [item->name UTF8String], len, cmd);
+				fprintf (f, "NAME %s\nCMD %.*s\n\n", [[item name] UTF8String], len, cmd);
 			cmd += len;
 			if (cr) cmd++;
 		}
@@ -202,7 +204,7 @@
 	if (row >= 0)
 	{
 		UserCommandItem *item = [myItems objectAtIndex:row];
-		item.cmd = [commandTextView string];
+		[[item cmd] setString:[commandTextView string]];
 	}
 	return YES;
 }
@@ -213,7 +215,7 @@
 	if (row >= 0)
 	{
 		UserCommandItem *item = [myItems objectAtIndex:row];
-		[commandTextView setString:item->cmd];
+		[commandTextView setString:[item cmd]];
 	}
 	else
 		[commandTextView setString:@""];
@@ -231,7 +233,7 @@
 	row:(NSInteger) rowIndex
 {
 	UserCommandItem *item = [myItems objectAtIndex:rowIndex];
-	return item->name;
+	return [item name];
 }
 
 - (void) tableView:(NSTableView *) aTableView
