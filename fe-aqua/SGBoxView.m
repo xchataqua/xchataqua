@@ -374,7 +374,7 @@ NSRect NSRectFlip (NSRect rect)
 
 - (void) setMinorJustificationFor:(NSView *) view to:(SGBoxMinorJustification) aJustification
 {
-	SGBoxMetaView *mv = (SGBoxMetaView *) [self find_view:view];
+	SGBoxMetaView *mv = (SGBoxMetaView *) [self findViewFor:view];
 	if (mv)
 		[mv setJustification:aJustification];
 	[self queue_layout];

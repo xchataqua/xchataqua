@@ -21,10 +21,10 @@
 #import "SGView.h"
 
 //////////////////////////////////////////////////////////////////////
-    
+	
 @interface PendingLayouts : NSObject
 {
-    NSMutableArray *penders;
+	NSMutableArray *penders;
 }
 @end
 
@@ -32,51 +32,51 @@
 
 - (id) init
 {
-    self = [super init];
-    penders = [[NSMutableArray arrayWithCapacity:10] retain];
-    return self;
+	self = [super init];
+	penders = [[NSMutableArray arrayWithCapacity:10] retain];
+	return self;
 }
 
 - (void) dealloc
 {
-    [penders release];
-    [super dealloc];
+	[penders release];
+	[super dealloc];
 }
 
 - (void) addPendingLayout:(NSView *) v
 {
-    if ([penders count] == 0)
-    {
+	if ([penders count] == 0)
+	{
 #if 1
-        [[NSRunLoop currentRunLoop] performSelector:@selector (do_layouts)
-            target:self argument:nil order:0
-            modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]];
+		[[NSRunLoop currentRunLoop] performSelector:@selector (do_layouts)
+			target:self argument:nil order:0
+			modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]];
 #else
-        [NSApp addAfterEvent:self sel:@selector (do_layouts)];
+		[NSApp addAfterEvent:self sel:@selector (do_layouts)];
 #endif
-    }
-    
-    [penders addObject:v];
+	}
+	
+	[penders addObject:v];
 }
 
 - (void) do_layouts
 {
-    while ([penders count])
-    {
-        SGView *v = [penders lastObject];
-        [v retain];
-        [penders removeLastObject];
-        [v layout_maybe];
-        [v release];
-    }
+	while ([penders count])
+	{
+		SGView *v = [penders lastObject];
+		[v retain];
+		[penders removeLastObject];
+		[v layout_maybe];
+		[v release];
+	}
 }
 
 + (void) addPendingLayout:(SGView *) v
 {
-    static PendingLayouts *pl;
-    if (!pl)
-        pl = [[PendingLayouts alloc] init];
-    [pl addPendingLayout:v];
+	static PendingLayouts *pl;
+	if (!pl)
+		pl = [[PendingLayouts alloc] init];
+	[pl addPendingLayout:v];
 }
 
 @end
@@ -96,8 +96,8 @@
 - (void) setSGHidden:(BOOL) flag
 {
 	[self setOriginalHidden:flag];
-    if ([[[self superview] class] isSubclassOfClass:[SGView class]])
-        [(SGView *) [self superview] queue_layout];
+	if ([[[self superview] class] isSubclassOfClass:[SGView class]])
+		[(SGView *) [self superview] queue_layout];
 }
 
 @end
@@ -112,8 +112,8 @@
 - (void) setHidden:(BOOL) flag
 {
 	[super setHidden:flag];
-    if ([[[self superview] class] isSubclassOfClass:[SGView class]])
-        [(SGView *) [self superview] queue_layout];
+	if ([[[self superview] class] isSubclassOfClass:[SGView class]])
+		[(SGView *) [self superview] queue_layout];
 }
 
 @end
@@ -124,11 +124,11 @@
 
 - (id)initWithView:(NSView *) the_view;
 {
-    self->view = the_view;
-    [self reset_prefSize];
-    [view retain];
-    
-    return self;
+	self->view = the_view;
+	[self reset_prefSize];
+	[view retain];
+	
+	return self;
 }
 
 - (id) initWithCoder:(NSCoder *) decoder
@@ -148,15 +148,15 @@
 
 - (void) dealloc
 {
-    [view release];
-    [super dealloc];
+	[view release];
+	[super dealloc];
 }
 
 - (void) setView:(NSView *) newView
 {
-    [view release];
-    view = newView;
-    [view retain];
+	[view release];
+	view = newView;
+	[view retain];
 }
 
 - (void) setFrame:(NSRect) frame
@@ -164,15 +164,15 @@
 	//NSLog (@"%x %f %f %f %f", metaView, frame.origin.x,
 	//	frame.origin.y, frame.size.width, frame.size.height);
 		
-    frame = NSIntegralRect (frame);
-    self->lastSize = frame;
-    [self->view setFrame:frame];
-    [self->view setNeedsDisplay:YES];
+	frame = NSIntegralRect (frame);
+	self->lastSize = frame;
+	[self->view setFrame:frame];
+	[self->view setNeedsDisplay:YES];
 }
 
 - (void) reset_prefSize
 {
-    self->prefSize = [view frame];
+	self->prefSize = [view frame];
 }
 
 - (NSView *) view { return self->view; }
@@ -202,17 +202,17 @@
 	[self setAutoresizesSubviews:YES];
 	
 	metaViews = [[NSMutableArray alloc] init];
-    self->first_layout = YES;
-    self->pending_layout = NO;
-    self->in_my_layout = NO;
-    self->in_dtor = NO;
+	self->first_layout = YES;
+	self->pending_layout = NO;
+	self->in_my_layout = NO;
+	self->in_dtor = NO;
 }
 
 - (id) initWithFrame:(NSRect)frameRect
 {
-    self = [super initWithFrame:frameRect];
+	self = [super initWithFrame:frameRect];
 	[self SGViewPrivateInit];
-    return self;
+	return self;
 }
 
 - (id) initWithCoder:(NSCoder *) decoder
@@ -222,9 +222,9 @@
 	self->first_layout = NO;	// This feels right
 	[metaViews release];
 	metaViews = [[NSMutableArray alloc] initWithCoder:decoder];
-    for (NSUInteger i = 0; i < [metaViews count]; i ++)
-        [self didAddSubview:[[metaViews objectAtIndex:i] view]];
-    return self;
+	for (NSUInteger i = 0; i < [metaViews count]; i ++)
+		[self didAddSubview:[[metaViews objectAtIndex:i] view]];
+	return self;
 }
 
 - (void) encodeWithCoder:(NSCoder *) encoder
@@ -235,12 +235,12 @@
 
 - (void) dealloc
 {
-    in_dtor = YES;
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
-    [metaViews release];
-    [super dealloc];
+	in_dtor = YES;
+	
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	
+	[metaViews release];
+	[super dealloc];
 }
 
 - (void) do_layout
@@ -249,223 +249,223 @@
 
 - (void) setAutoSizeToFit:(BOOL) sf
 {
-    auto_size_to_fit = sf;
+	auto_size_to_fit = sf;
 }
 
 - (void) sizeToFit
 {
-    needs_size_to_fit = NO;
+	needs_size_to_fit = NO;
 }
 
 - (void) layoutNow
-{    
-    pending_layout = NO;
-    in_my_layout = YES;
-    
-    if (needs_size_to_fit)
-        [self sizeToFit];
-        
-    [self do_layout];
-    [self setNeedsDisplay:YES];
+{	
+	pending_layout = NO;
+	in_my_layout = YES;
+	
+	if (needs_size_to_fit)
+		[self sizeToFit];
+		
+	[self do_layout];
+	[self setNeedsDisplay:YES];
 
-    in_my_layout = NO;
-    first_layout = NO;
+	in_my_layout = NO;
+	first_layout = NO;
 }
 
 - (void) layout_maybe
 {
-    if (pending_layout)
-        [self layoutNow];
+	if (pending_layout)
+		[self layoutNow];
 }
 
 #if 0
 static void noDisplay (NSView *v)
 {
-    [v setNeedsDisplay:NO];
-    NSArray *sub = [v subviews];
-    for (NSUInteger i = 0; i < [sub count]; i ++)
-        noDisplay ([sub objectAtIndex:i]);
+	[v setNeedsDisplay:NO];
+	NSArray *sub = [v subviews];
+	for (NSUInteger i = 0; i < [sub count]; i ++)
+		noDisplay ([sub objectAtIndex:i]);
 }
 #endif
 
 - (void) queue_layout
 {
 #if 1
-    [self layoutNow];
+	[self layoutNow];
 #else
-    if (!pending_layout)
-    {
-        [PendingLayouts addPendingLayout:self];
-        pending_layout = true;
-    }
+	if (!pending_layout)
+	{
+		[PendingLayouts addPendingLayout:self];
+		pending_layout = true;
+	}
 #endif
 }
 
 - (void) drawRect:(NSRect) aRect
 {
-    // Don't let views draw if they have pending layouts
-    //[self layout_maybe];
-    //if (pending_layout)
-        //return;
-        
-    [super drawRect:aRect];
+	// Don't let views draw if they have pending layouts
+	//[self layout_maybe];
+	//if (pending_layout)
+		//return;
+		
+	[super drawRect:aRect];
 
 #if 0
-    [[NSColor redColor] set];
-    [[NSGraphicsContext currentContext] setShouldAntialias:NO];
-    NSBezierPath *p = [NSBezierPath bezierPathWithRect:[self bounds]];
-    [p setLineWidth:5];
-    [p stroke];
+	[[NSColor redColor] set];
+	[[NSGraphicsContext currentContext] setShouldAntialias:NO];
+	NSBezierPath *p = [NSBezierPath bezierPathWithRect:[self bounds]];
+	[p setLineWidth:5];
+	[p stroke];
 #endif
 }
 
-- (SGMetaView *) find_view:(NSView *) the_view
+- (SGMetaView *) findViewFor:(NSView *) the_view
 {
-    NSUInteger i = [self viewOrder:the_view];
-    if (i == NSNotFound)
-        return nil;
-    return [metaViews objectAtIndex:i];
+	NSUInteger i = [self viewOrder:the_view];
+	if (i == NSNotFound)
+		return nil;
+	return [metaViews objectAtIndex:i];
 }
 
 - (void) setOrder:(NSUInteger)order forView:(NSView *) the_view
 {
-    NSUInteger i = [self viewOrder:the_view];
-    if (i == NSNotFound)
-        return;
-    id metaview = [metaViews objectAtIndex:i];
-    [metaview retain];
-    [metaViews removeObjectAtIndex:i];
-    if (order > [metaViews count])
-        [metaViews addObject:metaview];
-    else
-        [metaViews insertObject:metaview atIndex:order];
-    [metaview release];
-    [self queue_layout];
+	NSUInteger i = [self viewOrder:the_view];
+	if (i == NSNotFound)
+		return;
+	id metaview = [metaViews objectAtIndex:i];
+	[metaview retain];
+	[metaViews removeObjectAtIndex:i];
+	if (order > [metaViews count])
+		[metaViews addObject:metaview];
+	else
+		[metaViews insertObject:metaview atIndex:order];
+	[metaview release];
+	[self queue_layout];
 }
 
 - (NSUInteger) viewOrder:(NSView *) the_view
 {
-    for (NSUInteger i = 0; i < [metaViews count]; i ++)
-    {
-        id metaView = [metaViews objectAtIndex:i];
-        if ([metaView view] == the_view)
-            return i;
-    }
-    return NSNotFound;
+	for (NSUInteger i = 0; i < [metaViews count]; i ++)
+	{
+		id metaView = [metaViews objectAtIndex:i];
+		if ([metaView view] == the_view)
+			return i;
+	}
+	return NSNotFound;
 }
 
 //- (void) resizeSubviewsWithOldSize:(NSSize) oldBoundsSize Broken with rotation!
 - (void) i_did_resize
 {
-    if (in_my_layout)
-        return;
+	if (in_my_layout)
+		return;
 
-    // We are being given new dimensions and/or location.
-    // If we're being asked to move, then don't do a layout.
-    // TBD: This might make sense.. not sure now.
-    //if (! NSEqualSizes (oldBoundsSize, [self frame].size))
-        [self layoutNow];
+	// We are being given new dimensions and/or location.
+	// If we're being asked to move, then don't do a layout.
+	// TBD: This might make sense.. not sure now.
+	//if (! NSEqualSizes (oldBoundsSize, [self frame].size))
+		[self layoutNow];
 }
 
 - (void) setFrame:(NSRect) frameRect
 {
-    [super setFrame:frameRect];
-    [self i_did_resize];
+	[super setFrame:frameRect];
+	[self i_did_resize];
 }
 
 - (void) setFrameSize:(NSSize) newSize
 {
-    [super setFrameSize:newSize];
-    [self i_did_resize];
+	[super setFrameSize:newSize];
+	[self i_did_resize];
 }
 
 - (BOOL) isFlipped
 {
-    return NO;
+	return NO;
 }
 
 - (BOOL) isOpaque
 {
-    return NO;
+	return NO;
 }
 
 - (void) subview_did_resize:(NSNotification *)notification
 {
-    // A child view just changed size.  If we are in layout, then we
-    // can assume he's changed because we told him to.
-    // Sepcifically, we don't want to change the prefSize unless
-    // someone other than us changed him.
-    
-    // in_my_layout is not enough info.. SGViews that change other
-    // SGViews that change themselvs causes in_my_layout to be true
-    // when we really _do_ want a resize.  See below..
-    
-    //if (in_my_layout)
-        //return;
-        
-    NSView *subview = (NSView *) [notification object];
-    SGMetaView *metaView = [self find_view:subview];
-    
-    if (in_my_layout && (
-        NSEqualRects (metaView->lastSize, [subview frame]) ||
-        NSEqualRects (metaView->prefSize, [subview frame])))
-    {
-        return;
-    }
+	// A child view just changed size.  If we are in layout, then we
+	// can assume he's changed because we told him to.
+	// Sepcifically, we don't want to change the prefSize unless
+	// someone other than us changed him.
+	
+	// in_my_layout is not enough info.. SGViews that change other
+	// SGViews that change themselvs causes in_my_layout to be true
+	// when we really _do_ want a resize.  See below..
+	
+	//if (in_my_layout)
+		//return;
+		
+	NSView *subview = (NSView *) [notification object];
+	SGMetaView *metaView = [self findViewFor:subview];
+	
+	if (in_my_layout && (
+		NSEqualRects (metaView->lastSize, [subview frame]) ||
+		NSEqualRects (metaView->prefSize, [subview frame])))
+	{
+		return;
+	}
 
-    [metaView reset_prefSize];
-    
-    if (auto_size_to_fit)
-        needs_size_to_fit = YES;
-        
-    [self queue_layout];
+	[metaView reset_prefSize];
+	
+	if (auto_size_to_fit)
+		needs_size_to_fit = YES;
+		
+	[self queue_layout];
 }
 
 - (SGMetaView *) newMetaView:(NSView *) view
 {
-    return [[[SGMetaView alloc] initWithView:view] autorelease];
+	return [[[SGMetaView alloc] initWithView:view] autorelease];
 }
 
 - (NSArray *) metaViews
 {
-    return metaViews;
+	return metaViews;
 }
 
 - (void) didAddSubview:(NSView *) subview
 {
-    [super didAddSubview:subview];
+	[super didAddSubview:subview];
 
-    if ([self find_view:subview] == nil)
-        [metaViews addObject:[self newMetaView:subview]];
+	if ([self findViewFor:subview] == nil)
+		[metaViews addObject:[self newMetaView:subview]];
 
-    [subview setPostsFrameChangedNotifications:true];
-    [[NSNotificationCenter defaultCenter] addObserver:self 
-        selector:@selector (subview_did_resize:)
-        name:NSViewFrameDidChangeNotification object:subview];
-    
-    if (auto_size_to_fit)
-        needs_size_to_fit = YES;
+	[subview setPostsFrameChangedNotifications:true];
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+		selector:@selector (subview_did_resize:)
+		name:NSViewFrameDidChangeNotification object:subview];
+	
+	if (auto_size_to_fit)
+		needs_size_to_fit = YES;
 
-    [self queue_layout];
+	[self queue_layout];
 }
 
 - (void) willRemoveSubview:(NSView *) subview
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-        name:NSViewFrameDidChangeNotification object:subview];
+	[[NSNotificationCenter defaultCenter] removeObserver:self
+		name:NSViewFrameDidChangeNotification object:subview];
 
-    [super willRemoveSubview:subview];
+	[super willRemoveSubview:subview];
 
-    if (in_dtor)
-        return;
-            
-    id metaView = [self find_view:subview];
-    [metaViews removeObject:metaView];
-    
-    if (auto_size_to_fit)
-        needs_size_to_fit = YES;
+	if (in_dtor)
+		return;
+			
+	id metaView = [self findViewFor:subview];
+	[metaViews removeObject:metaView];
+	
+	if (auto_size_to_fit)
+		needs_size_to_fit = YES;
 
-    [self queue_layout];
+	[self queue_layout];
 }
 
 - (void) replaceSubview:(NSView *)oldView with:(NSView *)newView
@@ -473,12 +473,12 @@ static void noDisplay (NSView *v)
 	// We are about to remove oldView and add newView.
 	// We'll need to stuff our metadata back in
 	
-	SGMetaView *metaView = [self find_view:oldView];
+	SGMetaView *metaView = [self findViewFor:oldView];
 
 	if (metaView)
-        [metaView setView:newView];
-    
-    [super replaceSubview:oldView with:newView];
+		[metaView setView:newView];
+	
+	[super replaceSubview:oldView with:newView];
 }
 
 @end
