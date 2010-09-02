@@ -124,8 +124,9 @@ extern char *pntevts[];
 
     for (int i = 0; i < NUM_XP; i ++)                      
     {
-		EditEventsItem *item = [[[EditEventsItem alloc] initWithEvent:&te[i] text:pntevts_text[i]] autorelease];
+		EditEventsItem *item = [[EditEventsItem alloc] initWithEvent:&te[i] text:pntevts_text[i]];
 		[eventsItems addObject:item];
+		[item release];
     }
 
     [eventTableView reloadData];
