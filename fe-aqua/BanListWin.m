@@ -41,6 +41,7 @@
 @end
 
 @implementation BanListItem
+@synthesize mask, who, when;
 
 - (id) initWithMask:(NSString *)aMask who:(NSString *)aWho when:(NSString *)aWhen
 {	
