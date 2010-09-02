@@ -24,7 +24,7 @@ typedef void (*callback_t)(void * userdata, char * fname);
 @interface SGFileSelection : NSObject
 
 + (NSString *) selectWithWindow:(NSWindow *) win;
-+ (NSString *) selectWithWindow:(NSWindow *) win inDir:(NSString *) dir;
++ (NSString *) selectWithWindow:(NSWindow *) win inDirectory:(NSString *) dir;
 + (NSString *) saveWithWindow:(NSWindow *) win;
 + (void) getFile:(NSString *)title initial:(NSString *)initial callback:(callback_t)callback userdata:(void *)userdata flags:(int)flags;
 
