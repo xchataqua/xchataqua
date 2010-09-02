@@ -32,7 +32,7 @@ static mode_t getFileMode (const char *fname)
 	if (FSFindFolder(kUserDomain, kApplicationSupportFolderType, false, &ref) != noErr)
 		return nil;
 		
-	UInt8 path[PATH_MAX];    
+	UInt8 path[PATH_MAX];	
 	if (FSRefMakePath(&ref, path, sizeof(path)) != noErr)
 		return nil;
 		
@@ -48,7 +48,7 @@ static mode_t getFileMode (const char *fname)
 	return getFileMode ([fname UTF8String]) > 0;
 }
 
-+ (BOOL) isDir:(NSString *) fname
++ (BOOL) isDirectory:(NSString *) fname
 {
 	mode_t mode = getFileMode ([fname UTF8String]);
 	return mode > 0 ? (mode & S_IFDIR) != 0 : NO;
