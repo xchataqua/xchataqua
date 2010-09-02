@@ -51,7 +51,7 @@
 {
     self.name = nil;
 	self.command = nil;
-
+	
     [super dealloc];
 }
 
@@ -69,7 +69,7 @@
 - (id) initWithList:(GSList **)aSlist filename:(NSString *)aFilename title:(NSString *)aTitle
 {
     self = [super init];
-     
+	
     self->slist = aSlist;
     self->filename = [aFilename copy];
     self->title = [aTitle copy];
@@ -94,7 +94,7 @@
 {
     for (NSUInteger i = 0; i < [commandTableView numberOfColumns]; i ++)
         [[[commandTableView tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInteger:i]];
-
+	
     [commandTableView setDelegate:self];
     [commandTableView setDataSource:self];
     [[commandTableView window] setTitle:title];
@@ -104,7 +104,7 @@
 - (void) loadItems
 {
     [listItems removeAllObjects];
-
+	
     for (GSList *list = *slist; list; list = list->next)
     {
 		struct popup *pop = (struct popup *) list->data;
@@ -112,7 +112,7 @@
 		[listItems addObject:item];
 		[item release];
     }
-
+	
     [commandTableView reloadData];
 }
 
@@ -137,7 +137,7 @@
 {
 	NSInteger row = [commandTableView selectedRow];
 	if (row < 0 || row >= (NSInteger)[listItems count] - 1) return;
-
+	
 	[listItems exchangeObjectAtIndex:row withObjectAtIndex:row+1];
 	[commandTableView reloadData];
 	[commandTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row+1] byExtendingSelection:NO];
@@ -161,19 +161,19 @@
 - (void) doSave:(id) sender
 {
     [[sender window] makeFirstResponder:sender];
-
+	
     NSString *buf = [NSString stringWithFormat:@"%s/%s", get_xdir_fs(), [filename UTF8String]];
     
     FILE *f = fopen ([buf UTF8String], "w");
     if (f == NULL) return;
-
+	
     for (NSUInteger i = 0; i < [listItems count]; i ++)
     {
         EditListItem *item = [listItems objectAtIndex:i];
         fprintf (f, "NAME %s\ncommand %s\n\n", [[item name] UTF8String], [[item command] UTF8String]);
     }
     fclose (f);
-
+	
     list_free(slist);
     list_loadconf((char *)[filename UTF8String], slist, 0);
     
@@ -213,7 +213,7 @@
 		case 0: return [item name];
 		case 1: return [item command];
     }
-
+	
     return @"";
 }
 
@@ -223,7 +223,7 @@
 			   row:(NSInteger)rowIndex
 {
     EditListItem *item = [listItems objectAtIndex:rowIndex];
-
+	
     switch ([[aTableColumn identifier] integerValue])
     {
 		case 0: [item setName:anObject]; break;
