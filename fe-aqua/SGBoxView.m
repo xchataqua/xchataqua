@@ -17,7 +17,6 @@
 
 #define DEBUG_BOXVIEW NO
 
-#include <stdarg.h>
 #import "SGDebug.h"
 #import "SGBoxView.h"
 

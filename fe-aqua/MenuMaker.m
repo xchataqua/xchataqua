@@ -16,7 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
 /*
-	MenuMaker.mm
+	MenuMaker.m
 	Created by Camillo Lugaresi on 16/01/06.
 	
 	This class handles menu generation.
