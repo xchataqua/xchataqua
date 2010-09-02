@@ -85,7 +85,6 @@ static const char * strip_crap (const char *s)
 	return buff;
 }
 
-
 @implementation ChannelEntry
 @synthesize channel, numberOfUsersString, topic, numberOfUsers;
 
@@ -96,7 +95,7 @@ static const char * strip_crap (const char *s)
 	entry->numberOfUsersString = [user retain];
 	entry->size = NSZeroSize;
 	
-	entry->topic = [[mIRCString stringWithUTF8String:strip_crap([aTopic UTF8String]) len:-1 palette:palette font:nil boldFont:nil] retain];
+	entry->topic = [[mIRCString stringWithUTF8String:strip_crap([aTopic UTF8String]) length:-1 palette:palette font:nil boldFont:nil] retain];
 			
 	entry->numberOfUsers = [entry->numberOfUsersString integerValue];
 	

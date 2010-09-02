@@ -33,27 +33,27 @@
 
 - (id) initWithServer:(struct server *)aServ
 {
-    [super init];
+	[super init];
 
-    self->serv = aServ;
+	self->serv = aServ;
 	self->serv->gui->rawlog = self;
-    
-    [NSBundle loadNibNamed:@"RawLog" owner:self];
+	
+	[NSBundle loadNibNamed:@"RawLog" owner:self];
 
-    [rawLogView setServer:serv];
-    [rawLogView setTitle:[NSString stringWithFormat:NSLocalizedStringFromTable(@"XChat: Rawlog (%s)", @"xchat", @""), self->serv->servername]];
-    [rawLogView setTabTitle:NSLocalizedStringFromTable(@"rawlog", @"xchataqua", @"")];
-    [rawLogView setDelegate:self];
+	[rawLogView setServer:serv];
+	[rawLogView setTitle:[NSString stringWithFormat:NSLocalizedStringFromTable(@"XChat: Rawlog (%s)", @"xchat", @""), self->serv->servername]];
+	[rawLogView setTabTitle:NSLocalizedStringFromTable(@"rawlog", @"xchataqua", @"")];
+	[rawLogView setDelegate:self];
 
-    return self;
+	return self;
 }
 
 - (void) dealloc
 {
-    [rawLogView setDelegate:nil];
-    [rawLogView close];
-    [rawLogView autorelease];
-    [super dealloc];
+	[rawLogView setDelegate:nil];
+	[rawLogView close];
+	[rawLogView autorelease];
+	[super dealloc];
 }
 
 - (void) windowDidBecomeKey:(NSNotification *) xx
@@ -62,30 +62,30 @@
 
 - (void) windowWillClose:(NSNotification *) xx
 {
-    serv->gui->rawlog = nil;
-    [self release];
+	serv->gui->rawlog = nil;
+	[self release];
 }
 
 - (void) show
 {
-    if (prefs.windows_as_tabs)
-        [rawLogView becomeTabAndShow:YES];
-    else
-        [rawLogView becomeWindowAndShow:YES];
+	if (prefs.windows_as_tabs)
+		[rawLogView becomeTabAndShow:YES];
+	else
+		[rawLogView becomeWindowAndShow:YES];
 }
 
-- (void) log:(const char *) msg len:(NSInteger) len outbound:(BOOL) outbound
+- (void) log:(const char *) msg length:(NSInteger) len outbound:(BOOL) outbound
 {
 	NSString * s, * str;
 	if(msg[len-1]=='\n')
 		--len;
 	
-    s   = [[NSString alloc] initWithBytes:msg length:len encoding:NSUTF8StringEncoding];
+	s   = [[NSString alloc] initWithBytes:msg length:len encoding:NSUTF8StringEncoding];
 	str = [NSString stringWithFormat:@"%c %@\n", outbound ? '>' : '<', s];
 	[s release];
 
-    [logTextView replaceCharactersInRange:NSMakeRange([[logTextView textStorage] length], 0) withString:str];
-    [logTextView scrollRangeToVisible:NSMakeRange([[logTextView textStorage] length], 0)];
+	[logTextView replaceCharactersInRange:NSMakeRange([[logTextView textStorage] length], 0) withString:str];
+	[logTextView scrollRangeToVisible:NSMakeRange([[logTextView textStorage] length], 0)];
 }
 
 @end
