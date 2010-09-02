@@ -29,22 +29,22 @@ extern int dcc_sendcpssum;
 
 //////////////////////////////////////////////////////////////////////
 
-@interface OneDccSend : DCCFileItem
+@interface DccSendItem : DCCFileItem
 {
   @public
-    //struct DCC 		*dcc;
+	//struct DCC 		*dcc;
 	//unsigned char prev_dccstat;
-    
-    //NSMutableString	*status;
-    //NSMutableString	*file;
-    //NSMutableString	*size;
-    //NSMutableString	*position;
-    //NSMutableString	*per;
-    //NSMutableString	*kbs;
-    //NSMutableString	*eta;
+	
+	//NSMutableString	*status;
+	//NSMutableString	*file;
+	//NSMutableString	*size;
+	//NSMutableString	*position;
+	//NSMutableString	*per;
+	//NSMutableString	*kbs;
+	//NSMutableString	*eta;
 
-    NSMutableString	*ack;
-    NSMutableString	*to;
+	NSMutableString	*ack;
+	NSMutableString	*to;
 }
 
 - (id) initWithDCC:(struct DCC *) the_dcc;
@@ -52,33 +52,33 @@ extern int dcc_sendcpssum;
 
 @end
 
-@implementation OneDccSend
+@implementation DccSendItem
 
 - (id) initWithDCC:(struct DCC *) the_dcc
 {
 	[super initWithDCC:the_dcc];
 
-    ack = [[NSMutableString stringWithCapacity:0] retain];
-    to = [[NSMutableString stringWithCapacity:0] retain];
-    
-    [self update];
+	ack = [[NSMutableString stringWithCapacity:0] retain];
+	to = [[NSMutableString stringWithCapacity:0] retain];
+	
+	[self update];
    
-    return self;
+	return self;
 }
 
 - (void) dealloc
 {
-    [ack release];
-    [to release];
+	[ack release];
+	[to release];
 
-    [super dealloc];
+	[super dealloc];
 }
 
 - (void) update
 {
-    [super update];
-    [ack setString:[NSString stringWithFormat:@"%@", formatNumber (dcc->ack)]];
-    [to setString:[NSString stringWithUTF8String:dcc->nick]];
+	[super update];
+	[ack setString:[NSString stringWithFormat:@"%@", formatNumber (dcc->ack)]];
+	[to setString:[NSString stringWithUTF8String:dcc->nick]];
 }
 
 @end
@@ -89,15 +89,15 @@ extern int dcc_sendcpssum;
 
 - (id) init
 {
-    [super initWithNibNamed:@"DccSend"];
-    
-    return self;
+	[super initWithNibNamed:@"DccSend"];
+	
+	return self;
 }
 
 - (DCCItem *)itemWithDCC:(struct DCC *) dcc
 {
 	if (dcc->type != TYPE_SEND) return nil;
-	else return [[[OneDccSend alloc] initWithDCC:dcc] autorelease];
+	else return [[[DccSendItem alloc] initWithDCC:dcc] autorelease];
 }
 
 - (void) awakeFromNib
@@ -105,25 +105,25 @@ extern int dcc_sendcpssum;
 	cpssum = &dcc_sendcpssum;
 	[super awakeFromNib];
 
-    [dccListView setTitle:NSLocalizedStringFromTable(@"XChat: File Send List", @"xchataqua", @"")];
-    [dccListView setTabTitle:NSLocalizedStringFromTable(@"dccsend", @"xchataqua", @"")];
+	[dccListView setTitle:NSLocalizedStringFromTable(@"XChat: File Send List", @"xchataqua", @"")];
+	[dccListView setTabTitle:NSLocalizedStringFromTable(@"dccsend", @"xchataqua", @"")];
 }
 
 - (void) doInfo:(id) sender
 {
-    int row = [itemTableView selectedRow];
-    if (row >= 0)
-    {
-        OneDccSend *item = [myItems objectAtIndex:row];
+	int row = [itemTableView selectedRow];
+	if (row >= 0)
+	{
+		DccSendItem *item = [myItems objectAtIndex:row];
 
-        struct DCC *dcc = item->dcc;
+		struct DCC *dcc = item->dcc;
 
-        NSString *msg = [NSString stringWithFormat:NSLocalizedStringFromTable(@"      File: %s\n        To: %s\n      Size: %"DCC_SIZE_FMT"\n      Port: %d\n IP Number: %s\nStart Time: %s", @"xchataqua", @""),
-                                    dcc->file, dcc->nick, dcc->size, dcc->port,
-                                    net_ip (dcc->addr), ctime (&dcc->starttime)];
+		NSString *msg = [NSString stringWithFormat:NSLocalizedStringFromTable(@"	  File: %s\n		To: %s\n	  Size: %"DCC_SIZE_FMT"\n	  Port: %d\n IP Number: %s\nStart Time: %s", @"xchataqua", @""),
+									dcc->file, dcc->nick, dcc->size, dcc->port,
+									net_ip (dcc->addr), ctime (&dcc->starttime)];
 
-        [SGAlert noticeWithString:msg andWait:false];
-    }
+		[SGAlert noticeWithString:msg andWait:false];
+	}
 }
 
 - (NSString *)activeString
@@ -149,25 +149,25 @@ extern int dcc_sendcpssum;
 //
 
 - (id) tableView:(NSTableView *) aTableView
-    objectValueForTableColumn:(NSTableColumn *) aTableColumn
-    row:(NSInteger) rowIndex
+	objectValueForTableColumn:(NSTableColumn *) aTableColumn
+	row:(NSInteger) rowIndex
 {
-    OneDccSend *item = [myItems objectAtIndex:rowIndex];
+	DccSendItem *item = [myItems objectAtIndex:rowIndex];
 
-    switch ([[aTableColumn identifier] intValue])
-    {
-        case 0: return item->status;
-        case 1: return item->file;
-        case 2: return item->size;
-        case 3: return item->position;
-        case 4: return item->ack;
-        case 5: return item->per;
-        case 6: return item->kbs;
-        case 7: return item->eta;
-        case 8: return item->to;
-    }
-    
-    return @"";
+	switch ([[aTableColumn identifier] intValue])
+	{
+		case 0: return item->status;
+		case 1: return item->file;
+		case 2: return item->size;
+		case 3: return item->position;
+		case 4: return item->ack;
+		case 5: return item->per;
+		case 6: return item->kbs;
+		case 7: return item->eta;
+		case 8: return item->to;
+	}
+	
+	return @"";
 }
 
 @end

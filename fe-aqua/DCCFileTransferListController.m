@@ -21,42 +21,42 @@
 {
 	[super initWithDCC:aDcc];
 
-    file = [[NSMutableString stringWithCapacity:0] retain];
-    size = [[NSMutableString stringWithCapacity:0] retain];
-    position = [[NSMutableString stringWithCapacity:0] retain];
-    per = [[NSMutableString stringWithCapacity:0] retain];
-    kbs = [[NSMutableString stringWithCapacity:0] retain];
-    eta = [[NSMutableString stringWithCapacity:0] retain];
+	file = [[NSMutableString stringWithCapacity:0] retain];
+	size = [[NSMutableString stringWithCapacity:0] retain];
+	position = [[NSMutableString stringWithCapacity:0] retain];
+	per = [[NSMutableString stringWithCapacity:0] retain];
+	kbs = [[NSMutableString stringWithCapacity:0] retain];
+	eta = [[NSMutableString stringWithCapacity:0] retain];
    
-    return self;
+	return self;
 }
 
 - (void) dealloc
 {
-    [file release];
-    [size release];
-    [position release];
-    [per release];
-    [kbs release];
-    [eta release];
+	[file release];
+	[size release];
+	[position release];
+	[per release];
+	[kbs release];
+	[eta release];
 
-    [super dealloc];
+	[super dealloc];
 }
 
 - (void) update
 {
-    [super update];
-    [file setString:[NSString stringWithUTF8String:dcc->file]];
-    [size setString:[NSString stringWithFormat:@"%@", formatNumber (dcc->size)]];
-    [position setString:[NSString stringWithFormat:@"%@", formatNumber (dcc->pos)]];
-    [per setString:[NSString stringWithFormat:@"%.0f%%", floor((float) dcc->pos / dcc->size * 100.00)]];	// the floor is to ensure that the percent does not display 100% until the file is really finished
-    [kbs setString:[NSString stringWithFormat:@"%.1f", (float) dcc->cps / 1024]];
-    if (dcc->cps) {
-        int to_go = (dcc->size - dcc->ack) / dcc->cps;
-        [eta setString:[NSString stringWithFormat:@"%.2d:%.2d:%.2d", to_go / 3600, (to_go / 60) % 60, to_go % 60]];
-    }
-    else {
-        [eta setString:@"--:--:--"];
+	[super update];
+	[file setString:[NSString stringWithUTF8String:dcc->file]];
+	[size setString:[NSString stringWithFormat:@"%@", formatNumber (dcc->size)]];
+	[position setString:[NSString stringWithFormat:@"%@", formatNumber (dcc->pos)]];
+	[per setString:[NSString stringWithFormat:@"%.0f%%", floor((float) dcc->pos / dcc->size * 100.00)]];	// the floor is to ensure that the percent does not display 100% until the file is really finished
+	[kbs setString:[NSString stringWithFormat:@"%.1f", (float) dcc->cps / 1024]];
+	if (dcc->cps) {
+		int to_go = (dcc->size - dcc->ack) / dcc->cps;
+		[eta setString:[NSString stringWithFormat:@"%.2d:%.2d:%.2d", to_go / 3600, (to_go / 60) % 60, to_go % 60]];
+	}
+	else {
+		[eta setString:@"--:--:--"];
 	}
 }
 

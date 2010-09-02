@@ -80,9 +80,9 @@
 
 - (void) startTimer
 {
-	id<SGTableViewDataSource> dataSource = [self dataSource];
+	id<NSObject, SGTableViewDataSource> dataSource = [self dataSource];
 	BOOL do_fixups = [dataSource respondsToSelector:@selector(shouldDoSizeFixupsForTableView:)]
-				  && [datasource performSelector:@selector(shouldDoSizeFixupsForTableView:) withObject:self];
+				  && [dataSource performSelector:@selector(shouldDoSizeFixupsForTableView:) withObject:self];
 	if (!do_fixups) return;
 
 	if (!timer)

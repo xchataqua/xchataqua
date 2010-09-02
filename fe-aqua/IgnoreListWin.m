@@ -29,15 +29,15 @@
 
 @interface IgnoreListItem : NSObject
 {
-    struct ignore	*ign;
+	struct ignore	*ign;
 
-    NSString	*mask;
-    NSNumber	*ctcp;
-    NSNumber	*priv;
-    NSNumber	*chan;
-    NSNumber	*notice;
-    NSNumber	*invite;
-    NSNumber	*unignore;
+	NSString	*mask;
+	NSNumber	*ctcp;
+	NSNumber	*priv;
+	NSNumber	*chan;
+	NSNumber	*notice;
+	NSNumber	*invite;
+	NSNumber	*unignore;
 }
 
 @property (nonatomic, readonly) struct ignore *ign;
@@ -51,40 +51,40 @@
 
 - (id) initWithIgnore:(struct ignore *)aIgnore
 {
-    self->ign = aIgnore;
+	self->ign = aIgnore;
 
-    self.mask	= [NSString stringWithUTF8String:ign->mask];
-    self.ctcp	= [NSNumber numberWithBool:ign->type & IG_CTCP];
-    self.priv	= [NSNumber numberWithBool:ign->type & IG_PRIV];
-    self.chan	= [NSNumber numberWithBool:ign->type & IG_CHAN];
-    self.notice	= [NSNumber numberWithBool:ign->type & IG_NOTI];
-    self.invite	= [NSNumber numberWithBool:ign->type & IG_INVI];
-    self.unignore= [NSNumber numberWithBool:ign->type & IG_UNIG];
-    
-    return self;
+	self.mask	= [NSString stringWithUTF8String:ign->mask];
+	self.ctcp	= [NSNumber numberWithBool:ign->type & IG_CTCP];
+	self.priv	= [NSNumber numberWithBool:ign->type & IG_PRIV];
+	self.chan	= [NSNumber numberWithBool:ign->type & IG_CHAN];
+	self.notice	= [NSNumber numberWithBool:ign->type & IG_NOTI];
+	self.invite	= [NSNumber numberWithBool:ign->type & IG_INVI];
+	self.unignore= [NSNumber numberWithBool:ign->type & IG_UNIG];
+	
+	return self;
 }
 
 - (void) dealloc
 {
-    self.mask = nil;	
-    self.ctcp = nil;
-    self.priv = nil;
-    self.chan = nil;
-    self.notice = nil;
-    self.invite = nil;
-    self.unignore = nil;
-    
+	self.mask = nil;	
+	self.ctcp = nil;
+	self.priv = nil;
+	self.chan = nil;
+	self.notice = nil;
+	self.invite = nil;
+	self.unignore = nil;
+	
 	[super dealloc];
 }
 
 - (void) setBool:(BOOL)value forField:(id *)field type:(int)type
 {
-    [*field release];
-    *field = [[NSNumber alloc] initWithBool:value];
-    if (value)
-    	ign->type |= type;
-    else
-    	ign->type &= ~type;
+	[*field release];
+	*field = [[NSNumber alloc] initWithBool:value];
+	if (value)
+		ign->type |= type;
+	else
+		ign->type &= ~type;
 }
 
 - (void) setValue:(id)value forField:(int)field
@@ -102,7 +102,7 @@
 		case 4: [self setBool:[value boolValue] forField:&notice type:IG_NOTI];break;
 		case 5: [self setBool:[value boolValue] forField:&invite type:IG_INVI];break;
 		case 6: [self setBool:[value boolValue] forField:&unignore type:IG_UNIG];break;
-    }
+	}
 }
 
 @end
@@ -113,29 +113,29 @@
 
 - (id) initWithSelfPtr:(id *)self_ptr;
 {
-    [super initWithSelfPtr:self_ptr];
-    
-    myItems = [[NSMutableArray arrayWithCapacity:0] retain];
-    
-    [NSBundle loadNibNamed:@"IgnoreList" owner:self];
-    
-    return self;
+	[super initWithSelfPtr:self_ptr];
+	
+	myItems = [[NSMutableArray arrayWithCapacity:0] retain];
+	
+	[NSBundle loadNibNamed:@"IgnoreList" owner:self];
+	
+	return self;
 }
 
 - (void) dealloc
 {
-    [ignoreListView release];
-    [myItems release];
-    [super dealloc];
+	[ignoreListView release];
+	[myItems release];
+	[super dealloc];
 }
 
 - (void) updateStats
 {
-    [ignoredCtcpTextField setIntegerValue:ignored_ctcp];
-    [ignoredNoticeTextField setIntegerValue:ignored_noti];
-    [ignoredChannelTextField setIntegerValue:ignored_chan];
-    [ignoredInviteTextField setIntegerValue:ignored_invi];
-    [ignoredPrivateTextField setIntegerValue:ignored_priv];
+	[ignoredCtcpTextField setIntegerValue:ignored_ctcp];
+	[ignoredNoticeTextField setIntegerValue:ignored_noti];
+	[ignoredChannelTextField setIntegerValue:ignored_chan];
+	[ignoredInviteTextField setIntegerValue:ignored_invi];
+	[ignoredPrivateTextField setIntegerValue:ignored_priv];
 }
 
 - (void) loadData
@@ -180,9 +180,9 @@
 
 - (void) windowWillClose:(NSNotification *) xx
 {
-    ignore_save();
+	ignore_save();
 
-    [self release];
+	[self release];
 }
 
 - (NSInteger)find:(const char *)mask
@@ -191,8 +191,8 @@
 	{
 		if (rfc_casecmp (mask, ignoreItem.ign->mask) == 0)
 			return [myItems indexOfObject:ignoreItem];
-    }
-    return -1;
+	}
+	return -1;
 }
 
 - (void) doNew:(id) sender
@@ -213,32 +213,32 @@
 
 - (void) doDelete:(id) sender
 {
-    NSInteger row = [ignoreListTableView selectedRow];
-    if (row < 0) return;
+	NSInteger row = [ignoreListTableView selectedRow];
+	if (row < 0) return;
 
-    [[ignoreListTableView window] makeFirstResponder:ignoreListTableView];
+	[[ignoreListTableView window] makeFirstResponder:ignoreListTableView];
 
-    IgnoreListItem *item = [myItems objectAtIndex:row];
+	IgnoreListItem *item = [myItems objectAtIndex:row];
 
-    ignore_del (NULL, item.ign);	// This will call me back
+	ignore_del (NULL, item.ign);	// This will call me back
 
-    // item is gone when we get here
+	// item is gone when we get here
 }
 
 - (void) show
 {
-    if (prefs.windows_as_tabs)
-        [ignoreListView becomeTabAndShow:YES];
-    else
-        [ignoreListView becomeWindowAndShow:YES];
+	if (prefs.windows_as_tabs)
+		[ignoreListView becomeTabAndShow:YES];
+	else
+		[ignoreListView becomeWindowAndShow:YES];
 }
 
 - (void) update:(int)level
 {
-    if (level == 1)
-        [self loadData];
-    else if (level == 2)
-        [self updateStats];
+	if (level == 1)
+		[self loadData];
+	else if (level == 2)
+		[self updateStats];
 }
 
 //////////////
@@ -246,35 +246,35 @@
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
-    return [myItems count];
+	return [myItems count];
 }
 
 - (id) tableView:(NSTableView *) aTableView
-    objectValueForTableColumn:(NSTableColumn *) aTableColumn
-    row:(NSInteger) rowIndex
+	objectValueForTableColumn:(NSTableColumn *) aTableColumn
+	row:(NSInteger) rowIndex
 {
-    IgnoreListItem *item = [myItems objectAtIndex:rowIndex];
+	IgnoreListItem *item = [myItems objectAtIndex:rowIndex];
 
-    switch ([[aTableColumn identifier] intValue])
-    {
-        case 0: return item.mask;
-        case 1: return item.ctcp;
-        case 2: return item.priv;
-        case 3: return item.chan;
-        case 4: return item.notice;
-        case 5: return item.invite;
-        case 6: return item.unignore;
-    }
-    
-    return @"";
+	switch ([[aTableColumn identifier] intValue])
+	{
+		case 0: return item.mask;
+		case 1: return item.ctcp;
+		case 2: return item.priv;
+		case 3: return item.chan;
+		case 4: return item.notice;
+		case 5: return item.invite;
+		case 6: return item.unignore;
+	}
+	
+	return @"";
 }
 
 - (void) tableView:(NSTableView *) aTableView
-    setObjectValue:(id) anObject
-    forTableColumn:(NSTableColumn *) aTableColumn
-               row:(NSInteger)rowIndex
+	setObjectValue:(id) anObject
+	forTableColumn:(NSTableColumn *) aTableColumn
+			   row:(NSInteger)rowIndex
 {
-    [[myItems objectAtIndex:rowIndex] setValue:anObject forField:[[aTableColumn identifier] integerValue]];
+	[[myItems objectAtIndex:rowIndex] setValue:anObject forField:[[aTableColumn identifier] integerValue]];
 }
 
 @end

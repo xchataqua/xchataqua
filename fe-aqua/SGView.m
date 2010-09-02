@@ -438,10 +438,11 @@ static void noDisplay (NSView *v)
 	if ([self findViewFor:subview] == nil)
 		[metaViews addObject:[self newMetaView:subview]];
 
-	[subview setPostsFrameChangedNotifications:true];
-	[[NSNotificationCenter defaultCenter] addObserver:self 
-		selector:@selector (subview_did_resize:)
-		name:NSViewFrameDidChangeNotification object:subview];
+		[subview setPostsFrameChangedNotifications:true];
+		[[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector (subview_did_resize:)
+													 name:NSViewFrameDidChangeNotification
+												   object:subview];
 	
 	if (auto_size_to_fit)
 		needs_size_to_fit = YES;
@@ -452,7 +453,8 @@ static void noDisplay (NSView *v)
 - (void) willRemoveSubview:(NSView *) subview
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self
-		name:NSViewFrameDidChangeNotification object:subview];
+													name:NSViewFrameDidChangeNotification 
+												  object:subview];
 
 	[super willRemoveSubview:subview];
 

@@ -27,8 +27,8 @@
 
 - (id) init
 {
-    [super initWithList:&dlgbutton_list filename:@"dlgbuttons.conf" title:NSLocalizedStringFromTable(@"XChat: Dialog buttons", @"xchat", @"")];
-    return self;
+	[super initWithList:&dlgbutton_list filename:@"dlgbuttons.conf" title:NSLocalizedStringFromTable(@"XChat: Dialog buttons", @"xchat", @"")];
+	return self;
 }
 
 - (void) doSave:(id) sender

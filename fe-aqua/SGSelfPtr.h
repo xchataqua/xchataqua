@@ -17,7 +17,7 @@
 
 @interface SGSelfPtr : NSObject
 {
-    id	*ptr;
+	id	*ptr;
 }
 
 - (id) initWithSelfPtr:(id *) self_ptr;

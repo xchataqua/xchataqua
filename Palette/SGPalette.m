@@ -18,13 +18,14 @@
 
 #import "SGPalette.h"
 
-
 @implementation SGPalette
+
 - (NSArray *)libraryNibNames {
-    return [NSArray arrayWithObject:@"SGPalette"];
+	return [NSArray arrayWithObject:@"SGPalette"];
 }
 
 -(NSString *)label {
 	return @"SGPalette";
 }
+
 @end

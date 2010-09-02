@@ -24,8 +24,8 @@
 
 - (id) init
 {
-    [super initWithList:&urlhandler_list filename:@"urlhandlers.conf" title:NSLocalizedStringFromTable(@"XChat: URL Handlers", @"xchat", "Title of Window: MainMenu->X-Chat Aqua->References Lists->URL Handler...")];
-    return self;
+	[super initWithList:&urlhandler_list filename:@"urlhandlers.conf" title:NSLocalizedStringFromTable(@"XChat: URL Handlers", @"xchat", "Title of Window: MainMenu->X-Chat Aqua->References Lists->URL Handler...")];
+	return self;
 }
 
 @end

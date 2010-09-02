@@ -44,7 +44,7 @@ static NSString *charsets[] =
 	@"CP1256 (Arabic)",
 	@"CP1257 (Baltic)",
 	@"GB18030 (Chinese)",
-    NULL
+	NULL
 };
 
 //////////////////////////////////////////////////////////////////////
@@ -95,9 +95,9 @@ static NSString *charsets[] =
 @interface OneServer : NSObject
 {
   @public
-    ircserver	*svr;
-    NSString	*server;
-    NSString	*port;
+	ircserver	*svr;
+	NSString	*server;
+	NSString	*port;
 	BOOL		ssl;
 }
 
@@ -112,40 +112,40 @@ static NSString *charsets[] =
 
 - (id) initWithServer:(ircserver *) the_svr
 {
-    svr = the_svr;
+	svr = the_svr;
 	
-    const char *the_server = svr->hostname;
-    const char *slash = strchr(the_server, '/');
-    
-    const char *the_port;
-    
-    if (slash)
-    {
-        int len = slash - the_server;
+	const char *the_server = svr->hostname;
+	const char *slash = strchr(the_server, '/');
+	
+	const char *the_port;
+	
+	if (slash)
+	{
+		int len = slash - the_server;
 		self->server = [[NSString alloc] initWithBytes:the_server length:len encoding:NSUTF8StringEncoding];
-        the_port = slash + 1;
+		the_port = slash + 1;
 	}
-    else
-    {
+	else
+	{
 		self->server = [[NSString stringWithUTF8String:the_server] retain];
 		the_port = "";
-    }
+	}
 
 	if (ssl = (*the_port == '+'))
 	{
 		the_port++;
 	}
-    
-    self->port = [[NSString stringWithUTF8String:the_port] retain];
-    	
-    return self;
+	
+	self->port = [[NSString stringWithUTF8String:the_port] retain];
+		
+	return self;
 }
 
 - (void) dealloc
 {
-    [self->server release];
-    [self->port release];
-    [super dealloc];
+	[self->server release];
+	[self->port release];
+	[super dealloc];
 }
 
 - (void) setServerHost
@@ -154,21 +154,21 @@ static NSString *charsets[] =
 	NSString *hostName = self->server;
 	if ( [port length] > 0 )
 		[hostName stringByAppendingFormat:@"/%@%@", ssl ? @"+" : @"", self->port];
-    svr->hostname = strdup ([hostName UTF8String]);
+	svr->hostname = strdup ([hostName UTF8String]);
 }
 
 - (void) setServer:(NSString *) new_name
 {
-    [self->server release];
-    self->server = [new_name retain];
-    [self setServerHost];
+	[self->server release];
+	self->server = [new_name retain];
+	[self setServerHost];
 }
 
 - (void) setPort:(NSString *) new_port
 {
-    [self->port release];
-    self->port = [new_port retain];
-    [self setServerHost];
+	[self->port release];
+	self->port = [new_port retain];
+	[self setServerHost];
 }
 
 - (BOOL) setSSL:(NSNumber *) new_ssl
@@ -188,11 +188,11 @@ static NSString *charsets[] =
 @interface OneNetwork : NSObject
 {
   @public
-    NSMutableString	*name;
-    NSMutableArray	*servers;
+	NSMutableString	*name;
+	NSMutableArray	*servers;
 	NSMutableArray	*channels;
 	NSMutableArray	*connectCommands;
-    ircnet			*net;
+	ircnet			*net;
 }
 
 - (id) initWithIrcnet:(ircnet *)ircnet;
@@ -255,32 +255,32 @@ static NSString *charsets[] =
 
 - (id) initWithIrcnet:(ircnet *) ircnet
 {
-    self->net = ircnet;
-    
-    name = [[NSMutableString stringWithUTF8String:ircnet->name] retain];
-    servers = [[NSMutableArray arrayWithCapacity:0] retain];
+	self->net = ircnet;
+	
+	name = [[NSMutableString stringWithUTF8String:ircnet->name] retain];
+	servers = [[NSMutableArray arrayWithCapacity:0] retain];
 	channels = [[NSMutableArray arrayWithCapacity:0] retain];
 	connectCommands = [[NSMutableArray arrayWithCapacity:0] retain];
 
-    for (GSList *list = net->servlist; list; list = list->next)
-    {
-        ircserver *svr = (ircserver *) list->data;
-        [self addServer:svr];
-    }
-    
+	for (GSList *list = net->servlist; list; list = list->next)
+	{
+		ircserver *svr = (ircserver *) list->data;
+		[self addServer:svr];
+	}
+	
 	[self parseAutojoin];
 	[self parseCommands];
 
-    return self;
+	return self;
 }
 
 - (void) dealloc
 {
-    [name release];
-    [servers release];
+	[name release];
+	[servers release];
 	[channels release];
 	[connectCommands release];
-    [super dealloc];
+	[super dealloc];
 }
 
 - (void) resetCommands
@@ -355,7 +355,7 @@ static NSString *charsets[] =
 
 - (void) addServer:(ircserver *) svr
 {
-    [servers addObject:[[OneServer alloc] initWithServer:svr]];
+	[servers addObject:[[OneServer alloc] initWithServer:svr]];
 }
 
 - (NSString *) name
@@ -365,10 +365,10 @@ static NSString *charsets[] =
 
 - (void) setName:(NSString *)aName
 {
-    [name release];
-    name = [aName retain];
-    free(net->name);
-    net->name = strdup([aName UTF8String]);
+	[name release];
+	name = [aName retain];
+	free(net->name);
+	net->name = strdup([aName UTF8String]);
 }
 
 - (void) setAutoconnect:(BOOL) new_val
@@ -407,9 +407,9 @@ static ServerList *instance;
 
 - (void) showForSession:(session *) sess
 {
-    self->servlistSession = sess;
-    
-    [[nick1TextField window] makeKeyAndOrderFront:self];
+	self->servlistSession = sess;
+	
+	[[nick1TextField window] makeKeyAndOrderFront:self];
 }
 
 + (void) showForSession:(session *) sess
@@ -422,62 +422,62 @@ static ServerList *instance;
 
 - (id) init
 {
-    [super init];
-        
-    [NSBundle loadNibNamed:@"ServerList" owner:self];
+	[super init];
+		
+	[NSBundle loadNibNamed:@"ServerList" owner:self];
 
-    return self;
+	return self;
 }
 
 - (void) dealloc
 {
-    [AquaChat sharedAquaChat]->server_list = nil;
-    
-    [[nick1TextField window] release];
-    [myNetworks release];
-    [allNetworks release];
-    
-    [super dealloc];
+	[AquaChat sharedAquaChat]->server_list = nil;
+	
+	[[nick1TextField window] release];
+	[myNetworks release];
+	[allNetworks release];
+	
+	[super dealloc];
 }
 
 - (void) saveGUI
 {
-    [[nick1TextField window] makeFirstResponder:nick1TextField];
-    
-    strcpy (prefs.nick1, [[nick1TextField stringValue] UTF8String]);
-    strcpy (prefs.nick2, [[nick2TextField stringValue] UTF8String]);
-    strcpy (prefs.nick3, [[nick3TextField stringValue] UTF8String]);
-    strcpy (prefs.username, [[usernameTextField stringValue] UTF8String]);
-    strcpy (prefs.realname, [[realnameTextField stringValue] UTF8String]);
+	[[nick1TextField window] makeFirstResponder:nick1TextField];
+	
+	strcpy (prefs.nick1, [[nick1TextField stringValue] UTF8String]);
+	strcpy (prefs.nick2, [[nick2TextField stringValue] UTF8String]);
+	strcpy (prefs.nick3, [[nick3TextField stringValue] UTF8String]);
+	strcpy (prefs.username, [[usernameTextField stringValue] UTF8String]);
+	strcpy (prefs.realname, [[realnameTextField stringValue] UTF8String]);
 
-    servlist_save ();
+	servlist_save ();
 }
 
 - (void) doConnect:(id) sender
 {
-    NSInteger row = [networkTableView selectedRow];
-    if (row < 0)
-        return;
+	NSInteger row = [networkTableView selectedRow];
+	if (row < 0)
+		return;
 
-    [self saveGUI];
+	[self saveGUI];
 
-    OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
+	OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
 
-    if (sender == connectNewButton || !is_session (servlistSession))
-        servlistSession = NULL;
+	if (sender == connectNewButton || !is_session (servlistSession))
+		servlistSession = NULL;
 
-    net->net->selected = [networkServerTableView selectedRow];	// This kinda stinks. Boo Peter!
-                                                        // Why can't it be an arg to
-                                                        // servlist_connect!?
-    servlist_connect (servlistSession, net->net, true);
+	net->net->selected = [networkServerTableView selectedRow];	// This kinda stinks. Boo Peter!
+														// Why can't it be an arg to
+														// servlist_connect!?
+	servlist_connect (servlistSession, net->net, true);
 
-    [[nick1TextField window] orderOut:sender];
+	[[nick1TextField window] orderOut:sender];
 }
 
 - (void) doSetFlag:(id) sender
 {
-    NSInteger row = [networkTableView selectedRow];
-    if (row >= 0)
+	NSInteger row = [networkTableView selectedRow];
+	if (row >= 0)
 	{
 		OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
 
@@ -500,8 +500,8 @@ static ServerList *instance;
 
 - (void) doSetField:(id) sender
 {
-    NSInteger row = [networkTableView selectedRow];
-    if (row >= 0)
+	NSInteger row = [networkTableView selectedRow];
+	if (row >= 0)
 	{
 		OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
 
@@ -517,9 +517,9 @@ static ServerList *instance;
 {
 	// Grab values from the GUI and replace in struct ircnet.
 	// NOTE: struct ircserver is still edited in real time.
-    NSInteger row = [networkTableView selectedRow];
-    if (row >= 0)
-    {
+	NSInteger row = [networkTableView selectedRow];
+	if (row >= 0)
+	{
 		OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
 
 		//set_text_value (net_join, &net->net->autojoin);
@@ -550,12 +550,12 @@ static ServerList *instance;
 	[showDetailButton setIntValue:0];
 	[self showDetail:showDetailButton];
 	
-    [self saveGUI];
+	[self saveGUI];
 }
 
 - (void) toggleShowWhenStartup:(id) sender
 {
-    prefs.slist_skip = ![sender intValue];
+	prefs.slist_skip = ![sender intValue];
 }
 
 - (void) doClose:(id) sender
@@ -565,12 +565,12 @@ static ServerList *instance;
 
 - (void) toggleCustomUserInformation:(id) sender
 {
-    bool doit = [sender intValue];
-    
-    [networkNicknameTextField setEnabled:doit];
-    [networkNickname2TextField setEnabled:doit];
-    [networkRealnameTextField setEnabled:doit];
-    [networkUsernameTextField setEnabled:doit];
+	bool doit = [sender intValue];
+	
+	[networkNicknameTextField setEnabled:doit];
+	[networkNickname2TextField setEnabled:doit];
+	[networkRealnameTextField setEnabled:doit];
+	[networkUsernameTextField setEnabled:doit];
 	
 	[self doSetFlag:networkUseCustomInformationToggleButton];
 }
@@ -608,8 +608,8 @@ static ServerList *instance;
 
 - (void) populateEditor
 {
-    NSInteger row = [self->networkTableView selectedRow];
-    if (row < 0)
+	NSInteger row = [self->networkTableView selectedRow];
+	if (row < 0)
 		return;
 
 	OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
@@ -663,7 +663,7 @@ static ServerList *instance;
 	NSInteger nrow = [networkTableView selectedRow];
 	if (nrow < 0)
 		return;
-        
+		
 	OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:nrow];
 
 	OneChannel *chan = [[OneChannel alloc] initWithChannel:NSLocalizedStringFromTable(@"NEW CHANNEL", @"xchataqua", @"Default channel name: MainMenu->File->Server List... => (Select server)->On Join->channels->'+'")];
@@ -671,7 +671,7 @@ static ServerList *instance;
 	
 	[networkJoinTableView reloadData];
 	
-	NSInteger last = [net->channels count] - 1;    
+	NSInteger last = [net->channels count] - 1;	
 	[networkJoinTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:last] byExtendingSelection:NO];
 	[networkJoinTableView scrollRowToVisible:last];
 	[networkJoinTableView editColumn:0 row:last withEvent:nil select:YES];
@@ -681,15 +681,15 @@ static ServerList *instance;
 {
 	[networkJoinTableView abortEditing];
 
-    NSInteger nrow = [networkTableView selectedRow];
-    if (nrow < 0)
-        return;
+	NSInteger nrow = [networkTableView selectedRow];
+	if (nrow < 0)
+		return;
 
-    OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:nrow];
+	OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:nrow];
 
-    NSInteger crow = [networkJoinTableView selectedRow];
-    if (crow < 0)
-        return;
+	NSInteger crow = [networkJoinTableView selectedRow];
+	if (crow < 0)
+		return;
 
 	[net->channels removeObjectAtIndex:crow];
 	[networkJoinTableView reloadData];
@@ -701,14 +701,14 @@ static ServerList *instance;
 {
 	NSInteger nrow = [networkTableView selectedRow];
 	if (nrow < 0) return;
-        
+		
 	OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:nrow];
 
 	[net->connectCommands addObject:NSLocalizedStringFromTable(@"NEW COMMAND", @"xchataqua", @"Default command: MainMenu->File->Server List... => (Select server)->On Join->commands->'+'")];
 	
 	[networkCommandTableView reloadData];
 	
-	NSInteger last = [net->connectCommands count] - 1;    
+	NSInteger last = [net->connectCommands count] - 1;	
 	[networkCommandTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:last] byExtendingSelection:NO];
 	[networkCommandTableView scrollRowToVisible:last];
 	[networkCommandTableView editColumn:0 row:last withEvent:nil select:YES];
@@ -718,15 +718,15 @@ static ServerList *instance;
 {
 	[networkCommandTableView abortEditing];
 
-    NSInteger nrow = [networkTableView selectedRow];
-    if (nrow < 0)
-        return;
+	NSInteger nrow = [networkTableView selectedRow];
+	if (nrow < 0)
+		return;
 
-    OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:nrow];
+	OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:nrow];
 
-    NSInteger crow = [networkCommandTableView selectedRow];
-    if (crow < 0)
-        return;
+	NSInteger crow = [networkCommandTableView selectedRow];
+	if (crow < 0)
+		return;
 
 	[net->connectCommands removeObjectAtIndex:crow];
 	[networkCommandTableView reloadData];
@@ -738,25 +738,25 @@ static ServerList *instance;
 {
 	[networkServerTableView abortEditing];
 
-    NSInteger nrow = [networkTableView selectedRow];
-    if (nrow < 0)
-        return;
+	NSInteger nrow = [networkTableView selectedRow];
+	if (nrow < 0)
+		return;
 
-    NSInteger srow = [networkServerTableView selectedRow];
-    if (srow < 0)
-        return;
-        
-    OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:nrow];
-    
-    if (g_slist_length (net->net->servlist) < 2)
-        return;
-                
-    [net->servers removeObjectAtIndex:srow];
-    
-    ircserver *serv = (ircserver *) g_slist_nth (net->net->servlist, srow)->data;
-    servlist_server_remove (net->net, serv);
-    
-    [networkServerTableView reloadData];
+	NSInteger srow = [networkServerTableView selectedRow];
+	if (srow < 0)
+		return;
+		
+	OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:nrow];
+	
+	if (g_slist_length (net->net->servlist) < 2)
+		return;
+				
+	[net->servers removeObjectAtIndex:srow];
+	
+	ircserver *serv = (ircserver *) g_slist_nth (net->net->servlist, srow)->data;
+	servlist_server_remove (net->net, serv);
+	
+	[networkServerTableView reloadData];
 }
 
 - (void) doEditServer:(id) sender
@@ -773,20 +773,20 @@ static ServerList *instance;
 {
   NSInteger nrow = [networkTableView selectedRow];
   if (nrow < 0)
-    return;
+	return;
 
   NSInteger srow = [networkServerTableView selectedRow];
   if (srow < 0)
-    return;
-        
+	return;
+		
   OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:nrow];
 	
   ircserver *svr = servlist_server_add (net->net, "NewServer");
-    
+	
   [net addServer:svr];
   [networkServerTableView reloadData];
-    
-  NSInteger last = [net->servers count] - 1;    
+	
+  NSInteger last = [net->servers count] - 1;	
   [networkServerTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:last] byExtendingSelection:NO];
   [networkServerTableView scrollRowToVisible:last];
 	
@@ -809,19 +809,19 @@ static ServerList *instance;
 {
 	[networkTableView abortEditing];
 
-    NSInteger row = [networkTableView selectedRow];
-    if (row < 0)
-        return;
-    
-    OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
+	NSInteger row = [networkTableView selectedRow];
+	if (row < 0)
+		return;
+	
+	OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
 
-    if (![SGAlert confirmWithString:[NSString stringWithFormat:
+	if (![SGAlert confirmWithString:[NSString stringWithFormat:
 		NSLocalizedStringFromTable(@"Really remove network \"%@\" and all its servers?", @"xchat", @"Dialog Message from clicking '-' of MainMenu->File->Server List..."), net->name]])
 		return;
-    
-    servlist_net_remove (net->net);
-    [myNetworks removeObjectAtIndex:row];
-    [networkTableView reloadData];
+	
+	servlist_net_remove (net->net);
+	[myNetworks removeObjectAtIndex:row];
+	[networkTableView reloadData];
 }
 
 - (void) doFilter:(id) sender
@@ -847,8 +847,8 @@ static ServerList *instance;
 				[myNetworks addObject:net];
 		}
 	}
-    
-    [networkTableView reloadData];
+	
+	[networkTableView reloadData];
 	
 	// Simulate new selection
 	[self tableViewSelectionDidChange:[NSNotification notificationWithName:@"dummy" object:networkTableView]];
@@ -859,37 +859,37 @@ static ServerList *instance;
 	[myNetworks release];
 	[allNetworks release];
 	
-    allNetworks = [[NSMutableArray arrayWithCapacity:0] retain];
+	allNetworks = [[NSMutableArray arrayWithCapacity:0] retain];
 	myNetworks = [allNetworks retain];
 
-    for (GSList *list = network_list; list; list = list->next)
-    {
-        ircnet *net = (ircnet *) list->data;
+	for (GSList *list = network_list; list; list = list->next)
+	{
+		ircnet *net = (ircnet *) list->data;
 		[myNetworks addObject:[[OneNetwork alloc] initWithIrcnet:net]];
-    }
-    
-    [networkTableView reloadData];
+	}
+	
+	[networkTableView reloadData];
 }
 
 - (void) populate
 {
-    [nick1TextField setStringValue:[NSString stringWithUTF8String:prefs.nick1]];
-    [nick2TextField setStringValue:[NSString stringWithUTF8String:prefs.nick2]];
-    [nick3TextField setStringValue:[NSString stringWithUTF8String:prefs.nick3]];
-    [realnameTextField setStringValue:[NSString stringWithUTF8String:prefs.realname]];
-    [usernameTextField setStringValue:[NSString stringWithUTF8String:prefs.username]];
+	[nick1TextField setStringValue:[NSString stringWithUTF8String:prefs.nick1]];
+	[nick2TextField setStringValue:[NSString stringWithUTF8String:prefs.nick2]];
+	[nick3TextField setStringValue:[NSString stringWithUTF8String:prefs.nick3]];
+	[realnameTextField setStringValue:[NSString stringWithUTF8String:prefs.realname]];
+	[usernameTextField setStringValue:[NSString stringWithUTF8String:prefs.username]];
 
-    [showWhenStartupToggleButton setIntValue:!prefs.slist_skip];
+	[showWhenStartupToggleButton setIntValue:!prefs.slist_skip];
 	
 	[self populateNetworks];
-}    
+}	
 
 - (void) makeCharsetMenu
 {
-    for (NSString **c = charsets; *c; c ++)
-    {
-        [charsetComboBox addItemWithObjectValue:*c];
-    }
+	for (NSString **c = charsets; *c; c ++)
+	{
+		[charsetComboBox addItemWithObjectValue:*c];
+	}
 }
 
 - (void) awakeFromNib
@@ -943,7 +943,7 @@ static ServerList *instance;
 	[self->networkTableView setDataSource:self];
 	[self->networkTableView setDelegate:self];
 	[self->networkTableView setAutosaveTableColumns:YES];
-    
+	
 	[networkAutoConnectToggleButton setTag:FLAG_AUTO_CONNECT];
 	[networkUseCustomInformationToggleButton setTag:~FLAG_USE_GLOBAL];
 	[networkUseProxyToggleButton setTag:~FLAG_USE_PROXY];
@@ -959,13 +959,13 @@ static ServerList *instance;
 	[networkNickservPasswordTextField setTag:STRUCT_OFFSET_STR(ircnet, nickserv)];
 	[charsetComboBox setTag:STRUCT_OFFSET_STR(ircnet, encoding)];
 
-    // We gotta do a reloadData in order to change the selection, but reload
-    // data will call selectionDidChange and thus set prefs.slist_select.  We'll
-    // save the value of prefs.slist_select now, and reset the selection after
-    // the first reloadData.
-    
+	// We gotta do a reloadData in order to change the selection, but reload
+	// data will call selectionDidChange and thus set prefs.slist_select.  We'll
+	// save the value of prefs.slist_select now, and reset the selection after
+	// the first reloadData.
+	
 	NSInteger slist_select = prefs.slist_select;
-    
+	
 	[self makeCharsetMenu];
 	[self populate];
 
@@ -981,9 +981,8 @@ static ServerList *instance;
 	[[nick1TextField window] center];
 }
 
-//
-// Table delegates
-//
+#pragma mark -
+#pragma mark table view protocols
 
 - (void) tableViewSelectionDidChange:(NSNotification *) notification
 {
@@ -991,7 +990,7 @@ static ServerList *instance;
 	if (row < 0)
 		return;
 		
-    if ([notification object] == networkTableView)
+	if ([notification object] == networkTableView)
 	{
 		// Figure out what was selected from the allNetworks
 		id selected = [myNetworks objectAtIndex:row];
@@ -1001,16 +1000,16 @@ static ServerList *instance;
 	}
 	else if ([notification object] == networkServerTableView)
 	{
-	    OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
+		OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
 		net->net->selected = [networkServerTableView selectedRow];
 	}
 }
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
-    if (aTableView == networkTableView)
-        return [myNetworks count];
-    
+	if (aTableView == networkTableView)
+		return [myNetworks count];
+	
 	if (aTableView == networkServerTableView)
 	{
 		NSInteger row = [self->networkTableView selectedRow];
@@ -1048,7 +1047,7 @@ static ServerList *instance;
 {
 	NSInteger col = [[aTableColumn identifier] integerValue];
 	
-    if (aTableView == networkTableView)
+	if (aTableView == networkTableView)
 	{
 		OneNetwork *net =[myNetworks objectAtIndex:rowIndex];
 		
@@ -1102,19 +1101,19 @@ static ServerList *instance;
 		OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:row];
 		return [net->connectCommands objectAtIndex:rowIndex];
 	}
-    
-    return @"";
+	
+	return @"";
 }
 
 - (void) tableView:(NSTableView *) aTableView
-    setObjectValue:(id) anObject
-    forTableColumn:(NSTableColumn *) aTableColumn 
-               row:(NSInteger)rowIndex
+	setObjectValue:(id) anObject
+	forTableColumn:(NSTableColumn *) aTableColumn 
+			   row:(NSInteger)rowIndex
 {
 	NSInteger col = [[aTableColumn identifier] integerValue];
 	
-    if (aTableView == networkTableView)
-    {
+	if (aTableView == networkTableView)
+	{
 		OneNetwork *net =[myNetworks objectAtIndex:rowIndex];
 
 		switch (col)
@@ -1128,64 +1127,63 @@ static ServerList *instance;
 			case 2:
 				[net setName:anObject];
 		}
-    }
-    else if (aTableView == networkServerTableView)
-    {
+	}
+	else if (aTableView == networkServerTableView)
+	{
 		if ([networkTableView selectedRow] < 0)
 			return;
 
-        OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:[networkTableView selectedRow]];
-        OneServer *svr = (OneServer *) [net->servers objectAtIndex:rowIndex];
-        switch (col)
-        {
-            case 0: 
-                [svr setServer:anObject];
-                break;
-            case 1:
-                [svr setPort:anObject];
-                break;
-            case 2:
+		OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:[networkTableView selectedRow]];
+		OneServer *svr = (OneServer *) [net->servers objectAtIndex:rowIndex];
+		switch (col)
+		{
+			case 0: 
+				[svr setServer:anObject];
+				break;
+			case 1:
+				[svr setPort:anObject];
+				break;
+			case 2:
 			{
-                bool needReload = [svr setSSL:anObject];
+				bool needReload = [svr setSSL:anObject];
 				if (needReload)
 					[networkServerTableView reloadData];
-                break;
+				break;
 			}
-        }
-    }
-    else if (aTableView == networkJoinTableView)
-    {
+		}
+	}
+	else if (aTableView == networkJoinTableView)
+	{
 		if ([networkTableView selectedRow] < 0)
 			return;
 
-        OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:[networkTableView selectedRow]];
+		OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:[networkTableView selectedRow]];
 		OneChannel *chan = (OneChannel *) [net->channels objectAtIndex:rowIndex];
-        switch (col)
-        {
-            case 0: 
-                [chan setChannel:anObject];
-                break;
-            case 1:
-                [chan setKey:anObject];
-                break;
-        }
+		switch (col)
+		{
+			case 0: 
+				[chan setChannel:anObject];
+				break;
+			case 1:
+				[chan setKey:anObject];
+				break;
+		}
 		[net resetAutojoin];
-    }
-    else if (aTableView == networkCommandTableView)
-    {
+	}
+	else if (aTableView == networkCommandTableView)
+	{
 		if ([networkTableView selectedRow] < 0)
 			return;
 
-        OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:[networkTableView selectedRow]];
+		OneNetwork *net = (OneNetwork *) [myNetworks objectAtIndex:[networkTableView selectedRow]];
 		[net->connectCommands replaceObjectAtIndex:rowIndex withObject:anObject];
 		[net resetCommands];
-    }
+	}
 }
 
-- (void) tableView:(NSTableView *) aTableView
-	didClickTableColumn:(NSTableColumn *) aTableColumn
+- (void) tableView:(NSTableView *) aTableView didClickTableColumn:(NSTableColumn *) aTableColumn
 {
-    if (aTableView == networkTableView)
+	if (aTableView == networkTableView)
 	{
 		NSArray *descs = [aTableView sortDescriptors];
 		[myNetworks sortUsingDescriptors:descs];

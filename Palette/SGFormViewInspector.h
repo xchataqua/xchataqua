@@ -26,19 +26,19 @@
 
 @interface SGFormViewInspector : IBInspector
 {
-    IBOutlet NSPopUpButton *bottomConnectionMenu;
-    IBOutlet NSTextField *bottomOffsetText;
-    IBOutlet NSPopUpButton *bottomRelativeMenu;
-    IBOutlet NSTextField *identifierText;
-    IBOutlet NSPopUpButton *leftConnectionMenu;
-    IBOutlet NSTextField *leftOffsetText;
-    IBOutlet NSPopUpButton *leftRelativeMenu;
-    IBOutlet NSPopUpButton *rightConnectionMenu;
-    IBOutlet NSTextField *rightOffsetText;
-    IBOutlet NSPopUpButton *rightRelativeMenu;
-    IBOutlet NSPopUpButton *topConnectionMenu;
-    IBOutlet NSTextField *topOffsetText;
-    IBOutlet NSPopUpButton *topRelativeMenu;
+	IBOutlet NSPopUpButton *bottomConnectionMenu;
+	IBOutlet NSTextField *bottomOffsetText;
+	IBOutlet NSPopUpButton *bottomRelativeMenu;
+	IBOutlet NSTextField *identifierText;
+	IBOutlet NSPopUpButton *leftConnectionMenu;
+	IBOutlet NSTextField *leftOffsetText;
+	IBOutlet NSPopUpButton *leftRelativeMenu;
+	IBOutlet NSPopUpButton *rightConnectionMenu;
+	IBOutlet NSTextField *rightOffsetText;
+	IBOutlet NSPopUpButton *rightRelativeMenu;
+	IBOutlet NSPopUpButton *topConnectionMenu;
+	IBOutlet NSTextField *topOffsetText;
+	IBOutlet NSPopUpButton *topRelativeMenu;
 	
 	NSPopUpButton *connectionMenus [SGFormViewEdgeCount];
 	NSPopUpButton *relativeMenus [SGFormViewEdgeCount];

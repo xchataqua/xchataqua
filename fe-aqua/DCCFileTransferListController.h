@@ -13,13 +13,13 @@
 @interface DCCFileItem : DCCItem
 {
   @public
-    //NSMutableString	*status;
-    NSMutableString	*file;
-    NSMutableString	*size;
-    NSMutableString	*position;
-    NSMutableString	*per;
-    NSMutableString	*kbs;
-    NSMutableString	*eta;
+	//NSMutableString	*status;
+	NSMutableString	*file;
+	NSMutableString	*size;
+	NSMutableString	*position;
+	NSMutableString	*per;
+	NSMutableString	*kbs;
+	NSMutableString	*eta;
 }
 
 @end

@@ -33,7 +33,7 @@
 - (id) initWithSelfPtr:(id *) self_ptr
 {
 	[super initWithSelfPtr:self_ptr];
-    
+	
 	#define AWBWidth  30.0f
 	#define AWBHeight 30.0f
 	#define AWLWidth  30.0f
@@ -45,7 +45,7 @@
 								   AWColCount * AWBHeight + AWMargin + AWMargin);
 
 	NSView *asciiView = [[[NSView alloc] initWithFrame:viewFrame] autorelease];
-    
+	
 	for (NSInteger y = 0; y < AWColCount; y ++)
 	{
 		NSTextField *lineTextField = [[[NSTextField alloc] init] autorelease];
@@ -63,11 +63,11 @@
 		[lineTextField setFrameOrigin:lineOrigin];
 
 		[asciiView addSubview:lineTextField];
-            
+			
 		for (NSInteger x = 0; x < AWColCount; x ++)
 		{
 			unsigned char character = y * AWColCount + x;
-            
+			
 			NSButton *characterButton = [[[NSButton alloc] init] autorelease];
 			[characterButton setButtonType:NSMomentaryPushButton];
 			[characterButton setTitle:[NSString stringWithFormat:@"%c", character]];
@@ -81,11 +81,11 @@
 											   viewFrame.size.height - AWMargin - y * AWBHeight - AWBHeight, AWBWidth, AWBHeight);
 			
 			[characterButton setFrame:characterRect];
-    
+	
 			[asciiView addSubview:characterButton];
 		}
 	}
-    
+	
 	window = [[NSWindow alloc] initWithContentRect:[asciiView frame]
 										 styleMask: NSTitledWindowMask | 
 													NSClosableWindowMask | 
@@ -104,8 +104,8 @@
 
 - (void) dealloc
 {
-    [window autorelease];
-    [super dealloc];
+	[window autorelease];
+	[super dealloc];
 }
 
 - (void) windowDidBecomeKey:(NSNotification *) xx
@@ -114,18 +114,18 @@
 
 - (void) windowWillClose:(NSNotification *) xx
 {
-    [self release];
+	[self release];
 }
 
 - (void) show
 {
-    [window makeKeyAndOrderFront:self];
+	[window makeKeyAndOrderFront:self];
 }
 
 - (void) onInput:(id) sender
 {
-    if (current_sess)
-        [current_sess->gui->cw insertText:[sender title]];
+	if (current_sess)
+		[current_sess->gui->cw insertText:[sender title]];
 }
 
 @end

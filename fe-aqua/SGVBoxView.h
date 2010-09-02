@@ -21,19 +21,19 @@
 
 typedef enum
 {
-    SGVBoxHJustificationCenter	= SGBoxMinorJustificationCenter,
-    SGVBoxHJustificationLeft	= SGBoxMinorJustificationFirst,
-    SGVBoxHJustificationRight	= SGBoxMinorJustificationLast,
-    SGVBoxHJustificationFull	= SGBoxMinorJustificationFull,
-    SGVBoxHJustificationDefault	= SGBoxMinorJustificationDefault,
+	SGVBoxHJustificationCenter	= SGBoxMinorJustificationCenter,
+	SGVBoxHJustificationLeft	= SGBoxMinorJustificationFirst,
+	SGVBoxHJustificationRight	= SGBoxMinorJustificationLast,
+	SGVBoxHJustificationFull	= SGBoxMinorJustificationFull,
+	SGVBoxHJustificationDefault	= SGBoxMinorJustificationDefault,
 }	SGVBoxHJustification;
 
 typedef enum
 {
-    SGVBoxVJustificationCenter	= SGBoxMajorJustificationCenter,
-    SGVBoxVJustificationBottom	= SGBoxMajorJustificationLast,
-    SGVBoxVJustificationTop		= SGBoxMajorJustificationFirst,
-    SGVBoxVJustificationFull	= SGBoxMajorJustificationFull,
+	SGVBoxVJustificationCenter	= SGBoxMajorJustificationCenter,
+	SGVBoxVJustificationBottom	= SGBoxMajorJustificationLast,
+	SGVBoxVJustificationTop		= SGBoxMajorJustificationFirst,
+	SGVBoxVJustificationFull	= SGBoxMajorJustificationFull,
 }	SGVBoxVJustification;
 
 @interface SGVBoxView : SGBoxView

@@ -190,6 +190,8 @@
 		2D076DB510E919BE00E4A9F1 /* libiconv.2.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D076DB310E9195000E4A9F1 /* libiconv.2.dylib */; };
 		2D076DB610E919BE00E4A9F1 /* libintl.8.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D076DB410E919B900E4A9F1 /* libintl.8.dylib */; };
 		2D076DBA10E919F000E4A9F1 /* libintl.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D076DB410E919B900E4A9F1 /* libintl.8.dylib */; };
+		2D4ACFB11230005E00DEB5FA /* SGDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4ACFB01230005E00DEB5FA /* SGDebug.m */; };
+		2D4ACFB7123000F000DEB5FA /* SGDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4ACFB01230005E00DEB5FA /* SGDebug.m */; };
 		2D55F03010EBBA8E00B4ECCB /* Growl.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54C10E4ACFC00DBBFD0 /* Growl.framework */; };
 		2D55F03110EBBA8E00B4ECCB /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE56C10E4AD7300DBBFD0 /* Sparkle.framework */; };
 		2D5C954311AF35FA0062F4C0 /* xchat.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D5C951411AF35FA0062F4C0 /* xchat.strings */; };
@@ -589,6 +591,8 @@
 		2D076D9210E9105B00E4A9F1 /* libglib-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libglib-2.0.0.dylib"; path = "contrib/lib/libglib-2.0.0.dylib"; sourceTree = "<group>"; };
 		2D076DB310E9195000E4A9F1 /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = contrib/lib/libiconv.2.dylib; sourceTree = "<group>"; };
 		2D076DB410E919B900E4A9F1 /* libintl.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libintl.8.dylib; path = contrib/lib/libintl.8.dylib; sourceTree = "<group>"; };
+		2D4ACF77122FFED900DEB5FA /* SGDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGDebug.h; sourceTree = "<group>"; };
+		2D4ACFB01230005E00DEB5FA /* SGDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGDebug.m; sourceTree = "<group>"; };
 		2D5C951511AF35FA0062F4C0 /* wa */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = wa; path = Localization/wa.lproj/xchat.strings; sourceTree = SOURCE_ROOT; };
 		2D5C951611AF35FA0062F4C0 /* zh_CN */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = zh_CN; path = Localization/zh_CN.lproj/xchat.strings; sourceTree = SOURCE_ROOT; };
 		2D5C951711AF35FA0062F4C0 /* uk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = uk; path = Localization/uk.lproj/xchat.strings; sourceTree = SOURCE_ROOT; };
@@ -1606,8 +1610,8 @@
 		0F2FEF830E1FB52500DE4D41 /* Internal Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				0F2FEF840E1FB5AE00DE4D41 /* bundle_loader_plugin.m */,
 				0F2FEF9D0E1FC30E00DE4D41 /* bundle_loader_plugin.h */,
+				0F2FEF840E1FB5AE00DE4D41 /* bundle_loader_plugin.m */,
 			);
 			name = "Internal Plugins";
 			path = bundle_loader;
@@ -1712,6 +1716,8 @@
 			isa = PBXGroup;
 			children = (
 				0F8EA6590CFB300B001AE9AE /* SG.h */,
+				2D4ACF77122FFED900DEB5FA /* SGDebug.h */,
+				2D4ACFB01230005E00DEB5FA /* SGDebug.m */,
 				0F8EA65A0CFB300B001AE9AE /* SGAlert.h */,
 				0F8EA65B0CFB300B001AE9AE /* SGAlert.m */,
 				0F8EA65C0CFB300B001AE9AE /* SGApplication.h */,
@@ -1913,12 +1919,12 @@
 				0F8EA6290CFB2E0A001AE9AE /* ChannelListWin.m */,
 				0F8EA62A0CFB2E0A001AE9AE /* CtcpReplies.h */,
 				0F8EA62B0CFB2E0A001AE9AE /* CtcpReplies.m */,
+				0F8EA6360CFB2F5C001AE9AE /* DCCListController.h */,
+				0F8EA6370CFB2F5C001AE9AE /* DCCListController.m */,
 				0F8EA62C0CFB2E0A001AE9AE /* DccChatWin.h */,
 				0F8EA62D0CFB2E0A001AE9AE /* DccChatWin.m */,
 				0F8EA6340CFB2F5C001AE9AE /* DCCFileTransferListController.h */,
 				0F8EA6350CFB2F5C001AE9AE /* DCCFileTransferListController.m */,
-				0F8EA6360CFB2F5C001AE9AE /* DCCListController.h */,
-				0F8EA6370CFB2F5C001AE9AE /* DCCListController.m */,
 				0F8EA6380CFB2F5C001AE9AE /* DccRecvWin.h */,
 				0F8EA6390CFB2F5C001AE9AE /* DccRecvWin.m */,
 				0F8EA63A0CFB2F5C001AE9AE /* DccSendWin.h */,
@@ -2538,6 +2544,7 @@
 				0FE5E0940F480B26000E0F91 /* SGVBoxView.m in Sources */,
 				0FE5E0950F480B26000E0F91 /* SGView.m in Sources */,
 				0FE5E0980F480B39000E0F91 /* SGBoxView.m in Sources */,
+				2D4ACFB7123000F000DEB5FA /* SGDebug.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2621,6 +2628,7 @@
 				0F2FEF850E1FB5AE00DE4D41 /* bundle_loader_plugin.m in Sources */,
 				0F2FEFBD0E1FC8E900DE4D41 /* SystemVersion.m in Sources */,
 				2D7817CA10E872D200C71AF8 /* fe-aqua_utility.m in Sources */,
+				2D4ACFB11230005E00DEB5FA /* SGDebug.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
