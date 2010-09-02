@@ -22,8 +22,8 @@
 @interface ObjSel : NSObject
 {
   @public
-    SEL sel;
-    id object;
+	SEL sel;
+	id object;
 }
 @end
 
@@ -31,59 +31,58 @@
 
 - (void) invoke
 {
-    [object performSelector:sel];
+	[object performSelector:sel];
 }
 
 @end
 
 //////////////////////////////////////////////////////////////////////
 
-@interface OneCustomer : ObjSel
+@interface SGApplicationCustomer : ObjSel
 {
-    NSEventType type;
-    NSWindow *win;
-    NSView *view;
+	NSEventType type;
+	NSWindow *win;
+	NSView *view;
 }
 
 + (id) customerWithType:(NSEventType) the_type
-              forWindow:(NSWindow *) the_win
-                forView:(NSView *) the_view
+			  forWindow:(NSWindow *) the_win
+				forView:(NSView *) the_view
 			   selector:(SEL) the_sel
 				 object:(id) the_object;
 
 @end
 
-@implementation OneCustomer
+@implementation SGApplicationCustomer
 
 + (id) customerWithType:(NSEventType) the_type
-              forWindow:(NSWindow *) the_win
-                forView:(NSView *) the_view
+			  forWindow:(NSWindow *) the_win
+				forView:(NSView *) the_view
 			   selector:(SEL) the_sel
 				 object:(id) the_object
 {
-    OneCustomer *cust = [[[OneCustomer alloc] init] autorelease];
-    cust->type = the_type;
-    cust->win = the_win ? the_win : the_view ? [the_view window] : nil;
-    cust->view = the_view;
-    cust->sel = the_sel;
-    cust->object = the_object;
-    
-    return cust;
+	SGApplicationCustomer *cust = [[[SGApplicationCustomer alloc] init] autorelease];
+	cust->type = the_type;
+	cust->win = the_win ? the_win : the_view ? [the_view window] : nil;
+	cust->view = the_view;
+	cust->sel = the_sel;
+	cust->object = the_object;
+	
+	return cust;
 }
 
 - (bool) sendCopy:(NSEvent *) anEvent
 {
-    if ([anEvent type] == type && (!win || [anEvent window] == win))
-    {
-        if (!view || [SGApplication event:anEvent inView:view])
-        {
-            BOOL (*doit)(id, SEL, id) = 
-                (BOOL (*)(id, SEL, id)) [object methodForSelector:sel];
-            return doit (object, sel, anEvent);
-        }
-    }
-    
-    return false;
+	if ([anEvent type] == type && (!win || [anEvent window] == win))
+	{
+		if (!view || [SGApplication event:anEvent inView:view])
+		{
+			BOOL (*doit)(id, SEL, id) = (BOOL (*)(id, SEL, id)) [object methodForSelector:sel];
+			return doit (object, sel, anEvent);
+		}
+	}
+	
+	return false;
 }
 
 @end
@@ -94,46 +93,46 @@
 
 + (BOOL) event:(NSEvent *)event inView:(NSView *)view
 {
-    // TBD: Is locationInWindow only good for mouse events?
-    NSPoint point = [view convertPoint:[event locationInWindow] fromView:nil];
-    return [view mouse:point inRect:[view bounds]];
+	// TBD: Is locationInWindow only good for mouse events?
+	NSPoint point = [view convertPoint:[event locationInWindow] fromView:nil];
+	return [view mouse:point inRect:[view bounds]];
 }
 
 - (id) init
 {
-    [super init];
-    customers = [[NSMutableArray arrayWithCapacity:0] retain];
-    //after_events = [[NSMutableArray arrayWithCapacity:0] retain];
-    return self;
+	[super init];
+	customers = [[NSMutableArray arrayWithCapacity:0] retain];
+	//after_events = [[NSMutableArray arrayWithCapacity:0] retain];
+	return self;
 }
 
 - (id) requestEvents:(NSEventType)type
 		   forWindow:(NSWindow *)win
-             forView:(NSView *)view
-            selector:(SEL)sel
-              object:(id)obj
+			 forView:(NSView *)view
+			selector:(SEL)sel
+			  object:(id)obj
 {
-    OneCustomer *customer = [OneCustomer customerWithType:type
+	SGApplicationCustomer *customer = [SGApplicationCustomer customerWithType:type
 												forWindow:win
 												  forView:view
 												 selector:sel
 												   object:obj];
-    [customers addObject:customer];
-    return customer;
+	[customers addObject:customer];
+	return customer;
 }
 
 - (void) cancelRequestEvents:(id) req_id
 {
-    [customers removeObject:req_id];
+	[customers removeObject:req_id];
 }
 
 - (void) sendEvent:(NSEvent *) anEvent
 {
-    for (NSUInteger i = 0; i < [customers count]; i ++)
-        if ([[customers objectAtIndex:i] sendCopy:anEvent])
-            return;
-    
-    [super sendEvent:anEvent];
+	for (NSUInteger i = 0; i < [customers count]; i ++)
+		if ([[customers objectAtIndex:i] sendCopy:anEvent])
+			return;
+	
+	[super sendEvent:anEvent];
 }
 
 @end

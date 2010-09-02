@@ -17,8 +17,8 @@
 
 @interface SGApplication : NSApplication
 {
-    NSMutableArray	*customers;
-    //NSMutableArray	*after_events;
+	NSMutableArray	*customers;
+	//NSMutableArray	*after_events;
 }
 
 ///////
