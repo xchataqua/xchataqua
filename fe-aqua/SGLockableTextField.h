@@ -31,6 +31,7 @@
 @property (retain) NSButtonCell *lockCell;
 
 - (BOOL) isLocked;
+
 @end
 
 @interface SGLockableTextField : NSTextField
