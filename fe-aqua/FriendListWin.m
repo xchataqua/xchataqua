@@ -25,56 +25,56 @@
 
 //////////////////////////////////////////////////////////////////////
 
-@interface OneNotify : NSObject
+@interface FriendItem : NSObject
 {
   @public
-    NSString	*user;
-    NSString	*status;
-    NSString	*server;
-    NSString	*last;
-	NSString    *networks;
+	NSString	*user;
+	NSString	*status;
+	NSString	*server;
+	NSString	*last;
+	NSString	*networks;
 }
 
 - (id) initWithUser:(NSString *)user 
-             online:(BOOL) online
+			 online:(BOOL) online
 			 server:(struct notify_per_server *)server
 		   networks:(NSString *)networks;
 
 @end
 
-@implementation OneNotify
+@implementation FriendItem
 
 - (id) initWithUser:(NSString *)user_name
-             online:(BOOL) online
+			 online:(BOOL) online
 			 server:(struct notify_per_server *)svr
 		   networks:(NSString *)ntwk;
 {
-    user = [user_name retain];
-    status = [online ? NSLocalizedStringFromTable(@"Online", @"xchat", @"") : NSLocalizedStringFromTable(@"Offline", @"xchat", @"") retain];
+	user = [user_name retain];
+	status = [(online ? NSLocalizedStringFromTable(@"Online", @"xchat", @"") : NSLocalizedStringFromTable(@"Offline", @"xchat", @"")) retain];
 	self->networks = [ntwk retain];
-    if (svr && svr->laston)
-    {
-        self->server = [[NSString stringWithUTF8String:svr->server->servername] retain];
-        last = [[NSString stringWithUTF8String:ctime (&svr->laston)] retain];
-    }
-    else
-    {
-        self->server = [@"" retain];
-        last = [NSLocalizedStringFromTable(@"Never", @"xchat", @"") retain];
-    }
-    
-    return self;
+	if (svr && svr->laston)
+	{
+		self->server = [[NSString stringWithUTF8String:svr->server->servername] retain];
+		last = [[NSString stringWithUTF8String:ctime (&svr->laston)] retain];
+	}
+	else
+	{
+		self->server = [@"" retain];
+		last = [NSLocalizedStringFromTable(@"Never", @"xchat", @"") retain];
+	}
+	
+	return self;
 }
 
 - (void) dealloc
 {
-    [user release];
-    [status release];
-    [self->server release];
-    [last release];
+	[user release];
+	[status release];
+	[self->server release];
+	[last release];
 	[networks release];
 
-    [super dealloc];
+	[super dealloc];
 }
 
 @end
@@ -86,77 +86,77 @@
 
 - (id) initWithSelfPtr:(id *)selfPtr;
 {
-    [super initWithSelfPtr:selfPtr];
-    
-    myItems = [[NSMutableArray arrayWithCapacity:0] retain];
-    
-    [NSBundle loadNibNamed:@"FriendList" owner:self];
-    
-    return self;
+	[super initWithSelfPtr:selfPtr];
+	
+	myItems = [[NSMutableArray alloc] init];
+	
+	[NSBundle loadNibNamed:@"FriendList" owner:self];
+	
+	return self;
 }
 
 - (void) dealloc
 {
-    [friendListTableView release];
-    [myItems release];
+	[friendListTableView release];
+	[myItems release];
 	[friendAddWindow release];
-    [super dealloc];
+	[super dealloc];
 }
 
 - (void) loadData
 {
-    // Each "user" could exist on multiple servers.
-    // notify_list is a list of "users" and a list of all servers he is on
-    // each per_server object has the data for that user on that server.
-    // For each user that is online, we add one 1 per online server
-    // For each user that is not online on any server, we just add the 'lastseen' line
-    
-    [myItems removeAllObjects];
+	// Each "user" could exist on multiple servers.
+	// notify_list is a list of "users" and a list of all servers he is on
+	// each per_server object has the data for that user on that server.
+	// For each user that is online, we add one 1 per online server
+	// For each user that is not online on any server, we just add the 'lastseen' line
+	
+	[myItems removeAllObjects];
 
-    for (GSList *list = notify_list; list; list = list->next)
-    {
-        struct notify_per_server *lastsvr = NULL;
-        BOOL online = NO;
+	for (GSList *list = notify_list; list; list = list->next)
+	{
+		struct notify_per_server *lastsvr = NULL;
+		BOOL online = NO;
 		
-        struct notify *user = (struct notify *) list->data;
-        
-        for (GSList *list2 = user->server_list; list2; list2 = list2->next)
-        {
-            struct notify_per_server *svr = (struct notify_per_server *) list2->data;
+		struct notify *user = (struct notify *) list->data;
+		
+		for (GSList *list2 = user->server_list; list2; list2 = list2->next)
+		{
+			struct notify_per_server *svr = (struct notify_per_server *) list2->data;
 
-            if (!lastsvr || svr->laston > lastsvr->laston)
-                lastsvr = svr;
-                
-            if (svr->ison)
-            {
-                online = YES;
+			if (!lastsvr || svr->laston > lastsvr->laston)
+				lastsvr = svr;
+				
+			if (svr->ison)
+			{
+				online = YES;
 				break;
-            }               
-        }
+			}			   
+		}
 
-		OneNotify *oneNotify = [[OneNotify alloc] initWithUser:[NSString stringWithUTF8String:user->name]
-									 online:online
-									 server:lastsvr
-								   networks:user->networks ? [NSString stringWithUTF8String:user->networks] : @""];
-		[myItems addObject:oneNotify];
-		[oneNotify release];
-    }
+		FriendItem *friendItem = [[FriendItem alloc] initWithUser:[NSString stringWithUTF8String:user->name]
+														   online:online
+														   server:lastsvr
+														 networks:user->networks ? [NSString stringWithUTF8String:user->networks] : @""];
+		[myItems addObject:friendItem];
+		[friendItem release];
+	}
 
-    [self->friendListTableView reloadData];
+	[self->friendListTableView reloadData];
 }
 
 - (void) awakeFromNib
 {
-    [friendListView setTitle:NSLocalizedStringFromTable(@"XChat: Friends List", @"xchat", @"")];
-    [friendListView setTabTitle:NSLocalizedStringFromTable(@"friends", @"xchataqua", @"")];
-    
-    for (NSUInteger i = 0; i < [self->friendListTableView numberOfColumns]; i ++)
-        [[[self->friendListTableView tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
+	[friendListView setTitle:NSLocalizedStringFromTable(@"XChat: Friends List", @"xchat", @"")];
+	[friendListView setTabTitle:NSLocalizedStringFromTable(@"friends", @"xchataqua", @"")];
+	
+	for (NSUInteger i = 0; i < [self->friendListTableView numberOfColumns]; i ++)
+		[[[self->friendListTableView tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
 
-    [self->friendListTableView setDataSource:self];
-    [self->friendListView setDelegate:self];
-    
-    [self loadData];
+	[self->friendListTableView setDataSource:self];
+	[self->friendListView setDelegate:self];
+	
+	[self loadData];
 }
 
 - (void) doAdd:(id) sender
@@ -166,12 +166,12 @@
 
 - (void) doRemove:(id) sender
 {
-    NSInteger row = [self->friendListTableView selectedRow];
-    if (row < 0)
-    	return;
+	NSInteger row = [self->friendListTableView selectedRow];
+	if (row < 0)
+		return;
 
-    OneNotify *notif = (OneNotify *) [myItems objectAtIndex:row];
-    notify_deluser ((char *) [notif->user UTF8String]);
+	FriendItem *notif = (FriendItem *) [myItems objectAtIndex:row];
+	notify_deluser ((char *) [notif->user UTF8String]);
 }
 
 - (void) windowDidBecomeKey:(NSNotification *) xx
@@ -180,44 +180,44 @@
 
 - (void) windowWillClose:(NSNotification *) xx
 {
-    [self release];
+	[self release];
 }
 
 - (void) show
 {
-    if (prefs.windows_as_tabs)
-        [friendListView becomeTabAndShow:YES];
-    else
-        [friendListView becomeWindowAndShow:YES];
+	if (prefs.windows_as_tabs)
+		[friendListView becomeTabAndShow:YES];
+	else
+		[friendListView becomeWindowAndShow:YES];
 }
 
 - (void) update
 {
-    [self loadData];
+	[self loadData];
 }
 
-//////////////
-//
+#pragma mark -
+#pragma mark table view protocols
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
-    return [myItems count];
+	return [myItems count];
 }
 
 - (id) tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger) row
 {
-    OneNotify *item = [myItems objectAtIndex:row];
+	FriendItem *item = [myItems objectAtIndex:row];
 
-    switch ([[aTableColumn identifier] intValue])
-    {
-        case 0: return item->user;
-        case 1: return item->status;
-        case 2: return item->server;
+	switch ([[aTableColumn identifier] intValue])
+	{
+		case 0: return item->user;
+		case 1: return item->status;
+		case 2: return item->server;
 		case 3: return item->networks;
-        case 4: return item->last;
-    }
-    
-    return @"";
+		case 4: return item->last;
+	}
+	
+	return @"";
 }
 
 @end
@@ -233,15 +233,15 @@
 	[friendAddNetworkTextField setStringValue:@"ALL"];
 	
 	[friendAddPanel makeKeyAndOrderFront:self];
-    NSModalSession session = [NSApp beginModalSessionForWindow:self];
-    NSInteger ret;
-    while ((ret = [NSApp runModalSession:session]) == NSRunContinuesResponse)
+	NSModalSession session = [NSApp beginModalSessionForWindow:self];
+	NSInteger ret;
+	while ((ret = [NSApp runModalSession:session]) == NSRunContinuesResponse)
 		;
-    [NSApp endModalSession:session];     
-    [self close];
+	[NSApp endModalSession:session];	 
+	[self close];
 	
-    if (ret && [[friendAddNickTextField stringValue] length])
-        notify_adduser ((char *) [[friendAddNickTextField stringValue] UTF8String], (char*)[[friendAddNickTextField stringValue] UTF8String]); // TODO: Networks arg	
+	if (ret && [[friendAddNickTextField stringValue] length])
+		notify_adduser ((char *) [[friendAddNickTextField stringValue] UTF8String], (char*)[[friendAddNickTextField stringValue] UTF8String]); // TODO: Networks arg	
 }
 
 -(void) doOk:(id) sender
