@@ -41,8 +41,8 @@ extern struct event_info text_event_info[];
 @interface PrefLeaf : NSObject
 {
   @public
-    NSString	*label;
-    int			pane;
+	NSString	*label;
+	int			pane;
 }
 @end
 
@@ -51,10 +51,10 @@ extern struct event_info text_event_info[];
 
 PrefLeaf *leaf (NSString *label, int pane)
 {
-    PrefLeaf *l = [[PrefLeaf alloc] init];
-    l->label = label;
-    l->pane = pane;
-    return l;
+	PrefLeaf *l = [[PrefLeaf alloc] init];
+	l->label = label;
+	l->pane = pane;
+	return l;
 }
 
 static NSArray *root_items;
@@ -64,8 +64,8 @@ static NSArray *root_items;
 @interface SoundEvent : NSObject
 {
   @public
-	NSString     *name;
-    NSNumber     *sound;
+	NSString	 *name;
+	NSNumber	 *sound;
 	NSNumber	 *growl;
 	NSNumber	 *show;
 	NSNumber	 *bounce;
@@ -75,44 +75,44 @@ static NSArray *root_items;
 @implementation SoundEvent
 
 - (id) initWithEvent:(int) event
-              sounds:(NSArray *) sounds
+			  sounds:(NSArray *) sounds
 {
 	self = [super init];
 	
-    name = [[NSString stringWithUTF8String:te[event].name] retain];
-    
-    int xx = 0;
-    
-    if (sound_files && sound_files [event])
-    {
-        for (NSUInteger i = 1; i < [sounds count]; i ++)
-        {
-            if (strcasecmp (sound_files [event], [[sounds objectAtIndex:i] UTF8String]) == 0)
-            {
-                xx = i;
-                break;
-            }
-        }
-    }
+	name = [[NSString stringWithUTF8String:te[event].name] retain];
+	
+	int xx = 0;
+	
+	if (sound_files && sound_files [event])
+	{
+		for (NSUInteger i = 1; i < [sounds count]; i ++)
+		{
+			if (strcasecmp (sound_files [event], [[sounds objectAtIndex:i] UTF8String]) == 0)
+			{
+				xx = i;
+				break;
+			}
+		}
+	}
 	
 	struct event_info *info = &text_event_info[event];
 
-    sound = [[NSNumber numberWithInt:xx] retain];
+	sound = [[NSNumber numberWithInt:xx] retain];
 	growl = [[NSNumber numberWithInt:info->growl] retain];
 	show = [[NSNumber numberWithInt:info->show] retain];
 	bounce = [[NSNumber numberWithInt:info->bounce] retain];
-	    
-    return self;
+		
+	return self;
 }
 
 - (void) dealloc
 {
-    [name release];
-    [sound release];
-    [growl release];
-    [bounce release];
-    [show release];
-    [super dealloc];
+	[name release];
+	[sound release];
+	[growl release];
+	[bounce release];
+	[show release];
+	[super dealloc];
 }
 
 @end
@@ -126,7 +126,7 @@ static NSArray *root_items;
 @implementation MyButtonCell
 
 - (void) drawWithFrame:(NSRect) cellFrame 
-			    inView:(NSView *) controlView
+				inView:(NSView *) controlView
 {
 	NSSize sz = [self cellSize];
 	cellFrame.origin.x += (cellFrame.size.width - sz.width) / 2;
@@ -141,18 +141,18 @@ static NSArray *root_items;
 
 - (id) init
 {
-    self = [super init];
-    
-    [NSBundle loadNibNamed:@"Prefs" owner:self];
+	self = [super init];
+	
+	[NSBundle loadNibNamed:@"Prefs" owner:self];
 
-    return self;
+	return self;
 }
 
 - (void) dealloc
 {
-    [sounds release];
-    [sound_events release];
-    [super dealloc];
+	[sounds release];
+	[sound_events release];
+	[super dealloc];
 }
 
 - (void) populate
@@ -166,21 +166,21 @@ static NSArray *root_items;
 			case MYPREF_INT:
 				[my_prefs[i].item setIntValue: * (int *) my_prefs [i].pref];
 				break;
-                
+				
 			case MYPREF_STRING:
 			{
 				const char *v = (const char *) my_prefs[i].pref;
 				if (!v) v = "";
 				NSString *tmp = [NSString stringWithUTF8String:v];
-				[my_prefs[i].item setStringValue:tmp];    
+				[my_prefs[i].item setStringValue:tmp];	
 				break;
 			}
 				
 			case MYPREF_MENU:
 				[my_prefs [i].item selectItemAtIndex: * (int *) my_prefs [i].pref];
 				break;
-        }
-    }
+		}
+	}
 	
 	#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_4
 	KeyCombo left_combo = { prefs.tab_left_modifiers, prefs.tab_left_key };
@@ -210,10 +210,10 @@ static NSArray *root_items;
 			case MYPREF_INT:
 				* (int *) my_prefs [i].pref = [my_prefs [i].item intValue];
 				break;
-                
+				
 			case MYPREF_STRING:
 			{
-				NSString *s = [my_prefs [i].item stringValue];    
+				NSString *s = [my_prefs [i].item stringValue];	
 				strcpy ((char *) my_prefs [i].pref, [s UTF8String]);
 				break;
 			}
@@ -239,7 +239,7 @@ static NSArray *root_items;
 		[palette setColor:i color:[colors[i] color]];
 	[[AquaChat sharedAquaChat] setPalette:palette];
 	
-    [[AquaChat sharedAquaChat] preferencesChanged];
+	[[AquaChat sharedAquaChat] preferencesChanged];
 }
 
 - (void) find_colors
@@ -297,7 +297,7 @@ static NSArray *root_items;
 
 - (void) make_sound_menu
 {
-	NSPopUpButtonCell *cell = [[[NSPopUpButtonCell alloc] initTextCell:@"" pullsDown:false] autorelease];
+	NSPopUpButtonCell *cell = [[[NSPopUpButtonCell alloc] initWithText:@"" pullsDown:false] autorelease];
 	[cell setBordered:false];
 	for (NSUInteger i = 0; i < [sounds count]; i ++)
 	{
@@ -314,7 +314,7 @@ static NSArray *root_items;
 {
 	sound_events = [[NSMutableArray arrayWithCapacity:0] retain];
 	
-	for (NSUInteger i = 0; i < NUM_XP; i ++)                      
+	for (NSUInteger i = 0; i < NUM_XP; i ++)					  
 	{
 		SoundEvent *item = [[[SoundEvent alloc] initWithEvent:i sounds:sounds] autorelease];
 		[sound_events addObject:item];
@@ -325,84 +325,84 @@ static NSArray *root_items;
 
 - (void) awakeFromNib
 {
-    struct my_pref xx [] = 
-    {
-        { announce_away_check, &prefs.show_away_message, MYPREF_INT },
-        { auto_open_dcc_chat_list_check, &prefs.autoopendccchatwindow, MYPREF_INT },
-        { auto_open_dcc_receive_list_check, &prefs.autoopendccrecvwindow, MYPREF_INT },
-        { auto_open_dcc_send_list_check, &prefs.autoopendccsendwindow, MYPREF_INT },
-        { auto_reconnect_delay_text, &prefs.recon_delay, MYPREF_INT },
-        { auto_unmark_away_check, &prefs.auto_unmark_away, MYPREF_INT },
-        { tab_complete_check, &prefs.tab_completion, MYPREF_INT },
-        { away_message_text, &prefs.awayreason, MYPREF_STRING },
-        { beep_on_channel_messages_check, &prefs.input_beep_chans, MYPREF_INT },
-        { beep_on_private_check, &prefs.input_beep_priv, MYPREF_INT },
-        { bind_address_text, &prefs.hostname, MYPREF_STRING },
-        { channel_command_text, &prefs.channelcommand, MYPREF_STRING },
-        { colored_nicks_check, &prefs.colorednicks, MYPREF_INT },
-        { convert_spaces_check, &prefs.dcc_send_fillspaces, MYPREF_INT },
-        { dcc_address_text, &prefs.dcc_ip_str, MYPREF_STRING },
-        { doubleclick_command_text, &prefs.doubleclickuser, MYPREF_STRING },
-        { down_dir_text, &prefs.dccdir, MYPREF_STRING },
-        { enable_logging_check, &prefs.logging, MYPREF_INT },
-        { extra_highlight_words_text, &prefs.irc_extra_hilight, MYPREF_STRING },
-        { first_dcc_send_port_text, &prefs.first_dcc_send_port, MYPREF_INT },
-        { font_text, &prefs.font_normal, MYPREF_STRING },
-        { get_my_ip_check, &prefs.ip_from_server, MYPREF_INT },
-        { indent_nicks_check, &prefs.indent_nicks, MYPREF_INT },
-        { interpret_nnn_check, &prefs.perc_ascii, MYPREF_INT },
-        { interpret_percent_color, &prefs.perc_color, MYPREF_INT },
-        { last_dcc_send_port_text, &prefs.last_dcc_send_port, MYPREF_INT },
-        { log_filename_mask_text, &prefs.logmask, MYPREF_STRING },
-        { log_timestamp_format_text, &prefs.timestamp_log_format, MYPREF_STRING },
-        { insert_timestamps_check, &prefs.timestamp_logs, MYPREF_INT },
-        { notices_tab_check, &prefs.notices_tabs, MYPREF_INT },
-        { nick_command_text, &prefs.nickcommand, MYPREF_STRING },
-        { nick_completion_text, &prefs.nick_suffix, MYPREF_STRING },
-        { open_channels_in_menu, &prefs.tabchannels, MYPREF_MENU },
-        { open_dialogs_in_menu, &prefs.privmsgtab, MYPREF_MENU },
-        { open_utilities_in_menu, &prefs.windows_as_tabs, MYPREF_MENU },
+	struct my_pref xx [] = 
+	{
+		{ announce_away_check, &prefs.show_away_message, MYPREF_INT },
+		{ auto_open_dcc_chat_list_check, &prefs.autoopendccchatwindow, MYPREF_INT },
+		{ auto_open_dcc_receive_list_check, &prefs.autoopendccrecvwindow, MYPREF_INT },
+		{ auto_open_dcc_send_list_check, &prefs.autoopendccsendwindow, MYPREF_INT },
+		{ auto_reconnect_delay_text, &prefs.recon_delay, MYPREF_INT },
+		{ auto_unmark_away_check, &prefs.auto_unmark_away, MYPREF_INT },
+		{ tab_complete_check, &prefs.tab_completion, MYPREF_INT },
+		{ away_message_text, &prefs.awayreason, MYPREF_STRING },
+		{ beep_on_channel_messages_check, &prefs.input_beep_chans, MYPREF_INT },
+		{ beep_on_private_check, &prefs.input_beep_priv, MYPREF_INT },
+		{ bind_address_text, &prefs.hostname, MYPREF_STRING },
+		{ channel_command_text, &prefs.channelcommand, MYPREF_STRING },
+		{ colored_nicks_check, &prefs.colorednicks, MYPREF_INT },
+		{ convert_spaces_check, &prefs.dcc_send_fillspaces, MYPREF_INT },
+		{ dcc_address_text, &prefs.dcc_ip_str, MYPREF_STRING },
+		{ doubleclick_command_text, &prefs.doubleclickuser, MYPREF_STRING },
+		{ down_dir_text, &prefs.dccdir, MYPREF_STRING },
+		{ enable_logging_check, &prefs.logging, MYPREF_INT },
+		{ extra_highlight_words_text, &prefs.irc_extra_hilight, MYPREF_STRING },
+		{ first_dcc_send_port_text, &prefs.first_dcc_send_port, MYPREF_INT },
+		{ font_text, &prefs.font_normal, MYPREF_STRING },
+		{ get_my_ip_check, &prefs.ip_from_server, MYPREF_INT },
+		{ indent_nicks_check, &prefs.indent_nicks, MYPREF_INT },
+		{ interpret_nnn_check, &prefs.perc_ascii, MYPREF_INT },
+		{ interpret_percent_color, &prefs.perc_color, MYPREF_INT },
+		{ last_dcc_send_port_text, &prefs.last_dcc_send_port, MYPREF_INT },
+		{ log_filename_mask_text, &prefs.logmask, MYPREF_STRING },
+		{ log_timestamp_format_text, &prefs.timestamp_log_format, MYPREF_STRING },
+		{ insert_timestamps_check, &prefs.timestamp_logs, MYPREF_INT },
+		{ notices_tab_check, &prefs.notices_tabs, MYPREF_INT },
+		{ nick_command_text, &prefs.nickcommand, MYPREF_STRING },
+		{ nick_completion_text, &prefs.nick_suffix, MYPREF_STRING },
+		{ open_channels_in_menu, &prefs.tabchannels, MYPREF_MENU },
+		{ open_dialogs_in_menu, &prefs.privmsgtab, MYPREF_MENU },
+		{ open_utilities_in_menu, &prefs.windows_as_tabs, MYPREF_MENU },
 		{ part_on_sleep_check, &prefs.partonsleep, MYPREF_INT },
-        { part_message_text, &prefs.partreason, MYPREF_STRING },
-        { pop_new_tabs_check, &prefs.newtabstofront, MYPREF_INT },
-        { proxy_port_text, &prefs.proxy_port, MYPREF_INT },
-        { proxy_server_text, &prefs.proxy_host, MYPREF_STRING },
-        { proxy_type_menu, &prefs.proxy_type, MYPREF_MENU },
-        { quit_message_text, &prefs.quitreason, MYPREF_STRING },
-        { raw_modes_check, &prefs.raw_modes, MYPREF_INT },
-        { server_tab_check, &prefs.use_server_tab, MYPREF_INT },
-        { show_away_once_check, &prefs.show_away_once, MYPREF_INT },
-        { show_channel_mode_buttons_check, &prefs.chanmodebuttons, MYPREF_INT },
-        { show_hostnames_check, &prefs.showhostname_in_userlist, MYPREF_INT },
-        { show_tab_at_menu, &prefs._tabs_position, MYPREF_MENU },
-        { spell_check_check, &prefs.spell_check, MYPREF_INT },
-        { strip_mirc_color_check, &prefs.stripcolor, MYPREF_INT },
-        { use_text_box_font_check, &prefs.style_inputbox, MYPREF_INT },
-        { time_stamp_format_text, &prefs.stamp_format, MYPREF_STRING },
-        { time_stamp_text_check, &prefs.timestamp, MYPREF_INT },
-        { hide_tab_close_check, &prefs.hide_tab_close_buttons, MYPREF_INT },
-        { show_separator_check, &prefs.show_separator, MYPREF_INT },
-        { url_command_text, &prefs.urlcommand, MYPREF_STRING },
-        { userlist_buttons_enabled_check, &prefs.userlistbuttons, MYPREF_INT },
-        { userlist_sort_menu, &prefs.userlist_sort, MYPREF_MENU },
-        { trans_slider, &prefs.tint_red, MYPREF_INT },
-        { trans_check, &prefs.transparent, MYPREF_INT },
-        { bounce_check, &prefs.bounce_private, MYPREF_INT },
-        { bounce_other_check, &prefs.bounce_other, MYPREF_INT },
-        { badge_private_check, &prefs.badge_private, MYPREF_INT },
-        { badge_other_check, &prefs.badge_other, MYPREF_INT },
-        { whois_on_notify_check, &prefs.whois_on_notifyonline, MYPREF_INT },
-        { hide_join_part_check, &prefs.confmode, MYPREF_INT },
-        { identd_check, &prefs.identd, MYPREF_INT },
-        { dcc_send_menu, &prefs.autodccsend, MYPREF_MENU },
-        { dcc_chat_menu, &prefs.autodccchat, MYPREF_MENU },
-        { auto_rejoin_check, &prefs.autorejoin, MYPREF_INT },
-        { never_give_up_check, &prefs.autoreconnectonfail, MYPREF_INT },
-        { auto_reconnect_check, &prefs.autoreconnect, MYPREF_INT },
-        { auto_dialog_check, &prefs.autodialog, MYPREF_INT },
-        { hide_userlist_check, &prefs.hideuserlist, MYPREF_INT },
-        { suffix_completion_check, &prefs.nickcompletion, MYPREF_INT },
-        { checkvers_check, &prefs.checkvers, MYPREF_INT },
+		{ part_message_text, &prefs.partreason, MYPREF_STRING },
+		{ pop_new_tabs_check, &prefs.newtabstofront, MYPREF_INT },
+		{ proxy_port_text, &prefs.proxy_port, MYPREF_INT },
+		{ proxy_server_text, &prefs.proxy_host, MYPREF_STRING },
+		{ proxy_type_menu, &prefs.proxy_type, MYPREF_MENU },
+		{ quit_message_text, &prefs.quitreason, MYPREF_STRING },
+		{ raw_modes_check, &prefs.raw_modes, MYPREF_INT },
+		{ server_tab_check, &prefs.use_server_tab, MYPREF_INT },
+		{ show_away_once_check, &prefs.show_away_once, MYPREF_INT },
+		{ show_channel_mode_buttons_check, &prefs.chanmodebuttons, MYPREF_INT },
+		{ show_hostnames_check, &prefs.showhostname_in_userlist, MYPREF_INT },
+		{ show_tab_at_menu, &prefs._tabs_position, MYPREF_MENU },
+		{ spell_check_check, &prefs.spell_check, MYPREF_INT },
+		{ strip_mirc_color_check, &prefs.stripcolor, MYPREF_INT },
+		{ use_text_box_font_check, &prefs.style_inputbox, MYPREF_INT },
+		{ time_stamp_format_text, &prefs.stamp_format, MYPREF_STRING },
+		{ time_stamp_text_check, &prefs.timestamp, MYPREF_INT },
+		{ hide_tab_close_check, &prefs.hide_tab_close_buttons, MYPREF_INT },
+		{ show_separator_check, &prefs.show_separator, MYPREF_INT },
+		{ url_command_text, &prefs.urlcommand, MYPREF_STRING },
+		{ userlist_buttons_enabled_check, &prefs.userlistbuttons, MYPREF_INT },
+		{ userlist_sort_menu, &prefs.userlist_sort, MYPREF_MENU },
+		{ trans_slider, &prefs.tint_red, MYPREF_INT },
+		{ trans_check, &prefs.transparent, MYPREF_INT },
+		{ bounce_check, &prefs.bounce_private, MYPREF_INT },
+		{ bounce_other_check, &prefs.bounce_other, MYPREF_INT },
+		{ badge_private_check, &prefs.badge_private, MYPREF_INT },
+		{ badge_other_check, &prefs.badge_other, MYPREF_INT },
+		{ whois_on_notify_check, &prefs.whois_on_notifyonline, MYPREF_INT },
+		{ hide_join_part_check, &prefs.confmode, MYPREF_INT },
+		{ identd_check, &prefs.identd, MYPREF_INT },
+		{ dcc_send_menu, &prefs.autodccsend, MYPREF_MENU },
+		{ dcc_chat_menu, &prefs.autodccchat, MYPREF_MENU },
+		{ auto_rejoin_check, &prefs.autorejoin, MYPREF_INT },
+		{ never_give_up_check, &prefs.autoreconnectonfail, MYPREF_INT },
+		{ auto_reconnect_check, &prefs.autoreconnect, MYPREF_INT },
+		{ auto_dialog_check, &prefs.autodialog, MYPREF_INT },
+		{ hide_userlist_check, &prefs.hideuserlist, MYPREF_INT },
+		{ suffix_completion_check, &prefs.nickcompletion, MYPREF_INT },
+		{ checkvers_check, &prefs.checkvers, MYPREF_INT },
 		{ sleep_message_text, &prefs.sleepmessage, MYPREF_STRING },
 		{ gui_metal_check, &prefs.guimetal, MYPREF_INT },
 		{ scrolling_completion_check, &prefs.scrolling_completion, MYPREF_INT },
@@ -418,7 +418,7 @@ static NSArray *root_items;
 	// I was using #assert totally wrong.. this is the next best thing
 	// to get a compile time error if the array sizes are different.
 	// Credit where credit is due:
-	//    http://www.jaggersoft.com/pubs/CVu11_3.html
+	//	http://www.jaggersoft.com/pubs/CVu11_3.html
 	switch (0) { case 0: case (sizeof (xx) == sizeof (my_prefs)):; };
 	
 	for (NSUInteger i = 0; i < sizeof (xx) / sizeof (xx [0]); i ++)
@@ -462,7 +462,7 @@ static NSArray *root_items;
 	[self make_sound_menu];
 	[self get_sound_events];
 
-	NSButtonCell *bcell = [[MyButtonCell alloc] initTextCell:@""];
+	NSButtonCell *bcell = [[MyButtonCell alloc] initWithText:@""];
 	[bcell setButtonType:NSSwitchButton];
 	[bcell setControlSize:NSMiniControlSize];
 	[bcell setAllowsMixedState:YES];
@@ -470,7 +470,7 @@ static NSArray *root_items;
 	[[[sounds_table tableColumns] objectAtIndex:3] setDataCell:bcell];
 	[bcell release];
 
-	bcell = [[MyButtonCell alloc] initTextCell:@""];
+	bcell = [[MyButtonCell alloc] initWithText:@""];
 	[bcell setButtonType:NSSwitchButton];
 	[bcell setControlSize:NSMiniControlSize];
 	[[[sounds_table tableColumns] objectAtIndex:4] setDataCell:bcell];
@@ -484,89 +484,89 @@ static NSArray *root_items;
 
 - (void) outlineViewSelectionDidChange:(NSNotification *) notification
 {
-    NSInteger row = [category_list selectedRow];
-    id item = [category_list itemAtRow:row];
-    
-    if ([item isKindOfClass:[PrefLeaf class]])
-    {
-        PrefLeaf *l = (PrefLeaf *) item;
-        
-        [content_box setTitle:l->label];
-        [tabView selectTabViewItemAtIndex:l->pane];
-    }
+	NSInteger row = [category_list selectedRow];
+	id item = [category_list itemAtRow:row];
+	
+	if ([item isKindOfClass:[PrefLeaf class]])
+	{
+		PrefLeaf *l = (PrefLeaf *) item;
+		
+		[content_box setTitle:l->label];
+		[tabView selectTabViewItemAtIndex:l->pane];
+	}
 }
 
 - (void) do_trans:(id) sender
 {
-    [TabOrWindowView setTransparency:[trans_check intValue] ? [trans_slider intValue] : 255];
+	[TabOrWindowView setTransparency:[trans_check intValue] ? [trans_slider intValue] : 255];
 }
 
 - (void) do_show_prefs:(id) sender
 {
-    NSString *s = [NSString stringWithFormat:@"file://%s", get_xdir_fs ()];
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:s]];
+	NSString *s = [NSString stringWithFormat:@"file://%s", get_xdir_fs ()];
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:s]];
 }
 
 - (void) do_apply:(id) sender
 {
-    [self set];
+	[self set];
 }
 
 - (void) do_ok:(id) sender
 {
-    [self do_apply:sender];
-    [preferencesWindow close];
+	[self do_apply:sender];
+	[preferencesWindow close];
 }
 
 - (void) do_cancel:(id) sender
 {
-    [TabOrWindowView setTransparency:prefs.transparent ? prefs.tint_red : 255];
-    [preferencesWindow close];
+	[TabOrWindowView setTransparency:prefs.transparent ? prefs.tint_red : 255];
+	[preferencesWindow close];
 }
 
 - (void) do_font:(id) sender
 {
-    [preferencesWindow makeFirstResponder:preferencesWindow];
-    NSFontManager *fontManager = [NSFontManager sharedFontManager];
-    [fontManager orderFrontFontPanel:self];
+	[preferencesWindow makeFirstResponder:preferencesWindow];
+	NSFontManager *fontManager = [NSFontManager sharedFontManager];
+	[fontManager orderFrontFontPanel:self];
 }
 
 - (void) changeFont:(id) fontManager
 {
-    NSFont *font = [fontManager convertFont:[[AquaChat sharedAquaChat] font]];
-    sprintf (prefs.font_normal, "%s %.1f", [[font fontName] UTF8String], [font pointSize]);
-    [font_text setStringValue:[NSString stringWithUTF8String:prefs.font_normal]];
+	NSFont *font = [fontManager convertFont:[[AquaChat sharedAquaChat] font]];
+	sprintf (prefs.font_normal, "%s %.1f", [[font fontName] UTF8String], [font pointSize]);
+	[font_text setStringValue:[NSString stringWithUTF8String:prefs.font_normal]];
 }
 
 - (void) show
 {
-    [[NSFontManager sharedFontManager] setDelegate:self];
-    [self populate];
-    [preferencesWindow makeKeyAndOrderFront:self];
+	[[NSFontManager sharedFontManager] setDelegate:self];
+	[self populate];
+	[preferencesWindow makeKeyAndOrderFront:self];
 }
 
 /////////////////////
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item
 {
-    id xx = item ? [item objectAtIndex:index + 1] : [root_items objectAtIndex:index];
-    return xx;
+	id xx = item ? [item objectAtIndex:index + 1] : [root_items objectAtIndex:index];
+	return xx;
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item
 {
-    return item ? [item isKindOfClass:[NSArray class]] ? true : false : true;
+	return item ? [item isKindOfClass:[NSArray class]] ? true : false : true;
 }
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
 {
-    return item ? [item count] - 1 : [root_items count];
+	return item ? [item count] - 1 : [root_items count];
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
 {
-    return [item isKindOfClass:[NSArray class]] ? 
-        [item objectAtIndex:0] : ((PrefLeaf *)item)->label;
+	return [item isKindOfClass:[NSArray class]] ? 
+		[item objectAtIndex:0] : ((PrefLeaf *)item)->label;
 }
 
 ////////////
@@ -590,7 +590,7 @@ static NSArray *root_items;
 		case 4: return item->show;
 	}
 
-    return @"";
+	return @"";
 }
 
 - (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
@@ -637,7 +637,7 @@ static NSArray *root_items;
 			item->show = [object retain];
 			text_event_info[row].show = [item->show intValue];
 			break;
-    }
+	}
 }
 
 //////////
