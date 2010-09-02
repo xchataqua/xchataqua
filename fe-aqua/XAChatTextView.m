@@ -449,7 +449,7 @@ static NSCursor *lr_cursor;
 	didCompleteLayoutForTextContainer:(NSTextContainer *) aTextContainer
 	atEnd:(BOOL) flag
 {
-	SGDebug(FALSE, @"didCompleteLayoutForTextContainer %d\n", atBottom);
+	SGLog(FALSE, @"didCompleteLayoutForTextContainer %d\n", atBottom);
 	if (atBottom)
 	{
 #if 1
@@ -474,7 +474,7 @@ static NSCursor *lr_cursor;
 
 	atBottom = dmax == cmax;
 
-	SGDebug(FALSE, @"Update at bottom %d\n", atBottom);
+	SGLog(FALSE, @"Update at bottom %d\n", atBottom);
 }
 
 - (void) viewDidMoveToWindow
