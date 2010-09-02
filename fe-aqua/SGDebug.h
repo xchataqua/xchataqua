@@ -1,5 +1,9 @@
-/* X-Chat Aqua
- * Copyright (C) 2002 Steve Green
+/*
+ *  SGDebug.h
+ *  X-Chat Aqua
+ *
+ *  Created by 정윤원 on 10. 9. 3..
+ *  Copyright 2010 __MyCompanyName__. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,25 +19,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#import "SGDebug.h"
-#import "SGAlert.h"
-#import "SGApplication.h"
-//#import "SGArray.h" not used in xca
-#import "SGBoxView.h"
-#import "SGFileDescriptor.h"
-#import "SGFileSelection.h"
-#import "SGFileUtil.h"
-#import "SGFormView.h"
-#import "SGGuiUtil.h"
-#import "SGHBoxView.h"
-#import "SGRegex.h"
-#import "SGRequest.h"
-#import "SGRowColView.h"
-#import "SGSelfPtr.h"
-#import "SGSoundUtil.h"
-#import "SGVBoxView.h"
-#import "SGView.h"
-#import "SGTableView.h"
-#import "SGTabView.h"
-#import "SGTokenizer.h"
-#import "NStimerAdditions.h"
+#define SG_DEBUG 0
+
+#ifdef SG_DEBUG
+#	define SGLog(TAG, ...) { if ( TAG ) [SGDebug log:[NSString stringWithFormat:__VA_ARGS__] file:__FILE__ line:__LINE__]; }
+#else
+#	define SGLog(TAG, ...)
+#endif
+
+@interface SGDebug : NSObject 
++ (void) log:(NSString *)log file:(const char *)file line:(int)line;
+@end;
