@@ -19,22 +19,22 @@
 
 static NSString *fixPath (NSString *path)
 {
-    if (!path) return nil;
-        
-    if ([path isAbsolutePath]) return path;
-    
-    // Assume it's relative to the dir with the app bundle
-    return [NSString stringWithFormat:@"%@/../%@", [[NSBundle mainBundle] bundlePath], path];
+	if ( path == nil ) return nil;
+		
+	if ( [path isAbsolutePath] ) return path;
+	
+	// Assume it's relative to the dir with the app bundle
+	return [NSString stringWithFormat:@"%@/../%@", [[NSBundle mainBundle] bundlePath], path];
 }
 
 @implementation SGFileSelection
 
 + (NSString *) selectWithWindow:(NSWindow *) win
 {
-    return [self selectWithWindow:win inDir:nil];
+	return [self selectWithWindow:win inDirectory:nil];
 }
 
-+ (NSString *) selectWithWindow:(NSWindow *) win inDir:(NSString *) dir
++ (NSString *) selectWithWindow:(NSWindow *) win inDirectory:(NSString *) dir
 {
 	NSOpenPanel *p = [NSOpenPanel openPanel];
 
@@ -62,7 +62,7 @@ static NSString *fixPath (NSString *path)
 	}
 	else
 		sts = [p runModalForDirectory:dir file:nil types:nil] == NSOKButton;
-    
+	
 	[p orderOut:self];
 
 	if (sts)
@@ -76,24 +76,24 @@ static NSString *fixPath (NSString *path)
 
 + (NSString *) saveWithWindow:(NSWindow *) win
 {
-    NSSavePanel *p = [NSSavePanel savePanel];
-    
-    [p setPrompt:@"Select"];
-        
-    [p beginSheetForDirectory:nil file:nil
-       modalForWindow:win modalDelegate:nil didEndSelector:nil
-       contextInfo:nil];
+	NSSavePanel *p = [NSSavePanel savePanel];
+	
+	[p setPrompt:@"Select"];
+		
+	[p beginSheetForDirectory:nil file:nil
+	   modalForWindow:win modalDelegate:nil didEndSelector:nil
+	   contextInfo:nil];
 
-    NSInteger sts = [NSApp runModalForWindow:p];
+	NSInteger sts = [NSApp runModalForWindow:p];
 
-    [NSApp endSheet:p];
-    
-    [p orderOut:self];
+	[NSApp endSheet:p];
+	
+	[p orderOut:self];
 
-    if (sts)
-        return [p filename];
-    
-    return nil;
+	if (sts)
+		return [p filename];
+	
+	return nil;
 }
 
 + (void) getFile:(NSString *)title initial:(NSString *)initial callback:(callback_t)callback userdata:(void *)userdata flags:(int)flags
@@ -120,13 +120,13 @@ static NSString *fixPath (NSString *path)
 				   modalForWindow:nil modalDelegate:nil didEndSelector:nil
 					  contextInfo:nil];
 	
-    NSInteger sts = [NSApp runModalForWindow:panel];
+	NSInteger sts = [NSApp runModalForWindow:panel];
 	
-    [NSApp endSheet:panel];
-    
-    [panel orderOut:self];
+	[NSApp endSheet:panel];
 	
-    if (sts)
+	[panel orderOut:self];
+	
+	if (sts)
 	{
 		if(flags & FRF_MULTIPLE)
 		{
