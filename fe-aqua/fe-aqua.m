@@ -361,12 +361,12 @@ fe_input_add (int sok, int flags, void *func, void *data)
 
 static void setupAppSupport ()
 {
-	NSString *asdir = [SGFileUtil findApplicationSupportFor:@"X-Chat Aqua"];
+	NSString *asdir = [SGFileUtility findApplicationSupportFor:@"X-Chat Aqua"];
 	NSString *xcdir = [NSString stringWithUTF8String:get_xdir_utf8()];
 	
-	bool xclink_exists = [SGFileUtil isSymLink:xcdir];	
-	bool xcdir_exists = [SGFileUtil isDirectory:xcdir];
-	bool asdir_exists = [SGFileUtil isDirectory:asdir];
+	bool xclink_exists = [SGFileUtility isSymLink:xcdir];	
+	bool xcdir_exists = [SGFileUtility isDirectory:xcdir];
+	bool asdir_exists = [SGFileUtility isDirectory:asdir];
 
 	// State 1
 	if (xcdir_exists && asdir_exists)

@@ -894,9 +894,9 @@ static ServerList *instance;
 {
 	// 10.3 doesn't support small square buttons.
 	// This is the next best thing
-	[SGGuiUtil fixSquareButtonsInView:[showWhenStartupToggleButton superview]];
-	[SGGuiUtil fixSquareButtonsInView:[networkNicknameTextField superview]];
-	[SGGuiUtil fixSquareButtonsInView:[[[networkJoinTableView superview] superview] superview]];
+	[SGGuiUtility fixSquareButtonsInView:[showWhenStartupToggleButton superview]];
+	[SGGuiUtility fixSquareButtonsInView:[networkNicknameTextField superview]];
+	[SGGuiUtility fixSquareButtonsInView:[[[networkJoinTableView superview] superview] superview]];
 	
 	NSFont *font = [showWhenStartupToggleButton font];
 	for (NSView *view in [[[networkTableView window] contentView] subviews])
