@@ -28,9 +28,6 @@
 #include <ctype.h>
 #include <unistd.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 #undef TYPE_BOOL
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
@@ -42,10 +39,6 @@ extern "C" {
 #include "../common/servlist.h"
 #include "../common/server.h"
 #include "outbound.h"
-#undef TYPE_BOOL
-#ifdef __cplusplus
-}
-#endif
 
 #import "fe-aqua_utility.h"
 #import "aquachat.h"
