@@ -18,6 +18,7 @@
 #define DEBUG_BOXVIEW NO
 
 #include <stdarg.h>
+#import "SGDebug.h"
 #import "SGBoxView.h"
 
 //////////////////////////////////////////////////////////////////////
@@ -186,7 +187,7 @@ NSRect NSRectFlip (NSRect rect)
 
 - (void) do_layout
 {
-	SGDebug (DEBUG_BOXVIEW, @"Layout box view %p\n", self);
+	SGLog (DEBUG_BOXVIEW, @"Layout box view %p\n", self);
 	
 	if ([metaViews count] < 1) return;
 		
@@ -201,8 +202,8 @@ NSRect NSRectFlip (NSRect rect)
 
 	NSRect r = [self bounds];
 	
-	SGDebug (DEBUG_BOXVIEW, @"I am %f %f %f %f %p\n", r.origin.x, r.origin.y, r.size.width, r.size.height, self);
-	SGDebug (DEBUG_BOXVIEW, @"I have %d children\n", [metaViews count]);
+	SGLog (DEBUG_BOXVIEW, @"I am %f %f %f %f %p\n", r.origin.x, r.origin.y, r.size.width, r.size.height, self);
+	SGLog (DEBUG_BOXVIEW, @"I have %d children\n", [metaViews count]);
 	
 	if (orientation == SGBoxOrientationVertical)
 		r = NSRectFlip(r);
@@ -260,7 +261,7 @@ NSRect NSRectFlip (NSRect rect)
 			if (orientation == SGBoxOrientationVertical)
 				b = NSRectFlip (b);
 	
-			SGDebug (DEBUG_BOXVIEW, @"Setting 0x%x to %f %f %f %f\n",
+			SGLog (DEBUG_BOXVIEW, @"Setting 0x%x to %f %f %f %f\n",
 					 metaView, b.origin.x, b.origin.y, b.size.width, b.size.height);
 				
 			[metaView setFrame:b];
@@ -283,7 +284,7 @@ NSRect NSRectFlip (NSRect rect)
 				if (orientation == SGBoxOrientationVertical)
 					b = NSRectFlip (b);
 
-				SGDebug (DEBUG_BOXVIEW, @"Setting 0x%x to %f %f %f %f\n",
+				SGLog (DEBUG_BOXVIEW, @"Setting 0x%x to %f %f %f %f\n",
 						 metaView, b.origin.x, b.origin.y, b.size.width, b.size.height);
 
 				[metaView setFrame:b];
@@ -320,7 +321,7 @@ NSRect NSRectFlip (NSRect rect)
 			if (orientation == SGBoxOrientationVertical)
 				b = NSRectFlip (b);
 
-			SGDebug (DEBUG_BOXVIEW, @"Setting 0x%x to %f %f %f %f\n",
+			SGLog (DEBUG_BOXVIEW, @"Setting 0x%x to %f %f %f %f\n",
 					 metaView, b.origin.x, b.origin.y, b.size.width, b.size.height);
 
 			[metaView setFrame:b];
@@ -347,7 +348,7 @@ NSRect NSRectFlip (NSRect rect)
 		if (orientation == SGBoxOrientationVertical)
 			b = NSRectFlip (b);
 
-		SGDebug (DEBUG_BOXVIEW, @"Setting 0x%x to %f %f %f %f\n",
+		SGLog (DEBUG_BOXVIEW, @"Setting 0x%x to %f %f %f %f\n",
 				 metaView, b.origin.x, b.origin.y, b.size.width, b.size.height);
 
 		[metaView setFrame:b];
