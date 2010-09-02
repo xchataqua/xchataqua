@@ -23,19 +23,11 @@
 #import "MenuMaker.h"
 
 // TBD: This is for urlhander_list Should we pass this in?
-//extern "C" {
 #import "XACommon.h"
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
 #include "../common/text.h"
 #include "../common/url.h"
-//}
-
-#if 0
-#define DPrint printf
-#else
-static void DPrint (const char * x, ...) { };
-#endif
 
 //////////////////////////////////////////////////////////////////////
 
@@ -457,7 +449,7 @@ static NSCursor *lr_cursor;
 	didCompleteLayoutForTextContainer:(NSTextContainer *) aTextContainer
 	atEnd:(BOOL) flag
 {
-	DPrint("didCompleteLayoutForTextContainer %d\n", atBottom);
+	SGDebug(FALSE, @"didCompleteLayoutForTextContainer %d\n", atBottom);
 	if (atBottom)
 	{
 #if 1
@@ -482,7 +474,7 @@ static NSCursor *lr_cursor;
 
 	atBottom = dmax == cmax;
 
-	DPrint("Update at bottom %d\n", atBottom);
+	SGDebug(FALSE, @"Update at bottom %d\n", atBottom);
 }
 
 - (void) viewDidMoveToWindow

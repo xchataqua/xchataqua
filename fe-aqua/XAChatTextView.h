@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////
 
 /* CL: these methods are used in the default key bindings, are implemented by Cocoa classes,
-       but Apple forgot to include them in the headers. Declare them so the compiler knows
+	   but Apple forgot to include them in the headers. Declare them so the compiler knows
 	   what we're calling. */
 @interface NSResponder(MissingActionMethods)
 - (void)scrollToBeginningOfDocument:(id)sender;
@@ -36,18 +36,18 @@
 <NSLayoutManagerDelegate>
 #endif
 {
-    ColorPalette			*palette;
-    NSFont					*normalFont;
-    NSFont					*boldFont;
-    NSMutableParagraphStyle	*style;
-    NSRect					lineRect;
-    NSRange					wordRange;
-    int						wordType;
-    NSString				*word;
-    id						mouseEventRequestId;
-    ChatWindow				*dropHandler;
-    CGFloat					fontWidth;
-    BOOL					atBottom;
+	ColorPalette			*palette;
+	NSFont					*normalFont;
+	NSFont					*boldFont;
+	NSMutableParagraphStyle	*style;
+	NSRect					lineRect;
+	NSRange					wordRange;
+	int						wordType;
+	NSString				*word;
+	id						mouseEventRequestId;
+	ChatWindow				*dropHandler;
+	CGFloat					fontWidth;
+	BOOL					atBottom;
 	int						numberOfLines;
 }
 
