@@ -27,35 +27,37 @@
 
 //////////////////////////////////////////////////////////////////////
 
-@interface OneBan : NSObject
+@interface BanListItem : NSObject
 {
-  @public
-    NSString	*mask;
-    NSString	*who;
-    NSString	*when;
+	NSString *mask;
+	NSString *who;
+	NSString *when;
 }
+
+@property (nonatomic, retain) NSString *mask, *who, *when;
 
 - (id) initWithMask:(NSString *)mask who:(NSString *)who when:(NSString *)when;
 
 @end
 
-@implementation OneBan
+@implementation BanListItem
 
 - (id) initWithMask:(NSString *)aMask who:(NSString *)aWho when:(NSString *)aWhen
 {	
-    mask = [aMask retain];
-    who  = [aWho retain];
-    when = [aWhen retain];
-    
-    return self;
+	self.mask = aMask;
+	self.who  = aWho;
+	self.when = aWhen;
+	
+	return self;
 }
 
 - (void) dealloc
 {
-    [mask release];
-    [who  release];
-    [when release];
-    [super dealloc];
+	self.mask = nil;
+	self.who  = nil;
+	self.when = nil;
+	
+	[super dealloc];
 }
 
 @end
@@ -66,41 +68,40 @@
 
 - (id) initWithSelfPtr:(id *)selfPtr session:(struct session *)aSession
 {
-    [super initWithSelfPtr:selfPtr];
-    
-    self->sess = aSession;
-    self->timer = nil;
-    
-    myItems = [[NSMutableArray arrayWithCapacity:0] retain];
-    
-    [NSBundle loadNibNamed:@"BanList" owner:self];
+	[super initWithSelfPtr:selfPtr];
+	
+	self->sess = aSession;
+	self->timer = nil;
+	
+	myItems = [[NSMutableArray arrayWithCapacity:0] retain];
+	
+	[NSBundle loadNibNamed:@"BanList" owner:self];
 	
 	return self;
 }
 
 - (void) dealloc
 {
-    if (timer) [timer invalidate];
-    [banListView release];
-    [myItems release];
-    [super dealloc];
+	if (timer) [timer invalidate];
+	[banListView release];
+	[myItems release];
+	[super dealloc];
 }
 
 - (void) awakeFromNib
 {
-    [banListView setServer:sess->server];
+	[banListView setServer:sess->server];
 
-    [banListView setTitle:[NSString stringWithFormat:
-						   NSLocalizedStringFromTable(@"XChat: Ban List (%s)", @"xchat", @""),
-						   [[NSString stringWithFormat:@"%s, %s", sess->channel, sess->server->servername] UTF8String]]];
-    [banListView setTabTitle:NSLocalizedStringFromTable(@"banlist", @"xchataqua", @"Title of Tab: MainMenu->Window->Ban List...")];
-    
+	NSString *serverInfo = [NSString stringWithFormat:@"%s, %s", sess->channel, sess->server->servername];
+	NSString *title = [NSString stringWithFormat:NSLocalizedStringFromTable(@"XChat: Ban List (%s)", @"xchat", @""), [serverInfo UTF8String]];
+	[banListView setTitle:title];
+	[banListView setTabTitle:NSLocalizedStringFromTable(@"banlist", @"xchataqua", @"Title of Tab: MainMenu->Window->Ban List...")];
 	
-    for (NSInteger i = 0; i < [self->banList numberOfColumns]; i++)
-        [[[self->banList tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
+	for ( NSTableColumn *column in [self->banList tableColumns] )
+		[column setIdentifier:[NSNumber numberWithInteger:i]];
 
-    [self->banList setDataSource:self];
-    [self->banListView setDelegate:self];
+	[self->banList setDataSource:self];
+	[self->banListView setDelegate:self];
 }
 
 - (void) windowDidBecomeKey:(NSNotification *) xx
@@ -109,88 +110,88 @@
 
 - (void) windowWillClose:(NSNotification *) xx
 {
-    [self release];
+	[self release];
 }
 
 - (void) show
 {
-    if (prefs.windows_as_tabs)
-        [banListView becomeTabAndShow:YES];
-    else
-        [banListView becomeWindowAndShow:YES];
+	if (prefs.windows_as_tabs)
+		[banListView becomeTabAndShow:YES];
+	else
+		[banListView becomeWindowAndShow:YES];
 	[self doRefresh:nil]; // load list when window showed-up
 }
 
 - (void) doRefresh:(id) sender
 {
-    if (sess->server->connected)
-    {
-        [myItems removeAllObjects];
-        [banList reloadData];
+	if (sess->server->connected)
+	{
+		[myItems removeAllObjects];
+		[banList reloadData];
 
-        [refreshButton setEnabled:NO];
-        
-        handle_command(sess, "ban", false);
-    }
-    else
-        [SGAlert alertWithString:NSLocalizedStringFromTable(@"Not connected.", @"xchat", @"") andWait:false];
+		[refreshButton setEnabled:NO];
+		
+		handle_command(sess, "ban", false);
+	}
+	else
+		[SGAlert alertWithString:NSLocalizedStringFromTable(@"Not connected.", @"xchat", @"") andWait:NO];
 }
 
 - (void) performUnban:(BOOL)all invert:(BOOL)invert
 {
-    NSMutableArray *nicks = [NSMutableArray arrayWithCapacity:0];
-    
-    for (NSUInteger i = 0; i < [myItems count]; i ++)
-    {
-        BOOL unban_this_one = all || [banList isRowSelected:i];
-        if (invert) unban_this_one = !unban_this_one;
-        
-        if (unban_this_one)
-            [nicks addObject:((OneBan *) [myItems objectAtIndex:i])->mask];
-    }
-    
-    const char **masks = (const char **) malloc ([nicks count] * sizeof (const char *));
-    for (NSUInteger i = 0; i < [nicks count]; i ++)
-        masks [i] = [[nicks objectAtIndex:i] UTF8String];
-        
-    char tbuf[2048];
-    send_channel_modes (sess, tbuf, (char **) masks, 0, [nicks count], '-', 'b', 0);
-    
-    free (masks);
-    
-    [self doRefresh:nil];
+	NSMutableArray *nicks = [NSMutableArray array];
+	
+	for (NSUInteger i = 0; i < [myItems count]; i ++)
+	{
+		BOOL unban_this_one = all || [banList isRowSelected:i];
+		if (invert) unban_this_one = !unban_this_one;
+		
+		if (unban_this_one)
+			[nicks addObject:[(BanListItem *)[myItems objectAtIndex:i] mask]];
+	}
+	
+	const char **masks = (const char **) malloc ([nicks count] * sizeof (const char *));
+	for (NSUInteger i = 0; i < [nicks count]; i ++)
+		masks [i] = [[nicks objectAtIndex:i] UTF8String];
+		
+	char tbuf[2048];
+	send_channel_modes (sess, tbuf, (char **) masks, 0, [nicks count], '-', 'b', 0);
+	
+	free (masks);
+	
+	[self doRefresh:nil];
 }
 
 - (void) doUnban:(id) sender
 {
-    // Unban selected
-    [self performUnban:NO invert:NO];
+	// Unban selected
+	[self performUnban:NO invert:NO];
 }
 
 - (void) doCrop:(id) sender
 {
-    // Unban not-selected
-    [self performUnban:NO invert:YES];
+	// Unban not-selected
+	[self performUnban:NO invert:YES];
 }
 
 - (void) doWipe:(id) sender
 {
-    // Unban all
-    [self performUnban:YES invert:NO];
+	// Unban all
+	[self performUnban:YES invert:NO];
 }
 
 - (void) redraw:(id) sender
 {
-    [timer release];
-    timer = nil;
-    [banList reloadData];
+	[timer release];
+	timer = nil;
+	[banList reloadData];
 }
 
 - (void) addBanList:(NSString *)mask who:(NSString *)who when:(NSString *)when isExemption:(BOOL)isExemption
 {
 	if (isExemption) return;
 		
-	[myItems addObject:[[OneBan alloc] initWithMask:mask who:who when:when]];
+	[myItems addObject:[[[BanListItem alloc] initWithMask:mask who:who when:when] autorelease]];
 	
 	if (!timer)
 		timer = [[NSTimer scheduledTimerWithTimeInterval:1
@@ -203,7 +204,7 @@
 
 - (void) banListEnd
 {
-    [refreshButton setEnabled:YES];
+	[refreshButton setEnabled:YES];
 }
 
 //////////////
@@ -211,21 +212,21 @@
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
-    return [myItems count];
+	return [myItems count];
 }
 
 - (id) tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
-    OneBan *item = [myItems objectAtIndex:rowIndex];
+	BanListItem *item = [myItems objectAtIndex:rowIndex];
 
-    switch ([[aTableColumn identifier] integerValue])
-    {
-        case 0: return item->mask;
-        case 1: return item->who;
-        case 2: return item->when;
-    }
-    
-    return @"";
+	switch ( [[aTableColumn identifier] integerValue] )
+	{
+		case 0: return [item mask];
+		case 1: return [item who];
+		case 2: return [item when];
+	}
+	
+	return @"";
 }
 
 @end
