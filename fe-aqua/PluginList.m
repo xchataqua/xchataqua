@@ -33,37 +33,37 @@ extern GSList *plugin_list;
 
 //////////////////////////////////////////////////////////////////////
 
-@interface OnePlugin : NSObject
+@interface PluginItem : NSObject
 {
   @public
-    NSString	*name;
-    NSString	*vers;
-    NSString	*file;
-    NSString	*desc;
+	NSString	*name;
+	NSString	*vers;
+	NSString	*file;
+	NSString	*desc;
 }
 
 - (id) initWithPlugin:(xchat_plugin *) plugin;
 
 @end
 
-@implementation OnePlugin
+@implementation PluginItem
 
 - (id) initWithPlugin:(xchat_plugin *) plugin
 {
-    name = [[NSString stringWithUTF8String:plugin->name] retain];
-    vers = [[NSString stringWithUTF8String:plugin->version] retain];
-    file = [[NSString stringWithUTF8String:file_part(plugin->filename)] retain];
-    desc = [[NSString stringWithUTF8String:plugin->desc] retain];
-    
-    return self;
+	name = [[NSString stringWithUTF8String:plugin->name] retain];
+	vers = [[NSString stringWithUTF8String:plugin->version] retain];
+	file = [[NSString stringWithUTF8String:file_part(plugin->filename)] retain];
+	desc = [[NSString stringWithUTF8String:plugin->desc] retain];
+	
+	return self;
 }
 
 - (void) dealloc
 {
-    [name release];
-    [vers release];
-    [file release];
-    [desc dealloc];
+	[name release];
+	[vers release];
+	[file release];
+	[desc dealloc];
 	[super dealloc];
 }
 
@@ -75,73 +75,73 @@ extern GSList *plugin_list;
 
 - (id) initWithSelfPtr:(id *)self_ptr
 {
-    self = [super initWithSelfPtr:self_ptr];
+	self = [super initWithSelfPtr:self_ptr];
    
-    self->myItems = [[NSMutableArray arrayWithCapacity:0] retain];
+	self->myItems = [[NSMutableArray alloc] init];
 
-    [NSBundle loadNibNamed:@"PluginList" owner:self];
+	[NSBundle loadNibNamed:@"PluginList" owner:self];
 
-    return self;
+	return self;
 }
 
 - (void) dealloc
 {
-    [self->pluginListTableView setDataSource:nil];
-    [[self->pluginListTableView window] autorelease];
-    [myItems release];
-    [super dealloc];
+	[self->pluginListTableView setDataSource:nil];
+	[[self->pluginListTableView window] autorelease];
+	[myItems release];
+	[super dealloc];
 }
 
 - (void) doUnload:(id) sender
 {
-    NSInteger row = [self->pluginListTableView selectedRow];
-    if (row < 0)
-        return;
-    
-    OnePlugin *item = [myItems objectAtIndex:row];
+	NSInteger row = [self->pluginListTableView selectedRow];
+	if (row < 0)
+		return;
+	
+	PluginItem *item = [myItems objectAtIndex:row];
 
-    NSUInteger len = [item->file length];
-    if (len > 3 && strcasecmp ([item->file UTF8String] + len - 3, ".so") == 0)
-    {
-        if (plugin_kill ((char *) [item->name UTF8String], false) == 2)
-            [SGAlert alertWithString:NSLocalizedStringFromTable(@"That plugin is refusing to unload.\n", @"xchat", @"") andWait:false];
-    }
-    else
-    {
-        NSString *cmd = [NSString stringWithFormat:@"UNLOAD \"%@\"", item->file];
-        handle_command (current_sess, (char *)[cmd UTF8String], false);
-    }
+	NSUInteger len = [item->file length];
+	if (len > 3 && strcasecmp ([item->file UTF8String] + len - 3, ".so") == 0)
+	{
+		if (plugin_kill ((char *) [item->name UTF8String], false) == 2)
+			[SGAlert alertWithString:NSLocalizedStringFromTable(@"That plugin is refusing to unload.\n", @"xchat", @"") andWait:false];
+	}
+	else
+	{
+		NSString *cmd = [NSString stringWithFormat:@"UNLOAD \"%@\"", item->file];
+		handle_command (current_sess, (char *)[cmd UTF8String], false);
+	}
 }
 
 - (void) doLoad:(id) sender
 {
-    [[AquaChat sharedAquaChat] do_load_plugin:sender];
+	[[AquaChat sharedAquaChat] do_load_plugin:sender];
 }
 
 - (void) loadData
 {
-    [myItems removeAllObjects];
+	[myItems removeAllObjects];
 
-    for (GSList *list = plugin_list; list; list = list->next)
-    {
-    	xchat_plugin *pl = (xchat_plugin *) list->data;
-        if (pl->version && pl->version [0])
-            [myItems addObject:[[OnePlugin alloc] initWithPlugin:pl]];
-    }
+	for (GSList *list = plugin_list; list; list = list->next)
+	{
+		xchat_plugin *pl = (xchat_plugin *) list->data;
+		if (pl->version && pl->version [0])
+			[myItems addObject:[[PluginItem alloc] initWithPlugin:pl]];
+	}
 
-    [self->pluginListTableView reloadData];
+	[self->pluginListTableView reloadData];
 }
 
 - (void) awakeFromNib
 {
-    for (NSUInteger i = 0; i < [self->pluginListTableView numberOfColumns]; i ++)
-        [[[self->pluginListTableView tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
+	for (NSUInteger i = 0; i < [self->pluginListTableView numberOfColumns]; i ++)
+		[[[self->pluginListTableView tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
 
-    [self->pluginListTableView setDataSource:self];
-    [[self->pluginListTableView window] setDelegate:self];
-    [[self->pluginListTableView window] center];
+	[self->pluginListTableView setDataSource:self];
+	[[self->pluginListTableView window] setDelegate:self];
+	[[self->pluginListTableView window] center];
 
-    [self loadData];
+	[self loadData];
 }
 
 - (void) windowDidBecomeKey:(NSNotification *) xx
@@ -150,42 +150,42 @@ extern GSList *plugin_list;
 
 - (void) windowWillClose:(NSNotification *) xx
 {
-    [self release];
+	[self release];
 }
 
 - (void) show
 {
-    [[self->pluginListTableView window] makeKeyAndOrderFront:self];
+	[[self->pluginListTableView window] makeKeyAndOrderFront:self];
 }
 
 - (void) update
 {
-    [self loadData];
+	[self loadData];
 }
 
-//////////////
-//
+#pragma mark -
+#pragma mark table view protocols
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
-    return [myItems count];
+	return [myItems count];
 }
 
 - (id) tableView:(NSTableView *) aTableView
-    objectValueForTableColumn:(NSTableColumn *) aTableColumn
-    row:(NSInteger) rowIndex
+	objectValueForTableColumn:(NSTableColumn *) aTableColumn
+	row:(NSInteger) rowIndex
 {
-    OnePlugin *item = [myItems objectAtIndex:rowIndex];
+	PluginItem *item = [myItems objectAtIndex:rowIndex];
 
-    switch ([[aTableColumn identifier] integerValue])
-    {
-        case 0: return item->name;
-        case 1: return item->vers;
-        case 2: return item->file;
-        case 3: return item->desc;
-    }
-    
-    return @"";
+	switch ([[aTableColumn identifier] integerValue])
+	{
+		case 0: return item->name;
+		case 1: return item->vers;
+		case 2: return item->file;
+		case 3: return item->desc;
+	}
+	
+	return @"";
 }
 
 @end
