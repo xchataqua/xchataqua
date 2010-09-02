@@ -72,7 +72,7 @@
 	CGFloat lx = rect.origin.x;
 	CGFloat ly = rect.origin.y;
 	
-	rows = 0;
+	numberOfRows = 0;
 	
 	NSUInteger this_row = 0;
 	CGFloat maxHeight = 0;
