@@ -97,8 +97,8 @@
 	[banListView setTitle:title];
 	[banListView setTabTitle:NSLocalizedStringFromTable(@"banlist", @"xchataqua", @"Title of Tab: MainMenu->Window->Ban List...")];
 	
-	for ( NSTableColumn *column in [self->banList tableColumns] )
-		[column setIdentifier:[NSNumber numberWithInteger:i]];
+	for ( NSInteger i = 0; i < [self->banList numberOfColumns]; i++ )
+		[[[self->banList tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
 
 	[self->banList setDataSource:self];
 	[self->banListView setDelegate:self];
