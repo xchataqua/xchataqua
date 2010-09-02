@@ -15,16 +15,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 #undef TYPE_BOOL
 #include "../common/xchat.h"
 #include "../common/fe.h"
 #undef TYPE_BOOL
-#ifdef __cplusplus
-}
-#endif
 
 #import "fe-aqua_utility.h"
 #define CPP_INPUT_THING 0
@@ -43,35 +37,35 @@ static NSInteger input_seq = 1;
 @synthesize tag;
 
 + (id) socketFromFD:(int) sok 
-              flags:(int) the_flags
-               func:(socket_callback) the_func
-               data:(void *) the_data
+			  flags:(int) the_flags
+			   func:(socket_callback) the_func
+			   data:(void *) the_data
 {
-    InputThing *thing = [[InputThing alloc] init];
-    
-    thing->func = the_func;
-    thing->data = the_data;
-    thing->rf = nil;
-    thing->wf = nil;
-    thing->ef = nil;
-    thing->tag = input_seq ++;
-    
-    if (the_flags & FIA_READ)
-        thing->rf = [[SGFileDescriptor alloc] initWithFd:sok mode:SGFDRead
+	InputThing *thing = [[InputThing alloc] init];
+	
+	thing->func = the_func;
+	thing->data = the_data;
+	thing->rf = nil;
+	thing->wf = nil;
+	thing->ef = nil;
+	thing->tag = input_seq ++;
+	
+	if (the_flags & FIA_READ)
+		thing->rf = [[SGFileDescriptor alloc] initWithFd:sok mode:SGFileDescriptorRead
 												  target:thing selector:@selector (doit:) withObject:nil];
-    if (the_flags & FIA_WRITE)
-        thing->wf = [[SGFileDescriptor alloc] initWithFd:sok mode:SGFDWrite
+	if (the_flags & FIA_WRITE)
+		thing->wf = [[SGFileDescriptor alloc] initWithFd:sok mode:SGFileDescriptorWrite
 												  target:thing selector:@selector (doit:) withObject:nil];
-    if (the_flags & FIA_EX)
-        thing->ef = [[SGFileDescriptor alloc] initWithFd:sok mode:SGFDExcep
+	if (the_flags & FIA_EX)
+		thing->ef = [[SGFileDescriptor alloc] initWithFd:sok mode:SGFileDescriptorExcep
 												  target:thing selector:@selector (doit:) withObject:nil];
 	#if CPP_INPUT_THING
-    input_list.push_back (thing);
+	input_list.push_back (thing);
 	#else
 	[inputArray addObject:thing];
 	#endif
-    
-    return [thing autorelease];
+	
+	return [thing autorelease];
 }
 
 + (id)findTagged:(int)atag
@@ -84,14 +78,14 @@ static NSInteger input_seq = 1;
 		#endif
 		 )
 		
-    {
+	{
 		#if CPP_INPUT_THING
-        id athing = *iter++;
+		id athing = *iter++;
 		#endif
-        if ([athing tag] == atag)
-            return athing;
-    }
-    return nil;
+		if ([athing tag] == atag)
+			return athing;
+	}
+	return nil;
 }
 
 - (void)dealloc
@@ -100,23 +94,23 @@ static NSInteger input_seq = 1;
 	if(wf) [wf release];
 	if(ef) [ef release];
 	#if CPP_INPUT_THING
-    input_list.remove (self);
+	input_list.remove (self);
 	#else
 	[inputArray removeObject:self];
 	#endif
-    [super dealloc];
+	[super dealloc];
 }
 
 - (void)disable
 {
-    if (rf) [rf disable];
-    if (wf) [wf disable];
-    if (ef) [ef disable];
+	if (rf) [rf disable];
+	if (wf) [wf disable];
+	if (ef) [ef disable];
 }
 
 - (void)doit:(id)obj
 {
-    func (NULL, 0, data);
+	func (NULL, 0, data);
 }
 
 #if CPP_INPUT_THING
@@ -146,72 +140,72 @@ static int timer_seq = 1;
 + (id)timerFromInterval:(int)the_interval callback:(timer_callback)the_callback
 			   userdata:(void *)the_userdata
 {
-    TimerThing *thing = [[TimerThing alloc] init];
+	TimerThing *thing = [[TimerThing alloc] init];
 	
-    thing->interval = (NSTimeInterval) the_interval / 1000;
-    thing->callback = the_callback;
-    thing->userdata = the_userdata;
-    thing->tag = timer_seq ++;
-    thing->timer = nil;
+	thing->interval = (NSTimeInterval) the_interval / 1000;
+	thing->callback = the_callback;
+	thing->userdata = the_userdata;
+	thing->tag = timer_seq ++;
+	thing->timer = nil;
 	
 	#if CPP_TIMER_THING
-    timer_list.push_back (thing);
+	timer_list.push_back (thing);
 	#else
 	[timerArray addObject:thing];
 	#endif
-    
-    [thing schedule];
 	
-    return [thing autorelease];
+	[thing schedule];
+	
+	return [thing autorelease];
 }
 
 + (void)removeTimerWithTag:(int)atag
 {
-    for (
+	for (
 		#if CPP_TIMER_THING
 		 std::list<id>::iterator iter = timer_list.begin(); iter != timer_list.end();
 		#else
 		 TimerThing *atimer in timerArray
 		#endif
 		 )
-    {
+	{
 		#if CPP_TIMER_THING
-        TimerThing *atimer = *iter++;
+		TimerThing *atimer = *iter++;
 		#endif
-        if ([atimer tag] == atag)
-        {
-            TimerThing *timer = (TimerThing *) atimer;
-            [timer invalidate];
-            timer->callback = NULL;     // We'll use this to detect released
-            [timer release];            // timers in [TimerThing fire]
-            return;
-        }
-    }
+		if ([atimer tag] == atag)
+		{
+			TimerThing *timer = (TimerThing *) atimer;
+			[timer invalidate];
+			timer->callback = NULL;	 // We'll use this to detect released
+			[timer release];			// timers in [TimerThing fire]
+			return;
+		}
+	}
 }
 
 - (void)dealloc
 {
 	#if CPP_TIMER_THING
-    timer_list.remove (self);
+	timer_list.remove (self);
 	#else
 	[timerArray removeObject:self];
 	#endif
-    [self invalidate];
-    [super dealloc];
+	[self invalidate];
+	[super dealloc];
 }
 
 - (void)invalidate
 {
-    if (timer)
-    {
-        [timer invalidate];
-        timer = nil;
-    }
+	if (timer)
+	{
+		[timer invalidate];
+		timer = nil;
+	}
 }
 
 - (void)schedule
 {
-    timer = [NSTimer scheduledTimerWithTimeInterval:interval
+	timer = [NSTimer scheduledTimerWithTimeInterval:interval
 											 target:self
 										   selector:@selector(fire:)
 										   userInfo:nil
@@ -221,28 +215,28 @@ static int timer_seq = 1;
 
 - (void)fire:(id)userInfo
 {
-    [timer invalidate];
-    timer = nil;
+	[timer invalidate];
+	timer = nil;
 	
-    [self retain];	// Retain ourselvs just in case he decides
+	[self retain];	// Retain ourselvs just in case he decides
 	// to release us in the callback.
 	
-    if (callback (userdata) == 0)
-    {
-    	// Only honour his request to destroy this timer only if
-        // he did not already do it in the callback.  We NULL out
-        // the callback when he removes a timer to signal us here
-        // not to release.
+	if (callback (userdata) == 0)
+	{
+		// Only honour his request to destroy this timer only if
+		// he did not already do it in the callback.  We NULL out
+		// the callback when he removes a timer to signal us here
+		// not to release.
 		
-        if (callback != NULL)
-            [self release];
-    }
-    else
-    {
-        [self schedule];
-    }
+		if (callback != NULL)
+			[self release];
+	}
+	else
+	{
+		[self schedule];
+	}
 	
-    [self release];
+	[self release];
 }
 
 #if CPP_TIMER_THING

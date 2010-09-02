@@ -40,16 +40,16 @@ static SGFileDescriptorPrivate *sgfd_dispatch_list;
 
 @interface SGFileDescriptorPrivate : SGFileDescriptor
 {
-    int fd;
-    NSInteger mode;
-    id  target;
-    SEL selector;
-    id  obj;
+	int fd;
+	NSInteger mode;
+	id  target;
+	SEL selector;
+	id  obj;
 
-    BOOL enable;
+	BOOL enable;
 
   @public
-    SGFileDescriptorPrivate *next;	// For dispatch list
+	SGFileDescriptorPrivate *next;	// For dispatch list
 }
 
 @property (nonatomic, readonly) int fd;
@@ -65,29 +65,29 @@ static SGFileDescriptorPrivate *sgfd_dispatch_list;
 
 static void sgfd_dispatch (void *args)
 {
-    // NOTE:  We are in "run_loop"s thread.
-    //
-    // The mutex is NOT locked but this list IS safe because we know
-    // that sgfd_main_loop () is blocked waiting for us to complete.
-    // We could lock the mutex but then we would either have to make
-    // the mutex recursive or create a separate mutex just for this
-    // list.  Either way, it's not really needed.
+	// NOTE:  We are in "run_loop"s thread.
+	//
+	// The mutex is NOT locked but this list IS safe because we know
+	// that sgfd_main_loop () is blocked waiting for us to complete.
+	// We could lock the mutex but then we would either have to make
+	// the mutex recursive or create a separate mutex just for this
+	// list.  Either way, it's not really needed.
 
-    while (sgfd_dispatch_list)
-    {
+	while (sgfd_dispatch_list)
+	{
 		[sgfd_dispatch_list dispatch];
 
 		SGFileDescriptorPrivate *prev = sgfd_dispatch_list;
 		sgfd_dispatch_list = sgfd_dispatch_list->next;
 
 		[prev release];
-    }
+	}
 
-    // sgfd_main_loop is waiting for us to finish.. cut him loose..
+	// sgfd_main_loop is waiting for us to finish.. cut him loose..
 
-    pthread_mutex_lock (&sgfd_mtx);
-    pthread_cond_signal (&sgfd_dispatch_complete);
-    pthread_mutex_unlock (&sgfd_mtx);
+	pthread_mutex_lock (&sgfd_mtx);
+	pthread_cond_signal (&sgfd_dispatch_complete);
+	pthread_mutex_unlock (&sgfd_mtx);
 }
 
 static void *sgfd_main_loop (void *args)
@@ -109,15 +109,15 @@ static void *sgfd_main_loop (void *args)
 		for (NSUInteger i = 0; i < [sgfdArray count]; i++)
 		{
 			SGFileDescriptorPrivate *sgfd = [sgfdArray objectAtIndex:i];
-            
-            fd_set *the_set = NULL;
-            switch ([sgfd mode])
+			
+			fd_set *the_set = NULL;
+			switch ([sgfd mode])
 			{
-				case SGFDRead:  the_set = &rfds; break;
-				case SGFDWrite: the_set = &wfds; break;
-				case SGFDExcep: the_set = &efds; break;
+				case SGFileDescriptorRead:  the_set = &rfds; break;
+				case SGFileDescriptorWrite: the_set = &wfds; break;
+				case SGFileDescriptorExcep: the_set = &efds; break;
 			}
-            
+			
 			if (the_set)
 				FD_SET ([sgfd fd], the_set);
 
@@ -141,15 +141,15 @@ static void *sgfd_main_loop (void *args)
 				SGFileDescriptorPrivate *sgfd = [sgfdArray objectAtIndex:i];
 
 				bool fire = false;
-            
-                switch ([sgfd mode])
-                {
-                    case SGFDRead: fire = FD_ISSET ([sgfd fd], &rfds); break;
-                    case SGFDWrite: fire = FD_ISSET ([sgfd fd], &wfds); break;
-                    case SGFDExcep: fire = FD_ISSET ([sgfd fd], &efds); break;
-                }
+			
+				switch ([sgfd mode])
+				{
+					case SGFileDescriptorRead: fire = FD_ISSET ([sgfd fd], &rfds); break;
+					case SGFileDescriptorWrite: fire = FD_ISSET ([sgfd fd], &wfds); break;
+					case SGFileDescriptorExcep: fire = FD_ISSET ([sgfd fd], &efds); break;
+				}
 
-                if (fire)
+				if (fire)
 				{
 					sgfd->next = sgfd_dispatch_list;
 					sgfd_dispatch_list = sgfd;
@@ -177,64 +177,64 @@ static void *sgfd_main_loop (void *args)
 		}
 	}
 
-    pthread_mutex_unlock (&sgfd_mtx);
+	pthread_mutex_unlock (&sgfd_mtx);
 
-    return NULL;
+	return NULL;
 }
 
 + (void) initialize {
-    sgfdRunLoop = [[NSRunLoop currentRunLoop] getCFRunLoop];
-    sgfdArray = [[NSMutableArray arrayWithCapacity:0] retain];
+	sgfdRunLoop = [[NSRunLoop currentRunLoop] getCFRunLoop];
+	sgfdArray = [[NSMutableArray arrayWithCapacity:0] retain];
 	
-    pipe (sgfd_pipes);
+	pipe (sgfd_pipes);
 	
-    CFRunLoopSourceContext context = { 0, 0, 0, 0, 0, 0, 0, 0, 0, sgfd_dispatch };
+	CFRunLoopSourceContext context = { 0, 0, 0, 0, 0, 0, 0, 0, 0, sgfd_dispatch };
 	
-    sgfdRunLoopSource = CFRunLoopSourceCreate (NULL, 0, &context);
+	sgfdRunLoopSource = CFRunLoopSourceCreate (NULL, 0, &context);
 	
-    CFRunLoopAddSource (sgfdRunLoop, sgfdRunLoopSource, kCFRunLoopCommonModes);
+	CFRunLoopAddSource (sgfdRunLoop, sgfdRunLoopSource, kCFRunLoopCommonModes);
 	
-    pthread_t thrd;
-    pthread_create (&thrd, NULL, sgfd_main_loop, NULL);
+	pthread_t thrd;
+	pthread_create (&thrd, NULL, sgfd_main_loop, NULL);
 }
 
 + (void) sgfd_add:(SGFileDescriptor *)sgfd
 {
-    pthread_mutex_lock (&sgfd_mtx);
+	pthread_mutex_lock (&sgfd_mtx);
 	
-    [sgfdArray addObject:sgfd];
+	[sgfdArray addObject:sgfd];
 	
-    char ch = 0;
-    write (sgfd_pipes [1], &ch, 1);
+	char ch = 0;
+	write (sgfd_pipes [1], &ch, 1);
 	
-    pthread_mutex_unlock (&sgfd_mtx);
+	pthread_mutex_unlock (&sgfd_mtx);
 }
 
 - (SGFileDescriptor *)initWithFd:(int)the_fd mode:(NSInteger)the_mode target:(id)the_target 
-                        selector:(SEL)the_selector withObject:(id)the_obj
+						selector:(SEL)the_selector withObject:(id)the_obj
 {
-    self->fd = the_fd;
-    self->mode = the_mode;
-    self->target = the_target;
-    self->selector = the_selector;
-    self->obj = the_obj;
+	self->fd = the_fd;
+	self->mode = the_mode;
+	self->target = the_target;
+	self->selector = the_selector;
+	self->obj = the_obj;
 
-    self->enable = true;
+	self->enable = true;
 
-    [[self class] sgfd_add:self];
-    
-    return self;
+	[[self class] sgfd_add:self];
+	
+	return self;
 }
 
 - (void)dispatch
 {
-    if (enable)
-        [target performSelector:selector withObject:obj];
+	if (enable)
+		[target performSelector:selector withObject:obj];
 }
 
 - (void)disable
 {
-    enable = false;
+	enable = false;
 	
 	pthread_mutex_lock (&sgfd_mtx);
 		
@@ -251,16 +251,16 @@ static void *sgfd_main_loop (void *args)
 
 + (id)alloc
 {
-    if ([self isEqual:[SGFileDescriptor class]])
+	if ([self isEqual:[SGFileDescriptor class]])
 		return [SGFileDescriptorPrivate alloc];
-    else
+	else
 		return [super alloc];
 }
 
 - (SGFileDescriptor *)initWithFd:(int)fd mode:(NSInteger)the_mode target:(id)the_target 
-                        selector:(SEL)s withObject:(id)obj;
+						selector:(SEL)s withObject:(id)obj;
 {
-    return nil;
+	return nil;
 }
 
 - (void)disable
