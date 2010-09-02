@@ -19,7 +19,6 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-//extern "C" {
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
 #include "../common/outbound.h"
@@ -28,45 +27,44 @@
 #include "../common/util.h"
 #undef TYPE_BOOL
 #include "../common/cfgfiles.h"
-//}
 
 #include "XACommon.h"
 
 void change_channel_flag (session *sess, char flag, int enabled)
 {
-    if (sess->server->connected && sess->channel[0])
-    {
-        if (enabled)
-            tcp_sendf (sess->server, "MODE %s +%c\r\n", sess->channel, flag);
-        else
-            tcp_sendf (sess->server, "MODE %s -%c\r\n", sess->channel, flag);
-        tcp_sendf (sess->server, "MODE %s\r\n", sess->channel);
-        sess->ignore_mode = TRUE;
-        sess->ignore_date = TRUE;
-    }
+	if (sess->server->connected && sess->channel[0])
+	{
+		if (enabled)
+			tcp_sendf (sess->server, "MODE %s +%c\r\n", sess->channel, flag);
+		else
+			tcp_sendf (sess->server, "MODE %s -%c\r\n", sess->channel, flag);
+		tcp_sendf (sess->server, "MODE %s\r\n", sess->channel);
+		sess->ignore_mode = TRUE;
+		sess->ignore_date = TRUE;
+	}
 }
 
 void set_l_flag (session *sess, int enabled, int value)
 {
-    if (sess->server->connected && sess->channel[0])
-    {
-        if (enabled)
-        {
-            tcp_sendf (sess->server, "MODE %s +l %d\r\n", sess->channel, value);
-            tcp_sendf (sess->server, "MODE %s\r\n", sess->channel);
-        } 
-        else
-            change_channel_flag (sess, 'l', 0);
-    }
+	if (sess->server->connected && sess->channel[0])
+	{
+		if (enabled)
+		{
+			tcp_sendf (sess->server, "MODE %s +l %d\r\n", sess->channel, value);
+			tcp_sendf (sess->server, "MODE %s\r\n", sess->channel);
+		} 
+		else
+			change_channel_flag (sess, 'l', 0);
+	}
 }
 
 void set_k_flag (session *sess, int enabled, char *value)
 {
-    if (sess->server->connected && sess->channel[0])
-    {
-        char d = enabled ? '+' : '-';
-        tcp_sendf (sess->server, "MODE %s %ck %s\r\n", sess->channel, d, value);
-    }
+	if (sess->server->connected && sess->channel[0])
+	{
+		char d = enabled ? '+' : '-';
+		tcp_sendf (sess->server, "MODE %s %ck %s\r\n", sess->channel, d, value);
+	}
 }
 
 
@@ -74,12 +72,12 @@ void set_k_flag (session *sess, int enabled, char *value)
 static void
 nick_command (session * sess, char *cmd)
 {
-/*      gtkutil_get_number ("title", "Number to kill:", shit, "hi");*/
+/*	  gtkutil_get_number ("title", "Number to kill:", shit, "hi");*/
 
-        if (*cmd == '!')
-                xchat_exec (cmd + 1);
-        else
-                handle_command (sess, cmd, TRUE);
+		if (*cmd == '!')
+				xchat_exec (cmd + 1);
+		else
+				handle_command (sess, cmd, TRUE);
 }
 
 
@@ -88,35 +86,35 @@ nick_command (session * sess, char *cmd)
 void
 nick_command_parse (session *sess, const char *cmd, const char *nick, const char *allnick)
 {
-        char *buf;
-        const char *host = [NSLocalizedStringFromTable(@"Host unknown", @"xchat", @"") UTF8String];
-        struct User *user;
-        int len;
+		char *buf;
+		const char *host = [NSLocalizedStringFromTable(@"Host unknown", @"xchat", @"") UTF8String];
+		struct User *user;
+		int len;
 
-        user = userlist_find (sess, (char *)nick);
-        if (user && user->hostname)
-                host = strchr (user->hostname, '@') + 1;
+		user = userlist_find (sess, (char *)nick);
+		if (user && user->hostname)
+				host = strchr (user->hostname, '@') + 1;
 
-        /* this can't overflow, since popup->cmd is only 256 */
-        len = strlen (cmd) + strlen (nick) + strlen (allnick) + 512;
-        buf = (char *) malloc (len);
+		/* this can't overflow, since popup->cmd is only 256 */
+		len = strlen (cmd) + strlen (nick) + strlen (allnick) + 512;
+		buf = (char *) malloc (len);
 
-        auto_insert (buf, len, (unsigned char *) cmd, 0, 0, (char *)allnick, sess->channel, "",
+		auto_insert (buf, len, (unsigned char *) cmd, 0, 0, (char *)allnick, sess->channel, "",
 					 server_get_network (sess->server, TRUE), (char*)host,
-                     sess->server->nick, (char *)nick);
+					 sess->server->nick, (char *)nick);
 
-        nick_command (sess, buf);
+		nick_command (sess, buf);
 
-        free (buf);
+		free (buf);
 }
 
 NSString * formatNumber (int n)
 {
-    if (n < 1000)
-        return [NSString stringWithFormat:@"%d", n];
-    
-    if (n < 1000000)
-        return [NSString stringWithFormat:@"%.1fk", (float) n / 1000];
-    
-    return [NSString stringWithFormat:@"%.1fm", (float) n / 1000000];
+	if (n < 1000)
+		return [NSString stringWithFormat:@"%d", n];
+	
+	if (n < 1000000)
+		return [NSString stringWithFormat:@"%.1fk", (float) n / 1000];
+	
+	return [NSString stringWithFormat:@"%.1fm", (float) n / 1000000];
 }

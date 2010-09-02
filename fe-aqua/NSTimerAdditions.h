@@ -18,10 +18,10 @@
 @interface NSTimer (SGTimerAdditions)
 
 + (NSTimer *) scheduledTimerWithTimeInterval:(NSTimeInterval)seconds 
-                                      target:(id)target
-                                    selector:(SEL)aSelector
-                                    userInfo:(id)userInfo
-                                     repeats:(BOOL)repeats
-                                  retainArgs:(BOOL)retainArgs;
+									  target:(id)target
+									selector:(SEL)aSelector
+									userInfo:(id)userInfo
+									 repeats:(BOOL)repeats
+								  retainArgs:(BOOL)retainArgs;
 
 @end

@@ -81,7 +81,7 @@
 	
 	if ([metaViews count])
 	{
-		rows = 1;
+		numberOfRows = 1;
 		
 		for (NSUInteger i = 0; i < [metaViews count]; i ++)
 		{
@@ -100,7 +100,7 @@
 				lx = rect.origin.x;
 				rect.size.height += maxHeight;
 				maxHeight = 0;
-				rows ++;
+				numberOfRows ++;
 			}
 			
 			b.origin.x = lx;

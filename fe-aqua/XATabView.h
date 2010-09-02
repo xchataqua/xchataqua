@@ -15,12 +15,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#import <Cocoa/Cocoa.h>
-
 @interface XATabViewItem : NSTabViewItem
 {
-    NSRect	close_rect;
-    NSColor	*color;
+	NSRect	close_rect;
+	NSColor	*color;
 }
 
 - (BOOL) mouseInClose:(NSPoint) p;
@@ -31,7 +29,7 @@
 @protocol XATabViewDelegate;
 @interface XATabView : NSTabView
 {
-    XATabViewItem	*in_close_item;
+	XATabViewItem	*in_close_item;
 }
 
 - (XATabViewItem *) mouseInClose:(NSEvent *) e;

@@ -31,22 +31,22 @@
 @implementation NSTimer (SGTimerAdditions)
 
 + (NSTimer *) scheduledTimerWithTimeInterval:(NSTimeInterval)seconds 
-                                      target:(id)target
-                                    selector:(SEL)aSelector
-                                    userInfo:(id)userInfo
-                                     repeats:(BOOL)repeats
-                                  retainArgs:(BOOL)retainArgs
+									  target:(id)target
+									selector:(SEL)aSelector
+									userInfo:(id)userInfo
+									 repeats:(BOOL)repeats
+								  retainArgs:(BOOL)retainArgs
 {
-    NSMethodSignature *sig = [target methodSignatureForSelector:aSelector];
-    NSInvocation *inv = [MyInvocation invocationWithMethodSignature:sig];
-    [inv setSelector:aSelector];
-    [inv setTarget:target];
-    [inv setArgument:&userInfo atIndex:2];
-    if (retainArgs)
-        [inv retainArguments];
-    return [NSTimer scheduledTimerWithTimeInterval:seconds
+	NSMethodSignature *sig = [target methodSignatureForSelector:aSelector];
+	NSInvocation *inv = [MyInvocation invocationWithMethodSignature:sig];
+	[inv setSelector:aSelector];
+	[inv setTarget:target];
+	[inv setArgument:&userInfo atIndex:2];
+	if (retainArgs)
+		[inv retainArguments];
+	return [NSTimer scheduledTimerWithTimeInterval:seconds
 										invocation:inv
-                                           repeats:repeats];
+										   repeats:repeats];
 }
 
 @end

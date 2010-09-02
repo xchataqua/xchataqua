@@ -22,64 +22,64 @@
 
 - (NSString *)viewNibName
 {
-    return @"SGHBoxViewInspector";
+	return @"SGHBoxViewInspector";
 }
 
 - (void) awakeFromNib
 {
-    [[HJustMenu itemWithTitle:@"Left"]   setTag:SGHBoxHJustificationLeft];
-    [[HJustMenu itemWithTitle:@"Center"] setTag:SGHBoxHJustificationCenter];
-    [[HJustMenu itemWithTitle:@"Right"]  setTag:SGHBoxHJustificationRight];
+	[[HJustMenu itemWithTitle:@"Left"]   setTag:SGHBoxHJustificationLeft];
+	[[HJustMenu itemWithTitle:@"Center"] setTag:SGHBoxHJustificationCenter];
+	[[HJustMenu itemWithTitle:@"Right"]  setTag:SGHBoxHJustificationRight];
 }
 
 - (void) doHJust:(id) sender
 {
-    NSArray * objects = [self inspectedObjects];
-    NSUInteger numObjects = [objects count];
+	NSArray * objects = [self inspectedObjects];
+	NSUInteger numObjects = [objects count];
 	
-    for (NSUInteger i = 0; i < numObjects; ++i)
-    {
-        SGHBoxView *view = [objects objectAtIndex:i];
-        view.hJustification = [[sender selectedItem] tag];
-    }
+	for (NSUInteger i = 0; i < numObjects; ++i)
+	{
+		SGHBoxView *view = [objects objectAtIndex:i];
+		view.hJustification = [[sender selectedItem] tag];
+	}
 }
 
 - (void) doInner:(id) sender
 {
-    NSArray * objects = [self inspectedObjects];
-    NSUInteger numObjects = [objects count];
+	NSArray * objects = [self inspectedObjects];
+	NSUInteger numObjects = [objects count];
 	
-    for(NSUInteger i = 0; i < numObjects; ++i)
-    {
-        SGHBoxView *hbox = [objects objectAtIndex:i];
-        hbox.hInnerMargin = [inner_text floatValue];
-    }
+	for(NSUInteger i = 0; i < numObjects; ++i)
+	{
+		SGHBoxView *hbox = [objects objectAtIndex:i];
+		hbox.hInnerMargin = [inner_text floatValue];
+	}
 }
 
 - (void) doOutter:(id) sender
 {
-    NSArray * objects = [self inspectedObjects];
-    NSUInteger numObjects = [objects count];
+	NSArray * objects = [self inspectedObjects];
+	NSUInteger numObjects = [objects count];
 	
-    for(NSUInteger i = 0; i < numObjects; ++i)
-    {
-        SGHBoxView *hbox = [objects objectAtIndex:i];
-        hbox.hOutterMargin = [outter_text floatValue];
-    }
+	for(NSUInteger i = 0; i < numObjects; ++i)
+	{
+		SGHBoxView *hbox = [objects objectAtIndex:i];
+		hbox.hOutterMargin = [outter_text floatValue];
+	}
 }
 
 - (void) refresh
 {
-    NSArray * objects = [self inspectedObjects];
+	NSArray * objects = [self inspectedObjects];
 	
-    if([objects count] == 1)
-    {
-        SGHBoxView *hbox = [objects objectAtIndex:0];
-        [HJustMenu selectItemWithTag:hbox.hJustification];
-        [inner_text setFloatValue:hbox.hInnerMargin];
-        [outter_text setFloatValue:hbox.hOutterMargin];
-    }
-    [super refresh];
+	if([objects count] == 1)
+	{
+		SGHBoxView *hbox = [objects objectAtIndex:0];
+		[HJustMenu selectItemWithTag:hbox.hJustification];
+		[inner_text setFloatValue:hbox.hInnerMargin];
+		[outter_text setFloatValue:hbox.hOutterMargin];
+	}
+	[super refresh];
 }
 
 

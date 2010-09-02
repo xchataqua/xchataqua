@@ -19,8 +19,6 @@
 #import <InterfaceBuilderKit/InterfaceBuilderKit.h>
 
 // Import your framework view and your inspector 
-// #import <MyFramework/MyView.h>
-// #import "MyInspector.h"
 #import "SGFormView.h"
 #import "SGHBoxView.h"
 #import "SGVBoxView.h"
@@ -31,15 +29,15 @@
 @implementation SGFormView ( SGPalette )
 
 - (void)ibPopulateKeyPaths:(NSMutableDictionary *)keyPaths {
-    [super ibPopulateKeyPaths:keyPaths];
+	[super ibPopulateKeyPaths:keyPaths];
 
-//    [[keyPaths objectForKey:IBAttributeKeyPaths] addObjectsFromArray:[NSArray arrayWithObjects:/* @"MyFirstProperty", @"MySecondProperty",*/ nil]];
+//	[[keyPaths objectForKey:IBAttributeKeyPaths] addObjectsFromArray:[NSArray arrayWithObjects:/* @"MyFirstProperty", @"MySecondProperty",*/ nil]];
 }
 
 - (void)ibPopulateAttributeInspectorClasses:(NSMutableArray *)classes {
-    [super ibPopulateAttributeInspectorClasses:classes];
+	[super ibPopulateAttributeInspectorClasses:classes];
 
-    [classes addObject:[SGFormViewInspector class]];
+	[classes addObject:[SGFormViewInspector class]];
 }
 
 - (NSView*)ibDesignableContentView {
@@ -51,15 +49,15 @@
 @implementation SGHBoxView ( SGPalette )
 
 - (void)ibPopulateKeyPaths:(NSMutableDictionary *)keyPaths {
-    [super ibPopulateKeyPaths:keyPaths];
-    
-    [[keyPaths objectForKey:IBAttributeKeyPaths] addObjectsFromArray:[NSArray arrayWithObjects:@"hJustification", @"hInnerMargin", @"hOutterMargin", nil]];
+	[super ibPopulateKeyPaths:keyPaths];
+	
+	[[keyPaths objectForKey:IBAttributeKeyPaths] addObjectsFromArray:[NSArray arrayWithObjects:@"hJustification", @"hInnerMargin", @"hOutterMargin", nil]];
 }
 
 - (void)ibPopulateAttributeInspectorClasses:(NSMutableArray *)classes {
-    [super ibPopulateAttributeInspectorClasses:classes];
+	[super ibPopulateAttributeInspectorClasses:classes];
 
-    [classes addObject:[SGHBoxViewInspector class]];
+	[classes addObject:[SGHBoxViewInspector class]];
 }
 
 - (NSView*)ibDesignableContentView {
@@ -71,15 +69,15 @@
 @implementation SGVBoxView ( SGPalette )
 
 - (void)ibPopulateKeyPaths:(NSMutableDictionary *)keyPaths {
-    [super ibPopulateKeyPaths:keyPaths];
+	[super ibPopulateKeyPaths:keyPaths];
 
-    [[keyPaths objectForKey:IBAttributeKeyPaths] addObjectsFromArray:[NSArray arrayWithObjects:@"vInnerMargin", @"vOutterMargin", @"vJustification", @"hJustification", nil]];
+	[[keyPaths objectForKey:IBAttributeKeyPaths] addObjectsFromArray:[NSArray arrayWithObjects:@"vInnerMargin", @"vOutterMargin", @"vJustification", @"hJustification", nil]];
 }
 
 - (void)ibPopulateAttributeInspectorClasses:(NSMutableArray *)classes {
-    [super ibPopulateAttributeInspectorClasses:classes];
+	[super ibPopulateAttributeInspectorClasses:classes];
 	// Replace "SGPaletteLeopardInspector" with the name of your inspector class.
-    [classes addObject:[SGVBoxViewInspector class]];
+	[classes addObject:[SGVBoxViewInspector class]];
 }
 
 - (NSView*)ibDesignableContentView {

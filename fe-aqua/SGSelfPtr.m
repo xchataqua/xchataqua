@@ -21,16 +21,16 @@
 
 - (id) initWithSelfPtr:(id *) self_ptr
 {
-    [super init];
-    self->ptr = self_ptr;
-    *ptr = self;
-    return self;
+	[super init];
+	self->ptr = self_ptr;
+	*ptr = self;
+	return self;
 }
 
 - (void) dealloc
 {
-    *ptr = NULL;
-    [super dealloc];
+	*ptr = NULL;
+	[super dealloc];
 }
 
 @end

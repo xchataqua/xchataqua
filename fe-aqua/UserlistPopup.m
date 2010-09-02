@@ -24,8 +24,8 @@
 
 - (id) init
 {
-    [super initWithList:&popup_list filename:@"popup.conf" title:NSLocalizedStringFromTable(@"XChat: Userlist Popup menu", @"xchat", @"Title of Window: MainMenu->X-Chat Aqua->References Lists->Userlist Popup...")];
-    return self;
+	[super initWithList:&popup_list filename:@"popup.conf" title:NSLocalizedStringFromTable(@"XChat: Userlist Popup menu", @"xchat", @"Title of Window: MainMenu->X-Chat Aqua->References Lists->Userlist Popup...")];
+	return self;
 }
 
 @end

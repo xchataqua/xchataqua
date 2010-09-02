@@ -23,12 +23,12 @@
 {
   @protected
 	NSMutableArray  *metaViews;
-	BOOL		first_layout;
-	BOOL		pending_layout;
-	BOOL 		in_my_layout;
-	BOOL		in_dtor;
-	BOOL		auto_size_to_fit;
-	BOOL		needs_size_to_fit;
+	BOOL first_layout;
+	BOOL pending_layout;
+	BOOL in_my_layout;
+	BOOL in_dtor;
+	BOOL auto_size_to_fit;
+	BOOL needs_size_to_fit;
 }
 
 - (id) initWithFrame:(NSRect) frameRect;
