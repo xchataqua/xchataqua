@@ -713,7 +713,7 @@ void
 fe_add_rawlog (struct server *serv, char *text, int len, int outbound)
 {
 	if (serv->gui->rawlog)
-		[serv->gui->rawlog log:text len:len outbound:outbound];
+		[serv->gui->rawlog log:text length:len outbound:outbound];
 }
 
 void
