@@ -17,7 +17,7 @@
 
 #include <Carbon/Carbon.h>
 #include <dlfcn.h>
-#import "SGGuiUtil.h"
+#import "SGGuiUtility.h"
 #import "SGWrapView.h"
 #import "SGTabView.h"
 
@@ -160,7 +160,7 @@ static NSButtonCell *makeCloseCell ()
 		
 	if (NSPointInRect (where, closeRect))
 	{
-		[SGGuiUtil trackButtonCell:closeCell withEvent:theEvent inRect:closeRect controlView:controlView];
+		[SGGuiUtility trackButtonCell:closeCell withEvent:theEvent inRect:closeRect controlView:controlView];
 		return YES;
 	}
 	
@@ -556,7 +556,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 		track_rect = [controlView bounds];
 	}
 
-	[SGGuiUtil trackButtonCell:track_cell withEvent:event inRect:track_rect controlView:controlView];
+	[SGGuiUtility trackButtonCell:track_cell withEvent:event inRect:track_rect controlView:controlView];
 }
 
 @end

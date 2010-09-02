@@ -6,7 +6,6 @@
 //  Copyright 2005 __MyCompanyName__. All rights reserved.
 //
 
-#include <sys/types.h>
 #include <regex.h>
 
 @interface SGRegex : NSObject

@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#import "SGGuiUtil.h"
+#import "SGGuiUtility.h"
 #import "SGLockableTextField.h"
 
 /////////////////////////////////////////////////////////////////////////////
@@ -161,7 +161,7 @@
 
   if (NSPointInRect (where, lockFrame))
   {
-	[SGGuiUtil trackButtonCell:lockCell withEvent:theEvent inRect:lockFrame controlView:controlView];
+	[SGGuiUtility trackButtonCell:lockCell withEvent:theEvent inRect:lockFrame controlView:controlView];
 	return YES;
   }
 
