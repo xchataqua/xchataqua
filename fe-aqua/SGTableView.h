@@ -17,14 +17,12 @@
 
 @interface SGTableView : NSTableView
 {
-    NSTimer *timer;
+	NSTimer *timer;
 }
 
 @end
 
-
-//@interface NSObject(SGTableDataSource)
-@protocol SGTableDataSource
+@protocol SGTableViewDataSource
 - (NSSize) tableView:(NSTableView *) aTableView sizeHintForTableColumn:(NSTableColumn *) aTableColumn row:(NSInteger) rowIndex;
 - (void) tableView:(NSTableView *) aTableView sizeHintForTableColumn:(NSTableColumn *) aTableColumn row:(NSInteger) rowIndex size:(NSSize) size;
 - (BOOL) shouldDoSizeFixupsForTableView:(NSTableView *) aTableView;
