@@ -21,22 +21,22 @@ typedef int (*socket_callback) (void *source, int condition, void *user_data);
 
 @interface InputThing : NSObject
 {
-    SGFileDescriptor *rf;
-    SGFileDescriptor *wf;
-    SGFileDescriptor *ef;
-    
-    socket_callback  func;
-    void			*data;
-    
-    int		tag;
+	SGFileDescriptor *rf;
+	SGFileDescriptor *wf;
+	SGFileDescriptor *ef;
+	
+	socket_callback  func;
+	void			*data;
+	
+	int		tag;
 }
 
 @property (nonatomic,readonly) int tag;
 
 + (id) socketFromFD:(int) sok 
-              flags:(int) the_flags 
-               func:(socket_callback) the_func
-               data:(void *) the_data;
+			  flags:(int) the_flags 
+			   func:(socket_callback) the_func
+			   data:(void *) the_data;
 
 + (id)findTagged:(int)atag;
 - (void)disable;
@@ -48,19 +48,19 @@ typedef int (*socket_callback) (void *source, int condition, void *user_data);
 
 #define USE_GLIKE_TIMER 0
 #if USE_GLIKE_TIMER
-#import "GLikeTimer.h"
+#	import "GLikeTimer.h"
 #else
 
 typedef int (*timer_callback) (void *user_data);
 
 @interface TimerThing : NSObject
 {
-    NSTimeInterval interval;
-    timer_callback callback;
-    void *userdata;
-    int tag;
-    
-    NSTimer *timer;
+	NSTimeInterval interval;
+	timer_callback callback;
+	void *userdata;
+	int tag;
+	
+	NSTimer *timer;
 }
 
 @property (nonatomic, readonly) int tag;
