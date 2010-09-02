@@ -15,6 +15,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
+#define SG_DEBUG 0
+
+#ifdef SG_DEBUG
+#	define SPLog(TAG, ...) { if ( TAG ) [SPUtility log:[NSString stringWithFormat:__VA_ARGS__] file:__FILE__ line:__LINE__]; }
+#else
+#	define SPLog(TAG, ...)
+#endif
+
 #import "SGAlert.h"
 #import "SGApplication.h"
 //#import "SGArray.h" not used in xca
