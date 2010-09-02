@@ -6,14 +6,13 @@
 //  Copyright 2005 __MyCompanyName__. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
 #import <SGView.h>
 
 @interface SGWrapView : SGView 
 {
-    NSUInteger rows;
+	NSUInteger numberOfRows;
 }
 
-- (NSUInteger)rowCount;
+@property (nonatomic, readonly) NSUInteger numberOfRows;
 
 @end

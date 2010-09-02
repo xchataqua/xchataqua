@@ -22,7 +22,7 @@
 @interface SGWrapViewMetaView : SGMetaView
 {
   @public
-    NSRect pending_frame;
+	NSRect pending_frame;
 }
 
 - (id) initWithView:(NSView *) view;
@@ -33,8 +33,8 @@
 
 - (id)initWithView:(NSView *) the_view;
 {
-    [super initWithView:the_view];
-    return self;
+	[super initWithView:the_view];
+	return self;
 }
 
 @end
@@ -42,26 +42,27 @@
 //////////////////////////////////////////////////////////////////////
 
 @implementation SGWrapView
+@synthesize numberOfRows;
 
 - (id) initWithFrame:(NSRect) frameRect
 {
-    [super initWithFrame:frameRect];
-    return self;
+	[super initWithFrame:frameRect];
+	return self;
 }
 
 - (id) newMetaView:(NSView *) view
 {
-    return [[[SGWrapViewMetaView alloc] initWithView:view] autorelease];
+	return [[[SGWrapViewMetaView alloc] initWithView:view] autorelease];
 }
 
 - (void) shift:(NSUInteger)start to:(NSUInteger)stop by:(NSUInteger)unit
 {
-    for (NSUInteger i = start; i <= stop; i++)
-    {
-        SGWrapViewMetaView *metaView = [metaViews objectAtIndex:i];
-        if (! [[metaView view] isHidden])
-            metaView->pending_frame.origin.x += unit;
-    }
+	for (NSUInteger i = start; i <= stop; i++)
+	{
+		SGWrapViewMetaView *metaView = [metaViews objectAtIndex:i];
+		if (! [[metaView view] isHidden])
+			metaView->pending_frame.origin.x += unit;
+	}
 }
 
 - (void) do_wrap_layout
@@ -77,93 +78,88 @@
 	CGFloat maxHeight = 0;
 
 	rect.size.height = 0;
-    
-    if ([metaViews count])
-    {
-        rows = 1;
-        
-        for (NSUInteger i = 0; i < [metaViews count]; i ++)
-        {
-            SGWrapViewMetaView *metaView = [metaViews objectAtIndex:i];
-     
-            if ([[metaView view] isHidden])
-                continue;
+	
+	if ([metaViews count])
+	{
+		rows = 1;
+		
+		for (NSUInteger i = 0; i < [metaViews count]; i ++)
+		{
+			SGWrapViewMetaView *metaView = [metaViews objectAtIndex:i];
+	 
+			if ([[metaView view] isHidden])
+				continue;
 
-            NSRect b = [metaView prefSize];
-        
-            if (i != this_row && lx + b.size.width > rect.origin.x + rect.size.width)
-            {
-                [self shift:this_row to:i - 1 by:floor((rect.size.width - (lx - rect.origin.x)) / 2)];
-                this_row = i;
-                ly += maxHeight;
-                lx = rect.origin.x;
-                rect.size.height += maxHeight;
-                maxHeight = 0;
-                rows ++;
-            }
-            
-            b.origin.x = lx;
-            b.origin.y = ly;
-            
-            lx += b.size.width;
-            
-            if (b.size.height > maxHeight)
-                maxHeight = b.size.height;
-                
-            metaView->pending_frame = b;
-        }
-        
-        [self shift:this_row to:[metaViews count]-1 by:floor( (rect.size.width - (lx-rect.origin.x))/2 )];
+			NSRect b = [metaView prefSize];
+		
+			if (i != this_row && lx + b.size.width > rect.origin.x + rect.size.width)
+			{
+				[self shift:this_row to:i - 1 by:floor((rect.size.width - (lx - rect.origin.x)) / 2)];
+				this_row = i;
+				ly += maxHeight;
+				lx = rect.origin.x;
+				rect.size.height += maxHeight;
+				maxHeight = 0;
+				rows ++;
+			}
+			
+			b.origin.x = lx;
+			b.origin.y = ly;
+			
+			lx += b.size.width;
+			
+			if (b.size.height > maxHeight)
+				maxHeight = b.size.height;
+				
+			metaView->pending_frame = b;
+		}
+		
+		[self shift:this_row to:[metaViews count]-1 by:floor( (rect.size.width - (lx-rect.origin.x))/2 )];
 
-        for (NSUInteger i = 0; i < [metaViews count]; i ++)
-        {
-            SGWrapViewMetaView *metaView = [metaViews objectAtIndex:i];
-            if (![[metaView view] isHidden])
-                [metaView setFrame:metaView->pending_frame];
-        }
-        
-        rect.size.height += maxHeight;
-    }
+		for (NSUInteger i = 0; i < [metaViews count]; i ++)
+		{
+			SGWrapViewMetaView *metaView = [metaViews objectAtIndex:i];
+			if (![[metaView view] isHidden])
+				[metaView setFrame:metaView->pending_frame];
+		}
+		
+		rect.size.height += maxHeight;
+	}
 
-    // Set our frame size to accomodate the child views.
-    // N O T E: We could be rotated so the height is the width, etc..
-    //          We are ASSUMING +/- 90 degree rotation only!
-    
-    if ([self boundsRotation] != 0)
-    {
-        CGFloat x = rect.size.width;
-        rect.size.width = rect.size.height;
-        rect.size.height = x;
-    }
-    
-    [self setFrameSize:rect.size];
+	// Set our frame size to accomodate the child views.
+	// N O T E: We could be rotated so the height is the width, etc..
+	//		  We are ASSUMING +/- 90 degree rotation only!
+	
+	if ([self boundsRotation] != 0)
+	{
+		CGFloat x = rect.size.width;
+		rect.size.width = rect.size.height;
+		rect.size.height = x;
+	}
+	
+	[self setFrameSize:rect.size];
 }
 
 - (void) do_layout
 {
-    [self do_wrap_layout];
+	[self do_wrap_layout];
 }
 
 - (BOOL) isFlipped
 {
-    return YES;
-}
-
-- (NSUInteger) rowCount
-{
-    return rows;
+	return YES;
 }
 
 #if 0
 - (void) drawRect:(NSRect) aRect
 {
-    [super drawRect:aRect];
+	[super drawRect:aRect];
 
-    [[NSColor redColor] set];
-    [[NSGraphicsContext currentContext] setShouldAntialias:false];
-    NSBezierPath *p = [NSBezierPath bezierPathWithRect:[self bounds]];
-    [p setLineWidth:5];
-    [p stroke];
+	[[NSColor redColor] set];
+	[[NSGraphicsContext currentContext] setShouldAntialias:false];
+	NSBezierPath *p = [NSBezierPath bezierPathWithRect:[self bounds]];
+	[p setLineWidth:5];
+	[p stroke];
 }
 #endif
 
