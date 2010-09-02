@@ -17,14 +17,11 @@
 
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
-#include "../common/outbound.h"
 #include "../common/network.h"
 #include "../common/dcc.h"
 
-#import "SG.h"
-#import "AquaChat.h"
 #import "DccRecvWin.h"
-#import "XACommon.h"
+#import "SGAlert.h"
 
 extern int dcc_getcpssum;
 
@@ -32,22 +29,22 @@ extern int dcc_getcpssum;
 
 @interface DccRecvItem : DCCFileItem
 {
-  @public
-	NSMutableString	*from;
+	NSString *from;
 }
 
+@property (nonatomic, retain) NSString *from;
+		   
 - (id) initWithDCC:(struct DCC *) the_dcc;
 - (void) update;
 
 @end
 
 @implementation DccRecvItem
+@synthesize from;
 
 - (id) initWithDCC:(struct DCC *) the_dcc
 {
 	[super initWithDCC:the_dcc];
-
-	from = [[NSMutableString stringWithCapacity:0] retain];
 	
 	[self update];
    
@@ -56,7 +53,7 @@ extern int dcc_getcpssum;
 
 - (void) dealloc
 {
-	[from release];
+	self.from = nil;
 
 	[super dealloc];
 }
@@ -64,7 +61,7 @@ extern int dcc_getcpssum;
 - (void) update
 {
 	[super update];
-	[from setString:[NSString stringWithUTF8String:dcc->nick]];
+	self.from = [NSString stringWithUTF8String:dcc->nick];
 }
 
 @end
@@ -105,7 +102,7 @@ extern int dcc_getcpssum;
 	NSInteger row = [itemTableView selectedRow];
 	if (row >= 0)
 	{
-		DccRecvItem *item = [myItems objectAtIndex:row];
+		DccRecvItem *item = [dccItems objectAtIndex:row];
 		
 		// Reveal the proper file
 		NSString *fileToReveal;
@@ -131,7 +128,7 @@ extern int dcc_getcpssum;
 	NSInteger row = [itemTableView selectedRow];
 	if (row >= 0)
 	{
-		DccRecvItem *item = [myItems objectAtIndex:row];
+		DccRecvItem *item = [dccItems objectAtIndex:row];
 		struct DCC *dcc = item->dcc;
 		dcc_get (dcc);
 	}
@@ -142,7 +139,7 @@ extern int dcc_getcpssum;
 	NSInteger row = [itemTableView selectedRow];
 	if (row >= 0)
 	{
-		DccRecvItem *item = [myItems objectAtIndex:row];
+		DccRecvItem *item = [dccItems objectAtIndex:row];
 		struct DCC *dcc = item->dcc;
 		dcc_resume (dcc);
 	}
@@ -153,12 +150,12 @@ extern int dcc_getcpssum;
 	NSInteger row = [itemTableView selectedRow];
 	if (row >= 0)
 	{
-		DccRecvItem *item = [myItems objectAtIndex:row];
+		DccRecvItem *item = [dccItems objectAtIndex:row];
 
 		struct DCC *dcc = item->dcc;
 
 		NSString *msg = [NSString stringWithFormat:NSLocalizedStringFromTable(@"	  File: %@\n	  From: %s\n	  Size: %"DCC_SIZE_FMT"\n	  Port: %d\n IP Number: %s\nStart Time: %s", @"xchataqua", @""),
-						 item->file, dcc->nick, dcc->size, dcc->port,
+						 [item file], dcc->nick, dcc->size, dcc->port,
 						 net_ip (dcc->addr), ctime (&dcc->starttime)];
 
 		[SGAlert noticeWithString:msg andWait:NO];
@@ -193,18 +190,18 @@ extern int dcc_getcpssum;
 	objectValueForTableColumn:(NSTableColumn *) aTableColumn
 	row:(NSInteger) rowIndex
 {
-	DccRecvItem *item = [myItems objectAtIndex:rowIndex];
+	DccRecvItem *item = [dccItems objectAtIndex:rowIndex];
 
-	switch ([[aTableColumn identifier] intValue])
+	switch ([[aTableColumn identifier] integerValue])
 	{
-		case 0: return item->status;
-		case 1: return item->file;
-		case 2: return item->size;
-		case 3: return item->position;
-		case 4: return item->per;
-		case 5: return item->kbs;
-		case 6: return item->eta;
-		case 7: return item->from;
+		case 0: return [item status];
+		case 1: return [item file];
+		case 2: return [item size];
+		case 3: return [item position];
+		case 4: return [item per];
+		case 5: return [item kbs];
+		case 6: return [item eta];
+		case 7: return [item from];
 	}
 	
 	return @"";

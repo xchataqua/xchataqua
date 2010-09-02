@@ -6,21 +6,20 @@
 //  Copyright 2006 Camillo Lugaresi. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
 #import "DCCListController.h"
-
 
 @interface DCCFileItem : DCCItem
 {
-  @public
-	//NSMutableString	*status;
-	NSMutableString	*file;
-	NSMutableString	*size;
-	NSMutableString	*position;
-	NSMutableString	*per;
-	NSMutableString	*kbs;
-	NSMutableString	*eta;
+	//NSString	*status;
+	NSString	*file;
+	NSString	*size;
+	NSString	*position;
+	NSString	*per;
+	NSString	*kbs;
+	NSString	*eta;
 }
+
+@property (nonatomic, retain) NSString *file, *size, *position, *per, *kbs, *eta;
 
 @end
 

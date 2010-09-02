@@ -15,9 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#ifndef FE_AQUA_TIGER
-	#import <objc/runtime.h>
-#endif
+#import <objc/runtime.h>
 #import "SGView.h"
 
 //////////////////////////////////////////////////////////////////////

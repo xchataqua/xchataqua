@@ -17,15 +17,14 @@
 
 #import "AquaChat.h"
 #import "ChatWindow.h"
+#import "ColorPalette.h"
 #import "mIRCString.h"
 #import "MenuMaker.h"
 
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
 #include "../common/outbound.h"
-#include "../common/server.h"
 #include "../common/util.h"
-#include "../common/fe.h"
 #include "XACommon.h"
 
 /*

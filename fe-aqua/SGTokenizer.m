@@ -17,7 +17,6 @@
 
 #import "SGTokenizer.h"
 
-
 @implementation SGTokenizer
 
 - (id) initWithString:(NSString *) stringToTokenize;

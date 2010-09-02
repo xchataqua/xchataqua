@@ -17,24 +17,21 @@
 
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
-#include "../common/outbound.h"
-#include "../common/network.h"
 #include "../common/dcc.h"
 
-#import "SG.h"
-#import "AquaChat.h"
 #import "DccChatWin.h"
 
 //////////////////////////////////////////////////////////////////////
 
 @interface DccChatItem : DCCItem
 {
-  @public
-	NSMutableString	*toFrom;
-	NSMutableString	*recv;
-	NSMutableString	*sent;
-	NSMutableString	*startTime;
+	NSString	*toFrom;
+	NSString	*recv;
+	NSString	*sent;
+	NSString	*startTime;
 }
+
+@property (nonatomic, retain) NSString *toFrom, *recv, *sent, *startTime;
 
 - (id) initWithDCC:(struct DCC *)dcc;
 - (void) update;
@@ -42,15 +39,11 @@
 @end
 
 @implementation DccChatItem
+@synthesize toFrom, recv, sent, startTime;
 
 - (id) initWithDCC:(struct DCC *)aDcc
 {
 	[super initWithDCC:aDcc];
-
-	toFrom = [[NSMutableString alloc] init];
-	recv = [[NSMutableString alloc] init];
-	sent = [[NSMutableString alloc] init];
-	startTime = [[NSMutableString alloc] init];
 	
 	[self update];
    
@@ -59,10 +52,10 @@
 
 - (void) dealloc
 {
-	[toFrom release];
-	[recv release];
-	[sent release];
-	[startTime release];
+	self.toFrom   = nil;
+	self.recv     = nil;
+	self.sent     = nil;
+	self.startTime= nil;
 
 	[super dealloc];
 }
@@ -70,10 +63,10 @@
 - (void) update
 {
 	[super update];
-	[toFrom setString:[NSString stringWithUTF8String:dcc->nick]];
-	[recv setString:[NSString stringWithFormat:@"%"DCC_SIZE_FMT, dcc->pos]];
-	[sent setString:[NSString stringWithFormat:@"%"DCC_SIZE_FMT, dcc->size]];
-	[startTime setString:[NSString stringWithUTF8String:ctime(&dcc->starttime)]];
+	self.toFrom   = [NSString stringWithUTF8String:dcc->nick];
+	self.recv     = [NSString stringWithFormat:@"%"DCC_SIZE_FMT, dcc->pos];
+	self.sent     = [NSString stringWithFormat:@"%"DCC_SIZE_FMT, dcc->size];
+	self.startTime= [NSString stringWithUTF8String:ctime(&dcc->starttime)];
 }
 
 @end
@@ -108,7 +101,7 @@
 	NSInteger row = [itemTableView selectedRow];
 	if (row >= 0)
 	{
-		DccChatItem *item = [myItems objectAtIndex:row];
+		DccChatItem *item = [dccItems objectAtIndex:row];
 		struct DCC *dcc = item->dcc;
 		dcc_get(dcc);
 	}
@@ -117,7 +110,7 @@
 - (void) add:(struct DCC *) dcc
 {
 	DccChatItem *item = [[[DccChatItem alloc] initWithDCC:dcc] autorelease];
-	[myItems addObject:item];
+	[dccItems addObject:item];
 	[itemTableView reloadData];
 }
 
@@ -128,15 +121,15 @@
 	objectValueForTableColumn:(NSTableColumn *) aTableColumn
 	row:(NSInteger) rowIndex
 {
-	DccChatItem *item = [myItems objectAtIndex:rowIndex];
+	DccChatItem *item = [dccItems objectAtIndex:rowIndex];
 
 	switch ([[aTableColumn identifier] integerValue])
 	{
-		case 0: return item->status;
-		case 1: return item->toFrom;
-		case 2: return item->recv;
-		case 3: return item->sent;
-		case 4: return item->startTime;
+		case 0: return [item status];
+		case 1: return [item toFrom];
+		case 2: return [item recv];
+		case 3: return [item sent];
+		case 4: return [item startTime];
 	}
 	
 	return @"";

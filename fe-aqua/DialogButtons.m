@@ -18,10 +18,7 @@
 #import "AquaChat.h"
 #import "DialogButtons.h"
 
-//extern "C" {
-#include "../common/xchat.h"
 #include "../common/xchatc.h"
-//}
 
 @implementation DialogButtons
 

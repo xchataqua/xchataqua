@@ -17,8 +17,8 @@
 
 #include <string.h>
 #include <stdio.h>
-#include <CoreFoundation/CoreFoundation.h>
-#import "Cocoa/Cocoa.h"
+#include <dirent.h>
+
 #import "SystemVersion.h"
 
 #include "xchat.h"
@@ -28,7 +28,6 @@
 typedef struct session xchat_context;
 #include "xchat-plugin.h"
 #include "plugin.h"
-#include <dirent.h>
 
 static xchat_plugin *ph;
 

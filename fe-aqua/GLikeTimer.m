@@ -42,10 +42,10 @@
 	GLikeTimer *gTimer = [[GLikeTimer alloc] initWithFunction:function userData:data];
 	[gTimer autorelease];	// NSTimer retains target and userInfo until it is invalidated
 	return [NSTimer scheduledTimerWithTimeInterval:(NSTimeInterval)ms/1000.0
-					target:gTimer
-					selector:@selector(doCallback:)
-					userInfo:nil
-					repeats:YES];
+											target:gTimer
+										  selector:@selector(doCallback:)
+										  userInfo:nil
+										   repeats:YES];
 }
 
 /*
