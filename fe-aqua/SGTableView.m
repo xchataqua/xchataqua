@@ -21,19 +21,19 @@
 
 - (id) initWithFrame:(NSRect) frameRect
 {
-    [super initWithFrame:frameRect];
-    timer = nil;
-    return self;
+	[super initWithFrame:frameRect];
+	timer = nil;
+	return self;
 }
 
 - (void) dealloc
 {
-    if (timer)
-    {
-        [timer invalidate];
-        [timer release];
-    }
-    [super dealloc];
+	if (timer)
+	{
+		[timer invalidate];
+		[timer release];
+	}
+	[super dealloc];
 }
 
 - (void) sizeFixups:(id) sender
@@ -41,8 +41,8 @@
 	[timer release];
 	timer = nil;
 	
-	id col = [[self tableColumns] lastObject];
-	id cell = [col dataCell];
+	NSTableColumn *column = [[self tableColumns] lastObject];
+	id cell = [column dataCell];
 	
 	CGFloat width = 0;
 	CGFloat height = 16;
@@ -59,7 +59,7 @@
 		
 		if (size.width == 0 && size.height == 0)
 		{
-			id val = [[self dataSource] tableView:self objectValueForTableColumn:col row:i];
+			id val = [[self dataSource] tableView:self objectValueForTableColumn:column row:i];
 			[cell setObjectValue:val];
 			size = [cell cellSize];
 			
@@ -73,19 +73,19 @@
 			height = size.height;
 	}
 	
-	[col setWidth:width];
+	[column setWidth:width];
 	if (height != [self rowHeight])
 		[self setRowHeight:height];
 }
 
 - (void) startTimer
 {
-	id datasource = [self dataSource];
-	BOOL do_fixups = [datasource respondsToSelector:@selector(shouldDoSizeFixupsForTableView:)] &&
-		[datasource performSelector:@selector(shouldDoSizeFixupsForTableView:) withObject:self];
+	id<SGTableViewDataSource> dataSource = [self dataSource];
+	BOOL do_fixups = [dataSource respondsToSelector:@selector(shouldDoSizeFixupsForTableView:)]
+				  && [datasource performSelector:@selector(shouldDoSizeFixupsForTableView:) withObject:self];
 	if (!do_fixups) return;
 
-    if (!timer)
+	if (!timer)
 		timer = [[NSTimer scheduledTimerWithTimeInterval:1.0
 												  target:self
 												selector:@selector(sizeFixups:)
@@ -97,18 +97,18 @@
 - (void) reloadData
 {
 	[self startTimer];
-    [super reloadData];
+	[super reloadData];
 }
 
 -(void) textDidEndEditing:(NSNotification*) notification 
 {
-	if ([[[notification userInfo] objectForKey:@"NSTextMovement"] intValue] == NSReturnTextMovement)
+	if ([[[notification userInfo] objectForKey:@"NSTextMovement"] integerValue] == NSReturnTextMovement)
 	{
 		NSMutableDictionary *newUserInfo = [NSMutableDictionary dictionaryWithDictionary:[notification userInfo]];
 		[newUserInfo setObject:[NSNumber numberWithInt:NSIllegalTextMovement] forKey:@"NSTextMovement"];
 		notification = [NSNotification notificationWithName:[notification name]
-						  object:[notification object] 
-						userInfo:newUserInfo];
+													 object:[notification object]
+												   userInfo:newUserInfo];
 		[super textDidEndEditing:notification];
 		[[self window] makeFirstResponder:self];
 		[self startTimer];
