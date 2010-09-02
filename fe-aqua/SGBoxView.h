@@ -21,44 +21,44 @@
 
 typedef enum
 {
-    SGBoxOrientationHorizontal,
-    SGBoxOrientationVertical,
+	SGBoxOrientationHorizontal,
+	SGBoxOrientationVertical,
 }	SGBoxOrientation;
 
 typedef enum {
-    SGBoxMinorJustificationCenter,
-    SGBoxMinorJustificationFirst,
-    SGBoxMinorJustificationLast,
-    SGBoxMinorJustificationFull,
-    SGBoxMinorJustificationDefault,		// This is used to undo setMajorJustificationFor
+	SGBoxMinorJustificationCenter,
+	SGBoxMinorJustificationFirst,
+	SGBoxMinorJustificationLast,
+	SGBoxMinorJustificationFull,
+	SGBoxMinorJustificationDefault,		// This is used to undo setMajorJustificationFor
 }	SGBoxMinorJustification;
 
 typedef enum {
-    SGBoxMajorJustificationCenter,		// Overrides stretch view
-    SGBoxMajorJustificationLast,		// Not implemented yet
-    SGBoxMajorJustificationFirst,
-    SGBoxMajorJustificationFull,		// Not implemented yet.  Stretches all views with
+	SGBoxMajorJustificationCenter,		// Overrides stretch view
+	SGBoxMajorJustificationLast,		// Not implemented yet
+	SGBoxMajorJustificationFirst,
+	SGBoxMajorJustificationFull,		// Not implemented yet.  Stretches all views with
 }	SGBoxMajorJustification;			// leftover space.  Overrides stretch view
 										// This may be too much for this View..??
 typedef enum
 {
-    SGBoxOrderFIFO,
-    SGBoxOrderLIFO,
+	SGBoxOrderFIFO,
+	SGBoxOrderLIFO,
 }	SGBoxOrder;
 
 typedef CGFloat SGBoxMargin;
 
 @interface SGBoxView : SGView
 {
-    NSView					*stretchView;
-    SGBoxMinorJustification	minorJustification;
-    SGBoxMajorJustification	majorJustification;
-    SGBoxMargin				minorMargin;
-    SGBoxMargin				majorInnerMargin;
-    SGBoxMargin				majorOutterMargin;
-    SGBoxOrientation		orientation;
-    SGBoxOrder				order;
-    BOOL					wrap;
+	NSView					*stretchView;
+	SGBoxMinorJustification	minorJustification;
+	SGBoxMajorJustification	majorJustification;
+	SGBoxMargin				minorMargin;
+	SGBoxMargin				majorInnerMargin;
+	SGBoxMargin				majorOutterMargin;
+	SGBoxOrientation		orientation;
+	SGBoxOrder				order;
+	BOOL					wrap;
 }
 
 @property (nonatomic,assign,setter=setStretchView:)			NSView *stretchView;
