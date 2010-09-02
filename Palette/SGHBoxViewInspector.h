@@ -9,8 +9,8 @@
 
 @interface SGHBoxViewInspector : IBInspector
 {
-    IBOutlet NSPopUpButton *HJustMenu;
-    IBOutlet NSTextField *inner_text;
-    IBOutlet NSTextField *outter_text;
+	IBOutlet NSPopUpButton *HJustMenu;
+	IBOutlet NSTextField *inner_text;
+	IBOutlet NSTextField *outter_text;
 }
 @end

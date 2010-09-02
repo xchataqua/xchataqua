@@ -26,8 +26,8 @@
 
 @interface EditListItem : NSObject
 {
-    NSString	*name;
-    NSString	*command;
+	NSString	*name;
+	NSString	*command;
 }
 
 @property (nonatomic, retain) NSString *name, *command;
@@ -41,23 +41,23 @@
 {
 	self = [super init];
 	
-    self.name = aName;
-    self.command = aCommand;
-    
-    return self;
+	self.name = aName;
+	self.command = aCommand;
+	
+	return self;
 }
 
 - (void) dealloc
 {
-    self.name = nil;
+	self.name = nil;
 	self.command = nil;
 	
-    [super dealloc];
+	[super dealloc];
 }
 
 - (NSComparisonResult) sort:(EditListItem *) other
 {
-    return [name compare:other->name];
+	return [name compare:other->name];
 }
 
 @end
@@ -68,69 +68,69 @@
 
 - (id) initWithList:(GSList **)aSlist filename:(NSString *)aFilename title:(NSString *)aTitle
 {
-    self = [super init];
+	self = [super init];
 	
-    self->slist = aSlist;
-    self->filename = [aFilename copy];
-    self->title = [aTitle copy];
-    self->listItems = [[NSMutableArray alloc] init];
-    
-    [NSBundle loadNibNamed:@"EditList" owner:self];
-    
-    return self;
+	self->slist = aSlist;
+	self->filename = [aFilename copy];
+	self->title = [aTitle copy];
+	self->listItems = [[NSMutableArray alloc] init];
+	
+	[NSBundle loadNibNamed:@"EditList" owner:self];
+	
+	return self;
 }
 
 - (void) dealloc
 {
-    [[commandTableView window] release];
-    [filename release];
-    [title release];
-    [listItems release];
+	[[commandTableView window] release];
+	[filename release];
+	[title release];
+	[listItems release];
 	
 	[super dealloc];
 }
 
 - (void) awakeFromNib
 {
-    for (NSUInteger i = 0; i < [commandTableView numberOfColumns]; i ++)
-        [[[commandTableView tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInteger:i]];
+	for (NSUInteger i = 0; i < [commandTableView numberOfColumns]; i ++)
+		[[[commandTableView tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInteger:i]];
 	
-    [commandTableView setDelegate:self];
-    [commandTableView setDataSource:self];
-    [[commandTableView window] setTitle:title];
-    [[commandTableView window] center];
+	[commandTableView setDelegate:self];
+	[commandTableView setDataSource:self];
+	[[commandTableView window] setTitle:title];
+	[[commandTableView window] center];
 }
 
 - (void) loadItems
 {
-    [listItems removeAllObjects];
+	[listItems removeAllObjects];
 	
-    for (GSList *list = *slist; list; list = list->next)
-    {
+	for (GSList *list = *slist; list; list = list->next)
+	{
 		struct popup *pop = (struct popup *) list->data;
 		EditListItem *item = [[EditListItem alloc] initWithName:[NSString stringWithUTF8String:pop->name] command:[NSString stringWithUTF8String:pop->cmd]];
 		[listItems addObject:item];
 		[item release];
-    }
+	}
 	
-    [commandTableView reloadData];
+	[commandTableView reloadData];
 }
 
 - (void) show
 {
-    [self loadItems];
-    [[commandTableView window] makeKeyAndOrderFront:self];
+	[self loadItems];
+	[[commandTableView window] makeKeyAndOrderFront:self];
 }
 
 - (void) doDelete:(id)sender
 {
 	[commandTableView abortEditing];
-    NSInteger row = [commandTableView selectedRow];
-    
+	NSInteger row = [commandTableView selectedRow];
+	
 	if (row < 0) return;
 	
-    [listItems removeObjectAtIndex:row];
-    [commandTableView reloadData];
+	[listItems removeObjectAtIndex:row];
+	[commandTableView reloadData];
 }
 
 - (void) doDown:(id) sender
@@ -145,7 +145,7 @@
 
 - (void) doHelp:(id) sender
 {
-    [SGAlert alertWithString:NSLocalizedStringFromTable(@"Not implemented (yet)", @"xchataqua", @"Alert message when a feature not implemented yet is tried") andWait:false];
+	[SGAlert alertWithString:NSLocalizedStringFromTable(@"Not implemented (yet)", @"xchataqua", @"Alert message when a feature not implemented yet is tried") andWait:false];
 }
 
 - (void) doNew:(id) sender
@@ -160,30 +160,30 @@
 
 - (void) doSave:(id) sender
 {
-    [[sender window] makeFirstResponder:sender];
+	[[sender window] makeFirstResponder:sender];
 	
-    NSString *buf = [NSString stringWithFormat:@"%s/%s", get_xdir_fs(), [filename UTF8String]];
-    
-    FILE *f = fopen ([buf UTF8String], "w");
-    if (f == NULL) return;
+	NSString *buf = [NSString stringWithFormat:@"%s/%s", get_xdir_fs(), [filename UTF8String]];
 	
-    for (NSUInteger i = 0; i < [listItems count]; i ++)
-    {
-        EditListItem *item = [listItems objectAtIndex:i];
-        fprintf (f, "NAME %s\ncommand %s\n\n", [[item name] UTF8String], [[item command] UTF8String]);
-    }
-    fclose (f);
+	FILE *f = fopen ([buf UTF8String], "w");
+	if (f == NULL) return;
 	
-    list_free(slist);
-    list_loadconf((char *)[filename UTF8String], slist, 0);
-    
-    [[sender window] orderOut:sender];
+	for (NSUInteger i = 0; i < [listItems count]; i ++)
+	{
+		EditListItem *item = [listItems objectAtIndex:i];
+		fprintf (f, "NAME %s\ncommand %s\n\n", [[item name] UTF8String], [[item command] UTF8String]);
+	}
+	fclose (f);
+	
+	list_free(slist);
+	list_loadconf((char *)[filename UTF8String], slist, 0);
+	
+	[[sender window] orderOut:sender];
 }
 
 - (void) doSort:(id) sender
 {
-    [listItems sortUsingSelector:@selector(sort:)];
-    [commandTableView reloadData];
+	[listItems sortUsingSelector:@selector(sort:)];
+	[commandTableView reloadData];
 }
 
 - (void) doUp:(id) sender
@@ -201,20 +201,20 @@
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
-    return [listItems count];
+	return [listItems count];
 }
 
 - (id) tableView:(NSTableView *) aTableView objectValueForTableColumn:(NSTableColumn *) aTableColumn row:(NSInteger) rowIndex
 {
-    EditListItem *item = [listItems objectAtIndex:rowIndex];
-    
-    switch ([[aTableColumn identifier] integerValue])
-    {
+	EditListItem *item = [listItems objectAtIndex:rowIndex];
+	
+	switch ([[aTableColumn identifier] integerValue])
+	{
 		case 0: return [item name];
 		case 1: return [item command];
-    }
+	}
 	
-    return @"";
+	return @"";
 }
 
 - (void) tableView:(NSTableView *) aTableView
@@ -222,13 +222,13 @@
 	forTableColumn:(NSTableColumn *) aTableColumn
 			   row:(NSInteger)rowIndex
 {
-    EditListItem *item = [listItems objectAtIndex:rowIndex];
+	EditListItem *item = [listItems objectAtIndex:rowIndex];
 	
-    switch ([[aTableColumn identifier] integerValue])
-    {
+	switch ([[aTableColumn identifier] integerValue])
+	{
 		case 0: [item setName:anObject]; break;
 		case 1: [item setCommand:anObject]; break;
-    }
+	}
 }
 
 @end

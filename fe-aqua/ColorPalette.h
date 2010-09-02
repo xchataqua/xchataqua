@@ -15,21 +15,19 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#import <Cocoa/Cocoa.h>
-
 enum
 {
-    AC_FGCOLOR = 34,
-    AC_BGCOLOR = 35,
-    AC_NEW_DATA = 37,
-    AC_NICK_SAID = 38,
-    AC_MSG_SAID = 39,
-    AC_AWAY_USER = 40
+	AC_FGCOLOR = 34,
+	AC_BGCOLOR = 35,
+	AC_NEW_DATA = 37,
+	AC_NICK_SAID = 38,
+	AC_MSG_SAID = 39,
+	AC_AWAY_USER = 40
 };
 
 @interface ColorPalette : NSObject
 {
-    NSColor	**colors;
+	NSColor	**colors;
 }
 
 @property (readonly) NSUInteger numberOfColors;

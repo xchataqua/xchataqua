@@ -22,7 +22,7 @@
 <NSWindowDelegate>
 #endif
 {
-    NSWindow	*window;
+	NSWindow	*window;
 }
 
 - (id) initWithSelfPtr:(id *) self_ptr;

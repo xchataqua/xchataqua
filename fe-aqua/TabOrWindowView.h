@@ -26,13 +26,13 @@
 <NSWindowDelegate>
 #endif
 {
-	id               delegate;
-    NSWindow		*window;
-    SGTabViewItem	*tabViewItem;
-    NSString		*title;
-    NSString		*tabTitle;
-    NSView			*initialFirstResponder;
-    struct server	*server;
+	id			   delegate;
+	NSWindow		*window;
+	SGTabViewItem	*tabViewItem;
+	NSString		*title;
+	NSString		*tabTitle;
+	NSView			*initialFirstResponder;
+	struct server	*server;
 }
 
 @property (assign) id delegate;
@@ -43,11 +43,8 @@
 + (void) link_delink;		// Frontmost view
 + (void) updateGroupNameForServer:(struct server *) server;
 
-//+ (void) setTabPosition:(NSTabViewType) type;
-//+ (void) setHideCloseButtons:(bool) hidem;
 + (void) preferencesChanged;
 + (void) setTransparency:(NSInteger)transparency;
-//+ (NSArray *) views;
 
 - (void) link_delink:(id) sender;
 

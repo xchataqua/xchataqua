@@ -16,17 +16,17 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
 /*
-	CLLevelIndicatorCell.m
-	Created by Camillo Lugaresi on 13/01/06.
-	
-	This cell can draw a non-animating level indicator in a variety of styles.
-*/
+ CLLevelIndicatorCell.m
+ Created by Camillo Lugaresi on 13/01/06.
+ 
+ This cell can draw a non-animating level indicator in a variety of styles.
+ */
 
 #import "CLLevelIndicatorCell.h"
 
 static inline CGRect CGRectFromNSRect(NSRect nsRect)
 {
-    return *(CGRect*)&nsRect;
+	return *(CGRect*)&nsRect;
 }
 
 @implementation CLLevelIndicatorCell
@@ -49,7 +49,7 @@ static inline CGRect CGRectFromNSRect(NSRect nsRect)
 {
 	if (drawInfo.kind == CLLevelIndicatorFlat) {
 		NSRect bar, rest;
-
+		
 		[[NSColor grayColor] set];
 		[NSBezierPath setDefaultLineWidth:1];
 		[NSBezierPath strokeRect:cellFrame];
@@ -64,7 +64,7 @@ static inline CGRect CGRectFromNSRect(NSRect nsRect)
 		drawInfo.value = drawInfo.max * [self floatValue];
 		drawInfo.attributes = kThemeTrackHorizontal;
 		drawInfo.enableState = [[controlView window] isMainWindow] ? kThemeTrackActive : kThemeTrackInactive;
-
+		
 		OSStatus err = HIThemeDrawTrack(&drawInfo, NULL, (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort], [controlView isFlipped] ? kHIThemeOrientationNormal : kHIThemeOrientationInverted);
 		if (err != noErr) [NSException raise:NSGenericException format:@"CLLevelIndicatorCell: HIThemeDrawTrack returned %d", err];
 	}

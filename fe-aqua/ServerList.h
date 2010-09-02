@@ -49,9 +49,9 @@
 	
 	IBOutlet NSDrawer		*drawer;
 	
-    NSMutableArray	*allNetworks;
-    NSMutableArray	*myNetworks;
-    struct session	*servlistSession;
+	NSMutableArray	*allNetworks;
+	NSMutableArray	*myNetworks;
+	struct session	*servlistSession;
 }
 
 + (void) showForSession:(session *) sess;

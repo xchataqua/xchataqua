@@ -29,7 +29,7 @@
 	IBOutlet NSTextField		*ignoredChannelTextField;
 	IBOutlet NSTextField		*ignoredInviteTextField;
 	IBOutlet NSTextField		*ignoredPrivateTextField;
-    NSMutableArray	*myItems;
+	NSMutableArray	*myItems;
 }
 
 - (IBAction) doNew:(id) sender;

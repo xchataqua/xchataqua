@@ -47,15 +47,15 @@ struct session;
 
 struct session_gui
 {
-    ChatWindow     	*cw;
-    BanListWin		*ban_list;
+	ChatWindow	 	*cw;
+	BanListWin		*ban_list;
 };
 
 struct server_gui
 {
-    ChannelListWin	*clc;
-    RawLogWin		*rawlog;
-    int				tab_group;
+	ChannelListWin	*clc;
+	RawLogWin		*rawlog;
+	int				tab_group;
 };
 
 struct event_info
@@ -70,57 +70,52 @@ extern struct event_info text_event_info[];
 @interface AquaChat : NSObject <GrowlApplicationBridgeDelegate>
 {
   @public
-    IBOutlet NSMenuItem *awayMenuItem;
-    IBOutlet NSMenuItem *invisibleMenuItem;
-    IBOutlet NSMenuItem *newChannelTabMenuItem;
-    IBOutlet NSMenuItem *newServerTabMenuItem;
-    IBOutlet NSMenuItem *nextWindowMenuItem;
-    IBOutlet NSMenuItem *previousWindowMenuItem;
-    IBOutlet NSMenuItem *receiveNoticesMenuItem;
-    IBOutlet NSMenuItem *receiveWallopsMenuItem;
-    IBOutlet NSMenu *user_menu;
+	IBOutlet NSMenuItem *awayMenuItem;
+	IBOutlet NSMenuItem *invisibleMenuItem;
+	IBOutlet NSMenuItem *newChannelTabMenuItem;
+	IBOutlet NSMenuItem *newServerTabMenuItem;
+	IBOutlet NSMenuItem *nextWindowMenuItem;
+	IBOutlet NSMenuItem *previousWindowMenuItem;
+	IBOutlet NSMenuItem *receiveNoticesMenuItem;
+	IBOutlet NSMenuItem *receiveWallopsMenuItem;
+	IBOutlet NSMenu *user_menu;
    
-    NSString	*search_string;
-    
-    PrefsController *acprefs;
-    ColorPalette *palette;
-    
-    NSFont	*font;
-    NSFont	*boldFont;
-
-    ServerList	*server_list;
-    
-    EditList	*user_commands;
-    EditList	*ctcp_replies;
-    EditList	*userlist_buttons;
-    EditList	*userlist_popup;
-    EditList	*dialog_buttons;
-    EditList	*replace_popup;
-    EditList	*url_handlers;
-    EditList	*user_menus;
-    EditEvents	*edit_events;
-    
-    DccSendWin	*dcc_send_window;
-    DccRecvWin	*dcc_recv_window;
-    DccChatWin	*dcc_chat_window;
-    UrlGrabberWin *url_grabber;
-    FriendListWin *notify_list;
-    IgnoreListWin *ignore_window;
-    AsciiWin	*ascii_window;
-    PluginList	*plugin_list_win;
-    PrefsController *prefs_controller;
-    LogViewer       *log_viewer;
+	NSString	*search_string;
 	
-    NSMutableDictionary *sound_cache;
+	PrefsController *acprefs;
+	ColorPalette *palette;
+	
+	NSFont	*font;
+	NSFont	*boldFont;
+
+	ServerList	*server_list;
+	
+	EditList	*user_commands;
+	EditList	*ctcp_replies;
+	EditList	*userlist_buttons;
+	EditList	*userlist_popup;
+	EditList	*dialog_buttons;
+	EditList	*replace_popup;
+	EditList	*url_handlers;
+	EditList	*user_menus;
+	EditEvents	*edit_events;
+	
+	DccSendWin	*dcc_send_window;
+	DccRecvWin	*dcc_recv_window;
+	DccChatWin	*dcc_chat_window;
+	UrlGrabberWin *url_grabber;
+	FriendListWin *notify_list;
+	IgnoreListWin *ignore_window;
+	AsciiWin	*ascii_window;
+	PluginList	*plugin_list_win;
+	PrefsController *prefs_controller;
+	LogViewer	   *log_viewer;
+	
+	NSMutableDictionary *sound_cache;
 }
 
 @property (nonatomic, readonly) NSFont *font, *boldFont;
 @property (nonatomic, retain) ColorPalette *palette;
-
-+ (AquaChat *) sharedAquaChat;
-
-+ (void) forEachSessionOnServer:(struct server *)serv performSelector:(SEL)sel;
-+ (void) forEachSessionOnServer:(struct server *)serv performSelector:(SEL)sel withObject:(id) obj;
 
 - (void) preferencesChanged;
 
@@ -146,4 +141,10 @@ extern struct event_info text_event_info[];
 - (void) server_event:(server *)server event_type:(int)type arg:(int)arg;
 - (void) growl:(const char *)text title:(const char *)title;
 - (void) growl:(const char *)text;
+
++ (AquaChat *) sharedAquaChat;
+
++ (void) forEachSessionOnServer:(struct server *)serv performSelector:(SEL)sel;
++ (void) forEachSessionOnServer:(struct server *)serv performSelector:(SEL)sel withObject:(id) obj;
+
 @end

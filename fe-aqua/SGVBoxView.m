@@ -23,38 +23,41 @@
 
 - (id) initWithFrame:(NSRect) frameRect
 {
-    [super initWithFrame:frameRect];
-    
-    [self setOrientation:SGBoxOrientationVertical];
-    self.vJustification = SGVBoxVJustificationTop;
-    [self setDefaultHJustification:SGVBoxHJustificationCenter];
-    
-    return self;
+	[super initWithFrame:frameRect];
+	
+	[self setOrientation:SGBoxOrientationVertical];
+	self.vJustification = SGVBoxVJustificationTop;
+	[self setDefaultHJustification:SGVBoxHJustificationCenter];
+	
+	return self;
 }
+
+#pragma mark -
+#pragma mark property accessors/mutators
 
 - (void) setVJustification:(SGVBoxVJustification) aJustification
 {
-    [self setMajorJustification:(SGBoxMajorJustification)aJustification];
+	[self setMajorJustification:(SGBoxMajorJustification)aJustification];
 }
 
 - (void) setDefaultHJustification:(SGVBoxHJustification) aJustification
 {
-    [self setMinorDefaultJustification:(SGBoxMinorJustification)aJustification];
+	[self setMinorDefaultJustification:(SGBoxMinorJustification)aJustification];
 }
 
 - (SGVBoxHJustification) hJustification
 {
-    return [self minorJustification];
+	return [self minorJustification];
 }
 
 - (void) setHJustificationFor:(NSView *) view to:(SGVBoxHJustification) aJustification
 {
-    [self setMinorJustificationFor:view to:(SGBoxMinorJustification)aJustification];
+	[self setMinorJustificationFor:view to:(SGBoxMinorJustification)aJustification];
 }
 
 - (void) setHMargin:(SGBoxMargin) v
 {
-    [self setMinorMargin:v];
+	[self setMinorMargin:v];
 }
 
 - (SGBoxMargin) hMargin {
@@ -63,27 +66,27 @@
 
 - (void) setVInnerMargin:(SGBoxMargin) h
 {
-    [self setMajorInnerMargin:h];
+	[self setMajorInnerMargin:h];
 }
 
 - (SGBoxMargin) vInnerMargin
 {
-    return [self majorInnerMargin];
+	return [self majorInnerMargin];
 }
 
 - (void) setVOutterMargin:(SGBoxMargin) h
 {
-    [self setMajorOutterMargin:h];
+	[self setMajorOutterMargin:h];
 }
 
 - (SGBoxMargin) vOutterMargin
 {
-    return [self majorOutterMargin];
+	return [self majorOutterMargin];
 }
 
 - (SGVBoxVJustification) vJustification
 {
-    return [self majorJustification];
+	return [self majorJustification];
 }
 
 @end

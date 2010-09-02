@@ -9,9 +9,9 @@
 
 @interface SGVBoxViewInspector : IBInspector
 {
-    IBOutlet NSPopUpButton *VJustMenu;
-    IBOutlet NSPopUpButton *HJustMenu;
-    IBOutlet NSTextField *inner_text;
-    IBOutlet NSTextField *outter_text;
+	IBOutlet NSPopUpButton *VJustMenu;
+	IBOutlet NSPopUpButton *HJustMenu;
+	IBOutlet NSTextField *inner_text;
+	IBOutlet NSTextField *outter_text;
 }
 @end
