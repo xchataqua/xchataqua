@@ -15,19 +15,19 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#import <Cocoa/Cocoa.h>
-
-
 @interface SystemVersion : NSObject {
-    NSString * system_version;
-    NSString * build_version;
-    NSString * system_branch;
-    uint8_t major;
-    uint8_t minor;
-    uint8_t micro;
+	NSString * systemVersion;
+	NSString * buildVersion;
+	NSString * systemBranch;
+	uint8_t major;
+	uint8_t minor;
+	uint8_t micro;
 }
 
 + (SystemVersion*)sharedInstance;
+
+@property (nonatomic, readonly) NSString *systemVersion, *buildVersion, *systemBranch;
+@property (nonatomic, readonly) uint8_t major, minor, micro;
 
 + (uint8_t)major;
 + (uint8_t)minor;
@@ -36,10 +36,4 @@
 + (NSString *)buildVersion;
 + (NSString *)systemBranch;
 
-- (uint8_t)major;
-- (uint8_t)minor;
-- (uint8_t)micro;
-- (NSString *)systemVersion;
-- (NSString *)buildVersion;
-- (NSString *)systemBranch;
 @end
