@@ -15,19 +15,18 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#import "AquaChat.h"
-#import "XAChatTextView.h"
-#import "ChatWindow.h"
-#import "mIRCString.h"
-#import "SG.h"
-#import "MenuMaker.h"
-
-// TBD: This is for urlhander_list Should we pass this in?
-#import "XACommon.h"
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
 #include "../common/text.h"
 #include "../common/url.h"
+// TBD: This is for urlhander_list Should we pass this in?
+#import "XACommon.h"
+
+#import "XAChatTextView.h"
+#import "ColorPalette.h"
+#import "ChatWindow.h"
+#import "mIRCString.h"
+#import "MenuMaker.h"
 
 //////////////////////////////////////////////////////////////////////
 

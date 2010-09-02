@@ -16,32 +16,28 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 /* AquaChat */
 
-#include <glib/gslist.h>
-
 #include "../common/xchat.h"
-#include "../common/fe.h"
 
 #import <Growl/GrowlApplicationBridge.h>
 
-@class PrefsController;
+@class AsciiWin;
+@class BanListWin;
 @class ColorPalette;
-@class ServerList;
 @class ChannelListWin;
 @class ChatWindow;
-@class EditList;
-@class EditEvents;
 @class DccSendWin;
 @class DccRecvWin;
 @class DccChatWin;
-@class RawLogWin;
-@class UrlGrabberWin;
+@class EditList;
+@class EditEvents;
 @class FriendListWin;
 @class IgnoreListWin;
-@class BanListWin;
-@class AsciiWin;
+@class LogViewer;
 @class PluginList;
 @class PrefsController;
-@class LogViewer;
+@class RawLogWin;
+@class ServerList;
+@class UrlGrabberWin;
 
 struct session;
 

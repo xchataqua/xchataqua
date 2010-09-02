@@ -21,7 +21,7 @@
 #include <sys/types.h>
 #include <sys/time.h>
 #include <unistd.h>
-#import <pthread.h>
+#include <pthread.h>
 #import "SGFileDescriptor.h"
 
 //////////////////////////////////////////////////////////////////////

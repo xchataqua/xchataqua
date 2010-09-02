@@ -17,8 +17,6 @@
 
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
-#include "../common/outbound.h"
-#include "../common/network.h"
 #include "../common/servlist.h"
 #include "../common/cfgfiles.h"
 

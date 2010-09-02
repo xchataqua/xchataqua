@@ -17,13 +17,12 @@
 
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
-#include "../common/outbound.h"
 #include "../common/network.h"
 #include "../common/dcc.h"
 #import "XACommon.h"
 
-#import "AquaChat.h"
 #import "DccSendWin.h"
+#import "SGAlert.h"
 
 extern int dcc_sendcpssum;
 
@@ -31,7 +30,6 @@ extern int dcc_sendcpssum;
 
 @interface DccSendItem : DCCFileItem
 {
-  @public
 	//struct DCC 		*dcc;
 	//unsigned char prev_dccstat;
 	
@@ -43,9 +41,11 @@ extern int dcc_sendcpssum;
 	//NSMutableString	*kbs;
 	//NSMutableString	*eta;
 
-	NSMutableString	*ack;
-	NSMutableString	*to;
+	NSString	*ack;
+	NSString	*to;
 }
+
+@property (nonatomic, retain) NSString *ack, *to;
 
 - (id) initWithDCC:(struct DCC *) the_dcc;
 - (void) update;
@@ -53,13 +53,11 @@ extern int dcc_sendcpssum;
 @end
 
 @implementation DccSendItem
+@synthesize ack, to;
 
 - (id) initWithDCC:(struct DCC *) the_dcc
 {
 	[super initWithDCC:the_dcc];
-
-	ack = [[NSMutableString stringWithCapacity:0] retain];
-	to = [[NSMutableString stringWithCapacity:0] retain];
 	
 	[self update];
    
@@ -68,8 +66,8 @@ extern int dcc_sendcpssum;
 
 - (void) dealloc
 {
-	[ack release];
-	[to release];
+	self.ack = nil;
+	self.to = nil;
 
 	[super dealloc];
 }
@@ -77,8 +75,8 @@ extern int dcc_sendcpssum;
 - (void) update
 {
 	[super update];
-	[ack setString:[NSString stringWithFormat:@"%@", formatNumber (dcc->ack)]];
-	[to setString:[NSString stringWithUTF8String:dcc->nick]];
+	self.ack = formatNumber(dcc->ack);
+	self.to  = [NSString stringWithUTF8String:dcc->nick];
 }
 
 @end
@@ -114,7 +112,7 @@ extern int dcc_sendcpssum;
 	int row = [itemTableView selectedRow];
 	if (row >= 0)
 	{
-		DccSendItem *item = [myItems objectAtIndex:row];
+		DccSendItem *item = [dccItems objectAtIndex:row];
 
 		struct DCC *dcc = item->dcc;
 
@@ -152,19 +150,19 @@ extern int dcc_sendcpssum;
 	objectValueForTableColumn:(NSTableColumn *) aTableColumn
 	row:(NSInteger) rowIndex
 {
-	DccSendItem *item = [myItems objectAtIndex:rowIndex];
+	DccSendItem *item = [dccItems objectAtIndex:rowIndex];
 
-	switch ([[aTableColumn identifier] intValue])
+	switch ([[aTableColumn identifier] integerValue])
 	{
-		case 0: return item->status;
-		case 1: return item->file;
-		case 2: return item->size;
-		case 3: return item->position;
-		case 4: return item->ack;
-		case 5: return item->per;
-		case 6: return item->kbs;
-		case 7: return item->eta;
-		case 8: return item->to;
+		case 0: return [item status];
+		case 1: return [item file];
+		case 2: return [item size];
+		case 3: return [item position];
+		case 4: return [item ack];
+		case 5: return [item per];
+		case 6: return [item kbs];
+		case 7: return [item eta];
+		case 8: return [item to];
 	}
 	
 	return @"";

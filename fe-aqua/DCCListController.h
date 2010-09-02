@@ -18,19 +18,20 @@
 #import "TabOrWindowView.h"
 
 #ifdef USE_DCC64
-#define DCC_SIZE_FMT "qi"
+#	define DCC_SIZE_FMT "qi"
 #else
-#define DCC_SIZE_FMT "u"
+#	define DCC_SIZE_FMT "u"
 #endif
 
 @interface DCCItem : NSObject
 {
-	@public
+	NSString *status;	
+  @public
 	struct DCC		*dcc;
 	unsigned char	prevDccStat;
-	
-	NSMutableString	*status;
 }
+
+@property (nonatomic, retain) NSString *status;
 
 - (id) initWithDCC:(struct DCC *)dcc;
 - (void) update;
@@ -44,7 +45,7 @@
 {
 	IBOutlet NSTableView		*itemTableView;
 	IBOutlet TabOrWindowView	*dccListView;
-	NSMutableArray	*myItems;
+	NSMutableArray	*dccItems;
 	BOOL			hasSelection;
 	unsigned char	lastDCCStatus;
 	unsigned		activeCount;

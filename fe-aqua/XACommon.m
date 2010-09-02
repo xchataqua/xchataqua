@@ -15,18 +15,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#include <string.h>
-#include <stdlib.h>
-#include <ctype.h>
-
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
 #include "../common/outbound.h"
 #include "../common/userlist.h"
 #include "../common/server.h"
-#include "../common/util.h"
-#undef TYPE_BOOL
-#include "../common/cfgfiles.h"
 
 #include "XACommon.h"
 

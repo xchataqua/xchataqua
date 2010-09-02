@@ -15,8 +15,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#import "ColorPalette.h"
-
 //////////////////////////////////////////////////////////////////////
 
 /* CL: these methods are used in the default key bindings, are implemented by Cocoa classes,
@@ -29,6 +27,7 @@
 
 //////////////////////////////////////////////////////////////////////
 
+@class ColorPalette;
 @class ChatWindow;
 
 @interface XAChatTextView : NSTextView

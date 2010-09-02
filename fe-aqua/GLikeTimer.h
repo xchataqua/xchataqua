@@ -24,7 +24,6 @@
 	g_source_remove -> removeTimerWithTag:
 */
 
-#import <Cocoa/Cocoa.h>
 #include <glib.h>
 
 @interface GLikeTimer : NSObject {
