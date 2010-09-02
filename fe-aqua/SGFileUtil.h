@@ -13,7 +13,7 @@
 
 + (NSString *) findApplicationSupportFor:(NSString *) app;
 + (BOOL) exists:(NSString *) fname;
-+ (BOOL) isDir:(NSString *) fname;
++ (BOOL) isDirectory:(NSString *) fname;
 + (BOOL) isSymLink:(NSString *) fname;
 
 @end

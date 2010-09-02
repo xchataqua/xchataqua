@@ -64,53 +64,53 @@ static xchat_plugin *my_plugin_handle;
 static int
 applescript_cb (char *word[], char *word_eol[], void *userdata)
 {
-    char *command = NULL;
-    bool to_channel = false;
-    
-    if (!word [2][0])
-    {
-        PrintText (current_sess, APPLESCRIPT_HELP);
-        return XCHAT_EAT_ALL;
-    }
-    
-    if (strcmp (word [2], "-o") == 0)
-    {
-        if (!word [3][0])
-        {
-            PrintText (current_sess, APPLESCRIPT_HELP);
-            return XCHAT_EAT_ALL;
-        }
-        
-        command = word_eol [3];
-        to_channel = true;
-    }
-    else
-        command = word_eol [2];
-    
-    NSMutableString *script = [NSMutableString stringWithUTF8String:command];
-    [script replaceOccurrencesOfString:@"\\n" withString:@"\n" 
-        options:0 range:NSMakeRange(0, [script length])];
-    NSAppleScript *s = [[[NSAppleScript alloc] initWithSource:script] autorelease];
-    
-    NSDictionary *errors = nil;
-    NSAppleEventDescriptor *d = [s executeAndReturnError:&errors];
+	char *command = NULL;
+	bool to_channel = false;
+	
+	if (!word [2][0])
+	{
+		PrintText (current_sess, APPLESCRIPT_HELP);
+		return XCHAT_EAT_ALL;
+	}
+	
+	if (strcmp (word [2], "-o") == 0)
+	{
+		if (!word [3][0])
+		{
+			PrintText (current_sess, APPLESCRIPT_HELP);
+			return XCHAT_EAT_ALL;
+		}
+		
+		command = word_eol [3];
+		to_channel = true;
+	}
+	else
+		command = word_eol [2];
+	
+	NSMutableString *script = [NSMutableString stringWithUTF8String:command];
+	[script replaceOccurrencesOfString:@"\\n" withString:@"\n" 
+		options:0 range:NSMakeRange(0, [script length])];
+	NSAppleScript *s = [[[NSAppleScript alloc] initWithSource:script] autorelease];
+	
+	NSDictionary *errors = nil;
+	NSAppleEventDescriptor *d = [s executeAndReturnError:&errors];
 
-    if (d)
-    {
-        const char *return_val = [[d stringValue] UTF8String];
+	if (d)
+	{
+		const char *return_val = [[d stringValue] UTF8String];
 
-        if (return_val)
-        {
-            if (to_channel)
-                handle_multiline (current_sess, (char *) return_val, FALSE, TRUE);
-            else
-                PrintText (current_sess, (char *) return_val);
-        }
-    }
-    else
-        PrintText (current_sess, "Applescript Error\n");
-    
-    return XCHAT_EAT_ALL;
+		if (return_val)
+		{
+			if (to_channel)
+				handle_multiline (current_sess, (char *) return_val, FALSE, TRUE);
+			else
+				PrintText (current_sess, (char *) return_val);
+		}
+	}
+	else
+		PrintText (current_sess, "Applescript Error\n");
+	
+	return XCHAT_EAT_ALL;
 }
 
 static NSString *fix_url (const char *url)
@@ -127,12 +127,12 @@ static NSString *fix_url (const char *url)
 	NSString *scheme = [regex getNthMatch:1];
 	
 	// Any URL with a protocol is considered good
-    if ([scheme length])
+	if ([scheme length])
 		return ret;
 
-    // If we have an '@', then it's probably an email address
-    // URLs with ftp in their name are probably ftp://
-    // Else, just assume http://
+	// If we have an '@', then it's probably an email address
+	// URLs with ftp in their name are probably ftp://
+	// Else, just assume http://
 	if (strchr (url, '@'))
 		scheme = @"mailto:";
 	else if (strncasecmp (url, "ftp.", 4) == 0)
@@ -146,12 +146,12 @@ static NSString *fix_url (const char *url)
 static int
 browser_cb (char *word[], char *word_eol[], void *userdata)
 {
-    if (!word [2][0])
-    {
-        PrintText (current_sess, BROWSER_HELP);
-        return XCHAT_EAT_ALL;
-    }
-    
+	if (!word [2][0])
+	{
+		PrintText (current_sess, BROWSER_HELP);
+		return XCHAT_EAT_ALL;
+	}
+	
 	const char *browser = NULL;
 	const char *url = NULL;
 	
@@ -166,7 +166,7 @@ browser_cb (char *word[], char *word_eol[], void *userdata)
 	}
 
 	NSString *new_url = fix_url (url);
-    
+	
 	if (browser)
 	{
 		NSString *command =
@@ -189,13 +189,13 @@ event_cb (char *word[], void *cbd)
 {
 	int event = (int) (size_t)cbd;
 	session *sess = (session *) xchat_get_context(my_plugin_handle);
-    [[AquaChat sharedAquaChat] event:event args:word session:sess];
+	[[AquaChat sharedAquaChat] event:event args:word session:sess];
 	return XCHAT_EAT_NONE;
 }
 
 static int
 my_plugin_init (xchat_plugin *plugin_handle, char **plugin_name,
-                             char **plugin_desc, char **plugin_version, char *arg)
+							 char **plugin_desc, char **plugin_version, char *arg)
 {
 	/* we need to save this for use with any xchat_* functions */
 	my_plugin_handle = plugin_handle;
@@ -213,7 +213,7 @@ my_plugin_init (xchat_plugin *plugin_handle, char **plugin_name,
 	for (NSInteger i = 0; i < NUM_XP; i ++)
 		xchat_hook_print (plugin_handle, te[i].name, XCHAT_PRI_NORM, event_cb, (void *) i);
 
-	return 1;       /* return 1 for success */
+	return 1;	   /* return 1 for success */
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -221,9 +221,9 @@ my_plugin_init (xchat_plugin *plugin_handle, char **plugin_name,
 @interface ConfirmObject : NSObject
 {
   @public
-    void (*yesproc)(void *);
-    void (*noproc)(void *);
-    void *ud;
+	void (*yesproc)(void *);
+	void (*noproc)(void *);
+	void *ud;
 }
 @end
 
@@ -231,14 +231,14 @@ my_plugin_init (xchat_plugin *plugin_handle, char **plugin_name,
 
 - (void) do_yes
 {
-    yesproc (ud);
-    [self release];
+	yesproc (ud);
+	[self release];
 }
 
 - (void) do_no
 {
-    noproc (ud);
-    [self release];
+	noproc (ud);
+	[self release];
 }
 
 @end
@@ -246,11 +246,11 @@ my_plugin_init (xchat_plugin *plugin_handle, char **plugin_name,
 void
 confirm_wrapper (const char *message, void (*yesproc)(void *), void (*noproc)(void *), void *ud)
 {
-    ConfirmObject *o = [[ConfirmObject alloc] init];
-    o->yesproc = yesproc;
-    o->noproc = noproc;
-    o->ud = ud;
-    [SGAlert confirmWithString:[NSString stringWithUTF8String:message]
+	ConfirmObject *o = [[ConfirmObject alloc] init];
+	o->yesproc = yesproc;
+	o->noproc = noproc;
+	o->ud = ud;
+	[SGAlert confirmWithString:[NSString stringWithUTF8String:message]
 						inform:o
 						yesSel:@selector (do_yes)
 						 noSel:@selector (do_no)];
@@ -261,12 +261,12 @@ confirm_wrapper (const char *message, void (*yesproc)(void *), void (*noproc)(vo
 static void
 one_time_work_phase2()
 {
-    static bool done;
-    if (done)
+	static bool done;
+	if (done)
 		return;
 
 	plugin_add (current_sess, NULL, NULL, (void *) my_plugin_init, NULL, NULL, FALSE);
-    plugin_add (current_sess, NULL, NULL, (void *) bundle_loader_init, NULL, NULL, FALSE);
+	plugin_add (current_sess, NULL, NULL, (void *) bundle_loader_init, NULL, NULL, FALSE);
 
 	// TODO: Disable the version check here if the user has set that preference.
 	/*
@@ -281,9 +281,9 @@ one_time_work_phase2()
 void
 fe_new_window (struct session *sess, int focus)
 {
-    sess->gui = (struct session_gui *) malloc (sizeof (struct session_gui));
-    sess->gui->cw = [[ChatWindow alloc] initWithSession:sess];
-    sess->gui->ban_list = nil;
+	sess->gui = (struct session_gui *) malloc (sizeof (struct session_gui));
+	sess->gui->cw = [[ChatWindow alloc] initWithSession:sess];
+	sess->gui->ban_list = nil;
 
 	if (!current_sess)
 		current_sess = sess;
@@ -291,8 +291,8 @@ fe_new_window (struct session *sess, int focus)
 	if (focus)
 		[sess->gui->cw.view makeKeyAndOrderFront:nil];
 
-    // XChat waits until a session is created before installing plugins.. we
-    // do the same thing..
+	// XChat waits until a session is created before installing plugins.. we
+	// do the same thing..
 
 	one_time_work_phase2 ();
 }
@@ -300,7 +300,7 @@ fe_new_window (struct session *sess, int focus)
 void
 fe_print_text (struct session *sess, char *text, time_t stamp)
 {
-    [sess->gui->cw printText:[NSString stringWithUTF8String:text] stamp:stamp];
+	[sess->gui->cw printText:[NSString stringWithUTF8String:text] stamp:stamp];
 }
 
 void
@@ -309,7 +309,7 @@ fe_timeout_remove (int tag)
 #if USE_GLIKE_TIMER
 	[GLikeTimer removeTimerWithTag:tag];
 #else
-    [TimerThing removeTimerWithTag:tag];
+	[TimerThing removeTimerWithTag:tag];
 #endif
 }
 
@@ -319,37 +319,37 @@ fe_timeout_add (int interval, void *callback, void *userdata)
 #if USE_GLIKE_TIMER
 	return [GLikeTimer addTaggedTimerWithMSInterval:interval callback:(GSourceFunc)callback userData:userdata];
 #else
-    TimerThing *timer = [[TimerThing timerFromInterval:interval 
-        callback:(timer_callback)callback userdata:userdata] retain];
+	TimerThing *timer = [[TimerThing timerFromInterval:interval 
+		callback:(timer_callback)callback userdata:userdata] retain];
 
-    [timer schedule];
+	[timer schedule];
 
-    return [timer tag];
+	return [timer tag];
 #endif
 }
 
 void
 fe_idle_add (void *func, void *data)
 {
-    fe_timeout_add (0, func, data);
+	fe_timeout_add (0, func, data);
 }
 
 void
 fe_input_remove (int tag)
 {
-    InputThing *thing = [InputThing findTagged:tag];
-    [thing disable];
-    [thing release];
+	InputThing *thing = [InputThing findTagged:tag];
+	[thing disable];
+	[thing release];
 }
 
 int
 fe_input_add (int sok, int flags, void *func, void *data)
 {
-    InputThing *thing = [[InputThing socketFromFD:sok 
-                                            flags:flags 
-                                             func:(socket_callback)func 
-                                             data:data] retain];
-    return [thing tag];
+	InputThing *thing = [[InputThing socketFromFD:sok 
+											flags:flags 
+											 func:(socket_callback)func 
+											 data:data] retain];
+	return [thing tag];
 }
 
 //					|  AS Dir Exists	|	!AS Dir Exists	  |
@@ -358,7 +358,7 @@ fe_input_add (int sok, int flags, void *func, void *data)
 // ------------------------------------------------------------
 // !XC Dir Exists	|  (3)  Link		| (4) Mkdir AS, Link  |
 // ------------------------------------------------------------
-// XC Link Exists	|  (5)  Done		|  (6)    Mkdir		  |
+// XC Link Exists	|  (5)  Done		|  (6)	Mkdir		  |
 // ------------------------------------------------------------
 //
 #include <sys/types.h>
@@ -377,8 +377,8 @@ static void setupAppSupport ()
 	NSString *xcdir = [NSString stringWithUTF8String:get_xdir_utf8()];
 	
 	bool xclink_exists = [SGFileUtil isSymLink:xcdir];	
-	bool xcdir_exists = [SGFileUtil isDir:xcdir];
-	bool asdir_exists = [SGFileUtil isDir:asdir];
+	bool xcdir_exists = [SGFileUtil isDirectory:xcdir];
+	bool asdir_exists = [SGFileUtil isDirectory:asdir];
 
 	// State 1
 	if (xcdir_exists && asdir_exists)
@@ -422,9 +422,9 @@ fe_args (int argc, char *argv[])
 {
 	char buff [128];
 	
-    initPool = [[NSAutoreleasePool alloc] init];	
+	initPool = [[NSAutoreleasePool alloc] init];	
 	
-    setlocale (LC_ALL, "");
+	setlocale (LC_ALL, "");
 #if ENABLE_NLS
 	sprintf(buff, "%s/locale", [[[NSBundle mainBundle] resourcePath] UTF8String]);
 	bindtextdomain (GETTEXT_PACKAGE, buff);
@@ -435,7 +435,7 @@ fe_args (int argc, char *argv[])
 	// Find the default charset pref.. 
 	// This is really gross but we need it really early!
 	sprintf (buff, "%s/xchat.conf", get_xdir_fs());
-    FILE *f = fopen (buff, "r");
+	FILE *f = fopen (buff, "r");
 	if (f)
 	{
 		while (fgets (buff, sizeof (buff), f))
@@ -454,16 +454,16 @@ fe_args (int argc, char *argv[])
 
 	setupAppSupport();
 
-    return -1;
+	return -1;
 }
 
 static bool ends_with (const char *string, const char *ext)
 {
-    int s_len = strlen (string);
+	int s_len = strlen (string);
 	int e_len = strlen (ext);
 	if (e_len > s_len)
 		return false;
-    return strcasecmp (string + s_len - e_len, ext) == 0;
+	return strcasecmp (string + s_len - e_len, ext) == 0;
 }
 
 static void fix_log_files_and_pref ()
@@ -492,11 +492,11 @@ static void fix_log_files_and_pref ()
 	
 	// Rename the existing log files
 	NSString *dir = [NSString stringWithFormat:@"%s/xchatlogs", get_xdir_utf8 ()];
-    NSFileManager *fm = [NSFileManager defaultManager];
-    NSDirectoryEnumerator *enumerator = [fm enumeratorAtPath:dir];
-    
-    for (NSString *fname = [enumerator nextObject]; fname != nil; fname = [enumerator nextObject] )
-    {
+	NSFileManager *fm = [NSFileManager defaultManager];
+	NSDirectoryEnumerator *enumerator = [fm enumeratorAtPath:dir];
+	
+	for (NSString *fname = [enumerator nextObject]; fname != nil; fname = [enumerator nextObject] )
+	{
 		if ([fname hasPrefix:@"."] || [fname hasSuffix:@".txt"])
 			continue;
 		
@@ -522,17 +522,17 @@ fe_init (void)
 #if USE_GLIKE_TIMER
 	[GLikeTimer initialize];
 #endif
-    [SGApplication sharedApplication];
-    [NSBundle loadNibNamed:@"MainMenu" owner:NSApp];
+	[SGApplication sharedApplication];
+	[NSBundle loadNibNamed:@"MainMenu" owner:NSApp];
 
 	// This is not just for debug.
 #if !CLX_BUILD
-    if (GetCurrentKeyModifiers () & (optionKey | rightOptionKey))
+	if (GetCurrentKeyModifiers () & (optionKey | rightOptionKey))
 #endif
-        arg_dont_autoconnect = true;
-		        
-    NSString *bundle = [[NSBundle mainBundle] bundlePath];
-    chdir ([[NSString stringWithFormat:@"%@/..", bundle] fileSystemRepresentation]);
+		arg_dont_autoconnect = true;
+				
+	NSString *bundle = [[NSBundle mainBundle] bundlePath];
+	chdir ([[NSString stringWithFormat:@"%@/..", bundle] fileSystemRepresentation]);
 }
 
 #import <Foundation/NSDebug.h>
@@ -544,7 +544,7 @@ fe_init (void)
 #if AQUACHAT_DEBUG
 static void bar (NSException *e)
 {
-    printf ("BAR!\n");
+	printf ("BAR!\n");
 }
 #endif
 
@@ -566,16 +566,16 @@ static void USER_not_enough_parameters_bug ()
 	
 	bool found_any = false;
 	
-    for (GSList *list = network_list; list; list = list->next)
-    {
-        ircnet *net = (ircnet *) list->data;
+	for (GSList *list = network_list; list; list = list->next)
+	{
+		ircnet *net = (ircnet *) list->data;
 		found_any |= fix_field (&net->command);
 		found_any |= fix_field (&net->autojoin);
 		found_any |= fix_field (&net->nick);
 		found_any |= fix_field (&net->pass);
 		found_any |= fix_field (&net->real);
 		found_any |= fix_field (&net->user);
-    }
+	}
 
 	if (found_any)
 		servlist_save();
@@ -587,21 +587,21 @@ fe_main (void)
 	USER_not_enough_parameters_bug ();
 	
 #if 0
-    struct rlimit rlp;
-    rlp.rlim_cur = RLIM_INFINITY;
-    rlp.rlim_max = RLIM_INFINITY;
-    setrlimit (RLIMIT_CORE, &rlp);
+	struct rlimit rlp;
+	rlp.rlim_cur = RLIM_INFINITY;
+	rlp.rlim_max = RLIM_INFINITY;
+	setrlimit (RLIMIT_CORE, &rlp);
 #endif
 
 #if AQUACHAT_DEBUG
-    NSSetUncaughtExceptionHandler (bar);
-    [[NSExceptionHandler defaultExceptionHandler] setExceptionHandlingMask: 127];
-    //[[NSExceptionHandler defaultExceptionHandler] setExceptionHangingMask: NSHangOnEveryExceptionMask];
-    
-    NSZombieEnabled = true;
-    NSDebugEnabled = true;
-//    NSHangOnMallocError = true;
-    NSHangOnUncaughtException = true;
+	NSSetUncaughtExceptionHandler (bar);
+	[[NSExceptionHandler defaultExceptionHandler] setExceptionHandlingMask: 127];
+	//[[NSExceptionHandler defaultExceptionHandler] setExceptionHangingMask: NSHangOnEveryExceptionMask];
+	
+	NSZombieEnabled = true;
+	NSDebugEnabled = true;
+//	NSHangOnMallocError = true;
+	NSHangOnUncaughtException = true;
 	
 	/* CL: many concrete instances of Foundation objects are actually CF objects, and are
 	   not covered by NSZombieEnabled. To get them, set the CFZombieLevel environment
@@ -610,28 +610,28 @@ fe_main (void)
 	
 #endif
 	
-    [[AquaChat sharedAquaChat] post_init];
+	[[AquaChat sharedAquaChat] post_init];
 	
-    [initPool release];
-    [NSApp run];
+	[initPool release];
+	[NSApp run];
 }
 
 void
 fe_exit (void)
 {
-    exit (0);
+	exit (0);
 }
 
 void
 fe_new_server (struct server *serv)
 {
-    static int server_num;
-    
+	static int server_num;
+	
 	//server_set_encoding (serv, prefs.default_charset);
 	
-    serv->gui = (struct server_gui *) malloc (sizeof (struct server_gui));
-    memset (serv->gui, 0, sizeof (*serv->gui));
-    serv->gui->tab_group = ++server_num;
+	serv->gui = (struct server_gui *) malloc (sizeof (struct server_gui));
+	memset (serv->gui, 0, sizeof (*serv->gui));
+	serv->gui->tab_group = ++server_num;
 }
 
 void
@@ -658,334 +658,334 @@ fe_message (char *msg, int flags)
 void
 fe_get_int (char *msg, int def, void *callback, void *userdata)
 {
-    NSString *s = [SGRequest requestWithString:[NSString stringWithUTF8String:msg]
-                        defaultValue:[NSString stringWithFormat:@"%d", def]];
-    
-    int value = 0;
-    int cancel = 1;
-    
-    if (s)
-    {
-        value = [s intValue];
-        cancel = 0;
-    }
+	NSString *s = [SGRequest requestWithString:[NSString stringWithUTF8String:msg]
+						defaultValue:[NSString stringWithFormat:@"%d", def]];
+	
+	int value = 0;
+	int cancel = 1;
+	
+	if (s)
+	{
+		value = [s intValue];
+		cancel = 0;
+	}
 
-    void (*cb) (int cancel, int value, void *user_data);
-    cb = (void (*) (int cancel, int value, void *user_data)) callback;
-    
-    cb (cancel, value, userdata);
+	void (*cb) (int cancel, int value, void *user_data);
+	cb = (void (*) (int cancel, int value, void *user_data)) callback;
+	
+	cb (cancel, value, userdata);
 }
 
 void
 fe_get_str (char *msg, char *def, void *callback, void *userdata)
 {
-    NSString *s = [SGRequest requestWithString:[NSString stringWithUTF8String:msg]
-                        defaultValue:[NSString stringWithUTF8String:def]];
-    
-    char *value = NULL;
-    int cancel = 1;
-    
-    if (s)
-    {
-        value = (char *) [s UTF8String];
-        cancel = 0;
-    }
+	NSString *s = [SGRequest requestWithString:[NSString stringWithUTF8String:msg]
+						defaultValue:[NSString stringWithUTF8String:def]];
+	
+	char *value = NULL;
+	int cancel = 1;
+	
+	if (s)
+	{
+		value = (char *) [s UTF8String];
+		cancel = 0;
+	}
 
-    void (*cb) (int cancel, char *value, void *user_data);
-    cb = (void (*) (int cancel, char *value, void *user_data)) callback;
-    
-    cb (cancel, value, userdata);
+	void (*cb) (int cancel, char *value, void *user_data);
+	cb = (void (*) (int cancel, char *value, void *user_data)) callback;
+	
+	cb (cancel, value, userdata);
 }
 
 void
 fe_close_window (struct session *sess)
 {
-    [sess->gui->cw closeWindow];
+	[sess->gui->cw closeWindow];
 }
 
 void
 fe_beep (void)
 {
-    NSBeep ();
+	NSBeep ();
 }
 
 void
 fe_add_rawlog (struct server *serv, char *text, int len, int outbound)
 {
-    if (serv->gui->rawlog)
-        [serv->gui->rawlog log:text len:len outbound:outbound];
+	if (serv->gui->rawlog)
+		[serv->gui->rawlog log:text len:len outbound:outbound];
 }
 
 void
 fe_set_topic (struct session *sess, char *topic, char *stripped_topic)
 {
-    [sess->gui->cw setTopic:topic];
+	[sess->gui->cw setTopic:topic];
 }
 
 void
 fe_cleanup (void)
 {
-    [[AquaChat sharedAquaChat] cleanup];
+	[[AquaChat sharedAquaChat] cleanup];
 }
 
 void
 fe_set_hilight (struct session *sess)
 {
-    [sess->gui->cw setHilight];
+	[sess->gui->cw setHilight];
 }
 
 void
 fe_update_mode_buttons (struct session *sess, char mode, char sign)
 {
-    [sess->gui->cw modeButtons:mode sign:sign];
+	[sess->gui->cw modeButtons:mode sign:sign];
 }
 
 void
 fe_update_channel_key (struct session *sess)
 {
-    printf ("update channel key\n");
+	printf ("update channel key\n");
 }
 
 void
 fe_update_channel_limit (struct session *sess)
 {
-    [sess->gui->cw channelLimit];
+	[sess->gui->cw channelLimit];
 }
 
 int
 fe_is_chanwindow (struct server *serv)
 {
-    return serv->gui->clc != nil;
+	return serv->gui->clc != nil;
 }
 
 void
 fe_add_chan_list (struct server *serv, char *chan, char *users, char *topic)
 {
-    if (serv->gui->clc)
-        [serv->gui->clc addChannelList:[NSString stringWithUTF8String:chan] numberOfUsers:[NSString stringWithUTF8String:users] topic:[NSString stringWithUTF8String:topic]];
+	if (serv->gui->clc)
+		[serv->gui->clc addChannelList:[NSString stringWithUTF8String:chan] numberOfUsers:[NSString stringWithUTF8String:users] topic:[NSString stringWithUTF8String:topic]];
 }
 
 void
 fe_chan_list_end (struct server *serv)
 {
-    if (serv->gui->clc)
-        [serv->gui->clc chanListEnd];
+	if (serv->gui->clc)
+		[serv->gui->clc chanListEnd];
 }
 
 int
 fe_is_banwindow (struct session *sess)
 {
-    return sess->gui->ban_list ? true : false;
+	return sess->gui->ban_list ? true : false;
 }
 
 void
 fe_add_ban_list (struct session *sess, char *mask, char *who, char *when, int is_exemption)
 {
-    if (sess->gui->ban_list)
-        [sess->gui->ban_list addBanList:[NSString stringWithUTF8String:mask] who:[NSString stringWithUTF8String:who] when:[NSString stringWithUTF8String:when] isExemption:is_exemption];
-}     
-          
+	if (sess->gui->ban_list)
+		[sess->gui->ban_list addBanList:[NSString stringWithUTF8String:mask] who:[NSString stringWithUTF8String:who] when:[NSString stringWithUTF8String:when] isExemption:is_exemption];
+}	 
+		  
 void
 fe_ban_list_end (struct session *sess, int is_exemption)
 {
-    if (sess->gui->ban_list)
-        [sess->gui->ban_list banListEnd];
+	if (sess->gui->ban_list)
+		[sess->gui->ban_list banListEnd];
 }
 
 void
 fe_notify_update (char *name)
 {
-    // fe_notify_update is used in 2 different ways.
-    // 1.  With a user arg.  Presumably to {de}hilight in the userlist but fe-gtk has
-    //     this code commented out.  Ask Peter about this some day.  Either way, we
-    //     should probably do the same thing some day too.
-    // 2.  With a NULL args.  Just update the notify list.
+	// fe_notify_update is used in 2 different ways.
+	// 1.  With a user arg.  Presumably to {de}hilight in the userlist but fe-gtk has
+	//	 this code commented out.  Ask Peter about this some day.  Either way, we
+	//	 should probably do the same thing some day too.
+	// 2.  With a NULL args.  Just update the notify list.
  
-    if (!name)
-        [[AquaChat sharedAquaChat] notify_list_update];
+	if (!name)
+		[[AquaChat sharedAquaChat] notify_list_update];
 }
 
 void fe_notify_ask (char *name, char *networks)
 {
-    NSLog(@"Unimplemented function “fe_notify_ask”(%s, %s)", name, networks);
+	NSLog(@"Unimplemented function “fe_notify_ask”(%s, %s)", name, networks);
 }
 
 void
 fe_text_clear (struct session *sess, int lines)
 {
-    [sess->gui->cw clear:lines];
+	[sess->gui->cw clear:lines];
 }
 
 void
 fe_progressbar_start (struct session *sess)
 {
-    [sess->gui->cw progressbarStart];
+	[sess->gui->cw progressbarStart];
 }
 
 void
 fe_progressbar_end (struct server *serv)
 {
-    [AquaChat forEachSessionOnServer:serv
-		     performSelector:@selector (progressbarEnd)];
+	[AquaChat forEachSessionOnServer:serv
+			 performSelector:@selector (progressbarEnd)];
 }
 
 void
 fe_userlist_insert (struct session *sess, struct User *newuser, int row, int selected)
 {
-    [sess->gui->cw userlistInsert:newuser row:(NSInteger)row select:selected];
+	[sess->gui->cw userlistInsert:newuser row:(NSInteger)row select:selected];
 }
 
 void fe_userlist_update (struct session *sess, struct User *user)
 {
-    [sess->gui->cw userlistUpdate:user];
+	[sess->gui->cw userlistUpdate:user];
 }
 
 int
 fe_userlist_remove (struct session *sess, struct User *user)
 {
-    return (int)[sess->gui->cw userlistRemove:user];
+	return (int)[sess->gui->cw userlistRemove:user];
 }
 
 void
 fe_userlist_move (struct session *sess, struct User *user, int new_row)
 {
-    [sess->gui->cw userlistMove:user row:(NSInteger)new_row];
+	[sess->gui->cw userlistMove:user row:(NSInteger)new_row];
 }
 
 void
 fe_userlist_numbers (struct session *sess)
 {
-    [sess->gui->cw userlistNumbers];
+	[sess->gui->cw userlistNumbers];
 }
 
 void
 fe_userlist_clear (struct session *sess)
 {
-    [sess->gui->cw userlistClear];
+	[sess->gui->cw userlistClear];
 }
 
 void
 fe_dcc_add (struct DCC *dcc)
 {
-    [[AquaChat sharedAquaChat] dcc_add:dcc];
+	[[AquaChat sharedAquaChat] dcc_add:dcc];
 }
 
 void
 fe_dcc_update (struct DCC *dcc)
 {
-    [[AquaChat sharedAquaChat] dcc_update:dcc];
+	[[AquaChat sharedAquaChat] dcc_update:dcc];
 }
 
 void
 fe_dcc_remove (struct DCC *dcc)
 {
-    [[AquaChat sharedAquaChat] dcc_remove:dcc];
+	[[AquaChat sharedAquaChat] dcc_remove:dcc];
 }
 
 void
 fe_clear_channel (struct session *sess)
 {
-    [sess->gui->cw clearChannel];
+	[sess->gui->cw clearChannel];
 }
 
 void
 fe_session_callback (struct session *sess)
 {
-    [sess->gui->cw release];
-    free (sess->gui);
-    sess->gui = NULL;
+	[sess->gui->cw release];
+	free (sess->gui);
+	sess->gui = NULL;
 }
 
 void
 fe_server_callback (struct server *serv)
 {
-    [serv->gui->clc release];
-    [serv->gui->rawlog release];
-    free (serv->gui);
-    serv->gui = NULL;
+	[serv->gui->clc release];
+	[serv->gui->rawlog release];
+	free (serv->gui);
+	serv->gui = NULL;
 }
 
 void fe_url_add (const char *url)
 {
-    [[AquaChat sharedAquaChat] add_url:url];
+	[[AquaChat sharedAquaChat] add_url:url];
 }
 
 void
 fe_pluginlist_update (void)
 {
-    [[AquaChat sharedAquaChat] pluginlist_update];
+	[[AquaChat sharedAquaChat] pluginlist_update];
 }
 
 void
 fe_buttons_update (struct session *sess)
 {
-    [sess->gui->cw setupUserlistButtons];
+	[sess->gui->cw setupUserlistButtons];
 }
 
 void
 fe_dlgbuttons_update (struct session *sess)
 {
-    [sess->gui->cw setupDialogButtons];
+	[sess->gui->cw setupDialogButtons];
 }
 
 void
 fe_set_channel (struct session *sess)
 {
-    [sess->gui->cw setChannel];
+	[sess->gui->cw setChannel];
 }
 
 void
 fe_set_title (struct session *sess)
 {
-    [sess->gui->cw setTitle];
+	[sess->gui->cw setTitle];
 }
 
 void
 fe_set_nonchannel (struct session *sess, int state)
 {
-    [sess->gui->cw setNonchannel:state];
+	[sess->gui->cw setNonchannel:state];
 }
 
 void
 fe_set_nick (struct server *serv, char *newnick)
 {
-    [AquaChat forEachSessionOnServer:serv
-		     performSelector:@selector (setNick)];
+	[AquaChat forEachSessionOnServer:serv
+			 performSelector:@selector (setNick)];
 }
 
 void
 fe_change_nick (struct server *serv, char *nick, char *newnick)
 {
-    session *sess = find_dialog (serv, nick);
-    if (sess)
-    {
-        safe_strcpy (sess->channel, newnick, NICKLEN);	// fe-gtk does this, but I don't
-        fe_set_title (sess);				// think it's needed
-    }
+	session *sess = find_dialog (serv, nick);
+	if (sess)
+	{
+		safe_strcpy (sess->channel, newnick, NICKLEN);	// fe-gtk does this, but I don't
+		fe_set_title (sess);				// think it's needed
+	}
 }
 
 void
 fe_ignore_update (int level)
 {
-    [[AquaChat sharedAquaChat] ignore_update:level];
+	[[AquaChat sharedAquaChat] ignore_update:level];
 }
 
 int
 fe_dcc_open_recv_win (int passive)
 {
-    return [[AquaChat sharedAquaChat] dcc_open_recv_win:passive];
+	return [[AquaChat sharedAquaChat] dcc_open_recv_win:passive];
 }
 
 int
 fe_dcc_open_send_win (int passive)
 {
-    return [[AquaChat sharedAquaChat] dcc_open_send_win:passive];
+	return [[AquaChat sharedAquaChat] dcc_open_send_win:passive];
 }
 
 int
 fe_dcc_open_chat_win (int passive)
 {
-    return [[AquaChat sharedAquaChat] dcc_open_chat_win:passive];
+	return [[AquaChat sharedAquaChat] dcc_open_chat_win:passive];
 }
 
 void
@@ -997,105 +997,105 @@ fe_lastlog (session * sess, session * lastlog_sess, char *sstr, gboolean regexp)
 void
 fe_set_lag (server * serv, int lag)
 {
-    // lag seems to be measured as tenths of seconds since the ping was sent.
-    // -1 indicates that we sent a PING but we are stil waiting for the PING reply.
+	// lag seems to be measured as tenths of seconds since the ping was sent.
+	// -1 indicates that we sent a PING but we are stil waiting for the PING reply.
 
-    if (lag == -1)
-    {
-        if (!serv->lag_sent)
-            return;
-        unsigned long nowtim = make_ping_time ();
-        lag = (nowtim - serv->lag_sent) / 100000;
-    }
+	if (lag == -1)
+	{
+		if (!serv->lag_sent)
+			return;
+		unsigned long nowtim = make_ping_time ();
+		lag = (nowtim - serv->lag_sent) / 100000;
+	}
 
-    // Peter computes the lagmeter as a percentage of 4 seconds.
-    
-    float per = (float) lag / 40;
-    if (per > 1.0)
-        per = 1.0;
+	// Peter computes the lagmeter as a percentage of 4 seconds.
+	
+	float per = (float) lag / 40;
+	if (per > 1.0)
+		per = 1.0;
 
-    [AquaChat forEachSessionOnServer:serv
-		     performSelector:@selector (setLag:)
-		     withObject:[NSNumber numberWithFloat:per]];
+	[AquaChat forEachSessionOnServer:serv
+			 performSelector:@selector (setLag:)
+			 withObject:[NSNumber numberWithFloat:per]];
 }
 
 void
 fe_set_throttle (server *serv)
 {
-    [AquaChat forEachSessionOnServer:serv
-		     performSelector:@selector (setThrottle)];
+	[AquaChat forEachSessionOnServer:serv
+			 performSelector:@selector (setThrottle)];
 }
 
 void
 fe_set_away (server *serv)
 {
-    if (serv == current_sess->server)
-        [[AquaChat sharedAquaChat] set_away:serv->is_away];
+	if (serv == current_sess->server)
+		[[AquaChat sharedAquaChat] set_away:serv->is_away];
 }
 
 void
 fe_serverlist_open (session *sess)
 {
-    // We never allow the last session window to close, and thus we need to
-    // always have a session window.  If the session list is empty at this
-    // point, this must be at startup of XChat.  Open a session window now
-    // so it appears under the server list.
-    // We could create the window at fe_main, but then it would cover the 
-    // serverlist which was created just before fe_main
-    
-    if (!sess_list)
-        sess = new_ircwindow (NULL, NULL, SESS_SERVER, true);
+	// We never allow the last session window to close, and thus we need to
+	// always have a session window.  If the session list is empty at this
+	// point, this must be at startup of XChat.  Open a session window now
+	// so it appears under the server list.
+	// We could create the window at fe_main, but then it would cover the 
+	// serverlist which was created just before fe_main
+	
+	if (!sess_list)
+		sess = new_ircwindow (NULL, NULL, SESS_SERVER, true);
 
-    [[AquaChat sharedAquaChat] open_serverlist_for:sess];
+	[[AquaChat sharedAquaChat] open_serverlist_for:sess];
 }
 
 extern void
 fe_play_wave (const char *fname)
 {
-    [[AquaChat sharedAquaChat] play_wave:fname];
+	[[AquaChat sharedAquaChat] play_wave:fname];
 }
 
 void
 fe_ctrl_gui (session *sess, fe_gui_action action, int arg)
 {
-    [[AquaChat sharedAquaChat] ctrl_gui:sess action:action arg:arg];
+	[[AquaChat sharedAquaChat] ctrl_gui:sess action:action arg:arg];
 }
 
 void
 fe_userlist_rehash (struct session *sess, struct User *user)
 {
-    [sess->gui->cw userlistRehash:user];
+	[sess->gui->cw userlistRehash:user];
 }
 
 void
 fe_dcc_send_filereq (struct session *sess, char *nick, int maxcps, int passive)
 {
-    NSString *s = [SGFileSelection selectWithWindow:[current_sess->gui->cw window]];
-    if (s)
-        dcc_send (sess, nick, (char *) [s UTF8String], maxcps, passive);
+	NSString *s = [SGFileSelection selectWithWindow:[current_sess->gui->cw window]];
+	if (s)
+		dcc_send (sess, nick, (char *) [s UTF8String], maxcps, passive);
 }
 
 void fe_confirm (const char *message, void (*yesproc)(void *), void (*noproc)(void *), void *ud)
 {
-    confirm_wrapper (message, yesproc, noproc, ud);
+	confirm_wrapper (message, yesproc, noproc, ud);
 }
 
 int
 fe_gui_info (session *sess, int info_type)
 {
-    switch (info_type)
-    {
-        case 0: // window status
-            if (![[sess->gui->cw window] isVisible])
-                return 2;       // hidden (iconified or systray)
+	switch (info_type)
+	{
+		case 0: // window status
+			if (![[sess->gui->cw window] isVisible])
+				return 2;	   // hidden (iconified or systray)
 
-            if ([[sess->gui->cw window] isKeyWindow])
-                return 1;       // active/focused
+			if ([[sess->gui->cw window] isKeyWindow])
+				return 1;	   // active/focused
 
-            return 0;           // normal (no keyboard focus or behind a window)
-    }
+			return 0;		   // normal (no keyboard focus or behind a window)
+	}
 
-    return -1;
+	return -1;
 }
 
 char * fe_get_inputbox_contents (struct session *sess)
@@ -1142,7 +1142,7 @@ void fe_menu_update (menu_entry *me)
 
 void fe_uselect (session *sess, char *word[], int do_clear, int scroll_to)
 {
-    [sess->gui->cw userlistSelectNames:word clear:do_clear scrollTo:scroll_to];
+	[sess->gui->cw userlistSelectNames:word clear:do_clear scrollTo:scroll_to];
 }
 
 void fe_server_event (server *serv, int type, int arg)
