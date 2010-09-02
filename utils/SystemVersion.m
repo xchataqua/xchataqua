@@ -17,116 +17,99 @@
 
 #import "SystemVersion.h"
 
-static SystemVersion * shared_instance;
+static SystemVersion * sharedSystemVersion;
 
 @interface SystemVersion ( private )
 - (void)_load_system_version;
 @end
 
+@implementation SystemVersion ( private )
+@synthesize systemVersion, buildVersion, systemBranch;
+@synthesize major, minor, micro;
+
+- (void)_load_system_version {
+	NSDictionary * dict = [[NSDictionary alloc] initWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"];
+	
+	build_version  = [[dict valueForKey:@"ProductBuildVersion"] retain];
+	system_version = [[dict valueForKey:@"ProductVersion"] retain];
+	
+	{
+		char * orig_buf, * buf = strdup([system_version UTF8String]);
+		orig_buf = buf;
+		major = atoi(buf);
+		buf=strchr(buf, '.')+1;
+		if(buf) {
+			minor = atoi(buf);
+			buf=strchr(buf, '.');
+			if(buf)
+				++buf;
+		}
+		if(buf)
+			micro = atoi(buf);  
+		free(orig_buf);
+	}
+	
+	system_branch = [[NSString alloc] initWithFormat:@"%d.%d", major, minor];
+	
+	[dict release];
+}
+
+@end
+
 @implementation SystemVersion
 
-+(SystemVersion*)sharedInstance {
-    if(!shared_instance) {
-        shared_instance = [[SystemVersion alloc] init];
-    }
-    return shared_instance;
++ (void) initialize {
+	sharedSystemVersion = [[SystemVersion alloc] init];	
+}
+
++ (SystemVersion*)sharedInstance {
+	return sharedSystemVersion;
 }
 
 - (id) init {
-    self = [super init];
-    if(shared_instance != 0) {
-        [self dealloc];
-        self = shared_instance;
-    }else {
-        [self _load_system_version];
-    }
-    return self;
+	self = [super init];
+	if(sharedSystemVersion != 0) {
+		[self dealloc];
+		self = sharedSystemVersion;
+	}else {
+		[self _load_system_version];
+	}
+	return self;
 }
 
 - (void) dealloc
 {
-    if(system_version)
-        [system_version release];
-    if(build_version)
-        [build_version release];
-    if(system_branch)
-        [system_branch release];
-    [super dealloc];
+	if(systemVersion)
+		[systemVersion release];
+	if(buildVersion)
+		[buildVersion release];
+	if(systemBranch)
+		[systemBranch release];
+	[super dealloc];
 }
 
-
 + (uint8_t)major {
-    return [[SystemVersion sharedInstance] major];
+	return [[SystemVersion sharedInstance] major];
 }
 
 + (uint8_t)minor {
-    return [[SystemVersion sharedInstance] minor];
+	return [[SystemVersion sharedInstance] minor];
 }
 
 + (uint8_t)micro {
-    return [[SystemVersion sharedInstance] micro];
+	return [[SystemVersion sharedInstance] micro];
 }
 
 + (NSString *)systemVersion {
-    return [[SystemVersion sharedInstance] systemVersion];
+	return [[SystemVersion sharedInstance] systemVersion];
 }
 
 + (NSString *)buildVersion {
-    return [[SystemVersion sharedInstance] buildVersion];
+	return [[SystemVersion sharedInstance] buildVersion];
 }
 
 + (NSString *)systemBranch {
-    return [[SystemVersion sharedInstance] systemBranch];
-}
-
-- (void)_load_system_version {
-    NSDictionary * dict = [[NSDictionary alloc] initWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"];
-    
-    build_version  = [[dict valueForKey:@"ProductBuildVersion"] retain];
-    system_version = [[dict valueForKey:@"ProductVersion"] retain];
-    
-    {
-        char * orig_buf, * buf = strdup([system_version UTF8String]);
-        orig_buf = buf;
-        major = atoi(buf);
-        buf=strchr(buf, '.')+1;
-        if(buf) {
-            minor = atoi(buf);
-            buf=strchr(buf, '.');
-            if(buf)
-                ++buf;
-        }
-        if(buf)
-            micro = atoi(buf);  
-        free(orig_buf);
-    }
-    
-    system_branch = [[NSString alloc] initWithFormat:@"%d.%d", major, minor];
-    
-    [dict release];
-}
-
--(uint8_t) major {
-    return major;
-}
--(uint8_t) minor {
-    return minor;
-}
-
--(uint8_t) micro {
-    return micro;
-}
-
--(NSString *) systemVersion {
-    return system_version;
-}
-
--(NSString *) buildVersion {
-    return build_version;
-}
-
--(NSString *) systemBranch {
-    return system_branch;
+	return [[SystemVersion sharedInstance] systemBranch];
 }
 
 @end
