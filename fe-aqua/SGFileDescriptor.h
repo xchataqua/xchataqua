@@ -17,14 +17,14 @@
 
 //////////////////////////////////////////////////////////////////////
 
-#define SGFDRead  0
-#define SGFDWrite 1
-#define SGFDExcep 2
+#define SGFileDescriptorRead  0
+#define SGFileDescriptorWrite 1
+#define SGFileDescriptorExcep 2
 
 @interface SGFileDescriptor : NSObject
 
 - (SGFileDescriptor *)initWithFd:(int)fd mode:(NSInteger)mode target:(id)target 
-                        selector:(SEL)selector withObject:(id)object;
+						selector:(SEL)selector withObject:(id)object;
 - (void)disable;
 
 @end
