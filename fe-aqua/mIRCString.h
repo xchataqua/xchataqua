@@ -22,10 +22,10 @@
 }
 
 + (id) stringWithUTF8String:(const char *) string
-                        len:(NSInteger) len
-                    palette:(ColorPalette *) palette
-                       font:(NSFont *) font
-                   boldFont:(NSFont *) boldFont;
+					 length:(NSInteger) len
+					palette:(ColorPalette *) palette
+					   font:(NSFont *) font
+				   boldFont:(NSFont *) boldFont;
 
 + (NSFont *) hiddenFont;
 

@@ -35,7 +35,7 @@
 	IBOutlet NSScrollView		*chatScrollView;
 	
 	NSButton *tButton, *nButton, *sButton, *iButton, *pButton, *mButton,
-	         *bButton, *lButton, *kButton, *CButton, *NButton, *uButton;
+			 *bButton, *lButton, *kButton, *CButton, *NButton, *uButton;
 	
 	IBOutlet NSTextField	*limitTextField;
 	IBOutlet NSTextField	*keyTextField;
@@ -53,16 +53,16 @@
 	
 	NSMutableArray	*userlist;
 	NSMenuItem		*userlistMenuItem;
-    struct User		*userlistMenuItemCurrentUser;
+	struct User		*userlistMenuItemCurrentUser;
 /* CL */
 	CGFloat maxNickWidth;
 	CGFloat maxHostWidth;
 	CGFloat maxRowHeight;
 /* CL end */
-    
+	
 	NSInteger completionIndex; // Current index when cycling through tab-completions.
 	
-  struct session *sess;
+	struct session *sess;
 }
 
 @property (nonatomic, readonly) TabOrWindowView *view;

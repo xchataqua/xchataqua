@@ -1226,10 +1226,10 @@ static NSImage *empty_image;
 	[palette setColor:AC_BGCOLOR color:[NSColor whiteColor]];
 
 	[topicTextField setStringValue:[mIRCString stringWithUTF8String:topic
-															len:-1
-														palette:palette
-															font:nil
-														boldFont:nil]];
+															 length:-1
+															palette:palette
+															   font:nil
+														   boldFont:nil]];
 }
 
 - (void) setChannel
