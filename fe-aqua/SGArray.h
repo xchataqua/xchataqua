@@ -23,9 +23,9 @@
 
 @interface SGArray : NSObject 
 {
-    void **items;
-    unsigned count;
-    unsigned capacity;
+	void **items;
+	NSUInteger count;
+	NSUInteger capacity;
 }
 
 - (void) addObject:(id) object;
