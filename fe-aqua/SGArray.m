@@ -1,5 +1,5 @@
 //
-//  SGArray.mm
+//  SGArray.m
 //  aquachat
 //
 //  Created by Steve Green on Fri Apr 23 2004.

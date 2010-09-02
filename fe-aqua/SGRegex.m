@@ -1,5 +1,5 @@
 //
-//  SGRegex.mm
+//  SGRegex.m
 //  aquachat
 //
 //  Created by Steve Green on 3/29/05.

@@ -17,10 +17,10 @@
 
 @interface SGLockableTextFieldCell : NSTextFieldCell
 {
-  NSImage *lockImage;
-  NSImage *unlockImage;
+	NSImage *lockImage;
+	NSImage *unlockImage;
 
-  NSButtonCell *lockCell;
+	NSButtonCell *lockCell;
 }
 
 @property (retain) NSImage *lockImage;
@@ -33,7 +33,7 @@
 
 @interface SGLockableTextField : NSTextField
 {
-  id prevValue;
+	id prevValue;
 }
 @property (retain) id prevValue;
 @end

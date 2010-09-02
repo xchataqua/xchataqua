@@ -283,7 +283,7 @@ static NSArray *root_items;
 			[sounds addObject:sound];
 	}
 
-	NSArray *system_sounds = [SGSoundUtil systemSounds];
+	NSArray *system_sounds = [SGSoundUtility systemSounds];
 	
 	for (NSUInteger i = 0; i < [system_sounds count]; i ++)
 	{

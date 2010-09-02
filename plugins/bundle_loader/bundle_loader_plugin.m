@@ -15,19 +15,15 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#include <string.h>
-#include <stdio.h>
 #include <dirent.h>
 
-#import "SystemVersion.h"
-
-#include "xchat.h"
 #include "outbound.h"
-#include "xchatc.h"
 #define PLUGIN_C
 typedef struct session xchat_context;
 #include "xchat-plugin.h"
 #include "plugin.h"
+
+#import "SystemVersion.h"
 
 static xchat_plugin *ph;
 
