@@ -297,7 +297,7 @@ static NSArray *root_items;
 
 - (void) make_sound_menu
 {
-	NSPopUpButtonCell *cell = [[[NSPopUpButtonCell alloc] initWithText:@"" pullsDown:false] autorelease];
+	NSPopUpButtonCell *cell = [[[NSPopUpButtonCell alloc] initTextCell:@"" pullsDown:false] autorelease];
 	[cell setBordered:false];
 	for (NSUInteger i = 0; i < [sounds count]; i ++)
 	{
@@ -462,7 +462,7 @@ static NSArray *root_items;
 	[self make_sound_menu];
 	[self get_sound_events];
 
-	NSButtonCell *bcell = [[MyButtonCell alloc] initWithText:@""];
+	NSButtonCell *bcell = [[MyButtonCell alloc] initTextCell:@""];
 	[bcell setButtonType:NSSwitchButton];
 	[bcell setControlSize:NSMiniControlSize];
 	[bcell setAllowsMixedState:YES];
@@ -470,7 +470,7 @@ static NSArray *root_items;
 	[[[sounds_table tableColumns] objectAtIndex:3] setDataCell:bcell];
 	[bcell release];
 
-	bcell = [[MyButtonCell alloc] initWithText:@""];
+	bcell = [[MyButtonCell alloc] initTextCell:@""];
 	[bcell setButtonType:NSSwitchButton];
 	[bcell setControlSize:NSMiniControlSize];
 	[[[sounds_table tableColumns] objectAtIndex:4] setDataCell:bcell];
@@ -640,8 +640,8 @@ static NSArray *root_items;
 	}
 }
 
-//////////
-// Window delegate
+#pragma mark -
+#pragma mark window delegate
 
 - (BOOL)windowShouldClose:(id)sender
 {

@@ -27,9 +27,9 @@
 @synthesize unlockImage;
 @synthesize lockCell;
 
-- (id)initWithText:(NSString *)aString
+- (id)initTextCell:(NSString *)aString
 {
-	self = [super initWithText:aString];
+	self = [super initTextCell:aString];
 
 	self.lockImage   = [NSImage imageNamed:@"lock.tiff"];
 	self.unlockImage = [NSImage imageNamed:@"unlock.tiff"];
@@ -194,7 +194,7 @@
 
 - (void) privateInit
 {
-  NSTextFieldCell *cell = [[SGLockableTextFieldCell alloc] initWithText:@""];
+  NSTextFieldCell *cell = [[SGLockableTextFieldCell alloc] initTextCell:@""];
   [cell setEditable:[self isEditable]];
   [cell setDrawsBackground:[self drawsBackground]];
   [cell setBordered:[self isBordered]];

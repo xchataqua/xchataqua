@@ -88,9 +88,9 @@ static NSButtonCell *makeCloseCell ()
 @implementation SGTabViewOutlineCell
 @synthesize hasClose;
 
-- (id) initWithText:(NSString *) aString
+- (id) initTextCell:(NSString *) aString
 {
-	self = [super initWithText:aString];
+	self = [super initTextCell:aString];
 	closeCell = makeCloseCell();
 	return self;
 }
@@ -390,13 +390,13 @@ HIThemeSegmentPosition positionTable[2][2] =
 	
 	// The theme APIs for getting the segment height is broken too.
 	// Just get a cell and ask it...
-	NSSegmentedCell *cell = [[NSSegmentedCell alloc] initWithText:@""];
+	NSSegmentedCell *cell = [[NSSegmentedCell alloc] initTextCell:@""];
 	MySegmentHeight = [cell cellSize].height;
 }
 
-- (id) initWithText:(NSString *) aString
+- (id) initTextCell:(NSString *) aString
 {
-	self = [super initWithText:aString];
+	self = [super initTextCell:aString];
 	closeCell = makeCloseCell();
 	self->hideClose = false;
 	return self;
@@ -577,7 +577,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 {
 	[super init];
 	
-	[self setCell:[[[SGTabViewButtonCell alloc] initWithText:@""] autorelease]];
+	[self setCell:[[[SGTabViewButtonCell alloc] initTextCell:@""] autorelease]];
 	[self setButtonType:NSOnOffButton];
 	[[self cell] setControlSize:NSSmallControlSize];
 	[self setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
@@ -984,7 +984,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 		NSFont *font = [NSFont systemFontOfSize:[NSFont smallSystemFontSize]];
 		NSLayoutManager * layout_manager=[[NSLayoutManager new] autorelease];
 		
-		SGTabViewOutlineCell *data_cell = [[SGTabViewOutlineCell alloc] initWithText:@""];
+		SGTabViewOutlineCell *data_cell = [[SGTabViewOutlineCell alloc] initTextCell:@""];
 		
 		NSTableColumn *col = [[NSTableColumn alloc] initWithIdentifier:@""];
 		[col setWidth:outline_width];
