@@ -15,22 +15,25 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#undef TYPE_BOOL
 #include "../common/xchat.h"
 #include "../common/fe.h"
-#undef TYPE_BOOL
 
+#import "NSTimerAdditions.h"
+#import "SGFileDescriptor.h"
 #import "fe-aqua_utility.h"
+
 #define CPP_INPUT_THING 0
 #define CPP_TIMER_THING 0
 #if CPP_INPUT_THING | CPP_TIMER_THING
 #include <list>
 #endif
+
 #if CPP_INPUT_THING
 static std::list<id> input_list;
 #else
 NSMutableArray *inputArray;
 #endif
+
 static NSInteger input_seq = 1;
 
 @implementation InputThing

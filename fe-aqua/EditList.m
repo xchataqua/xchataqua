@@ -20,7 +20,7 @@
 #include "../common/cfgfiles.h"
 
 #import "EditList.h"
-#import "SG.h"
+#import "SGAlert.h"
 
 //////////////////////////////////////////////////////////////////////
 

@@ -15,14 +15,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
+#include <sys/stat.h>
+
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
 #include "../common/cfgfiles.h"
 
-#import "SG.h"
 #import "LogViewer.h"
-
-#include <sys/stat.h>
+#import "SGAlert.h"
 
 //////////////////////////////////////////////////////////////////////
 

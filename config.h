@@ -2,8 +2,9 @@
 #define _CONFIG_H
 
 #ifndef ENABLE_NLS
-#define ENABLE_NLS 1
+#	define ENABLE_NLS 1
 #endif
+
 #if ENABLE_NLS
 /* Gettext package name */
 #  define GETTEXT_PACKAGE "xchat"
@@ -13,6 +14,7 @@
 #  define HAVE_STRING_H 1
 #  define HAVE_STDLIB_H 1
 #endif
+
 /* Define to the full name of this package. */
 #define PACKAGE_NAME "XChat"
 
@@ -36,5 +38,5 @@
 #define USE_IPV6 1
 #define USE_PLUGIN 1
 #define USE_OPENSSL 1
-#include <stdio.h>
+
 #endif

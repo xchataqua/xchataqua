@@ -19,12 +19,7 @@
 
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
-#include "../common/outbound.h"
-#include "../common/server.h"
-#include "../common/network.h"
-#include "../common/dcc.h"
 
-#import "SG.h"
 #import "RawLogWin.h"
 
 //////////////////////////////////////////////////////////////////////

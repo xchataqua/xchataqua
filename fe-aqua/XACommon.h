@@ -1,4 +1,3 @@
-@class NSString;
 
 void nick_command_parse (session *sess, const char *cmd, const char *nick, const char *allnick);
 void change_channel_flag (session *sess, char flag, int enabled);

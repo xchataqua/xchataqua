@@ -15,33 +15,21 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#import <Cocoa/Cocoa.h>
+
 #import <Carbon/Carbon.h>
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <strings.h>
-#include <sys/time.h>
-#include <sys/types.h>
-#include <unistd.h>
-#include <ctype.h>
-#include <unistd.h>
-
 #undef TYPE_BOOL
-#include "../common/xchat.h"
+#include "../common/cfgfiles.h"
 #include "../common/xchatc.h"
 #include "../common/util.h"
 #include "../common/plugin.h"
 #include "../common/xchat-plugin.h"
-#include "../common/cfgfiles.h"
 #include "../common/text.h"
 #include "../common/servlist.h"
-#include "../common/server.h"
-#include "outbound.h"
+#include "../common/outbound.h"
 
 #import "fe-aqua_utility.h"
-#import "aquachat.h"
+#import "AquaChat.h"
 #import "ChatWindow.h"
 #import "ChannelListWin.h"
 #import "BanListWin.h"

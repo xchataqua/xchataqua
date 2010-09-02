@@ -6,7 +6,7 @@
 //  Copyright 2005 __MyCompanyName__. All rights reserved.
 //
 
-#import <SGView.h>
+#import "SGView.h"
 
 @interface SGWrapView : SGView 
 {

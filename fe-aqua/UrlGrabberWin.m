@@ -17,16 +17,12 @@
 
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
-#include "../common/outbound.h"
-#include "../common/network.h"
 #include "../common/url.h"
 #include "../common/tree.h"
 
-#import "AquaChat.h"
-#import "SG.h"
 #import "UrlGrabberWin.h"
-#import "XACommon.h"
 #import "MenuMaker.h"
+#import "SGFileSelection.h"
 
 //////////////////////////////////////////////////////////////////////
 

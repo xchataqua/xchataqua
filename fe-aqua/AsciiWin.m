@@ -17,10 +17,6 @@
 
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
-#include "../common/outbound.h"
-#include "../common/network.h"
-#include "../common/modes.h"
-#include "../common/util.h"
 
 #import "AquaChat.h"
 #import "ChatWindow.h"

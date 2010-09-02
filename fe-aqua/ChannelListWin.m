@@ -15,13 +15,17 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#import "AquaChat.h"
-#import "ChannelListWin.h"
-#import "mIRCString.h"
-
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
 #include "../common/outbound.h"
+
+#import "AquaChat.h"
+#import "TabOrWindowView.h"
+#import "ChannelListWin.h"
+#import "ColorPalette.h"
+#import "mIRCString.h"
+#import "NSTimerAdditions.h"
+#import "SGAlert.h"
 
 //////////////////////////////////////////////////////////////////////
 
@@ -430,7 +434,7 @@ static const char * strip_crap (const char *s)
 {
 	ChannelEntry *entry = [items objectAtIndex:rowIndex];
 	
-	switch ([[aTableColumn identifier] intValue])
+	switch ([[aTableColumn identifier] integerValue])
 	{
 		case 0: return [entry channel];
 		case 1: return [entry numberOfUsersString];
