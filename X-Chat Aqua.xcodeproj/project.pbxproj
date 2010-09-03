@@ -4219,7 +4219,10 @@
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = "fe-aqua";
+				FRAMEWORK_SEARCH_PATHS = (
+					Frameworks,
+					"fe-aqua",
+				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DEBUGGING_SYMBOLS = full;
 				GCC_PREPROCESSOR_DEFINITIONS = FE_AQUA;
@@ -4246,7 +4249,10 @@
 			baseConfigurationReference = B07C7AD70F4398FC00E11B58 /* Release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				FRAMEWORK_SEARCH_PATHS = "fe-aqua";
+				FRAMEWORK_SEARCH_PATHS = (
+					Frameworks,
+					"fe-aqua",
+				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = FE_AQUA;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
