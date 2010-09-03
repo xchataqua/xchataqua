@@ -12,11 +12,17 @@ my $in_git = 0;
 my $scriptpath = $cwd . "/" . dirname($0);
 my $outfile = $ARGV[0];
 my $xcconfig = $ARGV[1];
+if ( !$ARGV[0] ) {
+	print "firstarg: outfile / secondarg: xcconfig\n";
+	exit;
+}
 
+my @releasearr;
 my $releasever;
 
-if (open RELEASE, "<", "$scriptpath/release_ver") {
-	$releasever = <RELEASE>;
+if (open RELEASE, "<", "$scriptpath/../Changes") {
+	@releasearr = split / /, <RELEASE>;
+	$releasever = $releasearr[0];
 	close RELEASE;
 }
 
@@ -51,6 +57,12 @@ if (!$verstring) {
 chomp($verstring);
 
 my $pattern = "([0-9]+).([0-9]+).([0-9]+)(?:(?:-([a-zA-Z]+[0-9]+))?(?:-([0-9]+)-g[a-fA-F0-9]+)?)?";
+
+if ($verstring =~ $pattern) {
+} else {
+	# temporary expansion for SVN Changes
+	$verstring = $verstring.'.0';
+}
 
 if ($verstring =~ $pattern) {
 } else {
