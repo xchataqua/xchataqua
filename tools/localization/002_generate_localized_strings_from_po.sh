@@ -1,39 +1,59 @@
 #!/bin/bash
-BASESED='002.sed'
-BASELOCALE='en'
+. set_variables.sh
+
+if [ "$1" == 'clean' ]; then
+	for localedir in "$XIB_STRINGS_DIR"/*; do
+		if [ `basename $localedir` == $BASE_LOCALE ]; then
+			continue
+		fi
+		rm -rf $localedir
+	done
+	exit
+fi
+
+BASE_SED='002.sed'
+SED_TEMP_DIR="$L10N_TEMP_DIR/localesed"
+
+if [ ! -e "$SED_TEMP_DIR" ]; then
+	mkdir -p "$SED_TEMP_DIR"
+fi
 
 checkdone=''
-for locale in `ls -d po/*.strings`; do
-	locale=`basename $locale .strings`
-	echo -n $locale
-	if [ $BASELOCALE = $locale ]; then
+for po_strings in "$PO_STRINGS_DIR"/*.strings; do
+	locale=`basename "$po_strings" .strings`
+	if [ $BASE_LOCALE = $locale ]; then
 		continue
 	fi
 	if [ $DEBUG ]; then
-		echo "generate $BASESED.$locale..."
+		echo -n "generate $locale.sed"
+	else
+		echo -n $locale
 	fi
-	echo "#!/bin/sed" > $BASESED.$locale
-	if [ -e strings/$locale/xib.strings ]; then
-		sed -f $BASESED strings/$locale/xib.strings >> $BASESED.$locale
+
+	#generate sed file
+	sedtemp="$SED_TEMP_DIR/$locale.sed"
+	echo "#!/bin/sed" > "$sedtemp"
+	xibstrings="$MANUAL_STRINGS_DIR/$locale/xib.strings"
+	if [ -e "$xibstrings" ]; then
+		sed -f "$BASE_SED" "$xibstrings" >> "$sedtemp"
 	fi
-	sed -f $BASESED po/$locale.strings >> $BASESED.$locale
-	if [ ! -e "lproj/$locale" ]; then
-		mkdir lproj/$locale
+	sed -f "$BASE_SED" "$PO_STRINGS_DIR/$locale.strings" >> "$sedtemp"
+
+	# generate locale xib strings
+	if [ ! -e "$XIB_STRINGS_DIR/$locale" ]; then
+		mkdir "$XIB_STRINGS_DIR/$locale"
 	fi
-	for strings in `ls lproj/$BASELOCALE/*.xib.strings`; do
-		newstrings=lproj/$locale/`basename $strings`
-		if [ $newstrings -nt $strings ]; then # original locale
-			if [ $newstrings -nt strings/$locale/xib.strings ]; then # generated one from 001
-				if [ $newstrings -nt po/$locale.strings ]; then # generated one from mo_to_po
-					continue
-				fi
-			fi
+	
+	for strings in "$BASE_XIB_STRINGS_DIR"/*.xib.strings; do
+		newstrings="$XIB_STRINGS_DIR/$locale/"`basename "$strings"`
+		if [ "$newstrings" -nt "$strings" ] && [ "$newstrings" -nt "$xibstring" ] && [ "$newstrings" -nt "$PO_STRINGS_DIR/$locale.strings" ]; then
+			continue
 		fi
-		cmd="sed -f $BASESED.$locale $strings"
+		cmd="sed -f '$sedtemp' '$strings'"
 		if [ $DEBUG ]; then
-			echo $cmd
+			echo "$cmd > '$newstrings' &"
 		fi
-	 	$cmd > $newstrings &
+	 	eval "$cmd > '$newstrings' &"
 		checkdone=$checkdone'1'
 		echo -n .
 	done
@@ -41,11 +61,9 @@ for locale in `ls -d po/*.strings`; do
 	wait $!
 done
 if [ $checkdone ]; then
-	sleep 1
-fi
-if [ $DEBUG ]; then
-	echo "to remove temporary files, 'rm $BASESED.*'"
-else
-	rm $BASESED.*
+	if [ $DEBUG ]; then
+		echo 'waiting 2 seconds to syncronize'
+	fi
+	sleep 2
 fi
 #eof
