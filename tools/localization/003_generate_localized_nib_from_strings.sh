@@ -1,46 +1,49 @@
 #!/bin/bash
-BASELOCALE='en'
-RECDIR='../../Localization'
-DEFXIBDIR="$RECDIR/en.lproj"
+. set_variables.sh
+
+if [ "$1" = "clean" ]; then
+	for lproj in "$LPROJ_DIR"/*; do
+		if [ `basename "$lproj" .lproj` == $BASE_LOCALE ]; then
+			continue
+		fi
+		rm -rf "$lproj"
+	done
+	exit;
+fi
 
 checkdone=''
-for locale in `ls -d lproj/*`; do
-	locale=`basename $locale`
-	if [ $locale != `basename $locale .lproj` ]; then
-		continue;	# FIXME: tweak to avoid locale / locale.lproj
-	fi
-	if [ $BASELOCALE = $locale ]; then
+if [ ! -e "$LPROJ_DIR" ]; then
+	mkdir -p "$LPROJ_DIR"
+fi
+for xibstringslocale in "$XIB_STRINGS_DIR"/*; do
+	locale=`basename "$xibstringslocale"`
+	if [ $BASE_LOCALE = $locale ]; then
 	   continue;	# pass base locale
 	fi
 
 	echo -n "$locale"
-	for strings in `ls lproj/$locale/*.xib.strings`; do
+	lprojdir="$LPROJ_DIR/$locale.lproj"
+	if [ ! -e "$lprojdir" ]; then
+		mkdir "$lprojdir"
+	fi
+	for strings in "$xibstringslocale"/*.xib.strings; do
 		# strings: generated one
-		xib=`basename $strings .strings`
-		if [ ! -e lproj/$locale.lproj ]; then
-			mkdir lproj/$locale.lproj
-		fi
-		if [ $DEFXIBDIR/$xib -ot lproj/$locale.lproj/$xib ]; then # base is older
-			if [ $strings -ot lproj/$locale.lproj/$xib ]; then
+		xibname=`basename "$strings" .strings`
+		xibfile="$lprojdir/$xibname"
+		
+		if [ "$xibfile" -nt "$BASE_XIB_DIR/$xibname" ]; then
+			if [ "$xibfile" -nt "$strings"  ]; then # base is older
 				continue
 			fi
 		fi
-		if [ $DEFXIBDIR/$xib -ot $RECDIR/$locale.lproj/$xib ]; then
-			if [ strings/$locale/xib.strings -ot $RECDIR/$locale.lproj/$xib ]; then
-				continue
-			fi
-		fi
-		cmd="ibtool --strings-file $strings --write lproj/$locale.lproj/$xib $DEFXIBDIR/$xib"
-		checkdone=$checkdone'1'
-#		diff lproj/$locale/$xib lproj/$locale.lproj/$xib
-#		if [ $? ]; then
-#			cp lproj/$locale/$xib lproj/$locale.lproj/$xib
-#		fi
+		cmd="ibtool --strings-file '$strings' --write '$xibfile' '$BASE_XIB_DIR/$xibname'"
+		checkdone='1'
 		if [ $DEBUG ]; then
-			echo "$cmd"
+			echo "$cmd &"
+		else
+			echo -n .
 		fi
-		$cmd &
-		echo -n .
+		eval "$cmd &"
 	done
 	echo " waiting sync"
 	wait $!

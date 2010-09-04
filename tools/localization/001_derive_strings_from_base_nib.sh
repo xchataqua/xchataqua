@@ -1,23 +1,28 @@
 #!/bin/bash
-PWD=`pwd`
-BASELOCALE='en'
-WORKDIR="../../Localization/$BASELOCALE.lproj"
-PWDDIR="$PWD/lproj/$BASELOCALE"
+. set_variables.sh
 
-mkdir -p $PWDDIR
-cd $WORKDIR
-for xib in `ls *.xib`; do
-	if [ $PWDDIR/$xib.strings -nt $xib ]; then
+if [ "$1" = 'clean' ]; then
+	rm -rf "$BASE_XIB_STRINGS_DIR"
+	exit
+fi
+
+mkdir -p "$BASE_XIB_STRINGS_DIR"
+for xibfile in "$BASE_XIB_DIR"/*.xib; do
+	xibname=`basename "$xibfile"`
+	stringsfile="$BASE_XIB_STRINGS_DIR/$xibname.strings"
+	if [ "$stringsfile" -nt $xibfile ]; then
+		if [ $DEBUG ]; then
+			echo "pass $xib"
+		fi
 		continue # pass if old one
 	fi
-	cmd="ibtool --generate-stringsfile $xib.strings.utf16 $xib"
-	cmd2="iconv -f utf-16 -t utf-8 $xib.strings.utf16"
+	cmd_gen="ibtool $IBTOOL_FLAGS --generate-stringsfile '$stringsfile.utf16' '$xibfile'"
+	cmd_iconv="iconv -f utf-16 -t utf-8 '$stringsfile.utf16'"
 	if [ $DEBUG ]; then
-	  echo "$cmd ; $cmd2"
+		echo "$cmd_gen && $cmd_iconv > $stringsfile"
+	else
+		echo -n .
 	fi
-	$cmd
-	$cmd2 > $PWDDIR/$xib.strings
-	rm $xib.strings.utf16 # remove temporary utf16 file
-	echo -n .
+	eval "$cmd_gen && $cmd_iconv > '$stringsfile'"
 done
-echo ""
+echo "done"

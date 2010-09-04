@@ -14,8 +14,7 @@
 				0F2FEF770E1FB16600DE4D41 /* Copy Plugins */,
 			);
 			dependencies = (
-				2DDC64151230FC440015A26C /* PBXTargetDependency */,
-				2DDC640D1230FC1B0015A26C /* PBXTargetDependency */,
+				2DDC6FDD1231BCC10015A26C /* PBXTargetDependency */,
 				0F70656D0E1FA5C700FEA21C /* PBXTargetDependency */,
 				0F2FEF7E0E1FB1BD00DE4D41 /* PBXTargetDependency */,
 				0F8F08350E1FE08700359159 /* PBXTargetDependency */,
@@ -25,16 +24,30 @@
 			name = Release;
 			productName = Release;
 		};
-		B0A5F6CE0FFAB16E003F5A02 /* GenerateBuildNumber */ = {
+		2DDC6FD91231BCA00015A26C /* Prebuild */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = B0A5F6D40FFAB1AA003F5A02 /* Build configuration list for PBXAggregateTarget "GenerateBuildNumber" */;
+			buildConfigurationList = 2DDC6FE41231BD1E0015A26C /* Build configuration list for PBXAggregateTarget "Prebuild" */;
 			buildPhases = (
-				B0A5F6CD0FFAB16E003F5A02 /* ShellScript */,
+				2DDC6FEA1231BD760015A26C /* Generate Build Number */,
+				2DDC6FEF1231BDD40015A26C /* Generate Localization Files */,
 			);
 			dependencies = (
+				2DDC6FE11231BCCB0015A26C /* PBXTargetDependency */,
 			);
-			name = GenerateBuildNumber;
-			productName = "Generate Build Number";
+			name = Prebuild;
+			productName = Prebuild;
+		};
+		2DDC70011231DA230015A26C /* printenv */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 2DDC700A1231DA5C0015A26C /* Build configuration list for PBXAggregateTarget "printenv" */;
+			buildPhases = (
+				2DDC70001231DA230015A26C /* ShellScript */,
+			);
+			comments = "Not used directly";
+			dependencies = (
+			);
+			name = printenv;
+			productName = "Print Environtment Variables";
 		};
 /* End PBXAggregateTarget section */
 
@@ -276,19 +289,19 @@
 			remoteGlobalIDString = 0F8F06D60E1FDA8500359159;
 			remoteInfo = "perl-leopard";
 		};
-		2DDC640C1230FC1B0015A26C /* PBXContainerItemProxy */ = {
+		2DDC6FDC1231BCC10015A26C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0FE5E01C0F45576B000E0F91 /* SGPalette */;
-			remoteInfo = SGPalette;
+			remoteGlobalIDString = 2DDC6FD91231BCA00015A26C;
+			remoteInfo = Prebuild;
 		};
-		2DDC64141230FC440015A26C /* PBXContainerItemProxy */ = {
+		2DDC6FE01231BCCB0015A26C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B0A5F6CE0FFAB16E003F5A02 /* GenerateBuildNumber */;
-			remoteInfo = GenerateBuildNumber;
+			remoteGlobalIDString = 0FE5E01C0F45576B000E0F91;
+			remoteInfo = SGPalette;
 		};
 		DBA1A62611A5CCB2000B408C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -2223,7 +2236,6 @@
 			buildPhases = (
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
-				B0A5F6B30FFAB04D003F5A02 /* Generate Localizations */,
 				8D1107290486CEB800E47090 /* Resources */,
 				0F8EA7C40CFB6EC9001AE9AE /* Copy Frameworks */,
 			);
@@ -2300,7 +2312,7 @@
 			projectRoot = "";
 			targets = (
 				0F7065690E1FA5C100FEA21C /* Release */,
-				B0A5F6CE0FFAB16E003F5A02 /* GenerateBuildNumber */,
+				2DDC6FD91231BCA00015A26C /* Prebuild */,
 				8D1107260486CEB800E47090 /* X-Chat Aqua */,
 				0FC8F4AD0DEEE51700504F31 /* xchat */,
 				0FE5E01C0F45576B000E0F91 /* SGPalette */,
@@ -2308,6 +2320,7 @@
 				0F2FEF2A0E1FAB1500DE4D41 /* python */,
 				0F8F06D60E1FDA8500359159 /* perl-leopard */,
 				2D78137F10E77C6400C71AF8 /* perl-snowleopard */,
+				2DDC70011231DA230015A26C /* printenv */,
 			);
 		};
 /* End PBXProject section */
@@ -2446,21 +2459,35 @@
 			shellPath = /bin/bash;
 			shellScript = "if [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\necho 'input password for sudo to install leopard library to user system'\n\n/usr/bin/osascript > /dev/null <<ASCPT\ntell application \"Terminal\"\n\tactivate\n\tdo script with command \"sudo tar xvf \\\"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\\\" -P\"\nend tell\nASCPT\n\necho 'after running script, redo build please.'\n\nexit 1";
 		};
-		B0A5F6B30FFAB04D003F5A02 /* Generate Localizations */ = {
+		2DDC6FEA1231BD760015A26C /* Generate Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Generate Localizations";
+			name = "Generate Build Number";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "#!/bin/bash\n\n[ -f ~/.bashrc ] && source ~/.bashrc\n[ -f ~/.profile ] && source ~/.profile\n\necho \"Generating build_number.h...\";\n\ncd \"$PROJECT_DIR\"\n\"tools/gen_buildnum_h.pl\" \"fe-aqua/build_number.h\" \"BuildNumber.xcconfig\"\n\n# Update the 'date modified' timestamps so Xcode realizes they've changed\ntouch Release.xcconfig\ntouch Debug.xcconfig\n\nrm -f \"$TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/Info.plist\"";
+		};
+		2DDC6FEF1231BDD40015A26C /* Generate Localization Files */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Localization Files";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "cd \"$PROJECT_DIR/tools/localization\"\n\n[ -f ~/.bashrc ] && source ~/.bashrc\n[ -f ~/.profile ] && source ~/.profile\n\n/bin/bash _AUTOUPDATE.sh";
 		};
-		B0A5F6CD0FFAB16E003F5A02 /* ShellScript */ = {
+		2DDC70001231DA230015A26C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2470,8 +2497,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "#!/bin/bash\n\n[ -f ~/.bashrc ] && source ~/.bashrc\n[ -f ~/.profile ] && source ~/.profile\n\necho \"Generating build_number.h...\";\n\ncd \"$PROJECT_DIR\"\n\"tools/gen_buildnum_h.pl\" \"fe-aqua/build_number.h\" \"BuildNumber.xcconfig\"\n\n# Update the 'date modified' timestamps so Xcode realizes they've changed\ntouch Release.xcconfig\ntouch Debug.xcconfig\n\nrm -f \"$TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/Info.plist\"";
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here\nexit 0";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2665,15 +2692,15 @@
 			target = 0F8F06D60E1FDA8500359159 /* perl-leopard */;
 			targetProxy = 2DCBED6411AA1B2700388F47 /* PBXContainerItemProxy */;
 		};
-		2DDC640D1230FC1B0015A26C /* PBXTargetDependency */ = {
+		2DDC6FDD1231BCC10015A26C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DDC6FD91231BCA00015A26C /* Prebuild */;
+			targetProxy = 2DDC6FDC1231BCC10015A26C /* PBXContainerItemProxy */;
+		};
+		2DDC6FE11231BCCB0015A26C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0FE5E01C0F45576B000E0F91 /* SGPalette */;
-			targetProxy = 2DDC640C1230FC1B0015A26C /* PBXContainerItemProxy */;
-		};
-		2DDC64151230FC440015A26C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B0A5F6CE0FFAB16E003F5A02 /* GenerateBuildNumber */;
-			targetProxy = 2DDC64141230FC440015A26C /* PBXContainerItemProxy */;
+			targetProxy = 2DDC6FE01231BCCB0015A26C /* PBXContainerItemProxy */;
 		};
 		DBA1A62711A5CCB2000B408C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4148,21 +4175,31 @@
 			};
 			name = Release;
 		};
-		B0A5F6CF0FFAB16F003F5A02 /* Debug */ = {
+		2DDC6FDA1231BCA00015A26C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = "Generate Build Number";
+				PRODUCT_NAME = Prebuild;
 			};
 			name = Debug;
 		};
-		B0A5F6D00FFAB16F003F5A02 /* Release */ = {
+		2DDC6FDB1231BCA00015A26C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				PRODUCT_NAME = "Generate Build Number";
-				ZERO_LINK = NO;
+				PRODUCT_NAME = Prebuild;
+			};
+			name = Release;
+		};
+		2DDC70021231DA230015A26C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = printenv;
+			};
+			name = Debug;
+		};
+		2DDC70031231DA230015A26C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = printenv;
 			};
 			name = Release;
 		};
@@ -4338,11 +4375,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B0A5F6D40FFAB1AA003F5A02 /* Build configuration list for PBXAggregateTarget "GenerateBuildNumber" */ = {
+		2DDC6FE41231BD1E0015A26C /* Build configuration list for PBXAggregateTarget "Prebuild" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B0A5F6CF0FFAB16F003F5A02 /* Debug */,
-				B0A5F6D00FFAB16F003F5A02 /* Release */,
+				2DDC6FDA1231BCA00015A26C /* Debug */,
+				2DDC6FDB1231BCA00015A26C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DDC700A1231DA5C0015A26C /* Build configuration list for PBXAggregateTarget "printenv" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DDC70021231DA230015A26C /* Debug */,
+				2DDC70031231DA230015A26C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
