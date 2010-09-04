@@ -36,7 +36,7 @@ for xibstringslocale in "$XIB_STRINGS_DIR"/*; do
 				continue
 			fi
 		fi
-		cmd="ibtool --strings-file '$strings' --write '$xibfile' '$BASE_XIB_DIR/$xibname'"
+		cmd="ibtool $IBTOOL_FLAGS --strings-file '$strings' --write '$xibfile' '$BASE_XIB_DIR/$xibname'"
 		checkdone='1'
 		if [ $DEBUG ]; then
 			echo "$cmd &"

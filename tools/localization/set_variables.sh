@@ -5,7 +5,7 @@ if [ ! $PROJECT_DIR ]; then
 fi
 
 BASE_LOCALE='en'
-IBTOOL_FLAGS="--plugin-dir '$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME' --plugin-dir '$PROJECT_DIR/Frameworks'"
+IBTOOL_FLAGS="--plugin-dir '$BUILD_DIR/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME' --plugin-dir '$PROJECT_DIR/Frameworks/ShortcutRecorder.framework/Resources'"
 
 L10N_TEMP_DIR="$PROJECT_TEMP_DIR/Localization"
 MANUAL_STRINGS_DIR="$PROJECT_DIR/tools/localization/strings"
