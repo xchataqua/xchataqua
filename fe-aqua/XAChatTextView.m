@@ -315,9 +315,7 @@ static NSCursor *lr_cursor;
 	if (numberOfLines < threshhold)
 		return;
 	
-	// Clearing lines while adding lines seesm to cause strange artifacting.
-	// We'll give layout a chance before clearing.. 
-	[self performSelector:@selector(clear_lines_really) withObject:nil afterDelay:0.5];
+	[self performSelector:@selector(clear_lines_really) withObject:nil];
 }
 
 - (void) print_line:(char *) text
