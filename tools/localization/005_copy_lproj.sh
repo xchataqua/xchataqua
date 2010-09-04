@@ -1,26 +1,49 @@
 #!/bin/bash
-TARGET=../../Localization
-for lproj in `ls -d lproj/*.lproj`; do
-	if [ ! -e $TARGET/`basename $lproj` ]; then
-		mkdir $TARGET/`basename $lproj`
-	fi
-	echo -n "copying $lproj"
-	for xib in `ls -d $lproj/*.xib`; do
-		tgt=$TARGET/`basename $lproj`/`basename $xib`
-		if [ $tgt -nt $xib ]; then
+. set_variables.sh
+
+if [ "$LPROJ_DIR" = "$XIB_DIR" ]; then
+	echo "pass copy phase because source dir is the target dir"
+	exit;
+fi
+
+if [ "$1" = 'clean' ]; then
+	for lproj in "$XIB_DIR"/*; do
+		if [ `basename "$lproj" .lproj` == $BASE_LOCALE ]; then
 			continue
 		fi
-		cmd="cp $xib $tgt"
+		rm -rf "$lproj"
+	done
+	exit
+fi
+
+for lproj in "$LPROJ_DIR/*.lproj"; do
+	xibdir="$XIB_DIR"/`basename "$lproj"`
+	if [ ! -e "$xibdir" ]; then
+		mkdir "$xibdir"
+	fi
+	
+	echo -n "copying $lproj"
+	for xibtemp in "$lproj/*.xib"; do
+		xibfile=$xibdir/`basename $xibtemp`
+		if [ $xibfile -nt $xibtemp ]; then
+			continue
+		fi
+		cmd="$CP $xibtemp $xibfile"
 		if [ $DEBUG ]; then
 			echo $cmd;
+		else
+			echo -n .
 		fi
-		$cmd
-		echo -n .
+		eval "$cmd"
 	done
-	strings="$lproj/xchataqua.strings"
-	if [ -e "$strings" ]; then
-		cp "$strings" "$TARGET/`basename $lproj`/"
-		echo -n "'"
-	fi
+	for strings in "$lproj/*.strings"; do
+		cmd="$CP '$strings' '$xibdir/'"
+		if [ $DEBUG ]; then
+			echo "$cmd"
+		else
+			echo -n "_"
+		fi
+		eval "$cmd"
+	done
 	echo ""
 done
