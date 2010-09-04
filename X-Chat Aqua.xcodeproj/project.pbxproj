@@ -4207,22 +4207,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/fe-aqua\"",
-					"\"$(SRCROOT)/Frameworks\"/**",
-				);
+				FRAMEWORK_SEARCH_PATHS = "Frameworks/**";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fe-aqua/X-Chat Aqua_Prefix.pch";
-				IBC_PLUGIN_SEARCH_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) $(SRCROOT)/Frameworks/**";
-				INFOPLIST_FILE = Info.plist;
+				IBC_PLUGIN_SEARCH_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) Frameworks/ShortcutRecorder.framework/Resources";
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/contrib/lib\"";
 				PRODUCT_NAME = "X-Chat Aqua";
-				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4230,19 +4223,12 @@
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/fe-aqua\"",
-					"\"$(SRCROOT)/Frameworks\"/**",
-				);
+				FRAMEWORK_SEARCH_PATHS = "Frameworks/**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fe-aqua/X-Chat Aqua_Prefix.pch";
-				IBC_PLUGIN_SEARCH_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) $(SRCROOT)/Frameworks/**";
-				INFOPLIST_FILE = Info.plist;
+				IBC_PLUGIN_SEARCH_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) Frameworks/ShortcutRecorder.framework/Resources";
 				INSTALL_PATH = "$(HOME)/Applications";
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/contrib/lib\"";
 				PRODUCT_NAME = "X-Chat Aqua";
-				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -4254,10 +4240,6 @@
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					Frameworks,
-					"fe-aqua",
-				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DEBUGGING_SYMBOLS = full;
 				GCC_PREPROCESSOR_DEFINITIONS = FE_AQUA;
@@ -4284,10 +4266,6 @@
 			baseConfigurationReference = B07C7AD70F4398FC00E11B58 /* Release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				FRAMEWORK_SEARCH_PATHS = (
-					Frameworks,
-					"fe-aqua",
-				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = FE_AQUA;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
