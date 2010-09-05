@@ -4,11 +4,11 @@ all: release
 buildnumber:
 	xcodebuild -target 'GenerateBuildNumber'
 
-xchataqua:
-	xcodebuild -target 'X-Chat Aqua'
-
 sgpalette:
 	xcodebuild -target 'SGPalette'
+
+xchataqua: sgpalette
+	xcodebuild -target 'X-Chat Aqua'
 
 release:
 	xcodebuild -target 'Release'
