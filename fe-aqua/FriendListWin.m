@@ -232,11 +232,11 @@
 	[friendAddNetworkTextField setStringValue:@"ALL"];
 	
 	[friendAddPanel makeKeyAndOrderFront:self];
-	NSModalSession session = [NSApp beginModalSessionForWindow:self];
+	NSModalSession modalSession = [NSApp beginModalSessionForWindow:self];
 	NSInteger ret;
-	while ((ret = [NSApp runModalSession:session]) == NSRunContinuesResponse)
+	while ((ret = [NSApp runModalSession:modalSession]) == NSRunContinuesResponse)
 		;
-	[NSApp endModalSession:session];	 
+	[NSApp endModalSession:modalSession];	 
 	[self close];
 	
 	if (ret && [[friendAddNickTextField stringValue] length])
