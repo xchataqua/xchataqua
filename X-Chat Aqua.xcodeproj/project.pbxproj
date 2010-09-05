@@ -3848,7 +3848,6 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = python;
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
@@ -3876,7 +3875,6 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = python;
-				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -3884,9 +3882,6 @@
 		0F70656A0E1FA5C100FEA21C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
 				PRODUCT_NAME = Release;
 			};
 			name = Debug;
@@ -3894,10 +3889,7 @@
 		0F70656B0E1FA5C100FEA21C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				PRODUCT_NAME = Release;
-				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -3925,7 +3917,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SYSTEM_LIBRARY_DIR)/Perl/lib/5.8\"",
-					"\"$(SYSTEM_LIBRARY_DIR)/Perl/lib/5.8\"",
 				);
 				OTHER_LDFLAGS = (
 					"-undefined",
@@ -3933,7 +3924,6 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "perl-leopard";
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
@@ -3959,7 +3949,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SYSTEM_LIBRARY_DIR)/Perl/lib/5.8\"",
-					"\"$(SYSTEM_LIBRARY_DIR)/Perl/lib/5.8\"",
 				);
 				OTHER_LDFLAGS = (
 					"-undefined",
@@ -3967,7 +3956,6 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "perl-leopard";
-				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -3991,7 +3979,6 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = tcl;
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
@@ -4012,7 +3999,6 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = tcl;
-				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -4138,7 +4124,6 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "perl-snowleopard";
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
@@ -4170,7 +4155,6 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "perl-snowleopard";
-				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -4215,7 +4199,6 @@
 				GCC_PREFIX_HEADER = "fe-aqua/X-Chat Aqua_Prefix.pch";
 				IBC_PLUGIN_SEARCH_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) Frameworks/ShortcutRecorder.framework/Resources";
 				PRODUCT_NAME = "X-Chat Aqua";
-				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
@@ -4227,7 +4210,6 @@
 				GCC_PREFIX_HEADER = "fe-aqua/X-Chat Aqua_Prefix.pch";
 				IBC_PLUGIN_SEARCH_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) Frameworks/ShortcutRecorder.framework/Resources";
 				PRODUCT_NAME = "X-Chat Aqua";
-				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
