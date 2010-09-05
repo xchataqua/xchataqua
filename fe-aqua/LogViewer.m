@@ -190,9 +190,9 @@
 		if ([filename compare:@".DS_Store"] == NSOrderedSame)
 			continue;
 			
-		LogItem *log = [[LogItem alloc] initWithFilename:filename];
-		[allItems addObject:log];
-		[log release];
+		LogItem *logItem = [[LogItem alloc] initWithFilename:filename];
+		[allItems addObject:logItem];
+		[logItem release];
 	}
 
 	[self doFilter:nil];
@@ -219,8 +219,8 @@
 {
 	NSInteger row = [logTableView selectedRow];
 	if (row < 0) return;
-	LogItem *log = [myItems objectAtIndex:row];
-	[log reveal];
+	LogItem *logItem = [myItems objectAtIndex:row];
+	[logItem reveal];
 }
 
 - (void) doEdit:(id) sender
@@ -285,8 +285,8 @@
 	NSInteger row = [logTableView selectedRow];
 	if (row >= 0 && [logTableView numberOfSelectedRows] == 1)
 	{
-		LogItem *log = [myItems objectAtIndex:row];
-		contents = [log contents];
+		LogItem *logItem = [myItems objectAtIndex:row];
+		contents = [logItem contents];
 	}
 	
 	[logTextView setString:contents];
@@ -304,8 +304,8 @@
 		NSInteger row = [set firstIndex];
 		while (row != NSNotFound)
 		{
-			LogItem *log = [myItems objectAtIndex:row];
-			[log delete];
+			LogItem *logItem = [myItems objectAtIndex:row];
+			[logItem delete];
 			row = [set indexGreaterThanIndex:row];
 		}
 		
