@@ -2443,7 +2443,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "if [ -e '/System/Library/Perl/5.10.0/' ]; then\n\texit\nfi\n\ntar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Snowleopard.tar\"\n\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\texit\nfi\n\necho 'input password for sudo to install leopard library to user system'\n\n/usr/bin/osascript > /dev/null <<ASCPT\ntell application \"Terminal\"\n\tactivate\n\tdo script with command \"sudo tar xvf \\\"$PROJECT_DIR/contrib/systemlib/Perl-Snowleopard.tar\\\" -P\"\nend tell\nASCPT\n\necho 'after running script, redo build please.'\n\nexit 1";
+			shellScript = "if [ -e '/System/Library/Perl/5.10.0/' ]; then\n\texit\nfi\n\ntar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Snowleopard.tar\"\n\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\texit\nfi\n\nsudo tar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Snowleopard.tar\"\n\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\texit\nfi\n\necho 'input password for sudo to install leopard library to user system'\n\n/usr/bin/osascript > /dev/null <<ASCPT\ntell application \"Terminal\"\n\tactivate\n\tdo script with command \"sudo tar xvf \\\"$PROJECT_DIR/contrib/systemlib/Perl-Snowleopard.tar\\\" -P\"\nend tell\nASCPT\n\necho 'after running script, redo build please.'\n\nexit 1";
 		};
 		2DCBED2C11AA140E00388F47 /* Install Leopard Perl Library */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2457,7 +2457,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "if [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\ntar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\"\n\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\necho 'input password for sudo to install leopard library to user system'\n\n/usr/bin/osascript > /dev/null <<ASCPT\ntell application \"Terminal\"\n\tactivate\n\tdo script with command \"sudo tar xvf \\\"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\\\" -P\"\nend tell\nASCPT\n\necho 'after running script, redo build please.'\n\nexit 1";
+			shellScript = "if [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\ntar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\"\n\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\nsudo tar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\"\n\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\necho 'input password for sudo to install leopard library to user system'\n\n/usr/bin/osascript > /dev/null <<ASCPT\ntell application \"Terminal\"\n\tactivate\n\tdo script with command \"sudo tar xvf \\\"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\\\" -P\"\nend tell\nASCPT\n\necho 'after running script, redo build please.'\n\nexit 1";
 		};
 		2DDC6FEA1231BD760015A26C /* Generate Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
