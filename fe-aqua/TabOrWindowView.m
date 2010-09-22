@@ -26,6 +26,7 @@
 
 #import "SG.h"
 #import "AquaChat.h"
+#import "ColorPalette.h"
 #import "TabOrWindowView.h"
 
 //////////////////////////////////////////////////////////////////////
@@ -51,7 +52,7 @@ static NSWindow *makeWindowForView (Class nswindow, NSView *view, NSPoint *where
 	
 	if (prefs.guimetal)
 		windowAttributes |= NSTexturedBackgroundWindowMask;
-	
+
 	NSWindow *window = [[nswindow alloc] initWithContentRect:viewFrame
 												   styleMask:windowAttributes
 													 backing:NSBackingStoreBuffered
@@ -86,7 +87,7 @@ static NSWindow *makeWindowForView (Class nswindow, NSView *view, NSPoint *where
 		[window setFrame:to display:YES animate:YES];
 		firstTime = NO;
 	}
-	
+
 	[window setContentView:view];
 	
 	return window;
@@ -247,7 +248,12 @@ static NSWindow *makeWindowForView (Class nswindow, NSView *view, NSPoint *where
 		[[tabWindow contentView] setHideCloseButtons:prefs.hide_tab_close_buttons];
 		[[tabWindow contentView] setOutlineWidth:prefs.outline_width];
 	}
-	
+/*	This doesn't work because I can't reference outline in the way I just did,
+	if you have a better solution, please share it :)
+
+	ColorPalette *p = [[AquaChat sharedAquaChat] palette];
+	[outline setBackgroundColor:[p getColor:AC_BGCOLOR]];
+*/
 	for ( NSWindow *win in [NSApp windows] )
 	{
 		NSPoint where = win.frame.origin;

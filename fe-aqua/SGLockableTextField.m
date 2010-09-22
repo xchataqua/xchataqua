@@ -196,7 +196,7 @@
   [cell setEditable:[self isEditable]];
   [cell setDrawsBackground:[self drawsBackground]];
   [cell setBordered:[self isBordered]];
-  [cell setBezeled:[self isBezeled]];
+//  [cell setBezeled:[self isBezeled]];
   [cell setFont:[self font]];
   [cell setScrollable:YES];
   [cell setPlaceholderString:@"(no topic set)"];
