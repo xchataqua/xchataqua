@@ -384,23 +384,28 @@
 
 - (void) rehash
 {
+	//	I'm not sure how to or if I should call rehash on preferencesChanged it seems a bit irrelevant as eventually this will catch up and flip nick/host colors for us
 	[nick release];
 	[host release];
 
 	NSString *s = [NSString stringWithUTF8String:user->nick];
+	NSString *h = [[NSString stringWithUTF8String:user->hostname ? user->hostname : ""] retain];
+	ColorPalette *p = [[AquaChat sharedAquaChat] palette];
+	NSDictionary *attr = nil;
 
 	if (user->away)
 	{
-		ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-		NSDictionary *attr = [NSDictionary dictionaryWithObject:[p getColor:AC_AWAY_USER] forKey:NSForegroundColorAttributeName];
-		nick = [[NSAttributedString alloc] initWithString:s attributes:attr];
+		attr = [NSDictionary dictionaryWithObject:[p getColor:AC_AWAY_USER] forKey:NSForegroundColorAttributeName];
+	} else {
+		if (prefs.style_inputbox) {
+			attr = [NSDictionary dictionaryWithObject:[p getColor:AC_FGCOLOR] forKey:NSForegroundColorAttributeName];
+		} else {
+			attr = [NSDictionary dictionaryWithObject:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
+		}
 	}
-	else
-	{
-		nick = [[NSAttributedString alloc] initWithString:s];
-	}
-	
-	host = [[NSString stringWithUTF8String:user->hostname ? user->hostname : ""] retain];
+
+	nick = [[NSAttributedString alloc] initWithString:s attributes:attr];
+	host = [[NSAttributedString alloc] initWithString:h attributes:attr];
 }
 
 - (void) dealloc
@@ -670,6 +675,21 @@ static NSImage *empty_image;
 	{
 		[inputTextField setFont:[[AquaChat sharedAquaChat] font]];
 		[inputTextField sizeToFit];
+		// init ColorPalette
+		ColorPalette *p = [[AquaChat sharedAquaChat] palette];
+		// fg, bg and bezel
+		[inputTextField setTextColor:[p getColor:AC_FGCOLOR]];
+		[inputTextField setBackgroundColor:[p getColor:AC_BGCOLOR]];
+		[inputTextField setBezeled:NO];
+		[topicTextField setTextColor:[p getColor:AC_FGCOLOR]];
+		[topicTextField setBackgroundColor:[p getColor:AC_BGCOLOR]];
+		[topicTextField setBezeled:NO];
+		[userlistStatusTextField setTextColor:[p getColor:AC_FGCOLOR]];
+		[userlistStatusTextField setBackgroundColor:[p getColor:AC_BGCOLOR]];
+		[userlistStatusTextField setBezeled:NO];
+		// bg only
+		[userlistTableView setBackgroundColor:[p getColor:AC_BGCOLOR]];
+		// I really need to find a way to trigger a redraw of SGOutlineView
 	}
 
 	[chatTextView setPalette:[[AquaChat sharedAquaChat] palette]];
@@ -778,8 +798,6 @@ static NSImage *empty_image;
 	[inputTextField setTarget:self];
 	[inputTextField setDelegate:self];
 	[inputTextField setAction:@selector (doCommand:)];
-	if (prefs.style_inputbox)
-		[inputTextField setFont:[[AquaChat sharedAquaChat] font]];
  
 	[userlistTableView setDoubleAction:@selector (doDoubleclick:)];
 	[userlistTableView setTarget:self];
@@ -846,7 +864,7 @@ static NSImage *empty_image;
 		[self setChannel];
 	else
 		[chatView setTabTitle:NSLocalizedStringFromTable(@"<none>", @"xchat", @"")];
-	
+
 	if (sess->type == SESS_DIALOG || prefs.hideuserlist)
 		[bodyBoxView setSplitPosition:0];
 	else if (prefs.paned_pos > 0)
@@ -867,6 +885,13 @@ static NSImage *empty_image;
 			[chatView becomeTabAndShow:prefs.newtabstofront];
 		else
 			[chatView becomeWindowAndShow:true];
+	}
+
+	if (prefs._tabs_position == 4  && prefs.style_inputbox) {
+		ColorPalette *p = [[AquaChat sharedAquaChat] palette];
+		[chatView setTabTitleColor:[p getColor:AC_FGCOLOR]];
+	} else {
+		[chatView setTabTitleColor:[NSColor blackColor]];
 	}
 	
 	[bodyBoxView setDelegate:self];
@@ -996,6 +1021,10 @@ static NSImage *empty_image;
 		s = NSLocalizedStringFromTable(@"<none>", @"xchat", @"");
 		
 	[chatView setTabTitle:s];
+	if (prefs._tabs_position == 4 && prefs.style_inputbox) {
+		ColorPalette *p = [[AquaChat sharedAquaChat] palette];
+		[chatView setTabTitleColor:[p getColor:AC_FGCOLOR]];
+	}
 	[myOpOrVoiceIconImageView setHidden:true];
 	[limitTextField setStringValue:@""];
 
@@ -1097,8 +1126,14 @@ static NSImage *empty_image;
 
 - (void) setTabColor:(int)col flash:(BOOL)flash
 {
-	ColorPalette *palette = [[AquaChat sharedAquaChat] palette];
+	ColorPalette *p = [[AquaChat sharedAquaChat] palette];
+	NSColor *TTColor;
 
+	if (prefs._tabs_position == 4 && prefs.style_inputbox) {
+		TTColor = [p getColor:AC_FGCOLOR];
+	} else {
+		TTColor = [NSColor blackColor];
+	}
 	if (col == 0 || sess != current_tab)
 	{
 		switch (col)
@@ -1107,28 +1142,28 @@ static NSImage *empty_image;
 				sess->new_data = false;
 				sess->msg_said = false;
 				sess->nick_said = false;
-				[chatView setTabTitleColor:[NSColor blackColor]];
+				[chatView setTabTitleColor:TTColor];
 				break;
 				
 			case 1: /* new data has been displayed (dark red) */
 				sess->new_data = true;
 				sess->msg_said = false;
 				sess->nick_said = false;
-				[chatView setTabTitleColor:[palette getColor:AC_NEW_DATA]];
+				[chatView setTabTitleColor:[p getColor:AC_NEW_DATA]];
 				break;
 				
 			case 2: /* new message arrived in channel (light red) */
 				sess->new_data = false;
 				sess->msg_said = true;
 				sess->nick_said = false;
-				[chatView setTabTitleColor:[palette getColor:AC_MSG_SAID]];
+				[chatView setTabTitleColor:[p getColor:AC_MSG_SAID]];
 				break;
 				
 			case 3: /* your nick has been seen (blue) */
 				sess->new_data = false;
 				sess->msg_said = false;
 				sess->nick_said = true;
-				[chatView setTabTitleColor:[palette getColor:AC_NICK_SAID]];
+				[chatView setTabTitleColor:[p getColor:AC_NICK_SAID]];
 				break;
 		}
 	}
@@ -1242,6 +1277,10 @@ static NSImage *empty_image;
 		[channelString replaceCharactersInRange:NSMakeRange (start, len) withString:@".."];
 	}
 	[chatView setTabTitle:channelString];
+	if (prefs._tabs_position == 4 && prefs.style_inputbox) {
+		ColorPalette *p = [[AquaChat sharedAquaChat] palette];
+		[chatView setTabTitleColor:[p getColor:AC_FGCOLOR]];
+	}
 
 	// FIXME: rough solution to solve initialization with scrollToDocumentEnd 2/3
 	[chatTextView scrollToEndOfDocument:chatView];

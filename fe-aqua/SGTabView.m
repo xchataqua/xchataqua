@@ -17,6 +17,8 @@
 
 #include <Carbon/Carbon.h>
 #include <dlfcn.h>
+#import "AquaChat.h"
+#import "ColorPalette.h"
 #import "SGGuiUtility.h"
 #import "SGWrapView.h"
 #import "SGTabView.h"
@@ -531,8 +533,14 @@ HIThemeSegmentPosition positionTable[2][2] =
 	
 	if (!hideClose)
 		[closeCell drawWithFrame:close_rect inView:controlView];
-	
-	[label_dict setObject:(titleColor?titleColor:[NSColor blackColor]) forKey:NSForegroundColorAttributeName];
+
+	// I'm not sure if this actually even does anything
+	if (prefs._tabs_position == 4 && prefs.style_inputbox) {
+		ColorPalette *p = [[AquaChat sharedAquaChat] palette];
+		[label_dict setObject:(titleColor?titleColor:[p getColor:AC_FGCOLOR]) forKey:NSForegroundColorAttributeName];
+	} else {
+		[label_dict setObject:(titleColor?titleColor:[NSColor blackColor]) forKey:NSForegroundColorAttributeName];
+	}
 
 	[[self title] drawAtPoint:textPoint withAttributes:label_dict];
 }
@@ -976,6 +984,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 	
 	if (!outline)
 	{
+		ColorPalette *p = [[AquaChat sharedAquaChat] palette];
 		NSScrollView *outlineScroll = [[[NSScrollView alloc] initWithFrame:NSMakeRect (0.0f, 0.0f, outline_width, 1.0f)] autorelease];
 		[self addSubview:outlineScroll];
 		
@@ -1014,6 +1023,10 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 		NSInteger row = [outline rowForItem:selected_tab];
 		[outline selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+		if (prefs._tabs_position == 4 && prefs.style_inputbox) {
+			[data_cell setTextColor:[p getColor:AC_FGCOLOR]];
+			[outline setBackgroundColor:[p getColor:AC_BGCOLOR]];
+		}
 	}
 }
 
@@ -1466,8 +1479,14 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 - (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item
 {
-	NSColor *color = [NSColor blackColor];
-	
+	NSColor *color;
+	if (prefs._tabs_position == 4 && prefs.style_inputbox) {
+		ColorPalette *p = [[AquaChat sharedAquaChat] palette];
+		color = [p getColor:AC_FGCOLOR];
+	} else {
+		color = [NSColor blackColor];
+	}
+
 	if ([item isKindOfClass:[SGTabViewItem class]])
 	{
 		NSColor *c = [item titleColor];
