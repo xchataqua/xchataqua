@@ -54,7 +54,7 @@ static int get_mirc_value (const char **x, const char *stop_at)
 int append_text (NSMutableAttributedString *msgString,
 				 const char *text, int len,
 				 int fg, int bg, bool reverse, bool under, bool bold, bool hidden,
-				 ColorPalette *palette, NSFont *font,  NSFont *boldFont)
+				 ColorPalette *p, NSFont *font,  NSFont *boldFont)
 {
 	if (len < 0)
 		len = strlen (text);
@@ -85,12 +85,12 @@ int append_text (NSMutableAttributedString *msgString,
 		bg = xx;
 	}
 
-	[attr setObject:[palette getColor:fg]
+	[attr setObject:[p getColor:fg]
 		forKey:NSForegroundColorAttributeName];
 
 	if (bg >= 0)
 	{
-		[attr setObject:[palette getColor:bg]
+		[attr setObject:[p getColor:bg]
 				 forKey:NSBackgroundColorAttributeName];
 	}
 

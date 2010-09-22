@@ -225,7 +225,12 @@
 
 - (void)windowDidBecomeKey:(NSNotification *)aNotification
 {
-	[dccListView setTabTitleColor:[NSColor blackColor]];
+	if (prefs._tabs_position == 4 && prefs.style_inputbox) {
+		ColorPalette *p = [[AquaChat sharedAquaChat] palette];
+		[dccListView setTabTitleColor:[p getColor:AC_FGCOLOR]];
+	} else {
+		[dccListView setTabTitleColor:[NSColor blackColor]];
+	}
 }
 
 @end
