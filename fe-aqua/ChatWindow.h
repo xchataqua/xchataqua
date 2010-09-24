@@ -68,6 +68,7 @@
 @property (nonatomic, readonly) TabOrWindowView *view;
 @property (nonatomic, readonly) int inputTextPosition;
 @property (nonatomic, assign) NSString *inputText;
+@property (nonatomic, readonly) session *session;
 
 - (IBAction) doMircColor:(id)sender;
 - (IBAction) doConferenceMode:(id)sender;
@@ -80,7 +81,6 @@
 - (NSWindow *) window;
 - (BOOL) processFileDrop:(id<NSDraggingInfo>)info forUser:(NSString *) nick;
 - (NSMenu *)menuForEvent:(NSEvent *)theEvent rowIndexes:(NSIndexSet *)rows;
-- (session *)session;
 
 // Front end methods
 - (void) closeWindow;
@@ -117,34 +117,5 @@
 - (void) lastlogIntoWindow:(ChatWindow *)logWin key:(char *)ckey;
 
 @property NSInteger completionIndex; // Current index when cycling through tab-completions.
-
-@end
-
-/*
- * MARK: -
- * MARK: Objects for tab auto-complete
- *
- */
- 
-@interface OneCompletion : NSObject
-{
-	NSString *stringValue;
-}
-
-+ (id) completionWithValue:(NSString *) val;
-- (id) initWithValue:(NSString *) val;
-
-@property (retain) NSString* stringValue;
-@end
-
-@interface OneNickCompletion : OneCompletion
-{
-	time_t lasttalk;
-}
-
-+ (id) nickWithNick:(NSString *)nick lasttalk:(time_t)lt;
-- (id) initWithNick:(NSString *)nick lasttalk:(time_t)lt;
-
-@property time_t lasttalk;
 
 @end
