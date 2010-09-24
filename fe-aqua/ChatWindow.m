@@ -388,24 +388,24 @@
 	[nick release];
 	[host release];
 
-	NSString *s = [NSString stringWithUTF8String:user->nick];
-	NSString *h = [[NSString stringWithUTF8String:user->hostname ? user->hostname : ""] retain];
-	ColorPalette *p = [[AquaChat sharedAquaChat] palette];
+	NSString *nickString = [NSString stringWithUTF8String:user->nick];
+	NSString *hostString = user->hostname ? [NSString stringWithUTF8String:user->hostname] : @"";
+	ColorPalette *palette = [[AquaChat sharedAquaChat] palette];
 	NSDictionary *attr = nil;
 
 	if (user->away)
 	{
-		attr = [NSDictionary dictionaryWithObject:[p getColor:AC_AWAY_USER] forKey:NSForegroundColorAttributeName];
+		attr = [NSDictionary dictionaryWithObject:[palette getColor:AC_AWAY_USER] forKey:NSForegroundColorAttributeName];
 	} else {
 		if (prefs.style_inputbox) {
-			attr = [NSDictionary dictionaryWithObject:[p getColor:AC_FGCOLOR] forKey:NSForegroundColorAttributeName];
+			attr = [NSDictionary dictionaryWithObject:[palette getColor:AC_FGCOLOR] forKey:NSForegroundColorAttributeName];
 		} else {
 			attr = [NSDictionary dictionaryWithObject:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
 		}
 	}
 
-	nick = [[NSAttributedString alloc] initWithString:s attributes:attr];
-	host = [[NSAttributedString alloc] initWithString:h attributes:attr];
+	nick = [[NSAttributedString alloc] initWithString:nickString attributes:attr];
+	host = [[NSAttributedString alloc] initWithString:hostString attributes:attr];
 }
 
 - (void) dealloc
@@ -683,7 +683,7 @@ static NSImage *empty_image;
 		[inputTextField setBezeled:NO];
 		[topicTextField setTextColor:[p getColor:AC_FGCOLOR]];
 		[topicTextField setBackgroundColor:[p getColor:AC_BGCOLOR]];
-		[topicTextField setBezeled:NO];
+		[topicTextField setBezeled:YES];
 		[userlistStatusTextField setTextColor:[p getColor:AC_FGCOLOR]];
 		[userlistStatusTextField setBackgroundColor:[p getColor:AC_BGCOLOR]];
 		[userlistStatusTextField setBezeled:NO];
