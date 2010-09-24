@@ -27,6 +27,24 @@
 #include "../common/util.h"
 #include "XACommon.h"
 
+
+/*
+ * MARK: -
+ * MARK: Objects for tab auto-complete
+ *
+ */
+
+@interface OneCompletion : NSObject
+{
+	NSString *stringValue;
+}
+
++ (id) completionWithValue:(NSString *) val;
+- (id) initWithValue:(NSString *) val;
+
+@property (retain) NSString* stringValue;
+@end
+
 /*
  * MARK: -
  * MARK: Objects for tab auto-complete
@@ -104,6 +122,19 @@
 
 @end
 
+@interface OneNickCompletion : OneCompletion
+{
+	time_t lasttalk;
+}
+
++ (id) nickWithNick:(NSString *)nick lasttalk:(time_t)timestamp;
+- (id) initWithNick:(NSString *)nick lasttalk:(time_t)timestamp;
+
+@property (assign) time_t lasttalk;
+
+@end
+
+
 /*
  * Subclass of OneCompletion specifically for nicks.
  *
@@ -129,16 +160,16 @@
 	OneNickCompletion *other = (OneNickCompletion *) aNick;
 	
 	if (prefs.completion_sort == 1) {
-	if (other.lasttalk == self.lasttalk) {
-	  return NSOrderedSame;
-	} else if (other.lasttalk < self.lasttalk) {
-	  return NSOrderedAscending;
+		if (other.lasttalk == self.lasttalk) {
+			return NSOrderedSame;
+		} else if (other.lasttalk < self.lasttalk) {
+			return NSOrderedAscending;
+		} else {
+			return NSOrderedDescending;
+		}
 	} else {
-	  return NSOrderedDescending;
+		return [super compare:aNick];
 	}
-  } else {
-	return [super compare:aNick];
-  }
 }
 
 @end
@@ -186,11 +217,11 @@
 {
 	NSView *first = [[self subviews] objectAtIndex:0];
 
-	NSRect first_rect = [first frame];
-	first_rect.origin.x += first_rect.size.width;
-	first_rect.size.width = [self dividerThickness];
+	NSRect firstRect = [first frame];
+	firstRect.origin.x += firstRect.size.width;
+	firstRect.size.width = [self dividerThickness];
 	
-	return first_rect;
+	return firstRect;
 }
 
 - (void) mouseDown:(NSEvent *) theEvent
@@ -212,24 +243,24 @@
 	}
 	else
 	{
-		int old_pos = [self splitPosition];
+		int oldPosition = [self splitPosition];
 		[super mouseDown:theEvent];
-		int new_pos = [self splitPosition];
+		int newPosition = [self splitPosition];
 
 		// Only set the pref if we moved.  Double click might have moved the pane
 		// but not changed the prefs.  Lets not muck the pref when we double click again.
 		
-		if (old_pos != new_pos)
+		if (oldPosition != newPosition)
 		{
-			if (new_pos < 10 && new_pos > 0)
+			if (newPosition < 10 && newPosition > 0)
 			{
-				new_pos = 0;
+				newPosition = 0;
 				[self setSplitPosition:0];
-				if (old_pos == 0)		// It didn't really move, so put it back
+				if (oldPosition == 0)		// It didn't really move, so put it back
 					return;				// and don't change prefs.
 			}
 			
-			prefs.paned_pos = new_pos;
+			prefs.paned_pos = newPosition;
 			prefs.hideuserlist = prefs.paned_pos == 0;
 		}
 	}
@@ -237,29 +268,29 @@
 
 - (void) adjustSubviews 
 {
-	NSView *first = [[self subviews] objectAtIndex:0];
-	NSView *second = [[self subviews] objectAtIndex:1];
+	NSView *firstView = [[self subviews] objectAtIndex:0];
+	NSView *secondView = [[self subviews] objectAtIndex:1];
 
-	[first setPostsFrameChangedNotifications:NO];
-	[second setPostsFrameChangedNotifications:NO];
+	[firstView setPostsFrameChangedNotifications:NO];
+	[secondView setPostsFrameChangedNotifications:NO];
 	
-	NSRect total_rect = [self bounds];
-	NSRect first_rect = [first frame];
-	NSRect second_rect = [second frame];
+	NSRect totalRect = [self bounds];
+	NSRect firstRect = [firstView frame];
+	NSRect secondRect = [secondView frame];
 	
-	second_rect.origin.x = total_rect.size.width - second_rect.size.width;
-	second_rect.origin.y = 0.0f;
-	second_rect.size.height = total_rect.size.height;
-	first_rect.origin.x = 0.0f;
-	first_rect.origin.y = 0.0f;
-	first_rect.size.width = second_rect.origin.x - [self dividerThickness];
-	first_rect.size.height = total_rect.size.height;
+	secondRect.origin.x = totalRect.size.width - secondRect.size.width;
+	secondRect.origin.y = 0.0f;
+	secondRect.size.height = totalRect.size.height;
+	firstRect.origin.x = 0.0f;
+	firstRect.origin.y = 0.0f;
+	firstRect.size.width = secondRect.origin.x - [self dividerThickness];
+	firstRect.size.height = totalRect.size.height;
 	
-	[first setFrame:first_rect];
-	[second setFrame:second_rect];
+	[firstView setFrame:firstRect];
+	[secondView setFrame:secondRect];
 
-	[first setPostsFrameChangedNotifications:YES];
-	[second setPostsFrameChangedNotifications:YES];
+	[firstView setPostsFrameChangedNotifications:YES];
+	[secondView setPostsFrameChangedNotifications:YES];
 }
 
 @end
@@ -268,24 +299,26 @@
 
 @interface UserlistButton : NSButton
 {
-	struct popup *p;
+	struct popup *popup;
 }
 
-- (id) initWithPopup:(struct popup *) p;
-- (struct popup *) getPopup;
+@property (nonatomic, readonly) struct popup *popup;
+
+- (id) initWithPopup:(struct popup *) popup;
 
 @end
 
 @implementation UserlistButton
+@synthesize popup;
 
 - (id) initWithPopup:(struct popup *) pop
 {
 	[super init];
 
-	self->p = pop;
+	self->popup = pop;
 
 	[self setButtonType:NSMomentaryPushButton];
-	[self setTitle:[NSString stringWithUTF8String:p->name]];
+	[self setTitle:[NSString stringWithUTF8String:popup->name]];
 	[self setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
 	[[self cell] setControlSize:NSSmallControlSize];
 	[self setImagePosition:NSNoImage];
@@ -296,11 +329,6 @@
 	[self sizeToFit];
 
 	return self;
-}
-
-- (struct popup *) getPopup
-{
-	return p;
 }
 
 @end
@@ -340,7 +368,7 @@
 @interface OneUser : NSObject
 {
   @public
-	id		nick;		// NSString or NSAttributedString
+	id			nick;		// NSString or NSAttributedString
 	NSString	*host;
 	struct User	*user;
 /* CL */
@@ -350,6 +378,7 @@
 }
 
 @property (nonatomic, readonly) struct User *user;
+@property (nonatomic, readonly) NSString *nick;
 
 - (id) initWithUser:(struct User *)user;
 - (void) rehash;
@@ -448,12 +477,12 @@
 
 //////////////////////////////////////////////////////////////////////
 
-static NSImage *red_image;
-static NSImage *purple_image;
-static NSImage *green_image;
-static NSImage *blue_image;
-static NSImage *yellow_image;
-static NSImage *empty_image;
+static NSImage *redBulletImage;
+static NSImage *purpleBulletImage;
+static NSImage *greenBulletImage;
+static NSImage *blueBulletImage;
+static NSImage *yellowBulletImage;
+static NSImage *emptyBulletImage;
 
 
 //////////////////////////////////////////////////////////////////////
@@ -464,23 +493,23 @@ static NSImage *empty_image;
 
 @implementation ChatWindow
 
++ (void) initialize {
+	[super initialize];
+	redBulletImage = [[NSImage imageNamed:@"red.tiff"] retain];
+	purpleBulletImage = [[NSImage imageNamed:@"purple.tiff"] retain];
+	greenBulletImage = [[NSImage imageNamed:@"green.tiff"] retain];
+	blueBulletImage = [[NSImage imageNamed:@"blue.tiff"] retain];
+	yellowBulletImage = [[NSImage imageNamed:@"yellow.tiff"] retain];
+	emptyBulletImage = [[NSImage alloc] initWithSize:NSMakeSize(1.0f,1.0f)];	
+}
+
 - (id) initWithSession:(struct session *) the_sess
 {
 	[super init];
 	
 	self->sess = the_sess;
-	self->userlist = [[NSMutableArray arrayWithCapacity:0] retain];
-	
-	if (!green_image)
-	{
-		red_image = [[NSImage imageNamed:@"red.tiff"] retain];
-		purple_image = [[NSImage imageNamed:@"purple.tiff"] retain];
-		green_image = [[NSImage imageNamed:@"green.tiff"] retain];
-		blue_image = [[NSImage imageNamed:@"blue.tiff"] retain];
-		yellow_image = [[NSImage imageNamed:@"yellow.tiff"] retain];
-		empty_image = [[NSImage alloc] initWithSize:NSMakeSize (1,1)];
-	}
-	
+	self->userlist = [[NSMutableArray alloc] init];
+		
 	[NSBundle loadNibNamed:@"ChatWindow" owner:self];
 
 	return self;
@@ -545,12 +574,12 @@ static NSImage *empty_image;
 	// The dialog and channel mode buttons share the top box with the
 	// topic text.  Remove everything but the topic text and the spacer.
 
-	CGFloat x = [topicTextField frame].origin.x;
+	CGFloat topicOriginX = [topicTextField frame].origin.x;
 	
 	for (NSUInteger i = 0; i < [[headerBoxView subviews] count]; )
 	{
 		NSView *view = [[headerBoxView subviews] objectAtIndex:i];
-		if (view == topicTextField || [view frame].origin.x < x)
+		if (view == topicTextField || [view frame].origin.x < topicOriginX)
 			i ++;
 		else
 			[view removeFromSuperviewWithoutNeedingDisplay];
@@ -578,7 +607,7 @@ static NSImage *empty_image;
 	/* the longest cmd is 12, and the longest nickname is 64 */
 	char buf[128];
 
-	struct popup *p = [(UserlistButton *) sender getPopup];
+	struct popup *p = [(UserlistButton *)sender popup];
 	auto_insert (buf, sizeof (buf), (unsigned char *)p->cmd, 0, 0, "", "", "", "", "", "", sess->channel);
 	handle_command (sess, buf, TRUE);
 }
@@ -591,12 +620,12 @@ static NSImage *empty_image;
 	{
 		struct popup *p = (struct popup *) list->data;
 		
-		UserlistButton *b = [[[UserlistButton alloc] initWithPopup:p] autorelease];
+		UserlistButton *button = [[[UserlistButton alloc] initWithPopup:p] autorelease];
 
-		[b setAction:@selector(setupChannelModeButtons:)];
-		[b setTarget:self];
+		[button setAction:@selector(setupChannelModeButtons:)];
+		[button setTarget:self];
 
-		[headerBoxView addSubview:b];
+		[headerBoxView addSubview:button];
 	}
 }
 
@@ -964,7 +993,7 @@ static NSImage *empty_image;
 
 - (void) doUserlistButton:(id) sender
 {
-	struct popup *p = [(UserlistButton *) sender getPopup];
+	struct popup *p = [(UserlistButton *)sender popup];
 	[self doUserlistCommand:p->cmd];
 }
 
@@ -1341,9 +1370,9 @@ static NSImage *empty_image;
 {
 	switch (user->prefix [0])
 	{
-		case '@': return green_image;
-		case '%': return blue_image;
-		case '+': return yellow_image;
+		case '@': return greenBulletImage;
+		case '%': return blueBulletImage;
+		case '+': return yellowBulletImage;
 	}
 
 	/* find out how many levels above Op this user is */
@@ -1358,8 +1387,8 @@ static NSImage *empty_image;
 			{
 				switch (level)
 				{
-					case 0: return red_image;		/* 1 level above op */
-					case 1: return purple_image;	/* 2 levels above op */
+					case 0: return redBulletImage;		/* 1 level above op */
+					case 1: return purpleBulletImage;	/* 2 levels above op */
 				}
 				break;								/* 3+, no icons */
 			}
@@ -1369,21 +1398,21 @@ static NSImage *empty_image;
 			pre--;
 		}
 	}
-	return empty_image;
+	return emptyBulletImage;
 }
 
 /* CL */
 - (void) recalculateUserTableLayout
 {
-	maxNickWidth = 0.0;
-	maxHostWidth = 0.0;
-	maxRowHeight = 16.0;
+	maxNickWidth = 0.0f;
+	maxHostWidth = 0.0f;
+	maxRowHeight = 16.0f;
 
 	NSEnumerator *enumerator = [userlist objectEnumerator];
-	for ( OneUser * u = [enumerator nextObject]; u != nil; u = [enumerator nextObject]) {
-		if (u->nickSize.width > maxNickWidth) maxNickWidth = u->nickSize.width;
-		if ((prefs.showhostname_in_userlist) && (u->hostSize.width > maxHostWidth)) maxHostWidth = u->hostSize.width;
-		if (u->nickSize.height > maxRowHeight) maxRowHeight = u->nickSize.height;
+	for ( OneUser * user = [enumerator nextObject]; user != nil; user = [enumerator nextObject]) {
+		if (user->nickSize.width > maxNickWidth) maxNickWidth = user->nickSize.width;
+		if ((prefs.showhostname_in_userlist) && (user->hostSize.width > maxHostWidth)) maxHostWidth = user->hostSize.width;
+		if (user->nickSize.height > maxRowHeight) maxRowHeight = user->nickSize.height;
 	}
 	
 	NSTableColumn *column = [[userlistTableView tableColumns] objectAtIndex:1];
@@ -1403,7 +1432,7 @@ static NSImage *empty_image;
 	NSTableColumn *column = [columns objectAtIndex:1];
 	CGFloat width = user->nickSize.width;
 	if (width > maxNickWidth) {
-		maxNickWidth = width+0.5; // Leopard fix :) Where this 0.25 come from?
+		maxNickWidth = width+0.5f; // Leopard fix :) Where this 0.25 come from?
 		[column setWidth: maxNickWidth];
 	}
 	/* host column */
@@ -1432,12 +1461,11 @@ static NSImage *empty_image;
 	/* row height */
 	else {
 		CGFloat height = (user->nickSize.height > user->hostSize.height ? user->nickSize.height: user->hostSize.height);
-		if ((height == maxRowHeight) && (height > 16.0)) [self recalculateUserTableLayout];	/* in this case, a stricter condition should be added, as (oldHeight == [userlistTableView rowHeight]) will be true for most users */
+		if ((height == maxRowHeight) && (height > 16.0f)) [self recalculateUserTableLayout];	/* in this case, a stricter condition should be added, as (oldHeight == [userlistTableView rowHeight]) will be true for most users */
 	}
 }
 
-- (void) updateUserTableLayoutForRehash:(OneUser *)user
-							oldNickSize:(NSSize)oldNickSize oldHostSize:(NSSize)oldHostSize
+- (void) updateUserTableLayoutForRehash:(OneUser *)user oldNickSize:(NSSize)oldNickSize oldHostSize:(NSSize)oldHostSize
 {
 	NSArray *columns = [userlistTableView tableColumns];
 	/* nickname column */
@@ -1467,7 +1495,7 @@ static NSImage *empty_image;
 	/* row height */
 	CGFloat height = (user->nickSize.height > user->hostSize.height ? user->nickSize.height: user->hostSize.height);
 	CGFloat oldHeight = (oldNickSize.height > oldHostSize.height ? oldNickSize.height: oldHostSize.height);
-	if ((height < oldHeight) && (oldHeight == maxRowHeight) && (oldHeight > 16.0)) {	/* in this case, a stricter condition should be added, as (oldHeight == [userlistTableView rowHeight]) will be true for most users */
+	if ((height < oldHeight) && (oldHeight == maxRowHeight) && (oldHeight > 16.0f)) {	/* in this case, a stricter condition should be added, as (oldHeight == [userlistTableView rowHeight]) will be true for most users */
 		[self recalculateUserTableLayout];
 		return;
 	}
@@ -1497,9 +1525,8 @@ static NSImage *empty_image;
 			NSUInteger j = 0;
 			do {
 				if (sess->server->p_cmp (user->nick, names[j]) == 0) {
-					[userlistTableView
-		   selectRowIndexes:[NSIndexSet indexSetWithIndex:i]
-		   byExtendingSelection:YES];
+					[userlistTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:i]
+								   byExtendingSelection:YES];
 					if (scroll_to) [userlistTableView scrollRowToVisible:i];
 				}
 			} while (*names[++j]);
@@ -1545,7 +1572,7 @@ static NSImage *empty_image;
 	if (user->me)
 	{
 		NSImage *img = [self getUserImage:user];
-		if (img == empty_image) {
+		if (img == emptyBulletImage) {
 			[myOpOrVoiceIconImageView setHidden:true];
 		}
 		else
@@ -1607,7 +1634,7 @@ static NSImage *empty_image;
 	if (user->me)
 	{
 		NSImage *img = [self getUserImage:user];
-		if (img == empty_image)
+		if (img == emptyBulletImage)
 			[myOpOrVoiceIconImageView setHidden:true];
 		else
 		{
