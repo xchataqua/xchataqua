@@ -25,12 +25,19 @@
 #ifndef __G_TEST_UTILS_H__
 #define __G_TEST_UTILS_H__
 
-#include <glib.h>
+#include <glib/gmessages.h>
+#include <glib/gstring.h>
+#include <glib/gerror.h>
+#include <glib/gslist.h>
 
 G_BEGIN_DECLS
 
 typedef struct GTestCase  GTestCase;
 typedef struct GTestSuite GTestSuite;
+typedef void (*GTestFunc)        (void);
+typedef void (*GTestDataFunc)    (gconstpointer user_data);
+typedef void (*GTestFixtureFunc) (gpointer      fixture,
+                                  gconstpointer user_data);
 
 /* assertion API */
 #define g_assert_cmpstr(s1, cmp, s2)    do { const char *__s1 = (s1), *__s2 = (s2); \
@@ -95,10 +102,12 @@ void    g_test_init                     (int            *argc,
 int     g_test_run                      (void);
 /* hook up a test functions under test path */
 void    g_test_add_func                 (const char     *testpath,
-                                         void          (*test_func) (void));
+                                         GTestFunc       test_func);
+
 void    g_test_add_data_func            (const char     *testpath,
                                          gconstpointer   test_data,
-                                         void          (*test_func) (gconstpointer));
+                                         GTestDataFunc   test_func);
+
 /* hook up a test with fixture under test path */
 #define g_test_add(testpath, Fixture, tdata, fsetup, ftest, fteardown) \
 					G_STMT_START {			\
@@ -155,13 +164,13 @@ double   g_test_rand_double_range       (double          range_start,
                                          double          range_end);
 
 /* semi-internal API */
-GTestCase*    g_test_create_case        (const char     *test_name,
-                                         gsize           data_size,
-                                         gconstpointer   test_data,
-                                         void          (*data_setup) (void),
-                                         void          (*data_test) (void),
-                                         void          (*data_teardown) (void));
-GTestSuite*   g_test_create_suite       (const char     *suite_name);
+GTestCase*    g_test_create_case        (const char       *test_name,
+                                         gsize             data_size,
+                                         gconstpointer     test_data,
+                                         GTestFixtureFunc  data_setup,
+                                         GTestFixtureFunc  data_test,
+                                         GTestFixtureFunc  data_teardown);
+GTestSuite*   g_test_create_suite       (const char       *suite_name);
 GTestSuite*   g_test_get_root           (void);
 void          g_test_suite_add          (GTestSuite     *suite,
                                          GTestCase      *test_case);
@@ -208,15 +217,15 @@ void    g_assertion_message_error       (const char     *domain,
                                          int             line,
                                          const char     *func,
                                          const char     *expr,
-                                         GError         *error,
+                                         const GError   *error,
                                          GQuark          error_domain,
                                          int             error_code) G_GNUC_NORETURN;
 void    g_test_add_vtable               (const char     *testpath,
                                          gsize           data_size,
                                          gconstpointer   test_data,
-                                         void          (*data_setup)    (void),
-                                         void          (*data_test)     (void),
-                                         void          (*data_teardown) (void));
+                                         GTestFixtureFunc  data_setup,
+                                         GTestFixtureFunc  data_test,
+                                         GTestFixtureFunc  data_teardown);
 typedef struct {
   gboolean      test_initialized;
   gboolean      test_quick;     /* disable thorough tests */
@@ -261,6 +270,27 @@ void            g_test_log_buffer_push  (GTestLogBuffer *tbuffer,
                                          const guint8   *bytes);
 GTestLogMsg*    g_test_log_buffer_pop   (GTestLogBuffer *tbuffer);
 void            g_test_log_msg_free     (GTestLogMsg    *tmsg);
+
+/**
+ * GTestLogFatalFunc:
+ * @log_domain: the log domain of the message
+ * @log_level: the log level of the message (including the fatal and recursion flags)
+ * @message: the message to process
+ * @user_data: user data, set in g_test_log_set_fatal_handler()
+ *
+ * Specifies the prototype of fatal log handler functions.
+ *
+ * Return value: %TRUE if the program should abort, %FALSE otherwise
+ *
+ * Since: 2.22
+ */
+typedef gboolean        (*GTestLogFatalFunc)    (const gchar    *log_domain,
+                                                 GLogLevelFlags  log_level,
+                                                 const gchar    *message,
+                                                 gpointer        user_data);
+void
+g_test_log_set_fatal_handler            (GTestLogFatalFunc log_func,
+                                         gpointer          user_data);
 
 G_END_DECLS
 
