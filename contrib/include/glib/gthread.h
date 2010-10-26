@@ -32,7 +32,6 @@
 #define __G_THREAD_H__
 
 #include <glib/gerror.h>
-#include <glib/gtypes.h>
 #include <glib/gutils.h>        /* for G_INLINE_FUNC */
 #include <glib/gatomic.h>       /* for g_atomic_pointer_get */
 
@@ -198,7 +197,11 @@ GMutex* g_static_mutex_get_mutex_impl   (GMutex **mutex);
           (cond, mutex, abs_time, G_MUTEX_DEBUG_MAGIC, G_STRLOC) : TRUE)
 #endif /* G_ERRORCHECK_MUTEXES */
 
+#if defined(G_THREADS_ENABLED) && defined(G_THREADS_MANDATORY)
+#define g_thread_supported()     1
+#else
 #define g_thread_supported()    (g_threads_got_initialized)
+#endif
 #define g_mutex_new()            G_THREAD_UF (mutex_new,      ())
 #define g_cond_new()             G_THREAD_UF (cond_new,       ())
 #define g_cond_signal(cond)      G_THREAD_CF (cond_signal,    (void)0, (cond))

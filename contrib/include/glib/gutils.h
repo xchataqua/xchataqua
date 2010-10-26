@@ -127,6 +127,7 @@ void                  g_set_prgname          (const gchar *prgname);
 G_CONST_RETURN gchar* g_get_application_name (void);
 void                  g_set_application_name (const gchar *application_name);
 
+void    g_reload_user_special_dirs_cache     (void);
 G_CONST_RETURN gchar*    g_get_user_data_dir      (void);
 G_CONST_RETURN gchar*    g_get_user_config_dir    (void);
 G_CONST_RETURN gchar*    g_get_user_cache_dir     (void);
@@ -286,7 +287,9 @@ void	g_atexit		(GVoidFunc    func);
  * wants the function to be called when it *itself* exits (or is
  * detached, in case the caller, too, is a DLL).
  */
+#if (defined(__MINGW_H) && !defined(_STDLIB_H_)) || (defined(_MSC_VER) && !defined(_INC_STDLIB))
 int atexit (void (*)(void));
+#endif
 #define g_atexit(func) atexit(func)
 #endif
 
@@ -352,7 +355,7 @@ g_bit_storage (gulong number)
 {
 #if defined(__GNUC__) && (__GNUC__ >= 4) && defined(__OPTIMIZE__)
   return G_LIKELY (number) ?
-	   ((GLIB_SIZEOF_LONG * 8 - 1) ^ __builtin_clzl(number)) + 1 : 1;
+	   ((GLIB_SIZEOF_LONG * 8U - 1) ^ __builtin_clzl(number)) + 1 : 1;
 #else
   register guint n_bits = 0;
   
