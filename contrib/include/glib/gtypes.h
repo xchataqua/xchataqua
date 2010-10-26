@@ -92,6 +92,19 @@ typedef void            (*GHFunc)               (gpointer       key,
                                                  gpointer       value,
                                                  gpointer       user_data);
 typedef void            (*GFreeFunc)            (gpointer       data);
+
+/**
+ * GTranslateFunc:
+ * @str: the untranslated string
+ * @data: user data specified when installing the function, e.g.
+ *  in g_option_group_set_translate_func()
+ * 
+ * The type of functions which are used to translate user-visible
+ * strings, for <option>--help</option> output.
+ * 
+ * Returns: a translation of the string for the current locale.
+ *  The returned string is owned by GLib and must not be freed.
+ */
 typedef const gchar *   (*GTranslateFunc)       (const gchar   *str,
 						 gpointer       data);
 
@@ -321,6 +334,11 @@ typedef const gchar *   (*GTranslateFunc)       (const gchar   *str,
 #define GUINT_FROM_LE(val)	(GUINT_TO_LE (val))
 #define GINT_FROM_BE(val)	(GINT_TO_BE (val))
 #define GUINT_FROM_BE(val)	(GUINT_TO_BE (val))
+
+#define GSIZE_FROM_LE(val)	(GSIZE_TO_LE (val))
+#define GSSIZE_FROM_LE(val)	(GSSIZE_TO_LE (val))
+#define GSIZE_FROM_BE(val)	(GSIZE_TO_BE (val))
+#define GSSIZE_FROM_BE(val)	(GSSIZE_TO_BE (val))
 
 
 /* Portable versions of host-network order stuff

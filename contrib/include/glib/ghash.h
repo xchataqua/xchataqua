@@ -113,9 +113,22 @@ void        g_hash_table_unref             (GHashTable     *hash_table);
 
 #ifndef G_DISABLE_DEPRECATED
 
-/* The following two functions are deprecated and will be removed in
- * the next major release. They do no good. */
+/**
+ * g_hash_table_freeze:
+ * @hash_table: a #GHashTable
+ *
+ * This function is deprecated and will be removed in the next major
+ * release of GLib. It does nothing.
+ **/
 #define g_hash_table_freeze(hash_table) ((void)0)
+
+/**
+ * g_hash_table_thaw:
+ * @hash_table: a #GHashTable
+ *
+ * This function is deprecated and will be removed in the next major
+ * release of GLib. It does nothing.
+ **/
 #define g_hash_table_thaw(hash_table) ((void)0)
 
 #endif /* G_DISABLE_DEPRECATED */
@@ -129,6 +142,14 @@ guint    g_str_hash  (gconstpointer  v);
 gboolean g_int_equal (gconstpointer  v1,
                       gconstpointer  v2);
 guint    g_int_hash  (gconstpointer  v);
+
+gboolean g_int64_equal (gconstpointer  v1,
+                        gconstpointer  v2);
+guint    g_int64_hash  (gconstpointer  v);
+
+gboolean g_double_equal (gconstpointer  v1,
+                         gconstpointer  v2);
+guint    g_double_hash  (gconstpointer  v);
 
 /* This "hash" function will just return the key's address as an
  * unsigned integer. Useful for hashing on plain addresses or
