@@ -198,11 +198,6 @@
 		0FE5E0940F480B26000E0F91 /* SGVBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6810CFB300B001AE9AE /* SGVBoxView.m */; };
 		0FE5E0950F480B26000E0F91 /* SGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6850CFB300B001AE9AE /* SGView.m */; };
 		0FE5E0980F480B39000E0F91 /* SGBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6610CFB300B001AE9AE /* SGBoxView.m */; };
-		2D076D9410E9108200E4A9F1 /* libglib-2.0.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D076D9210E9105B00E4A9F1 /* libglib-2.0.0.dylib */; };
-		2D076D9510E9108600E4A9F1 /* libglib-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D076D9210E9105B00E4A9F1 /* libglib-2.0.0.dylib */; };
-		2D076DB510E919BE00E4A9F1 /* libiconv.2.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D076DB310E9195000E4A9F1 /* libiconv.2.dylib */; };
-		2D076DB610E919BE00E4A9F1 /* libintl.8.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D076DB410E919B900E4A9F1 /* libintl.8.dylib */; };
-		2D076DBA10E919F000E4A9F1 /* libintl.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D076DB410E919B900E4A9F1 /* libintl.8.dylib */; };
 		2D4ACFB11230005E00DEB5FA /* SGDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4ACFB01230005E00DEB5FA /* SGDebug.m */; };
 		2D4ACFB7123000F000DEB5FA /* SGDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4ACFB01230005E00DEB5FA /* SGDebug.m */; };
 		2D55F03010EBBA8E00B4ECCB /* Growl.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54C10E4ACFC00DBBFD0 /* Growl.framework */; };
@@ -241,6 +236,9 @@
 		2DEA2F490F8673BF00D6DC0D /* DccChat.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F2F0F8673BF00D6DC0D /* DccChat.xib */; };
 		2DEA2F4A0F8673BF00D6DC0D /* DccRecv.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F310F8673BF00D6DC0D /* DccRecv.xib */; };
 		2DEA2F4B0F8673BF00D6DC0D /* DccSend.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DEA2F330F8673BF00D6DC0D /* DccSend.xib */; };
+		2DEC8C7C1274CC98000C8670 /* libglib-2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DEC8C791274CC98000C8670 /* libglib-2.0.a */; };
+		2DEC8C7E1274CC98000C8670 /* libintl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DEC8C7B1274CC98000C8670 /* libintl.a */; };
+		2DEC8DA8127569B3000C8670 /* libiconv.1.13.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DEC8C7A1274CC98000C8670 /* libiconv.1.13.1.a */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		B0D937F10FFB0D34009370B5 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */; };
 		B0D937F20FFB0D34009370B5 /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937F00FFB0D34009370B5 /* libssl.dylib */; };
@@ -334,9 +332,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2D076DB510E919BE00E4A9F1 /* libiconv.2.dylib in Copy Frameworks */,
-				2D076DB610E919BE00E4A9F1 /* libintl.8.dylib in Copy Frameworks */,
-				2D076D9410E9108200E4A9F1 /* libglib-2.0.0.dylib in Copy Frameworks */,
 				2D55F03010EBBA8E00B4ECCB /* Growl.framework in Copy Frameworks */,
 				2D55F03110EBBA8E00B4ECCB /* Sparkle.framework in Copy Frameworks */,
 				2DAAE56510E4AD4B00DBBFD0 /* ShortcutRecorder.framework in Copy Frameworks */,
@@ -603,9 +598,6 @@
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		2D076D9210E9105B00E4A9F1 /* libglib-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libglib-2.0.0.dylib"; path = "contrib/lib/libglib-2.0.0.dylib"; sourceTree = "<group>"; };
-		2D076DB310E9195000E4A9F1 /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = contrib/lib/libiconv.2.dylib; sourceTree = "<group>"; };
-		2D076DB410E919B900E4A9F1 /* libintl.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libintl.8.dylib; path = contrib/lib/libintl.8.dylib; sourceTree = "<group>"; };
 		2D4ACF77122FFED900DEB5FA /* SGDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGDebug.h; sourceTree = "<group>"; };
 		2D4ACFB01230005E00DEB5FA /* SGDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGDebug.m; sourceTree = "<group>"; };
 		2D5C951511AF35FA0062F4C0 /* wa */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = wa; path = Localization/wa.lproj/xchat.strings; sourceTree = SOURCE_ROOT; };
@@ -1552,6 +1544,9 @@
 		2DEA2F5F0F8673ED00D6DC0D /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = Localization/ko.lproj/TabMenu.xib; sourceTree = "<group>"; };
 		2DEA2F600F8673ED00D6DC0D /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = Localization/ko.lproj/UrlGrabber.xib; sourceTree = "<group>"; };
 		2DEA2F610F8673ED00D6DC0D /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = Localization/ko.lproj/UserCommands.xib; sourceTree = "<group>"; };
+		2DEC8C791274CC98000C8670 /* libglib-2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libglib-2.0.a"; path = "contrib/lib/libglib-2.0.a"; sourceTree = "<group>"; };
+		2DEC8C7A1274CC98000C8670 /* libiconv.1.13.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libiconv.1.13.1.a; path = contrib/lib/libiconv.1.13.1.a; sourceTree = "<group>"; };
+		2DEC8C7B1274CC98000C8670 /* libintl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libintl.a; path = contrib/lib/libintl.a; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* X-Chat Aqua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "X-Chat Aqua.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B07C7AB20F4395E200E11B58 /* BuildNumber.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = BuildNumber.xcconfig; sourceTree = "<group>"; };
 		B07C7AD60F4398FC00E11B58 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -1607,8 +1602,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D076DBA10E919F000E4A9F1 /* libintl.8.dylib in Frameworks */,
-				2D076D9510E9108600E4A9F1 /* libglib-2.0.0.dylib in Frameworks */,
 				2DAAE54E10E4ACFC00DBBFD0 /* Growl.framework in Frameworks */,
 				0FC8F5C40DEEEA3E00504F31 /* libxchat.a in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
@@ -1617,6 +1610,9 @@
 				B0D937F20FFB0D34009370B5 /* libssl.dylib in Frameworks */,
 				2DE5D56210EBE0310024D2A4 /* ShortcutRecorder.framework in Frameworks */,
 				2DAAE56D10E4AD7300DBBFD0 /* Sparkle.framework in Frameworks */,
+				2DEC8DA8127569B3000C8670 /* libiconv.1.13.1.a in Frameworks */,
+				2DEC8C7C1274CC98000C8670 /* libglib-2.0.a in Frameworks */,
+				2DEC8C7E1274CC98000C8670 /* libintl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1866,9 +1862,9 @@
 				B0D937F00FFB0D34009370B5 /* libssl.dylib */,
 				0F8EA70A0CFB384A001AE9AE /* Carbon.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
-				2D076D9210E9105B00E4A9F1 /* libglib-2.0.0.dylib */,
-				2D076DB310E9195000E4A9F1 /* libiconv.2.dylib */,
-				2D076DB410E919B900E4A9F1 /* libintl.8.dylib */,
+				2DEC8C7A1274CC98000C8670 /* libiconv.1.13.1.a */,
+				2DEC8C791274CC98000C8670 /* libglib-2.0.a */,
+				2DEC8C7B1274CC98000C8670 /* libintl.a */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -2259,6 +2255,7 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "X-Chat Aqua" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -4200,6 +4197,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fe-aqua/X-Chat Aqua_Prefix.pch";
 				IBC_PLUGIN_SEARCH_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) Frameworks/ShortcutRecorder.framework/Resources";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/contrib/lib\"",
+				);
 				PRODUCT_NAME = "X-Chat Aqua";
 			};
 			name = Debug;
@@ -4211,6 +4212,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fe-aqua/X-Chat Aqua_Prefix.pch";
 				IBC_PLUGIN_SEARCH_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) Frameworks/ShortcutRecorder.framework/Resources";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/contrib/lib\"",
+				);
 				PRODUCT_NAME = "X-Chat Aqua";
 			};
 			name = Release;
@@ -4230,8 +4235,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"fe-aqua",
-					.,
 					contrib/include,
+					.,
 				);
 				INFOPLIST_FILE = "Info devel.plist";
 				LIBRARY_SEARCH_PATHS = contrib/lib;
@@ -4255,8 +4260,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"fe-aqua",
-					.,
 					contrib/include,
+					.,
 				);
 				INFOPLIST_FILE = Info.plist;
 				LIBRARY_SEARCH_PATHS = contrib/lib;
