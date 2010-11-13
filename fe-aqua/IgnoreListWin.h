@@ -33,8 +33,9 @@
 	NSMutableArray	*ignoreItems;
 }
 
-- (IBAction) doNew:(id) sender;
-- (IBAction) doDelete:(id) sender;
+- (IBAction)addItem:(id)sender;
+- (IBAction)removeItem:(id)sender;
+- (IBAction)clearItems:(id)sender;
 
 - (id) initWithSelfPtr:(id *)selfPtr;
 - (void) show;
