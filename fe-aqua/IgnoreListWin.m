@@ -193,7 +193,7 @@
 	return -1;
 }
 
-- (void) doNew:(id) sender
+- (void)addItem:(id)sender
 {
 	[[ignoreListTableView window] makeFirstResponder:ignoreListTableView];
 
@@ -209,7 +209,7 @@
 	}
 }
 
-- (void) doDelete:(id) sender
+- (void)removeItem:(id)sender
 {
 	NSInteger row = [ignoreListTableView selectedRow];
 	if (row < 0) return;
@@ -221,6 +221,12 @@
 	ignore_del (NULL, item.ign);	// This will call me back
 
 	// item is gone when we get here
+}
+
+- (void) clearItems:(id)sender {
+	while ( [ignoreItems count] > 0 ) {
+		ignore_del(NULL, ((IgnoreListItem *)[ignoreItems lastObject]).ign);
+	}
 }
 
 - (void) show
