@@ -101,8 +101,8 @@
 - (id) init
 {
 	[super init];
-	customers = [[NSMutableArray arrayWithCapacity:0] retain];
-	//after_events = [[NSMutableArray arrayWithCapacity:0] retain];
+	customers = [[NSMutableArray alloc] init];
+	//after_events = [[NSMutableArray alloc] init];
 	return self;
 }
 

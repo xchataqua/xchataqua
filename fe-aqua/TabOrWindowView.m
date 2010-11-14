@@ -41,7 +41,7 @@ static float trans = 1;
 
 //////////////////////////////////////////////////////////////////////
 
-static NSWindow *makeWindowForView (Class nswindow, NSView *view, NSPoint *where)
+static NSWindow *initWindowForView (Class nswindow, NSView *view, NSPoint *where)
 {
 	NSRect viewFrame = view.frame;
 	
@@ -210,7 +210,7 @@ static NSWindow *makeWindowForView (Class nswindow, NSView *view, NSPoint *where
 		[window autorelease];
 	}
 	
-	window = makeWindowForView ([NSWindow class], self, where);
+	window = initWindowForView ([NSWindow class], self, where);
 	[window setDelegate:self];
 	if (initialFirstResponder)
 		[window setInitialFirstResponder:initialFirstResponder];
@@ -226,7 +226,7 @@ static NSWindow *makeWindowForView (Class nswindow, NSView *view, NSPoint *where
 		[tabWindow autorelease];
 	}
 	
-	tabWindow = makeWindowForView ([MyTabWindow class], tabView, where);
+	tabWindow = initWindowForView ([MyTabWindow class], tabView, where);
 	[tabWindow setDelegate:tabDelegate];
 	[tabWindow makeKeyAndOrderFront:self];
 }
@@ -281,7 +281,7 @@ static NSWindow *makeWindowForView (Class nswindow, NSView *view, NSPoint *where
 
 + (void) setTransparency:(NSInteger)transparency
 {
-	trans = (float) transparency / 255;
+	trans = transparency / 255.0f;
 	
 	for ( NSWindow *win in [NSApp windows] )
 	{
@@ -290,42 +290,30 @@ static NSWindow *makeWindowForView (Class nswindow, NSView *view, NSPoint *where
 	}
 }
 
+#if 0
 - (id) initWithFrame:(NSRect) frameRect
 {
-	[super initWithFrame:frameRect];
-	
-	self->window = nil;
-	self->tabViewItem = nil;
-	self->delegate = nil;
-	self->initialFirstResponder = nil;
-	self->server = nil;
-	
-#if 0
-	if (!link_delink_image)
-		link_delink_image = [[NSImage imageNamed:@"link.tiff"] retain];
-	
-	NSButton *b = [[[NSButton alloc] init] autorelease];
-	[b setButtonType:NSMomentaryPushButton];
-	[b setTitle:@""];
-	[b setBezelStyle:NSShadowlessSquareBezelStyle];
-	[b setImage:link_delink_image];
-	[b sizeToFit];
-	if (![self isFlipped])
-		[b setFrameOrigin:NSMakePoint (2, [self bounds].size.height - [b bounds].size.height - 2)];
-	[b setAutoresizingMask:NSViewMaxXMargin | NSViewMinYMargin];
-	[b setAction:@selector (link_delink:)];
-	[b setTarget:self];
-	
-	[self addSubview:b];
-#endif
-	
+	if ((self=[super initWithFrame:frameRect])!=nil) {
+		if (!link_delink_image)
+			link_delink_image = [[NSImage imageNamed:@"link.tiff"] retain];
+		
+		NSButton *b = [[[NSButton alloc] init] autorelease];
+		[b setButtonType:NSMomentaryPushButton];
+		[b setTitle:@""];
+		[b setBezelStyle:NSShadowlessSquareBezelStyle];
+		[b setImage:link_delink_image];
+		[b sizeToFit];
+		if (![self isFlipped])
+			[b setFrameOrigin:NSMakePoint (2, [self bounds].size.height - [b bounds].size.height - 2)];
+		[b setAutoresizingMask:NSViewMaxXMargin | NSViewMinYMargin];
+		[b setAction:@selector (link_delink:)];
+		[b setTarget:self];
+		
+		[self addSubview:b];
+	}
 	return self;
 }
-
-- (void) dealloc
-{
-	[super dealloc];
-}
+#endif
 
 + (BOOL) selectTabByIndex:(NSUInteger)index
 {
@@ -625,7 +613,8 @@ static NSWindow *makeWindowForView (Class nswindow, NSView *view, NSPoint *where
 
 - (void) windowDidBecomeKey:(NSNotification *) notification
 {
-	[delegate windowDidBecomeKey:notification];
+	if ([delegate respondsToSelector:@selector(windowDidBecomeKey:)])
+		[delegate windowDidBecomeKey:notification];
 }
 
 // We are in window mode, and the window is closing.
@@ -633,7 +622,6 @@ static NSWindow *makeWindowForView (Class nswindow, NSView *view, NSPoint *where
 {
 	// Before giving the delegate the bad news, we need to take ourselvs out of the
 	// window so the delegate can release us.
-	
 	[self retain];
 	[window setContentView:nil];
 	[[NSNotificationCenter defaultCenter] postNotificationName:NSWindowWillCloseNotification object:self];

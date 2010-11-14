@@ -32,9 +32,11 @@
 #import "AquaChat.h"
 #import "ChatWindow.h"
 #import "ChannelListWin.h"
-#import "BanListWin.h"
+#import "BanWindow.h"
 #import "RawLogWin.h"
 #import "MenuMaker.h"
+
+#import "UtilityWindow.h"
 
 #include "plugins/bundle_loader/bundle_loader_plugin.h"
 
@@ -271,7 +273,6 @@ fe_new_window (struct session *sess, int focus)
 {
 	sess->gui = (struct session_gui *) malloc (sizeof (struct session_gui));
 	sess->gui->cw = [[ChatWindow alloc] initWithSession:sess];
-	sess->gui->ban_list = nil;
 
 	if (!current_sess)
 		current_sess = sess;
@@ -763,21 +764,19 @@ fe_chan_list_end (struct server *serv)
 int
 fe_is_banwindow (struct session *sess)
 {
-	return sess->gui->ban_list ? true : false;
+	return [UtilityTabOrWindowView utilityIfExistsByKey:BanWindowKey(sess)] ? true : false;
 }
 
 void
 fe_add_ban_list (struct session *sess, char *mask, char *who, char *when, int is_exemption)
 {
-	if (sess->gui->ban_list)
-		[sess->gui->ban_list addBanList:[NSString stringWithUTF8String:mask] who:[NSString stringWithUTF8String:who] when:[NSString stringWithUTF8String:when] isExemption:is_exemption];
+	[(BanWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:BanWindowKey(sess)] addBanList:[NSString stringWithUTF8String:mask] who:[NSString stringWithUTF8String:who] when:[NSString stringWithUTF8String:when] isExemption:is_exemption];
 }	 
 		  
 void
 fe_ban_list_end (struct session *sess, int is_exemption)
 {
-	if (sess->gui->ban_list)
-		[sess->gui->ban_list banListEnd];
+	[(BanWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:BanWindowKey(sess)] banListEnd];
 }
 
 void

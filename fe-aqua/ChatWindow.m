@@ -1745,7 +1745,7 @@ static NSImage *emptyBulletImage;
 {
 	[[inputTextField window] makeFirstResponder:inputTextField];
 
-	NSString* message = [[[inputTextField stringValue] retain] autorelease];
+	NSString* message = [inputTextField stringValue];
 	
 	if ([message length] < 1)
 		return;
