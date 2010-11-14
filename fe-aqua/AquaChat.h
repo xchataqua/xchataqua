@@ -20,7 +20,8 @@
 
 #import <Growl/GrowlApplicationBridge.h>
 
-@class AsciiWin;
+#define BanWindowKey(SESS)	[@"BanWindow" stringByAppendingFormat:@"_%x", SESS]
+
 @class BanListWin;
 @class ColorPalette;
 @class ChannelListWin;
@@ -30,11 +31,9 @@
 @class DccChatWin;
 @class EditList;
 @class EditEvents;
-@class FriendListWin;
-@class IgnoreListWin;
 @class LogViewer;
-@class PluginList;
-@class PrefsController;
+@class PluginWindow;
+@class PreferencesController;
 @class RawLogWin;
 @class ServerList;
 @class UrlGrabberWin;
@@ -44,7 +43,6 @@ struct session;
 struct session_gui
 {
 	ChatWindow	 	*cw;
-	BanListWin		*ban_list;
 };
 
 struct server_gui
@@ -78,7 +76,7 @@ extern struct event_info text_event_info[];
    
 	NSString	*search_string;
 	
-	PrefsController *acprefs;
+	PreferencesController *acprefs;
 	ColorPalette *palette;
 	
 	NSFont	*font;
@@ -100,11 +98,7 @@ extern struct event_info text_event_info[];
 	DccRecvWin	*dcc_recv_window;
 	DccChatWin	*dcc_chat_window;
 	UrlGrabberWin *url_grabber;
-	FriendListWin *notify_list;
-	IgnoreListWin *ignore_window;
-	AsciiWin	*ascii_window;
-	PluginList	*plugin_list_win;
-	PrefsController *prefs_controller;
+	PreferencesController *prefs_controller;
 	LogViewer	   *log_viewer;
 	
 	NSMutableDictionary *sound_cache;

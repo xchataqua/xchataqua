@@ -15,9 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_4
-#	import <ShortcutRecorder/ShortcutRecorder.h>
-#endif
+#import <ShortcutRecorder/ShortcutRecorder.h>
 
 enum
 {
@@ -26,28 +24,26 @@ enum
 	MYPREF_MENU
 };
 
-struct my_pref
+struct preferenceItem
 {
 	id		item;
 	void	*pref;
 	int		type;
 };
 
-@interface PrefsController : NSObject
+@interface PreferencesController : NSObject
 #if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSWindowDelegate,NSComboBoxDataSource>
+<NSWindowDelegate, NSComboBoxDataSource>
 #endif
 {
 	IBOutlet NSTabView	*tabView;
-	#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_4
 	IBOutlet SRRecorderCell *tabLeftRecorderCell;
 	IBOutlet SRRecorderCell *tabRightRecorderCell;
-	#endif
 	IBOutlet NSWindow *preferencesWindow;
 	
-	NSColorWell *colors [41];
+	NSColorWell *colors[41];
 	NSMutableArray *sounds;
-	NSMutableArray *sound_events;
+	NSMutableArray *soundEvents;
 	
 	id  perform_always_check;
 	id  sounds_table;
@@ -141,9 +137,16 @@ struct my_pref
 	id  auto_away_text;
 	id  nick_complete_sort_menu;
 	
-	struct my_pref my_prefs [86];
+	struct preferenceItem preferenceItems [86];
 }
 
 - (void) show;
+
+- (IBAction)applyTranparency:(id)sender;
+- (IBAction)showRawPreferences:(id)sender;
+- (IBAction)doApply:(id)sender;
+- (IBAction)doOk:(id)sender;
+- (IBAction)doCancel:(id)sender;
+- (IBAction)applyFont:(id)sender;
 
 @end

@@ -29,7 +29,7 @@
 #import "SGRegex.h"
 #import "SGRequest.h"
 #import "SGRowColView.h"
-#import "SGSelfPtr.h"
+//#import "SGSelfPtr.h"
 #import "SGSoundUtility.h"
 #import "SGVBoxView.h"
 #import "SGView.h"

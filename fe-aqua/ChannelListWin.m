@@ -163,8 +163,8 @@ static const char * strip_crap (const char *s)
 	self->serv = aServer;
 	self->timer = nil;
 	self->added = NO;
-	self->items = [[NSMutableArray arrayWithCapacity:0] retain];
-	self->allItems = [[NSMutableArray arrayWithCapacity:0] retain];
+	self->items = [[NSMutableArray alloc] init];
+	self->allItems = [[NSMutableArray alloc] init];
 	self->colorPalette = [[[AquaChat sharedAquaChat] palette] clone];
 	
 	[self->colorPalette setColor:AC_FGCOLOR color:[NSColor blackColor]];

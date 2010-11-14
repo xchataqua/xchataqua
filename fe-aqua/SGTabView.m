@@ -265,7 +265,7 @@ static NSButtonCell *makeCloseCell ()
 			
 	group = 0;
 	name = nil;
-	tabs = [[NSMutableArray arrayWithCapacity:0] retain];
+	tabs = [[NSMutableArray alloc] init];
 
 	return self;
 }
@@ -825,21 +825,16 @@ HIThemeSegmentPosition positionTable[2][2] =
 {
 	[super initWithFrame:frameRect];
 
-	self->selected_tab = nil;
-	self->tabs = [[NSMutableArray arrayWithCapacity:0] retain];
-	self->delegate = nil;
+	self->tabs = [[NSMutableArray alloc] init];
 	self->tabViewType = NSTopTabsBezelBorder;
-	self->hideClose = false;
-	self->hbox = nil;
-	self->outline = nil;
 	self->outline_width = 150;
-	self->groups = [[NSMutableArray arrayWithCapacity:5] retain];
+	self->groups = [[NSMutableArray alloc] initWithCapacity:5];
 	
 	[self setOrientation:SGBoxOrientationVertical];
 	[self setMinorDefaultJustification:SGBoxMinorJustificationFull];
-	[self setMajorInnerMargin:0];
-	[self setMajorOutterMargin:0];
-	[self setMinorMargin:0];
+	[self setMajorInnerMargin:0.0f];
+	[self setMajorOutterMargin:0.0f];
+	[self setMinorMargin:0.0f];
 	
 	[self setTabViewType:NSTopTabsBezelBorder];
 	
@@ -848,7 +843,6 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 - (void) dealloc
 {
-	//[hbox release];	We don't explicitly retain this.
 	//[outline release];	We don't explicitly retain this.
 	[tabs release];
 	[groups release];
@@ -951,8 +945,9 @@ HIThemeSegmentPosition positionTable[2][2] =
 	
 	if (!hbox)
 	{
-		hbox = [[[SGWrapView alloc] initWithFrame:NSMakeRect(0.0f, 0.0f, 1.0f, 1.0f)] autorelease];
+		hbox = [[SGWrapView alloc] initWithFrame:NSMakeRect(0.0f, 0.0f, 1.0f, 1.0f)];
 		[self addSubview:hbox];
+		[hbox release];
 		
 		[self setOrder:0 forView:hbox];
 

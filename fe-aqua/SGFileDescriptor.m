@@ -180,7 +180,7 @@ static void *sgfd_main_loop (void *args)
 
 + (void) initialize {
 	sgfdRunLoop = [[NSRunLoop currentRunLoop] getCFRunLoop];
-	sgfdArray = [[NSMutableArray arrayWithCapacity:0] retain];
+	sgfdArray = [[NSMutableArray alloc] init];
 	
 	pipe (sgfd_pipes);
 	

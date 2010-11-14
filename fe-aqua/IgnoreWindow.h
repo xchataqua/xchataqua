@@ -15,30 +15,28 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#import "SGSelfPtr.h"
+#import "UtilityWindow.h"
 
-@class TabOrWindowView;
-@interface IgnoreListWin : SGSelfPtr
+@interface IgnoreWindow : UtilityTabOrWindowView
 #if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
 <NSTableViewDataSource>
 #endif
 {
-	IBOutlet NSTableView		*ignoreListTableView;
-	IBOutlet TabOrWindowView	*ignoreListView;
-	IBOutlet NSTextField		*ignoredCtcpTextField;
-	IBOutlet NSTextField		*ignoredNoticeTextField;
-	IBOutlet NSTextField		*ignoredChannelTextField;
-	IBOutlet NSTextField		*ignoredInviteTextField;
-	IBOutlet NSTextField		*ignoredPrivateTextField;
-	NSMutableArray	*ignoreItems;
+	IBOutlet NSTableView *ignoreTableView;
+	
+	// ignored field
+	IBOutlet NSTextField *ctcpTextField;
+	IBOutlet NSTextField *noticeTextField;
+	IBOutlet NSTextField *channelTextField;
+	IBOutlet NSTextField *inviteTextField;
+	IBOutlet NSTextField *privateTextField;
+	NSMutableArray *ignores;
 }
 
-- (IBAction)addItem:(id)sender;
-- (IBAction)removeItem:(id)sender;
-- (IBAction)clearItems:(id)sender;
+- (IBAction)addIgnore:(id)sender;
+- (IBAction)removeIgnore:(id)sender;
+- (IBAction)removeAllIgnores:(id)sender;
 
-- (id) initWithSelfPtr:(id *)selfPtr;
-- (void) show;
-- (void) update:(int)level;
+- (void)update:(int)level;
 
 @end
