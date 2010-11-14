@@ -16,7 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
 #import "AquaChat.h"
-#import "PrefsController.h"
+#import "PreferencesController.h"
 #import "ColorPalette.h"
 #import "ChatWindow.h"
 
@@ -35,7 +35,7 @@ extern struct event_info text_event_info[];
 
 //////////////////////////////////////////////////////////////////////
 
-@interface PrefLeaf : NSObject
+@interface PreferenceLeaf : NSObject
 {
   @public
 	NSString	*label;
@@ -43,12 +43,12 @@ extern struct event_info text_event_info[];
 }
 @end
 
-@implementation PrefLeaf
+@implementation PreferenceLeaf
 @end
 
-PrefLeaf *leaf (NSString *label, int pane)
+PreferenceLeaf *leaf (NSString *label, int pane)
 {
-	PrefLeaf *l = [[PrefLeaf alloc] init];
+	PreferenceLeaf *l = [[PreferenceLeaf alloc] init];
 	l->label = label;
 	l->pane = pane;
 	return l;
@@ -134,13 +134,13 @@ static NSArray *root_items;
 
 //////////////////////////////////////////////////////////////////////
 
-@implementation PrefsController
+@implementation PreferencesController
 
 - (id) init
 {
 	self = [super init];
 	
-	[NSBundle loadNibNamed:@"Prefs" owner:self];
+	[NSBundle loadNibNamed:@"Preferences" owner:self];
 
 	return self;
 }
@@ -148,33 +148,33 @@ static NSArray *root_items;
 - (void) dealloc
 {
 	[sounds release];
-	[sound_events release];
+	[soundEvents release];
 	[super dealloc];
 }
 
 - (void) populate
 {
-	NSUInteger n = sizeof (my_prefs) / sizeof (my_prefs [0]);
+	NSUInteger n = sizeof (preferenceItems) / sizeof (preferenceItems [0]);
 
 	for (NSUInteger i = 0; i < n; i ++)
 	{
-		switch (my_prefs[i].type)
+		switch (preferenceItems[i].type)
 		{
 			case MYPREF_INT:
-				[my_prefs[i].item setIntValue: * (int *) my_prefs [i].pref];
+				[preferenceItems[i].item setIntValue: * (int *) preferenceItems [i].pref];
 				break;
 				
 			case MYPREF_STRING:
 			{
-				const char *v = (const char *) my_prefs[i].pref;
+				const char *v = (const char *) preferenceItems[i].pref;
 				if (!v) v = "";
 				NSString *tmp = [NSString stringWithUTF8String:v];
-				[my_prefs[i].item setStringValue:tmp];	
+				[preferenceItems[i].item setStringValue:tmp];	
 				break;
 			}
 				
 			case MYPREF_MENU:
-				[my_prefs [i].item selectItemAtIndex: * (int *) my_prefs [i].pref];
+				[preferenceItems [i].item selectItemAtIndex: * (int *) preferenceItems [i].pref];
 				break;
 		}
 	}
@@ -198,25 +198,25 @@ static NSArray *root_items;
 
 - (void) set
 {
-	NSUInteger n = sizeof (my_prefs) / sizeof (my_prefs [0]);
+	NSUInteger n = sizeof (preferenceItems) / sizeof (preferenceItems [0]);
 	
 	for (NSUInteger i = 0; i < n; i ++)
 	{
-		switch (my_prefs[i].type)
+		switch (preferenceItems[i].type)
 		{
 			case MYPREF_INT:
-				* (int *) my_prefs [i].pref = [my_prefs [i].item intValue];
+				* (int *) preferenceItems [i].pref = [preferenceItems [i].item intValue];
 				break;
 				
 			case MYPREF_STRING:
 			{
-				NSString *s = [my_prefs [i].item stringValue];	
-				strcpy ((char *) my_prefs [i].pref, [s UTF8String]);
+				NSString *s = [preferenceItems [i].item stringValue];	
+				strcpy ((char *) preferenceItems [i].pref, [s UTF8String]);
 				break;
 			}
 
 			case MYPREF_MENU:
-				* (int *) my_prefs [i].pref = [my_prefs [i].item indexOfSelectedItem];
+				* (int *) preferenceItems [i].pref = [preferenceItems [i].item indexOfSelectedItem];
 				break;
 		}
 	}
@@ -261,12 +261,11 @@ static NSArray *root_items;
 
 - (void) load_sounds
 {
-	sounds = [[NSMutableArray arrayWithCapacity:0] retain];
+	sounds = [[NSMutableArray alloc] init];
 	
 	[sounds addObject:NSLocalizedStringFromTable(@"<none>", @"xchat", @"")];
 	
-	NSString *bundle = [[NSBundle mainBundle] bundlePath];
-	NSString *dir_name = [NSString stringWithFormat:@"%@/../Sounds", bundle];
+	NSString *dir_name = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/../Sounds"];
 	NSFileManager *manager = [NSFileManager defaultManager];
 	#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_4
 	NSArray *files = [manager contentsOfDirectoryAtPath:dir_name error:NULL];
@@ -307,14 +306,14 @@ static NSArray *root_items;
 	[[[sounds_table tableColumns] objectAtIndex:1] setDataCell:cell];
 }
 
-- (void) get_sound_events
+- (void) get_soundEvents
 {
-	sound_events = [[NSMutableArray arrayWithCapacity:0] retain];
+	soundEvents = [[NSMutableArray arrayWithCapacity:0] retain];
 	
 	for (NSUInteger i = 0; i < NUM_XP; i ++)					  
 	{
 		SoundEvent *item = [[[SoundEvent alloc] initWithEvent:i sounds:sounds] autorelease];
-		[sound_events addObject:item];
+		[soundEvents addObject:item];
 	}
 	
 	[sounds_table reloadData];
@@ -322,7 +321,7 @@ static NSArray *root_items;
 
 - (void) awakeFromNib
 {
-	struct my_pref xx [] = 
+	struct preferenceItem xx [] = 
 	{
 		{ announce_away_check, &prefs.show_away_message, MYPREF_INT },
 		{ auto_open_dcc_chat_list_check, &prefs.autoopendccchatwindow, MYPREF_INT },
@@ -416,11 +415,11 @@ static NSArray *root_items;
 	// to get a compile time error if the array sizes are different.
 	// Credit where credit is due:
 	//	http://www.jaggersoft.com/pubs/CVu11_3.html
-	switch (0) { case 0: case (sizeof (xx) == sizeof (my_prefs)):; };
+	switch (0) { case 0: case (sizeof (xx) == sizeof (preferenceItems)):; };
 	
 	for (NSUInteger i = 0; i < sizeof (xx) / sizeof (xx [0]); i ++)
 	{
-		my_prefs [i] = xx [i];
+		preferenceItems [i] = xx [i];
 	}
 
 	NSArray *interface= [NSArray arrayWithObjects:NSLocalizedStringFromTable(@"Interface", @"xchat", @""),
@@ -457,7 +456,7 @@ static NSArray *root_items;
 	[self find_colors];
 	[self load_sounds];
 	[self make_sound_menu];
-	[self get_sound_events];
+	[self get_soundEvents];
 
 	NSButtonCell *bcell = [[MyButtonCell alloc] initTextCell:@""];
 	[bcell setButtonType:NSSwitchButton];
@@ -484,44 +483,44 @@ static NSArray *root_items;
 	NSInteger row = [category_list selectedRow];
 	id item = [category_list itemAtRow:row];
 	
-	if ([item isKindOfClass:[PrefLeaf class]])
+	if ([item isKindOfClass:[PreferenceLeaf class]])
 	{
-		PrefLeaf *l = (PrefLeaf *) item;
+		PreferenceLeaf *l = (PreferenceLeaf *) item;
 		
 		[content_box setTitle:l->label];
 		[tabView selectTabViewItemAtIndex:l->pane];
 	}
 }
 
-- (void) do_trans:(id) sender
+- (void) applyTranparency:(id) sender
 {
 	[TabOrWindowView setTransparency:[trans_check intValue] ? [trans_slider intValue] : 255];
 }
 
-- (void) do_show_prefs:(id) sender
+- (void) showRawPreferences:(id) sender
 {
-	NSString *s = [NSString stringWithFormat:@"file://%s", get_xdir_fs ()];
+	NSString *s = [NSString stringWithFormat:@"file://%s", get_xdir_fs()];
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:s]];
 }
 
-- (void) do_apply:(id) sender
+- (void) doApply:(id) sender
 {
 	[self set];
 }
 
-- (void) do_ok:(id) sender
+- (void) doOk:(id) sender
 {
-	[self do_apply:sender];
+	[self doApply:sender];
 	[preferencesWindow close];
 }
 
-- (void) do_cancel:(id) sender
+- (void) doCancel:(id) sender
 {
 	[TabOrWindowView setTransparency:prefs.transparent ? prefs.tint_red : 255];
 	[preferencesWindow close];
 }
 
-- (void) do_font:(id) sender
+- (void) applyFont:(id) sender
 {
 	[preferencesWindow makeFirstResponder:preferencesWindow];
 	NSFontManager *fontManager = [NSFontManager sharedFontManager];
@@ -563,7 +562,7 @@ static NSArray *root_items;
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
 {
 	return [item isKindOfClass:[NSArray class]] ? 
-		[item objectAtIndex:0] : ((PrefLeaf *)item)->label;
+		[item objectAtIndex:0] : ((PreferenceLeaf *)item)->label;
 }
 
 ////////////
@@ -571,12 +570,12 @@ static NSArray *root_items;
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
-	return [sound_events count];
+	return [soundEvents count];
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-	SoundEvent *item = [sound_events objectAtIndex:row];
+	SoundEvent *item = [soundEvents objectAtIndex:row];
 
 	switch ([[tableColumn identifier] integerValue])
 	{
@@ -592,7 +591,7 @@ static NSArray *root_items;
 
 - (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-	SoundEvent *item = [sound_events objectAtIndex:row];
+	SoundEvent *item = [soundEvents objectAtIndex:row];
 
 	switch ([[tableColumn identifier] integerValue])
 	{
@@ -642,7 +641,7 @@ static NSArray *root_items;
 
 - (BOOL)windowShouldClose:(id)sender
 {
-	[self do_ok:sender];
+	[self doOk:sender];
 	return NO;
 }
 

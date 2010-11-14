@@ -22,9 +22,7 @@
 #include "../common/cfgfiles.h"
 #include "../common/util.h"
 #include "../common/text.h"
-#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5
 #import <ShortcutRecorder/ShortcutRecorder.h>
-#endif
 
 #import "AquaChat.h"
 #import "AutoAwayController.h"
@@ -33,8 +31,8 @@
 #import "MenuMaker.h"
 #import "ReplacePopup.h"
 
-#import "AsciiWin.h"
-#import "BanListWin.h"
+#import "AsciiWindow.h"
+#import "BanWindow.h"
 #import "ChannelListWin.h"
 #import "ColorPalette.h"
 #import "ChatWindow.h"
@@ -42,11 +40,11 @@
 #import "DccRecvWin.h"
 #import "DccChatWin.h"
 #import "EditEvents.h"
-#import "FriendListWin.h"
-#import "IgnoreListWin.h"
+#import "FriendWindow.h"
+#import "IgnoreWindow.h"
 #import "LogViewer.h"
-#import "PluginList.h"
-#import "PrefsController.h"
+#import "PluginWindow.h"
+#import "PreferencesController.h"
 #import "RawLogWin.h"
 #import "ServerList.h"
 #import "UrlGrabberWin.h"
@@ -89,7 +87,6 @@ struct event_info text_event_info[NUM_XP];
 
 @end
 
-
 @implementation AquaChat
 @synthesize font, boldFont, palette;
 
@@ -107,8 +104,7 @@ struct event_info text_event_info[NUM_XP];
 	NSSize sz = [alert_image size];
 	NSSize sz2 = [msg_badge size];
 	[alert_image lockFocus];
-	[msg_badge compositeToPoint:NSMakePoint (sz.width - sz2.width,
-											 sz.height - sz2.height) 
+	[msg_badge compositeToPoint:NSMakePoint (sz.width - sz2.width, sz.height - sz2.height) 
 					  operation:NSCompositeSourceOver 
 					   fraction:1];
 	[alert_image unlockFocus];
@@ -131,10 +127,6 @@ struct event_info text_event_info[NUM_XP];
 	self->dcc_recv_window = nil;
 	self->dcc_chat_window = nil;
 	self->url_grabber = nil;
-	self->notify_list = nil;
-	self->ignore_window = nil;
-	self->ascii_window = nil;
-	self->plugin_list_win = nil;
 	
 	self->search_string = nil;
 	
@@ -256,7 +248,7 @@ struct event_info text_event_info[NUM_XP];
 - (void) do_prefs:(id) sender
 {
 	if (!prefs_controller)
-		prefs_controller = [[PrefsController alloc] init];
+		prefs_controller = [[PreferencesController alloc] init];
 	[prefs_controller show];
 }
 
@@ -413,15 +405,13 @@ struct event_info text_event_info[NUM_XP];
 
 - (void) pluginlist_update
 {
-	if (plugin_list_win)
-		[plugin_list_win update];
+	[(PluginWindow *)[UtilityWindow utilityIfExistsByKey:@"PluginWindow"] update];
 }
 
 - (void) do_pluginlist:(id) sender
 {
-	if (!plugin_list_win)
-		[[PluginList alloc] initWithSelfPtr:&plugin_list_win];
-	[plugin_list_win show];
+	UtilityWindow *window = [UtilityWindow utilityByKey:@"PluginWindow" windowNibName:@"PluginWindow"];
+	[window makeKeyAndOrderFront:self];
 }
 
 - (void) do_flush_buffer:(id) sender
@@ -619,14 +609,12 @@ struct event_info text_event_info[NUM_XP];
 
 - (void) notify_list_update
 {
-	if (notify_list)
-		[notify_list update];
+	[(FriendWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:@"FriendWindow"] update];
 }
 
-- (void) ignore_update:(int) level
+- (void) ignore_update:(int)level
 {
-	if (ignore_window)
-		[ignore_window update:level];
+	[(IgnoreWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:@"IgnoreWindow"] update:level];
 }
 
 /* let's do it in the standard Cocoa way */
@@ -715,32 +703,24 @@ struct event_info text_event_info[NUM_XP];
 
 - (void) do_notify_list_window:(id) sender
 {
-	if (!notify_list)
-		[[FriendListWin alloc] initWithSelfPtr:&notify_list];
-	[notify_list show];
+	[[UtilityTabOrWindowView utilityByKey:@"FriendWindow" viewNibName:@"FriendWindow"] becomeTabOrWindowAndShow];
 }
 
 - (void) do_ignore_window:(id) sender
 {
-	if (!ignore_window)
-		[[IgnoreListWin alloc] initWithSelfPtr:&ignore_window];
-	[ignore_window show];
+	[[UtilityTabOrWindowView utilityByKey:@"IgnoreWindow" viewNibName:@"IgnoreWindow"] becomeTabOrWindowAndShow];
 }
 
 - (void) do_ban_list_window:(id) sender
 {
 	if (current_sess->type != SESS_CHANNEL)
 		return;
-	if (!current_sess->gui->ban_list)
-		[[BanListWin alloc] initWithSelfPtr:&current_sess->gui->ban_list session:current_sess];
-	[current_sess->gui->ban_list show];
+	[[UtilityTabOrWindowView utilityByKey:BanWindowKey(current_sess) viewNibName:@"BanWindow"] becomeTabOrWindowAndShow];
 }
 
 - (void) do_ascii_window:(id) sender
 {
-	if (!ascii_window)
-		[[AsciiWin alloc] initWithSelfPtr:&ascii_window];
-	[ascii_window show];
+	[[AsciiWindow utilityByKey:@"AsciiWindow"] makeKeyAndOrderFront:self];
 }
 
 - (void) do_new_server:(id) sender
@@ -773,11 +753,9 @@ struct event_info text_event_info[NUM_XP];
 	if (current_sess->server->connected)
 	{
 		if (prefs.invisible)
-			tcp_sendf (current_sess->server, "MODE %s +i\r\n",
-											current_sess->server->nick);
+			tcp_sendf (current_sess->server, "MODE %s +i\r\n", current_sess->server->nick);
 		else
-			tcp_sendf (current_sess->server, "MODE %s -i\r\n",
-											current_sess->server->nick);
+			tcp_sendf (current_sess->server, "MODE %s -i\r\n", current_sess->server->nick);
 	}
 }
 
@@ -788,11 +766,9 @@ struct event_info text_event_info[NUM_XP];
 	if (current_sess->server->connected)
 	{
 		if (prefs.servernotice)
-			tcp_sendf (current_sess->server, "MODE %s +s\r\n",
-											current_sess->server->nick);
+			tcp_sendf (current_sess->server, "MODE %s +s\r\n", current_sess->server->nick);
 		else
-			tcp_sendf (current_sess->server, "MODE %s -s\r\n",
-											current_sess->server->nick);
+			tcp_sendf (current_sess->server, "MODE %s -s\r\n", current_sess->server->nick);
 	}
 }
 
@@ -803,11 +779,9 @@ struct event_info text_event_info[NUM_XP];
 	if (current_sess->server->connected)
 	{
 		if (prefs.wallops)
-			tcp_sendf (current_sess->server, "MODE %s +w\r\n",
-											current_sess->server->nick);
+			tcp_sendf (current_sess->server, "MODE %s +w\r\n", current_sess->server->nick);
 		else
-			tcp_sendf (current_sess->server, "MODE %s -w\r\n",
-											current_sess->server->nick);
+			tcp_sendf (current_sess->server, "MODE %s -w\r\n", current_sess->server->nick);
 	}
 }
 
