@@ -15,22 +15,26 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#import "SGSelfPtr.h"
+#import "UtilityWindow.h"
 
-@interface PluginList : SGSelfPtr
+@interface BanWindow : UtilityTabOrWindowView
 #if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSWindowDelegate,NSTableViewDataSource>
+<NSTableViewDataSource>
 #endif
 {
-	IBOutlet NSTableView *pluginListTableView;
-	NSMutableArray *myItems;
+	IBOutlet NSTableView *banTableView;
+	IBOutlet NSButton *refreshButton;
+	NSMutableArray	*bans;
+	NSTimer			*timer;
+	struct session	*sess;
 }
 
-- (IBAction) doLoad:(id) sender;
-- (IBAction) doUnload:(id) sender;
+- (void) addBanList:(NSString *)mask who:(NSString *)who when:(NSString *)when isExemption:(BOOL)isExemption;
+- (void) banListEnd;
 
-- (id) initWithSelfPtr:(id *)selfPtr;
-- (void) show;
-- (void) update;
+- (IBAction) doUnban:(id)sender;
+- (IBAction) doCrop:(id)sender;
+- (IBAction) doWipe:(id)sender;
+- (IBAction) doRefresh:(id)sender;
 
 @end

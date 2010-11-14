@@ -50,40 +50,30 @@ static NSString *charsets[] =
 @interface OneChannel : NSObject
 {
   @public
-	NSString	*chan;
+	NSString	*channel;
 	NSString	*key;
 }
+
+@property(nonatomic,retain) NSString *channel, *key;
 
 @end
 
 @implementation OneChannel
+@synthesize channel, key;
 
-- (id) initWithChannel:(NSString *) s
+- (id) initWithChannel:(NSString *)aChannel
 {
-	self = [super init];
-	
-	chan = [s retain];
-	
+	if ((self = [super init]) != nil ) {
+		self.channel = aChannel;
+	}
 	return self;
 }
 
 - (void) dealloc
 {
-	[chan release];
-	[key release];
+	self.channel = nil;
+	self.key = nil;
 	[super dealloc];
-}
-
-- (void) setChannel:(NSString *) c
-{
-	[chan release];
-	chan = [c retain];
-}
-
-- (void) setKey:(NSString *) k
-{
-	[key release];
-	key = [k retain];
 }
 
 @end
@@ -322,7 +312,7 @@ static NSString *charsets[] =
 				[keys appendString:@","];
 			}
 			
-			[chans appendString:chan->chan];
+			[chans appendString:chan->channel];
 			[keys appendString:key];
 		}
 	}
@@ -338,7 +328,7 @@ static NSString *charsets[] =
 			if ([chans length])
 				[chans appendString:@","];
 			
-			[chans appendString:chan->chan];
+			[chans appendString:chan->channel];
 		}
 	}
 	
@@ -1086,7 +1076,7 @@ static ServerList *instance;
 		
 		switch (col)
 		{
-			case 0: return chan->chan;
+			case 0: return chan->channel;
 			case 1: return chan->key;
 		}
 	}

@@ -31,7 +31,7 @@
 - (id) init
 {
 	self = [super init];
-	penders = [[NSMutableArray arrayWithCapacity:10] retain];
+	penders = [[NSMutableArray alloc] initWithCapacity:10];
 	return self;
 }
 
@@ -122,9 +122,8 @@
 
 - (id)initWithView:(NSView *) the_view;
 {
-	self->view = the_view;
+	self->view = [the_view retain];
 	[self reset_prefSize];
-	[view retain];
 	
 	return self;
 }
@@ -153,8 +152,7 @@
 - (void) setView:(NSView *) newView
 {
 	[view release];
-	view = newView;
-	[view retain];
+	view = [newView retain];
 }
 
 - (void) setFrame:(NSRect) frame

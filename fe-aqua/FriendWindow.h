@@ -15,43 +15,41 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#import "SGSelfPtr.h"
+#import "UtilityWindow.h"
 
-@interface FriendAddWindow : NSPanel
+@interface FriendAdditionPanel : NSPanel
 #if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
 <NSWindowDelegate>
 #endif
 {
-	NSPanel	 *friendAddPanel;
-	IBOutlet NSTextField *friendAddNickTextField;
-	IBOutlet NSTextField *friendAddNetworkTextField;	
+	IBOutlet NSTextField *friendAdditionNickTextField;
+	IBOutlet NSTextField *friendAdditionNetworkTextField;	
 }
 
-- (void) doAdd;
-- (IBAction) doOk:(id) sender;
-- (IBAction) doCancel:(id) sender;
+- (void)showAdditionWindow;
+- (IBAction)doOk:(id) sender;
+- (IBAction)doCancel:(id) sender;
 
 @end
 
 /****************************************************************************/
 
 @class TabOrWindowView;
-@interface FriendListWin : SGSelfPtr
+@interface FriendWindow : UtilityTabOrWindowView
 #if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
 <NSTableViewDataSource>
 #endif
 {
-	IBOutlet NSTableView		*friendListTableView;
-	IBOutlet TabOrWindowView	*friendListView;
-	IBOutlet FriendAddWindow	*friendAddWindow;
-	NSMutableArray	*friendItems;
+	IBOutlet NSTableView			*friendTableView;
+	IBOutlet FriendAdditionPanel	*friendAdditionPanel;
+	NSMutableArray	*friends;
 }
 
-- (IBAction) doAdd:(id)sender;
-- (IBAction) doRemove:(id)sender;
+@property (nonatomic, retain) FriendAdditionPanel *friendAdditionPanel;
 
-- (id) initWithSelfPtr:(id *)selfPtr;
-- (void) show;
+- (IBAction)addFriend:(id)sender;
+- (IBAction)removeFriend:(id)sender;
+
 - (void) update;
 
 @end

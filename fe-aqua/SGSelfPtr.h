@@ -20,6 +20,6 @@
 	id	*ptr;
 }
 
-- (id) initWithSelfPtr:(id *) self_ptr;
+- (id)initWithSelfPtr:(id *) self_ptr;
 
 @end

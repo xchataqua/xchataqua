@@ -35,7 +35,7 @@
 		<object class="NSMutableArray" key="IBDocument.RootObjects" id="156144608">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSCustomObject" id="11157371">
-				<string key="NSClassName">PrefsController</string>
+				<string key="NSClassName">PreferencesController</string>
 			</object>
 			<object class="NSCustomObject" id="402593865">
 				<string key="NSClassName">FirstResponder</string>
@@ -4295,7 +4295,6 @@
 																<reference key="NSHScroller" ref="1011610652"/>
 																<reference key="NSContentView" ref="433990135"/>
 																<reference key="NSHeaderClipView" ref="470130271"/>
-																<reference key="NSCornerView" ref="487984560"/>
 																<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
 															</object>
 															<object class="NSTextField" id="281284938">
@@ -5399,38 +5398,6 @@
 					<int key="connectionID">229</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_show_prefs:</string>
-						<reference key="source" ref="11157371"/>
-						<reference key="destination" ref="665353132"/>
-					</object>
-					<int key="connectionID">230</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_apply:</string>
-						<reference key="source" ref="11157371"/>
-						<reference key="destination" ref="26097905"/>
-					</object>
-					<int key="connectionID">231</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_cancel:</string>
-						<reference key="source" ref="11157371"/>
-						<reference key="destination" ref="662298341"/>
-					</object>
-					<int key="connectionID">232</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_font:</string>
-						<reference key="source" ref="11157371"/>
-						<reference key="destination" ref="1007387692"/>
-					</object>
-					<int key="connectionID">234</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">font_text</string>
 						<reference key="source" ref="11157371"/>
@@ -5479,14 +5446,6 @@
 					<int key="connectionID">240</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_trans:</string>
-						<reference key="source" ref="11157371"/>
-						<reference key="destination" ref="823087564"/>
-					</object>
-					<int key="connectionID">241</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">trans_check</string>
 						<reference key="source" ref="11157371"/>
@@ -5525,14 +5484,6 @@
 						<reference key="destination" ref="492037363"/>
 					</object>
 					<int key="connectionID">247</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_trans:</string>
-						<reference key="source" ref="11157371"/>
-						<reference key="destination" ref="8070843"/>
-					</object>
-					<int key="connectionID">248</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -6055,14 +6006,6 @@
 					<int key="connectionID">324</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_ok:</string>
-						<reference key="source" ref="11157371"/>
-						<reference key="destination" ref="247430523"/>
-					</object>
-					<int key="connectionID">336</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">scrolling_completion_check</string>
 						<reference key="source" ref="11157371"/>
@@ -6174,6 +6117,62 @@
 					</object>
 					<int key="connectionID">617</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doApply:</string>
+						<reference key="source" ref="11157371"/>
+						<reference key="destination" ref="26097905"/>
+					</object>
+					<int key="connectionID">656</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">applyTranparency:</string>
+						<reference key="source" ref="11157371"/>
+						<reference key="destination" ref="823087564"/>
+					</object>
+					<int key="connectionID">657</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doCancel:</string>
+						<reference key="source" ref="11157371"/>
+						<reference key="destination" ref="662298341"/>
+					</object>
+					<int key="connectionID">658</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">applyFont:</string>
+						<reference key="source" ref="11157371"/>
+						<reference key="destination" ref="1007387692"/>
+					</object>
+					<int key="connectionID">659</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doOk:</string>
+						<reference key="source" ref="11157371"/>
+						<reference key="destination" ref="247430523"/>
+					</object>
+					<int key="connectionID">660</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">applyTranparency:</string>
+						<reference key="source" ref="11157371"/>
+						<reference key="destination" ref="8070843"/>
+					</object>
+					<int key="connectionID">661</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showRawPreferences:</string>
+						<reference key="source" ref="11157371"/>
+						<reference key="destination" ref="665353132"/>
+					</object>
+					<int key="connectionID">663</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -6206,7 +6205,7 @@
 							<reference ref="812753686"/>
 						</object>
 						<reference key="parent" ref="0"/>
-						<string key="objectName">Pref window</string>
+						<string key="objectName">Preferences window</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">81</int>
@@ -12330,7 +12329,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">655</int>
+			<int key="maxID">663</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -12383,8 +12382,68 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">PrefsController</string>
+					<string key="className">PreferencesController</string>
 					<string key="superclassName">NSObject</string>
+					<object class="NSMutableDictionary" key="actions">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>applyFont:</string>
+							<string>applyTranparency:</string>
+							<string>doApply:</string>
+							<string>doCancel:</string>
+							<string>doOk:</string>
+							<string>showRawPreferences:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>applyFont:</string>
+							<string>applyTranparency:</string>
+							<string>doApply:</string>
+							<string>doCancel:</string>
+							<string>doOk:</string>
+							<string>showRawPreferences:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">applyFont:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">applyTranparency:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">doApply:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">doCancel:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">doOk:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showRawPreferences:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+						</object>
+					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
@@ -13063,114 +13122,7 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">fe-aqua/PrefsController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">PrefsController</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="actions">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>do_apply:</string>
-							<string>do_cancel:</string>
-							<string>do_font:</string>
-							<string>do_ok:</string>
-							<string>do_show_prefs:</string>
-							<string>do_trans:</string>
-							<string>showPrefs:</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>do_apply:</string>
-							<string>do_cancel:</string>
-							<string>do_font:</string>
-							<string>do_ok:</string>
-							<string>do_show_prefs:</string>
-							<string>do_trans:</string>
-							<string>showPrefs:</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBActionInfo">
-								<string key="name">do_apply:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_cancel:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_font:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_ok:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_show_prefs:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_trans:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">showPrefs:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="outlets">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>tab_left_sr</string>
-							<string>tab_right_sr</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>SRRecorderControl</string>
-							<string>SRRecorderControl</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>tab_left_sr</string>
-							<string>tab_right_sr</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBToOneOutletInfo">
-								<string key="name">tab_left_sr</string>
-								<string key="candidateClassName">SRRecorderControl</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">tab_right_sr</string>
-								<string key="candidateClassName">SRRecorderControl</string>
-							</object>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBUserSource</string>
-						<string key="minorKey"/>
+						<string key="minorKey">fe-aqua/PreferencesController.h</string>
 					</object>
 				</object>
 			</object>

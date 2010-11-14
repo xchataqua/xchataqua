@@ -29,7 +29,7 @@ extern GSList *plugin_list;
 
 #import "AquaChat.h"
 #import "SGAlert.h"
-#import "PluginList.h"
+#import "PluginWindow.h"
 
 //////////////////////////////////////////////////////////////////////
 
@@ -50,10 +50,10 @@ extern GSList *plugin_list;
 
 - (id) initWithPlugin:(xchat_plugin *) plugin
 {
-	name = [[NSString stringWithUTF8String:plugin->name] retain];
-	vers = [[NSString stringWithUTF8String:plugin->version] retain];
-	file = [[NSString stringWithUTF8String:file_part(plugin->filename)] retain];
-	desc = [[NSString stringWithUTF8String:plugin->desc] retain];
+	name = [[NSString alloc] initWithUTF8String:plugin->name];
+	vers = [[NSString alloc] initWithUTF8String:plugin->version];
+	file = [[NSString alloc] initWithUTF8String:file_part(plugin->filename)];
+	desc = [[NSString alloc] initWithUTF8String:plugin->desc];
 	
 	return self;
 }
@@ -71,34 +71,28 @@ extern GSList *plugin_list;
 
 //////////////////////////////////////////////////////////////////////
 
-@implementation PluginList
+@implementation PluginWindow
 
-- (id) initWithSelfPtr:(id *)self_ptr
-{
-	self = [super initWithSelfPtr:self_ptr];
-   
-	self->myItems = [[NSMutableArray alloc] init];
-
-	[NSBundle loadNibNamed:@"PluginList" owner:self];
-
+- (id) initWithCoder:(NSCoder *)aDecoder {
+	if ((self = [super initWithCoder:aDecoder]) != nil) {
+		self->plugins = [[NSMutableArray alloc] init];
+	}
 	return self;
 }
 
 - (void) dealloc
 {
-	[self->pluginListTableView setDataSource:nil];
-	[[self->pluginListTableView window] autorelease];
-	[myItems release];
+	[self->pluginTableView setDataSource:nil];
+	[plugins release];
 	[super dealloc];
 }
 
-- (void) doUnload:(id) sender
-{
-	NSInteger row = [self->pluginListTableView selectedRow];
+- (void)unloadPlugin:(id)sender {
+	NSInteger row = [self->pluginTableView selectedRow];
 	if (row < 0)
 		return;
 	
-	PluginItem *item = [myItems objectAtIndex:row];
+	PluginItem *item = [plugins objectAtIndex:row];
 
 	NSUInteger len = [item->file length];
 	if (len > 3 && strcasecmp ([item->file UTF8String] + len - 3, ".so") == 0)
@@ -113,49 +107,31 @@ extern GSList *plugin_list;
 	}
 }
 
-- (void) doLoad:(id) sender
-{
+- (void)loadPlugin:(id)sender {
 	[[AquaChat sharedAquaChat] do_load_plugin:sender];
 }
 
 - (void) loadData
 {
-	[myItems removeAllObjects];
+	[plugins removeAllObjects];
 
 	for (GSList *list = plugin_list; list; list = list->next)
 	{
 		xchat_plugin *pl = (xchat_plugin *) list->data;
 		if (pl->version && pl->version [0])
-			[myItems addObject:[[PluginItem alloc] initWithPlugin:pl]];
+			[plugins addObject:[[PluginItem alloc] initWithPlugin:pl]];
 	}
 
-	[self->pluginListTableView reloadData];
+	[self->pluginTableView reloadData];
 }
 
 - (void) awakeFromNib
 {
-	for (NSUInteger i = 0; i < [self->pluginListTableView numberOfColumns]; i ++)
-		[[[self->pluginListTableView tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInt:i]];
+	for (NSUInteger i = 0; i < [self->pluginTableView numberOfColumns]; i++)
+		[[[self->pluginTableView tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInteger:i]];
 
-	[self->pluginListTableView setDataSource:self];
-	[[self->pluginListTableView window] setDelegate:self];
-	[[self->pluginListTableView window] center];
-
+	[self center];
 	[self loadData];
-}
-
-- (void) windowDidBecomeKey:(NSNotification *) xx
-{
-}
-
-- (void) windowWillClose:(NSNotification *) xx
-{
-	[self release];
-}
-
-- (void) show
-{
-	[[self->pluginListTableView window] makeKeyAndOrderFront:self];
 }
 
 - (void) update
@@ -168,14 +144,14 @@ extern GSList *plugin_list;
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
 {
-	return [myItems count];
+	return [plugins count];
 }
 
 - (id) tableView:(NSTableView *) aTableView
 	objectValueForTableColumn:(NSTableColumn *) aTableColumn
 	row:(NSInteger) rowIndex
 {
-	PluginItem *item = [myItems objectAtIndex:rowIndex];
+	PluginItem *item = [plugins objectAtIndex:rowIndex];
 
 	switch ([[aTableColumn identifier] integerValue])
 	{
