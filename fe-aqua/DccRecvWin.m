@@ -21,7 +21,6 @@
 #include "../common/dcc.h"
 
 #import "DccRecvWin.h"
-#import "SGAlert.h"
 
 extern int dcc_getcpssum;
 
@@ -70,9 +69,8 @@ extern int dcc_getcpssum;
 
 @implementation DccRecvWin
 
-+ (void) initialize
-{
-	[self setKeys:[NSArray arrayWithObject:@"activeCount"] triggerChangeNotificationsForDependentKey:@"activeString"];
++ (NSSet *) keyPathsForValuesAffectingActiveString {
+	return [NSSet setWithObject:@"activeCount"];
 }
 
 - (id) init
@@ -97,7 +95,7 @@ extern int dcc_getcpssum;
 	[dccListView setTabTitle:NSLocalizedStringFromTable(@"dccrecv", @"xchataqua", @"")];
 }
 
-- (void) doReveal:(id) sender
+- (void) doReveal:(id)sender
 {
 	NSInteger row = [itemTableView selectedRow];
 	if (row >= 0)
@@ -123,7 +121,7 @@ extern int dcc_getcpssum;
 	}
 }
 
-- (void) doAccept:(id) sender
+- (void) doAccept:(id)sender
 {
 	NSInteger row = [itemTableView selectedRow];
 	if (row >= 0)
@@ -134,7 +132,7 @@ extern int dcc_getcpssum;
 	}
 }
 
-- (void) doResume:(id) sender
+- (void) doResume:(id)sender
 {
 	NSInteger row = [itemTableView selectedRow];
 	if (row >= 0)
@@ -145,7 +143,7 @@ extern int dcc_getcpssum;
 	}
 }
 
-- (void) doInfo:(id) sender
+- (void) doInfo:(id)sender
 {
 	NSInteger row = [itemTableView selectedRow];
 	if (row >= 0)
@@ -186,13 +184,13 @@ extern int dcc_getcpssum;
 //////////////
 //
 
-- (id) tableView:(NSTableView *) aTableView
-	objectValueForTableColumn:(NSTableColumn *) aTableColumn
+- (id) tableView:(NSTableView *)aTableView
+	objectValueForTableColumn:(NSTableColumn *)aTableColumn
 	row:(NSInteger) rowIndex
 {
 	DccRecvItem *item = [dccItems objectAtIndex:rowIndex];
 
-	switch ([[aTableColumn identifier] integerValue])
+	switch ([[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn])
 	{
 		case 0: return [item status];
 		case 1: return [item file];

@@ -33,7 +33,7 @@
   @public	// TODO - fix this
 	SGWrapView		*hbox;
 	NSOutlineView	*outline;
-	CGFloat			outline_width;
+	CGFloat			xa_outline_width;
 	SGTabViewItem	*selected_tab;
 	NSMutableArray	*tabs;
 	NSMutableArray	*groups;	// For outline view only
@@ -49,8 +49,8 @@
 - (void) removeTabViewItem:(SGTabViewItem *) tabViewItem;
 - (void) selectTabViewItem:(SGTabViewItem *) tabViewItem;
 - (void) selectTabViewItemAtIndex:(NSInteger) index;
-- (void) selectNextTabViewItem:(id) sender;
-- (void) selectPreviousTabViewItem:(id) sender;
+- (void) selectNextTabViewItem:(id)sender;
+- (void) selectPreviousTabViewItem:(id)sender;
 - (SGTabViewItem *) tabViewItemAtIndex:(NSInteger) index;
 - (SGTabViewItem *) selectedTabViewItem;
 - (NSArray *) tabViewItems;

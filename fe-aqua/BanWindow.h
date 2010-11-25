@@ -29,12 +29,12 @@
 	struct session	*sess;
 }
 
-- (void) addBanList:(NSString *)mask who:(NSString *)who when:(NSString *)when isExemption:(BOOL)isExemption;
-- (void) banListEnd;
+- (void)addBanWithMask:(NSString *)mask who:(NSString *)who when:(NSString *)when isExemption:(BOOL)isExemption;
+- (void)refreshFinished;
 
-- (IBAction) doUnban:(id)sender;
-- (IBAction) doCrop:(id)sender;
-- (IBAction) doWipe:(id)sender;
-- (IBAction) doRefresh:(id)sender;
+- (IBAction)removeSelectedBans:(id)sender;
+- (IBAction)removeUnselectedBans:(id)sender;
+- (IBAction)removeAllBans:(id)sender;
+- (IBAction)refreshTableView:(id)sender;
 
 @end

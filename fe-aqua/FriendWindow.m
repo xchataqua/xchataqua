@@ -17,77 +17,75 @@
 
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
+#include "../common/outbound.h"
 #include "../common/notify.h"
 
 #import "FriendWindow.h"
 #import "TabOrWindowView.h"
 
-//////////////////////////////////////////////////////////////////////
-
 @interface FriendItem : NSObject
 {
   @public
-	NSString *user, *status, *server, *last, *networks;
+	struct notify_per_server *serverNotify;
+	NSString *user, *status, *networks;
 }
 
-- (id) initWithUser:(NSString *)user 
-			 online:(BOOL)online
-			 server:(struct notify_per_server *)server
-		   networks:(NSString *)networks;
+@property (nonatomic, readonly) NSString *server, *last;
+
++ (FriendItem *)friendWithUser:(NSString *)aUser online:(BOOL)online notify:(struct notify_per_server *)notify networks:(NSString *)aNetwork;
 
 @end
 
 @implementation FriendItem
 
-- (id) initWithUser:(NSString *)aUser
-			 online:(BOOL)online
-			 server:(struct notify_per_server *)svr
-		   networks:(NSString *)aNetwork;
++ (FriendItem *) friendWithUser:(NSString *)aUser online:(BOOL)online notify:(struct notify_per_server *)aNotify networks:(NSString *)aNetwork
 {
-	self->user = [aUser retain];
-	self->status = [(online ? NSLocalizedStringFromTable(@"Online", @"xchat", @"") : NSLocalizedStringFromTable(@"Offline", @"xchat", @"")) retain];
-	self->networks = [aNetwork retain];
-	if (svr && svr->laston)
-	{
-		self->server = [[NSString alloc] initWithUTF8String:svr->server->servername];
-		self->last = [[NSString alloc] initWithUTF8String:ctime(&svr->laston)];
+	FriendItem *friend = [[self alloc] init];
+	if ( friend != nil ) {
+		friend->serverNotify = aNotify;
+		friend->user = [aUser retain];
+		friend->status = [(online ? NSLocalizedStringFromTable(@"Online", @"xchat", @"") : NSLocalizedStringFromTable(@"Offline", @"xchat", @"")) retain];
+		friend->networks = [aNetwork retain];
 	}
-	else
-	{
-		self->server = [@"" retain];
-		self->last = [NSLocalizedStringFromTable(@"Never", @"xchat", @"") retain];
-	}
-	return self;
+	return friend;
 }
 
 - (void) dealloc
 {
 	[user release];
 	[status release];
-	[self->server release];
-	[last release];
 	[networks release];
 	[super dealloc];
 }
 
+#pragma mark property interface
+
+- (NSString *) server {
+	return (serverNotify && serverNotify->laston) ? [NSString stringWithUTF8String:serverNotify->server->servername] : @"";
+}
+
+- (NSString *) last {
+	return (serverNotify && serverNotify->laston) ? [NSString stringWithUTF8String:ctime(&serverNotify->laston)] : NSLocalizedStringFromTable(@"Never", @"xchat", @"");
+}
+
 @end
 
-/****************************************************************************/
+#pragma mark -
 
 @implementation FriendWindow
 @synthesize friendAdditionPanel;
 
-- (id)FriendWindowInit {
+- (id) FriendWindowInit {
 	friends = [[NSMutableArray alloc] init];
 	return self;
 }
 
-- (id)initWithFrame:(NSRect)frameRect {
+- (id) initWithFrame:(NSRect)frameRect {
 	self = [super initWithFrame:frameRect];
 	return [self FriendWindowInit];
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder
+- (id) initWithCoder:(NSCoder *)aDecoder
 {
 	self = [super initWithCoder:aDecoder];
 	return [self FriendWindowInit];
@@ -100,7 +98,15 @@
 	[super dealloc];
 }
 
-- (void) loadData
+- (void) awakeFromNib
+{
+	[self setTitle:NSLocalizedStringFromTable(@"XChat: Friends List", @"xchat", @"")];
+	[self setTabTitle:NSLocalizedStringFromTable(@"friends", @"xchataqua", @"")];
+	
+	[self update];
+}
+
+- (void) update
 {
 	// Each "user" could exist on multiple servers.
 	// notify_list is a list of "users" and a list of all servers he is on
@@ -109,10 +115,10 @@
 	// For each user that is not online on any server, we just add the 'lastseen' line
 	
 	[friends removeAllObjects];
-
+	
 	for (GSList *list = notify_list; list; list = list->next)
 	{
-		struct notify_per_server *lastsvr = NULL;
+		struct notify_per_server *lastNotify = NULL;
 		BOOL online = NO;
 		
 		struct notify *user = (struct notify *) list->data;
@@ -120,63 +126,60 @@
 		for (GSList *list2 = user->server_list; list2; list2 = list2->next)
 		{
 			struct notify_per_server *svr = (struct notify_per_server *) list2->data;
-
-			if (!lastsvr || svr->laston > lastsvr->laston)
-				lastsvr = svr;
-				
+			
+			if (!lastNotify || svr->laston > lastNotify->laston)
+				lastNotify = svr;
+			
 			if (svr->ison)
 			{
 				online = YES;
 				break;
 			}			   
 		}
-
-		FriendItem *friendItem = [[FriendItem alloc] initWithUser:[NSString stringWithUTF8String:user->name]
-														   online:online
-														   server:lastsvr
-														 networks:user->networks ? [NSString stringWithUTF8String:user->networks] : @""];
+		
+		FriendItem *friendItem = [FriendItem friendWithUser:[NSString stringWithUTF8String:user->name]
+													 online:online
+													 notify:lastNotify
+												   networks:user->networks ? [NSString stringWithUTF8String:user->networks] : @""];
 		[friends addObject:friendItem];
-		[friendItem release];
 	}
-
+	
 	[friendTableView reloadData];
 }
 
-- (void) awakeFromNib
-{
-	[self setTitle:NSLocalizedStringFromTable(@"XChat: Friends List", @"xchat", @"")];
-	[self setTabTitle:NSLocalizedStringFromTable(@"friends", @"xchataqua", @"")];
-	
-	for ( NSUInteger i = 0; i < [self->friendTableView numberOfColumns]; i++ )
-		[[[self->friendTableView tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInteger:i]];
+#pragma mark -
+#pragma mark IBAction
 
-	[self loadData];
-}
-
-- (void)addFriend:(id)sender
+- (void) addFriend:(id)sender
 {
 	[friendAdditionPanel showAdditionWindow];
 }
 
-- (void)removeFriend:(id)sender
+- (void) removeFriend:(id)sender
 {
-	NSInteger row = [self->friendTableView selectedRow];
-	if (row < 0)
+	NSInteger friendIndex = [self->friendTableView selectedRow];
+	if (friendIndex < 0)
 		return;
 
-	FriendItem *friend = (FriendItem *) [self->friends objectAtIndex:row];
+	FriendItem *friend = [self->friends objectAtIndex:friendIndex];
 	notify_deluser ((char *)[friend->user UTF8String]);
 }
 
-- (void) update
+- (void) openDialog:(id)sender
 {
-	[self loadData];
+	NSInteger friendIndex = [self->friendTableView selectedRow];
+	if (friendIndex < 0)
+		return;
+
+	FriendItem *friend = [self->friends objectAtIndex:friendIndex];
+	if ( friend->serverNotify )
+		open_query(friend->serverNotify->server, friend->serverNotify->notify->name, true);
 }
 
 #pragma mark -
-#pragma mark table view protocols
+#pragma mark NSTableView dataSource
 
-- (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
+- (NSInteger) numberOfRowsInTableView:(NSTableView *)aTableView
 {
 	return [self->friends count];
 }
@@ -185,23 +188,25 @@
 {
 	FriendItem *item = [self->friends objectAtIndex:row];
 
-	switch ([[aTableColumn identifier] integerValue])
+	switch ([[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn])
 	{
 		case 0: return item->user;
 		case 1: return item->status;
-		case 2: return item->server;
+		case 2: return [item server];
 		case 3: return item->networks;
-		case 4: return item->last;
+		case 4: return [item last];
 	}
-	assert(NO);
+	SGAssert(NO);
 	return @"";
 }
 
 @end
 
+#pragma mark -
+
 @implementation FriendAdditionPanel
 
--(void)showAdditionWindow
+-(void) showAdditionWindow
 {	
 	[friendAdditionNickTextField setStringValue:@""];
 	[friendAdditionNetworkTextField setStringValue:@"ALL"];
@@ -222,12 +227,12 @@
 	}
 }
 
--(void)doOk:(id)sender
+-(void) doOk:(id)sender
 {
 	[NSApp stopModalWithCode:1];
 }
 
--(void)doCancel:(id)sender
+-(void) doCancel:(id)sender
 {
 	[NSApp stopModalWithCode:0];
 }

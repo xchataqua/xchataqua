@@ -17,25 +17,31 @@
 
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
+#include "fe-aqua_common.h"
 
-#import "AquaChat.h"
 #import "ChatWindow.h"
 #import "AsciiWindow.h"
 
-//////////////////////////////////////////////////////////////////////
+@interface AsciiWindow (private)
+
+- (void) inputCharacter:(id)sender;
+
+@end
+
+#pragma mark -
 
 @implementation AsciiWindow
 
 - (id) init {
-	#define AWBWidth  30.0f
-	#define AWBHeight 30.0f
-	#define AWLWidth  30.0f
-	#define AWMargin  20.0f
-	#define AWColCount 16
+	#define AWButtonWidth  30.0f
+	#define AWButtonHeight 30.0f
+	#define AWLabelWidth   30.0f
+	#define AWMargin	   20.0f
+	#define AWNumberOfColumns 16
 
 	NSRect windowRect = NSMakeRect (0.0f, 0.0f,
-								   AWColCount * AWBWidth + AWMargin + AWMargin + AWLWidth,
-								   AWColCount * AWBHeight + AWMargin + AWMargin);
+								   AWNumberOfColumns * AWButtonWidth + AWMargin + AWMargin + AWLabelWidth,
+								   AWNumberOfColumns * AWButtonHeight+ AWMargin + AWMargin);
 
 	self = [super initWithContentRect:windowRect 
 							styleMask:NSTitledWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask
@@ -45,7 +51,7 @@
 	if ( self != nil ) {
 		NSView *asciiView = [[NSView alloc] initWithFrame:windowRect];
 	
-		for (NSInteger y = 0; y < AWColCount; y ++)
+		for (NSInteger y = 0; y < AWNumberOfColumns; y ++)
 		{
 			NSTextField *lineTextField = [[NSTextField alloc] init];
 			[lineTextField setEditable:NO];
@@ -53,25 +59,25 @@
 			[lineTextField setBordered:NO];
 			[lineTextField setDrawsBackground:NO];
 			[lineTextField setAlignment:NSRightTextAlignment];
-			[lineTextField setTitleWithMnemonic:[NSString stringWithFormat:@"%03d", y * AWColCount]];
+			[lineTextField setTitleWithMnemonic:[NSString stringWithFormat:@"%03d", y * AWNumberOfColumns]];
 			[lineTextField sizeToFit];
 			NSRect lineFrame = [lineTextField frame];
-			NSPoint lineOrigin = NSMakePoint (AWMargin + AWLWidth - lineFrame.size.width - 5.0f, 
-											  windowRect.size.height - AWMargin - y * AWBHeight - AWBHeight + (AWBHeight - lineFrame.size.height) / 2);
+			NSPoint lineOrigin = NSMakePoint (AWMargin + AWLabelWidth - lineFrame.size.width - 5.0f, 
+											  AWMargin + y * AWButtonHeight + (AWButtonHeight - lineFrame.size.height) / 2);
 			[lineTextField setFrameOrigin:lineOrigin];
 			[asciiView addSubview:lineTextField];
 			[lineTextField release];
 			
-			for (NSInteger x = 0; x < AWColCount; x ++)
+			for (NSInteger x = 0; x < AWNumberOfColumns; x ++)
 			{
-				unichar character = y * AWColCount + x;
+				unichar character = y * AWNumberOfColumns + x;
 				
-				NSRect buttonRect = NSMakeRect (AWMargin + AWLWidth + x * AWBWidth, windowRect.size.height - AWMargin - y * AWBHeight - AWBHeight, AWBWidth, AWBHeight);
+				NSRect buttonRect = NSMakeRect (AWMargin + AWLabelWidth + x * AWButtonWidth, AWMargin + y * AWButtonHeight, AWButtonWidth, AWButtonHeight);
 				NSButton *characterButton = [[NSButton alloc] initWithFrame:buttonRect];
 				[characterButton setBezelStyle:NSShadowlessSquareBezelStyle];
 				[characterButton setButtonType:NSMomentaryPushButton];
 				[characterButton setTitle:[NSString stringWithFormat:@"%c", character]];
-				[characterButton setAction:@selector(onInput:)];
+				[characterButton setAction:@selector(inputCharacter:)];
 				[characterButton setTarget:self];
 				[characterButton setTag:character];
 				[characterButton setImagePosition:NSNoImage];
@@ -89,10 +95,16 @@
 	return self;
 }
 
-- (void) onInput:(id) sender
+@end
+
+#pragma mark -
+
+@implementation AsciiWindow (private)
+
+- (void) inputCharacter:(id)sender
 {
 	if (current_sess)
-		[current_sess->gui->cw insertText:[sender title]];
+		[current_sess->gui->chatWindow insertText:[sender title]];
 }
 
 @end

@@ -10,22 +10,26 @@
 
 @interface UtilityWindow : NSWindow
 {
-	id key;
+	id windowKey;
 }
 
-+ (UtilityWindow *)utilityIfExistsByKey:(id)key;
-+ (UtilityWindow *)utilityByKey:(id)key;
-+ (UtilityWindow *)utilityByKey:(id)key windowNibName:(NSString *)nibName;
+@property (nonatomic, readonly) id windowKey;
+
++ (id)utilityIfExistsByKey:(id)key;
++ (id)utilityByKey:(id)key;
++ (id)utilityByKey:(id)key windowNibName:(NSString *)nibName;
 
 @end
 
 @interface UtilityTabOrWindowView : TabOrWindowView
 {
-	id key;
+	id windowKey;
 }
 
-+ (UtilityTabOrWindowView *)utilityIfExistsByKey:(id)key;
-+ (UtilityTabOrWindowView *)utilityByKey:(id)key viewNibName:(NSString *)nibName;
-- (void)becomeTabOrWindowAndShow;
+@property (nonatomic, readonly) id windowKey;
+
++ (id)utilityIfExistsByKey:(id)key;
++ (id)utilityByKey:(id)key viewNibName:(NSString *)nibName;
+- (void)becomeTabOrWindowAndShow:(BOOL)flag;
 
 @end

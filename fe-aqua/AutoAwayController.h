@@ -20,6 +20,6 @@
 	BOOL	isAway;
 }
 
-@property (nonatomic, assign) BOOL isAway;
+@property (nonatomic, assign, setter=setAway:) BOOL isAway;
 
 @end

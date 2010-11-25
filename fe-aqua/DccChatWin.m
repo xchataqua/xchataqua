@@ -96,7 +96,7 @@
 	[dccListView setTabTitle:NSLocalizedStringFromTable(@"dccchat", @"xchataqua", @"Title of Tab: MainMenu->Window->DCC Chat...")];
 }
 
-- (void) doAccept:(id) sender
+- (void) doAccept:(id)sender
 {
 	NSInteger row = [itemTableView selectedRow];
 	if (row >= 0)
@@ -117,13 +117,13 @@
 //////////////
 //
 
-- (id) tableView:(NSTableView *) aTableView
-	objectValueForTableColumn:(NSTableColumn *) aTableColumn
+- (id) tableView:(NSTableView *)aTableView
+	objectValueForTableColumn:(NSTableColumn *)aTableColumn
 	row:(NSInteger) rowIndex
 {
 	DccChatItem *item = [dccItems objectAtIndex:rowIndex];
 
-	switch ([[aTableColumn identifier] integerValue])
+	switch ([[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn])
 	{
 		case 0: return [item status];
 		case 1: return [item toFrom];

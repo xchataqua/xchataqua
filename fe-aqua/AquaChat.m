@@ -22,73 +22,71 @@
 #include "../common/cfgfiles.h"
 #include "../common/util.h"
 #include "../common/text.h"
+#include "fe-aqua_common.h"
+
 #import <ShortcutRecorder/ShortcutRecorder.h>
 
 #import "AquaChat.h"
 #import "AutoAwayController.h"
-#import "CtcpReplies.h"
-#import "DialogButtons.h"
 #import "MenuMaker.h"
-#import "ReplacePopup.h"
 
+// Utility Window
 #import "AsciiWindow.h"
 #import "BanWindow.h"
-#import "ChannelListWin.h"
+#import "ChannelWindow.h"
 #import "ColorPalette.h"
 #import "ChatWindow.h"
 #import "DccSendWin.h"
 #import "DccRecvWin.h"
 #import "DccChatWin.h"
-#import "EditEvents.h"
+#import "EditListWindow.h"
 #import "FriendWindow.h"
 #import "IgnoreWindow.h"
-#import "LogViewer.h"
 #import "PluginWindow.h"
-#import "PreferencesController.h"
-#import "RawLogWin.h"
-#import "ServerList.h"
-#import "UrlGrabberWin.h"
-
-#import "UserCommands.h"
-#import "UserlistButtons.h"
-#import "UserlistPopup.h"
-#import "UrlHandlers.h"
-#import "UserMenus.h"
+#import "NetworkWindow.h"
+#import "UrlGrabberWindow.h"
 
 extern struct text_event te[];
 
 extern void identd_start ();
 extern void identd_stop ();
 
-//////////////////////////////////////////////////////////////////////
-
-struct menu_pref
+struct menuPreferenceItem
 {
-	id			 menu;
-	unsigned int *pref;
+	NSMenuItem *menuItem;
+	unsigned int *preference;
 };
 
-//////////////////////////////////////////////////////////////////////
-
-static struct menu_pref menu_prefs [3];
+static struct menuPreferenceItem menuPreferenceItems [3];
 static AquaChat *aquachat;
-static NSImage  *my_image;
-static NSImage  *alert_image;
 
-struct event_info text_event_info[NUM_XP];
+struct eventInfo textEventInfo[NUM_XP];
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 @interface AquaChat (private)
 
-- (void) load_event_info;
-- (void) save_event_info;
-- (void) setup_menu_prefs;
+- (void) loadEventInfo;
+- (void) saveEventInfo;
+- (void) loadMenuPreferences;
+- (void) toggleMenuItem:(id)sender;
+- (void) updateUsermenu;
+- (void) growl:(NSString *)text title:(NSString *)title;
+- (void) setFont:(const char *) fontName;
+- (NSUInteger) numberOfActiveDccFileTransfer;
 
 @end
 
 @implementation AquaChat
 @synthesize font, boldFont, palette;
+
+- (void) post_init
+{	
+	// Can't do this in awakeFromNib.. lists are not yet loaded..
+	[self updateUsermenu];
+	
+	[[AutoAwayController alloc] init];
+}
 
 - (void) awakeFromNib
 {
@@ -96,47 +94,25 @@ struct event_info text_event_info[NUM_XP];
 	
 	[GrowlApplicationBridge setGrowlDelegate:self];
 	
-	[self load_event_info];
+	[self loadEventInfo];
 	
-	my_image = [[NSApp applicationIconImage] copyWithZone:nil];
-	NSImage *msg_badge = [NSImage imageNamed:@"warning.tiff"];
-	alert_image = [my_image copyWithZone:nil];
-	NSSize sz = [alert_image size];
-	NSSize sz2 = [msg_badge size];
-	[alert_image lockFocus];
-	[msg_badge compositeToPoint:NSMakePoint (sz.width - sz2.width, sz.height - sz2.height) 
-					  operation:NSCompositeSourceOver 
-					   fraction:1];
-	[alert_image unlockFocus];
+	appImage = [[NSApp applicationIconImage] copy];
+	alertImage = [appImage copy];
+	NSImage *badgeImage = [NSImage imageNamed:@"warning.tiff"];
+	[alertImage lockFocus];
+	NSSize alertSize = [alertImage size];
+	NSSize badgeSize = [badgeImage size];
+	[badgeImage compositeToPoint:NSMakePoint(alertSize.width - badgeSize.width, alertSize.height - badgeSize.height) 
+					   operation:NSCompositeSourceOver 
+						fraction:1];
+	[alertImage unlockFocus];
 	
-	self->sound_cache = [[NSMutableDictionary dictionaryWithCapacity:0] retain];
-	
-	self->server_list = nil;
-	
-	self->user_commands = nil;
-	self->ctcp_replies = nil;
-	self->userlist_buttons = nil;
-	self->userlist_popup = nil;
-	self->dialog_buttons = nil;
-	self->replace_popup = nil;
-	self->url_handlers = nil;
-	self->user_menus = nil;
-	self->edit_events = nil;
-	
-	self->dcc_send_window = nil;
-	self->dcc_recv_window = nil;
-	self->dcc_chat_window = nil;
-	self->url_grabber = nil;
-	
-	self->search_string = nil;
-	
-	self->font = nil;
-	self->boldFont = nil;
+	self->soundCache = [[NSMutableDictionary alloc] init];
 	
 	self->palette = [[ColorPalette alloc] init];
 	[self->palette load];
 	
-	[self setup_menu_prefs];
+	[self loadMenuPreferences];
 	
 	// See comment in preferencesChanged
 	[TabOrWindowView setTransparency:prefs.transparent ? prefs.tint_red : 255];
@@ -146,85 +122,51 @@ struct event_info text_event_info[NUM_XP];
 	[NSApp requestEvents:NSKeyDown forWindow:nil forView:nil selector:@selector (myKeyDown:) object:self];
 }
 
-- (NSDictionary *) registrationDictionaryForGrowl
-{
-	return [NSDictionary dictionaryWithObjectsAndKeys:
-			[NSArray arrayWithObjects:@"X-Chat", nil], GROWL_NOTIFICATIONS_ALL,
-			[NSArray arrayWithObjects:@"X-Chat", nil], GROWL_NOTIFICATIONS_DEFAULT,
-			nil];
+- (void) dealloc {
+	[appImage dealloc];
+	[super dealloc];
 }
 
-- (void) load_event_info
+- (void) preferencesChanged
 {
-	NSString *fn = [NSString stringWithFormat:@"%s/xcaevents.conf", get_xdir_fs ()];
-	NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:fn];
-
-	if (!dict)
-		return;
+	[self setFont:prefs.font_normal];
 	
-	for (int i = 0; i < NUM_XP; i++)
-	{
-		struct event_info *event = &text_event_info[i];
-		char *name = te[i].name;
-
-		id gval = [dict objectForKey:[NSString stringWithFormat:@"%s_growl", name]];
-		id sval = [dict objectForKey:[NSString stringWithFormat:@"%s_show", name]];
-		id bval = [dict objectForKey:[NSString stringWithFormat:@"%s_bounce", name]];
-		
-		if (gval)
-			event->growl = [gval intValue];
-		if (sval)
-			event->show = [sval intValue];
-		if (bval)
-			event->bounce = [bval intValue];
-	}
-}
-
-- (void) save_event_info
-{	
-	NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:NUM_XP];
-	for (int i = 0; i < NUM_XP; i++)
-	{
-		struct event_info *event = &text_event_info[i];
-		char *name = te[i].name;
-		
-		if (event->growl)
-		{
-			[dict setObject:[NSNumber numberWithInt:event->growl]
-			 forKey:[NSString stringWithFormat:@"%s_growl", name]];
-		}
-		if (event->show)
-		{
-			[dict setObject:[NSNumber numberWithInt:event->show]
-			 forKey:[NSString stringWithFormat:@"%s_show", name]];
-		}
-		if (event->bounce)
-		{
-			[dict setObject:[NSNumber numberWithInt:event->bounce]
-			 forKey:[NSString stringWithFormat:@"%s_bounce", name]];
-		}
-		
-	}
-	NSString *fn = [NSString stringWithFormat:@"%s/xcaevents.conf", get_xdir_fs ()];
-	[dict writeToFile:fn atomically:true];
-}
-
-- (void) setup_menu_prefs
-{
-	struct menu_pref tmp_prefs [] = 
-	{
-		{ invisibleMenuItem, &prefs.invisible },
-		{ receiveNoticesMenuItem, &prefs.servernotice },
-		{ receiveWallopsMenuItem, &prefs.wallops },
-	};
+	[TabOrWindowView preferencesChanged];
 	
-	for (NSUInteger i = 0; i < sizeof(menu_prefs) / sizeof(menu_prefs[0]); i ++)
+	// This is a real-time pref.. it's already set when we get here.. we just need to make
+	// sure it get's set at startup too.
+	//[TabOrWindowView setTransparency:prefs.transparent ? prefs.tint_red : 255];
+	
+	if (prefs.autodccsend == 1 && !strcasecmp ((char *)g_get_home_dir (), prefs.dccdir))
 	{
-		menu_prefs [i] = tmp_prefs [i];
-		struct menu_pref *pref = &menu_prefs [i];
-		[pref->menu setState:*pref->pref ? NSOnState : NSOffState];
-		[pref->menu setTag:i];
+		[SGAlert alertWithString:NSLocalizedStringFromTable(@"*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile", @"xchat", @"") andWait:false];
 	}
+	
+	// Fix existing windows
+	
+	for (GSList *list = sess_list; list; list = list->next)
+	{
+		struct session *sess = (struct session *)list->data;
+		[sess->gui->chatWindow preferencesChanged];
+	}
+	
+	NSString* keyCodeString;
+	keyCodeString = SRStringForKeyCode(prefs.tab_left_key);
+	if ( keyCodeString != nil ) {
+		[previousWindowMenuItem setKeyEquivalent:keyCodeString];
+		[previousWindowMenuItem setKeyEquivalentModifierMask:prefs.tab_left_modifiers];
+	}
+	
+	keyCodeString = SRStringForKeyCode(prefs.tab_right_key);
+	if ( keyCodeString != nil ) {
+		[nextWindowMenuItem setKeyEquivalent:keyCodeString];
+		[nextWindowMenuItem setKeyEquivalentModifierMask:prefs.tab_right_modifiers];
+	}
+	
+	if (prefs.identd)
+		identd_start ();
+	else
+		identd_stop ();
 }
 
 - (BOOL) myKeyDown:(NSEvent *) theEvent
@@ -245,395 +187,124 @@ struct event_info text_event_info[NUM_XP];
 	return [TabOrWindowView selectTabByIndex:num];
 }
 
-- (void) do_prefs:(id) sender
-{
-	if (!prefs_controller)
-		prefs_controller = [[PreferencesController alloc] init];
-	[prefs_controller show];
-}
-
-/*
- * These four methods are hooked up to menu entries in the Help menu and are
- * used to open various relevant URLs (docs, homepage, etc.) in the default
- * web browser.
- *
- */
-
-  // Open the X-Chat Aqua home page.
-- (void) do_homepage:(id) sender
-{
-  [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://xchataqua.sourceforge.net/"]];
-}
-
-  // Open the X-Chat Aqua download page (same as homepage for now).
-- (void) do_goto_download:(id) sender
-{
-	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.uplinklabs.net/~tycho/projects/xchat-aqua/"]];
-}
-
-  // Open the X-Chat Aqua Release Notes.
-- (void) do_release_notes:(id) sender
-{
-	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.uplinklabs.net/~tycho/projects/xchat-aqua/sparkle/rnotes.html"]];
-}
-
-  // Open the X-Chat Aqua Online docs.
-- (void) do_online_docs:(id) sender
-{
-	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://xchataqua.sourceforge.net/docs/"]];
-}
-
-
 //TODO sparkle here
 - (void) new_version_alert
 {
 	bool ok = [SGAlert confirmWithString:NSLocalizedStringFromTable(@"There is a new version of X-Chat aqua available for download.  Press OK to visit the download site.", @"xchataqua", "")];
 	if (ok)
-		[self do_goto_download:self];
-}
-
-- (void) post_init
-{
-	[NSApp setDelegate:self];
-	
-	// Can't do this in awakeFromNib.. lists are not yet loaded..
-	[self usermenu_update];
-	
-	[[AutoAwayController alloc] init];
-}
-	
-- (void) cleanup
-{
-	[palette save];
-	[self save_event_info];
-}
-
-- (void) set_font:(const char *) font_name
-{
-	NSFont *f = nil;
-	
-	// "Font Name <space> Font Size"
-	const char *space = strrchr (font_name, ' ');
-	if (space)
-	{
-		CGFloat sz = atof (space + 1);
-		if (sz)
-		{
-			NSString *nm = [[NSString alloc] initWithBytes:prefs.font_normal
-													length:space - font_name
-												  encoding:NSUTF8StringEncoding];
-			f = [NSFont fontWithName:nm size:sz];
-			[nm release];
-		}
-	}
-
-	if (!f)
-		f = [NSFont fontWithName:@"Courier" size:12];
-	
-	if (!f)
-		f = [NSFont systemFontOfSize:12];
-		
-	NSFontManager *fontManager = [NSFontManager sharedFontManager];
-	
-	[self->font release];
-	[self->boldFont release];
-	
-	self->font = [[fontManager convertFont:f toHaveTrait:NSUnboldFontMask] retain];
-	self->boldFont = [[fontManager convertFont:f toHaveTrait:NSBoldFontMask] retain];
-
-	if (!self->font)
-		self->font = [f retain];
-	if (!self->boldFont)
-		self->boldFont = [f retain];
-	
-	sprintf (prefs.font_normal, "%s %.1f", [[font fontName] UTF8String], [font pointSize]);
-}
-
-- (void) preferencesChanged
-{
-	[self set_font:prefs.font_normal];
-
-	[TabOrWindowView preferencesChanged];
-
-	// This is a real-time pref.. it's already set when we get here.. we just need to make
-	// sure it get's set at startup too.
-	//[TabOrWindowView setTransparency:prefs.transparent ? prefs.tint_red : 255];
-
-	if (prefs.autodccsend == 1 && !strcasecmp ((char *)g_get_home_dir (), prefs.dccdir))
-	{
-		 [SGAlert alertWithString:NSLocalizedStringFromTable(@"*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile", @"xchat", @"") andWait:false];
-	}
-
-	// Fix existing windows
-
-	for (GSList *list = sess_list; list; list = list->next)
-	{
-		struct session *sess = (struct session *) list->data;
-		[sess->gui->cw preferencesChanged];
-	}
-	
-	#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_5
-	NSString* s;
-	s = SRStringForKeyCode(prefs.tab_left_key);
-	if ( s != nil ) {
-		[previousWindowMenuItem setKeyEquivalent:s];
-		[previousWindowMenuItem setKeyEquivalentModifierMask:prefs.tab_left_modifiers];
-	}
-	
-	s = SRStringForKeyCode(prefs.tab_right_key);
-	if ( s != nil ) {
-		[nextWindowMenuItem setKeyEquivalent:s];
-		[nextWindowMenuItem setKeyEquivalentModifierMask:prefs.tab_right_modifiers];
-	}
-	#endif
-	
-	if (prefs.identd)
-		identd_start ();
-	else
-		identd_stop ();
-}
-
-- (void) do_load_plugin:(id) sender
-{
-	NSString *f = [SGFileSelection selectWithWindow:nil inDirectory:@"Plugins"];
-	if (f)
-	{
-		NSString *cmd = [NSString stringWithFormat:@"LOAD \"%@\"", f];
-		handle_command (current_sess, (char *) [cmd UTF8String], FALSE);
-	}
-}
-
-- (void) pluginlist_update
-{
-	[(PluginWindow *)[UtilityWindow utilityIfExistsByKey:@"PluginWindow"] update];
-}
-
-- (void) do_pluginlist:(id) sender
-{
-	UtilityWindow *window = [UtilityWindow utilityByKey:@"PluginWindow" windowNibName:@"PluginWindow"];
-	[window makeKeyAndOrderFront:self];
-}
-
-- (void) do_flush_buffer:(id) sender
-{
-	if (current_sess)
-		[current_sess->gui->cw clear:0];
-}
-
-- (void) do_next_window:(id) sender
-{
-	[TabOrWindowView cycleWindow:1];
-}
-
-- (void) do_prev_window:(id) sender
-{
-	[TabOrWindowView cycleWindow:-1];
-}
-
-- (void) do_link_delink:(id) sender
-{
-	[TabOrWindowView link_delink];
-}
-
-- (void) do_close_menu:(id) sender
-{
-	[[NSApp keyWindow] performClose:sender];
-}
-
-- (void) usermenu_update
-{
-	while ([user_menu numberOfItems] > 2)
-		[user_menu removeItemAtIndex:2];
-
-	[[MenuMaker defaultMenuMaker] appendItemList:usermenu_list toMenu:user_menu withTarget:nil inSession:NULL];
-}
-
-- (void) set_away:(bool) is_away
-{
-	[awayMenuItem setState:is_away ? NSOnState : NSOffState];
-}
-
-- (void) do_search_again:(id) sender
-{
-	if (search_string)
-		[current_sess->gui->cw highlight:search_string];
-}
-
-- (void) do_search_buffer:(id) sender
-{
-	NSString *old_string = search_string;
-	search_string =
-		[[SGRequest requestWithString:NSLocalizedStringFromTable(@"XChat: Search", @"xchat", @"") defaultValue:search_string] retain];
-	[old_string release];
-	[self do_search_again:sender];
-}
-
-- (void) do_saveBuffer:(id) sender
-{
-	NSString *fname = [SGFileSelection saveWithWindow:[current_sess->gui->cw window]];
-	if (fname)
-		[current_sess->gui->cw saveBuffer:fname];
-}
-
-- (void) do_serverlist:(id) sender
-{
-	[self open_serverlist_for:current_sess];
-}
-
-- (void) open_serverlist_for:(session *) sess
-{
-	[ServerList showForSession:sess];
-}
-
-- (void) add_url:(const char *) url
-{
-	if (url_grabber)
-		[url_grabber addUrl:[NSString stringWithUTF8String:url]];
-}
-
-- (void) dcc_update:(struct DCC *) dcc
-{
-	switch (dcc->type)
-	{
-		case TYPE_SEND:
-			if (dcc_send_window)
-				[dcc_send_window update:dcc];
-			break;
-
-		case TYPE_RECV:
-			if (dcc_recv_window)
-				[dcc_recv_window update:dcc];
-			break;
-
-		case TYPE_CHATSEND:
-		case TYPE_CHATRECV:
-			if (dcc_chat_window)
-				[dcc_chat_window update:dcc];
-	}
-}
-
-- (void) dcc_add:(struct DCC *) dcc
-{
-	switch (dcc->type)
-	{
-		case TYPE_SEND:
-			if (dcc_send_window)
-				[dcc_send_window add:dcc];
-			break;
-
-		case TYPE_RECV:
-			if (dcc_recv_window)
-				[dcc_recv_window add:dcc];
-			break;
-
-		case TYPE_CHATSEND:
-		case TYPE_CHATRECV:
-			if (dcc_chat_window)
-				[dcc_chat_window add:dcc];
-	}
-}
-
-- (void) dcc_remove:(struct DCC *) dcc
-{
-	switch (dcc->type)
-	{
-		case TYPE_SEND:
-			if (dcc_send_window)
-				[dcc_send_window remove:dcc];
-			break;
-
-		case TYPE_RECV:
-			if (dcc_recv_window)
-				[dcc_recv_window remove:dcc];
-			break;
-
-		case TYPE_CHATSEND:
-		case TYPE_CHATRECV:
-			if (dcc_chat_window)
-				[dcc_chat_window remove:dcc];
-	}
-}
-
-- (unsigned) dcc_active_file_transfer_count
-{
-	GSList *list = dcc_list;
-	int count = 0;
-
-	while (list)
-	{
-		struct DCC *dcc = (struct DCC *)list->data;
-		if ((dcc->type == TYPE_SEND || dcc->type == TYPE_RECV) &&
-			 dcc->dccstat == STAT_ACTIVE)
-			count++;
-		list = list->next;
-	}
-
-	return count;
-}
-
-- (int) dcc_open_send_win:(bool) passive
-{
-	bool is_new = dcc_send_window != nil;
-	
-	if (!dcc_send_window)
-		dcc_send_window = [[DccSendWin alloc] init];
-		
-	[dcc_send_window show:!passive];
-	
-	return is_new;
-}
-
-- (int) dcc_open_recv_win:(bool) passive
-{
-	bool is_new = dcc_recv_window != nil;
-
-	if (!dcc_recv_window)
-		dcc_recv_window = [[DccRecvWin alloc] init];
-		
-	[dcc_recv_window show:!passive];
-
-	return is_new;
-}
-
-- (int) dcc_open_chat_win:(bool) passive
-{
-	bool is_new = dcc_chat_window != nil;
-
-	if (!dcc_chat_window)
-		dcc_chat_window = [[DccChatWin alloc] init];
-		
-	[dcc_chat_window show:!passive];
-
-	return is_new;
-}
-
-- (void) notify_list_update
-{
-	[(FriendWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:@"FriendWindow"] update];
-}
-
-- (void) ignore_update:(int)level
-{
-	[(IgnoreWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:@"IgnoreWindow"] update:level];
+		[self openDownload:self];
 }
 
 /* let's do it in the standard Cocoa way */
 /*
-- (void) do_quit_menu:(id) sender
+- (void) do_quit_menu:(id)sender
 {
 	[[NSUserDefaults standardUserDefaults] synchronize];
 	xchat_exit ();
 }
 */
 
+- (void) event:(int) event args:(char **) args session:(session *) sess
+{
+	struct eventInfo *info = textEventInfo + event;
+	BOOL bg = ![NSApp isActive];
+	
+	// Pref can be
+	//	0 - Don't do it
+	// -1 - Do it always
+	//  1 - Do it if we're background
+	//
+	// Boiled down:
+	//	Perform the action if our pref is -1 or we are in the background.
+	
+	if (info->growl && (info->growl == -1 || bg))
+	{
+		char o[4096];
+		format_event (sess, event, args, o, sizeof (o), 1);
+		if (o[0])
+		{
+			char *x = strip_color (o, -1, STRIP_ALL);
+			[GrowlApplicationBridge
+			 notifyWithTitle:[NSString stringWithUTF8String:te[event].name]
+			 description:[NSString stringWithUTF8String:x]
+			 notificationName:@"X-Chat"
+			 iconData:nil
+			 priority:0
+			 isSticky:NO
+			 clickContext:nil];
+			free (x);
+		}
+	}
+	
+	if (info->bounce && (info->bounce == -1 || bg))
+	{
+		[NSApp requestUserAttention:NSInformationalRequest];
+	}
+	
+	if (info->show && (info->show == -1 || bg))
+	{
+		[NSApp setApplicationIconImage:alertImage];
+	}
+}
+
+#pragma mark -
+
++ (void) forEachSessionOnServer:(struct server *)serv performSelector:(SEL)sel
+{
+	for (GSList *list = sess_list; list; list = list->next)
+	{
+		struct session *sess = (struct session *) list->data;
+		if (!serv || sess->server == serv)
+			[sess->gui->chatWindow performSelector:sel];
+	}
+}
+
++ (void) forEachSessionOnServer:(struct server *)serv performSelector:(SEL)sel withObject:(id) obj
+{
+	for (GSList *list = sess_list; list; list = list->next)
+	{
+		struct session *sess = (struct session *) list->data;
+		if (!serv || sess->server == serv)
+			[sess->gui->chatWindow performSelector:sel withObject:obj];
+	}
+}
+
++ (AquaChat *) sharedAquaChat
+{
+	return aquachat;
+}
+
+#pragma mark -
+#pragma mark NSApplication delegate
+
+- (void) applicationDidFinishLaunching:(NSNotification *) notification
+{ 
+	NSNotificationCenter *center = [[NSWorkspace sharedWorkspace] notificationCenter];
+		
+	[center addObserver:self
+			   selector:@selector(workspaceWillSleep:)
+				   name:NSWorkspaceWillSleepNotification
+				 object:nil];
+		
+	[center addObserver:self
+			   selector:@selector(workspaceDidWake:)
+				   name:NSWorkspaceDidWakeNotification
+				 object:nil];
+}
+
+- (void) applicationDidBecomeActive:(NSNotification *) aNotification
+{
+	[NSApp setApplicationIconImage:appImage];
+}
+
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)application
 {
 	NSApplicationTerminateReply reply = NSTerminateNow;
-	unsigned active = [self dcc_active_file_transfer_count];
+	NSUInteger active = [self numberOfActiveDccFileTransfer];
 	if (active > 0) {
 		if (NSRunAlertPanel(NSLocalizedStringFromTable(@"Some file transfers are still active.", @"xchat", @""),
-			NSLocalizedStringFromTable(@"Are you sure you want to quit?", @"xchat", @""),
-			NSLocalizedStringFromTable(@"Quit", @"xchataqua", @""), NSLocalizedStringFromTable(@"Cancel", @"xchataqua", @""), nil) != NSAlertDefaultReturn) reply = NSTerminateCancel;
+							NSLocalizedStringFromTable(@"Are you sure you want to quit?", @"xchat", @""),
+							NSLocalizedStringFromTable(@"Quit", @"xchataqua", @""), NSLocalizedStringFromTable(@"Cancel", @"xchataqua", @""), nil) != NSAlertDefaultReturn) reply = NSTerminateCancel;
 	}
 	return reply;
 }
@@ -657,367 +328,30 @@ struct event_info text_event_info[NUM_XP];
 	xchat_exit ();
 }
 
-- (void) do_away_button:(id) sender
-{
-	handle_command (current_sess, "away", FALSE);
-}
-
-- (void) do_channellist_window:(id) sender
-{
-	if (!current_sess->server->gui->clc)
-		current_sess->server->gui->clc = 
-			[[ChannelListWin alloc] initWithServer:current_sess->server];
-
-	[current_sess->server->gui->clc show];
-}
-
-- (void) do_dcc_recv_window:(id) sender
-{
-	[self dcc_open_recv_win:false];
-}
-
-- (void) do_dcc_chat_window:(id) sender
-{
-	[self dcc_open_chat_win:false];
-}
-
-- (void) do_dcc_send_window:(id) sender
-{
-	[self dcc_open_send_win:false];
-}
-
-- (void) do_raw_log_window:(id) sender
-{
-	if (!current_sess->server->gui->rawlog)
-		current_sess->server->gui->rawlog = [[RawLogWin alloc] 
-												initWithServer:current_sess->server];
-	[current_sess->server->gui->rawlog show];
-}
-
-- (void) do_url_grabber_window:(id) sender
-{
-	if (!url_grabber)
-		[[UrlGrabberWin alloc] initWithObjPtr:&url_grabber];
-	[url_grabber show];
-}
-
-- (void) do_notify_list_window:(id) sender
-{
-	[[UtilityTabOrWindowView utilityByKey:@"FriendWindow" viewNibName:@"FriendWindow"] becomeTabOrWindowAndShow];
-}
-
-- (void) do_ignore_window:(id) sender
-{
-	[[UtilityTabOrWindowView utilityByKey:@"IgnoreWindow" viewNibName:@"IgnoreWindow"] becomeTabOrWindowAndShow];
-}
-
-- (void) do_ban_list_window:(id) sender
-{
-	if (current_sess->type != SESS_CHANNEL)
-		return;
-	[[UtilityTabOrWindowView utilityByKey:BanWindowKey(current_sess) viewNibName:@"BanWindow"] becomeTabOrWindowAndShow];
-}
-
-- (void) do_ascii_window:(id) sender
-{
-	[[AsciiWindow utilityByKey:@"AsciiWindow"] makeKeyAndOrderFront:self];
-}
-
-- (void) do_new_server:(id) sender
-{
-	int old = prefs.tabchannels;
-	prefs.tabchannels = sender == newServerTabMenuItem;
-	new_ircwindow (NULL, NULL, SESS_SERVER, true);
-	prefs.tabchannels = old;
-}
-
-- (void) do_new_channel:(id) sender
-{
-	int old = prefs.tabchannels;
-	prefs.tabchannels = sender == newChannelTabMenuItem;
-	new_ircwindow (current_sess->server, NULL, SESS_CHANNEL, true);
-	prefs.tabchannels = old;
-}
-
-- (void) do_menu_toggle:(id) sender
-{
-	struct menu_pref *pref = &menu_prefs[[sender tag]];
-	*pref->pref = !*pref->pref;
-	[sender setState:*pref->pref ? NSOnState : NSOffState];
-}
-
-- (void) do_invisible_menu:(id) sender
-{
-	[self do_menu_toggle:sender];
-	
-	if (current_sess->server->connected)
-	{
-		if (prefs.invisible)
-			tcp_sendf (current_sess->server, "MODE %s +i\r\n", current_sess->server->nick);
-		else
-			tcp_sendf (current_sess->server, "MODE %s -i\r\n", current_sess->server->nick);
-	}
-}
-
-- (void) do_receive_server_notices_menu:(id) sender
-{
-	[self do_menu_toggle:sender];
-	
-	if (current_sess->server->connected)
-	{
-		if (prefs.servernotice)
-			tcp_sendf (current_sess->server, "MODE %s +s\r\n", current_sess->server->nick);
-		else
-			tcp_sendf (current_sess->server, "MODE %s -s\r\n", current_sess->server->nick);
-	}
-}
-
-- (void) do_receive_wallops_menu:(id) sender
-{
-	[self do_menu_toggle:sender];
-   
-	if (current_sess->server->connected)
-	{
-		if (prefs.wallops)
-			tcp_sendf (current_sess->server, "MODE %s +w\r\n", current_sess->server->nick);
-		else
-			tcp_sendf (current_sess->server, "MODE %s -w\r\n", current_sess->server->nick);
-	}
-}
-
-- (void) do_user_commands:(id) sender
-{
-	if (!user_commands)
-		user_commands = [[UserCommands alloc] init];
-	[user_commands show];
-}
-
-- (void) do_ctcp_replies:(id) sender
-{
-	if (!ctcp_replies)
-		ctcp_replies = [[CtcpReplies alloc] init];
-	[ctcp_replies show];
-}
-
-- (void) do_userlist_buttons:(id) sender
-{
-	if (!userlist_buttons)
-		userlist_buttons = [[UserlistButtons alloc] init];
-	[userlist_buttons show];
-}
-
-- (void) do_userlist_popup:(id) sender
-{
-	if (!userlist_popup)
-		userlist_popup = [[UserlistPopup alloc] init];
-	[userlist_popup show];
-}
-
-- (void) do_dialog_buttons:(id) sender
-{
-	if (!dialog_buttons)
-		dialog_buttons = [[DialogButtons alloc] init];
-	[dialog_buttons show];
-}
-
-- (void) do_replace_popup:(id) sender
-{
-	if (!replace_popup)
-		replace_popup = [[ReplacePopup alloc] init];
-	[replace_popup show];
-}
-
-- (void) do_url_handlers:(id) sender
-{
-	if (!url_handlers)
-		url_handlers = [[UrlHandlers alloc] init];
-	[url_handlers show];
-}
-
-- (void) do_edit_user_menu:(id) sender
-{
-	if (!user_menus)
-		user_menus = [[UserMenus alloc] init];
-	[user_menus show];
-}
-
-- (void) do_edit_events_menu:(id) sender
-{
-	if (!edit_events)
-		edit_events = [[EditEvents alloc] init];
-	[edit_events show];
-}
-
-- (void) do_log_viewer:(id) sender
-{
-	if (!log_viewer)
-		log_viewer = [[LogViewer alloc] init];
-	[log_viewer show];
-}
-
-- (void) play_wave:(const char *) fname
-{
-	NSString *key = [NSString stringWithUTF8String:fname];
-	NSSound *s = [sound_cache objectForKey:key];
-	
-	if (!s)
-	{
-		NSString *path;
-		
-		if ([key characterAtIndex:0] != '/')
-		{
-			NSString *bundle = [[NSBundle mainBundle] bundlePath];
-			path = [NSString stringWithFormat:@"%@/../Sounds/%@", bundle, key];
-		}
-		else
-			path = key;
-		s = [[[NSSound alloc] initWithContentsOfFile:path byReference:false] autorelease];
-		if (!s)
-			return;
-		[sound_cache setObject:s forKey:key];
-		[s setName:path];
-	}
-
-	if (![s isPlaying])
-		[s play];
-}
-
-- (void) applicationDidBecomeActive:(NSNotification *) aNotification
-{
-	[NSApp setApplicationIconImage:my_image];
-}
-
-- (void) event:(int) event
-		  args:(char **) args
-	   session:(session *) sess
-{
-	struct event_info *info = text_event_info + event;
-	BOOL bg = ![NSApp isActive];
-	
-	// Pref can be
-	//	0 - Don't do it
-	// -1 - Do it always
-	//  1 - Do it if we're background
-	//
-	// Boiled down:
-	//	Perform the action if our pref is -1 or we are in the background.
-	
-	if (info->growl && (info->growl == -1 || bg))
-	{
-		char o[4096];
-		format_event (sess, event, args, o, sizeof (o), 1);
-		if (o[0])
-		{
-			char *x = strip_color (o, -1, STRIP_ALL);
-			[GrowlApplicationBridge
-			   notifyWithTitle:[NSString stringWithUTF8String:te[event].name]
-				description:[NSString stringWithUTF8String:x]
-				notificationName:@"X-Chat"
-				iconData:nil
-				priority:0
-				isSticky:NO
-				clickContext:nil];
-			free (x);
-		}
-	}
-	
-	if (info->bounce && (info->bounce == -1 || bg))
-	{
-		[NSApp requestUserAttention:NSInformationalRequest];
-	}
-	
-	if (info->show && (info->show == -1 || bg))
-	{
-		[NSApp setApplicationIconImage:alert_image];
-	}
-}
-
-- (void) growl:(const char *)text
-{
-	[self growl:text title:0];
-}
-
-- (void) growl:(const char * )text title:(const char*)title
-{
-	[GrowlApplicationBridge
-	 notifyWithTitle:[NSString stringWithUTF8String:(title!=0 ? title : "X-Chat Aqua")]
-	 description:[NSString stringWithUTF8String:text]
-	 notificationName:@"X-Chat"
-	 iconData:nil
-	 priority:0
-	 isSticky:NO
-	 clickContext:nil];
-	
-}
-
-- (void) ctrl_gui:(session *) sess action:(int) action arg:(int) arg
-{
-	switch (action)
-	{
-		case 0:
-			[[sess->gui->cw window] orderOut:self]; break;
-		case 1:
-			[[sess->gui->cw window] orderFront:self]; break;
-		case 2:
-			[[sess->gui->cw window] orderFront:self]; break;
-		case 3:
-			/*[[sess->gui->cw set_tab_color (sess, -1, TRUE);*/ break; /* flash */
-		case 4:
-			[sess->gui->cw setTabColor:arg flash:NO]; break;
-		case 5:
-			[[sess->gui->cw window] miniaturize:self]; break;
-	}
-}
-
-- (void) server_event:(server *)server event_type:(int)type arg:(int)arg
-{
-	switch (type)
-	{
-		case FE_SE_CONNECT:
-			[TabOrWindowView updateGroupNameForServer:server];
-	}
-}
-
-- (void) applicationDidFinishLaunching:(NSNotification *) notification
-{ 
-	//if (self = [super init]) 
-	{ 
-		NSNotificationCenter *center = [[NSWorkspace sharedWorkspace] notificationCenter];
- 
-		[center addObserver: self
-				selector: @selector(workspaceWillSleep:)
-				name: NSWorkspaceWillSleepNotification
-				object: nil];
- 
-		[center addObserver: self
-				selector: @selector(workspaceDidWake:)
-				name: NSWorkspaceDidWakeNotification
-				object: nil];
-	}
-}
+#pragma mark NSWorkspace notification
 
 - (void) workspaceWillSleep: (NSNotification *) notification
 {
-	if (!prefs.partonsleep)
+	if (!prefs.xa_partonsleep)
 		return;
-		
+	
 	for (GSList *list = sess_list; list; list = list->next)
 	{
 		struct session *sess = (struct session *) list->data;
-
+		
 		if (sess->type == SESS_CHANNEL && sess->channel[0])
 		{
 			strcpy (sess->waitchannel, sess->channel);
 			strcpy (sess->willjoinchannel, sess->channel);
 		}
 	}
-		
+	
 	for (GSList *slist = serv_list; slist; slist = slist->next)
 	{
 		struct server *serv = (struct server *) slist->data;
 		if (serv->server_session)
 		{
-			serv->p_quit (serv, prefs.sleepmessage);
+			serv->p_quit (serv, prefs.xa_sleepmessage);
 			serv->disconnect (serv->server_session, false, -1);
 		}
 	}
@@ -1035,63 +369,665 @@ struct event_info text_event_info[NUM_XP];
 }
 
 #pragma mark -
+#pragma mark fe-aqua
 
-+ (void) forEachSessionOnServer:(struct server *)serv performSelector:(SEL)sel
+- (void) cleanup
 {
-	for (GSList *list = sess_list; list; list = list->next)
-	{
-		struct session *sess = (struct session *) list->data;
-		if (!serv || sess->server == serv)
-			[sess->gui->cw performSelector:sel];
-	}
+	[palette save];
+	[self saveEventInfo];
 }
 
-+ (void) forEachSessionOnServer:(struct server *)serv performSelector:(SEL)sel withObject:(id) obj
+- (void) updatePluginWindow
 {
-	for (GSList *list = sess_list; list; list = list->next)
-	{
-		struct session *sess = (struct session *) list->data;
-		if (!serv || sess->server == serv)
-			[sess->gui->cw performSelector:sel withObject:obj];
-	}
+	[(PluginWindow *)[UtilityWindow utilityIfExistsByKey:@"PluginWindow"] update];
 }
 
-+ (AquaChat *) sharedAquaChat
+- (void) updateIgnoreWindowForLevel:(int)level
 {
-	return aquachat;
+	[(IgnoreWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:@"IgnoreWindow"] update:level];
 }
 
-@end
-
-//////// Scripting crap
-
-@interface OpenURLCommand : NSScriptCommand { }
-
-- (id) performDefaultImplementation;
-
-@end
-
-@implementation OpenURLCommand
-
-- (id) performDefaultImplementation 
+- (void) growl:(NSString *)text title:(NSString *)title
 {
-	const char *newstr = "new";
+	if ( title == nil ) title = @"X-Chat Aqua";
+	[GrowlApplicationBridge notifyWithTitle:title
+								description:text
+						   notificationName:@"X-Chat"
+								   iconData:nil
+								   priority:0
+								   isSticky:NO
+							   clickContext:nil];
 	
-	// If we don't have any windows, we need to create 1 now, else the
-	// handle_command() is a no-op.  In that case, we don't need /newserver
-	if (!sess_list)
-	{
-		new_ircwindow (NULL, NULL, SESS_SERVER, true);
-		newstr = "";
-	}
+}
 
-	NSString *urlString = [self directParameter];
-	if (!urlString)
-		return nil;
-	char buff [128];
-	snprintf (buff, sizeof (buff), "%sserver %s", newstr, [urlString UTF8String]);
-	handle_command (current_sess, buff, 0);
-	return nil;
+- (void) updateDcc:(struct DCC *) dcc
+{
+	switch (dcc->type)
+	{
+		case TYPE_SEND:
+			if (dcc_send_window)
+				[dcc_send_window update:dcc];
+			break;
+			
+		case TYPE_RECV:
+			if (dcc_recv_window)
+				[dcc_recv_window update:dcc];
+			break;
+			
+		case TYPE_CHATSEND:
+		case TYPE_CHATRECV:
+			if (dcc_chat_window)
+				[dcc_chat_window update:dcc];
+	}
+}
+
+- (void) addDcc:(struct DCC *) dcc
+{
+	switch (dcc->type)
+	{
+		case TYPE_SEND:
+			if (dcc_send_window)
+				[dcc_send_window add:dcc];
+			break;
+			
+		case TYPE_RECV:
+			if (dcc_recv_window)
+				[dcc_recv_window add:dcc];
+			break;
+			
+		case TYPE_CHATSEND:
+		case TYPE_CHATRECV:
+			if (dcc_chat_window)
+				[dcc_chat_window add:dcc];
+	}
+}
+
+- (void) removeDcc:(struct DCC *) dcc
+{
+	switch (dcc->type)
+	{
+		case TYPE_SEND:
+			if (dcc_send_window)
+				[dcc_send_window remove:dcc];
+			break;
+			
+		case TYPE_RECV:
+			if (dcc_recv_window)
+				[dcc_recv_window remove:dcc];
+			break;
+			
+		case TYPE_CHATSEND:
+		case TYPE_CHATRECV:
+			if (dcc_chat_window)
+				[dcc_chat_window remove:dcc];
+	}
+}
+
+- (int) openDccSendWindowAndShow:(BOOL)show
+{
+	bool is_new = dcc_send_window != nil;
+	
+	if (!dcc_send_window)
+		dcc_send_window = [[DccSendWin alloc] init];
+	
+	[dcc_send_window show:show];
+	
+	return is_new;
+}
+
+- (int) openDccRecieveWindowAndShow:(BOOL)show
+{
+	bool is_new = dcc_recv_window != nil;
+	
+	if (!dcc_recv_window)
+		dcc_recv_window = [[DccRecvWin alloc] init];
+	
+	[dcc_recv_window show:show];
+	
+	return is_new;
+}
+
+- (int) openDccChatWindowAndShow:(BOOL)show
+{
+	bool is_new = dcc_chat_window != nil;
+	
+	if (!dcc_chat_window)
+		dcc_chat_window = [[DccChatWin alloc] init];
+	
+	[dcc_chat_window show:show];
+	
+	return is_new;
+}
+
+- (void) updateFriendWindow
+{
+	[(FriendWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:@"FriendWindow"] update];
+}
+
+- (void) playWaveNamed:(const char *)filename
+{
+	NSString *key = [NSString stringWithUTF8String:filename];
+	NSSound *sound = [soundCache objectForKey:key];
+	
+	if (sound == nil)
+	{
+		NSString *path = key;
+		
+		if ([key characterAtIndex:0] != '/')
+		{
+			NSString *bundle = [[NSBundle mainBundle] bundlePath];
+			path = [NSString stringWithFormat:@"%@/../Sounds/%@", bundle, key];
+		}
+
+		sound = [[NSSound alloc] initWithContentsOfFile:path byReference:NO];
+		if (sound == nil)
+			return;
+		[soundCache setObject:sound forKey:key];
+		[sound setName:path];
+		[sound release];
+	}
+	
+	if (![sound isPlaying])
+		[sound play];
+}
+
+- (void) openNetworkWindowForSession:(struct session *)sess
+{
+	NetworkWindow *window = [UtilityWindow utilityByKey:@"NetworkWindow" windowNibName:@"NetworkWindow"];
+	[window showForSession:sess];
+}
+
+- (void) addUrl:(const char *) url
+{
+	[(UrlGrabberWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:@"UrlGrabberWindow"] addUrl:[NSString stringWithUTF8String:url]];
+}
+
+- (void) ctrl_gui:(session *) sess action:(int) action arg:(int) arg
+{
+	switch (action)
+	{
+		case 0:
+			[[sess->gui->chatWindow window] orderOut:self]; break;
+		case 1:
+			[[sess->gui->chatWindow window] orderFront:self]; break;
+		case 2:
+			[[sess->gui->chatWindow window] orderFront:self]; break;
+		case 3:
+			/*[[sess->gui->chatWindow set_tab_color (sess, -1, TRUE);*/ break; /* flash */
+		case 4:
+			[sess->gui->chatWindow setTabColor:arg flash:NO]; break;
+		case 5:
+			[[sess->gui->chatWindow window] miniaturize:self]; break;
+	}
+}
+
+- (void) server_event:(server *)server event_type:(int)type arg:(int)arg
+{
+	switch (type)
+	{
+		case FE_SE_CONNECT:
+			[TabOrWindowView updateGroupNameForServer:server];
+	}
+}
+
+
+#pragma mark -
+#pragma mark IBAction
+
+- (void) showPreferencesWindow:(id)sender
+{
+	[[UtilityWindow utilityByKey:@"PreferencesWindow" windowNibName:@"PreferencesWindow"] makeKeyAndOrderFront:self];
+}
+
+- (void) loadPlugin:(id)sender
+{
+	NSString *f = [SGFileSelection selectWithWindow:nil inDirectory:@"Plugins"];
+	if (f)
+	{
+		NSString *cmd = [NSString stringWithFormat:@"LOAD \"%@\"", f];
+		handle_command (current_sess, (char *) [cmd UTF8String], FALSE);
+	}
+}
+
+- (void) showSearchPanel:(id)sender
+{
+	[searchString autorelease];
+	searchString = [[SGRequest requestWithString:NSLocalizedStringFromTable(@"XChat: Search", @"xchat", @"") defaultValue:searchString] retain];
+	[self searchAgain:sender];
+}
+
+- (void) searchAgain:(id)sender
+{
+	if ( searchString != nil )
+		[current_sess->gui->chatWindow highlight:searchString];
+}
+
+- (void) toggleAway:(id)sender
+{
+	handle_command (current_sess, "away", FALSE);
+}
+
+- (void) showChannelWindow:(id)sender
+{
+	[[UtilityTabOrWindowView utilityByKey:UtilityKey(@"ChannelWindow", current_sess->server) viewNibName:@"ChannelWindow"] becomeTabOrWindowAndShow:YES];
+}
+
+- (void) showDccRecieveWindow:(id)sender
+{
+	[self openDccRecieveWindowAndShow:YES];
+}
+
+- (void) showDccChatWindow:(id)sender
+{
+	[self openDccChatWindowAndShow:YES];
+}
+
+- (void) showDccSendWindow:(id)sender
+{
+	[self openDccSendWindowAndShow:YES];
+}
+
+- (void) showRawLogWindow:(id)sender
+{
+	[[UtilityTabOrWindowView utilityByKey:UtilityKey(@"RawLogWindow", current_sess->server) viewNibName:@"RawLogWindow"] becomeTabOrWindowAndShow:YES];
+}
+
+- (void) showUrlGrabberWindow:(id)sender
+{
+	[[UtilityTabOrWindowView utilityByKey:@"UrlGrabberWindow" viewNibName:@"UrlGrabberWindow"] becomeTabOrWindowAndShow:YES];
+}
+
+- (void) showFriendWindow:(id)sender
+{
+	[[UtilityTabOrWindowView utilityByKey:@"FriendWindow" viewNibName:@"FriendWindow"] becomeTabOrWindowAndShow:YES];
+}
+
+- (void) showIgnoreWindow:(id)sender
+{
+	[[UtilityTabOrWindowView utilityByKey:@"IgnoreWindow" viewNibName:@"IgnoreWindow"] becomeTabOrWindowAndShow:YES];
+}
+
+- (void) showBanWindow:(id)sender
+{
+	if (current_sess->type != SESS_CHANNEL) {
+		[SGAlert alertWithString:NSLocalizedStringFromTable(@"You can only open the Ban List window while in a channel tab.", @"xchat", @"") andWait:YES];
+		return;
+	}
+	[[UtilityTabOrWindowView utilityByKey:UtilityKey(@"BanWindow", current_sess) viewNibName:@"BanWindow"] becomeTabOrWindowAndShow:YES];
+}
+
+- (void) showAsciiWindow:(id)sender
+{
+	[[AsciiWindow utilityByKey:@"AsciiWindow"] makeKeyAndOrderFront:self];
+}
+
+- (void) openNewServer:(id)sender
+{
+	int old = prefs.tabchannels;
+	prefs.tabchannels = sender == newServerTabMenuItem;
+	new_ircwindow (NULL, NULL, SESS_SERVER, true);
+	prefs.tabchannels = old;
+}
+
+- (void) openNewChannel:(id)sender
+{
+	int old = prefs.tabchannels;
+	prefs.tabchannels = sender == newChannelTabMenuItem;
+	new_ircwindow (current_sess->server, NULL, SESS_CHANNEL, true);
+	prefs.tabchannels = old;
+}
+
+- (void) toggleInvisible:(id)sender
+{
+	[self toggleMenuItem:sender];
+	
+	if (current_sess->server->connected)
+	{
+		if (prefs.invisible)
+			tcp_sendf (current_sess->server, "MODE %s +i\r\n", current_sess->server->nick);
+		else
+			tcp_sendf (current_sess->server, "MODE %s -i\r\n", current_sess->server->nick);
+	}
+}
+
+- (void) toggleReceiveServerNotices:(id)sender
+{
+	[self toggleMenuItem:sender];
+	
+	if (current_sess->server->connected)
+	{
+		if (prefs.servernotice)
+			tcp_sendf (current_sess->server, "MODE %s +s\r\n", current_sess->server->nick);
+		else
+			tcp_sendf (current_sess->server, "MODE %s -s\r\n", current_sess->server->nick);
+	}
+}
+
+- (void) toggleReceiveWallops:(id)sender
+{
+	[self toggleMenuItem:sender];
+   
+	if (current_sess->server->connected)
+	{
+		if (prefs.wallops)
+			tcp_sendf (current_sess->server, "MODE %s +w\r\n", current_sess->server->nick);
+		else
+			tcp_sendf (current_sess->server, "MODE %s -w\r\n", current_sess->server->nick);
+	}
+}
+
+- (void) showPluginWindow:(id)sender
+{
+	[[UtilityWindow utilityByKey:@"PluginWindow" windowNibName:@"PluginWindow"] makeKeyAndOrderFront:self];
+}
+
+- (void) clearWindow:(id)sender
+{
+	if (current_sess)
+		[current_sess->gui->chatWindow clear:0];
+}
+
+- (void) selectNextTab:(id)sender
+{
+	[TabOrWindowView cycleWindow:1];
+}
+
+- (void) selectPreviousTab:(id)sender
+{
+	[TabOrWindowView cycleWindow:-1];
+}
+
+- (void) toggleTabAttachment:(id)sender
+{
+	[TabOrWindowView link_delink];
+}
+
+- (void) closeTab:(id)sender
+{
+	[[NSApp keyWindow] performClose:sender];
+}
+
+- (void) toggleAwayToValue:(bool) is_away
+{
+	[awayMenuItem setState:is_away ? NSOnState : NSOffState];
+}
+
+- (void) showNetworkWindow:(id)sender
+{
+	[self openNetworkWindowForSession:current_sess];
+}
+
+- (void) showUserCommandsWindow:(id)sender
+{
+	[[UtilityWindow utilityByKey:@"UserCommandsWindow" windowNibName:@"UserCommandsWindow"] makeKeyAndOrderFront:self];
+}
+
+- (void) showCtcpRepliesWindow:(id)sender
+{
+	EditListWindow *window = [UtilityWindow utilityByKey:@"CTCPRepliesWindow" windowNibName:@"EditListWindow"];
+	[window setTitle:NSLocalizedStringFromTable(@"XChat: CTCP Replies", @"xchat", @"Title of Window: MainMenu->X-Chat Aqua->Preference Lists->CTCP Replies...")];
+	[window loadDataFromList:&ctcp_list filename:@"ctcpreply.conf"];							  
+	[window makeKeyAndOrderFront:self];
+}
+
+- (void) showUserlistButtonsWindow:(id)sender
+{
+	EditListWindow *window = [UtilityWindow utilityByKey:@"UserlistButtonsWindow" windowNibName:@"EditListWindow"];	
+	[window setTitle:NSLocalizedStringFromTable(@"XChat: Userlist buttons", @"xchat", "Title of Window: MainMenu->X-Chat Aqua->References Lists->Userlist Buttons...")];
+	[window loadDataFromList:&button_list filename:@"buttons.conf"];
+	[window makeKeyAndOrderFront:self];
+	[window setTarget:[window class] didCloseSelector:@selector(setupUserlistButtons)];
+}
+
+- (void) showUserlistPopupWindow:(id)sender
+{
+	EditListWindow *window = [UtilityWindow utilityByKey:@"UserlistPopupWindow" windowNibName:@"EditListWindow"];
+	[window setTitle:NSLocalizedStringFromTable(@"XChat: Userlist Popup menu", @"xchat", @"Title of Window: MainMenu->X-Chat Aqua->References Lists->Userlist Popup...")];
+	[window loadDataFromList:&popup_list filename:@"popup.conf"];
+	[window makeKeyAndOrderFront:self];
+}
+
+- (void) showDialogButtonsWindow:(id)sender
+{
+	EditListWindow *window = [UtilityWindow utilityByKey:@"DialogButtonsWindow" windowNibName:@"EditListWindow"];
+	[window setTitle:NSLocalizedStringFromTable(@"XChat: Dialog buttons", @"xchat", @"")];
+	[window loadDataFromList:&dlgbutton_list filename:@"dlgbuttons.conf"];
+	[window makeKeyAndOrderFront:self];
+	[window setTarget:[window class] didCloseSelector:@selector(setupUserlistButtons)];
+}
+
+- (void) showReplacePopupWindow:(id)sender
+{
+	EditListWindow *window = [UtilityWindow utilityByKey:@"ReplacePopupWindow" windowNibName:@"EditListWindow"];
+	[window setTitle:NSLocalizedStringFromTable(@"XChat: Replace", @"xchat", @"")];
+	[window loadDataFromList:&replace_list filename:@"replace.conf"];
+	[window makeKeyAndOrderFront:self];
+}
+
+- (void) showUrlHandlersWindow:(id)sender
+{
+	EditListWindow *window = [UtilityWindow utilityByKey:@"URLHandlersWindow" windowNibName:@"EditListWindow"];
+	[window setTitle:NSLocalizedStringFromTable(@"XChat: URL Handlers", @"xchat", "Title of Window: MainMenu->X-Chat Aqua->References Lists->URL Handler...")];
+	[window loadDataFromList:&urlhandler_list filename:@"urlhandlers.conf"];
+	[window makeKeyAndOrderFront:self];	
+}
+
+- (void) showUserMenusWindow:(id)sender
+{
+	EditListWindow *window = [UtilityWindow utilityByKey:@"UserMenusWindow" windowNibName:@"EditListWindow"];
+	[window setTitle:NSLocalizedStringFromTable(@"XChat: User menu", @"xchat", @"Title of Window: MainMenu->User Menu->Edit This Menu...")];
+	[window loadDataFromList:&usermenu_list filename:@"usermenu.conf"];
+	[window makeKeyAndOrderFront:self];	
+	[window setTarget:[AquaChat sharedAquaChat] didCloseSelector:@selector(usermenu_update)];
+}
+
+- (void) showTextEventsWindow:(id)sender
+{
+	[[UtilityWindow utilityByKey:@"TextEventsWindow" windowNibName:@"TextEventsWindow"] makeKeyAndOrderFront:self];
+}
+
+- (void) showLogViewWindow:(id)sender
+{
+	[[UtilityTabOrWindowView utilityByKey:@"LogViewWindow" viewNibName:@"LogViewWindow"] becomeTabOrWindowAndShow:YES];
+}
+
+/*
+ * These four methods are hooked up to menu entries in the Help menu and are
+ * used to open various relevant URLs (docs, homepage, etc.) in the default
+ * web browser.
+ *
+ */
+
+// Open the X-Chat Aqua home page.
+- (void) openHomepage:(id)sender
+{
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://xchataqua.sourceforge.net/"]];
+}
+
+// Open the X-Chat Aqua download page (same as homepage for now).
+- (void) openDownload:(id)sender
+{
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.uplinklabs.net/~tycho/projects/xchat-aqua/"]];
+}
+
+// Open the X-Chat Aqua Release Notes.
+- (void) showReleaseNotes:(id)sender
+{
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.uplinklabs.net/~tycho/projects/xchat-aqua/sparkle/rnotes.html"]];
+}
+
+// Open the X-Chat Aqua Online docs.
+- (void) openOnlineDocs:(id)sender
+{
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://xchataqua.sourceforge.net/docs/"]];
+}
+
+#pragma mark -
+#pragma mark GrowlApplicationBridgeDelegate
+
+- (NSDictionary *) registrationDictionaryForGrowl
+{
+	return [NSDictionary dictionaryWithObjectsAndKeys:
+			[NSArray arrayWithObjects:@"X-Chat", nil], GROWL_NOTIFICATIONS_ALL,
+			[NSArray arrayWithObjects:@"X-Chat", nil], GROWL_NOTIFICATIONS_DEFAULT,
+			nil];
 }
 
 @end
+
+#pragma mark -
+
+@implementation AquaChat (Private)
+
+- (void) loadEventInfo
+{
+	NSString *fn = [NSString stringWithFormat:@"%s/xcaevents.conf", get_xdir_fs ()];
+	NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:fn];
+	
+	if (!dict)
+		return;
+	
+	for (int i = 0; i < NUM_XP; i++)
+	{
+		struct eventInfo *event = &textEventInfo[i];
+		char *name = te[i].name;
+		
+		id gval = [dict objectForKey:[NSString stringWithFormat:@"%s_growl", name]];
+		id sval = [dict objectForKey:[NSString stringWithFormat:@"%s_show", name]];
+		id bval = [dict objectForKey:[NSString stringWithFormat:@"%s_bounce", name]];
+		
+		if (gval)
+			event->growl = [gval intValue];
+		if (sval)
+			event->show = [sval intValue];
+		if (bval)
+			event->bounce = [bval intValue];
+	}
+}
+
+- (void) saveEventInfo
+{	
+	NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:NUM_XP];
+	for (int i = 0; i < NUM_XP; i++)
+	{
+		struct eventInfo *event = &textEventInfo[i];
+		char *name = te[i].name;
+		
+		if (event->growl)
+		{
+			[dict setObject:[NSNumber numberWithInt:event->growl] forKey:[NSString stringWithFormat:@"%s_growl", name]];
+		}
+		if (event->show)
+		{
+			[dict setObject:[NSNumber numberWithInt:event->show] forKey:[NSString stringWithFormat:@"%s_show", name]];
+		}
+		if (event->bounce)
+		{
+			[dict setObject:[NSNumber numberWithInt:event->bounce] forKey:[NSString stringWithFormat:@"%s_bounce", name]];
+		}
+		
+	}
+	NSString *filename = [NSString stringWithFormat:@"%s/xcaevents.conf", get_xdir_fs ()];
+	[dict writeToFile:filename atomically:YES];
+}
+
+- (void) toggleMenuItem:(id)sender
+{
+	struct menuPreferenceItem *pref = &menuPreferenceItems[[sender tag]];
+	*pref->preference = !*pref->preference;
+	[sender setState:*pref->preference ? NSOnState : NSOffState];
+}
+
+- (void) saveBuffer:(id)sender
+{
+	NSString *filename = [SGFileSelection saveWithWindow:[current_sess->gui->chatWindow window]];
+	if ( filename != nil )
+		[current_sess->gui->chatWindow saveBuffer:filename];
+}
+
+- (void) updateUsermenu
+{
+	while ([userMenu numberOfItems] > 2)
+		[userMenu removeItemAtIndex:2];
+	
+	[[MenuMaker defaultMenuMaker] appendItemList:usermenu_list toMenu:userMenu withTarget:nil inSession:NULL];
+}
+
+- (void) loadMenuPreferences
+{
+	struct menuPreferenceItem tmp_prefs [] = 
+	{
+		{ invisibleMenuItem, &prefs.invisible },
+		{ receiveNoticesMenuItem, &prefs.servernotice },
+		{ receiveWallopsMenuItem, &prefs.wallops },
+	};
+	
+	for (NSUInteger i = 0; i < sizeof(menuPreferenceItems) / sizeof(menuPreferenceItems[0]); i ++)
+	{
+		menuPreferenceItems [i] = tmp_prefs [i];
+		struct menuPreferenceItem *pref = &menuPreferenceItems [i];
+		[pref->menuItem setState:*pref->preference ? NSOnState : NSOffState];
+		[pref->menuItem setTag:i];
+	}
+}
+
+- (void) setFont:(const char *) fontName
+{
+	NSFont *f = nil;
+	
+	// "Font Name <space> Font Size"
+	const char *space = strrchr (fontName, ' ');
+	if (space)
+	{
+		CGFloat sz = atof (space + 1);
+		if (sz)
+		{
+			NSString *nm = [[NSString alloc] initWithBytes:prefs.font_normal
+													length:space - fontName
+												  encoding:NSUTF8StringEncoding];
+			f = [NSFont fontWithName:nm size:sz];
+			[nm release];
+		}
+	}
+	
+	if (!f)
+		f = [NSFont fontWithName:@"Courier" size:12];
+	
+	if (!f)
+		f = [NSFont systemFontOfSize:12];
+	
+	NSFontManager *fontManager = [NSFontManager sharedFontManager];
+	
+	[self->font release];
+	[self->boldFont release];
+	
+	self->font = [[fontManager convertFont:f toHaveTrait:NSUnboldFontMask] retain];
+	self->boldFont = [[fontManager convertFont:f toHaveTrait:NSBoldFontMask] retain];
+	
+	if (!self->font)
+		self->font = [f retain];
+	if (!self->boldFont)
+		self->boldFont = [f retain];
+	
+	sprintf (prefs.font_normal, "%s %.1f", [[font fontName] UTF8String], [font pointSize]);
+}
+
+- (NSUInteger) numberOfActiveDccFileTransfer
+{
+	GSList *list = dcc_list;
+	NSUInteger count = 0;
+	
+	while (list)
+	{
+		struct DCC *dcc = (struct DCC *)list->data;
+		if ((dcc->type == TYPE_SEND || dcc->type == TYPE_RECV) &&
+			dcc->dccstat == STAT_ACTIVE)
+			count++;
+		list = list->next;
+	}
+	
+	return count;
+}
+
+@end
+
