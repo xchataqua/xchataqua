@@ -23,9 +23,8 @@
 
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
+#include "fe-aqua_common.h"
 
-#import "SG.h"
-#import "AquaChat.h"
 #import "ColorPalette.h"
 #import "TabOrWindowView.h"
 
@@ -45,16 +44,13 @@ static NSWindow *initWindowForView (Class nswindow, NSView *view, NSPoint *where
 {
 	NSRect viewFrame = view.frame;
 	
-	NSUInteger windowAttributes = NSTitledWindowMask | 
-	NSClosableWindowMask | 
-	NSMiniaturizableWindowMask | 
-	NSResizableWindowMask;
-	
-	if (prefs.guimetal)
-		windowAttributes |= NSTexturedBackgroundWindowMask;
+	NSUInteger windowStyleMask = NSTitledWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask | NSResizableWindowMask;
 
+	if ( [view isKindOfClass:[SGTabView class]] )
+		windowStyleMask |= NSTexturedBackgroundWindowMask;
+	
 	NSWindow *window = [[nswindow alloc] initWithContentRect:viewFrame
-												   styleMask:windowAttributes
+												   styleMask:windowStyleMask
 													 backing:NSBackingStoreBuffered
 													   defer:NO];
  	
@@ -173,7 +169,7 @@ static NSWindow *initWindowForView (Class nswindow, NSView *view, NSPoint *where
 
 - (void) tabViewDidResizeOutlne:(int) width
 {
-	prefs.outline_width = width;
+	prefs.xa_outline_width = width;
 }
 
 @end
@@ -186,7 +182,7 @@ static NSWindow *initWindowForView (Class nswindow, NSView *view, NSPoint *where
 
 @implementation MyTabWindow
 
-- (void) performClose:(id) sender
+- (void) performClose:(id)sender
 {
 	if ([sender isKindOfClass:[NSMenuItem class]])	// Apple-W?
 		[[self delegate] appleW];
@@ -245,8 +241,8 @@ static NSWindow *initWindowForView (Class nswindow, NSView *view, NSPoint *where
 	if (tabWindow)
 	{
 		[[tabWindow contentView] setTabViewType:tabViewType];
-		[[tabWindow contentView] setHideCloseButtons:prefs.hide_tab_close_buttons];
-		[[tabWindow contentView] setOutlineWidth:prefs.outline_width];
+		[[tabWindow contentView] setHideCloseButtons:prefs.xa_hide_tab_close_buttons];
+		[[tabWindow contentView] setOutlineWidth:prefs.xa_outline_width];
 	}
 /*	This doesn't work because I can't reference outline in the way I just did,
 	if you have a better solution, please share it :)
@@ -254,29 +250,6 @@ static NSWindow *initWindowForView (Class nswindow, NSView *view, NSPoint *where
 	ColorPalette *p = [[AquaChat sharedAquaChat] palette];
 	[outline setBackgroundColor:[p getColor:AC_BGCOLOR]];
 */
-	for ( NSWindow *win in [NSApp windows] )
-	{
-		NSPoint where = win.frame.origin;
-		bool windowWasMetal = win.styleMask & NSTexturedBackgroundWindowMask;
-		
-		if ([[win.contentView class] isSubclassOfClass:[TabOrWindowView class]])
-		{
-			TabOrWindowView *view = (TabOrWindowView *)win.contentView;
-			if (view->window)
-			{
-				if (prefs.guimetal == windowWasMetal)
-					return;
-				[view makeViewWindow:&where];
-				[view->window makeKeyAndOrderFront:self];
-			}
-		}
-		else if (win == tabWindow)
-		{
-			if (prefs.guimetal == windowWasMetal)
-				return;
-			[TabOrWindowView makeTabWindow:win.contentView where:&where];
-		}
-	}
 }
 
 + (void) setTransparency:(NSInteger)transparency
@@ -405,7 +378,7 @@ static NSWindow *initWindowForView (Class nswindow, NSView *view, NSPoint *where
 	{
 		SGTabView *tabView = [tabWindow contentView];
 		NSString *groupName = [NSString stringWithUTF8String:server->servername];
-		[tabView setName:groupName forGroup:server->gui->tab_group];
+		[tabView setName:groupName forGroup:server->gui->tabGroup];
 	}
 }
 
@@ -414,7 +387,7 @@ static NSWindow *initWindowForView (Class nswindow, NSView *view, NSPoint *where
 	self->server = aServer;
 }
 
-- (void) link_delink:(id) sender
+- (void) link_delink:(id)sender
 {
 	if (tabViewItem)
 		[self becomeWindowAndShow:true];
@@ -497,7 +470,7 @@ static NSWindow *initWindowForView (Class nswindow, NSView *view, NSPoint *where
 		[self makeKeyAndOrderFront:self];
 }
 
-- (void) makeKeyAndOrderFront:(id) sender
+- (void) makeKeyAndOrderFront:(id)sender
 {
 	if (window)
 	{
@@ -532,8 +505,8 @@ static NSWindow *initWindowForView (Class nswindow, NSView *view, NSPoint *where
 		SGTabView *tabView = [[[SGTabView alloc] initWithFrame:frame] autorelease];
 		[tabView setDelegate:tabDelegate];
 		[tabView setTabViewType:tabViewType];
-		[tabView setHideCloseButtons:prefs.hide_tab_close_buttons];
-		[tabView setOutlineWidth:prefs.outline_width];
+		[tabView setHideCloseButtons:prefs.xa_hide_tab_close_buttons];
+		[tabView setOutlineWidth:prefs.xa_outline_width];
 		
 		[TabOrWindowView makeTabWindow:tabView where:nil];
 	}
@@ -549,7 +522,7 @@ static NSWindow *initWindowForView (Class nswindow, NSView *view, NSPoint *where
 		
 		SGTabView *tabView = (SGTabView *)[tabWindow contentView];
 		
-		int tabGroup = self->server ? self->server->gui->tab_group : 0;
+		int tabGroup = self->server ? self->server->gui->tabGroup : 0;
 		
 		[tabView addTabViewItem:tabViewItem toGroup:tabGroup];
 		

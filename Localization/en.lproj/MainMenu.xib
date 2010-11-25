@@ -2,9 +2,9 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1030</int>
-		<string key="IBDocument.SystemVersion">10F569</string>
+		<string key="IBDocument.SystemVersion">10H574</string>
 		<string key="IBDocument.InterfaceBuilderVersion">804</string>
-		<string key="IBDocument.AppKitVersion">1038.29</string>
+		<string key="IBDocument.AppKitVersion">1038.35</string>
 		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="57"/>
+			<integer value="456"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -580,70 +580,6 @@
 									<reference key="NSOnImage" ref="42437661"/>
 									<reference key="NSMixedImage" ref="1054068937"/>
 								</object>
-								<object class="NSMenuItem" id="849896429">
-									<reference key="NSMenu" ref="425526390"/>
-									<string key="NSTitle">IRC Stuff</string>
-									<string key="NSKeyEquiv"/>
-									<int key="NSKeyEquivModMask">1048576</int>
-									<int key="NSMnemonicLoc">2147483647</int>
-									<reference key="NSOnImage" ref="42437661"/>
-									<reference key="NSMixedImage" ref="1054068937"/>
-									<string key="NSAction">submenuAction:</string>
-									<object class="NSMenu" key="NSSubmenu" id="717868159">
-										<string key="NSTitle"/>
-										<object class="NSMutableArray" key="NSMenuItems">
-											<bool key="EncodedWithXMLCoder">YES</bool>
-										</object>
-									</object>
-								</object>
-								<object class="NSMenuItem" id="893583005">
-									<reference key="NSMenu" ref="425526390"/>
-									<string key="NSTitle">Connect</string>
-									<string key="NSKeyEquiv"/>
-									<int key="NSKeyEquivModMask">1048576</int>
-									<int key="NSMnemonicLoc">2147483647</int>
-									<reference key="NSOnImage" ref="42437661"/>
-									<reference key="NSMixedImage" ref="1054068937"/>
-									<string key="NSAction">submenuAction:</string>
-									<object class="NSMenu" key="NSSubmenu" id="779596668">
-										<string key="NSTitle"/>
-										<object class="NSMutableArray" key="NSMenuItems">
-											<bool key="EncodedWithXMLCoder">YES</bool>
-										</object>
-									</object>
-								</object>
-								<object class="NSMenuItem" id="217753677">
-									<reference key="NSMenu" ref="425526390"/>
-									<string key="NSTitle">Settings</string>
-									<string key="NSKeyEquiv"/>
-									<int key="NSKeyEquivModMask">1048576</int>
-									<int key="NSMnemonicLoc">2147483647</int>
-									<reference key="NSOnImage" ref="42437661"/>
-									<reference key="NSMixedImage" ref="1054068937"/>
-									<string key="NSAction">submenuAction:</string>
-									<object class="NSMenu" key="NSSubmenu" id="870694005">
-										<string key="NSTitle"/>
-										<object class="NSMutableArray" key="NSMenuItems">
-											<bool key="EncodedWithXMLCoder">YES</bool>
-										</object>
-									</object>
-								</object>
-								<object class="NSMenuItem" id="124233871">
-									<reference key="NSMenu" ref="425526390"/>
-									<string key="NSTitle">External program</string>
-									<string key="NSKeyEquiv"/>
-									<int key="NSKeyEquivModMask">1048576</int>
-									<int key="NSMnemonicLoc">2147483647</int>
-									<reference key="NSOnImage" ref="42437661"/>
-									<reference key="NSMixedImage" ref="1054068937"/>
-									<string key="NSAction">submenuAction:</string>
-									<object class="NSMenu" key="NSSubmenu" id="1038494521">
-										<string key="NSTitle">External program</string>
-										<object class="NSMutableArray" key="NSMenuItems">
-											<bool key="EncodedWithXMLCoder">YES</bool>
-										</object>
-									</object>
-								</object>
 							</object>
 							<bool key="NSNoAutoenable">YES</bool>
 						</object>
@@ -1000,110 +936,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">do_away_button:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="460894357"/>
-					</object>
-					<int key="connectionID">855</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_new_server:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="789590668"/>
-					</object>
-					<int key="connectionID">904</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_new_server:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="923812960"/>
-					</object>
-					<int key="connectionID">905</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_new_channel:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="239048632"/>
-					</object>
-					<int key="connectionID">906</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_new_channel:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="640851067"/>
-					</object>
-					<int key="connectionID">907</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_invisible_menu:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="446557098"/>
-					</object>
-					<int key="connectionID">911</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_receive_wallops_menu:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="281485293"/>
-					</object>
-					<int key="connectionID">912</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_receive_server_notices_menu:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="621176181"/>
-					</object>
-					<int key="connectionID">913</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_edit_user_menu:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="811589995"/>
-					</object>
-					<int key="connectionID">987</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">user_menu</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="425526390"/>
-					</object>
-					<int key="connectionID">988</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_serverlist:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="7554061"/>
-					</object>
-					<int key="connectionID">1002</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_homepage:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="405160683"/>
-					</object>
-					<int key="connectionID">1073</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_online_docs:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="882399074"/>
-					</object>
-					<int key="connectionID">1074</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">arrangeInFront:</string>
 						<reference key="source" ref="498682042"/>
 						<reference key="destination" ref="433079452"/>
@@ -1117,254 +949,6 @@
 						<reference key="destination" ref="49285020"/>
 					</object>
 					<int key="connectionID">1081</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_close_menu:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="588251919"/>
-					</object>
-					<int key="connectionID">1087</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_next_window:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="230031632"/>
-					</object>
-					<int key="connectionID">1088</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_prev_window:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="14035718"/>
-					</object>
-					<int key="connectionID">1089</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_release_notes:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="391362863"/>
-					</object>
-					<int key="connectionID">1107</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_load_plugin:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="656072199"/>
-					</object>
-					<int key="connectionID">1160</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_user_commands:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="610935314"/>
-					</object>
-					<int key="connectionID">1189</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_ctcp_replies:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="1018513590"/>
-					</object>
-					<int key="connectionID">1190</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_userlist_buttons:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="739897846"/>
-					</object>
-					<int key="connectionID">1191</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_userlist_popup:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="1022443712"/>
-					</object>
-					<int key="connectionID">1192</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_dialog_buttons:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="1060902345"/>
-					</object>
-					<int key="connectionID">1193</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_replace_popup:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="164836065"/>
-					</object>
-					<int key="connectionID">1194</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_url_handlers:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="353637747"/>
-					</object>
-					<int key="connectionID">1195</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_edit_events_menu:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="178568981"/>
-					</object>
-					<int key="connectionID">1196</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_flush_buffer:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="723820629"/>
-					</object>
-					<int key="connectionID">1197</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_search_buffer:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="597552214"/>
-					</object>
-					<int key="connectionID">1198</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_search_again:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="443949996"/>
-					</object>
-					<int key="connectionID">1199</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_dcc_recv_window:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="659753618"/>
-					</object>
-					<int key="connectionID">1200</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_ignore_window:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="1058445571"/>
-					</object>
-					<int key="connectionID">1201</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_ascii_window:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="159796841"/>
-					</object>
-					<int key="connectionID">1202</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_dcc_send_window:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="509822756"/>
-					</object>
-					<int key="connectionID">1203</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_url_grabber_window:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="223752378"/>
-					</object>
-					<int key="connectionID">1204</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_raw_log_window:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="800646908"/>
-					</object>
-					<int key="connectionID">1205</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_pluginlist:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="956376856"/>
-					</object>
-					<int key="connectionID">1206</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_dcc_chat_window:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="505234674"/>
-					</object>
-					<int key="connectionID">1207</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_ban_list_window:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="348081264"/>
-					</object>
-					<int key="connectionID">1208</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_channellist_window:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="694225026"/>
-					</object>
-					<int key="connectionID">1209</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_notify_list_window:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="512787735"/>
-					</object>
-					<int key="connectionID">1210</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_goto_download:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="753240948"/>
-					</object>
-					<int key="connectionID">1230</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_prefs:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="502880278"/>
-					</object>
-					<int key="connectionID">1269</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_log_viewer:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="945866187"/>
-					</object>
-					<int key="connectionID">1287</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">do_link_delink:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="802524968"/>
-					</object>
-					<int key="connectionID">1295</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -1461,6 +1045,366 @@
 						<reference key="destination" ref="281485293"/>
 					</object>
 					<int key="connectionID">1419</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">userMenu</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="425526390"/>
+					</object>
+					<int key="connectionID">1420</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showPreferencesWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="502880278"/>
+					</object>
+					<int key="connectionID">1422</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showUserCommandsWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="610935314"/>
+					</object>
+					<int key="connectionID">1423</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showCtcpRepliesWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="1018513590"/>
+					</object>
+					<int key="connectionID">1424</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showUserlistButtonsWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="739897846"/>
+					</object>
+					<int key="connectionID">1425</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showUserlistPopupWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="1022443712"/>
+					</object>
+					<int key="connectionID">1426</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showDialogButtonsWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="1060902345"/>
+					</object>
+					<int key="connectionID">1427</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showReplacePopupWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="164836065"/>
+					</object>
+					<int key="connectionID">1428</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showUrlHandlersWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="353637747"/>
+					</object>
+					<int key="connectionID">1429</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showTextEventsWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="178568981"/>
+					</object>
+					<int key="connectionID">1430</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showNetworkWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="7554061"/>
+					</object>
+					<int key="connectionID">1432</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">openNewServer:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="789590668"/>
+					</object>
+					<int key="connectionID">1433</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">openNewServer:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="923812960"/>
+					</object>
+					<int key="connectionID">1434</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">openNewChannel:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="239048632"/>
+					</object>
+					<int key="connectionID">1435</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">openNewChannel:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="640851067"/>
+					</object>
+					<int key="connectionID">1436</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">loadPlugin:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="656072199"/>
+					</object>
+					<int key="connectionID">1437</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">clearWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="723820629"/>
+					</object>
+					<int key="connectionID">1438</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showSearchPanel:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="597552214"/>
+					</object>
+					<int key="connectionID">1439</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">searchAgain:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="443949996"/>
+					</object>
+					<int key="connectionID">1440</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">toggleInvisible:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="446557098"/>
+					</object>
+					<int key="connectionID">1441</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">toggleReceiveWallops:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="281485293"/>
+					</object>
+					<int key="connectionID">1442</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">toggleReceiveServerNotices:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="621176181"/>
+					</object>
+					<int key="connectionID">1443</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">toggleAway:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="460894357"/>
+					</object>
+					<int key="connectionID">1444</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showUserMenusWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="811589995"/>
+					</object>
+					<int key="connectionID">1445</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">closeTab:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="588251919"/>
+					</object>
+					<int key="connectionID">1446</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">toggleTabAttachment:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="802524968"/>
+					</object>
+					<int key="connectionID">1447</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">selectNextTab:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="230031632"/>
+					</object>
+					<int key="connectionID">1448</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">selectPreviousTab:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="14035718"/>
+					</object>
+					<int key="connectionID">1449</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showChannelWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="694225026"/>
+					</object>
+					<int key="connectionID">1450</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showBanWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="348081264"/>
+					</object>
+					<int key="connectionID">1452</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showAsciiWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="159796841"/>
+					</object>
+					<int key="connectionID">1454</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showDccChatWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="505234674"/>
+					</object>
+					<int key="connectionID">1455</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showDccRecieveWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="659753618"/>
+					</object>
+					<int key="connectionID">1456</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showDccSendWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="509822756"/>
+					</object>
+					<int key="connectionID">1457</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showFriendWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="512787735"/>
+					</object>
+					<int key="connectionID">1458</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showIgnoreWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="1058445571"/>
+					</object>
+					<int key="connectionID">1459</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showLogViewWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="945866187"/>
+					</object>
+					<int key="connectionID">1460</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showPluginWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="956376856"/>
+					</object>
+					<int key="connectionID">1461</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showRawLogWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="800646908"/>
+					</object>
+					<int key="connectionID">1462</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showUrlGrabberWindow:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="223752378"/>
+					</object>
+					<int key="connectionID">1463</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">openDownload:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="753240948"/>
+					</object>
+					<int key="connectionID">1464</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">openHomepage:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="405160683"/>
+					</object>
+					<int key="connectionID">1465</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">openOnlineDocs:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="882399074"/>
+					</object>
+					<int key="connectionID">1466</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showReleaseNotes:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="391362863"/>
+					</object>
+					<int key="connectionID">1467</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="596900596"/>
+						<reference key="destination" ref="1009676812"/>
+					</object>
+					<int key="connectionID">1468</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1787,87 +1731,15 @@
 						<reference key="object" ref="425526390"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="849896429"/>
-							<reference ref="217753677"/>
-							<reference ref="893583005"/>
 							<reference ref="811589995"/>
-							<reference ref="124233871"/>
 							<reference ref="911977704"/>
 						</object>
 						<reference key="parent" ref="302451067"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">441</int>
-						<reference key="object" ref="849896429"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="717868159"/>
-						</object>
-						<reference key="parent" ref="425526390"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">449</int>
-						<reference key="object" ref="717868159"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-						</object>
-						<reference key="parent" ref="849896429"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">444</int>
-						<reference key="object" ref="217753677"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="870694005"/>
-						</object>
-						<reference key="parent" ref="425526390"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">455</int>
-						<reference key="object" ref="870694005"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-						</object>
-						<reference key="parent" ref="217753677"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">447</int>
-						<reference key="object" ref="893583005"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="779596668"/>
-						</object>
-						<reference key="parent" ref="425526390"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">442</int>
-						<reference key="object" ref="779596668"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-						</object>
-						<reference key="parent" ref="893583005"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">448</int>
 						<reference key="object" ref="811589995"/>
 						<reference key="parent" ref="425526390"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">452</int>
-						<reference key="object" ref="124233871"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="1038494521"/>
-						</object>
-						<reference key="parent" ref="425526390"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">451</int>
-						<reference key="object" ref="1038494521"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-						</object>
-						<reference key="parent" ref="124233871"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">454</int>
@@ -2324,30 +2196,10 @@
 					<string>424.IBEditorWindowLastContentRect</string>
 					<string>424.IBPluginDependency</string>
 					<string>424.ImportedFromIB2</string>
-					<string>441.IBPluginDependency</string>
-					<string>441.ImportedFromIB2</string>
-					<string>442.IBEditorWindowLastContentRect</string>
-					<string>442.IBPluginDependency</string>
-					<string>442.ImportedFromIB2</string>
-					<string>444.IBPluginDependency</string>
-					<string>444.ImportedFromIB2</string>
-					<string>447.IBPluginDependency</string>
-					<string>447.ImportedFromIB2</string>
 					<string>448.IBPluginDependency</string>
 					<string>448.ImportedFromIB2</string>
-					<string>449.IBEditorWindowLastContentRect</string>
-					<string>449.IBPluginDependency</string>
-					<string>449.ImportedFromIB2</string>
-					<string>451.IBEditorWindowLastContentRect</string>
-					<string>451.IBPluginDependency</string>
-					<string>451.ImportedFromIB2</string>
-					<string>452.IBPluginDependency</string>
-					<string>452.ImportedFromIB2</string>
 					<string>454.IBPluginDependency</string>
 					<string>454.ImportedFromIB2</string>
-					<string>455.IBEditorWindowLastContentRect</string>
-					<string>455.IBPluginDependency</string>
-					<string>455.ImportedFromIB2</string>
 					<string>456.IBEditorWindowLastContentRect</string>
 					<string>456.IBPluginDependency</string>
 					<string>456.ImportedFromIB2</string>
@@ -2387,7 +2239,7 @@
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>{{656, 588}, {235, 393}}</string>
+					<string>{{280, 593}, {235, 393}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2432,7 +2284,7 @@
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>{{243, 522}, {194, 163}}</string>
+					<string>{{405, 759}, {191, 163}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2471,7 +2323,7 @@
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>{{238, 649}, {64, 6}}</string>
+					<string>{{405, 866}, {64, 6}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2499,7 +2351,7 @@
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>{{528, 888}, {218, 93}}</string>
+					<string>{{374, 869}, {218, 93}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2512,14 +2364,14 @@
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>{{319, 981}, {469, 20}}</string>
+					<string>{{-57, 986}, {469, 20}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>{{442, 838}, {244, 143}}</string>
+					<string>{{288, 819}, {244, 143}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2534,34 +2386,31 @@
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>{{569, 868}, {185, 113}}</string>
+					<string>{{415, 929}, {180, 33}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>{{433, 669}, {64, 6}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
+					<string>{{351, 903}, {244, 83}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>{{433, 689}, {64, 6}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>{{629, 764}, {64, 6}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
+					<string>{{177, 749}, {228, 213}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>{{433, 649}, {64, 6}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>{{727, 898}, {244, 83}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2570,24 +2419,7 @@
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
-					<string>{{331, 768}, {228, 213}}</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
-					<string>{{484, 758}, {183, 223}}</string>
+					<string>{{330, 739}, {183, 223}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2611,7 +2443,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">1419</int>
+			<int key="maxID">1468</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2620,14 +2452,308 @@
 					<string key="className">AquaChat</string>
 					<string key="superclassName">NSObject</string>
 					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">do_load_plugin:</string>
-						<string key="NS.object.0">id</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>clearWindow:</string>
+							<string>closeTab:</string>
+							<string>loadPlugin:</string>
+							<string>openDownload:</string>
+							<string>openHomepage:</string>
+							<string>openNewChannel:</string>
+							<string>openNewServer:</string>
+							<string>openOnlineDocs:</string>
+							<string>searchAgain:</string>
+							<string>selectNextTab:</string>
+							<string>selectPreviousTab:</string>
+							<string>showAsciiWindow:</string>
+							<string>showBanWindow:</string>
+							<string>showChannelWindow:</string>
+							<string>showCtcpRepliesWindow:</string>
+							<string>showDccChatWindow:</string>
+							<string>showDccRecieveWindow:</string>
+							<string>showDccSendWindow:</string>
+							<string>showDialogButtonsWindow:</string>
+							<string>showFriendWindow:</string>
+							<string>showIgnoreWindow:</string>
+							<string>showLogViewWindow:</string>
+							<string>showNetworkWindow:</string>
+							<string>showPluginWindow:</string>
+							<string>showPreferencesWindow:</string>
+							<string>showRawLogWindow:</string>
+							<string>showReleaseNotes:</string>
+							<string>showReplacePopupWindow:</string>
+							<string>showSearchPanel:</string>
+							<string>showTextEventsWindow:</string>
+							<string>showUrlGrabberWindow:</string>
+							<string>showUrlHandlersWindow:</string>
+							<string>showUserCommandsWindow:</string>
+							<string>showUserMenusWindow:</string>
+							<string>showUserlistButtonsWindow:</string>
+							<string>showUserlistPopupWindow:</string>
+							<string>toggleAway:</string>
+							<string>toggleInvisible:</string>
+							<string>toggleReceiveServerNotices:</string>
+							<string>toggleReceiveWallops:</string>
+							<string>toggleTabAttachment:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+						</object>
 					</object>
 					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">do_load_plugin:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">do_load_plugin:</string>
-							<string key="candidateClassName">id</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>clearWindow:</string>
+							<string>closeTab:</string>
+							<string>loadPlugin:</string>
+							<string>openDownload:</string>
+							<string>openHomepage:</string>
+							<string>openNewChannel:</string>
+							<string>openNewServer:</string>
+							<string>openOnlineDocs:</string>
+							<string>searchAgain:</string>
+							<string>selectNextTab:</string>
+							<string>selectPreviousTab:</string>
+							<string>showAsciiWindow:</string>
+							<string>showBanWindow:</string>
+							<string>showChannelWindow:</string>
+							<string>showCtcpRepliesWindow:</string>
+							<string>showDccChatWindow:</string>
+							<string>showDccRecieveWindow:</string>
+							<string>showDccSendWindow:</string>
+							<string>showDialogButtonsWindow:</string>
+							<string>showFriendWindow:</string>
+							<string>showIgnoreWindow:</string>
+							<string>showLogViewWindow:</string>
+							<string>showNetworkWindow:</string>
+							<string>showPluginWindow:</string>
+							<string>showPreferencesWindow:</string>
+							<string>showRawLogWindow:</string>
+							<string>showReleaseNotes:</string>
+							<string>showReplacePopupWindow:</string>
+							<string>showSearchPanel:</string>
+							<string>showTextEventsWindow:</string>
+							<string>showUrlGrabberWindow:</string>
+							<string>showUrlHandlersWindow:</string>
+							<string>showUserCommandsWindow:</string>
+							<string>showUserMenusWindow:</string>
+							<string>showUserlistButtonsWindow:</string>
+							<string>showUserlistPopupWindow:</string>
+							<string>toggleAway:</string>
+							<string>toggleInvisible:</string>
+							<string>toggleReceiveServerNotices:</string>
+							<string>toggleReceiveWallops:</string>
+							<string>toggleTabAttachment:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">clearWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">closeTab:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">loadPlugin:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">openDownload:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">openHomepage:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">openNewChannel:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">openNewServer:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">openOnlineDocs:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">searchAgain:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">selectNextTab:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">selectPreviousTab:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showAsciiWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showBanWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showChannelWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showCtcpRepliesWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showDccChatWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showDccRecieveWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showDccSendWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showDialogButtonsWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showFriendWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showIgnoreWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showLogViewWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showNetworkWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showPluginWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showPreferencesWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showRawLogWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showReleaseNotes:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showReplacePopupWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showSearchPanel:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showTextEventsWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showUrlGrabberWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showUrlHandlersWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showUserCommandsWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showUserMenusWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showUserlistButtonsWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showUserlistPopupWindow:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">toggleAway:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">toggleInvisible:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">toggleReceiveServerNotices:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">toggleReceiveWallops:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">toggleTabAttachment:</string>
+								<string key="candidateClassName">id</string>
+							</object>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
@@ -2642,7 +2768,7 @@
 							<string>previousWindowMenuItem</string>
 							<string>receiveNoticesMenuItem</string>
 							<string>receiveWallopsMenuItem</string>
-							<string>user_menu</string>
+							<string>userMenu</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -2669,7 +2795,7 @@
 							<string>previousWindowMenuItem</string>
 							<string>receiveNoticesMenuItem</string>
 							<string>receiveWallopsMenuItem</string>
-							<string>user_menu</string>
+							<string>userMenu</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -2706,7 +2832,7 @@
 								<string key="candidateClassName">NSMenuItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">user_menu</string>
+								<string key="name">userMenu</string>
 								<string key="candidateClassName">NSMenu</string>
 							</object>
 						</object>
@@ -2723,99 +2849,17 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>do_ascii_window:</string>
 							<string>do_auto_accept_dcc_chat_menu:</string>
 							<string>do_auto_accept_dcc_send_menu:</string>
 							<string>do_auto_dialog_menu:</string>
 							<string>do_auto_reconnect_menu:</string>
 							<string>do_auto_rejoin_menu:</string>
-							<string>do_away_button:</string>
-							<string>do_ban_list_window:</string>
-							<string>do_channellist_window:</string>
-							<string>do_close_menu:</string>
-							<string>do_ctcp_replies:</string>
-							<string>do_dcc_chat_window:</string>
-							<string>do_dcc_recv_window:</string>
-							<string>do_dcc_send_window:</string>
-							<string>do_dialog_buttons:</string>
-							<string>do_edit_events_menu:</string>
-							<string>do_edit_user_menu:</string>
-							<string>do_flush_buffer:</string>
-							<string>do_goto_download:</string>
-							<string>do_homepage:</string>
-							<string>do_ignore_window:</string>
-							<string>do_invisible_menu:</string>
-							<string>do_link_delink:</string>
-							<string>do_log_viewer:</string>
 							<string>do_never_give_up_menu:</string>
-							<string>do_new_channel:</string>
-							<string>do_new_server:</string>
-							<string>do_next_window:</string>
-							<string>do_notify_list_window:</string>
-							<string>do_online_docs:</string>
-							<string>do_pluginlist:</string>
-							<string>do_prefs:</string>
-							<string>do_prev_window:</string>
 							<string>do_quit_menu:</string>
-							<string>do_raw_log_window:</string>
-							<string>do_receive_server_notices_menu:</string>
-							<string>do_receive_wallops_menu:</string>
-							<string>do_release_notes:</string>
-							<string>do_replace_popup:</string>
-							<string>do_save_buffer:</string>
-							<string>do_search_again:</string>
-							<string>do_search_buffer:</string>
-							<string>do_serverlist:</string>
-							<string>do_url_grabber_window:</string>
-							<string>do_url_handlers:</string>
-							<string>do_user_commands:</string>
-							<string>do_userlist_buttons:</string>
-							<string>do_userlist_popup:</string>
 							<string>show_channellist:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -2830,62 +2874,17 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>do_ascii_window:</string>
 							<string>do_auto_accept_dcc_chat_menu:</string>
 							<string>do_auto_accept_dcc_send_menu:</string>
 							<string>do_auto_dialog_menu:</string>
 							<string>do_auto_reconnect_menu:</string>
 							<string>do_auto_rejoin_menu:</string>
-							<string>do_away_button:</string>
-							<string>do_ban_list_window:</string>
-							<string>do_channellist_window:</string>
-							<string>do_close_menu:</string>
-							<string>do_ctcp_replies:</string>
-							<string>do_dcc_chat_window:</string>
-							<string>do_dcc_recv_window:</string>
-							<string>do_dcc_send_window:</string>
-							<string>do_dialog_buttons:</string>
-							<string>do_edit_events_menu:</string>
-							<string>do_edit_user_menu:</string>
-							<string>do_flush_buffer:</string>
-							<string>do_goto_download:</string>
-							<string>do_homepage:</string>
-							<string>do_ignore_window:</string>
-							<string>do_invisible_menu:</string>
-							<string>do_link_delink:</string>
-							<string>do_log_viewer:</string>
 							<string>do_never_give_up_menu:</string>
-							<string>do_new_channel:</string>
-							<string>do_new_server:</string>
-							<string>do_next_window:</string>
-							<string>do_notify_list_window:</string>
-							<string>do_online_docs:</string>
-							<string>do_pluginlist:</string>
-							<string>do_prefs:</string>
-							<string>do_prev_window:</string>
 							<string>do_quit_menu:</string>
-							<string>do_raw_log_window:</string>
-							<string>do_receive_server_notices_menu:</string>
-							<string>do_receive_wallops_menu:</string>
-							<string>do_release_notes:</string>
-							<string>do_replace_popup:</string>
-							<string>do_save_buffer:</string>
-							<string>do_search_again:</string>
-							<string>do_search_buffer:</string>
-							<string>do_serverlist:</string>
-							<string>do_url_grabber_window:</string>
-							<string>do_url_handlers:</string>
-							<string>do_user_commands:</string>
-							<string>do_userlist_buttons:</string>
-							<string>do_userlist_popup:</string>
 							<string>show_channellist:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBActionInfo">
-								<string key="name">do_ascii_window:</string>
-								<string key="candidateClassName">id</string>
-							</object>
 							<object class="IBActionInfo">
 								<string key="name">do_auto_accept_dcc_chat_menu:</string>
 								<string key="candidateClassName">id</string>
@@ -2907,111 +2906,7 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">do_away_button:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_ban_list_window:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_channellist_window:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_close_menu:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_ctcp_replies:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_dcc_chat_window:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_dcc_recv_window:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_dcc_send_window:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_dialog_buttons:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_edit_events_menu:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_edit_user_menu:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_flush_buffer:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_goto_download:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_homepage:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_ignore_window:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_invisible_menu:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_link_delink:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_log_viewer:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
 								<string key="name">do_never_give_up_menu:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_new_channel:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_new_server:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_next_window:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_notify_list_window:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_online_docs:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_pluginlist:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_prefs:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_prev_window:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -3019,76 +2914,9 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">do_raw_log_window:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_receive_server_notices_menu:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_receive_wallops_menu:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_release_notes:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_replace_popup:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_save_buffer:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_search_again:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_search_buffer:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_serverlist:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_url_grabber_window:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_url_handlers:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_user_commands:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_userlist_buttons:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">do_userlist_popup:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
 								<string key="name">show_channellist:</string>
 								<string key="candidateClassName">id</string>
 							</object>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">acprefs</string>
-						<string key="NS.object.0">PrefsController</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">acprefs</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">acprefs</string>
-							<string key="candidateClassName">PrefsController</string>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -3158,709 +2986,9 @@
 						<string key="minorKey"/>
 					</object>
 				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">PrefsController</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>announce_away_check</string>
-							<string>auto_away_check</string>
-							<string>auto_away_text</string>
-							<string>auto_dialog_check</string>
-							<string>auto_open_dcc_chat_list_check</string>
-							<string>auto_open_dcc_receive_list_check</string>
-							<string>auto_open_dcc_send_list_check</string>
-							<string>auto_reconnect_check</string>
-							<string>auto_reconnect_delay_text</string>
-							<string>auto_rejoin_check</string>
-							<string>auto_unmark_away_check</string>
-							<string>away_message_text</string>
-							<string>badge_other_check</string>
-							<string>badge_private_check</string>
-							<string>beep_on_channel_messages_check</string>
-							<string>beep_on_private_check</string>
-							<string>bind_address_text</string>
-							<string>bounce_check</string>
-							<string>bounce_other_check</string>
-							<string>category_list</string>
-							<string>channel_command_text</string>
-							<string>charset_text</string>
-							<string>checkvers_check</string>
-							<string>colored_nicks_check</string>
-							<string>completed_downloads_text</string>
-							<string>content_box</string>
-							<string>convert_spaces_check</string>
-							<string>dcc_address_text</string>
-							<string>dcc_chat_menu</string>
-							<string>dcc_send_menu</string>
-							<string>doubleclick_command_text</string>
-							<string>down_dir_text</string>
-							<string>enable_logging_check</string>
-							<string>extra_highlight_words_text</string>
-							<string>first_dcc_send_port_text</string>
-							<string>font_text</string>
-							<string>get_my_ip_check</string>
-							<string>gui_metal_check</string>
-							<string>hide_join_part_check</string>
-							<string>hide_tab_close_check</string>
-							<string>hide_userlist_check</string>
-							<string>identd_check</string>
-							<string>indent_nicks_check</string>
-							<string>insert_timestamps_check</string>
-							<string>interpret_nnn_check</string>
-							<string>interpret_percent_color</string>
-							<string>last_dcc_send_port_text</string>
-							<string>log_filename_mask_text</string>
-							<string>log_timestamp_format_text</string>
-							<string>max_lines_text</string>
-							<string>never_give_up_check</string>
-							<string>nick_command_text</string>
-							<string>nick_complete_sort_menu</string>
-							<string>nick_completion_text</string>
-							<string>notices_tab_check</string>
-							<string>open_channels_in_menu</string>
-							<string>open_dialogs_in_menu</string>
-							<string>open_utilities_in_menu</string>
-							<string>part_message_text</string>
-							<string>part_on_sleep_check</string>
-							<string>perform_always_check</string>
-							<string>pop_new_tabs_check</string>
-							<string>preferencesWindow</string>
-							<string>proxy_port_text</string>
-							<string>proxy_server_text</string>
-							<string>proxy_type_menu</string>
-							<string>quit_message_text</string>
-							<string>raw_modes_check</string>
-							<string>save_nicknames_check</string>
-							<string>scrolling_completion_check</string>
-							<string>server_tab_check</string>
-							<string>show_away_once_check</string>
-							<string>show_channel_mode_buttons_check</string>
-							<string>show_hostnames_check</string>
-							<string>show_separator_check</string>
-							<string>show_tab_at_menu</string>
-							<string>sleep_message_text</string>
-							<string>sounds_table</string>
-							<string>spell_check_check</string>
-							<string>strip_mirc_color_check</string>
-							<string>suffix_completion_check</string>
-							<string>tabLeftRecorderCell</string>
-							<string>tabRightRecorderCell</string>
-							<string>tabView</string>
-							<string>tab_complete_check</string>
-							<string>time_stamp_format_text</string>
-							<string>time_stamp_text_check</string>
-							<string>trans_check</string>
-							<string>trans_slider</string>
-							<string>url_command_text</string>
-							<string>use_text_box_font_check</string>
-							<string>userlist_buttons_enabled_check</string>
-							<string>userlist_sort_menu</string>
-							<string>whois_on_notify_check</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>NSWindow</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>SRRecorderCell</string>
-							<string>SRRecorderCell</string>
-							<string>NSTabView</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>announce_away_check</string>
-							<string>auto_away_check</string>
-							<string>auto_away_text</string>
-							<string>auto_dialog_check</string>
-							<string>auto_open_dcc_chat_list_check</string>
-							<string>auto_open_dcc_receive_list_check</string>
-							<string>auto_open_dcc_send_list_check</string>
-							<string>auto_reconnect_check</string>
-							<string>auto_reconnect_delay_text</string>
-							<string>auto_rejoin_check</string>
-							<string>auto_unmark_away_check</string>
-							<string>away_message_text</string>
-							<string>badge_other_check</string>
-							<string>badge_private_check</string>
-							<string>beep_on_channel_messages_check</string>
-							<string>beep_on_private_check</string>
-							<string>bind_address_text</string>
-							<string>bounce_check</string>
-							<string>bounce_other_check</string>
-							<string>category_list</string>
-							<string>channel_command_text</string>
-							<string>charset_text</string>
-							<string>checkvers_check</string>
-							<string>colored_nicks_check</string>
-							<string>completed_downloads_text</string>
-							<string>content_box</string>
-							<string>convert_spaces_check</string>
-							<string>dcc_address_text</string>
-							<string>dcc_chat_menu</string>
-							<string>dcc_send_menu</string>
-							<string>doubleclick_command_text</string>
-							<string>down_dir_text</string>
-							<string>enable_logging_check</string>
-							<string>extra_highlight_words_text</string>
-							<string>first_dcc_send_port_text</string>
-							<string>font_text</string>
-							<string>get_my_ip_check</string>
-							<string>gui_metal_check</string>
-							<string>hide_join_part_check</string>
-							<string>hide_tab_close_check</string>
-							<string>hide_userlist_check</string>
-							<string>identd_check</string>
-							<string>indent_nicks_check</string>
-							<string>insert_timestamps_check</string>
-							<string>interpret_nnn_check</string>
-							<string>interpret_percent_color</string>
-							<string>last_dcc_send_port_text</string>
-							<string>log_filename_mask_text</string>
-							<string>log_timestamp_format_text</string>
-							<string>max_lines_text</string>
-							<string>never_give_up_check</string>
-							<string>nick_command_text</string>
-							<string>nick_complete_sort_menu</string>
-							<string>nick_completion_text</string>
-							<string>notices_tab_check</string>
-							<string>open_channels_in_menu</string>
-							<string>open_dialogs_in_menu</string>
-							<string>open_utilities_in_menu</string>
-							<string>part_message_text</string>
-							<string>part_on_sleep_check</string>
-							<string>perform_always_check</string>
-							<string>pop_new_tabs_check</string>
-							<string>preferencesWindow</string>
-							<string>proxy_port_text</string>
-							<string>proxy_server_text</string>
-							<string>proxy_type_menu</string>
-							<string>quit_message_text</string>
-							<string>raw_modes_check</string>
-							<string>save_nicknames_check</string>
-							<string>scrolling_completion_check</string>
-							<string>server_tab_check</string>
-							<string>show_away_once_check</string>
-							<string>show_channel_mode_buttons_check</string>
-							<string>show_hostnames_check</string>
-							<string>show_separator_check</string>
-							<string>show_tab_at_menu</string>
-							<string>sleep_message_text</string>
-							<string>sounds_table</string>
-							<string>spell_check_check</string>
-							<string>strip_mirc_color_check</string>
-							<string>suffix_completion_check</string>
-							<string>tabLeftRecorderCell</string>
-							<string>tabRightRecorderCell</string>
-							<string>tabView</string>
-							<string>tab_complete_check</string>
-							<string>time_stamp_format_text</string>
-							<string>time_stamp_text_check</string>
-							<string>trans_check</string>
-							<string>trans_slider</string>
-							<string>url_command_text</string>
-							<string>use_text_box_font_check</string>
-							<string>userlist_buttons_enabled_check</string>
-							<string>userlist_sort_menu</string>
-							<string>whois_on_notify_check</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBToOneOutletInfo">
-								<string key="name">announce_away_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">auto_away_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">auto_away_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">auto_dialog_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">auto_open_dcc_chat_list_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">auto_open_dcc_receive_list_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">auto_open_dcc_send_list_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">auto_reconnect_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">auto_reconnect_delay_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">auto_rejoin_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">auto_unmark_away_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">away_message_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">badge_other_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">badge_private_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">beep_on_channel_messages_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">beep_on_private_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">bind_address_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">bounce_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">bounce_other_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">category_list</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">channel_command_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">charset_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">checkvers_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">colored_nicks_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">completed_downloads_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">content_box</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">convert_spaces_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">dcc_address_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">dcc_chat_menu</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">dcc_send_menu</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">doubleclick_command_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">down_dir_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">enable_logging_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">extra_highlight_words_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">first_dcc_send_port_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">font_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">get_my_ip_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">gui_metal_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">hide_join_part_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">hide_tab_close_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">hide_userlist_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">identd_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">indent_nicks_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">insert_timestamps_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">interpret_nnn_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">interpret_percent_color</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">last_dcc_send_port_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">log_filename_mask_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">log_timestamp_format_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">max_lines_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">never_give_up_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">nick_command_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">nick_complete_sort_menu</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">nick_completion_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">notices_tab_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">open_channels_in_menu</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">open_dialogs_in_menu</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">open_utilities_in_menu</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">part_message_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">part_on_sleep_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">perform_always_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">pop_new_tabs_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">preferencesWindow</string>
-								<string key="candidateClassName">NSWindow</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">proxy_port_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">proxy_server_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">proxy_type_menu</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">quit_message_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">raw_modes_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">save_nicknames_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">scrolling_completion_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">server_tab_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">show_away_once_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">show_channel_mode_buttons_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">show_hostnames_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">show_separator_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">show_tab_at_menu</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">sleep_message_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">sounds_table</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">spell_check_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">strip_mirc_color_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">suffix_completion_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">tabLeftRecorderCell</string>
-								<string key="candidateClassName">SRRecorderCell</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">tabRightRecorderCell</string>
-								<string key="candidateClassName">SRRecorderCell</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">tabView</string>
-								<string key="candidateClassName">NSTabView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">tab_complete_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">time_stamp_format_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">time_stamp_text_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">trans_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">trans_slider</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">url_command_text</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">use_text_box_font_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">userlist_buttons_enabled_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">userlist_sort_menu</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">whois_on_notify_check</string>
-								<string key="candidateClassName">id</string>
-							</object>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">fe-aqua/PrefsController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">PrefsController</string>
-					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBUserSource</string>
-						<string key="minorKey"/>
-					</object>
-				</object>
 			</object>
 			<object class="NSMutableArray" key="referencedPartialClassDescriptionsV3.2+">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSActionCell</string>
-					<string key="superclassName">NSCell</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBFrameworkSource</string>
-						<string key="minorKey">AppKit.framework/Headers/NSActionCell.h</string>
-					</object>
-				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">NSApplication</string>
 					<string key="superclassName">NSResponder</string>
@@ -3910,14 +3038,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">AppKit.framework/Headers/NSBrowser.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSCell</string>
-					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBFrameworkSource</string>
-						<string key="minorKey">AppKit.framework/Headers/NSCell.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -4228,7 +3348,7 @@
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="633175254">
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">ShortcutRecorder.framework/Headers/SRRecorderCell.h</string>
 					</object>
@@ -4274,14 +3394,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">AppKit.framework/Headers/NSResponder.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSTabView</string>
-					<string key="superclassName">NSView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBFrameworkSource</string>
-						<string key="minorKey">AppKit.framework/Headers/NSTabView.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -4348,22 +3460,6 @@
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">AppKit.framework/Headers/NSWindowScripting.h</string>
 					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">SRRecorderCell</string>
-					<string key="superclassName">NSActionCell</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">delegate</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">delegate</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">delegate</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<reference key="sourceIdentifier" ref="633175254"/>
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">SUUpdater</string>

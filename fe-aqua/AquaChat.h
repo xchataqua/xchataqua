@@ -20,46 +20,26 @@
 
 #import <Growl/GrowlApplicationBridge.h>
 
-#define BanWindowKey(SESS)	[@"BanWindow" stringByAppendingFormat:@"_%x", SESS]
+//#define AsciiWindowKey	@"AsciiWindow"
+//#define BanWindowKey	@"BanWindow"
+//#define FriendWindowKey	@"FriendWindow"
+//#define IgnoreWindowKey	@"IgnoreWindow"
+//#define PluginWindowKey	@"PluginWindow"
+#define UtilityKey(KEY, ADDR)	[KEY stringByAppendingFormat:@"_%x", ADDR]
 
-@class BanListWin;
-@class ColorPalette;
-@class ChannelListWin;
-@class ChatWindow;
-@class DccSendWin;
-@class DccRecvWin;
-@class DccChatWin;
-@class EditList;
-@class EditEvents;
-@class LogViewer;
-@class PluginWindow;
-@class PreferencesController;
-@class RawLogWin;
-@class ServerList;
-@class UrlGrabberWin;
-
-struct session;
-
-struct session_gui
-{
-	ChatWindow	 	*cw;
-};
-
-struct server_gui
-{
-	ChannelListWin	*clc;
-	RawLogWin		*rawlog;
-	int				tab_group;
-};
-
-struct event_info
+struct eventInfo
 {
 	int	growl;
 	int show;
 	int bounce;
 };
 
-extern struct event_info text_event_info[];
+extern struct eventInfo textEventInfo[];
+
+@class ColorPalette;
+@class DccSendWin;
+@class DccRecvWin;
+@class DccChatWin;
 
 @interface AquaChat : NSObject <GrowlApplicationBridgeDelegate>
 {
@@ -72,36 +52,21 @@ extern struct event_info text_event_info[];
 	IBOutlet NSMenuItem *previousWindowMenuItem;
 	IBOutlet NSMenuItem *receiveNoticesMenuItem;
 	IBOutlet NSMenuItem *receiveWallopsMenuItem;
-	IBOutlet NSMenu *user_menu;
+	IBOutlet NSMenu *userMenu;
    
-	NSString	*search_string;
+	NSString *searchString;
 	
-	PreferencesController *acprefs;
 	ColorPalette *palette;
 	
-	NSFont	*font;
-	NSFont	*boldFont;
-
-	ServerList	*server_list;
+	NSFont *font;
+	NSFont *boldFont;
 	
-	EditList	*user_commands;
-	EditList	*ctcp_replies;
-	EditList	*userlist_buttons;
-	EditList	*userlist_popup;
-	EditList	*dialog_buttons;
-	EditList	*replace_popup;
-	EditList	*url_handlers;
-	EditList	*user_menus;
-	EditEvents	*edit_events;
+	DccSendWin *dcc_send_window;
+	DccRecvWin *dcc_recv_window;
+	DccChatWin *dcc_chat_window;
 	
-	DccSendWin	*dcc_send_window;
-	DccRecvWin	*dcc_recv_window;
-	DccChatWin	*dcc_chat_window;
-	UrlGrabberWin *url_grabber;
-	PreferencesController *prefs_controller;
-	LogViewer	   *log_viewer;
-	
-	NSMutableDictionary *sound_cache;
+	NSMutableDictionary *soundCache;
+	NSImage *appImage, *alertImage;
 }
 
 @property (nonatomic, readonly) NSFont *font, *boldFont;
@@ -109,32 +74,81 @@ extern struct event_info text_event_info[];
 
 - (void) preferencesChanged;
 
-- (void) post_init;
-- (void) cleanup;
-- (void) set_away:(bool) is_away;
-- (void) usermenu_update;
-- (void) dcc_update:(struct DCC *) dcc;
-- (void) dcc_add:(struct DCC *) dcc;
-- (void) dcc_remove:(struct DCC *) dcc;
-- (int) dcc_open_send_win:(bool) passive;
-- (int) dcc_open_recv_win:(bool) passive;
-- (int) dcc_open_chat_win:(bool) passive;
-- (void) add_url:(const char *) url;
-- (void) open_serverlist_for:(session *) sess;
-- (void) notify_list_update;
-- (void) ignore_update:(int) level;
-- (void) pluginlist_update;
-- (void) do_load_plugin:(id) sender;
-- (void) play_wave:(const char *) fname;
-- (void) event:(int) event args:(char **) args session:(session *) sess;
-- (void) ctrl_gui:(session *) sess action:(int) action arg:(int) arg;
-- (void) server_event:(server *)server event_type:(int)type arg:(int)arg;
-- (void) growl:(const char *)text title:(const char *)title;
-- (void) growl:(const char *)text;
+- (void) event:(int) event args:(char **) args session:(struct session *) sess;
 
 + (AquaChat *) sharedAquaChat;
 
-+ (void) forEachSessionOnServer:(struct server *)serv performSelector:(SEL)sel;
-+ (void) forEachSessionOnServer:(struct server *)serv performSelector:(SEL)sel withObject:(id) obj;
++ (void) forEachSessionOnServer:(struct server *)server performSelector:(SEL)sel;
++ (void) forEachSessionOnServer:(struct server *)server performSelector:(SEL)sel withObject:(id) obj;
+
+// fe-aqua
+- (void) post_init;
+- (void) toggleAwayToValue:(bool)is_away;
+- (void) cleanup;
+- (void) updatePluginWindow;
+- (void) updateIgnoreWindowForLevel:(int)level;
+- (void) updateFriendWindow;
+- (void) updateDcc:(struct DCC *) dcc;
+- (void) addDcc:(struct DCC *) dcc;
+- (void) removeDcc:(struct DCC *) dcc;
+- (int) openDccSendWindowAndShow:(BOOL)show;
+- (int) openDccRecieveWindowAndShow:(BOOL)show;
+- (int) openDccChatWindowAndShow:(BOOL)show;
+- (void) addUrl:(const char *) url;
+- (void) playWaveNamed:(const char *)filename;
+- (void) openNetworkWindowForSession:(struct session *) sess;
+- (void) growl:(NSString *)text title:(NSString *)title;
+- (void) ctrl_gui:(struct session *) sess action:(int) action arg:(int) arg;
+- (void) server_event:(struct server *)server event_type:(int)type arg:(int)arg;
+
+// MainMenu IBAction
+// Standard menu
+- (IBAction) showPreferencesWindow:(id)sender;
+- (IBAction) showUserCommandsWindow:(id)sender;
+- (IBAction) showCtcpRepliesWindow:(id)sender;
+- (IBAction) showUserlistButtonsWindow:(id)sender;
+- (IBAction) showUserlistPopupWindow:(id)sender;
+- (IBAction) showDialogButtonsWindow:(id)sender;
+- (IBAction) showReplacePopupWindow:(id)sender;
+- (IBAction) showUrlHandlersWindow:(id)sender;
+- (IBAction) showTextEventsWindow:(id)sender;
+// File menu
+- (IBAction) showNetworkWindow:(id)sender;
+- (IBAction) openNewServer:(id)sender;
+- (IBAction) openNewChannel:(id)sender;
+- (IBAction) loadPlugin:(id)sender;
+// Edit menu
+- (IBAction) clearWindow:(id)sender;
+- (IBAction) showSearchPanel:(id)sender;
+- (IBAction) searchAgain:(id)sender;
+// IRC menu
+- (IBAction) toggleInvisible:(id)sender;
+- (IBAction) toggleReceiveWallops:(id)sender;
+- (IBAction) toggleReceiveServerNotices:(id)sender;
+- (IBAction) toggleAway:(id)sender;
+// Usermenu menu
+- (IBAction) showUserMenusWindow:(id)sender;
+// Window menu
+- (IBAction) closeTab:(id)sender;
+- (IBAction) toggleTabAttachment:(id)sender;
+- (IBAction) selectNextTab:(id)sender;
+- (IBAction) selectPreviousTab:(id)sender;
+- (IBAction) showChannelWindow:(id)sender;
+- (IBAction) showBanWindow:(id)sender;
+- (IBAction) showAsciiWindow:(id)sender;
+- (IBAction) showDccChatWindow:(id)sender;
+- (IBAction) showDccRecieveWindow:(id)sender;
+- (IBAction) showDccSendWindow:(id)sender;
+- (IBAction) showIgnoreWindow:(id)sender;
+- (IBAction) showFriendWindow:(id)sender;
+- (IBAction) showPluginWindow:(id)sender;
+- (IBAction) showRawLogWindow:(id)sender;
+- (IBAction) showUrlGrabberWindow:(id)sender;
+- (IBAction) showLogViewWindow:(id)sender;
+// Help menu
+- (IBAction) openHomepage:(id)sender;
+- (IBAction) openDownload:(id)sender;
+- (IBAction) showReleaseNotes:(id)sender;
+- (IBAction) openOnlineDocs:(id)sender;
 
 @end

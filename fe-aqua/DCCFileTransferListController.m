@@ -63,7 +63,7 @@
 	[self updateGlobalSpeed];
 }
 
-- (void) copy:(id) sender
+- (void) copy:(id)sender
 {
 	NSPasteboard *pb = [NSPasteboard generalPasteboard];
 	NSMutableString *copyString = [NSMutableString stringWithCapacity:200];

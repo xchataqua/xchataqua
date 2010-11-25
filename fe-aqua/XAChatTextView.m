@@ -108,7 +108,7 @@ static NSCursor *lr_cursor;
 	[super dealloc];
 }
 
-- (void) copy:(id) sender
+- (void) copy:(id)sender
 {
 	// Perform the "copy" operation.
 
@@ -204,7 +204,7 @@ static NSCursor *lr_cursor;
 
 - (void) setup_margin
 {
-	CGFloat x = prefs.text_manual_indent_chars * fontWidth;
+	CGFloat x = prefs.xa_text_manual_indent_chars * fontWidth;
 	NSMutableAttributedString *s = [self textStorage];
 	NSRange whole = NSMakeRange (0, [s length]);
 	
@@ -536,15 +536,15 @@ static NSCursor *lr_cursor;
 		case WORD_HOST:
 		case WORD_EMAIL:
 		case WORD_URL:
-			cmd = prefs.urlcommand;
+			cmd = prefs.xa_urlcommand;
 			break;
 			
 		case WORD_NICK:
-			cmd = prefs.nickcommand;
+			cmd = prefs.xa_nickcommand;
 			break;
 
 		case WORD_CHANNEL:
-			cmd = prefs.channelcommand;
+			cmd = prefs.xa_channelcommand;
 			break;
 		
 		default:
@@ -569,7 +569,7 @@ static NSCursor *lr_cursor;
 		return;
 	}
 
-	int margin = prefs.text_manual_indent_chars;
+	int margin = prefs.xa_text_manual_indent_chars;
 	
 	for (;;)
 	{
@@ -586,7 +586,7 @@ static NSCursor *lr_cursor;
 		if (new_margin > 2 && new_margin < 50 && new_margin != margin)
 		{
 			margin = new_margin;
-			prefs.text_manual_indent_chars = margin;
+			prefs.xa_text_manual_indent_chars = margin;
 			[self setup_margin];
 		}
 	}
