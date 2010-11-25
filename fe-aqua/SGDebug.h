@@ -22,9 +22,11 @@
 #define SG_DEBUG 0
 
 #ifdef SG_DEBUG
-#	define SGLog(TAG, ...) { if ( TAG ) [SGDebug log:[NSString stringWithFormat:__VA_ARGS__] file:__FILE__ line:__LINE__]; }
+#	define SGLog(TAG, ...)		{ if ( TAG ) [SGDebug log:[NSString stringWithFormat:__VA_ARGS__] file:__FILE__ line:__LINE__]; }
+#	define SGAssert(ASSERTION)	assert(NO)
 #else
 #	define SGLog(TAG, ...)
+#	define SGAssert(ASSERTION)
 #endif
 
 @interface SGDebug : NSObject 

@@ -19,9 +19,9 @@
 
 @interface DccRecvWin : DCCFileTransferListController
 
-- (IBAction) doReveal:(id) sender;
-- (IBAction) doAccept:(id) sender;
-- (IBAction) doResume:(id) sender;
-- (IBAction) doInfo:(id) sender;
+- (IBAction) doReveal:(id)sender;
+- (IBAction) doAccept:(id)sender;
+- (IBAction) doResume:(id)sender;
+- (IBAction) doInfo:(id)sender;
 
 @end

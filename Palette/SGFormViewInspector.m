@@ -145,7 +145,7 @@
 	[super refresh];
 }
 
-- (void) doConstrain:(id) sender
+- (void) doConstrain:(id)sender
 {
 	NSArray * objects = [self inspectedObjects];
 	NSUInteger numObjects = [objects count];
@@ -196,7 +196,7 @@
 	}
 }
 
-- (void) doIdentifier:(id) sender
+- (void) doIdentifier:(id)sender
 {
 	NSArray * objects = [self inspectedObjects];
 	NSInteger numObjects = [objects count];

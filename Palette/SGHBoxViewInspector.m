@@ -32,7 +32,7 @@
 	[[HJustMenu itemWithTitle:@"Right"]  setTag:SGHBoxHJustificationRight];
 }
 
-- (void) doHJust:(id) sender
+- (void) doHJust:(id)sender
 {
 	NSArray * objects = [self inspectedObjects];
 	NSUInteger numObjects = [objects count];
@@ -44,7 +44,7 @@
 	}
 }
 
-- (void) doInner:(id) sender
+- (void) doInner:(id)sender
 {
 	NSArray * objects = [self inspectedObjects];
 	NSUInteger numObjects = [objects count];
@@ -56,7 +56,7 @@
 	}
 }
 
-- (void) doOutter:(id) sender
+- (void) doOutter:(id)sender
 {
 	NSArray * objects = [self inspectedObjects];
 	NSUInteger numObjects = [objects count];

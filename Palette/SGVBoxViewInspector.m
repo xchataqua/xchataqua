@@ -37,7 +37,7 @@
 	[[HJustMenu itemWithTitle:@"Full"] setTag:SGVBoxHJustificationFull];
 }
 
-- (void) doVJust:(id) sender
+- (void) doVJust:(id)sender
 {
 	NSArray * objects = [self inspectedObjects];
 	NSUInteger count = [objects count];
@@ -49,7 +49,7 @@
 	}
 }
 
-- (void) doHJust:(id) sender
+- (void) doHJust:(id)sender
 {
 	NSArray * objects = [self inspectedObjects];
 	NSInteger count = [objects count];
@@ -61,7 +61,7 @@
 	}
 }
 
-- (void) doInner:(id) sender
+- (void) doInner:(id)sender
 {
 	NSArray * objects = [self inspectedObjects];
 	NSInteger count = [objects count];
@@ -73,7 +73,7 @@
 	}
 }
 
-- (void) doOutter:(id) sender
+- (void) doOutter:(id)sender
 {
 	NSArray * objects = [self inspectedObjects];
 	NSInteger count = [objects count];

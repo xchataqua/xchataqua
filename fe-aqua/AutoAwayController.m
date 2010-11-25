@@ -43,7 +43,7 @@
 		} else {
 			handle_command (srv->server_session, "back", false);
 		}
-		self.isAway = away;
+		self->isAway = away;
 	}
 }
 
@@ -59,7 +59,7 @@
 	//
 
 	// Only poll if the auto-away preference is set.
-	if (prefs.auto_away) {
+	if (prefs.xa_auto_away) {
 		CFTimeInterval idleTime;
 		NSTimeInterval interval;
 		
@@ -67,7 +67,7 @@
 		idleTime = CGEventSourceSecondsSinceLastEventType(kCGEventSourceStateCombinedSessionState, kCGAnyInputEventType);
 		
 		// Delay pref is in minutes, idleTime in seconds.
-		if (idleTime / 60 >= prefs.auto_away_delay) {
+		if (idleTime / 60 >= prefs.xa_auto_away_delay) {
 			if (!self.isAway) {
 				[self setAway:YES];
 			}
@@ -93,7 +93,7 @@
 }
 
 - (id) init {
-	if ((self = [super init])) {
+	if ((self = [super init]) != nil) {
 		// Init isAway to false.
 		self.isAway = NO;
 
@@ -126,7 +126,7 @@
 - (void) screenSaverDidStart
 {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	if (!self.isAway && prefs.auto_away) { // Don't set /away if we're allready away.
+	if (!self.isAway && prefs.xa_auto_away) { // Don't set /away if we're allready away.
 		[self setAway:YES];
 	}
 	[pool release];
@@ -140,7 +140,7 @@
 - (void)screenSaverDidStop
 {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	if (self.isAway && prefs.auto_away) { // Don't send /back if we're not /away.
+	if (self.isAway && prefs.xa_auto_away) { // Don't send /back if we're not /away.
 		[self setAway:NO];
 	}
 	[pool release];

@@ -41,7 +41,7 @@
 + (void) preferencesChanged;
 + (void) setTransparency:(NSInteger)transparency;
 
-- (void) link_delink:(id) sender;
+- (void) link_delink:(id)sender;
 
 - (void) setServer:(struct server *) server;
 
@@ -49,7 +49,7 @@
 - (void) becomeWindowAndShow:(BOOL) show;
 - (void) becomeTab:(BOOL) tab andShow:(BOOL) show;
 
-- (void) makeKeyAndOrderFront:(id) sender;
+- (void) makeKeyAndOrderFront:(id)sender;
 
 - (void) close;
 - (void) setTabTitleColor:(NSColor *) color;

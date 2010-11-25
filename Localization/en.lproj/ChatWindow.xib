@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1050</int>
-		<string key="IBDocument.SystemVersion">10D2094</string>
-		<string key="IBDocument.InterfaceBuilderVersion">762</string>
-		<string key="IBDocument.AppKitVersion">1038.29</string>
-		<string key="IBDocument.HIToolboxVersion">460.00</string>
+		<string key="IBDocument.SystemVersion">10H574</string>
+		<string key="IBDocument.InterfaceBuilderVersion">804</string>
+		<string key="IBDocument.AppKitVersion">1038.35</string>
+		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
@@ -15,13 +15,13 @@
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>762</string>
+				<string>804</string>
 				<string>1.0</string>
 			</object>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="434"/>
+			<integer value="169"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -29,13 +29,8 @@
 			<string>com.echo-sol.SGPalette</string>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.Metadata">
-			<bool key="EncodedWithXMLCoder">YES</bool>
-			<object class="NSArray" key="dict.sortedKeys" id="0">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-			</object>
-			<object class="NSMutableArray" key="dict.values">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-			</object>
+			<string key="NS.key.0">PluginDependencyRecalculationVersion</string>
+			<integer value="1" key="NS.object.0"/>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.RootObjects" id="634919208">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -463,6 +458,7 @@
 														</object>
 														<string key="NSFrame">{{1, 1}, {641, 549}}</string>
 														<reference key="NSSuperview" ref="264568351"/>
+														<reference key="NSNextKeyView" ref="1018426012"/>
 														<reference key="NSDocView" ref="1018426012"/>
 														<object class="NSColor" key="NSBGColor" id="740483302">
 															<int key="NSColorSpace">6</int>
@@ -498,6 +494,7 @@
 												</object>
 												<string key="NSFrame">{{0, 33}, {658, 551}}</string>
 												<reference key="NSSuperview" ref="924777832"/>
+												<reference key="NSNextKeyView" ref="992258571"/>
 												<int key="NSsFlags">18</int>
 												<reference key="NSVScroller" ref="11905204"/>
 												<reference key="NSHScroller" ref="654633798"/>
@@ -921,6 +918,7 @@
 														</object>
 														<string key="NSFrame">{{1, 1}, {116, 350}}</string>
 														<reference key="NSSuperview" ref="802015968"/>
+														<reference key="NSNextKeyView" ref="748338496"/>
 														<reference key="NSDocView" ref="748338496"/>
 														<reference key="NSBGColor" ref="819454815"/>
 														<int key="NScvFlags">4</int>
@@ -947,6 +945,7 @@
 												</object>
 												<string key="NSFrame">{{0, 198}, {133, 367}}</string>
 												<reference key="NSSuperview" ref="703106002"/>
+												<reference key="NSNextKeyView" ref="159940946"/>
 												<int key="NSsFlags">50</int>
 												<reference key="NSVScroller" ref="460487528"/>
 												<reference key="NSHScroller" ref="462215333"/>
@@ -1308,7 +1307,9 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="IBObjectRecord">
 						<int key="objectID">0</int>
-						<reference key="object" ref="0"/>
+						<object class="NSArray" key="object" id="0">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+						</object>
 						<reference key="children" ref="634919208"/>
 						<nil key="parent"/>
 					</object>
@@ -2130,6 +2131,25 @@
 							<string>id</string>
 						</object>
 					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>doConferenceMode:</string>
+							<string>doMircColor:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">doConferenceMode:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">doMircColor:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+						</object>
+					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
@@ -2173,6 +2193,105 @@
 							<string>NSTextField</string>
 							<string>NSTextField</string>
 							<string>NSTableView</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>bodyBoxView</string>
+							<string>buttonBoxView</string>
+							<string>chatScrollView</string>
+							<string>chatTextView</string>
+							<string>chatView</string>
+							<string>headerBoxView</string>
+							<string>inputTextField</string>
+							<string>keyTextField</string>
+							<string>lagIndicator</string>
+							<string>limitTextField</string>
+							<string>myOpOrVoiceIconImageView</string>
+							<string>nickTextField</string>
+							<string>progressIndicator</string>
+							<string>sessMenuButton</string>
+							<string>throttleIndicator</string>
+							<string>topicTextField</string>
+							<string>userlistStatusTextField</string>
+							<string>userlistTableView</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">bodyBoxView</string>
+								<string key="candidateClassName">MySplitView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">buttonBoxView</string>
+								<string key="candidateClassName">SGRowColView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">chatScrollView</string>
+								<string key="candidateClassName">NSScrollView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">chatTextView</string>
+								<string key="candidateClassName">XAChatTextView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">chatView</string>
+								<string key="candidateClassName">TabOrWindowView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">headerBoxView</string>
+								<string key="candidateClassName">SGHBoxView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">inputTextField</string>
+								<string key="candidateClassName">NSTextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">keyTextField</string>
+								<string key="candidateClassName">NSTextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">lagIndicator</string>
+								<string key="candidateClassName">NSControl</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">limitTextField</string>
+								<string key="candidateClassName">NSTextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">myOpOrVoiceIconImageView</string>
+								<string key="candidateClassName">NSImageView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">nickTextField</string>
+								<string key="candidateClassName">NSTextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">progressIndicator</string>
+								<string key="candidateClassName">NSProgressIndicator</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">sessMenuButton</string>
+								<string key="candidateClassName">NSPopUpButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">throttleIndicator</string>
+								<string key="candidateClassName">NSControl</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">topicTextField</string>
+								<string key="candidateClassName">NSTextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">userlistStatusTextField</string>
+								<string key="candidateClassName">NSTextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">userlistTableView</string>
+								<string key="candidateClassName">NSTableView</string>
+							</object>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -2226,6 +2345,25 @@
 							<string>id</string>
 						</object>
 					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>scrollToBeginningOfDocument:</string>
+							<string>scrollToEndOfDocument:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">scrollToBeginningOfDocument:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">scrollToEndOfDocument:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+						</object>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="851898098">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">fe-aqua/XAChatTextView.h</string>
@@ -2253,6 +2391,13 @@
 					<object class="NSMutableDictionary" key="outlets">
 						<string key="NS.key.0">prevValue</string>
 						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">prevValue</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">prevValue</string>
+							<string key="candidateClassName">id</string>
+						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
@@ -2323,9 +2468,35 @@
 							<string>id</string>
 						</object>
 					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>link_delink:</string>
+							<string>makeKeyAndOrderFront:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">link_delink:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">makeKeyAndOrderFront:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+						</object>
+					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<string key="NS.key.0">delegate</string>
 						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">delegate</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">delegate</string>
+							<string key="candidateClassName">id</string>
+						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
@@ -2344,8 +2515,15 @@
 					<string key="className">XAChatTextView</string>
 					<string key="superclassName">NSTextView</string>
 					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">m_event_req_id</string>
+						<string key="NS.key.0">mouseEventRequestId</string>
 						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">mouseEventRequestId</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">mouseEventRequestId</string>
+							<string key="candidateClassName">id</string>
+						</object>
 					</object>
 					<reference key="sourceIdentifier" ref="851898098"/>
 				</object>

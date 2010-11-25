@@ -172,7 +172,7 @@
 	[itemTableView reloadData];
 }
 
-- (void) doAbort:(id) sender
+- (void) doAbort:(id)sender
 {
 	NSInteger row = [itemTableView selectedRow];
 	if (row >= 0)

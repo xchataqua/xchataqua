@@ -17,24 +17,7 @@
 
 #import "UtilityWindow.h"
 
-@interface FriendAdditionPanel : NSPanel
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSWindowDelegate>
-#endif
-{
-	IBOutlet NSTextField *friendAdditionNickTextField;
-	IBOutlet NSTextField *friendAdditionNetworkTextField;	
-}
-
-- (void)showAdditionWindow;
-- (IBAction)doOk:(id) sender;
-- (IBAction)doCancel:(id) sender;
-
-@end
-
-/****************************************************************************/
-
-@class TabOrWindowView;
+@class FriendAdditionPanel;
 @interface FriendWindow : UtilityTabOrWindowView
 #if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
 <NSTableViewDataSource>
@@ -49,7 +32,25 @@
 
 - (IBAction)addFriend:(id)sender;
 - (IBAction)removeFriend:(id)sender;
+- (IBAction)openDialog:(id)sender;
 
-- (void) update;
+- (void)update;
+
+@end
+
+#pragma mark -
+
+@interface FriendAdditionPanel : NSPanel
+#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
+<NSWindowDelegate>
+#endif
+{
+	IBOutlet NSTextField *friendAdditionNickTextField;
+	IBOutlet NSTextField *friendAdditionNetworkTextField;	
+}
+
+- (void)showAdditionWindow;
+- (IBAction)doOk:(id)sender;
+- (IBAction)doCancel:(id)sender;
 
 @end

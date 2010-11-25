@@ -28,21 +28,15 @@ typedef struct session xchat_context;
 extern GSList *plugin_list;
 
 #import "AquaChat.h"
-#import "SGAlert.h"
 #import "PluginWindow.h"
-
-//////////////////////////////////////////////////////////////////////
 
 @interface PluginItem : NSObject
 {
   @public
-	NSString	*name;
-	NSString	*vers;
-	NSString	*file;
-	NSString	*desc;
+	NSString *name, *vers, *file, *desc;
 }
 
-- (id) initWithPlugin:(xchat_plugin *) plugin;
+- (id) initWithPlugin:(xchat_plugin *)plugin;
 
 @end
 
@@ -50,11 +44,12 @@ extern GSList *plugin_list;
 
 - (id) initWithPlugin:(xchat_plugin *) plugin
 {
-	name = [[NSString alloc] initWithUTF8String:plugin->name];
-	vers = [[NSString alloc] initWithUTF8String:plugin->version];
-	file = [[NSString alloc] initWithUTF8String:file_part(plugin->filename)];
-	desc = [[NSString alloc] initWithUTF8String:plugin->desc];
-	
+	if ((self=[super init]) != nil) {
+		name = [[NSString alloc] initWithUTF8String:plugin->name];
+		vers = [[NSString alloc] initWithUTF8String:plugin->version];
+		file = [[NSString alloc] initWithUTF8String:file_part(plugin->filename)];
+		desc = [[NSString alloc] initWithUTF8String:plugin->desc];
+	}
 	return self;
 }
 
@@ -69,7 +64,7 @@ extern GSList *plugin_list;
 
 @end
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 @implementation PluginWindow
 
@@ -87,13 +82,40 @@ extern GSList *plugin_list;
 	[super dealloc];
 }
 
-- (void)unloadPlugin:(id)sender {
+- (void) awakeFromNib
+{
+	[self center];
+	[self update];
+}
+
+- (void) update
+{
+	[plugins removeAllObjects];
+	
+	for (GSList *list = plugin_list; list; list = list->next)
+	{
+		xchat_plugin *pl = (xchat_plugin *) list->data;
+		if (pl->version && pl->version [0])
+			[plugins addObject:[[PluginItem alloc] initWithPlugin:pl]];
+	}
+	
+	[self->pluginTableView reloadData];
+}
+
+#pragma mark -
+#pragma mark IBAction
+
+- (void) loadPlugin:(id)sender {
+	[[AquaChat sharedAquaChat] loadPlugin:sender];
+}
+
+- (void) unloadPlugin:(id)sender {
 	NSInteger row = [self->pluginTableView selectedRow];
 	if (row < 0)
 		return;
 	
 	PluginItem *item = [plugins objectAtIndex:row];
-
+	
 	NSUInteger len = [item->file length];
 	if (len > 3 && strcasecmp ([item->file UTF8String] + len - 3, ".so") == 0)
 	{
@@ -107,60 +129,26 @@ extern GSList *plugin_list;
 	}
 }
 
-- (void)loadPlugin:(id)sender {
-	[[AquaChat sharedAquaChat] do_load_plugin:sender];
-}
-
-- (void) loadData
-{
-	[plugins removeAllObjects];
-
-	for (GSList *list = plugin_list; list; list = list->next)
-	{
-		xchat_plugin *pl = (xchat_plugin *) list->data;
-		if (pl->version && pl->version [0])
-			[plugins addObject:[[PluginItem alloc] initWithPlugin:pl]];
-	}
-
-	[self->pluginTableView reloadData];
-}
-
-- (void) awakeFromNib
-{
-	for (NSUInteger i = 0; i < [self->pluginTableView numberOfColumns]; i++)
-		[[[self->pluginTableView tableColumns] objectAtIndex:i] setIdentifier:[NSNumber numberWithInteger:i]];
-
-	[self center];
-	[self loadData];
-}
-
-- (void) update
-{
-	[self loadData];
-}
-
 #pragma mark -
-#pragma mark table view protocols
+#pragma mark NSTableView DataSource
 
-- (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
+- (NSInteger) numberOfRowsInTableView:(NSTableView *)aTableView
 {
 	return [plugins count];
 }
 
-- (id) tableView:(NSTableView *) aTableView
-	objectValueForTableColumn:(NSTableColumn *) aTableColumn
-	row:(NSInteger) rowIndex
+- (id) tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
 	PluginItem *item = [plugins objectAtIndex:rowIndex];
 
-	switch ([[aTableColumn identifier] integerValue])
+	switch ([[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn])
 	{
 		case 0: return item->name;
 		case 1: return item->vers;
 		case 2: return item->file;
 		case 3: return item->desc;
 	}
-	
+	SGAssert(NO);
 	return @"";
 }
 

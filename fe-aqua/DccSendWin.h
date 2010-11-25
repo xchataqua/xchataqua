@@ -19,6 +19,6 @@
 
 @interface DccSendWin : DCCFileTransferListController
 
-- (IBAction)doInfo:(id) sender;
+- (IBAction)doInfo:(id)sender;
 
 @end
