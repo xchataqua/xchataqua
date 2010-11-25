@@ -22,7 +22,6 @@
 #import "XACommon.h"
 
 #import "DccSendWin.h"
-#import "SGAlert.h"
 
 extern int dcc_sendcpssum;
 
@@ -107,7 +106,7 @@ extern int dcc_sendcpssum;
 	[dccListView setTabTitle:NSLocalizedStringFromTable(@"dccsend", @"xchataqua", @"")];
 }
 
-- (void) doInfo:(id) sender
+- (void) doInfo:(id)sender
 {
 	int row = [itemTableView selectedRow];
 	if (row >= 0)
@@ -146,13 +145,13 @@ extern int dcc_sendcpssum;
 //////////////
 //
 
-- (id) tableView:(NSTableView *) aTableView
-	objectValueForTableColumn:(NSTableColumn *) aTableColumn
+- (id) tableView:(NSTableView *)aTableView
+	objectValueForTableColumn:(NSTableColumn *)aTableColumn
 	row:(NSInteger) rowIndex
 {
 	DccSendItem *item = [dccItems objectAtIndex:rowIndex];
 
-	switch ([[aTableColumn identifier] integerValue])
+	switch ( [[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn] )
 	{
 		case 0: return [item status];
 		case 1: return [item file];

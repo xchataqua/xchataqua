@@ -19,6 +19,6 @@
 
 @interface DccChatWin : DCCListController 
 
-- (IBAction) doAccept:(id) sender;
+- (IBAction) doAccept:(id)sender;
 
 @end

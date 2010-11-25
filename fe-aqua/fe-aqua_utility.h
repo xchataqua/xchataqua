@@ -27,7 +27,7 @@ typedef int (*socket_callback) (void *source, int condition, void *user_data);
 	socket_callback  func;
 	void			*data;
 	
-	int		tag;
+	int tag;
 }
 
 @property (nonatomic,readonly) int tag;
@@ -37,13 +37,12 @@ typedef int (*socket_callback) (void *source, int condition, void *user_data);
 			   func:(socket_callback) the_func
 			   data:(void *) the_data;
 
-+ (id)findTagged:(int)atag;
++ (id)findTagged:(int)tag;
 - (void)disable;
 
 @end
 
-
-/////////////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 #define USE_GLIKE_TIMER 0
 #if USE_GLIKE_TIMER
@@ -73,3 +72,11 @@ typedef int (*timer_callback) (void *user_data);
 @end
 
 #endif
+
+#pragma mark -
+
+@interface OpenURLCommand : NSScriptCommand { }
+
+- (id) performDefaultImplementation;
+
+@end

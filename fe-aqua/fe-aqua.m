@@ -28,12 +28,13 @@
 #include "../common/servlist.h"
 #include "../common/outbound.h"
 
+#import "fe-aqua_common.h"
 #import "fe-aqua_utility.h"
 #import "AquaChat.h"
 #import "ChatWindow.h"
-#import "ChannelListWin.h"
+#import "ChannelWindow.h"
 #import "BanWindow.h"
-#import "RawLogWin.h"
+#import "RawLogWindow.h"
 #import "MenuMaker.h"
 
 #import "UtilityWindow.h"
@@ -178,7 +179,7 @@ static int
 event_cb (char *word[], void *cbd)
 {
 	int event = (int) (size_t)cbd;
-	session *sess = (session *) xchat_get_context(my_plugin_handle);
+	struct session *sess = (struct session *) xchat_get_context(my_plugin_handle);
 	[[AquaChat sharedAquaChat] event:event args:word session:sess];
 	return XCHAT_EAT_NONE;
 }
@@ -260,7 +261,7 @@ one_time_work_phase2()
 
 	// TODO: Disable the version check here if the user has set that preference.
 	/*
-	if (prefs.checkvers)
+	if (prefs.xa_checkvers)
 	{
 	}
 	*/
@@ -272,13 +273,13 @@ void
 fe_new_window (struct session *sess, int focus)
 {
 	sess->gui = (struct session_gui *) malloc (sizeof (struct session_gui));
-	sess->gui->cw = [[ChatWindow alloc] initWithSession:sess];
+	sess->gui->chatWindow = [[ChatWindow alloc] initWithSession:sess];
 
 	if (!current_sess)
 		current_sess = sess;
 		
 	if (focus)
-		[sess->gui->cw.view makeKeyAndOrderFront:nil];
+		[sess->gui->chatWindow.view makeKeyAndOrderFront:nil];
 
 	// XChat waits until a session is created before installing plugins.. we
 	// do the same thing..
@@ -289,7 +290,7 @@ fe_new_window (struct session *sess, int focus)
 void
 fe_print_text (struct session *sess, char *text, time_t stamp)
 {
-	[sess->gui->cw printText:[NSString stringWithUTF8String:text] stamp:stamp];
+	[sess->gui->chatWindow printText:[NSString stringWithUTF8String:text] stamp:stamp];
 }
 
 void
@@ -616,11 +617,11 @@ fe_new_server (struct server *serv)
 {
 	static int server_num;
 	
-	//server_set_encoding (serv, prefs.default_charset);
+	//server_set_encoding (serv, prefs.xa_default_charset);
 	
 	serv->gui = (struct server_gui *) malloc (sizeof (struct server_gui));
 	memset (serv->gui, 0, sizeof (*serv->gui));
-	serv->gui->tab_group = ++server_num;
+	serv->gui->tabGroup = ++server_num;
 }
 
 void
@@ -689,7 +690,7 @@ fe_get_str (char *msg, char *def, void *callback, void *userdata)
 void
 fe_close_window (struct session *sess)
 {
-	[sess->gui->cw closeWindow];
+	[sess->gui->chatWindow closeWindow];
 }
 
 void
@@ -701,14 +702,14 @@ fe_beep (void)
 void
 fe_add_rawlog (struct server *serv, char *text, int len, int outbound)
 {
-	if (serv->gui->rawlog)
-		[serv->gui->rawlog log:text length:len outbound:outbound];
+	RawLogWindow *window = [UtilityTabOrWindowView utilityIfExistsByKey:UtilityKey(@"RawLogWindow", serv)];
+	[window log:text length:len outbound:outbound];
 }
 
 void
 fe_set_topic (struct session *sess, char *topic, char *stripped_topic)
 {
-	[sess->gui->cw setTopic:topic];
+	[sess->gui->chatWindow setTopic:topic];
 }
 
 void
@@ -720,13 +721,13 @@ fe_cleanup (void)
 void
 fe_set_hilight (struct session *sess)
 {
-	[sess->gui->cw setHilight];
+	[sess->gui->chatWindow setHilight];
 }
 
 void
 fe_update_mode_buttons (struct session *sess, char mode, char sign)
 {
-	[sess->gui->cw modeButtons:mode sign:sign];
+	[sess->gui->chatWindow modeButtons:mode sign:sign];
 }
 
 void
@@ -738,45 +739,43 @@ fe_update_channel_key (struct session *sess)
 void
 fe_update_channel_limit (struct session *sess)
 {
-	[sess->gui->cw channelLimit];
+	[sess->gui->chatWindow channelLimit];
 }
 
 int
 fe_is_chanwindow (struct server *serv)
 {
-	return serv->gui->clc != nil;
+	return [UtilityTabOrWindowView utilityIfExistsByKey:UtilityKey(@"ChannelWindow", serv)] != nil;
 }
 
 void
 fe_add_chan_list (struct server *serv, char *chan, char *users, char *topic)
 {
-	if (serv->gui->clc)
-		[serv->gui->clc addChannelList:[NSString stringWithUTF8String:chan] numberOfUsers:[NSString stringWithUTF8String:users] topic:[NSString stringWithUTF8String:topic]];
+	[(ChannelWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityKey(@"ChannelWindow", serv)] addChannelWithName:[NSString stringWithUTF8String:chan] numberOfUsers:[NSString stringWithUTF8String:users] topic:[NSString stringWithUTF8String:topic]];
 }
 
 void
 fe_chan_list_end (struct server *serv)
 {
-	if (serv->gui->clc)
-		[serv->gui->clc chanListEnd];
+	[(ChannelWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityKey(@"ChannelWindow", serv)] refreshFinished];
 }
 
 int
 fe_is_banwindow (struct session *sess)
 {
-	return [UtilityTabOrWindowView utilityIfExistsByKey:BanWindowKey(sess)] ? true : false;
+	return [UtilityTabOrWindowView utilityIfExistsByKey:UtilityKey(@"BanWindow", sess)] ? true : false;
 }
 
 void
 fe_add_ban_list (struct session *sess, char *mask, char *who, char *when, int is_exemption)
 {
-	[(BanWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:BanWindowKey(sess)] addBanList:[NSString stringWithUTF8String:mask] who:[NSString stringWithUTF8String:who] when:[NSString stringWithUTF8String:when] isExemption:is_exemption];
+	[(BanWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityKey(@"BanWindow", sess)] addBanWithMask:[NSString stringWithUTF8String:mask] who:[NSString stringWithUTF8String:who] when:[NSString stringWithUTF8String:when] isExemption:is_exemption];
 }	 
 		  
 void
 fe_ban_list_end (struct session *sess, int is_exemption)
 {
-	[(BanWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:BanWindowKey(sess)] banListEnd];
+	[(BanWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityKey(@"BanWindow", sess)] refreshFinished];
 }
 
 void
@@ -789,7 +788,7 @@ fe_notify_update (char *name)
 	// 2.  With a NULL args.  Just update the notify list.
  
 	if (!name)
-		[[AquaChat sharedAquaChat] notify_list_update];
+		[[AquaChat sharedAquaChat] updateFriendWindow];
 }
 
 void fe_notify_ask (char *name, char *networks)
@@ -800,13 +799,13 @@ void fe_notify_ask (char *name, char *networks)
 void
 fe_text_clear (struct session *sess, int lines)
 {
-	[sess->gui->cw clear:lines];
+	[sess->gui->chatWindow clear:lines];
 }
 
 void
 fe_progressbar_start (struct session *sess)
 {
-	[sess->gui->cw progressbarStart];
+	[sess->gui->chatWindow progressbarStart];
 }
 
 void
@@ -819,66 +818,66 @@ fe_progressbar_end (struct server *serv)
 void
 fe_userlist_insert (struct session *sess, struct User *newuser, int row, int selected)
 {
-	[sess->gui->cw userlistInsert:newuser row:(NSInteger)row select:selected];
+	[sess->gui->chatWindow userlistInsert:newuser row:(NSInteger)row select:selected];
 }
 
 void fe_userlist_update (struct session *sess, struct User *user)
 {
-	[sess->gui->cw userlistUpdate:user];
+	[sess->gui->chatWindow userlistUpdate:user];
 }
 
 int
 fe_userlist_remove (struct session *sess, struct User *user)
 {
-	return (int)[sess->gui->cw userlistRemove:user];
+	return (int)[sess->gui->chatWindow userlistRemove:user];
 }
 
 void
 fe_userlist_move (struct session *sess, struct User *user, int new_row)
 {
-	[sess->gui->cw userlistMove:user row:(NSInteger)new_row];
+	[sess->gui->chatWindow userlistMove:user row:(NSInteger)new_row];
 }
 
 void
 fe_userlist_numbers (struct session *sess)
 {
-	[sess->gui->cw userlistNumbers];
+	[sess->gui->chatWindow userlistNumbers];
 }
 
 void
 fe_userlist_clear (struct session *sess)
 {
-	[sess->gui->cw userlistClear];
+	[sess->gui->chatWindow userlistClear];
 }
 
 void
 fe_dcc_add (struct DCC *dcc)
 {
-	[[AquaChat sharedAquaChat] dcc_add:dcc];
+	[[AquaChat sharedAquaChat] addDcc:dcc];
 }
 
 void
 fe_dcc_update (struct DCC *dcc)
 {
-	[[AquaChat sharedAquaChat] dcc_update:dcc];
+	[[AquaChat sharedAquaChat] updateDcc:dcc];
 }
 
 void
 fe_dcc_remove (struct DCC *dcc)
 {
-	[[AquaChat sharedAquaChat] dcc_remove:dcc];
+	[[AquaChat sharedAquaChat] removeDcc:dcc];
 }
 
 void
 fe_clear_channel (struct session *sess)
 {
-	[sess->gui->cw clearChannel];
+	[sess->gui->chatWindow clearChannel];
 }
 
 void
 fe_session_callback (struct session *sess)
 {
-	[sess->gui->cw release];
+	[sess->gui->chatWindow release];
 	free (sess->gui);
 	sess->gui = NULL;
 }
@@ -886,51 +885,49 @@ fe_session_callback (struct session *sess)
 void
 fe_server_callback (struct server *serv)
 {
-	[serv->gui->clc release];
-	[serv->gui->rawlog release];
 	free (serv->gui);
 	serv->gui = NULL;
 }
 
 void fe_url_add (const char *url)
 {
-	[[AquaChat sharedAquaChat] add_url:url];
+	[[AquaChat sharedAquaChat] addUrl:url];
 }
 
 void
 fe_pluginlist_update (void)
 {
-	[[AquaChat sharedAquaChat] pluginlist_update];
+	[[AquaChat sharedAquaChat] updatePluginWindow];
 }
 
 void
 fe_buttons_update (struct session *sess)
 {
-	[sess->gui->cw setupUserlistButtons];
+	[sess->gui->chatWindow setupUserlistButtons];
 }
 
 void
 fe_dlgbuttons_update (struct session *sess)
 {
-	[sess->gui->cw setupDialogButtons];
+	[sess->gui->chatWindow setupDialogButtons];
 }
 
 void
 fe_set_channel (struct session *sess)
 {
-	[sess->gui->cw setChannel];
+	[sess->gui->chatWindow setChannel];
 }
 
 void
 fe_set_title (struct session *sess)
 {
-	[sess->gui->cw setTitle];
+	[sess->gui->chatWindow setTitle];
 }
 
 void
 fe_set_nonchannel (struct session *sess, int state)
 {
-	[sess->gui->cw setNonchannel:state];
+	[sess->gui->chatWindow setNonchannel:state];
 }
 
 void
@@ -954,31 +951,31 @@ fe_change_nick (struct server *serv, char *nick, char *newnick)
 void
 fe_ignore_update (int level)
 {
-	[[AquaChat sharedAquaChat] ignore_update:level];
+	[[AquaChat sharedAquaChat] updateIgnoreWindowForLevel:level];
 }
 
 int
 fe_dcc_open_recv_win (int passive)
 {
-	return [[AquaChat sharedAquaChat] dcc_open_recv_win:passive];
+	return [[AquaChat sharedAquaChat] openDccRecieveWindowAndShow:!passive];
 }
 
 int
 fe_dcc_open_send_win (int passive)
 {
-	return [[AquaChat sharedAquaChat] dcc_open_send_win:passive];
+	return [[AquaChat sharedAquaChat] openDccSendWindowAndShow:!passive];
 }
 
 int
 fe_dcc_open_chat_win (int passive)
 {
-	return [[AquaChat sharedAquaChat] dcc_open_chat_win:passive];
+	return [[AquaChat sharedAquaChat] openDccChatWindowAndShow:!passive];
 }
 
 void
 fe_lastlog (session * sess, session * lastlog_sess, char *sstr, gboolean regexp)
 {
-	[sess->gui->cw lastlogIntoWindow:lastlog_sess->gui->cw key:sstr];
+	[sess->gui->chatWindow lastlogIntoWindow:lastlog_sess->gui->chatWindow key:sstr];
 }
 
 void
@@ -1009,15 +1006,14 @@ fe_set_lag (server * serv, int lag)
 void
 fe_set_throttle (server *serv)
 {
-	[AquaChat forEachSessionOnServer:serv
-			 performSelector:@selector (setThrottle)];
+	[AquaChat forEachSessionOnServer:serv performSelector:@selector (setThrottle)];
 }
 
 void
 fe_set_away (server *serv)
 {
 	if (serv == current_sess->server)
-		[[AquaChat sharedAquaChat] set_away:serv->is_away];
+		[[AquaChat sharedAquaChat] toggleAwayToValue:serv->is_away];
 }
 
 void
@@ -1033,13 +1029,13 @@ fe_serverlist_open (session *sess)
 	if (!sess_list)
 		sess = new_ircwindow (NULL, NULL, SESS_SERVER, true);
 
-	[[AquaChat sharedAquaChat] open_serverlist_for:sess];
+	[[AquaChat sharedAquaChat] openNetworkWindowForSession:sess];
 }
 
 extern void
 fe_play_wave (const char *fname)
 {
-	[[AquaChat sharedAquaChat] play_wave:fname];
+	[[AquaChat sharedAquaChat] playWaveNamed:fname];
 }
 
 void
@@ -1051,13 +1047,13 @@ fe_ctrl_gui (session *sess, fe_gui_action action, int arg)
 void
 fe_userlist_rehash (struct session *sess, struct User *user)
 {
-	[sess->gui->cw userlistRehash:user];
+	[sess->gui->chatWindow userlistRehash:user];
 }
 
 void
 fe_dcc_send_filereq (struct session *sess, char *nick, int maxcps, int passive)
 {
-	NSString *s = [SGFileSelection selectWithWindow:[current_sess->gui->cw window]];
+	NSString *s = [SGFileSelection selectWithWindow:[current_sess->gui->chatWindow window]];
 	if (s)
 		dcc_send (sess, nick, (char *) [s UTF8String], maxcps, passive);
 }
@@ -1073,10 +1069,10 @@ fe_gui_info (session *sess, int info_type)
 	switch (info_type)
 	{
 		case 0: // window status
-			if (![[sess->gui->cw window] isVisible])
+			if (![[sess->gui->chatWindow window] isVisible])
 				return 2;	   // hidden (iconified or systray)
 
-			if ([[sess->gui->cw window] isKeyWindow])
+			if ([[sess->gui->chatWindow window] isKeyWindow])
 				return 1;	   // active/focused
 
 			return 0;		   // normal (no keyboard focus or behind a window)
@@ -1087,22 +1083,22 @@ fe_gui_info (session *sess, int info_type)
 
 char * fe_get_inputbox_contents (struct session *sess)
 {
-	return (char *) [[sess->gui->cw inputText] UTF8String];
+	return (char *) [[sess->gui->chatWindow inputText] UTF8String];
 }
 
 void fe_set_inputbox_contents (struct session *sess, char *text)
 {
-	[sess->gui->cw setInputText:[NSString stringWithUTF8String:text]];
+	[sess->gui->chatWindow setInputText:[NSString stringWithUTF8String:text]];
 }
 
 int fe_get_inputbox_cursor (struct session *sess)
 {
-	return [sess->gui->cw inputTextPosition];
+	return [sess->gui->chatWindow inputTextPosition];
 }
 
 void fe_set_inputbox_cursor (struct session *sess, int delta, int pos)
 {
-	[sess->gui->cw setInputTextPosition:pos delta:delta];
+	[sess->gui->chatWindow setInputTextPosition:pos delta:delta];
 }
 
 void fe_open_url (const char *url)
@@ -1129,7 +1125,7 @@ void fe_menu_update (menu_entry *me)
 
 void fe_uselect (session *sess, char *word[], int do_clear, int scroll_to)
 {
-	[sess->gui->cw userlistSelectNames:word clear:do_clear scrollTo:scroll_to];
+	[sess->gui->chatWindow userlistSelectNames:word clear:do_clear scrollTo:scroll_to];
 }
 
 void fe_server_event (server *serv, int type, int arg)
@@ -1142,7 +1138,7 @@ void *fe_gui_info_ptr (session *sess, int info_type)
 	switch (info_type)
 	{
 		case 0:	/* native window pointer (for plugins) */
-			return [sess->gui->cw window];	// return the NSWindow *... it seems the closest thing to what GTK does, although I shudder to think what a plugin might want to do with it
+			return [sess->gui->chatWindow window];	// return the NSWindow *... it seems the closest thing to what GTK does, although I shudder to think what a plugin might want to do with it
 	}
 	return NULL;
 }
@@ -1150,7 +1146,7 @@ void *fe_gui_info_ptr (session *sess, int info_type)
 void
 fe_userlist_set_selected (struct session *sess)
 {
-	[sess->gui->cw userlistSetSelected];
+	[sess->gui->chatWindow userlistSetSelected];
 }
 
 // This should be called fe_joind()!  Sending mail to peter.
@@ -1194,9 +1190,9 @@ void fe_tray_set_icon (feicon icon)
 }
 void fe_tray_set_tooltip (const char *text)
 {
-	[[AquaChat sharedAquaChat] growl:text];
+	[[AquaChat sharedAquaChat] growl:[NSString stringWithUTF8String:text] title:nil];
 }
 void fe_tray_set_balloon (const char *title, const char *text)
 {
-	[[AquaChat sharedAquaChat] growl:text title:title];
+	[[AquaChat sharedAquaChat] growl:[NSString stringWithUTF8String:text] title:[NSString stringWithUTF8String:title]];
 }

@@ -37,7 +37,7 @@
 	[super dealloc];
 }
 
-- (void) sizeFixups:(id) sender
+- (void) sizeFixups:(id)sender
 {
 	[timer release];
 	timer = nil;
@@ -81,7 +81,7 @@
 
 - (void) startTimer
 {
-	id<NSObject, SGTableViewDataSource> dataSource = [self dataSource];
+	id<NSObject> dataSource = [self dataSource];
 	BOOL do_fixups = [dataSource respondsToSelector:@selector(shouldDoSizeFixupsForTableView:)]
 				  && [dataSource performSelector:@selector(shouldDoSizeFixupsForTableView:) withObject:self];
 	if (!do_fixups) return;

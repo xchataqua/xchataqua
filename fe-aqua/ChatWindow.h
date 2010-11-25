@@ -18,7 +18,6 @@
 
 #import "XAChatTextView.h"
 #import "TabOrWindowView.h"
-#import "SG.h"
 
 @class MySplitView;
 

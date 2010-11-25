@@ -22,8 +22,9 @@
 	This class handles menu generation.
 */
 
+#include "fe-aqua_common.h"
+
 #import "MenuMaker.h"
-#import "AquaChat.h"
 #import "ChatWindow.h"
 
 #import "XACommon.h"
@@ -93,7 +94,7 @@ void decHandlerCount()
 	if (target)
 		nick_command_parse (targetSess, cmd, target, target);
 	else
-		[targetSess->gui->cw doUserlistCommand:cmd];
+		[targetSess->gui->chatWindow doUserlistCommand:cmd];
 }
 
 @end

@@ -239,7 +239,7 @@
 		if ([self splitPosition] > 0)
 			[self setSplitPosition:0];
 		else
-			[self setSplitPosition:prefs.paned_pos];
+			[self setSplitPosition:prefs.xa_paned_pos];
 	}
 	else
 	{
@@ -260,8 +260,8 @@
 					return;				// and don't change prefs.
 			}
 			
-			prefs.paned_pos = newPosition;
-			prefs.hideuserlist = prefs.paned_pos == 0;
+			prefs.xa_paned_pos = newPosition;
+			prefs.hideuserlist = prefs.xa_paned_pos == 0;
 		}
 	}
 }
@@ -322,10 +322,7 @@
 	[self setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
 	[[self cell] setControlSize:NSSmallControlSize];
 	[self setImagePosition:NSNoImage];
-	if (prefs.guimetal)
-		[self setBezelStyle:NSTexturedSquareBezelStyle];
-	else
-		[self setBezelStyle:NSShadowlessSquareBezelStyle];
+	[self setBezelStyle:NSTexturedSquareBezelStyle];
 	[self sizeToFit];
 
 	return self;
@@ -602,7 +599,7 @@ static NSImage *emptyBulletImage;
 	keyTextField = nil;
 }
 
-- (void) doDialogButton:(id) sender
+- (void) doDialogButton:(id)sender
 {
 	/* the longest cmd is 12, and the longest nickname is 64 */
 	char buf[128];
@@ -638,10 +635,7 @@ static NSImage *emptyBulletImage;
 	[[b cell] setControlSize:NSSmallControlSize];
 	[b setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
 	[b setImagePosition:NSNoImage];
-	if (prefs.guimetal)
-		[b setBezelStyle:NSTexturedSquareBezelStyle];
-	else
-		[b setBezelStyle:NSShadowlessSquareBezelStyle];
+	[b setBezelStyle:NSTexturedSquareBezelStyle];
 	[b sizeToFit];
 	[b setTag:flag];
 	[b setAction:selector];
@@ -737,13 +731,13 @@ static NSImage *emptyBulletImage;
 		[self cleanHeaderBoxView];
 }
 
-- (void) doConferenceMode:(id) sender
+- (void) doConferenceMode:(id)sender
 {
 	sess->text_hidejoinpart = !sess->text_hidejoinpart;
 	[sender setState:sess->text_hidejoinpart ? NSOnState : NSOffState];
 }
 
-- (void) doMircColor:(id) sender
+- (void) doMircColor:(id)sender
 {
 	NSInteger val = [sender tag];
 	
@@ -846,12 +840,6 @@ static NSImage *emptyBulletImage;
 		[userlistTableView addTableColumn:c];
 		[c release];
 	}
-	
-	for (NSInteger i = 0; i < [userlistTableView numberOfColumns]; i ++)
-	{
-		NSTableColumn *col = [[userlistTableView tableColumns] objectAtIndex:i];
-		[col setIdentifier:[NSNumber numberWithInt:i]];
-	}
 
 	NSArray *cols = [userlistTableView tableColumns];
 	NSTableColumn *col_zero = [cols objectAtIndex:0];
@@ -896,8 +884,8 @@ static NSImage *emptyBulletImage;
 
 	if (sess->type == SESS_DIALOG || prefs.hideuserlist)
 		[bodyBoxView setSplitPosition:0];
-	else if (prefs.paned_pos > 0)
-		[bodyBoxView setSplitPosition:prefs.paned_pos];
+	else if (prefs.xa_paned_pos > 0)
+		[bodyBoxView setSplitPosition:prefs.xa_paned_pos];
 	else
 		[bodyBoxView setSplitPosition:150];
 
@@ -991,7 +979,7 @@ static NSImage *emptyBulletImage;
 		nick_command_parse (sess, cmd, first_nick ? first_nick : (char *)"", (char *) [allnicks UTF8String]);
 }
 
-- (void) doUserlistButton:(id) sender
+- (void) doUserlistButton:(id)sender
 {
 	struct popup *p = [(UserlistButton *)sender popup];
 	[self doUserlistCommand:p->cmd];
@@ -1016,7 +1004,7 @@ static NSImage *emptyBulletImage;
 	}
 }
 
-- (void) doDoubleclick:(id) sender
+- (void) doDoubleclick:(id)sender
 {
 	if (prefs.doubleclickuser [0])
 	{
@@ -1198,7 +1186,7 @@ static NSImage *emptyBulletImage;
 	}
 }
 
-- (void) doTopicTextField:(id) sender
+- (void) doTopicTextField:(id)sender
 {
 	if (sess->channel[0] && sess->server->connected)
 	{
@@ -1209,30 +1197,30 @@ static NSImage *emptyBulletImage;
 	[[inputTextField window] makeFirstResponder:inputTextField];
 }
 
-- (void) doLButton:(id) sender
+- (void) doLButton:(id)sender
 {
 	set_l_flag (sess, [sender state] == NSOnState, [limitTextField intValue]);
 }
 
-- (void) doKButton:(id) sender
+- (void) doKButton:(id)sender
 {
 	set_k_flag (sess, [sender state] == NSOnState, (char *) [[keyTextField stringValue] UTF8String]);
 }
 
 
 
-- (void) doBButton:(id) sender
+- (void) doBButton:(id)sender
 {
 	// TBD
 	printf ("Open banlist\n");
 }
 
-- (void) doFlagButton:(id) sender
+- (void) doFlagButton:(id)sender
 {
 	change_channel_flag (sess, [sender tag], [sender state] == NSOnState);
 }
 
-- (void) doKeyTextField:(id) sender
+- (void) doKeyTextField:(id)sender
 {
 	if (sess->server->connected && sess->channel[0])
 	{
@@ -1241,7 +1229,7 @@ static NSImage *emptyBulletImage;
 	}
 }
 
-- (void) doLimitTextField:(id) sender
+- (void) doLimitTextField:(id)sender
 {
 	if (sess->server->connected && sess->channel[0])
 	{
@@ -1741,7 +1729,7 @@ static NSImage *emptyBulletImage;
 	[chatView setTitle:title];
 }
 
-- (void) doCommand:(id) sender
+- (void) doCommand:(id)sender
 {
 	[[inputTextField window] makeFirstResponder:inputTextField];
 
@@ -1889,7 +1877,7 @@ static NSImage *emptyBulletImage;
 /////
 // User table data source methods
 
-- (NSInteger) numberOfRowsInTableView:(NSTableView *) aTableView
+- (NSInteger) numberOfRowsInTableView:(NSTableView *)aTableView
 {
 	return [userlist count];
 }
@@ -1897,7 +1885,7 @@ static NSImage *emptyBulletImage;
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
 {
 	OneUser *u = [userlist objectAtIndex:row];
-	switch ([[tableColumn identifier] integerValue])
+	switch ([[tableView tableColumns] indexOfObjectIdenticalTo:tableColumn])
 	{
 		case 0: return [self getUserImage:u->user];
 		case 1: return u->nick;
@@ -2169,7 +2157,7 @@ static NSImage *emptyBulletImage;
 	// If there's only 1 possible match, then we're done.
 	// If were doing the old style (bash style), and the common chars
 	// exceed what we typed, we'll complete up to the ambiguity.
-  if ([matchArray count] == 1 || (!prefs.scrolling_completion && shortestPrefix > completionTextRange.length))
+  if ([matchArray count] == 1 || (!prefs.xa_scrolling_completion && shortestPrefix > completionTextRange.length))
   {
 	NSString *first = [[matchArray objectAtIndex:0] stringValue];
 	NSMutableString *rightMutableString = [NSMutableString stringWithString:[first substringToIndex:shortestPrefix]];
@@ -2184,7 +2172,7 @@ static NSImage *emptyBulletImage;
 		return;
   }
 	
-	if (prefs.scrolling_completion)
+	if (prefs.xa_scrolling_completion)
 	{
 	NSString *completionItem = [[matchArray objectAtIndex:self.completionIndex] stringValue];
 
@@ -2228,7 +2216,7 @@ static NSImage *emptyBulletImage;
  */
 - (BOOL)control:(NSControl *)control textShouldBeginEditing:(NSText *)fieldEditor
 {
-	if (prefs.spell_check)
+	if (prefs.gui_input_spell)
 		[(NSTextView *)fieldEditor setContinuousSpellCheckingEnabled:YES];
 		
 	return YES;
@@ -2236,7 +2224,7 @@ static NSImage *emptyBulletImage;
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor
 {
-	prefs.spell_check = [(NSTextView *)fieldEditor isContinuousSpellCheckingEnabled];
+	prefs.gui_input_spell = [(NSTextView *)fieldEditor isContinuousSpellCheckingEnabled];
 	[(NSTextView *)fieldEditor setContinuousSpellCheckingEnabled:NO];
 	return YES;
 }
@@ -2316,7 +2304,7 @@ static NSImage *emptyBulletImage;
 	// Tab key auto-completes nicks, channels, and commands (if enabled in prefs).
   else if (commandSelector == @selector(insertTab:))
   {
-	if (prefs.tab_completion) {
+	if (prefs.xa_tab_completion) {
 	  [self tabComplete:textView];
 	  didHandleSelector = YES;
 	}

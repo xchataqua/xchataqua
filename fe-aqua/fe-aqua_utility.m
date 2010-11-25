@@ -16,10 +16,10 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
 #include "../common/xchat.h"
+#include "../common/outbound.h"
 #include "../common/fe.h"
 
 #import "NSTimerAdditions.h"
-#import "SGFileDescriptor.h"
 #import "fe-aqua_utility.h"
 
 #define CPP_INPUT_THING 0
@@ -27,6 +27,8 @@
 #if CPP_INPUT_THING | CPP_TIMER_THING
 #include <list>
 #endif
+
+#pragma mark -
 
 #if CPP_INPUT_THING
 static std::list<id> input_list;
@@ -125,7 +127,7 @@ static NSInteger input_seq = 1;
 
 @end
 
-/////////////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 #if USE_GLIKE_TIMER
 #else
@@ -212,8 +214,7 @@ static int timer_seq = 1;
 											 target:self
 										   selector:@selector(fire:)
 										   userInfo:nil
-											repeats:NO
-										 retainArgs:NO];
+											repeats:NO];
 }
 
 - (void)fire:(id)userInfo
@@ -249,7 +250,33 @@ static int timer_seq = 1;
 }
 #endif
 
-
 @end
 
 #endif
+
+#pragma mark -
+
+@implementation OpenURLCommand
+
+- (id) performDefaultImplementation 
+{
+	const char *newstr = "new";
+	
+	// If we don't have any windows, we need to create 1 now, else the
+	// handle_command() is a no-op.  In that case, we don't need /newserver
+	if (!sess_list)
+	{
+		new_ircwindow (NULL, NULL, SESS_SERVER, true);
+		newstr = "";
+	}
+	
+	NSString *urlString = [self directParameter];
+	if (!urlString)
+		return nil;
+	char buff [128];
+	snprintf (buff, sizeof (buff), "%sserver %s", newstr, [urlString UTF8String]);
+	handle_command (current_sess, buff, 0);
+	return nil;
+}
+
+@end
