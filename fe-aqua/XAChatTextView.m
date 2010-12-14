@@ -28,54 +28,41 @@
 #import "mIRCString.h"
 #import "MenuMaker.h"
 
-//////////////////////////////////////////////////////////////////////
-
 static NSAttributedString *newline;
 static NSAttributedString *tab;
-static bool jaguar;
 static NSCursor *lr_cursor;
-
-//////////////////////////////////////////////////////////////////////
 
 @implementation XAChatTextView
 
 - (id) initWithFrame:(NSRect) frameRect
 {
-	[super initWithFrame:frameRect];
+	if ((self = [super initWithFrame:frameRect]) != nil) {
+		if (!newline)
+		{
+			newline = [[NSAttributedString alloc] initWithString:@"\n"];
+			tab = [[NSAttributedString alloc] initWithString:@"\t"];
+			
+			lr_cursor = [[NSCursor alloc] initWithImage:[NSImage imageNamed:@"lr_cursor.tiff"]
+									hotSpot:NSMakePoint (8,8)];
+		}
+		
+		palette = nil;
+		normalFont = nil;
+		boldFont = nil;
+		wordRange = NSMakeRange(NSNotFound, 0);
+		wordType = 0;
+		word = nil;
+		mouseEventRequestId = nil;
+		fontWidth = 10;
+			
+		style = [[NSMutableParagraphStyle alloc] init];
+		
+		[self setRichText:YES];
+		[self setEditable:NO];
 
-	if (!newline)
-	{
-		newline = [[NSAttributedString alloc] initWithString:@"\n"];
-		tab = [[NSAttributedString alloc] initWithString:@"\t"];
-		
-		// Pre-10.2 MacOS does not support right tabs.  The only way I could
-		// figure out if I have Jaguar or better is to check for a method that
-		// I know appeared with 10.2.
-		
-		jaguar = [self respondsToSelector:@selector 
-					(performSelectorOnMainThread:withObject:waitUntilDone:)];
-		
-		lr_cursor = [[NSCursor alloc] initWithImage:[NSImage imageNamed:@"lr_cursor.tiff"]
-								hotSpot:NSMakePoint (8,8)];
+		[self registerForDraggedTypes:[NSArray arrayWithObject:NSFilenamesPboardType]];
+		[[self layoutManager] setDelegate:self];
 	}
-	
-	palette = nil;
-	normalFont = nil;
-	boldFont = nil;
-	wordRange = NSMakeRange(NSNotFound, 0);
-	wordType = 0;
-	word = nil;
-	mouseEventRequestId = nil;
-	fontWidth = 10;
-		
-	style = [[NSMutableParagraphStyle alloc] init];
-	
-	[self setRichText:true];
-	[self setEditable:false];
-
-	[self registerForDraggedTypes:[NSArray arrayWithObject:NSFilenamesPboardType]];
-	[[self layoutManager] setDelegate:self];
-
 	return self;
 }
 
@@ -195,8 +182,8 @@ static NSCursor *lr_cursor;
 
 - (void) setPalette:(ColorPalette *) new_palette
 {
-	if (palette)
-		[palette release];
+	if ( palette == new_palette ) return;
+	[palette release];
 	palette = [new_palette retain];
 	
 	[self setBackgroundColor:[palette getColor:AC_BGCOLOR]];
@@ -211,10 +198,6 @@ static NSCursor *lr_cursor;
 	[style release];
 	style = [[NSMutableParagraphStyle alloc] init];
 	[style setTabStops:[[[NSArray alloc] init] autorelease]];
-
-	if (jaguar)
-		[style addTabStop:[[[NSTextTab alloc] 
-			initWithType:NSRightTabStopType location:x] autorelease]];
 
 	x += fontWidth;
 
@@ -339,9 +322,6 @@ static NSCursor *lr_cursor;
 
 	if (prefs.indent_nicks)
 	{
-		if (jaguar)
-			*prepend++ = '\t';
-
 		tmp = strchr (text, '\t');
 		if (tmp)
 			tmp ++;
