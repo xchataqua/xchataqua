@@ -15,8 +15,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-//////////////////////////////////////////////////////////////////////
-
 /* CL: these methods are used in the default key bindings, are implemented by Cocoa classes,
 	   but Apple forgot to include them in the headers. Declare them so the compiler knows
 	   what we're calling. */
@@ -25,7 +23,7 @@
 - (void)scrollToEndOfDocument:(id)sender;
 @end
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 @class ColorPalette;
 @class ChatWindow;
