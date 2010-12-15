@@ -758,19 +758,42 @@ struct eventInfo textEventInfo[NUM_XP];
 	[[UtilityWindow utilityByKey:UserCommandsWindowKey windowNibName:@"UserCommandsWindow"] makeKeyAndOrderFront:self];
 }
 
+#define ctcp_help          _("CTCP Replies - Special codes:\n\n"\
+							"%d  =  data (the whole ctcp)\n"\
+							"%e  =  current network name\n"\
+							"%m  =  machine info\n"\
+							"%s  =  nick who sent the ctcp\n"\
+							"%t  =  time/date\n"\
+							"%2  =  word 2\n"\
+							"%3  =  word 3\n"\
+							"&2  =  word 2 to the end of line\n"\
+							"&3  =  word 3 to the end of line\n\n")
+
 - (void) showCtcpRepliesWindow:(id)sender
 {
 	EditListWindow *window = [UtilityWindow utilityByKey:CTCPRepliesWindowKey windowNibName:@"EditListWindow"];
 	[window setTitle:NSLocalizedStringFromTable(@"XChat: CTCP Replies", @"xchat", @"Title of Window: MainMenu->X-Chat Aqua->Preference Lists->CTCP Replies...")];
 	[window loadDataFromList:&ctcp_list filename:@"ctcpreply.conf"];							  
+	[window setHelp:ctcp_help];
 	[window makeKeyAndOrderFront:self];
 }
+
+#define ulbutton_help       _("Userlist Buttons - Special codes:\n\n"\
+							"%a  =  all selected nicks\n"\
+							"%c  =  current channel\n"\
+							"%e  =  current network name\n"\
+							"%h  =  selected nick's hostname\n"\
+							"%m  =  machine info\n"\
+							"%n  =  your nick\n"\
+							"%s  =  selected nick\n"\
+							"%t  =  time/date\n")
 
 - (void) showUserlistButtonsWindow:(id)sender
 {
 	EditListWindow *window = [UtilityWindow utilityByKey:UserlistButtonsWindowKey windowNibName:@"EditListWindow"];	
 	[window setTitle:NSLocalizedStringFromTable(@"XChat: Userlist buttons", @"xchat", "Title of Window: MainMenu->X-Chat Aqua->References Lists->Userlist Buttons...")];
 	[window loadDataFromList:&button_list filename:@"buttons.conf"];
+	[window setHelp:ulbutton_help];
 	[window makeKeyAndOrderFront:self];
 	[window setTarget:[window class] didCloseSelector:@selector(setupUserlistButtons)];
 }
@@ -780,14 +803,27 @@ struct eventInfo textEventInfo[NUM_XP];
 	EditListWindow *window = [UtilityWindow utilityByKey:UserlistPopupWindowKey windowNibName:@"EditListWindow"];
 	[window setTitle:NSLocalizedStringFromTable(@"XChat: Userlist Popup menu", @"xchat", @"Title of Window: MainMenu->X-Chat Aqua->References Lists->Userlist Popup...")];
 	[window loadDataFromList:&popup_list filename:@"popup.conf"];
+	[window setHelp:ulbutton_help];
 	[window makeKeyAndOrderFront:self];
 }
+
+#define dlgbutton_help      _("Dialog Buttons - Special codes:\n\n"\
+							"%a  =  all selected nicks\n"\
+							"%c  =  current channel\n"\
+							"%e  =  current network name\n"\
+							"%h  =  selected nick's hostname\n"\
+							"%m  =  machine info\n"\
+							"%n  =  your nick\n"\
+							"%s  =  selected nick\n"\
+							"%t  =  time/date\n")
+
 
 - (void) showDialogButtonsWindow:(id)sender
 {
 	EditListWindow *window = [UtilityWindow utilityByKey:DialogButtonsWindowKey windowNibName:@"EditListWindow"];
 	[window setTitle:NSLocalizedStringFromTable(@"XChat: Dialog buttons", @"xchat", @"")];
 	[window loadDataFromList:&dlgbutton_list filename:@"dlgbuttons.conf"];
+	[window setHelp:dlgbutton_help];
 	[window makeKeyAndOrderFront:self];
 	[window setTarget:[window class] didCloseSelector:@selector(setupUserlistButtons)];
 }
@@ -800,11 +836,18 @@ struct eventInfo textEventInfo[NUM_XP];
 	[window makeKeyAndOrderFront:self];
 }
 
+#define url_help           _("URL Handlers - Special codes:\n\n"\
+							"%s  =  the URL string\n\n"\
+							"Putting a ! infront of the command\n"\
+							"indicates it should be sent to a\n"\
+							"shell instead of XChat")
+
 - (void) showUrlHandlersWindow:(id)sender
 {
 	EditListWindow *window = [UtilityWindow utilityByKey:URLHandlersWindowKey windowNibName:@"EditListWindow"];
 	[window setTitle:NSLocalizedStringFromTable(@"XChat: URL Handlers", @"xchat", "Title of Window: MainMenu->X-Chat Aqua->References Lists->URL Handler...")];
 	[window loadDataFromList:&urlhandler_list filename:@"urlhandlers.conf"];
+	[window setHelp:url_help];
 	[window makeKeyAndOrderFront:self];	
 }
 

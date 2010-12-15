@@ -15,11 +15,27 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#include "../common/xchat.h"
-#include "../common/xchatc.h"
+#include "../common/fe.h"
 #include "../common/cfgfiles.h"
 
 #import "UserCommandsWindow.h"
+
+#define usercommands_help  _("User Commands - Special codes:\n\n"\
+							"%c  =  current channel\n"\
+							"%e  =  current network name\n"\
+							"%m  =  machine info\n"\
+							"%n  =  your nick\n"\
+							"%t  =  time/date\n"\
+							"%v  =  xchat version\n"\
+							"%2  =  word 2\n"\
+							"%3  =  word 3\n"\
+							"&2  =  word 2 to the end of line\n"\
+							"&3  =  word 3 to the end of line\n\n"\
+							"eg:\n"\
+							"/cmd john hello\n\n"\
+							"%2 would be \042john\042\n"\
+							"&2 would be \042john hello\042.")
+
 
 @interface UserCommandItem : NSObject
 {
@@ -119,6 +135,10 @@
 	[commandTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
 	[commandTableView editColumn:0 row:0 withEvent:nil select:true];
 	[self tableViewSelectionDidChange:nil];	// TBD: NULL ok?
+}
+
+- (void)showHelp:(id)sender {
+	fe_message(usercommands_help, FE_MSG_INFO);
 }
 
 - (void) close {
