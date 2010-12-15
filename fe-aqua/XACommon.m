@@ -23,7 +23,7 @@
 
 #include "XACommon.h"
 
-void change_channel_flag (session *sess, char flag, int enabled)
+void change_channel_flag (struct session *sess, char flag, int enabled)
 {
 	if (sess->server->connected && sess->channel[0])
 	{
@@ -37,7 +37,7 @@ void change_channel_flag (session *sess, char flag, int enabled)
 	}
 }
 
-void set_l_flag (session *sess, int enabled, int value)
+void set_l_flag (struct session *sess, int enabled, int value)
 {
 	if (sess->server->connected && sess->channel[0])
 	{
@@ -51,7 +51,7 @@ void set_l_flag (session *sess, int enabled, int value)
 	}
 }
 
-void set_k_flag (session *sess, int enabled, char *value)
+void set_k_flag (struct session *sess, int enabled, char *value)
 {
 	if (sess->server->connected && sess->channel[0])
 	{
@@ -63,7 +63,7 @@ void set_k_flag (session *sess, int enabled, char *value)
 
 // This is straight copied from fe-gtk
 static void
-nick_command (session * sess, char *cmd)
+nick_command (struct session * sess, char *cmd)
 {
 /*	  gtkutil_get_number ("title", "Number to kill:", shit, "hi");*/
 
@@ -77,7 +77,7 @@ nick_command (session * sess, char *cmd)
 // This is slightly modified from the version in fe-gtk
 /* fill in the %a %s %n etc and execute the command */
 void
-nick_command_parse (session *sess, const char *cmd, const char *nick, const char *allnick)
+nick_command_parse (struct session *sess, const char *cmd, const char *nick, const char *allnick)
 {
 		char *buf;
 		const char *host = [NSLocalizedStringFromTable(@"Host unknown", @"xchat", @"") UTF8String];

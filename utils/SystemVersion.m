@@ -67,11 +67,11 @@ static SystemVersion * sharedSystemVersion;
 }
 
 - (id) init {
-	self = [super init];
 	if(sharedSystemVersion != 0) {
-		[self dealloc];
+		[self release];
 		self = sharedSystemVersion;
-	}else {
+	} else {
+		self = [super init];
 		[self _load_system_version];
 	}
 	return self;

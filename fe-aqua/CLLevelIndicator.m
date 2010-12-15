@@ -43,7 +43,7 @@
 {
 	// How can we determine how big the HIToolbox track should be?
 	NSSize sz = [self frame].size;
-	sz.height = 10;
+	sz.height = 10.0f;
 	[self setFrameSize:sz];
 }
 

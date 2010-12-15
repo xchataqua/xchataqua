@@ -17,7 +17,6 @@
 
 #import "SGFormView.h"
 
-//////////////////////////////////////////////////////////////////////
 @interface NSView (SGFormViewAdditions)
 - (NSPoint) pointOfCenter;
 @end
@@ -32,7 +31,8 @@
 }
 
 @end
-//////////////////////////////////////////////////////////////////////
+
+#pragma mark -
 
 typedef enum
 {
@@ -53,13 +53,13 @@ typedef struct SGFormConstraint
 	SGFormMetaView *child;
 }	SGFormConstraint;
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 @interface SGFormMetaView : SGMetaView
 {
+	NSString *identifier;		// Used only for IB
   @public
 	SGFormConstraint constraints[SGFormViewEdgeCount];
-	NSString *identifier;		// Used only for IB
 }
 
 @property (nonatomic, retain) NSString *identifier;
@@ -68,6 +68,8 @@ typedef struct SGFormConstraint
 - (void) getInitialBounds;
 
 @end
+
+#pragma mark -
 
 @implementation SGFormMetaView
 @synthesize identifier;
@@ -151,7 +153,7 @@ typedef struct SGFormConstraint
 
 @end
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 @implementation SGFormView
 

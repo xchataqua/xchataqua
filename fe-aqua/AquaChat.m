@@ -247,7 +247,7 @@ struct eventInfo textEventInfo[NUM_XP];
 	}
 }
 
-#pragma mark -
+#pragma mark 
 
 + (void) forEachSessionOnServer:(struct server *)serv performSelector:(SEL)sel
 {
@@ -274,7 +274,6 @@ struct eventInfo textEventInfo[NUM_XP];
 	return aquachat;
 }
 
-#pragma mark -
 #pragma mark NSApplication delegate
 
 - (void) applicationDidFinishLaunching:(NSNotification *) notification
@@ -368,7 +367,6 @@ struct eventInfo textEventInfo[NUM_XP];
 	}
 }
 
-#pragma mark -
 #pragma mark fe-aqua
 
 - (void) cleanup
@@ -379,12 +377,12 @@ struct eventInfo textEventInfo[NUM_XP];
 
 - (void) updatePluginWindow
 {
-	[(PluginWindow *)[UtilityWindow utilityIfExistsByKey:@"PluginWindow"] update];
+	[(PluginWindow *)[UtilityWindow utilityIfExistsByKey:PluginWindowKey] update];
 }
 
 - (void) updateIgnoreWindowForLevel:(int)level
 {
-	[(IgnoreWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:@"IgnoreWindow"] update:level];
+	[(IgnoreWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:IgnoreWindowKey] update:level];
 }
 
 - (void) growl:(NSString *)text title:(NSString *)title
@@ -501,7 +499,7 @@ struct eventInfo textEventInfo[NUM_XP];
 
 - (void) updateFriendWindow
 {
-	[(FriendWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:@"FriendWindow"] update];
+	[(FriendWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:FriendWindowKey] update];
 }
 
 - (void) playWaveNamed:(const char *)filename
@@ -533,13 +531,13 @@ struct eventInfo textEventInfo[NUM_XP];
 
 - (void) openNetworkWindowForSession:(struct session *)sess
 {
-	NetworkWindow *window = [UtilityWindow utilityByKey:@"NetworkWindow" windowNibName:@"NetworkWindow"];
+	NetworkWindow *window = [UtilityWindow utilityByKey:NetworkWindowKey windowNibName:@"NetworkWindow"];
 	[window showForSession:sess];
 }
 
 - (void) addUrl:(const char *) url
 {
-	[(UrlGrabberWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:@"UrlGrabberWindow"] addUrl:[NSString stringWithUTF8String:url]];
+	[(UrlGrabberWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UrlGrabberWindowKey] addUrl:[NSString stringWithUTF8String:url]];
 }
 
 - (void) ctrl_gui:(session *) sess action:(int) action arg:(int) arg
@@ -570,13 +568,11 @@ struct eventInfo textEventInfo[NUM_XP];
 	}
 }
 
-
-#pragma mark -
 #pragma mark IBAction
 
 - (void) showPreferencesWindow:(id)sender
 {
-	[[UtilityWindow utilityByKey:@"PreferencesWindow" windowNibName:@"PreferencesWindow"] makeKeyAndOrderFront:self];
+	[[UtilityWindow utilityByKey:PreferencesWindowKey windowNibName:@"PreferencesWindow"] makeKeyAndOrderFront:self];
 }
 
 - (void) loadPlugin:(id)sender
@@ -609,7 +605,7 @@ struct eventInfo textEventInfo[NUM_XP];
 
 - (void) showChannelWindow:(id)sender
 {
-	[[UtilityTabOrWindowView utilityByKey:UtilityKey(@"ChannelWindow", current_sess->server) viewNibName:@"ChannelWindow"] becomeTabOrWindowAndShow:YES];
+	[[UtilityTabOrWindowView utilityByKey:UtilityWindowKey(ChannelWindowKey, current_sess->server) viewNibName:@"ChannelWindow"] becomeTabOrWindowAndShow:YES];
 }
 
 - (void) showDccRecieveWindow:(id)sender
@@ -629,22 +625,22 @@ struct eventInfo textEventInfo[NUM_XP];
 
 - (void) showRawLogWindow:(id)sender
 {
-	[[UtilityTabOrWindowView utilityByKey:UtilityKey(@"RawLogWindow", current_sess->server) viewNibName:@"RawLogWindow"] becomeTabOrWindowAndShow:YES];
+	[[UtilityTabOrWindowView utilityByKey:UtilityWindowKey(RawLogWindowKey, current_sess->server) viewNibName:@"RawLogWindow"] becomeTabOrWindowAndShow:YES];
 }
 
 - (void) showUrlGrabberWindow:(id)sender
 {
-	[[UtilityTabOrWindowView utilityByKey:@"UrlGrabberWindow" viewNibName:@"UrlGrabberWindow"] becomeTabOrWindowAndShow:YES];
+	[[UtilityTabOrWindowView utilityByKey:UrlGrabberWindowKey viewNibName:@"UrlGrabberWindow"] becomeTabOrWindowAndShow:YES];
 }
 
 - (void) showFriendWindow:(id)sender
 {
-	[[UtilityTabOrWindowView utilityByKey:@"FriendWindow" viewNibName:@"FriendWindow"] becomeTabOrWindowAndShow:YES];
+	[[UtilityTabOrWindowView utilityByKey:FriendWindowKey viewNibName:@"FriendWindow"] becomeTabOrWindowAndShow:YES];
 }
 
 - (void) showIgnoreWindow:(id)sender
 {
-	[[UtilityTabOrWindowView utilityByKey:@"IgnoreWindow" viewNibName:@"IgnoreWindow"] becomeTabOrWindowAndShow:YES];
+	[[UtilityTabOrWindowView utilityByKey:IgnoreWindowKey viewNibName:@"IgnoreWindow"] becomeTabOrWindowAndShow:YES];
 }
 
 - (void) showBanWindow:(id)sender
@@ -653,12 +649,12 @@ struct eventInfo textEventInfo[NUM_XP];
 		[SGAlert alertWithString:NSLocalizedStringFromTable(@"You can only open the Ban List window while in a channel tab.", @"xchat", @"") andWait:YES];
 		return;
 	}
-	[[UtilityTabOrWindowView utilityByKey:UtilityKey(@"BanWindow", current_sess) viewNibName:@"BanWindow"] becomeTabOrWindowAndShow:YES];
+	[[UtilityTabOrWindowView utilityByKey:UtilityWindowKey(BanWindowKey, current_sess) viewNibName:@"BanWindow"] becomeTabOrWindowAndShow:YES];
 }
 
 - (void) showAsciiWindow:(id)sender
 {
-	[[AsciiWindow utilityByKey:@"AsciiWindow"] makeKeyAndOrderFront:self];
+	[[AsciiWindow utilityByKey:AsciiWindowKey] makeKeyAndOrderFront:self];
 }
 
 - (void) openNewServer:(id)sender
@@ -718,7 +714,7 @@ struct eventInfo textEventInfo[NUM_XP];
 
 - (void) showPluginWindow:(id)sender
 {
-	[[UtilityWindow utilityByKey:@"PluginWindow" windowNibName:@"PluginWindow"] makeKeyAndOrderFront:self];
+	[[UtilityWindow utilityByKey:PluginWindowKey windowNibName:@"PluginWindow"] makeKeyAndOrderFront:self];
 }
 
 - (void) clearWindow:(id)sender
@@ -759,12 +755,12 @@ struct eventInfo textEventInfo[NUM_XP];
 
 - (void) showUserCommandsWindow:(id)sender
 {
-	[[UtilityWindow utilityByKey:@"UserCommandsWindow" windowNibName:@"UserCommandsWindow"] makeKeyAndOrderFront:self];
+	[[UtilityWindow utilityByKey:UserCommandsWindowKey windowNibName:@"UserCommandsWindow"] makeKeyAndOrderFront:self];
 }
 
 - (void) showCtcpRepliesWindow:(id)sender
 {
-	EditListWindow *window = [UtilityWindow utilityByKey:@"CTCPRepliesWindow" windowNibName:@"EditListWindow"];
+	EditListWindow *window = [UtilityWindow utilityByKey:CTCPRepliesWindowKey windowNibName:@"EditListWindow"];
 	[window setTitle:NSLocalizedStringFromTable(@"XChat: CTCP Replies", @"xchat", @"Title of Window: MainMenu->X-Chat Aqua->Preference Lists->CTCP Replies...")];
 	[window loadDataFromList:&ctcp_list filename:@"ctcpreply.conf"];							  
 	[window makeKeyAndOrderFront:self];
@@ -772,7 +768,7 @@ struct eventInfo textEventInfo[NUM_XP];
 
 - (void) showUserlistButtonsWindow:(id)sender
 {
-	EditListWindow *window = [UtilityWindow utilityByKey:@"UserlistButtonsWindow" windowNibName:@"EditListWindow"];	
+	EditListWindow *window = [UtilityWindow utilityByKey:UserlistButtonsWindowKey windowNibName:@"EditListWindow"];	
 	[window setTitle:NSLocalizedStringFromTable(@"XChat: Userlist buttons", @"xchat", "Title of Window: MainMenu->X-Chat Aqua->References Lists->Userlist Buttons...")];
 	[window loadDataFromList:&button_list filename:@"buttons.conf"];
 	[window makeKeyAndOrderFront:self];
@@ -781,7 +777,7 @@ struct eventInfo textEventInfo[NUM_XP];
 
 - (void) showUserlistPopupWindow:(id)sender
 {
-	EditListWindow *window = [UtilityWindow utilityByKey:@"UserlistPopupWindow" windowNibName:@"EditListWindow"];
+	EditListWindow *window = [UtilityWindow utilityByKey:UserlistPopupWindowKey windowNibName:@"EditListWindow"];
 	[window setTitle:NSLocalizedStringFromTable(@"XChat: Userlist Popup menu", @"xchat", @"Title of Window: MainMenu->X-Chat Aqua->References Lists->Userlist Popup...")];
 	[window loadDataFromList:&popup_list filename:@"popup.conf"];
 	[window makeKeyAndOrderFront:self];
@@ -789,7 +785,7 @@ struct eventInfo textEventInfo[NUM_XP];
 
 - (void) showDialogButtonsWindow:(id)sender
 {
-	EditListWindow *window = [UtilityWindow utilityByKey:@"DialogButtonsWindow" windowNibName:@"EditListWindow"];
+	EditListWindow *window = [UtilityWindow utilityByKey:DialogButtonsWindowKey windowNibName:@"EditListWindow"];
 	[window setTitle:NSLocalizedStringFromTable(@"XChat: Dialog buttons", @"xchat", @"")];
 	[window loadDataFromList:&dlgbutton_list filename:@"dlgbuttons.conf"];
 	[window makeKeyAndOrderFront:self];
@@ -798,7 +794,7 @@ struct eventInfo textEventInfo[NUM_XP];
 
 - (void) showReplacePopupWindow:(id)sender
 {
-	EditListWindow *window = [UtilityWindow utilityByKey:@"ReplacePopupWindow" windowNibName:@"EditListWindow"];
+	EditListWindow *window = [UtilityWindow utilityByKey:ReplacePopupWindowKey windowNibName:@"EditListWindow"];
 	[window setTitle:NSLocalizedStringFromTable(@"XChat: Replace", @"xchat", @"")];
 	[window loadDataFromList:&replace_list filename:@"replace.conf"];
 	[window makeKeyAndOrderFront:self];
@@ -806,7 +802,7 @@ struct eventInfo textEventInfo[NUM_XP];
 
 - (void) showUrlHandlersWindow:(id)sender
 {
-	EditListWindow *window = [UtilityWindow utilityByKey:@"URLHandlersWindow" windowNibName:@"EditListWindow"];
+	EditListWindow *window = [UtilityWindow utilityByKey:URLHandlersWindowKey windowNibName:@"EditListWindow"];
 	[window setTitle:NSLocalizedStringFromTable(@"XChat: URL Handlers", @"xchat", "Title of Window: MainMenu->X-Chat Aqua->References Lists->URL Handler...")];
 	[window loadDataFromList:&urlhandler_list filename:@"urlhandlers.conf"];
 	[window makeKeyAndOrderFront:self];	
@@ -814,7 +810,7 @@ struct eventInfo textEventInfo[NUM_XP];
 
 - (void) showUserMenusWindow:(id)sender
 {
-	EditListWindow *window = [UtilityWindow utilityByKey:@"UserMenusWindow" windowNibName:@"EditListWindow"];
+	EditListWindow *window = [UtilityWindow utilityByKey:UserMenusWindowKey windowNibName:@"EditListWindow"];
 	[window setTitle:NSLocalizedStringFromTable(@"XChat: User menu", @"xchat", @"Title of Window: MainMenu->User Menu->Edit This Menu...")];
 	[window loadDataFromList:&usermenu_list filename:@"usermenu.conf"];
 	[window makeKeyAndOrderFront:self];	
@@ -823,12 +819,12 @@ struct eventInfo textEventInfo[NUM_XP];
 
 - (void) showTextEventsWindow:(id)sender
 {
-	[[UtilityWindow utilityByKey:@"TextEventsWindow" windowNibName:@"TextEventsWindow"] makeKeyAndOrderFront:self];
+	[[UtilityWindow utilityByKey:TextEventsWindowKey windowNibName:@"TextEventsWindow"] makeKeyAndOrderFront:self];
 }
 
 - (void) showLogViewWindow:(id)sender
 {
-	[[UtilityTabOrWindowView utilityByKey:@"LogViewWindow" viewNibName:@"LogViewWindow"] becomeTabOrWindowAndShow:YES];
+	[[UtilityTabOrWindowView utilityByKey:LogViewWindowKey viewNibName:@"LogViewWindow"] becomeTabOrWindowAndShow:YES];
 }
 
 /*
@@ -862,7 +858,6 @@ struct eventInfo textEventInfo[NUM_XP];
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://xchataqua.sourceforge.net/docs/"]];
 }
 
-#pragma mark -
 #pragma mark GrowlApplicationBridgeDelegate
 
 - (NSDictionary *) registrationDictionaryForGrowl

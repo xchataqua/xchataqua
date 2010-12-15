@@ -20,6 +20,7 @@
 #import "ColorPalette.h"
 #import "mIRCString.h"
 #import "MenuMaker.h"
+#import "UtilityWindow.h"
 
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
@@ -39,8 +40,8 @@
 	NSString *stringValue;
 }
 
-+ (id) completionWithValue:(NSString *) val;
-- (id) initWithValue:(NSString *) val;
++ (OneCompletion *) completionWithValue:(NSString *)value;
+- (id) initWithValue:(NSString *)value;
 
 @property (retain) NSString* stringValue;
 @end
@@ -80,8 +81,9 @@
  */
 - (id) initWithValue:(NSString *) val
 {
-	self = [super init];
-	self.stringValue = val;
+	if ((self = [super init]) != nil) {
+		self.stringValue = val;
+	}
 	return self;
 }
 
@@ -127,13 +129,12 @@
 	time_t lasttalk;
 }
 
-+ (id) nickWithNick:(NSString *)nick lasttalk:(time_t)timestamp;
++ (OneNickCompletion *) nickWithNick:(NSString *)nick lasttalk:(time_t)timestamp;
 - (id) initWithNick:(NSString *)nick lasttalk:(time_t)timestamp;
 
 @property (assign) time_t lasttalk;
 
 @end
-
 
 /*
  * Subclass of OneCompletion specifically for nicks.
@@ -150,8 +151,9 @@
 
 - (id) initWithNick:(NSString *)nick lasttalk:(time_t)lt
 {
-	self = [super initWithValue:nick];
-	self.lasttalk = lt;
+	if ((self = [super initWithValue:nick]) != nil) {
+		self.lasttalk = lt;
+	}
 	return self;
 }
 
@@ -295,7 +297,7 @@
 
 @end
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 @interface UserlistButton : NSButton
 {
@@ -304,7 +306,8 @@
 
 @property (nonatomic, readonly) struct popup *popup;
 
-- (id) initWithPopup:(struct popup *) popup;
+- (id) initWithPopup:(struct popup *)popup;
++ (UserlistButton *)buttonWithPopup:(struct popup *)popup;
 
 @end
 
@@ -313,24 +316,27 @@
 
 - (id) initWithPopup:(struct popup *) pop
 {
-	[super init];
+	if ((self = [super init]) != nil) {
+		self->popup = pop;
 
-	self->popup = pop;
-
-	[self setButtonType:NSMomentaryPushButton];
-	[self setTitle:[NSString stringWithUTF8String:popup->name]];
-	[self setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
-	[[self cell] setControlSize:NSSmallControlSize];
-	[self setImagePosition:NSNoImage];
-	[self setBezelStyle:NSTexturedSquareBezelStyle];
-	[self sizeToFit];
-
+		[self setButtonType:NSMomentaryPushButton];
+		[self setTitle:[NSString stringWithUTF8String:popup->name]];
+		[self setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
+		[[self cell] setControlSize:NSSmallControlSize];
+		[self setImagePosition:NSNoImage];
+		[self setBezelStyle:NSTexturedSquareBezelStyle];
+		[self sizeToFit];
+	}
 	return self;
+}
+
++ (UserlistButton *) buttonWithPopup:(struct popup *)popup {
+	return [[[self alloc] initWithPopup:popup] autorelease];
 }
 
 @end
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 /* CL */
 @interface MyUserList : NSTableView
@@ -352,15 +358,15 @@
 {
 	NSIndexSet *selectedRows = [self selectedRowIndexes];
 	if ([selectedRows count] == 0) return [super menuForEvent:theEvent];
-	id delegate = [self delegate];
-	if (delegate && [delegate respondsToSelector:@selector(menuForEvent:rowIndexes:)])
-		return [(ChatWindow *)delegate menuForEvent:theEvent rowIndexes:selectedRows];
+	ChatWindow *delegate = [self delegate];
+	if ([delegate respondsToSelector:@selector(menuForEvent:rowIndexes:)])
+		return [delegate menuForEvent:theEvent rowIndexes:selectedRows];
 	else return [super menuForEvent:theEvent];
 }
 
 @end
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 @interface OneUser : NSObject
 {
@@ -390,22 +396,16 @@
 
 - (id) initWithUser:(struct User *) u
 {
-	self->user = u;
-	nick = nil;
-	host = nil;
-/* CL */
-	nickSize = NSZeroSize;
-	hostSize = NSZeroSize;
-/* CL end */
-	
-	[self rehash];
-
+	if ((self = [super init]) != nil) {
+		self->user = u;
+		/* CL */
+		nickSize = NSZeroSize;
+		hostSize = NSZeroSize;
+		/* CL end */
+		
+		[self rehash];
+	}
 	return self;
-}
-
-- (NSString *)nick
-{
-	return [NSString stringWithUTF8String:user->nick];
 }
 
 - (void) rehash
@@ -470,9 +470,16 @@
 }
 /* CL end */
 
+#pragma mark Property Interface
+
+- (NSString *)nick
+{
+	return [NSString stringWithUTF8String:user->nick];
+}
+
 @end
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 static NSImage *redBulletImage;
 static NSImage *purpleBulletImage;
@@ -481,17 +488,11 @@ static NSImage *blueBulletImage;
 static NSImage *yellowBulletImage;
 static NSImage *emptyBulletImage;
 
-
-//////////////////////////////////////////////////////////////////////
-/*
- * MARK: -
- * MARK: Main class definition for the ChatWindow
- */
+#pragma mark Main class definition for the ChatWindow
 
 @implementation ChatWindow
 
 + (void) initialize {
-	[super initialize];
 	redBulletImage = [[NSImage imageNamed:@"red.tiff"] retain];
 	purpleBulletImage = [[NSImage imageNamed:@"purple.tiff"] retain];
 	greenBulletImage = [[NSImage imageNamed:@"green.tiff"] retain];
@@ -502,19 +503,17 @@ static NSImage *emptyBulletImage;
 
 - (id) initWithSession:(struct session *) the_sess
 {
-	[super init];
-	
-	self->sess = the_sess;
-	self->userlist = [[NSMutableArray alloc] init];
-		
-	[NSBundle loadNibNamed:@"ChatWindow" owner:self];
-
+	if ((self = [super init]) != nil) {
+		self->sess = the_sess;
+		self->userlist = [[NSMutableArray alloc] init];
+		[NSBundle loadNibNamed:@"ChatWindow" owner:self];
+	}
 	return self;
 }
 
 - (void) dealloc
 {
-	[chatView release];		// ???: Anything else need to get released here?
+	[chatView release];	// ???: Anything else need to get released here?
 	[userlist release];
 	[super dealloc];
 }
@@ -561,7 +560,7 @@ static NSImage *emptyBulletImage;
 	return [chatView window];
 }
 
-- (session *)session
+- (struct session *)session
 {
 	return sess;
 }
@@ -617,7 +616,7 @@ static NSImage *emptyBulletImage;
 	{
 		struct popup *p = (struct popup *) list->data;
 		
-		UserlistButton *button = [[[UserlistButton alloc] initWithPopup:p] autorelease];
+		UserlistButton *button = [UserlistButton buttonWithPopup:p];
 
 		[button setAction:@selector(setupChannelModeButtons:)];
 		[button setTarget:self];
@@ -647,7 +646,7 @@ static NSImage *emptyBulletImage;
 
 	[headerBoxView addSubview:b];
 
-	return b;
+	return b;	// ???: no release?
 }
 
 - (NSTextField *) makeModeText:(SEL) selector
@@ -665,7 +664,7 @@ static NSImage *emptyBulletImage;
 
 	[headerBoxView addSubview:b];
 	
-	return b;
+	return b;	// ???: no release?
 }
 
 - (void) setupChannelModeButtons
@@ -771,7 +770,7 @@ static NSImage *emptyBulletImage;
 
 	[[m itemAtIndex:0] setState:sess->text_hidejoinpart ? NSOnState : NSOffState];
 	
-	NSRect rect = NSMakeRect (0,0,100,14);
+	NSRect rect = NSMakeRect (0.0f, 0.0f, 100.0f, 14.0f); // XXX: constant size used
 	ColorPalette *p = [[AquaChat sharedAquaChat] palette];
 	for (NSInteger i = 0; i < 16; i ++)
 	{
@@ -789,7 +788,8 @@ static NSImage *emptyBulletImage;
 		[mi setImage:im];
 		[mi setTag:-i];		// See do_mirc_color
 		
-		[m addItem:[mi autorelease]];
+		[m addItem:mi];
+		[mi release];
 	}
 }
 
@@ -925,7 +925,7 @@ static NSImage *emptyBulletImage;
 	if ([res isKindOfClass:[NSTextView class]])
 	{
 		NSTextView *tview = (NSTextView *) res;
-		if ((NSTextField *)[tview delegate] == inputTextField)
+		if ([tview delegate] == inputTextField)
 			[tview moveToEndOfParagraph:self];
 	}
 }
@@ -950,14 +950,15 @@ static NSImage *emptyBulletImage;
 		return;
 	}
 	
-	NSMutableString *allnicks = [NSMutableString stringWithCapacity:0];
+	NSMutableString *allnicks = [[NSMutableString alloc] init];
+	
 	char *first_nick = NULL;
 	bool using_allnicks = strstr (cmd, "%a");
 	
 	NSIndexSet *rowIndexSet = [userlistTableView selectedRowIndexes];
 	for (NSUInteger rowIndex = [rowIndexSet firstIndex]; rowIndex != NSNotFound; rowIndex = [rowIndexSet indexGreaterThanIndex:rowIndex] )
 	{
-		OneUser *u = (OneUser *) [userlist objectAtIndex:rowIndex];
+		OneUser *u = [userlist objectAtIndex:rowIndex];
 		struct User *user = u->user;
 
 		if (using_allnicks)
@@ -977,6 +978,8 @@ static NSImage *emptyBulletImage;
 
 	if (using_allnicks)
 		nick_command_parse (sess, cmd, first_nick ? first_nick : (char *)"", (char *) [allnicks UTF8String]);
+	
+	[allnicks release];
 }
 
 - (void) doUserlistButton:(id)sender
@@ -994,13 +997,13 @@ static NSImage *emptyBulletImage;
 	{
 		struct popup *p = (struct popup *) list->data;
 		
-		UserlistButton *b =
-		[[[UserlistButton alloc] initWithPopup:p] autorelease];
+		UserlistButton *button = [[UserlistButton alloc] initWithPopup:p];
 
-		[b setAction:@selector (doUserlistButton:)];
-		[b setTarget:self];
+		[button setAction:@selector (doUserlistButton:)];
+		[button setTarget:self];
 
-		[buttonBoxView addSubview:b];
+		[buttonBoxView addSubview:button];
+		[button release];
 	}
 }
 
@@ -1042,7 +1045,7 @@ static NSImage *emptyBulletImage;
 		ColorPalette *p = [[AquaChat sharedAquaChat] palette];
 		[chatView setTabTitleColor:[p getColor:AC_FGCOLOR]];
 	}
-	[myOpOrVoiceIconImageView setHidden:true];
+	[myOpOrVoiceIconImageView setHidden:YES];
 	[limitTextField setStringValue:@""];
 
 	[self setTopic:""];
@@ -1059,11 +1062,7 @@ static NSImage *emptyBulletImage;
 	[chatView close];
 }
 
-/*
- * MARK: -
- * MARK: NSWindowDelegate Protocol methods
- *
- */
+#pragma mark NSWindow delegate
 
 /*
  * Update xchat preferences with new sizes for the main window.
@@ -1071,11 +1070,11 @@ static NSImage *emptyBulletImage;
  */
 - (void) windowDidResize:(NSNotification *) resizeNotification
 {
-  NSWindow *window = resizeNotification.object;
-  NSRect windowRectangle = window.frame;
-
-  prefs.mainwindow_width  = windowRectangle.size.width;
-  prefs.mainwindow_height = windowRectangle.size.height;
+	NSWindow *window = resizeNotification.object;
+	NSRect windowRectangle = window.frame;
+	
+	prefs.mainwindow_width  = windowRectangle.size.width;
+	prefs.mainwindow_height = windowRectangle.size.height;
 }
 
 /*
@@ -1084,14 +1083,14 @@ static NSImage *emptyBulletImage;
  */
 - (void) windowDidMove:(NSNotification *) moveNotification
 {
-  NSWindow *window = moveNotification.object;
-  NSRect windowRectangle = window.frame;
-
-  prefs.mainwindow_top  = windowRectangle.origin.y;
-  prefs.mainwindow_left = windowRectangle.origin.x;
+	NSWindow *window = moveNotification.object;
+	NSRect windowRectangle = window.frame;
+	
+	prefs.mainwindow_top  = windowRectangle.origin.y;
+	prefs.mainwindow_left = windowRectangle.origin.x;
 }
 
-- (void) windowWillClose:(NSNotification *) xx
+- (void) windowWillClose:(NSNotification *) notification
 {
 	session_free (sess);
 	
@@ -1103,12 +1102,12 @@ static NSImage *emptyBulletImage;
 	// points to a zombie.  We need to find any session for current_sess.
 	
 	if (current_sess == sess)
-		current_sess = sess_list ? (session *) sess_list->data : NULL;
+		current_sess = sess_list ? (struct session *) sess_list->data : NULL;
 	
 	//printf ("current session is 0x%x\n", current_sess);
 }
 
-- (void) windowDidBecomeKey:(NSNotification *) xx
+- (void) windowDidBecomeKey:(NSNotification *) notification
 {
 	//printf ("Focus change\n");
 	//printf ("current session is 0x%x (0x%x)\n", current_sess, sess);
@@ -1207,12 +1206,9 @@ static NSImage *emptyBulletImage;
 	set_k_flag (sess, [sender state] == NSOnState, (char *) [[keyTextField stringValue] UTF8String]);
 }
 
-
-
 - (void) doBButton:(id)sender
 {
-	// TBD
-	printf ("Open banlist\n");
+	[[UtilityTabOrWindowView utilityByKey:UtilityWindowKey(BanWindowKey, sess) viewNibName:@"BanWindow"] becomeTabOrWindowAndShow:YES];
 }
 
 - (void) doFlagButton:(id)sender
@@ -1259,8 +1255,7 @@ static NSImage *emptyBulletImage;
 		default: return;
 	}
    
-	if ( nil != button )
-		[button setState:sign == '+' ? NSOnState : NSOffState];
+	[button setState:sign == '+' ? NSOnState : NSOffState];
 	
 	// Can't do this..  We really need to know if our user mode allows
 	// us to edit the topic.. can we know that for sure given the various
@@ -1271,7 +1266,7 @@ static NSImage *emptyBulletImage;
 
 - (void) setTopic:(const char *) topic
 {
-	ColorPalette *palette = [[[[AquaChat sharedAquaChat] palette] clone] autorelease];
+	ColorPalette *palette = [[[AquaChat sharedAquaChat] palette] clone];
 
 	[palette setColor:AC_FGCOLOR color:[NSColor blackColor]];
 	[palette setColor:AC_BGCOLOR color:[NSColor whiteColor]];
@@ -1281,6 +1276,7 @@ static NSImage *emptyBulletImage;
 															palette:palette
 															   font:nil
 														   boldFont:nil]];
+	[palette release];
 }
 
 - (void) setChannel
@@ -1396,8 +1392,7 @@ static NSImage *emptyBulletImage;
 	maxHostWidth = 0.0f;
 	maxRowHeight = 16.0f;
 
-	NSEnumerator *enumerator = [userlist objectEnumerator];
-	for ( OneUser * user = [enumerator nextObject]; user != nil; user = [enumerator nextObject]) {
+	for ( OneUser *user in userlist ) {
 		if (user->nickSize.width > maxNickWidth) maxNickWidth = user->nickSize.width;
 		if ((prefs.showhostname_in_userlist) && (user->hostSize.width > maxHostWidth)) maxHostWidth = user->hostSize.width;
 		if (user->nickSize.height > maxRowHeight) maxRowHeight = user->nickSize.height;
@@ -1533,10 +1528,10 @@ static NSImage *emptyBulletImage;
 	[self rehashUserAndUpdateLayout:u];
 /* CL end */
 }
-
+ 
 - (void) userlistInsert:(struct User *)user row:(NSInteger)row select:(BOOL)select
 {
-	OneUser *u = [(OneUser *) [OneUser alloc] initWithUser:user];
+	OneUser *u = [(OneUser *)[OneUser alloc] initWithUser:user];
 	/* CL */
 	[u cacheSizesForTable: userlistTableView];
 	[self updateUserTableLayoutForInsert: u];
@@ -1561,12 +1556,12 @@ static NSImage *emptyBulletImage;
 	{
 		NSImage *img = [self getUserImage:user];
 		if (img == emptyBulletImage) {
-			[myOpOrVoiceIconImageView setHidden:true];
+			[myOpOrVoiceIconImageView setHidden:YES];
 		}
 		else
 		{
 			[myOpOrVoiceIconImageView setImage:img];
-			[myOpOrVoiceIconImageView setHidden:false];
+			[myOpOrVoiceIconImageView setHidden:NO];
 		}
 	}
 	[u release];
@@ -1623,11 +1618,11 @@ static NSImage *emptyBulletImage;
 	{
 		NSImage *img = [self getUserImage:user];
 		if (img == emptyBulletImage)
-			[myOpOrVoiceIconImageView setHidden:true];
+			[myOpOrVoiceIconImageView setHidden:YES];
 		else
 		{
 			[myOpOrVoiceIconImageView setImage:img];
-			[myOpOrVoiceIconImageView setHidden:false];
+			[myOpOrVoiceIconImageView setHidden:NO];
 		}
 	}
 /* CL end */
@@ -1816,9 +1811,8 @@ static NSImage *emptyBulletImage;
 	}
 	
 	NSArray *files = [pboard propertyListForType:NSFilenamesPboardType];
-	for (NSUInteger i = 0; i < [files count]; i ++)
-	{
-		dcc_send (sess, (char *)[nick UTF8String], (char *)[[files objectAtIndex:i] UTF8String], prefs.dcc_max_send_cps, 0);
+	for ( id file in files ) {
+		dcc_send (sess, (char *)[nick UTF8String], (char *)[file UTF8String], prefs.dcc_max_send_cps, 0);
 	}
 	return YES;
 }
@@ -1874,8 +1868,7 @@ static NSImage *emptyBulletImage;
 	}
 }
 
-/////
-// User table data source methods
+#pragma mark NSTableView dataSource
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *)aTableView
 {
@@ -1891,6 +1884,7 @@ static NSImage *emptyBulletImage;
 		case 1: return u->nick;
 		case 2: return u->host;
 	}
+	SGAssert(NO);
 	return @"";
 }
 
@@ -1953,19 +1947,18 @@ static NSImage *emptyBulletImage;
   // Takes an NSArray of NSString and returns the shortest common prefix length.
 - (NSInteger) shortestCommonPrefixLength:(NSArray *)matches
 {
-  if ([matches count] < 1) return 0;
-
-  NSString *shortestPrefix = [[matches objectAtIndex:0] stringValue];
-
-  for (OneCompletion *thisItem in matches) {
-	NSString *commonPrefix = [thisItem.stringValue commonPrefixWithString:shortestPrefix options:NSCaseInsensitiveSearch];
-	if ([commonPrefix length] < [shortestPrefix length]) {
-	  shortestPrefix = commonPrefix;
+	if ([matches count] < 1) return 0;
+	
+	NSString *shortestPrefix = [[matches objectAtIndex:0] stringValue];
+	
+	for (OneCompletion *thisItem in matches) {
+		NSString *commonPrefix = [thisItem.stringValue commonPrefixWithString:shortestPrefix options:NSCaseInsensitiveSearch];
+		if ([commonPrefix length] < [shortestPrefix length]) {
+			shortestPrefix = commonPrefix;
+		}
 	}
-  }
-  return [shortestPrefix length];
+	return [shortestPrefix length];
 }
-
 
 - (NSArray *) command_complete:(NSTextView *) view start:(NSString *) start
 {
@@ -2053,153 +2046,153 @@ static NSImage *emptyBulletImage;
 {
 	// Get the NSTextField's underlying NSTextStorage and its string value.
 	NSTextStorage *textFieldStorage = [view textStorage];
-
+	
 	// NSRange to hold the actual text we'll be completing against, within the
 	// whole string, and excluding any words before a space character etc.
 	// We init with the whole string.
 	NSRange completionTextRange = NSMakeRange(0, 0);
-
+	
 	// Get the selected range and the position of the insertion point.
-  NSRange selectedRange = [view selectedRange];
-
+	NSRange selectedRange = [view selectedRange];
+	
 	// There's no selection at all so something is wrong: bail out!
-  if (selectedRange.location == NSNotFound)
-	return;
-
+	if (selectedRange.location == NSNotFound)
+		return;
+	
 	// If selected length is 0 there's no selection, just an insertion point.
-  if (selectedRange.length == 0) {
-	self.completionIndex = 0;
-	completionTextRange.location = selectedRange.location;
-	completionTextRange.length = 0;
-  } else {
-	  // Nuke selected text; it's what we completed on last tab.
-	[textFieldStorage replaceCharactersInRange:selectedRange withString:@""];
-	selectedRange = [view selectedRange]; // Get updated selectionRange.
-  }
+	if (selectedRange.length == 0) {
+		self.completionIndex = 0;
+		completionTextRange.location = selectedRange.location;
+		completionTextRange.length = 0;
+	} else {
+		// Nuke selected text; it's what we completed on last tab.
+		[textFieldStorage replaceCharactersInRange:selectedRange withString:@""];
+		selectedRange = [view selectedRange]; // Get updated selectionRange.
+	}
 	NSString *textFieldString = [textFieldStorage string];
-
+	
 	// Return if there's nothing to the left of the insertion point because
 	// then we have nothing to complete.
-  if (selectedRange.location == 0)
-	return;
-
+	if (selectedRange.location == 0)
+		return;
+	
 	// Return if the character before the insertion point is a space because
 	// then we have nothing to complete.
-  if ([textFieldString characterAtIndex:(selectedRange.location - 1)] == ' ')
-	return;
-
+	if ([textFieldString characterAtIndex:(selectedRange.location - 1)] == ' ')
+		return;
+	
 	// Find the location of the last space character in the string, and then
 	// grab its following characters as the completion string.
-  NSCharacterSet *spaceCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
-  NSRange spaceRange = [textFieldString
-	rangeOfCharacterFromSet:spaceCharacterSet
-					options:NSBackwardsSearch
-					  range:NSMakeRange(0, selectedRange.location)];
-
-
-  if (spaceRange.location == NSNotFound) {
-	  // No space characters in the string. Complete on whole string up to selection.
-	completionTextRange.location = 0;
-	completionTextRange.length = selectedRange.location;
-  } else {
-	  // Found a space character, and spaceRange has the NSRange for it.
-	  //
-	  // Our prefix to complete will be at the location given by spaceRange
-	  // plus one, because we don't want to include the actual space character.
-	  // Its length will be given by the total length of the string, minus the
-	  // position of the spaceRange; and minus one because we're excluding the
-	  // actual space character.
-	completionTextRange.location = spaceRange.location + 1;
-	completionTextRange.length = (textFieldString.length - spaceRange.location) - 1;
-  }
-
+	NSCharacterSet *spaceCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
+	NSRange spaceRange = [textFieldString
+						  rangeOfCharacterFromSet:spaceCharacterSet
+						  options:NSBackwardsSearch
+						  range:NSMakeRange(0, selectedRange.location)];
+	
+	
+	if (spaceRange.location == NSNotFound) {
+		// No space characters in the string. Complete on whole string up to selection.
+		completionTextRange.location = 0;
+		completionTextRange.length = selectedRange.location;
+	} else {
+		// Found a space character, and spaceRange has the NSRange for it.
+		//
+		// Our prefix to complete will be at the location given by spaceRange
+		// plus one, because we don't want to include the actual space character.
+		// Its length will be given by the total length of the string, minus the
+		// position of the spaceRange; and minus one because we're excluding the
+		// actual space character.
+		completionTextRange.location = spaceRange.location + 1;
+		completionTextRange.length = (textFieldString.length - spaceRange.location) - 1;
+	}
+	
 	NSArray *matchArray;
 	BOOL shouldAddSuffix = NO;
-
+	
 	// If we're in column 0 we're completing either a nick or a command.
-  if (completionTextRange.location == 0)
-  {
-	  // If the first char is the command char (/), it's a command.
-	if ([textFieldString characterAtIndex:0] == prefs.cmdchar[0])
+	if (completionTextRange.location == 0)
 	{
-		// Don't include the command char (/) in the prefix to complete.
-	  completionTextRange.location++;
-	  completionTextRange.length--;
-	  matchArray = [self command_complete:view start:[textFieldString substringWithRange:completionTextRange]];
-	}
-	  // Otherwise it's a nick.
+		// If the first char is the command char (/), it's a command.
+		if ([textFieldString characterAtIndex:0] == prefs.cmdchar[0])
+		{
+			// Don't include the command char (/) in the prefix to complete.
+			completionTextRange.location++;
+			completionTextRange.length--;
+			matchArray = [self command_complete:view start:[textFieldString substringWithRange:completionTextRange]];
+		}
+		// Otherwise it's a nick.
 		else
 		{
-	  matchArray = [self nick_complete:view start:[textFieldString substringWithRange:completionTextRange]];
-	  shouldAddSuffix = YES; // When we're in column 0, nicks get a ": " at the end.
+			matchArray = [self nick_complete:view start:[textFieldString substringWithRange:completionTextRange]];
+			shouldAddSuffix = YES; // When we're in column 0, nicks get a ": " at the end.
 		}
-  }
-	// If we're not in column 0 we're completing either a nick or a channel.
-  else
-  {
-	  // If the first char is a '#', it's a channel.
-	if ([textFieldString characterAtIndex:(completionTextRange.location - 1)] == '#') {
-	  matchArray = [self channel_complete:view start:[textFieldString substringWithRange:completionTextRange]];
-	} else {
-	  matchArray = [self nick_complete:view start:[textFieldString substringWithRange:completionTextRange]];
 	}
-  }
-
+	// If we're not in column 0 we're completing either a nick or a channel.
+	else
+	{
+		// If the first char is a '#', it's a channel.
+		if ([textFieldString characterAtIndex:(completionTextRange.location - 1)] == '#') {
+			matchArray = [self channel_complete:view start:[textFieldString substringWithRange:completionTextRange]];
+		} else {
+			matchArray = [self nick_complete:view start:[textFieldString substringWithRange:completionTextRange]];
+		}
+	}
+	
 	// If there are no completions we bail out.
-  if (!matchArray || [matchArray count] < 1) return;
+	if (!matchArray || [matchArray count] < 1) return;
 	
 	matchArray = [matchArray sortedArrayUsingSelector:@selector(compare:)];
-
-
+	
+	
 	// Get the position and length of the common prefix.
-  NSInteger shortestPrefix = [self shortestCommonPrefixLength:matchArray];
-
+	NSInteger shortestPrefix = [self shortestCommonPrefixLength:matchArray];
+	
 	// If there's only 1 possible match, then we're done.
 	// If were doing the old style (bash style), and the common chars
 	// exceed what we typed, we'll complete up to the ambiguity.
-  if ([matchArray count] == 1 || (!prefs.xa_scrolling_completion && shortestPrefix > completionTextRange.length))
-  {
-	NSString *first = [[matchArray objectAtIndex:0] stringValue];
-	NSMutableString *rightMutableString = [NSMutableString stringWithString:[first substringToIndex:shortestPrefix]];
+	if ([matchArray count] == 1 || (!prefs.xa_scrolling_completion && shortestPrefix > completionTextRange.length))
+	{
+		NSString *first = [[matchArray objectAtIndex:0] stringValue];
+		NSMutableString *rightMutableString = [NSMutableString stringWithString:[first substringToIndex:shortestPrefix]];
 		if ([matchArray count] == 1)
 		{
-	  if (shouldAddSuffix && prefs.nick_suffix[0]) {
-		[rightMutableString appendString:[NSString stringWithUTF8String:prefs.nick_suffix]]; 
-	  }
-	  [rightMutableString appendString:@" "];
+			if (shouldAddSuffix && prefs.nick_suffix[0]) {
+				[rightMutableString appendString:[NSString stringWithUTF8String:prefs.nick_suffix]]; 
+			}
+			[rightMutableString appendString:@" "];
 		}
-	[textFieldStorage replaceCharactersInRange:completionTextRange withString:rightMutableString];
+		[textFieldStorage replaceCharactersInRange:completionTextRange withString:rightMutableString];
 		return;
-  }
+	}
 	
 	if (prefs.xa_scrolling_completion)
 	{
-	NSString *completionItem = [[matchArray objectAtIndex:self.completionIndex] stringValue];
-
-	  // Final string to insert.
-	NSMutableString *replacementString = [NSMutableString stringWithString:@""];
-
-	  // Replace the part he typed, just so the case will match
+		NSString *completionItem = [[matchArray objectAtIndex:self.completionIndex] stringValue];
+		
+		// Final string to insert.
+		NSMutableString *replacementString = [NSMutableString stringWithString:@""];
+		
+		// Replace the part he typed, just so the case will match
 		NSString *leftString = [completionItem substringToIndex:completionTextRange.length];
-	  //		[view replaceCharactersInRange:completionTextRange withString:leftString];
-	[replacementString appendString:leftString];
-
-	  // Now add the completion part as a "marked" area.
+		//		[view replaceCharactersInRange:completionTextRange withString:leftString];
+		[replacementString appendString:leftString];
+		
+		// Now add the completion part as a "marked" area.
 		NSString *rightString = [completionItem substringFromIndex:completionTextRange.length];
 		NSMutableString *rightMutableString = [NSMutableString stringWithString:rightString];
-
-	  // Tack on the nick suffix if set.
+		
+		// Tack on the nick suffix if set.
 		if (shouldAddSuffix && prefs.nick_suffix[0]) {
-	  [rightMutableString appendString:[NSString stringWithUTF8String:prefs.nick_suffix]]; 
-	}
+			[rightMutableString appendString:[NSString stringWithUTF8String:prefs.nick_suffix]]; 
+		}
 		[rightMutableString appendString:@" "];
-
-	[replacementString appendString:rightMutableString];
-
-	[textFieldStorage replaceCharactersInRange:completionTextRange withString:replacementString];
-	NSUInteger insertAt = (completionTextRange.location + leftString.length);
-	NSUInteger insertTo = [rightMutableString length];
-	[view setSelectedRange:NSMakeRange(insertAt, insertTo)];
+		
+		[replacementString appendString:rightMutableString];
+		
+		[textFieldStorage replaceCharactersInRange:completionTextRange withString:replacementString];
+		NSUInteger insertAt = (completionTextRange.location + leftString.length);
+		NSUInteger insertTo = [rightMutableString length];
+		[view setSelectedRange:NSMakeRange(insertAt, insertTo)];
 		self.completionIndex = (self.completionIndex + 1) % [matchArray count];
 	}
 	else
@@ -2218,7 +2211,7 @@ static NSImage *emptyBulletImage;
 {
 	if (prefs.gui_input_spell)
 		[(NSTextView *)fieldEditor setContinuousSpellCheckingEnabled:YES];
-		
+	
 	return YES;
 }
 
@@ -2247,80 +2240,80 @@ static NSImage *emptyBulletImage;
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector
 {
 	// By default we do not handle the selector.
-  BOOL didHandleSelector = NO;
-
-  /*
-   * Check the passed in selector against the ones we have handlers for.
-   */
-
+	BOOL didHandleSelector = NO;
+	
+	/*
+	 * Check the passed in selector against the ones we have handlers for.
+	 */
+	
 	// Shift+Return inserts a literal newline.
-  if (commandSelector == @selector(insertNewline:))
-  {
-	NSEvent *theEvent = [NSApp currentEvent];
-	if ([theEvent type] == NSKeyDown && ([theEvent modifierFlags] & NSShiftKeyMask))
+	if (commandSelector == @selector(insertNewline:))
 	{
-	  [textView insertNewlineIgnoringFieldEditor:control];
-	  didHandleSelector = YES;
+		NSEvent *theEvent = [NSApp currentEvent];
+		if ([theEvent type] == NSKeyDown && ([theEvent modifierFlags] & NSShiftKeyMask))
+		{
+			[textView insertNewlineIgnoringFieldEditor:control];
+			didHandleSelector = YES;
+		}
 	}
-  }
-
+	
 	// Up/down-arrow scroll through your input history.
-  else if (commandSelector == @selector(moveUp:))
-  {
-	const char *prevInput = history_up(&sess->history, (char *) [[inputTextField stringValue] UTF8String]);
-	[self setInputText:[NSString stringWithUTF8String:prevInput]];
-	didHandleSelector = YES;
-  }
-  else if (commandSelector == @selector(moveDown:))
-  {
-	const char *nextInput = history_down(&sess->history);
-	[self setInputText:[NSString stringWithUTF8String:nextInput]];
-	didHandleSelector = YES;
-  }
-
+	else if (commandSelector == @selector(moveUp:))
+	{
+		const char *prevInput = history_up(&sess->history, (char *) [[inputTextField stringValue] UTF8String]);
+		[self setInputText:[NSString stringWithUTF8String:prevInput]];
+		didHandleSelector = YES;
+	}
+	else if (commandSelector == @selector(moveDown:))
+	{
+		const char *nextInput = history_down(&sess->history);
+		[self setInputText:[NSString stringWithUTF8String:nextInput]];
+		didHandleSelector = YES;
+	}
+	
 	// Handle Page-Up / Page-Down / Home / End
 	// (scroll channel window the appropriate direction).
-  else if (commandSelector == @selector(scrollPageDown:))
-  {
-	[chatTextView scrollPageDown:textView];
-	didHandleSelector = YES;
-  }
-  else if (commandSelector == @selector(scrollPageUp:))
-  {
-	[chatTextView scrollPageUp:textView];
-	didHandleSelector = YES;
-  }
-  else if (commandSelector == @selector(scrollToBeginningOfDocument:))
-  {
-	[chatTextView scrollToBeginningOfDocument:textView];
-	didHandleSelector = YES;
-  }
-  else if (commandSelector == @selector(scrollToEndOfDocument:))
-  {
-	[chatTextView scrollToEndOfDocument:textView];
-	didHandleSelector = YES;
-  }
-
-	// Tab key auto-completes nicks, channels, and commands (if enabled in prefs).
-  else if (commandSelector == @selector(insertTab:))
-  {
-	if (prefs.xa_tab_completion) {
-	  [self tabComplete:textView];
-	  didHandleSelector = YES;
-	}
-	else
+	else if (commandSelector == @selector(scrollPageDown:))
 	{
-	  /*
-	   * FIXME: This shouldn't be needed.
-	   *
-	   * If we return NO, NSResponder will handle the original insertTab: selector.
-	   */
-	  [textView insertTab:textView];
-	  didHandleSelector = YES;
+		[chatTextView scrollPageDown:textView];
+		didHandleSelector = YES;
 	}
-  }
-
-  return didHandleSelector;
+	else if (commandSelector == @selector(scrollPageUp:))
+	{
+		[chatTextView scrollPageUp:textView];
+		didHandleSelector = YES;
+	}
+	else if (commandSelector == @selector(scrollToBeginningOfDocument:))
+	{
+		[chatTextView scrollToBeginningOfDocument:textView];
+		didHandleSelector = YES;
+	}
+	else if (commandSelector == @selector(scrollToEndOfDocument:))
+	{
+		[chatTextView scrollToEndOfDocument:textView];
+		didHandleSelector = YES;
+	}
+	
+	// Tab key auto-completes nicks, channels, and commands (if enabled in prefs).
+	else if (commandSelector == @selector(insertTab:))
+	{
+		if (prefs.xa_tab_completion) {
+			[self tabComplete:textView];
+			didHandleSelector = YES;
+		}
+		else
+		{
+			/*
+			 * FIXME: This shouldn't be needed.
+			 *
+			 * If we return NO, NSResponder will handle the original insertTab: selector.
+			 */
+			[textView insertTab:textView];
+			didHandleSelector = YES;
+		}
+	}
+	
+	return didHandleSelector;
 }
 
 @end

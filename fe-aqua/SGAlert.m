@@ -42,7 +42,7 @@
 
 @end
 
-/////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 @implementation SGAlert
 
@@ -50,7 +50,7 @@
 			   message:(NSString *)alertText
 			   andWait:(BOOL) wait
 {
-	NSAlert *panel = [[[NSAlert alloc] init] autorelease];
+	NSAlert *panel = [[NSAlert alloc] init];
 	[panel setAlertStyle:style];
 	[panel addButtonWithTitle:NSLocalizedStringFromTable(@"OK", @"libsg", @"button")];
 	[panel setMessageText:alertText];
@@ -67,6 +67,7 @@
 						 didEndSelector:nil
 							contextInfo:nil];
 	}
+	[panel release];
 }
 
 + (void) alertWithString:(NSString *)alertText andWait:(BOOL)wait
@@ -86,14 +87,14 @@
 
 + (BOOL) confirmWithString:(NSString *)alertText
 {
-	NSAlert *panel = [[[NSAlert alloc] init] autorelease];
+	NSAlert *panel = [[NSAlert alloc] init];
 	[panel addButtonWithTitle:NSLocalizedStringFromTable(@"No", @"libsg", @"button")];
 	[panel addButtonWithTitle:NSLocalizedStringFromTable(@"Yes",@"libsg", @"button")];
 	[panel setMessageText:alertText];
 	[panel setAlertStyle:NSInformationalAlertStyle];
 	
 	NSInteger ret = [panel runModal];
-	
+	[panel release];
 	return ret == NSAlertSecondButtonReturn;
 }
 
@@ -102,7 +103,7 @@
 					yesSel:(SEL) yesSel
 					 noSel:(SEL) noSel
 {
-	NSAlert *panel = [[[NSAlert alloc] init] autorelease];
+	NSAlert *panel = [[NSAlert alloc] init];
 	[panel addButtonWithTitle:NSLocalizedStringFromTable(@"No" ,@"libsg", @"button")];
 	[panel addButtonWithTitle:NSLocalizedStringFromTable(@"Yes",@"libsg", @"button")];
 	[panel setMessageText:alertText];
@@ -118,6 +119,7 @@
 					  modalDelegate:confirmDelegate
 					 didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:)
 						contextInfo:nil];
+	[panel release];
 }
 
 @end

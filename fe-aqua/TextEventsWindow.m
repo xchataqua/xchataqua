@@ -107,7 +107,6 @@ extern char *pntevts[];
 	[super close];
 }
 
-#pragma mark -
 #pragma mark IBActions
 
 - (void) testAll:(id)sender
@@ -138,7 +137,6 @@ extern char *pntevts[];
 		pevent_save ((char *) [fname UTF8String]);
 }
 
-#pragma mark -
 #pragma mark NSTableView delegate
 
 - (void) tableViewSelectionDidChange:(NSNotification *) aNotification

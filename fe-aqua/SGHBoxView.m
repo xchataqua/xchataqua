@@ -17,18 +17,15 @@
 
 #import "SGHBoxView.h"
 
-//////////////////////////////////////////////////////////////////////
-
 @implementation SGHBoxView
 
 - (id) initWithFrame:(NSRect) frameRect
 {
-	[super initWithFrame:frameRect];
-	
-	[self setOrientation:SGBoxOrientationHorizontal];
-	self.hJustification = SGHBoxHJustificationLeft;
-	[self setDefaultVJustification:SGHBoxVJustificationCenter];
-	
+	if ((self = [super initWithFrame:frameRect]) != nil) {
+		[self setOrientation:SGBoxOrientationHorizontal];
+		self.hJustification = SGHBoxHJustificationLeft;
+		[self setDefaultVJustification:SGHBoxVJustificationCenter];
+	}
 	return self;
 }
 

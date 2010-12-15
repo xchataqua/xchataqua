@@ -51,18 +51,18 @@ void decHandlerCount()
 }
 #endif
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 @interface CommandHandler : NSObject {
 	char *cmd;
 	char *target;
-	session *sess;
+	struct session *sess;
 }
 @end
 
 @implementation CommandHandler
 
-- (CommandHandler *)initWithCommand:(const char *)inCmd target:(const char *)inTarget session:(session *)inSess
+- (CommandHandler *)initWithCommand:(const char *)inCmd target:(const char *)inTarget session:(struct session *)inSess
 {
 	cmd = strdup(inCmd);
 	target = inTarget ? strdup(inTarget) : NULL;
@@ -83,14 +83,14 @@ void decHandlerCount()
 	[super dealloc];
 }
 
-+ (CommandHandler *)handlerWithCommand:(const char *)cmd target:(const char *)target session:(session *)sess
++ (CommandHandler *)handlerWithCommand:(const char *)cmd target:(const char *)target session:(struct session *)sess
 {
 	return [[[CommandHandler alloc] initWithCommand:cmd target:target session:sess] autorelease];
 }
 
 - (IBAction)execute:(id)sender
 {
-	session *targetSess = sess ? sess : (current_sess ? current_sess : (session *)sess_list->data);
+	struct session *targetSess = sess ? sess : (current_sess ? current_sess : (struct session *)sess_list->data);
 	if (target)
 		nick_command_parse (targetSess, cmd, target, target);
 	else
@@ -99,7 +99,7 @@ void decHandlerCount()
 
 @end
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 @interface TogglerHandler : NSObject {
 	BOOL ownsEntry;
@@ -168,46 +168,48 @@ void decHandlerCount()
 
 @end
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 @implementation MenuMaker
 
 static MenuMaker *defaultMenuMaker;
 
++ (void) initialize {
+	defaultMenuMaker = [[MenuMaker alloc] init];
+}
+
 + (MenuMaker *)defaultMenuMaker
 {
-	if (defaultMenuMaker == nil) defaultMenuMaker = [[MenuMaker alloc] init];
 	return defaultMenuMaker;
 }
 
 - (MenuMaker *)init
 {
-	NSString *labels[] = {
-		NSLocalizedStringFromTable(@"Real Name:", @"xchat", @""),
-		NSLocalizedStringFromTable(@"User:", @"xchat", @""), 
-		NSLocalizedStringFromTable(@"Country:", @"xchat", @""),
-		NSLocalizedStringFromTable(@"Server:", @"xchat", @""),
-		NSLocalizedStringFromTable(@"Away Msg:", @"xchat", @""),
-		NSLocalizedStringFromTable(@"Last Msg:", @"xchat", @"")
-	};
-	NSMutableAttributedString *test;
-	NSSize size;
-
-	self = [super init];
-	
-	for (NSUInteger i = 0; i < (sizeof(labels) / sizeof(labels[0])); i++) {
-		test = [[NSMutableAttributedString alloc] initWithString:[labels[i] stringByAppendingString:@"	"]
+	if ((self = [super init]) != nil) {
+		NSString *labels[] = {
+			NSLocalizedStringFromTable(@"Real Name:", @"xchat", @""),
+			NSLocalizedStringFromTable(@"User:", @"xchat", @""), 
+			NSLocalizedStringFromTable(@"Country:", @"xchat", @""),
+			NSLocalizedStringFromTable(@"Server:", @"xchat", @""),
+			NSLocalizedStringFromTable(@"Away Msg:", @"xchat", @""),
+			NSLocalizedStringFromTable(@"Last Msg:", @"xchat", @"")
+		};
+		NSMutableAttributedString *test;
+		NSSize size;
+		
+		for (NSUInteger i = 0; i < (sizeof(labels) / sizeof(labels[0])); i++) {
+			test = [[NSMutableAttributedString alloc] initWithString:[labels[i] stringByAppendingString:@"	"]
+					attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont boldSystemFontOfSize:0], NSFontAttributeName, nil]];
+			size = [test size];
+			if (maxUserInfoLabelWidth < size.width) maxUserInfoLabelWidth = size.width;
+			[test dealloc];
+		}
+		test = [[NSMutableAttributedString alloc] initWithString:@"	"
 				attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont boldSystemFontOfSize:0], NSFontAttributeName, nil]];
 		size = [test size];
-		if (maxUserInfoLabelWidth < size.width) maxUserInfoLabelWidth = size.width;
+		userInfoTabWidth = size.width;
 		[test dealloc];
 	}
-	test = [[NSMutableAttributedString alloc] initWithString:@"	"
-			attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont boldSystemFontOfSize:0], NSFontAttributeName, nil]];
-	size = [test size];
-	userInfoTabWidth = size.width;
-	[test dealloc];
-	
 	return self;
 }
 
@@ -243,7 +245,7 @@ static MenuMaker *defaultMenuMaker;
 	return [item autorelease];
 }
 
-- (NSMenu *)infoMenuForUser:(struct User *)user inSession:(session *)sess
+- (NSMenu *)infoMenuForUser:(struct User *)user inSession:(struct session *)sess
 {
 	char min[96];
 
@@ -278,7 +280,7 @@ static MenuMaker *defaultMenuMaker;
 	return userMenu;
 }
 
-- (NSMenu *)menuForURL:(NSString *)url inSession:(session *)sess
+- (NSMenu *)menuForURL:(NSString *)url inSession:(struct session *)sess
 {
 	NSMenu *menu = [[[NSMenu alloc] initWithTitle:@""] autorelease];
 	[menu setAutoenablesItems:false];
@@ -288,7 +290,7 @@ static MenuMaker *defaultMenuMaker;
 	return menu;
 }
 
-- (NSMenu *)menuForNick:(NSString *)nick inSession:(session *)sess
+- (NSMenu *)menuForNick:(NSString *)nick inSession:(struct session *)sess
 {
 	struct User *user = userlist_find_global(sess->server, (char *)[nick UTF8String]);
 	NSMenu *menu = [[[NSMenu alloc] initWithTitle:@""] autorelease];
@@ -302,7 +304,7 @@ static MenuMaker *defaultMenuMaker;
 	return menu;
 }
 
-- (NSMenu *)menuForChannel:(NSString *)chan inSession:(session *)sess
+- (NSMenu *)menuForChannel:(NSString *)chan inSession:(struct session *)sess
 {
 	NSMenu *menu = [[[NSMenu alloc] initWithTitle:@""] autorelease];
 	[menu setAutoenablesItems:false];
@@ -317,7 +319,7 @@ static MenuMaker *defaultMenuMaker;
 	return menu;
 }
 
-- (NSMenuItem *)commandItemWithName:(NSString *)name command:(const char *)cmd target:(NSString *)target session:(session *)sess
+- (NSMenuItem *)commandItemWithName:(NSString *)name command:(const char *)cmd target:(NSString *)target session:(struct session *)sess
 {
 	NSString * icon = nil;
 	NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:[self stripImageFromTitle:name  icon:&icon] action:@selector(execute:) keyEquivalent:@""];
@@ -343,7 +345,7 @@ static MenuMaker *defaultMenuMaker;
 	return [item autorelease];
 }
 
-- (void) appendItemList:(GSList *)list toMenu:(NSMenu *)menu withTarget:(NSString *)target inSession:(session *)sess
+- (void) appendItemList:(GSList *)list toMenu:(NSMenu *)menu withTarget:(NSString *)target inSession:(struct session *)sess
 {
 	struct popup *pop;
 	NSMenu *currentMenu = menu;

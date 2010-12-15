@@ -12,7 +12,7 @@
 
 + (SGRegex *) regexWithString:(NSString *) regex nSubExpr:(int) nSubExpr
 {
-	SGRegex *me = [[[self alloc] init] autorelease];
+	SGRegex *me = [[self alloc] init];
 	
 	int flags = REG_EXTENDED | REG_ICASE;
 
@@ -34,7 +34,7 @@
 		printf ("Unable to compile ->%s<- code = %d\n", [regex UTF8String], rc);
 	me->ok = (rc == 0);
 	
-	return me;
+	return [me autorelease];
 }
 
 - (void) dealloc
@@ -47,7 +47,7 @@
 
 - (BOOL) doitWithString:(NSString *) input
 {
-	return [self doitWithUTF8String:[input UTF8String]];
+	return [self doitWithCString:[input UTF8String] encoding:NSUTF8StringEncoding];
 }
 
 - (BOOL) doitWithUTF8String:(const char *) input
@@ -58,7 +58,7 @@
 - (BOOL) doitWithCString:(const char *) input encoding:(NSStringEncoding) enc
 {
 	[list release];
-	list = [[NSMutableArray arrayWithCapacity:n_sub_expr] retain];
+	list = [[NSMutableArray alloc] initWithCapacity:n_sub_expr];
 
 	if (ok && regexec (&preg, input, n_sub_expr, pmatch, 0) == 0)
 	{

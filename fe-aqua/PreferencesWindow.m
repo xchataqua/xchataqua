@@ -347,7 +347,6 @@ extern struct eventInfo textEventInfo[];
 	[textBoxFontTextField setStringValue:[NSString stringWithUTF8String:prefs.font_normal]];
 }
 
-#pragma mark -
 #pragma mark IBActions
 
 - (void) applyTranparency:(id)sender
@@ -422,7 +421,6 @@ extern struct eventInfo textEventInfo[];
 	[fontManager orderFrontFontPanel:self];
 }
 
-#pragma mark -
 #pragma mark NSOutlineView delegate
 
 - (BOOL) outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item {

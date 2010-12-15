@@ -17,8 +17,6 @@
 
 #import "SGBoxView.h"
 
-//////////////////////////////////////////////////////////////////////
-
 typedef enum
 {
 	SGHBoxVJustificationCenter	= SGBoxMinorJustificationCenter,

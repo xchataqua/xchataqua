@@ -21,10 +21,9 @@
 
 - (id) initWithString:(NSString *) stringToTokenize;
 {
-	self = [super init];
-	
-	[self setString:stringToTokenize];
-	
+	if ((self = [super init]) != nil) {	
+		[self setString:stringToTokenize];
+	}
 	return self;
 }
 
@@ -51,16 +50,16 @@
 	if (slen == 0 || ptr >= slen)
 		return nil;
 
-	while (ptr < slen && strchr (delimit, [tmp characterAtIndex:ptr])) ptr++;	   // Skip leading tokens
+	while (ptr < slen && strchr (delimit, [tmp characterAtIndex:ptr])) ptr++;	// Skip leading tokens
 	NSInteger start = ptr;
-	while (ptr < slen && !strchr (delimit, [tmp characterAtIndex:ptr])) ptr++;	  // find the end
+	while (ptr < slen && !strchr (delimit, [tmp characterAtIndex:ptr])) ptr++;	// find the end
 
 	NSInteger len = ptr - start;
 
 	if (len == 0)
 		return nil;
 
-	if (ptr < slen) ptr++;		// Eat the delimiter
+	if (ptr < slen) ptr++;	// Eat the delimiter
 
 	return [tmp substringWithRange:NSMakeRange(start, len)];
 }

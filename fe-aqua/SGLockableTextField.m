@@ -18,8 +18,6 @@
 #import "SGGuiUtility.h"
 #import "SGLockableTextField.h"
 
-/////////////////////////////////////////////////////////////////////////////
-
 @implementation SGLockableTextFieldCell
 @synthesize lockImage;
 @synthesize unlockImage;
@@ -27,11 +25,10 @@
 
 - (id)initTextCell:(NSString *)aString
 {
-	self = [super initTextCell:aString];
-	
-	self.lockImage   = [NSImage imageNamed:@"lock.tiff"];
-	self.unlockImage = [NSImage imageNamed:@"unlock.tiff"];
-	
+	if ((self = [super initTextCell:aString]) != nil) {
+		self.lockImage   = [NSImage imageNamed:@"lock.tiff"];
+		self.unlockImage = [NSImage imageNamed:@"unlock.tiff"];
+	}
 	return self;
 }
 
@@ -62,7 +59,7 @@
  */
 - (BOOL) isLocked
 {
-	return ([lockCell state] == NSOffState ? YES : NO);
+	return [lockCell state] == NSOffState;
 }
 
 - (void) doLock:(id)sender
@@ -179,9 +176,8 @@
 
 @end
 
-/*
- * MARK: -
- */
+#pragma mark -
+
 @implementation SGLockableTextField
 @synthesize prevValue;
 
@@ -203,11 +199,6 @@
 	[self setCell:cell];
 	[cell release];
 	[self calcSize];
-}
-
-- (void) dealloc
-{
-	[super dealloc]; // ???: Do we really need to explicitly call super's dealloc?
 }
 
 - (id) initWithFrame:(NSRect)frameRect
@@ -236,7 +227,7 @@
 {
 	id currentVal = [self objectValue];
 	if (currentVal == nil)	// This is pure paranoia. We depend on non-null prev
-		currentVal = @"";   	// values below. This guarantees it.
+		currentVal = @"";	// values below. This guarantees it.
 	self.prevValue = [currentVal retain];
 	[super textDidBeginEditing:aNotification];
 }
