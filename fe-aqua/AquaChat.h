@@ -20,12 +20,30 @@
 
 #import <Growl/GrowlApplicationBridge.h>
 
-//#define AsciiWindowKey	@"AsciiWindow"
-//#define BanWindowKey	@"BanWindow"
-//#define FriendWindowKey	@"FriendWindow"
-//#define IgnoreWindowKey	@"IgnoreWindow"
-//#define PluginWindowKey	@"PluginWindow"
-#define UtilityKey(KEY, ADDR)	[KEY stringByAppendingFormat:@"_%x", ADDR]
+#define PreferencesWindowKey		@"PreferencesWindow"
+
+#define AsciiWindowKey				@"AsciiWindow"
+#define BanWindowKey				@"BanWindow"
+#define ChannelWindowKey			@"ChannelWindow"
+#define FriendWindowKey				@"FriendWindow"
+#define IgnoreWindowKey				@"IgnoreWindow"
+#define NetworkWindowKey			@"NetworkWindow"
+#define PluginWindowKey				@"PluginWindow"
+#define RawLogWindowKey				@"RawLogWindow"
+#define UrlGrabberWindowKey			@"UrlGrabberWindow"
+#define UserCommandsWindowKey		@"UserCommandsWindow"
+#define TextEventsWindowKey			@"TextEventsWindow"
+#define LogViewWindowKey			@"LogViewWindow"
+
+#define CTCPRepliesWindowKey		@"CTCPRepliesWindow"
+#define UserlistButtonsWindowKey	@"UserlistButtonsWindow"
+#define UserlistPopupWindowKey		@"UserlistPopupWindow"
+#define DialogButtonsWindowKey		@"DialogButtonsWindow"
+#define ReplacePopupWindowKey		@"ReplacePopupWindow"
+#define URLHandlersWindowKey		@"URLHandlersWindow"
+#define UserMenusWindowKey			@"UserMenusWindow"
+
+#define UtilityWindowKey(KEY, ADDR)	[KEY stringByAppendingFormat:@"_%x", ADDR]
 
 struct eventInfo
 {

@@ -23,10 +23,7 @@
 #import "SGWrapView.h"
 #import "SGTabView.h"
 
-//////////////////////////////////////////////////////////////////////
-
-static NSMutableDictionary *label_dict;
-static NSNib *tab_menu_nib;
+static NSMutableDictionary *labelDictionary;
 static NSCursor *lr_cursor;
 static NSImage *dimple;
 
@@ -60,6 +57,7 @@ static NSImage *getCloseImage()
 
 static NSNib *getTabMenuNib ()
 {
+	static NSNib *tab_menu_nib;
 	if (!tab_menu_nib)
 		tab_menu_nib = [[NSNib alloc] initWithNibNamed:@"TabMenu" bundle:nil];
 	return tab_menu_nib;
@@ -72,10 +70,10 @@ static NSButtonCell *makeCloseCell ()
 	[closeCell setImagePosition:NSImageOnly];
 	[closeCell setBordered:NO];
 	[closeCell setHighlightsBy:NSContentsCellMask];
-	return closeCell;
+	return [closeCell autorelease];
 }
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 @interface SGTabViewOutlineCell : NSTextFieldCell
 {
@@ -92,8 +90,9 @@ static NSButtonCell *makeCloseCell ()
 
 - (id) initTextCell:(NSString *) aString
 {
-	self = [super initTextCell:aString];
-	closeCell = makeCloseCell();
+	if ((self = [super initTextCell:aString]) != nil) {
+		closeCell = makeCloseCell();
+	}
 	return self;
 }
 
@@ -171,7 +170,7 @@ static NSButtonCell *makeCloseCell ()
 
 @end
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 @interface SGTabViewOutlineView : NSOutlineView
 @end
@@ -242,14 +241,14 @@ static NSButtonCell *makeCloseCell ()
 
 @end
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 @interface SGTabViewGroupInfo : NSObject
 {
-	@public
-		NSInteger	group;
-		NSString	*name;
-		NSMutableArray *tabs;
+  @public
+	NSInteger	group;
+	NSString	*name;
+	NSMutableArray *tabs;
 }
 
 @property (nonatomic, retain) NSString *name;
@@ -261,12 +260,11 @@ static NSButtonCell *makeCloseCell ()
 
 - (id) init
 {
-	self = [super init];
-			
-	group = 0;
-	name = nil;
-	tabs = [[NSMutableArray alloc] init];
-
+	if ((self = [super init]) != nil) {
+		group = 0;
+		name = nil;
+		tabs = [[NSMutableArray alloc] init];
+	}
 	return self;
 }
 
@@ -299,7 +297,7 @@ static NSButtonCell *makeCloseCell ()
 
 @end
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 HIThemeSegmentPosition positionTable[2][2] = 
 {
@@ -326,14 +324,15 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 @end
 
+#pragma mark -
+
 @implementation SGTabViewButtonCell
 @synthesize cellSize, titleColor;
 
 + (void) initialize
 {
-	label_dict = [[NSMutableDictionary
-				   dictionaryWithObject:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]
-				   forKey:NSFontAttributeName] retain];
+	labelDictionary = [[NSMutableDictionary alloc] init];
+	[labelDictionary setObject:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]] forKey:NSFontAttributeName];
 
 	// Setup stuff for drawing the segments.
 	//
@@ -398,16 +397,16 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 - (id) initTextCell:(NSString *) aString
 {
-	self = [super initTextCell:aString];
-	closeCell = makeCloseCell();
-	self->hideClose = false;
+	if ((self = [super initTextCell:aString]) != nil) {
+		closeCell = makeCloseCell();
+		self->hideClose = false;
+	}
 	return self;
 }
 
 - (void) dealloc
 {
 	[titleColor release];
-	[closeCell release];
 	[super dealloc];
 }
 
@@ -462,7 +461,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 	cellSize.height = MySegmentHeight;
 	
-	NSSize sz = [[self title] sizeWithAttributes:label_dict];
+	NSSize sz = [[self title] sizeWithAttributes:labelDictionary];
 
 	if (hideClose)
 	{
@@ -537,12 +536,12 @@ HIThemeSegmentPosition positionTable[2][2] =
 	// I'm not sure if this actually even does anything
 	if (prefs._tabs_position == 4 && prefs.style_inputbox) {
 		ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-		[label_dict setObject:(titleColor?titleColor:[p getColor:AC_FGCOLOR]) forKey:NSForegroundColorAttributeName];
+		[labelDictionary setObject:(titleColor?titleColor:[p getColor:AC_FGCOLOR]) forKey:NSForegroundColorAttributeName];
 	} else {
-		[label_dict setObject:(titleColor?titleColor:[NSColor blackColor]) forKey:NSForegroundColorAttributeName];
+		[labelDictionary setObject:(titleColor?titleColor:[NSColor blackColor]) forKey:NSForegroundColorAttributeName];
 	}
 
-	[[self title] drawAtPoint:textPoint withAttributes:label_dict];
+	[[self title] drawAtPoint:textPoint withAttributes:labelDictionary];
 }
 
 - (void) mouseDown:(NSEvent *)event controlView:(NSView *) controlView
@@ -569,7 +568,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 @end
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 @interface SGTabViewButton : NSButton
 
@@ -583,18 +582,15 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 - (id) init
 {
-	[super init];
-	
-	[self setCell:[[[SGTabViewButtonCell alloc] initTextCell:@""] autorelease]];
-	[self setButtonType:NSOnOffButton];
-	[[self cell] setControlSize:NSSmallControlSize];
-	[self setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
-	[self setImagePosition:NSNoImage];
-	[self setBezelStyle:NSShadowlessSquareBezelStyle];
-	[super setTitle:@""];
-
-	[self sizeToFit];
-
+	if ((self = [super init]) != nil) {
+		[self setCell:[[[SGTabViewButtonCell alloc] initTextCell:@""] autorelease]];
+		[self setButtonType:NSOnOffButton];
+		[[self cell] setControlSize:NSSmallControlSize];
+		[self setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
+		[self setImagePosition:NSNoImage];
+		[self setBezelStyle:NSShadowlessSquareBezelStyle];
+		[self sizeToFit];
+	}
 	return self;
 }
 
@@ -642,7 +638,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 @end
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 @implementation SGTabViewItem
 @synthesize label, titleColor, view;
@@ -654,11 +650,8 @@ HIThemeSegmentPosition positionTable[2][2] =
 	button = nil;
 	label = nil;
 
-	if (!lr_cursor)
-		lr_cursor = [[NSCursor alloc] initWithImage:[NSImage imageNamed:@"lr_cursor.tiff"]
-								hotSpot:NSMakePoint (8.0f,8.0f)];
-	if (!dimple)
-		dimple = [NSImage imageNamed:@"dimple.tiff"];
+	lr_cursor = [[NSCursor alloc] initWithImage:[NSImage imageNamed:@"lr_cursor.tiff"] hotSpot:NSMakePoint (8.0f,8.0f)];
+	dimple = [NSImage imageNamed:@"dimple.tiff"];
 	
 	[getTabMenuNib() instantiateNibWithOwner:self topLevelObjects:nil];
 
@@ -679,7 +672,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 			  where:(NSUInteger) where
 		  withClose:(BOOL) with_close
 {
-	button = [[SGTabViewButton alloc] init];
+	button = [[SGTabViewButton alloc] init]; // ???: not released here?
 	[button setAction:@selector (doit:)];
 	[button setTarget:self];
 	[button setCloseAction:@selector (doClose:)];
@@ -816,28 +809,27 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 @end
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 @implementation SGTabView
 @synthesize delegate;
 
 - (id) initWithFrame:(NSRect) frameRect
 {
-	[super initWithFrame:frameRect];
-
-	self->tabs = [[NSMutableArray alloc] init];
-	self->tabViewType = NSTopTabsBezelBorder;
-	self->xa_outline_width = 150;
-	self->groups = [[NSMutableArray alloc] initWithCapacity:5];
+	if (([super initWithFrame:frameRect]) != nil) {
+		self->tabs = [[NSMutableArray alloc] init];
+		self->tabViewType = NSTopTabsBezelBorder;
+		self->xa_outline_width = 150;
+		self->groups = [[NSMutableArray alloc] initWithCapacity:5];
 	
-	[self setOrientation:SGBoxOrientationVertical];
-	[self setMinorDefaultJustification:SGBoxMinorJustificationFull];
-	[self setMajorInnerMargin:0.0f];
-	[self setMajorOutterMargin:0.0f];
-	[self setMinorMargin:0.0f];
+		[self setOrientation:SGBoxOrientationVertical];
+		[self setMinorDefaultJustification:SGBoxMinorJustificationFull];
+		[self setMajorInnerMargin:0.0f];
+		[self setMajorOutterMargin:0.0f];
+		[self setMinorMargin:0.0f];
 	
-	[self setTabViewType:NSTopTabsBezelBorder];
-	
+		[self setTabViewType:NSTopTabsBezelBorder];
+	}
 	return self;
 }
 
@@ -1426,7 +1418,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 		[self selectTabViewItem:tabViewItem];
 }
 
-//////////////////////////////////////////////////////
+#pragma mark NSOutlineViewDataSource
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item
 {

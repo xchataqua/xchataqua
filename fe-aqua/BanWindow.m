@@ -23,7 +23,6 @@
 #import "AquaChat.h"
 #import "BanWindow.h"
 #import "TabOrWindowView.h"
-#import "NSTimerAdditions.h"
 
 @interface BanItem : NSObject
 {
@@ -43,10 +42,11 @@
 
 - (id) initWithMask:(NSString *)aMask who:(NSString *)aWho when:(NSString *)aWhen
 {	
-	self.mask = aMask;
-	self.who  = aWho;
-	self.when = aWhen;
-	
+	if ((self = [super init]) != nil) {
+		self.mask = aMask;
+		self.who  = aWho;
+		self.when = aWhen;
+	}
 	return self;
 }
 
@@ -132,7 +132,6 @@
 	[refreshButton setEnabled:YES];
 }
 
-#pragma mark -
 #pragma mark IBAction
 
 - (void)refreshTableView:(id)sender
@@ -166,8 +165,7 @@
 	[self removeBansInvertly:NO];
 }
 
-#pragma mark -
-#pragma mark table view protocols
+#pragma mark NSTableView protocols
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *)aTableView
 {

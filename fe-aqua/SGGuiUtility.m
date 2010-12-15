@@ -77,9 +77,7 @@
 	}
 	else
 	{
-		NSEnumerator *enumerator = [[view subviews] objectEnumerator];
-		for (NSView *view = [enumerator nextObject]; view != nil; view = [enumerator nextObject] )
-		{
+		for (NSView *view in [view subviews]) {
 			[self fixSquareButtonsInView:view];
 		}
 	}

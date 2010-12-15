@@ -48,7 +48,9 @@
 
 + (LogItem *) logWithFilename:(NSString *)aFilename {
 	LogItem *log = [[self alloc] init];
-	log->filename = [aFilename retain];
+	if ( log != nil ) {
+		log->filename = [aFilename retain];
+	}
 	return [log autorelease];
 }
 
@@ -155,7 +157,6 @@
 	[self refreshList:nil];
 }
 
-#pragma mark -
 #pragma mark IBActions
 
 - (void) doFilter:(id)sender
@@ -205,7 +206,6 @@
 	NSString *dir = [NSString stringWithFormat:@"%s/xchatlogs", get_xdir_fs ()];
 	NSFileManager *fm = [NSFileManager defaultManager];
 	NSDirectoryEnumerator *enumerator = [fm enumeratorAtPath:dir];
-	
 	for (NSString *filename = [enumerator nextObject]; filename != nil; filename = [enumerator nextObject])
 	{
 		if ([filename compare:@".DS_Store"] == NSOrderedSame)
@@ -217,7 +217,6 @@
 	[self doFilter:nil];
 }
 
-#pragma mark -
 #pragma mark NSTableView dataSource
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *)aTableView {
@@ -263,9 +262,11 @@
 
 - (void) keyDown:(NSEvent *) event 
 { 
+	if ( [self selectedRow] < 0 ) return;
+	
 	unichar key = [[event charactersIgnoringModifiers] characterAtIndex:0]; 
 	NSUInteger flags = [event modifierFlags] & NSDeviceIndependentModifierFlagsMask; 
-	if (key == NSDeleteCharacter && flags == 0 && [self selectedRow] != -1) 
+	if (key == NSDeleteCharacter && flags == 0) 
 	{ 
 		[(LogViewWindow *)[self delegate] removeSelectedLogFiles];
 	}

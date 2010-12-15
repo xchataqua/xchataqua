@@ -17,8 +17,6 @@
 
 #import "SGRowColView.h"
 
-//////////////////////////////////////////////////////////////////////
-
 @implementation SGRowColView
 
 - (id) initWithFrame:(NSRect) frameRect

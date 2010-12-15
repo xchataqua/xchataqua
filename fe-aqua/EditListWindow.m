@@ -102,7 +102,6 @@
 	[itemTableView reloadData];
 }
 
-#pragma mark -
 #pragma mark IBActions
 
 - (void) addItem:(id)sender
@@ -158,7 +157,6 @@
 	[itemTableView reloadData];
 }
 
-#pragma mark -
 #pragma mark NSTableView delegate
 
 #define DATA_ARRAY items

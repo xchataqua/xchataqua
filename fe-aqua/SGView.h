@@ -15,14 +15,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-//////////////////////////////////////////////////////////////////////
-
 @class SGMetaView;
 
 @interface SGView : NSView
 {
   @protected
-	NSMutableArray  *metaViews;
+	NSMutableArray *metaViews;
 	BOOL first_layout;
 	BOOL pending_layout;
 	BOOL in_my_layout;
@@ -31,15 +29,16 @@
 	BOOL needs_size_to_fit;
 }
 
+@property (readonly) NSArray *metaViews;
+
 - (id) initWithFrame:(NSRect) frameRect;
 
 - (void) layoutNow;
 
 // Methods for subclasses
 
-- (void) queue_layout;			// Mark as needing a layout.. (delayed)
-- (void) layout_maybe;				  // Layout only if queued
-- (NSArray *)	metaViews;
+- (void) queue_layout;	// Mark as needing a layout.. (delayed)
+- (void) layout_maybe;  // Layout only if queued
 - (SGMetaView *) findViewFor:(NSView *) the_view;
 - (void) setOrder:(NSUInteger)order forView:(NSView *) the_view;
 - (NSUInteger) viewOrder:(NSView *) the_view;
@@ -62,11 +61,12 @@
 	NSRect  lastSize;
 }
 
+@property (retain) NSView *view;
+@property (readonly) NSRect prefSize;
+
 - (id)initWithView:(NSView *) the_view;
 - (id) initWithCoder:(NSCoder *) decoder;
 - (void) encodeWithCoder:(NSCoder *) encoder;
-- (NSView *) view;
-- (NSRect) prefSize;
 - (void) setFrame:(NSRect) frame;	// Use this method from subclasses "layout ()"
 									// to avoid infinite recursion.  Redraws too.
 

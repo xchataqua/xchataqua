@@ -155,7 +155,6 @@
 	[super close];
 }
 
-#pragma mark -
 #pragma mark NSTableView delegate
 
 #define DATA_ARRAY commands

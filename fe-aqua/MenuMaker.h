@@ -32,17 +32,17 @@
 
 + (MenuMaker *)defaultMenuMaker;
 
-- (NSMenu *)infoMenuForUser:(struct User *)user inSession:(session *)sess;
-- (NSMenu *)menuForURL:(NSString *)url inSession:(session *)sess;
-- (NSMenu *)menuForNick:(NSString *)nick inSession:(session *)sess;
-- (NSMenu *)menuForChannel:(NSString *)chan inSession:(session *)sess;
+- (NSMenu *)infoMenuForUser:(struct User *)user inSession:(struct session *)sess;
+- (NSMenu *)menuForURL:(NSString *)url inSession:(struct session *)sess;
+- (NSMenu *)menuForNick:(NSString *)nick inSession:(struct session *)sess;
+- (NSMenu *)menuForChannel:(NSString *)chan inSession:(struct session *)sess;
 
-- (NSMenuItem *)commandItemWithName:(NSString *)name command:(const char *)cmd target:(NSString *)target session:(session *)sess;
+- (NSMenuItem *)commandItemWithName:(NSString *)name command:(const char *)cmd target:(NSString *)target session:(struct session *)sess;
 - (NSMenuItem *)togglerItemWithName:(NSString *)name option:(const char *)opt;
 
 - (NSString *)stripImageFromTitle:(NSString *)title icon:(NSString **)icon;
 
-- (void) appendItemList:(GSList *)list toMenu:(NSMenu *)menu withTarget:(NSString *)target inSession:(session *)sess;
+- (void) appendItemList:(GSList *)list toMenu:(NSMenu *)menu withTarget:(NSString *)target inSession:(struct session *)sess;
 - (void) menu_add:(menu_entry *) entry;
 - (void) menu_del:(menu_entry *) entry;
 - (void) menu_update:(menu_entry *) entry;

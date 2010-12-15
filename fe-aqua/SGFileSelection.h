@@ -19,6 +19,7 @@
 #define FRF_MULTIPLE 2
 #define FRF_ADDFOLDER 4
 #define FRF_CHOOSEFOLDER 8
+
 typedef void (*callback_t)(void * userdata, char * fname);
 
 @interface SGFileSelection : NSObject

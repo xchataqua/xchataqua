@@ -168,7 +168,6 @@
 		[self updateStats];
 }
 
-#pragma mark -
 #pragma mark IBAction
 
 - (void) addIgnore:(id)sender
@@ -207,7 +206,6 @@
 	}
 }
 
-#pragma mark -
 #pragma mark NSTableView dataSource
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *)aTableView

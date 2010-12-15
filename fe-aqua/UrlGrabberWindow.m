@@ -71,7 +71,6 @@ static int do_add_url (const void *key, void *cbd)
 	[self->urlTableView reloadData];
 }
 
-#pragma mark -
 #pragma mark IBActions
 
 - (void) buildMenu:(id)sender
@@ -106,8 +105,7 @@ static int do_add_url (const void *key, void *cbd)
 	[self->urlTableView reloadData];
 }
 
-#pragma mark -
-#pragma mark table view protocols
+#pragma mark NSTableView dataSource
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *)aTableView
 {
