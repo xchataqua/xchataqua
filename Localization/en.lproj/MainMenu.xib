@@ -3,16 +3,16 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1030</int>
 		<string key="IBDocument.SystemVersion">10H574</string>
-		<string key="IBDocument.InterfaceBuilderVersion">804</string>
+		<string key="IBDocument.InterfaceBuilderVersion">823</string>
 		<string key="IBDocument.AppKitVersion">1038.35</string>
 		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">804</string>
+			<string key="NS.object.0">823</string>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="456"/>
+			<integer value="1174"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -86,9 +86,9 @@
 										<string key="NSTitle"/>
 										<object class="NSMutableArray" key="NSMenuItems">
 											<bool key="EncodedWithXMLCoder">YES</bool>
-											<object class="NSMenuItem" id="610935314">
+											<object class="NSMenuItem" id="164836065">
 												<reference key="NSMenu" ref="365035895"/>
-												<string key="NSTitle">User Commands...</string>
+												<string key="NSTitle">Auto Replace...</string>
 												<string key="NSKeyEquiv"/>
 												<int key="NSKeyEquivModMask">1048576</int>
 												<int key="NSMnemonicLoc">2147483647</int>
@@ -98,6 +98,42 @@
 											<object class="NSMenuItem" id="1018513590">
 												<reference key="NSMenu" ref="365035895"/>
 												<string key="NSTitle">CTCP Replies...</string>
+												<string key="NSKeyEquiv"/>
+												<int key="NSKeyEquivModMask">1048576</int>
+												<int key="NSMnemonicLoc">2147483647</int>
+												<reference key="NSOnImage" ref="42437661"/>
+												<reference key="NSMixedImage" ref="1054068937"/>
+											</object>
+											<object class="NSMenuItem" id="1060902345">
+												<reference key="NSMenu" ref="365035895"/>
+												<string key="NSTitle">Dialog Buttons...</string>
+												<string key="NSKeyEquiv"/>
+												<int key="NSKeyEquivModMask">1048576</int>
+												<int key="NSMnemonicLoc">2147483647</int>
+												<reference key="NSOnImage" ref="42437661"/>
+												<reference key="NSMixedImage" ref="1054068937"/>
+											</object>
+											<object class="NSMenuItem" id="178568981">
+												<reference key="NSMenu" ref="365035895"/>
+												<string key="NSTitle">Text Events...</string>
+												<string key="NSKeyEquiv"/>
+												<int key="NSKeyEquivModMask">1048576</int>
+												<int key="NSMnemonicLoc">2147483647</int>
+												<reference key="NSOnImage" ref="42437661"/>
+												<reference key="NSMixedImage" ref="1054068937"/>
+											</object>
+											<object class="NSMenuItem" id="353637747">
+												<reference key="NSMenu" ref="365035895"/>
+												<string key="NSTitle">URL Handlers...</string>
+												<string key="NSKeyEquiv"/>
+												<int key="NSKeyEquivModMask">1048576</int>
+												<int key="NSMnemonicLoc">2147483647</int>
+												<reference key="NSOnImage" ref="42437661"/>
+												<reference key="NSMixedImage" ref="1054068937"/>
+											</object>
+											<object class="NSMenuItem" id="610935314">
+												<reference key="NSMenu" ref="365035895"/>
+												<string key="NSTitle">User Commands...</string>
 												<string key="NSKeyEquiv"/>
 												<int key="NSKeyEquivModMask">1048576</int>
 												<int key="NSMnemonicLoc">2147483647</int>
@@ -116,42 +152,6 @@
 											<object class="NSMenuItem" id="1022443712">
 												<reference key="NSMenu" ref="365035895"/>
 												<string key="NSTitle">Userlist Popup...</string>
-												<string key="NSKeyEquiv"/>
-												<int key="NSKeyEquivModMask">1048576</int>
-												<int key="NSMnemonicLoc">2147483647</int>
-												<reference key="NSOnImage" ref="42437661"/>
-												<reference key="NSMixedImage" ref="1054068937"/>
-											</object>
-											<object class="NSMenuItem" id="1060902345">
-												<reference key="NSMenu" ref="365035895"/>
-												<string key="NSTitle">Dialog Buttons...</string>
-												<string key="NSKeyEquiv"/>
-												<int key="NSKeyEquivModMask">1048576</int>
-												<int key="NSMnemonicLoc">2147483647</int>
-												<reference key="NSOnImage" ref="42437661"/>
-												<reference key="NSMixedImage" ref="1054068937"/>
-											</object>
-											<object class="NSMenuItem" id="164836065">
-												<reference key="NSMenu" ref="365035895"/>
-												<string key="NSTitle">Auto Replace...</string>
-												<string key="NSKeyEquiv"/>
-												<int key="NSKeyEquivModMask">1048576</int>
-												<int key="NSMnemonicLoc">2147483647</int>
-												<reference key="NSOnImage" ref="42437661"/>
-												<reference key="NSMixedImage" ref="1054068937"/>
-											</object>
-											<object class="NSMenuItem" id="353637747">
-												<reference key="NSMenu" ref="365035895"/>
-												<string key="NSTitle">URL Handlers...</string>
-												<string key="NSKeyEquiv"/>
-												<int key="NSKeyEquivModMask">1048576</int>
-												<int key="NSMnemonicLoc">2147483647</int>
-												<reference key="NSOnImage" ref="42437661"/>
-												<reference key="NSMixedImage" ref="1054068937"/>
-											</object>
-											<object class="NSMenuItem" id="178568981">
-												<reference key="NSMenu" ref="365035895"/>
-												<string key="NSTitle">Text Events...</string>
 												<string key="NSKeyEquiv"/>
 												<int key="NSKeyEquivModMask">1048576</int>
 												<int key="NSMnemonicLoc">2147483647</int>
@@ -1554,14 +1554,14 @@
 						<reference key="object" ref="365035895"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="1060902345"/>
-							<reference ref="1018513590"/>
 							<reference ref="1022443712"/>
 							<reference ref="739897846"/>
-							<reference ref="353637747"/>
-							<reference ref="178568981"/>
 							<reference ref="610935314"/>
 							<reference ref="164836065"/>
+							<reference ref="1018513590"/>
+							<reference ref="1060902345"/>
+							<reference ref="178568981"/>
+							<reference ref="353637747"/>
 						</object>
 						<reference key="parent" ref="899041711"/>
 					</object>
@@ -2284,7 +2284,7 @@
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>{{405, 759}, {191, 163}}</string>
+					<string>{{361, 47}, {191, 163}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2364,7 +2364,7 @@
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>{{-57, 986}, {469, 20}}</string>
+					<string>{{121, 250}, {469, 20}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2393,7 +2393,7 @@
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>{{351, 903}, {244, 83}}</string>
+					<string>{{997, 796}, {244, 83}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2404,7 +2404,7 @@
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
-					<string>{{177, 749}, {228, 213}}</string>
+					<string>{{133, 37}, {228, 213}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
