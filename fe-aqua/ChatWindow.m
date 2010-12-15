@@ -501,10 +501,10 @@ static NSImage *emptyBulletImage;
 	emptyBulletImage = [[NSImage alloc] initWithSize:NSMakeSize(1.0f,1.0f)];	
 }
 
-- (id) initWithSession:(struct session *) the_sess
+- (id) initWithSession:(struct session *)aSession
 {
 	if ((self = [super init]) != nil) {
-		self->sess = the_sess;
+		self->sess = aSession;
 		self->userlist = [[NSMutableArray alloc] init];
 		[NSBundle loadNibNamed:@"ChatWindow" owner:self];
 	}
@@ -553,16 +553,6 @@ static NSImage *emptyBulletImage;
 	[chatTextView setSelectedRange:where];
 	[chatTextView scrollRangeToVisible:where];
 	//[chatTextView updateAtBottom];
-}
-
-- (NSWindow *) window
-{
-	return [chatView window];
-}
-
-- (struct session *)session
-{
-	return sess;
 }
 
 - (void) cleanHeaderBoxView
@@ -1028,7 +1018,7 @@ static NSImage *emptyBulletImage;
 	if (sess->waitchannel[0])
 	{
 		NSMutableString *s2 = [NSMutableString stringWithUTF8String:sess->waitchannel];
-		if (prefs.truncchans && [s2 length] > prefs.truncchans)
+		if (prefs.truncchans > 2 && [s2 length] > prefs.truncchans)
 		{
 			NSUInteger start = prefs.truncchans - 4;
 			NSUInteger len = [s2 length] - start;
@@ -1060,6 +1050,18 @@ static NSImage *emptyBulletImage;
 - (void) closeWindow
 {
 	[chatView close];
+}
+
+#pragma mark Property interface
+
+- (NSWindow *) window
+{
+	return [chatView window];
+}
+
+- (struct session *)session
+{
+	return sess;
 }
 
 #pragma mark NSWindow delegate

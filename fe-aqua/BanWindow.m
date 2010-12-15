@@ -34,6 +34,7 @@
 @property (nonatomic, retain) NSString *mask, *who, *when;
 
 - (id) initWithMask:(NSString *)mask who:(NSString *)who when:(NSString *)when;
++ (BanItem *) banWithMask:(NSString *)mask who:(NSString *)who when:(NSString *)when;
 
 @end
 
@@ -48,6 +49,10 @@
 		self.when = aWhen;
 	}
 	return self;
+}
+
++ (BanItem *) banWithMask:(NSString *)mask who:(NSString *)who when:(NSString *)when {
+	return [[[self alloc] initWithMask:mask who:who when:when] autorelease];
 }
 
 - (void) dealloc
@@ -90,7 +95,7 @@
 
 - (void) dealloc
 {
-	if (timer != nil) [timer invalidate];
+	[timer invalidate];
 	[bans release];
 	[super dealloc];
 }
@@ -116,7 +121,7 @@
 {
 	if (isExemption) return;
 	
-	[bans addObject:[[[BanItem alloc] initWithMask:mask who:who when:when] autorelease]];
+	[bans addObject:[BanItem banWithMask:mask who:who when:when]];
 	
 	if (!timer) {
 		timer = [NSTimer scheduledTimerWithTimeInterval:0.3
@@ -195,7 +200,7 @@
 
 - (void)removeBansInvertly:(BOOL)invert
 {
-	NSMutableArray *nicks = [NSMutableArray array];
+	NSMutableArray *nicks = [[NSMutableArray alloc] init];
 	
 	for (NSUInteger i = 0; i < [bans count]; i ++)
 	{
@@ -209,6 +214,7 @@
 	const char **masks = (const char **) malloc ([nicks count] * sizeof (const char *));
 	for (NSUInteger i = 0; i < [nicks count]; i ++)
 		masks[i] = [[nicks objectAtIndex:i] UTF8String];
+	[nicks release];
 	
 	char tbuf[2048];
 	send_channel_modes (sess, tbuf, (char **) masks, 0, [nicks count], '-', 'b', 0);

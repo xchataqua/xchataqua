@@ -99,15 +99,16 @@ static const char * strip_crap (const char *s)
 
 + (id) entryWithChannel:(NSString *)channel numberOfUsers:(NSString *)numberOfUsersString topic:(NSString *)aTopic colorPalette:(ColorPalette *)palette
 {
-	ChannelEntry *entry = [[ChannelEntry alloc] init];
-	entry->channel = [channel retain];
-	entry->numberOfUsersString = [numberOfUsersString retain];
-	entry->size = NSZeroSize;
+	ChannelEntry *entry =  [[ChannelEntry alloc] init];
+	if (entry != nil) {
+		entry->channel = [channel retain];
+		entry->numberOfUsersString = [numberOfUsersString retain];
+		entry->size = NSZeroSize;
 	
-	entry->topic = [[mIRCString stringWithUTF8String:strip_crap([aTopic UTF8String]) length:-1 palette:palette font:nil boldFont:nil] retain];
+		entry->topic = [[mIRCString stringWithUTF8String:strip_crap([aTopic UTF8String]) length:-1 palette:palette font:nil boldFont:nil] retain];
 			
-	entry->numberOfUsers = [entry->numberOfUsersString integerValue];
-	
+		entry->numberOfUsers = [entry->numberOfUsersString integerValue];
+	}
 	return [entry autorelease];
 }
 
@@ -119,6 +120,8 @@ static const char * strip_crap (const char *s)
 
 	[super dealloc];
 }
+
+#pragma mark sort selectors
 
 - (NSComparisonResult) sortByChannelAscending:(ChannelEntry *)other
 {

@@ -67,6 +67,7 @@
 @property (nonatomic, readonly) TabOrWindowView *view;
 @property (nonatomic, readonly) int inputTextPosition;
 @property (nonatomic, assign) NSString *inputText;
+@property (nonatomic, readonly) NSWindow *window;
 @property (nonatomic, readonly) struct session *session;
 
 - (IBAction) doMircColor:(id)sender;
@@ -77,7 +78,6 @@
 - (void) preferencesChanged;
 - (void) saveBuffer:(NSString *)filename;
 - (void) highlight:(NSString *)string;
-- (NSWindow *) window;
 - (BOOL) processFileDrop:(id<NSDraggingInfo>)info forUser:(NSString *) nick;
 - (NSMenu *)menuForEvent:(NSEvent *)theEvent rowIndexes:(NSIndexSet *)rows;
 

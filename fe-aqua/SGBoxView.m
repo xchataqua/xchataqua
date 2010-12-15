@@ -116,9 +116,7 @@ NSRect NSRectFlip (NSRect rect)
 	
 	NSSize size = NSMakeSize(majorOutterMargin+majorOutterMargin, 0.0f);
 	
-	for (NSUInteger i = 0; i < [metaViews count]; i ++)
-	{
-		SGMetaView *metaView = [metaViews objectAtIndex:i];
+	for (SGMetaView *metaView in metaViews) {
 		NSRect r = [metaView prefSize];
 		if (orientation == SGBoxOrientationVertical)
 			r = NSRectFlip (r);
