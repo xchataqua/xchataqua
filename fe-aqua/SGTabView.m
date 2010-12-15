@@ -275,7 +275,7 @@ static NSButtonCell *makeCloseCell ()
 	[super dealloc];
 }
 
-- (NSUInteger) numTabs
+- (NSUInteger) numberOfTabs
 {
 	return [tabs count];
 }
@@ -1443,7 +1443,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 		return [groups count];
 		
 	if ([item isKindOfClass:[SGTabViewGroupInfo class]])
-		return [item numTabs];
+		return [item numberOfTabs];
 		
 	return 0;
 }
