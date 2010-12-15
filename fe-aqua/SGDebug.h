@@ -23,7 +23,7 @@
 
 #ifdef SG_DEBUG
 #	define SGLog(TAG, ...)		{ if ( TAG ) [SGDebug log:[NSString stringWithFormat:__VA_ARGS__] file:__FILE__ line:__LINE__]; }
-#	define SGAssert(ASSERTION)	assert(NO)
+#	define SGAssert(ASSERTION)	assert(ASSERTION)
 #else
 #	define SGLog(TAG, ...)
 #	define SGAssert(ASSERTION)

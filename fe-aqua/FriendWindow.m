@@ -147,7 +147,6 @@
 	[friendTableView reloadData];
 }
 
-#pragma mark -
 #pragma mark IBAction
 
 - (void) addFriend:(id)sender
@@ -176,7 +175,6 @@
 		open_query(friend->serverNotify->server, friend->serverNotify->notify->name, true);
 }
 
-#pragma mark -
 #pragma mark NSTableView dataSource
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *)aTableView

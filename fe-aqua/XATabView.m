@@ -17,8 +17,6 @@
 
 #import "XATabView.h"
 
-//////////////////////////////////////////////////////////////////////
-
 @implementation XATabView
 
 - (id<XATabViewDelegate>) delegate {
@@ -78,35 +76,31 @@
 
 @end
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 static NSImage *close_image;
-static NSMutableDictionary *label_dict;
+static NSMutableDictionary *labelDictionary;
 
 @implementation XATabViewItem
 
++ (void) initialize {
+	close_image = [[NSImage imageNamed:@"close.tiff"] retain];
+	[close_image setFlipped:YES];
+	labelDictionary = [[NSMutableDictionary dictionaryWithObject:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]
+														  forKey:NSFontAttributeName] retain];
+}
+
 - (id) initWithIdentifier:(id) identifier
 {
-	[super initWithIdentifier:identifier];
-	
-	if (!close_image)
-	{
-		close_image = [[NSImage imageNamed:@"close.tiff"] retain];
-		[close_image setFlipped:true];
-		label_dict = [[NSMutableDictionary dictionaryWithObject:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]
-														 forKey:NSFontAttributeName] retain];
+	if ((self = [super initWithIdentifier:identifier]) != nil) {
+		close_rect.size = [close_image size];
 	}
-	
-	close_rect.size = [close_image size];
-	color = nil;
-	
 	return self;
 }
 
 - (void) dealloc
 {
-	if (color)
-		[color release];
+	[color release];
 	[super dealloc];
 }
 
@@ -114,10 +108,9 @@ static NSMutableDictionary *label_dict;
 {
 	if (color != c)
 	{
-	if (color)
 		[color release];
-	color = [c retain]; 
-	[self setLabel:[self label]];
+		color = [c retain]; 
+		[self setLabel:[self label]];
 	}
 }
 
@@ -128,13 +121,12 @@ static NSMutableDictionary *label_dict;
 
 - (NSSize) sizeOfLabel:(BOOL) shouldTruncateLabel
 {
-	CGFloat width = [[self label] sizeWithAttributes:label_dict].width;
-	CGFloat height = [@"X" sizeWithAttributes:label_dict].height;
+	CGFloat width = [[self label] sizeWithAttributes:labelDictionary].width;
+	CGFloat height = [@"X" sizeWithAttributes:labelDictionary].height;
 	width += [close_image size].width + 3;
 	if (height < [close_image size].height)
 		height = [close_image size].height;
-	NSSize sz = { width, height };
-	return sz;
+	return NSMakeSize(width, height);
 }
 
 - (void) drawLabel:(BOOL) shouldTruncateLabel inRect:(NSRect) tabRect
@@ -156,9 +148,9 @@ static NSMutableDictionary *label_dict;
 	p.y = tabRect.origin.y;	
 	p.x += [close_image size].width + 5;
 
-	[label_dict setObject:(color?color:[NSColor blackColor]) forKey:NSForegroundColorAttributeName];
+	[labelDictionary setObject:(color?color:[NSColor blackColor]) forKey:NSForegroundColorAttributeName];
 
-	[[self label] drawAtPoint:p withAttributes:label_dict];
+	[[self label] drawAtPoint:p withAttributes:labelDictionary];
 }
 
 @end

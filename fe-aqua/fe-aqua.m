@@ -702,7 +702,7 @@ fe_beep (void)
 void
 fe_add_rawlog (struct server *serv, char *text, int len, int outbound)
 {
-	RawLogWindow *window = [UtilityTabOrWindowView utilityIfExistsByKey:UtilityKey(@"RawLogWindow", serv)];
+	RawLogWindow *window = [UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(RawLogWindowKey, serv)];
 	[window log:text length:len outbound:outbound];
 }
 
@@ -745,37 +745,37 @@ fe_update_channel_limit (struct session *sess)
 int
 fe_is_chanwindow (struct server *serv)
 {
-	return [UtilityTabOrWindowView utilityIfExistsByKey:UtilityKey(@"ChannelWindow", serv)] != nil;
+	return [UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(ChannelWindowKey, serv)] != nil;
 }
 
 void
 fe_add_chan_list (struct server *serv, char *chan, char *users, char *topic)
 {
-	[(ChannelWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityKey(@"ChannelWindow", serv)] addChannelWithName:[NSString stringWithUTF8String:chan] numberOfUsers:[NSString stringWithUTF8String:users] topic:[NSString stringWithUTF8String:topic]];
+	[(ChannelWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(ChannelWindowKey, serv)] addChannelWithName:[NSString stringWithUTF8String:chan] numberOfUsers:[NSString stringWithUTF8String:users] topic:[NSString stringWithUTF8String:topic]];
 }
 
 void
 fe_chan_list_end (struct server *serv)
 {
-	[(ChannelWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityKey(@"ChannelWindow", serv)] refreshFinished];
+	[(ChannelWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(ChannelWindowKey, serv)] refreshFinished];
 }
 
 int
 fe_is_banwindow (struct session *sess)
 {
-	return [UtilityTabOrWindowView utilityIfExistsByKey:UtilityKey(@"BanWindow", sess)] ? true : false;
+	return [UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(BanWindowKey, sess)] ? true : false;
 }
 
 void
 fe_add_ban_list (struct session *sess, char *mask, char *who, char *when, int is_exemption)
 {
-	[(BanWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityKey(@"BanWindow", sess)] addBanWithMask:[NSString stringWithUTF8String:mask] who:[NSString stringWithUTF8String:who] when:[NSString stringWithUTF8String:when] isExemption:is_exemption];
+	[(BanWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(BanWindowKey, sess)] addBanWithMask:[NSString stringWithUTF8String:mask] who:[NSString stringWithUTF8String:who] when:[NSString stringWithUTF8String:when] isExemption:is_exemption];
 }	 
 		  
 void
 fe_ban_list_end (struct session *sess, int is_exemption)
 {
-	[(BanWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityKey(@"BanWindow", sess)] refreshFinished];
+	[(BanWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(BanWindowKey, sess)] refreshFinished];
 }
 
 void

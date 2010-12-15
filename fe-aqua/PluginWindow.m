@@ -102,7 +102,6 @@ extern GSList *plugin_list;
 	[self->pluginTableView reloadData];
 }
 
-#pragma mark -
 #pragma mark IBAction
 
 - (void) loadPlugin:(id)sender {
@@ -129,7 +128,6 @@ extern GSList *plugin_list;
 	}
 }
 
-#pragma mark -
 #pragma mark NSTableView DataSource
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *)aTableView

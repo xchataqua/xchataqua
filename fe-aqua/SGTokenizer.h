@@ -8,8 +8,8 @@
 
 @interface SGTokenizer : NSObject
 {
-	NSString	*tmp;
-	NSInteger	ptr;
+	NSString *tmp;
+	NSInteger ptr;
 }
 
 - (id) initWithString:(NSString *) stringToTokenize;

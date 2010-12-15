@@ -15,11 +15,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-//////////////////////////////////////////////////////////////////////
-
-#define SGFileDescriptorRead  0
-#define SGFileDescriptorWrite 1
-#define SGFileDescriptorExcep 2
+typedef enum {
+	SGFileDescriptorRead = 0,
+	SGFileDescriptorWrite= 1,
+	SGFileDescriptorExcep= 2,
+}	SGFileDescriptorType;
 
 @interface SGFileDescriptor : NSObject
 
@@ -29,4 +29,3 @@
 
 @end
 
-//////////////////////////////////////////////////////////////////////

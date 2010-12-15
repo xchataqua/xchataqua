@@ -17,8 +17,6 @@
 
 #import "SGView.h"
 
-//////////////////////////////////////////////////////////////////////
-
 typedef enum
 {
 	SGBoxOrientationHorizontal,
@@ -47,6 +45,8 @@ typedef enum
 }	SGBoxOrder;
 
 typedef CGFloat SGBoxMargin;
+
+#pragma mark -
 
 @interface SGBoxView : SGView
 {
