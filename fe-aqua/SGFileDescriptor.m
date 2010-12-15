@@ -20,13 +20,13 @@
 
 @class SGFileDescriptorPrivate;
 
-static pthread_mutex_t	sgfd_mtx = PTHREAD_MUTEX_INITIALIZER;
+static pthread_mutex_t	SGFileDescriptorMutex = PTHREAD_MUTEX_INITIALIZER;
 static pthread_cond_t	sgfd_dispatch_complete = PTHREAD_COND_INITIALIZER;
 static NSMutableArray  *SGFileDescriptors;
-static CFRunLoopRef		sgfdRunLoop;
-static CFRunLoopSourceRef sgfdRunLoopSource;
+static CFRunLoopRef		SGFileDescriptorRunLoop;
+static CFRunLoopSourceRef SGFileDescriptorRunLoopSource;
 static int				sgfd_pipes [2];
-static SGFileDescriptorPrivate *sgfd_dispatch_list;
+static SGFileDescriptorPrivate *sgfd_dispatch_list;	// linked list
 
 @interface SGFileDescriptorPrivate : SGFileDescriptor
 {
@@ -73,14 +73,14 @@ static void sgfd_dispatch (void *args)
 	
 	// sgfd_main_loop is waiting for us to finish.. cut him loose..
 	
-	pthread_mutex_lock (&sgfd_mtx);
+	pthread_mutex_lock (&SGFileDescriptorMutex);
 	pthread_cond_signal (&sgfd_dispatch_complete);
-	pthread_mutex_unlock (&sgfd_mtx);
+	pthread_mutex_unlock (&SGFileDescriptorMutex);
 }
 
 static void *sgfd_main_loop (void *args)
 {
-	pthread_mutex_lock (&sgfd_mtx);
+	pthread_mutex_lock (&SGFileDescriptorMutex);
 	
 	for (;;)
 	{
@@ -111,14 +111,14 @@ static void *sgfd_main_loop (void *args)
 				max = [sgfd fd];
 		}
 		
-		pthread_mutex_unlock (&sgfd_mtx);
+		pthread_mutex_unlock (&SGFileDescriptorMutex);
 		
 		int n = select (max + 1, &rfds, &wfds, &efds, NULL);
 		
 		//if (n < 0)
 		//perror ("select");
 		
-		pthread_mutex_lock (&sgfd_mtx);
+		pthread_mutex_lock (&SGFileDescriptorMutex);
 		
 		if (n > 0)
 		{
@@ -153,15 +153,15 @@ static void *sgfd_main_loop (void *args)
 			
 			if (sgfd_dispatch_list)
 			{
-				CFRunLoopSourceSignal (sgfdRunLoopSource);
-				CFRunLoopWakeUp (sgfdRunLoop);
+				CFRunLoopSourceSignal (SGFileDescriptorRunLoopSource);
+				CFRunLoopWakeUp (SGFileDescriptorRunLoop);
 				
-				pthread_cond_wait (&sgfd_dispatch_complete, &sgfd_mtx);
+				pthread_cond_wait (&sgfd_dispatch_complete, &SGFileDescriptorMutex);
 			}
 		}
 	}
 	
-	pthread_mutex_unlock (&sgfd_mtx);
+	pthread_mutex_unlock (&SGFileDescriptorMutex);
 	
 	return NULL;
 }
@@ -170,16 +170,16 @@ static void *sgfd_main_loop (void *args)
 @synthesize fd,mode;
 
 + (void) initialize {
-	sgfdRunLoop = [[NSRunLoop currentRunLoop] getCFRunLoop];
+	SGFileDescriptorRunLoop = [[NSRunLoop currentRunLoop] getCFRunLoop];
 	SGFileDescriptors = [[NSMutableArray alloc] init];
 	
 	pipe (sgfd_pipes);
 	
 	CFRunLoopSourceContext context = { 0, 0, 0, 0, 0, 0, 0, 0, 0, sgfd_dispatch };
 	
-	sgfdRunLoopSource = CFRunLoopSourceCreate (NULL, 0, &context);
+	SGFileDescriptorRunLoopSource = CFRunLoopSourceCreate (NULL, 0, &context);
 	
-	CFRunLoopAddSource (sgfdRunLoop, sgfdRunLoopSource, kCFRunLoopCommonModes);
+	CFRunLoopAddSource (SGFileDescriptorRunLoop, SGFileDescriptorRunLoopSource, kCFRunLoopCommonModes);
 	
 	pthread_t thrd;
 	pthread_create (&thrd, NULL, sgfd_main_loop, NULL);
@@ -187,14 +187,14 @@ static void *sgfd_main_loop (void *args)
 
 + (void) sgfd_add:(SGFileDescriptor *)sgfd
 {
-	pthread_mutex_lock (&sgfd_mtx);
+	pthread_mutex_lock (&SGFileDescriptorMutex);
 	
 	[SGFileDescriptors addObject:sgfd];
 	
 	char ch = 0;
 	write (sgfd_pipes [1], &ch, 1);
 	
-	pthread_mutex_unlock (&sgfd_mtx);
+	pthread_mutex_unlock (&SGFileDescriptorMutex);
 }
 
 - (SGFileDescriptor *)initWithFd:(int)the_fd mode:(NSInteger)the_mode target:(id)the_target 
@@ -223,11 +223,11 @@ static void *sgfd_main_loop (void *args)
 {
 	enable = false;
 	
-	pthread_mutex_lock (&sgfd_mtx);
-		
+	pthread_mutex_lock (&SGFileDescriptorMutex);
+	
 	[SGFileDescriptors removeObjectIdenticalTo:self];
 		
-	pthread_mutex_unlock (&sgfd_mtx);
+	pthread_mutex_unlock (&SGFileDescriptorMutex);
 }
 
 @end
