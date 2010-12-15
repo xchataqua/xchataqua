@@ -30,5 +30,6 @@
 
 - (IBAction)addCommand:(id)sender;
 - (IBAction)removeCommand:(id)sender;
+- (IBAction)showHelp:(id)sender;
 
 @end
