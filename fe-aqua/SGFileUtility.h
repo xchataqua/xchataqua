@@ -8,9 +8,9 @@
 
 @interface SGFileUtility : NSObject
 
-+ (NSString *) findApplicationSupportFor:(NSString *) app;
-+ (BOOL) exists:(NSString *) fname;
-+ (BOOL) isDirectory:(NSString *) fname;
-+ (BOOL) isSymLink:(NSString *) fname;
++ (NSString *) findApplicationSupportFor:(NSString *)app;
++ (BOOL) exists:(NSString *)filename;
++ (BOOL) isDirectory:(NSString *)filename;
++ (BOOL) isSymLink:(NSString *)filename;
 
 @end

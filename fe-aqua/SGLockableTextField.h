@@ -35,5 +35,5 @@
 {
 	id prevValue;
 }
-@property (retain) id prevValue;
+
 @end
