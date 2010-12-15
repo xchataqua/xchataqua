@@ -253,7 +253,6 @@ static const char * strip_crap (const char *s)
 	[refreshButton setEnabled:YES];
 }
 
-#pragma mark -
 #pragma mark IBAction
 
 - (void) applySearch:(id)sender
@@ -312,7 +311,6 @@ static const char * strip_crap (const char *s)
 	}
 }
 
-#pragma mark -
 #pragma mark NSTableView dataSource
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *)aTableView

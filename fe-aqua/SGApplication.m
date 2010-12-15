@@ -17,8 +17,6 @@
 
 #import "SGApplication.h"
 
-//////////////////////////////////////////////////////////////////////
-
 @interface ObjSel : NSObject
 {
   @public
@@ -36,7 +34,7 @@
 
 @end
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 @interface SGApplicationCustomer : ObjSel
 {
@@ -87,7 +85,7 @@
 
 @end
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 @implementation SGApplication
 
@@ -100,9 +98,10 @@
 
 - (id) init
 {
-	[super init];
-	customers = [[NSMutableArray alloc] init];
-	//after_events = [[NSMutableArray alloc] init];
+	if ((self = [super init]) != nil) {
+		customers = [[NSMutableArray alloc] init];
+		//after_events = [[NSMutableArray alloc] init];
+	}
 	return self;
 }
 
@@ -128,8 +127,8 @@
 
 - (void) sendEvent:(NSEvent *) anEvent
 {
-	for (NSUInteger i = 0; i < [customers count]; i ++)
-		if ([[customers objectAtIndex:i] sendCopy:anEvent])
+	for (id customer in customers)
+		if ([customer sendCopy:anEvent])
 			return;
 	
 	[super sendEvent:anEvent];

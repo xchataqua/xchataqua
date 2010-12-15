@@ -31,18 +31,18 @@
 
 @end
 
+#pragma mark -
+
 @implementation SGRequestPrivate
 
 - (id) initWithString:(NSString *) title
 {
-	[super init];
-	
-	[NSBundle loadNibNamed:@"SGRequest" owner:self];
-	
-	[[label window] setTitle:title];
-	[label setStringValue:title];
-	[[label window] center];
-	
+	if ((self = [super init]) != nil) {
+		[NSBundle loadNibNamed:@"SGRequest" owner:self];
+		[[label window] setTitle:title];
+		[label setStringValue:title];
+		[[label window] center];
+	}
 	return self;
 }
 
@@ -82,20 +82,21 @@
 
 @end
 
+#pragma mark -
+
 @implementation SGRequest
 
 + (NSString *) requestWithString:(NSString *) title
 {
-	SGRequestPrivate *request = [[[SGRequestPrivate alloc] initWithString:title] autorelease];
-	return [request doit];
+	return [SGRequest requestWithString:title defaultValue:nil];
 }
 
 + (NSString *) requestWithString:(NSString *) title defaultValue:(NSString *) def
 {
-	SGRequestPrivate *request = [[[SGRequestPrivate alloc] initWithString:title] autorelease];
+	SGRequestPrivate *request = [[SGRequestPrivate alloc] initWithString:title];
 	if (def)
 		[request setValue:def];
-	return [request doit];
+	return [[request doit] autorelease];
 }
 
 @end

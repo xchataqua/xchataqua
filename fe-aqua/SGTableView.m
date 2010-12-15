@@ -15,31 +15,22 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#import "NSTimerAdditions.h"
 #import "SGTableView.h"
 
 @implementation SGTableView
-
-- (id) initWithFrame:(NSRect) frameRect
-{
-	[super initWithFrame:frameRect];
-	timer = nil;
-	return self;
-}
 
 - (void) dealloc
 {
 	if (timer)
 	{
 		[timer invalidate];
-		[timer release];
 	}
 	[super dealloc];
 }
 
 - (void) sizeFixups:(id)sender
 {
-	[timer release];
+	[timer invalidate];
 	timer = nil;
 	
 	NSTableColumn *column = [[self tableColumns] lastObject];
@@ -86,13 +77,12 @@
 				  && [dataSource performSelector:@selector(shouldDoSizeFixupsForTableView:) withObject:self];
 	if (!do_fixups) return;
 
-	if (!timer)
-		timer = [[NSTimer scheduledTimerWithTimeInterval:1.0
-												  target:self
-												selector:@selector(sizeFixups:)
-												userInfo:nil
-												 repeats:NO
-											  retainArgs:NO] retain];
+	if (timer == nil)
+		timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+												 target:self
+											   selector:@selector(sizeFixups:)
+											   userInfo:nil
+												repeats:NO];
 }
 
 - (void) reloadData

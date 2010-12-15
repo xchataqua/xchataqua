@@ -17,8 +17,6 @@
 
 #import "SGView.h"
 
-//////////////////////////////////////////////////////////////////////
-
 @interface SGRowColView : SGView
 {
 	NSInteger rows;
@@ -27,7 +25,7 @@
 	BOOL shrinkv;
 }
 
-- (void)setColumns:(NSInteger)cols rows:(NSInteger)rows;		// rows = 0 means dynamic rows 
+- (void)setColumns:(NSInteger)cols rows:(NSInteger)rows;	// rows = 0 means dynamic rows 
 - (void)setShrinkHoriz:(BOOL)shrinkh vert:(BOOL)shrinkv;
 
 @end

@@ -67,7 +67,7 @@
 @property (nonatomic, readonly) TabOrWindowView *view;
 @property (nonatomic, readonly) int inputTextPosition;
 @property (nonatomic, assign) NSString *inputText;
-@property (nonatomic, readonly) session *session;
+@property (nonatomic, readonly) struct session *session;
 
 - (IBAction) doMircColor:(id)sender;
 - (IBAction) doConferenceMode:(id)sender;

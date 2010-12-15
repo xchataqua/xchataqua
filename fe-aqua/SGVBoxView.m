@@ -17,18 +17,15 @@
 
 #import "SGVBoxView.h"
 
-//////////////////////////////////////////////////////////////////////
-
 @implementation SGVBoxView
 
 - (id) initWithFrame:(NSRect) frameRect
 {
-	[super initWithFrame:frameRect];
-	
-	[self setOrientation:SGBoxOrientationVertical];
-	self.vJustification = SGVBoxVJustificationTop;
-	[self setDefaultHJustification:SGVBoxHJustificationCenter];
-	
+	if ((self = [super initWithFrame:frameRect]) != nil) {
+		[self setOrientation:SGBoxOrientationVertical];
+		self.vJustification = SGVBoxVJustificationTop;
+		[self setDefaultHJustification:SGVBoxHJustificationCenter];
+	}
 	return self;
 }
 

@@ -36,13 +36,14 @@ static NSString *fixPath (NSString *path)
 
 + (NSString *) selectWithWindow:(NSWindow *) win inDirectory:(NSString *) dir
 {
-	NSOpenPanel *p = [NSOpenPanel openPanel];
-
-	[p setCanChooseFiles:YES];
-	[p setResolvesAliases:NO];
-	[p setCanChooseDirectories:NO];
-	[p setAllowsMultipleSelection:NO];
 	dir = fixPath (dir);
+	
+	NSOpenPanel *panel = [NSOpenPanel openPanel];
+
+	[panel setCanChooseFiles:YES];
+	[panel setResolvesAliases:NO];
+	[panel setCanChooseDirectories:NO];
+	[panel setAllowsMultipleSelection:NO];
 
 	NSInteger sts;
 
@@ -50,25 +51,23 @@ static NSString *fixPath (NSString *path)
 	{
 		SInt32 version = 0;
 		Gestalt(gestaltSystemVersion, &version);
-		if ( version > 0x1050 ) {
-			sts = [p runModalForDirectory:dir file:nil types:nil] == NSOKButton; // newcode
+		if ( version > 0x1050 ) { // snow leopard
+			sts = [panel runModalForDirectory:dir file:nil types:nil] == NSOKButton;
 		} else {
-			[p beginSheetForDirectory:dir file:nil types:nil modalForWindow:win
+			[panel beginSheetForDirectory:dir file:nil types:nil modalForWindow:win
 						modalDelegate:nil didEndSelector:nil contextInfo:nil];
-			sts = [NSApp runModalForWindow:p];
-			// FIXME: this code stuck HERE on snow leopard. working well on leopard
-			[NSApp endSheet:p];
+			sts = [NSApp runModalForWindow:panel];
+			[NSApp endSheet:panel];
 		}
 	}
 	else
-		sts = [p runModalForDirectory:dir file:nil types:nil] == NSOKButton;
+		sts = [panel runModalForDirectory:dir file:nil types:nil] == NSOKButton;
 	
-	[p orderOut:self];
+	[panel orderOut:self];
 
 	if (sts)
 	{
-		NSArray *a = [p filenames];
-		return [a objectAtIndex:0];
+		return [[panel filenames] objectAtIndex:0];
 	}
 
 	return nil;
@@ -78,7 +77,7 @@ static NSString *fixPath (NSString *path)
 {
 	NSSavePanel *p = [NSSavePanel savePanel];
 	
-	[p setPrompt:@"Select"];
+	[p setPrompt:NSLocalizedStringFromTable(@"Select", @"xchataqua", @"")];
 		
 	[p beginSheetForDirectory:nil file:nil
 	   modalForWindow:win modalDelegate:nil didEndSelector:nil

@@ -20,7 +20,7 @@
 		}
 	}
 
-	return paths;
+	return [paths autorelease];
 }
 
 @end

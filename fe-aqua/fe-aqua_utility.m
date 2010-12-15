@@ -19,7 +19,6 @@
 #include "../common/outbound.h"
 #include "../common/fe.h"
 
-#import "NSTimerAdditions.h"
 #import "fe-aqua_utility.h"
 
 #define CPP_INPUT_THING 0

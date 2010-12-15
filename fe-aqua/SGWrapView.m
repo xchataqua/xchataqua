@@ -25,17 +25,9 @@
 	NSRect pending_frame;
 }
 
-- (id) initWithView:(NSView *) view;
-
 @end
 
 @implementation SGWrapViewMetaView
-
-- (id)initWithView:(NSView *) the_view;
-{
-	[super initWithView:the_view];
-	return self;
-}
 
 @end
 
@@ -43,12 +35,6 @@
 
 @implementation SGWrapView
 @synthesize numberOfRows;
-
-- (id) initWithFrame:(NSRect) frameRect
-{
-	[super initWithFrame:frameRect];
-	return self;
-}
 
 - (id) newMetaView:(NSView *) view
 {

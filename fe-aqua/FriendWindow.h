@@ -28,7 +28,7 @@
 	NSMutableArray	*friends;
 }
 
-@property (nonatomic, retain) FriendAdditionPanel *friendAdditionPanel;
+@property (retain) FriendAdditionPanel *friendAdditionPanel;
 
 - (IBAction)addFriend:(id)sender;
 - (IBAction)removeFriend:(id)sender;

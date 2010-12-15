@@ -690,6 +690,7 @@ static NSCursor *lr_cursor;
 		return 0;
 	}
 	
+	SGAssert(NO);
 	// Make compiler happy
 	return 0;
 }

@@ -86,7 +86,6 @@
 		0F8EA6940CFB300B001AE9AE /* SGRegex.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6730CFB300B001AE9AE /* SGRegex.m */; };
 		0F8EA6950CFB300B001AE9AE /* SGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6750CFB300B001AE9AE /* SGRequest.m */; };
 		0F8EA6970CFB300B001AE9AE /* SGSoundUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6790CFB300B001AE9AE /* SGSoundUtility.m */; };
-		0F8EA6980CFB300B001AE9AE /* SGTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA67B0CFB300B001AE9AE /* SGTableView.m */; };
 		0F8EA6990CFB300B001AE9AE /* SGTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA67D0CFB300B001AE9AE /* SGTabView.m */; };
 		0F8EA69B0CFB300B001AE9AE /* SGVBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6810CFB300B001AE9AE /* SGVBoxView.m */; };
 		0F8EA69D0CFB300B001AE9AE /* SGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6850CFB300B001AE9AE /* SGView.m */; };
@@ -103,7 +102,6 @@
 		0F8EA6EC0CFB347B001AE9AE /* XAChatTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6C80CFB347B001AE9AE /* XAChatTextView.m */; };
 		0F8EA6ED0CFB347B001AE9AE /* XACommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6CA0CFB347B001AE9AE /* XACommon.m */; };
 		0F8EA6EE0CFB347B001AE9AE /* XATabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6CE0CFB347B001AE9AE /* XATabView.m */; };
-		0F8EA6EF0CFB347B001AE9AE /* NSTimerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6D10CFB347B001AE9AE /* NSTimerAdditions.m */; };
 		0F8EA6F00CFB347B001AE9AE /* PreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6D30CFB347B001AE9AE /* PreferencesWindow.m */; };
 		0F8EA6F20CFB347B001AE9AE /* NetworkWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6D70CFB347B001AE9AE /* NetworkWindow.m */; };
 		0F8EA6F30CFB347B001AE9AE /* TabOrWindowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6D90CFB347B001AE9AE /* TabOrWindowView.m */; };
@@ -234,6 +232,7 @@
 		B0D937F20FFB0D34009370B5 /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937F00FFB0D34009370B5 /* libssl.dylib */; };
 		B0E85AC20FFFC0AF0064D049 /* sparkle.pem in Resources */ = {isa = PBXBuildFile; fileRef = B0E85AC10FFFC0AF0064D049 /* sparkle.pem */; };
 		D487239E128F9DBC00647D7B /* UtilityWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D487239D128F9DBC00647D7B /* UtilityWindow.m */; };
+		D4CBE8CD12B6DC3D00B4E35E /* SGTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA67B0CFB300B001AE9AE /* SGTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -478,8 +477,6 @@
 		0F8EA6B50CFB33AF001AE9AE /* AutoAwayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AutoAwayController.m; path = "fe-aqua/AutoAwayController.m"; sourceTree = "<group>"; };
 		0F8EA6B70CFB33C9001AE9AE /* ColorPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorPalette.h; path = "fe-aqua/ColorPalette.h"; sourceTree = "<group>"; };
 		0F8EA6B80CFB33C9001AE9AE /* ColorPalette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorPalette.m; path = "fe-aqua/ColorPalette.m"; sourceTree = "<group>"; };
-		0F8EA6BD0CFB347B001AE9AE /* EncodedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EncodedString.h; path = "fe-aqua/EncodedString.h"; sourceTree = "<group>"; };
-		0F8EA6BE0CFB347B001AE9AE /* EncodedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EncodedString.m; path = "fe-aqua/EncodedString.m"; sourceTree = "<group>"; };
 		0F8EA6BF0CFB347B001AE9AE /* GLikeTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLikeTimer.h; path = "fe-aqua/GLikeTimer.h"; sourceTree = "<group>"; };
 		0F8EA6C00CFB347B001AE9AE /* GLikeTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLikeTimer.m; path = "fe-aqua/GLikeTimer.m"; sourceTree = "<group>"; };
 		0F8EA6C10CFB347B001AE9AE /* identd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = identd.c; path = "fe-aqua/identd.c"; sourceTree = "<group>"; };
@@ -496,8 +493,6 @@
 		0F8EA6CD0CFB347B001AE9AE /* XATabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XATabView.h; path = "fe-aqua/XATabView.h"; sourceTree = "<group>"; };
 		0F8EA6CE0CFB347B001AE9AE /* XATabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XATabView.m; path = "fe-aqua/XATabView.m"; sourceTree = "<group>"; };
 		0F8EA6CF0CFB347B001AE9AE /* XAVars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XAVars.h; path = "fe-aqua/XAVars.h"; sourceTree = "<group>"; };
-		0F8EA6D00CFB347B001AE9AE /* NSTimerAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSTimerAdditions.h; path = "fe-aqua/NSTimerAdditions.h"; sourceTree = "<group>"; };
-		0F8EA6D10CFB347B001AE9AE /* NSTimerAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSTimerAdditions.m; path = "fe-aqua/NSTimerAdditions.m"; sourceTree = "<group>"; };
 		0F8EA6D20CFB347B001AE9AE /* PreferencesWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesWindow.h; path = "fe-aqua/PreferencesWindow.h"; sourceTree = "<group>"; };
 		0F8EA6D30CFB347B001AE9AE /* PreferencesWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesWindow.m; path = "fe-aqua/PreferencesWindow.m"; sourceTree = "<group>"; };
 		0F8EA6D60CFB347B001AE9AE /* NetworkWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkWindow.h; path = "fe-aqua/NetworkWindow.h"; sourceTree = "<group>"; };
@@ -1921,8 +1916,6 @@
 				0F8EA6390CFB2F5C001AE9AE /* DccRecvWin.m */,
 				0F8EA63A0CFB2F5C001AE9AE /* DccSendWin.h */,
 				0F8EA63B0CFB2F5C001AE9AE /* DccSendWin.m */,
-				0F8EA63C0CFB2F5C001AE9AE /* TextEventsWindow.h */,
-				0F8EA63D0CFB2F5C001AE9AE /* TextEventsWindow.m */,
 				0F8EA63E0CFB2F5C001AE9AE /* EditListWindow.h */,
 				0F8EA63F0CFB2F5C001AE9AE /* EditListWindow.m */,
 				0F8EA6440CFB2F5C001AE9AE /* FriendWindow.h */,
@@ -1939,6 +1932,8 @@
 				0F8EA6D30CFB347B001AE9AE /* PreferencesWindow.m */,
 				0F8EA6480CFB2F5C001AE9AE /* RawLogWindow.h */,
 				0F8EA6490CFB2F5C001AE9AE /* RawLogWindow.m */,
+				0F8EA63C0CFB2F5C001AE9AE /* TextEventsWindow.h */,
+				0F8EA63D0CFB2F5C001AE9AE /* TextEventsWindow.m */,
 				0F8EA6DA0CFB347B001AE9AE /* UrlGrabberWindow.h */,
 				0F8EA6DB0CFB347B001AE9AE /* UrlGrabberWindow.m */,
 				0F8EA6DE0CFB347B001AE9AE /* UserCommandsWindow.h */,
@@ -1969,16 +1964,12 @@
 				0F8EA6AE0CFB3398001AE9AE /* CLLevelIndicator.m */,
 				0F8EA6AF0CFB3398001AE9AE /* CLLevelIndicatorCell.h */,
 				0F8EA6B00CFB3398001AE9AE /* CLLevelIndicatorCell.m */,
-				0F8EA6BD0CFB347B001AE9AE /* EncodedString.h */,
-				0F8EA6BE0CFB347B001AE9AE /* EncodedString.m */,
 				0F8EA6BF0CFB347B001AE9AE /* GLikeTimer.h */,
 				0F8EA6C00CFB347B001AE9AE /* GLikeTimer.m */,
 				0F8EA6C30CFB347B001AE9AE /* MenuMaker.h */,
 				0F8EA6C40CFB347B001AE9AE /* MenuMaker.m */,
 				0F8EA6C50CFB347B001AE9AE /* mIRCString.h */,
 				0F8EA6C60CFB347B001AE9AE /* mIRCString.m */,
-				0F8EA6D00CFB347B001AE9AE /* NSTimerAdditions.h */,
-				0F8EA6D10CFB347B001AE9AE /* NSTimerAdditions.m */,
 				0F8EA6D80CFB347B001AE9AE /* TabOrWindowView.h */,
 				0F8EA6D90CFB347B001AE9AE /* TabOrWindowView.m */,
 				D487239C128F9DBC00647D7B /* UtilityWindow.h */,
@@ -2586,7 +2577,6 @@
 				0F8EA6940CFB300B001AE9AE /* SGRegex.m in Sources */,
 				0F8EA6950CFB300B001AE9AE /* SGRequest.m in Sources */,
 				0F8EA6970CFB300B001AE9AE /* SGSoundUtility.m in Sources */,
-				0F8EA6980CFB300B001AE9AE /* SGTableView.m in Sources */,
 				0F8EA6990CFB300B001AE9AE /* SGTabView.m in Sources */,
 				0F8EA69B0CFB300B001AE9AE /* SGVBoxView.m in Sources */,
 				0F8EA69D0CFB300B001AE9AE /* SGView.m in Sources */,
@@ -2603,7 +2593,6 @@
 				0F8EA6EC0CFB347B001AE9AE /* XAChatTextView.m in Sources */,
 				0F8EA6ED0CFB347B001AE9AE /* XACommon.m in Sources */,
 				0F8EA6EE0CFB347B001AE9AE /* XATabView.m in Sources */,
-				0F8EA6EF0CFB347B001AE9AE /* NSTimerAdditions.m in Sources */,
 				0F8EA6F00CFB347B001AE9AE /* PreferencesWindow.m in Sources */,
 				0F8EA6F20CFB347B001AE9AE /* NetworkWindow.m in Sources */,
 				0F8EA6F30CFB347B001AE9AE /* TabOrWindowView.m in Sources */,
@@ -2617,6 +2606,7 @@
 				2D7817CA10E872D200C71AF8 /* fe-aqua_utility.m in Sources */,
 				2D4ACFB11230005E00DEB5FA /* SGDebug.m in Sources */,
 				D487239E128F9DBC00647D7B /* UtilityWindow.m in Sources */,
+				D4CBE8CD12B6DC3D00B4E35E /* SGTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

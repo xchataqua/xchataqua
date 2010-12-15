@@ -119,20 +119,24 @@
 //////////////////////////////////////////////////////////////////////
 
 @implementation SGMetaView
+@synthesize view, prefSize;
 
-- (id)initWithView:(NSView *) the_view;
+- (id)initWithView:(NSView *)aView;
 {
-	self->view = [the_view retain];
-	[self reset_prefSize];
-	
+	if ((self = [super init]) != nil) {
+		self.view = aView;
+		[self reset_prefSize];
+	}
 	return self;
 }
 
-- (id) initWithCoder:(NSCoder *) decoder
+- (id) initWithCoder:(NSCoder *)decoder
 {
-	view = [[decoder decodeObjectForKey:@"view"] retain];
-	lastSize = [decoder decodeRectForKey:@"lastSize"];
-	prefSize = [decoder decodeRectForKey:@"prefSize"];
+	if ((self = [super init]) != nil) {
+		self.view = [decoder decodeObjectForKey:@"view"];
+		lastSize = [decoder decodeRectForKey:@"lastSize"];
+		prefSize = [decoder decodeRectForKey:@"prefSize"];
+	}
 	return self;
 }
 
@@ -147,12 +151,6 @@
 {
 	[view release];
 	[super dealloc];
-}
-
-- (void) setView:(NSView *) newView
-{
-	[view release];
-	view = [newView retain];
 }
 
 - (void) setFrame:(NSRect) frame
@@ -171,14 +169,12 @@
 	self->prefSize = [view frame];
 }
 
-- (NSView *) view { return self->view; }
-- (NSRect) prefSize { return self->prefSize; }
-
 @end
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 @implementation SGView
+@synthesize metaViews;
 
 + (void) initialize
 {
@@ -197,7 +193,6 @@
 {
 	[self setAutoresizesSubviews:YES];
 	
-	metaViews = [[NSMutableArray alloc] init];
 	self->first_layout = YES;
 	self->pending_layout = NO;
 	self->in_my_layout = NO;
@@ -206,20 +201,22 @@
 
 - (id) initWithFrame:(NSRect)frameRect
 {
-	self = [super initWithFrame:frameRect];
-	[self SGViewPrivateInit];
+	if ((self = [super initWithFrame:frameRect]) != nil) {
+		[self SGViewPrivateInit];
+		metaViews = [[NSMutableArray alloc] init];
+	}
 	return self;
 }
 
 - (id) initWithCoder:(NSCoder *) decoder
 {
-	self = [super initWithCoder:decoder];
-	[self SGViewPrivateInit];
-	self->first_layout = NO;	// This feels right
-	[metaViews release];
-	metaViews = [[NSMutableArray alloc] initWithCoder:decoder];
-	for (NSUInteger i = 0; i < [metaViews count]; i ++)
-		[self didAddSubview:[[metaViews objectAtIndex:i] view]];
+	if ((self = [super initWithCoder:decoder]) != nil) {
+		[self SGViewPrivateInit];
+		self->first_layout = NO;	// This feels right
+		metaViews = [[NSMutableArray alloc] initWithCoder:decoder];
+		for (id metaView in metaViews)
+			[self didAddSubview:[metaView view]];
+	}
 	return self;
 }
 
@@ -420,11 +417,6 @@ static void noDisplay (NSView *v)
 - (SGMetaView *) newMetaView:(NSView *) view
 {
 	return [[[SGMetaView alloc] initWithView:view] autorelease];
-}
-
-- (NSArray *) metaViews
-{
-	return metaViews;
 }
 
 - (void) didAddSubview:(NSView *) subview

@@ -459,7 +459,6 @@ static NSString *charsets[] =
 	[self center];
 }
 
-#pragma mark -
 #pragma mark notification
 
 - (void) close
@@ -477,7 +476,6 @@ static NSString *charsets[] =
 	[charsetComboBox setObjectValue:[charsetComboBox objectValueOfSelectedItem]];
 }
 
-#pragma mark -
 #pragma mark IBAction
 
 - (void) showDetail:(id)sender
@@ -768,7 +766,6 @@ static NSString *charsets[] =
 	[self tableViewSelectionDidChange:[NSNotification notificationWithName:@"dummy" object:networkTableView]];
 }
 
-#pragma mark -
 #pragma mark NSTableView Protocols
 
 #define DraggingDataType @"TemporaryDataType"
