@@ -27,11 +27,14 @@
 	NSString *filename;
 	NSMutableArray *items;
 	IBOutlet NSTableView *itemTableView;
+	char *help;
 
 	id target;
 	SEL didCloseSelector;
 	BOOL isEdited;
 }
+
+@property (nonatomic, assign) char *help;
 
 - (IBAction)addItem:(id)sender;
 - (IBAction)removeItem:(id)sender;
