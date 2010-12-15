@@ -15,6 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
+#include "../common/fe.h"
 #include "../common/xchat.h"
 #include "../common/xchatc.h"
 #include "../common/cfgfiles.h"
@@ -38,11 +39,11 @@
 + (EditListItem *) itemWithName:(NSString *)aName command:(NSString *)aCommand
 {
 	EditListItem *item = [[self alloc] init];
-	
-	item.name = aName;
-	item.command = aCommand;
-	
-	return item;
+	if ( item != nil ) {
+		item.name = aName;
+		item.command = aCommand;
+	}
+	return [item autorelease];
 }
 
 - (void) dealloc
@@ -63,6 +64,7 @@
 #pragma mark -
 
 @implementation EditListWindow
+@synthesize help;
 
 - (void) dealloc
 {
@@ -130,9 +132,7 @@
 	if (fh == -1 ) return;
 	
 	char buf[512];
-	for (NSUInteger i = 0; i < [items count]; i ++)
-	{
-		EditListItem *item = [items objectAtIndex:i];
+	for (EditListItem *item in items) {
 		snprintf(buf, sizeof(buf), "NAME %s\nCMD %s\n\n", [[item name] UTF8String], [[item command] UTF8String]);
 		write(fh, buf, strlen(buf));
 	}
@@ -148,7 +148,13 @@
 
 - (void) showHelp:(id)sender
 {
-	[SGAlert alertWithString:NSLocalizedStringFromTable(@"Not implemented (yet)", @"xchataqua", @"Alert message when a feature not implemented yet is tried") andWait:false];
+	if ( help != NULL ) {
+		fe_message (help, FE_MSG_INFO);
+	}
+	else {
+		// FIXME: in real, it is implemented but no help message. fix message needed.
+		[SGAlert alertWithString:NSLocalizedStringFromTable(@"Not implemented (yet)", @"xchataqua", @"Alert message when a feature not implemented yet is tried") andWait:false];
+	}
 }
 
 - (void) sortList:(id)sender
