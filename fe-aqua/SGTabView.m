@@ -91,7 +91,7 @@ static NSButtonCell *makeCloseCell ()
 - (id) initTextCell:(NSString *) aString
 {
 	if ((self = [super initTextCell:aString]) != nil) {
-		closeCell = makeCloseCell();
+		closeCell = [makeCloseCell() retain];
 	}
 	return self;
 }
@@ -398,7 +398,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 - (id) initTextCell:(NSString *) aString
 {
 	if ((self = [super initTextCell:aString]) != nil) {
-		closeCell = makeCloseCell();
+		closeCell = [makeCloseCell() retain];
 		self->hideClose = false;
 	}
 	return self;
@@ -1181,18 +1181,19 @@ HIThemeSegmentPosition positionTable[2][2] =
 {
 	if (selected_tab)
 	{
-		if (tabViewItem == selected_tab)
+		if (tabViewItem == selected_tab) {
 			return;
+		}
 		[selected_tab->view removeFromSuperview];
-		[selected_tab setSelected:false];
+		[selected_tab setSelected:NO];
 	}
 
 	[self setStretchView:tabViewItem->view];
 	[self addSubview:tabViewItem->view];
 
 	selected_tab = tabViewItem;
+	[selected_tab setSelected:YES];
 	
-	[selected_tab setSelected:true];
 	
 	if (outline)
 	{
