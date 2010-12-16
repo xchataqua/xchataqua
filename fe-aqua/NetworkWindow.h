@@ -52,7 +52,7 @@
 	IBOutlet NSDrawer		*detailDrawer;
 	
 	NSMutableArray *allNetworks, *filteredNetworks;
-	struct session *servlistSession;
+	struct session *sess;
 }
 
 @property (nonatomic, retain) NSDrawer *detailDrawer;
