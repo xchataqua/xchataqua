@@ -811,8 +811,7 @@ fe_progressbar_start (struct session *sess)
 void
 fe_progressbar_end (struct server *serv)
 {
-	[AquaChat forEachSessionOnServer:serv
-			 performSelector:@selector (progressbarEnd)];
+	[AquaChat forEachSessionOnServer:serv performSelector:@selector (progressbarEnd)];
 }
 
 void

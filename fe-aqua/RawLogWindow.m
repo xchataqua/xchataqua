@@ -43,12 +43,11 @@
 
 - (void) log:(const char *) msg length:(NSInteger) len outbound:(BOOL) outbound
 {
-	NSString * s, * str;
 	if(msg[len-1]=='\n')
 		--len;
 	
-	s   = [[NSString alloc] initWithBytes:msg length:len encoding:NSUTF8StringEncoding];
-	str = [NSString stringWithFormat:@"%c %@\n", outbound ? '>' : '<', s];
+	NSString *s = [[NSString alloc] initWithBytes:msg length:len encoding:NSUTF8StringEncoding];
+	NSString *str = [NSString stringWithFormat:@"%c %@\n", outbound ? '>' : '<', s];
 	[s release];
 
 	[logTextView replaceCharactersInRange:NSMakeRange([[logTextView textStorage] length], 0) withString:str];
