@@ -90,7 +90,7 @@ struct preferenceItem
 	IBOutlet NSTextField *doubleClickCommandTextField;
 	
 	// Channel switcher
-	//	missing 'switcher type' in fe-gtk
+	IBOutlet NSPopUpButton *switcherTypePopUp;
 	IBOutlet NSButton *useServerTabCheckBox, *useNoticesTabCheckBox, *autoDialogCheckBox;
 	//	missing 'sort tabs' 'smaller text' in fe-gtk
 	IBOutlet NSButton *newTabsToFrontCheckBox; // not in fe-gtk

@@ -385,6 +385,8 @@ extern struct eventInfo textEventInfo[];
 		}
 	}
 	
+	prefs.tab_layout = [switcherTypePopUp indexOfSelectedItem]*2; // 1 is reserved
+	
 	KeyCombo left_combo = [tabLeftRecorderCell keyCombo];
 	prefs.tab_left_modifiers = left_combo.flags;
 	prefs.tab_left_key = left_combo.code;
@@ -566,6 +568,8 @@ extern struct eventInfo textEventInfo[];
 				break;
 		}
 	}
+	
+	[switcherTypePopUp selectItemAtIndex:prefs.tab_layout/2];
 	
 	KeyCombo left_combo = { prefs.tab_left_modifiers, prefs.tab_left_key };
 	[tabLeftRecorderCell setKeyCombo:left_combo];

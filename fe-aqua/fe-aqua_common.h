@@ -24,5 +24,5 @@ struct session_gui
 
 struct server_gui
 {
-	int	tabGroup;
+	NSInteger tabGroup;	// assume sizeof(NSInteger) > sizeof(struct server *)
 };

@@ -225,7 +225,7 @@
 
 - (void)windowDidBecomeKey:(NSNotification *)aNotification
 {
-	if (prefs._tabs_position == 4 && prefs.style_inputbox) {
+	if (prefs.tab_layout == 2 && prefs.style_inputbox) {
 		ColorPalette *p = [[AquaChat sharedAquaChat] palette];
 		[dccListView setTabTitleColor:[p getColor:AC_FGCOLOR]];
 	} else {

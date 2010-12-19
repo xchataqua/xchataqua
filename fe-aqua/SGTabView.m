@@ -534,7 +534,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 		[closeCell drawWithFrame:close_rect inView:controlView];
 
 	// I'm not sure if this actually even does anything
-	if (prefs._tabs_position == 4 && prefs.style_inputbox) {
+	if (prefs.tab_layout == 2 && prefs.style_inputbox) {
 		ColorPalette *p = [[AquaChat sharedAquaChat] palette];
 		[labelDictionary setObject:(titleColor?titleColor:[p getColor:AC_FGCOLOR]) forKey:NSForegroundColorAttributeName];
 	} else {
@@ -820,7 +820,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 		self->tabs = [[NSMutableArray alloc] init];
 		self->tabViewType = NSTopTabsBezelBorder;
 		self->xa_outline_width = 150;
-		self->groups = [[NSMutableArray alloc] initWithCapacity:5];
+		self->groups = [[NSMutableArray alloc] init];
 	
 		[self setOrientation:SGBoxOrientationVertical];
 		[self setMinorDefaultJustification:SGBoxMinorJustificationFull];
@@ -855,12 +855,10 @@ HIThemeSegmentPosition positionTable[2][2] =
 	}
 }
 
-- (SGTabViewGroupInfo *)getGroupInfo:(int) group
+- (SGTabViewGroupInfo *)getGroupInfo:(NSInteger) group
 {
 	SGTabViewGroupInfo *info = nil;
-	for (NSUInteger i = 0; i < [groups count]; i ++)
-	{
-		SGTabViewGroupInfo *this_info = [groups objectAtIndex:i];
+	for (SGTabViewGroupInfo *this_info in groups) {
 		if (this_info->group == group)
 		{
 			info = this_info;
@@ -868,7 +866,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 		}
 	}
 	
-	if (!info)
+	if (info == nil)
 	{
 		info = [[SGTabViewGroupInfo alloc] init];
 		info->group = group;
@@ -896,9 +894,8 @@ HIThemeSegmentPosition positionTable[2][2] =
 {
 	self->hideClose = hidem;
 	
-	for (NSUInteger i = 0; i < [tabs count]; i ++)
+	for (SGTabViewItem *tab in tabs)
 	{
-		SGTabViewItem *tab = [tabs objectAtIndex:i];
 		[tab setHideCloseButton:hideClose];
 	}
 }
@@ -914,10 +911,8 @@ HIThemeSegmentPosition positionTable[2][2] =
 		return;
 		
 	SGTabViewItem *last_tab = nil;
-	for (NSUInteger i = 0; i < [tabs count]; i ++)
+	for (SGTabViewItem *this_tab in tabs)
 	{
-		SGTabViewItem *this_tab = [tabs objectAtIndex:i];
-	
 		[this_tab->button setHasLeftCap:!last_tab || (this_tab->group != last_tab->group)];
 		if (last_tab)
 			[last_tab->button setHasRightCap:this_tab->group != last_tab->group];
@@ -959,9 +954,8 @@ HIThemeSegmentPosition positionTable[2][2] =
 {
 	if (hbox)
 	{
-		for (NSUInteger i = 0; i < [tabs count]; i ++)
+		for (SGTabViewItem *this_tab in tabs)
 		{
-			SGTabViewItem *this_tab = [tabs objectAtIndex:i];
 			[this_tab noButton];
 		}
 
@@ -1005,12 +999,12 @@ HIThemeSegmentPosition positionTable[2][2] =
 		[outline setDataSource:self];
 		[outline reloadData];
 		
-		for (NSUInteger i = 0; i < [groups count]; i ++)
-			[outline expandItem:[groups objectAtIndex:i]];
+		for (SGTabViewGroupInfo *info in groups)
+			[outline expandItem:info];
 
 		NSInteger row = [outline rowForItem:selected_tab];
 		[outline selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
-		if (prefs._tabs_position == 4 && prefs.style_inputbox) {
+		if (prefs.tab_layout == 2 && prefs.style_inputbox) {
 			[data_cell setTextColor:[p getColor:AC_FGCOLOR]];
 			[outline setBackgroundColor:[p getColor:AC_BGCOLOR]];
 		}
@@ -1468,7 +1462,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 - (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item
 {
 	NSColor *color;
-	if (prefs._tabs_position == 4 && prefs.style_inputbox) {
+	if (prefs.tab_layout == 2 && prefs.style_inputbox) {
 		ColorPalette *p = [[AquaChat sharedAquaChat] palette];
 		color = [p getColor:AC_FGCOLOR];
 	} else {
