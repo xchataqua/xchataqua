@@ -35,7 +35,7 @@
 static NSWindow  *tabWindow;		// Window for the tab view
 //static NSImage *link_delink_image;
 static TabOrWindowViewTabDelegate *tabDelegate;
-static NSTabViewType tabViewType = NSTopTabsBezelBorder;
+static NSTabViewType tabViewType = NSBottomTabsBezelBorder;
 static float trans = 1;
 
 //////////////////////////////////////////////////////////////////////
@@ -228,14 +228,17 @@ static NSWindow *initWindowForView (Class nswindow, NSView *view, NSPoint *where
 }
 
 + (void) preferencesChanged
-{	
-	switch ( prefs._tabs_position ) {
-		case 0: tabViewType = NSBottomTabsBezelBorder; break;
-		case 1: tabViewType = NSTopTabsBezelBorder; break;
-		case 2: tabViewType = NSRightTabsBezelBorder; break;
-		case 3: tabViewType = NSLeftTabsBezelBorder; break;
-		case 4: tabViewType = SGOutlineTabs; break;
-		default:tabViewType = NSTopTabsBezelBorder; break;
+{
+	if ( prefs.tab_layout == 2 ) {
+		tabViewType = SGOutlineTabs;
+	} else {
+		switch ( prefs._tabs_position ) {
+			case 0: tabViewType = NSBottomTabsBezelBorder; break;
+			case 1: tabViewType = NSTopTabsBezelBorder; break;
+			case 2: tabViewType = NSRightTabsBezelBorder; break;
+			case 3: tabViewType = NSLeftTabsBezelBorder; break;
+			default:tabViewType = NSBottomTabsBezelBorder; break;
+		}
 	}
 	
 	if (tabWindow)
@@ -513,7 +516,7 @@ static NSWindow *initWindowForView (Class nswindow, NSView *view, NSPoint *where
 	
 	if (!tabViewItem)
 	{
-		tabViewItem = [[[SGTabViewItem alloc] initWithIdentifier:nil] autorelease];
+		tabViewItem = [[SGTabViewItem alloc] initWithIdentifier:nil];
 		[tabViewItem setView:self];
 		if (initialFirstResponder)
 			[tabViewItem setInitialFirstResponder:initialFirstResponder];
@@ -522,9 +525,10 @@ static NSWindow *initWindowForView (Class nswindow, NSView *view, NSPoint *where
 		
 		SGTabView *tabView = (SGTabView *)[tabWindow contentView];
 		
-		int tabGroup = self->server ? self->server->gui->tabGroup : 0;
+		NSInteger tabGroup = self->server ? self->server->gui->tabGroup : 0;
 		
 		[tabView addTabViewItem:tabViewItem toGroup:tabGroup];
+		[tabViewItem release];
 		
 		if ([tabView groupName:tabGroup] == nil)
 		{
