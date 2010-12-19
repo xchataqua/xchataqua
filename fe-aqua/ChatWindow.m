@@ -29,27 +29,19 @@
 #include "XACommon.h"
 
 
-/*
- * MARK: -
- * MARK: Objects for tab auto-complete
- *
- */
+#pragma mark Objects for tab auto-complete
 
 @interface OneCompletion : NSObject
 {
 	NSString *stringValue;
 }
 
+@property (retain) NSString* stringValue;
+
 + (OneCompletion *) completionWithValue:(NSString *)value;
 - (id) initWithValue:(NSString *)value;
 
-@property (retain) NSString* stringValue;
 @end
-
-/*
- * MARK: -
- * MARK: Objects for tab auto-complete
- */
 
 /*
  * Superclass for a single auto-completion object.
@@ -58,7 +50,6 @@
  *
  */
 @implementation OneCompletion;
-
 @synthesize stringValue; // NSString where we stash the actual text value.
 
 /*
@@ -124,6 +115,8 @@
 
 @end
 
+#pragma mark -
+
 @interface OneNickCompletion : OneCompletion
 {
 	time_t lasttalk;
@@ -176,11 +169,8 @@
 
 @end
 
-//////////////////////////////////////////////////////////////////////
-/*
- * MARK: -
- * MARK: Various utility objects
- */
+#pragma mark -
+#pragma mark Various utility objects
 
 @interface MySplitView : NSSplitView
 
@@ -189,31 +179,6 @@
 @end
 
 @implementation MySplitView
-
-- (int) splitPosition
-{
-	NSView *second = [[self subviews] objectAtIndex:1];
-	NSRect secondFrame = [second frame];
-	return (int)secondFrame.size.width;
-}
-
-- (void) setSplitPosition:(int) position
-{
-	NSView *first = [[self subviews] objectAtIndex:0];
-	NSView *second = [[self subviews] objectAtIndex:1];
-
-	[first setPostsFrameChangedNotifications:NO];
-	[second setPostsFrameChangedNotifications:NO];
-
-	NSView *ulist = [[self subviews] objectAtIndex:1];
-	NSRect ulistFrame = [ulist frame];
-	ulistFrame.size.width = position;
-	[ulist setFrame:ulistFrame];
-	
-	[self adjustSubviews];
-	
-	[self setNeedsDisplay:YES];
-}
 
 - (NSRect) dividerRect
 {
@@ -295,6 +260,33 @@
 	[secondView setPostsFrameChangedNotifications:YES];
 }
 
+#pragma mark Propertyies
+
+- (int) splitPosition
+{
+	NSView *second = [[self subviews] objectAtIndex:1];
+	NSRect secondFrame = [second frame];
+	return (int)secondFrame.size.width;
+}
+
+- (void) setSplitPosition:(int) position
+{
+	NSView *first = [[self subviews] objectAtIndex:0];
+	NSView *second = [[self subviews] objectAtIndex:1];
+	
+	[first setPostsFrameChangedNotifications:NO];
+	[second setPostsFrameChangedNotifications:NO];
+	
+	NSView *ulist = [[self subviews] objectAtIndex:1];
+	NSRect ulistFrame = [ulist frame];
+	ulistFrame.size.width = position;
+	[ulist setFrame:ulistFrame];
+	
+	[self adjustSubviews];
+	
+	[self setNeedsDisplay:YES];
+}
+
 @end
 
 #pragma mark -
@@ -368,11 +360,10 @@
 
 #pragma mark -
 
-@interface OneUser : NSObject
+@interface ChannelUser : NSObject
 {
   @public
-	id			nick;		// NSString or NSAttributedString
-	NSString	*host;
+	id nick, host; // NSString or NSAttributedString
 	struct User	*user;
 /* CL */
 	NSSize nickSize;
@@ -391,7 +382,7 @@
 
 @end
 
-@implementation OneUser
+@implementation ChannelUser
 @synthesize user;
 
 - (id) initWithUser:(struct User *) u
@@ -505,7 +496,7 @@ static NSImage *emptyBulletImage;
 {
 	if ((self = [super init]) != nil) {
 		self->sess = aSession;
-		self->userlist = [[NSMutableArray alloc] init];
+		self->users = [[NSMutableArray alloc] init];
 		[NSBundle loadNibNamed:@"ChatWindow" owner:self];
 	}
 	return self;
@@ -514,7 +505,7 @@ static NSImage *emptyBulletImage;
 - (void) dealloc
 {
 	[chatView release];	// ???: Anything else need to get released here?
-	[userlist release];
+	[users release];
 	[super dealloc];
 }
 
@@ -797,7 +788,6 @@ static NSImage *emptyBulletImage;
 
 	[chatTextView setDropHandler:self];
 	[chatTextView setNextKeyView:inputTextField];
-	[chatTextView setDelegate:self];
 	
 #if 0
 	NSScroller *right_scroll_bar = [chatScrollView verticalScroller];
@@ -809,7 +799,6 @@ static NSImage *emptyBulletImage;
 
 	//[inputTextField setAllowsEditingTextAttributes:true];
 	[inputTextField setTarget:self];
-	[inputTextField setDelegate:self];
 	[inputTextField setAction:@selector (doCommand:)];
  
 	[userlistTableView setDoubleAction:@selector (doDoubleclick:)];
@@ -859,8 +848,6 @@ static NSImage *emptyBulletImage;
 	[buttonBoxView setShrinkHoriz:NO vert:YES];
 	[self setupUserlistButtons];
 
-	[chatView setDelegate:self];
-
 	[self setupSessMenuButton];
 	[self clear:0];
 	[self setNick];
@@ -894,14 +881,13 @@ static NSImage *emptyBulletImage;
 			[chatView becomeWindowAndShow:true];
 	}
 
-	if (prefs._tabs_position == 4  && prefs.style_inputbox) {
+	if (prefs.tab_layout == 2  && prefs.style_inputbox) {
 		ColorPalette *p = [[AquaChat sharedAquaChat] palette];
 		[chatView setTabTitleColor:[p getColor:AC_FGCOLOR]];
 	} else {
 		[chatView setTabTitleColor:[NSColor blackColor]];
 	}
 	
-	[bodyBoxView setDelegate:self];
 	//[[inputTextField window] makeFirstResponder:inputTextField];
 }
 
@@ -948,7 +934,7 @@ static NSImage *emptyBulletImage;
 	NSIndexSet *rowIndexSet = [userlistTableView selectedRowIndexes];
 	for (NSUInteger rowIndex = [rowIndexSet firstIndex]; rowIndex != NSNotFound; rowIndex = [rowIndexSet indexGreaterThanIndex:rowIndex] )
 	{
-		OneUser *u = [userlist objectAtIndex:rowIndex];
+		ChannelUser *u = [users objectAtIndex:rowIndex];
 		struct User *user = u->user;
 
 		if (using_allnicks)
@@ -1004,7 +990,7 @@ static NSImage *emptyBulletImage;
 		NSInteger row = [sender selectedRow];
 		if (row >= 0)
 		{
-			OneUser *u = (OneUser *) [userlist objectAtIndex:row];
+			ChannelUser *u = (ChannelUser *) [users objectAtIndex:row];
 			struct User *user = u->user;
 			nick_command_parse (sess, prefs.doubleclickuser, user->nick, user->nick);
 		}
@@ -1031,7 +1017,7 @@ static NSImage *emptyBulletImage;
 		s = NSLocalizedStringFromTable(@"<none>", @"xchat", @"");
 		
 	[chatView setTabTitle:s];
-	if (prefs._tabs_position == 4 && prefs.style_inputbox) {
+	if (prefs.tab_layout == 2 && prefs.style_inputbox) {
 		ColorPalette *p = [[AquaChat sharedAquaChat] palette];
 		[chatView setTabTitleColor:[p getColor:AC_FGCOLOR]];
 	}
@@ -1147,7 +1133,7 @@ static NSImage *emptyBulletImage;
 	ColorPalette *p = [[AquaChat sharedAquaChat] palette];
 	NSColor *TTColor;
 
-	if (prefs._tabs_position == 4 && prefs.style_inputbox) {
+	if (prefs.tab_layout == 2 && prefs.style_inputbox) {
 		TTColor = [p getColor:AC_FGCOLOR];
 	} else {
 		TTColor = [NSColor blackColor];
@@ -1292,7 +1278,7 @@ static NSImage *emptyBulletImage;
 		[channelString replaceCharactersInRange:NSMakeRange (start, len) withString:@".."];
 	}
 	[chatView setTabTitle:channelString];
-	if (prefs._tabs_position == 4 && prefs.style_inputbox) {
+	if (prefs.tab_layout == 2 && prefs.style_inputbox) {
 		ColorPalette *p = [[AquaChat sharedAquaChat] palette];
 		[chatView setTabTitleColor:[p getColor:AC_FGCOLOR]];
 	}
@@ -1331,17 +1317,17 @@ static NSImage *emptyBulletImage;
 
 - (int) findUser:(struct User *) user
 {
-	for (NSUInteger i = 0; i < [userlist count]; i ++)
-		if ([(OneUser *)[userlist objectAtIndex:i] user] == user)
+	for (NSUInteger i = 0; i < [users count]; i ++)
+		if ([(ChannelUser *)[users objectAtIndex:i] user] == user)
 			return i;
 	return -1;
 }
 
 /* CL */
-- (int) findUser:(struct User *) user returnObject:(OneUser **) userObject
+- (int) findUser:(struct User *) user returnObject:(ChannelUser **) userObject
 {
-	for (NSUInteger i = 0, n = [userlist count]; i < n; i++) {
-		OneUser *u = (OneUser *) [userlist objectAtIndex:i];
+	for (NSUInteger i = 0, n = [users count]; i < n; i++) {
+		ChannelUser *u = (ChannelUser *) [users objectAtIndex:i];
 		if ([u user] == user) {
 			*userObject = u;
 			return i;
@@ -1352,7 +1338,7 @@ static NSImage *emptyBulletImage;
 }
 /* CL end */
 
-- (NSImage *) getUserImage:(struct User *) user
+- (NSImage *) imageForUser:(struct User *) user
 {
 	switch (user->prefix [0])
 	{
@@ -1394,7 +1380,7 @@ static NSImage *emptyBulletImage;
 	maxHostWidth = 0.0f;
 	maxRowHeight = 16.0f;
 
-	for ( OneUser *user in userlist ) {
+	for ( ChannelUser *user in users ) {
 		if (user->nickSize.width > maxNickWidth) maxNickWidth = user->nickSize.width;
 		if ((prefs.showhostname_in_userlist) && (user->hostSize.width > maxHostWidth)) maxHostWidth = user->hostSize.width;
 		if (user->nickSize.height > maxRowHeight) maxRowHeight = user->nickSize.height;
@@ -1410,7 +1396,7 @@ static NSImage *emptyBulletImage;
 	if (maxRowHeight != [userlistTableView rowHeight]) [userlistTableView setRowHeight: maxRowHeight];
 }
 
-- (void) updateUserTableLayoutForInsert:(OneUser *) user
+- (void) updateUserTableLayoutForInsert:(ChannelUser *) user
 {
 	NSArray *columns = [userlistTableView tableColumns];
 	/* nickname column */
@@ -1437,7 +1423,7 @@ static NSImage *emptyBulletImage;
 	}
 }
 
-- (void) updateUserTableLayoutForRemove:(OneUser *) user
+- (void) updateUserTableLayoutForRemove:(ChannelUser *) user
 {
 	/* nickname column */
 	if (user->nickSize.width == maxNickWidth) [self recalculateUserTableLayout];
@@ -1450,7 +1436,7 @@ static NSImage *emptyBulletImage;
 	}
 }
 
-- (void) updateUserTableLayoutForRehash:(OneUser *)user oldNickSize:(NSSize)oldNickSize oldHostSize:(NSSize)oldHostSize
+- (void) updateUserTableLayoutForRehash:(ChannelUser *)user oldNickSize:(NSSize)oldNickSize oldHostSize:(NSSize)oldHostSize
 {
 	NSArray *columns = [userlistTableView tableColumns];
 	/* nickname column */
@@ -1490,7 +1476,7 @@ static NSImage *emptyBulletImage;
 	}
 }
 
-- (void) rehashUserAndUpdateLayout:(OneUser *)user
+- (void) rehashUserAndUpdateLayout:(ChannelUser *)user
 {
 	NSSize oldNickSize = user->nickSize;
 	NSSize oldHostSize = user->hostSize;
@@ -1505,8 +1491,8 @@ static NSImage *emptyBulletImage;
 	if (clear) [userlistTableView deselectAll:self];
 	
 	if (*names[0]) {
-		for (NSUInteger i = 0, n = [userlist count]; i < n; i++) {
-			struct User *user = [(OneUser *)[userlist objectAtIndex:i] user];
+		for (NSUInteger i = 0, n = [users count]; i < n; i++) {
+			struct User *user = [(ChannelUser *)[users objectAtIndex:i] user];
 			NSUInteger j = 0;
 			do {
 				if (sess->server->p_cmp (user->nick, names[j]) == 0) {
@@ -1523,7 +1509,7 @@ static NSImage *emptyBulletImage;
 - (void) userlistRehash:(struct User *) user
 {
 /* CL */
-	OneUser *u;
+	ChannelUser *u;
 	NSInteger idx = [self findUser:user returnObject:&u];
 	if (idx < 0)
 		return;
@@ -1533,18 +1519,18 @@ static NSImage *emptyBulletImage;
  
 - (void) userlistInsert:(struct User *)user row:(NSInteger)row select:(BOOL)select
 {
-	OneUser *u = [(OneUser *)[OneUser alloc] initWithUser:user];
+	ChannelUser *u = [(ChannelUser *)[ChannelUser alloc] initWithUser:user];
 	/* CL */
 	[u cacheSizesForTable: userlistTableView];
 	[self updateUserTableLayoutForInsert: u];
 	/* CL end */
 
 	if (row < 0) {
-		[userlist addObject:u];
+		[users addObject:u];
 	} else
 	{
 		NSInteger selectedRow = [userlistTableView selectedRow];
-		[userlist insertObject:u atIndex:row];
+		[users insertObject:u atIndex:row];
 		if (selectedRow >= 0 && row <= selectedRow)
 			[userlistTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedRow+1] byExtendingSelection:NO];
 	}
@@ -1556,7 +1542,7 @@ static NSImage *emptyBulletImage;
 
 	if (user->me)
 	{
-		NSImage *img = [self getUserImage:user];
+		NSImage *img = [self imageForUser:user];
 		if (img == emptyBulletImage) {
 			[myOpOrVoiceIconImageView setHidden:YES];
 		}
@@ -1572,14 +1558,14 @@ static NSImage *emptyBulletImage;
 - (BOOL) userlistRemove:(struct User *) user
 {
 /* CL */
-	OneUser *u;
+	ChannelUser *u;
 	NSInteger idx = [self findUser:user returnObject:&u];
 	if (idx < 0)
 		return false;
 
 	NSInteger srow = [userlistTableView selectedRow];
 	[u retain];
-	[userlist removeObjectAtIndex:idx];
+	[users removeObjectAtIndex:idx];
 	[self updateUserTableLayoutForRemove: u];
 	[u release];
 /* CL end */
@@ -1595,14 +1581,14 @@ static NSImage *emptyBulletImage;
 - (void) userlistMove:(struct User *)user row:(NSInteger) row
 {
 /* CL */
-	OneUser *u;
+	ChannelUser *u;
 	NSInteger i = [self findUser:user returnObject:&u];
 	if (i < 0) return;
 
 	if (i != row) {
 		[u retain];		//<--
-		[userlist removeObjectAtIndex:i];
-		[userlist insertObject:u atIndex:row];
+		[users removeObjectAtIndex:i];
+		[users insertObject:u atIndex:row];
 		[u release];	//<--
 
 		NSInteger srow = [userlistTableView selectedRow];
@@ -1618,7 +1604,7 @@ static NSImage *emptyBulletImage;
 	
 	if (user->me)
 	{
-		NSImage *img = [self getUserImage:user];
+		NSImage *img = [self imageForUser:user];
 		if (img == emptyBulletImage)
 			[myOpOrVoiceIconImageView setHidden:YES];
 		else
@@ -1660,7 +1646,7 @@ static NSImage *emptyBulletImage;
 
 - (void) userlistClear
 {
-	[userlist removeAllObjects];
+	[users removeAllObjects];
 /* CL */
 	[self recalculateUserTableLayout];
 /* CL end */
@@ -1819,6 +1805,17 @@ static NSImage *emptyBulletImage;
 	return YES;
 }
 
+- (void) userlistSetSelected
+{
+	for (NSUInteger row = 0; row < [users count]; row++)
+	{
+		ChannelUser *u = [users objectAtIndex:row];
+		u->user->selected = [userlistTableView isRowSelected:row];
+	}
+}
+
+#pragma mark Property interface
+
 - (NSString *) inputText
 {
 	return [inputTextField stringValue];
@@ -1861,28 +1858,19 @@ static NSImage *emptyBulletImage;
 	}
 }
 
-- (void) userlistSetSelected
-{
-	for (NSUInteger row = 0; row < [userlist count]; row++)
-	{
-		OneUser *u = [userlist objectAtIndex:row];
-		u->user->selected = [userlistTableView isRowSelected:row];
-	}
-}
-
 #pragma mark NSTableView dataSource
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *)aTableView
 {
-	return [userlist count];
+	return [users count];
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
 {
-	OneUser *u = [userlist objectAtIndex:row];
+	ChannelUser *u = [users objectAtIndex:row];
 	switch ([[tableView tableColumns] indexOfObjectIdenticalTo:tableColumn])
 	{
-		case 0: return [self getUserImage:u->user];
+		case 0: return [self imageForUser:u->user];
 		case 1: return u->nick;
 		case 2: return u->host;
 	}
@@ -1918,7 +1906,7 @@ static NSImage *emptyBulletImage;
 		[[menu addItemWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTable(@"%d users selected", @"xchataqua", @"Popup menu message when you right-clicked userlist."), count] action:nil keyEquivalent:@""] setEnabled:NO];
 		userlistMenuItemCurrentUser = NULL;
 	} else {
-		OneUser *userObject = (OneUser *) [userlist objectAtIndex:[rows firstIndex]];
+		ChannelUser *userObject = (ChannelUser *) [users objectAtIndex:[rows firstIndex]];
 		struct User *user = [userObject user];
 
 		nick = [userObject nick];
@@ -1968,7 +1956,7 @@ static NSImage *emptyBulletImage;
 	int len = strlen (utf);
 	
 	// Use a set because stupid user commands appear multiple times!
-	NSMutableSet *matchArray = [NSMutableSet setWithCapacity:0];
+	NSMutableSet *matchArray = [NSMutableSet set];
 
 	for (GSList *list = command_list; list; list = list->next)
 	{
@@ -1994,7 +1982,7 @@ static NSImage *emptyBulletImage;
 	const char *utf = [start UTF8String];
 	int len = strlen (utf);
 
-	NSMutableArray *matchArray = [NSMutableArray arrayWithCapacity:0];
+	NSMutableArray *matchArray = [[NSMutableArray alloc] init];
 
 	if (sess->type == SESS_DIALOG)
 	{
@@ -2005,9 +1993,7 @@ static NSImage *emptyBulletImage;
 	}
 	else
 	{
-		for (unsigned i = 0; i < [userlist count]; i ++)
-		{
-			OneUser *u = (OneUser *) [userlist objectAtIndex:i];
+		for (ChannelUser *u in users) {
 			struct User *user = u->user;
 			int this_len = strlen (user->nick);
 			if (len <= this_len && rfc_ncasecmp ((char *) utf, user->nick, len) == 0)
@@ -2015,7 +2001,7 @@ static NSImage *emptyBulletImage;
 		}
 	}
 
-	return matchArray;
+	return [matchArray autorelease];
 }
 
 - (NSArray *) channel_complete:(NSTextView *)view start:(NSString *) start
@@ -2023,7 +2009,7 @@ static NSImage *emptyBulletImage;
 	const char *utf = [start UTF8String];
 	int len = strlen (utf);
 
-	NSMutableArray *matchArray = [NSMutableArray arrayWithCapacity:0];
+	NSMutableArray *matchArray = [[NSMutableArray alloc] init];
 
 	for (GSList *list = sess_list; list; list = list->next)
 	{
@@ -2037,7 +2023,7 @@ static NSImage *emptyBulletImage;
 		}
 	}
 
-	return matchArray;
+	return [matchArray autorelease];
 }
 
 /*

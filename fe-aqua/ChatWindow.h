@@ -50,7 +50,7 @@
 	IBOutlet NSControl		*lagIndicator;
 	IBOutlet NSPopUpButton	*sessMenuButton;
 	
-	NSMutableArray	*userlist;
+	NSMutableArray	*users;
 	NSMenuItem		*userlistMenuItem;
 	struct User		*userlistMenuItemCurrentUser;
 /* CL */
