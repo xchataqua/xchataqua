@@ -290,6 +290,7 @@ fe_new_window (struct session *sess, int focus)
 void
 fe_print_text (struct session *sess, char *text, time_t stamp)
 {
+	if ( text == NULL ) return;
 	[sess->gui->chatWindow printText:[NSString stringWithUTF8String:text] stamp:stamp];
 }
 
