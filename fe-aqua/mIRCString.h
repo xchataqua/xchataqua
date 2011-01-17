@@ -20,7 +20,7 @@
 @interface mIRCString : NSMutableAttributedString
 
 + (id) stringWithUTF8String:(const char *) string
-					 length:(NSInteger) len
+					 length:(NSInteger) length
 					palette:(ColorPalette *) palette
 					   font:(NSFont *) font
 				   boldFont:(NSFont *) boldFont;

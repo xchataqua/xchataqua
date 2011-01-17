@@ -1315,16 +1315,16 @@ static NSImage *emptyBulletImage;
 	[nickTextField sizeToFit];
 }
 
-- (int) findUser:(struct User *) user
+- (NSInteger) findUser:(struct User *) user
 {
 	for (NSUInteger i = 0; i < [users count]; i ++)
 		if ([(ChannelUser *)[users objectAtIndex:i] user] == user)
 			return i;
-	return -1;
+	return NSNotFound;
 }
 
 /* CL */
-- (int) findUser:(struct User *) user returnObject:(ChannelUser **) userObject
+- (NSInteger) findUser:(struct User *) user returnObject:(ChannelUser **) userObject
 {
 	for (NSUInteger i = 0, n = [users count]; i < n; i++) {
 		ChannelUser *u = (ChannelUser *) [users objectAtIndex:i];
@@ -1334,7 +1334,7 @@ static NSImage *emptyBulletImage;
 		}
 	}
 	*userObject = nil;
-	return -1;
+	return NSNotFound;
 }
 /* CL end */
 
@@ -1511,8 +1511,7 @@ static NSImage *emptyBulletImage;
 /* CL */
 	ChannelUser *u;
 	NSInteger idx = [self findUser:user returnObject:&u];
-	if (idx < 0)
-		return;
+	if (idx == NSNotFound) return;
 	[self rehashUserAndUpdateLayout:u];
 /* CL end */
 }
@@ -1560,8 +1559,7 @@ static NSImage *emptyBulletImage;
 /* CL */
 	ChannelUser *u;
 	NSInteger idx = [self findUser:user returnObject:&u];
-	if (idx < 0)
-		return false;
+	if (idx == NSNotFound) return NO;
 
 	NSInteger srow = [userlistTableView selectedRow];
 	[u retain];
@@ -1583,7 +1581,7 @@ static NSImage *emptyBulletImage;
 /* CL */
 	ChannelUser *u;
 	NSInteger i = [self findUser:user returnObject:&u];
-	if (i < 0) return;
+	if (i == NSNotFound) return;
 
 	if (i != row) {
 		[u retain];		//<--
@@ -1620,18 +1618,6 @@ static NSImage *emptyBulletImage;
 	return chatView;
 }
 
-// Used only for updating menus
-- (void) userlistUpdate:(struct User *)user
-{
-	if(userlistMenuItemCurrentUser && !strcmp(userlistMenuItemCurrentUser->nick, user->nick))
-		[userlistMenuItem setSubmenu:[[MenuMaker defaultMenuMaker] infoMenuForUser:user inSession:sess]];
-}
-
-- (void) userlistNumbers
-{
-	[userlistStatusTextField setStringValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"%d ops, %d total", @"xchat", @""), sess->ops, sess->total]];
-}
-
 - (void) progressbarStart
 {
 	[progressIndicator startAnimation:self];
@@ -1642,6 +1628,18 @@ static NSImage *emptyBulletImage;
 {
 	[progressIndicator setHidden:YES];
 	[progressIndicator stopAnimation:self];
+}
+
+// Used only for updating menus
+- (void) userlistUpdate:(struct User *)user
+{
+	if(userlistMenuItemCurrentUser && !strcmp(userlistMenuItemCurrentUser->nick, user->nick))
+		[userlistMenuItem setSubmenu:[[MenuMaker defaultMenuMaker] infoMenuForUser:user inSession:sess]];
+}
+
+- (void) userlistNumbers
+{
+	[userlistStatusTextField setStringValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"%d ops, %d total", @"xchat", @""), sess->ops, sess->total]];
 }
 
 - (void) userlistClear
