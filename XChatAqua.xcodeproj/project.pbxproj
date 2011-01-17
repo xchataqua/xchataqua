@@ -234,6 +234,9 @@
 		D4A86A2012DE29A1000C201C /* xchat512.icns in Resources */ = {isa = PBXBuildFile; fileRef = D4A86A1F12DE29A1000C201C /* xchat512.icns */; };
 		D4A86A5D12DE2D05000C201C /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54D10E4ACFC00DBBFD0 /* ShortcutRecorder.framework */; };
 		D4CBE8CD12B6DC3D00B4E35E /* SGTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA67B0CFB300B001AE9AE /* SGTableView.m */; };
+		D4FBD93E12E449D5003EA441 /* ViewerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4FBD93D12E449D5003EA441 /* ViewerWindow.xib */; };
+		D4FBD95912E44CD0003EA441 /* ViewerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FBD93912E44946003EA441 /* ViewerWindow.m */; };
+		D4FBD9C612E458C4003EA441 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FBD9C512E458C4003EA441 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1533,6 +1536,10 @@
 		D487239C128F9DBC00647D7B /* UtilityWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityWindow.h; sourceTree = "<group>"; };
 		D487239D128F9DBC00647D7B /* UtilityWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityWindow.m; sourceTree = "<group>"; };
 		D4A86A1F12DE29A1000C201C /* xchat512.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = xchat512.icns; path = Resources/xchat512.icns; sourceTree = "<group>"; };
+		D4FBD93812E44946003EA441 /* ViewerWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewerWindow.h; sourceTree = "<group>"; };
+		D4FBD93912E44946003EA441 /* ViewerWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewerWindow.m; sourceTree = "<group>"; };
+		D4FBD93D12E449D5003EA441 /* ViewerWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewerWindow.xib; sourceTree = "<group>"; };
+		D4FBD9C512E458C4003EA441 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1592,6 +1599,7 @@
 				2DEC8DA8127569B3000C8670 /* libiconv.1.13.1.a in Frameworks */,
 				2DEC8C7C1274CC98000C8670 /* libglib-2.0.a in Frameworks */,
 				2DEC8C7E1274CC98000C8670 /* libintl.0.40.a in Frameworks */,
+				D4FBD9C612E458C4003EA441 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1844,6 +1852,7 @@
 				2DEC8C7A1274CC98000C8670 /* libiconv.1.13.1.a */,
 				2DEC8C791274CC98000C8670 /* libglib-2.0.a */,
 				2DEC8C7B1274CC98000C8670 /* libintl.0.40.a */,
+				D4FBD9C512E458C4003EA441 /* WebKit.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -1942,6 +1951,8 @@
 				0F8EA6DB0CFB347B001AE9AE /* UrlGrabberWindow.m */,
 				0F8EA6DE0CFB347B001AE9AE /* UserCommandsWindow.h */,
 				0F8EA6DF0CFB347B001AE9AE /* UserCommandsWindow.m */,
+				D4FBD93812E44946003EA441 /* ViewerWindow.h */,
+				D4FBD93912E44946003EA441 /* ViewerWindow.m */,
 			);
 			name = "Utility Windows";
 			sourceTree = "<group>";
@@ -2017,6 +2028,7 @@
 				2DEA2F150F8673BF00D6DC0D /* RawLogWindow.xib */,
 				2DEA2F0B0F8673BF00D6DC0D /* UrlGrabberWindow.xib */,
 				2DEA2F110F8673BF00D6DC0D /* UserCommandsWindow.xib */,
+				D4FBD93D12E449D5003EA441 /* ViewerWindow.xib */,
 				2DEA2F0F0F8673BF00D6DC0D /* SGPaletteLeopard.xib */,
 				2DEA2F190F8673BF00D6DC0D /* SGRequest.xib */,
 				0F8EA7950CFB6CF9001AE9AE /* X-Chat Aqua.scriptSuite */,
@@ -2390,6 +2402,7 @@
 				2D5C954311AF35FA0062F4C0 /* xchat.strings in Resources */,
 				2D5C954411AF35FA0062F4C0 /* xchataqua.strings in Resources */,
 				D4A86A2012DE29A1000C201C /* xchat512.icns in Resources */,
+				D4FBD93E12E449D5003EA441 /* ViewerWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2611,6 +2624,7 @@
 				2D4ACFB11230005E00DEB5FA /* SGDebug.m in Sources */,
 				D487239E128F9DBC00647D7B /* UtilityWindow.m in Sources */,
 				D4CBE8CD12B6DC3D00B4E35E /* SGTableView.m in Sources */,
+				D4FBD95912E44CD0003EA441 /* ViewerWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
