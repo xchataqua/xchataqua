@@ -426,10 +426,10 @@ static NSString *charsets[] =
 	
 	[networkNicknameTextField setTag:STRUCT_OFFSET_STR(struct ircnet, nick)];
 	[networkNickname2TextField setTag:STRUCT_OFFSET_STR(struct ircnet, nick2)];
-	[networkPasswordTextField setTag:STRUCT_OFFSET_STR(struct ircnet, pass)];
 	[networkRealnameTextField setTag:STRUCT_OFFSET_STR(struct ircnet, real)];
 	[networkUsernameTextField setTag:STRUCT_OFFSET_STR(struct ircnet, user)];
 	[networkNickservPasswordTextField setTag:STRUCT_OFFSET_STR(struct ircnet, nickserv)];
+	[networkPasswordTextField setTag:STRUCT_OFFSET_STR(struct ircnet, pass)];
 	[charsetComboBox setTag:STRUCT_OFFSET_STR(struct ircnet, encoding)];
 	
 	// We gotta do a reloadData in order to change the selection, but reload
