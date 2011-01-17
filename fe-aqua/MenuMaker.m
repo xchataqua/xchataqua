@@ -285,6 +285,7 @@ static MenuMaker *defaultMenuMaker;
 	NSMenu *menu = [[[NSMenu alloc] initWithTitle:@""] autorelease];
 	[menu setAutoenablesItems:false];
 	[menu addItem:[self commandItemWithName:url command:"url %s" target:url session:sess]];
+	//if ( [url hasSuffix:<#(NSString *)aString#>
 	[menu addItem:[NSMenuItem separatorItem]];
 	[self appendItemList:urlhandler_list toMenu:menu withTarget:url inSession:NULL];
 	return menu;
