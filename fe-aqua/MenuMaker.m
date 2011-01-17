@@ -27,6 +27,8 @@
 #import "MenuMaker.h"
 #import "ChatWindow.h"
 
+#import "ViewerWindow.h"
+
 #import "XACommon.h"
 #include "../common/xchatc.h"
 #include "../common/outbound.h"
@@ -170,6 +172,13 @@ void decHandlerCount()
 
 #pragma mark -
 
+@interface MenuMaker (Private)
+
+- (void) openWithInternalViewer:(NSMenuItem *)sender;
+
+@end
+
+
 @implementation MenuMaker
 
 static MenuMaker *defaultMenuMaker;
@@ -282,13 +291,19 @@ static MenuMaker *defaultMenuMaker;
 
 - (NSMenu *)menuForURL:(NSString *)url inSession:(struct session *)sess
 {
-	NSMenu *menu = [[[NSMenu alloc] initWithTitle:@""] autorelease];
+	NSMenu *menu = [[NSMenu alloc] initWithTitle:@""];
 	[menu setAutoenablesItems:false];
 	[menu addItem:[self commandItemWithName:url command:"url %s" target:url session:sess]];
-	//if ( [url hasSuffix:<#(NSString *)aString#>
 	[menu addItem:[NSMenuItem separatorItem]];
+	
+	NSMenuItem *imageMenu = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTable(@"Open with internal viewer", @"xchataqua", @"") action:@selector(openWithInternalViewer:) keyEquivalent:@""];
+	[imageMenu setTarget:self];
+	[imageMenu setToolTip:url]; // just a trick to avoid writing data source
+	[menu addItem:imageMenu];
+	[imageMenu release];
+	//[menu addItem:[NSMenuItem 
 	[self appendItemList:urlhandler_list toMenu:menu withTarget:url inSession:NULL];
-	return menu;
+	return [menu autorelease];
 }
 
 - (NSMenu *)menuForNick:(NSString *)nick inSession:(struct session *)sess
@@ -323,7 +338,7 @@ static MenuMaker *defaultMenuMaker;
 - (NSMenuItem *)commandItemWithName:(NSString *)name command:(const char *)cmd target:(NSString *)target session:(struct session *)sess
 {
 	NSString * icon = nil;
-	NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:[self stripImageFromTitle:name  icon:&icon] action:@selector(execute:) keyEquivalent:@""];
+	NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:[self stripImageFromTitle:name icon:&icon] action:@selector(execute:) keyEquivalent:@""];
 	CommandHandler *handler = [CommandHandler handlerWithCommand:cmd target:(target ? [target UTF8String] : nil) session:sess];
 	[item setRepresentedObject:handler];
 	[item setTarget:handler];
@@ -481,5 +496,18 @@ static MenuMaker *defaultMenuMaker;
 	return title;	
 }
 
+@end
+
+#import "ViewerWindow.h"
+
+@implementation MenuMaker (Private)
+
+- (void) openWithInternalViewer:(NSMenuItem *)sender {
+	NSURL *url = [NSURL URLWithString:[sender toolTip]];
+	
+	ViewerWindow *viewerWindow = [ViewerWindow utilityByKey:[@"ViewerWindow_" stringByAppendingString:[sender toolTip]] windowNibName:@"ViewerWindow"];
+	[viewerWindow makeKeyAndOrderFront:self];
+	[viewerWindow showURL:url];
+}
 
 @end
