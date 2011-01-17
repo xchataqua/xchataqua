@@ -901,7 +901,7 @@ static NSImage *emptyBulletImage;
 	if ([res isKindOfClass:[NSTextView class]])
 	{
 		NSTextView *tview = (NSTextView *) res;
-		if ([tview delegate] == inputTextField)
+		if ([tview delegate] == (id)inputTextField)
 			[tview moveToEndOfParagraph:self];
 	}
 }
