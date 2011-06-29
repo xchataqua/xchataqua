@@ -23,8 +23,8 @@
 
 @implementation SGDebug
 
-+ (void) log:(NSString *)log file:(char*)file line:(int)line {
-	NSLog(@"[%@:%d] %@", [[NSString stringWithUTF8String:file] lastPathComponent], line, log);
++ (void) log:(NSString *)log file:(const char*)file line:(int)line {
+    NSLog(@"[%@:%d] %@", [[NSString stringWithUTF8String:file] lastPathComponent], line, log);
 }
 
 @end
