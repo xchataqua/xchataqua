@@ -21,21 +21,21 @@
 <NSWindowDelegate>
 #endif
 {
-	id				delegate;	
-	NSWindow		*window;
-	SGTabViewItem	*tabViewItem;
-	NSString		*title;
-	NSString		*tabTitle;
-	NSView			*initialFirstResponder;
-	struct server	*server;
+    id              delegate;
+    NSWindow        *window;
+    SGTabViewItem   *tabViewItem;
+    NSString        *title;
+    NSString        *tabTitle;
+    NSView          *initialFirstResponder;
+    struct server   *server;
 }
 
 @property (assign) id delegate;
-@property (retain) NSString *title, *tabTitle;
+@property (nonatomic,retain) NSString *title, *tabTitle;
 
 + (void) cycleWindow:(int) direction;
 + (BOOL) selectTabByIndex:(NSUInteger)index;
-+ (void) link_delink;		// Frontmost view
++ (void) link_delink;   // Frontmost view
 + (void) updateGroupNameForServer:(struct server *)server;
 
 + (void) preferencesChanged;
