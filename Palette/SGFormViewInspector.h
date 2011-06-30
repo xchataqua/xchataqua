@@ -16,7 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
 
-#ifdef MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_5
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_5
 # import <InterfaceBuilderKit/InterfaceBuilderKit.h>
 #else
 # import <InterfaceBuilder/InterfaceBuilder.h>
@@ -26,23 +26,23 @@
 
 @interface SGFormViewInspector : IBInspector
 {
-	IBOutlet NSPopUpButton *bottomConnectionMenu;
-	IBOutlet NSTextField *bottomOffsetText;
-	IBOutlet NSPopUpButton *bottomRelativeMenu;
-	IBOutlet NSTextField *identifierText;
-	IBOutlet NSPopUpButton *leftConnectionMenu;
-	IBOutlet NSTextField *leftOffsetText;
-	IBOutlet NSPopUpButton *leftRelativeMenu;
-	IBOutlet NSPopUpButton *rightConnectionMenu;
-	IBOutlet NSTextField *rightOffsetText;
-	IBOutlet NSPopUpButton *rightRelativeMenu;
-	IBOutlet NSPopUpButton *topConnectionMenu;
-	IBOutlet NSTextField *topOffsetText;
-	IBOutlet NSPopUpButton *topRelativeMenu;
-	
-	NSPopUpButton *connectionMenus [SGFormViewEdgeCount];
-	NSPopUpButton *relativeMenus [SGFormViewEdgeCount];
-	NSTextField   *offsetTexts [SGFormViewEdgeCount];
+    IBOutlet NSPopUpButton *bottomConnectionMenu;
+    IBOutlet NSTextField *bottomOffsetText;
+    IBOutlet NSPopUpButton *bottomRelativeMenu;
+    IBOutlet NSTextField *identifierText;
+    IBOutlet NSPopUpButton *leftConnectionMenu;
+    IBOutlet NSTextField *leftOffsetText;
+    IBOutlet NSPopUpButton *leftRelativeMenu;
+    IBOutlet NSPopUpButton *rightConnectionMenu;
+    IBOutlet NSTextField *rightOffsetText;
+    IBOutlet NSPopUpButton *rightRelativeMenu;
+    IBOutlet NSPopUpButton *topConnectionMenu;
+    IBOutlet NSTextField *topOffsetText;
+    IBOutlet NSPopUpButton *topRelativeMenu;
+    
+    NSPopUpButton *connectionMenus [SGFormViewEdgeCount];
+    NSPopUpButton *relativeMenus [SGFormViewEdgeCount];
+    NSTextField   *offsetTexts [SGFormViewEdgeCount];
 }
 - (IBAction)doConstrain:(id)sender;
 - (IBAction)doIdentifier:(id)sender;
