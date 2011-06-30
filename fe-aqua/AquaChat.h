@@ -20,36 +20,36 @@
 
 #import <Growl/GrowlApplicationBridge.h>
 
-#define PreferencesWindowKey		@"PreferencesWindow"
+#define PreferencesWindowKey    @"PreferencesWindow"
 
-#define AsciiWindowKey				@"AsciiWindow"
-#define BanWindowKey				@"BanWindow"
-#define ChannelWindowKey			@"ChannelWindow"
-#define FriendWindowKey				@"FriendWindow"
-#define IgnoreWindowKey				@"IgnoreWindow"
-#define NetworkWindowKey			@"NetworkWindow"
-#define PluginWindowKey				@"PluginWindow"
-#define RawLogWindowKey				@"RawLogWindow"
-#define UrlGrabberWindowKey			@"UrlGrabberWindow"
-#define UserCommandsWindowKey		@"UserCommandsWindow"
-#define TextEventsWindowKey			@"TextEventsWindow"
-#define LogViewWindowKey			@"LogViewWindow"
+#define AsciiWindowKey          @"AsciiWindow"
+#define BanWindowKey            @"BanWindow"
+#define ChannelWindowKey        @"ChannelWindow"
+#define FriendWindowKey         @"FriendWindow"
+#define IgnoreWindowKey         @"IgnoreWindow"
+#define NetworkWindowKey        @"NetworkWindow"
+#define PluginWindowKey         @"PluginWindow"
+#define RawLogWindowKey         @"RawLogWindow"
+#define UrlGrabberWindowKey     @"UrlGrabberWindow"
+#define UserCommandsWindowKey   @"UserCommandsWindow"
+#define TextEventsWindowKey     @"TextEventsWindow"
+#define LogViewWindowKey        @"LogViewWindow"
 
-#define CTCPRepliesWindowKey		@"CTCPRepliesWindow"
-#define UserlistButtonsWindowKey	@"UserlistButtonsWindow"
-#define UserlistPopupWindowKey		@"UserlistPopupWindow"
-#define DialogButtonsWindowKey		@"DialogButtonsWindow"
-#define ReplacePopupWindowKey		@"ReplacePopupWindow"
-#define URLHandlersWindowKey		@"URLHandlersWindow"
-#define UserMenusWindowKey			@"UserMenusWindow"
+#define CTCPRepliesWindowKey    @"CTCPRepliesWindow"
+#define UserlistButtonsWindowKey @"UserlistButtonsWindow"
+#define UserlistPopupWindowKey  @"UserlistPopupWindow"
+#define DialogButtonsWindowKey  @"DialogButtonsWindow"
+#define ReplacePopupWindowKey   @"ReplacePopupWindow"
+#define URLHandlersWindowKey    @"URLHandlersWindow"
+#define UserMenusWindowKey      @"UserMenusWindow"
 
-#define UtilityWindowKey(KEY, ADDR)	[KEY stringByAppendingFormat:@"_%x", ADDR]
+#define UtilityWindowKey(KEY, ADDR) [KEY stringByAppendingFormat:@"_%x", ADDR]
 
 struct eventInfo
 {
-	int	growl;
-	int show;
-	int bounce;
+    int growl;
+    int show;
+    int bounce;
 };
 
 extern struct eventInfo textEventInfo[];
@@ -61,30 +61,30 @@ extern struct eventInfo textEventInfo[];
 
 @interface AquaChat : NSObject <GrowlApplicationBridgeDelegate>
 {
-  @public
-	IBOutlet NSMenuItem *awayMenuItem;
-	IBOutlet NSMenuItem *invisibleMenuItem;
-	IBOutlet NSMenuItem *newChannelTabMenuItem;
-	IBOutlet NSMenuItem *newServerTabMenuItem;
-	IBOutlet NSMenuItem *nextWindowMenuItem;
-	IBOutlet NSMenuItem *previousWindowMenuItem;
-	IBOutlet NSMenuItem *receiveNoticesMenuItem;
-	IBOutlet NSMenuItem *receiveWallopsMenuItem;
-	IBOutlet NSMenu *userMenu;
-   
-	NSString *searchString;
-	
-	ColorPalette *palette;
-	
-	NSFont *font;
-	NSFont *boldFont;
-	
-	DccSendWin *dcc_send_window;
-	DccRecvWin *dcc_recv_window;
-	DccChatWin *dcc_chat_window;
-	
-	NSMutableDictionary *soundCache;
-	NSImage *appImage, *alertImage;
+@public
+    IBOutlet NSMenuItem *awayMenuItem;
+    IBOutlet NSMenuItem *invisibleMenuItem;
+    IBOutlet NSMenuItem *newChannelTabMenuItem;
+    IBOutlet NSMenuItem *newServerTabMenuItem;
+    IBOutlet NSMenuItem *nextWindowMenuItem;
+    IBOutlet NSMenuItem *previousWindowMenuItem;
+    IBOutlet NSMenuItem *receiveNoticesMenuItem;
+    IBOutlet NSMenuItem *receiveWallopsMenuItem;
+    IBOutlet NSMenu *userMenu;
+    
+    NSString *searchString;
+    
+    ColorPalette *palette;
+    
+    NSFont *font;
+    NSFont *boldFont;
+    
+    DccSendWin *dcc_send_window;
+    DccRecvWin *dcc_recv_window;
+    DccChatWin *dcc_chat_window;
+    
+    NSMutableDictionary *soundCache;
+    NSImage *appImage, *alertImage;
 }
 
 @property (nonatomic, readonly) NSFont *font, *boldFont;
