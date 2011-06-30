@@ -22,37 +22,37 @@
 <NSTableViewDataSource,NSTableViewDelegate>
 #endif
 {
-	IBOutlet NSComboBox		*charsetComboBox;
-	IBOutlet NSButton		*connectNewButton;
-	IBOutlet NSButton		*networkSelectedOnlyToggleButton;
-	IBOutlet NSTableView 	*networkCommandTableView;
-	IBOutlet NSTableView 	*networkJoinTableView;
-	IBOutlet NSTableView 	*networkTableView;
-	IBOutlet NSTextField 	*networkNicknameTextField;
-	IBOutlet NSTextField 	*networkNickname2TextField;
-	IBOutlet NSTextField	*networkNickservPasswordTextField;
-	IBOutlet NSTextField 	*networkPasswordTextField;
-	IBOutlet NSTextField 	*networkRealnameTextField;
-	IBOutlet NSTableView 	*networkServerTableView;
-	IBOutlet NSTextField	*networkTitleTextField;
-	IBOutlet NSButton 		*networkUseCustomInformationToggleButton;
-	IBOutlet NSButton 		*networkAutoConnectToggleButton;
-	IBOutlet NSButton		*networkUseProxyToggleButton;
-	IBOutlet NSButton 		*networkUseSslToggleButton;
-	IBOutlet NSButton 		*networkAcceptInvalidCertificationToggleButton;
-	IBOutlet NSTextField 	*networkUsernameTextField;
-	IBOutlet NSTextField 	*nick1TextField;
-	IBOutlet NSTextField 	*nick2TextField;
-	IBOutlet NSTextField 	*nick3TextField;
-	IBOutlet NSTextField 	*realnameTextField;
-	IBOutlet NSButton		*showWhenStartupToggleButton;
-	IBOutlet NSTextField 	*usernameTextField;
-	IBOutlet NSButton		*showDetailButton;
-	
-	IBOutlet NSDrawer		*detailDrawer;
-	
-	NSMutableArray *allNetworks, *filteredNetworks;
-	struct session *sess;
+    IBOutlet NSComboBox     *charsetComboBox;
+    IBOutlet NSButton       *connectNewButton;
+    IBOutlet NSButton       *networkSelectedOnlyToggleButton;
+    IBOutlet NSTableView    *networkCommandTableView;
+    IBOutlet NSTableView    *networkJoinTableView;
+    IBOutlet NSTableView    *networkTableView;
+    IBOutlet NSTextField    *networkNicknameTextField;
+    IBOutlet NSTextField    *networkNickname2TextField;
+    IBOutlet NSTextField    *networkNickservPasswordTextField;
+    IBOutlet NSTextField    *networkPasswordTextField;
+    IBOutlet NSTextField    *networkRealnameTextField;
+    IBOutlet NSTableView    *networkServerTableView;
+    IBOutlet NSTextField    *networkTitleTextField;
+    IBOutlet NSButton       *networkUseCustomInformationToggleButton;
+    IBOutlet NSButton       *networkAutoConnectToggleButton;
+    IBOutlet NSButton       *networkUseProxyToggleButton;
+    IBOutlet NSButton       *networkUseSslToggleButton;
+    IBOutlet NSButton       *networkAcceptInvalidCertificationToggleButton;
+    IBOutlet NSTextField    *networkUsernameTextField;
+    IBOutlet NSTextField    *nick1TextField;
+    IBOutlet NSTextField    *nick2TextField;
+    IBOutlet NSTextField    *nick3TextField;
+    IBOutlet NSTextField    *realnameTextField;
+    IBOutlet NSButton       *showWhenStartupToggleButton;
+    IBOutlet NSTextField    *usernameTextField;
+    IBOutlet NSButton       *showDetailButton;
+    
+    IBOutlet NSDrawer       *detailDrawer;
+    
+    NSMutableArray *allNetworks, *filteredNetworks;
+    struct session *sess;
 }
 
 @property (nonatomic, retain) NSDrawer *detailDrawer;
