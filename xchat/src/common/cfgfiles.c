@@ -33,6 +33,8 @@
 
 #ifdef WIN32
 #define XCHAT_DIR "X-Chat 2"
+#elif FE_AQUA
+#define XCHAT_DIR "Library/Application Support/XChat Azure"
 #else
 #define XCHAT_DIR ".xchat2"
 #endif
