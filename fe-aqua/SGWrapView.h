@@ -10,7 +10,7 @@
 
 @interface SGWrapView : SGView 
 {
-	NSUInteger numberOfRows;
+    NSUInteger numberOfRows;
 }
 
 @property (nonatomic, readonly) NSUInteger numberOfRows;

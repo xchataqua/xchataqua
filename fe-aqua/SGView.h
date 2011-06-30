@@ -20,13 +20,13 @@
 @interface SGView : NSView
 {
   @protected
-	NSMutableArray *metaViews;
-	BOOL first_layout;
-	BOOL pending_layout;
-	BOOL in_my_layout;
-	BOOL in_dtor;
-	BOOL auto_size_to_fit;
-	BOOL needs_size_to_fit;
+    NSMutableArray *metaViews;
+    BOOL first_layout;
+    BOOL pending_layout;
+    BOOL in_my_layout;
+    BOOL in_dtor;
+    BOOL auto_size_to_fit;
+    BOOL needs_size_to_fit;
 }
 
 @property (readonly) NSArray *metaViews;
@@ -37,7 +37,7 @@
 
 // Methods for subclasses
 
-- (void) queue_layout;	// Mark as needing a layout.. (delayed)
+- (void) queue_layout;  // Mark as needing a layout.. (delayed)
 - (void) layout_maybe;  // Layout only if queued
 - (SGMetaView *) findViewFor:(NSView *) the_view;
 - (void) setOrder:(NSUInteger)order forView:(NSView *) the_view;
@@ -46,8 +46,8 @@
 
 // Override these if needed
 
-- (SGMetaView *) newMetaView:(NSView *) view;
-- (void) do_layout;			// This is where the work is done
+- (SGMetaView *) metaViewWithView:(NSView *) view;
+- (void) do_layout;            // This is where the work is done
 - (void) sizeToFit;
 - (void) subview_did_resize:(NSNotification *)notification;
 
@@ -56,9 +56,9 @@
 @interface SGMetaView : NSObject
 {
   @public
-	NSView *view;
-	NSRect  prefSize;
-	NSRect  lastSize;
+    NSView *view;
+    NSRect  prefSize;
+    NSRect  lastSize;
 }
 
 @property (retain) NSView *view;
@@ -67,8 +67,8 @@
 - (id)initWithView:(NSView *) the_view;
 - (id) initWithCoder:(NSCoder *) decoder;
 - (void) encodeWithCoder:(NSCoder *) encoder;
-- (void) setFrame:(NSRect) frame;	// Use this method from subclasses "layout ()"
-									// to avoid infinite recursion.  Redraws too.
+- (void) setFrame:(NSRect) frame;   // Use this method from subclasses "layout ()"
+                                    // to avoid infinite recursion.  Redraws too.
 
 // Private stuff
 

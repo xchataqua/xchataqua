@@ -34,53 +34,53 @@
  }
  */
 + (BOOL) trackButtonCell:(NSButtonCell *) cell
-			   withEvent:(NSEvent *) event
-				  inRect:(NSRect) track_rect
-			 controlView:(NSView *) controlView
+               withEvent:(NSEvent *) event
+                  inRect:(NSRect) track_rect
+             controlView:(NSView *) controlView
 {
-	for (;;)
-	{
-		NSPoint p = [controlView convertPoint:[event locationInWindow] fromView:nil];
-		if (NSMouseInRect (p, track_rect, [controlView isFlipped]))
-		{
-			[cell highlight:YES withFrame:track_rect inView:controlView];
-			[cell retain];
-			BOOL triggered = [cell trackMouse:event inRect:track_rect ofView:controlView untilMouseUp:NO];
-			[cell highlight:NO withFrame:track_rect inView:controlView];
-			[cell release];
-			if (triggered)
-				return YES;
-		}
-		
-		NSUInteger eventMask = NSLeftMouseDownMask | NSLeftMouseUpMask
-							 | NSMouseMovedMask | NSLeftMouseDraggedMask | NSOtherMouseDraggedMask
-							 | NSRightMouseDraggedMask;
-		
-		event = [NSApp nextEventMatchingMask:eventMask
-								   untilDate:nil
-									  inMode:NSEventTrackingRunLoopMode
-									 dequeue:YES];
-		if ([event type] == NSLeftMouseUp)
-			return NO;
-	}
+    for (;;)
+    {
+        NSPoint p = [controlView convertPoint:[event locationInWindow] fromView:nil];
+        if (NSMouseInRect (p, track_rect, [controlView isFlipped]))
+        {
+            [cell highlight:YES withFrame:track_rect inView:controlView];
+            [cell retain];
+            BOOL triggered = [cell trackMouse:event inRect:track_rect ofView:controlView untilMouseUp:NO];
+            [cell highlight:NO withFrame:track_rect inView:controlView];
+            [cell release];
+            if (triggered)
+                return YES;
+        }
+        
+        NSUInteger eventMask = NSLeftMouseDownMask | NSLeftMouseUpMask
+                             | NSMouseMovedMask | NSLeftMouseDraggedMask | NSOtherMouseDraggedMask
+                             | NSRightMouseDraggedMask;
+        
+        event = [NSApp nextEventMatchingMask:eventMask
+                                   untilDate:nil
+                                      inMode:NSEventTrackingRunLoopMode
+                                     dequeue:YES];
+        if ([event type] == NSLeftMouseUp)
+            return NO;
+    }
 }
 
 + (void) fixSquareButtonsInView:(NSView *) view
 {
-	NSFont *font = [NSFont systemFontOfSize:[NSFont smallSystemFontSize]];
-	
-	if ([view isKindOfClass:[NSButton class]]) 
-	{
-		NSButton *button = (NSButton *)view;
-		if ([button bezelStyle] == NSShadowlessSquareBezelStyle)
-			[button setFont:font];
-	}
-	else
-	{
-		for (NSView *view in [view subviews]) {
-			[self fixSquareButtonsInView:view];
-		}
-	}
+    NSFont *font = [NSFont systemFontOfSize:[NSFont smallSystemFontSize]];
+    
+    if ([view isKindOfClass:[NSButton class]]) 
+    {
+        NSButton *button = (NSButton *)view;
+        if ([button bezelStyle] == NSShadowlessSquareBezelStyle)
+            [button setFont:font];
+    }
+    else
+    {
+        for (NSView *subview in [view subviews]) {
+            [self fixSquareButtonsInView:subview];
+        }
+    }
 }
 
 @end

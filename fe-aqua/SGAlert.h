@@ -24,8 +24,8 @@
 + (BOOL)confirmWithString:(NSString *)alertText;
 
 + (void)confirmWithString:(NSString *)alertText
-				   inform:(id)obj
-				   yesSel:(SEL)yesSel
-					noSel:(SEL)noSel;
+                   inform:(id)obj
+                   yesSel:(SEL)yesSel
+                    noSel:(SEL)noSel;
 
 @end
