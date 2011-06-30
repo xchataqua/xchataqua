@@ -16,15 +16,15 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
 typedef enum {
-	SGFileDescriptorRead = 0,
-	SGFileDescriptorWrite= 1,
-	SGFileDescriptorExcep= 2,
-}	SGFileDescriptorType;
+    SGFileDescriptorRead = 0,
+    SGFileDescriptorWrite= 1,
+    SGFileDescriptorExcep= 2,
+}   SGFileDescriptorType;
 
 @interface SGFileDescriptor : NSObject
 
 - (SGFileDescriptor *)initWithFd:(int)fd mode:(NSInteger)mode target:(id)target 
-						selector:(SEL)selector withObject:(id)object;
+                        selector:(SEL)selector withObject:(id)object;
 - (void)disable;
 
 @end
