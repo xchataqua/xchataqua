@@ -23,9 +23,9 @@
 <NSTableViewDataSource>
 #endif
 {
-	IBOutlet NSTableView			*friendTableView;
-	IBOutlet FriendAdditionPanel	*friendAdditionPanel;
-	NSMutableArray	*friends;
+    IBOutlet NSTableView *friendTableView;
+    IBOutlet FriendAdditionPanel *friendAdditionPanel;
+    NSMutableArray *friends;
 }
 
 @property (retain) FriendAdditionPanel *friendAdditionPanel;
@@ -45,8 +45,8 @@
 <NSWindowDelegate>
 #endif
 {
-	IBOutlet NSTextField *friendAdditionNickTextField;
-	IBOutlet NSTextField *friendAdditionNetworkTextField;	
+    IBOutlet NSTextField *friendAdditionNickTextField;
+    IBOutlet NSTextField *friendAdditionNetworkTextField;
 }
 
 - (void)showAdditionWindow;

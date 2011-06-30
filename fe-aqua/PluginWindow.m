@@ -32,8 +32,8 @@ extern GSList *plugin_list;
 
 @interface PluginItem : NSObject
 {
-  @public
-	NSString *name, *vers, *file, *desc;
+@public
+    NSString *name, *vers, *file, *desc;
 }
 
 - (id) initWithPlugin:(xchat_plugin *)plugin;
@@ -44,22 +44,22 @@ extern GSList *plugin_list;
 
 - (id) initWithPlugin:(xchat_plugin *) plugin
 {
-	if ((self=[super init]) != nil) {
-		name = [[NSString alloc] initWithUTF8String:plugin->name];
-		vers = [[NSString alloc] initWithUTF8String:plugin->version];
-		file = [[NSString alloc] initWithUTF8String:file_part(plugin->filename)];
-		desc = [[NSString alloc] initWithUTF8String:plugin->desc];
-	}
-	return self;
+    if ((self=[super init]) != nil) {
+        name = [[NSString alloc] initWithUTF8String:plugin->name];
+        vers = [[NSString alloc] initWithUTF8String:plugin->version];
+        file = [[NSString alloc] initWithUTF8String:file_part(plugin->filename)];
+        desc = [[NSString alloc] initWithUTF8String:plugin->desc];
+    }
+    return self;
 }
 
 - (void) dealloc
 {
-	[name release];
-	[vers release];
-	[file release];
-	[desc dealloc];
-	[super dealloc];
+    [name release];
+    [vers release];
+    [file release];
+    [desc dealloc];
+    [super dealloc];
 }
 
 @end
@@ -69,85 +69,85 @@ extern GSList *plugin_list;
 @implementation PluginWindow
 
 - (id) initWithCoder:(NSCoder *)aDecoder {
-	if ((self = [super initWithCoder:aDecoder]) != nil) {
-		self->plugins = [[NSMutableArray alloc] init];
-	}
-	return self;
+    if ((self = [super initWithCoder:aDecoder]) != nil) {
+        self->plugins = [[NSMutableArray alloc] init];
+    }
+    return self;
 }
 
 - (void) dealloc
 {
-	[self->pluginTableView setDataSource:nil];
-	[plugins release];
-	[super dealloc];
+    [self->pluginTableView setDataSource:nil];
+    [plugins release];
+    [super dealloc];
 }
 
 - (void) awakeFromNib
 {
-	[self center];
-	[self update];
+    [self center];
+    [self update];
 }
 
 - (void) update
 {
-	[plugins removeAllObjects];
-	
-	for (GSList *list = plugin_list; list; list = list->next)
-	{
-		xchat_plugin *pl = (xchat_plugin *) list->data;
-		if (pl->version && pl->version [0])
-			[plugins addObject:[[PluginItem alloc] initWithPlugin:pl]];
-	}
-	
-	[self->pluginTableView reloadData];
+    [plugins removeAllObjects];
+    
+    for (GSList *list = plugin_list; list; list = list->next)
+    {
+        xchat_plugin *pl = (xchat_plugin *) list->data;
+        if (pl->version && pl->version [0])
+            [plugins addObject:[[[PluginItem alloc] initWithPlugin:pl] autorelease]];
+    }
+    
+    [self->pluginTableView reloadData];
 }
 
 #pragma mark IBAction
 
 - (void) loadPlugin:(id)sender {
-	[[AquaChat sharedAquaChat] loadPlugin:sender];
+    [[AquaChat sharedAquaChat] loadPlugin:sender];
 }
 
 - (void) unloadPlugin:(id)sender {
-	NSInteger row = [self->pluginTableView selectedRow];
-	if (row < 0)
-		return;
-	
-	PluginItem *item = [plugins objectAtIndex:row];
-	
-	NSUInteger len = [item->file length];
-	if (len > 3 && strcasecmp ([item->file UTF8String] + len - 3, ".so") == 0)
-	{
-		if (plugin_kill ((char *) [item->name UTF8String], false) == 2)
-			[SGAlert alertWithString:NSLocalizedStringFromTable(@"That plugin is refusing to unload.\n", @"xchat", @"") andWait:false];
-	}
-	else
-	{
-		NSString *cmd = [NSString stringWithFormat:@"UNLOAD \"%@\"", item->file];
-		handle_command (current_sess, (char *)[cmd UTF8String], false);
-	}
+    NSInteger row = [self->pluginTableView selectedRow];
+    if (row < 0)
+        return;
+    
+    PluginItem *item = [plugins objectAtIndex:row];
+    
+    NSUInteger len = [item->file length];
+    if (len > 3 && strcasecmp ([item->file UTF8String] + len - 3, ".so") == 0)
+    {
+        if (plugin_kill ((char *) [item->name UTF8String], false) == 2)
+            [SGAlert alertWithString:NSLocalizedStringFromTable(@"That plugin is refusing to unload.\n", @"xchat", @"") andWait:false];
+    }
+    else
+    {
+        NSString *cmd = [NSString stringWithFormat:@"UNLOAD \"%@\"", item->file];
+        handle_command (current_sess, (char *)[cmd UTF8String], false);
+    }
 }
 
 #pragma mark NSTableView DataSource
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *)aTableView
 {
-	return [plugins count];
+    return [plugins count];
 }
 
 - (id) tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
-	PluginItem *item = [plugins objectAtIndex:rowIndex];
-
-	switch ([[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn])
-	{
-		case 0: return item->name;
-		case 1: return item->vers;
-		case 2: return item->file;
-		case 3: return item->desc;
-	}
-	SGAssert(NO);
-	return @"";
+    PluginItem *item = [plugins objectAtIndex:rowIndex];
+    
+    switch ([[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn])
+    {
+        case 0: return item->name;
+        case 1: return item->vers;
+        case 2: return item->file;
+        case 3: return item->desc;
+    }
+    SGAssert(NO);
+    return @"";
 }
 
 @end

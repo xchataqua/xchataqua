@@ -22,11 +22,11 @@
 <NSTableViewDataSource>
 #endif
 {
-	IBOutlet NSTableView *banTableView;
-	IBOutlet NSButton *refreshButton;
-	NSMutableArray	*bans;
-	NSTimer			*timer;
-	struct session	*sess;
+    IBOutlet NSTableView *banTableView;
+    IBOutlet NSButton *refreshButton;
+    NSMutableArray  *bans;
+    NSTimer         *redrawTimer;
+    struct session  *sess;
 }
 
 - (void)addBanWithMask:(NSString *)mask who:(NSString *)who when:(NSString *)when isExemption:(BOOL)isExemption;

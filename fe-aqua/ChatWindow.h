@@ -26,49 +26,51 @@
 <NSTextViewDelegate,NSTextFieldDelegate,NSTableViewDataSource,NSTableViewDelegate,NSSplitViewDelegate>
 #endif
 {
-	IBOutlet TabOrWindowView	*chatView;
-	IBOutlet XAChatTextView		*chatTextView;
-	IBOutlet NSTextField		*inputTextField;
-	IBOutlet NSTextField		*nickTextField;
-	IBOutlet NSTableView		*userlistTableView;
-	IBOutlet NSScrollView		*chatScrollView;
-	
-	NSButton *tButton, *nButton, *sButton, *iButton, *pButton, *mButton,
-			 *bButton, *lButton, *kButton, *CButton, *NButton, *uButton;
-	
-	IBOutlet NSTextField	*limitTextField;
-	IBOutlet NSTextField	*keyTextField;
-
-	IBOutlet NSImageView	*myOpOrVoiceIconImageView;
-	IBOutlet NSTextField	*userlistStatusTextField;
-	IBOutlet NSTextField	*topicTextField;
-	IBOutlet SGHBoxView		*headerBoxView;
-	IBOutlet MySplitView	*bodyBoxView;
-	IBOutlet SGRowColView	*buttonBoxView;
-	IBOutlet NSProgressIndicator *progressIndicator;
-	IBOutlet NSControl		*throttleIndicator;
-	IBOutlet NSControl		*lagIndicator;
-	IBOutlet NSPopUpButton	*sessMenuButton;
-	
-	NSMutableArray	*users;
-	NSMenuItem		*userlistMenuItem;
-	struct User		*userlistMenuItemCurrentUser;
-/* CL */
-	CGFloat maxNickWidth;
-	CGFloat maxHostWidth;
-	CGFloat maxRowHeight;
-/* CL end */
-	
-	NSInteger completionIndex; // Current index when cycling through tab-completions.
-	
-	struct session *sess;
+    IBOutlet TabOrWindowView    *chatView;
+    IBOutlet XAChatTextView     *chatTextView;
+    IBOutlet NSTextField        *inputTextField;
+    IBOutlet NSTextField        *nickTextField;
+    IBOutlet NSTableView        *userlistTableView;
+    IBOutlet NSScrollView       *chatScrollView;
+    
+    NSButton *tButton, *nButton, *sButton, *iButton, *pButton, *mButton, 
+             *bButton, *lButton, *kButton, *CButton, *NButton, *uButton;
+    
+    IBOutlet NSTextField    *limitTextField;
+    IBOutlet NSTextField    *keyTextField;
+    
+    IBOutlet NSImageView    *myOpOrVoiceIconImageView;
+    IBOutlet NSTextField    *userlistStatusTextField;
+    IBOutlet NSTextField    *topicTextField;
+    IBOutlet SGHBoxView     *headerBoxView;
+    IBOutlet MySplitView    *bodyBoxView;
+    IBOutlet SGRowColView   *buttonBoxView;
+    IBOutlet NSProgressIndicator *progressIndicator;
+    IBOutlet NSControl      *throttleIndicator;
+    IBOutlet NSControl      *lagIndicator;
+    IBOutlet NSPopUpButton  *sessMenuButton;
+    
+    NSMutableArray  *users;
+    NSMenuItem      *userlistMenuItem;
+    struct User     *userlistMenuItemCurrentUser;
+    /* CL */
+    CGFloat maxNickWidth;
+    CGFloat maxHostWidth;
+    CGFloat maxRowHeight;
+    /* CL end */
+    
+    NSInteger completionIndex; // Current index when cycling through tab-completions.
+    
+    struct session *sess;
 }
 
 @property (nonatomic, readonly) TabOrWindowView *view;
 @property (nonatomic, readonly) int inputTextPosition;
-@property (nonatomic, assign) NSString *inputText;
+@property (nonatomic, assign)   NSString *inputText;
 @property (nonatomic, readonly) NSWindow *window;
 @property (nonatomic, readonly) struct session *session;
+@property (nonatomic, retain)   NSButton *tButton, *nButton, *sButton, *iButton, *pButton, *mButton,
+                                         *bButton, *lButton, *kButton, *CButton, *NButton, *uButton;
 
 - (IBAction) doMircColor:(id)sender;
 - (IBAction) doConferenceMode:(id)sender;

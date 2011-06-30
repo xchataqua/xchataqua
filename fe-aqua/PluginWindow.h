@@ -22,8 +22,8 @@
 <NSTableViewDataSource>
 #endif
 {
-	IBOutlet NSTableView *pluginTableView;
-	NSMutableArray *plugins;
+    IBOutlet NSTableView *pluginTableView;
+    NSMutableArray *plugins;
 }
 
 - (IBAction)loadPlugin:(id)sender;
