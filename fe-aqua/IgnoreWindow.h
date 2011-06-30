@@ -22,15 +22,15 @@
 <NSTableViewDataSource>
 #endif
 {
-	IBOutlet NSTableView *ignoreTableView;
-	
-	// ignored field
-	IBOutlet NSTextField *ctcpTextField;
-	IBOutlet NSTextField *noticeTextField;
-	IBOutlet NSTextField *channelTextField;
-	IBOutlet NSTextField *inviteTextField;
-	IBOutlet NSTextField *privateTextField;
-	NSMutableArray *ignores;
+    IBOutlet NSTableView *ignoreTableView;
+    
+    // ignored field
+    IBOutlet NSTextField *ctcpTextField;
+    IBOutlet NSTextField *noticeTextField;
+    IBOutlet NSTextField *channelTextField;
+    IBOutlet NSTextField *inviteTextField;
+    IBOutlet NSTextField *privateTextField;
+    NSMutableArray *ignores;
 }
 
 - (IBAction)addIgnore:(id)sender;

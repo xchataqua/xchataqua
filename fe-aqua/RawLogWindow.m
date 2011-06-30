@@ -24,34 +24,34 @@
 
 @implementation RawLogWindow
 
-- (id) RawLogWindowInit {
-	[self setServer:current_sess->server];
-	[self setTitle:[NSString stringWithFormat:NSLocalizedStringFromTable(@"XChat: Rawlog (%s)", @"xchat", @""), self->server->servername]];
-	[self setTabTitle:NSLocalizedStringFromTable(@"rawlog", @"xchataqua", @"")];
-	return self;
+- (id) initAsRawLogWindow {
+    [self setServer:current_sess->server];
+    [self setTitle:[NSString stringWithFormat:NSLocalizedStringFromTable(@"XChat: Rawlog (%s)", @"xchat", @""), self->server->servername]];
+    [self setTabTitle:NSLocalizedStringFromTable(@"rawlog", @"xchataqua", @"")];
+    return self;
 }
 
 - (id) initWithCoder:(NSCoder *)aDecoder {
-	self = [super initWithCoder:aDecoder];
-	return [self RawLogWindowInit];
+    self = [super initWithCoder:aDecoder];
+    return [self initAsRawLogWindow];
 }
 
 - (id) initWithFrame:(NSRect)frameRect {
-	self = [super initWithFrame:frameRect];
-	return [self RawLogWindowInit];
+    self = [super initWithFrame:frameRect];
+    return [self initAsRawLogWindow];
 }
 
 - (void) log:(const char *) msg length:(NSInteger) len outbound:(BOOL) outbound
 {
-	if(msg[len-1]=='\n')
-		--len;
-	
-	NSString *s = [[NSString alloc] initWithBytes:msg length:len encoding:NSUTF8StringEncoding];
-	NSString *str = [NSString stringWithFormat:@"%c %@\n", outbound ? '>' : '<', s];
-	[s release];
-
-	[logTextView replaceCharactersInRange:NSMakeRange([[logTextView textStorage] length], 0) withString:str];
-	[logTextView scrollRangeToVisible:NSMakeRange([[logTextView textStorage] length], 0)];
+    if(msg[len-1]=='\n')
+        --len;
+    
+    NSString *s = [[NSString alloc] initWithBytes:msg length:len encoding:NSUTF8StringEncoding];
+    NSString *str = [NSString stringWithFormat:@"%c %@\n", outbound ? '>' : '<', s];
+    [s release];
+    
+    [logTextView replaceCharactersInRange:NSMakeRange([[logTextView textStorage] length], 0) withString:str];
+    [logTextView scrollRangeToVisible:NSMakeRange([[logTextView textStorage] length], 0)];
 }
 
 @end

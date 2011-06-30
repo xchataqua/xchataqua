@@ -22,8 +22,8 @@
 <NSTableViewDataSource>
 #endif
 {
-	IBOutlet NSTableView *urlTableView;
-	NSMutableArray	*urls;
+    IBOutlet NSTableView *urlTableView;
+    NSMutableArray *urls;
 }
 
 - (IBAction)removeAllURLs:(id)sender;

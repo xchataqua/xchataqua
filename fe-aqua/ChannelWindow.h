@@ -23,35 +23,35 @@
 #if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
 <NSTableViewDataSource, NSTableViewDelegate>
 #endif
-{	
-	IBOutlet NSTableView *channelTableView;
-	IBOutlet NSTextField *captionTextField;
-	IBOutlet NSButton *refreshButton;
-	IBOutlet NSButton *saveButton;
-	NSImage	*arrowImage;
-	
-	// search interfaces
-	IBOutlet NSTextField *regexTextField;
-	IBOutlet NSTextField *minTextField;
-	IBOutlet NSTextField *maxTextField;
-	IBOutlet NSButton *regexChannelButton;
-	IBOutlet NSButton *regexTopicButton;
-	
-	// search temporary value
-	NSInteger numberOfFoundUsers;
-	NSInteger numberOfShownUsers;
-	NSInteger filterMin;
-	NSInteger filterMax;	
-	BOOL channelChecked;
-	BOOL topicChecked;
-
-	NSMutableArray *allChannels, *filteredChannels;
-	ColorPalette *colorPalette;
-	BOOL added;
-	regex_t matchRegex;
-	BOOL regexValid;
-	BOOL sortDirection[3];
-	NSTimer *redrawTimer;
+{
+    IBOutlet NSTableView *channelTableView;
+    IBOutlet NSTextField *captionTextField;
+    IBOutlet NSButton *refreshButton;
+    IBOutlet NSButton *saveButton;
+    NSImage *arrowImage;
+    
+    // search interfaces
+    IBOutlet NSTextField *regexTextField;
+    IBOutlet NSTextField *minTextField;
+    IBOutlet NSTextField *maxTextField;
+    IBOutlet NSButton *regexChannelButton;
+    IBOutlet NSButton *regexTopicButton;
+    
+    // search temporary value
+    NSInteger numberOfFoundUsers;
+    NSInteger numberOfShownUsers;
+    NSInteger filterMin;
+    NSInteger filterMax;
+    BOOL channelChecked;
+    BOOL topicChecked;
+    
+    NSMutableArray *allChannels, *filteredChannels;
+    ColorPalette *colorPalette;
+    BOOL added;
+    regex_t matchRegex;
+    BOOL regexValid;
+    BOOL sortDirection[3];
+    NSTimer *redrawTimer;
 }
 
 - (IBAction)applySearch:(id)sender;

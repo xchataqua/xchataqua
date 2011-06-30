@@ -19,7 +19,7 @@
 
 @interface RawLogWindow : UtilityTabOrWindowView
 {
-	IBOutlet NSTextView *logTextView;
+    IBOutlet NSTextView *logTextView;
 }
 
 - (void) log:(const char *) msg length:(NSInteger) len outbound:(BOOL) outbound;
