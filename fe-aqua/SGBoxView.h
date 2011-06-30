@@ -19,30 +19,30 @@
 
 typedef enum
 {
-	SGBoxOrientationHorizontal,
-	SGBoxOrientationVertical,
-}	SGBoxOrientation;
+    SGBoxOrientationHorizontal,
+    SGBoxOrientationVertical,
+}   SGBoxOrientation;
 
 typedef enum {
-	SGBoxMinorJustificationCenter,
-	SGBoxMinorJustificationFirst,
-	SGBoxMinorJustificationLast,
-	SGBoxMinorJustificationFull,
-	SGBoxMinorJustificationDefault,		// This is used to undo setMajorJustificationFor
-}	SGBoxMinorJustification;
+    SGBoxMinorJustificationCenter,
+    SGBoxMinorJustificationFirst,
+    SGBoxMinorJustificationLast,
+    SGBoxMinorJustificationFull,
+    SGBoxMinorJustificationDefault, // This is used to undo setMajorJustificationFor
+}   SGBoxMinorJustification;
 
 typedef enum {
-	SGBoxMajorJustificationCenter,		// Overrides stretch view
-	SGBoxMajorJustificationLast,		// Not implemented yet
-	SGBoxMajorJustificationFirst,
-	SGBoxMajorJustificationFull,		// Not implemented yet.  Stretches all views with
-}	SGBoxMajorJustification;			// leftover space.  Overrides stretch view
-										// This may be too much for this View..??
+    SGBoxMajorJustificationCenter,  // Overrides stretch view
+    SGBoxMajorJustificationLast,    // Not implemented yet
+    SGBoxMajorJustificationFirst,
+    SGBoxMajorJustificationFull,    // Not implemented yet.  Stretches all views with
+}   SGBoxMajorJustification;        // leftover space.  Overrides stretch view
+                                    // This may be too much for this View..??
 typedef enum
 {
-	SGBoxOrderFIFO,
-	SGBoxOrderLIFO,
-}	SGBoxOrder;
+    SGBoxOrderFIFO,
+    SGBoxOrderLIFO,
+}   SGBoxOrder;
 
 typedef CGFloat SGBoxMargin;
 
@@ -50,27 +50,27 @@ typedef CGFloat SGBoxMargin;
 
 @interface SGBoxView : SGView
 {
-	NSView					*stretchView;
-	SGBoxMinorJustification	minorJustification;
-	SGBoxMajorJustification	majorJustification;
-	SGBoxMargin				minorMargin;
-	SGBoxMargin				majorInnerMargin;
-	SGBoxMargin				majorOutterMargin;
-	SGBoxOrientation		orientation;
-	SGBoxOrder				order;
-	BOOL					wrap;
+    NSView                  *stretchView;
+    SGBoxMinorJustification minorJustification;
+    SGBoxMajorJustification majorJustification;
+    SGBoxMargin             minorMargin;
+    SGBoxMargin             majorInnerMargin;
+    SGBoxMargin             majorOutterMargin;
+    SGBoxOrientation        orientation;
+    SGBoxOrder              order;
+    BOOL                    wrap;
 }
 
-@property (nonatomic,assign,setter=setStretchView:)			NSView *stretchView;
-@property (nonatomic,readonly)								SGBoxMinorJustification	minorJustification;
-@property (nonatomic,assign,setter=setMajorJustification:)	SGBoxMajorJustification	majorJustification;
-@property (nonatomic,assign,setter=setMinorMargin:)			SGBoxMargin				minorMargin;
-@property (nonatomic,assign,setter=setMajorInnerMargin:)	SGBoxMargin				majorInnerMargin;
-@property (nonatomic,assign,setter=setMajorOutterMargin:)	SGBoxMargin				majorOutterMargin;
-@property (nonatomic,assign,setter=setOrientation:)			SGBoxOrientation		orientation;
-@property (nonatomic,assign,setter=setOrder:)				SGBoxOrder				order;
+@property (nonatomic,assign,setter=setStretchView:)         NSView *stretchView;
+@property (nonatomic,readonly)                              SGBoxMinorJustification minorJustification;
+@property (nonatomic,assign,setter=setMajorJustification:)  SGBoxMajorJustification majorJustification;
+@property (nonatomic,assign,setter=setMinorMargin:)         SGBoxMargin             minorMargin;
+@property (nonatomic,assign,setter=setMajorInnerMargin:)    SGBoxMargin             majorInnerMargin;
+@property (nonatomic,assign,setter=setMajorOutterMargin:)   SGBoxMargin             majorOutterMargin;
+@property (nonatomic,assign,setter=setOrientation:)         SGBoxOrientation        orientation;
+@property (nonatomic,assign,setter=setOrder:)               SGBoxOrder              order;
 
-- (void) setMinorDefaultJustification:(SGBoxMinorJustification) just;
-- (void) setMinorJustificationFor:(NSView *) view to:(SGBoxMinorJustification) just;
+- (void)setMinorDefaultJustification:(SGBoxMinorJustification)just;
+- (void)setMinorJustificationFor:(NSView *)view to:(SGBoxMinorJustification)just;
 
 @end

@@ -16,20 +16,20 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
 /*
-	GLikeTimer.h
-	Created by Camillo Lugaresi on 04/09/05.
-	
-	An NSTimer wrapper with semantics compatible with those of glib's timers.
-	g_timeout_add -> addTaggedTimerWithMSInterval:callback:userData:
-	g_source_remove -> removeTimerWithTag:
+    GLikeTimer.h
+    Created by Camillo Lugaresi on 04/09/05.
+    
+    An NSTimer wrapper with semantics compatible with those of glib's timers.
+    g_timeout_add -> addTaggedTimerWithMSInterval:callback:userData:
+    g_source_remove -> removeTimerWithTag:
 */
 
 #include <glib.h>
 
 @interface GLikeTimer : NSObject {
   @private
-	GSourceFunc	function;
-	gpointer	userData;
+    GSourceFunc function;
+    gpointer    userData;
 }
 + (guint)addTaggedTimerWithMSInterval:(guint)ms callback:(GSourceFunc)function userData:(gpointer)data;
 + (gboolean)removeTimerWithTag:(guint)tag;

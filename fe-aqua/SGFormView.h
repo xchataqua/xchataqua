@@ -19,21 +19,21 @@
 
 typedef enum
 {
-	SGFormViewAttachmentNone,
-	SGFormViewAttachmentForm,
-	SGFormViewAttachmentView,
-	SGFormViewAttachmentOppositeView,
-	SGFormViewAttachmentCenter,
-}	SGFormViewAttachment;
+    SGFormViewAttachmentNone,
+    SGFormViewAttachmentForm,
+    SGFormViewAttachmentView,
+    SGFormViewAttachmentOppositeView,
+    SGFormViewAttachmentCenter,
+}   SGFormViewAttachment;
 
 typedef enum
 {
-	/* N O T E:  These numbers ARE NOT ARBITRARY!! */
-	SGFormViewEdgeBottom= 0,
-	SGFormViewEdgeLeft  = 1,
-	SGFormViewEdgeTop   = 2,
-	SGFormViewEdgeRight = 3,
-}	SGFormViewEdge;
+    /* N O T E:  These numbers ARE NOT ARBITRARY!! */
+    SGFormViewEdgeBottom= 0,
+    SGFormViewEdgeLeft  = 1,
+    SGFormViewEdgeTop   = 2,
+    SGFormViewEdgeRight = 3,
+}   SGFormViewEdge;
 #define SGFormViewEdgeCount 4
 
 @interface SGFormView : SGView

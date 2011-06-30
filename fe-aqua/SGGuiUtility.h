@@ -18,14 +18,14 @@
 @interface SGGuiUtility : NSObject 
 /*
 + (NSPoint) centerRect:(NSRect) r
-				onRect:(NSRect) rr
-				   inX:(BOOL) inX
-				   inY:(BOOL) inY;
+                onRect:(NSRect) rr
+                   inX:(BOOL) inX
+                   inY:(BOOL) inY;
 */
 + (BOOL) trackButtonCell:(NSButtonCell *)cell
-			   withEvent:(NSEvent *)event
-				  inRect:(NSRect)trackRect
-			 controlView:(NSView *)controlView;
+               withEvent:(NSEvent *)event
+                  inRect:(NSRect)trackRect
+             controlView:(NSView *)controlView;
 
 + (void) fixSquareButtonsInView:(NSView *) view;
 
