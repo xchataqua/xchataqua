@@ -20,24 +20,32 @@
 @interface SGAlertConfirmDelegate : NSObject
 {
   @public
-	id obj;
-	SEL yesSel;
-	SEL noSel;
+    id object;
+    SEL yesSel;
+    SEL noSel;
 }
+@property (retain) id object;
+
 @end
 
 @implementation SGAlertConfirmDelegate
+@synthesize object;
 
 - (void) alertDidEnd:(NSAlert *)alert
-		  returnCode:(NSInteger)returnCode 
-		 contextInfo:(void *)contextInfo
+          returnCode:(NSInteger)returnCode 
+         contextInfo:(void *)contextInfo
 {
-	switch (returnCode) {
-		case NSAlertFirstButtonReturn: [obj performSelector:noSel]; break;
-		case NSAlertSecondButtonReturn:[obj performSelector:yesSel];break;
-		default: break;
-	}
-	[self release];
+    switch (returnCode) {
+        case NSAlertFirstButtonReturn: [object performSelector:noSel]; break;
+        case NSAlertSecondButtonReturn:[object performSelector:yesSel];break;
+        default: break;
+    }
+    [self release];
+}
+
+- (void) dealloc {
+    self.object = nil;
+    [super dealloc];
 }
 
 @end
@@ -47,79 +55,79 @@
 @implementation SGAlert
 
 + (void) doitWithStyle:(NSAlertStyle) style
-			   message:(NSString *)alertText
-			   andWait:(BOOL) wait
+               message:(NSString *)alertText
+               andWait:(BOOL) wait
 {
-	NSAlert *panel = [[NSAlert alloc] init];
-	[panel setAlertStyle:style];
-	[panel addButtonWithTitle:NSLocalizedStringFromTable(@"OK", @"libsg", @"button")];
-	[panel setMessageText:alertText];
-	
-	if (wait)
-	{
-		[panel runModal];
-	}
-	else
-	{
-		// Modal, but not blocking
-		[panel beginSheetModalForWindow:nil
-						  modalDelegate:nil
-						 didEndSelector:nil
-							contextInfo:nil];
-	}
-	[panel release];
+    NSAlert *panel = [[NSAlert alloc] init];
+    [panel setAlertStyle:style];
+    [panel addButtonWithTitle:NSLocalizedStringFromTable(@"OK", @"libsg", @"button")];
+    [panel setMessageText:alertText];
+    
+    if (wait)
+    {
+        [panel runModal];
+    }
+    else
+    {
+        // Modal, but not blocking
+        [panel beginSheetModalForWindow:nil
+                          modalDelegate:nil
+                         didEndSelector:nil
+                            contextInfo:nil];
+    }
+    [panel release];
 }
 
 + (void) alertWithString:(NSString *)alertText andWait:(BOOL)wait
 {
-	[self doitWithStyle:NSWarningAlertStyle message:alertText andWait:wait];
+    [self doitWithStyle:NSWarningAlertStyle message:alertText andWait:wait];
 }
 
 + (void) noticeWithString:(NSString *)alertText andWait:(BOOL)wait
 {
-	[self doitWithStyle:NSInformationalAlertStyle message:alertText andWait:wait];
+    [self doitWithStyle:NSInformationalAlertStyle message:alertText andWait:wait];
 }
 
 + (void) errorWithString:(NSString *)alertText andWait:(BOOL) wait
 {
-	[self doitWithStyle:NSCriticalAlertStyle message:alertText andWait:wait];
+    [self doitWithStyle:NSCriticalAlertStyle message:alertText andWait:wait];
 }
 
 + (BOOL) confirmWithString:(NSString *)alertText
 {
-	NSAlert *panel = [[NSAlert alloc] init];
-	[panel addButtonWithTitle:NSLocalizedStringFromTable(@"No", @"libsg", @"button")];
-	[panel addButtonWithTitle:NSLocalizedStringFromTable(@"Yes",@"libsg", @"button")];
-	[panel setMessageText:alertText];
-	[panel setAlertStyle:NSInformationalAlertStyle];
-	
-	NSInteger ret = [panel runModal];
-	[panel release];
-	return ret == NSAlertSecondButtonReturn;
+    NSAlert *panel = [[NSAlert alloc] init];
+    [panel addButtonWithTitle:NSLocalizedStringFromTable(@"No", @"libsg", @"button")];
+    [panel addButtonWithTitle:NSLocalizedStringFromTable(@"Yes",@"libsg", @"button")];
+    [panel setMessageText:alertText];
+    [panel setAlertStyle:NSInformationalAlertStyle];
+    
+    NSInteger ret = [panel runModal];
+    [panel release];
+    return ret == NSAlertSecondButtonReturn;
 }
 
 + (void) confirmWithString:(NSString *)alertText
-					inform:(id) obj
-					yesSel:(SEL) yesSel
-					 noSel:(SEL) noSel
+                    inform:(id) obj
+                    yesSel:(SEL) yesSel
+                     noSel:(SEL) noSel
 {
-	NSAlert *panel = [[NSAlert alloc] init];
-	[panel addButtonWithTitle:NSLocalizedStringFromTable(@"No" ,@"libsg", @"button")];
-	[panel addButtonWithTitle:NSLocalizedStringFromTable(@"Yes",@"libsg", @"button")];
-	[panel setMessageText:alertText];
-	[panel setAlertStyle:NSInformationalAlertStyle];
-	
-	SGAlertConfirmDelegate *confirmDelegate = [[SGAlertConfirmDelegate alloc] init];
-	confirmDelegate->obj = obj;
-	confirmDelegate->yesSel = yesSel;
-	confirmDelegate->noSel = noSel;
-	
-	// Modal, but non-blocking
-	[panel beginSheetModalForWindow:nil
-					  modalDelegate:confirmDelegate
-					 didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:)
-						contextInfo:nil];
-	[panel release];
+    NSAlert *panel = [[NSAlert alloc] init];
+    [panel addButtonWithTitle:NSLocalizedStringFromTable(@"No" ,@"libsg", @"button")];
+    [panel addButtonWithTitle:NSLocalizedStringFromTable(@"Yes",@"libsg", @"button")];
+    [panel setMessageText:alertText];
+    [panel setAlertStyle:NSInformationalAlertStyle];
+    
+    SGAlertConfirmDelegate *confirmDelegate = [[SGAlertConfirmDelegate alloc] init];
+    [confirmDelegate setObject:obj];
+    confirmDelegate->yesSel = yesSel;
+    confirmDelegate->noSel = noSel;
+    
+    // Modal, but non-blocking
+    [panel beginSheetModalForWindow:nil
+                      modalDelegate:confirmDelegate
+                     didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:)
+                        contextInfo:nil];
+    [panel release];
 }
 
 @end
