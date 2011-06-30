@@ -17,9 +17,9 @@
 
 @interface AutoAwayController : NSObject 
 {
-	BOOL isAway;
+    BOOL away;
 }
 
-@property (nonatomic, assign, setter=setAway:) BOOL isAway;
+@property (nonatomic, assign, getter=isAway) BOOL away;
 
 @end
