@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -19,7 +19,6 @@
 				0F2FEF7E0E1FB1BD00DE4D41 /* PBXTargetDependency */,
 				0F8F08350E1FE08700359159 /* PBXTargetDependency */,
 				2D7813DD10E783C100C71AF8 /* PBXTargetDependency */,
-				2DCBED6511AA1B2700388F47 /* PBXTargetDependency */,
 			);
 			name = Release;
 			productName = Release;
@@ -272,13 +271,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2D78137F10E77C6400C71AF8;
 			remoteInfo = "perl-snowleopard";
-		};
-		2DCBED6411AA1B2700388F47 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0F8F06D60E1FDA8500359159;
-			remoteInfo = "perl-leopard";
 		};
 		2DDC6FDC1231BCC10015A26C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1519,7 +1511,7 @@
 		2DEC8C791274CC98000C8670 /* libglib-2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libglib-2.0.a"; path = "contrib/lib/libglib-2.0.a"; sourceTree = "<group>"; };
 		2DEC8C7A1274CC98000C8670 /* libiconv.1.13.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libiconv.1.13.1.a; path = contrib/lib/libiconv.1.13.1.a; sourceTree = "<group>"; };
 		2DEC8C7B1274CC98000C8670 /* libintl.0.40.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libintl.0.40.a; path = contrib/lib/libintl.0.40.a; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* X-Chat Aqua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "X-Chat Aqua.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* XChat Azure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XChat Azure.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B07C7AB20F4395E200E11B58 /* BuildNumber.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = BuildNumber.xcconfig; sourceTree = "<group>"; };
 		B07C7AD60F4398FC00E11B58 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		B07C7AD70F4398FC00E11B58 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -1695,7 +1687,6 @@
 		0F8EA3640CFAA429001AE9AE /* fe-aqua */ = {
 			isa = PBXGroup;
 			children = (
-				0F8EA6580CFB2F71001AE9AE /* libSG */,
 				0F2FEFB50E1FC57800DE4D41 /* Utilities */,
 				2DC6AC8F118774E60048B7C7 /* Utility Windows */,
 				2DC6ACE6118776D40048B7C7 /* Sources */,
@@ -1706,7 +1697,7 @@
 			path = "fe-aqua";
 			sourceTree = "<group>";
 		};
-		0F8EA6580CFB2F71001AE9AE /* libSG */ = {
+		0F8EA6580CFB2F71001AE9AE /* SGLibrary */ = {
 			isa = PBXGroup;
 			children = (
 				0F8EA6590CFB300B001AE9AE /* SG.h */,
@@ -1757,7 +1748,8 @@
 				0F8EA6860CFB300B001AE9AE /* SGWrapView.h */,
 				0F8EA6870CFB300B001AE9AE /* SGWrapView.m */,
 			);
-			name = libSG;
+			name = SGLibrary;
+			path = "fe-aqua";
 			sourceTree = "<group>";
 		};
 		0F8F06BE0E1FD99400359159 /* perl */ = {
@@ -1865,7 +1857,7 @@
 			isa = PBXGroup;
 			children = (
 				2DDC6FA21231733E0015A26C /* build_number.h */,
-				8D1107320486CEB800E47090 /* X-Chat Aqua.app */,
+				8D1107320486CEB800E47090 /* XChat Azure.app */,
 				0FC8F4AE0DEEE51700504F31 /* libxchat.a */,
 				0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */,
 				0F8F06D70E1FDA8500359159 /* perl-leopard.bundle */,
@@ -1880,6 +1872,7 @@
 			isa = PBXGroup;
 			children = (
 				0FC8F3D10DEEC33D00504F31 /* plugins */,
+				0F8EA6580CFB2F71001AE9AE /* SGLibrary */,
 				0F8EA3640CFAA429001AE9AE /* fe-aqua */,
 				0F8EA3160CFAA342001AE9AE /* xchat common */,
 				2DC6AD1E118777750048B7C7 /* Palette */,
@@ -2216,7 +2209,7 @@
 			name = "X-Chat Aqua";
 			productInstallPath = "$(HOME)/Applications";
 			productName = "X-Chat Aqua";
-			productReference = 8D1107320486CEB800E47090 /* X-Chat Aqua.app */;
+			productReference = 8D1107320486CEB800E47090 /* XChat Azure.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2225,7 +2218,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "XChatAqua" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -2649,11 +2642,6 @@
 			isa = PBXTargetDependency;
 			target = 2D78137F10E77C6400C71AF8 /* perl-snowleopard */;
 			targetProxy = 2D7813DC10E783C100C71AF8 /* PBXContainerItemProxy */;
-		};
-		2DCBED6511AA1B2700388F47 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0F8F06D60E1FDA8500359159 /* perl-leopard */;
-			targetProxy = 2DCBED6411AA1B2700388F47 /* PBXContainerItemProxy */;
 		};
 		2DDC6FDD1231BCC10015A26C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3980,6 +3968,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = xchat;
+				SKIP_INSTALL = YES;
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
 			};
 			name = Debug;
@@ -3996,6 +3985,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = xchat;
+				SKIP_INSTALL = YES;
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
 			};
 			name = Release;
@@ -4007,7 +3997,7 @@
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -4036,7 +4026,7 @@
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
@@ -4165,7 +4155,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/contrib/lib\"",
 				);
-				PRODUCT_NAME = "X-Chat Aqua";
+				PRODUCT_NAME = "XChat Azure";
 			};
 			name = Debug;
 		};
@@ -4176,12 +4166,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "fe-aqua/X-Chat Aqua_Prefix.pch";
 				IBC_PLUGIN_SEARCH_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) Frameworks";
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = InfoAppstore.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/contrib/lib\"",
 				);
-				PRODUCT_NAME = "X-Chat Aqua";
+				PRODUCT_NAME = "XChat Azure";
 			};
 			name = Release;
 		};
@@ -4190,6 +4180,7 @@
 			baseConfigurationReference = B07C7AD60F4398FC00E11B58 /* Debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: 3rddev Inc.";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -4205,38 +4196,16 @@
 					.,
 				);
 				LIBRARY_SEARCH_PATHS = contrib/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.6;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
-				VALID_ARCHS = "i386 ppc x86_64";
+				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B07C7AD70F4398FC00E11B58 /* Release.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_PREPROCESSOR_DEFINITIONS = FE_AQUA;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"fe-aqua",
-					contrib/include,
-					.,
-				);
-				LIBRARY_SEARCH_PATHS = contrib/lib;
-				PREBINDING = NO;
-				SDKROOT = macosx10.5;
-				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
-				VALID_ARCHS = "i386 ppc x86_64";
-			};
-			name = Release;
-		};
-		D43912A212DE257A009BE73C /* Appstore */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B07C7AD70F4398FC00E11B58 /* Release.xcconfig */;
 			buildSettings = {
@@ -4245,9 +4214,10 @@
 					i386,
 				);
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: 3rddev Inc.";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = FE_AQUA;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -4256,209 +4226,13 @@
 					.,
 				);
 				LIBRARY_SEARCH_PATHS = contrib/lib;
-				ONLY_ACTIVE_ARCH = NO;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
 				SDKROOT = macosx10.6;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
 				VALID_ARCHS = "i386 x86_64";
 			};
-			name = Appstore;
-		};
-		D43912A312DE257A009BE73C /* Appstore */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = Release;
-			};
-			name = Appstore;
-		};
-		D43912A412DE257A009BE73C /* Appstore */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = Prebuild;
-			};
-			name = Appstore;
-		};
-		D43912A512DE257A009BE73C /* Appstore */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = "Frameworks/**";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "fe-aqua/X-Chat Aqua_Prefix.pch";
-				IBC_PLUGIN_SEARCH_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) Frameworks";
-				INFOPLIST_FILE = InfoAppstore.plist;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/contrib/lib\"",
-				);
-				PRODUCT_NAME = "X-Chat for Mac";
-			};
-			name = Appstore;
-		};
-		D43912A612DE257A009BE73C /* Appstore */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				OTHER_CFLAGS = (
-					"-w",
-					"-I",
-					"$(SDK_DIR)/usr/include",
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = xchat;
-				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
-			};
-			name = Appstore;
-		};
-		D43912A712DE257A009BE73C /* Appstore */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
-				);
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Palette/SGPalette_Prefix.pch;
-				INFOPLIST_FILE = "Palette/SGPalette-Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = SGPalette;
-				WRAPPER_EXTENSION = ibplugin;
-				ZERO_LINK = NO;
-			};
-			name = Appstore;
-		};
-		D43912A812DE257A009BE73C /* Appstore */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				INFOPLIST_FILE = "plugins/tcl/tcl-Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				OTHER_LDFLAGS = (
-					"-undefined",
-					dynamic_lookup,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = tcl;
-				ZERO_LINK = NO;
-			};
-			name = Appstore;
-		};
-		D43912A912DE257A009BE73C /* Appstore */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = "fe-aqua";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				HEADER_SEARCH_PATHS = (
-					/System/Library/Frameworks/Python.framework/Versions/Current/Headers,
-					"fe-aqua/",
-					.,
-					contrib/include,
-				);
-				INFOPLIST_FILE = "plugins/python/python-Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				OTHER_LDFLAGS = (
-					"-undefined",
-					dynamic_lookup,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = python;
-				ZERO_LINK = NO;
-			};
-			name = Appstore;
-		};
-		D43912AA12DE257A009BE73C /* Appstore */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				GCC_WARN_UNUSED_VARIABLE = NO;
-				HEADER_SEARCH_PATHS = (
-					"/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
-					"$(PROJECT_DIR)/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
-					"fe-aqua",
-					.,
-					contrib/include,
-				);
-				INFOPLIST_FILE = "plugins/perl/perl-leopard-Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SYSTEM_LIBRARY_DIR)/Perl/lib/5.8\"",
-				);
-				OTHER_LDFLAGS = (
-					"-undefined",
-					dynamic_lookup,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = "perl-leopard";
-				ZERO_LINK = NO;
-			};
-			name = Appstore;
-		};
-		D43912AB12DE257A009BE73C /* Appstore */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				GCC_WARN_UNUSED_VARIABLE = NO;
-				HEADER_SEARCH_PATHS = (
-					"/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE",
-					"fe-aqua",
-					.,
-					contrib/include,
-				);
-				INFOPLIST_FILE = "plugins/perl/perl-snowleopard-Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SYSTEM_LIBRARY_DIR)/Perl/lib/5.10\"",
-				);
-				OTHER_LDFLAGS = (
-					"-undefined",
-					dynamic_lookup,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = "perl-snowleopard";
-				ZERO_LINK = NO;
-			};
-			name = Appstore;
-		};
-		D43912AC12DE257A009BE73C /* Appstore */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = printenv;
-			};
-			name = Appstore;
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -4468,7 +4242,6 @@
 			buildConfigurations = (
 				0F2FEF2E0E1FAB1500DE4D41 /* Debug */,
 				0F2FEF2F0E1FAB1500DE4D41 /* Release */,
-				D43912A912DE257A009BE73C /* Appstore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -4478,7 +4251,6 @@
 			buildConfigurations = (
 				0F70656A0E1FA5C100FEA21C /* Debug */,
 				0F70656B0E1FA5C100FEA21C /* Release */,
-				D43912A312DE257A009BE73C /* Appstore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -4488,7 +4260,6 @@
 			buildConfigurations = (
 				0F8F06DA0E1FDA8600359159 /* Debug */,
 				0F8F06DB0E1FDA8600359159 /* Release */,
-				D43912AA12DE257A009BE73C /* Appstore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -4498,7 +4269,6 @@
 			buildConfigurations = (
 				0F8F08140E1FE00800359159 /* Debug */,
 				0F8F08150E1FE00800359159 /* Release */,
-				D43912A812DE257A009BE73C /* Appstore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -4508,7 +4278,6 @@
 			buildConfigurations = (
 				0FC8F4AF0DEEE51700504F31 /* Debug */,
 				0FC8F4B00DEEE51700504F31 /* Release */,
-				D43912A612DE257A009BE73C /* Appstore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -4518,7 +4287,6 @@
 			buildConfigurations = (
 				0FE5E01F0F45576C000E0F91 /* Debug */,
 				0FE5E0200F45576C000E0F91 /* Release */,
-				D43912A712DE257A009BE73C /* Appstore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -4528,7 +4296,6 @@
 			buildConfigurations = (
 				2D78138210E77C6600C71AF8 /* Debug */,
 				2D78138310E77C6600C71AF8 /* Release */,
-				D43912AB12DE257A009BE73C /* Appstore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -4538,7 +4305,6 @@
 			buildConfigurations = (
 				2DDC6FDA1231BCA00015A26C /* Debug */,
 				2DDC6FDB1231BCA00015A26C /* Release */,
-				D43912A412DE257A009BE73C /* Appstore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -4548,7 +4314,6 @@
 			buildConfigurations = (
 				2DDC70021231DA230015A26C /* Debug */,
 				2DDC70031231DA230015A26C /* Release */,
-				D43912AC12DE257A009BE73C /* Appstore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -4558,7 +4323,6 @@
 			buildConfigurations = (
 				C01FCF4B08A954540054247B /* Debug */,
 				C01FCF4C08A954540054247B /* Release */,
-				D43912A512DE257A009BE73C /* Appstore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -4568,7 +4332,6 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
-				D43912A212DE257A009BE73C /* Appstore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
