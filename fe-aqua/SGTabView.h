@@ -28,16 +28,16 @@
 <NSOutlineViewDelegate,NSOutlineViewDataSource>
 #endif
 {
-  @public	// TODO - fix this
-	SGWrapView		*hbox;
-	NSOutlineView	*outline;
-	CGFloat			xa_outline_width;
-	SGTabViewItem	*selected_tab;
-	NSMutableArray	*tabs;
-	NSMutableArray	*groups;	// For outline view only
-	id<NSObject,SGTabViewDelegate> delegate;
-	NSTabViewType	tabViewType;
-	bool			hideClose;
+@public    // TODO - fix this
+    SGWrapView      *hbox;
+    NSOutlineView   *outline;
+    CGFloat         xa_outline_width;
+    SGTabViewItem   *selected_tab;
+    NSMutableArray  *tabs;
+    NSMutableArray  *groups;    // For outline view only
+    id<NSObject,SGTabViewDelegate> delegate;
+    NSTabViewType   tabViewType;
+    bool            hideClose;
 }
 
 @property (nonatomic, assign) id delegate;
@@ -77,15 +77,15 @@
 
 @interface SGTabViewItem : NSObject
 {
-  @public	// TODO - fix this
-	SGTabViewButton	*button;
-	NSColor			*titleColor;
-	NSString		*label;
-	NSView			*view;
-	SGTabView		*parent;
-	NSInteger		group;
-	id				initial_first_responder;
-	NSMenu			*ctxMenu;
+@public    // TODO - fix this
+    SGTabViewButton *button;
+    NSColor     *titleColor;
+    NSString    *label;
+    NSView      *view;
+    SGTabView   *parent;
+    NSInteger   group;
+    id          initial_first_responder;
+    NSMenu      *ctxMenu;
 }
 
 @property (nonatomic, retain) NSColor *titleColor;

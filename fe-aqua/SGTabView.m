@@ -30,11 +30,11 @@ static NSImage *dimple;
 //////////////////////////////////////////////////////////////////////
 
 typedef OSStatus 
-	(*ThemeDrawSegmentProc)(
-	  const HIRect *				  inBounds,
-	  const HIThemeSegmentDrawInfo *  inDrawInfo,
-	  CGContextRef					inContext,
-	  HIThemeOrientation			  inOrientation);
+    (*ThemeDrawSegmentProc)(
+      const HIRect *                  inBounds,
+      const HIThemeSegmentDrawInfo *  inDrawInfo,
+      CGContextRef                    inContext,
+      HIThemeOrientation              inOrientation);
 
 static ThemeDrawSegmentProc MyThemeDrawSegment;
 
@@ -49,36 +49,36 @@ static CGFloat MySegmentHeight;
 
 static NSImage *getCloseImage()
 {
-	static NSImage *close_image;
-	if (!close_image)
-		close_image = [NSImage imageNamed:@"close.tiff"];
-	return close_image;
+    static NSImage *close_image;
+    if (!close_image)
+        close_image = [NSImage imageNamed:@"close.tiff"];
+    return close_image;
 }
 
 static NSNib *getTabMenuNib ()
 {
-	static NSNib *tab_menu_nib;
-	if (!tab_menu_nib)
-		tab_menu_nib = [[NSNib alloc] initWithNibNamed:@"TabMenu" bundle:nil];
-	return tab_menu_nib;
+    static NSNib *tab_menu_nib;
+    if (!tab_menu_nib)
+        tab_menu_nib = [[NSNib alloc] initWithNibNamed:@"TabMenu" bundle:nil];
+    return tab_menu_nib;
 }
 
 static NSButtonCell *makeCloseCell ()
 {
-	NSButtonCell *closeCell = [[NSButtonCell alloc] initImageCell:getCloseImage()];
-	[closeCell setButtonType:NSMomentaryLightButton];
-	[closeCell setImagePosition:NSImageOnly];
-	[closeCell setBordered:NO];
-	[closeCell setHighlightsBy:NSContentsCellMask];
-	return [closeCell autorelease];
+    NSButtonCell *closeCell = [[NSButtonCell alloc] initImageCell:getCloseImage()];
+    [closeCell setButtonType:NSMomentaryLightButton];
+    [closeCell setImagePosition:NSImageOnly];
+    [closeCell setBordered:NO];
+    [closeCell setHighlightsBy:NSContentsCellMask];
+    return [closeCell autorelease];
 }
 
 #pragma mark -
 
 @interface SGTabViewOutlineCell : NSTextFieldCell
 {
-	BOOL hasClose;
-	NSButtonCell *closeCell;
+    BOOL hasClose;
+    NSButtonCell *closeCell;
 }
 
 @property (nonatomic, assign) BOOL hasClose;
@@ -90,82 +90,82 @@ static NSButtonCell *makeCloseCell ()
 
 - (id) initTextCell:(NSString *) aString
 {
-	if ((self = [super initTextCell:aString]) != nil) {
-		closeCell = [makeCloseCell() retain];
-	}
-	return self;
+    if ((self = [super initTextCell:aString]) != nil) {
+        closeCell = [makeCloseCell() retain];
+    }
+    return self;
 }
 
 - (void) dealloc
 {
-	[closeCell release];
-	[super dealloc];
+    [closeCell release];
+    [super dealloc];
 }
 
 - (id) copyWithZone:(NSZone *) zone
 {
-	SGTabViewOutlineCell *copy = [super copyWithZone:zone];
-	copy->closeCell = [closeCell copyWithZone:zone];
-	return copy;
+    SGTabViewOutlineCell *copy = [super copyWithZone:zone];
+    copy->closeCell = [closeCell copyWithZone:zone];
+    return copy;
 }
 
 - (void) doClose:(id)sender
 {
-	[[closeCell target] performSelector:[closeCell action]];
+    [[closeCell target] performSelector:[closeCell action]];
 }
 
 - (NSRect) calculateCloseRectWithFrame:(NSRect)cellFrame inView:(NSView *)controlView
 {
-	NSRect r;
-	
-	r.size = [getCloseImage() size];
-	r.origin.x = cellFrame.origin.x;
-	r.origin.y = cellFrame.origin.y + floor ((cellFrame.size.height - r.size.height) / 2);
-	
-	return r;
+    NSRect r;
+    
+    r.size = [getCloseImage() size];
+    r.origin.x = cellFrame.origin.x;
+    r.origin.y = cellFrame.origin.y + floor ((cellFrame.size.height - r.size.height) / 2);
+    
+    return r;
 }
 
 - (void) drawInteriorWithFrame:(NSRect) cellFrame inView:(NSView *) controlView
 {
-	NSRect closeRect;
+    NSRect closeRect;
 
-	if (hasClose)
-	{
-		closeRect = [self calculateCloseRectWithFrame:cellFrame inView:controlView];
-		cellFrame.origin.x += closeRect.size.width + 5.0f;
-	}
+    if (hasClose)
+    {
+        closeRect = [self calculateCloseRectWithFrame:cellFrame inView:controlView];
+        cellFrame.origin.x += closeRect.size.width + 5.0f;
+    }
 
-	[super drawInteriorWithFrame:cellFrame inView:controlView];
+    [super drawInteriorWithFrame:cellFrame inView:controlView];
 
-	// Gotta draw the icon last because highlighted cells have a
-	// blue background which will cover the image otherwise.				  
-	if (hasClose)
-		[closeCell drawInteriorWithFrame:closeRect inView:controlView];
+    // Gotta draw the icon last because highlighted cells have a
+    // blue background which will cover the image otherwise.                  
+    if (hasClose)
+        [closeCell drawInteriorWithFrame:closeRect inView:controlView];
 }
 
 - (BOOL) mouseDown:(NSEvent *) theEvent
-		 cellFrame:(NSRect) cellFrame
-	   controlView:(NSView *) controlView
-	   closeAction:(SEL) closeAction
-	   closeTarget:(id) closeTarget
+         cellFrame:(NSRect) cellFrame
+       controlView:(NSView *) controlView
+       closeAction:(SEL) closeAction
+       closeTarget:(id) closeTarget
 {
-	if (!hasClose)
-		return NO;
+    if (!hasClose)
+        return NO;
 
-	[closeCell setAction:closeAction];
-	[closeCell setTarget:closeTarget];
-		
-	NSPoint point = [theEvent locationInWindow];
-	NSPoint where = [controlView convertPoint:point fromView:nil];
-	NSRect closeRect = [self calculateCloseRectWithFrame:cellFrame inView:controlView];
-		
-	if (NSPointInRect (where, closeRect))
-	{
-		[SGGuiUtility trackButtonCell:closeCell withEvent:theEvent inRect:closeRect controlView:controlView];
-		return YES;
-	}
-	
-	return NO;
+    [closeCell setAction:closeAction];
+    [closeCell setTarget:closeTarget];
+        
+    NSPoint point = [theEvent locationInWindow];
+    NSPoint where = [controlView convertPoint:point fromView:nil];
+    NSRect closeRect = [self calculateCloseRectWithFrame:cellFrame inView:controlView];
+        
+    if (NSPointInRect (where, closeRect))
+    {
+        [SGGuiUtility trackButtonCell:closeCell withEvent:theEvent inRect:closeRect controlView:controlView];
+        return YES;
+    }
+    
+    return NO;
 }
 
 @end
@@ -179,7 +179,7 @@ static NSButtonCell *makeCloseCell ()
 
 - (BOOL) acceptsFirstResponder
 {
-	return NO;
+    return NO;
 }
 
 // Grab mouse down and deal with the close button without selecting
@@ -189,54 +189,54 @@ static NSButtonCell *makeCloseCell ()
 // (if it has one).
 - (void) mouseDown:(NSEvent *) theEvent
 {
-	NSPoint where = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-	NSInteger row = [self rowAtPoint:where];
-	NSInteger col = [self columnAtPoint:where];
-	
-	if (row >= 0 && col >= 0)
-	{
-		id item = [self itemAtRow:row];
+    NSPoint where = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+    NSInteger row = [self rowAtPoint:where];
+    NSInteger col = [self columnAtPoint:where];
+    
+    if (row >= 0 && col >= 0)
+    {
+        id item = [self itemAtRow:row];
 
-		if ([item isKindOfClass:[SGTabViewItem class]])
-		{
-			NSTableColumn *tableColumn = [[self tableColumns] objectAtIndex:col];
-			SGTabViewOutlineCell *cell = [tableColumn dataCell];
-			
-			if ([cell isKindOfClass:[SGTabViewOutlineCell class]])
-			{
-				[[self delegate] outlineView:self willDisplayCell:cell forTableColumn:tableColumn item:item];
-				if ([cell mouseDown:theEvent 
-						  cellFrame:[self frameOfCellAtColumn:col row:row]
-						controlView:self
-						closeAction:@selector (doClose:)
-						closeTarget:item])
-				{
-					return;
-				}
-			}
-		}
-	}
-	
-	[super mouseDown:theEvent];
+        if ([item isKindOfClass:[SGTabViewItem class]])
+        {
+            NSTableColumn *tableColumn = [[self tableColumns] objectAtIndex:col];
+            SGTabViewOutlineCell *cell = [tableColumn dataCell];
+            
+            if ([cell isKindOfClass:[SGTabViewOutlineCell class]])
+            {
+                [[self delegate] outlineView:self willDisplayCell:cell forTableColumn:tableColumn item:item];
+                if ([cell mouseDown:theEvent 
+                          cellFrame:[self frameOfCellAtColumn:col row:row]
+                        controlView:self
+                        closeAction:@selector (doClose:)
+                        closeTarget:item])
+                {
+                    return;
+                }
+            }
+        }
+    }
+    
+    [super mouseDown:theEvent];
 }
 
 - (NSMenu *) menuForEvent:(NSEvent *) theEvent
 {
-	NSPoint where = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-	NSInteger row = [self rowAtPoint:where];
-	NSInteger col = [self columnAtPoint:where];
-	
-	if (row >= 0 && col >= 0)
-	{
-		id item = [self itemAtRow:row];
+    NSPoint where = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+    NSInteger row = [self rowAtPoint:where];
+    NSInteger col = [self columnAtPoint:where];
+    
+    if (row >= 0 && col >= 0)
+    {
+        id item = [self itemAtRow:row];
 
-		if ([item isKindOfClass:[SGTabViewItem class]])
-		{
-			return ((SGTabViewItem *)item)->ctxMenu;
-		}
-	}
-	
-	return [super menuForEvent:theEvent];
+        if ([item isKindOfClass:[SGTabViewItem class]])
+        {
+            return ((SGTabViewItem *)item)->ctxMenu;
+        }
+    }
+    
+    return [super menuForEvent:theEvent];
 }
 
 @end
@@ -246,9 +246,9 @@ static NSButtonCell *makeCloseCell ()
 @interface SGTabViewGroupInfo : NSObject
 {
   @public
-	NSInteger	group;
-	NSString	*name;
-	NSMutableArray *tabs;
+    NSInteger    group;
+    NSString    *name;
+    NSMutableArray *tabs;
 }
 
 @property (nonatomic, retain) NSString *name;
@@ -260,39 +260,39 @@ static NSButtonCell *makeCloseCell ()
 
 - (id) init
 {
-	if ((self = [super init]) != nil) {
-		group = 0;
-		name = nil;
-		tabs = [[NSMutableArray alloc] init];
-	}
-	return self;
+    if ((self = [super init]) != nil) {
+        group = 0;
+        name = nil;
+        tabs = [[NSMutableArray alloc] init];
+    }
+    return self;
 }
 
 - (void) dealloc
 {
-	[name release];
-	[tabs release];
-	[super dealloc];
+    [name release];
+    [tabs release];
+    [super dealloc];
 }
 
 - (NSUInteger) numberOfTabs
 {
-	return [tabs count];
+    return [tabs count];
 }
 
 - (SGTabViewItem *) tabAtIndex:(int) index
 {
-	return [tabs objectAtIndex:index];
+    return [tabs objectAtIndex:index];
 }
 
 - (void) addTabViewItem:(SGTabViewItem *) item
 {
-	[tabs addObject:item];
+    [tabs addObject:item];
 }
 
 - (void) removeTabViewItem:(SGTabViewItem *) item
 {
-	[tabs removeObject:item];
+    [tabs removeObject:item];
 }
 
 @end
@@ -301,22 +301,22 @@ static NSButtonCell *makeCloseCell ()
 
 HIThemeSegmentPosition positionTable[2][2] = 
 {
-	//							No right cap					right cap
-	/* No left cap */	{ kHIThemeSegmentPositionMiddle, kHIThemeSegmentPositionLast },
-	/* Left cap	   */   { kHIThemeSegmentPositionFirst,  kHIThemeSegmentPositionOnly },
+    //                            No right cap                    right cap
+    /* No left cap */    { kHIThemeSegmentPositionMiddle, kHIThemeSegmentPositionLast },
+    /* Left cap       */   { kHIThemeSegmentPositionFirst,  kHIThemeSegmentPositionOnly },
 };
 
 @interface SGTabViewButtonCell : NSButtonCell
 {
-	NSColor *titleColor;
-	BOOL	 hideClose;
-	BOOL	 left_cap;
-	BOOL	 right_cap;
-	NSRect   close_rect;
-	NSPoint  textPoint;
-	NSButtonCell *closeCell;
-	NSSize	cellSize;
-	HIThemeSegmentDrawInfo drawInfo;
+    NSColor *titleColor;
+    BOOL     hideClose;
+    BOOL     left_cap;
+    BOOL     right_cap;
+    NSRect   close_rect;
+    NSPoint  textPoint;
+    NSButtonCell *closeCell;
+    NSSize    cellSize;
+    HIThemeSegmentDrawInfo drawInfo;
 }
 
 @property (nonatomic, retain) NSColor *titleColor;
@@ -331,239 +331,240 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 + (void) initialize
 {
-	labelDictionary = [[NSMutableDictionary alloc] init];
-	[labelDictionary setObject:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]] forKey:NSFontAttributeName];
+    labelDictionary = [[NSMutableDictionary alloc] init];
+    [labelDictionary setObject:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]] forKey:NSFontAttributeName];
 
-	// Setup stuff for drawing the segments.
-	//
-	// NOTE to Camillo.. if you're still alive and wondering why I didn't use your patch,
-	// let me tell you (and anyone else that wonders WTF is going on here).
-	//
-	// I like the idea of drawing segments rather than tabs (even thought they look the same)
-	// for a few reasons.
-	//	1.  The same code works on 10.3 and 10.4.
-	//	2.  It's much simpler in implementation.
-	//	3.  If 10.5 changes tabs in any drastic way, we'd be broken.  In other words, my
-	//	  tab view is pretty much dependant on the way tabs work on 10.4.  i.e. with segments.
-	//
-	// Now I know what you're thinking.. we're using private APIs and that's bogus!  You're right
-	// but the odds of Apple changing 10.3 or even 10.4 at this time isn't very likely.  If they
-	// do change things, then we're screwed but hopefully they also fix the bugs for 10.4 at the
-	// same time.  I thought about this problem for quite some time and I feel this is the lesser
-	// of the evils.  Please feel free to awake from the dead and tell me what you think.
-		
-	SInt32 version = 0;
-	Gestalt(gestaltSystemVersion, &version);
-	
-	#if 0
-	if (version < 0x1040)
-	{
-		// 10.3 has this API, but it's a private API.
-		// We know from GDB that that the public API on 10.4 just 
-		// calls the private function without any parameter
-		// differences so we feel pretty good about using the private API.
-		//
-		// (gdb) disass HIThemeDrawSegment
-		// Dump of assembler code for function HIThemeDrawSegment:
-		// 0x92f57234 <HIThemeDrawSegment+0>:	  push   %ebp
-		// 0x92f57235 <HIThemeDrawSegment+1>:	  mov	%esp,%ebp
-		// 0x92f57237 <HIThemeDrawSegment+3>:	  pop	%ebp
-		// 0x92f57238 <HIThemeDrawSegment+4>:	  jmp	0x92e4d6e4 <_HIThemeDrawSegment>
-		
-		MyThemeDrawSegment = (ThemeDrawSegmentProc) dlsym (RTLD_DEFAULT, "_HIThemeDrawSegment");
-	}
-	else
-	#endif
-	{
-		// So yea.. this is technically the same as the 10.3 case but it may not
-		// be the same on 10.5..
-		MyThemeDrawSegment = (ThemeDrawSegmentProc) dlsym (RTLD_DEFAULT, "HIThemeDrawSegment");
-	}
+    // Setup stuff for drawing the segments.
+    //
+    // NOTE to Camillo.. if you're still alive and wondering why I didn't use your patch,
+    // let me tell you (and anyone else that wonders WTF is going on here).
+    //
+    // I like the idea of drawing segments rather than tabs (even thought they look the same)
+    // for a few reasons.
+    //    1.  The same code works on 10.3 and 10.4.
+    //    2.  It's much simpler in implementation.
+    //    3.  If 10.5 changes tabs in any drastic way, we'd be broken.  In other words, my
+    //      tab view is pretty much dependant on the way tabs work on 10.4.  i.e. with segments.
+    //
+    // Now I know what you're thinking.. we're using private APIs and that's bogus!  You're right
+    // but the odds of Apple changing 10.3 or even 10.4 at this time isn't very likely.  If they
+    // do change things, then we're screwed but hopefully they also fix the bugs for 10.4 at the
+    // same time.  I thought about this problem for quite some time and I feel this is the lesser
+    // of the evils.  Please feel free to awake from the dead and tell me what you think.
+        
+    SInt32 version = 0;
+    Gestalt(gestaltSystemVersion, &version);
+    
+    #if 0
+    if (version < 0x1040)
+    {
+        // 10.3 has this API, but it's a private API.
+        // We know from GDB that that the public API on 10.4 just 
+        // calls the private function without any parameter
+        // differences so we feel pretty good about using the private API.
+        //
+        // (gdb) disass HIThemeDrawSegment
+        // Dump of assembler code for function HIThemeDrawSegment:
+        // 0x92f57234 <HIThemeDrawSegment+0>:      push   %ebp
+        // 0x92f57235 <HIThemeDrawSegment+1>:      mov    %esp,%ebp
+        // 0x92f57237 <HIThemeDrawSegment+3>:      pop    %ebp
+        // 0x92f57238 <HIThemeDrawSegment+4>:      jmp    0x92e4d6e4 <_HIThemeDrawSegment>
+        
+        MyThemeDrawSegment = (ThemeDrawSegmentProc) dlsym (RTLD_DEFAULT, "_HIThemeDrawSegment");
+    }
+    else
+    #endif
+    {
+        // So yea.. this is technically the same as the 10.3 case but it may not
+        // be the same on 10.5..
+        MyThemeDrawSegment = (ThemeDrawSegmentProc) dlsym (RTLD_DEFAULT, "HIThemeDrawSegment");
+    }
 
-	// As for this, the public (and private) APIs have bugs.  The documented
-	// flags don't work.  These were discovered by CL.  If Apple ever fixes
-	// the bugs, then we can change these flags in the proper gestalt block.
-	
-	MySegmentHilightFlag = 0xc0000000;
-	MySegmentFGSelectedFlag = 0x80000000;
-	MySegmentNormalFlag = 0;
-	MySegmentBGSelectedFlag = 0x80000001;
-	
-	// The theme APIs for getting the segment height is broken too.
-	// Just get a cell and ask it...
-	NSSegmentedCell *cell = [[NSSegmentedCell alloc] initTextCell:@""];
-	MySegmentHeight = [cell cellSize].height;
+    // As for this, the public (and private) APIs have bugs.  The documented
+    // flags don't work.  These were discovered by CL.  If Apple ever fixes
+    // the bugs, then we can change these flags in the proper gestalt block.
+    
+    MySegmentHilightFlag = 0xc0000000;
+    MySegmentFGSelectedFlag = 0x80000000;
+    MySegmentNormalFlag = 0;
+    MySegmentBGSelectedFlag = 0x80000001;
+    
+    // The theme APIs for getting the segment height is broken too.
+    // Just get a cell and ask it...
+    NSSegmentedCell *cell = [[NSSegmentedCell alloc] initTextCell:@""];
+    MySegmentHeight = [cell cellSize].height;
+    [cell release];
 }
 
 - (id) initTextCell:(NSString *) aString
 {
-	if ((self = [super initTextCell:aString]) != nil) {
-		closeCell = [makeCloseCell() retain];
-		self->hideClose = false;
-	}
-	return self;
+    if ((self = [super initTextCell:aString]) != nil) {
+        closeCell = [makeCloseCell() retain];
+        self->hideClose = false;
+    }
+    return self;
 }
 
 - (void) dealloc
 {
-	[titleColor release];
-	[super dealloc];
+    [titleColor release];
+    [super dealloc];
 }
 
 // Undocumented method used to update the cell when the window is activated/deactivated
 - (BOOL) _needRedrawOnWindowChangedKeyState
 {
-	return YES;
+    return YES;
 }
 
 - (void) setHideCloseButton:(BOOL) hideit
 {
-	self->hideClose = hideit;
-	[self calcDrawInfo:NSMakeRect(0.0f, 0.0f, 1.0f, 1.0f)];
+    self->hideClose = hideit;
+    [self calcDrawInfo:NSMakeRect(0.0f, 0.0f, 1.0f, 1.0f)];
 }
 
 - (void) setHasLeftCap:(BOOL) b
 {
-	if (left_cap == b) return;
-	
-	left_cap = b;
-	[self calcDrawInfo:NSMakeRect(0.0f, 0.0f, 1.0f, 1.0f)];
+    if (left_cap == b) return;
+    
+    left_cap = b;
+    [self calcDrawInfo:NSMakeRect(0.0f, 0.0f, 1.0f, 1.0f)];
 }
 
 - (void) setHasRightCap:(BOOL) b
 {
-	if (right_cap == b) return;
+    if (right_cap == b) return;
 
-	right_cap = b;
-	[self calcDrawInfo:NSMakeRect(0.0f, 0.0f, 1.0f, 1.0f)];
+    right_cap = b;
+    [self calcDrawInfo:NSMakeRect(0.0f, 0.0f, 1.0f, 1.0f)];
 }
 
 - (void) setCloseAction:(SEL) act
 {
-	[closeCell setAction:act];
+    [closeCell setAction:act];
 }
 
 - (void) setCloseTarget:(id) targ
 {
-	[closeCell setTarget:targ];
+    [closeCell setTarget:targ];
 }
 
 - (void) doClose:(id)sender
 {
-	[[closeCell target] performSelector:[closeCell action]];
+    [[closeCell target] performSelector:[closeCell action]];
 }
 
 - (void) calcDrawInfo:(NSRect) aRect
 {
-	// [super init] calls us before we are ready
-	if (!closeCell)
-		return;
+    // [super init] calls us before we are ready
+    if (!closeCell)
+        return;
 
-	cellSize.height = MySegmentHeight;
-	
-	NSSize sz = [[self title] sizeWithAttributes:labelDictionary];
+    cellSize.height = MySegmentHeight;
+    
+    NSSize sz = [[self title] sizeWithAttributes:labelDictionary];
 
-	if (hideClose)
-	{
-		close_rect = NSMakeRect(0.0f, 0.0f, 1.0f, 1.0f);
-		textPoint.x = 7.0f + 2.0f;
-		textPoint.y = (cellSize.height - sz.height) / 2;
-	}
-	else
-	{
-		NSSize closeSize = [closeCell cellSize];
+    if (hideClose)
+    {
+        close_rect = NSMakeRect(0.0f, 0.0f, 1.0f, 1.0f);
+        textPoint.x = 7.0f + 2.0f;
+        textPoint.y = (cellSize.height - sz.height) / 2;
+    }
+    else
+    {
+        NSSize closeSize = [closeCell cellSize];
 
-		close_rect.size = closeSize;
-		close_rect.origin.x = 7.0f;
-		close_rect.origin.y = (cellSize.height - close_rect.size.height) / 2;
+        close_rect.size = closeSize;
+        close_rect.origin.x = 7.0f;
+        close_rect.origin.y = (cellSize.height - close_rect.size.height) / 2;
 
-		textPoint.x = close_rect.origin.x + closeSize.width + 3;
-		textPoint.y = (cellSize.height - sz.height) / 2;
-	}
+        textPoint.x = close_rect.origin.x + closeSize.width + 3;
+        textPoint.y = (cellSize.height - sz.height) / 2;
+    }
 
-	cellSize.width = floor (sz.width + textPoint.x + 7 + 2);
-	
-	drawInfo.version = 1;
-	drawInfo.value = kThemeButtonOn;
-	drawInfo.size = kHIThemeSegmentSizeNormal;
-	drawInfo.kind = kHIThemeSegmentKindNormal;
-	drawInfo.position = positionTable[left_cap][right_cap];
+    cellSize.width = floor (sz.width + textPoint.x + 7 + 2);
+    
+    drawInfo.version = 1;
+    drawInfo.value = kThemeButtonOn;
+    drawInfo.size = kHIThemeSegmentSizeNormal;
+    drawInfo.kind = kHIThemeSegmentKindNormal;
+    drawInfo.position = positionTable[left_cap][right_cap];
 
-	drawInfo.adornment = (left_cap ? kHIThemeSegmentAdornmentNone : kHIThemeSegmentAdornmentLeadingSeparator) |
-						 (right_cap ? kHIThemeSegmentAdornmentNone : kHIThemeSegmentAdornmentTrailingSeparator);
+    drawInfo.adornment = (left_cap ? kHIThemeSegmentAdornmentNone : kHIThemeSegmentAdornmentLeadingSeparator) |
+                         (right_cap ? kHIThemeSegmentAdornmentNone : kHIThemeSegmentAdornmentTrailingSeparator);
 }
 
 - (void) setTitle:(NSString *) aString
 {
-	[super setTitle:aString];
-	[self calcDrawInfo:NSMakeRect(0.0f, 0.0f, 1.0f, 1.0f)];
+    [super setTitle:aString];
+    [self calcDrawInfo:NSMakeRect(0.0f, 0.0f, 1.0f, 1.0f)];
 }
 
 - (void) drawCellBodyWithFrame:(NSRect)cellFrame inView:(NSView *)controlView
 {
-	BOOL selected = [self state] == NSOnState;
-	BOOL hilight = [self isHighlighted];
-	
-	if ([[controlView window] isMainWindow])
-	{
-		drawInfo.state = hilight ? MySegmentHilightFlag : 
-			selected ? MySegmentFGSelectedFlag : MySegmentNormalFlag;
-	}
-	else
-	{
-		drawInfo.state = selected ? MySegmentBGSelectedFlag : MySegmentNormalFlag;
-	}
+    BOOL selected = [self state] == NSOnState;
+    BOOL hilight = [self isHighlighted];
+    
+    if ([[controlView window] isMainWindow])
+    {
+        drawInfo.state = hilight ? MySegmentHilightFlag : 
+            selected ? MySegmentFGSelectedFlag : MySegmentNormalFlag;
+    }
+    else
+    {
+        drawInfo.state = selected ? MySegmentBGSelectedFlag : MySegmentNormalFlag;
+    }
 
-	HIRect cellRect;
-	cellRect.origin.x = cellFrame.origin.x;
-	cellRect.origin.y = cellFrame.origin.y;
-	cellRect.size.width = cellFrame.size.width;
-	cellRect.size.height = cellFrame.size.height;
+    HIRect cellRect;
+    cellRect.origin.x = cellFrame.origin.x;
+    cellRect.origin.y = cellFrame.origin.y;
+    cellRect.size.width = cellFrame.size.width;
+    cellRect.size.height = cellFrame.size.height;
 
-	HIThemeOrientation orientation = [controlView isFlipped] ? kHIThemeOrientationNormal : kHIThemeOrientationInverted;
+    HIThemeOrientation orientation = [controlView isFlipped] ? kHIThemeOrientationNormal : kHIThemeOrientationInverted;
 
-	NSGraphicsContext *ctx = [NSGraphicsContext currentContext];
-	MyThemeDrawSegment(&cellRect, &drawInfo, (CGContextRef)[ctx graphicsPort], orientation);
+    NSGraphicsContext *ctx = [NSGraphicsContext currentContext];
+    MyThemeDrawSegment(&cellRect, &drawInfo, (CGContextRef)[ctx graphicsPort], orientation);
 }
 
 - (void) drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView
 {
-	[self drawCellBodyWithFrame:cellFrame inView:controlView];
-	
-	if (!hideClose)
-		[closeCell drawWithFrame:close_rect inView:controlView];
+    [self drawCellBodyWithFrame:cellFrame inView:controlView];
+    
+    if (!hideClose)
+        [closeCell drawWithFrame:close_rect inView:controlView];
 
-	// I'm not sure if this actually even does anything
-	if (prefs.tab_layout == 2 && prefs.style_inputbox) {
-		ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-		[labelDictionary setObject:(titleColor?titleColor:[p getColor:AC_FGCOLOR]) forKey:NSForegroundColorAttributeName];
-	} else {
-		[labelDictionary setObject:(titleColor?titleColor:[NSColor blackColor]) forKey:NSForegroundColorAttributeName];
-	}
+    // I'm not sure if this actually even does anything
+    if (prefs.tab_layout == 2 && prefs.style_inputbox) {
+        ColorPalette *p = [[AquaChat sharedAquaChat] palette];
+        [labelDictionary setObject:(titleColor?titleColor:[p getColor:AC_FGCOLOR]) forKey:NSForegroundColorAttributeName];
+    } else {
+        [labelDictionary setObject:(titleColor?titleColor:[NSColor blackColor]) forKey:NSForegroundColorAttributeName];
+    }
 
-	[[self title] drawAtPoint:textPoint withAttributes:labelDictionary];
+    [[self title] drawAtPoint:textPoint withAttributes:labelDictionary];
 }
 
 - (void) mouseDown:(NSEvent *)event controlView:(NSView *) controlView
 {
-	NSButtonCell *track_cell;
-	NSRect track_rect;
-	
-	NSPoint p = [controlView convertPoint:[event locationInWindow] fromView:nil];
-	BOOL mouseIn = NSMouseInRect (p, close_rect, [controlView isFlipped]);
-	
-	if (!hideClose && mouseIn)
-	{
-		track_cell = closeCell;
-		track_rect = close_rect;
-	}
-	else
-	{
-		track_cell = self;
-		track_rect = [controlView bounds];
-	}
+    NSButtonCell *track_cell;
+    NSRect track_rect;
+    
+    NSPoint p = [controlView convertPoint:[event locationInWindow] fromView:nil];
+    BOOL mouseIn = NSMouseInRect (p, close_rect, [controlView isFlipped]);
+    
+    if (!hideClose && mouseIn)
+    {
+        track_cell = closeCell;
+        track_rect = close_rect;
+    }
+    else
+    {
+        track_cell = self;
+        track_rect = [controlView bounds];
+    }
 
-	[SGGuiUtility trackButtonCell:track_cell withEvent:event inRect:track_rect controlView:controlView];
+    [SGGuiUtility trackButtonCell:track_cell withEvent:event inRect:track_rect controlView:controlView];
 }
 
 @end
@@ -582,58 +583,58 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 - (id) init
 {
-	if ((self = [super init]) != nil) {
-		[self setCell:[[[SGTabViewButtonCell alloc] initTextCell:@""] autorelease]];
-		[self setButtonType:NSOnOffButton];
-		[[self cell] setControlSize:NSSmallControlSize];
-		[self setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
-		[self setImagePosition:NSNoImage];
-		[self setBezelStyle:NSShadowlessSquareBezelStyle];
-		[self sizeToFit];
-	}
-	return self;
+    if ((self = [super init]) != nil) {
+        [self setCell:[[[SGTabViewButtonCell alloc] initTextCell:@""] autorelease]];
+        [self setButtonType:NSOnOffButton];
+        [[self cell] setControlSize:NSSmallControlSize];
+        [self setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
+        [self setImagePosition:NSNoImage];
+        [self setBezelStyle:NSShadowlessSquareBezelStyle];
+        [self sizeToFit];
+    }
+    return self;
 }
 
 - (void) setHideCloseButton:(BOOL) hideit
 {
-	[[self cell] setHideCloseButton:hideit];
-	[self sizeToFit];
+    [[self cell] setHideCloseButton:hideit];
+    [self sizeToFit];
 }
 
 - (void) setCloseAction:(SEL) act
 {
-	[[self cell] setCloseAction:act];
+    [[self cell] setCloseAction:act];
 }
 
 - (void) setCloseTarget:(id) targ
 {
-	[[self cell] setCloseTarget:targ];
+    [[self cell] setCloseTarget:targ];
 }
 
 - (void) setHasLeftCap:(BOOL) b
 {
-	[[self cell] setHasLeftCap:b];
+    [[self cell] setHasLeftCap:b];
 }
 
 - (void) setHasRightCap:(BOOL) b
 {
-	[[self cell] setHasRightCap:b];
+    [[self cell] setHasRightCap:b];
 }
 
 - (void) setTitleColor:(NSColor *) c
 {
-	[[self cell] setTitleColor:c];
-	[self setNeedsDisplay:true];
+    [[self cell] setTitleColor:c];
+    [self setNeedsDisplay:true];
 }
 
 - (void) mouseDown:(NSEvent *) e
 {
-	[[self cell] mouseDown:e controlView:self];
+    [[self cell] mouseDown:e controlView:self];
 }
 
 - (BOOL) isFlipped
 {
-	return NO;
+    return NO;
 }
 
 @end
@@ -645,166 +646,166 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 - (id) initWithIdentifier:(id) identifier
 {
-	parent = nil;
-	view = nil;
-	button = nil;
-	label = nil;
+    parent = nil;
+    view = nil;
+    button = nil;
+    label = nil;
 
-	lr_cursor = [[NSCursor alloc] initWithImage:[NSImage imageNamed:@"lr_cursor.tiff"] hotSpot:NSMakePoint (8.0f,8.0f)];
-	dimple = [NSImage imageNamed:@"dimple.tiff"];
-	
-	[getTabMenuNib() instantiateNibWithOwner:self topLevelObjects:nil];
+    lr_cursor = [[NSCursor alloc] initWithImage:[NSImage imageNamed:@"lr_cursor.tiff"] hotSpot:NSMakePoint (8.0f,8.0f)];
+    dimple = [NSImage imageNamed:@"dimple.tiff"];
+    
+    [getTabMenuNib() instantiateNibWithOwner:self topLevelObjects:nil];
 
-	return self;
+    return self;
 }
 
 - (void) dealloc
 {
-	[label release];
-	[button release];
-	[titleColor release];
-	[view release];
-	[ctxMenu release];
-	[super dealloc];
+    [label release];
+    [button release];
+    [titleColor release];
+    [view release];
+    [ctxMenu release];
+    [super dealloc];
 }
 
 - (void) makeButton:(SGWrapView *) box
-			  where:(NSUInteger) where
-		  withClose:(BOOL) with_close
+              where:(NSUInteger) where
+          withClose:(BOOL) with_close
 {
-	button = [[SGTabViewButton alloc] init]; // ???: not released here?
-	[button setAction:@selector (doit:)];
-	[button setTarget:self];
-	[button setCloseAction:@selector (doClose:)];
-	[button setCloseTarget:self];
-	[button setHideCloseButton:!with_close];
-	[[button cell] setMenu:ctxMenu];
-	
-	[box addSubview:button];
-	[box setOrder:where forView:button];
+    button = [[SGTabViewButton alloc] init]; // ???: not released here?
+    [button setAction:@selector (doit:)];
+    [button setTarget:self];
+    [button setCloseAction:@selector (doClose:)];
+    [button setCloseTarget:self];
+    [button setHideCloseButton:!with_close];
+    [[button cell] setMenu:ctxMenu];
+    
+    [box addSubview:button];
+    [box setOrder:where forView:button];
 
-	[self setLabel:label];
+    [self setLabel:label];
 }
 
 - (void) noButton
 {
-	if (button)
-	{
-		[button removeFromSuperview];
-		[button release];
-		button = nil;
-	}
+    if (button)
+    {
+        [button removeFromSuperview];
+        [button release];
+        button = nil;
+    }
 }
 
 - (SGTabView *) tabView
 {
-	return parent;
+    return parent;
 }
 
 - (BOOL)isFrontTab
 {
-	return [parent selectedTabViewItem] == self;
+    return [parent selectedTabViewItem] == self;
 }
 
 - (void) setHideCloseButton:(BOOL) hidem
 {
-	[button setHideCloseButton:hidem];
+    [button setHideCloseButton:hidem];
 }
 
 - (void) setTitleColor:(NSColor *) color
 {
-	[titleColor release];
-	titleColor = [color retain];
-	if (button)
-		[button setTitleColor:color];
-	if (parent && parent->outline)
-		[parent->outline reloadData];
+    [titleColor release];
+    titleColor = [color retain];
+    if (button)
+        [button setTitleColor:color];
+    if (parent && parent->outline)
+        [parent->outline reloadData];
 }
 
 - (void) doClose:(id)sender
 {
-	// TODO
-	// This method shoud probably close the tab
-	// and behave much like clicking the red close
-	// button on a window.
-	if (parent)
-		[[parent delegate] tabWantsToClose:self];
+    // TODO
+    // This method shoud probably close the tab
+    // and behave much like clicking the red close
+    // button on a window.
+    if (parent)
+        [[parent delegate] tabWantsToClose:self];
 }
 
 - (void) link_delink:(id)sender
 {
-	if (parent)
-		[[parent delegate] link_delink:self];
+    if (parent)
+        [[parent delegate] link_delink:self];
 }
 
 - (void) doit:(id)sender
 {
-	if (parent)
-	{
-		[button setIntValue:1];
-		[parent selectTabViewItem:self];
-	}
+    if (parent)
+    {
+        [button setIntValue:1];
+        [parent selectTabViewItem:self];
+    }
 }
 
 - (void) setLabel:(NSString *) new_label
 {
-	if (new_label != label)
-	{
-		[label release];
-		label = [new_label retain];
-	}
-	
-	if (button)
-	{	
-		[button setTitle:label];
-		[button sizeToFit];
-	}
-	else if (parent && parent->outline)
-	{
-		[parent->outline reloadData];
-	}
+    if (new_label != label)
+    {
+        [label release];
+        label = [new_label retain];
+    }
+    
+    if (button)
+    {    
+        [button setTitle:label];
+        [button sizeToFit];
+    }
+    else if (parent && parent->outline)
+    {
+        [parent->outline reloadData];
+    }
 }
 
 - (void) setSelected:(BOOL) selected
 {
-	if (button)
-		[button setIntegerValue:selected ? 1 : 0];
+    if (button)
+        [button setIntegerValue:selected ? 1 : 0];
 }
 
 - (void) setView:(NSView *) new_view
 {
-	if (view)
-	{
-		[view removeFromSuperview];
-		[view release];
-	}
+    if (view)
+    {
+        [view removeFromSuperview];
+        [view release];
+    }
 
-	view = [new_view retain];
+    view = [new_view retain];
 
-	if (parent)
-	{
-		// 27-aug-04
-		//[parent addSubview:view];
-		//if (self == parent->selected_tab)
-		//	[parent setStretchView:view];
-		//else
-		//	[view setHidden:true];
-		if (self == parent->selected_tab) // 27-aug-04
-		{
-			[parent addSubview:view];	 // 27-aug-04
-			[parent setStretchView:view]; // 27-aug-04
-		}
-	}
+    if (parent)
+    {
+        // 27-aug-04
+        //[parent addSubview:view];
+        //if (self == parent->selected_tab)
+        //    [parent setStretchView:view];
+        //else
+        //    [view setHidden:true];
+        if (self == parent->selected_tab) // 27-aug-04
+        {
+            [parent addSubview:view];     // 27-aug-04
+            [parent setStretchView:view]; // 27-aug-04
+        }
+    }
 }
 
 - (id) initialFirstResponder
 {
-	return initial_first_responder;
+    return initial_first_responder;
 }
 
 - (void) setInitialFirstResponder:(NSView *) the_view
 {
-	initial_first_responder = the_view;
+    initial_first_responder = the_view;
 }
 
 @end
@@ -816,677 +817,671 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 - (id) initWithFrame:(NSRect) frameRect
 {
-	if (([super initWithFrame:frameRect]) != nil) {
-		self->tabs = [[NSMutableArray alloc] init];
-		self->tabViewType = NSTopTabsBezelBorder;
-		self->xa_outline_width = 150;
-		self->groups = [[NSMutableArray alloc] init];
-	
-		[self setOrientation:SGBoxOrientationVertical];
-		[self setMinorDefaultJustification:SGBoxMinorJustificationFull];
-		[self setMajorInnerMargin:0.0f];
-		[self setMajorOutterMargin:0.0f];
-		[self setMinorMargin:0.0f];
-	
-		[self setTabViewType:NSTopTabsBezelBorder];
-	}
-	return self;
+    if (([super initWithFrame:frameRect]) != nil) {
+        self->tabs = [[NSMutableArray alloc] init];
+        self->tabViewType = NSTopTabsBezelBorder;
+        self->xa_outline_width = 150;
+        self->groups = [[NSMutableArray alloc] init];
+    
+        [self setOrientation:SGBoxOrientationVertical];
+        [self setMinorDefaultJustification:SGBoxMinorJustificationFull];
+        [self setMajorInnerMargin:0.0f];
+        [self setMajorOutterMargin:0.0f];
+        [self setMinorMargin:0.0f];
+    
+        [self setTabViewType:NSTopTabsBezelBorder];
+    }
+    return self;
 }
 
 - (void) dealloc
 {
-	//[outline release];	We don't explicitly retain this.
-	[tabs release];
-	[groups release];
-	[super dealloc];
+    //[outline release];    We don't explicitly retain this.
+    [tabs release];
+    [groups release];
+    [super dealloc];
 }
 
 - (void) setOutlineWidth:(CGFloat) width
 {
-	self->xa_outline_width = width;
-	if (outline)
-	{
-		if (width < 50.0f)			// Just because
-			width = 50.0f;
-		else if (width > 300.0f)	// Just because
-			width = 300.0f;
-		NSScrollView *outlineScroll = [outline enclosingScrollView];
-		[outlineScroll setFrameSize:NSMakeSize(width, [outlineScroll frame].size.height)];
-	}
+    self->xa_outline_width = width;
+    if (outline)
+    {
+        if (width < 50.0f)            // Just because
+            width = 50.0f;
+        else if (width > 300.0f)    // Just because
+            width = 300.0f;
+        NSScrollView *outlineScroll = [outline enclosingScrollView];
+        [outlineScroll setFrameSize:NSMakeSize(width, [outlineScroll frame].size.height)];
+    }
 }
 
 - (SGTabViewGroupInfo *)getGroupInfo:(NSInteger) group
 {
-	SGTabViewGroupInfo *info = nil;
-	for (SGTabViewGroupInfo *this_info in groups) {
-		if (this_info->group == group)
-		{
-			info = this_info;
-			break;
-		}
-	}
-	
-	if (info == nil)
-	{
-		info = [[SGTabViewGroupInfo alloc] init];
-		info->group = group;
-		[groups addObject:info];
-		[outline reloadData];
-		[outline expandItem:info];
-		[info release];
-	}
-	
-	return info;
+    SGTabViewGroupInfo *info = nil;
+    for (SGTabViewGroupInfo *this_info in groups) {
+        if (this_info->group == group)
+        {
+            info = this_info;
+            break;
+        }
+    }
+    
+    if (info == nil)
+    {
+        info = [[SGTabViewGroupInfo alloc] init];
+        info->group = group;
+        [groups addObject:info];
+        [outline reloadData];
+        [outline expandItem:info];
+        [info release];
+    }
+    
+    return info;
 }
 
 - (void) setName:(NSString *)name forGroup:(NSInteger)group
 {
-	[[self getGroupInfo:group] setName:name];
-	[outline reloadData];
+    [[self getGroupInfo:group] setName:name];
+    [outline reloadData];
 }
 
 - (NSString *) groupName:(NSInteger) group
 {
-	return [[self getGroupInfo:group] name];
+    return [[self getGroupInfo:group] name];
 }
 
 - (void) setHideCloseButtons:(BOOL) hidem
 {
-	self->hideClose = hidem;
-	
-	for (SGTabViewItem *tab in tabs)
-	{
-		[tab setHideCloseButton:hideClose];
-	}
+    self->hideClose = hidem;
+    
+    for (SGTabViewItem *tab in tabs)
+    {
+        [tab setHideCloseButton:hideClose];
+    }
 }
 
 - (NSArray *) tabViewItems
 {
-	return tabs;
+    return tabs;
 }
 
 - (void) setCaps
 {
-	if (!hbox)
-		return;
-		
-	SGTabViewItem *last_tab = nil;
-	for (SGTabViewItem *this_tab in tabs)
-	{
-		[this_tab->button setHasLeftCap:!last_tab || (this_tab->group != last_tab->group)];
-		if (last_tab)
-			[last_tab->button setHasRightCap:this_tab->group != last_tab->group];
-		last_tab = this_tab;
-	}
-	if (last_tab)
-		[last_tab->button setHasRightCap:YES];
+    if (!hbox)
+        return;
+        
+    SGTabViewItem *last_tab = nil;
+    for (SGTabViewItem *this_tab in tabs)
+    {
+        [this_tab->button setHasLeftCap:!last_tab || (this_tab->group != last_tab->group)];
+        if (last_tab)
+            [last_tab->button setHasRightCap:this_tab->group != last_tab->group];
+        last_tab = this_tab;
+    }
+    if (last_tab)
+        [last_tab->button setHasRightCap:YES];
 }
 
 - (void) makeTabs
 {
-	if (outline)
-	{
-		[[outline enclosingScrollView] removeFromSuperview];
-		outline = nil;
-	}
-	
-	if (!hbox)
-	{
-		hbox = [[SGWrapView alloc] initWithFrame:NSMakeRect(0.0f, 0.0f, 1.0f, 1.0f)];
-		[self addSubview:hbox];
-		[hbox release];
-		
-		[self setOrder:0 forView:hbox];
+    if (outline)
+    {
+        [[outline enclosingScrollView] removeFromSuperview];
+        outline = nil;
+    }
+    
+    if (!hbox)
+    {
+        hbox = [[SGWrapView alloc] initWithFrame:NSMakeRect(0.0f, 0.0f, 1.0f, 1.0f)];
+        [self addSubview:hbox];
+        [hbox release];
+        
+        [self setOrder:0 forView:hbox];
 
-		for (NSUInteger i = 0; i < [tabs count]; i ++)
-		{
-			SGTabViewItem *this_tab = [tabs objectAtIndex:i];
-			[this_tab makeButton:hbox where:i withClose:!hideClose];
-		}
-		
-		[self setCaps];
-		
-		[selected_tab setSelected:YES];
-	}
+        for (NSUInteger i = 0; i < [tabs count]; i ++)
+        {
+            SGTabViewItem *this_tab = [tabs objectAtIndex:i];
+            [this_tab makeButton:hbox where:i withClose:!hideClose];
+        }
+        
+        [self setCaps];
+        
+        [selected_tab setSelected:YES];
+    }
 }
 
 - (void) makeOutline
 {
-	if (hbox)
-	{
-		for (SGTabViewItem *this_tab in tabs)
-		{
-			[this_tab noButton];
-		}
+    if (hbox)
+    {
+        for (SGTabViewItem *this_tab in tabs)
+        {
+            [this_tab noButton];
+        }
 
-		[hbox removeFromSuperview];
-		hbox = nil;
-	}
-	
-	if (!outline)
-	{
-		ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-		NSScrollView *outlineScroll = [[[NSScrollView alloc] initWithFrame:NSMakeRect (0.0f, 0.0f, xa_outline_width, 1.0f)] autorelease];
-		[self addSubview:outlineScroll];
-		
-		[self setOrder:0 forView:outlineScroll];
-		
-		NSFont *font = [NSFont systemFontOfSize:[NSFont smallSystemFontSize]];
-		NSLayoutManager * layout_manager=[[NSLayoutManager new] autorelease];
-		
-		SGTabViewOutlineCell *data_cell = [[SGTabViewOutlineCell alloc] initTextCell:@""];
-		
-		NSTableColumn *col = [[NSTableColumn alloc] initWithIdentifier:@""];
-		[col setWidth:xa_outline_width];
-		[col setDataCell:data_cell];
-		[data_cell setFont:font];
-		[[col headerCell] setStringValue:@"Tabs"];
-		
-		[data_cell release];
-		
-		outline = [[[SGTabViewOutlineView alloc] initWithFrame:NSMakeRect (0.0f, 0.0f, 1.0f, 1.0f)] autorelease];
-		[outline setIndentationPerLevel:10];
-		//[outline setIndentationMarkerFollowsCell:NO];
-		[outline addTableColumn:col];
-		[outline setOutlineTableColumn:col];
-		[outlineScroll setDocumentView:outline];
-		[outline setFrame:[outlineScroll documentVisibleRect]];
-		[outline setAutoresizingMask:NSViewWidthSizable];
-		[outline setRowHeight:[layout_manager defaultLineHeightForFont:font] + 1];
-		[outline setAllowsEmptySelection:NO];
+        [hbox removeFromSuperview];
+        hbox = nil;
+    }
+    
+    if (!outline)
+    {
+        ColorPalette *p = [[AquaChat sharedAquaChat] palette];
+        NSScrollView *outlineScroll = [[[NSScrollView alloc] initWithFrame:NSMakeRect (0.0f, 0.0f, xa_outline_width, 1.0f)] autorelease];
+        [self addSubview:outlineScroll];
+        
+        [self setOrder:0 forView:outlineScroll];
+        
+        NSFont *font = [NSFont systemFontOfSize:[NSFont smallSystemFontSize]];
+        NSLayoutManager * layout_manager=[[NSLayoutManager new] autorelease];
+        
+        SGTabViewOutlineCell *data_cell = [[SGTabViewOutlineCell alloc] initTextCell:@""];
+        
+        NSTableColumn *col = [[NSTableColumn alloc] initWithIdentifier:@""];
+        [col setWidth:xa_outline_width];
+        [col setDataCell:data_cell];
+        [data_cell setFont:font];
+        [[col headerCell] setStringValue:@"Tabs"];
+        
+        [data_cell release];
+        
+        outline = [[[SGTabViewOutlineView alloc] initWithFrame:NSMakeRect (0.0f, 0.0f, 1.0f, 1.0f)] autorelease];
+        [outline setIndentationPerLevel:10];
+        //[outline setIndentationMarkerFollowsCell:NO];
+        [outline addTableColumn:col];
+        [outline setOutlineTableColumn:col];
+        [outlineScroll setDocumentView:outline];
+        [outline setFrame:[outlineScroll documentVisibleRect]];
+        [outline setAutoresizingMask:NSViewWidthSizable];
+        [outline setRowHeight:[layout_manager defaultLineHeightForFont:font] + 1];
+        [outline setAllowsEmptySelection:NO];
 
-		[outline setDelegate:self];
-		[outline setDataSource:self];
-		[outline reloadData];
-		
-		for (SGTabViewGroupInfo *info in groups)
-			[outline expandItem:info];
+        [outline setDelegate:self];
+        [outline setDataSource:self];
+        [outline reloadData];
+        
+        for (SGTabViewGroupInfo *info in groups)
+            [outline expandItem:info];
 
-		NSInteger row = [outline rowForItem:selected_tab];
-		[outline selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
-		if (prefs.tab_layout == 2 && prefs.style_inputbox) {
-			[data_cell setTextColor:[p getColor:AC_FGCOLOR]];
-			[outline setBackgroundColor:[p getColor:AC_BGCOLOR]];
-		}
-	}
+        NSInteger row = [outline rowForItem:selected_tab];
+        [outline selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+        if (prefs.tab_layout == 2 && prefs.style_inputbox) {
+            [data_cell setTextColor:[p getColor:AC_FGCOLOR]];
+            [outline setBackgroundColor:[p getColor:AC_BGCOLOR]];
+        }
+    }
 }
 
 - (void) setTabViewType:(NSTabViewType) new_tabViewType
 {
-	self->tabViewType = new_tabViewType;
-	
-	SGBoxOrientation newOrientation;
-	SGBoxOrder newOrder;
-	SGBoxOrder boxOrder;
-	//short margin = 0;
-	SGBoxMargin imargin = 0;
-	float rotation;
+    self->tabViewType = new_tabViewType;
+    
+    SGBoxOrientation newOrientation;
+    SGBoxOrder newOrder;
+    //short margin = 0;
+    SGBoxMargin imargin = 0;
+    float rotation;
 
-	switch (tabViewType)
-	{
-		case SGOutlineTabs:
-			newOrientation = SGBoxOrientationVertical;
-			newOrder = SGBoxOrderFIFO;
-			boxOrder = SGBoxOrderLIFO;
-			rotation = 0;
-			imargin = 10;
-			break;
-			
-		case NSBottomTabsBezelBorder:
-			newOrientation = SGBoxOrientationHorizontal;
-			newOrder = SGBoxOrderFIFO;
-			boxOrder = SGBoxOrderFIFO;
-			rotation = 0;
-			break;
-			
-		case NSRightTabsBezelBorder:
-			newOrientation = SGBoxOrientationVertical;
-			newOrder = SGBoxOrderLIFO;
-			boxOrder = SGBoxOrderLIFO;
-			rotation = 90;
-			break;
-			
-		case NSLeftTabsBezelBorder:
-			newOrientation = SGBoxOrientationVertical;
-			newOrder = SGBoxOrderFIFO;
-			boxOrder = SGBoxOrderLIFO;
-			rotation = -90;
-			break;
+    switch (tabViewType)
+    {
+        case SGOutlineTabs:
+            newOrientation = SGBoxOrientationVertical;
+            newOrder = SGBoxOrderFIFO;
+            rotation = 0;
+            imargin = 10;
+            break;
+            
+        case NSBottomTabsBezelBorder:
+            newOrientation = SGBoxOrientationHorizontal;
+            newOrder = SGBoxOrderFIFO;
+            rotation = 0;
+            break;
+            
+        case NSRightTabsBezelBorder:
+            newOrientation = SGBoxOrientationVertical;
+            newOrder = SGBoxOrderLIFO;
+            rotation = 90;
+            break;
+            
+        case NSLeftTabsBezelBorder:
+            newOrientation = SGBoxOrientationVertical;
+            newOrder = SGBoxOrderFIFO;
+            rotation = -90;
+            break;
 
-		case NSTopTabsBezelBorder:
-		default:
-			newOrientation = SGBoxOrientationHorizontal;
-			newOrder = SGBoxOrderLIFO;
-			boxOrder = SGBoxOrderFIFO;
-			rotation = 0;
-			break;
-	}
-	
-	[self setOrientation:SGBoxOrientationVertical==newOrientation?SGBoxOrientationHorizontal:SGBoxOrientationVertical];
-	[self setOrder:newOrder];
-	[self setMajorInnerMargin:imargin];
-	//[self setMinorMargin:margin];
+        case NSTopTabsBezelBorder:
+        default:
+            newOrientation = SGBoxOrientationHorizontal;
+            newOrder = SGBoxOrderLIFO;
+            rotation = 0;
+            break;
+    }
+    
+    [self setOrientation:SGBoxOrientationVertical==newOrientation?SGBoxOrientationHorizontal:SGBoxOrientationVertical];
+    [self setOrder:newOrder];
+    [self setMajorInnerMargin:imargin];
+    //[self setMinorMargin:margin];
 
-	if (tabViewType == SGOutlineTabs)
-		[self makeOutline];
-	else
-	{
-		[self makeTabs];
-		[hbox setBoundsRotation:rotation];
-		[hbox queue_layout];
-	}
+    if (tabViewType == SGOutlineTabs)
+        [self makeOutline];
+    else
+    {
+        [self makeTabs];
+        [hbox setBoundsRotation:rotation];
+        [hbox queue_layout];
+    }
 }
 
 - (SGTabViewItem *) tabViewItemAtIndex:(NSInteger) index
 {
-	return (NSUInteger) index < [tabs count] ? [tabs objectAtIndex:index] : nil;
+    return (NSUInteger) index < [tabs count] ? [tabs objectAtIndex:index] : nil;
 }
 
 - (NSInteger) numberOfTabViewItems
 {
-	return [tabs count];
+    return [tabs count];
 }
 
 - (NSInteger) indexOfTabViewItem:(SGTabViewItem *) tabViewItem
 {
-	return [tabs indexOfObject:tabViewItem];
+    return [tabs indexOfObject:tabViewItem];
 }
 
 - (void) addTabViewItem:(SGTabViewItem *) tabViewItem
 {
-	[self addTabViewItem:tabViewItem toGroup:0];
+    [self addTabViewItem:tabViewItem toGroup:0];
 }
 
 - (void) removeTabViewItem:(SGTabViewItem *) tabViewItem
 {
-	if ([tabViewItem tabView] != self)
-		return;
-	
-	[tabViewItem->view removeFromSuperview];
-	[tabViewItem noButton];
-	tabViewItem->parent = nil;
+    if ([tabViewItem tabView] != self)
+        return;
+    
+    [tabViewItem->view removeFromSuperview];
+    [tabViewItem noButton];
+    tabViewItem->parent = nil;
 
-	if (selected_tab == tabViewItem)
-	{
-		selected_tab = nil;
+    if (selected_tab == tabViewItem)
+    {
+        selected_tab = nil;
 
-		if ([tabs count] > 1)
-		{
-			// If there is another tab on the right of the tab being closed, and it's in the same group, choose it;
-			// Else, if there is another tab on the left of the tab being closed, and it's in the same group, choose it;
-			// Else, choose the tab on the right unless it's the last tab;
-			// Else, choose the tab on the left.
-			NSUInteger tab_num = [tabs indexOfObject:tabViewItem];
-			NSUInteger last_tab = [tabs count] - 1;
-			NSUInteger tab_to_select;
-			if (tab_num < last_tab && ((SGTabViewItem *)[tabs objectAtIndex:tab_num + 1])->group == tabViewItem->group)
-				tab_to_select = tab_num + 1;
-			else if (tab_num > 0 && ((SGTabViewItem *)[tabs objectAtIndex:tab_num - 1])->group == tabViewItem->group)
-				tab_to_select = tab_num - 1;
-			else
-				tab_to_select = tab_num == last_tab ? tab_num - 1 : tab_num + 1;
-			[self selectTabViewItemAtIndex:tab_to_select];
-		}
-	}
-	
-	[tabs removeObject:tabViewItem];
-	
-	SGTabViewGroupInfo *info = [self getGroupInfo:tabViewItem->group];
-	[info removeTabViewItem:tabViewItem];
-	if ([info->tabs count] == 0)
-		[groups removeObject:[self getGroupInfo:tabViewItem->group]];
+        if ([tabs count] > 1)
+        {
+            // If there is another tab on the right of the tab being closed, and it's in the same group, choose it;
+            // Else, if there is another tab on the left of the tab being closed, and it's in the same group, choose it;
+            // Else, choose the tab on the right unless it's the last tab;
+            // Else, choose the tab on the left.
+            NSUInteger tab_num = [tabs indexOfObject:tabViewItem];
+            NSUInteger last_tab = [tabs count] - 1;
+            NSUInteger tab_to_select;
+            if (tab_num < last_tab && ((SGTabViewItem *)[tabs objectAtIndex:tab_num + 1])->group == tabViewItem->group)
+                tab_to_select = tab_num + 1;
+            else if (tab_num > 0 && ((SGTabViewItem *)[tabs objectAtIndex:tab_num - 1])->group == tabViewItem->group)
+                tab_to_select = tab_num - 1;
+            else
+                tab_to_select = tab_num == last_tab ? tab_num - 1 : tab_num + 1;
+            [self selectTabViewItemAtIndex:tab_to_select];
+        }
+    }
+    
+    [tabs removeObject:tabViewItem];
+    
+    SGTabViewGroupInfo *info = [self getGroupInfo:tabViewItem->group];
+    [info removeTabViewItem:tabViewItem];
+    if ([info->tabs count] == 0)
+        [groups removeObject:[self getGroupInfo:tabViewItem->group]];
 
-	if (outline)
-	{
-		[outline reloadData];
-		// Removing items above the current item muck up the selected item in the outline
-		NSInteger row = [outline rowForItem:selected_tab];
-		[outline selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
-	}
+    if (outline)
+    {
+        [outline reloadData];
+        // Removing items above the current item muck up the selected item in the outline
+        NSInteger row = [outline rowForItem:selected_tab];
+        [outline selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+    }
 
-	[self setCaps];
+    [self setCaps];
 }
 
 - (SGTabViewItem *) selectedTabViewItem
 {
-	return selected_tab;
+    return selected_tab;
 }
 
 - (void) selectNextTabViewItem:(id)sender
 {
-	NSInteger n = [self indexOfTabViewItem:[self selectedTabViewItem]] +1;
-	if (n < [self numberOfTabViewItems])
-		[self selectTabViewItemAtIndex:n];
+    NSInteger n = [self indexOfTabViewItem:[self selectedTabViewItem]] +1;
+    if (n < [self numberOfTabViewItems])
+        [self selectTabViewItemAtIndex:n];
 }
 
 - (void) selectPreviousTabViewItem:(id)sender
 {
-	NSInteger n = [self indexOfTabViewItem:[self selectedTabViewItem]] - 1;
-	if (n >= 0)
-		[self selectTabViewItemAtIndex:n];
+    NSInteger n = [self indexOfTabViewItem:[self selectedTabViewItem]] - 1;
+    if (n >= 0)
+        [self selectTabViewItemAtIndex:n];
 }
 
 - (void) selectTabViewItemAtIndex:(NSInteger) index
 {
-	[self selectTabViewItem:[self tabViewItemAtIndex:index]];
+    [self selectTabViewItem:[self tabViewItemAtIndex:index]];
 }
 
 - (void) selectTabViewItem:(SGTabViewItem *) tabViewItem
 {
-	if (selected_tab)
-	{
-		if (tabViewItem == selected_tab) {
-			return;
-		}
-		[selected_tab->view removeFromSuperview];
-		[selected_tab setSelected:NO];
-	}
+    if (selected_tab)
+    {
+        if (tabViewItem == selected_tab) {
+            return;
+        }
+        [selected_tab->view removeFromSuperview];
+        [selected_tab setSelected:NO];
+    }
 
-	[self setStretchView:tabViewItem->view];
-	[self addSubview:tabViewItem->view];
+    [self setStretchView:tabViewItem->view];
+    [self addSubview:tabViewItem->view];
 
-	selected_tab = tabViewItem;
-	[selected_tab setSelected:YES];
-	
-	
-	if (outline)
-	{
-		NSInteger row = [outline rowForItem:tabViewItem];
-		[outline selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
-	}
-	
-	if (selected_tab->view)
-	{
-		if ([selected_tab initialFirstResponder])
-			[[self window] makeFirstResponder:[selected_tab initialFirstResponder]];
-	}
-		
-	if ([delegate respondsToSelector:@selector(tabView:didSelectTabViewItem:)])
-		[delegate performSelector:@selector(tabView:didSelectTabViewItem:)
-					   withObject:self
-					   withObject:selected_tab];
+    selected_tab = tabViewItem;
+    [selected_tab setSelected:YES];
+    
+    
+    if (outline)
+    {
+        NSInteger row = [outline rowForItem:tabViewItem];
+        [outline selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+    }
+    
+    if (selected_tab->view)
+    {
+        if ([selected_tab initialFirstResponder])
+            [[self window] makeFirstResponder:[selected_tab initialFirstResponder]];
+    }
+        
+    if ([delegate respondsToSelector:@selector(tabView:didSelectTabViewItem:)])
+        [delegate performSelector:@selector(tabView:didSelectTabViewItem:)
+                       withObject:self
+                       withObject:selected_tab];
 
-	// We need to force the newly added item to have the correct size since hidden
-	// items are not layed out (or layed out wrong).
-	[self layout_maybe];
+    // We need to force the newly added item to have the correct size since hidden
+    // items are not layed out (or layed out wrong).
+    [self layout_maybe];
 }
 
 - (BOOL) mouseDownCanMoveWindow
 {
-	return NO;
+    return NO;
 }
 
 - (NSRect) dragAreaRect
 {
-	if (!outline || !selected_tab) return NSZeroRect;
-		
-	NSScrollView *outlineScroll = [outline enclosingScrollView];
-	NSRect outline_frame = [outlineScroll frame];
-	NSRect view_frame = [selected_tab->view frame];
-	CGFloat margin = view_frame.origin.x - outline_frame.origin.x - outline_frame.size.width + 1;
-	NSRect lineRect = NSMakeRect(outline_frame.origin.x + outline_frame.size.width, outline_frame.origin.y,
-								  margin, outline_frame.size.height);
+    if (!outline || !selected_tab) return NSZeroRect;
+        
+    NSScrollView *outlineScroll = [outline enclosingScrollView];
+    NSRect outline_frame = [outlineScroll frame];
+    NSRect view_frame = [selected_tab->view frame];
+    CGFloat margin = view_frame.origin.x - outline_frame.origin.x - outline_frame.size.width + 1;
+    NSRect lineRect = NSMakeRect(outline_frame.origin.x + outline_frame.size.width, outline_frame.origin.y,
+                                  margin, outline_frame.size.height);
 
-	return lineRect;
+    return lineRect;
 }
 
 - (void) resetCursorRects
 {
-	if (outline)
-		[self addCursorRect:[self dragAreaRect] cursor:lr_cursor];
+    if (outline)
+        [self addCursorRect:[self dragAreaRect] cursor:lr_cursor];
 }
 
 // SplitView-like functionality for outline view
 - (void) mouseDown:(NSEvent *) theEvent
 {
-	if (!outline)
-	{
-		[super mouseDown:theEvent];
-		return;
-	}
-	
-	NSPoint point = [theEvent locationInWindow];
-	NSPoint where = [self convertPoint:point fromView:nil];
-	NSRect lineRect = [self dragAreaRect];
-	
-	if (!NSPointInRect (where, lineRect))
-	{
-		[super mouseDown:theEvent];
-		return;
-	}
+    if (!outline)
+    {
+        [super mouseDown:theEvent];
+        return;
+    }
+    
+    NSPoint point = [theEvent locationInWindow];
+    NSPoint where = [self convertPoint:point fromView:nil];
+    NSRect lineRect = [self dragAreaRect];
+    
+    if (!NSPointInRect (where, lineRect))
+    {
+        [super mouseDown:theEvent];
+        return;
+    }
 
-	NSScrollView *outlineScroll = [outline enclosingScrollView];
-	NSRect outline_frame = [outlineScroll frame];
-	
-	for (;;)
-	{
-		NSEvent *theEvent = [[self window] nextEventMatchingMask:NSLeftMouseUpMask |
-																 NSLeftMouseDraggedMask];
-		if ([theEvent type] == NSLeftMouseUp)
-			break;
-		
-		NSPoint mouseLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-		
-		CGFloat width = mouseLoc.x - where.x + outline_frame.size.width;
-		[self setOutlineWidth:width];
+    NSScrollView *outlineScroll = [outline enclosingScrollView];
+    NSRect outline_frame = [outlineScroll frame];
+    
+    for (;;)
+    {
+        NSEvent *theEvent = [[self window] nextEventMatchingMask:NSLeftMouseUpMask |
+                                                                 NSLeftMouseDraggedMask];
+        if ([theEvent type] == NSLeftMouseUp)
+            break;
+        
+        NSPoint mouseLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+        
+        CGFloat width = mouseLoc.x - where.x + outline_frame.size.width;
+        [self setOutlineWidth:width];
 
-		[[self delegate] tabViewDidResizeOutlne:xa_outline_width];
-		
-		[[self window] invalidateCursorRectsForView:self];
-	}
+        [[self delegate] tabViewDidResizeOutlne:xa_outline_width];
+        
+        [[self window] invalidateCursorRectsForView:self];
+    }
 }
 
 - (void) drawBackground
 {
-	if (!hbox)
-		return;
-		
-	NSRect r = [selected_tab->view frame];
-	//NSRect br = [hbox frame];
-	const CGFloat dy = 12;		// floor (br.size.height / [hbox rowCount] / 2)
-	const CGFloat dx = 12;		// floor (br.size.width / [hbox rowCount] / 2)
+    if (!hbox)
+        return;
+        
+    NSRect r = [selected_tab->view frame];
+    //NSRect br = [hbox frame];
+    const CGFloat dy = 12;        // floor (br.size.height / [hbox rowCount] / 2)
+    const CGFloat dx = 12;        // floor (br.size.width / [hbox rowCount] / 2)
 
-	switch (tabViewType)
-	{
-		case NSBottomTabsBezelBorder:
-			r.origin.y -= dy;
-			r.size.height += dy;
-			break;
-			
-		case NSRightTabsBezelBorder:
-			r.size.width += dx;
-			break;
-			
-		case NSLeftTabsBezelBorder:
-			r.origin.x -= dx;
-			r.size.width += dx;
-			break;
+    switch (tabViewType)
+    {
+        case NSBottomTabsBezelBorder:
+            r.origin.y -= dy;
+            r.size.height += dy;
+            break;
+            
+        case NSRightTabsBezelBorder:
+            r.size.width += dx;
+            break;
+            
+        case NSLeftTabsBezelBorder:
+            r.origin.x -= dx;
+            r.size.width += dx;
+            break;
 
-		case NSTopTabsBezelBorder:
-		default:
-			r.size.height += dy;
-			break;
-	}
+        case NSTopTabsBezelBorder:
+        default:
+            r.size.height += dy;
+            break;
+    }
 
-	HIRect paneRect;
-	paneRect.origin.x = r.origin.x;
-	paneRect.origin.y = r.origin.y;
-	paneRect.size.width = r.size.width;
-	paneRect.size.height = r.size.height;
-	
+    HIRect paneRect;
+    paneRect.origin.x = r.origin.x;
+    paneRect.origin.y = r.origin.y;
+    paneRect.size.width = r.size.width;
+    paneRect.size.height = r.size.height;
+    
 #if 0
-	// Doesn't look right on 10.3
-	HIThemeTabPaneDrawInfo drawInfo;
-	drawInfo.version = 1;
-	drawInfo.state = [[self window] isMainWindow] ? kThemeStateActive : kThemeStateInactive;
-	drawInfo.direction = kThemeTabNorth;
-	drawInfo.size = kHIThemeTabSizeNormal;
-	drawInfo.kind = kHIThemeTabKindNormal;
-	drawInfo.adornment = kHIThemeTabPaneAdornmentNormal;
-	
-	OSStatus err = HIThemeDrawTabPane(&paneRect, &drawInfo, (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort],
-		[self isFlipped] ? kHIThemeOrientationNormal : kHIThemeOrientationInverted);
-	if (err != noErr)
-		[NSException raise:NSGenericException format:@"SGTabView: HIThemeDrawTabPane returned %d", err];
+    // Doesn't look right on 10.3
+    HIThemeTabPaneDrawInfo drawInfo;
+    drawInfo.version = 1;
+    drawInfo.state = [[self window] isMainWindow] ? kThemeStateActive : kThemeStateInactive;
+    drawInfo.direction = kThemeTabNorth;
+    drawInfo.size = kHIThemeTabSizeNormal;
+    drawInfo.kind = kHIThemeTabKindNormal;
+    drawInfo.adornment = kHIThemeTabPaneAdornmentNormal;
+    
+    OSStatus err = HIThemeDrawTabPane(&paneRect, &drawInfo, (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort],
+        [self isFlipped] ? kHIThemeOrientationNormal : kHIThemeOrientationInverted);
+    if (err != noErr)
+        [NSException raise:NSGenericException format:@"SGTabView: HIThemeDrawTabPane returned %d", err];
 #else
 
-	HIThemeGroupBoxDrawInfo drawInfo;
-	drawInfo.version = 1;
-	drawInfo.state = [[self window] isMainWindow] ? kThemeStateActive : kThemeStateInactive;
-	drawInfo.kind = kHIThemeGroupBoxKindPrimary;
-	
-	HIThemeDrawGroupBox(&paneRect, &drawInfo, (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort],
-		[self isFlipped] ? kHIThemeOrientationNormal : kHIThemeOrientationInverted);
-	
+    HIThemeGroupBoxDrawInfo drawInfo;
+    drawInfo.version = 1;
+    drawInfo.state = [[self window] isMainWindow] ? kThemeStateActive : kThemeStateInactive;
+    drawInfo.kind = kHIThemeGroupBoxKindPrimary;
+    
+    HIThemeDrawGroupBox(&paneRect, &drawInfo, (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort],
+        [self isFlipped] ? kHIThemeOrientationNormal : kHIThemeOrientationInverted);
+    
 #endif
 }
 
 - (void) drawDivider
 {
-	NSRect lineRect = [self dragAreaRect];
-	NSPoint point;
-	point.x = lineRect.origin.x + ((lineRect.size.width  - [dimple size].width ) / 2);
-	point.y = lineRect.origin.y + ((lineRect.size.height - [dimple size].height) / 2);
-	[dimple compositeToPoint:point operation:NSCompositeSourceOver];
+    NSRect lineRect = [self dragAreaRect];
+    NSPoint point;
+    point.x = lineRect.origin.x + ((lineRect.size.width  - [dimple size].width ) / 2);
+    point.y = lineRect.origin.y + ((lineRect.size.height - [dimple size].height) / 2);
+    [dimple compositeToPoint:point operation:NSCompositeSourceOver];
 }
 
 - (void) drawRect:(NSRect) aRect
 {
-	if (!selected_tab)
-		return;
+    if (!selected_tab)
+        return;
 
-	if (outline)
-		[self drawDivider];
-	else
-		[self drawBackground];
+    if (outline)
+        [self drawDivider];
+    else
+        [self drawBackground];
 }
 
 - (void) setupItem:(SGTabViewItem *) item where:(int) where
 {
-	if (hbox)
-	{
-		[item makeButton:hbox where:where withClose:!hideClose];
-	}
+    if (hbox)
+    {
+        [item makeButton:hbox where:where withClose:!hideClose];
+    }
 }
 
 - (void) addTabViewItem:(SGTabViewItem *) tabViewItem toGroup:(NSInteger) group
 {
-	if (tabViewItem->parent)
-		return;
+    if (tabViewItem->parent)
+        return;
 
-	tabViewItem->parent = self;
-	tabViewItem->group = group;
+    tabViewItem->parent = self;
+    tabViewItem->group = group;
 
-	// In order for selectNext and selectPrevious to work, we need to add this item
-	// in the correct order.  We'll also insert the tab button at the same position.
-	
-	NSUInteger where = 0;
-	for (; where < [tabs count]; where ++)
-	{
-		SGTabViewItem *this_tab = [tabs objectAtIndex:where];
-		if (this_tab->group == group)
-		{
-			where ++;
-			break;
-		}
-	}
-	for (; where < [tabs count]; where ++)
-	{
-		SGTabViewItem *this_tab = [tabs objectAtIndex:where];
-		if (this_tab->group != group)
-			break;
-	}
+    // In order for selectNext and selectPrevious to work, we need to add this item
+    // in the correct order.  We'll also insert the tab button at the same position.
+    
+    NSUInteger where = 0;
+    for (; where < [tabs count]; where ++)
+    {
+        SGTabViewItem *this_tab = [tabs objectAtIndex:where];
+        if (this_tab->group == group)
+        {
+            where ++;
+            break;
+        }
+    }
+    for (; where < [tabs count]; where ++)
+    {
+        SGTabViewItem *this_tab = [tabs objectAtIndex:where];
+        if (this_tab->group != group)
+            break;
+    }
 
-	[tabs insertObject:tabViewItem atIndex:where];
-	
-	SGTabViewGroupInfo *info = [self getGroupInfo:tabViewItem->group];
-	[info addTabViewItem:tabViewItem];
+    [tabs insertObject:tabViewItem atIndex:where];
+    
+    SGTabViewGroupInfo *info = [self getGroupInfo:tabViewItem->group];
+    [info addTabViewItem:tabViewItem];
 
-	[self setupItem:tabViewItem where:where];
-	
-	[self setCaps];
+    [self setupItem:tabViewItem where:where];
+    
+    [self setCaps];
 
-	if (outline)
-		[outline reloadData];
+    if (outline)
+        [outline reloadData];
 
-	if (!selected_tab)
-		[self selectTabViewItem:tabViewItem];
+    if (!selected_tab)
+        [self selectTabViewItem:tabViewItem];
 }
 
 #pragma mark NSOutlineViewDataSource
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item
 {
-	if (item == nil)
-		return [groups objectAtIndex:index];
-		
-	if ([item isKindOfClass:[SGTabViewGroupInfo class]])
-		return [item tabAtIndex:index];
-		
-	// Not possible
-	return nil;
+    if (item == nil)
+        return [groups objectAtIndex:index];
+        
+    if ([item isKindOfClass:[SGTabViewGroupInfo class]])
+        return [item tabAtIndex:index];
+        
+    // Not possible
+    return nil;
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item
 {
-	return [item isKindOfClass:[SGTabViewGroupInfo class]];
+    return [item isKindOfClass:[SGTabViewGroupInfo class]];
 }
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
 {
-	if (item == nil)
-		return [groups count];
-		
-	if ([item isKindOfClass:[SGTabViewGroupInfo class]])
-		return [item numberOfTabs];
-		
-	return 0;
+    if (item == nil)
+        return [groups count];
+        
+    if ([item isKindOfClass:[SGTabViewGroupInfo class]])
+        return [item numberOfTabs];
+        
+    return 0;
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
 {
-	if ([item isKindOfClass:[SGTabViewGroupInfo class]])
-		return [item name];
-		
-	if ([item isKindOfClass:[SGTabViewItem class]])
-		return [item label];
+    if ([item isKindOfClass:[SGTabViewGroupInfo class]])
+        return [item name];
+        
+    if ([item isKindOfClass:[SGTabViewItem class]])
+        return [item label];
 
-	return @"";
+    return @"";
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item
 {
-	return [item isKindOfClass:[SGTabViewItem class]];
+    return [item isKindOfClass:[SGTabViewItem class]];
 }
 
 - (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item
 {
-	NSColor *color;
-	if (prefs.tab_layout == 2 && prefs.style_inputbox) {
-		ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-		color = [p getColor:AC_FGCOLOR];
-	} else {
-		color = [NSColor blackColor];
-	}
+    NSColor *color;
+    if (prefs.tab_layout == 2 && prefs.style_inputbox) {
+        ColorPalette *p = [[AquaChat sharedAquaChat] palette];
+        color = [p getColor:AC_FGCOLOR];
+    } else {
+        color = [NSColor blackColor];
+    }
 
-	if ([item isKindOfClass:[SGTabViewItem class]])
-	{
-		NSColor *c = [item titleColor];
-		if (c)
-			color = c;
-		[cell setHasClose:!hideClose];
-	}
-	else
-		[cell setHasClose:NO];
+    if ([item isKindOfClass:[SGTabViewItem class]])
+    {
+        NSColor *c = [item titleColor];
+        if (c)
+            color = c;
+        [cell setHasClose:!hideClose];
+    }
+    else
+        [cell setHasClose:NO];
 
-	[cell setTextColor:color];
+    [cell setTextColor:color];
 }
 
 - (void) outlineViewSelectionDidChange:(NSNotification *) notification
 {
-	id item = [outline itemAtRow:[outline selectedRow]];
-	if (item && [item isKindOfClass:[SGTabViewItem class]])
-		[self selectTabViewItem:item];
+    id item = [outline itemAtRow:[outline selectedRow]];
+    if (item && [item isKindOfClass:[SGTabViewItem class]])
+        [self selectTabViewItem:item];
 }
 
 @end

@@ -19,10 +19,10 @@
 
 @interface LogViewWindow : UtilityTabOrWindowView 
 {
-	IBOutlet NSTableView *logTableView;
-	IBOutlet NSTextView *logTextView;
-	IBOutlet NSSearchField *filterSearchField;
-	NSMutableArray *allLogs, *filteredLogs;
+    IBOutlet NSTableView *logTableView;
+    IBOutlet NSTextView *logTextView;
+    IBOutlet NSSearchField *filterSearchField;
+    NSMutableArray *allLogs, *filteredLogs;
 }
 
 - (IBAction)revealInFinder:(id)sender;
