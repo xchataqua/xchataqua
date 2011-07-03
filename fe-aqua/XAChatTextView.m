@@ -78,6 +78,7 @@ static NSCursor *lr_cursor;
                                             selector:@selector(updateAtBottom:)
                                                 name:@"NSViewBoundsDidChangeNotification"
                                               object:[self superview]];
+    [self updateAtBottom:nil];
 }
 
 - (void) dealloc
@@ -429,9 +430,8 @@ static NSCursor *lr_cursor;
 
 - (void) clearText
 {
-    // FIXME: rough solution to solve initialization with scrollToDocumentEnd 1/3
-    numberOfLines = 50;
-    [self setString:@"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"];
+    numberOfLines = 0;
+    [self setString:@""];
 }
 
 - (void) layoutManager:(NSLayoutManager *) aLayoutManager 
@@ -463,7 +463,7 @@ static NSCursor *lr_cursor;
 
     atBottom = dmax == cmax;
 
-    SGLog(FALSE, @"Update at bottom %d\n", atBottom);
+    SGLog(FALSE, @"Update at bottom: dmax=%f, cmax=%f, at_bottom=%d\n", dmax, cmax, atBottom);
 }
 
 - (void) viewDidMoveToWindow

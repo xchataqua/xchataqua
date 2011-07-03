@@ -544,7 +544,6 @@ static NSImage *emptyBulletImage;
     
     [chatTextView setSelectedRange:where];
     [chatTextView scrollRangeToVisible:where];
-    //[chatTextView updateAtBottom];
 }
 
 - (void) cleanHeaderBoxView
@@ -850,7 +849,7 @@ static NSImage *emptyBulletImage;
     [self setupUserlistButtons];
     
     [self setupSessMenuButton];
-    [self clear:0];
+    [self clear];
     [self setNick];
     [self setTitle];
     [self setNonchannel:NO];
@@ -1027,9 +1026,8 @@ static NSImage *emptyBulletImage;
     [self setTopic:""];
 }
 
-- (void) clear:(NSUInteger)lines
+- (void) clear
 {
-    //TODO: implement this
     [chatTextView clearText];
 }
 
@@ -1282,9 +1280,6 @@ static NSImage *emptyBulletImage;
         ColorPalette *p = [[AquaChat sharedAquaChat] palette];
         [chatView setTabTitleColor:[p getColor:AC_FGCOLOR]];
     }
-    
-    // FIXME: rough solution to solve initialization with scrollToDocumentEnd 2/3
-    [chatTextView scrollToEndOfDocument:chatView];
 }
 
 - (void) setNonchannel:(bool) state
@@ -1304,9 +1299,6 @@ static NSImage *emptyBulletImage;
     [limitTextField setEnabled:state];
     [keyTextField setEnabled:state];
     [topicTextField setEditable:state];
-    
-    // FIXME: rough solution to solve initialization with scrollToDocumentEnd 3/3
-    [chatTextView scrollToEndOfDocument:chatView];
 }
 
 - (void) setNick
@@ -1403,7 +1395,7 @@ static NSImage *emptyBulletImage;
     NSTableColumn *column = [columns objectAtIndex:1];
     CGFloat width = user->nickSize.width;
     if (width > maxNickWidth) {
-        maxNickWidth = width+0.5f; // Leopard fix :) Where this 0.25 come from?
+        maxNickWidth = width+0.5f; // Leopard fix :) Where this 0.25 come from?// WEIRDNESS
         [column setWidth: maxNickWidth];
     }
     /* host column */
