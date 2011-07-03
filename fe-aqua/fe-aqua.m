@@ -793,7 +793,7 @@ void fe_notify_ask (char *name, char *networks)
 void
 fe_text_clear (struct session *sess, int lines)
 {
-    [sess->gui->chatWindow clear:lines];
+    [sess->gui->chatWindow clear];
 }
 
 void

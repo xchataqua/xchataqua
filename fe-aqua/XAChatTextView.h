@@ -45,7 +45,8 @@
 	ChatWindow				*dropHandler;
 	CGFloat					fontWidth;
 	BOOL					atBottom;
-	int						numberOfLines;
+	NSInteger				numberOfLines;
+    BOOL                    pendingEditing;
 }
 
 - (void) printText:(NSString *)text;
@@ -54,5 +55,6 @@
 - (void) setPalette:(ColorPalette *) palette;
 - (void) setFont:(NSFont *)font boldFont:(NSFont *) boldFont;
 - (void) setDropHandler:(id)dropHandler;
+- (void) updateAtBottom:(NSNotification *) notif;
 
 @end
