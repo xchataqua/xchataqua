@@ -1287,6 +1287,14 @@ HIThemeSegmentPosition positionTable[2][2] =
     }
 }
 
+#define kBackgroundStyleGroup   0
+#define kBackgroundStyleGL      1
+#define kBackgroundStyleTheme   2
+enum {
+    kTabBorderInset = 9 /* the exact value which matches the NSBox look is 11; however, since we have very little space between the box and the window border, using 9 gives a better visual balance */
+};
+#define BACKGROUND_VERSION  kBackgroundStyleGL
+
 - (void) drawBackground
 {
     if (!hbox)
@@ -1294,39 +1302,37 @@ HIThemeSegmentPosition positionTable[2][2] =
         
     NSRect r = [selected_tab->view frame];
     //NSRect br = [hbox frame];
-    const CGFloat dy = 12;        // floor (br.size.height / [hbox rowCount] / 2)
-    const CGFloat dx = 12;        // floor (br.size.width / [hbox rowCount] / 2)
+#if BACKGROUND_VERSION == kBackgroundStyleGroud
+    //  const float dy = 12;    // floor (br.size.height / [hbox rowCount] / 2)
+    //  const float dx = 12;    // floor (br.size.width / [hbox rowCount] / 2)
+    const float dr = 12;
+#elif BACKGROUND_VERSION == kBackgroundStyleTheme
+    const float d2 = -3;
+    const float dr = kTabBorderInset - d2 - 1;
+    r = NSInsetRect(r, d2, d2);
+#else
+    const float dr = kTabBorderInset;
+#endif
 
     switch (tabViewType)
     {
         case NSBottomTabsBezelBorder:
-            r.origin.y -= dy;
-            r.size.height += dy;
-            break;
-            
-        case NSRightTabsBezelBorder:
-            r.size.width += dx;
+            r.origin.y -= dr;
+        case NSTopTabsBezelBorder:
+        default:
+            r.size.height += dr;
             break;
             
         case NSLeftTabsBezelBorder:
-            r.origin.x -= dx;
-            r.size.width += dx;
-            break;
-
-        case NSTopTabsBezelBorder:
-        default:
-            r.size.height += dy;
+            r.origin.x -= dr;
+        case NSRightTabsBezelBorder:
+            r.size.width += dr;
             break;
     }
-
-    HIRect paneRect;
-    paneRect.origin.x = r.origin.x;
-    paneRect.origin.y = r.origin.y;
-    paneRect.size.width = r.size.width;
-    paneRect.size.height = r.size.height;
     
-#if 0
+#if BACKGROUND_VERSION == kBackgroundStyleTheme
     // Doesn't look right on 10.3
+    HIRect paneRect = NSRectToCGRect(r);
     HIThemeTabPaneDrawInfo drawInfo;
     drawInfo.version = 1;
     drawInfo.state = [[self window] isMainWindow] ? kThemeStateActive : kThemeStateInactive;
@@ -1336,20 +1342,31 @@ HIThemeSegmentPosition positionTable[2][2] =
     drawInfo.adornment = kHIThemeTabPaneAdornmentNormal;
     
     OSStatus err = HIThemeDrawTabPane(&paneRect, &drawInfo, (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort],
-        [self isFlipped] ? kHIThemeOrientationNormal : kHIThemeOrientationInverted);
-    if (err != noErr)
-        [NSException raise:NSGenericException format:@"SGTabView: HIThemeDrawTabPane returned %d", err];
-#else
-
+                                      [self isFlipped] ? kHIThemeOrientationNormal : kHIThemeOrientationInverted);
+    if (err != noErr) [NSException raise:NSGenericException format:@"SGTabView: HIThemeDrawTabPane returned %d", err];
+#elif BACKGROUND_VERSION == kBackgroundStyleGroup
+    HIRect paneRect = NSRectToCGRect(r);
     HIThemeGroupBoxDrawInfo drawInfo;
     drawInfo.version = 1;
     drawInfo.state = [[self window] isMainWindow] ? kThemeStateActive : kThemeStateInactive;
     drawInfo.kind = kHIThemeGroupBoxKindPrimary;
     
     HIThemeDrawGroupBox(&paneRect, &drawInfo, (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort],
-        [self isFlipped] ? kHIThemeOrientationNormal : kHIThemeOrientationInverted);
+                        [self isFlipped] ? kHIThemeOrientationNormal : kHIThemeOrientationInverted);
+#elif BACKGROUND_VERSION == kBackgroundStyleCL
+    [[[NSColor blackColor] colorWithAlphaComponent:0.05] set];
+    [NSBezierPath fillRect:r];
     
-#endif
+    [NSBezierPath setDefaultLineWidth:1];
+    [[NSGraphicsContext currentContext] setShouldAntialias:false];
+    
+    r = NSInsetRect(r,-0.5,-0.5);
+    [[[NSColor grayColor] colorWithAlphaComponent:0.25] set];
+    [NSBezierPath strokeRect:r];
+    r = NSInsetRect(r,-1,-1);
+    [[[NSColor grayColor] colorWithAlphaComponent:0.5] set];
+    [NSBezierPath strokeRect:r];
+#endif // BACKGROUND_VERSION
 }
 
 - (void) drawDivider
