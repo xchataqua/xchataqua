@@ -720,7 +720,7 @@ struct eventInfo textEventInfo[NUM_XP];
 - (void) clearWindow:(id)sender
 {
     if (current_sess)
-        [current_sess->gui->chatWindow clear:0];
+        [current_sess->gui->chatWindow clear];
 }
 
 - (void) selectNextTab:(id)sender

@@ -85,7 +85,7 @@
 
 // Front end methods
 - (void) closeWindow;
-- (void) clear:(NSUInteger)lines;
+- (void) clear;
 - (void) clearChannel;
 - (void) printText:(NSString *)text;
 - (void) printText:(NSString *)text stamp:(time_t)stamp;
