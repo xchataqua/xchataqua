@@ -22,6 +22,7 @@
 #import "SGGuiUtility.h"
 #import "SGWrapView.h"
 #import "SGTabView.h"
+#import "CLTabViewButtonCell.h"
 
 static NSMutableDictionary *labelDictionary;
 static NSCursor *lr_cursor;
@@ -63,15 +64,24 @@ static NSNib *getTabMenuNib ()
     return tab_menu_nib;
 }
 
-static NSButtonCell *makeCloseCell ()
-{
-    NSButtonCell *closeCell = [[NSButtonCell alloc] initImageCell:getCloseImage()];
+@interface NSButtonCell (SGTabViewCloseCell)
+
++ (NSButtonCell *)tabViewCloseCell;
+
+@end
+
+@implementation NSButtonCell (SGTabViewCloseCell)
+
++ (NSButtonCell *)tabViewCloseCell {
+    NSButtonCell *closeCell = [[self alloc] initImageCell:getCloseImage()];
     [closeCell setButtonType:NSMomentaryLightButton];
     [closeCell setImagePosition:NSImageOnly];
     [closeCell setBordered:NO];
     [closeCell setHighlightsBy:NSContentsCellMask];
-    return [closeCell autorelease];
+    return [closeCell autorelease];    
 }
+
+@end
 
 #pragma mark -
 
@@ -91,7 +101,7 @@ static NSButtonCell *makeCloseCell ()
 - (id) initTextCell:(NSString *) aString
 {
     if ((self = [super initTextCell:aString]) != nil) {
-        closeCell = [makeCloseCell() retain];
+        closeCell = [[NSButtonCell tabViewCloseCell] retain];
     }
     return self;
 }
@@ -399,7 +409,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 - (id) initTextCell:(NSString *) aString
 {
     if ((self = [super initTextCell:aString]) != nil) {
-        closeCell = [makeCloseCell() retain];
+        closeCell = [[NSButtonCell tabViewCloseCell] retain];
         self->hideClose = false;
     }
     return self;
@@ -581,10 +591,16 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 @implementation SGTabViewButton
 
+/* CL: undocumented method used to update the cell when the window is activated/deactivated */
+- (void) _windowChangedKeyState 
+{
+    [self updateCell:[self cell]];
+}
+
 - (id) init
 {
     if ((self = [super init]) != nil) {
-        [self setCell:[[[SGTabViewButtonCell alloc] initTextCell:@""] autorelease]];
+        [self setCell:[[[CLTabViewButtonCell alloc] init] autorelease]];
         [self setButtonType:NSOnOffButton];
         [[self cell] setControlSize:NSSmallControlSize];
         [self setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
