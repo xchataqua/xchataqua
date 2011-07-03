@@ -54,6 +54,7 @@ static NSCursor *lr_cursor;
         word = nil;
         mouseEventRequestId = nil;
         fontWidth = 10;
+        pendingEditing = NO;
             
         style = [[NSMutableParagraphStyle alloc] init];
         
@@ -367,6 +368,12 @@ static NSCursor *lr_cursor;
     [stg endEditing];
 }
 
+- (void) endEditing
+{
+    [[self textStorage] endEditing];
+    pendingEditing = NO;
+}
+
 - (void) print_line:(char *) text
              length:(int) len
 {
@@ -388,7 +395,12 @@ static NSCursor *lr_cursor;
     char *last_text = text;
     int len = 0;
 
-    [stg beginEditing];
+    /* coalesce multiple print_text calls into a single update to avoid delay when loading scrollback. */
+    if (!pendingEditing) {
+        [stg beginEditing];
+        [self performSelector:@selector(endEditing) withObject:nil afterDelay:0.01];
+        pendingEditing = YES;
+    }
 
     // split the text into separate lines
     while  (*text)
@@ -413,8 +425,6 @@ static NSCursor *lr_cursor;
 
     if (len)
         [self print_line:last_text length:len];
-
-    [stg endEditing];
 }
 
 - (void) clearText
