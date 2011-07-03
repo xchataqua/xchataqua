@@ -185,7 +185,7 @@ static NSWindow *initWindowForView (Class nswindow, NSView *view, NSPoint *where
 - (void) performClose:(id)sender
 {
     if ([sender isKindOfClass:[NSMenuItem class]])  // Apple-W?
-        [[self delegate] appleW];
+        [(TabOrWindowViewTabDelegate *)[self delegate] appleW];
     else
         [super performClose:sender];                // Window close button
 }
