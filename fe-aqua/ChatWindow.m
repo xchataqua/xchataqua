@@ -516,29 +516,46 @@ static NSImage *emptyBulletImage;
     [[[chatTextView textStorage] string] writeToFile:filename atomically:YES encoding:NSUTF8StringEncoding error:NULL];
 }
 
-- (void) find:(NSString *)string caseSensitive:(BOOL)caseSensitive previous:(BOOL)previous;
+- (void) find:(NSString *)string caseSensitive:(BOOL)caseSensitive backward:(BOOL)backward;
 {
     NSRange from = [chatTextView selectedRange];
-    
-    if (from.location == NSNotFound)
+
+    // set initial bound
+    if (!backward) {
+        if (from.location == NSNotFound) {
+            from.location = 0;
+        } else {
+            from.location += from.length;
+        }
+        from.length = [[chatTextView textStorage] length] - from.location;
+    } else {
+        if (from.location == NSNotFound) {
+            from.length = [[chatTextView textStorage] length];
+        } else {
+            from.length = from.location - 1;
+        }
         from.location = 0;
-    else
-        from.location += from.length;
-    
-    from.length = [[chatTextView textStorage] length] - from.location;
+    }
     
     NSStringCompareOptions mask = 0;
     if (!caseSensitive) {
         mask |= NSCaseInsensitiveSearch;
     }
+    if (backward) {
+        mask |= NSBackwardsSearch;
+    }
     
+    // find string
     NSRange where = [[[chatTextView textStorage] string] rangeOfString:string options:mask range:from];
     
     if (where.location == NSNotFound)
     {
+        // find on whole text already
         if (from.location == 0)
             return;
-        from.length = from.location;
+        
+        // or try again
+        from.length = [[chatTextView textStorage] length];
         from.location = 0;
         where = [[[chatTextView textStorage] string] rangeOfString:string options:mask range:from];
         
