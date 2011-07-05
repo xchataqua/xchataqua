@@ -595,7 +595,7 @@ struct eventInfo textEventInfo[NUM_XP];
 - (void) searchAgain:(id)sender
 {
     if ( searchString != nil )
-        [current_sess->gui->chatWindow highlight:searchString];
+        [current_sess->gui->chatWindow find:searchString caseSensitive:NO previous:NO];
 }
 
 - (void) toggleAway:(id)sender
