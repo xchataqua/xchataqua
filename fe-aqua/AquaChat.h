@@ -18,6 +18,7 @@
 
 #include "../common/xchat.h"
 
+#import <AppKit/AppKit.h>
 #import <Growl/GrowlApplicationBridge.h>
 
 #define PreferencesWindowKey    @"PreferencesWindow"

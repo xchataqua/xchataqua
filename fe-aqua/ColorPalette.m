@@ -171,7 +171,7 @@ static int color_remap [] =
     return self;
 }
 
-- (id) clone
+- (id) copyWithZone:(NSZone *)zone
 {
     ColorPalette *copy = [[ColorPalette alloc] init];
     for (NSUInteger i = 0; i < [self numberOfColors]; i++)
