@@ -198,10 +198,10 @@ static NSCursor *lr_cursor;
     
     [style release];
     style = [[NSMutableParagraphStyle alloc] init];
-	NSTextTab *tabStop = [[NSTextTab alloc] initWithType:NSRightTabStopType location:x];
+    NSTextTab *tabStop = [[NSTextTab alloc] initWithType:NSRightTabStopType location:x];
     [style setTabStops:[NSArray arrayWithObject:tabStop]];
-	[tabStop release];
-	
+    [tabStop release];
+    
     x += fontWidth;
 
     lineRect.origin.x = floor (x + fontWidth * 2 / 3) - 1;
@@ -319,14 +319,14 @@ static NSCursor *lr_cursor;
     {
         prepend += strftime (buff, sizeof (buff), prefs.stamp_format, localtime (&stamp));
     }
-	
+    
     char *tmp = text;
     char *end = tmp + len;
 
     if (prefs.indent_nicks)
     {
-		*prepend++ = '\t';
-		
+        *prepend++ = '\t';
+        
         tmp = strchr (text, '\t');
         if (tmp)
             tmp ++;
@@ -358,7 +358,7 @@ static NSCursor *lr_cursor;
     [pre_str appendAttributedString:newline];
 
     [pre_str addAttribute:NSParagraphStyleAttributeName
-					value:style range:NSMakeRange (0, [pre_str length])];
+                    value:style range:NSMakeRange (0, [pre_str length])];
 
     [stg appendAttributedString:pre_str];
     
@@ -599,12 +599,14 @@ static NSCursor *lr_cursor;
         NSMenuItem *i = [[NSMenuItem alloc] initWithTitle:@"URL Actions" action:nil keyEquivalent:@""];
         [i setSubmenu:url_menu];
         [m addItem:i];
-
+        [i release];
+        
         NSMenu *nick_menu = [[MenuMaker defaultMenuMaker] menuForNick:text inSession:sess];
         i = [[NSMenuItem alloc] initWithTitle:@"Nick Actions" action:nil keyEquivalent:@""];
         [i setSubmenu:nick_menu];
         [m addItem:i];
-
+        [i release];
+        
         return m;
     }
         
@@ -783,12 +785,12 @@ static NSCursor *lr_cursor;
 {
     [super drawRect:aRect];
     
-	if (!prefs.show_separator || !prefs.indent_nicks)
+    if (!prefs.show_separator || !prefs.indent_nicks)
     {
         return;
     }
     
-	[[palette getColor:AC_FGCOLOR] set];
+    [[palette getColor:AC_FGCOLOR] set];
     [[NSGraphicsContext currentContext] setShouldAntialias:false];
     NSBezierPath *p = [NSBezierPath bezierPath];
     [p setLineWidth:1];
