@@ -19,14 +19,14 @@
 
 @interface SGRequestPrivate : NSObject
 {
-	id label;
-	id text;
+    id label;
+    id text;
 }
 
 - (IBAction) doCancel:(id)sender;
 - (IBAction) doOk:(id)sender;
 
-- (NSString *) doit;
+- (NSString *) getResult;
 - (void) setValue:(NSString *) value;
 
 @end
@@ -37,47 +37,47 @@
 
 - (id) initWithString:(NSString *) title
 {
-	if ((self = [super init]) != nil) {
-		[NSBundle loadNibNamed:@"SGRequest" owner:self];
-		[[label window] setTitle:title];
-		[label setStringValue:title];
-		[[label window] center];
-	}
-	return self;
+    if ((self = [super init]) != nil) {
+        [NSBundle loadNibNamed:@"SGRequest" owner:self];
+        [[label window] setTitle:title];
+        [label setStringValue:title];
+        [[label window] center];
+    }
+    return self;
 }
 
 - (void) dealloc
 {
-	[[label window] autorelease];
-	[super dealloc];
+    [[label window] autorelease];
+    [super dealloc];
 }
 
 - (void) setValue:(NSString *) value
 {
-	[text setStringValue:value];
+    [text setStringValue:value];
 }
 
-- (NSString *) doit
+- (NSString *) getResult
 {
-	[[label window] makeKeyAndOrderFront:self];
-	NSModalSession session = [NSApp beginModalSessionForWindow:[label window]];
-	int ret;
-	while ((ret = [NSApp runModalSession:session]) == NSRunContinuesResponse)
-		;
-	[NSApp endModalSession:session];	 
-	[[label window] close];
-	
-	return ret ? [text stringValue] : nil;
+    [[label window] makeKeyAndOrderFront:self];
+    NSModalSession session = [NSApp beginModalSessionForWindow:[label window]];
+    int ret;
+    while ((ret = [NSApp runModalSession:session]) == NSRunContinuesResponse)
+        ;
+    [NSApp endModalSession:session];     
+    [[label window] close];
+    
+    return ret ? [text stringValue] : nil;
 }
 
 - (void) doCancel:(id)sender
 {
-	[NSApp stopModalWithCode:0];
+    [NSApp stopModalWithCode:0];
 }
 
 - (void) doOk:(id)sender
 {
-	[NSApp stopModalWithCode:1];
+    [NSApp stopModalWithCode:1];
 }
 
 @end
@@ -88,15 +88,15 @@
 
 + (NSString *) requestWithString:(NSString *) title
 {
-	return [SGRequest requestWithString:title defaultValue:nil];
+    return [SGRequest requestWithString:title defaultValue:nil];
 }
 
 + (NSString *) requestWithString:(NSString *) title defaultValue:(NSString *) def
 {
-	SGRequestPrivate *request = [[SGRequestPrivate alloc] initWithString:title];
-	if (def)
-		[request setValue:def];
-	return [[request doit] autorelease];
+    SGRequestPrivate *request = [[SGRequestPrivate alloc] initWithString:title];
+    if (def)
+        [request setValue:def];
+    return [request getResult];
 }
 
 @end

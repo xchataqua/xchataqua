@@ -1016,6 +1016,8 @@ HIThemeSegmentPosition positionTable[2][2] =
         [outline setDataSource:self];
         [outline reloadData];
         
+        [col release];
+        
         for (SGTabViewGroupInfo *info in groups)
             [outline expandItem:info];
 
