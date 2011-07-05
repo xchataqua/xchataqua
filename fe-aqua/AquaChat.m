@@ -589,13 +589,19 @@ struct eventInfo textEventInfo[NUM_XP];
 {
     [searchString autorelease];
     searchString = [[SGRequest requestWithString:NSLocalizedStringFromTable(@"XChat: Search", @"xchat", @"") defaultValue:searchString] retain];
-    [self searchAgain:sender];
+    [self findNext:sender];
 }
 
-- (void) searchAgain:(id)sender
+- (void) findNext:(id)sender
 {
     if ( searchString != nil )
-        [current_sess->gui->chatWindow find:searchString caseSensitive:NO previous:NO];
+        [current_sess->gui->chatWindow find:searchString caseSensitive:NO backward:NO];
+}
+
+- (void) findPrevious:(id)sender
+{
+    if ( searchString != nil )
+        [current_sess->gui->chatWindow find:searchString caseSensitive:NO backward:YES];
 }
 
 - (void) toggleAway:(id)sender
