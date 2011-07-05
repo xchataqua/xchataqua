@@ -80,7 +80,7 @@
 - (void) insertText:(NSString *)text;
 - (void) preferencesChanged;
 - (void) saveBuffer:(NSString *)filename;
-- (void) find:(NSString *)string caseSensitive:(BOOL)YesOrNo previous:(BOOL)YesOrNo;
+- (void) find:(NSString *)string caseSensitive:(BOOL)YesOrNo backward:(BOOL)YesOrNo;
 - (BOOL) processFileDrop:(id<NSDraggingInfo>)info forUser:(NSString *) nick;
 - (NSMenu *)menuForEvent:(NSEvent *)theEvent rowIndexes:(NSIndexSet *)rows;
 
