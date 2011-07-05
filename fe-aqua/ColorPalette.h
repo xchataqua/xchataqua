@@ -25,7 +25,7 @@ enum
     AC_AWAY_USER = 40
 };
 
-@interface ColorPalette : NSObject
+@interface ColorPalette : NSObject<NSCopying>
 {
     NSColor **colors;
 }
@@ -36,6 +36,5 @@ enum
 - (void) setColor:(NSUInteger) n color:(NSColor *) color;
 - (void) load;
 - (void) save;
-- (id) clone;
 
 @end

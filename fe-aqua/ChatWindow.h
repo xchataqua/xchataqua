@@ -71,6 +71,7 @@
 @property (nonatomic, readonly) struct session *session;
 @property (nonatomic, retain)   NSButton *tButton, *nButton, *sButton, *iButton, *pButton, *mButton,
                                          *bButton, *lButton, *kButton, *CButton, *NButton, *uButton;
+@property (nonatomic, retain)	NSTextField *limitTextField, *keyTextField;
 
 - (IBAction) doMircColor:(id)sender;
 - (IBAction) doConferenceMode:(id)sender;
@@ -79,7 +80,7 @@
 - (void) insertText:(NSString *)text;
 - (void) preferencesChanged;
 - (void) saveBuffer:(NSString *)filename;
-- (void) highlight:(NSString *)string;
+- (void) find:(NSString *)string caseSensitive:(BOOL)YesOrNo previous:(BOOL)YesOrNo;
 - (BOOL) processFileDrop:(id<NSDraggingInfo>)info forUser:(NSString *) nick;
 - (NSMenu *)menuForEvent:(NSEvent *)theEvent rowIndexes:(NSIndexSet *)rows;
 
