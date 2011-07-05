@@ -139,7 +139,8 @@ extern struct eventInfo textEventInfo[];
 // Edit menu
 - (IBAction) clearWindow:(id)sender;
 - (IBAction) showSearchPanel:(id)sender;
-- (IBAction) searchAgain:(id)sender;
+- (IBAction) findNext:(id)sender;
+- (IBAction) findPrevious:(id)sender;
 // IRC menu
 - (IBAction) toggleInvisible:(id)sender;
 - (IBAction) toggleReceiveWallops:(id)sender;
