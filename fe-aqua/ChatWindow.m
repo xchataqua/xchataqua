@@ -483,6 +483,7 @@ static NSImage *emptyBulletImage;
 
 @implementation ChatWindow
 @synthesize tButton, nButton, sButton, iButton, pButton, mButton, bButton, lButton, kButton, CButton, NButton, uButton;
+@synthesize limitTextField, keyTextField;
 
 + (void) initialize {
     redBulletImage = [[NSImage imageNamed:@"red.tiff"] retain];
@@ -515,7 +516,7 @@ static NSImage *emptyBulletImage;
     [[[chatTextView textStorage] string] writeToFile:filename atomically:YES encoding:NSUTF8StringEncoding error:NULL];
 }
 
-- (void) highlight:(NSString *) string
+- (void) find:(NSString *)string caseSensitive:(BOOL)caseSensitive previous:(BOOL)previous;
 {
     NSRange from = [chatTextView selectedRange];
     
@@ -526,7 +527,10 @@ static NSImage *emptyBulletImage;
     
     from.length = [[chatTextView textStorage] length] - from.location;
     
-    NSStringCompareOptions mask = NSCaseInsensitiveSearch;
+    NSStringCompareOptions mask = 0;
+    if (!caseSensitive) {
+        mask |= NSCaseInsensitiveSearch;
+    }
     
     NSRange where = [[[chatTextView textStorage] string] rangeOfString:string options:mask range:from];
     
@@ -575,8 +579,8 @@ static NSImage *emptyBulletImage;
     self.CButton = nil;
     self.NButton = nil;
     self.uButton = nil;
-    limitTextField = nil;
-    keyTextField = nil;
+    self.limitTextField = nil;
+    self.keyTextField = nil;
 }
 
 - (void) doDialogButton:(id)sender
@@ -630,7 +634,7 @@ static NSImage *emptyBulletImage;
     return [b autorelease];
 }
 
-- (NSTextField *) makeModeText:(SEL) selector
+- (NSTextField *)modeTextFieldForSelector:(SEL) selector
 {
     NSTextField *b = [[NSTextField alloc] init];
     
@@ -645,7 +649,7 @@ static NSImage *emptyBulletImage;
     
     [headerBoxView addSubview:b];
     
-    return b;    // ???: no release?
+    return [b autorelease];
 }
 
 - (void) setupChannelModeButtons
@@ -663,9 +667,9 @@ static NSImage *emptyBulletImage;
     self.uButton = [self modeButtonForFlag:'u' selector:@selector (doFlagButton:)];
     self.bButton = [self modeButtonForFlag:'b' selector:@selector (doBButton:)];
     self.lButton = [self modeButtonForFlag:'l' selector:@selector (doLButton:)];
-    limitTextField = [self makeModeText:@selector (doLimitTextField:)];
+    self.limitTextField = [self modeTextFieldForSelector:@selector (doLimitTextField:)];
     self.kButton = [self modeButtonForFlag:'k' selector:@selector (doKButton:)];
-    keyTextField = [self makeModeText:@selector (doKeyTextField:)];
+    self.keyTextField = [self modeTextFieldForSelector:@selector (doKeyTextField:)];
     
     [headerBoxView sizeToFit];
 }
@@ -771,6 +775,7 @@ static NSImage *emptyBulletImage;
         
         [m addItem:mi];
         [mi release];
+        [im release];
     }
 }
 
@@ -1252,7 +1257,7 @@ static NSImage *emptyBulletImage;
 
 - (void) setTopic:(const char *) topic
 {
-    ColorPalette *palette = [[[AquaChat sharedAquaChat] palette] clone];
+    ColorPalette *palette = [[[AquaChat sharedAquaChat] palette] copy];
     
     [palette setColor:AC_FGCOLOR color:[NSColor blackColor]];
     [palette setColor:AC_BGCOLOR color:[NSColor whiteColor]];
