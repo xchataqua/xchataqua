@@ -10,7 +10,7 @@ MSGFMT="$PROJECT_DIR/contrib/bin/msgfmt"
 
 moname=xchat
 
-for pofile in `ls $PO_DIR/*.po`; do
+for pofile in `ls "$PO_DIR/*.po"`; do
 	locale=`basename $pofile .po`
 	modir="$MO_BASE_DIR/$locale/LC_MESSAGES"
 	mofile="$modir/$moname.mo"
