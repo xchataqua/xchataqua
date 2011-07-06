@@ -532,7 +532,7 @@ static NSImage *emptyBulletImage;
         if (from.location == NSNotFound) {
             from.length = [[chatTextView textStorage] length];
         } else {
-            from.length = from.location - 1;
+            from.length = from.location;
         }
         from.location = 0;
     }
@@ -550,11 +550,7 @@ static NSImage *emptyBulletImage;
     
     if (where.location == NSNotFound)
     {
-        // find on whole text already
-        if (from.location == 0)
-            return;
-        
-        // or try again
+        // try again about whole text
         from.length = [[chatTextView textStorage] length];
         from.location = 0;
         where = [[[chatTextView textStorage] string] rangeOfString:string options:mask range:from];
