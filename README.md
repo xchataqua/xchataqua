@@ -14,6 +14,7 @@ There was no way. So I dropped the name.
 Also, where was several other issues because I didn't want to change X-Chat Aqua developement policy.
 
 * We should remove whole ppc/ppc64 support
+* We should support osx10.6 only
 * We should remove update module (Sparkle, in this case)
 * We should not work on ~/.xchat2 the traditional configutaion directory.
 
@@ -36,8 +37,9 @@ So if you want to keep your configuration, you should move it, copy it, or make 
   * cp -R ~/.xchat2 ~/Library/Application\ Support/XChat\ Azure
 5. Hard-/Soft-Link, if you want to share configurations
   * ln ~/.xchat2 ~/Library/Application\ Support/XChat\ Azure
+  * or
+  * ln -s ~/.xchat2 ~/Library/Application\ Support/XChat\ Azure
 
-OMG.. I don't know how to do. Do it yourself.
 
 # For developers
 
