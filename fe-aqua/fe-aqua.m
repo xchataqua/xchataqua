@@ -413,25 +413,25 @@ static void setupAppSupport ()
 int
 fe_args (int argc, char *argv[])
 {
-    char buff [128];
-    
     initPool = [[NSAutoreleasePool alloc] init];    
     
     setlocale (LC_ALL, "");
 #if ENABLE_NLS
-    sprintf(buff, "%s/locale", [[[NSBundle mainBundle] resourcePath] UTF8String]);
-    bindtextdomain (GETTEXT_PACKAGE, buff);
+    NSString *localePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/locale"];
+    bindtextdomain (GETTEXT_PACKAGE, [localePath UTF8String]);
     bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
     textdomain (GETTEXT_PACKAGE);
 #endif
     
     // Find the default charset pref.. 
     // This is really gross but we need it really early!
+    int path_length = [localePath length] + 10;
+    char *buff = (char *)malloc(path_length * sizeof(char));
     sprintf (buff, "%s/xchat.conf", get_xdir_fs());
     FILE *f = fopen (buff, "r");
     if (f)
     {
-        while (fgets (buff, sizeof (buff), f))
+        while (fgets (buff, path_length, f))
         {
             const char *k = strtok (buff, " =\n");
             const char *v = strtok (NULL, " =\n");
@@ -444,6 +444,7 @@ fe_args (int argc, char *argv[])
         }
         fclose (f);
     }
+    free(buff);
     
     setupAppSupport();
     
