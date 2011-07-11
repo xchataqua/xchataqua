@@ -6,7 +6,7 @@ if [ "$1" = 'clean' ]; then
 	exit
 fi
 
-MSGFMT="$PROJECT_DIR/contrib/bin/msgfmt"
+MSGFMT="$PROJECT_DIR/tools/localization/msgfmt"
 
 moname=xchat
 

@@ -33,8 +33,6 @@
 
 #ifdef WIN32
 #define XCHAT_DIR "X-Chat 2"
-#elif FE_AQUA
-#define XCHAT_DIR "Library/Application Support/XChat Azure"
 #else
 #define XCHAT_DIR ".xchat2"
 #endif
@@ -320,6 +318,10 @@ get_xdir_fs (void)
 	return xdir_fs;
 }
 
+#elif FE_AQUA
+
+extern char *get_xdir_fs(void);
+
 #else
 
 char *
@@ -565,7 +567,7 @@ const struct prefs vars[] = {
 	{"text_transparent", P_OFFINT (transparent), TYPE_BOOL},
 	{"text_wordwrap", P_OFFINT (wordwrap), TYPE_BOOL},
 #ifdef FE_AQUA
-#   include "fe-aqua/XAVars.h"
+#   include "Sources/XAVars.h"
 #endif
 	{0, 0, 0},
 };
@@ -687,7 +689,7 @@ load_config (void)
 	prefs.identd = 1;
 #endif
 #ifdef FE_AQUA
-#   include "fe-aqua/XADefaults.h"
+#   include "Sources/XADefaults.h"
 #endif
 	strcpy (prefs.stamp_format, "[%H:%M] ");
 	strcpy (prefs.timestamp_log_format, "%b %d %H:%M:%S ");

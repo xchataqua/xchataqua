@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby -wKU
 require 'fileutils'
 
-base = "../../Localization"
+base = "../../Mac/Resources"
 
 Dir.glob("po/*.strings") do |f|
   lang = $1 if f =~ /po\/(.+?)\.strings/
