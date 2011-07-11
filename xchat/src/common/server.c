@@ -1623,7 +1623,10 @@ server_connect (server *serv, char *hostname, int port, int no_login)
 {
 	int pid, read_des[2];
 	session *sess = serv->server_session;
-
+#ifdef FORK_DISABLED
+    pthread_t *t;
+#endif
+    
 #ifdef USE_OPENSSL
 	if (!ctx && serv->use_ssl)
 	{
@@ -1717,10 +1720,14 @@ server_connect (server *serv, char *hostname, int port, int no_login)
 		serv->proxy_sok6 = -1;
 	}
 
-#ifdef WIN32
+#if defined(WIN32)
 	CloseHandle (CreateThread (NULL, 0,
 										(LPTHREAD_START_ROUTINE)server_child,
 										serv, 0, (DWORD *)&pid));
+#elif defined (FORK_DISABLED)
+    t = malloc(sizeof(pthread_t));
+    pthread_create(t, NULL, &server_child, serv);
+    pid = t;
 #else
 #ifdef LOOKUPD
 	rand();	/* CL: net_resolve calls rand() when LOOKUPD is set, so prepare a different seed for each child. This method giver a bigger variation in seed values than calling srand(time(0)) in the child itself. */

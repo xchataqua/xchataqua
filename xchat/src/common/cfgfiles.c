@@ -318,7 +318,7 @@ get_xdir_fs (void)
 	return xdir_fs;
 }
 
-#elif FE_AQUA
+#elif FE_AQUA || FE_IOS
 
 extern char *get_xdir_fs(void);
 
