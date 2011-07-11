@@ -6,7 +6,11 @@ if [ "$1" = "clean" ]; then
 		if [ `basename "$lproj" .lproj` == $BASE_LOCALE ]; then
 			continue
 		fi
-		rm -rf "$lproj"
+		cmd="rm -rf \"$lproj\""
+		if [ $DEBUG ]; then
+			echo "$cmd"
+		fi
+		$cmd
 	done
 	exit;
 fi
@@ -17,11 +21,14 @@ if [ ! -e "$LPROJ_DIR" ]; then
 fi
 for xibstringslocale in "$XIB_STRINGS_DIR"/*; do
 	locale=`basename "$xibstringslocale"`
+	echo -n "$locale"
 	if [ $BASE_LOCALE = $locale ]; then
-	   continue;	# pass base locale
+		if [ $DEBUG ]; then
+ 			echo ": pass base locale"
+		fi
+		continue;	# pass base locale
 	fi
 
-	echo -n "$locale"
 	lprojdir="$LPROJ_DIR/$locale.lproj"
 	if [ ! -e "$lprojdir" ]; then
 		mkdir "$lprojdir"
