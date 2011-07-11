@@ -1,0 +1,60 @@
+#!/bin/sh
+
+##
+# Modified from original by Wilfredo Sanchez, wsanchez@mit.edu
+# Copyright (c) 2002 Wilfredo Sanchez. All rights reserved.
+##
+
+set -u
+set -e
+
+Target="$PRODUCT_NAME.$PRODUCT_VERSION"
+Source="build/stageimage"
+NewName=`echo "${Target}" | sed -e 's/ /_/g'`.dmg
+
+rm -f "${Target}.dmg" "${NewName}"
+
+# Get a unique temporary image file
+TempImage="/tmp/make_image_dmg.$$"
+while [ -e "${TempImage}.dmg" ]; do TempImage="${TempImage}x"; done
+TempImage="${TempImage}.dmg"
+
+# Get size in MB of the source directory, add 4
+Size=$(($(du -s "${Source}" | cut -f 1) / 1024 + 4))
+
+# Create a disk image of the right size
+hdiutil create -megabytes "${Size}" -layout NONE "${TempImage}"
+
+# Attach the image to a device node without mounting it
+# The cut is needed because hdid spits out crap after the device name
+DiskDevice=$(hdid -nomount "${TempImage}" | cut -f 1 -d ' ')
+
+# Format the mounted volume as HFS+
+newfs_hfs -v "${Target}" "${DiskDevice}"
+
+# Get a unique temporary mount point
+MountPoint="/tmp/make_image_mnt.$$"
+while [ -e "${MountPoint}" ]; do MountPoint="${MountPoint}x"; done
+
+# Mount the image
+mkdir -p "${MountPoint}"
+mount -t hfs "${DiskDevice}" "${MountPoint}"
+
+# Copy data
+pax -s '|'"${Source}"'||' -rw "${Source}" "${MountPoint}"
+
+# Umount the image
+umount "${DiskDevice}"
+rm -rf "${MountPoint}"
+
+# Detach the device
+hdiutil eject "${DiskDevice}"
+
+# Create a read-only version, use zlib compression
+hdiutil convert -format UDZO "${TempImage}" -o "${Target}"
+
+# Delete the temporary image
+rm -f "${TempImage}"
+
+# Rename the file for sourceforge
+mv "${Target}.dmg" "${NewName}"
