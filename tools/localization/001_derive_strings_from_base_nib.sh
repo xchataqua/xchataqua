@@ -2,11 +2,18 @@
 . set_variables.sh
 
 if [ "$1" = 'clean' ]; then
-	rm -rf "$BASE_XIB_STRINGS_DIR"
+	cmd="rm -rf \"$BASE_XIB_STRINGS_DIR\""
+	if [ $DEBUG ]; then
+		echo "$cmd"
+	fi
+	$cmd
 	exit
 fi
 
 mkdir -p "$BASE_XIB_STRINGS_DIR"
+if [ $DEBUG ]; then
+	echo "base xib dir: $BASE_XIB_DIR"
+fi
 for xibfile in "$BASE_XIB_DIR"/*.xib; do
 	xibname=`basename "$xibfile"`
 	stringsfile="$BASE_XIB_STRINGS_DIR/$xibname.strings"
