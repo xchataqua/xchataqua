@@ -1,0 +1,34 @@
+#!/bin/sh
+
+#
+# Make a fink directory with fat static libs and include files
+#
+
+# Which format is native on this machine?
+# This probably only works for me, but that's enough for now.
+if [ -d /sw_i386 ]; then
+  PPC=/sw
+  I386=/sw_i386
+else
+  I386=/sw
+  PPC=/sw_ppc
+fi
+FAT=/sw_fat
+
+rm -rf $FAT
+
+mkdir -p $FAT/lib
+ln -s $PPC/bin $FAT
+ln -s $PPC/include $FAT
+ln -s $PPC/lib/glib-2.0 $FAT/lib
+
+cd $I386/lib
+for lib in *.a; do
+    lipo -create $lib $PPC/lib/$lib -output $FAT/lib/$lib
+done
+
+mkdir $FAT/lib/pkgconfig
+cd $PPC/lib/pkgconfig
+for i in *pc; do
+    sed -e 's/\/sw/\/sw_fat/g' < $i > $FAT/lib/pkgconfig/$i
+done

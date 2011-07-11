@@ -18,7 +18,7 @@ for localedir in "$MANUAL_STRINGS_DIR"/*; do
 		continue
 	fi
 	echo -n "$locale "
-	$CP "$MANUAL_STRINGS_DIR/$locale/libsg.strings" "$LPROJ_DIR/$locale.lproj/"
-	$CP "$MANUAL_STRINGS_DIR/$locale/xchataqua.strings" "$LPROJ_DIR/$locale.lproj/"
+	$CP "$MANUAL_STRINGS_DIR/$locale/libsg.strings" "$COMMON_RES_DIR/$locale.lproj/"
+	$CP "$MANUAL_STRINGS_DIR/$locale/xchataqua.strings" "$COMMON_RES_DIR/$locale.lproj/"
 done
 echo "done"

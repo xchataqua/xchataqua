@@ -1,0 +1,14 @@
+prefs.use_server_tab = 0;
+prefs.xa_text_manual_indent_chars = 15;
+prefs.xa_outline_width = 150;
+prefs.xa_partonsleep = 1;
+prefs.tab_left_key = 123;
+prefs.tab_left_modifiers = 1 << 20 | 1 << 17;
+prefs.tab_right_key = 124;
+prefs.tab_right_modifiers = 1 << 20 | 1 << 17;
+prefs.xa_auto_away = 0;
+prefs.xa_auto_away_delay = 10;
+strcpy (prefs.xa_urlcommand, "browser %s");
+strcpy (prefs.xa_nickcommand, "query %s");
+strcpy (prefs.xa_channelcommand, "join %s");
+strcpy (prefs.xa_sleepmessage, "This computer has gone to sleep");

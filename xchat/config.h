@@ -1,8 +1,10 @@
 #ifndef _CONFIG_H
 #define _CONFIG_H
 
+#ifndef FE_IOS
 #ifndef ENABLE_NLS
 #	define ENABLE_NLS 1
+#endif
 #endif
 
 #if ENABLE_NLS
@@ -37,6 +39,11 @@
 #define HAVE_VSNPRINTF 1
 #define USE_IPV6 1
 #define USE_PLUGIN 1
-#define USE_OPENSSL 1
+
+#ifndef FE_IOS
+    #define USE_OPENSSL 1
+#else
+    #define FORK_DISABLED 1
+#endif
 
 #endif

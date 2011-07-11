@@ -801,9 +801,11 @@ xchat_init (void)
 
 	servlist_init ();							/* load server list */
 
+    #ifndef FE_IOS
 	/* if we got a URL, don't open the server list GUI */
 	if (!prefs.slist_skip && !arg_url)
 		fe_serverlist_open (NULL);
+    #endif
 
 	/* turned OFF via -a arg */
 	if (!arg_dont_autoconnect)
