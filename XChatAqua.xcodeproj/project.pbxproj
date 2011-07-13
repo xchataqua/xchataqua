@@ -210,6 +210,9 @@
 		380AD1F413C698E1003EEE3D /* xchat.h in Headers */ = {isa = PBXBuildFile; fileRef = 380AD1E813C698E1003EEE3D /* xchat.h */; };
 		380AD1F513C698E1003EEE3D /* xchatc.h in Headers */ = {isa = PBXBuildFile; fileRef = 380AD1E913C698E1003EEE3D /* xchatc.h */; };
 		380B9D1A13C6E5D70029CE25 /* SGFileUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 380B9D1913C6E5D70029CE25 /* SGFileUtility.m */; };
+		381EED4B13CD1EA900CC0B82 /* python.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */; };
+		381EED4C13CD1EA900CC0B82 /* tcl.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 0F8F08110E1FE00800359159 /* tcl.bundle */; };
+		381EED4D13CD1EA900CC0B82 /* perl-snowleopard.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */; };
 		3839010413C06619004D20BC /* CLTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3839010313C06619004D20BC /* CLTabCell.m */; };
 		3839010713C0667B004D20BC /* CLTabViewButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3839010613C0667B004D20BC /* CLTabViewButtonCell.m */; };
 		3839010913C06722004D20BC /* CLclose13.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3839010813C06722004D20BC /* CLclose13.tiff */; };
@@ -276,13 +279,11 @@
 		3876253813C7024F00850913 /* SGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCC013C6A0CB00B95036 /* SGView.m */; };
 		3876253913C7024F00850913 /* SGWrapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCC213C6A0CB00B95036 /* SGWrapView.m */; };
 		3876253A13C7024F00850913 /* SGFileUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 380B9D1913C6E5D70029CE25 /* SGFileUtility.m */; };
-		3876253C13C7024F00850913 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54C10E4ACFC00DBBFD0 /* Growl.framework */; };
 		3876253D13C7024F00850913 /* libxchat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC8F4AE0DEEE51700504F31 /* libxchat.a */; };
 		3876253E13C7024F00850913 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		3876253F13C7024F00850913 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8EA70A0CFB384A001AE9AE /* Carbon.framework */; };
 		3876254013C7024F00850913 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */; };
 		3876254113C7024F00850913 /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937F00FFB0D34009370B5 /* libssl.dylib */; };
-		3876254213C7024F00850913 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54D10E4ACFC00DBBFD0 /* ShortcutRecorder.framework */; };
 		3876254313C7024F00850913 /* libiconv.1.13.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DEC8C7A1274CC98000C8670 /* libiconv.1.13.1.a */; };
 		3876254413C7024F00850913 /* libglib-2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DEC8C791274CC98000C8670 /* libglib-2.0.a */; };
 		3876254513C7024F00850913 /* libintl.0.40.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DEC8C7B1274CC98000C8670 /* libintl.0.40.a */; };
@@ -343,8 +344,6 @@
 		3876257F13C7024F00850913 /* TextEventsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C8A0413C6E10100AAF20D /* TextEventsWindow.xib */; };
 		3876258013C7024F00850913 /* UrlGrabberWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C8A0613C6E10200AAF20D /* UrlGrabberWindow.xib */; };
 		3876258113C7024F00850913 /* UserCommandsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C8A0813C6E10200AAF20D /* UserCommandsWindow.xib */; };
-		3876258613C7024F00850913 /* Growl.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54C10E4ACFC00DBBFD0 /* Growl.framework */; };
-		3876258713C7024F00850913 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54D10E4ACFC00DBBFD0 /* ShortcutRecorder.framework */; };
 		3876258D13C7027400850913 /* MainMenuAppstore.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C89F413C6E10100AAF20D /* MainMenuAppstore.xib */; };
 		388BDCC313C6A0CB00B95036 /* SGAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDC9F13C6A0CB00B95036 /* SGAlert.m */; };
 		388BDCC413C6A0CB00B95036 /* SGApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCA113C6A0CB00B95036 /* SGApplication.m */; };
@@ -406,9 +405,13 @@
 		B0D937F10FFB0D34009370B5 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */; };
 		B0D937F20FFB0D34009370B5 /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937F00FFB0D34009370B5 /* libssl.dylib */; };
 		B0E85AC20FFFC0AF0064D049 /* sparkle.pem in Resources */ = {isa = PBXBuildFile; fileRef = B0E85AC10FFFC0AF0064D049 /* sparkle.pem */; };
+		D4517EA313CD3DF900ACA3F8 /* Growl.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 388BDD6B13C6AA2100B95036 /* Growl.framework */; };
+		D4517EA413CD3DF900ACA3F8 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 388BDD6C13C6AA2100B95036 /* ShortcutRecorder.framework */; };
 		D487239E128F9DBC00647D7B /* UtilityWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D487239D128F9DBC00647D7B /* UtilityWindow.m */; };
 		D4A86A2012DE29A1000C201C /* xchat512.icns in Resources */ = {isa = PBXBuildFile; fileRef = D4A86A1F12DE29A1000C201C /* xchat512.icns */; };
 		D4A86A5D12DE2D05000C201C /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54D10E4ACFC00DBBFD0 /* ShortcutRecorder.framework */; };
+		D4D0BE0F13CD3DB70092832B /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 388BDD6B13C6AA2100B95036 /* Growl.framework */; };
+		D4D0BE1013CD3DBD0092832B /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 388BDD6C13C6AA2100B95036 /* ShortcutRecorder.framework */; };
 		D4FBD93E12E449D5003EA441 /* ViewerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4FBD93D12E449D5003EA441 /* ViewerWindow.xib */; };
 		D4FBD95912E44CD0003EA441 /* ViewerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FBD93912E44946003EA441 /* ViewerWindow.m */; };
 		D4FBD9C612E458C4003EA441 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FBD9C512E458C4003EA441 /* WebKit.framework */; };
@@ -464,6 +467,27 @@
 			remoteGlobalIDString = 0FE5E01C0F45576B000E0F91;
 			remoteInfo = SGPalette;
 		};
+		381EECE613CD1DC800CC0B82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F8F08100E1FE00800359159;
+			remoteInfo = tcl;
+		};
+		381EECE813CD1DCB00CC0B82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F2FEF2A0E1FAB1500DE4D41;
+			remoteInfo = python;
+		};
+		381EECEA13CD1DCF00CC0B82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D78137F10E77C6400C71AF8;
+			remoteInfo = "perl-snowleopard";
+		};
 		387624FA13C7024F00850913 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -507,14 +531,27 @@
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		383A424513CD1D1600FE1CA1 /* Copy Plugins */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				381EED4B13CD1EA900CC0B82 /* python.bundle in Copy Plugins */,
+				381EED4C13CD1EA900CC0B82 /* tcl.bundle in Copy Plugins */,
+				381EED4D13CD1EA900CC0B82 /* perl-snowleopard.bundle in Copy Plugins */,
+			);
+			name = "Copy Plugins";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3876258513C7024F00850913 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3876258613C7024F00850913 /* Growl.framework in Copy Frameworks */,
-				3876258713C7024F00850913 /* ShortcutRecorder.framework in Copy Frameworks */,
+				D4517EA313CD3DF900ACA3F8 /* Growl.framework in Copy Frameworks */,
+				D4517EA413CD3DF900ACA3F8 /* ShortcutRecorder.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1845,17 +1882,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3876253C13C7024F00850913 /* Growl.framework in Frameworks */,
 				3876253D13C7024F00850913 /* libxchat.a in Frameworks */,
 				3876253E13C7024F00850913 /* Cocoa.framework in Frameworks */,
 				3876253F13C7024F00850913 /* Carbon.framework in Frameworks */,
 				3876254013C7024F00850913 /* libcrypto.dylib in Frameworks */,
 				3876254113C7024F00850913 /* libssl.dylib in Frameworks */,
-				3876254213C7024F00850913 /* ShortcutRecorder.framework in Frameworks */,
 				3876254313C7024F00850913 /* libiconv.1.13.1.a in Frameworks */,
 				3876254413C7024F00850913 /* libglib-2.0.a in Frameworks */,
 				3876254513C7024F00850913 /* libintl.0.40.a in Frameworks */,
 				3876254613C7024F00850913 /* WebKit.framework in Frameworks */,
+				D4D0BE0F13CD3DB70092832B /* Growl.framework in Frameworks */,
+				D4D0BE1013CD3DBD0092832B /* ShortcutRecorder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2553,11 +2590,15 @@
 				3876253B13C7024F00850913 /* Frameworks */,
 				3876254713C7024F00850913 /* Resources */,
 				3876258513C7024F00850913 /* Copy Frameworks */,
+				383A424513CD1D1600FE1CA1 /* Copy Plugins */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				387624F913C7024F00850913 /* PBXTargetDependency */,
+				381EECE713CD1DC800CC0B82 /* PBXTargetDependency */,
+				381EECE913CD1DCB00CC0B82 /* PBXTargetDependency */,
+				381EECEB13CD1DCF00CC0B82 /* PBXTargetDependency */,
 			);
 			name = "XChat Azure";
 			productInstallPath = "$(HOME)/Applications";
@@ -3176,6 +3217,21 @@
 			isa = PBXTargetDependency;
 			target = 0FE5E01C0F45576B000E0F91 /* SGPalette */;
 			targetProxy = 2DDC6FE01231BCCB0015A26C /* PBXContainerItemProxy */;
+		};
+		381EECE713CD1DC800CC0B82 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F8F08100E1FE00800359159 /* tcl */;
+			targetProxy = 381EECE613CD1DC800CC0B82 /* PBXContainerItemProxy */;
+		};
+		381EECE913CD1DCB00CC0B82 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F2FEF2A0E1FAB1500DE4D41 /* python */;
+			targetProxy = 381EECE813CD1DCB00CC0B82 /* PBXContainerItemProxy */;
+		};
+		381EECEB13CD1DCF00CC0B82 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D78137F10E77C6400C71AF8 /* perl-snowleopard */;
+			targetProxy = 381EECEA13CD1DCF00CC0B82 /* PBXContainerItemProxy */;
 		};
 		387624F913C7024F00850913 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4382,6 +4438,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = python;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -4407,6 +4464,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = python;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -4456,6 +4514,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "perl-leopard";
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -4488,6 +4547,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "perl-leopard";
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -4511,6 +4571,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = tcl;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -4531,6 +4592,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = tcl;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -4667,6 +4729,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "perl-snowleopard";
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -4699,6 +4762,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "perl-snowleopard";
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -4735,7 +4799,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(TARGET_PLATFORM)/$(PRODUCT_CODE)/Frameworks/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(TARGET_PLATFORM)/$(PRODUCT_CODE)/Frameworks/**",
+					"\"$(SRCROOT)/Mac/Azure/Frameworks\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -4761,7 +4828,10 @@
 		3876258A13C7024F00850913 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "$(TARGET_PLATFORM)/$(PRODUCT_CODE)/Frameworks/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(TARGET_PLATFORM)/$(PRODUCT_CODE)/Frameworks/**",
+					"\"$(SRCROOT)/Mac/Azure/Frameworks\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(TARGET_PLATFORM)/Sources/Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
