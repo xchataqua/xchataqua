@@ -521,7 +521,8 @@ fe_init (void)
     [GLikeTimer self];
 #endif
     [SGApplication sharedApplication];
-    [NSBundle loadNibNamed:@"MainMenu" owner:NSApp];
+    NSString *mainNibFile = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"NSMainNibFile"];
+    [NSBundle loadNibNamed:mainNibFile owner:NSApp];
     
     // This is not just for debug.
 #if !CLX_BUILD
