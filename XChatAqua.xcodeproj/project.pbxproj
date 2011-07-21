@@ -687,8 +687,8 @@
 		0F8F06C10E1FDA5E00359159 /* perl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = perl.c; sourceTree = "<group>"; };
 		0F8F06C20E1FDA5E00359159 /* xchat.pm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xchat.pm.h; sourceTree = "<group>"; };
 		0F8F06D70E1FDA8500359159 /* perl-leopard.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-leopard.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F8F07CE0E1FDDBF00359159 /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = "build/X-Chat Aqua.build/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib"; sourceTree = SOURCE_ROOT; };
-		0F8F07DA0E1FDEFF00359159 /* DynaLoader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = DynaLoader.a; path = "build/X-Chat Aqua.build/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a"; sourceTree = SOURCE_ROOT; };
+		0F8F07CE0E1FDDBF00359159 /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = "build/XChatAqua.build/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib"; sourceTree = SOURCE_ROOT; };
+		0F8F07DA0E1FDEFF00359159 /* DynaLoader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = DynaLoader.a; path = "build/XChatAqua.build/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a"; sourceTree = SOURCE_ROOT; };
 		0F8F08110E1FE00800359159 /* tcl.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tcl.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F8F08170E1FE01800359159 /* Tcl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tcl.framework; path = System/Library/Frameworks/Tcl.framework; sourceTree = SDKROOT; };
 		0F8F08270E1FE06800359159 /* printevents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = printevents.h; path = ../../../xchat/plugins/tcl/printevents.h; sourceTree = "<group>"; };
@@ -725,7 +725,7 @@
 		2D6D421E121E85470082F2EF /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		2D6D4266121E88CE0082F2EF /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-snowleopard.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D78138B10E77D1A00C71AF8 /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = "build/X-Chat Aqua.build/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib"; sourceTree = SOURCE_ROOT; };
+		2D78138B10E77D1A00C71AF8 /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = "build/XChatAqua.build/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib"; sourceTree = SOURCE_ROOT; };
 		2D7817C810E872D200C71AF8 /* fe-aqua_utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "fe-aqua_utility.h"; sourceTree = "<group>"; };
 		2D7817C910E872D200C71AF8 /* fe-aqua_utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "fe-aqua_utility.m"; sourceTree = "<group>"; };
 		2DAAE54C10E4ACFC00DBBFD0 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = Frameworks/Growl.framework; sourceTree = "<group>"; };
@@ -2962,7 +2962,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "TARGET_DIR=\"$PROJECT_TEMP_DIR\"\nrm -rf \"$TARGET_DIR/Perl/5.10.0\"\nmkdir -p \"$TARGET_DIR/Perl/5.10.0/darwin-thread-multi-2level/CORE/\"\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\tln -s '/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib' \"$TARGET_DIR/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib\"\nelse\n\tln -s \"$PROJECT_DIR/contrib/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib\" \"$TARGET_DIR/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib\"\nfi\n\nexit # old script\n\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\texit\nfi\n\ntar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Snowleopard.tar\" -P\n\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\texit\nfi\n\nsudo tar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Snowleopard.tar\" -P\n\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\texit\nfi\n\necho 'input password for sudo to install leopard library to user system'\n\n/usr/bin/osascript > /dev/null <<ASCPT\ntell application \"Terminal\"\n\tactivate\n\tdo script with command \"sudo tar xvf \\\"$PROJECT_DIR/contrib/systemlib/Perl-Snowleopard.tar\\\" -P\"\nend tell\nASCPT\n\necho 'after running script, redo build please.'\n\nexit 1";
+			shellScript = "TARGET_DIR=\"$PROJECT_TEMP_DIR\"\nrm -rf \"$TARGET_DIR/Perl/5.10.0\"\nmkdir -p \"$TARGET_DIR/Perl/5.10.0/darwin-thread-multi-2level/CORE/\"\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\tln -s '/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib' \"$TARGET_DIR/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib\"\nelse\n\tln -s \"$PROJECT_DIR/Mac/contrib/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib\" \"$TARGET_DIR/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib\"\nfi\n\nexit # old script\n\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\texit\nfi\n\ntar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Snowleopard.tar\" -P\n\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\texit\nfi\n\nsudo tar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Snowleopard.tar\" -P\n\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\texit\nfi\n\necho 'input password for sudo to install leopard library to user system'\n\n/usr/bin/osascript > /dev/null <<ASCPT\ntell application \"Terminal\"\n\tactivate\n\tdo script with command \"sudo tar xvf \\\"$PROJECT_DIR/contrib/systemlib/Perl-Snowleopard.tar\\\" -P\"\nend tell\nASCPT\n\necho 'after running script, redo build please.'\n\nexit 1";
 		};
 		2DCBED2C11AA140E00388F47 /* Generate Symlink For Leopard Perl Library */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2976,7 +2976,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "TARGET_DIR=\"$PROJECT_TEMP_DIR\"\nrm -rf \"$TARGET_DIR/Perl/5.8.8\"\nmkdir -p \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/CORE/\"\nmkdir -p \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/\"\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\tln -s '/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib' \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib\"\n\tln -s '/System/Library/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a' \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a\"\nelse\n\tln -s \"$PROJECT_DIR/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib\" \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib\"\n\tln -s \"$PROJECT_DIR/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a\" \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a\"\nfi\n\nexit # old script\n\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\ntar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\" -P\n\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\nsudo tar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\" -P\n\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\necho 'input password for sudo to install leopard library to user system'\n\n/usr/bin/osascript > /dev/null <<ASCPT\ntell application \"Terminal\"\n\tactivate\n\tdo script with command \"sudo tar xvf \\\"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\\\" -P\"\nend tell\nASCPT\n\necho 'after running script, redo build please.'\n\nexit 1";
+			shellScript = "TARGET_DIR=\"$PROJECT_TEMP_DIR\"\nrm -rf \"$TARGET_DIR/Perl/5.8.8\"\nmkdir -p \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/CORE/\"\nmkdir -p \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/\"\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\tln -s '/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib' \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib\"\n\tln -s '/System/Library/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a' \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a\"\nelse\n\tln -s \"$PROJECT_DIR/Mac/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib\" \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib\"\n\tln -s \"$PROJECT_DIR/Mac/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a\" \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a\"\nfi\n\nexit # old script\n\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\ntar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\" -P\n\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\nsudo tar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\" -P\n\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\necho 'input password for sudo to install leopard library to user system'\n\n/usr/bin/osascript > /dev/null <<ASCPT\ntell application \"Terminal\"\n\tactivate\n\tdo script with command \"sudo tar xvf \\\"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\\\" -P\"\nend tell\nASCPT\n\necho 'after running script, redo build please.'\n\nexit 1";
 		};
 		2DDC6FEA1231BD760015A26C /* Generate Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4575,7 +4575,7 @@
 					Mac,
 					Mac/contrib/include,
 					"/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
-					"$(PROJECT_DIR)/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
+					"$(PROJECT_DIR)/Mac/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
 					xchat/src,
 				);
 				INFOPLIST_FILE = "Mac/Plugins/perl/perl-leopard-Info.plist";
@@ -4609,7 +4609,7 @@
 					Mac,
 					Mac/contrib/include,
 					"/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
-					"$(PROJECT_DIR)/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
+					"$(PROJECT_DIR)/Mac/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
 					xchat/src,
 				);
 				INFOPLIST_FILE = "Mac/Plugins/perl/perl-leopard-Info.plist";
