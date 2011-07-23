@@ -1,3 +1,5 @@
 #!/bin/bash
-productbuild --component ../../build/Release/XChat\ Azure.app /Applications --sign "3rd Party Mac Developer Installer: 3rddev Inc." ../../build/XChatAzure.pkg
+xcodebuild -project '../XChatAqua.xcodeproj' -target 'XChat Azure' -configuration 'Release'
+cd '../build/Release'
+productbuild --component 'XChat Azure.app' '/Applications' --sign "3rd Party Mac Developer Installer: 3rddev Inc." 'XChat Azure.pkg'
 
