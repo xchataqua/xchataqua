@@ -36,13 +36,14 @@ extern GSList *plugin_list;
     NSString *name, *vers, *file, *desc;
 }
 
-- (id) initWithPlugin:(xchat_plugin *)plugin;
+- (id)initWithPlugin:(xchat_plugin *)plugin;
++ (id)pluginWithPlugin:(xchat_plugin *)plugin;
 
 @end
 
 @implementation PluginItem
 
-- (id) initWithPlugin:(xchat_plugin *) plugin
+- (id)initWithPlugin:(xchat_plugin *) plugin
 {
     if ((self=[super init]) != nil) {
         name = [[NSString alloc] initWithUTF8String:plugin->name];
@@ -53,13 +54,18 @@ extern GSList *plugin_list;
     return self;
 }
 
-- (void) dealloc
+- (void)dealloc
 {
     [name release];
     [vers release];
     [file release];
-    [desc dealloc];
+    [desc release];
     [super dealloc];
+}
+
++ (id)pluginWithPlugin:(xchat_plugin *)plugin
+{
+    return [[[self alloc] initWithPlugin:plugin] autorelease];
 }
 
 @end
@@ -68,17 +74,25 @@ extern GSList *plugin_list;
 
 @implementation PluginWindow
 
-- (id) initWithCoder:(NSCoder *)aDecoder {
-    if ((self = [super initWithCoder:aDecoder]) != nil) {
-        self->plugins = [[NSMutableArray alloc] init];
-    }
+- (id)initAsPluginWindow {
+    self->plugins = [[NSMutableArray alloc] init];
     return self;
+}
+
+- (id) initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    return [self initAsPluginWindow];
+}
+
+- (id) initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag {
+    self = [super initWithContentRect:contentRect styleMask:aStyle backing:bufferingType defer:flag];
+    return [self initAsPluginWindow];
 }
 
 - (void) dealloc
 {
     [self->pluginTableView setDataSource:nil];
-    [plugins release];
+    [self->plugins release];
     [super dealloc];
 }
 
@@ -95,8 +109,9 @@ extern GSList *plugin_list;
     for (GSList *list = plugin_list; list; list = list->next)
     {
         xchat_plugin *pl = (xchat_plugin *) list->data;
-        if (pl->version && pl->version [0])
-            [plugins addObject:[[[PluginItem alloc] initWithPlugin:pl] autorelease]];
+        if (pl->version && pl->version [0]) {
+            [plugins addObject:[PluginItem pluginWithPlugin:pl]];
+        }
     }
     
     [self->pluginTableView reloadData];
