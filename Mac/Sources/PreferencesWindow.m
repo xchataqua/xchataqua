@@ -70,17 +70,16 @@ extern struct eventInfo textEventInfo[];
     NSNumber *bounce;
 }
 
+- (id)initWithSoundEvent:(int)event sounds:(NSArray *)sounds;
 + (SoundEvent *) soundEventWithEvent:(int)event sounds:(NSArray *)sounds;
 
 @end
 
 @implementation SoundEvent
 
-+ (SoundEvent *) soundEventWithEvent:(int)event sounds:(NSArray *)sounds
-{
-    SoundEvent *soundEvent = [[self alloc] init];
-    if (soundEvent != nil) {
-        soundEvent->name = [[NSString alloc] initWithUTF8String:te[event].name];
+- (id)initWithSoundEvent:(int)event sounds:(NSArray *)sounds {
+    if ((self = [super init]) != nil) {
+        self->name = [[NSString alloc] initWithUTF8String:te[event].name];
         
         int soundIndex = 0;
         
@@ -91,12 +90,12 @@ extern struct eventInfo textEventInfo[];
         
         struct eventInfo *info = &textEventInfo[event];
         
-        soundEvent->sound = [[NSNumber alloc] initWithInteger:soundIndex];
-        soundEvent->growl = [[NSNumber alloc] initWithInt:info->growl];
-        soundEvent->show  = [[NSNumber alloc] initWithInt:info->show];
-        soundEvent->bounce= [[NSNumber alloc] initWithInt:info->bounce];
+        self->sound = [[NSNumber alloc] initWithInteger:soundIndex];
+        self->growl = [[NSNumber alloc] initWithInt:info->growl];
+        self->show  = [[NSNumber alloc] initWithInt:info->show];
+        self->bounce= [[NSNumber alloc] initWithInt:info->bounce];
     }
-    return [soundEvent autorelease];
+    return self;
 }
 
 - (void) dealloc
@@ -107,6 +106,11 @@ extern struct eventInfo textEventInfo[];
     [bounce release];
     [show release];
     [super dealloc];
+}
+
++ (SoundEvent *)soundEventWithEvent:(int)event sounds:(NSArray *)sounds
+{
+    return [[[self alloc] initWithSoundEvent:event sounds:sounds] autorelease];
 }
 
 @end
@@ -147,12 +151,12 @@ extern struct eventInfo textEventInfo[];
     return self;
 }
 
-- (id) initAsPreferencesWindow:(NSCoder *)aDecoder {
+- (id) initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     return [self initAsPreferencesWindow];
 }
 
-- (id) initAsPreferencesWindow:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag {
+- (id) initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag {
     self = [super initWithContentRect:contentRect styleMask:aStyle backing:bufferingType defer:flag];
     return [self initAsPreferencesWindow];
 }
@@ -604,7 +608,7 @@ extern struct eventInfo textEventInfo[];
     [sounds removeAllObjects];
     [sounds addObject:NSLocalizedStringFromTable(@"<none>", @"xchat", @"")];
     
-    NSString *directoryName = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/../Sounds"];
+    NSString *directoryName = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/../Sounds"]; // weird path
     NSFileManager *manager = [NSFileManager defaultManager];
 #if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_4
     NSArray *files = [manager contentsOfDirectoryAtPath:directoryName error:NULL];
