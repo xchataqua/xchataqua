@@ -52,21 +52,21 @@ clear_channel (session *sess)
 	sess->channel[0] = 0;
 	sess->doing_who = FALSE;
 	sess->done_away_check = FALSE;
-
+    
 	log_close (sess);
-
+    
 	if (sess->current_modes)
 	{
 		free (sess->current_modes);
 		sess->current_modes = NULL;
 	}
-
+    
 	if (sess->mode_timeout_tag)
 	{
 		fe_timeout_remove (sess->mode_timeout_tag);
 		sess->mode_timeout_tag = 0;
 	}
-
+    
 	fe_clear_channel (sess);
 	userlist_clear (sess);
 	fe_set_nonchannel (sess, FALSE);
@@ -87,23 +87,23 @@ find_session_from_nick (char *nick, server *serv)
 {
 	session *sess;
 	GSList *list = sess_list;
-
+    
 	sess = find_dialog (serv, nick);
 	if (sess)
 		return sess;
-
+    
 	if (serv->front_session)
 	{
 		if (userlist_find (serv->front_session, nick))
 			return serv->front_session;
 	}
-
+    
 	if (current_sess && current_sess->server == serv)
 	{
 		if (userlist_find (current_sess, nick))
 			return current_sess;
 	}
-
+    
 	while (list)
 	{
 		sess = list->data;
@@ -121,11 +121,11 @@ static session *
 inbound_open_dialog (server *serv, char *from)
 {
 	session *sess;
-
+    
 	sess = new_ircwindow (serv, from, SESS_DIALOG, 0);
 	/* for playing sounds */
 	EMIT_SIGNAL (XP_TE_OPENDIALOG, sess, NULL, NULL, NULL, NULL, 0);
-
+    
 	return sess;
 }
 
@@ -152,23 +152,23 @@ inbound_privmsg (server *serv, char *from, char *ip, char *text, int id)
 {
 	session *sess;
 	char idtext[64];
-
+    
 	sess = find_dialog (serv, from);
-
+    
 	if (sess || prefs.autodialog)
 	{
 		/*0=ctcp  1=priv will set autodialog=0 here is flud detected */
 		if (!sess)
 		{
 			if (flood_check (from, ip, serv, current_sess, 1))
-				/* Create a dialog session */
+            /* Create a dialog session */
 				sess = inbound_open_dialog (serv, from);
 			else
 				sess = serv->server_session;
 			if (!sess)
 				return; /* ?? */
 		}
-
+        
 		if (ip && ip[0])
 		{
 			if (prefs.logging && sess->logfd != -1 &&
@@ -183,9 +183,9 @@ inbound_privmsg (server *serv, char *from, char *ip, char *text, int id)
 		inbound_chanmsg (serv, NULL, NULL, from, text, FALSE, id);
 		return;
 	}
-
+    
 	inbound_make_idtext (serv, idtext, sizeof (idtext), id);
-
+    
 	sess = find_session_from_nick (from, serv);
 	if (!sess)
 	{
@@ -193,7 +193,7 @@ inbound_privmsg (server *serv, char *from, char *ip, char *text, int id)
 		EMIT_SIGNAL (XP_TE_PRIVMSG, sess, from, text, idtext, NULL, 0);
 		return;
 	}
-
+    
 	if (sess->type == SESS_DIALOG)
 		EMIT_SIGNAL (XP_TE_DPRIVMSG, sess, from, text, idtext, NULL, 0);
 	else
@@ -208,10 +208,10 @@ alert_match_word (char *word, char *masks)
 	char *p = masks;
 	char endchar;
 	int res;
-
+    
 	if (masks[0] == 0)
 		return FALSE;
-
+    
 	while (1)
 	{
 		/* if it's a 0, space or comma, the word has ended. */
@@ -221,10 +221,10 @@ alert_match_word (char *word, char *masks)
 			*p = 0;
 			res = match (masks, word);
 			*p = endchar;
-
+            
 			if (res)
 				return TRUE;	/* yes, matched! */
-
+            
 			masks = p + 1;
 			if (*p == 0)
 				return FALSE;
@@ -239,10 +239,10 @@ alert_match_text (char *text, char *masks)
 	unsigned char *p = text;
 	unsigned char endchar;
 	int res;
-
+    
 	if (masks[0] == 0)
 		return FALSE;
-
+    
 	while (1)
 	{
 		if (*p >= '0' && *p <= '9')
@@ -250,35 +250,35 @@ alert_match_text (char *text, char *masks)
 			p++;
 			continue;
 		}
-
+        
 		/* if it's RFC1459 <special>, it can be inside a word */
 		switch (*p)
 		{
-		case '-': case '[': case ']': case '\\':
-		case '`': case '^': case '{': case '}':
-		case '_': case '|':
-			p++;
-			continue;
+            case '-': case '[': case ']': case '\\':
+            case '`': case '^': case '{': case '}':
+            case '_': case '|':
+                p++;
+                continue;
 		}
-
+        
 		/* if it's a 0, space or comma, the word has ended. */
 		if (*p == 0 || *p == ' ' || *p == ',' ||
 			/* if it's anything BUT a letter, the word has ended. */
-			 (!g_unichar_isalpha (g_utf8_get_char (p))))
+            (!g_unichar_isalpha (g_utf8_get_char (p))))
 		{
 			endchar = *p;
 			*p = 0;
 			res = alert_match_word (text, masks);
 			*p = endchar;
-
+            
 			if (res)
 				return TRUE;	/* yes, matched! */
-
+            
 			text = p + g_utf8_skip [p[0]];
 			if (*p == 0)
 				return FALSE;
 		}
-
+        
 		p += g_utf8_skip [p[0]];
 	}
 }
@@ -288,12 +288,12 @@ is_hilight (char *from, char *text, session *sess, server *serv)
 {
 	if (alert_match_word (from, prefs.irc_no_hilight))
 		return 0;
-
+    
 	text = strip_color (text, -1, STRIP_ALL);
-
+    
 	if (alert_match_text (text, serv->nick) ||
-		 alert_match_text (text, prefs.irc_extra_hilight) ||
-		 alert_match_word (from, prefs.irc_nick_hilight))
+        alert_match_text (text, prefs.irc_extra_hilight) ||
+        alert_match_word (from, prefs.irc_nick_hilight))
 	{
 		g_free (text);
 		if (sess != current_tab)
@@ -301,7 +301,7 @@ is_hilight (char *from, char *text, session *sess, server *serv)
 		fe_set_hilight (sess);
 		return 1;
 	}
-
+    
 	g_free (text);
 	return 0;
 }
@@ -315,7 +315,7 @@ inbound_action (session *sess, char *chan, char *from, char *ip, char *text, int
 	char nickchar[2] = "\000";
 	char idtext[64];
 	int privaction = FALSE;
-
+    
 	if (!fromme)
 	{
 		if (is_channel (serv, chan))
@@ -345,10 +345,10 @@ inbound_action (session *sess, char *chan, char *from, char *ip, char *text, int
 			}
 		}
 	}
-
+    
 	if (!sess)
 		sess = def;
-
+    
 	if (sess != current_tab)
 	{
 		if (fromme)
@@ -361,16 +361,16 @@ inbound_action (session *sess, char *chan, char *from, char *ip, char *text, int
 			sess->new_data = FALSE;
 		}
 	}
-
+    
 	user = userlist_find (sess, from);
 	if (user)
 	{
 		nickchar[0] = user->prefix[0];
 		user->lasttalk = time (0);
 	}
-
+    
 	inbound_make_idtext (serv, idtext, sizeof (idtext), id);
-
+    
 	if (!fromme && !privaction)
 	{
 		if (is_hilight (from, text, sess, serv))
@@ -379,7 +379,7 @@ inbound_action (session *sess, char *chan, char *from, char *ip, char *text, int
 			return;
 		}
 	}
-
+    
 	if (fromme)
 		EMIT_SIGNAL (XP_TE_UACTION, sess, from, text, nickchar, idtext, 0);
 	else if (!privaction)
@@ -397,7 +397,7 @@ inbound_chanmsg (server *serv, session *sess, char *chan, char *from, char *text
 	int hilight = FALSE;
 	char nickchar[2] = "\000";
 	char idtext[64];
-
+    
 	if (!sess)
 	{
 		if (chan)
@@ -412,20 +412,20 @@ inbound_chanmsg (server *serv, session *sess, char *chan, char *from, char *text
 		if (!sess)
 			return;
 	}
-
+    
 	if (sess != current_tab)
 	{
 		sess->msg_said = TRUE;
 		sess->new_data = FALSE;
 	}
-
+    
 	user = userlist_find (sess, from);
 	if (user)
 	{
 		nickchar[0] = user->prefix[0];
 		user->lasttalk = time (0);
 	}
-
+    
 	if (fromme)
 	{
   		if (prefs.auto_unmark_away && serv->is_away)
@@ -433,12 +433,12 @@ inbound_chanmsg (server *serv, session *sess, char *chan, char *from, char *text
 		EMIT_SIGNAL (XP_TE_UCHANMSG, sess, from, text, nickchar, NULL, 0);
 		return;
 	}
-
+    
 	inbound_make_idtext (serv, idtext, sizeof (idtext), id);
-
+    
 	if (is_hilight (from, text, sess, serv))
 		hilight = TRUE;
-
+    
 	if (sess->type == SESS_DIALOG)
 		EMIT_SIGNAL (XP_TE_DPRIVMSG, sess, from, text, idtext, NULL, 0);
 	else if (hilight)
@@ -453,13 +453,13 @@ inbound_newnick (server *serv, char *nick, char *newnick, int quiet)
 	int me = FALSE;
 	session *sess;
 	GSList *list = sess_list;
-
+    
 	if (!serv->p_cmp (nick, serv->nick))
 	{
 		me = TRUE;
 		safe_strcpy (serv->nick, newnick, NICKLEN);
 	}
-
+    
 	while (list)
 	{
 		sess = list->data;
@@ -471,10 +471,10 @@ inbound_newnick (server *serv, char *nick, char *newnick, int quiet)
 				{
 					if (me)
 						EMIT_SIGNAL (XP_TE_UCHANGENICK, sess, nick, newnick, NULL,
-										 NULL, 0);
+                                     NULL, 0);
 					else
 						EMIT_SIGNAL (XP_TE_CHANGENICK, sess, nick, newnick, NULL,
-										 NULL, 0);
+                                     NULL, 0);
 				}
 			}
 			if (sess->type == SESS_DIALOG && !serv->p_cmp (sess->channel, nick))
@@ -486,9 +486,9 @@ inbound_newnick (server *serv, char *nick, char *newnick, int quiet)
 		}
 		list = list->next;
 	}
-
+    
 	dcc_change_nick (serv, nick, newnick);
-
+    
 	if (me)
 		fe_set_nick (serv, newnick);
 }
@@ -503,7 +503,7 @@ find_unused_session (server *serv)
 	{
 		sess = (session *) list->data;
 		if (sess->type == SESS_CHANNEL && sess->channel[0] == 0 &&
-			 sess->server == serv)
+            sess->server == serv)
 		{
 			if (sess->waitchannel[0] == 0)
 				return sess;
@@ -535,7 +535,7 @@ void
 inbound_ujoin (server *serv, char *chan, char *nick, char *ip)
 {
 	session *sess;
-
+    
 	/* already joined? probably a bnc */
 	sess = find_channel (serv, chan);
 	if (!sess)
@@ -547,31 +547,31 @@ inbound_ujoin (server *serv, char *chan, char *nick, char *ip)
 			/* find a "<none>" tab and use that */
 			sess = find_unused_session (serv);
 			if (!sess)
-				/* last resort, open a new tab/window */
+            /* last resort, open a new tab/window */
 				sess = new_ircwindow (serv, chan, SESS_CHANNEL, 1);
 		}
 	}
-
+    
 	safe_strcpy (sess->channel, chan, CHANLEN);
-
+    
 	fe_set_channel (sess);
 	fe_set_title (sess);
 	fe_set_nonchannel (sess, TRUE);
 	userlist_clear (sess);
-
+    
 	log_open_or_close (sess);
-
+    
 	sess->waitchannel[0] = 0;
 	sess->ignore_date = TRUE;
 	sess->ignore_mode = TRUE;
 	sess->ignore_names = TRUE;
 	sess->end_of_names = FALSE;
-
+    
 	/* sends a MODE */
 	serv->p_join_info (sess->server, chan);
-
+    
 	EMIT_SIGNAL (XP_TE_UJOIN, sess, nick, chan, ip, NULL, 0);
-
+    
 	if (prefs.userhost)
 	{
 		/* sends WHO #channel */
@@ -604,7 +604,7 @@ inbound_upart (server *serv, char *chan, char *ip, char *reason)
 	{
 		if (*reason)
 			EMIT_SIGNAL (XP_TE_UPARTREASON, sess, serv->nick, ip, chan, reason,
-							 0);
+                         0);
 		else
 			EMIT_SIGNAL (XP_TE_UPART, sess, serv->nick, ip, chan, NULL, 0);
 		clear_channel (sess);
@@ -617,41 +617,41 @@ inbound_nameslist (server *serv, char *chan, char *names)
 	session *sess;
 	char name[NICKLEN];
 	int pos = 0;
-
+    
 	sess = find_channel (serv, chan);
 	if (!sess)
 	{
 		EMIT_SIGNAL (XP_TE_USERSONCHAN, serv->server_session, chan, names, NULL,
-						 NULL, 0);
+                     NULL, 0);
 		return;
 	}
 	if (!sess->ignore_names)
 		EMIT_SIGNAL (XP_TE_USERSONCHAN, sess, chan, names, NULL, NULL, 0);
-
+    
 	if (sess->end_of_names)
 	{
 		sess->end_of_names = FALSE;
 		userlist_clear (sess);
 	}
-
+    
 	while (1)
 	{
 		switch (*names)
 		{
-		case 0:
-			name[pos] = 0;
-			if (pos != 0)
-				userlist_add (sess, name, 0);
-			return;
-		case ' ':
-			name[pos] = 0;
-			pos = 0;
-			userlist_add (sess, name, 0);
-			break;
-		default:
-			name[pos] = *names;
-			if (pos < (NICKLEN-1))
-				pos++;
+            case 0:
+                name[pos] = 0;
+                if (pos != 0)
+                    userlist_add (sess, name, 0);
+                return;
+            case ' ':
+                name[pos] = 0;
+                pos = 0;
+                userlist_add (sess, name, 0);
+                break;
+            default:
+                name[pos] = *names;
+                if (pos < (NICKLEN-1))
+                    pos++;
 		}
 		names++;
 	}
@@ -662,7 +662,7 @@ inbound_topic (server *serv, char *chan, char *topic_text)
 {
 	session *sess = find_channel (serv, chan);
 	char *stripped_topic;
-
+    
 	if (sess)
 	{
 		stripped_topic = strip_color (topic_text, -1, STRIP_ALL);
@@ -670,7 +670,7 @@ inbound_topic (server *serv, char *chan, char *topic_text)
 		g_free (stripped_topic);
 	} else
 		sess = serv->server_session;
-
+    
 	EMIT_SIGNAL (XP_TE_TOPIC, sess, chan, topic_text, NULL, NULL, 0);
 }
 
@@ -679,7 +679,7 @@ inbound_topicnew (server *serv, char *nick, char *chan, char *topic)
 {
 	session *sess;
 	char *stripped_topic;
-
+    
 	sess = find_channel (serv, chan);
 	if (sess)
 	{
@@ -731,10 +731,10 @@ inbound_topictime (server *serv, char *chan, char *nick, time_t stamp)
 {
 	char *tim = ctime (&stamp);
 	session *sess = find_channel (serv, chan);
-
+    
 	if (!sess)
 		sess = serv->server_session;
-
+    
 	tim[24] = 0;	/* get rid of the \n */
 	EMIT_SIGNAL (XP_TE_TOPICDATE, sess, chan, nick, tim, NULL, 0);
 }
@@ -744,8 +744,9 @@ inbound_quit (server *serv, char *nick, char *ip, char *reason)
 {
 	GSList *list = sess_list;
 	session *sess;
+	struct User *user;
 	int was_on_front_session = FALSE;
-
+    
 	while (list)
 	{
 		sess = (session *) list->data;
@@ -753,9 +754,10 @@ inbound_quit (server *serv, char *nick, char *ip, char *reason)
 		{
  			if (sess == current_sess)
  				was_on_front_session = TRUE;
-			if (userlist_remove (sess, nick))
+			if (user = userlist_find (sess, nick))
 			{
 				EMIT_SIGNAL (XP_TE_QUIT, sess, nick, reason, ip, NULL, 0);
+				userlist_remove_user (sess, user);
 			} else if (sess->type == SESS_DIALOG && !serv->p_cmp (sess->channel, nick))
 			{
 				EMIT_SIGNAL (XP_TE_QUIT, sess, nick, reason, ip, NULL, 0);
@@ -763,7 +765,7 @@ inbound_quit (server *serv, char *nick, char *ip, char *reason)
 		}
 		list = list->next;
 	}
-
+    
 	notify_set_offline (serv, nick, was_on_front_session);
 }
 
@@ -773,19 +775,19 @@ inbound_ping_reply (session *sess, char *timestring, char *from)
 	unsigned long tim, nowtim, dif;
 	int lag = 0;
 	char outbuf[64];
-
+    
 	if (strncmp (timestring, "LAG", 3) == 0)
 	{
 		timestring += 3;
 		lag = 1;
 	}
-
+    
 	tim = strtoul (timestring, NULL, 10);
 	nowtim = make_ping_time ();
 	dif = nowtim - tim;
-
+    
 	sess->server->ping_recv = time (0);
-
+    
 	if (lag)
 	{
 		sess->server->lag_sent = 0;
@@ -793,7 +795,7 @@ inbound_ping_reply (session *sess, char *timestring, char *from)
 		fe_set_lag (sess->server, dif / 100000);
 		return;
 	}
-
+    
 	if (atol (timestring) == 0)
 	{
 		if (sess->server->lag_sent)
@@ -828,31 +830,31 @@ inbound_notice (server *serv, char *to, char *nick, char *msg, char *ip, int id)
 	char *po,*ptr=to;
 	session *sess = 0;
 	int server_notice = FALSE;
-
+    
 	if (is_channel (serv, ptr))
 		sess = find_channel (serv, ptr);
-
+    
 	if (!sess && ptr[0] == '@')
 	{
 		ptr++;
 		sess = find_channel (serv, ptr);
 	}
-
+    
 	if (!sess && ptr[0] == '%')
 	{
 		ptr++;
 		sess = find_channel (serv, ptr);
 	}
-
+    
 	if (!sess && ptr[0] == '+')
 	{
 		ptr++;
 		sess = find_channel (serv, ptr);
 	}
-
+    
 	if (strcmp (nick, ip) == 0)
 		server_notice = TRUE;
-
+    
 	if (!sess)
 	{
 		ptr = 0;
@@ -877,7 +879,7 @@ inbound_notice (server *serv, char *to, char *nick, char *msg, char *ip, int id)
 				msg += 14;
 		} else
 		{
-											/* paranoia check */
+            /* paranoia check */
 			if (msg[0] == '[' && (!serv->have_idmsg || id))
 			{
 				/* guess where chanserv meant to post this -sigh- */
@@ -904,7 +906,7 @@ inbound_notice (server *serv, char *to, char *nick, char *msg, char *ip, int id)
 				sess = serv->front_session;
 		}
 	}
-
+    
 	if (msg[0] == 1)
 	{
 		msg++;
@@ -917,7 +919,7 @@ inbound_notice (server *serv, char *to, char *nick, char *msg, char *ip, int id)
 	po = strchr (msg, '\001');
 	if (po)
 		po[0] = 0;
-
+    
 	if (server_notice)
 		EMIT_SIGNAL (XP_TE_SERVNOTICE, sess, msg, nick, NULL, NULL, 0);
 	else if (ptr)
@@ -932,7 +934,7 @@ inbound_away (server *serv, char *nick, char *msg)
 	struct away_msg *away = server_away_find_message (serv, nick);
 	session *sess = NULL;
 	GSList *list;
-
+    
 	if (away && !strcmp (msg, away->message))	/* Seen the msg before? */
 	{
 		if (prefs.show_away_once && !serv->inside_whois)
@@ -941,7 +943,7 @@ inbound_away (server *serv, char *nick, char *msg)
 	{
 		server_away_save_message (serv, nick, msg);
 	}
-
+    
 	if (prefs.irc_whois_front)
 		sess = serv->front_session;
 	else
@@ -951,11 +953,11 @@ inbound_away (server *serv, char *nick, char *msg)
 		if (!sess)
 			sess = serv->server_session;
 	}
-
+    
 	/* possibly hide the output */
 	if (!serv->inside_whois || !serv->skip_next_whois)
 		EMIT_SIGNAL (XP_TE_WHOIS5, sess, nick, msg, NULL, NULL, 0);
-
+    
 	list = sess_list;
 	while (list)
 	{
@@ -971,7 +973,7 @@ inbound_nameslist_end (server *serv, char *chan)
 {
 	session *sess;
 	GSList *list;
-
+    
 	if (!strcmp (chan, "*"))
 	{
 		list = sess_list;
@@ -1005,24 +1007,24 @@ check_autojoin_channels (server *serv)
 	GSList *list = sess_list;
 	int i = 0;
 	GSList *channels, *keys;
-
+    
 	/* shouldnt really happen, the io tag is destroyed in server.c */
 	if (!is_server (serv))
 		return FALSE;
-
+    
 	/* send auto join list */
 	if (serv->autojoin)
 	{
 		joinlist_split (serv->autojoin, &channels, &keys);
 		serv->p_join_list (serv, channels, keys);
 		joinlist_free (channels, keys);
-
+        
 		free (serv->autojoin);
 		serv->autojoin = NULL;
 	}
-
+    
 	/* this is really only for re-connects when you
-    * join channels not in the auto-join list. */
+     * join channels not in the auto-join list. */
 	while (list)
 	{
 		sess = list->data;
@@ -1055,28 +1057,28 @@ inbound_next_nick (session *sess, char *nick)
 	char *newnick;
 	server *serv = sess->server;
 	ircnet *net;
-
+    
 	serv->nickcount++;
-
+    
 	switch (serv->nickcount)
 	{
-	case 2:
-		newnick = prefs.nick2;
-		net = serv->network;
-		/* use network specific "Second choice"? */
-		if (net && !(net->flags & FLAG_USE_GLOBAL) && net->nick2)
-			newnick = net->nick2;
-		serv->p_change_nick (serv, newnick);
-		EMIT_SIGNAL (XP_TE_NICKCLASH, sess, nick, newnick, NULL, NULL, 0);
-		break;
-
-	case 3:
-		serv->p_change_nick (serv, prefs.nick3);
-		EMIT_SIGNAL (XP_TE_NICKCLASH, sess, nick, prefs.nick3, NULL, NULL, 0);
-		break;
-
-	default:
-		EMIT_SIGNAL (XP_TE_NICKFAIL, sess, NULL, NULL, NULL, NULL, 0);
+        case 2:
+            newnick = prefs.nick2;
+            net = serv->network;
+            /* use network specific "Second choice"? */
+            if (net && !(net->flags & FLAG_USE_GLOBAL) && net->nick2)
+                newnick = net->nick2;
+            serv->p_change_nick (serv, newnick);
+            EMIT_SIGNAL (XP_TE_NICKCLASH, sess, nick, newnick, NULL, NULL, 0);
+            break;
+            
+        case 3:
+            serv->p_change_nick (serv, prefs.nick3);
+            EMIT_SIGNAL (XP_TE_NICKCLASH, sess, nick, prefs.nick3, NULL, NULL, 0);
+            break;
+            
+        default:
+            EMIT_SIGNAL (XP_TE_NICKFAIL, sess, NULL, NULL, NULL, NULL, 0);
 	}
 }
 
@@ -1085,7 +1087,7 @@ do_dns (session *sess, char *nick, char *host)
 {
 	char *po;
 	char tbuf[1024];
-
+    
 	po = strrchr (host, '@');
 	if (po)
 		host = po + 1;
@@ -1098,17 +1100,17 @@ static void
 set_default_modes (server *serv)
 {
 	char modes[8];
-
+    
 	modes[0] = '+';
 	modes[1] = '\0';
-
+    
 	if (prefs.wallops)
 		strcat (modes, "w");
 	if (prefs.servernotice)
 		strcat (modes, "s");
 	if (prefs.invisible)
 		strcat (modes, "i");
-
+    
 	if (modes[1] != '\0')
 	{
 		serv->p_mode (serv, serv->nick, modes);
@@ -1135,7 +1137,7 @@ inbound_set_all_away_status (server *serv, char *nick, unsigned int status)
 {
 	GSList *list;
 	session *sess;
-
+    
 	list = sess_list;
 	while (list)
 	{
@@ -1152,7 +1154,7 @@ inbound_uaway (server *serv)
 	serv->is_away = TRUE;
 	serv->away_time = time (NULL);
 	fe_set_away (serv);
-
+    
 	inbound_set_all_away_status (serv, serv->nick, 1);
 }
 
@@ -1162,7 +1164,7 @@ inbound_uback (server *serv)
 	serv->is_away = FALSE;
 	serv->reconnect_away = FALSE;
 	fe_set_away (serv);
-
+    
 	inbound_set_all_away_status (serv, serv->nick, 0);
 }
 
@@ -1170,14 +1172,14 @@ void
 inbound_foundip (session *sess, char *ip)
 {
 	struct hostent *HostAddr;
-
+    
 	HostAddr = gethostbyname (ip);
 	if (HostAddr)
 	{
 		prefs.dcc_ip = ((struct in_addr *) HostAddr->h_addr)->s_addr;
 		EMIT_SIGNAL (XP_TE_FOUNDIP, sess,
-						 inet_ntoa (*((struct in_addr *) HostAddr->h_addr)),
-						 NULL, NULL, NULL, 0);
+                     inet_ntoa (*((struct in_addr *) HostAddr->h_addr)),
+                     NULL, NULL, NULL, 0);
 	}
 }
 
@@ -1193,20 +1195,20 @@ inbound_user_info_start (session *sess, char *nick)
 
 void
 inbound_user_info (session *sess, char *chan, char *user, char *host,
-						 char *servname, char *nick, char *realname,
-						 unsigned int away)
+                   char *servname, char *nick, char *realname,
+                   unsigned int away)
 {
 	server *serv = sess->server;
 	session *who_sess;
 	GSList *list;
 	char *uhost = NULL;
-
+    
 	if (user && host)
 	{
 		uhost = g_malloc (strlen (user) + strlen (host) + 2);
 		sprintf (uhost, "%s@%s", user, host);
 	}
-
+    
 	if (chan)
 	{
 		who_sess = find_channel (serv, chan);
@@ -1230,7 +1232,7 @@ inbound_user_info (session *sess, char *chan, char *user, char *host,
 			}
 		}
 	}
-
+    
 	g_free (uhost);
 }
 
@@ -1239,29 +1241,29 @@ inbound_banlist (session *sess, time_t stamp, char *chan, char *mask, char *bann
 {
 	char *time_str = ctime (&stamp);
 	server *serv = sess->server;
-
+    
 	time_str[19] = 0;	/* get rid of the \n */
 	if (stamp == 0)
 		time_str = "";
-
+    
 	sess = find_channel (serv, chan);
 	if (!sess)
 	{
 		sess = serv->front_session;
 		goto nowindow;
 	}
-
-   if (!fe_is_banwindow (sess))
+    
+    if (!fe_is_banwindow (sess))
 	{
-nowindow:
+    nowindow:
 		/* let proto-irc.c do the 'goto def' for exemptions */
 		if (is_exemption)
 			return FALSE;
-
+        
 		EMIT_SIGNAL (XP_TE_BANLIST, sess, chan, mask, banner, time_str, 0);
 		return TRUE;
 	}
-
+    
 	fe_add_ban_list (sess, mask, banner, time_str, is_exemption);
 	return TRUE;
 }
@@ -1279,7 +1281,7 @@ void
 inbound_login_end (session *sess, char *text)
 {
 	server *serv = sess->server;
-
+    
 	if (!serv->end_of_motd)
 	{
 		if (prefs.ip_from_server && serv->use_who)
@@ -1288,24 +1290,24 @@ inbound_login_end (session *sess, char *text)
 			serv->p_get_ip_uh (serv, serv->nick);	/* sends USERHOST mynick */
 		}
 		set_default_modes (serv);
-
+        
 		if (serv->network)
 		{
 			/* there may be more than 1, separated by \n */
 			if (((ircnet *)serv->network)->command)
 				token_foreach (((ircnet *)serv->network)->command, '\n',
-									inbound_exec_eom_cmd, sess);
-
+                               inbound_exec_eom_cmd, sess);
+            
 			/* send nickserv password */
 			if (((ircnet *)serv->network)->nickserv)
 				serv->p_ns_identify (serv, ((ircnet *)serv->network)->nickserv);
 		}
-
+        
 		/* send JOIN now or wait? */
 		if (serv->network && ((ircnet *)serv->network)->nickserv &&
-			 prefs.irc_join_delay)
+            prefs.irc_join_delay)
 			serv->joindelay_tag = fe_timeout_add (prefs.irc_join_delay * 1000,
-															  check_autojoin_channels, serv);
+                                                  check_autojoin_channels, serv);
 		else
 			check_autojoin_channels (serv);
 		if (serv->supports_watch)
@@ -1316,11 +1318,11 @@ inbound_login_end (session *sess, char *text)
 	{
 		serv->motd_skipped = TRUE;
 		EMIT_SIGNAL (XP_TE_MOTDSKIP, serv->server_session, NULL, NULL,
-						 NULL, NULL, 0);
+                     NULL, NULL, 0);
 		return;
 	}
 	EMIT_SIGNAL (XP_TE_MOTD, serv->server_session, text, NULL,
-					 NULL, NULL, 0);
+                 NULL, NULL, 0);
 }
 
 void
