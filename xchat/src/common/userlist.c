@@ -35,7 +35,7 @@ nick_cmp_az_ops (server *serv, struct User *user1, struct User *user2)
 	unsigned int access1 = user1->access;
 	unsigned int access2 = user2->access;
 	int pos;
-
+    
 	if (access1 != access2)
 	{
 		for (pos = 0; pos < USERACCESS_SIZE; pos++)
@@ -48,7 +48,7 @@ nick_cmp_az_ops (server *serv, struct User *user1, struct User *user2)
 				return 1;
 		}
 	}
-
+    
 	return serv->p_cmp (user1->nick, user2->nick);
 }
 
@@ -63,23 +63,23 @@ nick_cmp (struct User *user1, struct User *user2, server *serv)
 {
 	switch (prefs.userlist_sort)
 	{
-	case 0:
-		return nick_cmp_az_ops (serv, user1, user2);
-	case 1:
-		return serv->p_cmp (user1->nick, user2->nick);
-	case 2:
-		return -1 * nick_cmp_az_ops (serv, user1, user2);
-	case 3:
-		return -1 * serv->p_cmp (user1->nick, user2->nick);
-	default:
-		return -1;
+        case 0:
+            return nick_cmp_az_ops (serv, user1, user2);
+        case 1:
+            return serv->p_cmp (user1->nick, user2->nick);
+        case 2:
+            return -1 * nick_cmp_az_ops (serv, user1, user2);
+        case 3:
+            return -1 * serv->p_cmp (user1->nick, user2->nick);
+        default:
+            return -1;
 	}
 }
 
 /*
  insert name in appropriate place in linked list. Returns row number or:
-  -1: duplicate
-*/
+ -1: duplicate
+ */
 
 static int
 userlist_insertname (session *sess, struct User *newuser)
@@ -89,7 +89,7 @@ userlist_insertname (session *sess, struct User *newuser)
 		sess->usertree = tree_new ((tree_cmp_func *)nick_cmp, sess->server);
 		sess->usertree_alpha = tree_new ((tree_cmp_func *)nick_cmp_alpha, sess->server);
 	}
-
+    
 	tree_insert (sess->usertree_alpha, newuser);
 	return tree_insert (sess->usertree, newuser);
 }
@@ -98,7 +98,7 @@ void
 userlist_set_away (struct session *sess, char *nick, unsigned int away)
 {
 	struct User *user;
-
+    
 	user = userlist_find (sess, nick);
 	if (user)
 	{
@@ -115,10 +115,10 @@ userlist_set_away (struct session *sess, char *nick, unsigned int away)
 
 int
 userlist_add_hostname (struct session *sess, char *nick, char *hostname,
-							  char *realname, char *servername, unsigned int away)
+                       char *realname, char *servername, unsigned int away)
 {
 	struct User *user;
-
+    
 	user = userlist_find (sess, nick);
 	if (user)
 	{
@@ -128,7 +128,7 @@ userlist_add_hostname (struct session *sess, char *nick, char *hostname,
 			user->realname = strdup (realname);
 		if (!user->servername && servername)
 			user->servername = strdup (servername);
-
+        
 		if (away != 0xff)
 		{
 			if (prefs.showhostname_in_userlist || user->away != away)
@@ -138,9 +138,9 @@ userlist_add_hostname (struct session *sess, char *nick, char *hostname,
 			}
 			user->away = away;
 		}
-
+        
 		fe_userlist_update (sess, user);
-
+        
 		return 1;
 	}
 	return 0;
@@ -156,7 +156,7 @@ free_user (struct User *user, gpointer data)
 	if (user->servername)
 		free (user->servername);
 	free (user);
-
+    
 	return TRUE;
 }
 
@@ -166,11 +166,11 @@ userlist_free (session *sess)
 	tree_foreach (sess->usertree, (tree_traverse_func *)free_user, NULL);
 	tree_destroy (sess->usertree);
 	tree_destroy (sess->usertree_alpha);
-
+    
 	sess->usertree = NULL;
 	sess->usertree_alpha = NULL;
 	sess->me = NULL;
-
+    
 	sess->ops = 0;
 	sess->hops = 0;
 	sess->voices = 0;
@@ -195,11 +195,11 @@ struct User *
 userlist_find (struct session *sess, char *name)
 {
 	int pos;
-
+    
 	if (sess->usertree_alpha)
 		return tree_find (sess->usertree_alpha, name,
-								(tree_cmp_func *)find_cmp, sess->server, &pos);
-
+                          (tree_cmp_func *)find_cmp, sess->server, &pos);
+    
 	return NULL;
 }
 
@@ -225,22 +225,22 @@ userlist_find_global (struct server *serv, char *name)
 
 static void
 update_counts (session *sess, struct User *user, char prefix,
-					int level, int offset)
+               int level, int offset)
 {
 	switch (prefix)
 	{
-	case '@':
-		user->op = level;
-		sess->ops += offset;
-		break;
-	case '%':
-		user->hop = level;
-		sess->hops += offset;
-		break;
-	case '+':
-		user->voice = level;
-		sess->voices += offset;
-		break;
+        case '@':
+            user->op = level;
+            sess->ops += offset;
+            break;
+        case '%':
+            user->hop = level;
+            sess->hops += offset;
+            break;
+        case '+':
+            user->voice = level;
+            sess->voices += offset;
+            break;
 	}
 }
 
@@ -253,18 +253,18 @@ userlist_update_mode (session *sess, char *name, char mode, char sign)
 	int pos;
 	char prefix;
 	struct User *user;
-
+    
 	user = userlist_find (sess, name);
 	if (!user)
 		return;
-
+    
 	/* remove from binary trees, before we loose track of it */
 	tree_remove (sess->usertree, user, &pos);
 	tree_remove (sess->usertree_alpha, user, &pos);
-
+    
 	/* which bit number is affected? */
 	access = mode_access (sess->server, mode, &prefix);
-
+    
 	if (sign == '+')
 	{
 		level = TRUE;
@@ -282,17 +282,17 @@ userlist_update_mode (session *sess, char *name, char mode, char sign)
 			user->access &= ~(1 << access);
 		}
 	}
-
+    
 	/* now what is this users highest prefix? e.g. @ for ops */
 	user->prefix[0] = get_nick_prefix (sess->server, user->access);
-
+    
 	/* update the various counts using the CHANGED prefix only */
 	update_counts (sess, user, prefix, level, offset);
-
+    
 	/* insert it back into its new place */
 	tree_insert (sess->usertree_alpha, user);
 	pos = tree_insert (sess->usertree, user);
-
+    
 	/* let GTK move it too */
 	fe_userlist_move (sess, user, pos);
 	fe_userlist_numbers (sess);
@@ -303,22 +303,22 @@ userlist_change (struct session *sess, char *oldname, char *newname)
 {
 	struct User *user = userlist_find (sess, oldname);
 	int pos;
-
+    
 	if (user)
 	{
 		tree_remove (sess->usertree, user, &pos);
 		tree_remove (sess->usertree_alpha, user, &pos);
-
+        
 		safe_strcpy (user->nick, newname, NICKLEN);
-
+        
 		tree_insert (sess->usertree_alpha, user);
-
+        
 		fe_userlist_move (sess, user, tree_insert (sess->usertree, user));
 		fe_userlist_numbers (sess);
-
+        
 		return 1;
 	}
-
+    
 	return 0;
 }
 
@@ -326,12 +326,19 @@ int
 userlist_remove (struct session *sess, char *name)
 {
 	struct User *user;
-	int pos;
-
+    
 	user = userlist_find (sess, name);
 	if (!user)
 		return FALSE;
+    
+	userlist_remove_user (sess, user);
+	return TRUE;
+}
 
+void
+userlist_remove_user (struct session *sess, struct User *user)
+{
+	int pos;
 	if (user->voice)
 		sess->voices--;
 	if (user->op)
@@ -341,15 +348,13 @@ userlist_remove (struct session *sess, char *name)
 	sess->total--;
 	fe_userlist_numbers (sess);
 	fe_userlist_remove (sess, user);
-
+    
 	if (user == sess->me)
 		sess->me = NULL;
-
+    
 	tree_remove (sess->usertree, user, &pos);
 	tree_remove (sess->usertree_alpha, user, &pos);
 	free_user (user, NULL);
-
-	return TRUE;
 }
 
 void
@@ -358,20 +363,20 @@ userlist_add (struct session *sess, char *name, char *hostname)
 	struct User *user;
 	int row, prefix_chars;
 	unsigned int acc;
-
+    
 	acc = nick_access (sess->server, name, &prefix_chars);
-
+    
 	notify_set_online (sess->server, name + prefix_chars);
-
+    
 	user = malloc (sizeof (struct User));
 	memset (user, 0, sizeof (struct User));
-
+    
 	user->access = acc;
-
+    
 	/* assume first char is the highest level nick prefix */
 	if (prefix_chars)
 		user->prefix[0] = name[0];
-
+    
 	/* add it to our linked list */
 	if (hostname)
 		user->hostname = strdup (hostname);
@@ -380,7 +385,7 @@ userlist_add (struct session *sess, char *name, char *hostname)
 	if (!sess->server->p_cmp (user->nick, sess->server->nick))
 		user->me = TRUE;
 	row = userlist_insertname (sess, user);
-
+    
 	/* duplicate? some broken servers trigger this */
 	if (row == -1)
 	{
@@ -389,21 +394,21 @@ userlist_add (struct session *sess, char *name, char *hostname)
 		free (user);
 		return;
 	}
-
+    
 	sess->total++;
-
+    
 	/* most ircds don't support multiple modechars infront of the nickname
-      for /NAMES - though they should. */
+     for /NAMES - though they should. */
 	while (prefix_chars)
 	{
 		update_counts (sess, user, name[0], TRUE, 1);
 		name++;
 		prefix_chars--;
 	}
-
+    
 	if (user->me)
 		sess->me = user;
-
+    
 	fe_userlist_insert (sess, user, row, FALSE);
 	fe_userlist_numbers (sess);
 }
@@ -432,7 +437,7 @@ GSList *
 userlist_flat_list (session *sess)
 {
 	GSList *list = NULL;
-
+    
 	tree_foreach (sess->usertree_alpha, (tree_traverse_func *)flat_cb, &list);
 	return g_slist_reverse (list);
 }
@@ -448,7 +453,7 @@ GList *
 userlist_double_list(session *sess)
 {
 	GList *list = NULL;
-
+    
 	tree_foreach (sess->usertree_alpha, (tree_traverse_func *)double_cb, &list);
 	return list;
 }
