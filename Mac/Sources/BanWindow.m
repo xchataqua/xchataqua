@@ -214,13 +214,13 @@
     const char **masks = (const char **) malloc ([nicks count] * sizeof (const char *));
     for (NSUInteger i = 0; i < [nicks count]; i ++)
         masks[i] = [[nicks objectAtIndex:i] UTF8String];
-    [nicks release];
     
     char tbuf[2048];
     send_channel_modes (sess, tbuf, (char **) masks, 0, [nicks count], '-', 'b', 0);
     
     free (masks);
     
+    [nicks release];
     [self refreshTableView:nil];
 }
 
