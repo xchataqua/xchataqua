@@ -345,6 +345,12 @@
 		3876258013C7024F00850913 /* UrlGrabberWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C8A0613C6E10200AAF20D /* UrlGrabberWindow.xib */; };
 		3876258113C7024F00850913 /* UserCommandsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C8A0813C6E10200AAF20D /* UserCommandsWindow.xib */; };
 		3876258D13C7027400850913 /* MainMenuAppstore.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C89F413C6E10100AAF20D /* MainMenuAppstore.xib */; };
+		38763F1C13DD40D6008C40DB /* perl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F06C10E1FDA5E00359159 /* perl.c */; };
+		38763F1E13DD40D6008C40DB /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D78138B10E77D1A00C71AF8 /* libperl.dylib */; };
+		38763F2613DD460E008C40DB /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 38763F2513DD460E008C40DB /* libperl.dylib */; };
+		38763F2713DD4676008C40DB /* perl-lion.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 38763F2213DD40D6008C40DB /* perl-lion.bundle */; };
+		38763F2813DD4767008C40DB /* ruby.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 38D1414013D800E60026B7B5 /* ruby.bundle */; };
+		38763F2913DD476D008C40DB /* perl-lion.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 38763F2213DD40D6008C40DB /* perl-lion.bundle */; };
 		388BDCC313C6A0CB00B95036 /* SGAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDC9F13C6A0CB00B95036 /* SGAlert.m */; };
 		388BDCC413C6A0CB00B95036 /* SGApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCA113C6A0CB00B95036 /* SGApplication.m */; };
 		388BDCC513C6A0CB00B95036 /* SGArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCA313C6A0CB00B95036 /* SGArray.m */; };
@@ -393,7 +399,7 @@
 		388C8EB113C6E10500AAF20D /* UserCommandsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C8A0813C6E10200AAF20D /* UserCommandsWindow.xib */; };
 		38D1414213D801B70026B7B5 /* Ruby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38D1414113D801B70026B7B5 /* Ruby.framework */; };
 		38D1415A13D801E60026B7B5 /* xchat-ruby.c in Sources */ = {isa = PBXBuildFile; fileRef = 38D1415113D801E60026B7B5 /* xchat-ruby.c */; };
-		38D1415E13D8030A0026B7B5 /* ruby-snowleopard.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 38D1414013D800E60026B7B5 /* ruby-snowleopard.bundle */; };
+		38D1415E13D8030A0026B7B5 /* ruby.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 38D1414013D800E60026B7B5 /* ruby.bundle */; };
 		38DA68CF13C8D72700B12F16 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C89F213C6E10100AAF20D /* MainMenu.xib */; };
 		38FC936B13CAF449006CB5C8 /* xchat.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38FC92B713CAF449006CB5C8 /* xchat.strings */; };
 		38FC936C13CAF449006CB5C8 /* xchat.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38FC92B713CAF449006CB5C8 /* xchat.strings */; };
@@ -523,7 +529,9 @@
 				0F8F08330E1FE07C00359159 /* tcl.bundle in Copy Plugins */,
 				2DDCC9501233FAE20015A26C /* perl-leopard.bundle in Copy Plugins */,
 				2D78143710E78FBE00C71AF8 /* perl-snowleopard.bundle in Copy Plugins */,
+				38763F2913DD476D008C40DB /* perl-lion.bundle in Copy Plugins */,
 				0F2FEF790E1FB1A900DE4D41 /* python.bundle in Copy Plugins */,
+				38763F2813DD4767008C40DB /* ruby.bundle in Copy Plugins */,
 			);
 			name = "Copy Plugins";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -546,10 +554,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				38D1415E13D8030A0026B7B5 /* ruby-snowleopard.bundle in Copy Plugins */,
+				38D1415E13D8030A0026B7B5 /* ruby.bundle in Copy Plugins */,
 				381EED4B13CD1EA900CC0B82 /* python.bundle in Copy Plugins */,
 				381EED4C13CD1EA900CC0B82 /* tcl.bundle in Copy Plugins */,
 				381EED4D13CD1EA900CC0B82 /* perl-snowleopard.bundle in Copy Plugins */,
+				38763F2713DD4676008C40DB /* perl-lion.bundle in Copy Plugins */,
 			);
 			name = "Copy Plugins";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -800,6 +809,9 @@
 		3839010613C0667B004D20BC /* CLTabViewButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTabViewButtonCell.m; sourceTree = "<group>"; };
 		3839010813C06722004D20BC /* CLclose13.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = CLclose13.tiff; path = Resources/CLclose13.tiff; sourceTree = "<group>"; };
 		3876258B13C7024F00850913 /* XChat Azure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XChat Azure.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		38763F2213DD40D6008C40DB /* perl-lion.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-lion.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		38763F2313DD45D3008C40DB /* perl-lion-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "perl-lion-Info.plist"; sourceTree = "<group>"; };
+		38763F2513DD460E008C40DB /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = "build/XChatAqua.build/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib"; sourceTree = SOURCE_ROOT; };
 		388BDC9E13C6A0CB00B95036 /* SGAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAlert.h; sourceTree = "<group>"; };
 		388BDC9F13C6A0CB00B95036 /* SGAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAlert.m; sourceTree = "<group>"; };
 		388BDCA013C6A0CB00B95036 /* SGApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGApplication.h; sourceTree = "<group>"; };
@@ -1782,12 +1794,12 @@
 		388C8E6D13C6E10400AAF20D /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/TextEventsWindow.xib; sourceTree = "<group>"; };
 		388C8E6E13C6E10400AAF20D /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/UrlGrabberWindow.xib; sourceTree = "<group>"; };
 		388C8E6F13C6E10400AAF20D /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/UserCommandsWindow.xib; sourceTree = "<group>"; };
-		38D1414013D800E60026B7B5 /* ruby-snowleopard.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ruby-snowleopard.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		38D1414113D801B70026B7B5 /* Ruby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ruby.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Ruby.framework; sourceTree = DEVELOPER_DIR; };
+		38D1414013D800E60026B7B5 /* ruby.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ruby.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		38D1414113D801B70026B7B5 /* Ruby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ruby.framework; path = System/Library/Frameworks/Ruby.framework; sourceTree = SDKROOT; };
 		38D1414E13D801E60026B7B5 /* xchat-plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "xchat-plugin.h"; sourceTree = "<group>"; };
 		38D1414F13D801E60026B7B5 /* xchat-ruby-plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "xchat-ruby-plugin.h"; sourceTree = "<group>"; };
 		38D1415113D801E60026B7B5 /* xchat-ruby.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "xchat-ruby.c"; sourceTree = "<group>"; };
-		38D1415F13D80C700026B7B5 /* ruby-snowleopard-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ruby-snowleopard-Info.plist"; sourceTree = "<group>"; };
+		38D1415F13D80C700026B7B5 /* ruby-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ruby-Info.plist"; sourceTree = "<group>"; };
 		38FC92B813CAF449006CB5C8 /* am */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = am; path = am.lproj/xchat.strings; sourceTree = "<group>"; };
 		38FC92B913CAF449006CB5C8 /* az */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = az; path = az.lproj/xchat.strings; sourceTree = "<group>"; };
 		38FC92BA13CAF449006CB5C8 /* be */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = be; path = be.lproj/xchat.strings; sourceTree = "<group>"; };
@@ -1909,6 +1921,15 @@
 				3876254613C7024F00850913 /* WebKit.framework in Frameworks */,
 				D4D0BE0F13CD3DB70092832B /* Growl.framework in Frameworks */,
 				D4D0BE1013CD3DBD0092832B /* ShortcutRecorder.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38763F1D13DD40D6008C40DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38763F1E13DD40D6008C40DB /* libperl.dylib in Frameworks */,
+				38763F2613DD460E008C40DB /* libperl.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2100,9 +2121,11 @@
 			children = (
 				2DE5D5C210EBE2260024D2A4 /* perl-leopard-Info.plist */,
 				2DE5D5C410EBE2300024D2A4 /* perl-snowleopard-Info.plist */,
+				38763F2313DD45D3008C40DB /* perl-lion-Info.plist */,
 				0F8F07DA0E1FDEFF00359159 /* DynaLoader.a */,
 				0F8F07CE0E1FDDBF00359159 /* libperl.dylib */,
 				2D78138B10E77D1A00C71AF8 /* libperl.dylib */,
+				38763F2513DD460E008C40DB /* libperl.dylib */,
 				0F8F06C10E1FDA5E00359159 /* perl.c */,
 				0F8F06C20E1FDA5E00359159 /* xchat.pm.h */,
 			);
@@ -2137,6 +2160,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				38D1414113D801B70026B7B5 /* Ruby.framework */,
 				B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */,
 				B0D937F00FFB0D34009370B5 /* libssl.dylib */,
 				0F8EA70A0CFB384A001AE9AE /* Carbon.framework */,
@@ -2171,7 +2195,8 @@
 				0FE5E01D0F45576B000E0F91 /* SGPalette.ibplugin */,
 				2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */,
 				3876258B13C7024F00850913 /* XChat Azure.app */,
-				38D1414013D800E60026B7B5 /* ruby-snowleopard.bundle */,
+				38D1414013D800E60026B7B5 /* ruby.bundle */,
+				38763F2213DD40D6008C40DB /* perl-lion.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2179,7 +2204,6 @@
 		29B97314FDCFA39411CA2CEA /* X-Chat Aqua */ = {
 			isa = PBXGroup;
 			children = (
-				38D1414113D801B70026B7B5 /* Ruby.framework */,
 				380AD16C13C6967B003EEE3D /* Aqua */,
 				380AD16D13C69682003EEE3D /* Azure */,
 				0F8EA3640CFAA429001AE9AE /* Sources */,
@@ -2455,7 +2479,7 @@
 		38D1414513D801E60026B7B5 /* ruby */ = {
 			isa = PBXGroup;
 			children = (
-				38D1415F13D80C700026B7B5 /* ruby-snowleopard-Info.plist */,
+				38D1415F13D80C700026B7B5 /* ruby-Info.plist */,
 				38D1414E13D801E60026B7B5 /* xchat-plugin.h */,
 				38D1414F13D801E60026B7B5 /* xchat-ruby-plugin.h */,
 				38D1415113D801E60026B7B5 /* xchat-ruby.c */,
@@ -2645,9 +2669,27 @@
 			productReference = 3876258B13C7024F00850913 /* XChat Azure.app */;
 			productType = "com.apple.product-type.application";
 		};
-		38D1413613D800E60026B7B5 /* ruby-snowleopard */ = {
+		38763F1813DD40D6008C40DB /* perl-lion */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 38D1413D13D800E60026B7B5 /* Build configuration list for PBXNativeTarget "ruby-snowleopard" */;
+			buildConfigurationList = 38763F1F13DD40D6008C40DB /* Build configuration list for PBXNativeTarget "perl-lion" */;
+			buildPhases = (
+				38763F1913DD40D6008C40DB /* Generate Symlink For Lion Perl Library */,
+				38763F1A13DD40D6008C40DB /* Resources */,
+				38763F1B13DD40D6008C40DB /* Sources */,
+				38763F1D13DD40D6008C40DB /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "perl-lion";
+			productName = "perl-snowleopard";
+			productReference = 38763F2213DD40D6008C40DB /* perl-lion.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		38D1413613D800E60026B7B5 /* ruby */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 38D1413D13D800E60026B7B5 /* Build configuration list for PBXNativeTarget "ruby" */;
 			buildPhases = (
 				38D1413813D800E60026B7B5 /* Resources */,
 				38D1413913D800E60026B7B5 /* Sources */,
@@ -2657,9 +2699,9 @@
 			);
 			dependencies = (
 			);
-			name = "ruby-snowleopard";
+			name = ruby;
 			productName = "perl-snowleopard";
-			productReference = 38D1414013D800E60026B7B5 /* ruby-snowleopard.bundle */;
+			productReference = 38D1414013D800E60026B7B5 /* ruby.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		8D1107260486CEB800E47090 /* XChat Aqua */ = {
@@ -2754,7 +2796,8 @@
 				0F2FEF2A0E1FAB1500DE4D41 /* python */,
 				0F8F06D60E1FDA8500359159 /* perl-leopard */,
 				2D78137F10E77C6400C71AF8 /* perl-snowleopard */,
-				38D1413613D800E60026B7B5 /* ruby-snowleopard */,
+				38763F1813DD40D6008C40DB /* perl-lion */,
+				38D1413613D800E60026B7B5 /* ruby */,
 				2DDC70011231DA230015A26C /* printenv */,
 			);
 		};
@@ -2869,6 +2912,13 @@
 				38FC936E13CAF449006CB5C8 /* libsg.strings in Resources */,
 				38FC937013CAF449006CB5C8 /* xchataqua.strings in Resources */,
 				38FC93CB13CAF46E006CB5C8 /* locale in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38763F1A13DD40D6008C40DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3018,6 +3068,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# shell script goes here\nexit 0";
+		};
+		38763F1913DD40D6008C40DB /* Generate Symlink For Lion Perl Library */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Symlink For Lion Perl Library";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "TARGET_DIR=\"$PROJECT_TEMP_DIR\"\nrm -rf \"$TARGET_DIR/Perl/5.12\"\nmkdir -p \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/\"\nif [ -e '/System/Library/Perl/5.12/' ]; then\n\tln -s '/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib' \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\"\nelse\n\tln -s \"$PROJECT_DIR/Mac/contrib/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\" \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\"\nfi\n\nexit";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -3173,6 +3237,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		38763F1B13DD40D6008C40DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38763F1C13DD40D6008C40DB /* perl.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		38D1413913D800E60026B7B5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3311,7 +3383,7 @@
 		};
 		38D1415D13D802F10026B7B5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 38D1413613D800E60026B7B5 /* ruby-snowleopard */;
+			target = 38D1413613D800E60026B7B5 /* ruby */;
 			targetProxy = 38D1415C13D802F10026B7B5 /* PBXContainerItemProxy */;
 		};
 		DBA1A62711A5CCB2000B408C /* PBXTargetDependency */ = {
@@ -4792,7 +4864,7 @@
 					Mac,
 					Mac/contrib/include,
 					"/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE",
-					"Mac/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
+					"Mac/contrib/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE",
 					xchat/src,
 				);
 				INFOPLIST_FILE = "Mac/Plugins/perl/perl-snowleopard-Info.plist";
@@ -4826,7 +4898,7 @@
 					Mac,
 					Mac/contrib/include,
 					"/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE",
-					"Mac/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
+					"Mac/contrib/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE",
 					xchat/src,
 				);
 				INFOPLIST_FILE = "Mac/Plugins/perl/perl-snowleopard-Info.plist";
@@ -4932,6 +5004,79 @@
 			};
 			name = Release;
 		};
+		38763F2013DD40D6008C40DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					Mac,
+					Mac/contrib/include,
+					"/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
+					"Mac/contrib/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
+					xchat/src,
+				);
+				INFOPLIST_FILE = "Mac/Plugins/perl/perl-lion-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				LIBRARY_SEARCH_PATHS = (
+					Mac/contrib/lib,
+					"\\\"$(SYSTEM_LIBRARY_DIR)/Perl/lib/5.12\\\"",
+					"\"$(SRCROOT)/build/XChatAqua.build/Perl/5.12/darwin-thread-multi-2level/CORE\"",
+				);
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "perl-lion";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		38763F2113DD40D6008C40DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					Mac,
+					Mac/contrib/include,
+					"/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
+					"Mac/contrib/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
+					xchat/src,
+				);
+				INFOPLIST_FILE = "Mac/Plugins/perl/perl-lion-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				LIBRARY_SEARCH_PATHS = (
+					Mac/contrib/lib,
+					"\\\"$(SYSTEM_LIBRARY_DIR)/Perl/lib/5.12\\\"",
+					"\"$(SRCROOT)/build/XChatAqua.build/Perl/5.12/darwin-thread-multi-2level/CORE\"",
+				);
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "perl-lion";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		38D1413E13D800E60026B7B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -4947,11 +5092,9 @@
 				HEADER_SEARCH_PATHS = (
 					Mac,
 					Mac/contrib/include,
-					"/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE",
-					"Mac/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
 					xchat/src,
 				);
-				INFOPLIST_FILE = "Mac/Plugins/ruby/ruby-snowleopard-Info.plist";
+				INFOPLIST_FILE = "Mac/Plugins/ruby/ruby-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					Mac/contrib/lib,
@@ -4962,7 +5105,7 @@
 					dynamic_lookup,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = "ruby-snowleopard";
+				PRODUCT_NAME = ruby;
 				SDKROOT = macosx10.6;
 				SKIP_INSTALL = YES;
 			};
@@ -4981,11 +5124,9 @@
 				HEADER_SEARCH_PATHS = (
 					Mac,
 					Mac/contrib/include,
-					"/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE",
-					"Mac/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
 					xchat/src,
 				);
-				INFOPLIST_FILE = "Mac/Plugins/ruby/ruby-snowleopard-Info.plist";
+				INFOPLIST_FILE = "Mac/Plugins/ruby/ruby-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					Mac/contrib/lib,
@@ -4996,7 +5137,7 @@
 					dynamic_lookup,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = "ruby-snowleopard";
+				PRODUCT_NAME = ruby;
 				SDKROOT = macosx10.6;
 				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
@@ -5197,7 +5338,16 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		38D1413D13D800E60026B7B5 /* Build configuration list for PBXNativeTarget "ruby-snowleopard" */ = {
+		38763F1F13DD40D6008C40DB /* Build configuration list for PBXNativeTarget "perl-lion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38763F2013DD40D6008C40DB /* Debug */,
+				38763F2113DD40D6008C40DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		38D1413D13D800E60026B7B5 /* Build configuration list for PBXNativeTarget "ruby" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				38D1413E13D800E60026B7B5 /* Debug */,
