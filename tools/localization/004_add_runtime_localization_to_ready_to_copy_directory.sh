@@ -11,14 +11,13 @@ if [ "$1" = "clean" ]; then
 	exit;
 fi
 
-echo -n "copying xchataqua.strings: "
+echo -n "copying *.strings: "
 for localedir in "$MANUAL_STRINGS_DIR"/*; do
 	locale=`basename "$localedir"`
 	if [ "$locale" = "$BASE_LOCALE" ]; then
 		continue
 	fi
 	echo -n "$locale "
-	$CP "$MANUAL_STRINGS_DIR/$locale/libsg.strings" "$COMMON_RES_DIR/$locale.lproj/"
-	$CP "$MANUAL_STRINGS_DIR/$locale/xchataqua.strings" "$COMMON_RES_DIR/$locale.lproj/"
+	$CP "$MANUAL_STRINGS_DIR/$locale/"*.strings "$COMMON_RES_DIR/$locale.lproj/"
 done
 echo "done"
