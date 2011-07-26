@@ -101,7 +101,7 @@ enum {
 
 // Localization macros, for use in any bundle
 #define SRLoc(key) SRLocalizedString(key, nil)
-#define SRLocalizedString(key, comment) NSLocalizedStringFromTableInBundle(key, @"ShortcutRecorder", [NSBundle bundleForClass: [SRDummyClass class]], comment)
+#define SRLocalizedString(key, comment) NSLocalizedStringFromTable(key, @"ShortcutRecorder", comment)
 
 // Image macros, for use in any bundle
 //#define SRImage(name) [[[NSImage alloc] initWithContentsOfFile: [[NSBundle bundleForClass: [self class]] pathForImageResource: name]] autorelease]
