@@ -886,7 +886,7 @@ struct eventInfo textEventInfo[NUM_XP];
 // Open developer page
 - (void) openHomepage:(id)sender
 {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://github.com/youknowone/xchatazure"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://github.com/xchataqua/xchataqua"]];
 }
 
 // Open the X-Chat Aqua download page (same as homepage for now).
