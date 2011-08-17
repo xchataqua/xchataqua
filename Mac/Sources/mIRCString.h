@@ -25,6 +25,11 @@
                        font:(NSFont *) font
                    boldFont:(NSFont *) boldFont;
 
++ (id) stringWithUTF8String:(const char *) string
+                    palette:(ColorPalette *) palette
+                       font:(NSFont *) font
+                   boldFont:(NSFont *) boldFont;
+
 + (NSFont *) hiddenFont;
 
 - (const char *) UTF8String;

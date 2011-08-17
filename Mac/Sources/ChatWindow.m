@@ -1278,7 +1278,6 @@ static NSImage *emptyBulletImage;
     [palette setColor:AC_BGCOLOR color:[NSColor whiteColor]];
     
     [topicTextField setStringValue:[mIRCString stringWithUTF8String:topic
-                                                             length:-1
                                                             palette:palette
                                                                font:nil
                                                            boldFont:nil]];
