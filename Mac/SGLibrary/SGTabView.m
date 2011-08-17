@@ -603,7 +603,11 @@ HIThemeSegmentPosition positionTable[2][2] =
         [self setCell:[[[CLTabViewButtonCell alloc] init] autorelease]];
         [self setButtonType:NSOnOffButton];
         [[self cell] setControlSize:NSSmallControlSize];
-        [self setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
+        CGFloat fontSize = [NSFont smallSystemFontSize];
+        if (prefs.tab_small) {
+            fontSize *= 0.86;
+        }
+        [self setFont:[NSFont systemFontOfSize:fontSize]];
         [self setImagePosition:NSNoImage];
         [self setBezelStyle:NSShadowlessSquareBezelStyle];
         [self sizeToFit];
@@ -988,7 +992,11 @@ HIThemeSegmentPosition positionTable[2][2] =
         
         [self setOrder:0 forView:outlineScroll];
         
-        NSFont *font = [NSFont systemFontOfSize:[NSFont smallSystemFontSize]];
+        CGFloat fontSize = [NSFont smallSystemFontSize];
+        if (prefs.tab_small) {
+            fontSize *= 0.86;
+        }
+        NSFont *font = [NSFont systemFontOfSize:fontSize];
         NSLayoutManager * layout_manager=[[NSLayoutManager new] autorelease];
         
         SGTabViewOutlineCell *data_cell = [[SGTabViewOutlineCell alloc] initTextCell:@""];
