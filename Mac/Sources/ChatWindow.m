@@ -712,12 +712,14 @@ static NSImage *emptyBulletImage;
         // I really need to find a way to trigger a redraw of SGOutlineView
     }
     
-    [chatTextView setPalette:[[AquaChat sharedAquaChat] palette]];
-    if (prefs.background) {
+    ColorPalette *palette = [[AquaChat sharedAquaChat] palette];
+    if (prefs.background && strlen(prefs.background) > 0) {
+        palette = [palette copy];
         NSImage *image = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithUTF8String:prefs.background]];
-        [[chatTextView palette] setColor:AC_BGCOLOR color:[NSColor colorWithPatternImage:image]];
+        [palette setColor:AC_BGCOLOR color:[NSColor colorWithPatternImage:image]];
         [image release];
     }
+    [chatTextView setPalette:palette];
     
     [buttonBoxView setHidden:!prefs.userlistbuttons];
     [self setupUserlistButtons];
