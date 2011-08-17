@@ -15,6 +15,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
+/* PluginWindow.h
+ * Correspond to fe-gtk: xchat/src/fe-gtk/plugingui.*
+ * Correspond to main menu: Window -> Plugins and Scripts...
+ */
+
 #define PLUGIN_C
 typedef struct session xchat_context;
 
