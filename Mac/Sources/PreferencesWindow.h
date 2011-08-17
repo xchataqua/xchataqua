@@ -98,6 +98,7 @@ struct preferenceItem
     //  missing 'sort tabs' 'smaller text' in fe-gtk
     IBOutlet NSButton *newTabsToFrontCheckBox; // not in fe-gtk
     IBOutlet NSButton *hideTabCloseButtonsCheckBox; // fe-aqua
+    IBOutlet NSButton *smallerTextTabCheckBox;
     IBOutlet SRRecorderCell *tabLeftRecorderCell, *tabRightRecorderCell; // fe-aqua
     IBOutlet NSPopUpButton *tabPositionPopUp;
     IBOutlet NSTextField *shortenTabLabelLengthTextField;
@@ -175,7 +176,7 @@ struct preferenceItem
     IBOutlet NSPopUpButton *autoAcceptDccChatPopUp;
     IBOutlet NSButton *autoOpenDccChatCheckBox, *autoOpenDccReceiveCheckBox, *autoOpenDccSendCheckBox;
     
-    struct preferenceItem preferenceItems[93];
+    struct preferenceItem preferenceItems[94];
 }
 
 - (IBAction)applyPreferences:(id)sender;
@@ -185,6 +186,7 @@ struct preferenceItem
 
 - (IBAction)applyFont:(id)sender;
 - (IBAction)applyBackgroundImage:(id)sender;
+- (IBAction)removeBackgroundImage:(id)sender;
 - (IBAction)applyTranparency:(id)sender;
 
 @end

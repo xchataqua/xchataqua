@@ -217,6 +217,7 @@ extern struct eventInfo textEventInfo[];
         { autoDialogCheckBox, &prefs.autodialog, MYPREF_INT },
         { newTabsToFrontCheckBox, &prefs.newtabstofront, MYPREF_INT },
         { hideTabCloseButtonsCheckBox, &prefs.xa_hide_tab_close_buttons, MYPREF_INT },
+        { smallerTextTabCheckBox, &prefs.tab_small, MYPREF_INT },
         { tabPositionPopUp, &prefs._tabs_position, MYPREF_MENU },
         { shortenTabLabelLengthTextField, &prefs.truncchans, MYPREF_INT },
         { openChannelsInPopUp, &prefs.tabchannels, MYPREF_MENU },
@@ -437,6 +438,11 @@ extern struct eventInfo textEventInfo[];
 {
     [self makeFirstResponder:self];
     [backgroundImageTextField setStringValue:[SGFileSelection selectWithWindow:self]];
+}
+
+- (void) removeBackgroundImage:(id)sender
+{
+    [backgroundImageTextField setStringValue:@""];
 }
 
 #pragma mark NSOutlineView delegate
