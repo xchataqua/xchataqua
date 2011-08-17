@@ -15,6 +15,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
+/* RawLogWindow.m
+ * Correspond to fe-gtk: xchat/src/fe-gtk/rawlog.*
+ * Correspond to main menu: Window -> Raw Log...
+ */
+
 #import "AquaChat.h"
 
 #include "common/xchat.h"

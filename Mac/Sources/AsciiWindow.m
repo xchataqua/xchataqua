@@ -15,6 +15,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
+/* AsciiWindow.m
+ * Correspond to fe-gtk: xchat/src/fe-gtk/ascii.*
+ * Correspond to main menu: Window -> Character Chart...
+ */
+
 #include "common/xchat.h"
 #include "common/xchatc.h"
 #include "fe-aqua_common.h"

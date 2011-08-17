@@ -15,6 +15,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
+/* UrlGrabberWindow.h
+ * Correspond to fe-gtk: xchat/src/fe-gtk/urlgrab.*
+ * Correspond to main menu: Window -> URL Grabber...
+ */
+
 #import "UtilityWindow.h"
 
 @interface UrlGrabberWindow : UtilityTabOrWindowView

@@ -15,6 +15,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
+/* DccSendWin.m
+ * Correspond to main menu: Window -> File Send...
+ */
+
 #include "common/xchat.h"
 #include "common/xchatc.h"
 #include "common/network.h"
@@ -29,19 +33,19 @@ extern int dcc_sendcpssum;
 
 @interface DccSendItem : DCCFileItem
 {
-	//struct DCC 		*dcc;
-	//unsigned char prev_dccstat;
-	
-	//NSMutableString	*status;
-	//NSMutableString	*file;
-	//NSMutableString	*size;
-	//NSMutableString	*position;
-	//NSMutableString	*per;
-	//NSMutableString	*kbs;
-	//NSMutableString	*eta;
-
-	NSString	*ack;
-	NSString	*to;
+    //struct DCC         *dcc;
+    //unsigned char prev_dccstat;
+    
+    //NSMutableString    *status;
+    //NSMutableString    *file;
+    //NSMutableString    *size;
+    //NSMutableString    *position;
+    //NSMutableString    *per;
+    //NSMutableString    *kbs;
+    //NSMutableString    *eta;
+    
+    NSString    *ack;
+    NSString    *to;
 }
 
 @property (nonatomic, retain) NSString *ack, *to;
@@ -56,26 +60,26 @@ extern int dcc_sendcpssum;
 
 - (id) initWithDCC:(struct DCC *) the_dcc
 {
-	[super initWithDCC:the_dcc];
-	
-	[self update];
-   
-	return self;
+    [super initWithDCC:the_dcc];
+    
+    [self update];
+    
+    return self;
 }
 
 - (void) dealloc
 {
-	self.ack = nil;
-	self.to = nil;
-
-	[super dealloc];
+    self.ack = nil;
+    self.to = nil;
+    
+    [super dealloc];
 }
 
 - (void) update
 {
-	[super update];
-	self.ack = formatNumber(dcc->ack);
-	self.to  = [NSString stringWithUTF8String:dcc->nick];
+    [super update];
+    self.ack = formatNumber(dcc->ack);
+    self.to  = [NSString stringWithUTF8String:dcc->nick];
 }
 
 @end
@@ -86,85 +90,85 @@ extern int dcc_sendcpssum;
 
 - (id) init
 {
-	[super initWithNibNamed:@"DccSend"];
-	
-	return self;
+    [super initWithNibNamed:@"DccSend"];
+    
+    return self;
 }
 
 - (DCCItem *)itemWithDCC:(struct DCC *) dcc
 {
-	if (dcc->type != TYPE_SEND) return nil;
-	else return [[[DccSendItem alloc] initWithDCC:dcc] autorelease];
+    if (dcc->type != TYPE_SEND) return nil;
+    else return [[[DccSendItem alloc] initWithDCC:dcc] autorelease];
 }
 
 - (void) awakeFromNib
 {
-	cpssum = &dcc_sendcpssum;
-	[super awakeFromNib];
-
-	[dccListView setTitle:NSLocalizedStringFromTable(@"XChat: File Send List", @"xchataqua", @"")];
-	[dccListView setTabTitle:NSLocalizedStringFromTable(@"dccsend", @"xchataqua", @"")];
+    cpssum = &dcc_sendcpssum;
+    [super awakeFromNib];
+    
+    [dccListView setTitle:NSLocalizedStringFromTable(@"XChat: File Send List", @"xchataqua", @"")];
+    [dccListView setTabTitle:NSLocalizedStringFromTable(@"dccsend", @"xchataqua", @"")];
 }
 
 - (void) doInfo:(id)sender
 {
-	int row = [itemTableView selectedRow];
-	if (row >= 0)
-	{
-		DccSendItem *item = [dccItems objectAtIndex:row];
-
-		struct DCC *dcc = item->dcc;
-
-		NSString *msg = [NSString stringWithFormat:NSLocalizedStringFromTable(@"	  File: %s\n		To: %s\n	  Size: %"DCC_SIZE_FMT"\n	  Port: %d\n IP Number: %s\nStart Time: %s", @"xchataqua", @""),
-									dcc->file, dcc->nick, dcc->size, dcc->port,
-									net_ip (dcc->addr), ctime (&dcc->starttime)];
-
-		[SGAlert noticeWithString:msg andWait:false];
-	}
+    int row = [itemTableView selectedRow];
+    if (row >= 0)
+    {
+        DccSendItem *item = [dccItems objectAtIndex:row];
+        
+        struct DCC *dcc = item->dcc;
+        
+        NSString *msg = [NSString stringWithFormat:NSLocalizedStringFromTable(@"      File: %s\n        To: %s\n      Size: %"DCC_SIZE_FMT"\n      Port: %d\n IP Number: %s\nStart Time: %s", @"xchataqua", @""),
+                         dcc->file, dcc->nick, dcc->size, dcc->port,
+                         net_ip (dcc->addr), ctime (&dcc->starttime)];
+        
+        [SGAlert noticeWithString:msg andWait:false];
+    }
 }
 
 - (NSString *)activeString
 {
-	if (activeCount == 0) return NSLocalizedStringFromTable(@"No active upload", @"xchataqua", @"label of DCC Send List: MainMenu->Window->DCC Send List...");
-	else if (activeCount == 1) return NSLocalizedStringFromTable(@"1 active upload", @"xchataqua", @"label of DCC Send List: MainMenu->Window->DCC Send List...");
-	else return [NSString stringWithFormat:NSLocalizedStringFromTable(@"%d active uploads", @"xchataqua", @"label of DCC Send List: MainMenu->Window->DCC Send List..."), activeCount];
+    if (activeCount == 0) return NSLocalizedStringFromTable(@"No active upload", @"xchataqua", @"label of DCC Send List: MainMenu->Window->DCC Send List...");
+    else if (activeCount == 1) return NSLocalizedStringFromTable(@"1 active upload", @"xchataqua", @"label of DCC Send List: MainMenu->Window->DCC Send List...");
+    else return [NSString stringWithFormat:NSLocalizedStringFromTable(@"%d active uploads", @"xchataqua", @"label of DCC Send List: MainMenu->Window->DCC Send List..."), activeCount];
 }
 
 - (NSNumber *)globalSpeedLimit
 {
-	if (prefs.dcc_global_max_send_cps) return [NSNumber numberWithInt:prefs.dcc_global_max_send_cps / 1024];
-	else return nil;
+    if (prefs.dcc_global_max_send_cps) return [NSNumber numberWithInt:prefs.dcc_global_max_send_cps / 1024];
+    else return nil;
 }
 
 - (void)setGlobalSpeedLimit:(id)value
 {
-	if ([value respondsToSelector:@selector(intValue)]) prefs.dcc_global_max_send_cps = [value intValue] * 1024;
-	else prefs.dcc_global_max_send_cps = 0;
+    if ([value respondsToSelector:@selector(intValue)]) prefs.dcc_global_max_send_cps = [value intValue] * 1024;
+    else prefs.dcc_global_max_send_cps = 0;
 }
 
 //////////////
 //
 
 - (id) tableView:(NSTableView *)aTableView
-	objectValueForTableColumn:(NSTableColumn *)aTableColumn
-	row:(NSInteger) rowIndex
+objectValueForTableColumn:(NSTableColumn *)aTableColumn
+             row:(NSInteger) rowIndex
 {
-	DccSendItem *item = [dccItems objectAtIndex:rowIndex];
-
-	switch ( [[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn] )
-	{
-		case 0: return [item status];
-		case 1: return [item file];
-		case 2: return [item size];
-		case 3: return [item position];
-		case 4: return [item ack];
-		case 5: return [item per];
-		case 6: return [item kbs];
-		case 7: return [item eta];
-		case 8: return [item to];
-	}
-	
-	return @"";
+    DccSendItem *item = [dccItems objectAtIndex:rowIndex];
+    
+    switch ( [[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn] )
+    {
+        case 0: return [item status];
+        case 1: return [item file];
+        case 2: return [item size];
+        case 3: return [item position];
+        case 4: return [item ack];
+        case 5: return [item per];
+        case 6: return [item kbs];
+        case 7: return [item eta];
+        case 8: return [item to];
+    }
+    
+    return @"";
 }
 
 @end
