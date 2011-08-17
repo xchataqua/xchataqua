@@ -717,17 +717,16 @@ static NSImage *emptyBulletImage;
     [buttonBoxView setHidden:!prefs.userlistbuttons];
     [self setupUserlistButtons];
     
+    SEL setupModeButtons = @selector(cleanHeaderBoxView);
     if (prefs.chanmodebuttons)
     {
-        if (sess->type == SESS_DIALOG)
-            [self setupDialogButtons];
-        else
-            [self setupChannelModeButtons];
+        switch (sess->type) {
+            case SESS_CHANNEL: setupModeButtons = @selector(setupChannelModeButtons); break;
+            case SESS_DIALOG:  setupModeButtons = @selector(setupDialogButtons); break;
+            default: break;
+        }
     }
-    else
-    {
-        [self cleanHeaderBoxView];
-    }
+    [self performSelector:setupModeButtons];
     
     if (sess->type != SESS_CHANNEL || prefs.hideuserlist)
         [bodyBoxView setSplitPosition:0];
