@@ -190,6 +190,17 @@ NSFont *sharedHiddenFont;
     return [msgString autorelease];
 }
 
++ (id) stringWithUTF8String:(const char *) string
+                    palette:(ColorPalette *) palette
+                       font:(NSFont *) font
+                   boldFont:(NSFont *) boldFont {
+    return [self stringWithUTF8String:string
+                               length:-1
+                              palette:palette
+                                 font:font
+                             boldFont:boldFont];
+}
+
 - (const char *) UTF8String
 {
     return [[self string] UTF8String];
