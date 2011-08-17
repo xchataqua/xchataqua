@@ -729,7 +729,7 @@ static NSImage *emptyBulletImage;
         [self cleanHeaderBoxView];
     }
     
-    if (sess->type == SESS_DIALOG || prefs.hideuserlist)
+    if (sess->type != SESS_CHANNEL || prefs.hideuserlist)
         [bodyBoxView setSplitPosition:0];
     else if (prefs.xa_paned_pos > 0)
         [bodyBoxView setSplitPosition:prefs.xa_paned_pos];
