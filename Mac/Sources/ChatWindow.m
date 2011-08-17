@@ -713,6 +713,11 @@ static NSImage *emptyBulletImage;
     }
     
     [chatTextView setPalette:[[AquaChat sharedAquaChat] palette]];
+    if (prefs.background) {
+        NSImage *image = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithUTF8String:prefs.background]];
+        [[chatTextView palette] setColor:AC_BGCOLOR color:[NSColor colorWithPatternImage:image]];
+        [image release];
+    }
     
     [buttonBoxView setHidden:!prefs.userlistbuttons];
     [self setupUserlistButtons];
