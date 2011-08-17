@@ -725,7 +725,16 @@ static NSImage *emptyBulletImage;
             [self setupChannelModeButtons];
     }
     else
+    {
         [self cleanHeaderBoxView];
+    }
+    
+    if (sess->type == SESS_DIALOG || prefs.hideuserlist)
+        [bodyBoxView setSplitPosition:0];
+    else if (prefs.xa_paned_pos > 0)
+        [bodyBoxView setSplitPosition:prefs.xa_paned_pos];
+    else
+        [bodyBoxView setSplitPosition:150];
 }
 
 - (void) doConferenceMode:(id)sender
@@ -877,12 +886,6 @@ static NSImage *emptyBulletImage;
     else
         [chatView setTabTitle:NSLocalizedStringFromTable(@"<none>", @"xchat", @"")];
     
-    if (sess->type == SESS_DIALOG || prefs.hideuserlist)
-        [bodyBoxView setSplitPosition:0];
-    else if (prefs.xa_paned_pos > 0)
-        [bodyBoxView setSplitPosition:prefs.xa_paned_pos];
-    else
-        [bodyBoxView setSplitPosition:150];
     
     if (sess->type == SESS_DIALOG)
     {
