@@ -15,6 +15,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
+/* DCCListController.h
+ * Correspond to fe-gtk: xchat/src/fe-gtk/dccgui.c
+ */
+
 #import "TabOrWindowView.h"
 
 #ifdef USE_DCC64
