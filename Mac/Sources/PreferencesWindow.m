@@ -180,6 +180,7 @@ extern struct eventInfo textEventInfo[];
     {
         // Text box
         { textBoxFontTextField, &prefs.font_normal, MYPREF_STRING },
+        { backgroundImageTextField, &prefs.background, MYPREF_STRING },
         { maxLinesTextField, &prefs.max_lines, MYPREF_INT },
         { coloredNicksCheckBox, &prefs.colorednicks, MYPREF_INT },
         { indentNicksCheckBox, &prefs.indent_nicks, MYPREF_INT },
@@ -430,6 +431,12 @@ extern struct eventInfo textEventInfo[];
     [self makeFirstResponder:self];
     NSFontManager *fontManager = [NSFontManager sharedFontManager];
     [fontManager orderFrontFontPanel:self];
+}
+
+- (void) applyBackgroundImage:(id)sender
+{
+    [self makeFirstResponder:self];
+    [backgroundImageTextField setStringValue:[SGFileSelection selectWithWindow:self]];
 }
 
 #pragma mark NSOutlineView delegate

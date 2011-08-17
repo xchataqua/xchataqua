@@ -33,6 +33,7 @@ static NSAttributedString *tab;
 static NSCursor *lr_cursor;
 
 @implementation XAChatTextView
+@synthesize palette;
 
 - (id) initWithFrame:(NSRect) frameRect
 {
