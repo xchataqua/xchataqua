@@ -49,10 +49,11 @@
     BOOL        pendingEditing;
 }
 
+@property(nonatomic, assign, setter=setPalette:) ColorPalette *palette;
+
 - (void) printText:(NSString *)text;
 - (void) printText:(NSString *)text stamp:(time_t)stamp;
 - (void) clearText;
-- (void) setPalette:(ColorPalette *) palette;
 - (void) setFont:(NSFont *)font boldFont:(NSFont *) boldFont;
 - (void) setDropHandler:(id)dropHandler;
 - (void) updateAtBottom:(NSNotification *) notif;
