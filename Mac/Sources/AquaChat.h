@@ -60,15 +60,23 @@ extern struct eventInfo textEventInfo[];
 @interface AquaChat : NSObject <GrowlApplicationBridgeDelegate>
 {
 @public
-    IBOutlet NSMenuItem *awayMenuItem;
-    IBOutlet NSMenuItem *invisibleMenuItem;
+    //Main menu
+    // File menu
     IBOutlet NSMenuItem *newChannelTabMenuItem;
     IBOutlet NSMenuItem *newServerTabMenuItem;
+    // View menu
+    IBOutlet NSMenuItem *userListMenuItem, *userlistButtonsMenuItem, *modeButtonsMenuItem;
+    // IRC menu
+    IBOutlet NSMenuItem *invisibleMenuItem;
+    IBOutlet NSMenuItem *receiveWallopsMenuItem;
+    IBOutlet NSMenuItem *receiveNoticesMenuItem;
+    IBOutlet NSMenuItem *awayMenuItem;
+    // Usermenu menu
+    IBOutlet NSMenu *userMenu;
+    // Window menu
     IBOutlet NSMenuItem *nextWindowMenuItem;
     IBOutlet NSMenuItem *previousWindowMenuItem;
-    IBOutlet NSMenuItem *receiveNoticesMenuItem;
-    IBOutlet NSMenuItem *receiveWallopsMenuItem;
-    IBOutlet NSMenu *userMenu;
+    //End of main menu
     
     NSString *searchString;
     
@@ -117,8 +125,9 @@ extern struct eventInfo textEventInfo[];
 - (void) ctrl_gui:(struct session *) sess action:(int) action arg:(int) arg;
 - (void) server_event:(struct server *)server event_type:(int)type arg:(int)arg;
 
+- (void) toggleMenuItemAndReloadPreferences:(id)sender;
 // MainMenu IBAction
-// Standard menu
+// Application menu
 - (IBAction) showPreferencesWindow:(id)sender;
 - (IBAction) showUserCommandsWindow:(id)sender;
 - (IBAction) showCtcpRepliesWindow:(id)sender;
@@ -132,6 +141,8 @@ extern struct eventInfo textEventInfo[];
 - (IBAction) showNetworkWindow:(id)sender;
 - (IBAction) openNewServer:(id)sender;
 - (IBAction) openNewChannel:(id)sender;
+- (IBAction) toggleTabAttachment:(id)sender;
+- (IBAction) closeTab:(id)sender;
 - (IBAction) loadPlugin:(id)sender;
 // Edit menu
 - (IBAction) clearWindow:(id)sender;
@@ -148,8 +159,6 @@ extern struct eventInfo textEventInfo[];
 // Usermenu menu
 - (IBAction) showUserMenusWindow:(id)sender;
 // Window menu
-- (IBAction) closeTab:(id)sender;
-- (IBAction) toggleTabAttachment:(id)sender;
 - (IBAction) selectNextTab:(id)sender;
 - (IBAction) selectPreviousTab:(id)sender;
 - (IBAction) showChannelWindow:(id)sender;
