@@ -81,6 +81,8 @@
 - (void) preferencesChanged;
 - (void) saveBuffer:(NSString *)filename;
 - (void) find:(NSString *)string caseSensitive:(BOOL)YesOrNo backward:(BOOL)YesOrNo;
+- (void) useSelectionForFind;
+- (void) jumpToSelection;
 - (BOOL) processFileDrop:(id<NSDraggingInfo>)info forUser:(NSString *) nick;
 - (NSMenu *)menuForEvent:(NSEvent *)theEvent rowIndexes:(NSIndexSet *)rows;
 

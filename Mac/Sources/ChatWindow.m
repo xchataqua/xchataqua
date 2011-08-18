@@ -563,6 +563,19 @@ static NSImage *emptyBulletImage;
     [chatTextView scrollRangeToVisible:where];
 }
 
+- (void) useSelectionForFind {
+    NSRange selectedRange = [[[chatView window] fieldEditor:NO forObject:inputTextField] selectedRange];    
+    NSString *searchString = [[inputTextField stringValue] substringWithRange:selectedRange];
+    if ([searchString length] == 0) {
+        searchString = [[[chatTextView textStorage] string] substringWithRange:[chatTextView selectedRange]];
+    }
+    [self find:searchString caseSensitive:NO backward:NO];
+}
+
+- (void) jumpToSelection {
+    [chatTextView scrollRangeToVisible:[chatTextView selectedRange]];
+}
+
 - (void) cleanHeaderBoxView
 {
     // The dialog and channel mode buttons share the top box with the

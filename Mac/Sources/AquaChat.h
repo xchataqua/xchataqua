@@ -138,6 +138,8 @@ extern struct eventInfo textEventInfo[];
 - (IBAction) showSearchPanel:(id)sender;
 - (IBAction) findNext:(id)sender;
 - (IBAction) findPrevious:(id)sender;
+- (IBAction) useSelectionForFind:(id)sender;
+- (IBAction) jumpToSelection:(id)sender;
 // IRC menu
 - (IBAction) toggleInvisible:(id)sender;
 - (IBAction) toggleReceiveWallops:(id)sender;
