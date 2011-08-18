@@ -55,9 +55,10 @@ struct menuPreferenceItem
 {
     NSMenuItem *menuItem;
     unsigned int *preference;
+    int reverse;
 };
 
-static struct menuPreferenceItem menuPreferenceItems [3];
+static struct menuPreferenceItem menuPreferenceItems [6];
 static AquaChat *aquachat;
 
 struct eventInfo textEventInfo[NUM_XP];
@@ -689,6 +690,11 @@ struct eventInfo textEventInfo[NUM_XP];
     prefs.tabchannels = old;
 }
 
+- (void) toggleMenuItemAndReloadPreferences:(id)sender {
+    [self toggleMenuItem:sender];
+    [self preferencesChanged];
+}
+
 - (void) toggleInvisible:(id)sender
 {
     [self toggleMenuItem:sender];
@@ -995,7 +1001,9 @@ struct eventInfo textEventInfo[NUM_XP];
 {
     struct menuPreferenceItem *pref = &menuPreferenceItems[[sender tag]];
     *pref->preference = !*pref->preference;
-    [sender setState:*pref->preference ? NSOnState : NSOffState];
+    NSCellStateValue shownValue = *pref->preference ? NSOnState : NSOffState;
+    if (pref->reverse) shownValue = !shownValue;
+    [sender setState:shownValue];
 }
 
 - (void) saveBuffer:(id)sender
@@ -1015,18 +1023,25 @@ struct eventInfo textEventInfo[NUM_XP];
 
 - (void) loadMenuPreferences
 {
-    struct menuPreferenceItem tmp_prefs [] = 
+    struct menuPreferenceItem tempPreferences [] =
     {
-        { invisibleMenuItem, &prefs.invisible },
-        { receiveNoticesMenuItem, &prefs.servernotice },
-        { receiveWallopsMenuItem, &prefs.wallops },
+        // IRC menu
+        { invisibleMenuItem, &prefs.invisible, NO },
+        { receiveNoticesMenuItem, &prefs.servernotice, NO },
+        { receiveWallopsMenuItem, &prefs.wallops, NO },
+        // View menu
+        { userListMenuItem,  &prefs.hideuserlist, YES },
+        { userlistButtonsMenuItem, &prefs.userlistbuttons, NO },
+        { modeButtonsMenuItem, &prefs.chanmodebuttons, NO },
     };
     
     for (NSUInteger i = 0; i < sizeof(menuPreferenceItems) / sizeof(menuPreferenceItems[0]); i ++)
     {
-        menuPreferenceItems [i] = tmp_prefs [i];
+        menuPreferenceItems [i] = tempPreferences [i];
         struct menuPreferenceItem *pref = &menuPreferenceItems [i];
-        [pref->menuItem setState:*pref->preference ? NSOnState : NSOffState];
+        NSCellStateValue shownValue = *pref->preference ? NSOnState : NSOffState;
+        if (pref->reverse) shownValue = !shownValue;
+        [pref->menuItem setState:shownValue];
         [pref->menuItem setTag:i];
     }
 }
