@@ -604,6 +604,16 @@ struct eventInfo textEventInfo[NUM_XP];
         [current_sess->gui->chatWindow find:searchString caseSensitive:NO backward:YES];
 }
 
+- (void) useSelectionForFind:(id)sender
+{
+    [current_sess->gui->chatWindow useSelectionForFind];
+}
+
+- (void) jumpToSelection:(id)sender
+{
+    [current_sess->gui->chatWindow jumpToSelection];
+}
+
 - (void) toggleAway:(id)sender
 {
     handle_command (current_sess, "away", FALSE);
