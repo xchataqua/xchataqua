@@ -420,7 +420,7 @@ static const char * strip_crap (const char *s)
 
 - (void) updateCaption
 {
-    NSString *caption = [NSString stringWithFormat:NSLocalizedStringFromTable(@"Displaying %d/%d users on %d/%d filteredChannels.", @"xchat", @""),
+    NSString *caption = [NSString stringWithFormat:NSLocalizedStringFromTable(@"Displaying %d/%d users on %d/%d channels.", @"xchat", @""),
                          numberOfShownUsers, numberOfFoundUsers, [filteredChannels count], [allChannels count]];
     [captionTextField setStringValue:caption];
 }
