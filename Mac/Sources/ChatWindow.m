@@ -350,7 +350,7 @@
 {
     NSIndexSet *selectedRows = [self selectedRowIndexes];
     if ([selectedRows count] == 0) return [super menuForEvent:theEvent];
-    ChatWindow *delegate = [self delegate];
+    ChatWindow *delegate = (id)[self delegate];
     if ([delegate respondsToSelector:@selector(menuForEvent:rowIndexes:)])
         return [delegate menuForEvent:theEvent rowIndexes:selectedRows];
     else return [super menuForEvent:theEvent];
@@ -1752,8 +1752,9 @@ static NSImage *emptyBulletImage;
     
     [inputTextField setStringValue:@""];
     
-    handle_multiline (sess, (char *) [message UTF8String], TRUE, FALSE);
-    
+    char *msg = strdup([message UTF8String]);
+    handle_multiline (sess, msg, TRUE, FALSE);
+    free(msg);
     // Don't do anything there.. previous command might have killed us.
 }
 
