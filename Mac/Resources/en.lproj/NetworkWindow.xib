@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1050</int>
-		<string key="IBDocument.SystemVersion">10J567</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1305</string>
-		<string key="IBDocument.AppKitVersion">1038.35</string>
-		<string key="IBDocument.HIToolboxVersion">462.00</string>
+		<string key="IBDocument.SystemVersion">11B26</string>
+		<string key="IBDocument.InterfaceBuilderVersion">1617</string>
+		<string key="IBDocument.AppKitVersion">1138</string>
+		<string key="IBDocument.HIToolboxVersion">566.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">1305</string>
+			<string key="NS.object.0">1617</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -40,8 +40,11 @@
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.Metadata">
-			<string key="NS.key.0">PluginDependencyRecalculationVersion</string>
-			<integer value="1" key="NS.object.0"/>
+			<bool key="EncodedWithXMLCoder">YES</bool>
+			<object class="NSArray" key="dict.sortedKeys" id="0">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+			</object>
+			<reference key="dict.values" ref="0"/>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.RootObjects" id="929920035">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -64,6 +67,7 @@
 				<object class="NSMutableString" key="NSViewClass">
 					<characters key="NS.bytes">View</characters>
 				</object>
+				<nil key="NSUserInterfaceItemIdentifier"/>
 				<string key="NSWindowContentMinSize">{200.136, 5}</string>
 				<object class="NSView" key="NSWindowView" id="947182922">
 					<reference key="NSNextResponder"/>
@@ -109,7 +113,6 @@
 							<string key="NSFrame">{{278, 20}, {168, 21}}</string>
 							<reference key="NSSuperview" ref="947182922"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="804454757">
 								<int key="NSCellFlags">67239424</int>
@@ -322,7 +325,7 @@
 											<string key="NSFrameSize">{409, 226}</string>
 											<reference key="NSSuperview" ref="909322776"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="690384585"/>
+											<reference key="NSNextKeyView" ref="130510378"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTableHeaderView" key="NSHeaderView" id="940954885">
 												<reference key="NSNextResponder" ref="292339553"/>
@@ -580,6 +583,7 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 											<int key="NSDraggingSourceMaskForNonLocal">0</int>
 											<bool key="NSAllowsTypeSelect">YES</bool>
 											<int key="NSTableViewDraggingDestinationStyle">0</int>
+											<int key="NSTableViewGroupRowStyle">1</int>
 										</object>
 									</object>
 									<string key="NSFrame">{{1, 17}, {409, 226}}</string>
@@ -633,8 +637,8 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 							<string key="NSFrame">{{20, 48}, {426, 244}}</string>
 							<reference key="NSSuperview" ref="947182922"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="130510378"/>
-							<int key="NSsFlags">18</int>
+							<reference key="NSNextKeyView" ref="909322776"/>
+							<int key="NSsFlags">133138</int>
 							<reference key="NSVScroller" ref="690384585"/>
 							<reference key="NSHScroller" ref="130510378"/>
 							<reference key="NSContentView" ref="909322776"/>
@@ -1004,14 +1008,15 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 							</object>
 						</object>
 					</object>
-					<string key="NSFrame">{{7, 11}, {466, 452}}</string>
+					<string key="NSFrameSize">{466, 452}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="663382514"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1600, 1178}}</string>
 				<string key="NSMinSize">{200.136, 27}</string>
-				<string key="NSMaxSize">{1e+13, 1e+13}</string>
+				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
+				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
 			<object class="NSDrawer" id="324573534">
 				<nil key="NSNextResponder"/>
@@ -1195,6 +1200,7 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 															<int key="NSDraggingSourceMaskForNonLocal">0</int>
 															<bool key="NSAllowsTypeSelect">YES</bool>
 															<int key="NSTableViewDraggingDestinationStyle">0</int>
+															<int key="NSTableViewGroupRowStyle">1</int>
 														</object>
 													</object>
 													<string key="NSFrame">{{1, 17}, {330, 91}}</string>
@@ -1242,7 +1248,7 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 											<string key="NSFrame">{{14, 231}, {347, 109}}</string>
 											<reference key="NSSuperview" ref="577103459"/>
 											<reference key="NSNextKeyView" ref="1012629837"/>
-											<int key="NSsFlags">18</int>
+											<int key="NSsFlags">133138</int>
 											<reference key="NSVScroller" ref="863571672"/>
 											<reference key="NSHScroller" ref="752931269"/>
 											<reference key="NSContentView" ref="1012629837"/>
@@ -1688,7 +1694,6 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 													<object class="NSMutableArray" key="NSTableColumns">
 														<bool key="EncodedWithXMLCoder">YES</bool>
 														<object class="NSTableColumn">
-															<integer value="0" key="NSIdentifier"/>
 															<double key="NSWidth">12</double>
 															<double key="NSMinWidth">10</double>
 															<double key="NSMaxWidth">1000</double>
@@ -1734,6 +1739,7 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 													<int key="NSDraggingSourceMaskForNonLocal">0</int>
 													<bool key="NSAllowsTypeSelect">YES</bool>
 													<int key="NSTableViewDraggingDestinationStyle">0</int>
+													<int key="NSTableViewGroupRowStyle">1</int>
 												</object>
 											</object>
 										</object>
@@ -1880,6 +1886,7 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 															<int key="NSDraggingSourceMaskForNonLocal">0</int>
 															<bool key="NSAllowsTypeSelect">YES</bool>
 															<int key="NSTableViewDraggingDestinationStyle">0</int>
+															<int key="NSTableViewGroupRowStyle">1</int>
 														</object>
 													</object>
 													<string key="NSFrame">{{1, 17}, {327, 77}}</string>
@@ -1927,7 +1934,7 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 											<string key="NSFrame">{{17, 224}, {344, 110}}</string>
 											<reference key="NSSuperview" ref="450961682"/>
 											<reference key="NSNextKeyView" ref="213719385"/>
-											<int key="NSsFlags">50</int>
+											<int key="NSsFlags">133170</int>
 											<reference key="NSVScroller" ref="391693086"/>
 											<reference key="NSHScroller" ref="994021122"/>
 											<reference key="NSContentView" ref="213719385"/>
@@ -2007,6 +2014,7 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 															<int key="NSDraggingSourceMaskForNonLocal">0</int>
 															<bool key="NSAllowsTypeSelect">YES</bool>
 															<int key="NSTableViewDraggingDestinationStyle">0</int>
+															<int key="NSTableViewGroupRowStyle">1</int>
 														</object>
 													</object>
 													<string key="NSFrame">{{1, 17}, {327, 77}}</string>
@@ -2054,7 +2062,7 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 											<string key="NSFrame">{{17, 44}, {344, 110}}</string>
 											<reference key="NSSuperview" ref="450961682"/>
 											<reference key="NSNextKeyView" ref="992075069"/>
-											<int key="NSsFlags">50</int>
+											<int key="NSsFlags">133170</int>
 											<reference key="NSVScroller" ref="979485949"/>
 											<reference key="NSHScroller" ref="362177519"/>
 											<reference key="NSContentView" ref="992075069"/>
@@ -2746,9 +2754,7 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="IBObjectRecord">
 						<int key="objectID">0</int>
-						<object class="NSArray" key="object" id="0">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-						</object>
+						<reference key="object" ref="0"/>
 						<reference key="children" ref="929920035"/>
 						<nil key="parent"/>
 					</object>
@@ -3976,239 +3982,103 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="NSArray" key="dict.sortedKeys">
 					<bool key="EncodedWithXMLCoder">YES</bool>
+					<string>-1.IBPluginDependency</string>
+					<string>-2.IBPluginDependency</string>
 					<string>-3.IBPluginDependency</string>
 					<string>120.IBPluginDependency</string>
-					<string>120.ImportedFromIB2</string>
 					<string>169.IBPluginDependency</string>
-					<string>169.IBViewBoundsToFrameTransform</string>
-					<string>169.ImportedFromIB2</string>
 					<string>170.IBPluginDependency</string>
-					<string>170.ImportedFromIB2</string>
 					<string>171.IBPluginDependency</string>
-					<string>171.IBViewBoundsToFrameTransform</string>
-					<string>171.ImportedFromIB2</string>
 					<string>172.IBPluginDependency</string>
-					<string>172.IBViewBoundsToFrameTransform</string>
-					<string>172.ImportedFromIB2</string>
 					<string>173.IBPluginDependency</string>
-					<string>173.IBViewBoundsToFrameTransform</string>
-					<string>173.ImportedFromIB2</string>
 					<string>174.IBPluginDependency</string>
-					<string>174.IBViewBoundsToFrameTransform</string>
-					<string>174.ImportedFromIB2</string>
 					<string>175.IBPluginDependency</string>
-					<string>175.IBViewBoundsToFrameTransform</string>
-					<string>175.ImportedFromIB2</string>
 					<string>176.IBPluginDependency</string>
-					<string>176.IBViewBoundsToFrameTransform</string>
-					<string>176.ImportedFromIB2</string>
 					<string>177.IBPluginDependency</string>
-					<string>177.ImportedFromIB2</string>
 					<string>178.CustomClassName</string>
 					<string>178.IBPluginDependency</string>
-					<string>178.ImportedFromIB2</string>
 					<string>179.IBPluginDependency</string>
-					<string>179.ImportedFromIB2</string>
 					<string>180.IBPluginDependency</string>
-					<string>180.IBViewBoundsToFrameTransform</string>
-					<string>180.ImportedFromIB2</string>
 					<string>181.IBPluginDependency</string>
-					<string>181.ImportedFromIB2</string>
 					<string>183.IBPluginDependency</string>
-					<string>183.IBViewBoundsToFrameTransform</string>
-					<string>183.ImportedFromIB2</string>
 					<string>186.IBPluginDependency</string>
-					<string>186.ImportedFromIB2</string>
 					<string>187.IBPluginDependency</string>
-					<string>187.IBViewBoundsToFrameTransform</string>
-					<string>187.ImportedFromIB2</string>
 					<string>188.IBPluginDependency</string>
-					<string>188.IBViewBoundsToFrameTransform</string>
-					<string>188.ImportedFromIB2</string>
 					<string>20.IBPluginDependency</string>
-					<string>20.IBViewBoundsToFrameTransform</string>
-					<string>20.ImportedFromIB2</string>
 					<string>258.IBPluginDependency</string>
-					<string>258.ImportedFromIB2</string>
 					<string>259.IBPluginDependency</string>
-					<string>259.ImportedFromIB2</string>
 					<string>262.IBPluginDependency</string>
-					<string>262.IBViewBoundsToFrameTransform</string>
-					<string>262.ImportedFromIB2</string>
 					<string>263.IBPluginDependency</string>
-					<string>263.IBViewBoundsToFrameTransform</string>
-					<string>263.ImportedFromIB2</string>
 					<string>264.IBPluginDependency</string>
-					<string>264.IBViewBoundsToFrameTransform</string>
-					<string>264.ImportedFromIB2</string>
 					<string>265.IBPluginDependency</string>
-					<string>265.IBViewBoundsToFrameTransform</string>
-					<string>265.ImportedFromIB2</string>
 					<string>266.IBPluginDependency</string>
-					<string>266.IBViewBoundsToFrameTransform</string>
-					<string>266.ImportedFromIB2</string>
 					<string>267.IBPluginDependency</string>
-					<string>267.ImportedFromIB2</string>
 					<string>268.IBPluginDependency</string>
-					<string>268.ImportedFromIB2</string>
 					<string>27.IBPluginDependency</string>
-					<string>27.ImportedFromIB2</string>
-					<string>271.IBEditorWindowLastContentRect</string>
 					<string>271.IBPluginDependency</string>
-					<string>271.ImportedFromIB2</string>
 					<string>276.IBPluginDependency</string>
-					<string>276.ImportedFromIB2</string>
 					<string>277.IBPluginDependency</string>
-					<string>277.ImportedFromIB2</string>
 					<string>278.IBPluginDependency</string>
-					<string>278.ImportedFromIB2</string>
 					<string>279.IBPluginDependency</string>
-					<string>279.IBViewBoundsToFrameTransform</string>
-					<string>279.ImportedFromIB2</string>
 					<string>280.CustomClassName</string>
 					<string>280.IBPluginDependency</string>
-					<string>280.ImportedFromIB2</string>
 					<string>281.IBPluginDependency</string>
-					<string>281.ImportedFromIB2</string>
 					<string>282.IBPluginDependency</string>
-					<string>282.ImportedFromIB2</string>
 					<string>283.IBPluginDependency</string>
-					<string>283.IBViewBoundsToFrameTransform</string>
-					<string>283.ImportedFromIB2</string>
 					<string>284.CustomClassName</string>
 					<string>284.IBPluginDependency</string>
-					<string>284.ImportedFromIB2</string>
 					<string>285.IBPluginDependency</string>
-					<string>285.ImportedFromIB2</string>
 					<string>286.IBPluginDependency</string>
-					<string>286.ImportedFromIB2</string>
 					<string>287.IBPluginDependency</string>
-					<string>287.ImportedFromIB2</string>
 					<string>288.IBPluginDependency</string>
-					<string>288.ImportedFromIB2</string>
 					<string>289.IBPluginDependency</string>
-					<string>289.IBViewBoundsToFrameTransform</string>
-					<string>289.ImportedFromIB2</string>
 					<string>290.IBPluginDependency</string>
-					<string>290.IBViewBoundsToFrameTransform</string>
-					<string>290.ImportedFromIB2</string>
 					<string>291.IBPluginDependency</string>
-					<string>291.IBViewBoundsToFrameTransform</string>
-					<string>291.ImportedFromIB2</string>
 					<string>292.IBPluginDependency</string>
-					<string>292.IBViewBoundsToFrameTransform</string>
-					<string>292.ImportedFromIB2</string>
 					<string>293.IBPluginDependency</string>
-					<string>293.IBViewBoundsToFrameTransform</string>
-					<string>293.ImportedFromIB2</string>
 					<string>296.IBPluginDependency</string>
-					<string>296.IBViewBoundsToFrameTransform</string>
-					<string>296.ImportedFromIB2</string>
 					<string>297.IBPluginDependency</string>
-					<string>297.ImportedFromIB2</string>
 					<string>298.IBPluginDependency</string>
-					<string>298.ImportedFromIB2</string>
 					<string>299.IBPluginDependency</string>
-					<string>299.IBViewBoundsToFrameTransform</string>
-					<string>299.ImportedFromIB2</string>
 					<string>300.IBPluginDependency</string>
-					<string>300.IBViewBoundsToFrameTransform</string>
-					<string>300.ImportedFromIB2</string>
 					<string>301.IBPluginDependency</string>
-					<string>301.IBViewBoundsToFrameTransform</string>
-					<string>301.ImportedFromIB2</string>
 					<string>302.IBPluginDependency</string>
-					<string>302.IBViewBoundsToFrameTransform</string>
-					<string>302.ImportedFromIB2</string>
 					<string>303.IBPluginDependency</string>
-					<string>303.IBViewBoundsToFrameTransform</string>
-					<string>303.ImportedFromIB2</string>
 					<string>304.IBPluginDependency</string>
-					<string>304.IBViewBoundsToFrameTransform</string>
-					<string>304.ImportedFromIB2</string>
 					<string>305.IBPluginDependency</string>
-					<string>305.IBViewBoundsToFrameTransform</string>
-					<string>305.ImportedFromIB2</string>
 					<string>306.IBPluginDependency</string>
-					<string>306.IBViewBoundsToFrameTransform</string>
-					<string>306.ImportedFromIB2</string>
 					<string>307.CustomClassName</string>
 					<string>307.IBPluginDependency</string>
-					<string>307.ImportedFromIB2</string>
 					<string>308.IBPluginDependency</string>
-					<string>308.ImportedFromIB2</string>
 					<string>309.IBPluginDependency</string>
-					<string>309.ImportedFromIB2</string>
 					<string>31.IBPluginDependency</string>
-					<string>31.IBViewBoundsToFrameTransform</string>
-					<string>31.ImportedFromIB2</string>
 					<string>310.IBPluginDependency</string>
-					<string>310.ImportedFromIB2</string>
 					<string>311.IBPluginDependency</string>
-					<string>311.ImportedFromIB2</string>
 					<string>312.IBPluginDependency</string>
-					<string>312.ImportedFromIB2</string>
 					<string>313.IBPluginDependency</string>
-					<string>313.ImportedFromIB2</string>
 					<string>314.IBPluginDependency</string>
-					<string>314.IBViewBoundsToFrameTransform</string>
-					<string>314.ImportedFromIB2</string>
 					<string>315.IBPluginDependency</string>
-					<string>315.IBViewBoundsToFrameTransform</string>
-					<string>315.ImportedFromIB2</string>
 					<string>316.IBPluginDependency</string>
-					<string>316.IBViewBoundsToFrameTransform</string>
-					<string>316.ImportedFromIB2</string>
 					<string>317.IBPluginDependency</string>
-					<string>317.IBViewBoundsToFrameTransform</string>
-					<string>317.ImportedFromIB2</string>
 					<string>318.IBPluginDependency</string>
-					<string>318.IBViewBoundsToFrameTransform</string>
-					<string>318.ImportedFromIB2</string>
 					<string>319.IBPluginDependency</string>
-					<string>319.ImportedFromIB2</string>
 					<string>320.IBPluginDependency</string>
-					<string>320.ImportedFromIB2</string>
 					<string>321.IBPluginDependency</string>
-					<string>321.ImportedFromIB2</string>
 					<string>322.IBPluginDependency</string>
-					<string>322.IBViewBoundsToFrameTransform</string>
-					<string>322.ImportedFromIB2</string>
 					<string>323.IBPluginDependency</string>
-					<string>323.IBViewBoundsToFrameTransform</string>
-					<string>323.ImportedFromIB2</string>
 					<string>324.IBPluginDependency</string>
-					<string>324.IBViewBoundsToFrameTransform</string>
-					<string>324.ImportedFromIB2</string>
 					<string>325.IBPluginDependency</string>
-					<string>325.IBViewBoundsToFrameTransform</string>
-					<string>325.ImportedFromIB2</string>
 					<string>326.IBPluginDependency</string>
-					<string>326.IBViewBoundsToFrameTransform</string>
-					<string>326.ImportedFromIB2</string>
 					<string>327.IBPluginDependency</string>
-					<string>327.IBViewBoundsToFrameTransform</string>
-					<string>327.ImportedFromIB2</string>
 					<string>328.IBPluginDependency</string>
-					<string>328.IBViewBoundsToFrameTransform</string>
-					<string>328.ImportedFromIB2</string>
 					<string>329.CustomClassName</string>
 					<string>329.IBPluginDependency</string>
-					<string>329.IBViewBoundsToFrameTransform</string>
-					<string>329.ImportedFromIB2</string>
 					<string>330.IBPluginDependency</string>
-					<string>330.IBViewBoundsToFrameTransform</string>
-					<string>330.ImportedFromIB2</string>
 					<string>331.CustomClassName</string>
 					<string>331.IBPluginDependency</string>
-					<string>331.IBViewBoundsToFrameTransform</string>
-					<string>331.ImportedFromIB2</string>
 					<string>332.IBPluginDependency</string>
-					<string>332.ImportedFromIB2</string>
 					<string>333.IBPluginDependency</string>
-					<string>333.ImportedFromIB2</string>
 					<string>334.IBPluginDependency</string>
-					<string>334.ImportedFromIB2</string>
 					<string>378.IBPluginDependency</string>
 					<string>379.IBPluginDependency</string>
 					<string>380.IBPluginDependency</string>
@@ -4241,10 +4111,8 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 					<string>407.IBPluginDependency</string>
 					<string>408.IBPluginDependency</string>
 					<string>409.IBPluginDependency</string>
-					<string>41.IBEditorWindowLastContentRect</string>
 					<string>41.IBPluginDependency</string>
 					<string>41.IBWindowTemplateEditedContentRect</string>
-					<string>41.ImportedFromIB2</string>
 					<string>410.IBPluginDependency</string>
 					<string>411.IBPluginDependency</string>
 					<string>412.IBPluginDependency</string>
@@ -4303,335 +4171,102 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABC0gAAw76AAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABBuAAAw8qAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABB6AAAw7EAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABC0gAAw8wAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDowAAw76AAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDowAAw8wAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABBuAAAw70AAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>SGTableView</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABB8AAAwhwAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDeAAAw70AAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCTAAAwhwAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCogAAwhwAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDmAAAwhwAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">AULaAABDmAAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">AUM/AABDl4AAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABC+gAAw5wAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDTwAAw5wAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDbwAAw8qAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
-					<string>{{870, 521}, {389, 462}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABBiAAAwyoAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>SGTableView</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABBiAAAw6kAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>SGTableView</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCHAAAwlQAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABBEAAAwy4AAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABBEAAAw7EAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABBiAAAw10AAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABBiAAAwlQAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCHAAAw10AAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABBMAAAw0EAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABBYAAAw1wAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABC9gAAwsAAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABBMAAAwyUAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCmgAAw18AAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABC9gAAwxAAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABBMAAAwuoAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABBYAAAw6kAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>SGTableView</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDZwAAwhwAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABC9gAAwygAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCEAAAw14AAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABBMAAAwroAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABC9gAAwvAAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABBMAAAww0AAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABAgAAAw5GAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABAgAAAw7IAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABAgAAAw0sAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABAgAAAw4CAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABAgAAAw5wAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABAgAAAw2YAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABAgAAAw6aAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>NSSecureTextField</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABC/gAAw4IAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABC/gAAw08AAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>NSSecureTextField</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABC/gAAw2kAAA</bytes>
-					</object>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -4665,9 +4300,6 @@ AAAAAAAAAAAAAHRleHQAAAAAQ29weXJpZ2h0IEFwcGxlIENvbXB1dGVyLCBJbmMuLCAyMDA1AAAAAA</
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{651, 242}, {466, 452}}</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{651, 242}, {466, 452}}</string>
-					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>

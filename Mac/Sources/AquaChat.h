@@ -17,6 +17,7 @@
 /* AquaChat */
 
 #import <Growl/GrowlApplicationBridge.h>
+#include "common/dcc.h"
 
 #define PreferencesWindowKey    @"PreferencesWindow"
 

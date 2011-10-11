@@ -36,7 +36,7 @@
 
 - (SGHBoxHJustification) hJustification
 {
-	return [self majorJustification];
+	return (SGHBoxHJustification)[self majorJustification];
 }
 
 - (void) setDefaultVJustification:(SGHBoxVJustification) aJustification
@@ -46,7 +46,7 @@
 
 - (SGHBoxVJustification) vJustification
 {
-	return minorJustification;
+	return (SGHBoxVJustification)minorJustification;
 }
 
 - (void) setVJustificationFor:(NSView *) view to:(SGHBoxVJustification) aJustification
