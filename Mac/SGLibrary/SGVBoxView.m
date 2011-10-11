@@ -44,7 +44,7 @@
 
 - (SGVBoxHJustification) hJustification
 {
-	return [self minorJustification];
+	return (SGVBoxHJustification)[self minorJustification];
 }
 
 - (void) setHJustificationFor:(NSView *) view to:(SGVBoxHJustification) aJustification
@@ -83,7 +83,7 @@
 
 - (SGVBoxVJustification) vJustification
 {
-	return [self majorJustification];
+	return (SGVBoxVJustification)[self majorJustification];
 }
 
 @end

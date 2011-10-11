@@ -30,7 +30,7 @@
     struct server   *server;
 }
 
-@property (assign) id delegate;
+@property (assign) IBOutlet id delegate;
 @property (nonatomic,retain) NSString *title, *tabTitle;
 
 + (void) cycleWindow:(int) direction;
