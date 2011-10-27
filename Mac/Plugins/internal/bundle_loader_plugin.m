@@ -29,41 +29,32 @@ static xchat_plugin *ph;
 
 static void bundle_loader_load_bundle( char * word[], char * word_eol[])
 {
-	char * arg, * error;
-	CFURLRef url;
-	CFBundleRef bundle;
-	CFStringRef bundle_path;
-	NSString * version_str;
-	char filename[1024];
+	char * arg;
 	
 	arg = NULL;
 	if (word_eol[3][0])
 		arg = word_eol[3];
 	
-	bundle_path = CFStringCreateWithCString(0, word[2], kCFStringEncodingUTF8);
+	NSString *bundle_path = [NSString stringWithUTF8String:word[2]]; 
+	NSBundle *bundle = [NSBundle bundleWithPath:bundle_path];
 	
-	url = CFURLCreateWithFileSystemPath(0, bundle_path, (CFURLPathStyle)0, 0);
-	bundle = CFBundleCreate(0, url);
-	
-	CFRelease(url);
-	CFRelease(bundle_path);
-	if(!bundle)
+	if(bundle == nil)
 		return;
 	
-	do{
-		url = CFBundleCopyExecutableURL(bundle);
-		CFURLGetFileSystemRepresentation(url, true, (UInt8*)filename, sizeof(filename));
+	do {
+		NSString *path = [bundle executablePath];
+        const char *filename = [path fileSystemRepresentation];
 		
-		version_str = (NSString*)CFBundleGetValueForInfoDictionaryKey(bundle, CFSTR("XChatAquaMacOSVersionBranch"));
-		if(version_str != nil && [[SystemVersion systemBranch] compare:version_str options:NSNumericSearch] != NSOrderedSame)
+        NSString *version = [[bundle infoDictionary] objectForKey:@"XChatAquaMacOSVersionBranch"];
+		if(version != nil && [[SystemVersion systemBranch] compare:version options:NSNumericSearch] != NSOrderedSame) {
 			break;
+        }
 		
-		error = plugin_load(current_sess, filename, arg);
-		if(error)
+		char *error = plugin_load(current_sess, (char *)filename, arg);
+		if(error != NULL) {
 			xchat_print(ph, error);
-	}while(0);
-	CFRelease(bundle);
-	CFRelease(url);
+        }
+	} while(0); // while 0??
 }
 
 static int bundle_loader_load(char *word[], char *word_eol[], void *userdata)

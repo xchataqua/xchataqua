@@ -32,7 +32,8 @@
 
 - (id)initWithView:(NSView *) the_view;
 {
-    if (([super initWithView:the_view]) != nil) {
+    self = [super initWithView:the_view];
+    if (self) {
         justification = SGBoxMinorJustificationDefault;
     }
     return self;

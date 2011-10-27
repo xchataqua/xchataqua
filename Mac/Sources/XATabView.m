@@ -29,12 +29,12 @@
 
 - (id) initWithFrame:(NSRect) frameRect
 {
-    [super initWithFrame:frameRect];
+    self = [super initWithFrame:frameRect];
+    if (self) {
+        in_close_item = nil;
     
-    in_close_item = nil;
-    
-    [self setControlSize:NSSmallControlSize];
-    
+        [self setControlSize:NSSmallControlSize];
+    }
     return self;
 }
 
