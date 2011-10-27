@@ -94,7 +94,7 @@ static int do_add_url (const void *key, void *cbd)
     [[MenuMaker defaultMenuMaker] appendItemList:urlhandler_list toMenu:menu withTarget:url inSession:NULL];
     
     [self->urlTableView setMenu:menu];
-    //[menu release]; // TODO: test required
+    [menu release];
 }
 
 - (void) save:(id)sender

@@ -506,6 +506,20 @@ static NSImage *emptyBulletImage;
 
 - (void) dealloc
 {
+    self.tButton = nil;
+    self.nButton = nil;
+    self.sButton = nil;
+    self.iButton = nil;
+    self.pButton = nil;
+    self.mButton = nil;
+    self.bButton = nil;
+    self.lButton = nil;
+    self.kButton = nil;
+    self.CButton = nil;
+    self.NButton = nil;
+    self.uButton = nil;
+    self.limitTextField = nil;
+    self.keyTextField = nil;
     [chatView release];    // ???: Anything else need to get released here?
     [users release];
     [super dealloc];
@@ -727,7 +741,7 @@ static NSImage *emptyBulletImage;
     
     ColorPalette *palette = [[AquaChat sharedAquaChat] palette];
     if (prefs.background && strlen(prefs.background) > 0) {
-        palette = [palette copy];
+        palette = [[palette copy] autorelease];
         NSImage *image = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithUTF8String:prefs.background]];
         [palette setColor:AC_BGCOLOR color:[NSColor colorWithPatternImage:image]];
         [image release];

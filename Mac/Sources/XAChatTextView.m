@@ -29,24 +29,24 @@
 #import "MenuMaker.h"
 
 static NSAttributedString *newline;
-static NSAttributedString *tab;
+//static NSAttributedString *tab;
 static NSCursor *lr_cursor;
 
 @implementation XAChatTextView
 @synthesize palette;
 
++ (void)initialize {
+    [super initialize];
+    newline = [[NSAttributedString alloc] initWithString:@"\n"];
+    //tab = [[NSAttributedString alloc] initWithString:@"\t"];
+    
+    lr_cursor = [[NSCursor alloc] initWithImage:[NSImage imageNamed:@"lr_cursor.tiff"]
+                                        hotSpot:NSMakePoint (8,8)];   
+}
+
 - (id) initWithFrame:(NSRect) frameRect
 {
     if ((self = [super initWithFrame:frameRect]) != nil) {
-        if (!newline)
-        {
-            newline = [[NSAttributedString alloc] initWithString:@"\n"];
-            tab = [[NSAttributedString alloc] initWithString:@"\t"];
-            
-            lr_cursor = [[NSCursor alloc] initWithImage:[NSImage imageNamed:@"lr_cursor.tiff"]
-                                    hotSpot:NSMakePoint (8,8)];
-        }
-        
         palette = nil;
         normalFont = nil;
         boldFont = nil;
@@ -152,6 +152,8 @@ static NSCursor *lr_cursor;
     NSData *rtfData = [rstripped RTFFromRange:(NSMakeRange(0, [rstripped length]))
                            documentAttributes:nil];
     [pb setData:rtfData forType:NSRTFPboardType];
+    [rstripped release];
+    [pstripped release];
 }
 
 - (void) setDropHandler:(id) handler
@@ -608,7 +610,7 @@ static NSCursor *lr_cursor;
         [m addItem:i];
         [i release];
         
-        return m;
+        return [m autorelease];
     }
         
     if (word)

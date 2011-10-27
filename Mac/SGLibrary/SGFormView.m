@@ -91,7 +91,7 @@ typedef struct SGFormConstraint
 
 - (id) initWithView:(NSView *)aView
 {
-    [super initWithView:aView];
+    self = [super initWithView:aView];
     [self initAsSGFormMetaView];
     return self;
 }

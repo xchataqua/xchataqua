@@ -43,10 +43,10 @@
 
 - (id) initWithDCC:(struct DCC *)aDcc
 {
-    [super initWithDCC:aDcc];
-    
-    [self update];
-   
+    self = [super initWithDCC:aDcc];
+    if (self) {
+        [self update];
+    }
     return self;
 }
 
@@ -77,15 +77,15 @@
 
 - (id) init
 {
-    [super initWithNibNamed:@"DccChat"];
-    
+    self = [super initWithNibNamed:@"DccChat"];
     return self;
 }
 
 - (DCCItem *)itemWithDCC:(struct DCC *) dcc
 {
     if (dcc->type != TYPE_CHATSEND && dcc->type != TYPE_CHATRECV) return nil;
-    else return [[[DccChatItem alloc] initWithDCC:dcc] autorelease];
+    
+    return [[[DccChatItem alloc] initWithDCC:dcc] autorelease];
 }
 
 - (void) awakeFromNib

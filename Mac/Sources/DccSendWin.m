@@ -60,10 +60,10 @@ extern int dcc_sendcpssum;
 
 - (id) initWithDCC:(struct DCC *) the_dcc
 {
-    [super initWithDCC:the_dcc];
-    
-    [self update];
-    
+    self = [super initWithDCC:the_dcc];
+    if (self) {
+        [self update];
+    }
     return self;
 }
 
@@ -90,7 +90,7 @@ extern int dcc_sendcpssum;
 
 - (id) init
 {
-    [super initWithNibNamed:@"DccSend"];
+    self = [super initWithNibNamed:@"DccSend"];
     
     return self;
 }
