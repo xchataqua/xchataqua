@@ -62,15 +62,15 @@
 
 - (id) initWithNibNamed:(NSString *)nibName
 {
-    [super init];
-    
-    dccItems = [[NSMutableArray alloc] init]; // this must be done before loading the nib
-    
-    hasSelection = NO;
-    lastDCCStatus = 0xFF;
-    
-    [NSBundle loadNibNamed:nibName owner:self];
-    
+    self = [super init];
+    if (self) {
+        dccItems = [[NSMutableArray alloc] init]; // this must be done before loading the nib
+        
+        hasSelection = NO;
+        lastDCCStatus = 0xFF;
+        
+        [NSBundle loadNibNamed:nibName owner:self];
+    }
     return self;
 }
 

@@ -47,10 +47,10 @@ extern int dcc_getcpssum;
 
 - (id) initWithDCC:(struct DCC *) the_dcc
 {
-    [super initWithDCC:the_dcc];
-    
-    [self update];
-    
+    self = [super initWithDCC:the_dcc];
+    if (self) {
+        [self update];
+    }
     return self;
 }
 

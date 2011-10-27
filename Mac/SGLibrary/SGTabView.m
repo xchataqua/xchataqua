@@ -25,8 +25,8 @@
 #import "CLTabViewButtonCell.h"
 
 static NSMutableDictionary *labelDictionary;
-static NSCursor *lr_cursor;
 static NSImage *dimple;
+static NSCursor *lrCursor;
 
 //////////////////////////////////////////////////////////////////////
 
@@ -149,8 +149,9 @@ static NSNib *getTabMenuNib ()
 
     // Gotta draw the icon last because highlighted cells have a
     // blue background which will cover the image otherwise.                  
-    if (hasClose)
+    if (hasClose) {
         [closeCell drawInteriorWithFrame:closeRect inView:controlView];
+    }
 }
 
 - (BOOL) mouseDown:(NSEvent *) theEvent
@@ -671,7 +672,6 @@ HIThemeSegmentPosition positionTable[2][2] =
     button = nil;
     label = nil;
 
-    lr_cursor = [[NSCursor alloc] initWithImage:[NSImage imageNamed:@"lr_cursor.tiff"] hotSpot:NSMakePoint (8.0f,8.0f)];
     dimple = [NSImage imageNamed:@"dimple.tiff"];
     
     [getTabMenuNib() instantiateNibWithOwner:self topLevelObjects:nil];
@@ -681,10 +681,10 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 - (void) dealloc
 {
-    [label release];
+    self.label = nil;
+    self.titleColor = nil;
+    self.view = nil;
     [button release];
-    [titleColor release];
-    [view release];
     [ctxMenu release];
     [super dealloc];
 }
@@ -835,9 +835,15 @@ HIThemeSegmentPosition positionTable[2][2] =
 @implementation SGTabView
 @synthesize delegate;
 
++ (void)initialize {
+    [super initialize];
+    lrCursor = [[NSCursor alloc] initWithImage:[NSImage imageNamed:@"lr_cursor.tiff"] hotSpot:NSMakePoint (8.0f,8.0f)];
+}
+
 - (id) initWithFrame:(NSRect) frameRect
 {
-    if (([super initWithFrame:frameRect]) != nil) {
+    self = [super initWithFrame:frameRect];
+    if (self) {
         self->tabs = [[NSMutableArray alloc] init];
         self->tabViewType = NSTopTabsBezelBorder;
         self->xa_outline_width = 150;
@@ -1253,8 +1259,9 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 - (void) resetCursorRects
 {
-    if (outline)
-        [self addCursorRect:[self dragAreaRect] cursor:lr_cursor];
+    if (outline) {
+        [self addCursorRect:[self dragAreaRect] cursor:lrCursor];
+    }
 }
 
 // SplitView-like functionality for outline view

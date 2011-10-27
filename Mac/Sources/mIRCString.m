@@ -79,7 +79,7 @@ NSFont *sharedHiddenFont;
                        font:(NSFont *) font
                    boldFont:(NSFont *) boldFont;
 {
-    mIRCString *msgString = [[NSMutableAttributedString alloc] init];
+    mIRCString *msgString = [[NSMutableAttributedString alloc] init]; // how to fake well?
  
     NSInteger fg = -1;
     NSInteger bg = -1;
