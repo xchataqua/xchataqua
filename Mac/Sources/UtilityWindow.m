@@ -30,8 +30,9 @@ NSMutableDictionary *utilities;
 @synthesize windowKey;
 
 + (void) initialize {
-    if ( utilities == nil )
+    if (self == [UtilityWindow class]) {
         utilities = [[NSMutableDictionary alloc] init];
+    }
 }
 
 + (UtilityWindow *) utilityIfExistsByKey:(id)aKey {
@@ -63,11 +64,16 @@ NSMutableDictionary *utilities;
 
 - (void) close {    
     [super close];
-    [utilities removeObjectForKey:windowKey];
+    if (self.isReleasedWhenClosed) {
+        [utilities removeObjectForKey:windowKey];
+    }
 }
 
 - (void) dealloc {
     [self->windowKey release];
+    if ([utilities objectForKey:windowKey]) {
+        [utilities removeObjectForKey:windowKey];
+    }
     [super dealloc];
 }
 
