@@ -146,8 +146,7 @@
     list_loadconf((char *)[filename UTF8String], slist, 0);
     
     [target performSelector:didCloseSelector];
-    
-    [self performClose:sender];
+    [self close];
 }
 
 - (void) showHelp:(id)sender

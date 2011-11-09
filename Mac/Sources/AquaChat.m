@@ -876,10 +876,11 @@ struct eventInfo textEventInfo[NUM_XP];
 - (void) showUserMenusWindow:(id)sender
 {
     EditListWindow *window = [UtilityWindow utilityByKey:UserMenusWindowKey windowNibName:@"EditListWindow"];
+
     [window setTitle:NSLocalizedStringFromTable(@"XChat: User menu", @"xchat", @"Title of Window: MainMenu->User Menu->Edit This Menu...")];
     [window loadDataFromList:&usermenu_list filename:@"usermenu.conf"];
     [window makeKeyAndOrderFront:self];    
-    [window setTarget:[AquaChat sharedAquaChat] didCloseSelector:@selector(usermenu_update)];
+    [window setTarget:[AquaChat sharedAquaChat] didCloseSelector:@selector(updateUsermenu)];
 }
 
 - (void) showTextEventsWindow:(id)sender
