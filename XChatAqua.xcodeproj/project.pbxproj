@@ -579,7 +579,7 @@
 		0F30611F0D83C5830084F2CA /* AquaChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AquaChat.h; sourceTree = "<group>"; };
 		0F7065530E1FA32E00FEA21C /* Changes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Changes; path = ../Changes; sourceTree = "<group>"; };
 		0F8EA3660CFAA49B001AE9AE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Mac/Aqua/Info.plist; sourceTree = "<group>"; };
-		0F8EA3830CFAA896001AE9AE /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = xchat/config.h; sourceTree = "<group>"; };
+		0F8EA3830CFAA896001AE9AE /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		0F8EA3CE0CFAF7E2001AE9AE /* fe-aqua.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "fe-aqua.m"; sourceTree = "<group>"; };
 		0F8EA5F80CFB2500001AE9AE /* AquaChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AquaChat.m; sourceTree = "<group>"; };
 		0F8EA6240CFB2E0A001AE9AE /* AsciiWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsciiWindow.h; sourceTree = "<group>"; };
@@ -4757,6 +4757,11 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				HEADER_SEARCH_PATHS = (
+					Mac,
+					Mac/contrib/include,
+					xchat/src,
+				);
 				OTHER_CFLAGS = (
 					"-w",
 					"-I",
@@ -4772,6 +4777,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
+				HEADER_SEARCH_PATHS = (
+					Mac,
+					Mac/contrib/include,
+					xchat/src,
+				);
 				OTHER_CFLAGS = (
 					"-w",
 					"-I",
@@ -5012,6 +5022,7 @@
 					"/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
 					"Mac/contrib/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
 					xchat/src,
+					.,
 				);
 				INFOPLIST_FILE = "Mac/Plugins/perl/perl-lion-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
@@ -5045,6 +5056,7 @@
 					"/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
 					"Mac/contrib/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
 					xchat/src,
+					.,
 				);
 				INFOPLIST_FILE = "Mac/Plugins/perl/perl-lion-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
@@ -5195,7 +5207,7 @@
 				LIBRARY_SEARCH_PATHS = Mac/contrib/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.6;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
 				TARGET_PLATFORM = Mac;
 			};
@@ -5219,7 +5231,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = Mac/contrib/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.6;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
 				TARGET_PLATFORM = Mac;
 			};
