@@ -2902,6 +2902,7 @@
 			buildConfigurationList = 38D1413D13D800E60026B7B5 /* Build configuration list for PBXNativeTarget "ruby" */;
 			buildPhases = (
 				38D1413813D800E60026B7B5 /* Resources */,
+				38BC9850154AD8A7005894EF /* Generate XChat Plugin Header */,
 				38D1413913D800E60026B7B5 /* Sources */,
 				38D1413B13D800E60026B7B5 /* Frameworks */,
 			);
@@ -3420,6 +3421,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "TARGET_DIR=\"$PROJECT_TEMP_DIR\"\nrm -rf \"$TARGET_DIR/Perl/5.12\"\nmkdir -p \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/\"\nif [ -e '/System/Library/Perl/5.12/' ]; then\n\tln -s '/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib' \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\"\nelse\n\tln -s \"$PROJECT_DIR/Mac/contrib/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\" \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\"\nfi\n\ncd \"$PROJECT_DIR/xchat/plugins/perl\"\n./generate_header\n\nexit";
+		};
+		38BC9850154AD8A7005894EF /* Generate XChat Plugin Header */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate XChat Plugin Header";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "cd \"$PROJECT_DIR/Mac/Plugins/ruby\"\n\n/usr/bin/ruby scripts/embedify.rb xchat-ruby-plugin.rb xchat-ruby-plugin.h";
 		};
 /* End PBXShellScriptBuildPhase section */
 
