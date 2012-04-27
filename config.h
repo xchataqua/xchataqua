@@ -46,4 +46,6 @@
     #define FORK_DISABLED 1
 #endif
 
+#define OLD_PERL 1
+
 #endif

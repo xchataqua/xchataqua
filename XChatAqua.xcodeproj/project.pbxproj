@@ -341,7 +341,6 @@
 		3876258113C7024F00850913 /* UserCommandsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C8A0813C6E10200AAF20D /* UserCommandsWindow.xib */; };
 		3876258D13C7027400850913 /* MainMenuAppstore.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C89F413C6E10100AAF20D /* MainMenuAppstore.xib */; };
 		38763F1C13DD40D6008C40DB /* perl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F06C10E1FDA5E00359159 /* perl.c */; };
-		38763F1E13DD40D6008C40DB /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D78138B10E77D1A00C71AF8 /* libperl.dylib */; };
 		38763F2613DD460E008C40DB /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 38763F2513DD460E008C40DB /* libperl.dylib */; };
 		38763F2713DD4676008C40DB /* perl-lion.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 38763F2213DD40D6008C40DB /* perl-lion.bundle */; };
 		38763F2813DD4767008C40DB /* ruby.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 38D1414013D800E60026B7B5 /* ruby.bundle */; };
@@ -390,6 +389,18 @@
 		388C8EAD13C6E10500AAF20D /* TextEventsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C8A0413C6E10100AAF20D /* TextEventsWindow.xib */; };
 		388C8EAF13C6E10500AAF20D /* UrlGrabberWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C8A0613C6E10200AAF20D /* UrlGrabberWindow.xib */; };
 		388C8EB113C6E10500AAF20D /* UserCommandsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C8A0813C6E10200AAF20D /* UserCommandsWindow.xib */; };
+		38CE5A6E154A55B400480EC6 /* browser.pl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 380F1EF013E29C930033E3AC /* browser.pl */; };
+		38CE5A6F154A55B400480EC6 /* google.pl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 380F1EF113E29C930033E3AC /* google.pl */; };
+		38CE5A70154A55BB00480EC6 /* alt_completion.pl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38CE5A63154A551600480EC6 /* alt_completion.pl */; };
+		38CE5A71154A55BB00480EC6 /* char_count.pl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38CE5A64154A551600480EC6 /* char_count.pl */; };
+		38CE5A73154A55D600480EC6 /* browser.pl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 380F1EF013E29C930033E3AC /* browser.pl */; };
+		38CE5A74154A55D600480EC6 /* google.pl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 380F1EF113E29C930033E3AC /* google.pl */; };
+		38CE5A75154A55D600480EC6 /* alt_completion.pl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38CE5A63154A551600480EC6 /* alt_completion.pl */; };
+		38CE5A76154A55D600480EC6 /* char_count.pl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38CE5A64154A551600480EC6 /* char_count.pl */; };
+		38CE5A78154A55E000480EC6 /* browser.pl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 380F1EF013E29C930033E3AC /* browser.pl */; };
+		38CE5A79154A55E000480EC6 /* google.pl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 380F1EF113E29C930033E3AC /* google.pl */; };
+		38CE5A7A154A55E000480EC6 /* alt_completion.pl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38CE5A63154A551600480EC6 /* alt_completion.pl */; };
+		38CE5A7B154A55E000480EC6 /* char_count.pl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38CE5A64154A551600480EC6 /* char_count.pl */; };
 		38D1414213D801B70026B7B5 /* Ruby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38D1414113D801B70026B7B5 /* Ruby.framework */; };
 		38D1415A13D801E60026B7B5 /* xchat-ruby.c in Sources */ = {isa = PBXBuildFile; fileRef = 38D1415113D801E60026B7B5 /* xchat-ruby.c */; };
 		38D1415E13D8030A0026B7B5 /* ruby.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 38D1414013D800E60026B7B5 /* ruby.bundle */; };
@@ -496,6 +507,13 @@
 			remoteGlobalIDString = 0FC8F4AD0DEEE51700504F31;
 			remoteInfo = xchat;
 		};
+		38CE5A5A154A420300480EC6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 38763F1813DD40D6008C40DB;
+			remoteInfo = "perl-lion";
+		};
 		38D1415C13D802F10026B7B5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -566,6 +584,45 @@
 				D4517EA413CD3DF900ACA3F8 /* ShortcutRecorder.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38CE5A6D154A557600480EC6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				38CE5A6E154A55B400480EC6 /* browser.pl in CopyFiles */,
+				38CE5A6F154A55B400480EC6 /* google.pl in CopyFiles */,
+				38CE5A70154A55BB00480EC6 /* alt_completion.pl in CopyFiles */,
+				38CE5A71154A55BB00480EC6 /* char_count.pl in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38CE5A72154A55C900480EC6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				38CE5A73154A55D600480EC6 /* browser.pl in CopyFiles */,
+				38CE5A74154A55D600480EC6 /* google.pl in CopyFiles */,
+				38CE5A75154A55D600480EC6 /* alt_completion.pl in CopyFiles */,
+				38CE5A76154A55D600480EC6 /* char_count.pl in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38CE5A77154A55DA00480EC6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				38CE5A78154A55E000480EC6 /* browser.pl in CopyFiles */,
+				38CE5A79154A55E000480EC6 /* google.pl in CopyFiles */,
+				38CE5A7A154A55E000480EC6 /* alt_completion.pl in CopyFiles */,
+				38CE5A7B154A55E000480EC6 /* char_count.pl in CopyFiles */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -686,8 +743,7 @@
 		0F8EA7970CFB6CF9001AE9AE /* xchat.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = xchat.icns; path = Resources/xchat.icns; sourceTree = "<group>"; };
 		0F8EA7980CFB6CF9001AE9AE /* xchat.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = xchat.tiff; path = Resources/xchat.tiff; sourceTree = "<group>"; };
 		0F8EA7990CFB6CF9001AE9AE /* yellow.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = yellow.tiff; path = Resources/yellow.tiff; sourceTree = "<group>"; };
-		0F8F06C10E1FDA5E00359159 /* perl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = perl.c; sourceTree = "<group>"; };
-		0F8F06C20E1FDA5E00359159 /* xchat.pm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xchat.pm.h; sourceTree = "<group>"; };
+		0F8F06C10E1FDA5E00359159 /* perl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = perl.c; path = xchat/plugins/perl/perl.c; sourceTree = SOURCE_ROOT; };
 		0F8F06D70E1FDA8500359159 /* perl-leopard.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-leopard.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F8F07CE0E1FDDBF00359159 /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = "build/XChatAqua.build/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib"; sourceTree = SOURCE_ROOT; };
 		0F8F07DA0E1FDEFF00359159 /* DynaLoader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = DynaLoader.a; path = "build/XChatAqua.build/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a"; sourceTree = SOURCE_ROOT; };
@@ -796,8 +852,8 @@
 		380AD1E913C698E1003EEE3D /* xchatc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xchatc.h; sourceTree = "<group>"; };
 		380B9D1813C6E5D70029CE25 /* SGFileUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFileUtility.h; sourceTree = "<group>"; };
 		380B9D1913C6E5D70029CE25 /* SGFileUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFileUtility.m; sourceTree = "<group>"; };
-		380F1EF013E29C930033E3AC /* browser.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = browser.pl; sourceTree = "<group>"; };
-		380F1EF113E29C930033E3AC /* google.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = google.pl; sourceTree = "<group>"; };
+		380F1EF013E29C930033E3AC /* browser.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = browser.pl; path = ../Scripts/browser.pl; sourceTree = "<group>"; };
+		380F1EF113E29C930033E3AC /* google.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = google.pl; path = ../Scripts/google.pl; sourceTree = "<group>"; };
 		3839010213C06619004D20BC /* CLTabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTabCell.h; sourceTree = "<group>"; };
 		3839010313C06619004D20BC /* CLTabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTabCell.m; sourceTree = "<group>"; };
 		3839010513C0667B004D20BC /* CLTabViewButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTabViewButtonCell.h; sourceTree = "<group>"; };
@@ -1795,6 +1851,10 @@
 		388C8E6D13C6E10400AAF20D /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/TextEventsWindow.xib; sourceTree = "<group>"; };
 		388C8E6E13C6E10400AAF20D /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/UrlGrabberWindow.xib; sourceTree = "<group>"; };
 		388C8E6F13C6E10400AAF20D /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/UserCommandsWindow.xib; sourceTree = "<group>"; };
+		38CE5A63154A551600480EC6 /* alt_completion.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = alt_completion.pl; path = xchat/plugins/perl/alt_completion.pl; sourceTree = SOURCE_ROOT; };
+		38CE5A64154A551600480EC6 /* char_count.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = char_count.pl; path = xchat/plugins/perl/char_count.pl; sourceTree = SOURCE_ROOT; };
+		38CE5A65154A551600480EC6 /* irc.pm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = irc.pm.h; path = xchat/plugins/perl/irc.pm.h; sourceTree = SOURCE_ROOT; };
+		38CE5A66154A551600480EC6 /* xchat.pm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xchat.pm.h; path = xchat/plugins/perl/xchat.pm.h; sourceTree = SOURCE_ROOT; };
 		38D1414013D800E60026B7B5 /* ruby.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ruby.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		38D1414113D801B70026B7B5 /* Ruby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ruby.framework; path = System/Library/Frameworks/Ruby.framework; sourceTree = SDKROOT; };
 		38D1414E13D801E60026B7B5 /* xchat-plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "xchat-plugin.h"; sourceTree = "<group>"; };
@@ -1929,7 +1989,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38763F1E13DD40D6008C40DB /* libperl.dylib in Frameworks */,
 				38763F2613DD460E008C40DB /* libperl.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2127,8 +2186,9 @@
 				0F8F07CE0E1FDDBF00359159 /* libperl.dylib */,
 				2D78138B10E77D1A00C71AF8 /* libperl.dylib */,
 				38763F2513DD460E008C40DB /* libperl.dylib */,
-				0F8F06C10E1FDA5E00359159 /* perl.c */,
-				0F8F06C20E1FDA5E00359159 /* xchat.pm.h */,
+				380F1EF013E29C930033E3AC /* browser.pl */,
+				380F1EF113E29C930033E3AC /* google.pl */,
+				38CE5A62154A54C800480EC6 /* src */,
 			);
 			path = perl;
 			sourceTree = "<group>";
@@ -2148,7 +2208,6 @@
 		0FC8F3D10DEEC33D00504F31 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				380F1EEF13E29C930033E3AC /* Scripts */,
 				0F2FEF830E1FB52500DE4D41 /* Internal Plugins */,
 				0F8F08260E1FE04C00359159 /* tcl */,
 				0F8F06BE0E1FD99400359159 /* perl */,
@@ -2403,15 +2462,6 @@
 			name = ClassDescriptions;
 			sourceTree = "<group>";
 		};
-		380F1EEF13E29C930033E3AC /* Scripts */ = {
-			isa = PBXGroup;
-			children = (
-				380F1EF013E29C930033E3AC /* browser.pl */,
-				380F1EF113E29C930033E3AC /* google.pl */,
-			);
-			path = Scripts;
-			sourceTree = "<group>";
-		};
 		388BDC9C13C69DCE00B95036 /* ViewInspectors */ = {
 			isa = PBXGroup;
 			children = (
@@ -2491,6 +2541,18 @@
 			path = Mac/Azure;
 			sourceTree = "<group>";
 		};
+		38CE5A62154A54C800480EC6 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0F8F06C10E1FDA5E00359159 /* perl.c */,
+				38CE5A63154A551600480EC6 /* alt_completion.pl */,
+				38CE5A64154A551600480EC6 /* char_count.pl */,
+				38CE5A65154A551600480EC6 /* irc.pm.h */,
+				38CE5A66154A551600480EC6 /* xchat.pm.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
 		38D1414513D801E60026B7B5 /* ruby */ = {
 			isa = PBXGroup;
 			children = (
@@ -2566,10 +2628,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F8F06DC0E1FDA8600359159 /* Build configuration list for PBXNativeTarget "perl-leopard" */;
 			buildPhases = (
-				2DCBED2C11AA140E00388F47 /* Generate Symlink For Leopard Perl Library */,
+				2DCBED2C11AA140E00388F47 /* Generate Symlink For Leopard Perl Library & XChat Plugin Headers */,
 				0F8F06D30E1FDA8500359159 /* Resources */,
 				0F8F06D40E1FDA8500359159 /* Sources */,
 				0F8F06D50E1FDA8500359159 /* Frameworks */,
+				38CE5A77154A55DA00480EC6 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -2634,10 +2697,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D78138410E77C6600C71AF8 /* Build configuration list for PBXNativeTarget "perl-snowleopard" */;
 			buildPhases = (
-				2D324F6F11AA31250081A855 /* Generate Symlink For Snowleopard Perl Library */,
+				2D324F6F11AA31250081A855 /* Generate Symlink For Snow Leopard Perl Library & XChat Plugin Headers */,
 				2D78137C10E77C6400C71AF8 /* Resources */,
 				2D78137D10E77C6400C71AF8 /* Sources */,
 				2D78137E10E77C6400C71AF8 /* Frameworks */,
+				38CE5A72154A55C900480EC6 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -2665,6 +2729,7 @@
 				381EECE713CD1DC800CC0B82 /* PBXTargetDependency */,
 				381EECE913CD1DCB00CC0B82 /* PBXTargetDependency */,
 				381EECEB13CD1DCF00CC0B82 /* PBXTargetDependency */,
+				38CE5A5B154A420300480EC6 /* PBXTargetDependency */,
 				38D1415D13D802F10026B7B5 /* PBXTargetDependency */,
 			);
 			name = "XChat Azure";
@@ -2677,10 +2742,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 38763F1F13DD40D6008C40DB /* Build configuration list for PBXNativeTarget "perl-lion" */;
 			buildPhases = (
-				38763F1913DD40D6008C40DB /* Generate Symlink For Lion Perl Library */,
+				38763F1913DD40D6008C40DB /* Generate Symlink For Lion Perl Library & XChat Plugin Headers */,
 				38763F1A13DD40D6008C40DB /* Resources */,
 				38763F1B13DD40D6008C40DB /* Sources */,
 				38763F1D13DD40D6008C40DB /* Frameworks */,
+				38CE5A6D154A557600480EC6 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -3000,33 +3066,33 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2D324F6F11AA31250081A855 /* Generate Symlink For Snowleopard Perl Library */ = {
+		2D324F6F11AA31250081A855 /* Generate Symlink For Snow Leopard Perl Library & XChat Plugin Headers */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Generate Symlink For Snowleopard Perl Library";
+			name = "Generate Symlink For Snow Leopard Perl Library & XChat Plugin Headers";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "TARGET_DIR=\"$PROJECT_TEMP_DIR\"\nrm -rf \"$TARGET_DIR/Perl/5.10.0\"\nmkdir -p \"$TARGET_DIR/Perl/5.10.0/darwin-thread-multi-2level/CORE/\"\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\tln -s '/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib' \"$TARGET_DIR/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib\"\nelse\n\tln -s \"$PROJECT_DIR/Mac/contrib/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib\" \"$TARGET_DIR/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib\"\nfi\n\nexit # old script\n\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\texit\nfi\n\ntar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Snowleopard.tar\" -P\n\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\texit\nfi\n\nsudo tar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Snowleopard.tar\" -P\n\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\texit\nfi\n\necho 'input password for sudo to install leopard library to user system'\n\n/usr/bin/osascript > /dev/null <<ASCPT\ntell application \"Terminal\"\n\tactivate\n\tdo script with command \"sudo tar xvf \\\"$PROJECT_DIR/contrib/systemlib/Perl-Snowleopard.tar\\\" -P\"\nend tell\nASCPT\n\necho 'after running script, redo build please.'\n\nexit 1";
+			shellScript = "TARGET_DIR=\"$PROJECT_TEMP_DIR\"\nrm -rf \"$TARGET_DIR/Perl/5.10.0\"\nmkdir -p \"$TARGET_DIR/Perl/5.10.0/darwin-thread-multi-2level/CORE/\"\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\tln -s '/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib' \"$TARGET_DIR/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib\"\nelse\n\tln -s \"$PROJECT_DIR/Mac/contrib/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib\" \"$TARGET_DIR/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib\"\nfi\n\ncd \"$PROJECT_DIR/xchat/plugins/perl\"\n./generate_header\n\nexit # old script\n\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\texit\nfi\n\ntar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Snowleopard.tar\" -P\n\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\texit\nfi\n\nsudo tar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Snowleopard.tar\" -P\n\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\texit\nfi\n\necho 'input password for sudo to install leopard library to user system'\n\n/usr/bin/osascript > /dev/null <<ASCPT\ntell application \"Terminal\"\n\tactivate\n\tdo script with command \"sudo tar xvf \\\"$PROJECT_DIR/contrib/systemlib/Perl-Snowleopard.tar\\\" -P\"\nend tell\nASCPT\n\necho 'after running script, redo build please.'\n\nexit 1";
 		};
-		2DCBED2C11AA140E00388F47 /* Generate Symlink For Leopard Perl Library */ = {
+		2DCBED2C11AA140E00388F47 /* Generate Symlink For Leopard Perl Library & XChat Plugin Headers */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Generate Symlink For Leopard Perl Library";
+			name = "Generate Symlink For Leopard Perl Library & XChat Plugin Headers";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "TARGET_DIR=\"$PROJECT_TEMP_DIR\"\nrm -rf \"$TARGET_DIR/Perl/5.8.8\"\nmkdir -p \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/CORE/\"\nmkdir -p \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/\"\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\tln -s '/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib' \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib\"\n\tln -s '/System/Library/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a' \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a\"\nelse\n\tln -s \"$PROJECT_DIR/Mac/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib\" \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib\"\n\tln -s \"$PROJECT_DIR/Mac/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a\" \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a\"\nfi\n\nexit # old script\n\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\ntar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\" -P\n\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\nsudo tar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\" -P\n\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\necho 'input password for sudo to install leopard library to user system'\n\n/usr/bin/osascript > /dev/null <<ASCPT\ntell application \"Terminal\"\n\tactivate\n\tdo script with command \"sudo tar xvf \\\"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\\\" -P\"\nend tell\nASCPT\n\necho 'after running script, redo build please.'\n\nexit 1";
+			shellScript = "TARGET_DIR=\"$PROJECT_TEMP_DIR\"\nrm -rf \"$TARGET_DIR/Perl/5.8.8\"\nmkdir -p \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/CORE/\"\nmkdir -p \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/\"\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\tln -s '/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib' \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib\"\n\tln -s '/System/Library/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a' \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a\"\nelse\n\tln -s \"$PROJECT_DIR/Mac/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib\" \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib\"\n\tln -s \"$PROJECT_DIR/Mac/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a\" \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a\"\nfi\n\ncd \"$PROJECT_DIR/xchat/plugins/perl\"\n./generate_header\n\nexit # old script\n\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\ntar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\" -P\n\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\nsudo tar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\" -P\n\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\necho 'input password for sudo to install leopard library to user system'\n\n/usr/bin/osascript > /dev/null <<ASCPT\ntell application \"Terminal\"\n\tactivate\n\tdo script with command \"sudo tar xvf \\\"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\\\" -P\"\nend tell\nASCPT\n\necho 'after running script, redo build please.'\n\nexit 1";
 		};
 		2DDC6FEA1231BD760015A26C /* Generate Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3069,19 +3135,19 @@
 			shellPath = /bin/sh;
 			shellScript = "# shell script goes here\nexit 0";
 		};
-		38763F1913DD40D6008C40DB /* Generate Symlink For Lion Perl Library */ = {
+		38763F1913DD40D6008C40DB /* Generate Symlink For Lion Perl Library & XChat Plugin Headers */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Generate Symlink For Lion Perl Library";
+			name = "Generate Symlink For Lion Perl Library & XChat Plugin Headers";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "TARGET_DIR=\"$PROJECT_TEMP_DIR\"\nrm -rf \"$TARGET_DIR/Perl/5.12\"\nmkdir -p \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/\"\nif [ -e '/System/Library/Perl/5.12/' ]; then\n\tln -s '/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib' \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\"\nelse\n\tln -s \"$PROJECT_DIR/Mac/contrib/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\" \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\"\nfi\n\nexit";
+			shellScript = "TARGET_DIR=\"$PROJECT_TEMP_DIR\"\nrm -rf \"$TARGET_DIR/Perl/5.12\"\nmkdir -p \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/\"\nif [ -e '/System/Library/Perl/5.12/' ]; then\n\tln -s '/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib' \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\"\nelse\n\tln -s \"$PROJECT_DIR/Mac/contrib/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\" \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\"\nfi\n\ncd \"$PROJECT_DIR/xchat/plugins/perl\"\n./generate_header\n\nexit";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -3380,6 +3446,11 @@
 			isa = PBXTargetDependency;
 			target = 0FC8F4AD0DEEE51700504F31 /* xchat */;
 			targetProxy = 387624FA13C7024F00850913 /* PBXContainerItemProxy */;
+		};
+		38CE5A5B154A420300480EC6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 38763F1813DD40D6008C40DB /* perl-lion */;
+			targetProxy = 38CE5A5A154A420300480EC6 /* PBXContainerItemProxy */;
 		};
 		38D1415D13D802F10026B7B5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4653,6 +4724,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
+				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					Mac,
@@ -4660,6 +4732,7 @@
 					"/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
 					"$(PROJECT_DIR)/Mac/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
 					xchat/src,
+					xchat/plugins/perl,
 				);
 				INFOPLIST_FILE = "Mac/Plugins/perl/perl-leopard-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
@@ -4685,6 +4758,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
+				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					Mac,
@@ -4692,6 +4766,7 @@
 					"/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
 					"$(PROJECT_DIR)/Mac/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
 					xchat/src,
+					xchat/plugins/perl,
 				);
 				INFOPLIST_FILE = "Mac/Plugins/perl/perl-leopard-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
@@ -4864,6 +4939,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
+				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					Mac,
@@ -4871,6 +4947,7 @@
 					"/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE",
 					"Mac/contrib/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE",
 					xchat/src,
+					xchat/plugins/perl,
 				);
 				INFOPLIST_FILE = "Mac/Plugins/perl/perl-snowleopard-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
@@ -4896,6 +4973,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
+				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					Mac,
@@ -4903,6 +4981,7 @@
 					"/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE",
 					"Mac/contrib/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE",
 					xchat/src,
+					xchat/plugins/perl,
 				);
 				INFOPLIST_FILE = "Mac/Plugins/perl/perl-snowleopard-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
@@ -5015,6 +5094,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
+				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					Mac,
@@ -5022,13 +5102,13 @@
 					"/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
 					"Mac/contrib/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
 					xchat/src,
-					.,
+					xchat/plugins/perl,
 				);
 				INFOPLIST_FILE = "Mac/Plugins/perl/perl-lion-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					Mac/contrib/lib,
-					"\\\"$(SYSTEM_LIBRARY_DIR)/Perl/lib/5.12\\\"",
+					"\"/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE\"",
 					"\"$(SRCROOT)/build/XChatAqua.build/Perl/5.12/darwin-thread-multi-2level/CORE\"",
 				);
 				OTHER_LDFLAGS = (
@@ -5038,6 +5118,7 @@
 				PRODUCT_NAME = "perl-lion";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "Mac Mac/contrib/include";
 			};
 			name = Debug;
 		};
@@ -5049,6 +5130,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
+				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					Mac,
@@ -5056,13 +5138,13 @@
 					"/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
 					"Mac/contrib/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
 					xchat/src,
-					.,
+					xchat/plugins/perl,
 				);
 				INFOPLIST_FILE = "Mac/Plugins/perl/perl-lion-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					Mac/contrib/lib,
-					"\\\"$(SYSTEM_LIBRARY_DIR)/Perl/lib/5.12\\\"",
+					"\"/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE\"",
 					"\"$(SRCROOT)/build/XChatAqua.build/Perl/5.12/darwin-thread-multi-2level/CORE\"",
 				);
 				OTHER_LDFLAGS = (
@@ -5072,6 +5154,7 @@
 				PRODUCT_NAME = "perl-lion";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "Mac Mac/contrib/include";
 				ZERO_LINK = NO;
 			};
 			name = Release;
