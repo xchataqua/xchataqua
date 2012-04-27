@@ -19,8 +19,8 @@
 
 @interface SGRequestPrivate : NSObject
 {
-    id label;
-    id text;
+    IBOutlet id label;
+    IBOutlet id text;
 }
 
 - (IBAction) doCancel:(id)sender;
