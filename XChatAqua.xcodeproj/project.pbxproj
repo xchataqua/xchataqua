@@ -401,6 +401,7 @@
 		38CE5A79154A55E000480EC6 /* google.pl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 380F1EF113E29C930033E3AC /* google.pl */; };
 		38CE5A7A154A55E000480EC6 /* alt_completion.pl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38CE5A63154A551600480EC6 /* alt_completion.pl */; };
 		38CE5A7B154A55E000480EC6 /* char_count.pl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38CE5A64154A551600480EC6 /* char_count.pl */; };
+		38CE5A95154A689F00480EC6 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5A8F154A687400480EC6 /* ShortcutRecorder.framework */; };
 		38D1414213D801B70026B7B5 /* Ruby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38D1414113D801B70026B7B5 /* Ruby.framework */; };
 		38D1415A13D801E60026B7B5 /* xchat-ruby.c in Sources */ = {isa = PBXBuildFile; fileRef = 38D1415113D801E60026B7B5 /* xchat-ruby.c */; };
 		38D1415E13D8030A0026B7B5 /* ruby.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 38D1414013D800E60026B7B5 /* ruby.bundle */; };
@@ -418,10 +419,8 @@
 		B0D937F20FFB0D34009370B5 /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937F00FFB0D34009370B5 /* libssl.dylib */; };
 		B0E85AC20FFFC0AF0064D049 /* sparkle.pem in Resources */ = {isa = PBXBuildFile; fileRef = B0E85AC10FFFC0AF0064D049 /* sparkle.pem */; };
 		D4517EA313CD3DF900ACA3F8 /* Growl.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 388BDD6B13C6AA2100B95036 /* Growl.framework */; };
-		D4517EA413CD3DF900ACA3F8 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 388BDD6C13C6AA2100B95036 /* ShortcutRecorder.framework */; };
 		D487239E128F9DBC00647D7B /* UtilityWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D487239D128F9DBC00647D7B /* UtilityWindow.m */; };
 		D4A86A2012DE29A1000C201C /* xchat512.icns in Resources */ = {isa = PBXBuildFile; fileRef = D4A86A1F12DE29A1000C201C /* xchat512.icns */; };
-		D4A86A5D12DE2D05000C201C /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2DAAE54D10E4ACFC00DBBFD0 /* ShortcutRecorder.framework */; };
 		D4D0BE0F13CD3DB70092832B /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 388BDD6B13C6AA2100B95036 /* Growl.framework */; };
 		D4D0BE1013CD3DBD0092832B /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 388BDD6C13C6AA2100B95036 /* ShortcutRecorder.framework */; };
 		D4FBD93E12E449D5003EA441 /* ViewerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4FBD93D12E449D5003EA441 /* ViewerWindow.xib */; };
@@ -514,6 +513,27 @@
 			remoteGlobalIDString = 38763F1813DD40D6008C40DB;
 			remoteInfo = "perl-lion";
 		};
+		38CE5A8E154A687400480EC6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 38CE5A85154A687300480EC6 /* ShortcutRecorder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 939837800DA42965007F53F3;
+			remoteInfo = ShortcutRecorder.framework;
+		};
+		38CE5A90154A687400480EC6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 38CE5A85154A687300480EC6 /* ShortcutRecorder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 93983B220DA43C4E007F53F3;
+			remoteInfo = ShortcutRecorder_Tester;
+		};
+		38CE5A93154A688D00480EC6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 38CE5A85154A687300480EC6 /* ShortcutRecorder.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9398377F0DA42965007F53F3;
+			remoteInfo = ShortcutRecorder.framework;
+		};
 		38D1415C13D802F10026B7B5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -554,7 +574,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				2D55F03010EBBA8E00B4ECCB /* Growl.framework in Copy Frameworks */,
-				D4A86A5D12DE2D05000C201C /* ShortcutRecorder.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -580,8 +599,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				38CE5A95154A689F00480EC6 /* ShortcutRecorder.framework in Copy Frameworks */,
 				D4517EA313CD3DF900ACA3F8 /* Growl.framework in Copy Frameworks */,
-				D4517EA413CD3DF900ACA3F8 /* ShortcutRecorder.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1855,6 +1874,7 @@
 		38CE5A64154A551600480EC6 /* char_count.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = char_count.pl; path = xchat/plugins/perl/char_count.pl; sourceTree = SOURCE_ROOT; };
 		38CE5A65154A551600480EC6 /* irc.pm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = irc.pm.h; path = xchat/plugins/perl/irc.pm.h; sourceTree = SOURCE_ROOT; };
 		38CE5A66154A551600480EC6 /* xchat.pm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xchat.pm.h; path = xchat/plugins/perl/xchat.pm.h; sourceTree = SOURCE_ROOT; };
+		38CE5A85154A687300480EC6 /* ShortcutRecorder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShortcutRecorder.xcodeproj; path = Mac/ShortcutRecorder/ShortcutRecorder.xcodeproj; sourceTree = "<group>"; };
 		38D1414013D800E60026B7B5 /* ruby.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ruby.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		38D1414113D801B70026B7B5 /* Ruby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ruby.framework; path = System/Library/Frameworks/Ruby.framework; sourceTree = SDKROOT; };
 		38D1414E13D801E60026B7B5 /* xchat-plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "xchat-plugin.h"; sourceTree = "<group>"; };
@@ -2265,6 +2285,7 @@
 		29B97314FDCFA39411CA2CEA /* X-Chat Aqua */ = {
 			isa = PBXGroup;
 			children = (
+				38CE5A85154A687300480EC6 /* ShortcutRecorder.xcodeproj */,
 				380AD16C13C6967B003EEE3D /* Aqua */,
 				380AD16D13C69682003EEE3D /* Azure */,
 				0F8EA3640CFAA429001AE9AE /* Sources */,
@@ -2553,6 +2574,15 @@
 			name = src;
 			sourceTree = "<group>";
 		};
+		38CE5A86154A687300480EC6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				38CE5A8F154A687400480EC6 /* ShortcutRecorder.framework */,
+				38CE5A91154A687400480EC6 /* ShortcutRecorder.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		38D1414513D801E60026B7B5 /* ruby */ = {
 			isa = PBXGroup;
 			children = (
@@ -2726,6 +2756,7 @@
 			);
 			dependencies = (
 				387624F913C7024F00850913 /* PBXTargetDependency */,
+				38CE5A94154A688D00480EC6 /* PBXTargetDependency */,
 				381EECE713CD1DC800CC0B82 /* PBXTargetDependency */,
 				381EECE913CD1DCB00CC0B82 /* PBXTargetDependency */,
 				381EECEB13CD1DCF00CC0B82 /* PBXTargetDependency */,
@@ -2857,6 +2888,12 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* X-Chat Aqua */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 38CE5A86154A687300480EC6 /* Products */;
+					ProjectRef = 38CE5A85154A687300480EC6 /* ShortcutRecorder.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				0F7065690E1FA5C100FEA21C /* Release */,
@@ -2875,6 +2912,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		38CE5A8F154A687400480EC6 /* ShortcutRecorder.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ShortcutRecorder.framework;
+			remoteRef = 38CE5A8E154A687400480EC6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		38CE5A91154A687400480EC6 /* ShortcutRecorder.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ShortcutRecorder.app;
+			remoteRef = 38CE5A90154A687400480EC6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		0F2FEF270E1FAB1500DE4D41 /* Resources */ = {
@@ -3451,6 +3505,11 @@
 			isa = PBXTargetDependency;
 			target = 38763F1813DD40D6008C40DB /* perl-lion */;
 			targetProxy = 38CE5A5A154A420300480EC6 /* PBXContainerItemProxy */;
+		};
+		38CE5A94154A688D00480EC6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ShortcutRecorder.framework;
+			targetProxy = 38CE5A93154A688D00480EC6 /* PBXContainerItemProxy */;
 		};
 		38D1415D13D802F10026B7B5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5033,8 +5092,8 @@
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(TARGET_PLATFORM)/$(PRODUCT_CODE)/Frameworks/**",
-					"\"$(SRCROOT)/Mac/Azure/Frameworks\"",
+					"\"$(TARGET_PLATFORM)/$(PRODUCT_CODE)/Frameworks\"/**",
+					"\"$(TARGET_PLATFORM)/ShortcutRecorder/build/$(CONFIGURATION)\"/**",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -5061,8 +5120,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(TARGET_PLATFORM)/$(PRODUCT_CODE)/Frameworks/**",
-					"\"$(SRCROOT)/Mac/Azure/Frameworks\"",
+					"\"$(TARGET_PLATFORM)/$(PRODUCT_CODE)/Frameworks\"/**",
+					"\"$(TARGET_PLATFORM)/ShortcutRecorder/build/$(CONFIGURATION)\"/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(TARGET_PLATFORM)/Sources/Prefix.pch";
