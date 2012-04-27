@@ -126,7 +126,7 @@ extern struct eventInfo textEventInfo[];
 - (void) ctrl_gui:(struct session *) sess action:(int) action arg:(int) arg;
 - (void) server_event:(struct server *)server event_type:(int)type arg:(int)arg;
 
-- (void) toggleMenuItemAndReloadPreferences:(id)sender;
+- (IBAction) toggleMenuItemAndReloadPreferences:(id)sender;
 // MainMenu IBAction
 // Application menu
 - (IBAction) showPreferencesWindow:(id)sender;

@@ -85,7 +85,7 @@
     SGTabView   *parent;
     NSInteger   group;
     id          initial_first_responder;
-    NSMenu      *ctxMenu;
+    IBOutlet NSMenu *ctxMenu;
 }
 
 @property (nonatomic, retain) NSColor *titleColor;
@@ -98,5 +98,8 @@
 - (void) setInitialFirstResponder:(NSView *) view;
 - (void) setHideCloseButton:(BOOL) hidem;
 - (BOOL) isFrontTab;
+
+- (IBAction)doClose:(id)sender;
+- (IBAction)link_delink:(id)sender;
 
 @end
