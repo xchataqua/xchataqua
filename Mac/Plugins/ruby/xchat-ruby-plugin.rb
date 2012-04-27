@@ -415,6 +415,18 @@ module XChatRuby
     end
 
     def XChatRubyEnvironment.initialize_ruby_environment
+      $LOAD_PATH.push "/Library/Ruby/Site/1.8"
+      $LOAD_PATH.push "/Library/Ruby/Site/1.8/powerpc-darwin11.0"
+      $LOAD_PATH.push "/Library/Ruby/Site/1.8/universal-darwin11.0"
+      $LOAD_PATH.push "/Library/Ruby/Site"
+      $LOAD_PATH.push "/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/vendor_ruby/1.8"
+      $LOAD_PATH.push "/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/vendor_ruby/1.8/universal-darwin11.0"
+      $LOAD_PATH.push "/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/vendor_ruby"
+      $LOAD_PATH.push "/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8"
+      $LOAD_PATH.push "/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/powerpc-darwin11.0"
+      $LOAD_PATH.push "/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin11.0"
+      $LOAD_PATH.push "."
+      return
       envfile = get_info( "xchatdir" ) + "/rubyenv"
       begin
         File.open( envfile, "r" ) do |file|
