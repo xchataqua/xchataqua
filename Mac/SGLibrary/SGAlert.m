@@ -44,7 +44,7 @@
 }
 
 - (void) dealloc {
-    self.object = nil;
+    // self.object = nil; // memory leak expected but no crash
     [super dealloc];
 }
 
