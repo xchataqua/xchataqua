@@ -19,3 +19,4 @@
 {"auto_away", P_OFFINT (xa_auto_away), TYPE_INT},
 {"auto_away_delay", P_OFFINT (xa_auto_away_delay), TYPE_INT},
 {"gui_ulist_size", P_OFFINT (xa_paned_pos), TYPE_INT},
+{"builtin_plugins_version", P_OFFSET (xa_builtin_plugins_version), TYPE_STR},

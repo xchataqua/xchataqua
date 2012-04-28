@@ -32,6 +32,23 @@
 			name = printenv;
 			productName = "Print Environtment Variables";
 		};
+		38876EB7154C6FC8000B7E27 /* Azure PlugIns */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 38876EB8154C6FC9000B7E27 /* Build configuration list for PBXAggregateTarget "Azure PlugIns" */;
+			buildPhases = (
+				38876EC7154C7019000B7E27 /* CopyFiles */,
+				38876ECF154C70D2000B7E27 /* ShellScript */,
+			);
+			dependencies = (
+				38876EBC154C6FEA000B7E27 /* PBXTargetDependency */,
+				38876EBE154C6FEA000B7E27 /* PBXTargetDependency */,
+				38876EC2154C6FEA000B7E27 /* PBXTargetDependency */,
+				38876EC4154C6FEA000B7E27 /* PBXTargetDependency */,
+				38876EC6154C6FEA000B7E27 /* PBXTargetDependency */,
+			);
+			name = "Azure PlugIns";
+			productName = "PlugIn Installer";
+		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
@@ -187,9 +204,6 @@
 		380AD1F413C698E1003EEE3D /* xchat.h in Headers */ = {isa = PBXBuildFile; fileRef = 380AD1E813C698E1003EEE3D /* xchat.h */; };
 		380AD1F513C698E1003EEE3D /* xchatc.h in Headers */ = {isa = PBXBuildFile; fileRef = 380AD1E913C698E1003EEE3D /* xchatc.h */; };
 		380B9D1A13C6E5D70029CE25 /* SGFileUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 380B9D1913C6E5D70029CE25 /* SGFileUtility.m */; };
-		381EED4B13CD1EA900CC0B82 /* python.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */; };
-		381EED4C13CD1EA900CC0B82 /* tcl.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 0F8F08110E1FE00800359159 /* tcl.bundle */; };
-		381EED4D13CD1EA900CC0B82 /* perl-snowleopard.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */; };
 		3839010413C06619004D20BC /* CLTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3839010313C06619004D20BC /* CLTabCell.m */; };
 		3839010713C0667B004D20BC /* CLTabViewButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3839010613C0667B004D20BC /* CLTabViewButtonCell.m */; };
 		3839010913C06722004D20BC /* CLclose13.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3839010813C06722004D20BC /* CLclose13.tiff */; };
@@ -319,9 +333,14 @@
 		3876258D13C7027400850913 /* MainMenuAppstore.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C89F413C6E10100AAF20D /* MainMenuAppstore.xib */; };
 		38763F1C13DD40D6008C40DB /* perl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F06C10E1FDA5E00359159 /* perl.c */; };
 		38763F2613DD460E008C40DB /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 38763F2513DD460E008C40DB /* libperl.dylib */; };
-		38763F2713DD4676008C40DB /* perl-lion.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 38763F2213DD40D6008C40DB /* perl-lion.bundle */; };
 		387C79F613DEA24300A79FA8 /* ShortcutRecorder.strings in Resources */ = {isa = PBXBuildFile; fileRef = 387C79F413DEA24300A79FA8 /* ShortcutRecorder.strings */; };
 		387C79F713DEA24300A79FA8 /* ShortcutRecorder.strings in Resources */ = {isa = PBXBuildFile; fileRef = 387C79F413DEA24300A79FA8 /* ShortcutRecorder.strings */; };
+		38876EC8154C706E000B7E27 /* python.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */; };
+		38876ECA154C706E000B7E27 /* tcl.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F8F08110E1FE00800359159 /* tcl.bundle */; };
+		38876ECC154C706E000B7E27 /* perl-snowleopard.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */; };
+		38876ECD154C706E000B7E27 /* ruby.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38D1414013D800E60026B7B5 /* ruby.bundle */; };
+		38876ECE154C706E000B7E27 /* perl-lion.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38763F2213DD40D6008C40DB /* perl-lion.bundle */; };
+		38876F3E154C7771000B7E27 /* PlugIns.tar in Copy PlugIns Archive */ = {isa = PBXBuildFile; fileRef = 38876EF4154C766A000B7E27 /* PlugIns.tar */; };
 		388BDCC313C6A0CB00B95036 /* SGAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDC9F13C6A0CB00B95036 /* SGAlert.m */; };
 		388BDCC413C6A0CB00B95036 /* SGApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCA113C6A0CB00B95036 /* SGApplication.m */; };
 		388BDCC513C6A0CB00B95036 /* SGArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCA313C6A0CB00B95036 /* SGArray.m */; };
@@ -390,7 +409,6 @@
 		38CE5AE2154A718500480EC6 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5AC5154A70E300480EC6 /* Growl.framework */; };
 		38D1414213D801B70026B7B5 /* Ruby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38D1414113D801B70026B7B5 /* Ruby.framework */; };
 		38D1415A13D801E60026B7B5 /* xchat-ruby.c in Sources */ = {isa = PBXBuildFile; fileRef = 38D1415113D801E60026B7B5 /* xchat-ruby.c */; };
-		38D1415E13D8030A0026B7B5 /* ruby.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 38D1414013D800E60026B7B5 /* ruby.bundle */; };
 		38DA68CF13C8D72700B12F16 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C89F213C6E10100AAF20D /* MainMenu.xib */; };
 		38E34015154A74C2005B59F8 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5AC5154A70E300480EC6 /* Growl.framework */; };
 		38E34016154A75BF005B59F8 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5A8F154A687400480EC6 /* ShortcutRecorder.framework */; };
@@ -429,33 +447,54 @@
 			remoteGlobalIDString = 0FE5E01C0F45576B000E0F91;
 			remoteInfo = SGPalette;
 		};
-		381EECE613CD1DC800CC0B82 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0F8F08100E1FE00800359159;
-			remoteInfo = tcl;
-		};
-		381EECE813CD1DCB00CC0B82 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0F2FEF2A0E1FAB1500DE4D41;
-			remoteInfo = python;
-		};
-		381EECEA13CD1DCF00CC0B82 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2D78137F10E77C6400C71AF8;
-			remoteInfo = "perl-snowleopard";
-		};
 		387624FA13C7024F00850913 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 0FC8F4AD0DEEE51700504F31;
 			remoteInfo = xchat;
+		};
+		38876EBB154C6FEA000B7E27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F8F08100E1FE00800359159;
+			remoteInfo = tcl;
+		};
+		38876EBD154C6FEA000B7E27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F2FEF2A0E1FAB1500DE4D41;
+			remoteInfo = python;
+		};
+		38876EC1154C6FEA000B7E27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D78137F10E77C6400C71AF8;
+			remoteInfo = "perl-snowleopard";
+		};
+		38876EC3154C6FEA000B7E27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 38763F1813DD40D6008C40DB;
+			remoteInfo = "perl-lion";
+		};
+		38876EC5154C6FEA000B7E27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 38D1413613D800E60026B7B5;
+			remoteInfo = ruby;
+		};
+		38876F3F154C7967000B7E27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 38876EB7154C6FC8000B7E27;
+			remoteInfo = "Azure PlugIns";
 		};
 		38BC97A8154A9937005894EF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -498,13 +537,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9398377F0DA42965007F53F3;
 			remoteInfo = ShortcutRecorder.framework;
-		};
-		38CE5A5A154A420300480EC6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 38763F1813DD40D6008C40DB;
-			remoteInfo = "perl-lion";
 		};
 		38CE5A8E154A687400480EC6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -632,13 +664,6 @@
 			remoteGlobalIDString = 34F60EAA078E1CD500CECA86;
 			remoteInfo = Growl.framework;
 		};
-		38D1415C13D802F10026B7B5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 38D1413613D800E60026B7B5;
-			remoteInfo = "ruby-snowleopard";
-		};
 		38E34013154A74B0005B59F8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 38CE5AA4154A70E100480EC6 /* Growl.xcodeproj */;
@@ -669,21 +694,6 @@
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		383A424513CD1D1600FE1CA1 /* Copy Plugins */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				38D1415E13D8030A0026B7B5 /* ruby.bundle in Copy Plugins */,
-				381EED4B13CD1EA900CC0B82 /* python.bundle in Copy Plugins */,
-				381EED4C13CD1EA900CC0B82 /* tcl.bundle in Copy Plugins */,
-				381EED4D13CD1EA900CC0B82 /* perl-snowleopard.bundle in Copy Plugins */,
-				38763F2713DD4676008C40DB /* perl-lion.bundle in Copy Plugins */,
-			);
-			name = "Copy Plugins";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3876258513C7024F00850913 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -694,6 +704,31 @@
 				38E34017154A75BF005B59F8 /* Growl.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38876EC7154C7019000B7E27 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = PlugIns;
+			dstSubfolderSpec = 16;
+			files = (
+				38876EC8154C706E000B7E27 /* python.bundle in CopyFiles */,
+				38876ECA154C706E000B7E27 /* tcl.bundle in CopyFiles */,
+				38876ECC154C706E000B7E27 /* perl-snowleopard.bundle in CopyFiles */,
+				38876ECD154C706E000B7E27 /* ruby.bundle in CopyFiles */,
+				38876ECE154C706E000B7E27 /* perl-lion.bundle in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38876F3D154C7727000B7E27 /* Copy PlugIns Archive */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 1;
+			files = (
+				38876F3E154C7771000B7E27 /* PlugIns.tar in Copy PlugIns Archive */,
+			);
+			name = "Copy PlugIns Archive";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		38BC97B9154A9AAC005894EF /* Copy Plugins */ = {
@@ -992,6 +1027,7 @@
 		387C79FE13DEA27D00A79FA8 /* de */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/xchataqua.strings; sourceTree = "<group>"; };
 		387C7A0113DEA29100A79FA8 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = Resources/nl.lproj/ShortcutRecorder.strings; sourceTree = SOURCE_ROOT; };
 		387C7A0413DEA29D00A79FA8 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = Resources/sv.lproj/ShortcutRecorder.strings; sourceTree = SOURCE_ROOT; };
+		38876EF4154C766A000B7E27 /* PlugIns.tar */ = {isa = PBXFileReference; explicitFileType = archive.tar; path = PlugIns.tar; sourceTree = BUILT_PRODUCTS_DIR; };
 		388BDC9E13C6A0CB00B95036 /* SGAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAlert.h; sourceTree = "<group>"; };
 		388BDC9F13C6A0CB00B95036 /* SGAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAlert.m; sourceTree = "<group>"; };
 		388BDCA013C6A0CB00B95036 /* SGApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGApplication.h; sourceTree = "<group>"; };
@@ -2376,15 +2412,16 @@
 			children = (
 				2DDC6FA21231733E0015A26C /* build_number.h */,
 				8D1107320486CEB800E47090 /* X-Chat Aqua.app */,
+				3876258B13C7024F00850913 /* XChat Azure.app */,
 				0FC8F4AE0DEEE51700504F31 /* libxchat.a */,
+				0F8F08110E1FE00800359159 /* tcl.bundle */,
 				0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */,
 				0F8F06D70E1FDA8500359159 /* perl-leopard.bundle */,
-				0F8F08110E1FE00800359159 /* tcl.bundle */,
-				0FE5E01D0F45576B000E0F91 /* SGPalette.ibplugin */,
 				2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */,
-				3876258B13C7024F00850913 /* XChat Azure.app */,
-				38D1414013D800E60026B7B5 /* ruby.bundle */,
 				38763F2213DD40D6008C40DB /* perl-lion.bundle */,
+				38D1414013D800E60026B7B5 /* ruby.bundle */,
+				38876EF4154C766A000B7E27 /* PlugIns.tar */,
+				0FE5E01D0F45576B000E0F91 /* SGPalette.ibplugin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2858,7 +2895,7 @@
 				3876253B13C7024F00850913 /* Frameworks */,
 				3876254713C7024F00850913 /* Resources */,
 				3876258513C7024F00850913 /* Copy Frameworks */,
-				383A424513CD1D1600FE1CA1 /* Copy Plugins */,
+				38876F3D154C7727000B7E27 /* Copy PlugIns Archive */,
 			);
 			buildRules = (
 			);
@@ -2866,11 +2903,7 @@
 				387624F913C7024F00850913 /* PBXTargetDependency */,
 				38CE5A94154A688D00480EC6 /* PBXTargetDependency */,
 				38CE5AE1154A717900480EC6 /* PBXTargetDependency */,
-				381EECE713CD1DC800CC0B82 /* PBXTargetDependency */,
-				381EECE913CD1DCB00CC0B82 /* PBXTargetDependency */,
-				381EECEB13CD1DCF00CC0B82 /* PBXTargetDependency */,
-				38CE5A5B154A420300480EC6 /* PBXTargetDependency */,
-				38D1415D13D802F10026B7B5 /* PBXTargetDependency */,
+				38876F40154C7967000B7E27 /* PBXTargetDependency */,
 			);
 			name = "XChat Azure";
 			productInstallPath = "$(HOME)/Applications";
@@ -3021,6 +3054,7 @@
 				2DDC6FD91231BCA00015A26C /* Prebuild */,
 				8D1107260486CEB800E47090 /* XChat Aqua */,
 				387624F813C7024F00850913 /* XChat Azure */,
+				38876EB7154C6FC8000B7E27 /* Azure PlugIns */,
 				0FC8F4AD0DEEE51700504F31 /* xchat */,
 				0FE5E01C0F45576B000E0F91 /* SGPalette */,
 				0F8F08100E1FE00800359159 /* tcl */,
@@ -3422,6 +3456,21 @@
 			shellPath = /bin/bash;
 			shellScript = "TARGET_DIR=\"$PROJECT_TEMP_DIR\"\nrm -rf \"$TARGET_DIR/Perl/5.12\"\nmkdir -p \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/\"\nif [ -e '/System/Library/Perl/5.12/' ]; then\n\tln -s '/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib' \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\"\nelse\n\tln -s \"$PROJECT_DIR/Mac/contrib/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\" \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\"\nfi\n\ncd \"$PROJECT_DIR/xchat/plugins/perl\"\n./generate_header\n\nexit";
 		};
+		38876ECF154C70D2000B7E27 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/PlugIns",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/PlugIns.tar",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "cd \"$BUILT_PRODUCTS_DIR\"\ntar -cf PlugIns.tar PlugIns";
+		};
 		38BC9850154AD8A7005894EF /* Generate XChat Plugin Header */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3689,25 +3738,40 @@
 			target = 0FE5E01C0F45576B000E0F91 /* SGPalette */;
 			targetProxy = 2DDC6FE01231BCCB0015A26C /* PBXContainerItemProxy */;
 		};
-		381EECE713CD1DC800CC0B82 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0F8F08100E1FE00800359159 /* tcl */;
-			targetProxy = 381EECE613CD1DC800CC0B82 /* PBXContainerItemProxy */;
-		};
-		381EECE913CD1DCB00CC0B82 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0F2FEF2A0E1FAB1500DE4D41 /* python */;
-			targetProxy = 381EECE813CD1DCB00CC0B82 /* PBXContainerItemProxy */;
-		};
-		381EECEB13CD1DCF00CC0B82 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2D78137F10E77C6400C71AF8 /* perl-snowleopard */;
-			targetProxy = 381EECEA13CD1DCF00CC0B82 /* PBXContainerItemProxy */;
-		};
 		387624F913C7024F00850913 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0FC8F4AD0DEEE51700504F31 /* xchat */;
 			targetProxy = 387624FA13C7024F00850913 /* PBXContainerItemProxy */;
+		};
+		38876EBC154C6FEA000B7E27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F8F08100E1FE00800359159 /* tcl */;
+			targetProxy = 38876EBB154C6FEA000B7E27 /* PBXContainerItemProxy */;
+		};
+		38876EBE154C6FEA000B7E27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F2FEF2A0E1FAB1500DE4D41 /* python */;
+			targetProxy = 38876EBD154C6FEA000B7E27 /* PBXContainerItemProxy */;
+		};
+		38876EC2154C6FEA000B7E27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D78137F10E77C6400C71AF8 /* perl-snowleopard */;
+			targetProxy = 38876EC1154C6FEA000B7E27 /* PBXContainerItemProxy */;
+		};
+		38876EC4154C6FEA000B7E27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 38763F1813DD40D6008C40DB /* perl-lion */;
+			targetProxy = 38876EC3154C6FEA000B7E27 /* PBXContainerItemProxy */;
+		};
+		38876EC6154C6FEA000B7E27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 38D1413613D800E60026B7B5 /* ruby */;
+			targetProxy = 38876EC5154C6FEA000B7E27 /* PBXContainerItemProxy */;
+		};
+		38876F40154C7967000B7E27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 38876EB7154C6FC8000B7E27 /* Azure PlugIns */;
+			targetProxy = 38876F3F154C7967000B7E27 /* PBXContainerItemProxy */;
 		};
 		38BC97A9154A9937005894EF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3739,11 +3803,6 @@
 			name = ShortcutRecorder.framework;
 			targetProxy = 38BC97B4154A9941005894EF /* PBXContainerItemProxy */;
 		};
-		38CE5A5B154A420300480EC6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 38763F1813DD40D6008C40DB /* perl-lion */;
-			targetProxy = 38CE5A5A154A420300480EC6 /* PBXContainerItemProxy */;
-		};
 		38CE5A94154A688D00480EC6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ShortcutRecorder.framework;
@@ -3753,11 +3812,6 @@
 			isa = PBXTargetDependency;
 			name = Growl.framework;
 			targetProxy = 38CE5AE0154A717900480EC6 /* PBXContainerItemProxy */;
-		};
-		38D1415D13D802F10026B7B5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 38D1413613D800E60026B7B5 /* ruby */;
-			targetProxy = 38D1415C13D802F10026B7B5 /* PBXContainerItemProxy */;
 		};
 		38E34014154A74B0005B59F8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5331,7 +5385,7 @@
 					"$(TARGET_PLATFORM)/contrib/include",
 					xchat/src,
 				);
-				IBC_PLUGIN_SEARCH_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				IBC_PLUGIN_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_CODE = Azure;
@@ -5359,7 +5413,7 @@
 					"$(TARGET_PLATFORM)/contrib/include",
 					xchat/src,
 				);
-				IBC_PLUGIN_SEARCH_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				IBC_PLUGIN_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_CODE = Azure;
@@ -5438,6 +5492,20 @@
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "Mac Mac/contrib/include";
 				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		38876EB9154C6FC9000B7E27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		38876EBA154C6FC9000B7E27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -5524,7 +5592,7 @@
 					"$(TARGET_PLATFORM)/contrib/include",
 					xchat/src,
 				);
-				IBC_PLUGIN_SEARCH_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				IBC_PLUGIN_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
 				PRODUCT_CODE = Aqua;
 				PRODUCT_NAME = "X-Chat Aqua";
@@ -5551,7 +5619,7 @@
 					"$(TARGET_PLATFORM)/contrib/include",
 					xchat/src,
 				);
-				IBC_PLUGIN_SEARCH_PATHS = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				IBC_PLUGIN_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
 				PRODUCT_CODE = Aqua;
 				PRODUCT_NAME = "X-Chat Aqua";
@@ -5699,6 +5767,15 @@
 			buildConfigurations = (
 				38763F2013DD40D6008C40DB /* Debug */,
 				38763F2113DD40D6008C40DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		38876EB8154C6FC9000B7E27 /* Build configuration list for PBXAggregateTarget "Azure PlugIns" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38876EB9154C6FC9000B7E27 /* Debug */,
+				38876EBA154C6FC9000B7E27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
