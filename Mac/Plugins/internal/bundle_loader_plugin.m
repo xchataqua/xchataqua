@@ -29,83 +29,86 @@ static xchat_plugin *ph;
 
 static void bundle_loader_load_bundle( char * word[], char * word_eol[])
 {
-	char * arg;
-	
-	arg = NULL;
-	if (word_eol[3][0])
-		arg = word_eol[3];
-	
-	NSString *bundle_path = [NSString stringWithUTF8String:word[2]]; 
-	NSBundle *bundle = [NSBundle bundleWithPath:bundle_path];
-	
-	if(bundle == nil)
-		return;
-	
-	do {
-		NSString *path = [bundle executablePath];
+    char * arg;
+    
+    arg = NULL;
+    if (word_eol[3][0])
+        arg = word_eol[3];
+    
+    NSString *bundle_path = [NSString stringWithUTF8String:word[2]];
+    NSBundle *bundle = [NSBundle bundleWithPath:bundle_path];
+    
+    if(bundle == nil)
+        return;
+    
+    do {
+        NSString *path = [bundle executablePath];
         const char *filename = [path fileSystemRepresentation];
-		
+        
         NSString *version = [[bundle infoDictionary] objectForKey:@"XChatAquaMacOSVersionBranch"];
-		if(version != nil && [[SystemVersion systemBranch] compare:version options:NSNumericSearch] != NSOrderedSame) {
-			break;
+        if(version != nil && [[SystemVersion systemBranch] compare:version options:NSNumericSearch] != NSOrderedSame) {
+            break;
         }
-		
-		char *error = plugin_load(current_sess, (char *)filename, arg);
-		if(error != NULL) {
-			xchat_print(ph, error);
+        
+        char *error = plugin_load(current_sess, (char *)filename, arg);
+        if(error != NULL) {
+            xchat_print(ph, error);
         }
-	} while(0); // while 0??
+    } while(0); // while 0??
 }
 
 static int bundle_loader_load(char *word[], char *word_eol[], void *userdata)
 {
-	int len = strlen(word[2]);
-	if (len > 7 && strcasecmp(".bundle", word[2]+len-7) == 0) {
-		bundle_loader_load_bundle(word, word_eol);
-		return XCHAT_EAT_XCHAT;
-	}
-	return XCHAT_EAT_NONE;
+    int len = strlen(word[2]);
+    if (len > 7 && strcasecmp(".bundle", word[2]+len-7) == 0) {
+        bundle_loader_load_bundle(word, word_eol);
+        return XCHAT_EAT_XCHAT;
+    }
+    return XCHAT_EAT_NONE;
 }
 
 
 //Tries to load all files in plugins dir
-void bundle_loader_auto_load(int pass)
+void bundle_loader_auto_load(NSString *plugins_dir, int load_package)
 {
-	NSString * plugins_dir = [[NSBundle mainBundle] builtInPlugInsPath];
-	DIR * dir;
-	
-	dir = opendir([plugins_dir UTF8String]);
-	if(!dir)
-		return;
-	for ( struct dirent *de=readdir(dir); de!=NULL; de=readdir(dir)) {
-		if((de->d_namlen < 3 && de->d_name[0] == '.') || (de->d_namlen == 2 && de->d_name[1] == 0))
-			continue;
-		
-		if ( pass ==
-			(((de->d_namlen > 7 && strcasecmp(".bundle", de->d_name+de->d_namlen-7) == 0))
-			 ||(de->d_namlen > 3 && strcasecmp(".so", de->d_name+de->d_namlen-3) == 0 ))){
-				NSString *cmd = [NSString stringWithFormat:@"LOAD \"%@/%@\"", plugins_dir, [NSString stringWithUTF8String:de->d_name]];
-				handle_command (current_sess, (char *) [cmd UTF8String], FALSE);
-			}
-	}
-	
-	closedir(dir);
+    DIR * dir;
+    
+    dir = opendir([plugins_dir UTF8String]);
+    if(!dir)
+        return;
+    for ( struct dirent *de=readdir(dir); de!=NULL; de=readdir(dir)) {
+        if (de->d_name[0] == '.') continue; // ignore .*
+        if (de->d_namlen == 2 && de->d_name[1] == 0) continue; // which case??
+        
+        int is_package = (de->d_namlen > 7 && strcasecmp(".bundle", de->d_name+de->d_namlen-7) == 0);
+        is_package |= (de->d_namlen > 3 && strcasecmp(".so", de->d_name+de->d_namlen-3) == 0 );
+        if (load_package == is_package) {
+            NSString *cmd = [NSString stringWithFormat:@"LOAD \"%@/%@\"", plugins_dir, [NSString stringWithUTF8String:de->d_name]];
+            handle_command (current_sess, (char *) [cmd UTF8String], FALSE);
+        }
+    }
+    
+    closedir(dir);
 }
 
 int bundle_loader_init (xchat_plugin *plugin_handle, char **plugin_name,
-						char **plugin_desc, char **plugin_version, char *arg)
+                        char **plugin_desc, char **plugin_version, char *arg)
 {
-	/* we need to save this for use with any xchat_* functions */
-	ph = plugin_handle;
-	
-	*plugin_name = (char*)"Bundle loader";
-	*plugin_desc = (char*)"X-Chat Aqua Bundle loader";
-	*plugin_version = (char*)"";
-	
-	xchat_hook_command (ph, "LOAD", XCHAT_PRI_NORM, bundle_loader_load, 0, 0);
-	
-	bundle_loader_auto_load(1);
-	bundle_loader_auto_load(0);
-	
-	return 1;	   /* return 1 for success */
+    /* we need to save this for use with any xchat_* functions */
+    ph = plugin_handle;
+    
+    *plugin_name = (char*)"Bundle loader";
+    *plugin_desc = (char*)PRODUCT_NAME" Bundle loader";
+    *plugin_version = (char*)"";
+    
+    xchat_hook_command (ph, "LOAD", XCHAT_PRI_NORM, bundle_loader_load, 0, 0);
+    
+    NSString *builtInPlugInsPath = [[NSBundle mainBundle] builtInPlugInsPath];
+    bundle_loader_auto_load(builtInPlugInsPath, true);
+    
+    NSString *applicationSupportPlugInsPath = [[SGFileUtility findApplicationSupportFor:@PRODUCT_NAME] stringByAppendingPathComponent:@"PlugIns"];
+    bundle_loader_auto_load(applicationSupportPlugInsPath, true);
+    bundle_loader_auto_load(applicationSupportPlugInsPath, false);
+    
+    return 1;       /* return 1 for success */
 }
