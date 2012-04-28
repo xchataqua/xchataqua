@@ -176,7 +176,7 @@ extern struct eventInfo textEventInfo[];
 
 - (void) awakeFromNib
 {
-    struct preferenceItem items [] = 
+    struct PreferenceItem items [] =
     {
         // Text box
         { textBoxFontTextField, &prefs.font_normal, MYPREF_STRING },
