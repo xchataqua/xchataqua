@@ -367,8 +367,8 @@ extern struct eventInfo textEventInfo[];
 
 - (void) showRawPreferences:(id)sender
 {
-    NSString *s = [NSString stringWithFormat:@"file://%s", get_xdir_fs()];
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:s]];
+    NSString *s = [NSString stringWithUTF8String:(const char *)get_xdir_fs()];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:s]];
 }
 
 - (void) applyPreferences:(id)sender
