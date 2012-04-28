@@ -54,7 +54,7 @@ static NSString *fixPath (NSString *path)
     {
         SInt32 version = 0;
         Gestalt(gestaltSystemVersion, &version);
-        if ( version > 0x1050 ) { // snow leopard
+        if ( version > 0x1050 ) { // >= snow leopard
             [panel beginSheetModalForWindow:win completionHandler:NULL];
             sts = [panel runModal];
             [NSApp endSheet:panel];
@@ -87,19 +87,28 @@ static NSString *fixPath (NSString *path)
     NSSavePanel *p = [NSSavePanel savePanel];
     
     [p setPrompt:NSLocalizedStringFromTable(@"Select", @"xchataqua", @"")];
-        
-    [p beginSheetForDirectory:nil file:nil
-       modalForWindow:win modalDelegate:nil didEndSelector:nil
-       contextInfo:nil];
-
-    NSInteger sts = [NSApp runModalForWindow:p];
-
-    [NSApp endSheet:p];
     
+    NSInteger sts;
+    SInt32 version = 0;
+    Gestalt(gestaltSystemVersion, &version);
+    if (version > 0x1050) { // >= snow leopard
+        [p beginSheetModalForWindow:win completionHandler:NULL];
+        sts = [p runModal];
+        [NSApp endSheet:p];
+    } else {
+        // ignore deprecated warning. this is legacy support runtime code.
+        [p beginSheetForDirectory:nil file:nil modalForWindow:win
+                    modalDelegate:nil didEndSelector:nil contextInfo:nil];
+        sts = [NSApp runModalForWindow:p];
+        [NSApp endSheet:p];
+    }
+
     [p orderOut:self];
 
-    if (sts)
-        return [p filename];
+    if (sts) {
+        NSURL *URL = [p URL];
+        return URL.path;
+    }
     
     return nil;
 }
