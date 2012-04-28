@@ -30,7 +30,7 @@ enum
     MYPREF_MENU
 };
 
-struct preferenceItem
+struct PreferenceItem
 {
     id       item;
     void    *pref;
@@ -176,7 +176,7 @@ struct preferenceItem
     IBOutlet NSPopUpButton *autoAcceptDccChatPopUp;
     IBOutlet NSButton *autoOpenDccChatCheckBox, *autoOpenDccReceiveCheckBox, *autoOpenDccSendCheckBox;
     
-    struct preferenceItem preferenceItems[94];
+    struct PreferenceItem preferenceItems[94];
 }
 
 - (IBAction)applyPreferences:(id)sender;
