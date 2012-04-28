@@ -2,7 +2,6 @@
 require 'fileutils'
 
 base = "../../Resources"
-Dir.mkdir(base)
 
 Dir.glob("po/*.strings") do |f|
   lang = $1 if f =~ /po\/(.+?)\.strings/
