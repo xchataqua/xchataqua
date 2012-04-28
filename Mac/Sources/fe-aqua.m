@@ -266,6 +266,23 @@ one_time_work_phase2()
     if (done)
         return;
     
+    // if this is first runtime, install builtin plugins.
+    const char *current_version = [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] UTF8String];
+    if (strcmp(prefs.xa_builtin_plugins_version, current_version) != 0) {
+        // install builtin plugins
+        NSString *pack = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"PlugIns.tar"];
+        int result = 0;
+        if ([[NSFileManager defaultManager] fileExistsAtPath:pack]) {
+            // install when embedded archive exists
+            NSString *support_dir = [SGFileUtility findApplicationSupportFor:@PRODUCT_NAME];
+            result = system([[NSString stringWithFormat:@"/usr/bin/tar xf '%@' -C '%@'", pack, support_dir] UTF8String]);
+        }
+        if (0 == result) {
+            // save current version
+            strcpy(prefs.xa_builtin_plugins_version, current_version);
+        }
+    }
+    
     plugin_add (current_sess, NULL, NULL, (void *) my_plugin_init, NULL, NULL, FALSE);
     plugin_add (current_sess, NULL, NULL, (void *) bundle_loader_init, NULL, NULL, FALSE);
     
