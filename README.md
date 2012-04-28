@@ -41,6 +41,3 @@ So if you want to keep your configuration, you should move it, copy it, or make 
   * ln -s ~/.xchat2 ~/Library/Application\ Support/XChat\ Azure
 
 
-# For developers
-
-Please visit http://github.com/youknowone/xchatazure
