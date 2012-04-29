@@ -36,7 +36,7 @@
     NSString *stringValue;
 }
 
-@property (retain) NSString* stringValue;
+@property (nonatomic, retain) NSString* stringValue;
 
 + (OneCompletion *) completionWithValue:(NSString *)value;
 - (id) initWithValue:(NSString *)value;
@@ -49,7 +49,7 @@
  * Used for commands and channels; nicks have a specific subclass.
  *
  */
-@implementation OneCompletion;
+@implementation OneCompletion
 @synthesize stringValue; // NSString where we stash the actual text value.
 
 /*
@@ -125,7 +125,7 @@
 + (OneNickCompletion *) nickWithNick:(NSString *)nick lasttalk:(time_t)timestamp;
 - (id) initWithNick:(NSString *)nick lasttalk:(time_t)timestamp;
 
-@property (assign) time_t lasttalk;
+@property (nonatomic, assign) time_t lasttalk;
 
 @end
 
