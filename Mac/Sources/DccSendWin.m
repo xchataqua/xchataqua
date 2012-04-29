@@ -112,7 +112,7 @@ extern int dcc_sendcpssum;
 
 - (void) doInfo:(id)sender
 {
-    int row = [itemTableView selectedRow];
+    NSInteger row = [itemTableView selectedRow];
     if (row >= 0)
     {
         DccSendItem *item = [dccItems objectAtIndex:row];

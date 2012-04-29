@@ -24,7 +24,7 @@
     SEL yesSel;
     SEL noSel;
 }
-@property (retain) id object;
+@property (atomic, retain) id object;
 
 @end
 
