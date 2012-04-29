@@ -99,7 +99,7 @@
 - (void) doAccept:(id)sender
 {
     NSInteger row = [itemTableView selectedRow];
-    if (row >= 0)
+    if (row != NSNotFound)
     {
         DccChatItem *item = [dccItems objectAtIndex:row];
         struct DCC *dcc = item->dcc;

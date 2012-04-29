@@ -1288,12 +1288,12 @@ HIThemeSegmentPosition positionTable[2][2] =
     
     for (;;)
     {
-        NSEvent *theEvent = [[self window] nextEventMatchingMask:NSLeftMouseUpMask |
+        NSEvent *nextEvent = [[self window] nextEventMatchingMask:NSLeftMouseUpMask |
                                                                  NSLeftMouseDraggedMask];
-        if ([theEvent type] == NSLeftMouseUp)
+        if ([nextEvent type] == NSLeftMouseUp)
             break;
         
-        NSPoint mouseLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+        NSPoint mouseLoc = [self convertPoint:[nextEvent locationInWindow] fromView:nil];
         
         CGFloat width = mouseLoc.x - where.x + outline_frame.size.width;
         [self setOutlineWidth:width];

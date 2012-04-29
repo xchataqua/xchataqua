@@ -29,7 +29,7 @@
     BOOL needs_size_to_fit;
 }
 
-@property (readonly) NSArray *metaViews;
+@property (nonatomic, readonly) NSArray *metaViews;
 
 - (id) initWithFrame:(NSRect) frameRect;
 
@@ -61,8 +61,8 @@
     NSRect  lastSize;
 }
 
-@property (retain) NSView *view;
-@property (readonly) NSRect prefSize;
+@property (nonatomic, retain) NSView *view;
+@property (nonatomic, readonly) NSRect prefSize;
 
 - (id)initWithView:(NSView *) the_view;
 - (id) initWithCoder:(NSCoder *) decoder;

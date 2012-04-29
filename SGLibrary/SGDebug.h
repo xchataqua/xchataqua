@@ -31,4 +31,4 @@
 
 @interface SGDebug : NSObject 
 + (void) log:(NSString *)log file:(const char *)file line:(int)line;
-@end;
+@end
