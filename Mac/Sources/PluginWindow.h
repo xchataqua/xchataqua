@@ -34,6 +34,8 @@
 - (IBAction)loadPlugin:(id)sender;
 - (IBAction)unloadPlugin:(id)sender;
 
+- (IBAction)revealStartupItemsInFinder:(id)sender;
+
 - (void)update;
 
 @end
