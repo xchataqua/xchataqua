@@ -148,6 +148,11 @@ extern GSList *plugin_list;
     }
 }
 
+- (void)revealStartupItemsInFinder:(id)sender {
+    NSString *path = [[SGFileUtility findApplicationSupportFor:@PRODUCT_NAME] stringByAppendingPathComponent:@"PlugIns"];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:path isDirectory:YES]];
+}
+
 #pragma mark NSTableView DataSource
 
 - (NSInteger) numberOfRowsInTableView:(NSTableView *)aTableView
