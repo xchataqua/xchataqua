@@ -829,11 +829,11 @@ static NSString *charsets[] =
     [tableView unregisterDraggedTypes];
     
     if ( tableView == networkJoinTableView ) {
-        NetworkItem *network = [filteredNetworks objectAtIndex:[networkTableView selectedRow]];
+        network = [filteredNetworks objectAtIndex:[networkTableView selectedRow]];
         [network resetAutojoin];
     }
     else if ( tableView == networkCommandTableView ) {
-        NetworkItem *network = [filteredNetworks objectAtIndex:[networkTableView selectedRow]];
+        network = [filteredNetworks objectAtIndex:[networkTableView selectedRow]];
         [network resetCommands];
     }
     

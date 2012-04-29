@@ -23,9 +23,9 @@
     NSButtonCell *lockCell;
 }
 
-@property (retain) NSImage *lockImage;
-@property (retain) NSImage *unlockImage;
-@property (retain) NSButtonCell *lockCell;
+@property (nonatomic, retain) NSImage *lockImage;
+@property (nonatomic, retain) NSImage *unlockImage;
+@property (nonatomic, retain) NSButtonCell *lockCell;
 
 - (BOOL) isLocked;
 

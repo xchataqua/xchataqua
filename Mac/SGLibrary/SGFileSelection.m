@@ -159,5 +159,4 @@ static NSString *fixPath (NSString *path)
         callback(userdata, 0);
 }
 
-
 @end

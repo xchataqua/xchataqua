@@ -568,13 +568,13 @@ static NSCursor *lr_cursor;
     
     for (;;)
     {
-        NSEvent *theEvent = [[self window] nextEventMatchingMask:NSLeftMouseUpMask |
+        NSEvent *nextEvent = [[self window] nextEventMatchingMask:NSLeftMouseUpMask |
                                                                  NSLeftMouseDraggedMask];
 
-        if ([theEvent type] == NSLeftMouseUp)
+        if ([nextEvent type] == NSLeftMouseUp)
             break;
         
-        NSPoint mouseLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+        NSPoint mouseLoc = [self convertPoint:[nextEvent locationInWindow] fromView:nil];
         
         int new_margin = (int)(mouseLoc.x / fontWidth) - 1;
         

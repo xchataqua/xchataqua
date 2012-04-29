@@ -120,6 +120,6 @@
 - (void) doUserlistCommand:(const char *)cmd;
 - (void) lastlogIntoWindow:(ChatWindow *)logWin key:(char *)ckey;
 
-@property NSInteger completionIndex; // Current index when cycling through tab-completions.
+@property(nonatomic) NSInteger completionIndex; // Current index when cycling through tab-completions.
 
 @end
