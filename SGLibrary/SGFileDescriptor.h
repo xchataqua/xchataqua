@@ -23,7 +23,7 @@ typedef enum {
 
 @interface SGFileDescriptor : NSObject
 
-- (SGFileDescriptor *)initWithFd:(int)fd mode:(NSInteger)mode target:(id)target 
+- (SGFileDescriptor *)initWithFd:(int)fd mode:(NSInteger)mode target:(id)target
 						selector:(SEL)selector withObject:(id)object;
 - (void)disable;
 
