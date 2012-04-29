@@ -221,7 +221,7 @@
         masks[i] = [[nicks objectAtIndex:i] UTF8String];
     
     char tbuf[2048];
-    send_channel_modes (sess, tbuf, (char **) masks, 0, [nicks count], '-', 'b', 0);
+    send_channel_modes (sess, tbuf, (char **) masks, 0, (int)[nicks count], '-', 'b', 0);
     
     free (masks);
     
