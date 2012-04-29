@@ -2295,13 +2295,15 @@ static NSImage *emptyBulletImage;
     else if (commandSelector == @selector(moveUp:))
     {
         const char *prevInput = history_up(&sess->history, (char *) [[inputTextField stringValue] UTF8String]);
-        [self setInputText:[NSString stringWithUTF8String:prevInput]];
+        if (prevInput != NULL) {
+            [self setInputText:[NSString stringWithUTF8String:prevInput]];
+        }
         didHandleSelector = YES;
     }
     else if (commandSelector == @selector(moveDown:))
     {
         const char *nextInput = history_down(&sess->history);
-        [self setInputText:[NSString stringWithUTF8String:nextInput]];
+        [self setInputText:nextInput == NULL ? @"" : [NSString stringWithUTF8String:nextInput]];
         didHandleSelector = YES;
     }
     
