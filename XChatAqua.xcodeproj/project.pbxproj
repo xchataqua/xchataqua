@@ -563,8 +563,6 @@
 		3876258D13C7027400850913 /* MainMenuAppstore.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C89F413C6E10100AAF20D /* MainMenuAppstore.xib */; };
 		38763F1C13DD40D6008C40DB /* perl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F06C10E1FDA5E00359159 /* perl.c */; };
 		38763F2613DD460E008C40DB /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 38763F2513DD460E008C40DB /* libperl.dylib */; };
-		387C79F613DEA24300A79FA8 /* ShortcutRecorder.strings in Resources */ = {isa = PBXBuildFile; fileRef = 387C79F413DEA24300A79FA8 /* ShortcutRecorder.strings */; };
-		387C79F713DEA24300A79FA8 /* ShortcutRecorder.strings in Resources */ = {isa = PBXBuildFile; fileRef = 387C79F413DEA24300A79FA8 /* ShortcutRecorder.strings */; };
 		38876EC8154C706E000B7E27 /* python.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */; };
 		38876ECA154C706E000B7E27 /* tcl.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F8F08110E1FE00800359159 /* tcl.bundle */; };
 		38876ECC154C706E000B7E27 /* perl-snowleopard.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */; };
@@ -1553,12 +1551,8 @@
 		38763F2213DD40D6008C40DB /* perl-lion.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-lion.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		38763F2313DD45D3008C40DB /* perl-lion-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "perl-lion-Info.plist"; sourceTree = "<group>"; };
 		38763F2513DD460E008C40DB /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = "build/XChatAqua.build/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib"; sourceTree = SOURCE_ROOT; };
-		387C79F513DEA24300A79FA8 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Resources/de.lproj/ShortcutRecorder.strings; sourceTree = SOURCE_ROOT; };
-		387C79F813DEA25100A79FA8 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = Resources/ko.lproj/ShortcutRecorder.strings; sourceTree = SOURCE_ROOT; };
 		387C79FB13DEA26A00A79FA8 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/libsg.strings; sourceTree = "<group>"; };
 		387C79FE13DEA27D00A79FA8 /* de */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/xchataqua.strings; sourceTree = "<group>"; };
-		387C7A0113DEA29100A79FA8 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = Resources/nl.lproj/ShortcutRecorder.strings; sourceTree = SOURCE_ROOT; };
-		387C7A0413DEA29D00A79FA8 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = Resources/sv.lproj/ShortcutRecorder.strings; sourceTree = SOURCE_ROOT; };
 		38876EF4154C766A000B7E27 /* PlugIns.tar */ = {isa = PBXFileReference; explicitFileType = archive.tar; path = PlugIns.tar; sourceTree = BUILT_PRODUCTS_DIR; };
 		388BDC9E13C6A0CB00B95036 /* SGAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAlert.h; sourceTree = "<group>"; };
 		388BDC9F13C6A0CB00B95036 /* SGAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAlert.m; sourceTree = "<group>"; };
@@ -3060,7 +3054,6 @@
 				38FC92B713CAF449006CB5C8 /* xchat.strings */,
 				38FC92CB13CAF449006CB5C8 /* libsg.strings */,
 				38FC92CE13CAF449006CB5C8 /* xchataqua.strings */,
-				387C79F413DEA24300A79FA8 /* ShortcutRecorder.strings */,
 				38FC93C913CAF46E006CB5C8 /* locale */,
 				388C89DD13C6E10100AAF20D /* alert.xib */,
 				D4FBD93D12E449D5003EA441 /* ViewerWindow.xib */,
@@ -4381,7 +4374,6 @@
 				38FC936E13CAF449006CB5C8 /* libsg.strings in Resources */,
 				38FC937013CAF449006CB5C8 /* xchataqua.strings in Resources */,
 				38FC93CB13CAF46E006CB5C8 /* locale in Resources */,
-				387C79F713DEA24300A79FA8 /* ShortcutRecorder.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4460,7 +4452,6 @@
 				38FC936D13CAF449006CB5C8 /* libsg.strings in Resources */,
 				38FC936F13CAF449006CB5C8 /* xchataqua.strings in Resources */,
 				38FC93CA13CAF46E006CB5C8 /* locale in Resources */,
-				387C79F613DEA24300A79FA8 /* ShortcutRecorder.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5055,17 +5046,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		387C79F413DEA24300A79FA8 /* ShortcutRecorder.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				387C79F513DEA24300A79FA8 /* de */,
-				387C79F813DEA25100A79FA8 /* ko */,
-				387C7A0113DEA29100A79FA8 /* nl */,
-				387C7A0413DEA29D00A79FA8 /* sv */,
-			);
-			name = ShortcutRecorder.strings;
-			sourceTree = "<group>";
-		};
 		388C89DE13C6E10100AAF20D /* BanWindow.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
