@@ -112,6 +112,7 @@
 		3812983913CACCCD00AE8746 /* xchat.h in Headers */ = {isa = PBXBuildFile; fileRef = 3812982D13CACCCD00AE8746 /* xchat.h */; };
 		3812983A13CACCCD00AE8746 /* xchatc.h in Headers */ = {isa = PBXBuildFile; fileRef = 3812982E13CACCCD00AE8746 /* xchatc.h */; };
 		3812984213CAD6BE00AE8746 /* locale in Resources */ = {isa = PBXBuildFile; fileRef = 3812984113CAD6BE00AE8746 /* locale */; };
+		385F550E154E357600689E6E /* libglib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 385F54AC154E34A800689E6E /* libglib.a */; };
 		38FC927913CADF7E006CB5C8 /* xchat.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38FC91C513CADF7E006CB5C8 /* xchat.strings */; };
 		38FC927A13CADF7E006CB5C8 /* libsg.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38FC91D913CADF7E006CB5C8 /* libsg.strings */; };
 		38FC927B13CADF7E006CB5C8 /* xchataqua.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38FC91DC13CADF7E006CB5C8 /* xchataqua.strings */; };
@@ -162,7 +163,6 @@
 		D4CBF1D912B96A9600B4E35E /* localcharset.c in Sources */ = {isa = PBXBuildFile; fileRef = D4CBF18612B96A9600B4E35E /* localcharset.c */; };
 		D4CBF1DA12B96A9600B4E35E /* xalocalization.h in Headers */ = {isa = PBXBuildFile; fileRef = D4CBF18712B96A9600B4E35E /* xalocalization.h */; };
 		D4CBF1DB12B96A9600B4E35E /* xalocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CBF18812B96A9600B4E35E /* xalocalization.m */; };
-		D4CBF29612B9711900B4E35E /* libglib2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CBF12A12B96A6400B4E35E /* libglib2.a */; };
 		D4CBF3BB12B9778000B4E35E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CBF3BA12B9778000B4E35E /* libiconv.dylib */; };
 		D4CBF45112B97E8700B4E35E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4CBF45012B97E8700B4E35E /* MainWindow.xib */; };
 		D4CBF45B12B97F2E00B4E35E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4CBF45A12B97F2E00B4E35E /* AppDelegate.m */; };
@@ -198,12 +198,26 @@
 			remoteGlobalIDString = 2DDC6FD91231BCA00015A26C;
 			remoteInfo = Prebuild;
 		};
-		D4CBF1E012B96AC500B4E35E /* PBXContainerItemProxy */ = {
+		385F54AB154E34A800689E6E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D4CBF10D12B96A6400B4E35E;
+			containerPortal = 385F54A4154E34A800689E6E /* glib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 38257F7B154E2FB200A25CFA;
 			remoteInfo = glib;
+		};
+		385F550A154E355100689E6E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 385F54A4154E34A800689E6E /* glib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 385F5507154E351C00689E6E;
+			remoteInfo = "glib-ios";
+		};
+		385F550C154E355300689E6E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 385F54A4154E34A800689E6E /* glib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 385F54B1154E351C00689E6E;
+			remoteInfo = "glib-ios";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -321,6 +335,7 @@
 		3812982D13CACCCD00AE8746 /* xchat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xchat.h; sourceTree = "<group>"; };
 		3812982E13CACCCD00AE8746 /* xchatc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xchatc.h; sourceTree = "<group>"; };
 		3812984113CAD6BE00AE8746 /* locale */ = {isa = PBXFileReference; lastKnownFileType = folder; name = locale; path = Resources/locale; sourceTree = SOURCE_ROOT; };
+		385F54A4154E34A800689E6E /* glib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = glib.xcodeproj; path = glib/glib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		38FC91C613CADF7E006CB5C8 /* am */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = am; path = am.lproj/xchat.strings; sourceTree = "<group>"; };
 		38FC91C713CADF7E006CB5C8 /* az */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = az; path = az.lproj/xchat.strings; sourceTree = "<group>"; };
 		38FC91C813CADF7E006CB5C8 /* be */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = be; path = be.lproj/xchat.strings; sourceTree = "<group>"; };
@@ -495,10 +510,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FC8F5C40DEEEA3E00504F31 /* libxchat.a in Frameworks */,
-				D4CBF29612B9711900B4E35E /* libglib2.a in Frameworks */,
 				D4CBF0A712B96A3500B4E35E /* Foundation.framework in Frameworks */,
 				D4CBF00A12B9657000B4E35E /* UIKit.framework in Frameworks */,
 				D4CBF3BB12B9778000B4E35E /* libiconv.dylib in Frameworks */,
+				385F550E154E357600689E6E /* libglib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -726,6 +741,15 @@
 			name = "Utility Windows";
 			sourceTree = "<group>";
 		};
+		385F54A5154E34A800689E6E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				385F54AC154E34A800689E6E /* libglib.a */,
+				385F550B154E355100689E6E /* libglib copy.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		38FC91C413CADF7E006CB5C8 /* Core Localizations */ = {
 			isa = PBXGroup;
 			children = (
@@ -861,6 +885,7 @@
 		D4CBF22712B96F0700B4E35E /* glib */ = {
 			isa = PBXGroup;
 			children = (
+				385F54A4154E34A800689E6E /* glib.xcodeproj */,
 				D4CBF13512B96A9600B4E35E /* glib */,
 				D4CBF18912B96A9600B4E35E /* glib.h */,
 				D4CBF18A12B96A9600B4E35E /* glibconfig.h */,
@@ -948,8 +973,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				D4CBF1E112B96AC500B4E35E /* PBXTargetDependency */,
 				0FC8F5C30DEEEA3B00504F31 /* PBXTargetDependency */,
+				385F550D154E355300689E6E /* PBXTargetDependency */,
 			);
 			name = "X-Chat iPhone";
 			productInstallPath = "$(HOME)/Applications";
@@ -1036,6 +1061,12 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* X-Chat Aqua */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 385F54A5154E34A800689E6E /* Products */;
+					ProjectRef = 385F54A4154E34A800689E6E /* glib.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				0F7065690E1FA5C100FEA21C /* Release */,
@@ -1047,6 +1078,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		385F54AC154E34A800689E6E /* libglib.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libglib.a;
+			remoteRef = 385F54AB154E34A800689E6E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		385F550B154E355100689E6E /* libglib copy.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libglib copy.a";
+			remoteRef = 385F550A154E355100689E6E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8D1107290486CEB800E47090 /* Resources */ = {
@@ -1235,10 +1283,10 @@
 			target = 2DDC6FD91231BCA00015A26C /* Prebuild */;
 			targetProxy = 2DDC6FDC1231BCC10015A26C /* PBXContainerItemProxy */;
 		};
-		D4CBF1E112B96AC500B4E35E /* PBXTargetDependency */ = {
+		385F550D154E355300689E6E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D4CBF10D12B96A6400B4E35E /* glib */;
-			targetProxy = D4CBF1E012B96AC500B4E35E /* PBXContainerItemProxy */;
+			name = "glib-ios";
+			targetProxy = 385F550C154E355300689E6E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1432,7 +1480,6 @@
 					xchat/src,
 					"$(TARGET_PLATFORM)",
 				);
-				LIBRARY_SEARCH_PATHS = contrib/lib;
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -1457,7 +1504,6 @@
 					xchat/src,
 					"$(TARGET_PLATFORM)",
 				);
-				LIBRARY_SEARCH_PATHS = contrib/lib;
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
