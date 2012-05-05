@@ -20,10 +20,8 @@
  * Correspond to main menu: File -> Network List...
  */
 
-#include "common/xchat.h"
-#include "common/xchatc.h"
-#include "common/servlist.h"
-#include "common/cfgfiles.h"
+#include "servlist.h"
+#include "cfgfiles.h"
 
 #import "AquaChat.h"
 #import "NetworkWindow.h"

@@ -19,10 +19,10 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 
-#include "common/xchat.h"
-#include "common/xchatc.h"
-#include "common/text.h"
-#include "common/fe.h"
+#include "xchat.h"
+#include "xchatc.h"
+#include "text.h"
+#include "fe.h"
 
 static int ident_sok = -1;
 static int ident_tag = -1;

@@ -21,9 +21,7 @@
 
 #include <sys/stat.h>
 
-#include "common/xchat.h"
-#include "common/xchatc.h"
-#include "common/cfgfiles.h"
+#include "cfgfiles.h"
 
 #import "LogViewWindow.h"
 

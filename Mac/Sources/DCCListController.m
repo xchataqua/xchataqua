@@ -19,9 +19,7 @@
  * Correspond to fe-gtk: xchat/src/fe-gtk/dccgui.c
  */
 
-#include "common/xchat.h"
-#include "common/xchatc.h"
-#include "common/dcc.h"
+#include "dcc.h"
 
 #import "AquaChat.h"
 #import "ColorPalette.h"

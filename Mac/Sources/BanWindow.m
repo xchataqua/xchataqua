@@ -20,10 +20,8 @@
  * Correspond to main menu: Window -> Ban List...
  */
 
-#include "common/xchat.h"
-#include "common/xchatc.h"
-#include "common/outbound.h"
-#include "common/modes.h"
+#include "outbound.h"
+#include "modes.h"
 
 #import "AquaChat.h"
 #import "BanWindow.h"

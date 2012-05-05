@@ -20,8 +20,6 @@
  * Correspond to main menu: Window -> Character Chart...
  */
 
-#include "common/xchat.h"
-#include "common/xchatc.h"
 #include "fe-aqua_common.h"
 
 #import "ChatWindow.h"

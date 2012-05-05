@@ -30,12 +30,11 @@
 #import "ViewerWindow.h"
 
 #import "XACommon.h"
-#include "common/xchatc.h"
-#include "common/outbound.h"
-#include "common/util.h"
-#include "common/server.h"
+#include "outbound.h"
+#include "util.h"
+#include "server.h"
 #undef TYPE_BOOL	/* clash between cfgfiles.h and ConditionalMacros.h  */
-#include "common/cfgfiles.h"
+#include "cfgfiles.h"
 
 #if CLX_BUILD
 static unsigned handlerCount = 0;

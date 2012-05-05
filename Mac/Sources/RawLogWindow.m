@@ -22,9 +22,6 @@
 
 #import "AquaChat.h"
 
-#include "common/xchat.h"
-#include "common/xchatc.h"
-
 #import "RawLogWindow.h"
 
 @implementation RawLogWindow

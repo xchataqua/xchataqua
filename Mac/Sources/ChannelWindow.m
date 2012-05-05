@@ -20,9 +20,7 @@
  * Correspond to main menu: Window -> List of Channels...
  */
 
-#include "common/xchat.h"
-#include "common/xchatc.h"
-#include "common/outbound.h"
+#include "outbound.h"
 
 #import "AquaChat.h"
 #import "ColorPalette.h"

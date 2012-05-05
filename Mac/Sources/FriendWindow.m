@@ -20,10 +20,8 @@
  * Correspond to main menu: Window -> Friends List...
  */
 
-#include "common/xchat.h"
-#include "common/xchatc.h"
-#include "common/outbound.h"
-#include "common/notify.h"
+#include "outbound.h"
+#include "notify.h"
 
 #import "FriendWindow.h"
 #import "TabOrWindowView.h"

@@ -6,9 +6,7 @@
 //  Copyright 2006 Camillo Lugaresi. All rights reserved.
 //
 
-#include "common/xchat.h"
-#include "common/xchatc.h"
-#include "common/dcc.h"
+#include "dcc.h"
 
 #import "XACommon.h"
 #import "DCCFileTransferListController.h"
