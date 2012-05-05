@@ -19,14 +19,13 @@
 #import <Carbon/Carbon.h>
 
 #undef TYPE_BOOL
-#include "common/cfgfiles.h"
-#include "common/xchatc.h"
-#include "common/util.h"
-#include "common/plugin.h"
-#include "common/xchat-plugin.h"
-#include "common/text.h"
-#include "common/servlist.h"
-#include "common/outbound.h"
+#include "cfgfiles.h"
+#include "util.h"
+#include "plugin.h"
+#include "xchat-plugin.h"
+#include "text.h"
+#include "servlist.h"
+#include "outbound.h"
 
 #import "fe-aqua_common.h"
 #import "fe-aqua_utility.h"

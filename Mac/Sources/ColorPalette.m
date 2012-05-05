@@ -19,7 +19,7 @@
  * Correspond to fe-gtk: xchat/src/fe-gtk/palette.*
  */
 
-#include "common/cfgfiles.h"
+#include "cfgfiles.h"
 
 #import "ColorPalette.h"
 

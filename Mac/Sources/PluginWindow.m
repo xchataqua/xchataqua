@@ -23,12 +23,10 @@
 #define PLUGIN_C
 typedef struct session xchat_context;
 
-#include "common/xchat.h"
-#include "common/xchatc.h"
-#include "common/outbound.h"
-#include "common/xchat-plugin.h"
-#include "common/plugin.h"
-#include "common/util.h"
+#include "outbound.h"
+#include "xchat-plugin.h"
+#include "plugin.h"
+#include "util.h"
 
 extern GSList *plugin_list;
 

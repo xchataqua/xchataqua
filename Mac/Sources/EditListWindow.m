@@ -19,10 +19,7 @@
  * Correspond to fe-gtk: xchat/src/fe-gtk/editlist.*
  */
 
-#include "common/fe.h"
-#include "common/xchat.h"
-#include "common/xchatc.h"
-#include "common/cfgfiles.h"
+#include "cfgfiles.h"
 
 #import "AquaChat.h"
 #import "EditListWindow.h"

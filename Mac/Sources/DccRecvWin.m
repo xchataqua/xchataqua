@@ -19,10 +19,10 @@
  * Correspond to main menu: Window -> File Receive...
  */
 
-#include "common/xchat.h"
-#include "common/xchatc.h"
-#include "common/network.h"
-#include "common/dcc.h"
+#include "xchat.h"
+#include "xchatc.h"
+#include "network.h"
+#include "dcc.h"
 
 #import "DccRecvWin.h"
 

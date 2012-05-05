@@ -25,10 +25,9 @@
 #import "ColorPalette.h"
 #import "ChatWindow.h"
 
-#include "common/text.h"
-#include "common/xchatc.h"
+#include "text.h"
 #undef TYPE_BOOL
-#include "common/cfgfiles.h"
+#include "cfgfiles.h"
 
 extern char *sound_files[];
 extern struct text_event te[];

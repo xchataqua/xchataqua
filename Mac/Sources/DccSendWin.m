@@ -19,10 +19,8 @@
  * Correspond to main menu: Window -> File Send...
  */
 
-#include "common/xchat.h"
-#include "common/xchatc.h"
-#include "common/network.h"
-#include "common/dcc.h"
+#include "network.h"
+#include "dcc.h"
 #import "XACommon.h"
 
 #import "DccSendWin.h"

@@ -1038,7 +1038,7 @@
 		0F30611F0D83C5830084F2CA /* AquaChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AquaChat.h; sourceTree = "<group>"; };
 		0F7065530E1FA32E00FEA21C /* Changes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Changes; path = ../Changes; sourceTree = "<group>"; };
 		0F8EA3660CFAA49B001AE9AE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Mac/Aqua/Info.plist; sourceTree = "<group>"; };
-		0F8EA3830CFAA896001AE9AE /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		0F8EA3830CFAA896001AE9AE /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = xchat/config.h; sourceTree = "<group>"; };
 		0F8EA3CE0CFAF7E2001AE9AE /* fe-aqua.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "fe-aqua.m"; sourceTree = "<group>"; };
 		0F8EA5F80CFB2500001AE9AE /* AquaChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AquaChat.m; sourceTree = "<group>"; };
 		0F8EA6240CFB2E0A001AE9AE /* AsciiWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsciiWindow.h; sourceTree = "<group>"; };
@@ -6289,7 +6289,7 @@
 					Mac/contrib/include,
 					"/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
 					"$(PROJECT_DIR)/Mac/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
-					xchat/src,
+					xchat/src/common,
 					xchat/plugins/perl,
 				);
 				INFOPLIST_FILE = "Mac/Plugins/perl/perl-leopard-Info.plist";
@@ -6323,7 +6323,7 @@
 					Mac/contrib/include,
 					"/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
 					"$(PROJECT_DIR)/Mac/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
-					xchat/src,
+					xchat/src/common,
 					xchat/plugins/perl,
 				);
 				INFOPLIST_FILE = "Mac/Plugins/perl/perl-leopard-Info.plist";
@@ -6389,7 +6389,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				HEADER_SEARCH_PATHS = (
 					Mac,
-					xchat/src,
+					xchat/src/common,
 					glib,
 				);
 				OTHER_CFLAGS = (
@@ -6408,7 +6408,7 @@
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
 					Mac,
-					xchat/src,
+					xchat/src/common,
 					glib,
 				);
 				OTHER_CFLAGS = (
@@ -6500,7 +6500,7 @@
 					Mac/contrib/include,
 					"/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE",
 					"Mac/contrib/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE",
-					xchat/src,
+					xchat/src/common,
 					xchat/plugins/perl,
 				);
 				INFOPLIST_FILE = "Mac/Plugins/perl/perl-snowleopard-Info.plist";
@@ -6534,7 +6534,7 @@
 					Mac/contrib/include,
 					"/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE",
 					"Mac/contrib/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE",
-					xchat/src,
+					xchat/src/common,
 					xchat/plugins/perl,
 				);
 				INFOPLIST_FILE = "Mac/Plugins/perl/perl-snowleopard-Info.plist";
@@ -6698,7 +6698,7 @@
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(TARGET_PLATFORM)",
-					xchat/src,
+					xchat/src/common,
 					glib,
 				);
 				IBC_PLUGIN_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
@@ -6726,7 +6726,7 @@
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(TARGET_PLATFORM)",
-					xchat/src,
+					xchat/src/common,
 					glib,
 				);
 				IBC_PLUGIN_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
@@ -6754,7 +6754,7 @@
 					Mac/contrib/include,
 					"/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
 					"Mac/contrib/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
-					xchat/src,
+					xchat/src/common,
 					xchat/plugins/perl,
 				);
 				INFOPLIST_FILE = "Mac/Plugins/perl/perl-lion-Info.plist";
@@ -6790,7 +6790,7 @@
 					Mac/contrib/include,
 					"/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
 					"Mac/contrib/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
-					xchat/src,
+					xchat/src/common,
 					xchat/plugins/perl,
 				);
 				INFOPLIST_FILE = "Mac/Plugins/perl/perl-lion-Info.plist";

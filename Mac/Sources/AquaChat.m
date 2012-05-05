@@ -15,13 +15,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#include "common/xchat.h"
-#include "common/xchatc.h"
-#include "common/outbound.h"
-#include "common/server.h"
-#include "common/cfgfiles.h"
-#include "common/util.h"
-#include "common/text.h"
+#include "outbound.h"
+#include "server.h"
+#include "cfgfiles.h"
+#include "util.h"
+#include "text.h"
 #include "fe-aqua_common.h"
 
 #import <ShortcutRecorder/ShortcutRecorder.h>

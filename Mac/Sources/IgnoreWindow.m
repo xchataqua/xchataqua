@@ -20,10 +20,8 @@
  * Correspond to main menu: Window -> Ignore List...
  */
 
-#include "common/xchat.h"
-#include "common/xchatc.h"
-#include "common/util.h"
-#include "common/ignore.h"
+#include "util.h"
+#include "ignore.h"
 
 #import "TabOrWindowView.h"
 #import "IgnoreWindow.h"
