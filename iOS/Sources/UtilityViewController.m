@@ -6,7 +6,6 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#include "common/xchat.h"
 #import "fe-iphone_common.h"
 #import "AppDelegate.h"
 #import "UtilityViewController.h"
