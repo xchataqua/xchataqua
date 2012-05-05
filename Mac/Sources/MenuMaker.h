@@ -22,9 +22,6 @@
 	This class handles menu generation.
 */
 
-#include "common/xchat.h"
-#include "common/fe.h"	/* why is there a typedef menu_entry, but no typedef User? */
-	
 @interface MenuMaker : NSObject {
 	CGFloat maxUserInfoLabelWidth;
 	CGFloat userInfoTabWidth;

@@ -20,10 +20,8 @@
  * Correspond to main menu: Window -> URL Grabber...
  */
 
-#include "common/xchat.h"
-#include "common/xchatc.h"
-#include "common/url.h"
-#include "common/tree.h"
+#include "url.h"
+#include "tree.h"
 
 #import "UrlGrabberWindow.h"
 #import "MenuMaker.h"

@@ -19,10 +19,8 @@
 
 #import "AutoAwayController.h"
 
-#include "common/xchat.h"
-#include "common/xchatc.h"
-#include "common/outbound.h"
-#include "common/server.h"
+#include "outbound.h"
+#include "server.h"
 
 @implementation AutoAwayController
 

@@ -21,8 +21,6 @@
 
 ///////////////////////////////////////////////////////////////////////
 
-#include "common/xchat.h"
-#include "common/xchatc.h"
 #include "fe-aqua_common.h"
 
 #import "ColorPalette.h"

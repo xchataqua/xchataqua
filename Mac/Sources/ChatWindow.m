@@ -22,10 +22,8 @@
 #import "MenuMaker.h"
 #import "UtilityWindow.h"
 
-#include "common/xchat.h"
-#include "common/xchatc.h"
-#include "common/outbound.h"
-#include "common/util.h"
+#include "outbound.h"
+#include "util.h"
 #include "XACommon.h"
 
 
