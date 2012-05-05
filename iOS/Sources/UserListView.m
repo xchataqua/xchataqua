@@ -6,9 +6,7 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#include "common/xchat.h"
-#include "common/xchatc.h"
-#include "common/userlist.h"
+#include "userlist.h"
 
 #import "AppDelegate.h"
 #import "ColorPalette.h"
