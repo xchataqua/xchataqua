@@ -222,7 +222,7 @@
 			// else fall through
 			
 		default:
-			title = [NSString stringWithFormat:@"X-Chat [%s/%s]", MYVERSION, PACKAGE_VERSION];
+			title = [NSString stringWithFormat:@"X-Chat [%s/%s]", XCHAT_AQUA_VERSION_STRING, PACKAGE_VERSION];
 	}
 
 	[self setTitle:title];

@@ -11,6 +11,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 2DDC6FE41231BD1E0015A26C /* Build configuration list for PBXAggregateTarget "Prebuild" */;
 			buildPhases = (
+				389DC407155569EB003BA8D9 /* Generate XChat Package Name */,
 				2DDC6FEA1231BD760015A26C /* Generate Build Number */,
 				2DDC6FEF1231BDD40015A26C /* Generate Localization Files */,
 			);
@@ -4555,6 +4556,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "cd \"$BUILT_PRODUCTS_DIR\"\ntar -cf PlugIns.tar PlugIns";
+		};
+		389DC407155569EB003BA8D9 /* Generate XChat Package Name */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate XChat Package Name";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "#!/bin/bash\n\n[ -f ~/.bashrc ] && source ~/.bashrc\n[ -f ~/.profile ] && source ~/.profile\n\necho \"Generating config.package_name.in.h\"\n\ncd \"$PROJECT_DIR\"\n\"tools/gen_xchat_package_name.sh\" > \"xchat/config.package_name.in.h\"";
 		};
 		38BC9850154AD8A7005894EF /* Generate XChat Plugin Header */ = {
 			isa = PBXShellScriptBuildPhase;
