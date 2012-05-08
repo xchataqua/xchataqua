@@ -2745,7 +2745,7 @@
 			path = python;
 			sourceTree = "<group>";
 		};
-		0F8EA3160CFAA342001AE9AE /* xchat-common */ = {
+		0F8EA3160CFAA342001AE9AE /* common */ = {
 			isa = PBXGroup;
 			children = (
 				380AD19813C69861003EEE3D /* fe.h */,
@@ -2802,7 +2802,7 @@
 				380AD1E813C698E1003EEE3D /* xchat.h */,
 				380AD1E913C698E1003EEE3D /* xchatc.h */,
 			);
-			name = "xchat-common";
+			name = common;
 			path = xchat/src/common;
 			sourceTree = "<group>";
 		};
@@ -2980,8 +2980,6 @@
 				0FC8F3D10DEEC33D00504F31 /* Plugins */,
 				0F8EA6580CFB2F71001AE9AE /* SGLibrary */,
 				388BDC9D13C69F8D00B95036 /* SGLibrary-Mac */,
-				0F8EA3830CFAA896001AE9AE /* config.h */,
-				0F8EA3160CFAA342001AE9AE /* xchat-common */,
 				2DC6AD1E118777750048B7C7 /* Palette */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -3167,11 +3165,21 @@
 			name = ClassDescriptions;
 			sourceTree = "<group>";
 		};
+		385DCEF91558C260002FE467 /* xchat */ = {
+			isa = PBXGroup;
+			children = (
+				0F8EA3830CFAA896001AE9AE /* config.h */,
+				0F8EA3160CFAA342001AE9AE /* common */,
+			);
+			name = xchat;
+			sourceTree = "<group>";
+		};
 		385F774A155158BB00689E6E /* staticlib */ = {
 			isa = PBXGroup;
 			children = (
 				385F774B155158F900689E6E /* gettext-runtime */,
 				385F782D15515BFD00689E6E /* glib */,
+				385DCEF91558C260002FE467 /* xchat */,
 			);
 			name = staticlib;
 			sourceTree = "<group>";
