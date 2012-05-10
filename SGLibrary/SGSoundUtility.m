@@ -10,7 +10,7 @@
 															 
 	for ( NSString *libraryName in directories )
 	{
-		NSString *directoryName = [NSString stringWithFormat:@"%@/Sounds", libraryName];
+		NSString *directoryName = [libraryName stringByAppendingString:@"/Sounds"];
 		NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:directoryName error:NULL];
 		
 		for ( NSString *file in files )
