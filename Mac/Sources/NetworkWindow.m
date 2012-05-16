@@ -52,17 +52,18 @@ static NSString *charsets[] =
 @interface OneChannel : NSObject
 {
 @public
-    NSString *name;
-    NSString *key;
+    NSString *_name;
+    NSString *_key;
 }
 @property(nonatomic,retain) NSString *name, *key;
 
+- (id)initWithChannelName:(NSString *)name;
 + (OneChannel *)channelWithName:(NSString *)name;
 
 @end
 
 @implementation OneChannel
-@synthesize name, key;
+@synthesize name=_name, key=_key;
 
 - (void) dealloc
 {
@@ -71,10 +72,16 @@ static NSString *charsets[] =
     [super dealloc];
 }
 
-+ (OneChannel *) channelWithName:(NSString *)aName {
-    OneChannel *channel = [[self alloc] init];
-    channel.name = aName;
-    return [channel autorelease];
+- (id)initWithChannelName:(NSString *)name {
+    self = [super init];
+    if (self != nil) {
+        self.name = name;
+    }
+    return self;
+}
+
++ (OneChannel *) channelWithName:(NSString *)name {
+    return [[[self alloc] initWithChannelName:name] autorelease];
 }
 
 @end
@@ -264,7 +271,7 @@ static NSString *charsets[] =
     // First, the channels with keys
     for ( OneChannel *channel in channels )
     {
-        NSString *key = channel->key;
+        NSString *key = channel->_key;
         if (key && [key length])
         {
             if ([ircNetChannels length])
@@ -273,7 +280,7 @@ static NSString *charsets[] =
                 [ircNetKeys appendString:@","];
             }
             
-            [ircNetChannels appendString:channel->name];
+            [ircNetChannels appendString:channel->_name];
             [ircNetKeys appendString:key];
         }
     }
@@ -281,13 +288,13 @@ static NSString *charsets[] =
     // and then the channels without keys
     for ( OneChannel *channel in channels )
     {
-        NSString *key = channel->key;
+        NSString *key = channel->_key;
         if ( !key || [key length] == 0)
         {
             if ([ircNetChannels length])
                 [ircNetChannels appendString:@","];
             
-            [ircNetChannels appendString:channel->name];
+            [ircNetChannels appendString:channel->_name];
         }
     }
     
@@ -351,10 +358,11 @@ static NSString *charsets[] =
     //
     //        <channel>{,<channel>} [<key>{,<key>}]
     NSString *autojoins = [NSString stringWithUTF8String:autojoin];
-    NSArray *autojoinParts = [autojoins componentsSeparatedByString:@" \t\n"];
+    NSArray *autojoinParts = [autojoins componentsSeparatedByString:@" "];
     
     NSString *channelsString = [autojoinParts objectAtIndex:0];
     NSString *keysString = [autojoinParts count]>1 ? [autojoinParts objectAtIndex:1] : @"";
+    keysString = [keysString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
     for ( NSString *channelName in [channelsString componentsSeparatedByString:@","] ) {
         [channels addObject:[OneChannel channelWithName:channelName]];
@@ -924,8 +932,8 @@ static NSString *charsets[] =
             OneChannel *channel = [network->channels objectAtIndex:rowIndex];
             switch (column)
             {
-                case 0: return channel->name;
-                case 1: return channel->key;
+                case 0: return channel->_name;
+                case 1: return channel->_key;
             }
         }
         else if (aTableView == networkCommandTableView)
