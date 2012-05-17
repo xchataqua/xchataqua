@@ -32,13 +32,11 @@ typedef int (*socket_callback) (void *source, int condition, void *user_data);
 
 @property (nonatomic,readonly) int tag;
 
-+ (id) socketFromFD:(int) sok 
-              flags:(int) the_flags 
-               func:(socket_callback) the_func
-               data:(void *) the_data;
++ (id)inputWithSocketFD:(int)socket flags:(int)flags callback:(socket_callback)callback data:(void *)data;
 
-+ (id)findTagged:(int)tag;
++ (id)inputForTag:(int)tag;
 - (void)disable;
+- (void)remove;
 
 @end
 
@@ -63,11 +61,12 @@ typedef int (*timer_callback) (void *user_data);
 
 @property (nonatomic, readonly) int tag;
 
-+ (id)timerFromInterval:(int)the_interval callback:(timer_callback)the_callback
++ (id)timerWithInterval:(int)the_interval callback:(timer_callback)the_callback
                userdata:(void *)the_userdata;
-+ (void)removeTimerWithTag:(int)atag;
++ (id)timerForTag:(int)tag;
 - (void)schedule;
 - (void)invalidate;
+- (void)remove;
 
 @end
 
