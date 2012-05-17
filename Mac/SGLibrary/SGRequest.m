@@ -26,7 +26,7 @@
 - (IBAction) doCancel:(id)sender;
 - (IBAction) doOk:(id)sender;
 
-- (NSString *) getResult;
+- (NSString *) stringForRequest;
 - (void) setValue:(NSString *) value;
 
 @end
@@ -37,7 +37,8 @@
 
 - (id) initWithString:(NSString *) title
 {
-    if ((self = [super init]) != nil) {
+    self = [super init];
+    if (self != nil) {
         [NSBundle loadNibNamed:@"SGRequest" owner:self];
         [[label window] setTitle:title];
         [label setStringValue:title];
@@ -48,7 +49,7 @@
 
 - (void) dealloc
 {
-    [[label window] autorelease];
+//    [[label window] autorelease];
     [super dealloc];
 }
 
@@ -57,7 +58,7 @@
     [text setStringValue:value];
 }
 
-- (NSString *) getResult
+- (NSString *)stringForRequest
 {
     [[label window] makeKeyAndOrderFront:self];
     NSModalSession session = [NSApp beginModalSessionForWindow:[label window]];
@@ -86,17 +87,17 @@
 
 @implementation SGRequest
 
-+ (NSString *) requestWithString:(NSString *) title
++ (NSString *) stringByRequestWithTitle:(NSString *) title
 {
-    return [SGRequest requestWithString:title defaultValue:nil];
+    return [SGRequest stringByRequestWithTitle:title defaultValue:nil];
 }
 
-+ (NSString *) requestWithString:(NSString *) title defaultValue:(NSString *) def
++ (NSString *) stringByRequestWithTitle:(NSString *) title defaultValue:(NSString *) def
 {
-    SGRequestPrivate *request = [[SGRequestPrivate alloc] initWithString:title];
+    SGRequestPrivate *request = [[[SGRequestPrivate alloc] initWithString:title] autorelease];
     if (def)
         [request setValue:def];
-    return [request getResult];
+    return [request stringForRequest];
 }
 
 @end

@@ -22,4 +22,6 @@
 
 @property (nonatomic, assign, getter=isAway) BOOL away;
 
++ (AutoAwayController *)defaultAwayController;
+
 @end
