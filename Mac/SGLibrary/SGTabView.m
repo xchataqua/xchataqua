@@ -137,7 +137,7 @@ static NSNib *getTabMenuNib ()
 
 - (void) drawInteriorWithFrame:(NSRect) cellFrame inView:(NSView *) controlView
 {
-    NSRect closeRect;
+    NSRect closeRect = NSMakeRect(0, 0, 0, 0);
 
     if (hasClose)
     {

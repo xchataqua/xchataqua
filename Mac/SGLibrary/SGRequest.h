@@ -17,7 +17,7 @@
 
 @interface SGRequest : NSObject
 
-+ (NSString *) requestWithString:(NSString *) title;
-+ (NSString *) requestWithString:(NSString *) title defaultValue:(NSString *) defaultValue;
++ (NSString *)stringByRequestWithTitle:(NSString *) title;
++ (NSString *)stringByRequestWithTitle:(NSString *) title defaultValue:(NSString *) defaultValue;
 
 @end
