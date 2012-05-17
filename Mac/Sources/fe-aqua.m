@@ -327,7 +327,7 @@ fe_timeout_remove (int tag)
 #if USE_GLIKE_TIMER
     [GLikeTimer removeTimerWithTag:tag];
 #else
-    [TimerThing removeTimerWithTag:tag];
+    [[TimerThing timerForTag:tag] remove];
 #endif
 }
 
@@ -337,8 +337,8 @@ fe_timeout_add (int interval, void *callback, void *userdata)
 #if USE_GLIKE_TIMER
     return [GLikeTimer addTaggedTimerWithMSInterval:interval callback:(GSourceFunc)callback userData:userdata];
 #else
-    TimerThing *timer = [[TimerThing timerFromInterval:interval 
-                                              callback:(timer_callback)callback userdata:userdata] retain];
+    TimerThing *timer = [TimerThing timerWithInterval:interval
+                                             callback:(timer_callback)callback userdata:userdata];
     
     [timer schedule];
     
@@ -355,18 +355,15 @@ fe_idle_add (void *func, void *data)
 void
 fe_input_remove (int tag)
 {
-    InputThing *thing = [InputThing findTagged:tag];
+    InputThing *thing = [InputThing inputForTag:tag];
     [thing disable];
-    [thing release];
+    [thing remove];
 }
 
 int
 fe_input_add (int sok, int flags, void *func, void *data)
 {
-    InputThing *thing = [[InputThing socketFromFD:sok 
-                                            flags:flags 
-                                             func:(socket_callback)func 
-                                             data:data] retain];
+    InputThing *thing = [InputThing inputWithSocketFD:sok flags:flags callback:(socket_callback)func data:data]; 
     return [thing tag];
 }
 

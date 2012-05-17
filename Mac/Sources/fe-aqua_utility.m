@@ -19,71 +19,48 @@
 
 #import "fe-aqua_utility.h"
 
-#define CPP_INPUT_THING 0
-#define CPP_TIMER_THING 0
-#if CPP_INPUT_THING | CPP_TIMER_THING
-#include <list>
-#endif
-
 #pragma mark -
 
-#if CPP_INPUT_THING
-static std::list<id> input_list;
-#else
-NSMutableArray *inputArray;
-#endif
-
-static NSInteger input_seq = 1;
+NSMutableArray *InputThingItems;
+NSInteger InputThingSequence = 1;
 
 @implementation InputThing
 @synthesize tag;
 
-+ (id) socketFromFD:(int) sok 
-              flags:(int) the_flags
-               func:(socket_callback) the_func
-               data:(void *) the_data
-{
++ (void) initialize {
+    if (self == [InputThing class]) {
+        InputThingItems = [[NSMutableArray alloc] init];
+    }
+}
+
++ (id)inputWithSocketFD:(int)socket flags:(int)flags callback:(socket_callback)callback data:(void *)the_data {
     InputThing *thing = [[InputThing alloc] init];
     
-    thing->func = the_func;
+    thing->func = callback;
     thing->data = the_data;
     thing->rf = nil;
     thing->wf = nil;
     thing->ef = nil;
-    thing->tag = input_seq ++;
+    thing->tag = InputThingSequence ++;
     
-    if (the_flags & FIA_READ)
-        thing->rf = [[SGFileDescriptor alloc] initWithFd:sok mode:SGFileDescriptorRead
+    if (flags & FIA_READ)
+        thing->rf = [[SGFileDescriptor alloc] initWithFd:socket mode:SGFileDescriptorRead
                                                   target:thing selector:@selector (doit:) withObject:nil];
-    if (the_flags & FIA_WRITE)
-        thing->wf = [[SGFileDescriptor alloc] initWithFd:sok mode:SGFileDescriptorWrite
+    if (flags & FIA_WRITE)
+        thing->wf = [[SGFileDescriptor alloc] initWithFd:socket mode:SGFileDescriptorWrite
                                                   target:thing selector:@selector (doit:) withObject:nil];
-    if (the_flags & FIA_EX)
-        thing->ef = [[SGFileDescriptor alloc] initWithFd:sok mode:SGFileDescriptorExcep
+    if (flags & FIA_EX)
+        thing->ef = [[SGFileDescriptor alloc] initWithFd:socket mode:SGFileDescriptorExcep
                                                   target:thing selector:@selector (doit:) withObject:nil];
-#if CPP_INPUT_THING
-    input_list.push_back (thing);
-#else
-    [inputArray addObject:thing];
-#endif
-    
+    [InputThingItems addObject:thing];
+   
     return [thing autorelease];
 }
 
-+ (id)findTagged:(int)atag
++ (id)inputForTag:(int)atag
 {
-    for (
-#if CPP_INPUT_THING
-         std::list<id>::iterator iter = input_list.begin(); iter != input_list.end();
-#else
-         InputThing *athing in inputArray
-#endif
-         )
-        
+    for (InputThing *athing in InputThingItems)
     {
-#if CPP_INPUT_THING
-        id athing = *iter++;
-#endif
         if ([athing tag] == atag)
             return athing;
     }
@@ -92,35 +69,27 @@ static NSInteger input_seq = 1;
 
 - (void)dealloc
 {
-    if(rf) [rf release];
-    if(wf) [wf release];
-    if(ef) [ef release];
-#if CPP_INPUT_THING
-    input_list.remove (self);
-#else
-    [inputArray removeObject:self];
-#endif
+    [rf release];
+    [wf release];
+    [ef release];
     [super dealloc];
+}
+
+- (void)remove {
+    [InputThingItems removeObject:self];
 }
 
 - (void)disable
 {
-    if (rf) [rf disable];
-    if (wf) [wf disable];
-    if (ef) [ef disable];
+    [rf disable];
+    [wf disable];
+    [ef disable];
 }
 
 - (void)doit:(id)obj
 {
     func (NULL, 0, data);
 }
-
-#if CPP_INPUT_THING
-#else
-+ (void) initialize {
-    inputArray = [[NSMutableArray alloc] init];    
-}
-#endif
 
 @end
 
@@ -129,17 +98,19 @@ static NSInteger input_seq = 1;
 #if USE_GLIKE_TIMER
 #else
 
-#if CPP_TIMER_THING
-static std::list<id> timer_list;
-#else
-NSMutableArray *timerArray;
-#endif
-static int timer_seq = 1;
+NSMutableArray *TimerThingItems;
+static int TimerThingSequence = 1;
 
 @implementation TimerThing
 @synthesize tag;
 
-+ (id)timerFromInterval:(int)the_interval callback:(timer_callback)the_callback
++ (void) initialize {
+    if (self == [TimerThing class]) { 
+        TimerThingItems = [[NSMutableArray alloc] init];
+    }
+}
+
++ (id)timerWithInterval:(int)the_interval callback:(timer_callback)the_callback
                userdata:(void *)the_userdata
 {
     TimerThing *thing = [[TimerThing alloc] init];
@@ -147,52 +118,33 @@ static int timer_seq = 1;
     thing->interval = (NSTimeInterval) the_interval / 1000;
     thing->callback = the_callback;
     thing->userdata = the_userdata;
-    thing->tag = timer_seq ++;
+    thing->tag = TimerThingSequence ++;
     thing->timer = nil;
     
-#if CPP_TIMER_THING
-    timer_list.push_back (thing);
-#else
-    [timerArray addObject:thing];
-#endif
+    [TimerThingItems addObject:thing];
     
     [thing schedule];
     
     return [thing autorelease];
 }
 
-+ (void)removeTimerWithTag:(int)atag
-{
-    for (
-#if CPP_TIMER_THING
-         std::list<id>::iterator iter = timer_list.begin(); iter != timer_list.end();
-#else
-         TimerThing *atimer in timerArray
-#endif
-         )
++ (id)timerForTag:(int)tag {
+    for (TimerThing *atimer in TimerThingItems)
     {
-#if CPP_TIMER_THING
-        TimerThing *atimer = *iter++;
-#endif
-        if ([atimer tag] == atag)
-        {
-            TimerThing *timer = (TimerThing *) atimer;
-            [timer invalidate];
-            timer->callback = NULL;     // We'll use this to detect released
-            [timer release];            // timers in [TimerThing fire]
-            timer = nil;
-            return;
-        }
+        if (atimer->tag == tag)
+            return atimer;
     }
+    return nil;
+}
+
+- (void)remove {
+    [self invalidate];
+    self->callback = NULL;     // We'll use this to detect released
+    [TimerThingItems removeObject:self];
 }
 
 - (void)dealloc
 {
-#if CPP_TIMER_THING
-    timer_list.remove (self);
-#else
-    [timerArray removeObject:self];
-#endif
     [self invalidate];
     [super dealloc];
 }
@@ -244,13 +196,6 @@ static int timer_seq = 1;
     
     [self release];
 }
-
-#if CPP_TIMER_THING
-#else
-+ (void) initialize {
-    timerArray = [[NSMutableArray alloc] init];    
-}
-#endif
 
 @end
 
