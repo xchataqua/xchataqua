@@ -26,6 +26,18 @@
 
 @synthesize away;
 
+AutoAwayController *AutoAwayControllerDefaultController = nil;
+
++ (void)initialize {
+    if (self == [AutoAwayController class]) {
+        AutoAwayControllerDefaultController = [[AutoAwayController alloc] init];
+    }
+}
+
++ (AutoAwayController *)defaultAwayController {
+    return AutoAwayControllerDefaultController;
+}
+
 - (void) setAway:(BOOL)flag
 {
     // Get list of current servers from xchat and set the user away (or

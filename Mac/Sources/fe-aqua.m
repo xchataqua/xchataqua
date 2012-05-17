@@ -673,8 +673,8 @@ fe_message (char *msg, int flags)
 void
 fe_get_int (char *msg, int def, void *callback, void *userdata)
 {
-    NSString *s = [SGRequest requestWithString:[NSString stringWithUTF8String:msg]
-                                  defaultValue:[NSString stringWithFormat:@"%d", def]];
+    NSString *s = [SGRequest stringByRequestWithTitle:[NSString stringWithUTF8String:msg]
+                                         defaultValue:[NSString stringWithFormat:@"%d", def]];
     
     int value = 0;
     int cancel = 1;
@@ -694,8 +694,8 @@ fe_get_int (char *msg, int def, void *callback, void *userdata)
 void
 fe_get_str (char *msg, char *def, void *callback, void *userdata)
 {
-    NSString *s = [SGRequest requestWithString:[NSString stringWithUTF8String:msg]
-                                  defaultValue:[NSString stringWithUTF8String:def]];
+    NSString *s = [SGRequest stringByRequestWithTitle:[NSString stringWithUTF8String:msg]
+                                         defaultValue:[NSString stringWithUTF8String:def]];
     
     char *value = NULL;
     int cancel = 1;

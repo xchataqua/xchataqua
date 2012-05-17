@@ -84,7 +84,7 @@ struct eventInfo textEventInfo[NUM_XP];
     // Can't do this in awakeFromNib.. lists are not yet loaded..
     [self updateUsermenu];
     
-    [[AutoAwayController alloc] init];
+    [AutoAwayController self]; // initialize
 }
 
 - (void) awakeFromNib
@@ -587,7 +587,7 @@ struct eventInfo textEventInfo[NUM_XP];
 - (void) showSearchPanel:(id)sender
 {
     [searchString autorelease];
-    searchString = [[SGRequest requestWithString:NSLocalizedStringFromTable(@"XChat: Search", @"xchat", @"") defaultValue:searchString] retain];
+    searchString = [[SGRequest stringByRequestWithTitle:NSLocalizedStringFromTable(@"XChat: Search", @"xchat", @"") defaultValue:searchString] retain];
     [self findNext:sender];
 }
 
