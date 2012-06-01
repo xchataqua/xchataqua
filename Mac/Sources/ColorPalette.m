@@ -19,66 +19,67 @@
  * Correspond to fe-gtk: xchat/src/fe-gtk/palette.*
  */
 
-#include "cfgfiles.h"
-
 #import "ColorPalette.h"
 
-//////////////////////////////////////////////////////////////////////
+#include <sys/stat.h>
+#include "cfgfiles.h"
 
-struct color_def
-{
-    int r;
-    int g;
-    int b;
+// Constants are copied from fe-gtk
+
+struct GdkColor {
+    guint32 pixel;
+    guint16 red;
+    guint16 green;
+    guint16 blue;
 };
 
-static struct color_def def_color_vals[] =
-{
-    {0xcccc, 0xcccc, 0xcccc}, /* 0 white */
-    {0x0000, 0x0000, 0x0000}, /* 1 black */
-    {0x35c2, 0x35c2, 0xb332}, /* 2 blue */
-    {0x2a3d, 0x8ccc, 0x2a3d}, /* 3 green */
-    {0xc3c3, 0x3b3b, 0x3b3b}, /* 4 red */
-    {0xc7c7, 0x3232, 0x3232}, /* 5 light red */
-    {0x8000, 0x2666, 0x7fff}, /* 6 purple */
-    {0x6666, 0x3636, 0x1f1f}, /* 7 orange */
-    {0xd999, 0xa6d3, 0x4147}, /* 8 yellow */
-    {0x3d70, 0xcccc, 0x3d70}, /* 9 green */
-    {0x199a, 0x5555, 0x5555}, /* 10 aqua */
-    {0x2eef, 0x8ccc, 0x74df}, /* 11 light aqua */
-    {0x451e, 0x451e, 0xe666}, /* 12 blue */
-    {0xb0b0, 0x3737, 0xb0b0}, /* 13 light purple */
-    {0x4c4c, 0x4c4c, 0x4c4c}, /* 14 grey */
-    {0x9595, 0x9595, 0x9595}, /* 15 light grey */
-
-    {0xcccc, 0xcccc, 0xcccc}, /* 16 white */
-    {0x0000, 0x0000, 0x0000}, /* 17 black */
-    {0x35c2, 0x35c2, 0xb332}, /* 18 blue */
-    {0x2a3d, 0x8ccc, 0x2a3d}, /* 19 green */
-    {0xc3c3, 0x3b3b, 0x3b3b}, /* 20 red */
-    {0xc7c7, 0x3232, 0x3232}, /* 21 light red */
-    {0x8000, 0x2666, 0x7fff}, /* 22 purple */
-    {0x6666, 0x3636, 0x1f1f}, /* 23 orange */
-    {0xd999, 0xa6d3, 0x4147}, /* 24 yellow */
-    {0x3d70, 0xcccc, 0x3d70}, /* 25 green */
-    {0x199a, 0x5555, 0x5555}, /* 26 aqua */
-    {0x2eef, 0x8ccc, 0x74df}, /* 27 light aqua */
-    {0x451e, 0x451e, 0xe666}, /* 28 blue */
-    {0xb0b0, 0x3737, 0xb0b0}, /* 29 light purple */
-    {0x4c4c, 0x4c4c, 0x4c4c}, /* 30 grey */
-    {0x9595, 0x9595, 0x9595}, /* 31 light grey */
-
-    {0xffff, 0xffff, 0xffff}, /* 32 marktext Fore (white) */    // Text highlight (unused)
-    {0x3535, 0x6e6e, 0xc1c1}, /* 33 marktext Back (blue) */     // Text highlight (unused)
-    {0x0000, 0x0000, 0x0000}, /* 34 foreground (black) */
-    {0xf0f0, 0xf0f0, 0xf0f0}, /* 35 background (white) */
-    {0xcccc, 0x1010, 0x1010}, /* 36 marker line (red) */        // Not sure (unused)
-
-    /* colors for GUI */
-    {0x9999, 0x0000, 0x0000}, /* 37 tab New Data (dark red) */
-    {0x0000, 0x0000, 0xffff}, /* 38 tab Nick Mentioned (blue) */
-    {0xffff, 0x0000, 0x0000}, /* 39 tab New Message (red) */
-    {0x9595, 0x9595, 0x9595}, /* 40 away user (grey) */
+struct GdkColor ColorPalleteDefaultColors[] = {
+	/* colors for xtext */
+	{0, 0xcccc, 0xcccc, 0xcccc}, /* 16 white */
+	{0, 0x0000, 0x0000, 0x0000}, /* 17 black */
+	{0, 0x35c2, 0x35c2, 0xb332}, /* 18 blue */
+	{0, 0x2a3d, 0x8ccc, 0x2a3d}, /* 19 green */
+	{0, 0xc3c3, 0x3b3b, 0x3b3b}, /* 20 red */
+	{0, 0xc7c7, 0x3232, 0x3232}, /* 21 light red */
+	{0, 0x8000, 0x2666, 0x7fff}, /* 22 purple */
+	{0, 0x6666, 0x3636, 0x1f1f}, /* 23 orange */
+	{0, 0xd999, 0xa6d3, 0x4147}, /* 24 yellow */
+	{0, 0x3d70, 0xcccc, 0x3d70}, /* 25 green */
+	{0, 0x199a, 0x5555, 0x5555}, /* 26 aqua */
+	{0, 0x2eef, 0x8ccc, 0x74df}, /* 27 light aqua */
+	{0, 0x451e, 0x451e, 0xe666}, /* 28 blue */
+	{0, 0xb0b0, 0x3737, 0xb0b0}, /* 29 light purple */
+	{0, 0x4c4c, 0x4c4c, 0x4c4c}, /* 30 grey */
+	{0, 0x9595, 0x9595, 0x9595}, /* 31 light grey */
+    
+	{0, 0xcccc, 0xcccc, 0xcccc}, /* 16 white */
+	{0, 0x0000, 0x0000, 0x0000}, /* 17 black */
+	{0, 0x35c2, 0x35c2, 0xb332}, /* 18 blue */
+	{0, 0x2a3d, 0x8ccc, 0x2a3d}, /* 19 green */
+	{0, 0xc3c3, 0x3b3b, 0x3b3b}, /* 20 red */
+	{0, 0xc7c7, 0x3232, 0x3232}, /* 21 light red */
+	{0, 0x8000, 0x2666, 0x7fff}, /* 22 purple */
+	{0, 0x6666, 0x3636, 0x1f1f}, /* 23 orange */
+	{0, 0xd999, 0xa6d3, 0x4147}, /* 24 yellow */
+	{0, 0x3d70, 0xcccc, 0x3d70}, /* 25 green */
+	{0, 0x199a, 0x5555, 0x5555}, /* 26 aqua */
+	{0, 0x2eef, 0x8ccc, 0x74df}, /* 27 light aqua */
+	{0, 0x451e, 0x451e, 0xe666}, /* 28 blue */
+	{0, 0xb0b0, 0x3737, 0xb0b0}, /* 29 light purple */
+	{0, 0x4c4c, 0x4c4c, 0x4c4c}, /* 30 grey */
+	{0, 0x9595, 0x9595, 0x9595}, /* 31 light grey */
+    
+	{0, 0xffff, 0xffff, 0xffff}, /* 32 marktext Fore (white) */
+	{0, 0x3535, 0x6e6e, 0xc1c1}, /* 33 marktext Back (blue) */
+	{0, 0x0000, 0x0000, 0x0000}, /* 34 foreground (black) */
+	{0, 0xf0f0, 0xf0f0, 0xf0f0}, /* 35 background (white) */
+	{0, 0xcccc, 0x1010, 0x1010}, /* 36 marker line (red) */
+    
+	/* colors for GUI */
+	{0, 0x9999, 0x0000, 0x0000}, /* 37 tab New Data (dark red) */
+	{0, 0x0000, 0x0000, 0xffff}, /* 38 tab Nick Mentioned (blue) */
+	{0, 0xffff, 0x0000, 0x0000}, /* 39 tab New Message (red) */
+	{0, 0x9595, 0x9595, 0x9595}, /* 40 away user (grey) */
 };
 
 static int color_remap [] =
@@ -95,26 +96,57 @@ static int color_remap [] =
 
 @implementation ColorPalette
 
-- (void) load
+- (id) init
 {
-    // Initialize defaults
+    self = [super init];
+    if (self != nil) {
+        colors = (NSColor **) malloc ([self numberOfColors] * sizeof(NSColor *));
+        for (NSUInteger i = 0; i < [self numberOfColors]; i++) {
+            colors[i] = nil;
+        }
+    }
+    return self;
+}
 
-    for (NSUInteger i = 0; i < [self numberOfColors]; i ++)
-    {
+- (id) copyWithZone:(NSZone *)zone
+{
+    ColorPalette *copy = [[ColorPalette alloc] init];
+    for (NSUInteger i = 0; i < [self numberOfColors]; i++) {
+        copy->colors[i] = [colors[i] retain];
+    }
+    return copy;
+}
+
+- (void) dealloc
+{
+    for (NSUInteger i = 0; i < [self numberOfColors]; i ++) {
         [colors[i] release];
-        struct color_def *def = &def_color_vals[i];
-        colors[i] = [[NSColor colorWithDeviceRed:(CGFloat)def->r / 0xffff
-                                           green:(CGFloat)def->g / 0xffff
-                                            blue:(CGFloat)def->b / 0xffff
+    }
+    free (colors);
+    [super dealloc];
+}
+
+- (void)loadDefaults {
+    for (NSUInteger i = 0; i < [self numberOfColors]; i++) {
+        struct GdkColor *defaultColor = &ColorPalleteDefaultColors[i];
+        colors[i] = [[NSColor colorWithDeviceRed:(CGFloat)defaultColor->red  / 0xffff
+                                           green:(CGFloat)defaultColor->green/ 0xffff
+                                            blue:(CGFloat)defaultColor->blue / 0xffff
                                            alpha:1.0f] retain];
     }
+}
 
+- (void) loadLegacy // load palette.conf
+{
     // Load saved value
 
     NSString *fn = [NSString stringWithFormat:@"%s/palette.conf", get_xdir_fs()];
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:fn];
 
-    if (!dict) return;
+    if (!dict) {
+        [self loadDefaults];
+        return;
+    }
 
     // If there are only 24 colors, then we'll need to move things around
     // to map into the new color palette.
@@ -147,48 +179,61 @@ static int color_remap [] =
     }
 }
 
+- (void) load {
+    int file = xchat_open_file("colors.conf", O_RDONLY, 0, 0);
+    if (file == -1) {
+        [self loadLegacy];
+        return;
+    }
+    
+    struct stat filestat;
+    fstat(file, &filestat);
+    char *cfg = malloc(filestat.st_size + 1);
+    if (cfg != NULL) {
+        cfg[0]  = '\0';
+        int cfglen = read(file, cfg, filestat.st_size);
+        if (cfglen >= 0)
+            cfg[cfglen] = '\0';
+        
+        int red, green, blue;
+        for (NSInteger i = 0; i < 32; i++) {
+            const char *name = [[NSString stringWithFormat:@"color_%d", i] UTF8String];
+            cfg_get_color(cfg, (char *)name, &red, &green, &blue);
+            [colors[i] release];
+            colors[i] = [[NSColor colorWithDeviceRed:(CGFloat)red/0xffff green:(CGFloat)green/0xffff blue:(CGFloat)blue/0xffff alpha:1.0f] retain];
+        }
+        for (NSInteger i = 256, j = 32; j < [self numberOfColors]; i++, j++) {
+            const char *name = [[NSString stringWithFormat:@"color_%d", i] UTF8String];
+            cfg_get_color(cfg, (char *)name, &red, &green, &blue);
+            [colors[j] release];
+            colors[j] = [[NSColor colorWithDeviceRed:(CGFloat)red/0xffff green:(CGFloat)green/0xffff blue:(CGFloat)blue/0xffff alpha:1.0f] retain];
+        }
+        free(cfg);
+    }
+    close(file);
+}
+
 - (void) save
 {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:[self numberOfColors]];
-    for (NSUInteger i = 0; i < [self numberOfColors]; i++)
-    {
-        NSColor *color = colors[i];
-        NSColor *c = [color colorUsingColorSpaceName:NSDeviceRGBColorSpace];
+    int file = xchat_open_file ("colors.conf", O_TRUNC | O_WRONLY | O_CREAT, 0600, XOF_DOMODE);
+	if (file != -1)
+	{
+		/* mIRC colors 0-31 are here */
+		for (NSInteger i = 0; i < 32; i++)
+		{
+            const char *name = [[NSString stringWithFormat:@"color_%d", i] UTF8String];
+			cfg_put_color(file, colors[i].redComponent * 0xffff, colors[i].greenComponent * 0xffff, colors[i].blueComponent * 0xffff, (char *)name);
+		}
         
-        [dict setObject:[NSNumber numberWithFloat:[c redComponent]]   forKey:[NSString stringWithFormat:@"color_%d_red",   i]];
-        [dict setObject:[NSNumber numberWithFloat:[c greenComponent]] forKey:[NSString stringWithFormat:@"color_%d_green", i]];
-        [dict setObject:[NSNumber numberWithFloat:[c blueComponent]]  forKey:[NSString stringWithFormat:@"color_%d_blue",  i]];
-        [dict setObject:[NSNumber numberWithFloat:[c alphaComponent]] forKey:[NSString stringWithFormat:@"color_%d_alpha", i]];
-    }
-    NSString *filename = [NSString stringWithFormat:@"%s/palette.conf", get_xdir_fs ()];
-    [dict writeToFile:filename atomically:true];
-}
-
-- (id) init
-{
-    if ( (self = [super init]) ) {
-        colors = (NSColor **) malloc ([self numberOfColors] * sizeof(NSColor *));
-
-        for (NSUInteger i = 0; i < [self numberOfColors]; i++)
-            colors[i] = nil;
-    }
-    return self;
-}
-
-- (id) copyWithZone:(NSZone *)zone
-{
-    ColorPalette *copy = [[ColorPalette alloc] init];
-    for (NSUInteger i = 0; i < [self numberOfColors]; i++)
-        copy->colors[i] = [colors[i] retain];
-    return copy;
-}
-
-- (void) dealloc
-{
-    for (NSUInteger i = 0; i < [self numberOfColors]; i ++)
-        [colors[i] release];
-    free (colors);
-    [super dealloc];
+		/* our special colors are mapped at 256+ */
+		for (NSInteger i = 256, j = 32; j < self.numberOfColors; i++, j++)
+		{
+			const char *name = [[NSString stringWithFormat:@"color_%d", i] UTF8String];
+			cfg_put_color (file, colors[j].redComponent * 0xffff, colors[j].greenComponent * 0xffff, colors[j].blueComponent * 0xffff, (char *)name);
+		}
+        
+		close (file);
+	}
 }
 
 - (NSColor *) getColor:(int) color
@@ -204,7 +249,7 @@ static int color_remap [] =
 
 - (NSUInteger) numberOfColors
 {
-    return sizeof (def_color_vals) / sizeof (def_color_vals [0]);
+    return sizeof(ColorPalleteDefaultColors) / sizeof(ColorPalleteDefaultColors[0]);
 }
 
 @end
