@@ -19,7 +19,9 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#define SG_DEBUG 0
+#ifndef SG_DEBUG
+#   define SG_DEBUG DEBUG
+#endif
 
 #ifdef SG_DEBUG
 #	define SGLog(TAG, ...)		{ if ( TAG ) [SGDebug log:[NSString stringWithFormat:__VA_ARGS__] file:__FILE__ line:__LINE__]; }
