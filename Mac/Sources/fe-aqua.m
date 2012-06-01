@@ -553,7 +553,7 @@ fe_init (void)
 #include <sys/time.h>
 #include <sys/resource.h>
 
-#if AQUACHAT_DEBUG
+#if DEBUG
 static void bar (NSException *e)
 {
     printf ("BAR!\n");
@@ -605,7 +605,7 @@ fe_main (void)
     setrlimit (RLIMIT_CORE, &rlp);
 #endif
     
-#if AQUACHAT_DEBUG
+#if DEBUG
     NSSetUncaughtExceptionHandler (bar);
     [[NSExceptionHandler defaultExceptionHandler] setExceptionHandlingMask: 127];
     //[[NSExceptionHandler defaultExceptionHandler] setExceptionHangingMask: NSHangOnEveryExceptionMask];
