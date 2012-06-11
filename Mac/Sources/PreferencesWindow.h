@@ -82,7 +82,7 @@ struct PreferenceItem
     
     // User list
     //  User List
-    IBOutlet NSButton *hideUserlistCheckBox, *showUserlistButtonsCheckBox; // not in fe-gtk
+    IBOutlet NSButton *hideUserlistCheckBox, *userlistUseTextBoxFontCheckBox, *showUserlistButtonsCheckBox; // not in fe-gtk
     IBOutlet NSButton * showHostnameCheckBox;
     IBOutlet NSPopUpButton *userlistSortPopUp;
     //  missing 'Show user list at' in fe-gtk
@@ -176,7 +176,7 @@ struct PreferenceItem
     IBOutlet NSPopUpButton *autoAcceptDccChatPopUp;
     IBOutlet NSButton *autoOpenDccChatCheckBox, *autoOpenDccReceiveCheckBox, *autoOpenDccSendCheckBox;
     
-    struct PreferenceItem preferenceItems[94];
+    struct PreferenceItem preferenceItems[95];
 }
 
 - (IBAction)applyPreferences:(id)sender;
