@@ -412,7 +412,7 @@
     {
         attr = [NSDictionary dictionaryWithObject:[palette getColor:AC_AWAY_USER] forKey:NSForegroundColorAttributeName];
     } else {
-        if (prefs.style_inputbox) {
+        if (prefs.style_namelistgad) {
             attr = [NSDictionary dictionaryWithObject:[palette getColor:AC_FGCOLOR] forKey:NSForegroundColorAttributeName];
         } else {
             attr = [NSDictionary dictionaryWithObject:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
@@ -729,12 +729,23 @@ static NSImage *emptyBulletImage;
         [topicTextField setTextColor:[p getColor:AC_FGCOLOR]];
         [topicTextField setBackgroundColor:[p getColor:AC_BGCOLOR]];
         [topicTextField setBezeled:YES];
+    } else {
+        // How to restore this?
+    }
+    
+    if (prefs.style_namelistgad) {
+        // init ColorPalette
+        ColorPalette *p = [[AquaChat sharedAquaChat] palette];
+        // fg, bg and bezel        
         [userlistStatusTextField setTextColor:[p getColor:AC_FGCOLOR]];
         [userlistStatusTextField setBackgroundColor:[p getColor:AC_BGCOLOR]];
         [userlistStatusTextField setBezeled:NO];
         // bg only
         [userlistTableView setBackgroundColor:[p getColor:AC_BGCOLOR]];
+
         // I really need to find a way to trigger a redraw of SGOutlineView
+    } else {
+        // How to restore this?
     }
     
     ColorPalette *palette = [[AquaChat sharedAquaChat] palette];
@@ -1561,7 +1572,7 @@ static NSImage *emptyBulletImage;
 
 - (void) userlistInsert:(struct User *)user row:(NSInteger)row select:(BOOL)select
 {
-    ChannelUser *u = [(ChannelUser *)[ChannelUser alloc] initWithUser:user];
+    ChannelUser *u = [[ChannelUser alloc] initWithUser:user];
     /* CL */
     [u cacheSizesForTable: userlistTableView];
     [self updateUserTableLayoutForInsert: u];
@@ -1569,27 +1580,24 @@ static NSImage *emptyBulletImage;
     
     if (row < 0) {
         [users addObject:u];
-    } else
-    {
+    } else {
         NSInteger selectedRow = [userlistTableView selectedRow];
         [users insertObject:u atIndex:row];
         if (selectedRow >= 0 && row <= selectedRow)
             [userlistTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedRow+1] byExtendingSelection:NO];
     }
     
-    if (select)
+    if (select) {
         [userlistTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+    }
     
     [userlistTableView reloadData];
     
-    if (user->me)
-    {
+    if (user->me) {
         NSImage *img = [self imageForUser:user];
         if (img == emptyBulletImage) {
             [myOpOrVoiceIconImageView setHidden:YES];
-        }
-        else
-        {
+        } else {
             [myOpOrVoiceIconImageView setImage:img];
             [myOpOrVoiceIconImageView setHidden:NO];
         }
