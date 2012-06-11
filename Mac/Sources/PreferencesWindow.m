@@ -194,6 +194,7 @@ extern struct eventInfo textEventInfo[];
         { channelLinkCommandTextField, &prefs.xa_channelcommand, MYPREF_STRING },
         // Input box
         { inputBoxUseTextBoxFontCheckBox, &prefs.style_inputbox, MYPREF_INT },
+        { userlistUseTextBoxFontCheckBox, &prefs.style_namelistgad, MYPREF_INT },
         { spellCheckingCheckBox, &prefs.gui_input_spell, MYPREF_INT },
         { interpretPercentAsciiCheckBox, &prefs.perc_ascii, MYPREF_INT },
         { interpretPercentColorCheckBox, &prefs.perc_color, MYPREF_INT },
