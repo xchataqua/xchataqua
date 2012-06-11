@@ -19,7 +19,7 @@
 #import "XAChatTextView.h"
 #import "TabOrWindowView.h"
 
-@class MySplitView;
+@class ChatSplitView;
 
 @interface ChatWindow : NSObject
 #if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
@@ -43,7 +43,7 @@
     IBOutlet NSTextField    *userlistStatusTextField;
     IBOutlet NSTextField    *topicTextField;
     IBOutlet SGHBoxView     *headerBoxView;
-    IBOutlet MySplitView    *bodyBoxView;
+    IBOutlet ChatSplitView  *bodyBoxView;
     IBOutlet SGRowColView   *buttonBoxView;
     IBOutlet NSProgressIndicator *progressIndicator;
     IBOutlet NSControl      *throttleIndicator;
