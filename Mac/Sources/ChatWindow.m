@@ -170,13 +170,13 @@
 #pragma mark -
 #pragma mark Various utility objects
 
-@interface MySplitView : NSSplitView
+@interface ChatSplitView : NSSplitView
 
 @property (nonatomic, assign) int splitPosition;
 
 @end
 
-@implementation MySplitView
+@implementation ChatSplitView
 
 - (NSRect) dividerRect
 {
