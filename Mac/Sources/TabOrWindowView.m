@@ -143,6 +143,10 @@ static NSWindow *initWindowForView (Class nswindow, NSView *view, NSPoint *where
 
 - (void) windowWillClose:(NSNotification *) notification
 {
+    // NOTE: This raise part-on-quit problem on XChat Aqua
+    // Cmd-Q goes AquaChat -applicationWillTerminate: first, so no problem
+    // Clicking Red button on Chat windows trigget this directly, so part over all channels
+    
     while ([[tabWindow contentView] numberOfTabViewItems])
     {
         SGTabViewItem *item = [(SGTabView *)[tabWindow contentView] tabViewItemAtIndex:0];
