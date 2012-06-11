@@ -192,8 +192,6 @@
 - (void) SGViewPrivateInit
 {
     [self setAutoresizesSubviews:YES];
-    
-    self->first_layout = YES;
     self->pending_layout = NO;
     self->in_my_layout = NO;
     self->in_dtor = NO;
@@ -203,6 +201,7 @@
 {
     if ((self = [super initWithFrame:frameRect]) != nil) {
         [self SGViewPrivateInit];
+        self->first_layout = YES;
         metaViews = [[NSMutableArray alloc] init];
     }
     return self;
@@ -210,12 +209,14 @@
 
 - (id) initWithCoder:(NSCoder *) decoder
 {
-    if ((self = [super initWithCoder:decoder]) != nil) {
+    self = [super initWithCoder:decoder];
+    if (self != nil) {
         [self SGViewPrivateInit];
         self->first_layout = NO;    // This feels right
         metaViews = [[NSMutableArray alloc] initWithCoder:decoder];
-        for (id metaView in metaViews)
+        for (id metaView in metaViews) {
             [self didAddSubview:[metaView view]];
+        }
     }
     return self;
 }
@@ -432,8 +433,9 @@ static void noDisplay (NSView *v)
                                                      name:NSViewFrameDidChangeNotification
                                                    object:subview];
     
-    if (auto_size_to_fit)
+    if (auto_size_to_fit) {
         needs_size_to_fit = YES;
+    }
 
     [self queue_layout];
 }
