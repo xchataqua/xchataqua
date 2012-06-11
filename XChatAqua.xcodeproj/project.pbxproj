@@ -16,7 +16,6 @@
 				2DDC6FEF1231BDD40015A26C /* Generate Localization Files */,
 			);
 			dependencies = (
-				2DDC6FE11231BCCB0015A26C /* PBXTargetDependency */,
 			);
 			name = Prebuild;
 			productName = Prebuild;
@@ -129,22 +128,7 @@
 		0FC8F5C40DEEEA3E00504F31 /* libxchat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC8F4AE0DEEE51700504F31 /* libxchat.a */; };
 		0FC8F6AF0DEEF3AC00504F31 /* AquaChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA5F80CFB2500001AE9AE /* AquaChat.m */; };
 		0FC8F6ED0DEEF64200504F31 /* fe-aqua.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA3CE0CFAF7E2001AE9AE /* fe-aqua.m */; };
-		0FE5E0230F4557A2000E0F91 /* InterfaceBuilderKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE5E0220F4557A2000E0F91 /* InterfaceBuilderKit.framework */; };
-		0FE5E0370F45595A000E0F91 /* SGFormView.classdescription in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5E02C0F45595A000E0F91 /* SGFormView.classdescription */; };
-		0FE5E0380F45595A000E0F91 /* SGFormViewInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5E02D0F45595A000E0F91 /* SGFormViewInspector.xib */; };
-		0FE5E0390F45595A000E0F91 /* SGHBoxView.classdescription in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5E02E0F45595A000E0F91 /* SGHBoxView.classdescription */; };
-		0FE5E03A0F45595A000E0F91 /* SGHBoxViewInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5E02F0F45595A000E0F91 /* SGHBoxViewInspector.xib */; };
-		0FE5E03B0F45595A000E0F91 /* SGPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE5E0310F45595A000E0F91 /* SGPalette.m */; };
-		0FE5E03C0F45595A000E0F91 /* SGPalette.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5E0320F45595A000E0F91 /* SGPalette.xib */; };
-		0FE5E03D0F45595A000E0F91 /* SGPaletteIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE5E0330F45595A000E0F91 /* SGPaletteIntegration.m */; };
-		0FE5E03E0F45595A000E0F91 /* SGVBoxView.classdescription in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5E0340F45595A000E0F91 /* SGVBoxView.classdescription */; };
-		0FE5E03F0F45595A000E0F91 /* SGVBoxViewInspector.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5E0350F45595A000E0F91 /* SGVBoxViewInspector.xib */; };
-		0FE5E0400F45595A000E0F91 /* SGView.classdescription in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5E0360F45595A000E0F91 /* SGView.classdescription */; };
-		0FE5E0470F455A07000E0F91 /* SGFormViewInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE5E0420F455A07000E0F91 /* SGFormViewInspector.m */; };
-		0FE5E0480F455A07000E0F91 /* SGHBoxViewInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE5E0440F455A07000E0F91 /* SGHBoxViewInspector.m */; };
-		0FE5E0490F455A07000E0F91 /* SGVBoxViewInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE5E0460F455A07000E0F91 /* SGVBoxViewInspector.m */; };
 		2D4ACFB11230005E00DEB5FA /* SGDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4ACFB01230005E00DEB5FA /* SGDebug.m */; };
-		2D4ACFB7123000F000DEB5FA /* SGDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4ACFB01230005E00DEB5FA /* SGDebug.m */; };
 		2D78138A10E77CC700C71AF8 /* perl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F06C10E1FDA5E00359159 /* perl.c */; };
 		2D78138E10E77E4E00C71AF8 /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D78138B10E77D1A00C71AF8 /* libperl.dylib */; };
 		2D7817CA10E872D200C71AF8 /* fe-aqua_utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7817C910E872D200C71AF8 /* fe-aqua_utility.m */; };
@@ -586,11 +570,6 @@
 		388BDCD213C6A0CB00B95036 /* SGVBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCBE13C6A0CB00B95036 /* SGVBoxView.m */; };
 		388BDCD313C6A0CB00B95036 /* SGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCC013C6A0CB00B95036 /* SGView.m */; };
 		388BDCD413C6A0CB00B95036 /* SGWrapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCC213C6A0CB00B95036 /* SGWrapView.m */; };
-		388BDCD513C6A17C00B95036 /* SGFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCA913C6A0CB00B95036 /* SGFormView.m */; };
-		388BDCD613C6A18100B95036 /* SGHBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCAD13C6A0CB00B95036 /* SGHBoxView.m */; };
-		388BDCD713C6A18800B95036 /* SGVBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCBE13C6A0CB00B95036 /* SGVBoxView.m */; };
-		388BDCD813C6A19A00B95036 /* SGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCC013C6A0CB00B95036 /* SGView.m */; };
-		388BDCD913C6A1A500B95036 /* SGBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCA513C6A0CB00B95036 /* SGBoxView.m */; };
 		388C8E8513C6E10500AAF20D /* alert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C89DD13C6E10100AAF20D /* alert.xib */; };
 		388C8E8713C6E10500AAF20D /* BanWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C89DE13C6E10100AAF20D /* BanWindow.xib */; };
 		388C8E8913C6E10500AAF20D /* ChannelWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C89E013C6E10100AAF20D /* ChannelWindow.xib */; };
@@ -663,13 +642,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0FC8F4AD0DEEE51700504F31;
 			remoteInfo = xchat;
-		};
-		2DDC6FE01231BCCB0015A26C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0FE5E01C0F45576B000E0F91;
-			remoteInfo = SGPalette;
 		};
 		387624FA13C7024F00850913 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1148,25 +1120,6 @@
 		0FC8F3E80DEEDA0C00504F31 /* python.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = python.c; path = ../../../xchat/plugins/python/python.c; sourceTree = "<group>"; };
 		0FC8F3F50DEEDAB300504F31 /* Python.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Python.framework; path = System/Library/Frameworks/Python.framework; sourceTree = SDKROOT; };
 		0FC8F4AE0DEEE51700504F31 /* libxchat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxchat.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		0FE5E01D0F45576B000E0F91 /* SGPalette.ibplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SGPalette.ibplugin; sourceTree = BUILT_PRODUCTS_DIR; };
-		0FE5E0220F4557A2000E0F91 /* InterfaceBuilderKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InterfaceBuilderKit.framework; path = Library/Frameworks/InterfaceBuilderKit.framework; sourceTree = DEVELOPER_DIR; };
-		0FE5E02C0F45595A000E0F91 /* SGFormView.classdescription */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.ibClassDescription; path = SGFormView.classdescription; sourceTree = "<group>"; };
-		0FE5E02D0F45595A000E0F91 /* SGFormViewInspector.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SGFormViewInspector.xib; sourceTree = "<group>"; };
-		0FE5E02E0F45595A000E0F91 /* SGHBoxView.classdescription */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.ibClassDescription; path = SGHBoxView.classdescription; sourceTree = "<group>"; };
-		0FE5E02F0F45595A000E0F91 /* SGHBoxViewInspector.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SGHBoxViewInspector.xib; sourceTree = "<group>"; };
-		0FE5E0300F45595A000E0F91 /* SGPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPalette.h; sourceTree = "<group>"; };
-		0FE5E0310F45595A000E0F91 /* SGPalette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPalette.m; sourceTree = "<group>"; };
-		0FE5E0320F45595A000E0F91 /* SGPalette.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SGPalette.xib; sourceTree = "<group>"; };
-		0FE5E0330F45595A000E0F91 /* SGPaletteIntegration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPaletteIntegration.m; sourceTree = "<group>"; };
-		0FE5E0340F45595A000E0F91 /* SGVBoxView.classdescription */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.ibClassDescription; path = SGVBoxView.classdescription; sourceTree = "<group>"; };
-		0FE5E0350F45595A000E0F91 /* SGVBoxViewInspector.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SGVBoxViewInspector.xib; sourceTree = "<group>"; };
-		0FE5E0360F45595A000E0F91 /* SGView.classdescription */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.ibClassDescription; path = SGView.classdescription; sourceTree = "<group>"; };
-		0FE5E0410F455A07000E0F91 /* SGFormViewInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFormViewInspector.h; sourceTree = "<group>"; };
-		0FE5E0420F455A07000E0F91 /* SGFormViewInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFormViewInspector.m; sourceTree = "<group>"; };
-		0FE5E0430F455A07000E0F91 /* SGHBoxViewInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGHBoxViewInspector.h; sourceTree = "<group>"; };
-		0FE5E0440F455A07000E0F91 /* SGHBoxViewInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGHBoxViewInspector.m; sourceTree = "<group>"; };
-		0FE5E0450F455A07000E0F91 /* SGVBoxViewInspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGVBoxViewInspector.h; sourceTree = "<group>"; };
-		0FE5E0460F455A07000E0F91 /* SGVBoxViewInspector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGVBoxViewInspector.m; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -1174,13 +1127,11 @@
 		2D4ACF77122FFED900DEB5FA /* SGDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGDebug.h; sourceTree = "<group>"; };
 		2D4ACFB01230005E00DEB5FA /* SGDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGDebug.m; sourceTree = "<group>"; };
 		2D6D421E121E85470082F2EF /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
-		2D6D4266121E88CE0082F2EF /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-snowleopard.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D78138B10E77D1A00C71AF8 /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = "build/XChatAqua.build/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib"; sourceTree = SOURCE_ROOT; };
 		2D7817C810E872D200C71AF8 /* fe-aqua_utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "fe-aqua_utility.h"; sourceTree = "<group>"; };
 		2D7817C910E872D200C71AF8 /* fe-aqua_utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "fe-aqua_utility.m"; sourceTree = "<group>"; };
 		2DDC6FA21231733E0015A26C /* build_number.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = build_number.h; sourceTree = "<group>"; };
-		2DE5D5C010EBE2020024D2A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DE5D5C210EBE2260024D2A4 /* perl-leopard-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "perl-leopard-Info.plist"; sourceTree = "<group>"; };
 		2DE5D5C410EBE2300024D2A4 /* perl-snowleopard-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "perl-snowleopard-Info.plist"; sourceTree = "<group>"; };
 		2DE5D5C610EBE23E0024D2A4 /* python-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "python-Info.plist"; sourceTree = "<group>"; };
@@ -2629,14 +2580,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0FE5E01B0F45576B000E0F91 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0FE5E0230F4557A2000E0F91 /* InterfaceBuilderKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2D78137E10E77C6400C71AF8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2950,7 +2893,6 @@
 				38763F2213DD40D6008C40DB /* perl-lion.bundle */,
 				38D1414013D800E60026B7B5 /* ruby.bundle */,
 				38876EF4154C766A000B7E27 /* PlugIns.tar */,
-				0FE5E01D0F45576B000E0F91 /* SGPalette.ibplugin */,
 				385F7746155156A400689E6E /* libintl.a */,
 				385F783215515C3F00689E6E /* libglib.a */,
 			);
@@ -2970,7 +2912,6 @@
 				0FC8F3D10DEEC33D00504F31 /* Plugins */,
 				0F8EA6580CFB2F71001AE9AE /* SGLibrary */,
 				388BDC9D13C69F8D00B95036 /* SGLibrary-Mac */,
-				2DC6AD1E118777750048B7C7 /* Palette */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				B07C7AB20F4395E200E11B58 /* BuildNumber.xcconfig */,
@@ -3076,23 +3017,6 @@
 			path = Mac/Resources;
 			sourceTree = "<group>";
 		};
-		2DC6AD1E118777750048B7C7 /* Palette */ = {
-			isa = PBXGroup;
-			children = (
-				0FE5E0220F4557A2000E0F91 /* InterfaceBuilderKit.framework */,
-				2D6D4266121E88CE0082F2EF /* Prefix.pch */,
-				380AD1F613C69CC0003EEE3D /* ClassDescriptions */,
-				388BDC9C13C69DCE00B95036 /* ViewInspectors */,
-				0FE5E0300F45595A000E0F91 /* SGPalette.h */,
-				0FE5E0310F45595A000E0F91 /* SGPalette.m */,
-				0FE5E0320F45595A000E0F91 /* SGPalette.xib */,
-				0FE5E0330F45595A000E0F91 /* SGPaletteIntegration.m */,
-				2DE5D5C010EBE2020024D2A4 /* Info.plist */,
-			);
-			name = Palette;
-			path = Mac/SGPalette;
-			sourceTree = "<group>";
-		};
 		2DEA303D0F87235400D6DC0D /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -3142,17 +3066,6 @@
 				D439129912DE2569009BE73C /* Info.plist */,
 			);
 			name = Azure;
-			sourceTree = "<group>";
-		};
-		380AD1F613C69CC0003EEE3D /* ClassDescriptions */ = {
-			isa = PBXGroup;
-			children = (
-				0FE5E0360F45595A000E0F91 /* SGView.classdescription */,
-				0FE5E02C0F45595A000E0F91 /* SGFormView.classdescription */,
-				0FE5E02E0F45595A000E0F91 /* SGHBoxView.classdescription */,
-				0FE5E0340F45595A000E0F91 /* SGVBoxView.classdescription */,
-			);
-			name = ClassDescriptions;
 			sourceTree = "<group>";
 		};
 		385DCEF91558C260002FE467 /* xchat */ = {
@@ -3541,22 +3454,6 @@
 			path = libcharset;
 			sourceTree = "<group>";
 		};
-		388BDC9C13C69DCE00B95036 /* ViewInspectors */ = {
-			isa = PBXGroup;
-			children = (
-				0FE5E0410F455A07000E0F91 /* SGFormViewInspector.h */,
-				0FE5E0420F455A07000E0F91 /* SGFormViewInspector.m */,
-				0FE5E02D0F45595A000E0F91 /* SGFormViewInspector.xib */,
-				0FE5E0430F455A07000E0F91 /* SGHBoxViewInspector.h */,
-				0FE5E0440F455A07000E0F91 /* SGHBoxViewInspector.m */,
-				0FE5E02F0F45595A000E0F91 /* SGHBoxViewInspector.xib */,
-				0FE5E0450F455A07000E0F91 /* SGVBoxViewInspector.h */,
-				0FE5E0460F455A07000E0F91 /* SGVBoxViewInspector.m */,
-				0FE5E0350F45595A000E0F91 /* SGVBoxViewInspector.xib */,
-			);
-			name = ViewInspectors;
-			sourceTree = "<group>";
-		};
 		388BDC9D13C69F8D00B95036 /* SGLibrary-Mac */ = {
 			isa = PBXGroup;
 			children = (
@@ -3571,8 +3468,6 @@
 				388BDCA713C6A0CB00B95036 /* SGFileSelection.m */,
 				380B9D1813C6E5D70029CE25 /* SGFileUtility.h */,
 				380B9D1913C6E5D70029CE25 /* SGFileUtility.m */,
-				388BDCA813C6A0CB00B95036 /* SGFormView.h */,
-				388BDCA913C6A0CB00B95036 /* SGFormView.m */,
 				388BDCAA13C6A0CB00B95036 /* SGGuiUtility.h */,
 				388BDCAB13C6A0CB00B95036 /* SGGuiUtility.m */,
 				388BDCB013C6A0CB00B95036 /* SGLockableTextField.h */,
@@ -3587,6 +3482,8 @@
 				388BDCBC13C6A0CB00B95036 /* SGTabView.m */,
 				388BDCBF13C6A0CB00B95036 /* SGView.h */,
 				388BDCC013C6A0CB00B95036 /* SGView.m */,
+				388BDCA813C6A0CB00B95036 /* SGFormView.h */,
+				388BDCA913C6A0CB00B95036 /* SGFormView.m */,
 				388BDCA413C6A0CB00B95036 /* SGBoxView.h */,
 				388BDCA513C6A0CB00B95036 /* SGBoxView.m */,
 				388BDCAC13C6A0CB00B95036 /* SGHBoxView.h */,
@@ -3900,23 +3797,6 @@
 			productReference = 0FC8F4AE0DEEE51700504F31 /* libxchat.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		0FE5E01C0F45576B000E0F91 /* SGPalette */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0FE5E0210F45576C000E0F91 /* Build configuration list for PBXNativeTarget "SGPalette" */;
-			buildPhases = (
-				0FE5E0190F45576B000E0F91 /* Resources */,
-				0FE5E01A0F45576B000E0F91 /* Sources */,
-				0FE5E01B0F45576B000E0F91 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SGPalette;
-			productName = SGPalette;
-			productReference = 0FE5E01D0F45576B000E0F91 /* SGPalette.ibplugin */;
-			productType = "com.apple.product-type.bundle";
-		};
 		2D78137F10E77C6400C71AF8 /* perl-snowleopard */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D78138410E77C6600C71AF8 /* Build configuration list for PBXNativeTarget "perl-snowleopard" */;
@@ -4142,7 +4022,6 @@
 				385F7745155156A400689E6E /* intl */,
 				385F783115515C3F00689E6E /* glib */,
 				0FC8F4AD0DEEE51700504F31 /* xchat */,
-				0FE5E01C0F45576B000E0F91 /* SGPalette */,
 				0F8F08100E1FE00800359159 /* tcl */,
 				0F2FEF2A0E1FAB1500DE4D41 /* python */,
 				0F8F06D60E1FDA8500359159 /* perl-leopard */,
@@ -4288,21 +4167,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0FE5E0190F45576B000E0F91 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0FE5E0370F45595A000E0F91 /* SGFormView.classdescription in Resources */,
-				0FE5E0380F45595A000E0F91 /* SGFormViewInspector.xib in Resources */,
-				0FE5E0390F45595A000E0F91 /* SGHBoxView.classdescription in Resources */,
-				0FE5E03A0F45595A000E0F91 /* SGHBoxViewInspector.xib in Resources */,
-				0FE5E03C0F45595A000E0F91 /* SGPalette.xib in Resources */,
-				0FE5E03E0F45595A000E0F91 /* SGVBoxView.classdescription in Resources */,
-				0FE5E03F0F45595A000E0F91 /* SGVBoxViewInspector.xib in Resources */,
-				0FE5E0400F45595A000E0F91 /* SGView.classdescription in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4641,24 +4505,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0FE5E01A0F45576B000E0F91 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0FE5E03B0F45595A000E0F91 /* SGPalette.m in Sources */,
-				0FE5E03D0F45595A000E0F91 /* SGPaletteIntegration.m in Sources */,
-				0FE5E0470F455A07000E0F91 /* SGFormViewInspector.m in Sources */,
-				0FE5E0480F455A07000E0F91 /* SGHBoxViewInspector.m in Sources */,
-				0FE5E0490F455A07000E0F91 /* SGVBoxViewInspector.m in Sources */,
-				2D4ACFB7123000F000DEB5FA /* SGDebug.m in Sources */,
-				388BDCD513C6A17C00B95036 /* SGFormView.m in Sources */,
-				388BDCD613C6A18100B95036 /* SGHBoxView.m in Sources */,
-				388BDCD713C6A18800B95036 /* SGVBoxView.m in Sources */,
-				388BDCD813C6A19A00B95036 /* SGView.m in Sources */,
-				388BDCD913C6A1A500B95036 /* SGBoxView.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2D78137D10E77C6400C71AF8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4955,11 +4801,6 @@
 			isa = PBXTargetDependency;
 			target = 0FC8F4AD0DEEE51700504F31 /* xchat */;
 			targetProxy = 0FC8F5C20DEEEA3B00504F31 /* PBXContainerItemProxy */;
-		};
-		2DDC6FE11231BCCB0015A26C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0FE5E01C0F45576B000E0F91 /* SGPalette */;
-			targetProxy = 2DDC6FE01231BCCB0015A26C /* PBXContainerItemProxy */;
 		};
 		387624F913C7024F00850913 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -6435,67 +6276,6 @@
 			};
 			name = Release;
 		};
-		0FE5E01F0F45576C000E0F91 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Mac/SGPalette/Prefix.pch;
-				INFOPLIST_FILE = Mac/SGPalette/Info.plist;
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				LIBRARY_SEARCH_PATHS = (
-					Mac/contrib/lib,
-					Mac/SGLibrary,
-				);
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PRODUCT_NAME = SGPalette;
-				WRAPPER_EXTENSION = ibplugin;
-			};
-			name = Debug;
-		};
-		0FE5E0200F45576C000E0F91 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Mac/SGPalette/Prefix.pch;
-				INFOPLIST_FILE = Mac/SGPalette/Info.plist;
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				LIBRARY_SEARCH_PATHS = (
-					Mac/contrib/lib,
-					Mac/SGLibrary,
-				);
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PRODUCT_NAME = SGPalette;
-				WRAPPER_EXTENSION = ibplugin;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
 		2D78138210E77C6600C71AF8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -7047,15 +6827,6 @@
 			buildConfigurations = (
 				0FC8F4AF0DEEE51700504F31 /* Debug */,
 				0FC8F4B00DEEE51700504F31 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0FE5E0210F45576C000E0F91 /* Build configuration list for PBXNativeTarget "SGPalette" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0FE5E01F0F45576C000E0F91 /* Debug */,
-				0FE5E0200F45576C000E0F91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
