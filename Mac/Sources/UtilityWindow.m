@@ -31,7 +31,9 @@ NSMutableDictionary *utilities;
 
 + (void) initialize {
     if (self == [UtilityWindow class]) {
-        utilities = [[NSMutableDictionary alloc] init];
+        if (utilities == nil) {
+            utilities = [[NSMutableDictionary alloc] init];
+        }
     }
 }
 
@@ -83,8 +85,11 @@ NSMutableDictionary *utilities;
 @synthesize windowKey;
 
 + (void) initialize {
-    if ( utilities == nil )
-        utilities = [[NSMutableDictionary alloc] init];    
+    if (self == [UtilityTabOrWindowView class]) {
+        if (utilities == nil) {
+            utilities = [[NSMutableDictionary alloc] init];
+        }
+    }
 }
 
 + (UtilityTabOrWindowView *) utilityIfExistsByKey:(id)aKey {
