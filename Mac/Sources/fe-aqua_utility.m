@@ -22,7 +22,7 @@
 #pragma mark -
 
 NSMutableArray *InputThingItems;
-NSInteger InputThingSequence = 1;
+static int InputThingSequence = 1;
 
 @implementation InputThing
 @synthesize tag;
@@ -98,6 +98,7 @@ NSInteger InputThingSequence = 1;
 #if USE_GLIKE_TIMER
 #else
 
+NSLock *TimerThingLock;
 NSMutableArray *TimerThingItems;
 static int TimerThingSequence = 1;
 
@@ -105,7 +106,8 @@ static int TimerThingSequence = 1;
 @synthesize tag;
 
 + (void) initialize {
-    if (self == [TimerThing class]) { 
+    if (self == [TimerThing class]) {
+        TimerThingLock = [NSLock new];
         TimerThingItems = [[NSMutableArray alloc] init];
     }
 }
@@ -116,31 +118,38 @@ static int TimerThingSequence = 1;
     TimerThing *thing = [[TimerThing alloc] init];
     
     thing->interval = (NSTimeInterval) the_interval / 1000;
+    thing->tag = TimerThingSequence ++;
     thing->callback = the_callback;
     thing->userdata = the_userdata;
-    thing->tag = TimerThingSequence ++;
-    thing->timer = nil;
-    
+
+    [TimerThingLock lock];
     [TimerThingItems addObject:thing];
-    
+    [TimerThingLock unlock];
+
     [thing schedule];
     
     return [thing autorelease];
 }
 
 + (id)timerForTag:(int)tag {
+    [TimerThingLock lock];
+    id timer = nil;
     for (TimerThing *atimer in TimerThingItems)
     {
-        if (atimer->tag == tag)
-            return atimer;
+        if (atimer->tag == tag) {
+            timer = atimer;
+        }
     }
-    return nil;
+    [TimerThingLock unlock];
+    return timer;
 }
 
 - (void)remove {
     [self invalidate];
     self->callback = NULL;     // We'll use this to detect released
-    [TimerThingItems removeObject:self];
+    [TimerThingLock lock];
+    [TimerThingItems removeObjectIdenticalTo:self];
+    [TimerThingLock unlock];
 }
 
 - (void)dealloc
