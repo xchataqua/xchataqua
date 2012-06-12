@@ -58,7 +58,7 @@ extern struct eventInfo textEventInfo[];
 @class DccRecvWin;
 @class DccChatWin;
 
-@interface AquaChat : NSObject <GrowlApplicationBridgeDelegate>
+@interface AquaChat : NSObject <GrowlApplicationBridgeDelegate, NSApplicationDelegate>
 {
 @public
     //Main menu

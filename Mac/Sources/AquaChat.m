@@ -237,7 +237,7 @@ struct eventInfo textEventInfo[NUM_XP];
     
     if (info->bounce && (info->bounce == -1 || bg))
     {
-        [NSApp requestUserAttention:NSInformationalRequest];
+        [NSApp requestUserAttention:NSCriticalRequest];
     }
     
     if (info->show && (info->show == -1 || bg))
