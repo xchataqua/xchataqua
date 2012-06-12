@@ -22,7 +22,7 @@
 #pragma mark -
 
 NSMutableArray *InputThingItems;
-NSInteger InputThingSequence = 1;
+static int InputThingSequence = 1;
 
 @implementation InputThing
 @synthesize tag;
