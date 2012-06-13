@@ -189,6 +189,9 @@
 		3839010413C06619004D20BC /* CLTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3839010313C06619004D20BC /* CLTabCell.m */; };
 		3839010713C0667B004D20BC /* CLTabViewButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3839010613C0667B004D20BC /* CLTabViewButtonCell.m */; };
 		3839010913C06722004D20BC /* CLclose13.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3839010813C06722004D20BC /* CLclose13.tiff */; };
+		384A96461588F2CC00268814 /* xchat-ruby.c in Sources */ = {isa = PBXBuildFile; fileRef = 384A963E1588F2CC00268814 /* xchat-ruby.c */; };
+		384A964B1588F6FE00268814 /* DEVELOPERS in CopyFiles */ = {isa = PBXBuildFile; fileRef = 384A96341588F2CC00268814 /* DEVELOPERS */; };
+		384A964C1588F6FE00268814 /* rubyenv in CopyFiles */ = {isa = PBXBuildFile; fileRef = 384A96481588F66100268814 /* rubyenv */; };
 		385F774D1551595300689E6E /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 385F774C1551595300689E6E /* config.h */; };
 		385F77D81551596E00689E6E /* bindtextdom.c in Sources */ = {isa = PBXBuildFile; fileRef = 385F77591551596E00689E6E /* bindtextdom.c */; };
 		385F77DA1551596E00689E6E /* dcgettext.c in Sources */ = {isa = PBXBuildFile; fileRef = 385F775E1551596E00689E6E /* dcgettext.c */; };
@@ -611,7 +614,6 @@
 		38CE5A95154A689F00480EC6 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5A8F154A687400480EC6 /* ShortcutRecorder.framework */; };
 		38CE5AE2154A718500480EC6 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5AC5154A70E300480EC6 /* Growl.framework */; };
 		38D1414213D801B70026B7B5 /* Ruby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38D1414113D801B70026B7B5 /* Ruby.framework */; };
-		38D1415A13D801E60026B7B5 /* xchat-ruby.c in Sources */ = {isa = PBXBuildFile; fileRef = 38D1415113D801E60026B7B5 /* xchat-ruby.c */; };
 		38DA68CF13C8D72700B12F16 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C89F213C6E10100AAF20D /* MainMenu.xib */; };
 		38E34015154A74C2005B59F8 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5AC5154A70E300480EC6 /* Growl.framework */; };
 		38E34016154A75BF005B59F8 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5A8F154A687400480EC6 /* ShortcutRecorder.framework */; };
@@ -902,6 +904,17 @@
 				38BC97C2154A9BB5005894EF /* Sparkle.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		384A964A1588F6C200268814 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 12;
+			files = (
+				384A964B1588F6FE00268814 /* DEVELOPERS in CopyFiles */,
+				384A964C1588F6FE00268814 /* rubyenv in CopyFiles */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		3876258513C7024F00850913 /* Copy Frameworks */ = {
@@ -1198,6 +1211,13 @@
 		3839010513C0667B004D20BC /* CLTabViewButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTabViewButtonCell.h; sourceTree = "<group>"; };
 		3839010613C0667B004D20BC /* CLTabViewButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTabViewButtonCell.m; sourceTree = "<group>"; };
 		3839010813C06722004D20BC /* CLclose13.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = CLclose13.tiff; path = Resources/CLclose13.tiff; sourceTree = "<group>"; };
+		384A96321588F2B700268814 /* ruby-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ruby-Info.plist"; path = "../ruby-Info.plist"; sourceTree = "<group>"; };
+		384A96341588F2CC00268814 /* DEVELOPERS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DEVELOPERS; sourceTree = "<group>"; };
+		384A963C1588F2CC00268814 /* xchat-plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "xchat-plugin.h"; sourceTree = "<group>"; };
+		384A963D1588F2CC00268814 /* xchat-ruby-plugin.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = "xchat-ruby-plugin.rb"; sourceTree = "<group>"; };
+		384A963E1588F2CC00268814 /* xchat-ruby.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "xchat-ruby.c"; sourceTree = "<group>"; };
+		384A96471588F41200268814 /* xchat-ruby-plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "xchat-ruby-plugin.h"; sourceTree = "<group>"; };
+		384A96481588F66100268814 /* rubyenv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rubyenv; sourceTree = "<group>"; };
 		385F766D155148FC00689E6E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		385F7746155156A400689E6E /* libintl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libintl.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		385F774C1551595300689E6E /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
@@ -2477,7 +2497,6 @@
 		388C8E6E13C6E10400AAF20D /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/UrlGrabberWindow.xib; sourceTree = "<group>"; };
 		388C8E6F13C6E10400AAF20D /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/UserCommandsWindow.xib; sourceTree = "<group>"; };
 		38BC97BF154A9B2C005894EF /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Mac/Aqua/Frameworks/Sparkle/Sparkle.framework; sourceTree = "<group>"; };
-		38BC97C3154AD0A7005894EF /* xchat-ruby-plugin.rb */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = text.script.ruby; path = "xchat-ruby-plugin.rb"; sourceTree = "<group>"; tabWidth = 2; };
 		38CE5A63154A551600480EC6 /* alt_completion.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = alt_completion.pl; path = xchat/plugins/perl/alt_completion.pl; sourceTree = SOURCE_ROOT; };
 		38CE5A64154A551600480EC6 /* char_count.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = char_count.pl; path = xchat/plugins/perl/char_count.pl; sourceTree = SOURCE_ROOT; };
 		38CE5A65154A551600480EC6 /* irc.pm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = irc.pm.h; path = xchat/plugins/perl/irc.pm.h; sourceTree = SOURCE_ROOT; };
@@ -2486,10 +2505,6 @@
 		38CE5AA4154A70E100480EC6 /* Growl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Growl.xcodeproj; path = Mac/Growl/Growl.xcodeproj; sourceTree = "<group>"; };
 		38D1414013D800E60026B7B5 /* ruby.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ruby.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		38D1414113D801B70026B7B5 /* Ruby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ruby.framework; path = System/Library/Frameworks/Ruby.framework; sourceTree = SDKROOT; };
-		38D1414E13D801E60026B7B5 /* xchat-plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "xchat-plugin.h"; sourceTree = "<group>"; };
-		38D1414F13D801E60026B7B5 /* xchat-ruby-plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "xchat-ruby-plugin.h"; sourceTree = "<group>"; };
-		38D1415113D801E60026B7B5 /* xchat-ruby.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "xchat-ruby.c"; sourceTree = "<group>"; };
-		38D1415F13D80C700026B7B5 /* ruby-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ruby-Info.plist"; sourceTree = "<group>"; };
 		38FC92B813CAF449006CB5C8 /* am */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = am; path = am.lproj/xchat.strings; sourceTree = "<group>"; };
 		38FC92B913CAF449006CB5C8 /* az */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = az; path = az.lproj/xchat.strings; sourceTree = "<group>"; };
 		38FC92BA13CAF449006CB5C8 /* be */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = be; path = be.lproj/xchat.strings; sourceTree = "<group>"; };
@@ -3068,6 +3083,19 @@
 			name = Azure;
 			sourceTree = "<group>";
 		};
+		384A96331588F2CC00268814 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				384A96341588F2CC00268814 /* DEVELOPERS */,
+				384A963C1588F2CC00268814 /* xchat-plugin.h */,
+				384A963D1588F2CC00268814 /* xchat-ruby-plugin.rb */,
+				384A963E1588F2CC00268814 /* xchat-ruby.c */,
+				384A96471588F41200268814 /* xchat-ruby-plugin.h */,
+				384A96481588F66100268814 /* rubyenv */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		385DCEF91558C260002FE467 /* xchat */ = {
 			isa = PBXGroup;
 			children = (
@@ -3542,11 +3570,8 @@
 		38D1414513D801E60026B7B5 /* ruby */ = {
 			isa = PBXGroup;
 			children = (
-				38D1415F13D80C700026B7B5 /* ruby-Info.plist */,
-				38D1414E13D801E60026B7B5 /* xchat-plugin.h */,
-				38BC97C3154AD0A7005894EF /* xchat-ruby-plugin.rb */,
-				38D1414F13D801E60026B7B5 /* xchat-ruby-plugin.h */,
-				38D1415113D801E60026B7B5 /* xchat-ruby.c */,
+				384A96321588F2B700268814 /* ruby-Info.plist */,
+				384A96331588F2CC00268814 /* src */,
 			);
 			path = ruby;
 			sourceTree = "<group>";
@@ -3900,8 +3925,10 @@
 			buildPhases = (
 				38D1413813D800E60026B7B5 /* Resources */,
 				38BC9850154AD8A7005894EF /* Generate XChat Plugin Header */,
+				384A964D1588FBD100268814 /* Generate rubyenv */,
 				38D1413913D800E60026B7B5 /* Sources */,
 				38D1413B13D800E60026B7B5 /* Frameworks */,
+				384A964A1588F6C200268814 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -4390,6 +4417,20 @@
 			shellPath = /bin/sh;
 			shellScript = "# shell script goes here\nexit 0";
 		};
+		384A964D1588FBD100268814 /* Generate rubyenv */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate rubyenv";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "cd \"$PROJECT_DIR/Mac/Plugins/ruby/src\"\n\n/usr/bin/ruby -e 'puts $LOAD_PATH.join(\"\\n\")' > rubyenv";
+		};
 		38763F1913DD40D6008C40DB /* Generate Symlink For Lion Perl Library & XChat Plugin Headers */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4445,7 +4486,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "cd \"$PROJECT_DIR/Mac/Plugins/ruby\"\n\n/usr/bin/ruby scripts/embedify.rb xchat-ruby-plugin.rb xchat-ruby-plugin.h";
+			shellScript = "cd \"$PROJECT_DIR/Mac/Plugins/ruby/src\"\n\n/usr/bin/ruby ../scripts/embedify.rb xchat-ruby-plugin.rb xchat-ruby-plugin.h";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -4720,7 +4761,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38D1415A13D801E60026B7B5 /* xchat-ruby.c in Sources */,
+				384A96461588F2CC00268814 /* xchat-ruby.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6634,7 +6675,7 @@
 					Mac/contrib/include,
 					xchat/src,
 				);
-				INFOPLIST_FILE = "Mac/Plugins/ruby/ruby-Info.plist";
+				INFOPLIST_FILE = "Mac/Plugins/ruby-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					Mac/contrib/lib,
@@ -6662,7 +6703,7 @@
 					Mac/contrib/include,
 					xchat/src,
 				);
-				INFOPLIST_FILE = "Mac/Plugins/ruby/ruby-Info.plist";
+				INFOPLIST_FILE = "Mac/Plugins/ruby-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					Mac/contrib/lib,
