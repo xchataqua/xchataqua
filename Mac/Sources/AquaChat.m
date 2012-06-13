@@ -59,7 +59,7 @@ struct menuPreferenceItem
 static struct menuPreferenceItem menuPreferenceItems [6];
 static AquaChat *aquachat;
 
-struct eventInfo textEventInfo[NUM_XP];
+struct EventInfo textEventInfo[NUM_XP];
 
 #pragma mark -
 
@@ -205,7 +205,7 @@ struct eventInfo textEventInfo[NUM_XP];
 
 - (void) event:(int) event args:(char **) args session:(session *) sess
 {
-    struct eventInfo *info = textEventInfo + event;
+    struct EventInfo *info = textEventInfo + event;
     BOOL bg = ![NSApp isActive];
     
     // Pref can be
@@ -954,7 +954,7 @@ struct eventInfo textEventInfo[NUM_XP];
     
     for (int i = 0; i < NUM_XP; i++)
     {
-        struct eventInfo *event = &textEventInfo[i];
+        struct EventInfo *event = &textEventInfo[i];
         char *name = te[i].name;
         
         id gval = [dict objectForKey:[NSString stringWithFormat:@"%s_growl", name]];
@@ -975,7 +975,7 @@ struct eventInfo textEventInfo[NUM_XP];
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:NUM_XP];
     for (int i = 0; i < NUM_XP; i++)
     {
-        struct eventInfo *event = &textEventInfo[i];
+        struct EventInfo *event = &textEventInfo[i];
         char *name = te[i].name;
         
         if (event->growl)

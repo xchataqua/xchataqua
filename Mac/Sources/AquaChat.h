@@ -44,14 +44,14 @@
 
 #define UtilityWindowKey(KEY, ADDR) [KEY stringByAppendingFormat:@"_%x", ADDR]
 
-struct eventInfo
+struct EventInfo
 {
     int growl;
     int show;
     int bounce;
 };
 
-extern struct eventInfo textEventInfo[];
+extern struct EventInfo textEventInfo[];
 
 @class ColorPalette;
 @class DccSendWin;

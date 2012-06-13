@@ -31,7 +31,7 @@
 
 extern char *sound_files[];
 extern struct text_event te[];
-extern struct eventInfo textEventInfo[];
+extern struct EventInfo textEventInfo[];
 
 @interface PreferenceLeaf : NSObject
 {
@@ -92,7 +92,7 @@ extern struct eventInfo textEventInfo[];
             soundIndex = [sounds indexOfObject:[NSString stringWithUTF8String:sound_files[event]]];
         }
         
-        struct eventInfo *info = &textEventInfo[event];
+        struct EventInfo *info = &textEventInfo[event];
         
         self->sound = [[NSNumber alloc] initWithInteger:soundIndex];
         self->growl = [[NSNumber alloc] initWithInt:info->growl];
