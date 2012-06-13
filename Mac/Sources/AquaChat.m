@@ -222,15 +222,10 @@ struct EventInfo textEventInfo[NUM_XP];
         format_event (sess, event, args, o, sizeof (o), 1);
         if (o[0])
         {
+            NSString *title = [NSString stringWithUTF8String:te[event].name];
             char *x = strip_color (o, -1, STRIP_ALL);
-            [GrowlApplicationBridge
-             notifyWithTitle:[NSString stringWithUTF8String:te[event].name]
-             description:[NSString stringWithUTF8String:x]
-             notificationName:@"X-Chat"
-             iconData:nil
-             priority:0
-             isSticky:NO
-             clickContext:nil];
+            NSString *description = [NSString stringWithUTF8String:x];
+            [self growl:description title:title];
             free (x);
         }
     }
