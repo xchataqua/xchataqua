@@ -96,16 +96,16 @@ AquaChat *AquaChatShared;
     
     [self loadEventInfo];
     
-    appImage = [[NSApp applicationIconImage] copy];
-    alertImage = [appImage copy];
-    NSImage *badgeImage = [NSImage imageNamed:@"warning.tiff"];
-    [alertImage lockFocus];
-    NSSize alertSize = [alertImage size];
-    NSSize badgeSize = [badgeImage size];
-    [badgeImage compositeToPoint:NSMakePoint(alertSize.width - badgeSize.width, alertSize.height - badgeSize.height) 
-                       operation:NSCompositeSourceOver 
-                        fraction:1];
-    [alertImage unlockFocus];
+
+//    alertImage = [appImage copy];
+//    NSImage *badgeImage = [NSImage imageNamed:@"warning.tiff"];
+//    [alertImage lockFocus];
+//    NSSize alertSize = [alertImage size];
+//    NSSize badgeSize = [badgeImage size];
+//    [badgeImage compositeToPoint:NSMakePoint(alertSize.width - badgeSize.width, alertSize.height - badgeSize.height) 
+//                       operation:NSCompositeSourceOver 
+//                        fraction:1];
+//    [alertImage unlockFocus];
     
     self->soundCache = [[NSMutableDictionary alloc] init];
     
@@ -122,9 +122,20 @@ AquaChat *AquaChatShared;
     [NSApp requestEvents:NSKeyDown forWindow:nil forView:nil selector:@selector (myKeyDown:) object:self];
 }
 
-- (void) dealloc {
-    [appImage dealloc];
-    [super dealloc];
+- (NSInteger)badgeCount {
+    return _badgeCount;
+}
+
+- (void)setBadgeCount:(NSInteger)value {
+    if (_badgeCount == value) return;
+
+    NSDockTile *tile = [NSApp dockTile];
+    if (value == 0) {
+        tile.badgeLabel = nil;
+    } else {
+        tile.badgeLabel = [NSString stringWithFormat:@"%d", value];
+    }
+    _badgeCount = value;
 }
 
 - (void) preferencesChanged
@@ -238,7 +249,7 @@ AquaChat *AquaChatShared;
     
     if (info->show && (info->show == -1 || bg))
     {
-        [NSApp setApplicationIconImage:alertImage];
+        self.badgeCount += 1;
     }
 }
 
@@ -288,7 +299,7 @@ AquaChat *AquaChatShared;
 
 - (void) applicationDidBecomeActive:(NSNotification *) aNotification
 {
-    [NSApp setApplicationIconImage:appImage];
+    self.badgeCount = 0;
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)application
