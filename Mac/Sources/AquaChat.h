@@ -91,11 +91,13 @@ extern struct EventInfo textEventInfo[];
     DccChatWin *dcc_chat_window;
     
     NSMutableDictionary *soundCache;
-    NSImage *appImage, *alertImage;
+    
+    NSInteger _badgeCount;
 }
 
 @property (nonatomic, readonly) NSFont *font, *boldFont;
 @property (nonatomic, retain) ColorPalette *palette;
+@property (nonatomic, assign) NSInteger badgeCount;
 
 - (void) preferencesChanged;
 
