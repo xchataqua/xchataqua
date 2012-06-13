@@ -1,4 +1,8 @@
-# X-Chat Azure
+# X-Chat Aqua
+
+X-Chat Aqua is a XChat front-end for Mac OS X. It originally starts from http://sourceforge.net/projects/xchataqua/
+
+# XChat Azure
 
 XChat Azure is a fork from X-Chat Aqua, the Mac OS X native XChat front-end.
 
