@@ -57,7 +57,6 @@ struct menuPreferenceItem
 };
 
 static struct menuPreferenceItem menuPreferenceItems [6];
-static AquaChat *aquachat;
 
 struct EventInfo textEventInfo[NUM_XP];
 
@@ -76,6 +75,8 @@ struct EventInfo textEventInfo[NUM_XP];
 
 @end
 
+AquaChat *AquaChatShared;
+
 @implementation AquaChat
 @synthesize font, boldFont, palette;
 
@@ -88,8 +89,8 @@ struct EventInfo textEventInfo[NUM_XP];
 }
 
 - (void) awakeFromNib
-{
-    aquachat = self;
+{   
+    AquaChatShared = self;
     
     [GrowlApplicationBridge setGrowlDelegate:self];
     
@@ -265,7 +266,7 @@ struct EventInfo textEventInfo[NUM_XP];
 
 + (AquaChat *) sharedAquaChat
 {
-    return aquachat;
+    return AquaChatShared;
 }
 
 #pragma mark NSApplication delegate
