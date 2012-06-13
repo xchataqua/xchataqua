@@ -398,6 +398,7 @@ static NSCursor *lr_cursor;
     int len = 0;
 
     /* coalesce multiple print_text calls into a single update to avoid delay when loading scrollback. */
+    // NOTE: this is unsafe. this will raise exceptions
     if (!pendingEditing) {
         [stg beginEditing];
         [self performSelector:@selector(endEditing) withObject:nil afterDelay:0.01];
