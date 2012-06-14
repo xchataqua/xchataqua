@@ -56,14 +56,6 @@ static NSImage *getCloseImage()
     return close_image;
 }
 
-static NSNib *getTabMenuNib ()
-{
-    static NSNib *tab_menu_nib;
-    if (!tab_menu_nib)
-        tab_menu_nib = [[NSNib alloc] initWithNibNamed:@"TabMenu" bundle:nil];
-    return tab_menu_nib;
-}
-
 @interface NSButtonCell (SGTabViewCloseCell)
 
 + (NSButtonCell *)tabViewCloseCell;
@@ -662,8 +654,16 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 #pragma mark -
 
+NSNib *SGTabViewItemTabMenuNib;
+
 @implementation SGTabViewItem
 @synthesize label, titleColor, view;
+
++ (void)initialize {
+    if (self == [SGTabViewItem class]) {
+        SGTabViewItemTabMenuNib = [[NSNib alloc] initWithNibNamed:@"TabMenu" bundle:nil];
+    }
+}
 
 - (id) initWithIdentifier:(id) identifier
 {
@@ -674,7 +674,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 
     dimple = [NSImage imageNamed:@"dimple.tiff"];
     
-    [getTabMenuNib() instantiateNibWithOwner:self topLevelObjects:nil];
+    [SGTabViewItemTabMenuNib instantiateNibWithOwner:self topLevelObjects:nil];
 
     return self;
 }
@@ -707,7 +707,7 @@ HIThemeSegmentPosition positionTable[2][2] =
     [self setLabel:label];
 }
 
-- (void) noButton
+- (void)removeButton
 {
     if (button)
     {
@@ -981,9 +981,9 @@ HIThemeSegmentPosition positionTable[2][2] =
 {
     if (hbox)
     {
-        for (SGTabViewItem *this_tab in tabs)
+        for (SGTabViewItem *tab in tabs)
         {
-            [this_tab noButton];
+            [tab removeButton];
         }
 
         [hbox removeFromSuperview];
@@ -1130,7 +1130,7 @@ HIThemeSegmentPosition positionTable[2][2] =
         return;
     
     [tabViewItem->view removeFromSuperview];
-    [tabViewItem noButton];
+    [tabViewItem removeButton];
     tabViewItem->parent = nil;
 
     if (selected_tab == tabViewItem)
