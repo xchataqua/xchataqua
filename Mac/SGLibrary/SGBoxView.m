@@ -87,23 +87,7 @@ NSRect NSRectFlip (NSRect rect)
 {
     self = [super initWithCoder:decoder];
     if (self != nil) {
-        if (self->minorJustification || self->majorJustification) {
-            // user defiend runtime attributes
-            self->minorMargin = 0.0f;
-            self->majorInnerMargin = 0.0f;
-            self->majorOutterMargin = 0.0f;
-            self->orientation = SGBoxOrientationHorizontal;
-            self->order = SGBoxOrderFIFO;            
-        } else {
-            self->minorJustification = (SGBoxMinorJustification)[decoder decodeIntForKey:@"minorjust"];
-            self->majorJustification = (SGBoxMajorJustification)[decoder decodeIntForKey:@"majorjust"];
-            self->minorMargin        = [decoder decodeFloatForKey:@"minormargin"];
-            self->majorInnerMargin   = [decoder decodeFloatForKey:@"majorinnermargin"];
-            self->majorOutterMargin  = [decoder decodeFloatForKey:@"majorouttermargin"];
-            self->orientation        = (SGBoxOrientation)[decoder decodeIntForKey:@"orient"];
-            self->order              = (SGBoxOrder)[decoder decodeIntForKey:@"order"];
-            self->stretchView        = [decoder decodeObjectForKey:@"stretch"];
-        }
+        // load data from user defiend runtime attributes
         [self queue_layout];
     }
     return self;

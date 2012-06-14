@@ -61,7 +61,7 @@ typedef CGFloat SGBoxMargin;
     BOOL                    wrap;
 }
 
-@property (nonatomic,assign,setter=setStretchView:)         NSView *stretchView;
+@property (nonatomic,assign,setter=setStretchView:)         IBOutlet NSView *stretchView;
 @property (nonatomic,readonly)                              SGBoxMinorJustification minorJustification;
 @property (nonatomic,assign,setter=setMajorJustification:)  SGBoxMajorJustification majorJustification;
 @property (nonatomic,assign,setter=setMinorMargin:)         SGBoxMargin             minorMargin;
