@@ -34,7 +34,7 @@
 #import "BanWindow.h"
 #import "ChannelWindow.h"
 #import "ColorPalette.h"
-#import "ChatWindow.h"
+#import "ChatViewController.h"
 #import "DccSendWin.h"
 #import "DccRecvWin.h"
 #import "DccChatWin.h"
@@ -159,7 +159,7 @@ AquaChat *AquaChatShared;
     for (GSList *list = sess_list; list; list = list->next)
     {
         struct session *sess = (struct session *)list->data;
-        [sess->gui->chatWindow preferencesChanged];
+        [sess->gui->controller preferencesChanged];
     }
     
     NSString* keyCodeString;
@@ -262,7 +262,7 @@ AquaChat *AquaChatShared;
     {
         struct session *sess = (struct session *) list->data;
         if (!serv || sess->server == serv)
-            [sess->gui->chatWindow performSelector:sel];
+            [sess->gui->controller performSelector:sel];
     }
 }
 
@@ -272,7 +272,7 @@ AquaChat *AquaChatShared;
     {
         struct session *sess = (struct session *) list->data;
         if (!serv || sess->server == serv)
-            [sess->gui->chatWindow performSelector:sel withObject:obj];
+            [sess->gui->controller performSelector:sel withObject:obj];
     }
 }
 
@@ -552,17 +552,17 @@ AquaChat *AquaChatShared;
     switch (action)
     {
         case 0:
-            [[sess->gui->chatWindow window] orderOut:self]; break;
+            [[sess->gui->controller window] orderOut:self]; break;
         case 1:
-            [[sess->gui->chatWindow window] orderFront:self]; break;
+            [[sess->gui->controller window] orderFront:self]; break;
         case 2:
-            [[sess->gui->chatWindow window] orderFront:self]; break;
+            [[sess->gui->controller window] orderFront:self]; break;
         case 3:
-            /*[[sess->gui->chatWindow set_tab_color (sess, -1, TRUE);*/ break; /* flash */
+            /*[[sess->gui->controller set_tab_color (sess, -1, TRUE);*/ break; /* flash */
         case 4:
-            [sess->gui->chatWindow setTabColor:arg flash:NO]; break;
+            [sess->gui->controller setTabColor:arg flash:NO]; break;
         case 5:
-            [[sess->gui->chatWindow window] miniaturize:self]; break;
+            [[sess->gui->controller window] miniaturize:self]; break;
     }
 }
 
@@ -602,23 +602,23 @@ AquaChat *AquaChatShared;
 - (void) findNext:(id)sender
 {
     if ( searchString != nil )
-        [current_sess->gui->chatWindow find:searchString caseSensitive:NO backward:NO];
+        [current_sess->gui->controller find:searchString caseSensitive:NO backward:NO];
 }
 
 - (void) findPrevious:(id)sender
 {
     if ( searchString != nil )
-        [current_sess->gui->chatWindow find:searchString caseSensitive:NO backward:YES];
+        [current_sess->gui->controller find:searchString caseSensitive:NO backward:YES];
 }
 
 - (void) useSelectionForFind:(id)sender
 {
-    [current_sess->gui->chatWindow useSelectionForFind];
+    [current_sess->gui->controller useSelectionForFind];
 }
 
 - (void) jumpToSelection:(id)sender
 {
-    [current_sess->gui->chatWindow jumpToSelection];
+    [current_sess->gui->controller jumpToSelection];
 }
 
 - (void) toggleAway:(id)sender
@@ -748,7 +748,7 @@ AquaChat *AquaChatShared;
 - (void) clearWindow:(id)sender
 {
     if (current_sess)
-        [current_sess->gui->chatWindow clear];
+        [current_sess->gui->controller clear];
 }
 
 - (void) selectNextTab:(id)sender
@@ -1015,9 +1015,9 @@ AquaChat *AquaChatShared;
 
 - (void) saveBuffer:(id)sender
 {
-    NSString *filename = [SGFileSelection saveWithWindow:[current_sess->gui->chatWindow window]];
+    NSString *filename = [SGFileSelection saveWithWindow:[current_sess->gui->controller window]];
     if ( filename != nil )
-        [current_sess->gui->chatWindow saveBuffer:filename];
+        [current_sess->gui->controller saveBuffer:filename];
 }
 
 - (void) updateUsermenu
