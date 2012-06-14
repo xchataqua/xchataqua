@@ -25,6 +25,7 @@
 
 #import "ColorPalette.h"
 #import "TabOrWindowView.h"
+#import "XATabWindow.h"
 
 //////////////////////////////////////////////////////////////////////
 
@@ -116,7 +117,7 @@ static NSWindow *initWindowForView (Class nswindow, NSView *view, NSPoint *where
     }
 }
 
-- (void) appleW
+- (void)closeTab
 {
     SGTabViewItem *item = [(SGTabView *)[tabWindow contentView] selectedTabViewItem];
     [self tabWantsToClose:item];
@@ -178,24 +179,6 @@ static NSWindow *initWindowForView (Class nswindow, NSView *view, NSPoint *where
 
 //////////////////////////////////////////////////////////////////////
 
-@interface MyTabWindow : NSWindow
-
-@end
-
-@implementation MyTabWindow
-
-- (void) performClose:(id)sender
-{
-    if ([sender isKindOfClass:[NSMenuItem class]])  // Apple-W?
-        [(TabOrWindowViewTabDelegate *)[self delegate] appleW];
-    else
-        [super performClose:sender];                // Window close button
-}
-
-@end
-
-//////////////////////////////////////////////////////////////////////
-
 @implementation TabOrWindowView
 @synthesize delegate;
 @synthesize title, tabTitle;
@@ -224,7 +207,7 @@ static NSWindow *initWindowForView (Class nswindow, NSView *view, NSPoint *where
         [tabWindow autorelease];
     }
     
-    tabWindow = initWindowForView ([MyTabWindow class], tabView, where);
+    tabWindow = initWindowForView ([XATabWindow class], tabView, where);
     [tabWindow setDelegate:tabDelegate];
     [tabWindow makeKeyAndOrderFront:self];
 }
