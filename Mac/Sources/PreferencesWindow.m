@@ -23,7 +23,7 @@
 #import "AquaChat.h"
 #import "PreferencesWindow.h"
 #import "ColorPalette.h"
-#import "ChatWindow.h"
+#import "ChatViewController.h"
 
 #include "text.h"
 #undef TYPE_BOOL

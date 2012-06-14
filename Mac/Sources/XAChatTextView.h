@@ -26,7 +26,7 @@
 #pragma mark -
 
 @class ColorPalette;
-@class ChatWindow;
+@class ChatViewController;
 
 @interface XAChatTextView : NSTextView
 #if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
@@ -42,7 +42,7 @@
     int         wordType;
     NSString    *word;
     id          mouseEventRequestId;
-    ChatWindow  *dropHandler;
+    ChatViewController  *dropHandler;
     CGFloat     fontWidth;
     BOOL        atBottom;
     NSInteger   numberOfLines;
