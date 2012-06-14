@@ -551,6 +551,10 @@
 		3876258D13C7027400850913 /* MainMenuAppstore.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C89F413C6E10100AAF20D /* MainMenuAppstore.xib */; };
 		38763F1C13DD40D6008C40DB /* perl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F06C10E1FDA5E00359159 /* perl.c */; };
 		38763F2613DD460E008C40DB /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 38763F2513DD460E008C40DB /* libperl.dylib */; };
+		387676941589BC41007366B7 /* XATabWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 387676931589BC41007366B7 /* XATabWindow.m */; };
+		387676951589BC41007366B7 /* XATabWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 387676931589BC41007366B7 /* XATabWindow.m */; };
+		387676961589BC48007366B7 /* XAUserList.m in Sources */ = {isa = PBXBuildFile; fileRef = 387676911589B61A007366B7 /* XAUserList.m */; };
+		387676971589BC49007366B7 /* XAUserList.m in Sources */ = {isa = PBXBuildFile; fileRef = 387676911589B61A007366B7 /* XAUserList.m */; };
 		38876EC8154C706E000B7E27 /* python.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */; };
 		38876ECA154C706E000B7E27 /* tcl.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0F8F08110E1FE00800359159 /* tcl.bundle */; };
 		38876ECC154C706E000B7E27 /* perl-snowleopard.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */; };
@@ -1515,6 +1519,8 @@
 		38763F2513DD460E008C40DB /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = "build/XChatAqua.build/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib"; sourceTree = SOURCE_ROOT; };
 		387676901589B61A007366B7 /* XAUserList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XAUserList.h; sourceTree = "<group>"; };
 		387676911589B61A007366B7 /* XAUserList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XAUserList.m; sourceTree = "<group>"; };
+		387676921589BC41007366B7 /* XATabWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XATabWindow.h; sourceTree = "<group>"; };
+		387676931589BC41007366B7 /* XATabWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XATabWindow.m; sourceTree = "<group>"; };
 		387C79FB13DEA26A00A79FA8 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/libsg.strings; sourceTree = "<group>"; };
 		387C79FE13DEA27D00A79FA8 /* de */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/xchataqua.strings; sourceTree = "<group>"; };
 		38876EF4154C766A000B7E27 /* PlugIns.tar */ = {isa = PBXFileReference; explicitFileType = archive.tar; path = PlugIns.tar; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2801,6 +2807,8 @@
 				0F8EA6CA0CFB347B001AE9AE /* XACommon.m */,
 				0F8EA6CD0CFB347B001AE9AE /* XATabView.h */,
 				0F8EA6CE0CFB347B001AE9AE /* XATabView.m */,
+				387676921589BC41007366B7 /* XATabWindow.h */,
+				387676931589BC41007366B7 /* XATabWindow.m */,
 				387676901589B61A007366B7 /* XAUserList.h */,
 				387676911589B61A007366B7 /* XAUserList.m */,
 				0F8EA6CB0CFB347B001AE9AE /* XADefaults.h */,
@@ -4750,6 +4758,8 @@
 				3876253813C7024F00850913 /* SGView.m in Sources */,
 				3876253913C7024F00850913 /* SGWrapView.m in Sources */,
 				3876253A13C7024F00850913 /* SGFileUtility.m in Sources */,
+				387676951589BC41007366B7 /* XATabWindow.m in Sources */,
+				387676961589BC48007366B7 /* XAUserList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4836,6 +4846,8 @@
 				388BDCD313C6A0CB00B95036 /* SGView.m in Sources */,
 				388BDCD413C6A0CB00B95036 /* SGWrapView.m in Sources */,
 				380B9D1A13C6E5D70029CE25 /* SGFileUtility.m in Sources */,
+				387676941589BC41007366B7 /* XATabWindow.m in Sources */,
+				387676971589BC49007366B7 /* XAUserList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,6 +27,7 @@
 #import "AquaChat.h"
 #import "AutoAwayController.h"
 #import "MenuMaker.h"
+#import "XATabWindow.h"
 
 // Utility Window
 #import "AsciiWindow.h"
@@ -767,7 +768,7 @@ AquaChat *AquaChatShared;
 
 - (void) closeTab:(id)sender
 {
-    [[NSApp keyWindow] performClose:sender];
+    [(XATabWindow *)[NSApp keyWindow] performCloseTab:sender];
 }
 
 - (void) toggleAwayToValue:(bool) is_away
