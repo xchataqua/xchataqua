@@ -15,11 +15,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-@class ChatWindow;
+@class ChatViewController;
 
 struct session_gui
 {
-    ChatWindow *chatWindow;
+    ChatViewController *controller;
 };
 
 struct server_gui

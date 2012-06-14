@@ -25,7 +25,7 @@
 #include "fe-aqua_common.h"
 
 #import "MenuMaker.h"
-#import "ChatWindow.h"
+#import "ChatViewController.h"
 
 #import "ViewerWindow.h"
 
@@ -95,7 +95,7 @@ void decHandlerCount()
 	if (target)
 		nick_command_parse (targetSess, cmd, target, target);
 	else
-		[targetSess->gui->chatWindow doUserlistCommand:cmd];
+		[targetSess->gui->controller doUserlistCommand:cmd];
 }
 
 @end

@@ -21,12 +21,11 @@
 
 @class ChatSplitView;
 
-@interface ChatWindow : NSObject
+@interface ChatViewController : NSViewController
 #if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
 <NSTextViewDelegate,NSTextFieldDelegate,NSTableViewDataSource,NSTableViewDelegate,NSSplitViewDelegate>
 #endif
 {
-    IBOutlet TabOrWindowView    *chatView;
     IBOutlet XAChatTextView     *chatTextView;
     IBOutlet NSTextField        *inputTextField;
     IBOutlet NSTextField        *nickTextField;
@@ -64,7 +63,7 @@
     struct session *sess;
 }
 
-@property (nonatomic, readonly) TabOrWindowView *view;
+@property (nonatomic, readonly) TabOrWindowView *chatView;
 @property (nonatomic, readonly) int inputTextPosition;
 @property (nonatomic, assign)   NSString *inputText;
 @property (nonatomic, readonly) NSWindow *window;
@@ -118,7 +117,7 @@
 - (void) setInputTextPosition:(int)pos delta:(bool) delta;
 - (void) userlistSetSelected;
 - (void) doUserlistCommand:(const char *)cmd;
-- (void) lastlogIntoWindow:(ChatWindow *)logWin key:(char *)ckey;
+- (void) lastlogIntoWindow:(ChatViewController *)logWin key:(char *)ckey;
 
 @property(nonatomic) NSInteger completionIndex; // Current index when cycling through tab-completions.
 

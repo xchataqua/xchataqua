@@ -22,7 +22,7 @@
 
 #include "fe-aqua_common.h"
 
-#import "ChatWindow.h"
+#import "ChatViewController.h"
 #import "AsciiWindow.h"
 
 @interface AsciiWindow (private)
@@ -107,7 +107,7 @@
 - (void) inputCharacter:(id)sender
 {
     if (current_sess)
-        [current_sess->gui->chatWindow insertText:[sender title]];
+        [current_sess->gui->controller insertText:[sender title]];
 }
 
 @end
