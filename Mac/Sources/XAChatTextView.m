@@ -22,7 +22,7 @@
 
 #import "XAChatTextView.h"
 #import "ColorPalette.h"
-#import "ChatWindow.h"
+#import "ChatViewController.h"
 #import "mIRCString.h"
 #import "MenuMaker.h"
 
@@ -516,9 +516,11 @@ static NSCursor *lr_cursor;
 /* CL: use our real session if possible, otherwise fall back on current_sess */
 - (session *)currentSession
 {
-    ChatWindow *chatWindow = (ChatWindow *)[self delegate];
-    if (![chatWindow isKindOfClass:[ChatWindow class]]) chatWindow = nil;
-    return (chatWindow ? [chatWindow session] : current_sess);
+    ChatViewController *controller = (ChatViewController *)[self delegate];
+    if (![controller isKindOfClass:[ChatViewController class]]) {
+        controller = nil;
+    }
+    return (controller ? [controller session] : current_sess);
 }
 
 - (void) do_link

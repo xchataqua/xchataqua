@@ -16,7 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
 #import "AquaChat.h"
-#import "ChatWindow.h"
+#import "ChatViewController.h"
 #import "ColorPalette.h"
 #import "mIRCString.h"
 #import "MenuMaker.h"
@@ -447,9 +447,9 @@ static NSImage *blueBulletImage;
 static NSImage *yellowBulletImage;
 static NSImage *emptyBulletImage;
 
-#pragma mark Main class definition for the ChatWindow
+#pragma mark Main class definition for the ChatViewController
 
-@implementation ChatWindow
+@implementation ChatViewController
 @synthesize tButton, nButton, sButton, iButton, pButton, mButton, bButton, lButton, kButton, CButton, NButton, uButton;
 @synthesize limitTextField, keyTextField;
 
@@ -464,10 +464,10 @@ static NSImage *emptyBulletImage;
 
 - (id) initWithSession:(struct session *)aSession
 {
-    if ((self = [super init]) != nil) {
+    self = [super initWithNibName:@"ChatView" bundle:nil];
+    if (self != nil) {
         self->sess = aSession;
         self->users = [[NSMutableArray alloc] init];
-        [NSBundle loadNibNamed:@"ChatWindow" owner:self];
     }
     return self;
 }
@@ -488,7 +488,6 @@ static NSImage *emptyBulletImage;
     self.uButton = nil;
     self.limitTextField = nil;
     self.keyTextField = nil;
-    [chatView release];    // ???: Anything else need to get released here?
     [users release];
     [super dealloc];
 }
@@ -546,7 +545,7 @@ static NSImage *emptyBulletImage;
 }
 
 - (void) useSelectionForFind {
-    NSRange selectedRange = [[[chatView window] fieldEditor:NO forObject:inputTextField] selectedRange];    
+    NSRange selectedRange = [[self.view.window fieldEditor:NO forObject:inputTextField] selectedRange];    
     NSString *searchString = [[inputTextField stringValue] substringWithRange:selectedRange];
     if ([searchString length] == 0) {
         searchString = [[[chatTextView textStorage] string] substringWithRange:[chatTextView selectedRange]];
@@ -815,15 +814,15 @@ static NSImage *emptyBulletImage;
 
 - (void) awakeFromNib
 {
-    [chatView setFrameSize:NSMakeSize (prefs.mainwindow_width, prefs.mainwindow_height)];
+    [self.chatView setFrameSize:NSMakeSize (prefs.mainwindow_width, prefs.mainwindow_height)];
     [chatTextView setFrame:[chatScrollView documentVisibleRect]];
     
     [headerBoxView layoutNow];
     
     [self preferencesChanged];
     
-    [chatView setServer:sess->server];
-    [chatView setInitialFirstResponder:inputTextField];
+    [self.chatView setServer:sess->server];
+    [self.chatView setInitialFirstResponder:inputTextField];
     
     [chatTextView setDropHandler:self];
     [chatTextView setNextKeyView:inputTextField];
@@ -896,29 +895,27 @@ static NSImage *emptyBulletImage;
     if (sess->type == SESS_DIALOG)
         [self setChannel];
     else
-        [chatView setTabTitle:NSLocalizedStringFromTable(@"<none>", @"xchat", @"")];
+        [self.chatView setTabTitle:NSLocalizedStringFromTable(@"<none>", @"xchat", @"")];
     
     
     if (sess->type == SESS_DIALOG)
     {
         if (prefs.privmsgtab)
-            [chatView becomeTabAndShow:prefs.newtabstofront];
+            [self.chatView becomeTabAndShow:prefs.newtabstofront];
         else
-            [chatView becomeWindowAndShow:true];
+            [self.chatView becomeWindowAndShow:true];
     }
     else
     {
         if (prefs.tabchannels)
-            [chatView becomeTabAndShow:prefs.newtabstofront];
+            [self.chatView becomeTabAndShow:prefs.newtabstofront];
         else
-            [chatView becomeWindowAndShow:true];
+            [self.chatView becomeWindowAndShow:true];
     }
     
     if (prefs.tab_layout == 2  && prefs.style_inputbox) {
         ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-        [chatView setTabTitleColor:[p getColor:AC_FGCOLOR]];
-    } else {
-        [chatView setTabTitleColor:[NSColor blackColor]];
+        [self.chatView setTabTitleColor:[p getColor:AC_FGCOLOR]];
     }
     
     //[[inputTextField window] makeFirstResponder:inputTextField];
@@ -1048,10 +1045,10 @@ static NSImage *emptyBulletImage;
     else
         s = NSLocalizedStringFromTable(@"<none>", @"xchat", @"");
     
-    [chatView setTabTitle:s];
+    [self.chatView setTabTitle:s];
     if (prefs.tab_layout == 2 && prefs.style_inputbox) {
         ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-        [chatView setTabTitleColor:[p getColor:AC_FGCOLOR]];
+        [self.chatView setTabTitleColor:[p getColor:AC_FGCOLOR]];
     }
     [myOpOrVoiceIconImageView setHidden:YES];
     [limitTextField setStringValue:@""];
@@ -1066,14 +1063,14 @@ static NSImage *emptyBulletImage;
 
 - (void) closeWindow
 {
-    [chatView close];
+    [self.chatView close];
 }
 
 #pragma mark Property interface
 
 - (NSWindow *) window
 {
-    return [chatView window];
+    return self.view.window;
 }
 
 - (struct session *)session
@@ -1177,28 +1174,28 @@ static NSImage *emptyBulletImage;
                 sess->new_data = false;
                 sess->msg_said = false;
                 sess->nick_said = false;
-                [chatView setTabTitleColor:TTColor];
+                [self.chatView setTabTitleColor:TTColor];
                 break;
                 
             case 1: /* new data has been displayed (dark red) */
                 sess->new_data = true;
                 sess->msg_said = false;
                 sess->nick_said = false;
-                [chatView setTabTitleColor:[p getColor:AC_NEW_DATA]];
+                [self.chatView setTabTitleColor:[p getColor:AC_NEW_DATA]];
                 break;
                 
             case 2: /* new message arrived in channel (light red) */
                 sess->new_data = false;
                 sess->msg_said = true;
                 sess->nick_said = false;
-                [chatView setTabTitleColor:[p getColor:AC_MSG_SAID]];
+                [self.chatView setTabTitleColor:[p getColor:AC_MSG_SAID]];
                 break;
                 
             case 3: /* your nick has been seen (blue) */
                 sess->new_data = false;
                 sess->msg_said = false;
                 sess->nick_said = true;
-                [chatView setTabTitleColor:[p getColor:AC_NICK_SAID]];
+                [self.chatView setTabTitleColor:[p getColor:AC_NICK_SAID]];
                 break;
         }
     }
@@ -1307,10 +1304,10 @@ static NSImage *emptyBulletImage;
         NSUInteger len = [channelString length] - start;
         [channelString replaceCharactersInRange:NSMakeRange (start, len) withString:@".."];
     }
-    [chatView setTabTitle:channelString];
+    [self.chatView setTabTitle:channelString];
     if (prefs.tab_layout == 2 && prefs.style_inputbox) {
         ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-        [chatView setTabTitleColor:[p getColor:AC_FGCOLOR]];
+        [self.chatView setTabTitleColor:[p getColor:AC_FGCOLOR]];
     }
 }
 
@@ -1635,8 +1632,8 @@ static NSImage *emptyBulletImage;
     /* CL end */
 }
 
-- (TabOrWindowView *) view {
-    return chatView;
+- (TabOrWindowView *)chatView {
+    return (id)self.view;
 }
 
 - (void) progressbarStart
@@ -1728,7 +1725,7 @@ static NSImage *emptyBulletImage;
         default:
             title = [NSString stringWithFormat:@"X-Chat [%s/%s]", XCHAT_AQUA_VERSION_STRING, PACKAGE_VERSION];
     }
-    [chatView setTitle:title];
+    [self.chatView setTitle:title];
 }
 
 - (void) doCommand:(id)sender
@@ -1748,7 +1745,7 @@ static NSImage *emptyBulletImage;
     // Don't do anything there.. previous command might have killed us.
 }
 
-- (void) lastlogIntoWindow:(ChatWindow *)logWin key:(char *)ckey
+- (void) lastlogIntoWindow:(ChatViewController *)logWin key:(char *)ckey
 {
     
     if ([[chatTextView textStorage] length] == 0) {

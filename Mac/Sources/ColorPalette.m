@@ -236,9 +236,9 @@ static int color_remap [] =
 	}
 }
 
-- (NSColor *) getColor:(int) color
+- (NSColor *) getColor:(NSInteger)n
 {
-    return colors[color % [self numberOfColors]];
+    return colors[n % [self numberOfColors]];
 }
 
 - (void) setColor:(NSUInteger) n color:(NSColor *) color

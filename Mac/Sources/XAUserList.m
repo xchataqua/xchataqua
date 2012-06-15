@@ -7,6 +7,7 @@
 //
 
 #import "XAUserList.h"
+#import "ChatViewController.h"
 
 @implementation XAUserList
 
@@ -23,10 +24,11 @@
 {
     NSIndexSet *selectedRows = [self selectedRowIndexes];
     if ([selectedRows count] == 0) return [super menuForEvent:theEvent];
-    ChatWindow *delegate = (id)[self delegate];
+    ChatViewController *delegate = (id)self.delegate;
     if ([delegate respondsToSelector:@selector(menuForEvent:rowIndexes:)])
         return [delegate menuForEvent:theEvent rowIndexes:selectedRows];
     return [super menuForEvent:theEvent];
 }
 
 @end
+

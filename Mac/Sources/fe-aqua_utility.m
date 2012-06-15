@@ -138,6 +138,7 @@ static int TimerThingSequence = 1;
     {
         if (atimer->tag == tag) {
             timer = atimer;
+            break;
         }
     }
     [TimerThingLock unlock];
