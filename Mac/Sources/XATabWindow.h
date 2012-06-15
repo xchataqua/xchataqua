@@ -8,9 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class SGTabView;
+
 @interface XATabWindow : NSWindow
 
+@property(nonatomic, readonly) SGTabView *tabView;
+
 - (IBAction)performCloseTab:(id)sender;
+
++ (XATabWindow *)defaultTabWindow;
 
 @end
 

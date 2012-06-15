@@ -17,6 +17,9 @@
 
 #include <Carbon/Carbon.h>
 #include <dlfcn.h>
+
+#include "cfgfiles.h"
+
 #import "AquaChat.h"
 #import "ColorPalette.h"
 #import "SGGuiUtility.h"
@@ -25,8 +28,6 @@
 #import "CLTabViewButtonCell.h"
 
 static NSMutableDictionary *labelDictionary;
-static NSImage *dimple;
-static NSCursor *lrCursor;
 
 //////////////////////////////////////////////////////////////////////
 
@@ -538,7 +539,7 @@ HIThemeSegmentPosition positionTable[2][2] =
         [closeCell drawWithFrame:close_rect inView:controlView];
 
     // I'm not sure if this actually even does anything
-    if (prefs.tab_layout == 2 && prefs.style_inputbox) {
+    if (prefs.tab_layout == 2 && prefs.style_namelistgad) {
         ColorPalette *p = [[AquaChat sharedAquaChat] palette];
         [labelDictionary setObject:(titleColor?titleColor:[p getColor:AC_FGCOLOR]) forKey:NSForegroundColorAttributeName];
     } else {
@@ -574,7 +575,7 @@ HIThemeSegmentPosition positionTable[2][2] =
 
 #pragma mark -
 
-@interface SGTabViewButton : NSButton
+@interface SGTabViewButton: NSButton
 
 - (void) setCloseAction:(SEL) act;
 - (void) setCloseTarget:(id) targ;
@@ -657,7 +658,10 @@ HIThemeSegmentPosition positionTable[2][2] =
 NSNib *SGTabViewItemTabMenuNib;
 
 @implementation SGTabViewItem
-@synthesize label, titleColor, view;
+@synthesize label;
+@synthesize titleColor=_titleColor;
+@synthesize view=_view;
+@synthesize initialFirstResponder=_initialFirstResponder;
 
 + (void)initialize {
     if (self == [SGTabViewItem class]) {
@@ -667,15 +671,10 @@ NSNib *SGTabViewItemTabMenuNib;
 
 - (id) initWithIdentifier:(id) identifier
 {
-    parent = nil;
-    view = nil;
-    button = nil;
-    label = nil;
-
-    dimple = [NSImage imageNamed:@"dimple.tiff"];
-    
-    [SGTabViewItemTabMenuNib instantiateNibWithOwner:self topLevelObjects:nil];
-
+    self = [super init];
+    if (self != nil) {    
+        [SGTabViewItemTabMenuNib instantiateNibWithOwner:self topLevelObjects:nil];
+    }
     return self;
 }
 
@@ -734,12 +733,12 @@ NSNib *SGTabViewItemTabMenuNib;
 
 - (void) setTitleColor:(NSColor *) color
 {
-    [titleColor release];
-    titleColor = [color retain];
-    if (button)
+    [_titleColor autorelease];
+    _titleColor = [color retain];
+    if (button) {
         [button setTitleColor:color];
-    if (parent && parent->outline)
-        [parent->outline reloadData];
+    }
+    [parent.tabOutlineView reloadData];
 }
 
 - (void) doClose:(id)sender
@@ -780,52 +779,30 @@ NSNib *SGTabViewItemTabMenuNib;
         [button setTitle:label];
         [button sizeToFit];
     }
-    else if (parent && parent->outline)
+    else
     {
-        [parent->outline reloadData];
+        [parent.tabOutlineView reloadData];
     }
 }
 
 - (void) setSelected:(BOOL) selected
 {
-    if (button)
-        [button setIntegerValue:selected ? 1 : 0];
-}
-
-- (void) setView:(NSView *) new_view
-{
-    if (view)
-    {
-        [view removeFromSuperview];
-        [view release];
-    }
-
-    view = [new_view retain];
-
-    if (parent)
-    {
-        // 27-aug-04
-        //[parent addSubview:view];
-        //if (self == parent->selected_tab)
-        //    [parent setStretchView:view];
-        //else
-        //    [view setHidden:true];
-        if (self == parent->selected_tab) // 27-aug-04
-        {
-            [parent addSubview:view];     // 27-aug-04
-            [parent setStretchView:view]; // 27-aug-04
-        }
+    if (button) {
+        [button setIntegerValue:!!selected];
     }
 }
 
-- (id) initialFirstResponder
+- (void) setView:(NSView *)view
 {
-    return initial_first_responder;
-}
+    [_view removeFromSuperview];
+    [_view release];
 
-- (void) setInitialFirstResponder:(NSView *) the_view
-{
-    initial_first_responder = the_view;
+    _view = [view retain];
+
+    if (self == parent.selectedTabViewItem)
+    {
+        parent.chatView = view;
+    }
 }
 
 @end
@@ -833,53 +810,75 @@ NSNib *SGTabViewItemTabMenuNib;
 #pragma mark -
 
 @implementation SGTabView
-@synthesize delegate;
+@synthesize delegate=_delegate;
+@synthesize tabOutlineView=_tabOutlineView;
+@synthesize selectedTabViewItem=_selectedTabViewItem;
 
-+ (void)initialize {
-    [super initialize];
-    lrCursor = [[NSCursor alloc] initWithImage:[NSImage imageNamed:@"lr_cursor.tiff"] hotSpot:NSMakePoint (8.0f,8.0f)];
+- (void)SGTabViewInit {
+    self->_tabViewItems = [[NSMutableArray alloc] init];
+    self->groups = [[NSMutableArray alloc] init];
+    [_chatViewContainer	 setMinorDefaultJustification:SGBoxMinorJustificationFull];
 }
 
 - (id) initWithFrame:(NSRect) frameRect
 {
     self = [super initWithFrame:frameRect];
-    if (self) {
-        self->tabs = [[NSMutableArray alloc] init];
-        self->tabViewType = NSTopTabsBezelBorder;
-        self->xa_outline_width = 150;
-        self->groups = [[NSMutableArray alloc] init];
-    
-        [self setOrientation:SGBoxOrientationVertical];
-        [self setMinorDefaultJustification:SGBoxMinorJustificationFull];
-        [self setMajorInnerMargin:0.0f];
-        [self setMajorOutterMargin:0.0f];
-        [self setMinorMargin:0.0f];
-    
-        [self setTabViewType:NSTopTabsBezelBorder];
-    }
+    [self SGTabViewInit];
+    [self makeOutline];
+    [self makeTabs];
     return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    [self SGTabViewInit];
+    return self;
+}
+
+- (void)awakeFromNib {
+    [self makeOutline];
+    [self makeTabs];
 }
 
 - (void) dealloc
 {
-    //[outline release];    We don't explicitly retain this.
-    [tabs release];
+    [_tabViewItems release];
     [groups release];
     [super dealloc];
 }
 
 - (void) setOutlineWidth:(CGFloat) width
 {
-    self->xa_outline_width = width;
-    if (outline)
-    {
-        if (width < 50.0f)            // Just because
-            width = 50.0f;
-        else if (width > 300.0f)    // Just because
-            width = 300.0f;
-        NSScrollView *outlineScroll = [outline enclosingScrollView];
-        [outlineScroll setFrameSize:NSMakeSize(width, [outlineScroll frame].size.height)];
+    prefs.xa_outline_width = width;
+    if (width < 50.0f) {            // Just because
+        width = 50.0f;
     }
+    if (self->tabViewType != SGOutlineTabs) return;
+    
+    NSScrollView *outlineScroll = [_tabOutlineView enclosingScrollView];
+    [outlineScroll setFrameSize:NSMakeSize(width, [outlineScroll frame].size.height)];
+}
+
+- (id)chatView {
+    if (_chatViewContainer.subviews.count == 0) return nil;
+    return [_chatViewContainer.subviews objectAtIndex:0];
+}
+
+- (void)setChatView:(id)chatView {
+    while (_chatViewContainer.subviews.count > 0) {
+        [[_chatViewContainer.subviews objectAtIndex:0] removeFromSuperview];
+    }
+    [chatView setFrame:_chatViewContainer.bounds];
+    [_chatViewContainer addSubview:chatView];
+    [_chatViewContainer setStretchView:chatView];
+    
+    NSView *v = chatView;
+    NSLog(@"chat view: %.0f %.0f", v.frame.size.width, v.frame.size.height);
+    
+    if (self->tabViewType != SGOutlineTabs) {
+        [_chatViewContainer addSubview:_tabButtonView];
+    }
+    NSLog(@"button view: %.0f %.0f", _tabButtonView.frame.size.width, _tabButtonView.frame.size.height);
 }
 
 - (SGTabViewGroupInfo *)getGroupInfo:(NSInteger) group
@@ -898,8 +897,8 @@ NSNib *SGTabViewItemTabMenuNib;
         info = [[SGTabViewGroupInfo alloc] init];
         info->group = group;
         [groups addObject:info];
-        [outline reloadData];
-        [outline expandItem:info];
+        [_tabOutlineView reloadData];
+        [_tabOutlineView expandItem:info];
         [info release];
     }
     
@@ -909,7 +908,7 @@ NSNib *SGTabViewItemTabMenuNib;
 - (void) setName:(NSString *)name forGroup:(NSInteger)group
 {
     [[self getGroupInfo:group] setName:name];
-    [outline reloadData];
+    [_tabOutlineView reloadData];
 }
 
 - (NSString *) groupName:(NSInteger) group
@@ -921,7 +920,7 @@ NSNib *SGTabViewItemTabMenuNib;
 {
     self->hideClose = hidem;
     
-    for (SGTabViewItem *tab in tabs)
+    for (SGTabViewItem *tab in self.tabViewItems)
     {
         [tab setHideCloseButton:hideClose];
     }
@@ -929,118 +928,70 @@ NSNib *SGTabViewItemTabMenuNib;
 
 - (NSArray *) tabViewItems
 {
-    return tabs;
+    return _tabViewItems;
 }
 
 - (void) setCaps
-{
-    if (!hbox)
-        return;
-        
-    SGTabViewItem *last_tab = nil;
-    for (SGTabViewItem *this_tab in tabs)
+{        
+    SGTabViewItem *lastTab = nil;
+    for (SGTabViewItem *tab in self.tabViewItems)
     {
-        [this_tab->button setHasLeftCap:!last_tab || (this_tab->group != last_tab->group)];
-        if (last_tab)
-            [last_tab->button setHasRightCap:this_tab->group != last_tab->group];
-        last_tab = this_tab;
+        [tab->button setHasLeftCap:!lastTab || (tab->group != lastTab->group)];
+        if (lastTab)
+            [lastTab->button setHasRightCap:tab->group != lastTab->group];
+        lastTab = tab;
     }
-    if (last_tab)
-        [last_tab->button setHasRightCap:YES];
+    if (lastTab)
+        [lastTab->button setHasRightCap:YES];
 }
 
 - (void) makeTabs
 {
-    if (outline)
+    _tabButtonView = [[SGWrapView alloc] initWithFrame:NSMakeRect(0.0f, 0.0f, 1.0f, 1.0f)];
+    _tabButtonView.autoresizingMask = NSViewMinXMargin|NSViewWidthSizable|NSViewMaxXMargin|NSViewMinYMargin|NSViewHeightSizable|NSViewMaxYMargin;
+    [_chatViewContainer addSubview:_tabButtonView];
+    
+    NSArray *tabViewItems = self.tabViewItems;
+    for (NSUInteger i = 0; i < tabViewItems.count; i ++)
     {
-        [[outline enclosingScrollView] removeFromSuperview];
-        outline = nil;
+        SGTabViewItem *tab = [tabViewItems objectAtIndex:i];
+        [tab makeButton:_tabButtonView where:i withClose:!hideClose];
     }
     
-    if (!hbox)
-    {
-        hbox = [[SGWrapView alloc] initWithFrame:NSMakeRect(0.0f, 0.0f, 1.0f, 1.0f)];
-        [self addSubview:hbox];
-        [hbox release];
-        
-        [self setOrder:0 forView:hbox];
-
-        for (NSUInteger i = 0; i < [tabs count]; i ++)
-        {
-            SGTabViewItem *this_tab = [tabs objectAtIndex:i];
-            [this_tab makeButton:hbox where:i withClose:!hideClose];
-        }
-        
-        [self setCaps];
-        
-        [selected_tab setSelected:YES];
-    }
+    [self setCaps];
+    
+    [_selectedTabViewItem setSelected:YES];
 }
 
 - (void) makeOutline
-{
-    if (hbox)
-    {
-        for (SGTabViewItem *tab in tabs)
-        {
-            [tab removeButton];
-        }
+{    
+    ColorPalette *p = [[AquaChat sharedAquaChat] palette];
 
-        [hbox removeFromSuperview];
-        hbox = nil;
-    }
+    [_tabOutlineView enclosingScrollView].frame = NSMakeRect(.0, .0, prefs.xa_outline_width, self.frame.size.height);    
     
-    if (!outline)
-    {
-        ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-        NSScrollView *outlineScroll = [[[NSScrollView alloc] initWithFrame:NSMakeRect (0.0f, 0.0f, xa_outline_width, 1.0f)] autorelease];
-        [self addSubview:outlineScroll];
-        
-        [self setOrder:0 forView:outlineScroll];
-        
-        CGFloat fontSize = [NSFont smallSystemFontSize];
-        if (prefs.tab_small) {
-            fontSize *= 0.86;
-        }
-        NSFont *font = [NSFont systemFontOfSize:fontSize];
-        NSLayoutManager * layout_manager=[[NSLayoutManager new] autorelease];
-        
-        SGTabViewOutlineCell *data_cell = [[SGTabViewOutlineCell alloc] initTextCell:@""];
-        
-        NSTableColumn *col = [[NSTableColumn alloc] initWithIdentifier:@""];
-        [col setWidth:xa_outline_width];
-        [col setDataCell:data_cell];
-        [data_cell setFont:font];
-        [[col headerCell] setStringValue:@"Tabs"];
-        
-        [data_cell release];
-        
-        outline = [[[SGTabViewOutlineView alloc] initWithFrame:NSMakeRect (0.0f, 0.0f, 1.0f, 1.0f)] autorelease];
-        [outline setIndentationPerLevel:10];
-        //[outline setIndentationMarkerFollowsCell:NO];
-        [outline addTableColumn:col];
-        [outline setOutlineTableColumn:col];
-        [outlineScroll setDocumentView:outline];
-        [outline setFrame:[outlineScroll documentVisibleRect]];
-        [outline setAutoresizingMask:NSViewWidthSizable];
-        [outline setRowHeight:[layout_manager defaultLineHeightForFont:font] + 1];
-        [outline setAllowsEmptySelection:NO];
+    CGFloat fontSize = [NSFont smallSystemFontSize];
+    if (prefs.tab_small) {
+        fontSize *= 0.86;
+    }
+    NSFont *font = [NSFont systemFontOfSize:fontSize];
+    SGTabViewOutlineCell *dataCell = [[_tabOutlineView.tableColumns objectAtIndex:0] dataCell];
+    dataCell.font = font;
 
-        [outline setDelegate:self];
-        [outline setDataSource:self];
-        [outline reloadData];
-        
-        [col release];
-        
-        for (SGTabViewGroupInfo *info in groups)
-            [outline expandItem:info];
+    NSLayoutManager *layoutManager=[[NSLayoutManager new] autorelease];
 
-        NSInteger row = [outline rowForItem:selected_tab];
-        [outline selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
-        if (prefs.tab_layout == 2 && prefs.style_inputbox) {
-            [data_cell setTextColor:[p getColor:AC_FGCOLOR]];
-            [outline setBackgroundColor:[p getColor:AC_BGCOLOR]];
-        }
+    [_tabOutlineView setOutlineTableColumn:[_tabOutlineView.tableColumns objectAtIndex:0]];
+    [_tabOutlineView setRowHeight:[layoutManager defaultLineHeightForFont:font] + 1];
+
+    [_tabOutlineView reloadData];
+        
+    for (SGTabViewGroupInfo *info in groups)
+        [_tabOutlineView expandItem:info];
+
+    NSInteger row = [_tabOutlineView rowForItem:self.selectedTabViewItem];
+    [_tabOutlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+    if (prefs.style_namelistgad) {
+        dataCell.textColor = [p getColor:AC_FGCOLOR];
+        _tabOutlineView.backgroundColor = [p getColor:AC_BGCOLOR];
     }
 }
 
@@ -1050,73 +1001,67 @@ NSNib *SGTabViewItemTabMenuNib;
     
     SGBoxOrientation newOrientation;
     SGBoxOrder newOrder;
-    //short margin = 0;
-    SGBoxMargin imargin = 0;
     float rotation;
 
     switch (tabViewType)
     {
         case SGOutlineTabs:
-            newOrientation = SGBoxOrientationVertical;
-            newOrder = SGBoxOrderFIFO;
-            rotation = 0;
-            imargin = 10;
             break;
             
         case NSBottomTabsBezelBorder:
-            newOrientation = SGBoxOrientationHorizontal;
-            newOrder = SGBoxOrderFIFO;
-            rotation = 0;
+            newOrientation = SGBoxOrientationVertical;
+            newOrder = SGBoxOrderLIFO;
+            rotation = 0.0;
             break;
             
         case NSRightTabsBezelBorder:
-            newOrientation = SGBoxOrientationVertical;
-            newOrder = SGBoxOrderLIFO;
-            rotation = 90;
+            newOrientation = SGBoxOrientationHorizontal;
+            newOrder = SGBoxOrderFIFO;
+            rotation = 90.0;
             break;
             
         case NSLeftTabsBezelBorder:
-            newOrientation = SGBoxOrientationVertical;
-            newOrder = SGBoxOrderFIFO;
-            rotation = -90;
+            newOrientation = SGBoxOrientationHorizontal;
+            newOrder = SGBoxOrderLIFO;
+            rotation = -90.0;
             break;
 
         case NSTopTabsBezelBorder:
         default:
-            newOrientation = SGBoxOrientationHorizontal;
-            newOrder = SGBoxOrderLIFO;
-            rotation = 0;
+            newOrientation = SGBoxOrientationVertical;
+            newOrder = SGBoxOrderFIFO;
+            rotation = 0.0;
             break;
     }
     
-    [self setOrientation:SGBoxOrientationVertical==newOrientation?SGBoxOrientationHorizontal:SGBoxOrientationVertical];
-    [self setOrder:newOrder];
-    [self setMajorInnerMargin:imargin];
-    //[self setMinorMargin:margin];
+    [_chatViewContainer setOrientation:newOrientation];
+    [_chatViewContainer setOrder:newOrder];
 
-    if (tabViewType == SGOutlineTabs)
-        [self makeOutline];
-    else
-    {
-        [self makeTabs];
-        [hbox setBoundsRotation:rotation];
-        [hbox queue_layout];
+    if (tabViewType == SGOutlineTabs) {
+        [self setOutlineWidth:prefs.xa_outline_width];
+    } else {
+        NSScrollView *outlineScrollView = [_tabOutlineView enclosingScrollView];
+        [outlineScrollView setFrameSize:NSMakeSize(1.0, outlineScrollView.frame.size.height)];
+        
+        [_tabButtonView setBoundsRotation:rotation];
+        NSSize size = _tabButtonView.frame.size;
+        if ((rotation == 0.0) ^ (size.height < size.width)) {
+            // restart is better than this...
+            [_tabButtonView setFrameSize:NSMakeSize(size.height, size.width)];
+        }
+        [_tabButtonView queue_layout];
     }
+    self.chatView = self.chatView;
 }
 
 - (SGTabViewItem *) tabViewItemAtIndex:(NSInteger) index
 {
-    return (NSUInteger) index < [tabs count] ? [tabs objectAtIndex:index] : nil;
-}
-
-- (NSInteger) numberOfTabViewItems
-{
-    return [tabs count];
+    return (NSUInteger) index < self.tabViewItems.count ? [self.tabViewItems objectAtIndex:index] : nil;
 }
 
 - (NSInteger) indexOfTabViewItem:(SGTabViewItem *) tabViewItem
 {
-    return [tabs indexOfObject:tabViewItem];
+    return [self.tabViewItems indexOfObject:tabViewItem];
 }
 
 - (void) addTabViewItem:(SGTabViewItem *) tabViewItem
@@ -1129,68 +1074,64 @@ NSNib *SGTabViewItemTabMenuNib;
     if ([tabViewItem tabView] != self)
         return;
     
-    [tabViewItem->view removeFromSuperview];
+    [tabViewItem.view removeFromSuperview];
     [tabViewItem removeButton];
     tabViewItem->parent = nil;
 
-    if (selected_tab == tabViewItem)
+    if (_selectedTabViewItem == tabViewItem)
     {
-        selected_tab = nil;
+        _selectedTabViewItem = nil;
 
-        if ([tabs count] > 1)
+        if (self.tabViewItems.count > 1)
         {
             // If there is another tab on the right of the tab being closed, and it's in the same group, choose it;
             // Else, if there is another tab on the left of the tab being closed, and it's in the same group, choose it;
             // Else, choose the tab on the right unless it's the last tab;
             // Else, choose the tab on the left.
-            NSUInteger tab_num = [tabs indexOfObject:tabViewItem];
-            NSUInteger last_tab = [tabs count] - 1;
-            NSUInteger tab_to_select;
-            if (tab_num < last_tab && ((SGTabViewItem *)[tabs objectAtIndex:tab_num + 1])->group == tabViewItem->group)
-                tab_to_select = tab_num + 1;
-            else if (tab_num > 0 && ((SGTabViewItem *)[tabs objectAtIndex:tab_num - 1])->group == tabViewItem->group)
-                tab_to_select = tab_num - 1;
-            else
-                tab_to_select = tab_num == last_tab ? tab_num - 1 : tab_num + 1;
-            [self selectTabViewItemAtIndex:tab_to_select];
+            NSUInteger tabIndex = [self.tabViewItems indexOfObject:tabViewItem];
+            NSUInteger lastTabIndex = self.tabViewItems.count - 1;
+            NSUInteger selectedIndex;
+            if (tabIndex < lastTabIndex && ((SGTabViewItem *)[self.tabViewItems objectAtIndex:tabIndex + 1])->group == tabViewItem->group) {
+                selectedIndex = tabIndex + 1;
+            } else if (tabIndex > 0 && ((SGTabViewItem *)[self.tabViewItems objectAtIndex:tabIndex - 1])->group == tabViewItem->group) {
+                selectedIndex = tabIndex - 1;
+            } else {
+                selectedIndex = tabIndex == lastTabIndex ? tabIndex - 1 : tabIndex + 1;
+            }
+            [self selectTabViewItemAtIndex:selectedIndex];
         }
     }
     
-    [tabs removeObject:tabViewItem];
+    [_tabViewItems removeObject:tabViewItem];
     
     SGTabViewGroupInfo *info = [self getGroupInfo:tabViewItem->group];
     [info removeTabViewItem:tabViewItem];
-    if ([info->tabs count] == 0)
+    if ([info->tabs count] == 0) {
         [groups removeObject:[self getGroupInfo:tabViewItem->group]];
-
-    if (outline)
-    {
-        [outline reloadData];
-        // Removing items above the current item muck up the selected item in the outline
-        NSInteger row = [outline rowForItem:selected_tab];
-        [outline selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
     }
 
+    [_tabOutlineView reloadData];
+        // Removing items above the current item muck up the selected item in the outline
+    NSInteger row = [_tabOutlineView rowForItem:_selectedTabViewItem];
+    [_tabOutlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
+    
     [self setCaps];
-}
-
-- (SGTabViewItem *) selectedTabViewItem
-{
-    return selected_tab;
 }
 
 - (void) selectNextTabViewItem:(id)sender
 {
-    NSInteger n = [self indexOfTabViewItem:[self selectedTabViewItem]] +1;
-    if (n < [self numberOfTabViewItems])
+    NSInteger n = [self indexOfTabViewItem:self.selectedTabViewItem] +1;
+    if (n < self.tabViewItems.count) {
         [self selectTabViewItemAtIndex:n];
+    }
 }
 
 - (void) selectPreviousTabViewItem:(id)sender
 {
-    NSInteger n = [self indexOfTabViewItem:[self selectedTabViewItem]] - 1;
-    if (n >= 0)
+    NSInteger n = [self indexOfTabViewItem:self.selectedTabViewItem] - 1;
+    if (n >= 0) {
         [self selectTabViewItemAtIndex:n];
+    }
 }
 
 - (void) selectTabViewItemAtIndex:(NSInteger) index
@@ -1200,108 +1141,41 @@ NSNib *SGTabViewItemTabMenuNib;
 
 - (void) selectTabViewItem:(SGTabViewItem *) tabViewItem
 {
-    if (selected_tab)
+    if (_selectedTabViewItem)
     {
-        if (tabViewItem == selected_tab) {
+        if (tabViewItem == _selectedTabViewItem) {
             return;
         }
-        [selected_tab->view removeFromSuperview];
-        [selected_tab setSelected:NO];
+        [_selectedTabViewItem.view removeFromSuperview];
+        [_selectedTabViewItem setSelected:NO];
     }
 
-    [self setStretchView:tabViewItem->view];
-    [self addSubview:tabViewItem->view];
+    self.chatView = tabViewItem.view;
 
-    selected_tab = tabViewItem;
-    [selected_tab setSelected:YES];
+    _selectedTabViewItem = tabViewItem;
+    [_selectedTabViewItem setSelected:YES];
     
+    NSInteger row = [_tabOutlineView rowForItem:tabViewItem];
+    [_tabOutlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
     
-    if (outline)
+    if (_selectedTabViewItem.view)
     {
-        NSInteger row = [outline rowForItem:tabViewItem];
-        [outline selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
-    }
-    
-    if (selected_tab->view)
-    {
-        if ([selected_tab initialFirstResponder])
-            [[self window] makeFirstResponder:[selected_tab initialFirstResponder]];
+        if ([_selectedTabViewItem initialFirstResponder])
+            [[self window] makeFirstResponder:[_selectedTabViewItem initialFirstResponder]];
     }
         
-    if ([delegate respondsToSelector:@selector(tabView:didSelectTabViewItem:)])
-        [delegate performSelector:@selector(tabView:didSelectTabViewItem:)
-                       withObject:self
-                       withObject:selected_tab];
-
-    // We need to force the newly added item to have the correct size since hidden
-    // items are not layed out (or layed out wrong).
-    [self layout_maybe];
+    if ([_delegate respondsToSelector:@selector(tabView:didSelectTabViewItem:)]) {
+        [_delegate performSelector:@selector(tabView:didSelectTabViewItem:)
+                        withObject:self
+                        withObject:_selectedTabViewItem];
+    }
+    
+    [_chatViewContainer layout_maybe];
 }
 
 - (BOOL) mouseDownCanMoveWindow
 {
     return NO;
-}
-
-- (NSRect) dragAreaRect
-{
-    if (!outline || !selected_tab) return NSZeroRect;
-        
-    NSScrollView *outlineScroll = [outline enclosingScrollView];
-    NSRect outline_frame = [outlineScroll frame];
-    NSRect view_frame = [selected_tab->view frame];
-    CGFloat margin = view_frame.origin.x - outline_frame.origin.x - outline_frame.size.width + 1;
-    NSRect lineRect = NSMakeRect(outline_frame.origin.x + outline_frame.size.width, outline_frame.origin.y,
-                                  margin, outline_frame.size.height);
-
-    return lineRect;
-}
-
-- (void) resetCursorRects
-{
-    if (outline) {
-        [self addCursorRect:[self dragAreaRect] cursor:lrCursor];
-    }
-}
-
-// SplitView-like functionality for outline view
-- (void) mouseDown:(NSEvent *) theEvent
-{
-    if (!outline)
-    {
-        [super mouseDown:theEvent];
-        return;
-    }
-    
-    NSPoint point = [theEvent locationInWindow];
-    NSPoint where = [self convertPoint:point fromView:nil];
-    NSRect lineRect = [self dragAreaRect];
-    
-    if (!NSPointInRect (where, lineRect))
-    {
-        [super mouseDown:theEvent];
-        return;
-    }
-
-    NSScrollView *outlineScroll = [outline enclosingScrollView];
-    NSRect outline_frame = [outlineScroll frame];
-    
-    for (;;)
-    {
-        NSEvent *nextEvent = [[self window] nextEventMatchingMask:NSLeftMouseUpMask |
-                                                                 NSLeftMouseDraggedMask];
-        if ([nextEvent type] == NSLeftMouseUp)
-            break;
-        
-        NSPoint mouseLoc = [self convertPoint:[nextEvent locationInWindow] fromView:nil];
-        
-        CGFloat width = mouseLoc.x - where.x + outline_frame.size.width;
-        [self setOutlineWidth:width];
-
-        [[self delegate] tabViewDidResizeOutlne:xa_outline_width];
-        
-        [[self window] invalidateCursorRectsForView:self];
-    }
 }
 
 #define kBackgroundStyleGroup   0
@@ -1314,10 +1188,10 @@ enum {
 
 - (void) drawBackground
 {
-    if (!hbox)
+    if (self->tabViewType == SGOutlineTabs)
         return;
         
-    NSRect r = [selected_tab->view frame];
+    NSRect r = _selectedTabViewItem.view.frame;
     //NSRect br = [hbox frame];
 #if BACKGROUND_VERSION == kBackgroundStyleGroud
     //  const float dy = 12;    // floor (br.size.height / [hbox rowCount] / 2)
@@ -1386,31 +1260,13 @@ enum {
 #endif // BACKGROUND_VERSION
 }
 
-- (void) drawDivider
-{
-    NSRect lineRect = [self dragAreaRect];
-    NSPoint point;
-    point.x = lineRect.origin.x + ((lineRect.size.width  - [dimple size].width ) / 2);
-    point.y = lineRect.origin.y + ((lineRect.size.height - [dimple size].height) / 2);
-    [dimple compositeToPoint:point operation:NSCompositeSourceOver];
-}
-
 - (void) drawRect:(NSRect) aRect
 {
-    if (!selected_tab)
+    if (_selectedTabViewItem == nil)
         return;
 
-    if (outline)
-        [self drawDivider];
-    else
+    if (self->tabViewType != SGOutlineTabs) {
         [self drawBackground];
-}
-
-- (void) setupItem:(SGTabViewItem *) item where:(int) where
-{
-    if (hbox)
-    {
-        [item makeButton:hbox where:where withClose:!hideClose];
     }
 }
 
@@ -1426,36 +1282,36 @@ enum {
     // in the correct order.  We'll also insert the tab button at the same position.
     
     NSUInteger where = 0;
-    for (; where < [tabs count]; where ++)
+    for (; where < self.tabViewItems.count; where ++)
     {
-        SGTabViewItem *this_tab = [tabs objectAtIndex:where];
-        if (this_tab->group == group)
+        SGTabViewItem *tab = [self.tabViewItems objectAtIndex:where];
+        if (tab->group == group)
         {
             where ++;
             break;
         }
     }
-    for (; where < [tabs count]; where ++)
+    for (; where < self.tabViewItems.count; where ++)
     {
-        SGTabViewItem *this_tab = [tabs objectAtIndex:where];
-        if (this_tab->group != group)
+        SGTabViewItem *tab = [self.tabViewItems objectAtIndex:where];
+        if (tab->group != group)
             break;
     }
 
-    [tabs insertObject:tabViewItem atIndex:where];
+    [_tabViewItems insertObject:tabViewItem atIndex:where];
     
     SGTabViewGroupInfo *info = [self getGroupInfo:tabViewItem->group];
     [info addTabViewItem:tabViewItem];
 
-    [self setupItem:tabViewItem where:where];
+    [tabViewItem makeButton:_tabButtonView where:where withClose:!hideClose];
     
     [self setCaps];
 
-    if (outline)
-        [outline reloadData];
+    [_tabOutlineView reloadData];
 
-    if (!selected_tab)
+    if (_selectedTabViewItem == nil) {
         [self selectTabViewItem:tabViewItem];
+    }
 }
 
 #pragma mark NSOutlineViewDataSource
@@ -1507,31 +1363,38 @@ enum {
 - (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item
 {
     NSColor *color;
-    if (prefs.tab_layout == 2 && prefs.style_inputbox) {
+    if (prefs.tab_layout == 2 && prefs.style_namelistgad) {
         ColorPalette *p = [[AquaChat sharedAquaChat] palette];
         color = [p getColor:AC_FGCOLOR];
     } else {
         color = [NSColor blackColor];
     }
 
-    if ([item isKindOfClass:[SGTabViewItem class]])
-    {
+    if ([item isKindOfClass:[SGTabViewItem class]]) {
         NSColor *c = [item titleColor];
         if (c)
             color = c;
         [cell setHasClose:!hideClose];
-    }
-    else
+    } else {
         [cell setHasClose:NO];
+    }
 
     [cell setTextColor:color];
 }
 
 - (void) outlineViewSelectionDidChange:(NSNotification *) notification
 {
-    id item = [outline itemAtRow:[outline selectedRow]];
+    id item = [_tabOutlineView itemAtRow:[_tabOutlineView selectedRow]];
     if (item && [item isKindOfClass:[SGTabViewItem class]])
         [self selectTabViewItem:item];
+}
+
+#pragma mark - NSSplitView
+
+- (void)splitViewDidResizeSubviews:(NSNotification *)notification {
+    if (self->tabViewType == SGOutlineTabs) {
+        prefs.xa_outline_width = _tabOutlineView.frame.size.width;
+    }
 }
 
 @end
