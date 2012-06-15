@@ -36,7 +36,7 @@ enum
 
 @property (readonly) NSUInteger numberOfColors;
 
-- (NSColor *) getColor:(int) n;
+- (NSColor *) getColor:(NSInteger) n;
 - (void) setColor:(NSUInteger) n color:(NSColor *) color;
 - (void) load;
 - (void) save;

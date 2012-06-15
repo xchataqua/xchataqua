@@ -916,8 +916,6 @@ static NSImage *emptyBulletImage;
     if (prefs.tab_layout == 2  && prefs.style_inputbox) {
         ColorPalette *p = [[AquaChat sharedAquaChat] palette];
         [self.chatView setTabTitleColor:[p getColor:AC_FGCOLOR]];
-    } else {
-        [self.chatView setTabTitleColor:[NSColor blackColor]];
     }
     
     //[[inputTextField window] makeFirstResponder:inputTextField];

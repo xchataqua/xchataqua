@@ -23,24 +23,24 @@
 #define SGOutlineTabs ((NSTabViewType) 99)
 
 @protocol SGTabViewDelegate;
-@interface SGTabView : SGBoxView
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSOutlineViewDelegate,NSOutlineViewDataSource>
-#endif
-{
+@interface SGTabView : NSView<NSOutlineViewDelegate, NSOutlineViewDataSource, NSSplitViewDelegate> {
+    SGWrapView      *_tabButtonView;
+    NSOutlineView   *_tabOutlineView;
+    NSMutableArray  *_tabViewItems;
+    SGTabViewItem   *_selectedTabViewItem;
+    IBOutlet SGBoxView *_chatViewContainer;
+    
 @public    // TODO - fix this
-    SGWrapView      *hbox;
-    NSOutlineView   *outline;
-    CGFloat         xa_outline_width;
-    SGTabViewItem   *selected_tab;
-    NSMutableArray  *tabs;
     NSMutableArray  *groups;    // For outline view only
-    id<NSObject,SGTabViewDelegate> delegate;
+    id<NSObject,SGTabViewDelegate> _delegate;
     NSTabViewType   tabViewType;
     bool            hideClose;
 }
 
-@property (nonatomic, assign) id delegate;
+@property(nonatomic, assign) IBOutlet id delegate;
+@property(nonatomic, retain) IBOutlet NSOutlineView *tabOutlineView;
+@property(nonatomic, retain) id chatView;
+@property(nonatomic, readonly) SGTabViewItem *selectedTabViewItem;
 
 // NSTabView emulation methods
 - (void) addTabViewItem:(SGTabViewItem *) tabViewItem;
@@ -53,7 +53,6 @@
 - (SGTabViewItem *) selectedTabViewItem;
 - (NSArray *) tabViewItems;
 - (void) setTabViewType:(NSTabViewType) tabViewType;
-- (NSInteger) numberOfTabViewItems;
 - (NSInteger) indexOfTabViewItem:(SGTabViewItem *) tabViewItem;
 
 // SGTabView only methods
@@ -77,27 +76,26 @@
 
 @interface SGTabViewItem : NSObject
 {
+    NSView      *_view;
+    NSColor     *_titleColor;
+    id          _initialFirstResponder;
 @public    // TODO - fix this
     SGTabViewButton *button;
-    NSColor     *titleColor;
     NSString    *label;
-    NSView      *view;
     SGTabView   *parent;
     NSInteger   group;
-    id          initial_first_responder;
     IBOutlet NSMenu *ctxMenu;
 }
 
-@property (nonatomic, retain) NSColor *titleColor;
-@property (nonatomic, retain) NSString *label;
-@property (nonatomic, retain) NSView *view;
-@property (nonatomic, readonly) SGTabView *tabView;
+@property(nonatomic, retain) NSColor *titleColor;
+@property(nonatomic, retain) NSString *label;
+@property(nonatomic, retain) NSView *view;
+@property(nonatomic, readonly) SGTabView *tabView;
+@property(nonatomic, assign) id initialFirstResponder;
+@property(nonatomic, readonly, getter=isFrontTab) BOOL frontTab;
 
-- (id) initWithIdentifier:(id) identifier;
-- (id) initialFirstResponder;
-- (void) setInitialFirstResponder:(NSView *) view;
-- (void) setHideCloseButton:(BOOL) hidem;
-- (BOOL) isFrontTab;
+- (id)initWithIdentifier:(id) identifier;
+- (void)setHideCloseButton:(BOOL) hidem;
 
 - (IBAction)doClose:(id)sender;
 - (IBAction)link_delink:(id)sender;
