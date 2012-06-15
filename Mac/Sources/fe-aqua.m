@@ -30,7 +30,7 @@
 #import "fe-aqua_common.h"
 #import "fe-aqua_utility.h"
 #import "AquaChat.h"
-#import "ChatWindow.h"
+#import "ChatViewController.h"
 #import "ChannelWindow.h"
 #import "BanWindow.h"
 #import "RawLogWindow.h"
@@ -299,13 +299,13 @@ void
 fe_new_window (struct session *sess, int focus)
 {
     sess->gui = (struct session_gui *) malloc (sizeof (struct session_gui));
-    sess->gui->chatWindow = [[ChatWindow alloc] initWithSession:sess];
+    sess->gui->controller = [[ChatViewController alloc] initWithSession:sess];
     
     if (!current_sess)
         current_sess = sess;
     
     if (focus)
-        [sess->gui->chatWindow.view makeKeyAndOrderFront:nil];
+        [sess->gui->controller.chatView makeKeyAndOrderFront:nil];
     
     // XChat waits until a session is created before installing plugins.. we
     // do the same thing..
@@ -318,7 +318,7 @@ fe_print_text (struct session *sess, char *text, time_t stamp)
 {
     NSString *string = [NSString stringWithUTF8String:text];
     if ( string == nil ) return;
-    [sess->gui->chatWindow printText:string stamp:stamp];
+    [sess->gui->controller printText:string stamp:stamp];
 }
 
 void
@@ -712,7 +712,7 @@ fe_get_str (char *msg, char *def, void *callback, void *userdata)
 void
 fe_close_window (struct session *sess)
 {
-    [sess->gui->chatWindow closeWindow];
+    [sess->gui->controller closeWindow];
 }
 
 void
@@ -731,7 +731,7 @@ fe_add_rawlog (struct server *serv, char *text, int len, int outbound)
 void
 fe_set_topic (struct session *sess, char *topic, char *stripped_topic)
 {
-    [sess->gui->chatWindow setTopic:topic];
+    [sess->gui->controller setTopic:topic];
 }
 
 void
@@ -743,13 +743,13 @@ fe_cleanup (void)
 void
 fe_set_hilight (struct session *sess)
 {
-    [sess->gui->chatWindow setHilight];
+    [sess->gui->controller setHilight];
 }
 
 void
 fe_update_mode_buttons (struct session *sess, char mode, char sign)
 {
-    [sess->gui->chatWindow modeButtons:mode sign:sign];
+    [sess->gui->controller modeButtons:mode sign:sign];
 }
 
 void
@@ -761,7 +761,7 @@ fe_update_channel_key (struct session *sess)
 void
 fe_update_channel_limit (struct session *sess)
 {
-    [sess->gui->chatWindow channelLimit];
+    [sess->gui->controller channelLimit];
 }
 
 int
@@ -821,13 +821,13 @@ void fe_notify_ask (char *name, char *networks)
 void
 fe_text_clear (struct session *sess, int lines)
 {
-    [sess->gui->chatWindow clear];
+    [sess->gui->controller clear];
 }
 
 void
 fe_progressbar_start (struct session *sess)
 {
-    [sess->gui->chatWindow progressbarStart];
+    [sess->gui->controller progressbarStart];
 }
 
 void
@@ -839,36 +839,36 @@ fe_progressbar_end (struct server *serv)
 void
 fe_userlist_insert (struct session *sess, struct User *newuser, int row, int selected)
 {
-    [sess->gui->chatWindow userlistInsert:newuser row:(NSInteger)row select:selected];
+    [sess->gui->controller userlistInsert:newuser row:(NSInteger)row select:selected];
 }
 
 void fe_userlist_update (struct session *sess, struct User *user)
 {
-    [sess->gui->chatWindow userlistUpdate:user];
+    [sess->gui->controller userlistUpdate:user];
 }
 
 int
 fe_userlist_remove (struct session *sess, struct User *user)
 {
-    return (int)[sess->gui->chatWindow userlistRemove:user];
+    return (int)[sess->gui->controller userlistRemove:user];
 }
 
 void
 fe_userlist_move (struct session *sess, struct User *user, int new_row)
 {
-    [sess->gui->chatWindow userlistMove:user row:(NSInteger)new_row];
+    [sess->gui->controller userlistMove:user row:(NSInteger)new_row];
 }
 
 void
 fe_userlist_numbers (struct session *sess)
 {
-    [sess->gui->chatWindow userlistNumbers];
+    [sess->gui->controller userlistNumbers];
 }
 
 void
 fe_userlist_clear (struct session *sess)
 {
-    [sess->gui->chatWindow userlistClear];
+    [sess->gui->controller userlistClear];
 }
 
 void
@@ -892,13 +892,13 @@ fe_dcc_remove (struct DCC *dcc)
 void
 fe_clear_channel (struct session *sess)
 {
-    [sess->gui->chatWindow clearChannel];
+    [sess->gui->controller clearChannel];
 }
 
 void
 fe_session_callback (struct session *sess)
 {
-    [sess->gui->chatWindow release];
+    [sess->gui->controller release];
     free (sess->gui);
     sess->gui = NULL;
 }
@@ -924,31 +924,31 @@ fe_pluginlist_update (void)
 void
 fe_buttons_update (struct session *sess)
 {
-    [sess->gui->chatWindow setupUserlistButtons];
+    [sess->gui->controller setupUserlistButtons];
 }
 
 void
 fe_dlgbuttons_update (struct session *sess)
 {
-    [sess->gui->chatWindow setupDialogButtons];
+    [sess->gui->controller setupDialogButtons];
 }
 
 void
 fe_set_channel (struct session *sess)
 {
-    [sess->gui->chatWindow setChannel];
+    [sess->gui->controller setChannel];
 }
 
 void
 fe_set_title (struct session *sess)
 {
-    [sess->gui->chatWindow setTitle];
+    [sess->gui->controller setTitle];
 }
 
 void
 fe_set_nonchannel (struct session *sess, int state)
 {
-    [sess->gui->chatWindow setNonchannel:state];
+    [sess->gui->controller setNonchannel:state];
 }
 
 void
@@ -996,7 +996,7 @@ fe_dcc_open_chat_win (int passive)
 void
 fe_lastlog (session * sess, session * lastlog_sess, char *sstr, gboolean regexp)
 {
-    [sess->gui->chatWindow lastlogIntoWindow:lastlog_sess->gui->chatWindow key:sstr];
+    [sess->gui->controller lastlogIntoWindow:lastlog_sess->gui->controller key:sstr];
 }
 
 void
@@ -1068,13 +1068,13 @@ fe_ctrl_gui (session *sess, fe_gui_action action, int arg)
 void
 fe_userlist_rehash (struct session *sess, struct User *user)
 {
-    [sess->gui->chatWindow userlistRehash:user];
+    [sess->gui->controller userlistRehash:user];
 }
 
 void
 fe_dcc_send_filereq (struct session *sess, char *nick, int maxcps, int passive)
 {
-    NSString *s = [SGFileSelection selectWithWindow:[current_sess->gui->chatWindow window]];
+    NSString *s = [SGFileSelection selectWithWindow:[current_sess->gui->controller window]];
     if (s)
         dcc_send (sess, nick, (char *) [s UTF8String], maxcps, passive);
 }
@@ -1090,10 +1090,10 @@ fe_gui_info (session *sess, int info_type)
     switch (info_type)
     {
         case 0: // window status
-            if (![[sess->gui->chatWindow window] isVisible])
+            if (![[sess->gui->controller window] isVisible])
                 return 2;       // hidden (iconified or systray)
             
-            if ([[sess->gui->chatWindow window] isKeyWindow])
+            if ([[sess->gui->controller window] isKeyWindow])
                 return 1;       // active/focused
             
             return 0;           // normal (no keyboard focus or behind a window)
@@ -1104,22 +1104,22 @@ fe_gui_info (session *sess, int info_type)
 
 char * fe_get_inputbox_contents (struct session *sess)
 {
-    return (char *) [[sess->gui->chatWindow inputText] UTF8String];
+    return (char *) [[sess->gui->controller inputText] UTF8String];
 }
 
 void fe_set_inputbox_contents (struct session *sess, char *text)
 {
-    [sess->gui->chatWindow setInputText:[NSString stringWithUTF8String:text]];
+    [sess->gui->controller setInputText:[NSString stringWithUTF8String:text]];
 }
 
 int fe_get_inputbox_cursor (struct session *sess)
 {
-    return [sess->gui->chatWindow inputTextPosition];
+    return [sess->gui->controller inputTextPosition];
 }
 
 void fe_set_inputbox_cursor (struct session *sess, int delta, int pos)
 {
-    [sess->gui->chatWindow setInputTextPosition:pos delta:delta];
+    [sess->gui->controller setInputTextPosition:pos delta:delta];
 }
 
 void fe_open_url (const char *url)
@@ -1146,7 +1146,7 @@ void fe_menu_update (menu_entry *me)
 
 void fe_uselect (session *sess, char *word[], int do_clear, int scroll_to)
 {
-    [sess->gui->chatWindow userlistSelectNames:word clear:do_clear scrollTo:scroll_to];
+    [sess->gui->controller userlistSelectNames:word clear:do_clear scrollTo:scroll_to];
 }
 
 void fe_server_event (server *serv, int type, int arg)
@@ -1159,7 +1159,7 @@ void *fe_gui_info_ptr (session *sess, int info_type)
     switch (info_type)
     {
         case 0:    /* native window pointer (for plugins) */
-            return [sess->gui->chatWindow window];    // return the NSWindow *... it seems the closest thing to what GTK does, although I shudder to think what a plugin might want to do with it
+            return [sess->gui->controller window];    // return the NSWindow *... it seems the closest thing to what GTK does, although I shudder to think what a plugin might want to do with it
     }
     return NULL;
 }
@@ -1167,7 +1167,7 @@ void *fe_gui_info_ptr (session *sess, int info_type)
 void
 fe_userlist_set_selected (struct session *sess)
 {
-    [sess->gui->chatWindow userlistSetSelected];
+    [sess->gui->controller userlistSetSelected];
 }
 
 // This should be called fe_joind()!  Sending mail to peter.

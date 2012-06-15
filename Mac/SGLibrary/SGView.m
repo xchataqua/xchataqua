@@ -256,8 +256,9 @@
     pending_layout = NO;
     in_my_layout = YES;
     
-    if (needs_size_to_fit)
+    if (needs_size_to_fit) {
         [self sizeToFit];
+    }
         
     [self do_layout];
     [self setNeedsDisplay:YES];
