@@ -305,7 +305,7 @@ fe_new_window (struct session *sess, int focus)
         current_sess = sess;
     
     if (focus)
-        [sess->gui->controller.view makeKeyAndOrderFront:nil];
+        [sess->gui->controller.chatView makeKeyAndOrderFront:nil];
     
     // XChat waits until a session is created before installing plugins.. we
     // do the same thing..

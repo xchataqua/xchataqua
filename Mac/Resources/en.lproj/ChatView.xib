@@ -382,7 +382,7 @@
 								<array class="NSMutableArray" key="NSSubviews">
 									<object class="NSCustomView" id="432190965">
 										<reference key="NSNextResponder" ref="438210779"/>
-										<int key="NSvFlags">292</int>
+										<int key="NSvFlags">256</int>
 										<array class="NSMutableArray" key="NSSubviews">
 											<object class="NSScrollView" id="264568351">
 												<reference key="NSNextResponder" ref="432190965"/>
@@ -403,7 +403,7 @@
 																<string key="NSExtension">NSTextView</string>
 															</object>
 														</array>
-														<string key="NSFrame">{{1, 1}, {579, 555}}</string>
+														<string key="NSFrame">{{1, 1}, {579, 562}}</string>
 														<reference key="NSSuperview" ref="264568351"/>
 														<reference key="NSWindow"/>
 														<reference key="NSNextKeyView" ref="1018426012"/>
@@ -422,7 +422,7 @@
 													<object class="NSScroller" id="11905204">
 														<reference key="NSNextResponder" ref="264568351"/>
 														<int key="NSvFlags">256</int>
-														<string key="NSFrame">{{580, 1}, {15, 555}}</string>
+														<string key="NSFrame">{{580, 1}, {15, 562}}</string>
 														<reference key="NSSuperview" ref="264568351"/>
 														<reference key="NSWindow"/>
 														<reference key="NSNextKeyView" ref="566931599"/>
@@ -444,7 +444,7 @@
 														<double key="NSPercent">0.99032258987426758</double>
 													</object>
 												</array>
-												<string key="NSFrame">{{0, 33}, {596, 557}}</string>
+												<string key="NSFrame">{{0, 26}, {596, 564}}</string>
 												<reference key="NSSuperview" ref="432190965"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="654633798"/>
@@ -603,7 +603,7 @@
 													<object class="NSTextField" id="1068836615">
 														<reference key="NSNextResponder" ref="566931599"/>
 														<int key="NSvFlags">290</int>
-														<string key="NSFrame">{{88, 4}, {467, 22}}</string>
+														<string key="NSFrame">{{88, 2}, {467, 22}}</string>
 														<reference key="NSSuperview" ref="566931599"/>
 														<reference key="NSWindow"/>
 														<reference key="NSNextKeyView" ref="264917991"/>
@@ -682,7 +682,7 @@
 														<double key="NSMaxValue">100</double>
 													</object>
 												</array>
-												<string key="NSFrameSize">{596, 28}</string>
+												<string key="NSFrameSize">{596, 26}</string>
 												<reference key="NSSuperview" ref="432190965"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="1024297297"/>
@@ -1206,6 +1206,30 @@
 						<reference key="destination" ref="802015968"/>
 					</object>
 					<int key="connectionID">626</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">stretchView</string>
+						<reference key="source" ref="432190965"/>
+						<reference key="destination" ref="264568351"/>
+					</object>
+					<int key="connectionID">629</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">stretchView</string>
+						<reference key="source" ref="825554670"/>
+						<reference key="destination" ref="44188103"/>
+					</object>
+					<int key="connectionID">630</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">stretchView</string>
+						<reference key="source" ref="44188103"/>
+						<reference key="destination" ref="475610218"/>
+					</object>
+					<int key="connectionID">631</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1836,7 +1860,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">628</int>
+			<int key="maxID">631</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1878,7 +1902,6 @@
 						<string key="buttonBoxView">SGRowColView</string>
 						<string key="chatScrollView">NSScrollView</string>
 						<string key="chatTextView">XAChatTextView</string>
-						<string key="chatView">TabOrWindowView</string>
 						<string key="headerBoxView">SGHBoxView</string>
 						<string key="inputTextField">NSTextField</string>
 						<string key="keyTextField">NSTextField</string>
@@ -1909,10 +1932,6 @@
 						<object class="IBToOneOutletInfo" key="chatTextView">
 							<string key="name">chatTextView</string>
 							<string key="candidateClassName">XAChatTextView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="chatView">
-							<string key="name">chatView</string>
-							<string key="candidateClassName">TabOrWindowView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="headerBoxView">
 							<string key="name">headerBoxView</string>

@@ -64,6 +64,10 @@ NSMutableDictionary *utilities;
     return utility;
 }
 
+- (void)performCloseTab:(id)sender {
+    [self performClose:sender];
+}
+
 - (void) close {    
     [super close];
     if (self.isReleasedWhenClosed) {
