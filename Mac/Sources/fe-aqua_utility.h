@@ -72,6 +72,16 @@ typedef int (*timer_callback) (void *user_data);
 
 #endif
 
+
+@interface ConfirmObject : NSObject
+{
+@public
+    void (*yesproc)(void *);
+    void (*noproc)(void *);
+    void *ud;
+}
+@end
+
 #pragma mark -
 
 @interface OpenURLCommand : NSScriptCommand { }

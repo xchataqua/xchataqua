@@ -146,8 +146,18 @@ extern GSList *plugin_list;
     }
 }
 
-- (void)revealStartupItemsInFinder:(id)sender {
-    NSString *path = [[SGFileUtility findApplicationSupportFor:@PRODUCT_NAME] stringByAppendingPathComponent:@"PlugIns"];
+- (void)showStartupItemsInFinder:(id)sender {
+    NSString *path = [[SGFileUtility findApplicationSupportFor:@PRODUCT_NAME] stringByAppendingPathComponent:@"plugins"];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:path isDirectory:YES]];
+}
+
+- (void)showBundledItemsInFinder:(id)sender {
+    NSString *path;
+    if ([@PRODUCT_NAME isEqualToString:@"XChat Azure"]) {
+        path = [[SGFileUtility findApplicationSupportFor:@PRODUCT_NAME] stringByAppendingPathComponent:@"plugins-bundled"];
+    } else {
+        path = [[NSBundle mainBundle] builtInPlugInsPath];
+    }
     [[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:path isDirectory:YES]];
 }
 

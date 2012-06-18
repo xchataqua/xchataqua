@@ -15,28 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-/* PluginWindow.h
- * Correspond to fe-gtk: xchat/src/fe-gtk/plugingui.*
- * Correspond to main menu: Window -> Plugins and Scripts...
- */
+#include "xchat-plugin.h"
 
-#import "UtilityWindow.h"
-
-@interface PluginWindow : UtilityWindow
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSTableViewDataSource>
-#endif
-{
-    IBOutlet NSTableView *pluginTableView;
-    NSMutableArray *plugins;
-}
-
-- (IBAction)loadPlugin:(id)sender;
-- (IBAction)unloadPlugin:(id)sender;
-
-- (IBAction)showStartupItemsInFinder:(id)sender;
-- (IBAction)showBundledItemsInFinder:(id)sender;
-
-- (void)update;
-
-@end
+int XAInitInternalPlugin(xchat_plugin *plugin_handle, char **plugin_name,
+                         char **plugin_desc, char **plugin_version, char *arg);
