@@ -211,6 +211,22 @@ static int TimerThingSequence = 1;
 
 #endif
 
+@implementation ConfirmObject
+
+- (void) do_yes
+{
+    yesproc (ud);
+    [self release];
+}
+
+- (void) do_no
+{
+    noproc (ud);
+    [self release];
+}
+
+@end
+
 #pragma mark -
 
 @implementation OpenURLCommand
