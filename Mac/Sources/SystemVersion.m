@@ -21,7 +21,7 @@ static SystemVersion *SystemVersionSharedSystemVersion;
 
 @implementation SystemVersion
 @synthesize systemVersion, buildVersion, systemBranch;
-@synthesize major, minor, micro;
+@synthesize version, major, minor, bugfix;
 
 + (void) initialize {
     if (self == [SystemVersion class]) {
@@ -41,21 +41,10 @@ static SystemVersion *SystemVersionSharedSystemVersion;
         buildVersion  = [[dict valueForKey:@"ProductBuildVersion"] retain];
         systemVersion = [[dict valueForKey:@"ProductVersion"] retain];
         
-        {
-            char * orig_buf, * buf = strdup([systemVersion UTF8String]);
-            orig_buf = buf;
-            major = atoi(buf);
-            buf=strchr(buf, '.')+1;
-            if(buf) {
-                minor = atoi(buf);
-                buf=strchr(buf, '.');
-                if(buf)
-                    ++buf;
-            }
-            if(buf)
-                micro = atoi(buf);  
-            free(orig_buf);
-        }
+        Gestalt(gestaltSystemVersion, &version);
+        Gestalt(gestaltSystemVersionMajor, &major);
+        Gestalt(gestaltSystemVersionMinor, &minor);
+        Gestalt(gestaltSystemVersionBugFix, &bugfix);
         
         systemBranch = [[NSString alloc] initWithFormat:@"%d.%d", major, minor];
         
@@ -72,16 +61,20 @@ static SystemVersion *SystemVersionSharedSystemVersion;
     [super dealloc];
 }
 
-+ (uint8_t)major {
++ (SInt32)version {
+    return [[SystemVersion sharedInstance] version];
+}
+
++ (SInt32)major {
     return [[SystemVersion sharedInstance] major];
 }
 
-+ (uint8_t)minor {
++ (SInt32)minor {
     return [[SystemVersion sharedInstance] minor];
 }
 
-+ (uint8_t)micro {
-    return [[SystemVersion sharedInstance] micro];
++ (SInt32)bugfix {
+    return [[SystemVersion sharedInstance] bugfix];
 }
 
 + (NSString *)systemVersion {
