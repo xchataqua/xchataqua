@@ -438,7 +438,7 @@ extern struct EventInfo textEventInfo[];
 - (void) applyBackgroundImage:(id)sender
 {
     [self makeFirstResponder:self];
-    [backgroundImageTextField setStringValue:[SGFileSelection selectWithWindow:self]];
+    [backgroundImageTextField setStringValue:[SGFileSelection selectWithWindow:self].path];
 }
 
 - (void) removeBackgroundImage:(id)sender
@@ -455,10 +455,10 @@ extern struct EventInfo textEventInfo[];
 
 - (void)loadColorFromFile:(id)sender {
     [self makeFirstResponder:self];
-    NSString *path = [SGFileSelection selectWithWindow:self];
-    if (path != nil) {
+    NSURL *URL = [SGFileSelection selectWithWindow:self];
+    if (URL != nil) {
         ColorPalette *palette = [[ColorPalette alloc] init];
-        [palette loadFromURL:[NSURL fileURLWithPath:path]];
+        [palette loadFromURL:URL];
         [self populateColorsFromPalette:palette];
         [palette release];
     }
