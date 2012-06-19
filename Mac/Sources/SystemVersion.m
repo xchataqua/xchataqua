@@ -17,99 +17,83 @@
 
 #import "SystemVersion.h"
 
-static SystemVersion * sharedSystemVersion;
-
-@interface SystemVersion ( private )
-- (void)_load_system_version;
-@end
-
-@implementation SystemVersion ( private )
-
-- (void)_load_system_version {
-	NSDictionary * dict = [[NSDictionary alloc] initWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"];
-	
-	buildVersion  = [[dict valueForKey:@"ProductBuildVersion"] retain];
-	systemVersion = [[dict valueForKey:@"ProductVersion"] retain];
-	
-	{
-		char * orig_buf, * buf = strdup([systemVersion UTF8String]);
-		orig_buf = buf;
-		major = atoi(buf);
-		buf=strchr(buf, '.')+1;
-		if(buf) {
-			minor = atoi(buf);
-			buf=strchr(buf, '.');
-			if(buf)
-				++buf;
-		}
-		if(buf)
-			micro = atoi(buf);  
-		free(orig_buf);
-	}
-	
-	systemBranch = [[NSString alloc] initWithFormat:@"%d.%d", major, minor];
-	
-	[dict release];
-}
-
-@end
+static SystemVersion *SystemVersionSharedSystemVersion;
 
 @implementation SystemVersion
 @synthesize systemVersion, buildVersion, systemBranch;
 @synthesize major, minor, micro;
 
 + (void) initialize {
-	sharedSystemVersion = [[SystemVersion alloc] init];	
+    if (self == [SystemVersion class]) {
+        SystemVersionSharedSystemVersion = [[SystemVersion alloc] init];
+    }
 }
 
 + (SystemVersion*)sharedInstance {
-	return sharedSystemVersion;
+    return SystemVersionSharedSystemVersion;
 }
 
 - (id) init {
-	if(sharedSystemVersion != 0) {
-		[self release];
-		self = sharedSystemVersion;
-	} else {
-		self = [super init];
-		[self _load_system_version];
-	}
-	return self;
+    self = [super init];
+    if (self != nil) {
+        NSDictionary * dict = [[NSDictionary alloc] initWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"];
+        
+        buildVersion  = [[dict valueForKey:@"ProductBuildVersion"] retain];
+        systemVersion = [[dict valueForKey:@"ProductVersion"] retain];
+        
+        {
+            char * orig_buf, * buf = strdup([systemVersion UTF8String]);
+            orig_buf = buf;
+            major = atoi(buf);
+            buf=strchr(buf, '.')+1;
+            if(buf) {
+                minor = atoi(buf);
+                buf=strchr(buf, '.');
+                if(buf)
+                    ++buf;
+            }
+            if(buf)
+                micro = atoi(buf);  
+            free(orig_buf);
+        }
+        
+        systemBranch = [[NSString alloc] initWithFormat:@"%d.%d", major, minor];
+        
+        [dict release];
+    }
+    return self;
 }
 
 - (void) dealloc
 {
-	if(systemVersion)
-		[systemVersion release];
-	if(buildVersion)
-		[buildVersion release];
-	if(systemBranch)
-		[systemBranch release];
-	[super dealloc];
+    [systemVersion release];
+    [buildVersion release];
+    [systemBranch release];
+    [super dealloc];
 }
 
 + (uint8_t)major {
-	return [[SystemVersion sharedInstance] major];
+    return [[SystemVersion sharedInstance] major];
 }
 
 + (uint8_t)minor {
-	return [[SystemVersion sharedInstance] minor];
+    return [[SystemVersion sharedInstance] minor];
 }
 
 + (uint8_t)micro {
-	return [[SystemVersion sharedInstance] micro];
+    return [[SystemVersion sharedInstance] micro];
 }
 
 + (NSString *)systemVersion {
-	return [[SystemVersion sharedInstance] systemVersion];
+    return [[SystemVersion sharedInstance] systemVersion];
 }
 
 + (NSString *)buildVersion {
-	return [[SystemVersion sharedInstance] buildVersion];
+    return [[SystemVersion sharedInstance] buildVersion];
 }
 
 + (NSString *)systemBranch {
-	return [[SystemVersion sharedInstance] systemBranch];
+    return [[SystemVersion sharedInstance] systemBranch];
 }
 
 @end
