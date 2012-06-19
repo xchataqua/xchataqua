@@ -597,6 +597,8 @@
 		388C8EAD13C6E10500AAF20D /* TextEventsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C8A0413C6E10100AAF20D /* TextEventsWindow.xib */; };
 		388C8EAF13C6E10500AAF20D /* UrlGrabberWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C8A0613C6E10200AAF20D /* UrlGrabberWindow.xib */; };
 		388C8EB113C6E10500AAF20D /* UserCommandsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C8A0813C6E10200AAF20D /* UserCommandsWindow.xib */; };
+		3894C1B31590D93C00BCD762 /* NSPanelAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3894C1B21590D6F400BCD762 /* NSPanelAdditions.m */; };
+		3894C1B41590D93D00BCD762 /* NSPanelAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3894C1B21590D6F400BCD762 /* NSPanelAdditions.m */; };
 		38BC97B6154A994D005894EF /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5A8F154A687400480EC6 /* ShortcutRecorder.framework */; };
 		38BC97B7154A996F005894EF /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5A8F154A687400480EC6 /* ShortcutRecorder.framework */; };
 		38BC97B8154A996F005894EF /* Growl.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5AC5154A70E300480EC6 /* Growl.framework */; };
@@ -2505,6 +2507,8 @@
 		388C8E6D13C6E10400AAF20D /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/TextEventsWindow.xib; sourceTree = "<group>"; };
 		388C8E6E13C6E10400AAF20D /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/UrlGrabberWindow.xib; sourceTree = "<group>"; };
 		388C8E6F13C6E10400AAF20D /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/UserCommandsWindow.xib; sourceTree = "<group>"; };
+		3894C1B11590D6F400BCD762 /* NSPanelAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSPanelAdditions.h; sourceTree = "<group>"; };
+		3894C1B21590D6F400BCD762 /* NSPanelAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSPanelAdditions.m; sourceTree = "<group>"; };
 		38BC97BF154A9B2C005894EF /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Mac/Aqua/Frameworks/Sparkle/Sparkle.framework; sourceTree = "<group>"; };
 		38CE5A63154A551600480EC6 /* alt_completion.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = alt_completion.pl; path = xchat/plugins/perl/alt_completion.pl; sourceTree = SOURCE_ROOT; };
 		38CE5A64154A551600480EC6 /* char_count.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = char_count.pl; path = xchat/plugins/perl/char_count.pl; sourceTree = SOURCE_ROOT; };
@@ -2792,6 +2796,8 @@
 				0F8EA6CB0CFB347B001AE9AE /* XADefaults.h */,
 				0F8EA6CC0CFB347B001AE9AE /* XAPrefs.h */,
 				0F8EA6CF0CFB347B001AE9AE /* XAVars.h */,
+				3894C1B11590D6F400BCD762 /* NSPanelAdditions.h */,
+				3894C1B21590D6F400BCD762 /* NSPanelAdditions.m */,
 			);
 			name = Sources;
 			path = Mac/Sources;
@@ -4799,6 +4805,7 @@
 				387676961589BC48007366B7 /* XAUserList.m in Sources */,
 				38E5737F158EEF38007943DA /* xchatext.m in Sources */,
 				38E573E2158F1A76007943DA /* AquaPlugins.m in Sources */,
+				3894C1B31590D93C00BCD762 /* NSPanelAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4888,6 +4895,7 @@
 				387676971589BC49007366B7 /* XAUserList.m in Sources */,
 				38E57380158EEF39007943DA /* xchatext.m in Sources */,
 				38E573E1158F1A76007943DA /* AquaPlugins.m in Sources */,
+				3894C1B41590D93D00BCD762 /* NSPanelAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
