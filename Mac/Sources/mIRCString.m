@@ -229,14 +229,14 @@ NSFont *sharedHiddenFont;
     NSMutableDictionary *attr = [NSMutableDictionary dictionary];
     
     if (fg < 0)
-        fg = AC_FGCOLOR;
+        fg = XAColorForeground;
     
     if (reverse)
     {
         // Special case:  Since we don't always have a bg color value, if
         // we are reversing the default colors, we need to do it specifically.
         if (bg < 0)
-            bg = AC_BGCOLOR;
+            bg = XAColorBackground;
         
         int xx = fg;
         fg = bg;

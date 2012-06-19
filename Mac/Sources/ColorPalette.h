@@ -19,14 +19,13 @@
  * Correspond to fe-gtk: xchat/src/fe-gtk/palette.*
  */
 
-enum
-{
-    AC_FGCOLOR = 34,
-    AC_BGCOLOR = 35,
-    AC_NEW_DATA = 37,
-    AC_NICK_SAID = 38,
-    AC_MSG_SAID = 39,
-    AC_AWAY_USER = 40
+enum {
+    XAColorForeground = 34,
+    XAColorBackground = 35,
+    XAColorNewData = 37,
+    XAColorNickMentioned = 38,
+    XAColorNewMessage = 39,
+    XAColorAwayUser = 40,
 };
 
 @interface ColorPalette : NSObject<NSCopying>
