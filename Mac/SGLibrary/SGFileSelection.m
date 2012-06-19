@@ -17,7 +17,7 @@
 
 #import "SGFileSelection.h"
 
-static NSString *fixPath (NSString *path)
+static NSString *SGFileSelectionFixURL (NSString *path)
 {
     if ( path == nil ) return nil;
         
@@ -36,7 +36,7 @@ static NSString *fixPath (NSString *path)
 
 + (NSString *) selectWithWindow:(NSWindow *) win inDirectory:(NSString *) dir
 {
-    dir = fixPath (dir);
+    dir = SGFileSelectionFixURL (dir);
     
     NSOpenPanel *panel = [NSOpenPanel openPanel];
 

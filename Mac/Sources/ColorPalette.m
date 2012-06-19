@@ -179,13 +179,7 @@ static int color_remap [] =
     }
 }
 
-- (void) load {
-    int file = xchat_open_file("colors.conf", O_RDONLY, 0, 0);
-    if (file == -1) {
-        [self loadLegacy];
-        return;
-    }
-    
+- (void)loadFromXChatFile:(int)file {
     struct stat filestat;
     fstat(file, &filestat);
     char *cfg = malloc(filestat.st_size + 1);
@@ -211,6 +205,21 @@ static int color_remap [] =
         free(cfg);
     }
     close(file);
+}
+
+- (void)loadFromURL:(NSURL *)fileURL {
+    const char *filename = fileURL.path.UTF8String;
+    int file = xchat_open_file((char *)filename, O_RDONLY, 0, XOF_FULLPATH);
+    [self loadFromXChatFile:file];
+}
+
+- (void)loadFromConfiguration {
+    int file = xchat_open_file("colors.conf", O_RDONLY, 0, 0);
+    if (file == -1) {
+        [self loadLegacy];
+        return;
+    }
+    [self loadFromXChatFile:file];
 }
 
 - (void) save

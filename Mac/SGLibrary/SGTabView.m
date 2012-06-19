@@ -541,7 +541,7 @@ HIThemeSegmentPosition positionTable[2][2] =
     // I'm not sure if this actually even does anything
     if (prefs.tab_layout == 2 && prefs.style_namelistgad) {
         ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-        [labelDictionary setObject:(titleColor?titleColor:[p getColor:AC_FGCOLOR]) forKey:NSForegroundColorAttributeName];
+        [labelDictionary setObject:(titleColor?titleColor:[p getColor:XAColorForeground]) forKey:NSForegroundColorAttributeName];
     } else {
         [labelDictionary setObject:(titleColor?titleColor:[NSColor blackColor]) forKey:NSForegroundColorAttributeName];
     }
@@ -986,8 +986,8 @@ NSNib *SGTabViewItemTabMenuNib;
     NSInteger row = [_tabOutlineView rowForItem:self.selectedTabViewItem];
     [_tabOutlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
     if (prefs.style_namelistgad) {
-        dataCell.textColor = [p getColor:AC_FGCOLOR];
-        _tabOutlineView.backgroundColor = [p getColor:AC_BGCOLOR];
+        dataCell.textColor = [p getColor:XAColorForeground];
+        _tabOutlineView.backgroundColor = [p getColor:XAColorBackground];
     }
 }
 
@@ -1361,7 +1361,7 @@ enum {
     NSColor *color;
     if (prefs.tab_layout == 2 && prefs.style_namelistgad) {
         ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-        color = [p getColor:AC_FGCOLOR];
+        color = [p getColor:XAColorForeground];
     } else {
         color = [NSColor blackColor];
     }

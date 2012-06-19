@@ -189,4 +189,7 @@ struct PreferenceItem
 - (IBAction)removeBackgroundImage:(id)sender;
 - (IBAction)applyTranparency:(id)sender;
 
+- (IBAction)loadColorFromDefault:(id)sender;
+- (IBAction)loadColorFromFile:(id)sender;
+
 @end

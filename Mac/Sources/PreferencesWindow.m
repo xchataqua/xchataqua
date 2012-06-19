@@ -140,6 +140,7 @@ extern struct EventInfo textEventInfo[];
 @interface PreferencesWindow (Private)
 
 - (void)populate;
+- (void)populateColorsFromPalette:(ColorPalette *)palette;
 - (void)fillColorWellsFromTag;
 - (void)loadSounds;
 - (void)makeSoundMenu;
@@ -445,6 +446,24 @@ extern struct EventInfo textEventInfo[];
     [backgroundImageTextField setStringValue:@""];
 }
 
+- (void)loadColorFromDefault:(id)sender {
+    ColorPalette *palette = [[ColorPalette alloc] init];
+    [palette loadDefaults];
+    [self populateColorsFromPalette:palette];
+    [palette release];
+}
+
+- (void)loadColorFromFile:(id)sender {
+    [self makeFirstResponder:self];
+    NSString *path = [SGFileSelection selectWithWindow:self];
+    if (path != nil) {
+        ColorPalette *palette = [[ColorPalette alloc] init];
+        [palette loadFromURL:[NSURL fileURLWithPath:path]];
+        [self populateColorsFromPalette:palette];
+        [palette release];
+    }
+}
+
 #pragma mark NSOutlineView delegate
 
 - (BOOL) outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item {
@@ -604,6 +623,10 @@ extern struct EventInfo textEventInfo[];
     if ([palette numberOfColors] != (sizeof(colorWells)/sizeof(colorWells[0])))
         NSLog(@"COLOR MAP OUT OF SYNC\n");
     
+    [self populateColorsFromPalette:palette];
+}
+
+- (void)populateColorsFromPalette:(ColorPalette *)palette {
     for (NSUInteger i = 0; i < [palette numberOfColors]; i ++)
         [colorWells[i] setColor:[palette getColor:i]];
 }
