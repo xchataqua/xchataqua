@@ -193,8 +193,8 @@ static const char * strip_crap (const char *s)
     self->allChannels = [[NSMutableArray alloc] init];
     self->colorPalette = [[[AquaChat sharedAquaChat] palette] copy];
     
-    [self->colorPalette setColor:AC_FGCOLOR color:[NSColor blackColor]];
-    [self->colorPalette setColor:AC_BGCOLOR color:[NSColor whiteColor]];
+    [self->colorPalette setColor:XAColorForeground color:[NSColor blackColor]];
+    [self->colorPalette setColor:XAColorBackground color:[NSColor whiteColor]];
     
     return self;    
 }
