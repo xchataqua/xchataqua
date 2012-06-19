@@ -35,9 +35,11 @@ enum {
 
 @property (readonly) NSUInteger numberOfColors;
 
-- (NSColor *) getColor:(NSInteger) n;
-- (void) setColor:(NSUInteger) n color:(NSColor *) color;
-- (void) load;
-- (void) save;
+- (NSColor *)getColor:(NSInteger)index;
+- (void)setColor:(NSUInteger)index color:(NSColor *)color;
+- (void)loadFromConfiguration;
+- (void)loadFromURL:(NSURL *)fileURL;
+- (void)loadDefaults;
+- (void)save;
 
 @end

@@ -187,7 +187,7 @@ static void setupAppSupport ()
     // State 1
     if (xcdir_exists && asdir_exists)
     {
-        printf ("~/.xchat2 and ApplicationSupport/XChat Azure!?");
+        NSLog(@"~/.xchat2 and ApplicationSupport/XChat Azure!?");
         return;
     }
     
