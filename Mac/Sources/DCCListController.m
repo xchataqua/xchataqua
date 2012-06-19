@@ -230,7 +230,7 @@ objectValueForTableColumn:(NSTableColumn *) aTableColumn
 {
     if (prefs.tab_layout == 2 && prefs.style_inputbox) {
         ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-        [dccListView setTabTitleColor:[p getColor:AC_FGCOLOR]];
+        [dccListView setTabTitleColor:[p getColor:XAColorForeground]];
     } else {
         [dccListView setTabTitleColor:[NSColor blackColor]];
     }
