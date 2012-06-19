@@ -111,7 +111,7 @@ AquaChat *AquaChatShared;
     self->soundCache = [[NSMutableDictionary alloc] init];
     
     self->palette = [[ColorPalette alloc] init];
-    [self->palette load];
+    [self->palette loadFromConfiguration];
     
     [self loadMenuPreferences];
     
