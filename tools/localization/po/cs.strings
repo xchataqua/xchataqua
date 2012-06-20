@@ -1,5 +1,5 @@
 /* nothing */
-"" = "Project-Id-Version: xchat 2.8.4\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2007-06-24 13:05+1000\nPO-Revision-Date: 2007-06-26 11:42+0200\nLast-Translator: Martin Šín <martin.sin@zshk.cz>\nLanguage-Team: Czech <translation-team-cs@lists.sourceforge.net>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\n";
+"" = "Project-Id-Version: xchat 2.8.8\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2010-05-30 13:56+1000\nPO-Revision-Date: 2011-08-24 19:38+0200\nLast-Translator: Martin Šín <martin.sin@zshk.cz>\nLanguage-Team: Czech <translation-team-cs@lists.sourceforge.net>\nLanguage: cs\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n";
 
 /* nothing */
 "Cannot create ~/.xchat2" = "Nemohu vytvořit ~/.xchat2";
@@ -119,7 +119,7 @@
 "BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "BAN <mask> [<bantype>], zakáže každého, kdo odpovídá masce na aktuálním kanálu. Pokud se již nacházíte na kanálu, nedojde k jeho vyhození (na to je potřeba chanop)";
 
 /* nothing */
-"Set per channel options\nCHANOPT CONFMODE ON|OFF - Toggle conf mode/showing of join and part messages\nCHANOPT COLORPASTE ON|OFF - Toggle color paste\nCHANOPT BEEP ON|OFF - Toggle beep on message\nCHANOPT TRAY ON|OFF - Toggle tray blink on message" = "Množina voleb kanálu\nCHANOPT CONFMODE ON|OFF - Zapne mód zobrazující připojení a částečné zprávy kanálu\nCHANOPT COLORPASTE ON|OFF - Zapne barvu\nCHANOPT BEEP ON|OFF - Zapne zvuk při zprávě\nCHANOPT TRAY ON|OFF - Zapne blikání při zprávě";
+"CHANOPT [-quiet] <variable> [<value>]" = "CHANOPT [-quiet] <variable> [<value>]";
 
 /* nothing */
 "CLEAR [ALL|HISTORY], Clears the current text window or command history" = "CLEAR [ALL|HISTORY], smaže aktuální textové okno nebo historii příkazů";
@@ -134,7 +134,7 @@
 "CTCP <nick> <message>, send the CTCP message to nick, common messages are VERSION and USERINFO" = "CTCP <nick> <zpráva>, pošle zprávu CTCP dané přezdívce, běžné zprávy jsou VERSION a USERINFO";
 
 /* nothing */
-"CYCLE [<channel>], parts the current or given channel and immediately rejoins" = "CYCLE [<channel>], odejde z aktuálního nebo zadaného kanálu a ihned se zas připojí";
+"CYCLE [<channel>], parts the current or given channel and immediately rejoins" = "CYCLE [<channel>], odejde ze současného kanálu a ihned se zas připojí";
 
 /* nothing */
 "\nDCC GET <nick>                      - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file]  - send a file to someone\nDCC PSEND [-maxcps=#] <nick> [file] - send a file using passive mode\nDCC LIST                            - show DCC list\nDCC CHAT <nick>                     - offer DCC CHAT to someone\nDCC PCHAT <nick>                    - offer DCC CHAT using passive mode\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "\nDCC GET <nick>                      - přijme nabízený soubor\nDCC SEND [-maxcps=#] <nick> [file]  - pošle někomu soubor\nDCC PSEND [-maxcps=#] <nick> [file] - pošle soubor pomocí pasivního módu\nDCC LIST                            - zobrazí seznam DCC\nDCC CHAT <nick>                     - nabídne někomu DCC CHAT\nDCC PCHAT <nick>                    - nabídne DCC CHAT v pasivní režimu\nDCC CLOSE <type> <nick> <file>        příklad:\n         /dcc close send johnsmith file.tar.gz";
@@ -182,7 +182,7 @@
 "GATE <host> [<port>], proxies through a host, port defaults to 23" = "GATE <host> [<port>], použije proxy hostitele, výchozí port je 23";
 
 /* nothing */
-"GHOST <nick> <password>, Kills a ghosted nickname" = "GHOST <nick> <password>, zabije ducha přezdívky";
+"GHOST <nick> [password], Kills a ghosted nickname" = "GHOST <nick> [password], zabije ducha přezdívky";
 
 /* nothing */
 "HOP <nick>, gives chanhalf-op status to the nick (needs chanop)" = "HOP <nick>, předá právo chanhalf-op přezdívce (vyžaduje chanop)";
@@ -275,7 +275,7 @@
 "RECONNECT [<host>] [<port>] [<password>], Can be called just as /RECONNECT to reconnect to the current server or with /RECONNECT ALL to reconnect to all the open servers" = "RECONNECT [<host>] [<port>] [<password>], Může být volán stejně jako /RECONNECT pro nové připojení k aktuálnímu serveru nebo pomocí /RECONNECT ALL pro připojení ke všem otevřeným serverům";
 
 /* nothing */
-"RECV <text>, send raw data to xchat, as if it was received from the irc server" = "RECV <text>, pošle text xchatu, stejně jako by byl přijmut od serveru irc";
+"RECV <text>, send raw data to xchat, as if it was received from the irc server" = "RECV <text>, pošle text xchatu, stejně jako by byl přijat od serveru irc";
 
 /* nothing */
 "SAY <text>, sends the text to the object in the current window" = "SAY <text>, pošle text do aktuálního okna";
@@ -296,7 +296,7 @@
 "SERVER <host> [<port>] [<password>], connects to a server, the default port is 6667" = "SERVER <host> [<port>] [<password>], připojí se k serveru na výchozím portu 6667";
 
 /* nothing */
-"SET [-e] [-or] [-quiet] <variable> [<value>]" = "SET [-e] [-or] [-quiet] <variable> [<value>]";
+"SET [-e] [-off|-on] [-quiet] <variable> [<value>]" = "SET [-e] [-off|-on] [-quiet] <variable> [<value>]";
 
 /* nothing */
 "SETCURSOR [-|+]<position>" = "SETCURSOR [-|+]<position>";
@@ -713,7 +713,7 @@
 "%C22*%O$tYou are now known as $2" = "%C22*%O$tJste znám jako $2";
 
 /* nothing */
-"Loaded log from" = "Načtený log z";
+"Loaded log from" = "Log načten z";
 
 /* nothing */
 "**** ENDING LOGGING AT %s\n" = "**** KONČÍM ZÁZNAM V %s\n";
@@ -749,10 +749,10 @@
 "Mode char" = "Znak módu";
 
 /* nothing */
-"The text" = "Text";
+"Identified text" = "Textová identifikace";
 
 /* nothing */
-"Identified text" = "Textová identifikace";
+"The text" = "Text";
 
 /* nothing */
 "The message" = "Zpráva";
@@ -941,7 +941,7 @@
 "Account" = "Účet";
 
 /* nothing */
-"Real user@host" = "Skutený uživatel@počítač";
+"Real user@host" = "Skutečný uživatel@počítač";
 
 /* nothing */
 "Real IP" = "Skutečná IP";
@@ -954,6 +954,9 @@
 
 /* nothing */
 "Server Name" = "Jméno serveru";
+
+/* nothing */
+"Raw Numeric or Identifier" = "Číselné označení nebo identifikátor";
 
 /* nothing */
 "Nick of person who invited you" = "Přezdívka uživatele, který vás pozval";
@@ -1046,7 +1049,7 @@
 "Error parsing event %s.\nLoading default." = "Chyba při analýze události %s.\nNačítám výchozí nastavení.";
 
 /* nothing */
-"Cannot read sound file:\n%s" = "Nemůžu přečíst zvkukový soubor:\n%s";
+"Cannot read sound file:\n%s" = "Nemůžu přečíst zvukový soubor:\n%s";
 
 /* nothing */
 "Remote host closed socket" = "Vzdálený počítač zavřel soket";
@@ -1070,13 +1073,13 @@
 "Ascension Island" = "Ostrov Nanebevstoupení";
 
 /* nothing */
-"Andorra" = "Andora";
+"Andorra" = "Andorra";
 
 /* nothing */
 "United Arab Emirates" = "Spojené arabské emiráty";
 
 /* nothing */
-"Afghanistan" = "Afgánistán";
+"Afghanistan" = "Afghánistán";
 
 /* nothing */
 "Antigua and Barbuda" = "Antigua a Barbuda";
@@ -1145,7 +1148,7 @@
 "Bulgaria" = "Bulharsko";
 
 /* nothing */
-"Bahrain" = "Bahrain";
+"Bahrain" = "Bahrajn";
 
 /* nothing */
 "Burundi" = "Burundi";
@@ -1160,7 +1163,7 @@
 "Bermuda" = "Bermudy";
 
 /* nothing */
-"Brunei Darussalam" = "Brunei Darussalam";
+"Brunei Darussalam" = "Brunej";
 
 /* nothing */
 "Bolivia" = "Bolívie";
@@ -1172,10 +1175,10 @@
 "Bahamas" = "Bahamy";
 
 /* nothing */
-"Bhutan" = "Bhutan";
+"Bhutan" = "Bhútán";
 
 /* nothing */
-"Bouvet Island" = "Bouvet Island";
+"Bouvet Island" = "Bouvetův ostrov";
 
 /* nothing */
 "Botswana" = "Botswana";
@@ -1205,10 +1208,10 @@
 "Switzerland" = "Švýcarsko";
 
 /* nothing */
-"Cote d'Ivoire" = "Cote d'Ivoire";
+"Cote d'Ivoire" = "Pobřeží slonoviny";
 
 /* nothing */
-"Cook Islands" = "Cook Islands";
+"Cook Islands" = "Cookovy ostrovy";
 
 /* nothing */
 "Chile" = "Chile";
@@ -1220,22 +1223,22 @@
 "China" = "Čína";
 
 /* nothing */
-"Colombia" = "Kolombie";
+"Colombia" = "Kolumbie";
 
 /* nothing */
 "Internic Commercial" = "Internic Commercial";
 
 /* nothing */
-"Costa Rica" = "Costa Rica";
+"Costa Rica" = "Kostarika";
 
 /* nothing */
-"Serbia and Montenegro" = "Srbsko a Černá hora";
+"Serbia and Montenegro" = "Srbsko a Černá Hora";
 
 /* nothing */
 "Cuba" = "Kuba";
 
 /* nothing */
-"Cape Verde" = "Cape Verde";
+"Cape Verde" = "Kapverdy";
 
 /* nothing */
 "Christmas Island" = "Vánoční ostrov";
@@ -1250,19 +1253,19 @@
 "Germany" = "Německo";
 
 /* nothing */
-"Djibouti" = "Djibouti";
+"Djibouti" = "Džibutsko";
 
 /* nothing */
 "Denmark" = "Dánsko";
 
 /* nothing */
-"Dominica" = "Dominica";
+"Dominica" = "Dominika";
 
 /* nothing */
 "Dominican Republic" = "Dominkánská republika";
 
 /* nothing */
-"Algeria" = "Algeria";
+"Algeria" = "Alžírsko";
 
 /* nothing */
 "Ecuador" = "Ekvádor";
@@ -1304,7 +1307,7 @@
 "Micronesia" = "Mikronésie";
 
 /* nothing */
-"Faroe Islands" = "Faroe Islands";
+"Faroe Islands" = "Faerské ostrovy";
 
 /* nothing */
 "France" = "Francie";
@@ -1322,7 +1325,7 @@
 "Georgia" = "Gruzie";
 
 /* nothing */
-"French Guiana" = "Francouzská Guayana";
+"French Guiana" = "Francouzská Guyana";
 
 /* nothing */
 "British Channel Isles" = "Britské satelitní ostrovy";
@@ -1355,7 +1358,7 @@
 "Greece" = "Řecko";
 
 /* nothing */
-"S. Georgia and S. Sandwich Isles" = "S. Georgia a S. Sandwich Isles";
+"S. Georgia and S. Sandwich Isles" = "Jižní Georgie a Jižní Sandwichovy ostrovy";
 
 /* nothing */
 "Guatemala" = "Guatemala";
@@ -1370,10 +1373,10 @@
 "Guyana" = "Guyana";
 
 /* nothing */
-"Hong Kong" = "Hong Kong";
+"Hong Kong" = "Hongkong";
 
 /* nothing */
-"Heard and McDonald Islands" = "Heard a McDonald Islands";
+"Heard and McDonald Islands" = "Heardův ostrov a McDonaldovy ostrovy";
 
 /* nothing */
 "Honduras" = "Honduras";
@@ -1394,10 +1397,10 @@
 "Ireland" = "Irsko";
 
 /* nothing */
-"Israel" = "Israel";
+"Israel" = "Izrael";
 
 /* nothing */
-"Isle of Man" = "Isle of Man";
+"Isle of Man" = "Ostrov Man";
 
 /* nothing */
 "India" = "Indie";
@@ -1409,13 +1412,13 @@
 "International" = "Mezinárodní";
 
 /* nothing */
-"British Indian Ocean Territory" = "Britské teritorium Indického oceánu";
+"British Indian Ocean Territory" = "Britské indickooceánské území";
 
 /* nothing */
 "Iraq" = "Irák";
 
 /* nothing */
-"Iran" = "Irán";
+"Iran" = "Írán";
 
 /* nothing */
 "Iceland" = "Island";
@@ -1448,10 +1451,10 @@
 "Kiribati" = "Kiribati";
 
 /* nothing */
-"Comoros" = "Comoros";
+"Comoros" = "Komory";
 
 /* nothing */
-"St. Kitts and Nevis" = "St. Kitts and Nevis";
+"St. Kitts and Nevis" = "Svatý Kryštof a Nevis";
 
 /* nothing */
 "North Korea" = "Severní Korea";
@@ -1463,7 +1466,7 @@
 "Kuwait" = "Kuvajt";
 
 /* nothing */
-"Cayman Islands" = "Cayman Islands";
+"Cayman Islands" = "Kajmanské ostrovy";
 
 /* nothing */
 "Kazakhstan" = "Kazachstán";
@@ -1475,7 +1478,7 @@
 "Lebanon" = "Libanon";
 
 /* nothing */
-"Saint Lucia" = "Saint Lucia";
+"Saint Lucia" = "Svatá Lucie";
 
 /* nothing */
 "Liechtenstein" = "Lichtenštejnsko";
@@ -1499,7 +1502,7 @@
 "Latvia" = "Lotyšsko";
 
 /* nothing */
-"Libya" = "Libya";
+"Libya" = "Libye";
 
 /* nothing */
 "Morocco" = "Maroko";
@@ -1508,7 +1511,7 @@
 "Monaco" = "Monako";
 
 /* nothing */
-"Moldova" = "Moldávie";
+"Moldova" = "Moldavsko";
 
 /* nothing */
 "United States Medical" = "United States Medical";
@@ -1517,7 +1520,7 @@
 "Madagascar" = "Madagaskar";
 
 /* nothing */
-"Marshall Islands" = "Marshall Islands";
+"Marshall Islands" = "Marshallovy ostrovy";
 
 /* nothing */
 "Military" = "Vojenské";
@@ -1538,13 +1541,13 @@
 "Macau" = "Macau";
 
 /* nothing */
-"Northern Mariana Islands" = "Northern Mariana Islands";
+"Northern Mariana Islands" = "Severní Mariany";
 
 /* nothing */
-"Martinique" = "Martinique";
+"Martinique" = "Martinik";
 
 /* nothing */
-"Mauritania" = "Mauretánie";
+"Mauritania" = "Mauritánie";
 
 /* nothing */
 "Montserrat" = "Montserrat";
@@ -1553,10 +1556,10 @@
 "Malta" = "Malta";
 
 /* nothing */
-"Mauritius" = "Mauritius";
+"Mauritius" = "Mauricius";
 
 /* nothing */
-"Maldives" = "Maldivy";
+"Maldives" = "Maledivy";
 
 /* nothing */
 "Malawi" = "Malawi";
@@ -1568,7 +1571,7 @@
 "Malaysia" = "Malajsie";
 
 /* nothing */
-"Mozambique" = "Mozambik";
+"Mozambique" = "Mosambik";
 
 /* nothing */
 "Namibia" = "Namibie";
@@ -1583,16 +1586,16 @@
 "Internic Network" = "Internic Network";
 
 /* nothing */
-"Norfolk Island" = "Norfolk Island";
+"Norfolk Island" = "Ostrov Norfolk";
 
 /* nothing */
 "Nigeria" = "Nigérie";
 
 /* nothing */
-"Nicaragua" = "Nicaragua";
+"Nicaragua" = "Nikaragua";
 
 /* nothing */
-"Netherlands" = "Holandsko";
+"Netherlands" = "Nizozemsko";
 
 /* nothing */
 "Norway" = "Norsko";
@@ -1637,16 +1640,16 @@
 "Poland" = "Polsko";
 
 /* nothing */
-"St. Pierre and Miquelon" = "St. Pierre and Miquelon";
+"St. Pierre and Miquelon" = "Sv. Pierre a Miquelon";
 
 /* nothing */
 "Pitcairn" = "Pitcairn";
 
 /* nothing */
-"Puerto Rico" = "Puerto Rico";
+"Puerto Rico" = "Portoriko";
 
 /* nothing */
-"Palestinian Territory" = "Palestinské teritorium";
+"Palestinian Territory" = "Palestinská území";
 
 /* nothing */
 "Portugal" = "Portugalsko";
@@ -1658,10 +1661,10 @@
 "Paraguay" = "Paraguay";
 
 /* nothing */
-"Qatar" = "Qatar";
+"Qatar" = "Katar";
 
 /* nothing */
-"Reunion" = "Sjednocení";
+"Reunion" = "Réunion";
 
 /* nothing */
 "Romania" = "Rumunsko";
@@ -1676,13 +1679,13 @@
 "Rwanda" = "Rwanda";
 
 /* nothing */
-"Saudi Arabia" = "Saudská arábie";
+"Saudi Arabia" = "Saúdská Arábie";
 
 /* nothing */
 "Solomon Islands" = "Šalamounovy ostrovy";
 
 /* nothing */
-"Seychelles" = "Seychelles";
+"Seychelles" = "Seychely";
 
 /* nothing */
 "Sudan" = "Súdán";
@@ -1694,13 +1697,13 @@
 "Singapore" = "Singapur";
 
 /* nothing */
-"St. Helena" = "St. Helena";
+"St. Helena" = "Sv. Helena";
 
 /* nothing */
 "Slovenia" = "Slovinsko";
 
 /* nothing */
-"Svalbard and Jan Mayen Islands" = "Svalbard and Jan Mayen Islands";
+"Svalbard and Jan Mayen Islands" = "Špicberky a Jan Mayen";
 
 /* nothing */
 "Slovak Republic" = "Slovenská republika";
@@ -1721,28 +1724,28 @@
 "Suriname" = "Surinam";
 
 /* nothing */
-"Sao Tome and Principe" = "Sao Tome and Principe";
+"Sao Tome and Principe" = "Svatý Tomáš a Princův ostrov";
 
 /* nothing */
-"Former USSR" = "Bývalé USSR";
+"Former USSR" = "Bývalé SSSR";
 
 /* nothing */
-"El Salvador" = "El Salvádor";
+"El Salvador" = "Salvador";
 
 /* nothing */
 "Syria" = "Sýrie";
 
 /* nothing */
-"Swaziland" = "Swaziland";
+"Swaziland" = "Svazijsko";
 
 /* nothing */
-"Turks and Caicos Islands" = "Turks and Caicos Islands";
+"Turks and Caicos Islands" = "Ostrovy Turks a Caicos";
 
 /* nothing */
 "Chad" = "Čad";
 
 /* nothing */
-"French Southern Territories" = "Francouzská jižní teritoria";
+"French Southern Territories" = "Francouzská jižní území";
 
 /* nothing */
 "Togo" = "Togo";
@@ -1751,7 +1754,7 @@
 "Thailand" = "Thajsko";
 
 /* nothing */
-"Tajikistan" = "Tajikistan";
+"Tajikistan" = "Tádžikistán";
 
 /* nothing */
 "Tokelau" = "Tokelau";
@@ -1760,10 +1763,10 @@
 "East Timor" = "Východní Timor";
 
 /* nothing */
-"Turkmenistan" = "Turkménistán";
+"Turkmenistan" = "Turkmenistán";
 
 /* nothing */
-"Tunisia" = "Tunis";
+"Tunisia" = "Tunisko";
 
 /* nothing */
 "Tonga" = "Tonga";
@@ -1778,10 +1781,10 @@
 "Tuvalu" = "Tuvalu";
 
 /* nothing */
-"Taiwan" = "Taiwan";
+"Taiwan" = "Tchaj-wan";
 
 /* nothing */
-"Tanzania" = "Tanzánie";
+"Tanzania" = "Tanzanie";
 
 /* nothing */
 "Ukraine" = "Ukrajina";
@@ -1790,10 +1793,10 @@
 "Uganda" = "Uganda";
 
 /* nothing */
-"United Kingdom" = "Spojené Království";
+"United Kingdom" = "Spojené království";
 
 /* nothing */
-"United States of America" = "USA";
+"United States of America" = "Spojené státy americké";
 
 /* nothing */
 "Uruguay" = "Uruguay";
@@ -1805,16 +1808,16 @@
 "Vatican City State" = "Městský stát Vatikán";
 
 /* nothing */
-"St. Vincent and the Grenadines" = "St. Vincent and the Grenadines";
+"St. Vincent and the Grenadines" = "Sv. Vincenc a Grenadiny";
 
 /* nothing */
 "Venezuela" = "Venezuela";
 
 /* nothing */
-"British Virgin Islands" = "British Virgin Islands";
+"British Virgin Islands" = "Britské Panenské ostrovy";
 
 /* nothing */
-"US Virgin Islands" = "US Virgin Islands";
+"US Virgin Islands" = "Americké Panenské ostrovy";
 
 /* nothing */
 "Vietnam" = "Vietnam";
@@ -1829,7 +1832,7 @@
 "Samoa" = "Samoa";
 
 /* nothing */
-"Yemen" = "Yemen";
+"Yemen" = "Jemen";
 
 /* nothing */
 "Mayotte" = "Mayotte";
@@ -1838,7 +1841,7 @@
 "Yugoslavia" = "Jugoslávie";
 
 /* nothing */
-"South Africa" = "Jižní Afrika";
+"South Africa" = "Jihoafrická republika";
 
 /* nothing */
 "Zambia" = "Zambie";
@@ -1850,16 +1853,19 @@
 "Unknown" = "Neznámé";
 
 /* nothing */
-"Open Dialog Window" = "Otevřít dialogové okno";
+"_Open Dialog Window" = "_Otevřít dialogové okno";
 
 /* nothing */
-"Send a File" = "Poslat soubor";
+"_Send a File" = "_Poslat soubor";
 
 /* nothing */
-"User Info (WHOIS)" = "Informace o uživateli (WHOIS)";
+"_User Info (WhoIs)" = "_Informace o uživateli (WHOIS)";
 
 /* nothing */
-"Operator Actions" = "Akce operátora";
+"_Add to Friends List" = "_Přidat do seznamu přátel";
+
+/* nothing */
+"O_perator Actions" = "_Akce operátora";
 
 /* nothing */
 "Give Ops" = "Dát práva Op";
@@ -1884,87 +1890,6 @@
 
 /* nothing */
 "KickBan" = "KickBan";
-
-/* nothing */
-"Direct client-to-client" = "Přímo klient-klient";
-
-/* nothing */
-"Send File" = "Poslat soubor";
-
-/* nothing */
-"Offer Chat" = "Nabídnout hovor";
-
-/* nothing */
-"Abort Chat" = "Zrušit hovor";
-
-/* nothing */
-"Version" = "Verze";
-
-/* nothing */
-"Userinfo" = "Uživatelinfo";
-
-/* nothing */
-"Clientinfo" = "Klientinfo";
-
-/* nothing */
-"Ping" = "Ping";
-
-/* nothing */
-"Time" = "Čas";
-
-/* nothing */
-"Finger" = "Prst";
-
-/* nothing */
-"Oper" = "Oper";
-
-/* nothing */
-"Kill this user" = "Zabít tohoto uživatele";
-
-/* nothing */
-"Mode" = "Mód";
-
-/* nothing */
-"Give Half-Ops" = "Dát práva Half-Op";
-
-/* nothing */
-"Take Half-Ops" = "Vzít Half-Op";
-
-/* nothing */
-"Ignore" = "Ignorovat";
-
-/* nothing */
-"Ignore User" = "Ignorovat uživatele";
-
-/* nothing */
-"UnIgnore User" = "Zrušit ignoraci uživatele";
-
-/* nothing */
-"Info" = "Informace";
-
-/* nothing */
-"Who" = "Kdo";
-
-/* nothing */
-"WhoIs" = "KdoJe";
-
-/* nothing */
-"DNS Lookup" = "DNS Lookup";
-
-/* nothing */
-"Trace" = "Trasa";
-
-/* nothing */
-"UserHost" = "UserHost";
-
-/* nothing */
-"External" = "Externí";
-
-/* nothing */
-"Traceroute" = "Trasovat cestu";
-
-/* nothing */
-"Telnet" = "Telnet";
 
 /* nothing */
 "Leave Channel" = "Opustit kanál";
@@ -2003,6 +1928,9 @@
 "Dialog" = "Dialog";
 
 /* nothing */
+"WhoIs" = "KdoJe";
+
+/* nothing */
 "Send" = "Poslat";
 
 /* nothing */
@@ -2010,6 +1938,9 @@
 
 /* nothing */
 "Clear" = "Smazat";
+
+/* nothing */
+"Ping" = "Ping";
 
 /* nothing */
 "Couldn't connect to session bus" = "Nemohu se připojit k sezení";
@@ -2033,7 +1964,7 @@
 "Failed to acquire %s: %s\n" = "Chyba při získání %s: %s\n";
 
 /* nothing */
-"About XChat" = "O XChatu";
+"About " = "O programu";
 
 /* nothing */
 "A multiplatform IRC Client" = "Multiplatformní klient IRC";
@@ -2045,7 +1976,7 @@
 "Not connected." = "Nepřipojen";
 
 /* nothing */
-"You must select some bans." = "Musíte vybrat nějký ban.";
+"You must select some bans." = "Musíte vybrat nějaký ban.";
 
 /* nothing */
 "Are you sure you want to remove all bans in %s?" = "Určitě chcete odstranit všechny bany na %s?";
@@ -2060,13 +1991,13 @@
 "Date" = "Datum";
 
 /* nothing */
-"You can only open the Ban List window while in a channel tab." = "Okno se seznamem banů otevřet pouze pokud se nacházíte na kanálu.";
+"You can only open the Ban List window while in a channel tab." = "Okno se seznamem banů otevře pouze pokud se nacházíte na kanálu.";
 
 /* nothing */
 "XChat: Ban List (%s)" = "XChat: Seznam Banů (%s)";
 
 /* nothing */
-"Unban" = "Odbanovat";
+"Remove" = "Odstranit";
 
 /* nothing */
 "Crop" = "Sbalit";
@@ -2195,7 +2126,7 @@
 "XChat: DCC Chat List" = "XChat: Seznam DCC Chat";
 
 /* nothing */
-"Recv" = "Přijmuto";
+"Recv" = "Přijato";
 
 /* nothing */
 "Sent" = "Odesláno";
@@ -2258,10 +2189,13 @@
 "Open an irc://server:port/channel URL" = "Otevřít URL irc://server:port/channel";
 
 /* nothing */
-"Open URL in an existing XChat" = "Otevře URL ve stávajícím XChatu";
+"Execute command:" = "Vykonat příkaz";
 
 /* nothing */
-"Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "Spustit minimalizované. Úroveň 0=Normální 1=Ikona 2=Oznamovací oblast";
+"Open URL or execute command in an existing XChat" = "Otevře URL nebo vykoná příkaz XChatu";
+
+/* nothing */
+"Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "Spustit minimalizovaný. Úrovně 0=Normální 1=Ikona 2=Panel";
 
 /* nothing */
 "level" = "úroveň";
@@ -2450,7 +2384,7 @@
 "_Join this channel:" = "_Připojit se k tomuto kanálu:";
 
 /* nothing */
-"If you know the name of the channel you want to join, enter it here." = "Pokud víte jméno kanálu, kte kterému se chcete připojit, pak ho zde zadejte.";
+"If you know the name of the channel you want to join, enter it here." = "Pokud víte jméno kanálu,   kterému se chcete připojit, pak ho zde zadejte.";
 
 /* nothing */
 "O_pen the Channel-List window." = "O_tevřít seznam kanálů.";
@@ -2459,7 +2393,7 @@
 "Retrieving the Channel-List may take a minute or two." = "Získávám seznam kanálů, to může chvíli trvat.";
 
 /* nothing */
-"_Always show this dialog after connecting." = "_Vždy zobrait tento dialog po požipojení.";
+"_Always show this dialog after connecting." = "_Vždy zobrazit tento dialog po připojení.";
 
 /* nothing */
 "Dialog with" = "Dialog k";
@@ -2480,16 +2414,16 @@
 "Don't ask next time." = "Příště se neptat.";
 
 /* nothing */
-"You are connected to %i IRC networks." = "Jste připojen k %i sítím IRC.";
+"You are connected to %i IRC networks." = "Jste připojeni k %i sítím IRC.";
 
 /* nothing */
-"Are you sure you want to quit?" = "Určitě chcete skončit?";
+"Are you sure you want to quit?" = "Určitě chcete ukončit program?";
 
 /* nothing */
 "Some file transfers are still active." = "Některé přenosy souborů jsou stále aktivní.";
 
 /* nothing */
-"_Minimize to Tray" = "_Schovat do ikony";
+"_Minimize to Tray" = "_Minimalizovat do ikony";
 
 /* nothing */
 "Insert Attribute or Color Code" = "Vložit atributy nebo barvy";
@@ -2510,22 +2444,34 @@
 "Colors 8-15" = "Barvy 8-15";
 
 /* nothing */
-"Beep on message" = "Zazvonit při zprávě";
+"_Settings" = "_Nastavení";
 
 /* nothing */
-"Blink tray on message" = "Zablikat při zprávě";
+"_Log to Disk" = "Logovat na disk";
 
 /* nothing */
-"Show join/part messages" = "Zobrazit zprávu o příhlášní/odchodu";
+"_Reload Scrollback" = "_Obnovit posun";
 
 /* nothing */
-"Color paste" = "Vkládání barev";
+"_Hide Join/Part Messages" = "_Skrýt zprávy o přihlášení/odchodu";
 
 /* nothing */
-"_Close Tab" = "_Zavřít záložku";
+"_Extra Alerts" = "_Extra upozornění";
 
 /* nothing */
-"_Detach Tab" = "_Odpojit Záložku";
+"Beep on _Message" = "Zazvonit při _zprávě";
+
+/* nothing */
+"Blink Tray _Icon" = "Zablikat _oznamovací ikonou";
+
+/* nothing */
+"Blink Task _Bar" = "Zablikat _pruhem úlohy";
+
+/* nothing */
+"_Detach" = "_Odpojit";
+
+/* nothing */
+"_Close" = "_Zavřít";
 
 /* nothing */
 "User limit must be a number!\n" = "Uživatelský limit musí být číslo!\n";
@@ -2558,7 +2504,7 @@
 "Show/Hide userlist" = "Zobrazit/skrýt seznam uživatelů";
 
 /* nothing */
-"Unable to set transparent background!\n\nYou may be using a non-compliant window\nmanager that is not currently supported.\n" = "Nemohu nastavit transparentní pozadí!\n\nMožná používáte nějaký netypický okenní\nmazažer, který není v současné době podporován.\n";
+"Unable to set transparent background!\n\nYou may be using a non-compliant window\nmanager that is not currently supported.\n" = "Nemohu nastavit transparentní pozadí!\n\nMožná používáte nějaký netypický okenní\nmanažer, který není v současné době podporován.\n";
 
 /* nothing */
 "Enter new nickname:" = "Zadejte novou přezdívku:";
@@ -2582,13 +2528,16 @@
 "Server:" = "Server:";
 
 /* nothing */
-"Away Msg:" = "Zpráva pryč:";
-
-/* nothing */
 "%u minutes ago" = "před %u minutami";
 
 /* nothing */
 "Last Msg:" = "Poslední zpráva:";
+
+/* nothing */
+"Away Msg:" = "Zpráva pryč:";
+
+/* nothing */
+"%d nicks selected." = "vybráno %d přezdívek.";
 
 /* nothing */
 "The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "Panel s menu je nyní skrytý. Můžete ho opět zobrazit pomocí stisku klávesy F9 nebo kliknutím pravého tlačítka myši na prázdnou plochu hlavního textového pole.";
@@ -2609,6 +2558,12 @@
 "Cycle Channel" = "Otočit kanál";
 
 /* nothing */
+"_Remove from Favorites" = "_Odstranit z oblíbených";
+
+/* nothing */
+"_Add to Favorites" = "_Přidat do oblíbených";
+
+/* nothing */
 "XChat: User menu" = "X-Chat: Uživatelské menu";
 
 /* nothing */
@@ -2624,7 +2579,7 @@
 "Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Uživatelská tlačítka - Speciální kódy:\n\n%a  =  všechny vybrané přezdívky\n%c  =  aktuální kanál\n%e  =  jméno aktuální sítě\n%h  =  vybrat hostitelský název přezdívky\n%m  =  informace o počítači\n%n  =  váš nick\n%s  =  vybraný nick\n%t  =  čas/datum\n";
 
 /* nothing */
-"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Dialogová tlačítka - Speciální kódy:\n\n%a  =  všechny zvolené přezdívky\n%c  =  aktuální kanál\n%e  =  jméno aktuální sítě\n%h  =  zvloený hostitelský název nicku\n%m  =  informace o počítači\n%n  =  váš nick\n%s  =  zvolený nick\n%t  =  čas/datum\n";
+"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Dialogová tlačítka - Speciální kódy:\n\n%a  =  všechny zvolené přezdívky\n%c  =  aktuální kanál\n%e  =  jméno aktuální sítě\n%h  =  zvolený hostitelský název nicku\n%m  =  informace o počítači\n%n  =  váš nick\n%s  =  zvolený nick\n%t  =  čas/datum\n";
 
 /* nothing */
 "CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%e  =  current network name\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "Odpovědi CTCP - Speciální kódy:\n\n%d  =  data (kompletní ctcp)\n%e  =  jméno aktuální sítě\n%m  =  informace o počítači\n%s  =  nick, který poslal ctcp\n%t  =  čas/datum\n%2  =  slovo 2\n%3  =  slovo 3\n&2  =  slovo 2 do konce řádku\n&3  =  slovo 3 do konce řádku\n\n";
@@ -2687,13 +2642,13 @@
 "_View" = "Z_obrazit";
 
 /* nothing */
-"_Menu Bar" = "Panel _menu";
+"_Menu Bar" = "_Pruh nenu";
 
 /* nothing */
-"_Topic Bar" = "Panel _téma";
+"_Topic Bar" = "Panel s pře_dmětem";
 
 /* nothing */
-"_User List" = "Seznam _uživatelů";
+"_User List" = "_Seznam uživatelů";
 
 /* nothing */
 "U_serlist Buttons" = "_Tlačítka seznamu uživatelů";
@@ -2702,7 +2657,7 @@
 "M_ode Buttons" = "T_lačítka módů";
 
 /* nothing */
-"_Channel Switcher" = "_Přepínač kanálu";
+"_Channel Switcher" = "Př_epínač kanálu";
 
 /* nothing */
 "_Tabs" = "_Záložky";
@@ -2727,6 +2682,12 @@
 
 /* nothing */
 "_Reconnect" = "_Znovu připojit";
+
+/* nothing */
+"Join a Channel..." = "Vstoupit do kanálu...";
+
+/* nothing */
+"List of Channels..." = "Seznam kanálů...";
 
 /* nothing */
 "Marked Away" = "Jsem pryč (AWAY)";
@@ -2777,9 +2738,6 @@
 "Ban List..." = "Seznam banů...";
 
 /* nothing */
-"Channel List..." = "Seznam kanálů...";
-
-/* nothing */
 "Character Chart..." = "Graf...";
 
 /* nothing */
@@ -2789,10 +2747,10 @@
 "File Transfers..." = "Přenosy souboru...";
 
 /* nothing */
-"Ignore List..." = "Seznam ignorovaných...";
+"Friends List..." = "Seznam přátel...";
 
 /* nothing */
-"Notify List..." = "Seznam oznámení...";
+"Ignore List..." = "Seznam ignorovaných...";
 
 /* nothing */
 "Plugins and Scripts..." = "Pluginy a skripty...";
@@ -2822,16 +2780,13 @@
 "_Contents" = "_Obsah";
 
 /* nothing */
+"Check for updates" = "Zkontrolovat aktualizace";
+
+/* nothing */
 "_About" = "_O programu";
 
 /* nothing */
-"_Attach Window" = "_Připojit okno";
-
-/* nothing */
-"_Close Window" = "_Zavřít okno";
-
-/* nothing */
-"User" = "Uživatel";
+"_Attach" = "_Připojit";
 
 /* nothing */
 "Last Seen" = "Naposledy viděn";
@@ -2858,10 +2813,7 @@
 "Comma separated list of networks is accepted." = "Čárkou oddělený seznam zvolených sítí.";
 
 /* nothing */
-"XChat: Notify List" = "XChat: Seznam upozornění";
-
-/* nothing */
-"Remove" = "Odstranit";
+"XChat: Friends List" = "XChat: Seznam přátel";
 
 /* nothing */
 "Open Dialog" = "Otevřít dialog";
@@ -2891,6 +2843,15 @@
 "Highlighted Message" = "Zvýrazněná zpráva";
 
 /* nothing */
+"_Change status" = "_Změnit stav";
+
+/* nothing */
+"_Away" = "_Pryč";
+
+/* nothing */
+"_Back" = "_Zpět";
+
+/* nothing */
 "XChat: Highlighted message from: %s (%s)" = "XChat: Zvýrazněná zpráva od: %s (%s)";
 
 /* nothing */
@@ -2915,6 +2876,9 @@
 "XChat: %u file offers, latest from: %s (%s)" = "XChat: %u nabídnutých souborů, poslední od: %s (%s)";
 
 /* nothing */
+"Version" = "Verze";
+
+/* nothing */
 "Description" = "Popis";
 
 /* nothing */
@@ -2928,9 +2892,6 @@
 
 /* nothing */
 "_UnLoad" = "_Uvolnit";
-
-/* nothing */
-"_Close" = "_Zavřít";
 
 /* nothing */
 "Save As..." = "Uložit jako...";
@@ -2964,6 +2925,27 @@
 
 /* nothing */
 "Really remove network \"%s\" and all its servers?" = "Skutečně chcete odstranit síť \"%s\" a všechny servery, které obsahuje?";
+
+/* nothing */
+"#channel" = "#kanál";
+
+/* nothing */
+"XChat: Favorite Channels (Auto-Join List)" = "XChat: Oblíbené kanály (seznam automatického připojení)";
+
+/* nothing */
+"These channels will be joined whenever you connect to %s." = "K těmto kanálům se připojíte při připojení k %s.";
+
+/* nothing */
+"Key (Password)" = "Klíč (Heslo)";
+
+/* nothing */
+"_Edit" = "_Editovat";
+
+/* nothing */
+"%s has been removed." = "%s byl odstraněn.";
+
+/* nothing */
+"%s has been added." = "%s byl přidán.";
 
 /* nothing */
 "User name and Real name cannot be left blank." = "Uživatelské jméno a skutečné jméno nemohou být prázdná políčka.";
@@ -3005,7 +2987,7 @@
 "Auto connect to this network at startup" = "Automaticky připojit ke zvolené síti při startu";
 
 /* nothing */
-"Use a proxy server" = "Použít server proxy";
+"Bypass proxy server" = "Obejít proxy server";
 
 /* nothing */
 "Use SSL for all the servers on this network" = "Použít SSL pro všechny servery v této síti";
@@ -3014,7 +2996,7 @@
 "Accept invalid SSL certificate" = "Přijmout neplatné certifikáty SSL";
 
 /* nothing */
-"C_hannels to join:" = "_Připojit se ke kanálům:";
+"_Favorite channels:" = "_Oblíbené kanály:";
 
 /* nothing */
 "Channels to join, separated by commas, but not spaces!" = "Kanály, ke kterým se připojit, jsou odděleny čárkami, ne mezerami!";
@@ -3039,9 +3021,6 @@
 
 /* nothing */
 "Character set:" = "Znaková sada:";
-
-/* nothing */
-"_Edit" = "_Editovat";
 
 /* nothing */
 "XChat: Network List" = "XChat: Seznam sítí";
@@ -3176,16 +3155,16 @@
 "Unsorted" = "Netřídit";
 
 /* nothing */
-"Left (Upper)" = "Levý (Horní)";
+"Left (Upper)" = "Vlevo (Nahoře)";
 
 /* nothing */
-"Left (Lower)" = "Levý (Dolní)";
+"Left (Lower)" = "Vlevo (Dole)";
 
 /* nothing */
-"Right (Upper)" = "Pravý (horní)";
+"Right (Upper)" = "Vpravo (Nahoře)";
 
 /* nothing */
-"Right (Lower)" = "Pravý (Dolní)";
+"Right (Lower)" = "Vpravo (Dole)";
 
 /* nothing */
 "Top" = "Nahoře";
@@ -3221,9 +3200,6 @@
 "Action Upon Double Click" = "Akce při dvojkliku";
 
 /* nothing */
-"Execute command:" = "Vykonat příkaz";
-
-/* nothing */
 "Windows" = "Okna";
 
 /* nothing */
@@ -3236,7 +3212,10 @@
 "Only requested tabs" = "Pouze požadované záložky";
 
 /* nothing */
-"Channel Switcher" = "Přepínač kanálu";
+"Tree" = "Strom";
+
+/* nothing */
+"Switcher type:" = "Typ přepínače:";
 
 /* nothing */
 "Open an extra tab for server messages" = "Otevřít speciální záložku pro zprávy serveru";
@@ -3251,13 +3230,13 @@
 "Sort tabs in alphabetical order" = "Třídit záložky v abecedním pořadí";
 
 /* nothing */
-"Small tabs" = "Malé záložky";
+"Smaller text" = "Menší text";
 
 /* nothing */
 "Focus new tabs:" = "Zaměřit se na nové záložky:";
 
 /* nothing */
-"Show channel switcher at:" = "Zobrazit přepínač kanálu:";
+"Show channel switcher at:" = "Zobrazit přepínač kanálu v:";
 
 /* nothing */
 "Shorten tab labels to:" = "Zkrácené popisky záložek na:";
@@ -3383,7 +3362,7 @@
 "Nick names to always highlight:" = "Přezdívky, které se budou zvýrazňovat:";
 
 /* nothing */
-"Separate multiple words with commas." = "Více slov oddělte pomocí čárek.";
+"Separate multiple words with commas.\nWildcards are accepted." = "Více slov oddělte pomocí čárek.\nMožno zadat wildcards.";
 
 /* nothing */
 "Default Messages" = "Výchozí zpráva";
@@ -3455,7 +3434,10 @@
 "Logging" = "Přihlašování";
 
 /* nothing */
-"Enable logging of conversations" = "Povolí ukládání hovoru";
+"Display scrollback from previous session" = "Zobrazit obrazovku z předchozího sezení";
+
+/* nothing */
+"Enable logging of conversations to disk" = "Povolit ukládání hovoru na disk";
 
 /* nothing */
 "Log filename:" = "Jméno logu:";
@@ -3638,7 +3620,7 @@
 "User list" = "Seznam uživatelů";
 
 /* nothing */
-"Channel switcher" = "Přepínač kanálu";
+"Channel switcher" = "Přepínač kanálů";
 
 /* nothing */
 "Colors" = "Barvy";

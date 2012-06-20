@@ -1,5 +1,5 @@
 /* nothing */
-"" = "Project-Id-Version: xchat 2.4.5\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2005-07-23 19:49+1000\nPO-Revision-Date: 2005-08-09 01:38+0200\nLast-Translator: Jure Cuhalev <gandalf@owca.info>\nLanguage-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nX-Generator: KBabel 1.10\nPlural-Forms:  nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n";
+"" = "Project-Id-Version: xchat 2.4.5\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2010-05-30 13:56+1000\nPO-Revision-Date: 2005-08-09 01:38+0200\nLast-Translator: Jure Cuhalev <gandalf@owca.info>\nLanguage-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nX-Generator: KBabel 1.10\nPlural-Forms:  nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n";
 
 /* nothing */
 "Cannot create ~/.xchat2" = "Ne morem ustvariti ~/.xchat2";
@@ -35,6 +35,12 @@
 "Cannot access %s\n" = "Ne morem dostopati do %s\n";
 
 /* nothing */
+"Error" = "Napaka";
+
+/* nothing */
+"%s is offering \"%s\". Do you want to accept?" = "";
+
+/* nothing */
 "No active DCCs\n" = "Ni aktivnih DCCjev\n";
 
 /* nothing */
@@ -60,6 +66,12 @@
 
 /* nothing */
 "Not connected. Try /server <host> [<port>]\n" = "Niste povezani. Poskusite /server <gostitelj> [<vrata>]\n";
+
+/* nothing */
+"Already marked away: %s\n" = "";
+
+/* nothing */
+"Already marked back.\n" = "";
 
 /* nothing */
 "I need /bin/sh to run!\n" = "Potrebujem /bin/sh za zagon!\n";
@@ -101,10 +113,16 @@
 "AWAY [<reason>], sets you away" = "AWAY [<razlog>] nastavi vašo odsotnost";
 
 /* nothing */
+"BACK, sets you back (not away)" = "";
+
+/* nothing */
 "BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "BAN <maska> [<vrsta>], prepove dostop do trenutnega kanala vsem, ki ustrezajo maski. Če so že na kanalu, jih ta ukaz ne brcne iz kanala (potrebuje status op)";
 
 /* nothing */
-"CLEAR, Clears the current text window" = "CLEAR počisti besedilo v trenutnem oknu";
+"CHANOPT [-quiet] <variable> [<value>]" = "SET <spremenljivka> [<vrednost>]";
+
+/* nothing */
+"CLEAR [ALL|HISTORY], Clears the current text window or command history" = "CLEAR počisti besedilo v trenutnem oknu";
 
 /* nothing */
 "CLOSE, Closes the current window/tab" = "CLOSE zapre trenutno okno/zavihek";
@@ -116,7 +134,7 @@
 "CTCP <nick> <message>, send the CTCP message to nick, common messages are VERSION and USERINFO" = "CTCP <vzdevek> <sporočilo> pošlje sporočilo CTCP vzdevku; pogosti sporočili sta VERSION in USERINFO";
 
 /* nothing */
-"CYCLE, parts current channel and immediately rejoins" = "CYCLE zapusti trenutni kanal in se takoj spet poveže z njim";
+"CYCLE [<channel>], parts the current or given channel and immediately rejoins" = "CYCLE zapusti trenutni kanal in se takoj spet poveže z njim";
 
 /* nothing */
 "\nDCC GET <nick>                      - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file]  - send a file to someone\nDCC PSEND [-maxcps=#] <nick> [file] - send a file using passive mode\nDCC LIST                            - show DCC list\nDCC CHAT <nick>                     - offer DCC CHAT to someone\nDCC PCHAT <nick>                    - offer DCC CHAT using passive mode\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "\nDCC GET <vzdevek>              - prejme ponujeno datoteko\nDCC SEND [-maxcps=#] <vzdevek> [datoteka]  - pošlje nekomu datoteko\nDCC PSEND [-maxcps=#] <vzdevek> [datoteka]  - pošlje nekomu datoteko z uporabo pasivnega načina\nDCC LIST                       - pokaže DCC seznam\nDCC CHAT <vzdevek>             - nekomu ponudi DCC CHAT\nDCC CHAT <vzdevek>             - nekomu ponudi DCC CHAT v pasivnem načinu\nDCC CLOSE <vrsta> <vzdevek> <datoteka>         primer:\n          /dcc close send janeznovak datoteka.tar.gz";
@@ -162,6 +180,9 @@
 
 /* nothing */
 "GATE <host> [<port>], proxies through a host, port defaults to 23" = "GATE <gostitelj> [<vrata>] usmeri tok prek gostitelja (proxy), privzeto prek vrat 23";
+
+/* nothing */
+"GHOST <nick> [password], Kills a ghosted nickname" = "";
 
 /* nothing */
 "HOP <nick>, gives chanhalf-op status to the nick (needs chanop)" = "HOP <vzdevek> vzdevku dodeli status polovični-op (za kar potrebuje pravice op)";
@@ -218,7 +239,7 @@
 "NCTCP <nick> <message>, Sends a CTCP notice" = "NCTCP <vzdevek> <sporočilo> pošlje obvestilo CTCP";
 
 /* nothing */
-"NEWSERVER <hostname> [<port>]" = "NEWSERVER <gostitelj> [<vrata>]";
+"NEWSERVER [-noconnect] <hostname> [<port>]" = "NEWSERVER <gostitelj> [<vrata>]";
 
 /* nothing */
 "NICK <nickname>, sets your nick" = "NICK <vzdevek> nastavi vaš vzdevek";
@@ -227,7 +248,7 @@
 "NOTICE <nick/channel> <message>, sends a notice. Notices are a type of message that should be auto reacted to" = "NOTICE <vzdevek/kanal> <obvestilo> pošlje obvestilo. To je vrsta sporočila, na katerega je možen samodejen odziv";
 
 /* nothing */
-"NOTIFY [<nick>], lists your notify list or adds someone to it" = "NOTIFY [<vzdevek>] doda vzdevek v vaš seznam za obveščanje ali pa ga izpiše";
+"NOTIFY [-n network1[,network2,...]] [<nick>], displays your notify list or adds someone to it" = "NOTIFY [<vzdevek>] doda vzdevek v vaš seznam za obveščanje ali pa ga izpiše";
 
 /* nothing */
 "OP <nick>, gives chanop status to the nick (needs chanop)" = "OP <vzdevek> vzdevku podeli status operateja (op) kanala (za kar potrebuje pravice op)";
@@ -239,7 +260,7 @@
 "PING <nick | channel>, CTCP pings nick or channel" = "PING <vzdevek | kanal> pošlje CTCP ping vzdevku ali kanalu";
 
 /* nothing */
-"QUERY <nick>, opens up a new privmsg window to someone" = "QUERY <vzdevek>, odpre novo okno za zasebni pogovor";
+"QUERY [-nofocus] <nick>, opens up a new privmsg window to someone" = "QUERY <vzdevek>, odpre novo okno za zasebni pogovor";
 
 /* nothing */
 "QUIT [<reason>], disconnects from the current server" = "QUIT [<razlog]> prekine povezavo s trenutnim strežnikom";
@@ -260,6 +281,9 @@
 "SAY <text>, sends the text to the object in the current window" = "SAY <besedilo> pošlje besedilo predmetu v trenutnem oknu";
 
 /* nothing */
+"SEND <nick> [<file>]" = "";
+
+/* nothing */
 "SERVCHAN [-ssl] <host> <port> <channel>, connects and joins a channel" = "SERVCHAN [-ssl] <gostitelj> <vrata> <kanal> se poveže na strežnik in se pridruži kanalu";
 
 /* nothing */
@@ -272,13 +296,16 @@
 "SERVER <host> [<port>] [<password>], connects to a server, the default port is 6667" = "SERVER <gostitelj> [<vrata>] [<geslo>] poveže se na strežnik, privzeto na vrata 6667";
 
 /* nothing */
-"SET [-quiet] <variable> [<value>]" = "SET <spremenljivka> [<vrednost>]";
+"SET [-e] [-off|-on] [-quiet] <variable> [<value>]" = "SET <spremenljivka> [<vrednost>]";
 
 /* nothing */
 "SETCURSOR [-|+]<position>" = "SETCURSOR [-|+]<položaj>";
 
 /* nothing */
 "TOPIC [<topic>], sets the topic if one is given, else shows the current topic" = "TOPIC [<tema>] če podamo temo, jo nastavi, sicer pa prikaže trenutno";
+
+/* nothing */
+"\nTRAY -f <timeout> <file1> [<file2>] Blink tray between two icons.\nTRAY -f <filename>                  Set tray to a fixed icon.\nTRAY -i <number>                    Blink tray with an internal icon.\nTRAY -t <text>                      Set the tray tooltip.\nTRAY -b <title> <text>              Set the tray balloon." = "";
 
 /* nothing */
 "UNBAN <mask> [<mask>...], unbans the specified masks." = "UNBAN <maska> [<maska> ...] odstrani prepoved za določene maske.";
@@ -291,6 +318,9 @@
 
 /* nothing */
 "URL <url>, opens a URL in your browser" = "URL <url>, odpre URL v vašem brskalniku";
+
+/* nothing */
+"USELECT [-a] [-s] <nick1> <nick2> etc, highlights nick(s) in channel userlist" = "";
 
 /* nothing */
 "VOICE <nick>, gives voice status to someone (needs chanop)" = "VOICE <vzdevek> dodeli glasovni privilegij vzdevku (za kar potrebuje pravice op)";
@@ -350,12 +380,6 @@
 "%C22*%O$t$1 is now known as $2" = "%C22*%O$t$1 se odslej imenuje $2";
 
 /* nothing */
-"%C18*$t$1%O $2" = "%C18*$t$1%O $2";
-
-/* nothing */
-"%C21*%O$t%C21%B$1%O%C21 $2" = "%C21*%O$t%C21%B$1%O%C21 $2";
-
-/* nothing */
 "%C22*%O$t$1 sets ban on $2" = "%C22*%O$t$1 je nastavil prepoved na $2";
 
 /* nothing */
@@ -383,19 +407,10 @@
 "%UChannel          Users   Topic" = "%UKanal         Uporabnikov   Tema";
 
 /* nothing */
-"%C18%B%B$4$1%O%C18%O$t$2" = "%C18%B%B$4$1%O%C18%O$t$2";
-
-/* nothing */
 "%C22*%O$t$1 sets mode $2$3 $4" = "%C22*%O$t$1 je nastavil izbiro na $2$3 $4";
 
 /* nothing */
 "%C22*%O$t%C22Channel $1 modes: $2" = "%C22*%O$t%C22Možnosti kanala $1 : $2";
-
-/* nothing */
-"$4%C21%B$1%O%C21$t$2" = "$4%C21%B$1%O%C21$t$2";
-
-/* nothing */
-"%C28-%C29$1/$2%C28-%O$t$3" = "%C28-%C29$1/$2%C28-%O$t$3";
 
 /* nothing */
 "%C22*%O$t%C26$1%O gives channel operator status to%C26 $2" = "%C22*%O$t%C26$1%O dodeli status op vzdevku%C26 $2";
@@ -536,9 +551,6 @@
 "%C22*%O$tFound your IP: [$1]" = "%C22*%O$tVaš IP najden: [$1]";
 
 /* nothing */
-"$1$t$2" = "$1$t$2";
-
-/* nothing */
 "%O%C26$1%O added to ignore list." = "%O%C26$1%O dodan na seznam za spregledovanje.";
 
 /* nothing */
@@ -575,12 +587,6 @@
 "%C22*%O$tYou have been killed by $1 ($2%O%C22)" = "%C22*%O$t$1ˇ($2%O%C22) vas je ubil";
 
 /* nothing */
-"%C19>%O$1%C19<%O$t$2" = "%C19>%O$1%C19<%O$t$2";
-
-/* nothing */
-"%C16*%O$t$1%O" = "%C16*%O$t$1%O";
-
-/* nothing */
 "%C22*%O$t%C22MOTD Skipped." = "%C22*%O$t%C22MOTD preskočen.";
 
 /* nothing */
@@ -596,9 +602,6 @@
 "%C22*%O$tNo process is currently running" = "%C22*%O$tTrenutno ni tekočih procesov";
 
 /* nothing */
-"%C28-%C29$1%C28-%O$t$2" = "%C28-%C29$1%C28-%O$t$2";
-
-/* nothing */
 "$tNotify list is empty." = "Seznam za obveščanje je prazen.";
 
 /* nothing */
@@ -608,10 +611,10 @@
 "%C22*%O$t$1 users in notify list." = "%C22*%O$t$1 uporabniki v seznamu za obveščanje.";
 
 /* nothing */
-"%C22*%O$tNotify: $1 is offline ($2)." = "%C22*%O$tObvestilo: $1 je odšel ($2).";
+"%C22*%O$tNotify: $1 is offline ($3)." = "%C22*%O$tObvestilo: $1 je odšel ($2).";
 
 /* nothing */
-"%C22*%O$tNotify: $1 is online ($2)." = "%C22*%O$tObvestilo: $1 je prisoten ($2).";
+"%C22*%O$tNotify: $1 is online ($3)." = "%C22*%O$tObvestilo: $1 je prisoten ($2).";
 
 /* nothing */
 "%C23*%O$t%C23$1 (%O%C23$2) has left $3" = "%C23*%O$t%C23$1 (%O%C23$2) je zapustil $3";
@@ -624,12 +627,6 @@
 
 /* nothing */
 "%C22*%O$tNo ping reply for $1 seconds, disconnecting." = "%C22*%O$tNi ping odgovora že $1 sekund, prekinjam povezavo.";
-
-/* nothing */
-"%C28*%C29$3$1%C28*$t%O$2" = "%C28*%C29$3$1%C28*$t%O$2";
-
-/* nothing */
-"%C18%B%B$3$1%O$t$2" = "%C18%B%B$3$1%O$t$2";
 
 /* nothing */
 "%C22*%O$tA process is already running" = "%C22*%O$tProces že teče";
@@ -648,9 +645,6 @@
 
 /* nothing */
 "%C22*%O$t%C22Connected." = "%C22*%O$t%C22Povezan.";
-
-/* nothing */
-"%C22*%O$t$1" = "%C22*%O$t$1";
 
 /* nothing */
 "%C22*%O$t%C22Looking up $1" = "%C22*%O$t%C22Iščem $1";
@@ -716,10 +710,10 @@
 "%C22*%O$tYou've invited%C26 $1%O to%C26 $2%O (%C26$3%O)" = "%C22*%O$tPovabili ste%C26 $1%O na%C26 $2%O (%C26$3%O)";
 
 /* nothing */
-"%C31%B%B$4$1%O%C30$t$2" = "%C31%B%B$4$1%O%C30$t$2";
+"%C22*%O$tYou are now known as $2" = "%C22*%O$tOdslej ste znani kot $2";
 
 /* nothing */
-"%C22*%O$tYou are now known as $2" = "%C22*%O$tOdslej ste znani kot $2";
+"Loaded log from" = "Naloži iz";
 
 /* nothing */
 "**** ENDING LOGGING AT %s\n" = "*** KONČUJEM BELEŽENJE %s\n";
@@ -752,13 +746,13 @@
 "The action" = "Dejanje";
 
 /* nothing */
-"The text" = "Besedilo";
-
-/* nothing */
 "Mode char" = "Znak opcije";
 
 /* nothing */
 "Identified text" = "Podatki";
+
+/* nothing */
+"The text" = "Besedilo";
 
 /* nothing */
 "The message" = "Sporočilo";
@@ -962,6 +956,9 @@
 "Server Name" = "Ime strežnika";
 
 /* nothing */
+"Raw Numeric or Identifier" = "";
+
+/* nothing */
 "Nick of person who invited you" = "Vzdevek osebe, ki vas je povabila";
 
 /* nothing */
@@ -974,16 +971,13 @@
 "Nick being tried" = "Poskušam vzdevek";
 
 /* nothing */
-"Error" = "Napaka";
-
-/* nothing */
 "IP" = "IP";
 
 /* nothing */
 "Port" = "Vrata";
 
 /* nothing */
-"PID" = "PID";
+"Network" = "Omrežje";
 
 /* nothing */
 "Modes string" = "Možnosti niza";
@@ -1076,6 +1070,9 @@
 "Connection reset by peer" = "Povezava je bila prekinjena";
 
 /* nothing */
+"Ascension Island" = "Kokosovi otoki";
+
+/* nothing */
 "Andorra" = "Andora";
 
 /* nothing */
@@ -1125,6 +1122,9 @@
 
 /* nothing */
 "Aruba" = "Aruba";
+
+/* nothing */
+"Aland Islands" = "Falklandski otoki";
 
 /* nothing */
 "Azerbaijan" = "Azerbajdžan";
@@ -1292,6 +1292,9 @@
 "Ethiopia" = "Etiopija";
 
 /* nothing */
+"European Union" = "";
+
+/* nothing */
 "Finland" = "Finska";
 
 /* nothing */
@@ -1308,9 +1311,6 @@
 
 /* nothing */
 "France" = "Francija";
-
-/* nothing */
-"France, Metropolitan" = "Metropolitanska Francija";
 
 /* nothing */
 "Gabon" = "Gabon";
@@ -1400,6 +1400,9 @@
 "Israel" = "Izrael";
 
 /* nothing */
+"Isle of Man" = "";
+
+/* nothing */
 "India" = "Indija";
 
 /* nothing */
@@ -1422,6 +1425,9 @@
 
 /* nothing */
 "Italy" = "Italija";
+
+/* nothing */
+"Jersey" = "";
 
 /* nothing */
 "Jamaica" = "Jamajka";
@@ -1601,9 +1607,6 @@
 "Nauru" = "Nauru";
 
 /* nothing */
-"Neutral Zone" = "Nevtralno območje";
-
-/* nothing */
 "Niue" = "Niue";
 
 /* nothing */
@@ -1757,6 +1760,9 @@
 "Tokelau" = "Tokelau";
 
 /* nothing */
+"East Timor" = "Vzhodni Timor";
+
+/* nothing */
 "Turkmenistan" = "Turkmenistan";
 
 /* nothing */
@@ -1764,9 +1770,6 @@
 
 /* nothing */
 "Tonga" = "Tonga";
-
-/* nothing */
-"East Timor" = "Vzhodni Timor";
 
 /* nothing */
 "Turkey" = "Turčija";
@@ -1791,9 +1794,6 @@
 
 /* nothing */
 "United Kingdom" = "Združeno kraljestvo";
-
-/* nothing */
-"US Minor Outlying Islands" = "Ameriški zunajležeči otoki";
 
 /* nothing */
 "United States of America" = "Združene države Amerike";
@@ -1853,43 +1853,19 @@
 "Unknown" = "Neznan";
 
 /* nothing */
-"Direct client-to-client" = "Neposredno uporabnik-do-uporabnik";
+"_Open Dialog Window" = "Odpri pogovorno okno";
 
 /* nothing */
-"Send File" = "Pošlji datoteko";
+"_Send a File" = "Pošlji datoteko";
 
 /* nothing */
-"Offer Chat" = "Ponudi pogovor";
+"_User Info (WhoIs)" = "";
 
 /* nothing */
-"Abort Chat" = "Prekini pogovor";
+"_Add to Friends List" = "";
 
 /* nothing */
-"Version" = "Različica";
-
-/* nothing */
-"Userinfo" = "Podatki o uporabniku";
-
-/* nothing */
-"Clientinfo" = "Podatki o odjemalcu";
-
-/* nothing */
-"Ping" = "Ping";
-
-/* nothing */
-"Time" = "Čas";
-
-/* nothing */
-"Finger" = "Prst";
-
-/* nothing */
-"Oper" = "Op";
-
-/* nothing */
-"Kill this user" = "Ubij tega uporabnika";
-
-/* nothing */
-"Mode" = "Način";
+"O_perator Actions" = "";
 
 /* nothing */
 "Give Ops" = "Dodeli status op";
@@ -1898,25 +1874,10 @@
 "Take Ops" = "Odvzemi status op";
 
 /* nothing */
-"Give Half-Ops" = "Dodeli status op";
-
-/* nothing */
-"Take Half-Ops" = "Odvzemi status op";
-
-/* nothing */
 "Give Voice" = "Dodeli glasovni privilegij";
 
 /* nothing */
 "Take Voice" = "Odvzemi glasovni privilegij";
-
-/* nothing */
-"Ignore" = "Prezri";
-
-/* nothing */
-"Ignore User" = "Prezri uporabnika";
-
-/* nothing */
-"UnIgnore User" = "Odstrani preziranje uporabnika";
 
 /* nothing */
 "Kick/Ban" = "Brcni/Izobči";
@@ -1929,42 +1890,6 @@
 
 /* nothing */
 "KickBan" = "Brcni in izobči";
-
-/* nothing */
-"Info" = "Podatki";
-
-/* nothing */
-"Who" = "Who";
-
-/* nothing */
-"WhoIs" = "Whois";
-
-/* nothing */
-"DNS Lookup" = "Iskanje DNS";
-
-/* nothing */
-"Trace" = "Sledi";
-
-/* nothing */
-"UserHost" = "Gostitelj uporabnika";
-
-/* nothing */
-"External" = "Zunanji";
-
-/* nothing */
-"Traceroute" = "Sledi smeri";
-
-/* nothing */
-"Telnet" = "Telnet";
-
-/* nothing */
-"Open Dialog Window" = "Odpri pogovorno okno";
-
-/* nothing */
-"Disconnect" = "Odstrani povezavo";
-
-/* nothing */
-"Reconnect" = "Ponovno se poveži";
 
 /* nothing */
 "Leave Channel" = "Zapusti kanal";
@@ -2003,6 +1928,9 @@
 "Dialog" = "Pogovorno okno";
 
 /* nothing */
+"WhoIs" = "Whois";
+
+/* nothing */
 "Send" = "Pošlji";
 
 /* nothing */
@@ -2012,7 +1940,31 @@
 "Clear" = "Počisti";
 
 /* nothing */
-"About X-Chat" = "O X-Chatu";
+"Ping" = "Ping";
+
+/* nothing */
+"Couldn't connect to session bus" = "";
+
+/* nothing */
+"Failed to complete NameHasOwner" = "";
+
+/* nothing */
+"Failed to complete Command" = "Ne morem odpreti pisave:\n\n%s";
+
+/* nothing */
+"remote access" = "Ne morem dostopati do %s\n";
+
+/* nothing */
+"plugin for remote access using DBUS" = "";
+
+/* nothing */
+"Couldn't connect to session bus: %s\n" = "";
+
+/* nothing */
+"Failed to acquire %s: %s\n" = "Ne morem odpreti pisave:\n\n%s";
+
+/* nothing */
+"About " = "_O programu";
 
 /* nothing */
 "A multiplatform IRC Client" = "IRC odjemalec za več platform";
@@ -2021,7 +1973,13 @@
 "Character Chart" = "Kodna tabela";
 
 /* nothing */
+"Not connected." = "ne povezuj se samodejno";
+
+/* nothing */
 "You must select some bans." = "Izbrati morate nekaj izobčenih.";
+
+/* nothing */
+"Are you sure you want to remove all bans in %s?" = "";
 
 /* nothing */
 "Mask" = "Maska";
@@ -2033,10 +1991,13 @@
 "Date" = "Datum";
 
 /* nothing */
-"X-Chat: Ban List (%s)" = "X-Chat: Seznam izobčenih (%s)";
+"You can only open the Ban List window while in a channel tab." = "";
 
 /* nothing */
-"Unban" = "Prekliči izobčenje";
+"XChat: Ban List (%s)" = "X-Chat: Seznam izobčenih (%s)";
+
+/* nothing */
+"Remove" = "Odstrani";
 
 /* nothing */
 "Crop" = "Odreži";
@@ -2045,70 +2006,67 @@
 "Refresh" = "Osveži";
 
 /* nothing */
-"User and Channel Statistics: %d/%d Users on %d/%d Channels" = "Statistika uporabnikov in kanalov: %d/%d uporabnikov na %d/%d kanalih";
-
-/* nothing */
-"I can't save an empty list!" = "Ne morem shraniti praznega seznama!";
+"Displaying %d/%d users on %d/%d channels." = "Statistika uporabnikov in kanalov: %d/%d uporabnikov na %d/%d kanalih";
 
 /* nothing */
 "Select an output filename" = "Izberite izhodno ime datoteke";
 
 /* nothing */
-"X-Chat: Channel List (%s)" = "X-Chat: Seznam kanalov (%s)";
+"_Join Channel" = "Pridruži se kanalu";
 
 /* nothing */
-"List display options:" = "Možnosti prikaza seznama:";
+"_Copy Channel Name" = "Ime kanala";
 
 /* nothing */
-"Minimum Users:" = "Najmanj uporabnikov: ";
+"Copy _Topic Text" = "";
 
 /* nothing */
-"Maximum Users:" = "Največ uporabnikov: ";
+"XChat: Channel List (%s)" = "X-Chat: Seznam kanalov (%s)";
 
 /* nothing */
-"Regex Match:" = "Regularni zadetek:";
+"_Search" = "";
 
 /* nothing */
-"Apply Match to:" = "Uporabi enakost:";
+"_Download List" = "Prenesi datoteke v:";
 
 /* nothing */
-"Apply" = "Uporabi";
+"Save _List..." = "Seznam strežnikov ...";
 
 /* nothing */
-"Refresh the list" = "Osveži seznam";
+"Show only:" = "";
 
 /* nothing */
-"Save the list" = "Shrani seznam";
+"channels with" = "Odpri kanale v:";
 
 /* nothing */
-"Join Channel" = "Pridruži se kanalu";
+"to" = "";
+
+/* nothing */
+"users." = "Uporabniki";
+
+/* nothing */
+"Look in:" = "";
+
+/* nothing */
+"Channel name" = "Ime kanala";
+
+/* nothing */
+"Search type:" = "Išči besedilo ...";
+
+/* nothing */
+"Simple Search" = "";
+
+/* nothing */
+"Pattern Match (Wildcards)" = "";
+
+/* nothing */
+"Regular Expression" = "";
+
+/* nothing */
+"Find:" = "Poišči:";
 
 /* nothing */
 "Send file to %s" = "Pošlji datoteko k %s";
-
-/* nothing */
-"None" = "Brez";
-
-/* nothing */
-"File:" = "Datoteka:";
-
-/* nothing */
-"From:" = "Od:";
-
-/* nothing */
-"To:" = "Za:";
-
-/* nothing */
-"Size:" = "Velikost:";
-
-/* nothing */
-"Address:" = "Naslov:";
-
-/* nothing */
-"Started:" = "Začetek:";
-
-/* nothing */
-"Speed limit:" = "Omejitev hitrosti:";
 
 /* nothing */
 "That file is not resumable." = "Sprejemanja te datoteke ni mogoče nadaljevati.";
@@ -2123,7 +2081,7 @@
 "Cannot resume the same file from two people." = "Ne morem nadaljevati datoteke od dveh ljudi.";
 
 /* nothing */
-"MIME Type" = "Tip MIME";
+"XChat: Uploads and Downloads" = "";
 
 /* nothing */
 "Status" = "Stanje";
@@ -2135,7 +2093,22 @@
 "ETA" = "Preostanek čas";
 
 /* nothing */
-"X-Chat: File Receive List" = "X-Chat: Seznam prejetih datotek";
+"Both" = "Oboje";
+
+/* nothing */
+"Uploads" = "";
+
+/* nothing */
+"Downloads" = "Prenesi datoteke v:";
+
+/* nothing */
+"Details" = "Podatki o vas";
+
+/* nothing */
+"File:" = "Datoteka:";
+
+/* nothing */
+"Address:" = "Naslov:";
 
 /* nothing */
 "Abort" = "Prekini";
@@ -2147,19 +2120,10 @@
 "Resume" = "Nadaljuj";
 
 /* nothing */
-"Open" = "Odpri";
+"Open Folder..." = "";
 
 /* nothing */
-"Ack" = "Ack";
-
-/* nothing */
-"To" = "Za";
-
-/* nothing */
-"X-Chat: File Send List" = "X-Chat: Seznam pošiljanja datotek";
-
-/* nothing */
-"To/From" = "Od/Za";
+"XChat: DCC Chat List" = "X-Chat: Seznam klepetov DCC";
 
 /* nothing */
 "Recv" = "Prejeto";
@@ -2168,10 +2132,7 @@
 "Sent" = "Poslano";
 
 /* nothing */
-"StartTime" = "Začetničas";
-
-/* nothing */
-"X-Chat: DCC Chat List" = "X-Chat: Seznam klepetov DCC";
+"Start Time" = "Začetničas";
 
 /* nothing */
 "*NEW*" = "*NOVO*";
@@ -2210,28 +2171,37 @@
 "Help" = "Pomoč";
 
 /* nothing */
-"Options" = "Možnosti";
+"Don't auto connect to servers" = "Samodejno obnovi povezavo na strežnik";
 
 /* nothing */
-"don't auto connect" = "ne povezuj se samodejno";
+"Use a different config directory" = "uporabi drugi imenik za nastavitve";
 
 /* nothing */
-"DIRECTORY" = "IMENIK";
+"Don't auto load any plugins" = "ne naloži vtičnikov samodejno";
 
 /* nothing */
-"use a different config dir" = "uporabi drugi imenik za nastavitve";
+"Show plugin auto-load directory" = "pokaži imenik s samodejno zagnanimi vtičniki";
 
 /* nothing */
-"don't auto load any plugins" = "ne naloži vtičnikov samodejno";
+"Show user config directory" = "pokaži uporabnikov nastavitveni imenik";
 
 /* nothing */
-"show plugin auto-load dir" = "pokaži imenik s samodejno zagnanimi vtičniki";
+"Open an irc://server:port/channel URL" = "";
 
 /* nothing */
-"show user config dir" = "pokaži uporabnikov nastavitveni imenik";
+"Execute command:" = "Ukaz za povezavo:";
 
 /* nothing */
-"show version information" = "pokaži informacijo o različicah";
+"Open URL or execute command in an existing XChat" = "";
+
+/* nothing */
+"Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "";
+
+/* nothing */
+"level" = "Nikoli";
+
+/* nothing */
+"Show version information" = "pokaži informacijo o različicah";
 
 /* nothing */
 "Failed to open font:\n\n%s" = "Ne morem odpreti pisave:\n\n%s";
@@ -2241,6 +2211,9 @@
 
 /* nothing */
 "%d bytes" = "%d bajtov";
+
+/* nothing */
+"Network send queue: %d bytes" = "";
 
 /* nothing */
 "The Run Command action runs the data in Data 1 as if it has been typed into the entry box where you pressed the key sequence. Thus it can contain text (which will be sent to the channel/person), commands or user commands. When run all \\n characters in Data 1 are used to deliminate seperate commands so it is possible to run more than one command. If you want a \\ in the actual text run then enter \\\\" = "Ukaz ^BZaženi ukaz^B zažene vsebino Podatka 1, kot da bi bilo vpisano v vnosno polje, kjer ste pritisnili zaporedje tipk. Vsebuje lahko bodisi besedilo (ki bo poslano na kanal/osebi), bodisi uporabniške ukaze. Kjer so zagnani vsi ^B\\n^B znak v Podatku 1 bodo uporabljeni za ločevanje ukazov, tako da je mogoče zagnati več kot en ukaz. Če želite ^B\\^B zagnati kot resnično besedilo, uporabite ^B\\\\^B ";
@@ -2303,7 +2276,7 @@
 "Action" = "Dejanje";
 
 /* nothing */
-"X-Chat: Keyboard Shortcuts" = "X-Chat: Tipkovnične bljižnjice";
+"XChat: Keyboard Shortcuts" = "X-Chat: Tipkovnične bljižnjice";
 
 /* nothing */
 "Shift" = "Shift";
@@ -2366,7 +2339,7 @@
 "Enter mask to ignore:" = "Vnesite masko za preziranje:";
 
 /* nothing */
-"X-Chat: Ignore list" = "X-Chat: Seznam prezrtih";
+"XChat: Ignore list" = "X-Chat: Seznam prezrtih";
 
 /* nothing */
 "Ignore Stats:" = "Statistika preziranja:";
@@ -2387,7 +2360,40 @@
 "Invite:" = "Povabi:";
 
 /* nothing */
-"Add" = "Dodaj";
+"Add..." = "Dodaj";
+
+/* nothing */
+"Channel name too short, try again." = "";
+
+/* nothing */
+"XChat: Connection Complete" = "Čas za povezavo se je iztekel";
+
+/* nothing */
+"Connection to %s complete." = "Povezava je bila prekinjena";
+
+/* nothing */
+"In the Server-List window, no channel (chat room) has been entered to be automatically joined for this network." = "";
+
+/* nothing */
+"What would you like to do next?" = "";
+
+/* nothing */
+"_Nothing, I'll join a channel later." = "";
+
+/* nothing */
+"_Join this channel:" = "Pridruži se kanalu";
+
+/* nothing */
+"If you know the name of the channel you want to join, enter it here." = "";
+
+/* nothing */
+"O_pen the Channel-List window." = "Odpri kanale v:";
+
+/* nothing */
+"Retrieving the Channel-List may take a minute or two." = "";
+
+/* nothing */
+"_Always show this dialog after connecting." = "";
 
 /* nothing */
 "Dialog with" = "Pogovorno okno";
@@ -2399,31 +2405,73 @@
 "No topic is set" = "Tema ni nastavljena";
 
 /* nothing */
-"No other tabs open, quit xchat?" = "Drugi zavihki niso odprti, zaprem xchat?";
+"This server still has %d channels or dialogs associated with it. Close them all?" = "";
 
 /* nothing */
-"Insert color code" = "Vnesite kodo barve";
+"Quit XChat?" = "O X-Chatu";
 
 /* nothing */
-"Beep on message" = "Zapiskaj ob sporočilih";
+"Don't ask next time." = "";
 
 /* nothing */
-"Show join/part messages" = "Prikaži sporočila ob prihodu/odhodu";
+"You are connected to %i IRC networks." = "Samodejna povezava ob zagonu";
 
 /* nothing */
-"Color paste" = "Barva paste";
+"Are you sure you want to quit?" = "";
 
 /* nothing */
-"Go to" = "Pojdi na";
+"Some file transfers are still active." = "Nekaj prenosov datotek je še vedno aktivnih, zaprem xchat?";
 
 /* nothing */
-"Close Tab" = "Zapri zavihek";
+"_Minimize to Tray" = "";
 
 /* nothing */
-"Detach Tab" = "Loči zavihek";
+"Insert Attribute or Color Code" = "Vnesite kodo barve";
 
 /* nothing */
-"Some file transfers still active, quit xchat?" = "Nekaj prenosov datotek je še vedno aktivnih, zaprem xchat?";
+"<b>Bold</b>" = "";
+
+/* nothing */
+"<u>Underline</u>" = "Prisoten";
+
+/* nothing */
+"Normal" = "Norveška";
+
+/* nothing */
+"Colors 0-7" = "Barve";
+
+/* nothing */
+"Colors 8-15" = "Barve";
+
+/* nothing */
+"_Settings" = "Nastavitv_e";
+
+/* nothing */
+"_Log to Disk" = "";
+
+/* nothing */
+"_Reload Scrollback" = "";
+
+/* nothing */
+"_Hide Join/Part Messages" = "Skrij sporočila ob prihodu/odhodu";
+
+/* nothing */
+"_Extra Alerts" = "Dodatne naprave";
+
+/* nothing */
+"Beep on _Message" = "Zapiskaj ob sporočilih";
+
+/* nothing */
+"Blink Tray _Icon" = "";
+
+/* nothing */
+"Blink Task _Bar" = "";
+
+/* nothing */
+"_Detach" = "Loči zavihek";
+
+/* nothing */
+"_Close" = "_Zapri";
 
 /* nothing */
 "User limit must be a number!\n" = "Omejitev uporabnikov mora biti številka!\n";
@@ -2453,9 +2501,6 @@
 "User Limit" = "Omejitev uporabnikov";
 
 /* nothing */
-"Close this tab/window" = "Zapri to okno/zavihek";
-
-/* nothing */
 "Show/Hide userlist" = "Prikaži/skrij seznam uporabnikov";
 
 /* nothing */
@@ -2471,40 +2516,40 @@
 "<tt><b>%-11s</b></tt> %s" = "<tt><b>%-11s</b></tt> %s";
 
 /* nothing */
+"Real Name:" = "Pravo ime:";
+
+/* nothing */
 "User:" = "Uporabnik:";
 
 /* nothing */
 "Country:" = "Država:";
 
 /* nothing */
-"Real Name:" = "Pravo ime:";
-
-/* nothing */
 "Server:" = "Strežnik:";
 
 /* nothing */
-"Away Msg:" = "Sporočilo o odsotnosti:";
+"%u minutes ago" = "";
 
 /* nothing */
 "Last Msg:" = "Zadnje sporočilo:";
 
 /* nothing */
-"Menu Bar" = "Vrstica z menijem";
+"Away Msg:" = "Sporočilo o odsotnosti:";
 
 /* nothing */
-"Topic Bar" = "Vrstica teme";
+"%d nicks selected." = "";
 
 /* nothing */
-"User List" = "Seznam uporabnikov";
+"The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "";
 
 /* nothing */
-"Mode Buttons" = "Gumbi za način";
+"Open Link in Browser" = "";
 
 /* nothing */
-"User List Buttons" = "Gumbi seznama uporabnikov";
+"Copy Selected Link" = "Kopiraj izbrani URL";
 
 /* nothing */
-"Copy selected URL" = "Kopiraj izbrani URL";
+"Join Channel" = "Pridruži se kanalu";
 
 /* nothing */
 "Part Channel" = "Zapusti kanal";
@@ -2513,61 +2558,67 @@
 "Cycle Channel" = "Zapusti/Vrni se na kanal";
 
 /* nothing */
-"X-Chat: User menu" = "X-Chat: Uporabnikov meni";
+"_Remove from Favorites" = "";
+
+/* nothing */
+"_Add to Favorites" = "";
+
+/* nothing */
+"XChat: User menu" = "X-Chat: Uporabnikov meni";
 
 /* nothing */
 "Edit This Menu..." = "Uredi ta meni ...";
 
 /* nothing */
-"*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile" = "*OPOZORILO*\nSamodejno prejemanje DCC-jev v vaš domač imenik\nje lahko zelo nevarno. Nekdo vam lahko pošlje npr.\n.bash_profile";
+"Retrieve channel list..." = "Seznam kanalov ...";
 
 /* nothing */
-"Settings saved." = "Nastavitve shranjene.";
+"User Commands - Special codes:\n\n%c  =  current channel\n%e  =  current network name\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "Uporabnikovi ukazi - Posebne kode:\n\n%c = trenutni kanal\n%m = podatki o računalniku\n%n = vaš vzdevek\n%t = čas/datum\n%v = različica programa xchat\n%2 = beseda 2\n%3 = beseda 3\n&2 = beseda 2 na konec vrstice\n&3 = beseda 3 na konec vrstice\n\nPrimer:\n/cmd Janez pozdrav\n\n%2 bi bilo \"Janez\"\n&2 bi bilo \"Janez pozdrav\".";
 
 /* nothing */
-"User Commands - Special codes:\n\n%c  =  current channel\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "Uporabnikovi ukazi - Posebne kode:\n\n%c = trenutni kanal\n%m = podatki o računalniku\n%n = vaš vzdevek\n%t = čas/datum\n%v = različica programa xchat\n%2 = beseda 2\n%3 = beseda 3\n&2 = beseda 2 na konec vrstice\n&3 = beseda 3 na konec vrstice\n\nPrimer:\n/cmd Janez pozdrav\n\n%2 bi bilo \"Janez\"\n&2 bi bilo \"Janez pozdrav\".";
+"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Gumbi seznama uporabnikov - Posebne kode:\n\n%a = vsi izbrani vzdevki\n%c = trenutni kanal\n%h = gostitelj izbranega vzdevka\n%m = podatki o računalniku\n%n = vaš vzdevek\n%s = izbran vzdevek\n%t = čas/datum\n";
 
 /* nothing */
-"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Gumbi seznama uporabnikov - Posebne kode:\n\n%a = vsi izbrani vzdevki\n%c = trenutni kanal\n%h = gostitelj izbranega vzdevka\n%m = podatki o računalniku\n%n = vaš vzdevek\n%s = izbran vzdevek\n%t = čas/datum\n";
+"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Gumbi pogovornih oken - Posebne kode:\n\n%a = vsi izbrani vzdevki\n%c = trenutni kanal\n%h = gostitelj izbranega vzdevka\n%m = podatki o računalniku\n%n = vaš vzdevek\n%s = izbran vzdevek\n%t = čas/datum\n";
 
 /* nothing */
-"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Gumbi pogovornih oken - Posebne kode:\n\n%a = vsi izbrani vzdevki\n%c = trenutni kanal\n%h = gostitelj izbranega vzdevka\n%m = podatki o računalniku\n%n = vaš vzdevek\n%s = izbran vzdevek\n%t = čas/datum\n";
+"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%e  =  current network name\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "Odgovori CTCP - Posebne kode:\n\n%d = podatki (celoten ctcp)\n%m = podatki o računalniku\n%s = vzdevek, ki je poslal ctcp\n%t = čas/datum\n%2 = beseda 2\n%3 = beseda 3\n&2 = beseda 2 na konec vrstice\n&3 = beseda 3 na konec vrstice\n\n";
 
 /* nothing */
-"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "Odgovori CTCP - Posebne kode:\n\n%d = podatki (celoten ctcp)\n%m = podatki o računalniku\n%s = vzdevek, ki je poslal ctcp\n%t = čas/datum\n%2 = beseda 2\n%3 = beseda 3\n&2 = beseda 2 na konec vrstice\n&3 = beseda 3 na konec vrstice\n\n";
+"URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of XChat" = "Upravitelji URL - Posebne kode:\n\n%s = URL zapis\n\nČe vnesete ! pred ukazom,\nbo poslan\nkonzoli namesto X-Chatu";
 
 /* nothing */
-"URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of X-Chat" = "Upravitelji URL - Posebne kode:\n\n%s = URL zapis\n\nČe vnesete ! pred ukazom,\nbo poslan\nkonzoli namesto X-Chatu";
+"XChat: User Defined Commands" = "X-Chat: Uporabnikovi ukazi";
 
 /* nothing */
-"X-Chat: User Defined Commands" = "X-Chat: Uporabnikovi ukazi";
+"XChat: Userlist Popup menu" = "X-Chat: Meni seznama uporabnikov";
 
 /* nothing */
-"X-Chat: Userlist Popup menu" = "X-Chat: Meni seznama uporabnikov";
+"Replace with" = "";
 
 /* nothing */
-"X-Chat: Replace" = "X-Chat: Zamenjaj";
+"XChat: Replace" = "X-Chat: Zamenjaj";
 
 /* nothing */
-"X-Chat: URL Handlers" = "X-Chat: Upravitelji URL-jev";
+"XChat: URL Handlers" = "X-Chat: Upravitelji URL-jev";
 
 /* nothing */
-"X-Chat: Userlist buttons" = "X-Chat: Gumbi seznama uporabnikov";
+"XChat: Userlist buttons" = "X-Chat: Gumbi seznama uporabnikov";
 
 /* nothing */
-"X-Chat: Dialog buttons" = "X-Chat: Gumbi pogovornega okna";
+"XChat: Dialog buttons" = "X-Chat: Gumbi pogovornega okna";
 
 /* nothing */
-"X-Chat: CTCP Replies" = "X-Chat: Odgovori CTCP";
+"XChat: CTCP Replies" = "X-Chat: Odgovori CTCP";
 
 /* nothing */
-"_X-Chat" = "_X-Chat";
+"_XChat" = "_X-Chat";
 
 /* nothing */
-"Server List..." = "Seznam strežnikov ...";
+"Network Li_st..." = "Omrežne nastavitve";
 
 /* nothing */
-"New" = "Nov";
+"_New" = "Nov";
 
 /* nothing */
 "Server Tab..." = "Zavihek strežnikov ...";
@@ -2582,55 +2633,73 @@
 "Channel Window..." = "Okno kanalov ...";
 
 /* nothing */
-"Load Plugin or Script..." = "Naloži dodatek ali skripto ...";
+"_Load Plugin or Script..." = "Naloži dodatek ali skripto ...";
 
 /* nothing */
-"New Shell Tab..." = "Nov zavihek lupine ...";
+"_Quit" = "Izhod";
 
 /* nothing */
-"Quit" = "Izhod";
+"_View" = "";
 
 /* nothing */
-"_IRC" = "_IRC";
+"_Menu Bar" = "Vrstica z menijem";
 
 /* nothing */
-"Invisible" = "Neviden";
+"_Topic Bar" = "Vrstica teme";
 
 /* nothing */
-"Receive Wallops" = "Sprejemaj sporočila za operaterje";
+"_User List" = "Seznam uporabnikov";
 
 /* nothing */
-"Receive Server Notices" = "Sprejemaj strežniška obvestila";
+"U_serlist Buttons" = "Gumbi seznama uporabnikov ...";
 
 /* nothing */
-"Marked Away" = "Označen kot odsoten";
+"M_ode Buttons" = "Gumbi za način";
 
 /* nothing */
-"Auto Rejoin when Kicked" = "Samodejna vrnitev ob brci";
+"_Channel Switcher" = "Seznam kanalov ...";
 
 /* nothing */
-"Auto Reconnect to Server" = "Samodejno obnovi povezavo na strežnik";
+"_Tabs" = "Zavihki";
 
 /* nothing */
-"Never-give-up ReConnect" = "Nikoli ne obupaj ob ponovnem povezovanju";
+"T_ree" = "Sledi";
 
 /* nothing */
-"Auto Open Dialog Windows" = "Samodejno odpri okna za zasebni pogovor";
+"_Network Meters" = "Omrežne nastavitve";
 
 /* nothing */
-"Auto Accept Direct Chat" = "Samodejno sprejmi neposredni pogovor";
+"Off" = "Izključeno";
 
 /* nothing */
-"Auto Accept Files" = "Samodejno sprejmi datoteke";
+"Graph" = "Graf";
 
 /* nothing */
 "_Server" = "_Strežnik";
 
 /* nothing */
+"_Disconnect" = "Odstrani povezavo";
+
+/* nothing */
+"_Reconnect" = "Ponovno se poveži";
+
+/* nothing */
+"Join a Channel..." = "Pridruži se kanalu ...";
+
+/* nothing */
+"List of Channels..." = "Pridruži se kanalu ...";
+
+/* nothing */
+"Marked Away" = "Označen kot odsoten";
+
+/* nothing */
+"_Usermenu" = "Uporabniško ime";
+
+/* nothing */
 "S_ettings" = "Nastavitv_e";
 
 /* nothing */
-"Preferences..." = "Nastavitve ...";
+"_Preferences" = "Nastavitve ...";
 
 /* nothing */
 "Advanced" = "Napredno";
@@ -2663,22 +2732,10 @@
 "Userlist Popup..." = "Priročen meni seznama uporabnikov ...";
 
 /* nothing */
-"Reload Settings" = "Osveži nastavitve";
-
-/* nothing */
-"Save Settings now" = "Shrani nastavitve zdaj";
-
-/* nothing */
-"Save Settings on exit" = "Shrani nastavitve ob izhodu";
-
-/* nothing */
 "_Window" = "_Okno";
 
 /* nothing */
 "Ban List..." = "Seznam izobčenih ...";
-
-/* nothing */
-"Channel List..." = "Seznam kanalov ...";
 
 /* nothing */
 "Character Chart..." = "Kodna tabela ...";
@@ -2687,16 +2744,13 @@
 "Direct Chat..." = "Neposredni pogovor ...";
 
 /* nothing */
-"File Receive..." = "Prejemanje datotek ...";
+"File Transfers..." = "Prenosi datotek";
 
 /* nothing */
-"File Send..." = "Pošiljanje datotek ...";
+"Friends List..." = "Seznam izobčenih ...";
 
 /* nothing */
 "Ignore List..." = "Seznam prezrtih ...";
-
-/* nothing */
-"Notify List..." = "Seznam opomnikov ...";
 
 /* nothing */
 "Plugins and Scripts..." = "Dodatki in skripte ...";
@@ -2726,16 +2780,13 @@
 "_Contents" = "Vs_ebina";
 
 /* nothing */
+"Check for updates" = "";
+
+/* nothing */
 "_About" = "_O programu";
 
 /* nothing */
-"Attach Tab" = "Pritrdi zavihek";
-
-/* nothing */
-"User" = "Uporabnik";
-
-/* nothing */
-"Server" = "Strežnik";
+"_Attach" = "Pritrdi zavihek";
 
 /* nothing */
 "Last Seen" = "Nazadnje viden";
@@ -2747,16 +2798,85 @@
 "Never" = "Nikoli";
 
 /* nothing */
+"%d minutes ago" = "";
+
+/* nothing */
 "Online" = "Prisoten";
 
 /* nothing */
 "Enter nickname to add:" = "Vnesite vzdevek, ki ga želite dodati:";
 
 /* nothing */
-"X-Chat: Notify List" = "X-Chat: Seznam opomnikov";
+"Notify on these networks:" = "";
 
 /* nothing */
-"Remove" = "Odstrani";
+"Comma separated list of networks is accepted." = "";
+
+/* nothing */
+"XChat: Friends List" = "X-Chat: Seznam pošiljanja datotek";
+
+/* nothing */
+"Open Dialog" = "Odpri pogovorno okno";
+
+/* nothing */
+"Cannot find 'notify-send' to open balloon alerts.\nPlease install libnotify." = "";
+
+/* nothing */
+"XChat: Connected to %u networks and %u channels" = "";
+
+/* nothing */
+"_Restore" = "";
+
+/* nothing */
+"_Hide" = "Skrito";
+
+/* nothing */
+"_Blink on" = "";
+
+/* nothing */
+"Channel Message" = "Ime kanala";
+
+/* nothing */
+"Private Message" = "Zapiskaj ob zasebnih sporočilih";
+
+/* nothing */
+"Highlighted Message" = "Zapiskaj ob osvetljenih sporočilih";
+
+/* nothing */
+"_Change status" = "";
+
+/* nothing */
+"_Away" = "Odsoten";
+
+/* nothing */
+"_Back" = "";
+
+/* nothing */
+"XChat: Highlighted message from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u highlighted messages, latest from: %s (%s)" = "";
+
+/* nothing */
+"XChat: New public message from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u new public messages." = "";
+
+/* nothing */
+"XChat: Private message from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u private messages, latest from: %s (%s)" = "";
+
+/* nothing */
+"XChat: File offer from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u file offers, latest from: %s (%s)" = "";
+
+/* nothing */
+"Version" = "Različica";
 
 /* nothing */
 "Description" = "Opis";
@@ -2765,7 +2885,7 @@
 "Select a Plugin or Script to load" = "Izberite dodatek ali skripto za zagon";
 
 /* nothing */
-"X-Chat: Plugins and Scripts" = "X-Chat: Dodatki in skripte";
+"XChat: Plugins and Scripts" = "X-Chat: Dodatki in skripte";
 
 /* nothing */
 "_Load..." = "Na_loži ...";
@@ -2774,34 +2894,31 @@
 "_UnLoad" = "_Odstrani";
 
 /* nothing */
-"_Close" = "_Zapri";
+"Save As..." = "Shrani kot";
 
 /* nothing */
-"Save rawlog" = "Shrani surov dnevnik";
-
-/* nothing */
-"X-Chat: Rawlog (%s)" = "X-Chat: Surov dnevnik (%s)";
+"XChat: Rawlog (%s)" = "X-Chat: Surov dnevnik (%s)";
 
 /* nothing */
 "Clear rawlog" = "Počisti surov dnevnik";
 
 /* nothing */
-"Save rawlog..." = "Shrani surov dnevnik ...";
-
-/* nothing */
 "The window you opened this Search for doesn't exist anymore." = "Okno, ki ste ga odprli v tem iskanju, ne obstaja več.";
 
 /* nothing */
-"X-Chat: Search" = "X-Chat: Iskanje";
+"Search hit end, not found." = "";
 
 /* nothing */
-"Find:" = "Poišči:";
+"XChat: Search" = "X-Chat: Iskanje";
 
 /* nothing */
-"Find" = "Poišči";
+"_Match case" = "";
 
 /* nothing */
-"Close" = "Zapri";
+"Search _backwards" = "";
+
+/* nothing */
+"_Find" = "Poišči";
 
 /* nothing */
 "New Network" = "Novo omrežje";
@@ -2810,10 +2927,31 @@
 "Really remove network \"%s\" and all its servers?" = "Res odstranim omrežje \"%s\" in vse njegove strežnike?";
 
 /* nothing */
+"#channel" = "Kanal";
+
+/* nothing */
+"XChat: Favorite Channels (Auto-Join List)" = "X-Chat: Seznam kanalov (%s)";
+
+/* nothing */
+"These channels will be joined whenever you connect to %s." = "";
+
+/* nothing */
+"Key (Password)" = "Geslo:";
+
+/* nothing */
+"_Edit" = "Uredi";
+
+/* nothing */
+"%s has been removed." = "";
+
+/* nothing */
+"%s has been added." = "";
+
+/* nothing */
 "User name and Real name cannot be left blank." = "Uporabniško ime in pravo ne morete pustiti praznih.";
 
 /* nothing */
-"X-Chat: Edit %s" = "X-Chat: Seznam izobčenih (%s)";
+"XChat: Edit %s" = "X-Chat: Seznam izobčenih (%s)";
 
 /* nothing */
 "Servers for %s" = "Strežnik: %s";
@@ -2834,6 +2972,9 @@
 "_Nick name:" = "Vzdevek:";
 
 /* nothing */
+"Second choice:" = "Druga izbira: ";
+
+/* nothing */
 "_User name:" = "Uporabniško ime:";
 
 /* nothing */
@@ -2846,7 +2987,7 @@
 "Auto connect to this network at startup" = "Samodejna povezava ob zagonu";
 
 /* nothing */
-"Use a proxy server" = "Uporabi strežnik proxy";
+"Bypass proxy server" = "Uporabi strežnik proxy";
 
 /* nothing */
 "Use SSL for all the servers on this network" = "Uporabi povezavo SSL do vseh strežnikov v omrežju";
@@ -2855,7 +2996,7 @@
 "Accept invalid SSL certificate" = "Sprejmi neveljaven SSL certifikat";
 
 /* nothing */
-"C_hannels to join:" = "Kanal, ki se mu želite pridružiti:";
+"_Favorite channels:" = "Zapusti kanal:";
 
 /* nothing */
 "Channels to join, separated by commas, but not spaces!" = "Kanali, s katerimi se želite povezati, so ločeni z vejicami, ne s presledki!";
@@ -2870,6 +3011,9 @@
 "Nickserv password:" = "Geslo strežnika:";
 
 /* nothing */
+"If your nickname requires a password, enter it here. Not all IRC networks support this." = "";
+
+/* nothing */
 "Server password:" = "Geslo strežnika:";
 
 /* nothing */
@@ -2879,16 +3023,10 @@
 "Character set:" = "Kodni nabor:";
 
 /* nothing */
-"_Edit" = "Uredi";
-
-/* nothing */
-"X-Chat: Server List" = "X-Chat: Seznam strežnikov";
+"XChat: Network List" = "X-Chat: Seznam opomnikov";
 
 /* nothing */
 "User Information" = "Podatki o uporabniku";
-
-/* nothing */
-"Second choice:" = "Druga izbira: ";
 
 /* nothing */
 "Third choice:" = "Tretja izbira:";
@@ -2897,7 +3035,7 @@
 "Networks" = "Omrežja";
 
 /* nothing */
-"Skip server list on startup" = "Brez seznama strežnikov ob zagonu";
+"Skip network list on startup" = "Brez seznama strežnikov ob zagonu";
 
 /* nothing */
 "_Edit..." = "Uredi ...";
@@ -2906,10 +3044,10 @@
 "_Sort" = "Razvrsti";
 
 /* nothing */
-"C_onnect" = "P_oveži se";
+"Sorts the network list in alphabetical order. Use SHIFT-UP and SHIFT-DOWN keys to move a row." = "";
 
 /* nothing */
-"Connect in new tab" = "P_oveži se v _nov zavihek";
+"C_onnect" = "P_oveži se";
 
 /* nothing */
 "Text Box Appearance" = "Videz";
@@ -2924,7 +3062,10 @@
 "Scrollback lines:" = "Vračajoče vrstice:";
 
 /* nothing */
-"Transparent background" = "Prozorno ozadje";
+"Colored nick names" = "Obarvani vzdevki";
+
+/* nothing */
+"Give each person on IRC a different color" = "Vsakemu vzdevku pripiši drugo barvo";
 
 /* nothing */
 "Indent nick names" = "Zamakni vzdevke";
@@ -2933,16 +3074,7 @@
 "Make nick names right-justified" = "Desno poravnavaj vzdevke";
 
 /* nothing */
-"Tint (shade) transparency" = "Prozorna barva";
-
-/* nothing */
-"Colored nick names" = "Obarvani vzdevki";
-
-/* nothing */
-"Give each person on IRC a different color" = "Vsakemu vzdevku pripiši drugo barvo";
-
-/* nothing */
-"Strip mIRC colors" = "Odstrani barve mIRC";
+"Transparent background" = "Prozorno ozadje";
 
 /* nothing */
 "Show marker line" = "Pokaži odsotnost enkrat";
@@ -2951,7 +3083,7 @@
 "Insert a red line after the last read text." = "Zadnjo prebrano vrsto označi z rdečo barvo.";
 
 /* nothing */
-"Tint Settings" = "Barvne nastavitve";
+"Transparency Settings" = "Barvne nastavitve";
 
 /* nothing */
 "Red:" = "Rdeča:";
@@ -2966,25 +3098,40 @@
 "Time Stamps" = "Besedilo opremi s časom";
 
 /* nothing */
+"Enable time stamps" = "Dnevnike opremi s časom";
+
+/* nothing */
 "Time stamp format:" = "Oblika prikaza časa:";
 
 /* nothing */
 "See strftime manpage for details." = "Poglej stran man strftime za podrobnosti.";
 
 /* nothing */
-"Enable time stamps" = "Dnevnike opremi s časom";
+"A-Z" = "A-Ž";
+
+/* nothing */
+"Last-spoke order" = "";
+
+/* nothing */
+"Input box" = "Vnosno polje";
+
+/* nothing */
+"Use the Text box font and colors" = "Uporabi pisavo in barvo besedilnega polja";
+
+/* nothing */
+"Spell checking" = "";
 
 /* nothing */
 "Nick Completion" = "Dokončevanje vzdevkov";
 
 /* nothing */
-"Automatic nick completion" = "Samodokončevanje vzdevkov";
-
-/* nothing */
-"Completes nick names without using the TAB key" = "Samodejno dopolnjevanje vzdevkov brez pritiska na preslednico TAB";
+"Automatic nick completion (without TAB key)" = "Samodokončevanje vzdevkov";
 
 /* nothing */
 "Nick completion suffix:" = "Pripona za dopolnjevanje vzdevkov:";
+
+/* nothing */
+"Nick completion sorted:" = "Pripona za dopolnjevanje vzdevkov:";
 
 /* nothing */
 "Input Box Codes" = "Vnosno polje";
@@ -2996,28 +3143,7 @@
 "Interpret %C, %B as Color, Bold etc" = "Prevedi %C, %B kot Barva, Povdarjeno itd.";
 
 /* nothing */
-"Input Box Appearance" = "Videz vhodnega okna";
-
-/* nothing */
-"Use the Text box font and colors" = "Uporabi pisavo in barvo besedilnega polja";
-
-/* nothing */
-"Off" = "Izključeno";
-
-/* nothing */
-"Graph" = "Graf";
-
-/* nothing */
-"Info text" = "Podatki";
-
-/* nothing */
-"Both" = "Oboje";
-
-/* nothing */
 "A-Z, Ops first" = "A-Ž, najprej status op";
-
-/* nothing */
-"A-Z" = "A-Ž";
 
 /* nothing */
 "Z-A, Ops last" = "Ž-A, nazadnje status op";
@@ -3029,22 +3155,43 @@
 "Unsorted" = "Neurejeno";
 
 /* nothing */
-"User list sorted by:" = "Seznam uporabnikov urejen po:";
+"Left (Upper)" = "";
+
+/* nothing */
+"Left (Lower)" = "";
+
+/* nothing */
+"Right (Upper)" = "";
+
+/* nothing */
+"Right (Lower)" = "";
+
+/* nothing */
+"Top" = "Zgoraj";
+
+/* nothing */
+"Bottom" = "Spodaj";
+
+/* nothing */
+"Hidden" = "Skrito";
+
+/* nothing */
+"User List" = "Seznam uporabnikov";
 
 /* nothing */
 "Show hostnames in user list" = "Pokaži gostitelje v seznamu uporabnikov";
 
 /* nothing */
-"User list buttons enabled" = "Omogoči gumbe za seznam uporabnikov";
+"User list sorted by:" = "Seznam uporabnikov urejen po:";
 
 /* nothing */
-"Resizable user list" = "Prilagodljiv seznam uporabnikov";
+"Show user list at:" = "Prikaži/skrij seznam uporabnikov";
 
 /* nothing */
 "Away tracking" = "Razlog odsotnosti";
 
 /* nothing */
-"Enable away tracking" = "Omogoči sledenje odsotnosti";
+"Track the Away status of users and mark them in a different color" = "";
 
 /* nothing */
 "On channels smaller than:" = "Spremljaj razloge za odsotnost na kanalih manjših od:";
@@ -3053,37 +3200,10 @@
 "Action Upon Double Click" = "Ob dvokliku izvedi ukaz";
 
 /* nothing */
-"Execute command:" = "Ukaz za povezavo:";
-
-/* nothing */
-"Extra Gadgets" = "Dodatne naprave";
-
-/* nothing */
-"Lag meter:" = "Merilec zaostanka:";
-
-/* nothing */
-"Throttle meter:" = "Merilec obremenjenosti:";
-
-/* nothing */
 "Windows" = "Okna";
 
 /* nothing */
 "Tabs" = "Zavihki";
-
-/* nothing */
-"Bottom" = "Spodaj";
-
-/* nothing */
-"Top" = "Zgoraj";
-
-/* nothing */
-"Left" = "Levo";
-
-/* nothing */
-"Right" = "Desno";
-
-/* nothing */
-"Hidden" = "Skrito";
 
 /* nothing */
 "Always" = "Vselej";
@@ -3092,31 +3212,37 @@
 "Only requested tabs" = "Le zahtevane zavihke";
 
 /* nothing */
+"Tree" = "Sledi";
+
+/* nothing */
+"Switcher type:" = "";
+
+/* nothing */
 "Open an extra tab for server messages" = "Odpri zavihek za sporočila strežnika";
 
 /* nothing */
 "Open an extra tab for server notices" = "Odpri zavihek za opomine strežnika";
 
 /* nothing */
-"Small tabs" = "Majhni zavihki";
+"Open a new tab when you receive a private message" = "Odpri zavihek za sporočila strežnika";
 
 /* nothing */
 "Sort tabs in alphabetical order" = "Zavihke uredi po abecedi";
 
 /* nothing */
+"Smaller text" = "Majhni zavihki";
+
+/* nothing */
 "Focus new tabs:" = "Fokusiraj nove zavihke:";
+
+/* nothing */
+"Show channel switcher at:" = "Spremljaj razloge za odsotnost na kanalih manjših od:";
 
 /* nothing */
 "Shorten tab labels to:" = "Skrajša zavihke v:";
 
 /* nothing */
 "letters." = "črk.";
-
-/* nothing */
-"Tabs Location" = "Lega zavihkov";
-
-/* nothing */
-"Show tabs at:" = "Prikaži zavihke na:";
 
 /* nothing */
 "Tabs or Windows" = "Zavihki ali okna";
@@ -3134,7 +3260,19 @@
 "Open DCC, Ignore, Notify etc, in tabs or windows?" = "Odprem DCC, Opomnike in podobno v zavihkih ali oknih?";
 
 /* nothing */
+"No" = "Brez";
+
+/* nothing */
+"Yes" = "";
+
+/* nothing */
+"Browse for save folder every time" = "";
+
+/* nothing */
 "Files and Directories" = "Datoteke in imeniki";
+
+/* nothing */
+"Auto accept file offers:" = "Samodejno sprejmi datoteke";
 
 /* nothing */
 "Download files to:" = "Prenesi datoteke v:";
@@ -3146,10 +3284,13 @@
 "Save nick name in filenames" = "Shrani vzdevek v imena datotek";
 
 /* nothing */
-"Convert spaces to underscore before sending" = "Pretvori presledke v podčrtaje";
+"Network Settings" = "Nastavitve omrežja";
 
 /* nothing */
-"Network Settings" = "Nastavitve omrežja";
+"Get my address from the IRC server" = "Pridobi moj podatke o mojem  IP od strežnika IRC";
+
+/* nothing */
+"Asks the IRC server for your real address. Use this if you have a 192.168.*.* address!" = "Vpraša IRC strežnik za vaš pravi naslov. Uporabljajte to možnost, če imate naslov oblike 192.168.*.*!";
 
 /* nothing */
 "DCC IP address:" = "Naslov IP DCC:";
@@ -3164,13 +3305,7 @@
 "Last DCC send port:" = "Zadnja vrata za pošiljanje DCC:";
 
 /* nothing */
-"(Leave ports at zero for full range)." = "(Pusti vrata na ničli za celoten niz).";
-
-/* nothing */
-"Get my address from the IRC server" = "Pridobi moj podatke o mojem  IP od strežnika IRC";
-
-/* nothing */
-"Asks the IRC server for your real address. Use this if you have a 192.168.*.* address!" = "Vpraša IRC strežnik za vaš pravi naslov. Uporabljajte to možnost, če imate naslov oblike 192.168.*.*!";
+"!Leave ports at zero for full range." = "(Pusti vrata na ničli za celoten niz).";
 
 /* nothing */
 "Maximum File Transfer Speeds (bytes per second)" = "Največja hitrost prenosa podatkov (bajti na sekundo)";
@@ -3192,6 +3327,42 @@
 
 /* nothing */
 "All downloads combined:" = "Vsi prenosi k vam združeno:";
+
+/* nothing */
+"Alerts" = "Opozorila";
+
+/* nothing */
+"Show tray balloons on:" = "Prikaži zavihke na:";
+
+/* nothing */
+"Blink tray icon on:" = "";
+
+/* nothing */
+"Blink task bar on:" = "";
+
+/* nothing */
+"Make a beep sound on:" = "";
+
+/* nothing */
+"Enable system tray icon" = "Omogoči sledenje odsotnosti";
+
+/* nothing */
+"Highlighted Messages" = "Zapiskaj ob osvetljenih sporočilih";
+
+/* nothing */
+"Highlighted messages are ones where your nickname is mentioned, but also:" = "";
+
+/* nothing */
+"Extra words to highlight:" = "Dodatne besede za osvetlitev:";
+
+/* nothing */
+"Nick names not to highlight:" = "Vzdevki, ki jih ne osvetljujem:";
+
+/* nothing */
+"Nick names to always highlight:" = "Vzdevki, ki jih ne osvetljujem:";
+
+/* nothing */
+"Separate multiple words with commas.\nWildcards are accepted." = "(Več besed ločite z vejicami).";
 
 /* nothing */
 "Default Messages" = "Privzeta sporočila";
@@ -3225,36 +3396,6 @@
 
 /* nothing */
 "Unmark yourself as away before sending messages" = "Prekini odsotnost preden pošlješ sporočila";
-
-/* nothing */
-"(Can be a text file relative to ~/.xchat2/)." = "(Lahko je tekstovna datoteka, ki se nanaša na ~/.xchat2/).";
-
-/* nothing */
-"(Can be a text file relative to config dir)." = "(Lahko je tekstovna datoteka, ki se nanaša na konfiguracijski imenik).";
-
-/* nothing */
-"Alerts" = "Opozorila";
-
-/* nothing */
-"Flash taskbar on highlighted messages" = "Zapiskaj ob osvetljenih sporočilih";
-
-/* nothing */
-"Beep on highlighted messages" = "Zapiskaj ob osvetljenih sporočilih";
-
-/* nothing */
-"Extra words to highlight on:" = "Dodatne besede za osvetlitev:";
-
-/* nothing */
-"Nicks not to highlight on:" = "Vzdevki, ki jih ne osvetljujem:";
-
-/* nothing */
-"(Separate multiple words with commas)." = "(Več besed ločite z vejicami).";
-
-/* nothing */
-"Beep on private messages" = "Zapiskaj ob zasebnih sporočilih";
-
-/* nothing */
-"Beep on channel messages" = "Zapiskaj ob kanalnih sporočilih";
 
 /* nothing */
 "Advanced Settings" = "Napredne nastavitve";
@@ -3293,22 +3434,22 @@
 "Logging" = "Beleženje";
 
 /* nothing */
-"Enable logging of conversations" = "Vključi beleženje pogovorov";
+"Display scrollback from previous session" = "";
 
 /* nothing */
-"Log filename mask:" = "Maska imena datoteke dnevnika:";
+"Enable logging of conversations to disk" = "Vključi beleženje pogovorov";
 
 /* nothing */
-"(%s=Server %c=Channel %n=Network)." = "(%s=Strežnik %c=Kanal %n=Omrežje).";
+"Log filename:" = "Maska imena datoteke dnevnika:";
+
+/* nothing */
+"%s=Server %c=Channel %n=Network." = "(%s=Strežnik %c=Kanal %n=Omrežje).";
 
 /* nothing */
 "Insert timestamps in logs" = "Dnevnike opremi s časom";
 
 /* nothing */
 "Log timestamp format:" = "Oblika prikaza časa v dnevniku:";
-
-/* nothing */
-"(See strftime manpage for details)." = "(Poglejte man stran strftime za podrobnosti).";
 
 /* nothing */
 "(Disabled)" = "(Izključeno)";
@@ -3326,13 +3467,25 @@
 "HTTP" = "HTTP";
 
 /* nothing */
+"MS Proxy (ISA)" = "";
+
+/* nothing */
+"All Connections" = "Povezujem se";
+
+/* nothing */
+"IRC Server Only" = "Samo na povabilo";
+
+/* nothing */
+"DCC Get Only" = "";
+
+/* nothing */
 "Your Address" = "Naslov IP";
 
 /* nothing */
 "Bind to:" = "Poišči:";
 
 /* nothing */
-"(Only useful for computers with multiple addresses)." = "(Uporabno le za računalnike z več naslovi).";
+"Only useful for computers with multiple addresses." = "(Uporabno le za računalnike z več naslovi).";
 
 /* nothing */
 "Proxy Server" = "Strežnik proxy";
@@ -3341,34 +3494,34 @@
 "Hostname:" = "Ime gostitelja:";
 
 /* nothing */
-"Username:" = "Uporabniško ime:";
-
-/* nothing */
-"Password:" = "Geslo:";
-
-/* nothing */
 "Port:" = "Vrata:";
 
 /* nothing */
 "Type:" = "Vrsta:";
 
 /* nothing */
-"Authenticate to the proxy server (HTTP and Socks5)" = "Overi se proxy strežniku (samo HTTP)";
+"Use proxy for:" = "Uporabi strežnik proxy";
 
 /* nothing */
-"(disabled)" = "(Izključeno)";
+"Proxy Authentication" = "";
 
 /* nothing */
-"A star (*)" = "Zvezdica";
+"Use Authentication (MS Proxy, HTTP or Socks5 only)" = "Overi se proxy strežniku (samo HTTP)";
 
 /* nothing */
-"A red star (*)" = "Rdeča zvezdica<";
+"Use Authentication (HTTP or Socks5 only)" = "Overi se proxy strežniku (samo HTTP)";
 
 /* nothing */
-"Underlined" = "Prisoten";
+"Username:" = "Uporabniško ime:";
+
+/* nothing */
+"Password:" = "Geslo:";
 
 /* nothing */
 "Select an Image File" = "Izberite datoteko s sliko";
+
+/* nothing */
+"Select Download Folder" = "Izberi barvo";
 
 /* nothing */
 "Select font" = "Izberite pisavo";
@@ -3383,6 +3536,9 @@
 "Mark not-identified users with:" = "Označi neprepoznane uporabnike z:";
 
 /* nothing */
+"Open Data Folder" = "";
+
+/* nothing */
 "Select color" = "Izberi barvo";
 
 /* nothing */
@@ -3392,7 +3548,7 @@
 "mIRC colors:" = "Barve mIRC:";
 
 /* nothing */
-"Extra colors:" = "Dodatne barve:";
+"Local colors:" = "Dodatne barve:";
 
 /* nothing */
 "Foreground:" = "Ospredje:";
@@ -3461,10 +3617,10 @@
 "Text box" = "Besedilno polje";
 
 /* nothing */
-"Input box" = "Vnosno polje";
+"User list" = "Seznam uporabnikov";
 
 /* nothing */
-"User list" = "Seznam uporabnikov";
+"Channel switcher" = "Seznam kanalov ...";
 
 /* nothing */
 "Colors" = "Barve";
@@ -3479,9 +3635,6 @@
 "Sound" = "Zvok";
 
 /* nothing */
-"Network" = "Omrežje";
-
-/* nothing */
 "Network setup" = "Omrežne nastavitve";
 
 /* nothing */
@@ -3491,10 +3644,16 @@
 "Categories" = "Kategorije";
 
 /* nothing */
+"You cannot place the tree on the top or bottom!\nPlease change to the <b>Tabs</b> layout in the <b>View</b> menu first." = "";
+
+/* nothing */
 "Some settings were changed that require a restart to take full effect." = "Nekatere spremenjene nastavitve potrebujejo ponovni zagon za uveljavitev.";
 
 /* nothing */
-"X-Chat: Preferences" = "X-Chat: Nastavitve";
+"*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile" = "*OPOZORILO*\nSamodejno prejemanje DCC-jev v vaš domač imenik\nje lahko zelo nevarno. Nekdo vam lahko pošlje npr.\n.bash_profile";
+
+/* nothing */
+"XChat: Preferences" = "X-Chat: Nastavitve";
 
 /* nothing */
 "There was an error parsing the string" = "Prišlo je do napake pri obdelavi niza";
@@ -3506,16 +3665,13 @@
 "Print Texts File" = "Izpiši datoteko z besedilom";
 
 /* nothing */
-"$ Number" = "$ Število";
-
-/* nothing */
 "Edit Events" = "Uredi dogodke";
 
 /* nothing */
-"Save As" = "Shrani kot";
+"$ Number" = "$ Število";
 
 /* nothing */
-"Load From" = "Naloži iz";
+"Load From..." = "Naloži iz";
 
 /* nothing */
 "Test All" = "Preskusi vse";
@@ -3524,10 +3680,13 @@
 "URL" = "URL";
 
 /* nothing */
-"X-Chat: URL Grabber" = "X-Chat: Lovilec URL-jev";
+"XChat: URL Grabber" = "X-Chat: Lovilec URL-jev";
 
 /* nothing */
 "Clear list" = "Počisti seznam";
+
+/* nothing */
+"Copy selected URL" = "Kopiraj izbrani URL";
 
 /* nothing */
 "Copy" = "Kopiraj";

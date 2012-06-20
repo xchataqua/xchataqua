@@ -1,5 +1,5 @@
 /* nothing */
-"" = "Project-Id-Version: xchat 2.8.4\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2006-05-19 00:25+1000\nPO-Revision-Date: 2006-09-08 12:26:43+0200\nLast-Translator: Benjamin Sonntag <benjamin@alternc.org>\nLanguage-Team: French <traduc@traduc.org>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n";
+"" = "Project-Id-Version: xchat 2.8.4\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2010-05-30 13:56+1000\nPO-Revision-Date: 2006-09-08 12:26:43+0200\nLast-Translator: Benjamin Sonntag <benjamin@alternc.org>\nLanguage-Team: French <traduc@traduc.org>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n";
 
 /* nothing */
 "Cannot create ~/.xchat2" = "Impossible de créer ~/.xchat2";
@@ -35,6 +35,9 @@
 "Cannot access %s\n" = "Impossible d'accéder à %s\n";
 
 /* nothing */
+"Error" = "Erreur";
+
+/* nothing */
 "%s is offering \"%s\". Do you want to accept?" = "%s vous propose « %s ». Voulez-vous l'accepter ?";
 
 /* nothing */
@@ -63,6 +66,12 @@
 
 /* nothing */
 "Not connected. Try /server <host> [<port>]\n" = "Vous n'êtes pas encore connecté. Essayez /server <hôte> [<port>]\n";
+
+/* nothing */
+"Already marked away: %s\n" = "Vous êtes déjà considéré comme absent : %s\n";
+
+/* nothing */
+"Already marked back.\n" = "Vous êtes déjà considéré comme présent : %s\n";
 
 /* nothing */
 "I need /bin/sh to run!\n" = "/bin/sh est nécessaire au fonctionnement\n";
@@ -104,10 +113,16 @@
 "AWAY [<reason>], sets you away" = "AWAY [<raison>], indiquer que vous êtes absent";
 
 /* nothing */
+"BACK, sets you back (not away)" = "BACK signale que vous êtes de retour (plus absent)";
+
+/* nothing */
 "BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "BAN <masque> [<typeban>], bannir du canal en cours tous ceux qui correspondent au masque. S'ils sont déjà sur ce canal, ils ne seront pas expulsés (nécessite d'être opérateur [chanop])";
 
 /* nothing */
-"CLEAR, Clears the current text window" = "CLEAR, effacer la fenêtre de texte actuelle";
+"CHANOPT [-quiet] <variable> [<value>]" = "SET [-quiet] <variable> [<valeur>] (-quiet = silencieusement)";
+
+/* nothing */
+"CLEAR [ALL|HISTORY], Clears the current text window or command history" = "CLEAR [ALL|HISTORY], Efface la fenêtre courant ou l'historique des commandes";
 
 /* nothing */
 "CLOSE, Closes the current window/tab" = "CLOSE, fermer l'onglet ou la fenêtre en cours";
@@ -119,7 +134,7 @@
 "CTCP <nick> <message>, send the CTCP message to nick, common messages are VERSION and USERINFO" = "CTCP <pseudo> <message>, envoyer au pseudo un message CTCP, « VERSION » et « USERINFO » sont des messages usuels.";
 
 /* nothing */
-"CYCLE, parts current channel and immediately rejoins" = "CYCLE, quitter le canal actuel et y revenir immédiatement";
+"CYCLE [<channel>], parts the current or given channel and immediately rejoins" = "CYCLE [<canal>], quitte et rejoint à nouveau le canal donné";
 
 /* nothing */
 "\nDCC GET <nick>                      - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file]  - send a file to someone\nDCC PSEND [-maxcps=#] <nick> [file] - send a file using passive mode\nDCC LIST                            - show DCC list\nDCC CHAT <nick>                     - offer DCC CHAT to someone\nDCC PCHAT <nick>                    - offer DCC CHAT using passive mode\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "\nDCC GET <pseudo>                        - accepter le fichier proposé\nDCC SEND [maxcps=#] <pseudo> <fichier>  - envoyer un fichier à quelqu'un\nDCC LIST                                - afficher les connexions DCC\nDCC CHAT <pseudo>                       - proposer une discussion DCC\nDCC PCHAT <pseudo>                      - proposer une discussion DCC\n                                          en mode passif\nDCC CLOSE <type> <pseudo> <fichier>     - exemple :\n                                         /dcc close send paul fichier.tar.gz";
@@ -167,7 +182,7 @@
 "GATE <host> [<port>], proxies through a host, port defaults to 23" = "GATE <hôte> [<port>], utiliser un hôte comme serveur mandataire (proxy), le port 23 est utilisé par défaut";
 
 /* nothing */
-"GHOST <nick> <password>, Kills a ghosted nickname" = "GHOST <pseudo> <mot-de-passe>, tuer un pseudonyme fantôme";
+"GHOST <nick> [password], Kills a ghosted nickname" = "GHOST <pseudo> <mot-de-passe>, tuer un pseudonyme fantôme";
 
 /* nothing */
 "HOP <nick>, gives chanhalf-op status to the nick (needs chanop)" = "HOP <pseudo>, donner l'état de demi-opérateur de canal « chanhalf-op » au pseudo (nécessite d'être opérateur [chanop)]";
@@ -233,7 +248,7 @@
 "NOTICE <nick/channel> <message>, sends a notice. Notices are a type of message that should be auto reacted to" = "NOTICE <pseudo/canal> <message>, envoyer une notification. Les notifications sont un type de message auquel on devrait réagir automatiquement";
 
 /* nothing */
-"NOTIFY [<nick>], lists your notify list or adds someone to it" = "NOTIFY [<pseudo>], afficher votre liste de notifications ou y ajouter quelqu'un";
+"NOTIFY [-n network1[,network2,...]] [<nick>], displays your notify list or adds someone to it" = "NOTIFY [-n réseau1[,réseau2,...]] [<pseudo>], affiche la liste des notifications ou ajoute un quelqu'un à cette liste.";
 
 /* nothing */
 "OP <nick>, gives chanop status to the nick (needs chanop)" = "OP <pseudo>, donner l'état d'opérateur « chanop » au pseudo (nécessite d'être opérateur [chanop])";
@@ -245,7 +260,7 @@
 "PING <nick | channel>, CTCP pings nick or channel" = "PING <pseudo | canal>, envoyer un ping CTCP au pseudo ou au canal";
 
 /* nothing */
-"QUERY <nick>, opens up a new privmsg window to someone" = "QUERY <pseudo>, ouvrir une nouvelle fenêtre de message privé avec quelqu'un";
+"QUERY [-nofocus] <nick>, opens up a new privmsg window to someone" = "QUERY [-nofocus] <pseudo>, ouvre une fenêtre de chat privé avec quelqu'un";
 
 /* nothing */
 "QUIT [<reason>], disconnects from the current server" = "QUIT [<raison>], se déconnecter du serveur actuel";
@@ -281,13 +296,16 @@
 "SERVER <host> [<port>] [<password>], connects to a server, the default port is 6667" = "SERVER <hôte> [<port>] [<mot_de_passe>], se connecter à un serveur, le port par défaut est 6667";
 
 /* nothing */
-"SET [-quiet] <variable> [<value>]" = "SET [-quiet] <variable> [<valeur>] (-quiet = silencieusement)";
+"SET [-e] [-off|-on] [-quiet] <variable> [<value>]" = "SET [-e] [-or] [-quiet] <variable> [<valeur>]";
 
 /* nothing */
 "SETCURSOR [-|+]<position>" = "SETCURSOR [-|+]<position>";
 
 /* nothing */
 "TOPIC [<topic>], sets the topic if one is given, else shows the current topic" = "TOPIC [<sujet>], définir le sujet si on en fournit un, sinon afficher le sujet actuel";
+
+/* nothing */
+"\nTRAY -f <timeout> <file1> [<file2>] Blink tray between two icons.\nTRAY -f <filename>                  Set tray to a fixed icon.\nTRAY -i <number>                    Blink tray with an internal icon.\nTRAY -t <text>                      Set the tray tooltip.\nTRAY -b <title> <text>              Set the tray balloon." = "\nTRAY -f <délai> <fichier1> [<fichier2>] Spécifie les fichiers à utiliser pour faire clignoter l'icone de barre d'état.\nTRAY -f <fichier>                   Spécifie le fichier à utiliser pour l'icone de barre d'état.\nTRAY -i <numéro>                    Spécifie un icone interne pour le clignotement de la barre d'état.\nTRAY -t <texte>                     Spécifie le message d'aide de l'icone de barre d'état.\nTRAY -b <titre> <texte>             Spécifie le message flottant de l'icone de barre d'état.";
 
 /* nothing */
 "UNBAN <mask> [<mask>...], unbans the specified masks." = "UNBAN <masque> [<masque>...], supprimer le bannissement pour les masques fournis.";
@@ -362,12 +380,6 @@
 "%C22*%O$t$1 is now known as $2" = "%C22*%O$t$1 s'appelle maintenant $2";
 
 /* nothing */
-"%C18*$t$1%O $2" = "%C18*$t$1%O $2";
-
-/* nothing */
-"%C21*%O$t%C21%B$1%O%C21 $2" = "%C21*%O$t%C21%B$1%O%C21 $2";
-
-/* nothing */
 "%C22*%O$t$1 sets ban on $2" = "%C22*%O$t$1 met un ban sur $2";
 
 /* nothing */
@@ -395,19 +407,10 @@
 "%UChannel          Users   Topic" = "%UCanal          Utilisateurs   Sujet";
 
 /* nothing */
-"%C18%H<%H$4$1%H>%H%O$t$2" = "%C18%H<%H$4$1%H>%H%O$t$2";
-
-/* nothing */
 "%C22*%O$t$1 sets mode $2$3 $4" = "%C22*%O$t$1 active le mode $2$3 $4";
 
 /* nothing */
 "%C22*%O$t%C22Channel $1 modes: $2" = "%C22*%O$t%C22Modes du canal $1 : $2";
-
-/* nothing */
-"$4%C21%B%H<%H$1%H>%H%O%C21$t$2" = "$4%C21%B%H<%H$1%H>%H%O%C21$t$2";
-
-/* nothing */
-"%C28-%C29$1/$2%C28-%O$t$3" = "%C28-%C29$1/$2%C28-%O$t$3";
 
 /* nothing */
 "%C22*%O$t%C26$1%O gives channel operator status to%C26 $2" = "%C22*%O$t%C26$1%O donne l'état d'opérateur de canal à%C26 $2";
@@ -548,9 +551,6 @@
 "%C22*%O$tFound your IP: [$1]" = "%C22*%O$tVotre IP a été trouvée : [$1]";
 
 /* nothing */
-"$1$t$2" = "$1$t$2";
-
-/* nothing */
 "%O%C26$1%O added to ignore list." = "%O%C26$1%O ajouté à la liste d'exclusion.";
 
 /* nothing */
@@ -587,12 +587,6 @@
 "%C22*%O$tYou have been killed by $1 ($2%O%C22)" = "%C22*%O$tVous avez été tué par $1 ($2%O%C22)";
 
 /* nothing */
-"%C19>%O$1%C19<%O$t$2" = "%C19>%O$1%C19<%O$t$2";
-
-/* nothing */
-"%C16*%O$t$1%O" = "%C16*%O$t$1%O";
-
-/* nothing */
 "%C22*%O$t%C22MOTD Skipped." = "%C22*%O$t%C22MOTD sauté.";
 
 /* nothing */
@@ -608,9 +602,6 @@
 "%C22*%O$tNo process is currently running" = "%C22*%O$tAucun processus ne tourne actuellement";
 
 /* nothing */
-"%C28-%C29$1%C28-%O$t$2" = "%C28-%C29$1%C28-%O$t$2";
-
-/* nothing */
 "$tNotify list is empty." = "$tLa liste de notification est vide.";
 
 /* nothing */
@@ -620,10 +611,10 @@
 "%C22*%O$t$1 users in notify list." = "%C22*%O$t$1 utilisateurs dans la liste de notification.";
 
 /* nothing */
-"%C22*%O$tNotify: $1 is offline ($2)." = "%C22*%O$tNotification : $1 est déconnecté ($2).";
+"%C22*%O$tNotify: $1 is offline ($3)." = "%C22*%O$tNotify: $1 est hors-ligne ($3).";
 
 /* nothing */
-"%C22*%O$tNotify: $1 is online ($2)." = "%C22*%O$tNotification : $1 est connecté ($2).";
+"%C22*%O$tNotify: $1 is online ($3)." = "%C22*%O$tNotify: $1 est en ligne ($3).";
 
 /* nothing */
 "%C23*%O$t%C23$1 (%O%C23$2) has left $3" = "%C23*%O$t%C23$1 (%O%C23$2) a quitté $3";
@@ -636,12 +627,6 @@
 
 /* nothing */
 "%C22*%O$tNo ping reply for $1 seconds, disconnecting." = "%C22*%O$tAucune réponse à la requête ping depuis $1 secondes, déconnexion.";
-
-/* nothing */
-"%C28*%C29$3$1%C28*$t%O$2" = "%C28*%C29$3$1%C28*$t%O$2";
-
-/* nothing */
-"%C18%H<%H$3$1%H>%H%O$t$2" = "%C18%H<%H$3$1%H>%H%O$t$2";
 
 /* nothing */
 "%C22*%O$tA process is already running" = "%C22*%O$tUn processus tourne déjà";
@@ -660,9 +645,6 @@
 
 /* nothing */
 "%C22*%O$t%C22Connected." = "%C22*%O$t%C22Connecté.";
-
-/* nothing */
-"%C22*%O$t$1" = "%C22*%O$t$1";
 
 /* nothing */
 "%C22*%O$t%C22Looking up $1" = "%C22*%O$t%C22Recherche de $1";
@@ -728,10 +710,10 @@
 "%C22*%O$tYou've invited%C26 $1%O to%C26 $2%O (%C26$3%O)" = "%C22*%O$tVous avez invité%C26 $1%O à%C26 $2%O (%C26$3%O)";
 
 /* nothing */
-"%C31%H<%H$4$1%H>%H%O%C30$t$2" = "%C31%H<%H$4$1%H>%H%O%C30$t$2";
+"%C22*%O$tYou are now known as $2" = "%C22*%O$tVous vous appelez maintenant $2";
 
 /* nothing */
-"%C22*%O$tYou are now known as $2" = "%C22*%O$tVous vous appelez maintenant $2";
+"Loaded log from" = "Historique chargé depuis";
 
 /* nothing */
 "**** ENDING LOGGING AT %s\n" = "**** FIN DU JOURNAL À %s\n";
@@ -767,10 +749,10 @@
 "Mode char" = "Caractère de mode";
 
 /* nothing */
-"The text" = "Texte";
+"Identified text" = "Texte identifié";
 
 /* nothing */
-"Identified text" = "Texte identifié";
+"The text" = "Texte";
 
 /* nothing */
 "The message" = "Message";
@@ -974,6 +956,9 @@
 "Server Name" = "Nom du serveur";
 
 /* nothing */
+"Raw Numeric or Identifier" = "";
+
+/* nothing */
 "Nick of person who invited you" = "Pseudonyme de la personne qui vous a invité";
 
 /* nothing */
@@ -986,16 +971,13 @@
 "Nick being tried" = "Pseudonyme en essai";
 
 /* nothing */
-"Error" = "Erreur";
-
-/* nothing */
 "IP" = "IP";
 
 /* nothing */
 "Port" = "Port";
 
 /* nothing */
-"PID" = "PID";
+"Network" = "Réseau";
 
 /* nothing */
 "Modes string" = "Chaîne de modes";
@@ -1814,9 +1796,6 @@
 "United Kingdom" = "Royaume-Uni";
 
 /* nothing */
-"US Minor Outlying Islands" = "Îles mineures éloignées des États-Unis";
-
-/* nothing */
 "United States of America" = "États-Unis";
 
 /* nothing */
@@ -1874,16 +1853,19 @@
 "Unknown" = "Inconnu";
 
 /* nothing */
-"Open Dialog Window" = "Ouvrir la fenêtre de dialogue";
+"_Open Dialog Window" = "Ouvrir la fenêtre de dialogue";
 
 /* nothing */
-"Send a File" = "Envoyer un fichier";
+"_Send a File" = "Envoyer un fichier";
 
 /* nothing */
-"User Info (WHOIS)" = "Informations de l'utilisateur (WHOIS)";
+"_User Info (WhoIs)" = "Informations de l'utilisateur (WHOIS)";
 
 /* nothing */
-"Operator Actions" = "Actions de l'opérateur";
+"_Add to Friends List" = "";
+
+/* nothing */
+"O_perator Actions" = "Actions de l'opérateur";
 
 /* nothing */
 "Give Ops" = "Donner l'état d'opérateur";
@@ -1908,87 +1890,6 @@
 
 /* nothing */
 "KickBan" = "ExpulserBannir";
-
-/* nothing */
-"Direct client-to-client" = "Client-vers-client direct";
-
-/* nothing */
-"Send File" = "Envoyer un fichier";
-
-/* nothing */
-"Offer Chat" = "Proposer une discussion";
-
-/* nothing */
-"Abort Chat" = "Abandonner la discussion";
-
-/* nothing */
-"Version" = "Version";
-
-/* nothing */
-"Userinfo" = "Informations sur l'utilisateur";
-
-/* nothing */
-"Clientinfo" = "Informations sur le client";
-
-/* nothing */
-"Ping" = "Ping";
-
-/* nothing */
-"Time" = "Délai";
-
-/* nothing */
-"Finger" = "Finger";
-
-/* nothing */
-"Oper" = "Opér";
-
-/* nothing */
-"Kill this user" = "Tuer cet utilisateur";
-
-/* nothing */
-"Mode" = "Mode";
-
-/* nothing */
-"Give Half-Ops" = "Donner l'état de demi-opérateur";
-
-/* nothing */
-"Take Half-Ops" = "Prendre l'état de demi-opérateur";
-
-/* nothing */
-"Ignore" = "Ignorer";
-
-/* nothing */
-"Ignore User" = "Ignorer l'utilisateur";
-
-/* nothing */
-"UnIgnore User" = "Ne pas exclure l'utilisateur";
-
-/* nothing */
-"Info" = "Info";
-
-/* nothing */
-"Who" = "who";
-
-/* nothing */
-"WhoIs" = "WhoIs";
-
-/* nothing */
-"DNS Lookup" = "Résolution DNS";
-
-/* nothing */
-"Trace" = "Trace";
-
-/* nothing */
-"UserHost" = "Hôte de l'utilisateur";
-
-/* nothing */
-"External" = "Externe";
-
-/* nothing */
-"Traceroute" = "Traceroute";
-
-/* nothing */
-"Telnet" = "Telnet";
 
 /* nothing */
 "Leave Channel" = "Quitter le canal";
@@ -2027,6 +1928,9 @@
 "Dialog" = "Dialogue";
 
 /* nothing */
+"WhoIs" = "WhoIs";
+
+/* nothing */
 "Send" = "Send";
 
 /* nothing */
@@ -2036,7 +1940,31 @@
 "Clear" = "Clear";
 
 /* nothing */
-"About XChat" = "À propos de XChat";
+"Ping" = "Ping";
+
+/* nothing */
+"Couldn't connect to session bus" = "Impossible de se connecter au bus de session";
+
+/* nothing */
+"Failed to complete NameHasOwner" = "Impossible de compléter NameHasOwner";
+
+/* nothing */
+"Failed to complete Command" = "Impossible de terminer la commande";
+
+/* nothing */
+"remote access" = "accès distant";
+
+/* nothing */
+"plugin for remote access using DBUS" = "greffon pour l'accès à distance en utilisant DBUS";
+
+/* nothing */
+"Couldn't connect to session bus: %s\n" = "Impossible de se connecter au bus: %s\n";
+
+/* nothing */
+"Failed to acquire %s: %s\n" = "Échec de l'acquisition de %s : %s\n";
+
+/* nothing */
+"About " = "À _propos";
 
 /* nothing */
 "A multiplatform IRC Client" = "Client IRC multiplateformes";
@@ -2049,6 +1977,9 @@
 
 /* nothing */
 "You must select some bans." = "Vous devez sélectionner des bannissements.";
+
+/* nothing */
+"Are you sure you want to remove all bans in %s?" = "Voulez-vous vraiment enlever les bannissements de %s ?";
 
 /* nothing */
 "Mask" = "Masque";
@@ -2066,7 +1997,7 @@
 "XChat: Ban List (%s)" = "XChat : liste de bannissement (%s)";
 
 /* nothing */
-"Unban" = "Suppr. ban.";
+"Remove" = "Enlever";
 
 /* nothing */
 "Crop" = "Scinder";
@@ -2075,67 +2006,67 @@
 "Refresh" = "Rafraîchir";
 
 /* nothing */
-"User and Channel Statistics: %d/%d Users on %d/%d Channels" = "Statistiques des utilisateurs et canaux : %d/%d utilisateurs sur %d/%d canaux";
-
-/* nothing */
-"I can't save an empty list!" = "Impossible d'enregistrer une liste vide.";
+"Displaying %d/%d users on %d/%d channels." = "Affichage de %d/%d utilisateurs sur %d/%d canaux.";
 
 /* nothing */
 "Select an output filename" = "Choisir un nom de fichier de sortie";
 
 /* nothing */
+"_Join Channel" = "Re_joint le canal";
+
+/* nothing */
+"_Copy Channel Name" = "_Copie le nom du canal";
+
+/* nothing */
+"Copy _Topic Text" = "Copie le suje_t du canal";
+
+/* nothing */
 "XChat: Channel List (%s)" = "XChat : liste des canaux (%s)";
 
 /* nothing */
-"List display options:" = "Options d'affichage de la liste :";
+"_Search" = "_Recherche";
 
 /* nothing */
-"Minimum Users:" = "Nombre minimum d'utilisateurs :";
+"_Download List" = "_Télécharger";
 
 /* nothing */
-"Maximum Users:" = "Nombre maximum d'utilisateurs :";
+"Save _List..." = "Sauver la _Liste";
 
 /* nothing */
-"Pattern Match:" = "Correspondance avec le motif :";
+"Show only:" = "Seuls les canaux ";
 
 /* nothing */
-"Regex Match:" = "Correspondance avec l'expression rationnelle :";
+"channels with" = "ayant entre";
 
 /* nothing */
-"Apply Match to:" = "Appliquer la correspondance à :";
+"to" = "et";
 
 /* nothing */
-"Apply" = "Appliquer";
+"users." = "utilisateurs.";
 
 /* nothing */
-"Refresh the list" = "Rafraîchir la liste";
+"Look in:" = "Chercher dans :";
 
 /* nothing */
-"Save the list" = "Enregistrer la liste";
+"Channel name" = "Nom du canal";
 
 /* nothing */
-"Join Channel" = "Rejoindre le canal";
+"Search type:" = "Type de recherche :";
+
+/* nothing */
+"Simple Search" = "Recherche simple";
+
+/* nothing */
+"Pattern Match (Wildcards)" = "Recherche par motif (*)";
+
+/* nothing */
+"Regular Expression" = "Expression rationnelle";
+
+/* nothing */
+"Find:" = "Rechercher :";
 
 /* nothing */
 "Send file to %s" = "Envoyer le fichier à %s";
-
-/* nothing */
-"None" = "Aucun";
-
-/* nothing */
-"File" = "Fichier";
-
-/* nothing */
-"To" = "À";
-
-/* nothing */
-"Address" = "Adresse";
-
-/* nothing */
-"Started" = "Démarré";
-
-/* nothing */
-"Speed limit" = "Limite de vitesse";
 
 /* nothing */
 "That file is not resumable." = "Ce fichier ne peut être repris.";
@@ -2150,13 +2081,34 @@
 "Cannot resume the same file from two people." = "Impossible de reprendre le même fichier en provenance de deux personnes différentes.";
 
 /* nothing */
+"XChat: Uploads and Downloads" = "XChat: Envois et réceptions";
+
+/* nothing */
 "Status" = "État";
+
+/* nothing */
+"File" = "Fichier";
 
 /* nothing */
 "ETA" = "Heure de fin estimée";
 
 /* nothing */
-"XChat: File Receive List" = "XChat : liste des fichiers reçus";
+"Both" = "Les deux";
+
+/* nothing */
+"Uploads" = "Envois";
+
+/* nothing */
+"Downloads" = "Récupération";
+
+/* nothing */
+"Details" = "Détails";
+
+/* nothing */
+"File:" = "Fichier : ";
+
+/* nothing */
+"Address:" = "Adresse : ";
 
 /* nothing */
 "Abort" = "Interrompre";
@@ -2168,31 +2120,10 @@
 "Resume" = "Reprendre";
 
 /* nothing */
-"Open" = "Ouvrir";
-
-/* nothing */
-"Ack" = "Acquittement";
-
-/* nothing */
-"XChat: Uploads und Downloads" = "XChat : envois et récupération de fichiers";
-
-/* nothing */
-"Downloads" = "Récupération";
-
-/* nothing */
-"Uploads" = "Envois";
-
-/* nothing */
-"Details" = "Détails";
-
-/* nothing */
 "Open Folder..." = "Ouvrir le dossier...";
 
 /* nothing */
-"XChat: File Send List" = "XChat : liste des fichiers envoyés";
-
-/* nothing */
-"To/From" = "À/De";
+"XChat: DCC Chat List" = "XChat : liste de Chat DCC";
 
 /* nothing */
 "Recv" = "Recv";
@@ -2202,9 +2133,6 @@
 
 /* nothing */
 "Start Time" = "Heure de début";
-
-/* nothing */
-"XChat: DCC Chat List" = "XChat : liste de Chat DCC";
 
 /* nothing */
 "*NEW*" = "*NOUVEAU*";
@@ -2259,6 +2187,18 @@
 
 /* nothing */
 "Open an irc://server:port/channel URL" = "Ouvrir une URL irc://serveur:port/canal";
+
+/* nothing */
+"Execute command:" = "Exécuter la commande :";
+
+/* nothing */
+"Open URL or execute command in an existing XChat" = "Ouvrir l'URL dans un XChat existant";
+
+/* nothing */
+"Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "Démarré minimisé. 0=Normal 1=Minimisé 2=Dans l'icone d'état";
+
+/* nothing */
+"level" = "niveau";
 
 /* nothing */
 "Show version information" = "Afficher la version";
@@ -2468,7 +2408,22 @@
 "This server still has %d channels or dialogs associated with it. Close them all?" = "Ce serveur comporte déjà %d canaux ou dialogues qui lui sont associés. Faut-il tous les fermer ?";
 
 /* nothing */
-"No other tabs open, quit xchat?" = "Aucun autre onglet ouvert, voulez-vous quitter xchat ?";
+"Quit XChat?" = "Quitter XChat ?";
+
+/* nothing */
+"Don't ask next time." = "Ne plus me demander.";
+
+/* nothing */
+"You are connected to %i IRC networks." = "Vous êtes connecté à %i réseaux IRC.";
+
+/* nothing */
+"Are you sure you want to quit?" = "Voulez-vous vraiment quitter ?";
+
+/* nothing */
+"Some file transfers are still active." = "Des transferts de fichiers sont en cours.";
+
+/* nothing */
+"_Minimize to Tray" = "_Minimiser dans la barre d'état";
 
 /* nothing */
 "Insert Attribute or Color Code" = "Insérer un attribut ou un code de couleur";
@@ -2489,25 +2444,34 @@
 "Colors 8-15" = "Couleurs 8-15";
 
 /* nothing */
-"Beep on message" = "Biper sur les messages";
+"_Settings" = "_Paramètres";
 
 /* nothing */
-"Show join/part messages" = "Afficher les messages join/part";
+"_Log to Disk" = "";
 
 /* nothing */
-"Color paste" = "Coller la couleur";
+"_Reload Scrollback" = "";
 
 /* nothing */
-"Go to" = "Aller à";
+"_Hide Join/Part Messages" = "Cacher les messages join/part";
 
 /* nothing */
-"_Close Tab" = "_Fermer l'onglet";
+"_Extra Alerts" = "Alertes";
 
 /* nothing */
-"_Detach Tab" = "_Détacher l'onglet";
+"Beep on _Message" = "Biper sur les messages";
 
 /* nothing */
-"Some file transfers still active, quit xchat?" = "Des transferts de fichiers sont toujours actifs, voulez-vous quitter xchat ?";
+"Blink Tray _Icon" = "Clignoter l'icone de barre d'état";
+
+/* nothing */
+"Blink Task _Bar" = "Quand faire clignoter la barre d'état :";
+
+/* nothing */
+"_Detach" = "_Détacher l'onglet";
+
+/* nothing */
+"_Close" = "_Fermer";
 
 /* nothing */
 "User limit must be a number!\n" = "La limite d'utilisateurs doit être un nombre !\n";
@@ -2564,13 +2528,16 @@
 "Server:" = "Serveur :";
 
 /* nothing */
-"Away Msg:" = "Message d'absence :";
-
-/* nothing */
 "%u minutes ago" = "il y a %u minutes";
 
 /* nothing */
 "Last Msg:" = "Dernier message :";
+
+/* nothing */
+"Away Msg:" = "Message d'absence :";
+
+/* nothing */
+"%d nicks selected." = "";
 
 /* nothing */
 "The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "La barre de menu est maintenant cachée. Vous pouvez l'afficher de nouveau en pressant F9 ou en cliquant avec le bouton droit de la souris dans une partie vierge de la zone de texte principale.";
@@ -2582,10 +2549,19 @@
 "Copy Selected Link" = "Copier le lien sélectionné";
 
 /* nothing */
+"Join Channel" = "Rejoindre le canal";
+
+/* nothing */
 "Part Channel" = "Partir du canal";
 
 /* nothing */
 "Cycle Channel" = "Cycler canal";
+
+/* nothing */
+"_Remove from Favorites" = "";
+
+/* nothing */
+"_Add to Favorites" = "";
 
 /* nothing */
 "XChat: User menu" = "XChat : menu utilisateur";
@@ -2597,16 +2573,16 @@
 "Retrieve channel list..." = "Récupérer la liste des canaux...";
 
 /* nothing */
-"User Commands - Special codes:\n\n%c  =  current channel\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "Commandes utilisateur - Codes spéciaux :\n\n%c  =  canal actuel\n%m  =  informations concernant la machine\n%n  =  votre pseudonyme\n%t  =  heure/date\n%v  =  version de xchat\n%2  =  mot 2\n%3  =  mot 3\n&2  =  du mot 2 jusqu'à la fin de la ligne\n&3  =  du mot 3 jusqu'à la fin de la ligne\n\nex :\n/cmd salut john\n\n%2 donnerait « salut »\n&2 donnerait « salut john ».";
+"User Commands - Special codes:\n\n%c  =  current channel\n%e  =  current network name\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "Commandes utilisateur - codes d'échappement :\n\n%c  =  canal actuel\n%e  =  réseau actuel\n%m  =  informations sur la machine\n%n  =  votre pseudo\n%t  =  date/heure\n%v  =  version de xchat\n%2  =  2e mot\n%3  =  3e mot\n&2  =  du 2e mot à la fin de la ligne\n&3  =  du 3e mot à la fin de la ligne\n\nexemple :\n/cmd sylvain bonjour\n\n%2 sera \"sylvain\"\n&2 sera \"sylvain bonjour\".";
 
 /* nothing */
-"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Boutons Liste Utilisateurs - Codes spéciaux :\n\n%a  =  tous les pseudonymes sélectionnés\n%c  =  canal actuel\n%h  =  nom d'hôte du pseudonyme sélectionné\n%m  =  informations concernant la machine\n%n  =  votre pseudonyme\n%s  =  pseudonyme sélectionné\n%t  =  heure/date\n";
+"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Boutons de la liste des utilisateurs - code d'échappement : \n\n%a  =  tous les pseudos sélectionnés\n%c  =  canal actuel\n%e  =  réseau actuel\n%h  =  nom d'hôte du pseudo sélectionné\n%m  =  informations sur la machine\n%n  =  votre pseudo\n%s  =  le pseudo sélectionné\n%t  =  date/heure\n";
 
 /* nothing */
-"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Boutons de dialogue - Codes spéciaux :\n\n%a  =  tous les pseudonymes sélectionnés\n%c  =  canal actuel\n%h  =  nom d'hôte du pseudonyme sélectionné\n%m  =  informations concernant la machine\n%n  =  votre pseudonyme\n%s  =  pseudonyme sélectionné\n%t  =  heure/date\n";
+"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Boutons de la boite de dialogue - Codes d'échappement : \n\n%a  =  tous les pseudos sélectionnés\n%c  =  canal actuel\n%e  =  réseau actuel\n%h  =  nom d'hôte du pseudo sélectionné\n%m  =  informations sur la machine\n%n  =  votre pseudo\n%s  =  le pseudo sélectionné\n%t  =  date/heure\n";
 
 /* nothing */
-"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "Réponses CTCP - Codes Spéciaux :\n\n%d  =  données (l'ensemble du CTCP)\n%m  =  informations concernant la machine\n%s  =  pseudonyme qui a envoyé le CTCP\n%t  =  heure/date\n%2  =  mot 2\n%3  =  mot 3\n&2  =  du mot 2 jusqu'à la fin de la ligne\n&3  =  du mot 3 jusqu'à la fin de la ligne\n\n";
+"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%e  =  current network name\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "Réponses CTCP - Codes d'échappement :\n\n%d  =  données (toute la réponse CTCP)\n%e  =  réseau actuel\n%m  =  informations sur la machine\n%s  =  pseudo ayant envoyé le CTCP\n%t  =  date/heure\n%2  =  2e mot\n%3  =  3e mot\n&2  =  du 2e mot à la fin de la ligne\n&3  =  du 3e mot à la fin de la ligne\n\n";
 
 /* nothing */
 "URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of XChat" = "Gestionnaires d'URL - Codes spéciaux :\n\n%s  =  la chaîne d'URL\n\nPlacer un ! devant la commande\nindique qu'elle devrait être\nenvoyée à un interpréteur de commandes\nau lieu de XChat";
@@ -2666,19 +2642,22 @@
 "_View" = "_Vue";
 
 /* nothing */
-"_Menubar" = "Barre de _menu";
+"_Menu Bar" = "Barre de _menu";
 
 /* nothing */
-"_Topicbar" = "Barre de _sujet";
+"_Topic Bar" = "Barre de suje_t";
 
 /* nothing */
-"_Userlist Buttons" = "Boutons de la liste des _utilisateurs...";
+"_User List" = "Liste d'_utilisateurs";
+
+/* nothing */
+"U_serlist Buttons" = "Bouton_s de la liste des utilisateurs";
 
 /* nothing */
 "M_ode Buttons" = "Boutons de m_ode";
 
 /* nothing */
-"_Layout" = "_Disposition";
+"_Channel Switcher" = "Sélecteur de _canaux";
 
 /* nothing */
 "_Tabs" = "_Onglets";
@@ -2696,9 +2675,6 @@
 "Graph" = "Graphique";
 
 /* nothing */
-"Both" = "Les deux";
-
-/* nothing */
 "_Server" = "_Serveur";
 
 /* nothing */
@@ -2706,6 +2682,12 @@
 
 /* nothing */
 "_Reconnect" = "Se _reconnecter";
+
+/* nothing */
+"Join a Channel..." = "Rejoindre un canal...";
+
+/* nothing */
+"List of Channels..." = "Rejoindre un canal...";
 
 /* nothing */
 "Marked Away" = "Marquer absent (Away)";
@@ -2756,9 +2738,6 @@
 "Ban List..." = "Liste de bannissement...";
 
 /* nothing */
-"Channel List..." = "Liste des canaux...";
-
-/* nothing */
 "Character Chart..." = "Table de caractères...";
 
 /* nothing */
@@ -2768,10 +2747,10 @@
 "File Transfers..." = "Transferts de fichiers...";
 
 /* nothing */
-"Ignore List..." = "Liste d'ignorance...";
+"Friends List..." = "Liste de bannissement...";
 
 /* nothing */
-"Notify List..." = "Liste de notification...";
+"Ignore List..." = "Liste d'ignorance...";
 
 /* nothing */
 "Plugins and Scripts..." = "Greffons et scripts...";
@@ -2801,19 +2780,13 @@
 "_Contents" = "_Contenu";
 
 /* nothing */
+"Check for updates" = "";
+
+/* nothing */
 "_About" = "À _propos";
 
 /* nothing */
-"_Attach Window" = "_Attacher la fenêtre";
-
-/* nothing */
-"_Close Window" = "_Fermer la fenêtre";
-
-/* nothing */
-"User" = "Utilisateur";
-
-/* nothing */
-"Server" = "Serveur";
+"_Attach" = "_Attacher la fenêtre";
 
 /* nothing */
 "Last Seen" = "Dernière apparition";
@@ -2825,19 +2798,85 @@
 "Never" = "Jamais";
 
 /* nothing */
+"%d minutes ago" = "il y a %d minutes";
+
+/* nothing */
 "Online" = "Connecté";
 
 /* nothing */
 "Enter nickname to add:" = "Entrer le pseudonyme à ajouter :";
 
 /* nothing */
-"XChat: Notify List" = "XChat : liste de notification";
+"Notify on these networks:" = "Notifier depuis les réseaux suivants :";
 
 /* nothing */
-"Remove" = "Enlever";
+"Comma separated list of networks is accepted." = "Entrez les réseaux séparés par une virgule.";
+
+/* nothing */
+"XChat: Friends List" = "XChat : liste des fichiers envoyés";
 
 /* nothing */
 "Open Dialog" = "Ouvrir la fenêtre de dialogue";
+
+/* nothing */
+"Cannot find 'notify-send' to open balloon alerts.\nPlease install libnotify." = "Je ne trouve pas 'notify-send' pour ouvrir les fenêtres d'alertes.\nMerci d'installer libnotify.";
+
+/* nothing */
+"XChat: Connected to %u networks and %u channels" = "XChat : Vous êtes connecté à %u réseaux et %u canaux";
+
+/* nothing */
+"_Restore" = "Affiche_r";
+
+/* nothing */
+"_Hide" = "Cac_her";
+
+/* nothing */
+"_Blink on" = "_Clignoter lors des";
+
+/* nothing */
+"Channel Message" = "Messages de canaux";
+
+/* nothing */
+"Private Message" = "Messages privés";
+
+/* nothing */
+"Highlighted Message" = "Messages en surbrillance";
+
+/* nothing */
+"_Change status" = "";
+
+/* nothing */
+"_Away" = "Absent";
+
+/* nothing */
+"_Back" = "";
+
+/* nothing */
+"XChat: Highlighted message from: %s (%s)" = "XChat : Message en surbrillance de %s (%s)";
+
+/* nothing */
+"XChat: %u highlighted messages, latest from: %s (%s)" = "XChat : %u messages en surbrillance. Le dernier est de %s (%s)";
+
+/* nothing */
+"XChat: New public message from: %s (%s)" = "XChat : Nouveau message public de %s (%s)";
+
+/* nothing */
+"XChat: %u new public messages." = "XChat : %u nouveaux messages publics.";
+
+/* nothing */
+"XChat: Private message from: %s (%s)" = "XChat : Message privé de %s (%s)";
+
+/* nothing */
+"XChat: %u private messages, latest from: %s (%s)" = "XChat : %u messages privés. Le dernier est de %s (%s)";
+
+/* nothing */
+"XChat: File offer from: %s (%s)" = "XChat : Demande de transfert de fichier de %s (%s)";
+
+/* nothing */
+"XChat: %u file offers, latest from: %s (%s)" = "XChat : %u demandes de transferts de fichier. Le dernier est de %s (%s)";
+
+/* nothing */
+"Version" = "Version";
 
 /* nothing */
 "Description" = "Description";
@@ -2853,9 +2892,6 @@
 
 /* nothing */
 "_UnLoad" = "_Décharger";
-
-/* nothing */
-"_Close" = "_Fermer";
 
 /* nothing */
 "Save As..." = "Enregistrer sous...";
@@ -2876,9 +2912,6 @@
 "XChat: Search" = "XChat : chercher";
 
 /* nothing */
-"Find:" = "Rechercher :";
-
-/* nothing */
 "_Match case" = "_Sensible à la casse";
 
 /* nothing */
@@ -2892,6 +2925,27 @@
 
 /* nothing */
 "Really remove network \"%s\" and all its servers?" = "Voulez-vous vraiment supprimer le réseau « %s » et tous ses serveurs ?";
+
+/* nothing */
+"#channel" = "canal";
+
+/* nothing */
+"XChat: Favorite Channels (Auto-Join List)" = "XChat : liste des canaux (%s)";
+
+/* nothing */
+"These channels will be joined whenever you connect to %s." = "";
+
+/* nothing */
+"Key (Password)" = "Mot de passe :";
+
+/* nothing */
+"_Edit" = "_Éditer";
+
+/* nothing */
+"%s has been removed." = "";
+
+/* nothing */
+"%s has been added." = "";
 
 /* nothing */
 "User name and Real name cannot be left blank." = "Le nom d'utilisateur et le nom réel ne peuvent être laissés blancs.";
@@ -2933,7 +2987,7 @@
 "Auto connect to this network at startup" = "Connexion automatique à ce réseau au démarrage";
 
 /* nothing */
-"Use a proxy server" = "Utiliser un serveur mandataire (proxy)";
+"Bypass proxy server" = "Utiliser un serveur mandataire (proxy)";
 
 /* nothing */
 "Use SSL for all the servers on this network" = "Utiliser SSL pour tous les serveurs de ce réseau";
@@ -2942,7 +2996,7 @@
 "Accept invalid SSL certificate" = "Accepter un certificat SSL non valable";
 
 /* nothing */
-"C_hannels to join:" = "Canaux à rejoindre :";
+"_Favorite channels:" = "Quitter le canal :";
 
 /* nothing */
 "Channels to join, separated by commas, but not spaces!" = "Canaux à rejoindre, séparé par des virgules, mais sans espace !";
@@ -2969,9 +3023,6 @@
 "Character set:" = "Jeu de caractères :";
 
 /* nothing */
-"_Edit" = "_Éditer";
-
-/* nothing */
 "XChat: Network List" = "XChat : liste des réseaux";
 
 /* nothing */
@@ -2991,6 +3042,9 @@
 
 /* nothing */
 "_Sort" = "_Trier";
+
+/* nothing */
+"Sorts the network list in alphabetical order. Use SHIFT-UP and SHIFT-DOWN keys to move a row." = "Trie les réseaux dans l'ordre alphabétique. Utilisez Shift-Haut et Shift-Bas pour déplacer une ligne.";
 
 /* nothing */
 "C_onnect" = "C_onnecter";
@@ -3053,6 +3107,12 @@
 "See strftime manpage for details." = "Voir la page de manuel de strftime pour plus de détails.";
 
 /* nothing */
+"A-Z" = "A-Z";
+
+/* nothing */
+"Last-spoke order" = "Le dernier ayant parlé d'abord";
+
+/* nothing */
 "Input box" = "Boîte de saisie";
 
 /* nothing */
@@ -3071,6 +3131,9 @@
 "Nick completion suffix:" = "Suffixe pour la complétion des pseudonymes :";
 
 /* nothing */
+"Nick completion sorted:" = "Tri de la complétion des pseudo :";
+
+/* nothing */
 "Input Box Codes" = "Codes de la boîte de saisie";
 
 /* nothing */
@@ -3083,9 +3146,6 @@
 "A-Z, Ops first" = "A-Z, les opérateurs en premier";
 
 /* nothing */
-"A-Z" = "A-Z";
-
-/* nothing */
 "Z-A, Ops last" = "A-Z, les opérateurs en dernier";
 
 /* nothing */
@@ -3095,16 +3155,37 @@
 "Unsorted" = "Non classé";
 
 /* nothing */
+"Left (Upper)" = "Gauche (Haut)";
+
+/* nothing */
+"Left (Lower)" = "Gauche (Bas)";
+
+/* nothing */
+"Right (Upper)" = "Droite (Haut)";
+
+/* nothing */
+"Right (Lower)" = "Droite (Bas)";
+
+/* nothing */
+"Top" = "Haut";
+
+/* nothing */
+"Bottom" = "Bas";
+
+/* nothing */
+"Hidden" = "Cachés";
+
+/* nothing */
 "User List" = "Liste Utilisateur";
 
 /* nothing */
 "Show hostnames in user list" = "Afficher les noms d'hôtes dans la liste des utilisateurs";
 
 /* nothing */
-"Resizable user list" = "Liste des utilisateurs redimensionnable";
+"User list sorted by:" = "Liste des utilisateurs classée par :";
 
 /* nothing */
-"User list sorted by:" = "Liste des utilisateurs classée par :";
+"Show user list at:" = "Position de la liste des utilisateurs :";
 
 /* nothing */
 "Away tracking" = "Suivi de l'absence";
@@ -3119,28 +3200,10 @@
 "Action Upon Double Click" = "Action sur un double clic";
 
 /* nothing */
-"Execute command:" = "Exécuter la commande :";
-
-/* nothing */
 "Windows" = "Fenêtres";
 
 /* nothing */
 "Tabs" = "Onglets";
-
-/* nothing */
-"Bottom" = "Bas";
-
-/* nothing */
-"Top" = "Haut";
-
-/* nothing */
-"Left" = "Gauche";
-
-/* nothing */
-"Right" = "Droite";
-
-/* nothing */
-"Hidden" = "Cachés";
 
 /* nothing */
 "Always" = "Toujours";
@@ -3149,31 +3212,37 @@
 "Only requested tabs" = "Uniquement les onglets nécessaires";
 
 /* nothing */
+"Tree" = "Arbre";
+
+/* nothing */
+"Switcher type:" = "Type de liste des canaux :";
+
+/* nothing */
 "Open an extra tab for server messages" = "Ouvrir un onglet supplémentaire pour les messages du serveur";
 
 /* nothing */
 "Open an extra tab for server notices" = "Ouvrir un onglet supplémentaire pour les notifications du serveur";
 
 /* nothing */
+"Open a new tab when you receive a private message" = "Ouvrir un nouvel onglet lors de la réception de message privé";
+
+/* nothing */
 "Sort tabs in alphabetical order" = "Trier les onglets par ordre alphabétique";
 
 /* nothing */
-"Small tabs" = "Petits onglets";
+"Smaller text" = "Petits onglets";
 
 /* nothing */
 "Focus new tabs:" = "Focus sur les nouveaux onglets :";
+
+/* nothing */
+"Show channel switcher at:" = "Position de la liste des canaux :";
 
 /* nothing */
 "Shorten tab labels to:" = "Réduire les étiquettes des onglets à :";
 
 /* nothing */
 "letters." = "lettres.";
-
-/* nothing */
-"Tabs Location" = "Emplacement des onglets";
-
-/* nothing */
-"Show tabs at:" = "Afficher les onglets en :";
 
 /* nothing */
 "Tabs or Windows" = "Onglets ou fenêtres";
@@ -3260,6 +3329,42 @@
 "All downloads combined:" = "Tous les téléchargements combinés :";
 
 /* nothing */
+"Alerts" = "Alertes";
+
+/* nothing */
+"Show tray balloons on:" = "Quand montrer une fenêtre de notification :";
+
+/* nothing */
+"Blink tray icon on:" = "Clignoter l'icone de barre d'état";
+
+/* nothing */
+"Blink task bar on:" = "Quand faire clignoter la barre d'état :";
+
+/* nothing */
+"Make a beep sound on:" = "Quand émettre un bip : ";
+
+/* nothing */
+"Enable system tray icon" = "Activer l'icone de barre d'état";
+
+/* nothing */
+"Highlighted Messages" = "Messages en surbrillance";
+
+/* nothing */
+"Highlighted messages are ones where your nickname is mentioned, but also:" = "Les messages en surbrillance sont ceux où apparait votre pseudo, mais aussi :";
+
+/* nothing */
+"Extra words to highlight:" = "Mots déclenchant une surbrillance :";
+
+/* nothing */
+"Nick names not to highlight:" = "Pseudo à ne pas mettre en surbrillance :";
+
+/* nothing */
+"Nick names to always highlight:" = "Pseudos à toujours mettre en surbrillance :";
+
+/* nothing */
+"Separate multiple words with commas.\nWildcards are accepted." = "Séparer les mots avec des virgules.";
+
+/* nothing */
 "Default Messages" = "Messages par défaut";
 
 /* nothing */
@@ -3291,36 +3396,6 @@
 
 /* nothing */
 "Unmark yourself as away before sending messages" = "Enlever automatiquement la marque d'absence vous concernant avant d'envoyer des messages";
-
-/* nothing */
-"(Can be a text file relative to ~/.xchat2/)." = "(Peut être un fichier texte relatif à ~/.xchat2/).";
-
-/* nothing */
-"(Can be a text file relative to config dir)." = "(Peut être un fichier texte relatif au répertoire de configuration).";
-
-/* nothing */
-"Alerts" = "Alertes";
-
-/* nothing */
-"Flash taskbar on highlighted messages" = "Faire clignoter la barre de tâches pour les messages en surbrillance";
-
-/* nothing */
-"Beep on highlighted messages" = "Biper sur les messages en surbrillance";
-
-/* nothing */
-"Beep on private messages" = "Biper sur les messages privés";
-
-/* nothing */
-"Beep on channel messages" = "Biper sur les messages du canal";
-
-/* nothing */
-"Extra words to highlight on:" = "Mots à mettre en surbrillance :";
-
-/* nothing */
-"Nicks not to highlight on:" = "Pseudos à ne pas mettre en surbrillance :";
-
-/* nothing */
-"Separate multiple words with commas." = "Séparer les mots avec des virgules.";
 
 /* nothing */
 "Advanced Settings" = "Paramètres avancés";
@@ -3359,7 +3434,10 @@
 "Logging" = "Journalisation";
 
 /* nothing */
-"Enable logging of conversations" = "Activer l'enregistrement des conversations";
+"Display scrollback from previous session" = "";
+
+/* nothing */
+"Enable logging of conversations to disk" = "Activer l'enregistrement des conversations";
 
 /* nothing */
 "Log filename:" = "Nom du fichier journal :";
@@ -3458,6 +3536,9 @@
 "Mark not-identified users with:" = "Marquer les utilisateurs non identifiés par :";
 
 /* nothing */
+"Open Data Folder" = "Ouvrir le dossier des données";
+
+/* nothing */
 "Select color" = "Choisir la couleur";
 
 /* nothing */
@@ -3539,6 +3620,9 @@
 "User list" = "Liste des utilisateurs";
 
 /* nothing */
+"Channel switcher" = "Liste des canaux";
+
+/* nothing */
 "Colors" = "Couleurs";
 
 /* nothing */
@@ -3551,9 +3635,6 @@
 "Sound" = "Son";
 
 /* nothing */
-"Network" = "Réseau";
-
-/* nothing */
 "Network setup" = "Réglages relatifs au réseau";
 
 /* nothing */
@@ -3561,6 +3642,9 @@
 
 /* nothing */
 "Categories" = "Catégories";
+
+/* nothing */
+"You cannot place the tree on the top or bottom!\nPlease change to the <b>Tabs</b> layout in the <b>View</b> menu first." = "Vous ne pouvez pas placer l'arbre en haut ou en bas !\nMerci de passer en mode <b>Onglets</b> dans le menu <b>Vue</b> d'abord.";
 
 /* nothing */
 "Some settings were changed that require a restart to take full effect." = "Certains réglages qui ont été modifiés nécessitent un redémarrage afin d'être effectifs.";
@@ -3612,388 +3696,4 @@
 
 /* nothing */
 "%d ops, %d total" = "%d ops, %d total";
-
-/* nothing */
-"Open an irc:// url" = "Ouvrir une URL irc://";
-
-/* nothing */
-"irc://server:port/channel" = "irc://serveur:port/canal";
-
-/* nothing */
-"Execute a xchat command" = "Exécuter une commande de xchat";
-
-/* nothing */
-"\"Command to execute\"" = "« Commande à exécuter »";
-
-/* nothing */
-"Prints some text to the current tab/window" = "Envoyer un texte vers la fenêtre ou l'onglet actuel";
-
-/* nothing */
-"\"Text to print\"" = "« Texte à envoyer »";
-
-/* nothing */
-"Change the context to the channel" = "Modifier le contexte du canal";
-
-/* nothing */
-"channel" = "canal";
-
-/* nothing */
-"Change the context to the server" = "Modifier le contexte du serveur";
-
-/* nothing */
-"server" = "serveur";
-
-/* nothing */
-"Get some informations from xchat" = "Obtenir des informations de xchat";
-
-/* nothing */
-"id" = "id";
-
-/* nothing */
-"Get settings from xchat" = "Obtenir la configuration de xchat";
-
-/* nothing */
-"name" = "nom";
-
-/* nothing */
-"xchat-remote: %s\nTry `xchat-remote --help' for more information\n" = "xchat-remote : %s\nEssayez « xchat-remote --help » pour davantage d'informations\n";
-
-/* nothing */
-"Couldn't connect to session bus" = "Impossible de se connecter au bus de session";
-
-/* nothing */
-"Failed to complete command" = "Échec de la commande";
-
-/* nothing */
-"Failed to complete SetContext" = "Échec de SetContext";
-
-/* nothing */
-"Failed to complete print" = "Échec de l'impression";
-
-/* nothing */
-"Failed to complete GetInfo" = "Échec de GetInfo";
-
-/* nothing */
-"Failed to complete GetPrefs" = "Échec de GetPrefs";
-
-/* nothing */
-"%s doesn't exist\n" = "%s n'existe pas\n";
-
-/* nothing */
-"xchat remote access" = "accès à distance de xchat";
-
-/* nothing */
-"plugin for remote access using DBUS" = "greffon pour l'accès à distance en utilisant DBUS";
-
-/* nothing */
-"Couldn't connect to session bus : %s\n" = "Impossible de se connecter au bus de session : %s\n";
-
-/* nothing */
-"Failed to acquire %s: %s\n" = "Échec de l'acquisition de %s : %s\n";
-
-/* nothing */
-"%s loaded successfully!\n" = "%s a été chargé avec succès.\n";
-
-/* nothing */
-"Already marked away: %s\n" = "Vous êtes déjà considéré comme absent : %s\n";
-
-/* nothing */
-"Already marked back.\n" = "Vous êtes déjà considéré comme présent : %s\n";
-
-/* nothing */
-"BACK, sets you back (not away)" = "BACK signale que vous êtes de retour (plus absent)";
-
-/* nothing */
-"Set per channel options\nCHANOPT CONFMODE ON|OFF - Toggle conf mode/showing of join and part messages\nCHANOPT COLORPASTE ON|OFF - Toggle color paste\nCHANOPT BEEP ON|OFF - Toggle beep on message\nCHANOPT TRAY ON|OFF - Toggle tray blink on message" = "Modifie les options du canal\nCHANOPT CONFMODE ON|OFF - Active ou désactive le mode conférence (qui n'affiche plus les personnes entrant et sortant du canal)\nCHANOPT COLORPASTE ON|OFF - Active ou désactive le collage de la couleur\nCHANOPT BEEP ON|OFF - Active ou désactive le beep lors des messages\nCHANOPT TRAY ON|OFF - Active ou désactive le clignotement de l'icone de barre d'état lors des messages";
-
-/* nothing */
-"CLEAR [ALL|HISTORY], Clears the current text window or command history" = "CLEAR [ALL|HISTORY], Efface la fenêtre courant ou l'historique des commandes";
-
-/* nothing */
-"CYCLE [<channel>], parts the current or given channel and immediately rejoins" = "CYCLE [<canal>], quitte et rejoint à nouveau le canal donné";
-
-/* nothing */
-"NOTIFY [-n network1[,network2,...]] [<nick>], displays your notify list or adds someone to it" = "NOTIFY [-n réseau1[,réseau2,...]] [<pseudo>], affiche la liste des notifications ou ajoute un quelqu'un à cette liste.";
-
-/* nothing */
-"QUERY [-nofocus] <nick>, opens up a new privmsg window to someone" = "QUERY [-nofocus] <pseudo>, ouvre une fenêtre de chat privé avec quelqu'un";
-
-/* nothing */
-"SET [-e] [-or] [-quiet] <variable> [<value>]" = "SET [-e] [-or] [-quiet] <variable> [<valeur>]";
-
-/* nothing */
-"\nTRAY -f <timeout> <file1> [<file2>] Blink tray between two icons.\nTRAY -f <filename>                  Set tray to a fixed icon.\nTRAY -i <number>                    Blink tray with an internal icon.\nTRAY -t <text>                      Set the tray tooltip.\nTRAY -b <title> <text>              Set the tray balloon." = "\nTRAY -f <délai> <fichier1> [<fichier2>] Spécifie les fichiers à utiliser pour faire clignoter l'icone de barre d'état.\nTRAY -f <fichier>                   Spécifie le fichier à utiliser pour l'icone de barre d'état.\nTRAY -i <numéro>                    Spécifie un icone interne pour le clignotement de la barre d'état.\nTRAY -t <texte>                     Spécifie le message d'aide de l'icone de barre d'état.\nTRAY -b <titre> <texte>             Spécifie le message flottant de l'icone de barre d'état.";
-
-/* nothing */
-"%C22*%O$tNotify: $1 is offline ($3)." = "%C22*%O$tNotify: $1 est hors-ligne ($3).";
-
-/* nothing */
-"%C22*%O$tNotify: $1 is online ($3)." = "%C22*%O$tNotify: $1 est en ligne ($3).";
-
-/* nothing */
-"Loaded log from" = "Historique chargé depuis";
-
-/* nothing */
-"Failed to complete NameHasOwner" = "Impossible de compléter NameHasOwner";
-
-/* nothing */
-"Failed to complete Command" = "Impossible de terminer la commande";
-
-/* nothing */
-"remote access" = "accès distant";
-
-/* nothing */
-"Couldn't connect to session bus: %s\n" = "Impossible de se connecter au bus: %s\n";
-
-/* nothing */
-"Are you sure you want to remove all bans in %s?" = "Voulez-vous vraiment enlever les bannissements de %s ?";
-
-/* nothing */
-"Displaying %d/%d users on %d/%d channels." = "Affichage de %d/%d utilisateurs sur %d/%d canaux.";
-
-/* nothing */
-"_Join Channel" = "Re_joint le canal";
-
-/* nothing */
-"_Copy Channel Name" = "_Copie le nom du canal";
-
-/* nothing */
-"Copy _Topic Text" = "Copie le suje_t du canal";
-
-/* nothing */
-"_Search" = "_Recherche";
-
-/* nothing */
-"_Download List" = "_Télécharger";
-
-/* nothing */
-"Save _List..." = "Sauver la _Liste";
-
-/* nothing */
-"Show only:" = "Seuls les canaux ";
-
-/* nothing */
-"channels with" = "ayant entre";
-
-/* nothing */
-"to" = "et";
-
-/* nothing */
-"users." = "utilisateurs.";
-
-/* nothing */
-"Look in:" = "Chercher dans :";
-
-/* nothing */
-"Channel name" = "Nom du canal";
-
-/* nothing */
-"Search type:" = "Type de recherche :";
-
-/* nothing */
-"Simple Search" = "Recherche simple";
-
-/* nothing */
-"Pattern Match (Wildcards)" = "Recherche par motif (*)";
-
-/* nothing */
-"Regular Expression" = "Expression rationnelle";
-
-/* nothing */
-"XChat: Uploads and Downloads" = "XChat: Envois et réceptions";
-
-/* nothing */
-"File:" = "Fichier : ";
-
-/* nothing */
-"Address:" = "Adresse : ";
-
-/* nothing */
-"Open URL in an existing XChat" = "Ouvrir l'URL dans un XChat existant";
-
-/* nothing */
-"Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "Démarré minimisé. 0=Normal 1=Minimisé 2=Dans l'icone d'état";
-
-/* nothing */
-"level" = "niveau";
-
-/* nothing */
-"Quit XChat?" = "Quitter XChat ?";
-
-/* nothing */
-"Don't ask next time." = "Ne plus me demander.";
-
-/* nothing */
-"You are connected to %i IRC networks." = "Vous êtes connecté à %i réseaux IRC.";
-
-/* nothing */
-"Are you sure you want to quit?" = "Voulez-vous vraiment quitter ?";
-
-/* nothing */
-"Some file transfers are still active." = "Des transferts de fichiers sont en cours.";
-
-/* nothing */
-"_Minimize to Tray" = "_Minimiser dans la barre d'état";
-
-/* nothing */
-"Blink tray on message" = "Faire clignoter l'icone en cas de message";
-
-/* nothing */
-"User Commands - Special codes:\n\n%c  =  current channel\n%e  =  current network name\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "Commandes utilisateur - codes d'échappement :\n\n%c  =  canal actuel\n%e  =  réseau actuel\n%m  =  informations sur la machine\n%n  =  votre pseudo\n%t  =  date/heure\n%v  =  version de xchat\n%2  =  2e mot\n%3  =  3e mot\n&2  =  du 2e mot à la fin de la ligne\n&3  =  du 3e mot à la fin de la ligne\n\nexemple :\n/cmd sylvain bonjour\n\n%2 sera \"sylvain\"\n&2 sera \"sylvain bonjour\".";
-
-/* nothing */
-"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Boutons de la liste des utilisateurs - code d'échappement : \n\n%a  =  tous les pseudos sélectionnés\n%c  =  canal actuel\n%e  =  réseau actuel\n%h  =  nom d'hôte du pseudo sélectionné\n%m  =  informations sur la machine\n%n  =  votre pseudo\n%s  =  le pseudo sélectionné\n%t  =  date/heure\n";
-
-/* nothing */
-"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Boutons de la boite de dialogue - Codes d'échappement : \n\n%a  =  tous les pseudos sélectionnés\n%c  =  canal actuel\n%e  =  réseau actuel\n%h  =  nom d'hôte du pseudo sélectionné\n%m  =  informations sur la machine\n%n  =  votre pseudo\n%s  =  le pseudo sélectionné\n%t  =  date/heure\n";
-
-/* nothing */
-"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%e  =  current network name\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "Réponses CTCP - Codes d'échappement :\n\n%d  =  données (toute la réponse CTCP)\n%e  =  réseau actuel\n%m  =  informations sur la machine\n%s  =  pseudo ayant envoyé le CTCP\n%t  =  date/heure\n%2  =  2e mot\n%3  =  3e mot\n&2  =  du 2e mot à la fin de la ligne\n&3  =  du 3e mot à la fin de la ligne\n\n";
-
-/* nothing */
-"_Menu Bar" = "Barre de _menu";
-
-/* nothing */
-"_Topic Bar" = "Barre de suje_t";
-
-/* nothing */
-"_User List" = "Liste d'_utilisateurs";
-
-/* nothing */
-"U_serlist Buttons" = "Bouton_s de la liste des utilisateurs";
-
-/* nothing */
-"_Channel Switcher" = "Sélecteur de _canaux";
-
-/* nothing */
-"%d minutes ago" = "il y a %d minutes";
-
-/* nothing */
-"Notify on these networks:" = "Notifier depuis les réseaux suivants :";
-
-/* nothing */
-"Comma separated list of networks is accepted." = "Entrez les réseaux séparés par une virgule.";
-
-/* nothing */
-"Cannot find 'notify-send' to open balloon alerts.\nPlease install libnotify." = "Je ne trouve pas 'notify-send' pour ouvrir les fenêtres d'alertes.\nMerci d'installer libnotify.";
-
-/* nothing */
-"XChat: Connected to %u networks and %u channels" = "XChat : Vous êtes connecté à %u réseaux et %u canaux";
-
-/* nothing */
-"_Restore" = "Affiche_r";
-
-/* nothing */
-"_Hide" = "Cac_her";
-
-/* nothing */
-"_Blink on" = "_Clignoter lors des";
-
-/* nothing */
-"Channel Message" = "Messages de canaux";
-
-/* nothing */
-"Private Message" = "Messages privés";
-
-/* nothing */
-"Highlighted Message" = "Messages en surbrillance";
-
-/* nothing */
-"XChat: Highlighted message from: %s (%s)" = "XChat : Message en surbrillance de %s (%s)";
-
-/* nothing */
-"XChat: %u highlighted messages, latest from: %s (%s)" = "XChat : %u messages en surbrillance. Le dernier est de %s (%s)";
-
-/* nothing */
-"XChat: New public message from: %s (%s)" = "XChat : Nouveau message public de %s (%s)";
-
-/* nothing */
-"XChat: %u new public messages." = "XChat : %u nouveaux messages publics.";
-
-/* nothing */
-"XChat: Private message from: %s (%s)" = "XChat : Message privé de %s (%s)";
-
-/* nothing */
-"XChat: %u private messages, latest from: %s (%s)" = "XChat : %u messages privés. Le dernier est de %s (%s)";
-
-/* nothing */
-"XChat: File offer from: %s (%s)" = "XChat : Demande de transfert de fichier de %s (%s)";
-
-/* nothing */
-"XChat: %u file offers, latest from: %s (%s)" = "XChat : %u demandes de transferts de fichier. Le dernier est de %s (%s)";
-
-/* nothing */
-"Sorts the network list in alphabetical order. Use SHIFT-UP and SHIFT-DOWN keys to move a row." = "Trie les réseaux dans l'ordre alphabétique. Utilisez Shift-Haut et Shift-Bas pour déplacer une ligne.";
-
-/* nothing */
-"Last-spoke order" = "Le dernier ayant parlé d'abord";
-
-/* nothing */
-"Nick completion sorted:" = "Tri de la complétion des pseudo :";
-
-/* nothing */
-"Left (Upper)" = "Gauche (Haut)";
-
-/* nothing */
-"Left (Lower)" = "Gauche (Bas)";
-
-/* nothing */
-"Right (Upper)" = "Droite (Haut)";
-
-/* nothing */
-"Right (Lower)" = "Droite (Bas)";
-
-/* nothing */
-"Show user list at:" = "Position de la liste des utilisateurs :";
-
-/* nothing */
-"Tree" = "Arbre";
-
-/* nothing */
-"Switcher type:" = "Type de liste des canaux :";
-
-/* nothing */
-"Open a new tab when you receive a private message" = "Ouvrir un nouvel onglet lors de la réception de message privé";
-
-/* nothing */
-"Show channel switcher at:" = "Position de la liste des canaux :";
-
-/* nothing */
-"Show tray balloons on:" = "Quand montrer une fenêtre de notification :";
-
-/* nothing */
-"Blink tray icon on:" = "Clignoter l'icone de barre d'état";
-
-/* nothing */
-"Blink task bar on:" = "Quand faire clignoter la barre d'état :";
-
-/* nothing */
-"Make a beep sound on:" = "Quand émettre un bip : ";
-
-/* nothing */
-"Enable system tray icon" = "Activer l'icone de barre d'état";
-
-/* nothing */
-"Highlighted Messages" = "Messages en surbrillance";
-
-/* nothing */
-"Highlighted messages are ones where your nickname is mentioned, but also:" = "Les messages en surbrillance sont ceux où apparait votre pseudo, mais aussi :";
-
-/* nothing */
-"Extra words to highlight:" = "Mots déclenchant une surbrillance :";
-
-/* nothing */
-"Nick names not to highlight:" = "Pseudo à ne pas mettre en surbrillance :";
-
-/* nothing */
-"Nick names to always highlight:" = "Pseudos à toujours mettre en surbrillance :";
-
-/* nothing */
-"Open Data Folder" = "Ouvrir le dossier des données";
-
-/* nothing */
-"Channel switcher" = "Liste des canaux";
-
-/* nothing */
-"You cannot place the tree on the top or bottom!\nPlease change to the <b>Tabs</b> layout in the <b>View</b> menu first." = "Vous ne pouvez pas placer l'arbre en haut ou en bas !\nMerci de passer en mode <b>Onglets</b> dans le menu <b>Vue</b> d'abord.";
 

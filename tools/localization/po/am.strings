@@ -1,5 +1,5 @@
 /* nothing */
-"" = "Project-Id-Version: xchat \nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2004-01-01 23:38+1100\nPO-Revision-Date: 2003-01-30 10:06+EDT\nLast-Translator: Ge'ez Frontier Foundation <locales@geez.org>\nLanguage-Team: Amharic <locales@geez.org>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\n";
+"" = "Project-Id-Version: xchat \nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2010-05-30 13:56+1000\nPO-Revision-Date: 2002-12-14 19:37+EDT\nLast-Translator: Ge'ez Frontier Foundation <locales@geez.org>\nLanguage-Team: Amharic <locales@geez.org>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\nContent-Transfer-Encoding: 8bit\n";
 
 /* nothing */
 "Cannot create ~/.xchat2" = "";
@@ -35,6 +35,12 @@
 "Cannot access %s\n" = "";
 
 /* nothing */
+"Error" = "ስህተት";
+
+/* nothing */
+"%s is offering \"%s\". Do you want to accept?" = "";
+
+/* nothing */
 "No active DCCs\n" = "";
 
 /* nothing */
@@ -47,7 +53,7 @@
 "You are being CTCP flooded from %s, ignoring %s\n" = "";
 
 /* nothing */
-"You are being MSG flooded from %s, setting autodialog OFF.\n" = "";
+"You are being MSG flooded from %s, setting gui_auto_open_dialog OFF.\n" = "";
 
 /* nothing */
 "  %-20s online\n" = "";
@@ -62,16 +68,25 @@
 "Not connected. Try /server <host> [<port>]\n" = "";
 
 /* nothing */
+"Already marked away: %s\n" = "";
+
+/* nothing */
+"Already marked back.\n" = "";
+
+/* nothing */
 "I need /bin/sh to run!\n" = "";
 
 /* nothing */
-"\nCommands Available:\n\n  " = "";
+"Commands Available:" = "";
 
 /* nothing */
-"\n\nType /HELP <command> for more information, or /HELP -l\n\n" = "";
+"User defined commands:" = "";
 
 /* nothing */
-"User defined commands:\n\n  " = "";
+"Plugin defined commands:" = "";
+
+/* nothing */
+"Type /HELP <command> for more information, or /HELP -l" = "";
 
 /* nothing */
 "Unknown arg '%s' ignored." = "";
@@ -89,31 +104,40 @@
 "ALLCHAN <cmd>, sends a command to all channels you're in" = "";
 
 /* nothing */
+"ALLCHANL <cmd>, sends a command to all channels you're in" = "";
+
+/* nothing */
 "ALLSERV <cmd>, sends a command to all servers you're in" = "";
 
 /* nothing */
 "AWAY [<reason>], sets you away" = "";
 
 /* nothing */
+"BACK, sets you back (not away)" = "";
+
+/* nothing */
 "BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "";
 
 /* nothing */
-"CLEAR, Clears the current text window" = "";
+"CHANOPT [-quiet] <variable> [<value>]" = "";
+
+/* nothing */
+"CLEAR [ALL|HISTORY], Clears the current text window or command history" = "";
 
 /* nothing */
 "CLOSE, Closes the current window/tab" = "";
 
 /* nothing */
-"COUNTRY <code>, finds a country code, eg: au = australia" = "";
+"COUNTRY [-s] <code|wildcard>, finds a country code, eg: au = australia" = "";
 
 /* nothing */
 "CTCP <nick> <message>, send the CTCP message to nick, common messages are VERSION and USERINFO" = "";
 
 /* nothing */
-"CYCLE, parts current channel and immediately rejoins" = "";
+"CYCLE [<channel>], parts the current or given channel and immediately rejoins" = "";
 
 /* nothing */
-"\nDCC GET <nick>                     - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file] - send a file to someone\nDCC LIST                           - show DCC list\nDCC CHAT <nick>                    - offer DCC CHAT to someone\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "";
+"\nDCC GET <nick>                      - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file]  - send a file to someone\nDCC PSEND [-maxcps=#] <nick> [file] - send a file using passive mode\nDCC LIST                            - show DCC list\nDCC CHAT <nick>                     - offer DCC CHAT to someone\nDCC PCHAT <nick>                    - offer DCC CHAT using passive mode\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "";
 
 /* nothing */
 "DEHOP <nick>, removes chanhalf-op status from the nick on the current channel (needs chanop)" = "";
@@ -158,7 +182,13 @@
 "GATE <host> [<port>], proxies through a host, port defaults to 23" = "";
 
 /* nothing */
+"GHOST <nick> [password], Kills a ghosted nickname" = "";
+
+/* nothing */
 "HOP <nick>, gives chanhalf-op status to the nick (needs chanop)" = "";
+
+/* nothing */
+"ID <password>, identifies yourself to nickserv" = "";
 
 /* nothing */
 "IGNORE <mask> <types..> <options..>\n    mask - host mask to ignore, eg: *!*@*.aol.com\n    types - types of data to ignore, one or all of:\n            PRIV, CHAN, NOTI, CTCP, DCC, INVI, ALL\n    options - NOSAVE, QUIET" = "";
@@ -182,7 +212,7 @@
 "LASTLOG <string>, searches for a string in the buffer" = "";
 
 /* nothing */
-"LOAD <file>, loads a plugin or script" = "";
+"LOAD [-e] <file>, loads a plugin or script" = "";
 
 /* nothing */
 "MDEHOP, Mass deop's all chanhalf-ops in the current channel (needs chanop)" = "";
@@ -209,7 +239,7 @@
 "NCTCP <nick> <message>, Sends a CTCP notice" = "";
 
 /* nothing */
-"NEWSERVER <hostname> [<port>]" = "";
+"NEWSERVER [-noconnect] <hostname> [<port>]" = "";
 
 /* nothing */
 "NICK <nickname>, sets your nick" = "";
@@ -218,7 +248,7 @@
 "NOTICE <nick/channel> <message>, sends a notice. Notices are a type of message that should be auto reacted to" = "";
 
 /* nothing */
-"NOTIFY [<nick>], lists your notify list or adds someone to it" = "";
+"NOTIFY [-n network1[,network2,...]] [<nick>], displays your notify list or adds someone to it" = "";
 
 /* nothing */
 "OP <nick>, gives chanop status to the nick (needs chanop)" = "";
@@ -230,7 +260,7 @@
 "PING <nick | channel>, CTCP pings nick or channel" = "";
 
 /* nothing */
-"QUERY <nick>, opens up a new privmsg window to someone" = "";
+"QUERY [-nofocus] <nick>, opens up a new privmsg window to someone" = "";
 
 /* nothing */
 "QUIT [<reason>], disconnects from the current server" = "";
@@ -251,6 +281,9 @@
 "SAY <text>, sends the text to the object in the current window" = "";
 
 /* nothing */
+"SEND <nick> [<file>]" = "";
+
+/* nothing */
 "SERVCHAN [-ssl] <host> <port> <channel>, connects and joins a channel" = "";
 
 /* nothing */
@@ -263,10 +296,16 @@
 "SERVER <host> [<port>] [<password>], connects to a server, the default port is 6667" = "";
 
 /* nothing */
-"SET <variable> [<value>]" = "";
+"SET [-e] [-off|-on] [-quiet] <variable> [<value>]" = "";
+
+/* nothing */
+"SETCURSOR [-|+]<position>" = "";
 
 /* nothing */
 "TOPIC [<topic>], sets the topic if one is given, else shows the current topic" = "";
+
+/* nothing */
+"\nTRAY -f <timeout> <file1> [<file2>] Blink tray between two icons.\nTRAY -f <filename>                  Set tray to a fixed icon.\nTRAY -i <number>                    Blink tray with an internal icon.\nTRAY -t <text>                      Set the tray tooltip.\nTRAY -b <title> <text>              Set the tray balloon." = "";
 
 /* nothing */
 "UNBAN <mask> [<mask>...], unbans the specified masks." = "";
@@ -276,6 +315,12 @@
 
 /* nothing */
 "UNLOAD <name>, unloads a plugin or script" = "";
+
+/* nothing */
+"URL <url>, opens a URL in your browser" = "";
+
+/* nothing */
+"USELECT [-a] [-s] <nick1> <nick2> etc, highlights nick(s) in channel userlist" = "";
 
 /* nothing */
 "VOICE <nick>, gives voice status to someone (needs chanop)" = "";
@@ -308,6 +353,9 @@
 "No xchat_plugin_init symbol; is this really an xchat plugin?" = "";
 
 /* nothing */
+"Are you sure this is a SSL capable server and port?\n" = "";
+
+/* nothing */
 "Cannot resolve hostname %s\nCheck your IP Settings!\n" = "";
 
 /* nothing */
@@ -320,385 +368,352 @@
 "Warning: \"%s\" character set is unknown. No conversion will be applied for network %s." = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 added to notify list." = "";
+"%C22*%O$t$1 added to notify list." = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 Banlist: %C3$4 %C4$2 %C5$3%O" = "";
+"%C22*%O$t$1 Banlist:%C19 $4%C20 $2%C21 $3" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tCannot join%C11 %B$1 %O(You are banned)." = "";
+"%C22*%O$tCannot join%C26 %B$1 %O(You are banned)." = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 is now known as $2" = "";
+"%C22*%O$t$1 is now known as $2" = "";
 
 /* nothing */
-"%C13*%O$t$1%O $2%O" = "";
+"%C22*%O$t$1 sets ban on $2" = "";
 
 /* nothing */
-"%C13*%O$t%C8%B$1%B%O $2%O" = "";
+"%C22*%O$tChannel $1 created on $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 sets ban on $2" = "";
+"%C22*%O$t%C26$1%O removes channel half-operator status from%C26 $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tChannel $1 created on $2" = "";
+"%C22*%O$t%C26$1%O removes channel operator status from%C26 $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C11$1%O removes channel half-operator status from %C11$2" = "";
+"%C22*%O$t%C26$1%O removes voice from%C26 $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C11$1%O removes channel operator status from %C11$2" = "";
+"%C22*%O$t$1 sets exempt on $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C11$1%O removes voice from %C11$2" = "";
+"%C22*%O$t%C26$1%O gives channel half-operator status to%C26 $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 sets exempt on $2" = "";
+"%C22*%O$t$1 sets invite on $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C11$1%O gives channel half-operator status to %C11$2" = "";
+"%UChannel          Users   Topic" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 sets invite on $2" = "";
+"%C22*%O$t$1 sets mode $2$3 $4" = "";
 
 /* nothing */
-"%UChannel          Users   Topic%O" = "";
+"%C22*%O$t%C22Channel $1 modes: $2" = "";
 
 /* nothing */
-"%C2<%O$1%C2>%O$t$2%O" = "";
+"%C22*%O$t%C26$1%O gives channel operator status to%C26 $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 sets mode $2$3 $4" = "";
+"%C22*%O$t$1 removes exempt on $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tChannel $1 modes: $2" = "";
+"%C22*%O$t$1 removes invite on $2" = "";
 
 /* nothing */
-"%C2<%C8%B$1%B%C2>%O$t$2%O" = "";
+"%C22*%O$t$1 removes channel keyword" = "";
 
 /* nothing */
-"%C12-%C13$1/$2%C12-%O$t$3%O" = "";
+"%C22*%O$t$1 removes user limit" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C11$1%O gives channel operator status to %C11$2" = "";
+"%C22*%O$t$1 sets channel keyword to $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 removes exempt on $2" = "";
+"%C22*%O$t$1 sets channel limit to $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 removes invite on $2" = "";
+"%C22*%O$t$1 removes ban on $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 removes channel keyword" = "";
+"%C22*%O$t%C26$1%O gives voice to%C26 $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 removes user limit" = "";
+"%C22*%O$t%C22Connected. Now logging in..." = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 sets channel keyword to $2" = "";
+"%C22*%O$t%C22Connecting to $1 ($2) port $3%O..." = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 sets channel limit to $2" = "";
+"%C21*%O$t%C21Connection failed. Error: $1" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 removes ban on $2" = "";
+"%C22*%O$tReceived a CTCP $1 from $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C11$1%O gives voice to %C11$2" = "";
+"%C22*%O$tReceived a CTCP $1 from $2 (to $3)" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tConnected. Now logging in.." = "";
+"%C19>%O$1%C19<%O$tCTCP $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tConnecting to %C11$1 %C14(%C11$2%C14)%C port %C11$3%C.." = "";
+"%C22*%O$tReceived a CTCP Sound $1 from $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tConnection failed. Error: $1" = "";
+"%C22*%O$tReceived a CTCP Sound $1 from $2 (to $3)" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tReceived a CTCP $1 from $2" = "";
+"%C22*%O$tDCC CHAT to %C26$1%O aborted." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tReceived a CTCP $1 from $2 (to $3)" = "";
+"%C22*%O$tDCC CHAT connection established to %C26$1 %C30[%O$2%C30]" = "";
 
 /* nothing */
-"%C3>%O$1%C3<%O$tCTCP $2%O" = "";
+"%C22*%O$tDCC CHAT to %C26$1%O lost ($4)." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tReceived a CTCP Sound $1 from $2" = "";
+"%C22*%O$tReceived a DCC CHAT offer from $1" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC CHAT to %C11$1%O aborted." = "";
+"%C22*%O$tOffering DCC CHAT to $1" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC CHAT connection established to %C11$1 %C14[%O$2%C14]%O" = "";
+"%C22*%O$tAlready offering CHAT to $1" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC CHAT to %C11$1%O lost. $4." = "";
+"%C22*%O$tDCC $1 connect attempt to%C26 $2%O failed (err=$3)." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tReceived a DCC CHAT offer from $1" = "";
+"%C22*%O$tReceived '$1%O' from $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tOffering DCC CHAT to $1" = "";
+"%C24,18 Type  To/From    Status  Size    Pos     File         " = "";
 
 /* nothing */
-"-%C10-%C11-%O$tAlready offering CHAT to $1" = "";
+"%C22*%O$tReceived a malformed DCC request from %C26$1%O.%010%C22*%O$tContents of packet: $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC $1 connect attempt to %C11$2%O failed (err=$3)." = "";
+"%C22*%O$tOffering%C26 $1%O to%C26 $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tReceived '$1%O' from $2" = "";
+"%C22*%O$tNo such DCC offer." = "";
 
 /* nothing */
-"%C8,2 Type  To/From    Status  Size    Pos     File      %O%010%B%C9----------------------------------------------------%O" = "";
+"%C22*%O$tDCC RECV%C26 $2%O to%C26 $1%O aborted." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tReceived a malformed DCC request from %C11$1%O.%010-%C10-%C11-%O$tContents of packet: $2" = "";
+"%C22*%O$tDCC RECV%C26 $1%O from%C26 $3%O complete %C30[%C26$4%O cps%C30]%O." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tOffering %C11$1 %Cto %C11$2%O" = "";
+"%C22*%O$tDCC RECV connection established to%C26 $1 %C30[%O$2%C30]" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tNo such DCC offer." = "";
+"%C22*%O$tDCC RECV%C26 $1%O from%C26 $3%O failed ($4)." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC RECV %C11$2%O to %C11$1%O aborted." = "";
+"%C22*%O$tDCC RECV: Cannot open $1 for writing ($2)." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC RECV %C11$1%O from %C11$3%O complete %C14[%C11$4%O cps%C14]%O." = "";
+"%C22*%O$tThe file%C26 $1%C already exists, saving it as%C26 $2%O instead." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC RECV connection established to %C11$1 %C14[%O$2%C14]%O" = "";
+"%C22*%O$t%C26$1 %Ohas requested to resume%C26 $2 %Cfrom%C26 $3%C." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC RECV %C11$1%O from %C11$3%O failed. $4." = "";
+"%C22*%O$tDCC SEND%C26 $2%O to%C26 $1%O aborted." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC RECV: Cannot open $1 for writing ($2)." = "";
+"%C22*%O$tDCC SEND%C26 $1%O to%C26 $2%O complete %C30[%C26$3%O cps%C30]%O." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tThe file %C11$1%C already exists, saving it as %C11$2%O instead." = "";
+"%C22*%O$tDCC SEND connection established to%C26 $1 %C30[%O$2%C30]" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C11$1 %Chas requested to resume %C11$2 %Cfrom %C11$3%C." = "";
+"%C22*%O$tDCC SEND%C26 $1%O to%C26 $2%O failed. $3" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC SEND %C11$2%O to %C11$1%O aborted." = "";
+"%C22*%O$t%C26$1 %Ohas offered%C26 $2 %O(%C26$3 %Obytes)" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC SEND %C11$1%O to %C11$2%O complete %C14[%C11$3%O cps%C14]%O." = "";
+"%C22*%O$tDCC $1%C26 $2 %Oto%C26 $3 %Cstalled - aborting." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC SEND connection established to %C11$1 %C14[%O$2%C14]%O" = "";
+"%C22*%O$tDCC $1%C26 $2 %Oto%C26 $3 %Otimed out - aborting." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC SEND %C11$1%O to %C11$2%O failed. $3" = "";
+"%C22*%O$t$1 deleted from notify list." = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C11$1 %Chas offered %C11$2 %C(%C11$3 %Cbytes)" = "";
+"%C22*%O$tDisconnected ($1)." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC $1 %C11$2 %Cto %C11$3 %Cstalled - aborting." = "";
+"%C22*%O$tFound your IP: [$1]" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC $1 %C11$2 %Cto %C11$3 %Ctimed out - aborting." = "";
+"%O%C26$1%O added to ignore list." = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 deleted from notify list." = "";
+"Ignore on %C26$1%O changed." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDisconnected ($1)." = "";
+"%C24,18                                                              " = "";
 
 /* nothing */
-"-%C10-%C11-%O$tFound your IP: [$1]" = "";
+"%C24,18 Hostmask                  PRIV NOTI CHAN CTCP DCC  INVI UNIG " = "";
 
 /* nothing */
-"$1$t$2" = "";
-
-/* nothing */
-"%O%C11$1%O added to ignore list." = "";
-
-/* nothing */
-"Ignore on %C11$1%O changed." = "";
-
-/* nothing */
-"%C08,02                                                              %O" = "";
-
-/* nothing */
-"%C08,02 Hostmask                  PRIV NOTI CHAN CTCP DCC  INVI UNIG %O" = "";
-
-/* nothing */
-"%O%C11$1%O removed from ignore list." = "";
+"%O%C26$1%O removed from ignore list." = "";
 
 /* nothing */
 "  Ignore list is empty." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tCannot join%C11 %B$1 %O(Channel is invite only)." = "";
+"%C22*%O$tCannot join%C26 %B$1 %O(Channel is invite only)." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tYou have been invited to %C11$1%C by %C11$2%C (%C11$3%C)" = "";
+"%C22*%O$tYou have been invited to%C26 $1%O by%C26 $2%C (%C26$3%C)" = "";
 
 /* nothing */
-"-%C10-%C11>%O$t%B$1%B %C14(%C10$3%C14)%C has joined $2" = "";
+"%C19*%O$t%C19%B$1 %B($3) has joined $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tCannot join%C11 %B$1 %O(Requires keyword)." = "";
+"%C22*%O$tCannot join%C26 %B$1 %O(Requires keyword)." = "";
 
 /* nothing */
-"<%C10-%C11-%O$t$1 has kicked $2 from $3 ($4%O)" = "";
+"%C21*%O$t%C21$1 has kicked $2 from $3 ($4%O%C21)" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tYou have been killed by $1 ($2%O)" = "";
+"%C22*%O$tYou have been killed by $1 ($2%O%C22)" = "";
 
 /* nothing */
-"%C3>%O$1%C3<%O$t$2%O" = "";
+"%C22*%O$t%C22MOTD Skipped." = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1%O" = "";
+"%C22*%O$t$1 already in use. Retrying with $2..." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tMOTD Skipped." = "";
+"%C22*%O$tNickname already in use. Use /NICK to try another." = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 already in use. Retrying with $2.." = "";
+"%C22*%O$tNo such DCC." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tNickname already in use. Use /NICK to try another." = "";
+"%C22*%O$tNo process is currently running" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tNo such DCC." = "";
+"$tNotify list is empty." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tNo process is currently running" = "";
+"%C24,18 %B  Notify List                           " = "";
 
 /* nothing */
-"%C12-%C13$1%C12-%O$t$2%O" = "";
+"%C22*%O$t$1 users in notify list." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tNotify list is empty." = "";
+"%C22*%O$tNotify: $1 is offline ($3)." = "";
 
 /* nothing */
-"%C08,02 %B-- Notify List --------------- %O" = "";
+"%C22*%O$tNotify: $1 is online ($3)." = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 users in notify list." = "";
+"%C23*%O$t%C23$1 (%O%C23$2) has left $3" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tNotify: $1 is offline ($2)." = "";
+"%C23*%O$t%C23$1 (%O%C23$2) has left $3 (%O%C23%B%B$4%O%C23)" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tNotify: $1 is online ($2)." = "";
+"%C22*%O$tPing reply from $1: $2 second(s)" = "";
 
 /* nothing */
-"<%C10-%C11-%O$t$1 %C14(%O$2%C14)%C has left $3" = "";
+"%C22*%O$tNo ping reply for $1 seconds, disconnecting." = "";
 
 /* nothing */
-"<%C10-%C11-%O$t$1 %C14(%O$2%C14)%C has left $3 %C14(%O$4%C14)%O" = "";
+"%C22*%O$tA process is already running" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tPing reply from $1 : $2 second(s)" = "";
+"%C23*%O$t%C23$1 has quit (%O%C23%B%B$2%O%C23)" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tNo ping reply for $1 seconds, disconnecting." = "";
+"%C22*%O$t$1 sets modes%B %C30[%O$2%B%C30]" = "";
 
 /* nothing */
-"%C12*%C13$1%C12*$t%O$2%O" = "";
+"%C28-%C29$1/Wallops%C28-%O$t$2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tA process is already running" = "";
+"%C22*%O$tLooking up IP number for%C26 $1%O..." = "";
 
 /* nothing */
-"<%C10-%C11-%O$t$1 has quit %C14(%O$2%O%C14)%O" = "";
+"%C22*%O$t%C22Connected." = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 sets modes%B %C14[%O$2%B%C14]%O" = "";
+"%C22*%O$t%C22Looking up $1" = "";
 
 /* nothing */
-"%C12-%C13$1/Wallops%C12-%O$t$2%O" = "";
+"%C22*%O$tStopped previous connection attempt (pid=$1)" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tLooking up IP number for%C11 $1%O.." = "";
+"%C29*%O$t%C29Topic for $1%C %C29is: $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tConnected." = "";
+"%C22*%O$t$1 has changed the topic to: $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tLooking up %C11$1%C.." = "";
+"%C29*%O$t%C29Topic for $1%C %C29set by $2%C %C29at $3" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tStopped previous connection attempt (pid=$1)" = "";
+"%C22*%O$tUnknown host. Maybe you misspelled it?" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tTopic for %C11$1%C is %C11$2%O" = "";
+"%C22*%O$tCannot join%C26 %B$1 %O(User limit reached)." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tTopic for %C11$1%C set by %C11$2%C at %C11$3%O" = "";
+"%C22*%O$t%C26Users on $1:%C $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 has changed the topic to: $2%O" = "";
+"%C22*%O$t%C28[%O$1%C28] %O$2%C27 $3" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tUnknown host. Maybe you misspelled it?" = "";
+"%C22*%O$t%C28[%O$1%C28] %Cis away %C30(%O$2%O%C30)" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tCannot join%C11 %B$1 %O(User limit reached)." = "";
+"%C22*%O$t%C28[%O$1%C28]%O $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C11Users on $1:%C $2" = "";
+"%C22*%O$t%C28[%O$1%C28] %OEnd of WHOIS list." = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C12[%O$1%C12] %Cis away %C14(%O$2%O%C14)" = "";
+"%C22*%O$t%C28[%O$1%C28]%O idle%C26 $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C12[%O$1%C12]%C $2" = "";
+"%C22*%O$t%C28[%O$1%C28]%O idle%C26 $2%O, signon:%C26 $3" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C12[%O$1%C12] %CEnd of WHOIS list." = "";
+"%C22*%O$t%C28[%O$1%C28] %C30(%O$2@$3%C30)%O: $4" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C12[%O$1%C12] %O$2" = "";
+"%C22*%O$t%C28[%O$1%C28] %Oreal user@host%C27 $2%O, real IP%C27 $3" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C12[%O$1%C12] %O$2 %C11$3%O" = "";
+"%C19*%O$t%C19Now talking on $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C12[%O$1%C12] %Oreal user@host %C11$2%O, real IP %C11$3%O" = "";
+"%C23*$tYou have been kicked from $2 by $3 ($4%O%C23)" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C12[%O$1%C12]%O idle %C11$2%O" = "";
+"%C23*$tYou have left channel $3" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C12[%O$1%C12]%O idle %C11$2%O, signon: %C11$3%O" = "";
+"%C23*$tYou have left channel $3 (%O%C23%B%B$4%O%C23)" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C12[%O$1%C12] %C14(%O$2@$3%C14) %O: $4%O" = "";
+"%C22*%O$tYou've invited%C26 $1%O to%C26 $2%O (%C26$3%O)" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C12[%O$1%C12]%O $2" = "";
+"%C22*%O$tYou are now known as $2" = "";
 
 /* nothing */
-"-%C10-%C11>%O$t%BYou%B are now talking on %C11$2%O" = "";
-
-/* nothing */
-"-%C10-%C11-%O$tYou have left channel $3" = "";
-
-/* nothing */
-"-%C10-%C11-%O$tYou have left channel $3 %C14(%O$4%C14)%O" = "";
-
-/* nothing */
-"-%C10-%C11-%O$tYou have been kicked from $2 by $3 ($4%O)" = "";
-
-/* nothing */
-"-%C10-%C11-%O$tYou're inviting %C11$1%C to %C11$2%C (%C11$3%C)" = "";
-
-/* nothing */
-"%C6<%O$1%C6>%O$t$2%O" = "";
-
-/* nothing */
-"-%C10-%C11-%O$tYou are now known as $2" = "";
+"Loaded log from" = "ከ...ጫን";
 
 /* nothing */
 "**** ENDING LOGGING AT %s\n" = "";
@@ -731,10 +746,13 @@
 "The action" = "";
 
 /* nothing */
-"The text" = "ጽሑፉ";
+"Mode char" = "";
 
 /* nothing */
-"Mode char" = "";
+"Identified text" = "";
+
+/* nothing */
+"The text" = "ጽሑፉ";
 
 /* nothing */
 "The message" = "መልእክቱ";
@@ -929,13 +947,16 @@
 "Real IP" = "";
 
 /* nothing */
-"Channel Name" = "የጣቢያ ስም";
+"Channel Name" = "";
 
 /* nothing */
 "Text" = "ጽሑፍ";
 
 /* nothing */
 "Server Name" = "የሰርቨር ስም";
+
+/* nothing */
+"Raw Numeric or Identifier" = "";
 
 /* nothing */
 "Nick of person who invited you" = "";
@@ -950,19 +971,13 @@
 "Nick being tried" = "";
 
 /* nothing */
-"Error" = "ስህተት";
-
-/* nothing */
 "IP" = "IP";
 
 /* nothing */
 "Port" = "ፖርት";
 
 /* nothing */
-"PID" = "PID";
-
-/* nothing */
-"Channel name" = "የጣቢያን ስም";
+"Network" = "መረብ";
 
 /* nothing */
 "Modes string" = "";
@@ -998,9 +1013,6 @@
 "Number of notify items" = "";
 
 /* nothing */
-"Servername" = "የሰርቨር ስም";
-
-/* nothing */
 "Old Filename" = "አሮጌ የፋይል ስም";
 
 /* nothing */
@@ -1034,7 +1046,7 @@
 "Ban time" = "";
 
 /* nothing */
-"Error parsing event %s.\nLoading default" = "";
+"Error parsing event %s.\nLoading default." = "";
 
 /* nothing */
 "Cannot read sound file:\n%s" = "";
@@ -1056,6 +1068,9 @@
 
 /* nothing */
 "Connection reset by peer" = "";
+
+/* nothing */
+"Ascension Island" = "የኮኮስ ደሴቶች";
 
 /* nothing */
 "Andorra" = "አንዶራ";
@@ -1107,6 +1122,9 @@
 
 /* nothing */
 "Aruba" = "አሩባ";
+
+/* nothing */
+"Aland Islands" = "የፎልክላንድ ደሴቶች";
 
 /* nothing */
 "Azerbaijan" = "አዘርባጃን";
@@ -1178,6 +1196,9 @@
 "Cocos Islands" = "የኮኮስ ደሴቶች";
 
 /* nothing */
+"Democratic Republic of Congo" = "";
+
+/* nothing */
 "Central African Republic" = "የመካከለኛው አፍሪካ ሪፐብሊክ";
 
 /* nothing */
@@ -1187,7 +1208,7 @@
 "Switzerland" = "ስዊዘርላንድ";
 
 /* nothing */
-"Cote D'ivoire" = "ኮት ዲቯር";
+"Cote d'Ivoire" = "ኮት ዲቯር";
 
 /* nothing */
 "Cook Islands" = "ኩክ ደሴቶች";
@@ -1211,7 +1232,7 @@
 "Costa Rica" = "ኮስታ ሪካ";
 
 /* nothing */
-"Former Czechoslovakia" = "የቀድሞው ቼኮዝሎቫኪያ";
+"Serbia and Montenegro" = "";
 
 /* nothing */
 "Cuba" = "ኩባ";
@@ -1271,6 +1292,9 @@
 "Ethiopia" = "ኢትዮጵያ";
 
 /* nothing */
+"European Union" = "";
+
+/* nothing */
 "Finland" = "ፊንላንድ";
 
 /* nothing */
@@ -1287,9 +1311,6 @@
 
 /* nothing */
 "France" = "ፈረንሳይ";
-
-/* nothing */
-"France, Metropolitan" = "የፈረንሳይ፣ ሜትሮ";
 
 /* nothing */
 "Gabon" = "ጋቦን";
@@ -1337,7 +1358,7 @@
 "Greece" = "ግሪክ";
 
 /* nothing */
-"S. Georgia and S. Sandwich Isles." = "";
+"S. Georgia and S. Sandwich Isles" = "";
 
 /* nothing */
 "Guatemala" = "ጉዋቲማላ";
@@ -1379,6 +1400,9 @@
 "Israel" = "እስራኤል";
 
 /* nothing */
+"Isle of Man" = "";
+
+/* nothing */
 "India" = "ህንድ";
 
 /* nothing */
@@ -1401,6 +1425,9 @@
 
 /* nothing */
 "Italy" = "ጣሊያን";
+
+/* nothing */
+"Jersey" = "";
 
 /* nothing */
 "Jamaica" = "ጃማይካ";
@@ -1580,9 +1607,6 @@
 "Nauru" = "ናኡሩ";
 
 /* nothing */
-"Neutral Zone" = "";
-
-/* nothing */
 "Niue" = "ኒኡይ";
 
 /* nothing */
@@ -1623,6 +1647,9 @@
 
 /* nothing */
 "Puerto Rico" = "ፖርታ ሪኮ";
+
+/* nothing */
+"Palestinian Territory" = "የብሪታኒያ ህንድ ውቂያኖስ ግዛት";
 
 /* nothing */
 "Portugal" = "ፖርቱጋል";
@@ -1733,6 +1760,9 @@
 "Tokelau" = "ቶክላው";
 
 /* nothing */
+"East Timor" = "ምስራቅ ቲሞር";
+
+/* nothing */
 "Turkmenistan" = "ቱርክሜኒስታን";
 
 /* nothing */
@@ -1740,9 +1770,6 @@
 
 /* nothing */
 "Tonga" = "ቶንጋ";
-
-/* nothing */
-"East Timor" = "ምስራቅ ቲሞር";
 
 /* nothing */
 "Turkey" = "ቱርክ";
@@ -1769,9 +1796,6 @@
 "United Kingdom" = "እንግሊዝ";
 
 /* nothing */
-"US Minor Outlying Islands" = "የአሜሪካ ራቅ ያሉ  አናሳ ደሴቶች";
-
-/* nothing */
 "United States of America" = "አሜሪካ";
 
 /* nothing */
@@ -1784,7 +1808,7 @@
 "Vatican City State" = "ቫቲካን ከተማ";
 
 /* nothing */
-"St. Vincent and the grenadines" = "ቅዱስ ቪንሴንት እና ግሬናዲንስ";
+"St. Vincent and the Grenadines" = "ቅዱስ ቪንሴንት እና ግሬናዲንስ";
 
 /* nothing */
 "Venezuela" = "ቬንዙዌላ";
@@ -1823,58 +1847,25 @@
 "Zambia" = "ዛምቢያ";
 
 /* nothing */
-"Zaire" = "ዛየር";
-
-/* nothing */
 "Zimbabwe" = "ዚምቧቤ";
 
 /* nothing */
 "Unknown" = "ያልታወቀ";
 
 /* nothing */
-"Direct client-to-client" = "";
+"_Open Dialog Window" = "";
 
 /* nothing */
-"Send File" = "የድምፅ ፋይል፦";
+"_Send a File" = "የድምፅ ፋይል፦";
 
 /* nothing */
-"Offer Chat" = "";
+"_User Info (WhoIs)" = "";
 
 /* nothing */
-"Abort Chat" = "ስለ X-ማውሪያ";
+"_Add to Friends List" = "";
 
 /* nothing */
-"Version" = "ዝርያ";
-
-/* nothing */
-"Userinfo" = "ተጠቃሚ";
-
-/* nothing */
-"Clientinfo" = "";
-
-/* nothing */
-"Ping" = "";
-
-/* nothing */
-"Time" = "";
-
-/* nothing */
-"Finger" = "ኒጀር";
-
-/* nothing */
-"Oper" = "ክፈት";
-
-/* nothing */
-"Kill this user" = "";
-
-/* nothing */
-"Mode" = "";
-
-/* nothing */
-"Give Voice" = "";
-
-/* nothing */
-"Take Voice" = "";
+"O_perator Actions" = "";
 
 /* nothing */
 "Give Ops" = "";
@@ -1883,16 +1874,13 @@
 "Take Ops" = "";
 
 /* nothing */
-"Ignore" = "";
+"Give Voice" = "";
 
 /* nothing */
-"Ignore User" = "";
+"Take Voice" = "";
 
 /* nothing */
-"UnIgnore User" = "";
-
-/* nothing */
-"Kick/Ban" = "";
+"Kick/Ban" = "ቅጽል";
 
 /* nothing */
 "Kick" = "ቅጽል";
@@ -1901,43 +1889,7 @@
 "Ban" = "ቡህታን";
 
 /* nothing */
-"KickBan" = "";
-
-/* nothing */
-"Info" = "_መረጃ";
-
-/* nothing */
-"Who" = "";
-
-/* nothing */
-"WhoIs" = "";
-
-/* nothing */
-"DNS Lookup" = "";
-
-/* nothing */
-"Trace" = "ፈረንሳይ";
-
-/* nothing */
-"UserHost" = "ተጠቃሚዎች";
-
-/* nothing */
-"External" = "";
-
-/* nothing */
-"Traceroute" = "";
-
-/* nothing */
-"Telnet" = "አጥፉ";
-
-/* nothing */
-"Open Dialog Window" = "";
-
-/* nothing */
-"Disconnect" = "አገናኝ";
-
-/* nothing */
-"Reconnect" = "አገናኝ";
+"KickBan" = "ቅጽል";
 
 /* nothing */
 "Leave Channel" = "ጣቢያ";
@@ -1976,6 +1928,9 @@
 "Dialog" = "";
 
 /* nothing */
+"WhoIs" = "";
+
+/* nothing */
 "Send" = "ተልኳል";
 
 /* nothing */
@@ -1985,7 +1940,31 @@
 "Clear" = "ሰርዝ";
 
 /* nothing */
-"About X-Chat" = "ስለ X-ማውሪያ";
+"Ping" = "";
+
+/* nothing */
+"Couldn't connect to session bus" = "";
+
+/* nothing */
+"Failed to complete NameHasOwner" = "";
+
+/* nothing */
+"Failed to complete Command" = "";
+
+/* nothing */
+"remote access" = "";
+
+/* nothing */
+"plugin for remote access using DBUS" = "";
+
+/* nothing */
+"Couldn't connect to session bus: %s\n" = "";
+
+/* nothing */
+"Failed to acquire %s: %s\n" = "";
+
+/* nothing */
+"About " = "ውድቅ";
 
 /* nothing */
 "A multiplatform IRC Client" = "";
@@ -1994,7 +1973,13 @@
 "Character Chart" = "";
 
 /* nothing */
+"Not connected." = "አገናኝ";
+
+/* nothing */
 "You must select some bans." = "";
+
+/* nothing */
+"Are you sure you want to remove all bans in %s?" = "";
 
 /* nothing */
 "Mask" = "";
@@ -2006,10 +1991,13 @@
 "Date" = "ቀን";
 
 /* nothing */
-"X-Chat: Ban List (%s)" = "";
+"You can only open the Ban List window while in a channel tab." = "";
 
 /* nothing */
-"Unban" = "";
+"XChat: Ban List (%s)" = "X-Chat፦ የሰርቨር ዝርዝር";
+
+/* nothing */
+"Remove" = "አስወግድ";
 
 /* nothing */
 "Crop" = "";
@@ -2018,49 +2006,67 @@
 "Refresh" = "በድጋሚ ጀምር";
 
 /* nothing */
-"User and Channel Statistics: %d/%d Users on %d/%d Channels" = "";
-
-/* nothing */
-"I can't save an empty list!" = "";
+"Displaying %d/%d users on %d/%d channels." = "";
 
 /* nothing */
 "Select an output filename" = "";
 
 /* nothing */
-"X-Chat: Channel List (%s)" = "X-ማውሪያ፦ የጣቢያ ዝርዝር (%s)";
+"_Join Channel" = "ጣቢያ አትጫን";
 
 /* nothing */
-"List display options:" = "";
+"_Copy Channel Name" = "የጣቢያን ስም";
 
 /* nothing */
-"Minimum Users:" = "በተቻለ መጠን ተጠቃሚዎች፦";
+"Copy _Topic Text" = "";
 
 /* nothing */
-"Maximum Users:" = "ከፍተኛ መጠን ተጠቃሚዎች፦";
+"XChat: Channel List (%s)" = "የጣቢያ ዝርዝር...";
 
 /* nothing */
-"Regex Match:" = "";
+"_Search" = "";
 
 /* nothing */
-"Apply Match to:" = "";
+"_Download List" = "";
 
 /* nothing */
-"Apply" = "ተጠቀም";
+"Save _List..." = "የሰርቨር ዝርዝር...";
 
 /* nothing */
-"Refresh the list" = "ዝርዝሩን አድስ";
+"Show only:" = "";
 
 /* nothing */
-"Save the list" = "ዝርዝሩን አስቀምጥ";
+"channels with" = "የጣቢያ ዝርዝር...";
 
 /* nothing */
-"Join Channel" = "ጣቢያ አትጫን";
+"to" = "";
+
+/* nothing */
+"users." = "ተጠቃሚዎች";
+
+/* nothing */
+"Look in:" = "";
+
+/* nothing */
+"Channel name" = "የጣቢያን ስም";
+
+/* nothing */
+"Search type:" = "ጽሑፉን አስስ...";
+
+/* nothing */
+"Simple Search" = "";
+
+/* nothing */
+"Pattern Match (Wildcards)" = "";
+
+/* nothing */
+"Regular Expression" = "";
+
+/* nothing */
+"Find:" = "ፈልግ፦";
 
 /* nothing */
 "Send file to %s" = "";
-
-/* nothing */
-"      File: %s\n   To/From: %s\n      Size: %u\n      Port: %d\n IP Number: %s\nStart Time: %s   Max CPS: %d\n" = "";
 
 /* nothing */
 "That file is not resumable." = "";
@@ -2075,7 +2081,7 @@
 "Cannot resume the same file from two people." = "";
 
 /* nothing */
-"MIME Type" = "የMIME ዓይነት";
+"XChat: Uploads and Downloads" = "";
 
 /* nothing */
 "Status" = "ሁኔታ";
@@ -2087,7 +2093,22 @@
 "ETA" = "ETA";
 
 /* nothing */
-"X-Chat: File Receive List" = "";
+"Both" = "ሁለትም";
+
+/* nothing */
+"Uploads" = "";
+
+/* nothing */
+"Downloads" = "";
+
+/* nothing */
+"Details" = "";
+
+/* nothing */
+"File:" = "ፋይል";
+
+/* nothing */
+"Address:" = "IP አድራሻ";
 
 /* nothing */
 "Abort" = "ውድቅ";
@@ -2099,19 +2120,10 @@
 "Resume" = "ቀጥል";
 
 /* nothing */
-"Open" = "ክፈት";
+"Open Folder..." = "";
 
 /* nothing */
-"Ack" = "Ack";
-
-/* nothing */
-"To" = "ወደ";
-
-/* nothing */
-"X-Chat: File Send List" = "";
-
-/* nothing */
-"To/From" = "ወደ/ከ";
+"XChat: DCC Chat List" = "X-Chat፦ የሰርቨር ዝርዝር";
 
 /* nothing */
 "Recv" = "";
@@ -2120,16 +2132,13 @@
 "Sent" = "ተልኳል";
 
 /* nothing */
-"StartTime" = "";
-
-/* nothing */
-"X-Chat: DCC Chat List" = "X-ማውሪያ፦ የDCC ማውሪያ ዝርዝር";
+"Start Time" = "ምስራቅ ቲሞር";
 
 /* nothing */
 "*NEW*" = "*አዲስ*";
 
 /* nothing */
-"EDIT ME" = "እኔ ያስተካክሉ";
+"EDIT ME" = "";
 
 /* nothing */
 "Name" = "ስም";
@@ -2162,22 +2171,37 @@
 "Help" = "መረጃ";
 
 /* nothing */
-"Options" = "ትግባር";
+"Don't auto connect to servers" = "";
 
 /* nothing */
-"DIRECTORY" = "";
+"Use a different config directory" = "";
 
 /* nothing */
-"use a different config dir" = "";
+"Don't auto load any plugins" = "";
 
 /* nothing */
-"don't auto connect" = "";
+"Show plugin auto-load directory" = "";
 
 /* nothing */
-"don't auto load any plugins" = "";
+"Show user config directory" = "";
 
 /* nothing */
-"show version information" = "";
+"Open an irc://server:port/channel URL" = "";
+
+/* nothing */
+"Execute command:" = "አገናኝ ትዕዛዝ";
+
+/* nothing */
+"Open URL or execute command in an existing XChat" = "";
+
+/* nothing */
+"Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "";
+
+/* nothing */
+"level" = "በፍጹም";
+
+/* nothing */
+"Show version information" = "";
 
 /* nothing */
 "Failed to open font:\n\n%s" = "";
@@ -2189,6 +2213,9 @@
 "%d bytes" = "";
 
 /* nothing */
+"Network send queue: %d bytes" = "";
+
+/* nothing */
 "The Run Command action runs the data in Data 1 as if it has been typed into the entry box where you pressed the key sequence. Thus it can contain text (which will be sent to the channel/person), commands or user commands. When run all \\n characters in Data 1 are used to deliminate seperate commands so it is possible to run more than one command. If you want a \\ in the actual text run then enter \\\\" = "";
 
 /* nothing */
@@ -2198,7 +2225,7 @@
 "The Insert in Buffer command will insert the contents of Data 1 into the entry where the key sequence was pressed at the current cursor position" = "";
 
 /* nothing */
-"The Scroll Page command scrolls the text widget up or down one page. If Data 1 is set to anything the page scrolls up, else it scrolls down" = "";
+"The Scroll Page command scrolls the text widget up or down one page or one line. Set Data 1 to either Up, Down, +1 or -1." = "";
 
 /* nothing */
 "The Set Buffer command sets the entry where the key sequence was entered to the contents of Data 1" = "";
@@ -2249,10 +2276,7 @@
 "Action" = "ትግባር";
 
 /* nothing */
-"X-Chat: Edit Key Bindings" = "";
-
-/* nothing */
-"Add new" = "አዲስ ጨምር";
+"XChat: Keyboard Shortcuts" = "";
 
 /* nothing */
 "Shift" = "Shift";
@@ -2315,13 +2339,13 @@
 "Enter mask to ignore:" = "";
 
 /* nothing */
-"X-Chat: Ignore list" = "";
+"XChat: Ignore list" = "X-Chat፦ የሰርቨር ዝርዝር";
 
 /* nothing */
 "Ignore Stats:" = "";
 
 /* nothing */
-"Channel:" = "ጣቢያ፦";
+"Channel:" = "";
 
 /* nothing */
 "Private:" = "";
@@ -2336,10 +2360,43 @@
 "Invite:" = "";
 
 /* nothing */
-"New" = "አዲስ";
+"Add..." = "ጨምር";
 
 /* nothing */
-"Delete All" = "አጥፉ";
+"Channel name too short, try again." = "";
+
+/* nothing */
+"XChat: Connection Complete" = "";
+
+/* nothing */
+"Connection to %s complete." = "";
+
+/* nothing */
+"In the Server-List window, no channel (chat room) has been entered to be automatically joined for this network." = "";
+
+/* nothing */
+"What would you like to do next?" = "";
+
+/* nothing */
+"_Nothing, I'll join a channel later." = "";
+
+/* nothing */
+"_Join this channel:" = "ጣቢያዎች አትጫን፦";
+
+/* nothing */
+"If you know the name of the channel you want to join, enter it here." = "";
+
+/* nothing */
+"O_pen the Channel-List window." = "";
+
+/* nothing */
+"Retrieving the Channel-List may take a minute or two." = "";
+
+/* nothing */
+"_Always show this dialog after connecting." = "";
+
+/* nothing */
+"Dialog with" = "";
 
 /* nothing */
 "Topic for %s is: %s" = "";
@@ -2348,31 +2405,73 @@
 "No topic is set" = "";
 
 /* nothing */
-"No other tabs open, quit xchat?" = "";
+"This server still has %d channels or dialogs associated with it. Close them all?" = "";
 
 /* nothing */
-"Insert color code" = "";
+"Quit XChat?" = "ስለ X-Chat";
 
 /* nothing */
-"Close Tab" = "መክፈቻን ዝጋ";
+"Don't ask next time." = "";
 
 /* nothing */
-"Detach Tab" = "መክፈቻን አለያይ";
+"You are connected to %i IRC networks." = "";
 
 /* nothing */
-"Beep on message" = "";
+"Are you sure you want to quit?" = "";
 
 /* nothing */
-"Show join/part messages" = "";
+"Some file transfers are still active." = "";
 
 /* nothing */
-"Color paste" = "";
+"_Minimize to Tray" = "";
 
 /* nothing */
-"Go to" = "";
+"Insert Attribute or Color Code" = "";
 
 /* nothing */
-"Some file transfers still active, quit xchat?" = "";
+"<b>Bold</b>" = "";
+
+/* nothing */
+"<u>Underline</u>" = "";
+
+/* nothing */
+"Normal" = "ኖርዌ";
+
+/* nothing */
+"Colors 0-7" = "ቀለማት";
+
+/* nothing */
+"Colors 8-15" = "ቀለማት";
+
+/* nothing */
+"_Settings" = "_ምርጫዎች";
+
+/* nothing */
+"_Log to Disk" = "";
+
+/* nothing */
+"_Reload Scrollback" = "";
+
+/* nothing */
+"_Hide Join/Part Messages" = "";
+
+/* nothing */
+"_Extra Alerts" = "";
+
+/* nothing */
+"Beep on _Message" = "አዲስ መልእክት፦";
+
+/* nothing */
+"Blink Tray _Icon" = "";
+
+/* nothing */
+"Blink Task _Bar" = "";
+
+/* nothing */
+"_Detach" = "መክፈቻን አለያይ";
+
+/* nothing */
+"_Close" = "ዝጋ";
 
 /* nothing */
 "User limit must be a number!\n" = "";
@@ -2402,9 +2501,6 @@
 "User Limit" = "";
 
 /* nothing */
-"Close this tab/window" = "";
-
-/* nothing */
 "Show/Hide userlist" = "";
 
 /* nothing */
@@ -2417,34 +2513,43 @@
 "Host unknown" = "";
 
 /* nothing */
-"User: %s" = "ተጠቃሚ፦ %s";
+"<tt><b>%-11s</b></tt> %s" = "";
 
 /* nothing */
-"Country: %s" = "አገር፦ %s";
+"Real Name:" = "የውነት ስም፦";
 
 /* nothing */
-"Realname: %s" = "የውነት ስም፦ %s";
+"User:" = "ተጠቃሚ";
 
 /* nothing */
-"Server: %s" = "ሰርቨር፦ %s";
+"Country:" = "አገር፦ %s";
 
 /* nothing */
-"Last Msg: %s" = "የመጨረሻ መልዕክት፦ %s";
+"Server:" = "ሰርቨር";
 
 /* nothing */
-"Menu Bar" = "ሜኑባር";
+"%u minutes ago" = "";
 
 /* nothing */
-"Topic Bar" = "ጉዳዩባር";
+"Last Msg:" = "የመጨረሻ መልዕክት፦ %s";
 
 /* nothing */
-"User List" = "የተጠቃሚ ዝርዝር";
+"Away Msg:" = "";
 
 /* nothing */
-"Mode Buttons" = "";
+"%d nicks selected." = "";
 
 /* nothing */
-"User List Buttons" = "የተጠቃሚ ዝርዝር";
+"The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "";
+
+/* nothing */
+"Open Link in Browser" = "";
+
+/* nothing */
+"Copy Selected Link" = "";
+
+/* nothing */
+"Join Channel" = "ጣቢያ አትጫን";
 
 /* nothing */
 "Part Channel" = "";
@@ -2453,58 +2558,67 @@
 "Cycle Channel" = "";
 
 /* nothing */
-"X-Chat: User menu" = "X-ማውሪያ፦ የተጠቃሚ ሜኑ";
+"_Remove from Favorites" = "";
+
+/* nothing */
+"_Add to Favorites" = "";
+
+/* nothing */
+"XChat: User menu" = "X-Chat፦ የተጠቃሚ ሜኑ";
 
 /* nothing */
 "Edit This Menu..." = "ይህ ሜኑ ያስተካክሉ...";
 
 /* nothing */
-"*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile" = "";
+"Retrieve channel list..." = "የጣቢያ ዝርዝር...";
 
 /* nothing */
-"Settings saved." = "";
+"User Commands - Special codes:\n\n%c  =  current channel\n%e  =  current network name\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "";
 
 /* nothing */
-"User Commands - Special codes:\n\n%c  =  current channel\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "";
+"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "";
 
 /* nothing */
-"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "";
+"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "";
 
 /* nothing */
-"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "";
+"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%e  =  current network name\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "";
 
 /* nothing */
-"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "";
+"URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of XChat" = "";
 
 /* nothing */
-"URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of X-Chat" = "";
+"XChat: User Defined Commands" = "X-Chat፦ የተጠቃሚ ሜኑ";
 
 /* nothing */
-"X-Chat: User Defined Commands" = "";
+"XChat: Userlist Popup menu" = "X-Chat፦ የተጠቃሚ ሜኑ";
 
 /* nothing */
-"X-Chat: Userlist Popup menu" = "";
+"Replace with" = "";
 
 /* nothing */
-"X-Chat: Replace" = "";
+"XChat: Replace" = "X-Chat፦ ፈልግ";
 
 /* nothing */
-"X-Chat: URL Handlers" = "";
+"XChat: URL Handlers" = "";
 
 /* nothing */
-"X-Chat: Userlist buttons" = "";
+"XChat: Userlist buttons" = "X-Chat፦ የተጠቃሚ ሜኑ";
 
 /* nothing */
-"X-Chat: Dialog buttons" = "";
+"XChat: Dialog buttons" = "";
 
 /* nothing */
-"X-Chat: CTCP Replies" = "";
+"XChat: CTCP Replies" = "";
 
 /* nothing */
-"_X-Chat" = "_X-ማውሪያ";
+"_XChat" = "_X-Chat";
 
 /* nothing */
-"Server List..." = "የሰርቨር ዝርዝር...";
+"Network Li_st..." = "የመረብ ቅንጅት";
+
+/* nothing */
+"_New" = "አዲስ";
 
 /* nothing */
 "Server Tab..." = "የሰርቨር መክፈቻ...";
@@ -2519,58 +2633,76 @@
 "Channel Window..." = "የጣቢያ መስኮት...";
 
 /* nothing */
-"Load Plugin or Script..." = "የተጨማሪው ፕሮግራምን ጫን...";
+"_Load Plugin or Script..." = "የተጨማሪው ፕሮግራምን ጫን...";
 
 /* nothing */
-"New Shell Tab..." = "";
+"_Quit" = "ውጣ";
 
 /* nothing */
-"Quit" = "ውጣ";
+"_View" = "";
 
 /* nothing */
-"_IRC" = "_IRC";
+"_Menu Bar" = "ሜኑባር";
 
 /* nothing */
-"Invisible" = "";
+"_Topic Bar" = "ጉዳዩባር";
 
 /* nothing */
-"Receive Wallops" = "";
+"_User List" = "የተጠቃሚ ዝርዝር";
 
 /* nothing */
-"Receive Server Notices" = "";
+"U_serlist Buttons" = "";
 
 /* nothing */
-"Marked Away" = "";
+"M_ode Buttons" = "";
 
 /* nothing */
-"Auto Rejoin when Kicked" = "";
+"_Channel Switcher" = "የጣቢያ ዝርዝር...";
 
 /* nothing */
-"Auto Reconnect to Server" = "";
+"_Tabs" = "መክፈቻዎች";
 
 /* nothing */
-"Never-give-up ReConnect" = "";
+"T_ree" = "";
 
 /* nothing */
-"Auto Open Dialog Windows" = "";
+"_Network Meters" = "የመረብ ቅንጅት";
 
 /* nothing */
-"Auto Accept Direct Chat" = "";
+"Off" = "አጥፋ";
 
 /* nothing */
-"Auto Accept Files" = "";
+"Graph" = "";
 
 /* nothing */
 "_Server" = "_ሰርቨር";
 
 /* nothing */
+"_Disconnect" = "አገናኝ";
+
+/* nothing */
+"_Reconnect" = "አገናኝ";
+
+/* nothing */
+"Join a Channel..." = "ጣቢያ አትጫን";
+
+/* nothing */
+"List of Channels..." = "ጣቢያ አትጫን";
+
+/* nothing */
+"Marked Away" = "";
+
+/* nothing */
+"_Usermenu" = "የተጠቃሚ ስም";
+
+/* nothing */
 "S_ettings" = "_ምርጫዎች";
 
 /* nothing */
-"Preferences..." = "ምርጫዎች...";
+"_Preferences" = "ምርጫዎች...";
 
 /* nothing */
-"Lists" = "ዝርዝሮች";
+"Advanced" = "";
 
 /* nothing */
 "Auto Replace..." = "";
@@ -2582,7 +2714,7 @@
 "Dialog Buttons..." = "";
 
 /* nothing */
-"Key Bindings..." = "";
+"Keyboard Shortcuts..." = "";
 
 /* nothing */
 "Text Events..." = "";
@@ -2600,22 +2732,10 @@
 "Userlist Popup..." = "";
 
 /* nothing */
-"Reload Settings" = "";
-
-/* nothing */
-"Save Settings now" = "";
-
-/* nothing */
-"Save Settings on exit" = "";
-
-/* nothing */
 "_Window" = "_መስኮት";
 
 /* nothing */
 "Ban List..." = "";
-
-/* nothing */
-"Channel List..." = "የጣቢያ ዝርዝር...";
 
 /* nothing */
 "Character Chart..." = "";
@@ -2624,16 +2744,13 @@
 "Direct Chat..." = "";
 
 /* nothing */
-"File Receive..." = "ፋይልን ተቀበል...";
+"File Transfers..." = "ፋይልን ላክ...";
 
 /* nothing */
-"File Send..." = "ፋይልን ላክ...";
+"Friends List..." = "የሰርቨር ዝርዝር...";
 
 /* nothing */
 "Ignore List..." = "";
-
-/* nothing */
-"Notify List..." = "";
 
 /* nothing */
 "Plugins and Scripts..." = "የተጨማሪው ፕሮግራም ዝርዝር...";
@@ -2643,6 +2760,9 @@
 
 /* nothing */
 "URL Grabber..." = "";
+
+/* nothing */
+"Reset Marker Line" = "";
 
 /* nothing */
 "C_lear Text" = "ጽሑፉ _ሰርዝ";
@@ -2660,16 +2780,13 @@
 "_Contents" = "አገናኝ";
 
 /* nothing */
+"Check for updates" = "";
+
+/* nothing */
 "_About" = "ውድቅ";
 
 /* nothing */
-"Attach Tab" = "መክፈቻን አለያይ";
-
-/* nothing */
-"User" = "ተጠቃሚ";
-
-/* nothing */
-"Server" = "ሰርቨር";
+"_Attach" = "";
 
 /* nothing */
 "Last Seen" = "";
@@ -2681,19 +2798,85 @@
 "Never" = "በፍጹም";
 
 /* nothing */
+"%d minutes ago" = "";
+
+/* nothing */
 "Online" = "ኦንላይን";
 
 /* nothing */
 "Enter nickname to add:" = "";
 
 /* nothing */
-"X-Chat: Notify List" = "";
+"Notify on these networks:" = "";
 
 /* nothing */
-"Add" = "ጨምር";
+"Comma separated list of networks is accepted." = "";
 
 /* nothing */
-"Remove" = "አስወግድ";
+"XChat: Friends List" = "X-Chat፦ የሰርቨር ዝርዝር";
+
+/* nothing */
+"Open Dialog" = "";
+
+/* nothing */
+"Cannot find 'notify-send' to open balloon alerts.\nPlease install libnotify." = "";
+
+/* nothing */
+"XChat: Connected to %u networks and %u channels" = "";
+
+/* nothing */
+"_Restore" = "";
+
+/* nothing */
+"_Hide" = "የተደበቀ";
+
+/* nothing */
+"_Blink on" = "";
+
+/* nothing */
+"Channel Message" = "የጣቢያን ስም";
+
+/* nothing */
+"Private Message" = "አዲስ መልእክት፦";
+
+/* nothing */
+"Highlighted Message" = "አቅልም፦";
+
+/* nothing */
+"_Change status" = "";
+
+/* nothing */
+"_Away" = "";
+
+/* nothing */
+"_Back" = "";
+
+/* nothing */
+"XChat: Highlighted message from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u highlighted messages, latest from: %s (%s)" = "";
+
+/* nothing */
+"XChat: New public message from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u new public messages." = "";
+
+/* nothing */
+"XChat: Private message from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u private messages, latest from: %s (%s)" = "";
+
+/* nothing */
+"XChat: File offer from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u file offers, latest from: %s (%s)" = "";
+
+/* nothing */
+"Version" = "ዝርያ";
 
 /* nothing */
 "Description" = "መግለጫ";
@@ -2702,7 +2885,7 @@
 "Select a Plugin or Script to load" = "";
 
 /* nothing */
-"X-Chat: Plugins and Scripts" = "የX-ማውሪያ ተጨማሪ ፕሮግራሞች";
+"XChat: Plugins and Scripts" = "የX-Chat ተጨማሪ ፕሮግራሞች";
 
 /* nothing */
 "_Load..." = "_ጫን...";
@@ -2711,37 +2894,31 @@
 "_UnLoad" = "_አትጫን";
 
 /* nothing */
-"_Close" = "ዝጋ";
+"Save As..." = "በሌላ ስም አስቀምጥ";
 
 /* nothing */
-"Save rawlog" = "";
-
-/* nothing */
-"X-Chat: Rawlog (%s)" = "";
+"XChat: Rawlog (%s)" = "";
 
 /* nothing */
 "Clear rawlog" = "";
 
 /* nothing */
-"Save rawlog..." = "";
-
-/* nothing */
 "The window you opened this Search for doesn't exist anymore." = "";
 
 /* nothing */
-"X-Chat: Search" = "X-ማውሪያ፦ ፈልግ";
+"Search hit end, not found." = "";
 
 /* nothing */
-"Find:" = "ፈልግ፦";
+"XChat: Search" = "X-Chat፦ ፈልግ";
 
 /* nothing */
-"Find" = "ፈልግ";
+"_Match case" = "";
 
 /* nothing */
-"Close" = "ዝጋ";
+"Search _backwards" = "";
 
 /* nothing */
-"Settings for %s" = "የ%s ምርጫዎች";
+"_Find" = "ፈልግ";
 
 /* nothing */
 "New Network" = "አዲስ መረብ";
@@ -2750,94 +2927,130 @@
 "Really remove network \"%s\" and all its servers?" = "";
 
 /* nothing */
-"_Remove \"%s\"" = "_አስወግድ \"%s\"";
+"#channel" = "ጣቢያ";
 
 /* nothing */
-"_Add new server" = "አዲስ ሰርቨርን _ጨምር";
+"XChat: Favorite Channels (Auto-Join List)" = "";
 
 /* nothing */
-"Move \"%s\" _down" = "\"%s\"ን ወደ_ታች አንቀሳቅስ";
+"These channels will be joined whenever you connect to %s." = "";
 
 /* nothing */
-"Move \"%s\" _up" = "\"%s\"ን ወደ_ላይ አንቀሳቅስ";
+"Key (Password)" = "ቁልፍ ቃላት";
 
 /* nothing */
-"_Add new network" = "_አዲስ መረብ ጨምር";
+"_Edit" = "";
 
 /* nothing */
-"Global User Info" = "";
+"%s has been removed." = "";
 
 /* nothing */
-"Nick Names:" = "ቅጽል ስሞች፦";
+"%s has been added." = "";
 
 /* nothing */
-"User Name:" = "የተጠቃሚ ስም፦";
+"User name and Real name cannot be left blank." = "";
 
 /* nothing */
-"Real Name:" = "የውነት ስም፦";
+"XChat: Edit %s" = "";
 
 /* nothing */
-"C_onnect" = "_አገናኝ";
+"Servers for %s" = "ሰርቨር፦ %s";
 
 /* nothing */
-"Connect in a _new tab" = "በአዲስ መክፈቻ _አገናኝ";
+"Connect to selected server only" = "";
 
 /* nothing */
-"Servers" = "ሰርቨሮች";
+"Don't cycle through all the servers when the connection fails." = "";
 
 /* nothing */
-"Character Set:" = "";
+"Your Details" = "";
 
 /* nothing */
-"Nick Name:" = "ቅጽል ስምች፦";
+"Use global user information" = "";
 
 /* nothing */
-"Server Password:" = "የሰርቨር ሚስጢራዊ ቃል፦";
+"_Nick name:" = "ቅጽል ስምች፦";
 
 /* nothing */
-"Join Channels:" = "ጣቢያዎች አትጫን፦";
+"Second choice:" = "የድምፅ ፋይል፦";
+
+/* nothing */
+"_User name:" = "የተጠቃሚ ስም፦";
+
+/* nothing */
+"Rea_l name:" = "የውነት ስም፦";
+
+/* nothing */
+"Connecting" = "አገናኝ";
+
+/* nothing */
+"Auto connect to this network at startup" = "";
+
+/* nothing */
+"Bypass proxy server" = "";
+
+/* nothing */
+"Use SSL for all the servers on this network" = "";
+
+/* nothing */
+"Accept invalid SSL certificate" = "";
+
+/* nothing */
+"_Favorite channels:" = "ጣቢያዎች አትጫን፦";
 
 /* nothing */
 "Channels to join, separated by commas, but not spaces!" = "";
 
 /* nothing */
-"Connect Command:" = "አገናኝ ትዕዛዝ";
+"Connect command:" = "አገናኝ ትዕዛዝ";
 
 /* nothing */
-"Command to execute after connecting. Can be used to authenticate to NickServ" = "";
+"Extra command to execute after connecting. If you need more than one, set this to LOAD -e <filename>, where <filename> is a text-file full of commands to execute." = "";
 
 /* nothing */
-"Cycle until connected" = "";
+"Nickserv password:" = "የሰርቨር ሚስጢራዊ ቃል፦";
 
 /* nothing */
-"Use global user info" = "";
+"If your nickname requires a password, enter it here. Not all IRC networks support this." = "";
 
 /* nothing */
-"Use secure SSL" = "";
+"Server password:" = "የሰርቨር ሚስጢራዊ ቃል፦";
 
 /* nothing */
-"Auto connect at startup" = "";
+"Password for the server, if in doubt, leave blank." = "";
 
 /* nothing */
-"Use a proxy server" = "";
+"Character set:" = "";
 
 /* nothing */
-"Accept invalid cert." = "";
+"XChat: Network List" = "X-Chat፦ የሰርቨር ዝርዝር";
 
 /* nothing */
-"Settings for Selected Network" = "";
+"User Information" = "";
 
 /* nothing */
-"Edit mode" = "";
+"Third choice:" = "";
 
 /* nothing */
 "Networks" = "መረቦች";
 
 /* nothing */
-"No server list on startup" = "";
+"Skip network list on startup" = "";
 
 /* nothing */
-"X-Chat: Server List" = "X-ማውሪያ፦ የሰርቨር ዝርዝር";
+"_Edit..." = "_ጫን...";
+
+/* nothing */
+"_Sort" = "ቅደም ተከተል";
+
+/* nothing */
+"Sorts the network list in alphabetical order. Use SHIFT-UP and SHIFT-DOWN keys to move a row." = "";
+
+/* nothing */
+"C_onnect" = "_አገናኝ";
+
+/* nothing */
+"Text Box Appearance" = "";
 
 /* nothing */
 "Font:" = "የፊደል ቅርጽ፦";
@@ -2846,73 +3059,91 @@
 "Background image:" = "የመደቡ ምስል፦";
 
 /* nothing */
+"Scrollback lines:" = "";
+
+/* nothing */
+"Colored nick names" = "አሮጌ  ቅጽል ስም";
+
+/* nothing */
+"Give each person on IRC a different color" = "";
+
+/* nothing */
+"Indent nick names" = "አሮጌ  ቅጽል ስም";
+
+/* nothing */
+"Make nick names right-justified" = "";
+
+/* nothing */
+"Transparent background" = "የሚያሳይ መደብ";
+
+/* nothing */
+"Show marker line" = "";
+
+/* nothing */
+"Insert a red line after the last read text." = "";
+
+/* nothing */
+"Transparency Settings" = "";
+
+/* nothing */
+"Red:" = "";
+
+/* nothing */
+"Green:" = "ግሪንላንድ";
+
+/* nothing */
+"Blue:" = "";
+
+/* nothing */
+"Time Stamps" = "";
+
+/* nothing */
+"Enable time stamps" = "";
+
+/* nothing */
 "Time stamp format:" = "";
 
 /* nothing */
 "See strftime manpage for details." = "";
 
 /* nothing */
-"Time stamp text" = "";
+"A-Z" = "A-Z";
 
 /* nothing */
-"Transparent background" = "የሚያሳይ መደብ";
+"Last-spoke order" = "";
 
 /* nothing */
-"Indent nicks" = "";
-
-/* nothing */
-"Tint transparency" = "";
-
-/* nothing */
-"Colored nicks" = "";
-
-/* nothing */
-"Strip mIRC color" = "";
-
-/* nothing */
-"Scrollback lines:" = "";
-
-/* nothing */
-"Tint red:" = "";
-
-/* nothing */
-"Tint green:" = "";
-
-/* nothing */
-"Tint blue:" = "";
-
-/* nothing */
-"Interpret %nnn as an ASCII value" = "";
-
-/* nothing */
-"Automatic nick completion" = "";
-
-/* nothing */
-"Interpret %C, %B as Color, Bold etc" = "";
+"Input box" = "";
 
 /* nothing */
 "Use the Text box font and colors" = "";
 
 /* nothing */
+"Spell checking" = "";
+
+/* nothing */
+"Nick Completion" = "";
+
+/* nothing */
+"Automatic nick completion (without TAB key)" = "";
+
+/* nothing */
 "Nick completion suffix:" = "";
 
 /* nothing */
-"Off" = "አጥፋ";
+"Nick completion sorted:" = "";
 
 /* nothing */
-"Graph" = "";
+"Input Box Codes" = "";
 
 /* nothing */
-"Info text" = "";
+"Interpret %nnn as an ASCII value" = "";
 
 /* nothing */
-"Both" = "ሁለትም";
+"Interpret %C, %B as Color, Bold etc" = "";
 
 /* nothing */
 "A-Z, Ops first" = "";
-
-/* nothing */
-"A-Z" = "A-Z";
 
 /* nothing */
 "Z-A, Ops last" = "";
@@ -2924,28 +3155,49 @@
 "Unsorted" = "";
 
 /* nothing */
-"Lag meter:" = "";
+"Left (Upper)" = "";
 
 /* nothing */
-"Throttle meter:" = "";
+"Left (Lower)" = "";
 
 /* nothing */
-"Userlist sorted by:" = "";
+"Right (Upper)" = "";
 
 /* nothing */
-"Double-click command:" = "";
+"Right (Lower)" = "";
 
 /* nothing */
-"Show hostnames in userlist" = "";
+"Top" = "ወደ ላይ";
 
 /* nothing */
-"Userlist buttons enabled" = "";
+"Bottom" = "ወደ ታች";
 
 /* nothing */
-"Resizable userlist" = "";
+"Hidden" = "የተደበቀ";
 
 /* nothing */
-"Track away-status on channels smaller than:" = "";
+"User List" = "የተጠቃሚ ዝርዝር";
+
+/* nothing */
+"Show hostnames in user list" = "";
+
+/* nothing */
+"User list sorted by:" = "";
+
+/* nothing */
+"Show user list at:" = "";
+
+/* nothing */
+"Away tracking" = "";
+
+/* nothing */
+"Track the Away status of users and mark them in a different color" = "";
+
+/* nothing */
+"On channels smaller than:" = "";
+
+/* nothing */
+"Action Upon Double Click" = "";
 
 /* nothing */
 "Windows" = "መስኮቶች";
@@ -2954,22 +3206,46 @@
 "Tabs" = "መክፈቻዎች";
 
 /* nothing */
-"Bottom" = "ወደ ታች";
+"Always" = "";
 
 /* nothing */
-"Top" = "ወደ ላይ";
+"Only requested tabs" = "";
 
 /* nothing */
-"Left" = "";
+"Tree" = "ግሪክ";
 
 /* nothing */
-"Right" = "";
+"Switcher type:" = "";
 
 /* nothing */
-"Hidden" = "የተደበቀ";
+"Open an extra tab for server messages" = "";
 
 /* nothing */
-"Show tabs at:" = "";
+"Open an extra tab for server notices" = "";
+
+/* nothing */
+"Open a new tab when you receive a private message" = "";
+
+/* nothing */
+"Sort tabs in alphabetical order" = "";
+
+/* nothing */
+"Smaller text" = "ጽሑፉ _ሰርዝ";
+
+/* nothing */
+"Focus new tabs:" = "";
+
+/* nothing */
+"Show channel switcher at:" = "";
+
+/* nothing */
+"Shorten tab labels to:" = "";
+
+/* nothing */
+"letters." = "";
+
+/* nothing */
+"Tabs or Windows" = "መስኮቶች";
 
 /* nothing */
 "Open channels in:" = "";
@@ -2984,25 +3260,37 @@
 "Open DCC, Ignore, Notify etc, in tabs or windows?" = "";
 
 /* nothing */
-"Open tab for server messages" = "";
+"No" = "አይ";
 
 /* nothing */
-"Open tab for server notices" = "";
+"Yes" = "አዎ";
 
 /* nothing */
-"Pop new tabs to front" = "";
+"Browse for save folder every time" = "";
 
 /* nothing */
-"Shorten tabs to:" = "";
+"Files and Directories" = "";
 
 /* nothing */
-"letters." = "";
+"Auto accept file offers:" = "";
 
 /* nothing */
 "Download files to:" = "";
 
 /* nothing */
 "Move completed files to:" = "";
+
+/* nothing */
+"Save nick name in filenames" = "";
+
+/* nothing */
+"Network Settings" = "የመረብ ቅንጅት";
+
+/* nothing */
+"Get my address from the IRC server" = "";
+
+/* nothing */
+"Asks the IRC server for your real address. Use this if you have a 192.168.*.* address!" = "";
 
 /* nothing */
 "DCC IP address:" = "";
@@ -3017,91 +3305,79 @@
 "Last DCC send port:" = "";
 
 /* nothing */
-"(Leave ports at zero for full range)." = "";
+"!Leave ports at zero for full range." = "";
 
 /* nothing */
-"Auto open DCC send list" = "";
+"Maximum File Transfer Speeds (bytes per second)" = "";
 
 /* nothing */
-"Convert spaces to underscore" = "";
+"One upload:" = "";
 
 /* nothing */
-"In filenames, before sending" = "";
+"Maximum speed for one transfer" = "";
 
 /* nothing */
-"Auto open DCC chat list" = "";
+"One download:" = "";
 
 /* nothing */
-"Save nickname in filenames" = "";
+"All uploads combined:" = "";
 
 /* nothing */
-"Auto open DCC receive list" = "";
+"Maximum speed for all files" = "";
 
 /* nothing */
-"Get my IP from IRC server" = "";
+"All downloads combined:" = "";
 
 /* nothing */
-"/WHOIS yourself to find your real address. Use this if you have a 192.168.*.* address!" = "";
+"Alerts" = "Alt";
 
 /* nothing */
-"Max. send CPS:" = "";
+"Show tray balloons on:" = "";
 
 /* nothing */
-"Max. speed for one transfer" = "";
+"Blink tray icon on:" = "";
 
 /* nothing */
-"Max. receive CPS:" = "";
+"Blink task bar on:" = "";
 
 /* nothing */
-"Max. global send CPS:" = "";
+"Make a beep sound on:" = "";
 
 /* nothing */
-"Max. speed for all traffic" = "";
+"Enable system tray icon" = "";
 
 /* nothing */
-"Max. global receive CPS:" = "";
+"Highlighted Messages" = "አቅልም፦";
 
 /* nothing */
-"(Leave at zero for full speed file transfers)." = "";
+"Highlighted messages are ones where your nickname is mentioned, but also:" = "";
 
 /* nothing */
-"Default quit message:" = "";
+"Extra words to highlight:" = "";
 
 /* nothing */
-"Default part message:" = "";
+"Nick names not to highlight:" = "";
 
 /* nothing */
-"Default away message:" = "";
+"Nick names to always highlight:" = "";
 
 /* nothing */
-"(Can be a text file relative to ~/.xchat2/)." = "";
+"Separate multiple words with commas.\nWildcards are accepted." = "";
 
 /* nothing */
-"(Can be a text file relative to config dir)." = "";
+"Default Messages" = "አዲስ መልእክት፦";
 
 /* nothing */
-"Extra words to highlight on:" = "";
+"Quit:" = "ውጣ";
 
 /* nothing */
-"(Separate multiple words with commas)." = "";
+"Leave channel:" = "ጣቢያ";
 
 /* nothing */
-"Show away once" = "";
+"Away:" = "";
 
 /* nothing */
-"Show identical away messages only once" = "";
-
-/* nothing */
-"Beep on private messages" = "";
-
-/* nothing */
-"Automatically unmark away" = "";
-
-/* nothing */
-"Unmark yourself as away before sending messages" = "";
-
-/* nothing */
-"Beep on channel messages" = "";
+"Away" = "ኖርዌ";
 
 /* nothing */
 "Announce away messages" = "";
@@ -3110,7 +3386,22 @@
 "Announce your away messages to all channels" = "";
 
 /* nothing */
-"Beep on highlighted messages" = "";
+"Show away once" = "";
+
+/* nothing */
+"Show identical away messages only once" = "";
+
+/* nothing */
+"Automatically unmark away" = "";
+
+/* nothing */
+"Unmark yourself as away before sending messages" = "";
+
+/* nothing */
+"Advanced Settings" = "_ምርጫዎች";
+
+/* nothing */
+"Auto reconnect delay:" = "";
 
 /* nothing */
 "Display MODEs in raw form" = "";
@@ -3122,31 +3413,43 @@
 "Sends a /WHOIS when a user comes online in your notify list" = "";
 
 /* nothing */
-"Hide join/part messages" = "";
+"Hide join and part messages" = "";
 
 /* nothing */
 "Hide channel join/part messages by default" = "";
 
 /* nothing */
-"Auto reconnect delay:" = "";
+"Auto Open DCC Windows" = "";
 
 /* nothing */
-"Log filename mask:" = "";
+"Send window" = "";
 
 /* nothing */
-"(%s=Server %c=Channel %n=Network)." = "";
+"Receive window" = "የሰርቨር መስኮት...";
 
 /* nothing */
-"Log timestamp format:" = "";
+"Chat window" = "የጣቢያ መስኮት...";
 
 /* nothing */
-"(See strftime manpage for details)." = "";
+"Logging" = "";
 
 /* nothing */
-"Enable logging of conversations" = "";
+"Display scrollback from previous session" = "";
+
+/* nothing */
+"Enable logging of conversations to disk" = "";
+
+/* nothing */
+"Log filename:" = "የፋይል ስም";
+
+/* nothing */
+"%s=Server %c=Channel %n=Network." = "";
 
 /* nothing */
 "Insert timestamps in logs" = "";
+
+/* nothing */
+"Log timestamp format:" = "";
 
 /* nothing */
 "(Disabled)" = "(የተበላሸ)";
@@ -3164,22 +3467,31 @@
 "HTTP" = "HTTP";
 
 /* nothing */
-"Address to bind to:" = "";
+"MS Proxy (ISA)" = "";
 
 /* nothing */
-"(Only useful for computers with multiple addresses)." = "";
+"All Connections" = "አገናኝ";
 
 /* nothing */
-"Proxy server" = "ሰርቨር";
+"IRC Server Only" = "";
+
+/* nothing */
+"DCC Get Only" = "";
+
+/* nothing */
+"Your Address" = "IP አድራሻ";
+
+/* nothing */
+"Bind to:" = "ፈልግ፦";
+
+/* nothing */
+"Only useful for computers with multiple addresses." = "";
+
+/* nothing */
+"Proxy Server" = "ሰርቨር";
 
 /* nothing */
 "Hostname:" = "የእንግዳ ተቀባይ ስም";
-
-/* nothing */
-"Username:" = "የተጠቃሚ ስም";
-
-/* nothing */
-"Password:" = "የሰርቨር ሚስጢራዊ ቃል፦";
 
 /* nothing */
 "Port:" = "ፖርት";
@@ -3188,22 +3500,55 @@
 "Type:" = "DCC ዓይነት";
 
 /* nothing */
-"Authenticate to the proxy server (only HTTP)" = "";
+"Use proxy for:" = "";
+
+/* nothing */
+"Proxy Authentication" = "";
+
+/* nothing */
+"Use Authentication (MS Proxy, HTTP or Socks5 only)" = "";
+
+/* nothing */
+"Use Authentication (HTTP or Socks5 only)" = "";
+
+/* nothing */
+"Username:" = "የተጠቃሚ ስም";
+
+/* nothing */
+"Password:" = "የሰርቨር ሚስጢራዊ ቃል፦";
 
 /* nothing */
 "Select an Image File" = "";
 
 /* nothing */
-"Select font" = "የፊደል ቅርጹ ምረጡ";
+"Select Download Folder" = "ቀላሙ ምረጡ";
+
+/* nothing */
+"Select font" = "የፊደል ቁርጹ ምረጡ";
 
 /* nothing */
 "Browse..." = "ቃኝ...";
 
 /* nothing */
-"Select color" = "ቀለም ምረጡ";
+"Mark identified users with:" = "";
+
+/* nothing */
+"Mark not-identified users with:" = "";
+
+/* nothing */
+"Open Data Folder" = "";
+
+/* nothing */
+"Select color" = "ቀላሙ ምረጡ";
+
+/* nothing */
+"Text Colors" = "ቀለማት";
 
 /* nothing */
 "mIRC colors:" = "የmIRC ቀለሞች፦";
+
+/* nothing */
+"Local colors:" = "የmIRC ቀለሞች፦";
 
 /* nothing */
 "Foreground:" = "ፊት ለፊት፦";
@@ -3212,22 +3557,58 @@
 "Background:" = "መደቡ፦";
 
 /* nothing */
-"Mark fore:" = "";
+"Marking Text" = "ጽሑፉ _ሰርዝ";
 
 /* nothing */
-"Mark back:" = "";
+"Interface Colors" = "";
 
 /* nothing */
-"New Data:" = "አዲስ ዳታ፦";
+"New data:" = "አዲስ ዳታ፦";
 
 /* nothing */
-"New Message:" = "አዲስ መልእክት፦";
+"Marker line:" = "";
+
+/* nothing */
+"New message:" = "አዲስ መልእክት፦";
+
+/* nothing */
+"Away user:" = "";
 
 /* nothing */
 "Highlight:" = "አቅልም፦";
 
 /* nothing */
-"Away User:" = "";
+"Event" = "";
+
+/* nothing */
+"Sound file" = "የድምፅ ፋይል፦";
+
+/* nothing */
+"Select a sound file" = "የድምፅ ፋይል፦";
+
+/* nothing */
+"Sound playing method:" = "";
+
+/* nothing */
+"External sound playing _program:" = "";
+
+/* nothing */
+"_External program" = "";
+
+/* nothing */
+"_Automatic" = "አንታርክቲካ";
+
+/* nothing */
+"Sound files _directory:" = "የድምፅ ፋይል፦";
+
+/* nothing */
+"Sound file:" = "የድምፅ ፋይል፦";
+
+/* nothing */
+"_Browse..." = "ቃኝ...";
+
+/* nothing */
+"_Play" = "ፓላው";
 
 /* nothing */
 "Interface" = "";
@@ -3236,25 +3617,22 @@
 "Text box" = "";
 
 /* nothing */
-"Input box" = "";
+"User list" = "";
 
 /* nothing */
-"User list" = "የተጠቃሚ ዝርዝር";
+"Channel switcher" = "የጣቢያ ዝርዝር...";
 
 /* nothing */
-"Colors" = "ቀለሞች";
+"Colors" = "ቀለማት";
 
 /* nothing */
-"Chatting" = "ወሪ";
+"Chatting" = "";
 
 /* nothing */
 "General" = "አጠቃላይ";
 
 /* nothing */
-"Logging" = "";
-
-/* nothing */
-"Network" = "መረብ";
+"Sound" = "ድምፅ";
 
 /* nothing */
 "Network setup" = "የመረብ ቅንጅት";
@@ -3266,10 +3644,16 @@
 "Categories" = "ምድብ";
 
 /* nothing */
+"You cannot place the tree on the top or bottom!\nPlease change to the <b>Tabs</b> layout in the <b>View</b> menu first." = "";
+
+/* nothing */
 "Some settings were changed that require a restart to take full effect." = "";
 
 /* nothing */
-"X-Chat: Preferences" = "X-ማውሪያ፦ ምርጫዎች";
+"*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile" = "";
+
+/* nothing */
+"XChat: Preferences" = "X-Chat፦ ምርጫዎች";
 
 /* nothing */
 "There was an error parsing the string" = "";
@@ -3281,25 +3665,13 @@
 "Print Texts File" = "";
 
 /* nothing */
-"Event" = "";
-
-/* nothing */
-"Sound" = "ድምፅ";
+"Edit Events" = "";
 
 /* nothing */
 "$ Number" = "$ ቍጥር";
 
 /* nothing */
-"Edit Events" = "";
-
-/* nothing */
-"Sound file: " = "የድምፅ ፋይል፦";
-
-/* nothing */
-"Save As" = "በሌላ ስም አስቀምጥ";
-
-/* nothing */
-"Load From" = "ከ...ጫን";
+"Load From..." = "ከ...ጫን";
 
 /* nothing */
 "Test All" = "ሁሉም ሙከራ";
@@ -3308,13 +3680,10 @@
 "URL" = "";
 
 /* nothing */
-"Select a file to save to" = "";
+"XChat: URL Grabber" = "";
 
 /* nothing */
-"X-Chat: URL Grabber" = "";
-
-/* nothing */
-"Clear list" = "የተጠቃሚ ዝርዝር";
+"Clear list" = "ጽሑፉ _ሰርዝ";
 
 /* nothing */
 "Copy selected URL" = "";

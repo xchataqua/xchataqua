@@ -1,5 +1,5 @@
 /* nothing */
-"" = "Project-Id-Version: xchat 2.6.3\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2006-05-19 00:25+1000\nPO-Revision-Date: 2006-08-07 19:04+0900\nLast-Translator: Tadashi Jokagi <elf2000@users.sourceforge.net>\nLanguage-Team: Japanese <translation-team-ja@lists.sourceforge.net>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n";
+"" = "Project-Id-Version: xchat 2.8.6\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2010-05-30 13:56+1000\nPO-Revision-Date: 2010-06-13 11:23+0900\nLast-Translator: Tadashi Jokagi <elf2000@users.sourceforge.net>\nLanguage-Team: Japanese <translation-team-ja@lists.sourceforge.net>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n";
 
 /* nothing */
 "Cannot create ~/.xchat2" = "~/.xchat2 を作成できません。";
@@ -35,6 +35,9 @@
 "Cannot access %s\n" = "%s へアクセスできません。\n";
 
 /* nothing */
+"Error" = "エラー";
+
+/* nothing */
 "%s is offering \"%s\". Do you want to accept?" = "%s が「%s」を提案しています。受け付けますか?";
 
 /* nothing */
@@ -63,6 +66,12 @@
 
 /* nothing */
 "Not connected. Try /server <host> [<port>]\n" = "サーバーと接続していません。「/server <ホスト> [<ポート>]」を実行してください。\n";
+
+/* nothing */
+"Already marked away: %s\n" = "";
+
+/* nothing */
+"Already marked back.\n" = "";
 
 /* nothing */
 "I need /bin/sh to run!\n" = "実行には /bin/sh が必要です!\n";
@@ -104,22 +113,28 @@
 "AWAY [<reason>], sets you away" = "AWAY [<理由>], 離席状態にする";
 
 /* nothing */
+"BACK, sets you back (not away)" = "";
+
+/* nothing */
 "BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "BAN <マスク> [<禁止タイプ>], 現在のチャンネルから, マスクに一致するニックをバンする. 既にチャンネルに参加しているニックに関しては効果がない (なるとが必要)";
 
 /* nothing */
-"CLEAR, Clears the current text window" = "CLEAR, 現在のテキストウィンドウの内容を消去する";
+"CHANOPT [-quiet] <variable> [<value>]" = "CHANOPT [-quiet] <変数> [<値>]";
+
+/* nothing */
+"CLEAR [ALL|HISTORY], Clears the current text window or command history" = "CLEAR [ALL|HISTORY], 現在のテキストウィンドウもしくはコマンド履歴の内容を消去する";
 
 /* nothing */
 "CLOSE, Closes the current window/tab" = "CLOSE, 現在のウィンドウ／タブを閉じる";
 
 /* nothing */
-"COUNTRY [-s] <code|wildcard>, finds a country code, eg: au = australia" = "COUNTRY <コード>, 国コードを検出, 例: au = オーストラリア";
+"COUNTRY [-s] <code|wildcard>, finds a country code, eg: au = australia" = "COUNTRY [-s] <コード|ワイルドカード>, 国コードの検出。例: au = オーストラリア";
 
 /* nothing */
-"CTCP <nick> <message>, send the CTCP message to nick, common messages are VERSION and USERINFO" = "CTCP <ニック> <メッセージ>, CTCP メッセージを指定のニックへ送信する。メッセージは普通, VERSION や USERINFO を使う";
+"CTCP <nick> <message>, send the CTCP message to nick, common messages are VERSION and USERINFO" = "CTCP <ニック> <メッセージ>, CTCP メッセージを指定のニックへ送信する。メッセージは普通、VERSION や USERINFO を使う";
 
 /* nothing */
-"CYCLE, parts current channel and immediately rejoins" = "CYCLE, 現在のチャンネルを離れ, 直後に再参加する";
+"CYCLE [<channel>], parts the current or given channel and immediately rejoins" = "CYCLE [<チャンネル>], 現在の、もしくは指定のチャンネルを離れすぐに再参加する";
 
 /* nothing */
 "\nDCC GET <nick>                      - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file]  - send a file to someone\nDCC PSEND [-maxcps=#] <nick> [file] - send a file using passive mode\nDCC LIST                            - show DCC list\nDCC CHAT <nick>                     - offer DCC CHAT to someone\nDCC PCHAT <nick>                    - offer DCC CHAT using passive mode\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "\nDCC GET <ニック>                         - 差し出されたファイルを受け取る\nDCC SEND [-maxcps=#] <ニック> <ファイル> - ファイルを送信する\nDCC PSEND [-maxcps=#] <nick> [file]      - パッシブモードでファイルを送信する\nDCC LIST                                 - DCC 一覧を表示する\nDCC CHAT <ニック>                        - DCC CHAT を申し込む\nDCC PCHAT <ニック>                       - パッシブモードで DCC CHAT を申し込む\nDCC CLOSE <種類> <ニック> <ファイル>   例:\n         /dcc close send johnsmith file.tar.gz";
@@ -167,7 +182,7 @@
 "GATE <host> [<port>], proxies through a host, port defaults to 23" = "GATE <ホスト> [<ポート>], 指定ホストを通したプロキシ。標準ポートは 23";
 
 /* nothing */
-"GHOST <nick> <password>, Kills a ghosted nickname" = "GHOST <nick> <password>, ゴーストになってしまったニック名を削除する";
+"GHOST <nick> [password], Kills a ghosted nickname" = "GHOST <nick> <password>, ゴーストになってしまったニック名を削除する";
 
 /* nothing */
 "HOP <nick>, gives chanhalf-op status to the nick (needs chanop)" = "HOP <ニック>, 指定のニックにハーフなるとを与える (なるとが必要)";
@@ -224,7 +239,7 @@
 "NCTCP <nick> <message>, Sends a CTCP notice" = "NCTCP <ニック> <メッセージ>, CTCP NOTICE を送信する";
 
 /* nothing */
-"NEWSERVER [-noconnect] <hostname> [<port>]" = "NEWSERVER <ホスト名> [<ポート>]";
+"NEWSERVER [-noconnect] <hostname> [<port>]" = "NEWSERVER [-noconnect] <ホスト名> [<ポート>]";
 
 /* nothing */
 "NICK <nickname>, sets your nick" = "NICK <ニック>, 自分のニックを設定する";
@@ -233,7 +248,7 @@
 "NOTICE <nick/channel> <message>, sends a notice. Notices are a type of message that should be auto reacted to" = "NOTICE <ニック/チャンネル> <メッセージ>, NOTICE を送信する。NOTICE は自動的に応答されるメッセージである";
 
 /* nothing */
-"NOTIFY [<nick>], lists your notify list or adds someone to it" = "NOTIFY [<ニック>], 自分の通知リストを表示する、または誰かをそれに追加する";
+"NOTIFY [-n network1[,network2,...]] [<nick>], displays your notify list or adds someone to it" = "NOTIFY [-n ネットワーク1[,ネットワーク2,...]] [<ニック>], 自分の通知リストを表示する、または誰かをそれに追加する";
 
 /* nothing */
 "OP <nick>, gives chanop status to the nick (needs chanop)" = "OP <ニック>, 指定のニックになるとを与える (なるとが必要)";
@@ -245,7 +260,7 @@
 "PING <nick | channel>, CTCP pings nick or channel" = "PING <ニック | チャンネル>, ニックかチャンネルへ CTCP PING をかける";
 
 /* nothing */
-"QUERY <nick>, opens up a new privmsg window to someone" = "QUERY <ニック>, 指定ニックとの新規ぷりぶウィンドウを開く";
+"QUERY [-nofocus] <nick>, opens up a new privmsg window to someone" = "QUERY <ニック>, 指定ニックとの新規ぷりぶウィンドウを開く";
 
 /* nothing */
 "QUIT [<reason>], disconnects from the current server" = "QUIT [<理由>], 現在のサーバーから接続を切断する";
@@ -281,13 +296,16 @@
 "SERVER <host> [<port>] [<password>], connects to a server, the default port is 6667" = "SERVER <ホスト> [<ポート>] [<パスワード>], サーバーへ接続する。標準ポート番号は6667";
 
 /* nothing */
-"SET [-quiet] <variable> [<value>]" = "SET [-quiet] <変数> [<値>]";
+"SET [-e] [-off|-on] [-quiet] <variable> [<value>]" = "SET [-e] [-or] [-quiet] <変数> [<値>]";
 
 /* nothing */
 "SETCURSOR [-|+]<position>" = "SETCURSOR [-|+]<位置>";
 
 /* nothing */
 "TOPIC [<topic>], sets the topic if one is given, else shows the current topic" = "TOPIC [<トピック>], トピックを設定する。引数がなければ現在のトピックを表示する";
+
+/* nothing */
+"\nTRAY -f <timeout> <file1> [<file2>] Blink tray between two icons.\nTRAY -f <filename>                  Set tray to a fixed icon.\nTRAY -i <number>                    Blink tray with an internal icon.\nTRAY -t <text>                      Set the tray tooltip.\nTRAY -b <title> <text>              Set the tray balloon." = "";
 
 /* nothing */
 "UNBAN <mask> [<mask>...], unbans the specified masks." = "UNBAN <マスク> [<マスク>...], 指定したマスクのBanを解除する";
@@ -317,10 +335,10 @@
 "Usage: %s\n" = "使い方: %s\n";
 
 /* nothing */
-"\nNo help available on that command.\n" = "\nこのコマンドのヘルプは利用できません.\n";
+"\nNo help available on that command.\n" = "\nこのコマンドのヘルプは利用できません。\n";
 
 /* nothing */
-"No such command.\n" = "そのようなコマンドはありません.\n";
+"No such command.\n" = "そのようなコマンドはありません。\n";
 
 /* nothing */
 "Bad arguments for user command.\n" = "ユーザーコマンドに対して不正な引数を与えています.\n";
@@ -335,19 +353,19 @@
 "No xchat_plugin_init symbol; is this really an xchat plugin?" = "シンボル「xchat_plugin_init」がありません。これは本当に xchat のプラグインですか?";
 
 /* nothing */
-"Are you sure this is a SSL capable server and port?\n" = "";
+"Are you sure this is a SSL capable server and port?\n" = "これは SSL の能力のあるサーバーとポートですか?\n";
 
 /* nothing */
 "Cannot resolve hostname %s\nCheck your IP Settings!\n" = "ホスト名「%s」を解決できません。\nIP 設定を確認してください!\n";
 
 /* nothing */
-"Proxy traversal failed.\n" = "";
+"Proxy traversal failed.\n" = "プロ来シーの検索に失敗しました。\n";
 
 /* nothing */
-"Cycling to next server in %s...\n" = "";
+"Cycling to next server in %s...\n" = "%s の次のサーバーに循環しています...\n";
 
 /* nothing */
-"Warning: \"%s\" character set is unknown. No conversion will be applied for network %s." = "";
+"Warning: \"%s\" character set is unknown. No conversion will be applied for network %s." = "警告: 文字セット「%s」は不明です。変換はネットワーク %s に適用されないでしょう。";
 
 /* nothing */
 "%C22*%O$t$1 added to notify list." = "%C22*%O$t$1 を通知リストへ追加しました。";
@@ -356,16 +374,10 @@
 "%C22*%O$t$1 Banlist:%C19 $4%C20 $2%C21 $3" = "%C22*%O$t$1 バン一覧:%C19 $4%C20 $2%C21 $3";
 
 /* nothing */
-"%C22*%O$tCannot join%C26 %B$1 %O(You are banned)." = "-%C10-%C11-%O$t Ban されているため %C11%B$1%O 参加できません。";
+"%C22*%O$tCannot join%C26 %B$1 %O(You are banned)." = "%C22*%O$t%C26 %B$1 %O に参加できません(バンされています)。";
 
 /* nothing */
 "%C22*%O$t$1 is now known as $2" = "%C22*%O$t$1 は $2 にニックを変更しました。";
-
-/* nothing */
-"%C18*$t$1%O $2" = "%C18*$t$1%O $2";
-
-/* nothing */
-"%C21*%O$t%C21%B$1%O%C21 $2" = "%C21*%O$t%C21%B$1%O%C21 $2";
 
 /* nothing */
 "%C22*%O$t$1 sets ban on $2" = "%C22*%O$t$1 は $2 をバンしました。";
@@ -380,7 +392,7 @@
 "%C22*%O$t%C26$1%O removes channel operator status from%C26 $2" = "%C22*%O$t%C26$1%O は $2 からなるとを剥奪しました。";
 
 /* nothing */
-"%C22*%O$t%C26$1%O removes voice from%C26 $2" = "-%C10-%C11-%O$t$1 は $2 から発言権を剥奪しました。";
+"%C22*%O$t%C26$1%O removes voice from%C26 $2" = "%C22*%O$t%C26$1%O は %C26$2%O から発言権を剥奪しました。";
 
 /* nothing */
 "%C22*%O$t$1 sets exempt on $2" = "-%C10-%C11-%O$t$1 はチャンネル $2 への免除設定しました。";
@@ -395,25 +407,16 @@
 "%UChannel          Users   Topic" = "%Uチャンネル       ユーザー  トピック";
 
 /* nothing */
-"%C18%H<%H$4$1%H>%H%O$t$2" = "%C18%B%B$4$1%O%C18%O$t$2";
-
-/* nothing */
 "%C22*%O$t$1 sets mode $2$3 $4" = "-%C10-%C11-%O$t$1 はモードを $2$3 $4 に設定しました。";
 
 /* nothing */
 "%C22*%O$t%C22Channel $1 modes: $2" = "%C22*%O$t%C22$t チャンネル $1 モード: $2";
 
 /* nothing */
-"$4%C21%B%H<%H$1%H>%H%O%C21$t$2" = "$4%C21%B$1%O%C21$t$2";
+"%C22*%O$t%C26$1%O gives channel operator status to%C26 $2" = "%C22*%O$t%C26$1%O は %C26 $2 になるとを与えました。";
 
 /* nothing */
-"%C28-%C29$1/$2%C28-%O$t$3" = "%C28-%C29$1/$2%C28-%O$t$3";
-
-/* nothing */
-"%C22*%O$t%C26$1%O gives channel operator status to%C26 $2" = "-%C10-%C11-%O$t$1 は $2 になるとを与えました。";
-
-/* nothing */
-"%C22*%O$t$1 removes exempt on $2" = "-%C10-%C11-%O$t$1 は $2 への免除を削除しました。";
+"%C22*%O$t$1 removes exempt on $2" = "%C22*%O$t$1$1 は $2 への免除を削除しました。";
 
 /* nothing */
 "%C22*%O$t$1 removes invite on $2" = "%C22*%O$t$1 は INVITE マスクを削除しました: $2";
@@ -431,10 +434,10 @@
 "%C22*%O$t$1 sets channel limit to $2" = "%C22*%O$t$1 はチャンネルを $2 に制限しました。";
 
 /* nothing */
-"%C22*%O$t$1 removes ban on $2" = "-%C10-%C11-%O$t$1 は $2 に対するバンを取り外しました。";
+"%C22*%O$t$1 removes ban on $2" = "%C22*%O$t$1 は $2 に対するバンを取り外しました。";
 
 /* nothing */
-"%C22*%O$t%C26$1%O gives voice to%C26 $2" = "-%C10-%C11-%O$t$1 は $2 に発言権を与えました。";
+"%C22*%O$t%C26$1%O gives voice to%C26 $2" = "%C22*%O$t%C26$1%O は %C26 $2 に発言権を与えました。";
 
 /* nothing */
 "%C22*%O$t%C22Connected. Now logging in..." = "%C22*%O$t%C22接続しました。直ちにログインします...";
@@ -443,13 +446,13 @@
 "%C22*%O$t%C22Connecting to $1 ($2) port $3%O..." = "%C22*%O$t%C22サーバー $1($2) の、ポート$3 へ接続中%O...";
 
 /* nothing */
-"%C21*%O$t%C21Connection failed. Error: $1" = "-%C10-%C11-%O$t 接続に失敗しました. エラー: $1";
+"%C21*%O$t%C21Connection failed. Error: $1" = "%C21*%O$t%C21接続に失敗しました。エラー: $1";
 
 /* nothing */
-"%C22*%O$tReceived a CTCP $1 from $2" = "-%C10-%C11-%O$tCTCP 一般 $1 を $2 から受け取りました。";
+"%C22*%O$tReceived a CTCP $1 from $2" = "%C22*%O$tCTCP 一般 $1 を $2 から受け取りました。";
 
 /* nothing */
-"%C22*%O$tReceived a CTCP $1 from $2 (to $3)" = "-%C10-%C11-%O$t$2 から($3へ), CTCP $1 を受け取りました。";
+"%C22*%O$tReceived a CTCP $1 from $2 (to $3)" = "%C22*%O$t$2 から($3へ) CTCP $1 を受け取りました。";
 
 /* nothing */
 "%C19>%O$1%C19<%O$tCTCP $2" = "%C19>%O$1%C19<%O$tCTCP $2";
@@ -461,10 +464,10 @@
 "%C22*%O$tReceived a CTCP Sound $1 from $2 (to $3)" = "-%C10-%C11-%O$t$2 から($3へ), CTCP $1 を受け取りました。";
 
 /* nothing */
-"%C22*%O$tDCC CHAT to %C26$1%O aborted." = "-%C10-%C11-%O$tDCC $1 %C11$2 %Cto %C11$3 %C は中断しました。";
+"%C22*%O$tDCC CHAT to %C26$1%O aborted." = "%C22*%O$t %C26$1%O への DCC CHAT を中断しました。";
 
 /* nothing */
-"%C22*%O$tDCC CHAT connection established to %C26$1 %C30[%O$2%C30]" = "-%C10-%C11-%O$tDCC $1 の $4 %C11$2 %C14[%O$3%C14]%O への接続を確立しました。";
+"%C22*%O$tDCC CHAT connection established to %C26$1 %C30[%O$2%C30]" = "%C22*%O$t%C26$1 %C30[%O$2%C30] への tDCC CHAT 接続を確立しました。";
 
 /* nothing */
 "%C22*%O$tDCC CHAT to %C26$1%O lost ($4)." = "%C22*%O$t %C26$1%O との DCC CHAT を失いました ($4)";
@@ -473,7 +476,7 @@
 "%C22*%O$tReceived a DCC CHAT offer from $1" = "%C22*%O$t$1 から DCC チャット提案を受け取りました。";
 
 /* nothing */
-"%C22*%O$tOffering DCC CHAT to $1" = "-%C10-%C11-%O$t$1 への DCC チャットを提案しています。";
+"%C22*%O$tOffering DCC CHAT to $1" = "%C22*%O$t$1 への DCC チャットを提案しています。";
 
 /* nothing */
 "%C22*%O$tAlready offering CHAT to $1" = "%C22*%O$t既に $1 へのチャットは提案しています。";
@@ -491,28 +494,28 @@
 "%C22*%O$tReceived a malformed DCC request from %C26$1%O.%010%C22*%O$tContents of packet: $2" = "-%C10-%C11-%O$t%C11$1%O から異常な DCC チャット要求を受け取りました。";
 
 /* nothing */
-"%C22*%O$tOffering%C26 $1%O to%C26 $2" = "-%C10-%C11-%O$t%C11$1 %C を %C11$2%Oへ提案しています...%O";
+"%C22*%O$tOffering%C26 $1%O to%C26 $2" = "%C22*%O$t%C26 $1%O を %C26 $2%O へ提案しています...";
 
 /* nothing */
-"%C22*%O$tNo such DCC offer." = "-%C10-%C11-%O$t そのような DCC 提案はありません。";
+"%C22*%O$tNo such DCC offer." = "%C22*%O$tそのような DCC 提案はありません。";
 
 /* nothing */
-"%C22*%O$tDCC RECV%C26 $2%O to%C26 $1%O aborted." = "";
+"%C22*%O$tDCC RECV%C26 $2%O to%C26 $1%O aborted." = "%C22*%O$tDCC RECV%C26 $2%O から%C26 $1%O を中断しました。";
 
 /* nothing */
 "%C22*%O$tDCC RECV%C26 $1%O from%C26 $3%O complete %C30[%C26$4%O cps%C30]%O." = "-%C10-%C11-%O$t%C11$1%Oの %C11$2%O への DCC 送信は %C14[%C11$3%O cps%C14]%O を完了。";
 
 /* nothing */
-"%C22*%O$tDCC RECV connection established to%C26 $1 %C30[%O$2%C30]" = "-%C10-%C11-%O$tDCC $1 の $4 %C11$2 %C14[%O$3%C14]%O への接続を確立しました。";
+"%C22*%O$tDCC RECV connection established to%C26 $1 %C30[%O$2%C30]" = "%C22*%O$t%C26 $1 %OへのDCC RECV 接続を確立しました%C30[%O$2%C30]%O。";
 
 /* nothing */
 "%C22*%O$tDCC RECV%C26 $1%O from%C26 $3%O failed ($4)." = "";
 
 /* nothing */
-"%C22*%O$tDCC RECV: Cannot open $1 for writing ($2)." = "-%C10-%C11-%O$tDCC RECV: 出力ファイル $1 を開けません - 中断します。";
+"%C22*%O$tDCC RECV: Cannot open $1 for writing ($2)." = "%C22*%O$tDCC RECV: $1 を書き込みのために開けません ($2)。";
 
 /* nothing */
-"%C22*%O$tThe file%C26 $1%C already exists, saving it as%C26 $2%O instead." = "-%C10-%C11-%O$t ファイル %C11$1%C は既に存在します. かわりに, このファイルを %C11$2%O へ保存します。";
+"%C22*%O$tThe file%C26 $1%C already exists, saving it as%C26 $2%O instead." = "%C22*%O$tファイル%C26 $1%C は既に存在するため、代わりに%C26 $2%Oとして保存しています。";
 
 /* nothing */
 "%C22*%O$t%C26$1 %Ohas requested to resume%C26 $2 %Cfrom%C26 $3%C." = "-%C10-%C11-%O$t%C11$1 %C は %C11$3%C から %C11$2 %C の再開を要求しました。";
@@ -524,7 +527,7 @@
 "%C22*%O$tDCC SEND%C26 $1%O to%C26 $2%O complete %C30[%C26$3%O cps%C30]%O." = "-%C10-%C11-%O$t%C11$1%O の %C11$2%O への DCC送信は %C14[%C11$3%O cps%C14]%O を完了。";
 
 /* nothing */
-"%C22*%O$tDCC SEND connection established to%C26 $1 %C30[%O$2%C30]" = "-%C10-%C11-%O$tDCC $1 の $4 %C11$2 %C14[%O$3%C14]%O への接続を確立しました。";
+"%C22*%O$tDCC SEND connection established to%C26 $1 %C30[%O$2%C30]" = "%C22*%O$t%C26 $1 %Oへの DCC SEND 接続を確立しました%C30[%O$2%C30]%O。";
 
 /* nothing */
 "%C22*%O$tDCC SEND%C26 $1%O to%C26 $2%O failed. $3" = "%C22*%O$tDCC SEND%C26 $1%O から %C26 $2%O への送信に失敗しました。 $3";
@@ -548,9 +551,6 @@
 "%C22*%O$tFound your IP: [$1]" = "%C22*%O$t 自分のIPを見付けました: [$1]";
 
 /* nothing */
-"$1$t$2" = "$1$t$2";
-
-/* nothing */
 "%O%C26$1%O added to ignore list." = "%O%C26$1%O 無視リストへ追加しました。";
 
 /* nothing */
@@ -572,25 +572,19 @@
 "%C22*%O$tCannot join%C26 %B$1 %O(Channel is invite only)." = "-%C10-%C11-%O$t%C11%B$1 %O は招待のみのチャンネルなため参加できません。";
 
 /* nothing */
-"%C22*%O$tYou have been invited to%C26 $1%O by%C26 $2%C (%C26$3%C)" = "-%C10-%C11-%O$t %C11$2%C から チャンネル %C11$1%C へ招待されました.(%C11$3%C)";
+"%C22*%O$tYou have been invited to%C26 $1%O by%C26 $2%C (%C26$3%C)" = "%C22*%O$t%C26 $2%C からチャンネル %C26 $1%O に招待されました(%C26$3%C)。";
 
 /* nothing */
 "%C19*%O$t%C19%B$1 %B($3) has joined $2" = "%C19*%O$t%C19%B$1 %B($3) は $2 へ参加しました。";
 
 /* nothing */
-"%C22*%O$tCannot join%C26 %B$1 %O(Requires keyword)." = "-%C10-%C11-%O$t%C11%B$1%O へ参加できません(キーワードが必要です)。";
+"%C22*%O$tCannot join%C26 %B$1 %O(Requires keyword)." = "%C22*%O$t%B$1 %O へ参加できません(キーワードが必要です)。";
 
 /* nothing */
-"%C21*%O$t%C21$1 has kicked $2 from $3 ($4%O%C21)" = "<%C10-%C11-%O$t$1 は $3 から $2 をキックしました. ($4%O)";
+"%C21*%O$t%C21$1 has kicked $2 from $3 ($4%O%C21)" = "%C21*%O$t%C21$1 は $3 から $2 をキックしました($4%O%C21)。";
 
 /* nothing */
-"%C22*%O$tYou have been killed by $1 ($2%O%C22)" = "-%C10-%C11-%O$t $1 によって殺されました. ($2%O)";
-
-/* nothing */
-"%C19>%O$1%C19<%O$t$2" = "%C19>%O$1%C19<%O$t$2";
-
-/* nothing */
-"%C16*%O$t$1%O" = "%C16*%O$t$1%O";
+"%C22*%O$tYou have been killed by $1 ($2%O%C22)" = "%C22*%O$t$1 によって殺されました($2%O%C22)。";
 
 /* nothing */
 "%C22*%O$t%C22MOTD Skipped." = "%C22*%O$t%C22 MOTD を飛ばしました。";
@@ -599,16 +593,13 @@
 "%C22*%O$t$1 already in use. Retrying with $2..." = "%C22*%O$t$1 は既に使用されています。$2 で再試行します...";
 
 /* nothing */
-"%C22*%O$tNickname already in use. Use /NICK to try another." = "%C22*%O$tニックはすでに使用されています。他を「/NICK」で指定してください。";
+"%C22*%O$tNickname already in use. Use /NICK to try another." = "%C22*%O$tニックはすでに使用されています。「/NICK」で他を指定してください。";
 
 /* nothing */
 "%C22*%O$tNo such DCC." = "%C22*%O$t そのような DCC はありません。";
 
 /* nothing */
 "%C22*%O$tNo process is currently running" = "%C22*%O$t現在は実行プロセスがありません。";
-
-/* nothing */
-"%C28-%C29$1%C28-%O$t$2" = "%C28-%C29$1%C28-%O$t$2";
 
 /* nothing */
 "$tNotify list is empty." = "$t通知リストの内容が空です。";
@@ -620,10 +611,10 @@
 "%C22*%O$t$1 users in notify list." = "%C22*%O$t$1 ユーザーが通知リストにいます。";
 
 /* nothing */
-"%C22*%O$tNotify: $1 is offline ($2)." = "%C22*%O$t 通知: $1 はオフラインです ($2)";
+"%C22*%O$tNotify: $1 is offline ($3)." = "%C22*%O$t通知: $1 はオフラインです($3)。";
 
 /* nothing */
-"%C22*%O$tNotify: $1 is online ($2)." = "C22*%O$t通知: $1 はオンラインです ($2)。";
+"%C22*%O$tNotify: $1 is online ($3)." = "C22*%O$t通知: $1 はオンラインです($3)。";
 
 /* nothing */
 "%C23*%O$t%C23$1 (%O%C23$2) has left $3" = "%C23*%O$t%C23$1 (%O%C23$2) は $3 から離れました。";
@@ -638,12 +629,6 @@
 "%C22*%O$tNo ping reply for $1 seconds, disconnecting." = "%C22*%O$tPing 応答が $1 秒間ありません, 切断。";
 
 /* nothing */
-"%C28*%C29$3$1%C28*$t%O$2" = "%C28*%C29$3$1%C28*$t%O$2";
-
-/* nothing */
-"%C18%H<%H$3$1%H>%H%O$t$2" = "%C18%H<%H$3$1%H>%H%O$t$2";
-
-/* nothing */
 "%C22*%O$tA process is already running" = "%C22*%O$tプロセスは既に実行しています。";
 
 /* nothing */
@@ -656,25 +641,22 @@
 "%C28-%C29$1/Wallops%C28-%O$t$2" = "%C28-%C29$1/Wallops%C28-%O$t$2";
 
 /* nothing */
-"%C22*%O$tLooking up IP number for%C26 $1%O..." = "-%C10-%C11-%O$t%C11$1%O のIPアドレスを探しています..";
+"%C22*%O$tLooking up IP number for%C26 $1%O..." = "%C22*%O$t %C26 $1%O の IP アドレスを検索しています...";
 
 /* nothing */
 "%C22*%O$t%C22Connected." = "%C22*%O$t%C22接続しました。";
 
 /* nothing */
-"%C22*%O$t$1" = "%C22*%O$t$1";
-
-/* nothing */
-"%C22*%O$t%C22Looking up $1" = "-%C10-%C11-%O$t%C11$1%C を探しています..";
+"%C22*%O$t%C22Looking up $1" = "%C22*%O$t%C22$1 を検索しています...";
 
 /* nothing */
 "%C22*%O$tStopped previous connection attempt (pid=$1)" = "-%C10-%C11-%O$t 以前の接続試行が中止されました. (PID=$1)";
 
 /* nothing */
-"%C29*%O$t%C29Topic for $1%C %C29is: $2" = "-%C10-%C11-%O$t %C11$1%C のトピックは %C11$2%O です。";
+"%C29*%O$t%C29Topic for $1%C %C29is: $2" = "%C29*%O$t%C29 $1 のトピック%C %C29: $2";
 
 /* nothing */
-"%C22*%O$t$1 has changed the topic to: $2" = "-%C10-%C11-%O$t$1はトピックを変更しました: $2%O";
+"%C22*%O$t$1 has changed the topic to: $2" = "%C22*%O$t$1 がトピックを変更しました: $2";
 
 /* nothing */
 "%C29*%O$t%C29Topic for $1%C %C29set by $2%C %C29at $3" = "-%C10-%C11-%O$t%C11$3%O に, %C11$1%C のトピックが %C11$2%C によって設定されました。";
@@ -683,10 +665,10 @@
 "%C22*%O$tUnknown host. Maybe you misspelled it?" = "%C22*%O$t不明なホストです。スペルミスしていませんか?";
 
 /* nothing */
-"%C22*%O$tCannot join%C26 %B$1 %O(User limit reached)." = "-%C10-%C11-%O$t%C11%B$1%O へ参加できません(ユーザー数が上限を越えました)。";
+"%C22*%O$tCannot join%C26 %B$1 %O(User limit reached)." = "%C22*%O$t%C26 %B$1 %O に参加できません (ユーザー数の上限に到達しました)。";
 
 /* nothing */
-"%C22*%O$t%C26Users on $1:%C $2" = "-%C10-%C11-%O$t%C11$1 のユーザー:%C $2";
+"%C22*%O$t%C26Users on $1:%C $2" = "%C22*%O$t%C26$1 のユーザー:%C $2";
 
 /* nothing */
 "%C22*%O$t%C28[%O$1%C28] %O$2%C27 $3" = "%C22*%O$t%C28[%O$1%C28] %O$2%C27 $3";
@@ -716,22 +698,22 @@
 "%C19*%O$t%C19Now talking on $2" = "%C19*%O$t%C19今 $2 で会話中です。";
 
 /* nothing */
-"%C23*$tYou have been kicked from $2 by $3 ($4%O%C23)" = "-%C10-%C11-%O$t $3 により チャンネル $2 からキックされました ($4%O)";
+"%C23*$tYou have been kicked from $2 by $3 ($4%O%C23)" = "%C23*$t$3 により、チャンネル $2 からキックされました ($4%O%C23)";
 
 /* nothing */
 "%C23*$tYou have left channel $3" = "%C23*$t チャンネル $3 から離れました。";
 
 /* nothing */
-"%C23*$tYou have left channel $3 (%O%C23%B%B$4%O%C23)" = "-%C10-%C11-%O$t あなたはチャンネル $3 %C14(%O$4%C14)%O から離れました。";
+"%C23*$tYou have left channel $3 (%O%C23%B%B$4%O%C23)" = "%C23*$tチャンネル $3 から退室しました (%O%C23%B%B$4%O%C23)。";
 
 /* nothing */
 "%C22*%O$tYou've invited%C26 $1%O to%C26 $2%O (%C26$3%O)" = "-%C10-%C11-%O$t%C11$2%C に %C11$1%C を招待しています (%C11$3%C)";
 
 /* nothing */
-"%C31%H<%H$4$1%H>%H%O%C30$t$2" = "%C31%H<%H$4$1%H>%H%O%C30$t$2";
+"%C22*%O$tYou are now known as $2" = "%C22*%O$t あなたは $2 にニックを変更しました。";
 
 /* nothing */
-"%C22*%O$tYou are now known as $2" = "%C22*%O$t あなたは $2 にニックを変更しました。";
+"Loaded log from" = "次のログを読み込みました:";
 
 /* nothing */
 "**** ENDING LOGGING AT %s\n" = "**** %s でログ記録終了\n";
@@ -767,10 +749,10 @@
 "Mode char" = "モード文字";
 
 /* nothing */
-"The text" = "テキスト";
+"Identified text" = "識別テキスト";
 
 /* nothing */
-"Identified text" = "識別テキスト";
+"The text" = "テキスト";
 
 /* nothing */
 "The message" = "メッセージ";
@@ -974,6 +956,9 @@
 "Server Name" = "サーバー名";
 
 /* nothing */
+"Raw Numeric or Identifier" = "";
+
+/* nothing */
 "Nick of person who invited you" = "自分を招待したニック";
 
 /* nothing */
@@ -986,16 +971,13 @@
 "Nick being tried" = "次に試行するニック";
 
 /* nothing */
-"Error" = "エラー";
-
-/* nothing */
 "IP" = "IPアドレス";
 
 /* nothing */
 "Port" = "ポート";
 
 /* nothing */
-"PID" = "PID";
+"Network" = "ネットワーク";
 
 /* nothing */
 "Modes string" = "モード文字列";
@@ -1088,7 +1070,7 @@
 "Connection reset by peer" = "peerによって接続がリセットされました。";
 
 /* nothing */
-"Ascension Island" = "ココス諸島";
+"Ascension Island" = "アセンション島";
 
 /* nothing */
 "Andorra" = "アンドラ";
@@ -1142,7 +1124,7 @@
 "Aruba" = "アルーバ";
 
 /* nothing */
-"Aland Islands" = "フォークランド諸島";
+"Aland Islands" = "オーランド諸島";
 
 /* nothing */
 "Azerbaijan" = "アゼルバイジャン";
@@ -1226,7 +1208,7 @@
 "Switzerland" = "スイス";
 
 /* nothing */
-"Cote d'Ivoire" = "コートジボアール";
+"Cote d'Ivoire" = "コートジボワール共和国";
 
 /* nothing */
 "Cook Islands" = "クック諸島";
@@ -1376,7 +1358,7 @@
 "Greece" = "ギリシャ";
 
 /* nothing */
-"S. Georgia and S. Sandwich Isles" = "南ジョージア・南サンドイッチ諸島";
+"S. Georgia and S. Sandwich Isles" = "南ジョージア島・南サンドイッチ諸島";
 
 /* nothing */
 "Guatemala" = "グァテマラ";
@@ -1667,7 +1649,7 @@
 "Puerto Rico" = "プエルトリコ";
 
 /* nothing */
-"Palestinian Territory" = "英領インド洋領域";
+"Palestinian Territory" = "パレスチナ領域";
 
 /* nothing */
 "Portugal" = "ポルトガル";
@@ -1814,9 +1796,6 @@
 "United Kingdom" = "イギリス";
 
 /* nothing */
-"US Minor Outlying Islands" = "米領マイナーアウトライイング諸島";
-
-/* nothing */
 "United States of America" = "アメリカ合衆国";
 
 /* nothing */
@@ -1874,16 +1853,19 @@
 "Unknown" = "不明";
 
 /* nothing */
-"Open Dialog Window" = "ダイアログウィンドウを開く";
+"_Open Dialog Window" = "ダイアログウィンドウを開く(_O)";
 
 /* nothing */
-"Send a File" = "ファイル送信";
+"_Send a File" = "ファイル送信(_S)";
 
 /* nothing */
-"User Info (WHOIS)" = "ユーザー情報 (WHOIS)";
+"_User Info (WhoIs)" = "ユーザー情報 (WhoIs) (_U)";
 
 /* nothing */
-"Operator Actions" = "オペレーター操作";
+"_Add to Friends List" = "友達一覧に追加する(_A)";
+
+/* nothing */
+"O_perator Actions" = "オペレーター操作(_P)";
 
 /* nothing */
 "Give Ops" = "なるとを与える";
@@ -1908,87 +1890,6 @@
 
 /* nothing */
 "KickBan" = "キックバン";
-
-/* nothing */
-"Direct client-to-client" = "ダイレクトにクライアントからクライアント";
-
-/* nothing */
-"Send File" = "ファイル送信";
-
-/* nothing */
-"Offer Chat" = "チャットの依頼";
-
-/* nothing */
-"Abort Chat" = "Chat について";
-
-/* nothing */
-"Version" = "バージョン";
-
-/* nothing */
-"Userinfo" = "ユーザー情報";
-
-/* nothing */
-"Clientinfo" = "クライアント情報";
-
-/* nothing */
-"Ping" = "Ping";
-
-/* nothing */
-"Time" = "時間";
-
-/* nothing */
-"Finger" = "Finger";
-
-/* nothing */
-"Oper" = "Oper";
-
-/* nothing */
-"Kill this user" = "このユーザーをkill";
-
-/* nothing */
-"Mode" = "モード";
-
-/* nothing */
-"Give Half-Ops" = "ハーフなるとを与える";
-
-/* nothing */
-"Take Half-Ops" = "ハーフなるとを奪う";
-
-/* nothing */
-"Ignore" = "無視";
-
-/* nothing */
-"Ignore User" = "無視するユーザー";
-
-/* nothing */
-"UnIgnore User" = "無視解除するユーザー";
-
-/* nothing */
-"Info" = "情報";
-
-/* nothing */
-"Who" = "Who";
-
-/* nothing */
-"WhoIs" = "WhoIs";
-
-/* nothing */
-"DNS Lookup" = "DNS 検索";
-
-/* nothing */
-"Trace" = "トレース";
-
-/* nothing */
-"UserHost" = "ユーザーホスト";
-
-/* nothing */
-"External" = "外部";
-
-/* nothing */
-"Traceroute" = "Traceroute";
-
-/* nothing */
-"Telnet" = "Telnet";
 
 /* nothing */
 "Leave Channel" = "チャンネルを離れる";
@@ -2027,6 +1928,9 @@
 "Dialog" = "ダイアログ";
 
 /* nothing */
+"WhoIs" = "WhoIs";
+
+/* nothing */
 "Send" = "送信";
 
 /* nothing */
@@ -2036,7 +1940,31 @@
 "Clear" = "消去";
 
 /* nothing */
-"About XChat" = "XChat について";
+"Ping" = "Ping";
+
+/* nothing */
+"Couldn't connect to session bus" = "セッションバスに接続できません";
+
+/* nothing */
+"Failed to complete NameHasOwner" = "NameHasOwner を完了していません";
+
+/* nothing */
+"Failed to complete Command" = "コマンドを完了していません";
+
+/* nothing */
+"remote access" = "リモートアクセス";
+
+/* nothing */
+"plugin for remote access using DBUS" = "DBUS を用いてリモートアクセスのプラグイン";
+
+/* nothing */
+"Couldn't connect to session bus: %s\n" = "セッションバスに接続できません : %s\n";
+
+/* nothing */
+"Failed to acquire %s: %s\n" = "%s の取得に失敗しました: %s\n";
+
+/* nothing */
+"About " = "XChat について(_A)";
 
 /* nothing */
 "A multiplatform IRC Client" = "マルチプラットフォーム IRC クライアント";
@@ -2049,6 +1977,9 @@
 
 /* nothing */
 "You must select some bans." = "いくつかのバンを選ばなければなりません。";
+
+/* nothing */
+"Are you sure you want to remove all bans in %s?" = "%s のすべての禁止を削除しますか?";
 
 /* nothing */
 "Mask" = "マスク";
@@ -2066,7 +1997,7 @@
 "XChat: Ban List (%s)" = "XChat: バン一覧 (%s)";
 
 /* nothing */
-"Unban" = "バン解除";
+"Remove" = "削除";
 
 /* nothing */
 "Crop" = "";
@@ -2075,67 +2006,67 @@
 "Refresh" = "再描画";
 
 /* nothing */
-"User and Channel Statistics: %d/%d Users on %d/%d Channels" = "ユーザーとチャンネルの統計: %d/%d ユーザーが %d/%d チャンネルにいます。";
-
-/* nothing */
-"I can't save an empty list!" = "内容が空のリストは保存できません!";
+"Displaying %d/%d users on %d/%d channels." = "ユーザーとチャンネルの統計: %d/%d ユーザーが %d/%d チャンネルにいます。";
 
 /* nothing */
 "Select an output filename" = "出力ファイル名の選択";
 
 /* nothing */
+"_Join Channel" = "チャンネルへ参加(_J)";
+
+/* nothing */
+"_Copy Channel Name" = "チャンネル名のコピー(_C)";
+
+/* nothing */
+"Copy _Topic Text" = "トピックテキストのコピー(_T)";
+
+/* nothing */
 "XChat: Channel List (%s)" = "XChat: チャンネル一覧 (%s)";
 
 /* nothing */
-"List display options:" = "ディスプレイオプションを表示:";
+"_Search" = "検索(_S)";
 
 /* nothing */
-"Minimum Users:" = "最小ユーザー数:";
+"_Download List" = "ダウンロード一覧(_D)";
 
 /* nothing */
-"Maximum Users:" = "最大ユーザー数:";
+"Save _List..." = "保存一覧(_L)...";
 
 /* nothing */
-"Pattern Match:" = "パターンマッチ:";
+"Show only:" = "表示のみ:";
 
 /* nothing */
-"Regex Match:" = "正規表現マッチ:";
+"channels with" = "チャンネル";
 
 /* nothing */
-"Apply Match to:" = "";
+"to" = "";
 
 /* nothing */
-"Apply" = "適用";
+"users." = "ユーザーです。";
 
 /* nothing */
-"Refresh the list" = "最新情報に更新";
+"Look in:" = "";
 
 /* nothing */
-"Save the list" = "リストを保存";
+"Channel name" = "チャンネル名";
 
 /* nothing */
-"Join Channel" = "チャンネルへ参加";
+"Search type:" = "検索の種類:";
+
+/* nothing */
+"Simple Search" = "簡易検索";
+
+/* nothing */
+"Pattern Match (Wildcards)" = "パターンマッチ (ワイルドカード):";
+
+/* nothing */
+"Regular Expression" = "正規表現";
+
+/* nothing */
+"Find:" = "検索語:";
 
 /* nothing */
 "Send file to %s" = "%s へ送信するファイル名の選択";
-
-/* nothing */
-"None" = "なし";
-
-/* nothing */
-"File" = "ファイル";
-
-/* nothing */
-"To" = "宛先";
-
-/* nothing */
-"Address" = "アドレス";
-
-/* nothing */
-"Started" = "開始時間";
-
-/* nothing */
-"Speed limit" = "速度制限";
 
 /* nothing */
 "That file is not resumable." = "ファイルはリジュームできません。";
@@ -2144,19 +2075,40 @@
 "Cannot access file: %s\n%s.\nResuming not possible." = "ファイルにアクセスできません: %s\n%s.\nおそらく継続できません。";
 
 /* nothing */
-"File in download directory is larger than file offered. Resuming not possible." = "";
+"File in download directory is larger than file offered. Resuming not possible." = "ダウンロードディレクトリのファイルは送信を打診されたファイルより大きいです。おそらく再開できません。";
 
 /* nothing */
 "Cannot resume the same file from two people." = "2 人から同じファイルを再開できません。";
 
 /* nothing */
+"XChat: Uploads and Downloads" = "XChat: アップロードとダウンロード";
+
+/* nothing */
 "Status" = "状態";
+
+/* nothing */
+"File" = "ファイル";
 
 /* nothing */
 "ETA" = "残り";
 
 /* nothing */
-"XChat: File Receive List" = "XChat: ファイル受信一覧";
+"Both" = "両方";
+
+/* nothing */
+"Uploads" = "アップロード";
+
+/* nothing */
+"Downloads" = "ダウンロード";
+
+/* nothing */
+"Details" = "詳細";
+
+/* nothing */
+"File:" = "ファイル:";
+
+/* nothing */
+"Address:" = "アドレス:";
 
 /* nothing */
 "Abort" = "中断";
@@ -2168,31 +2120,10 @@
 "Resume" = "再開";
 
 /* nothing */
-"Open" = "開く";
-
-/* nothing */
-"Ack" = "確認";
-
-/* nothing */
-"XChat: Uploads und Downloads" = "XChat: アップロードとダウンロード";
-
-/* nothing */
-"Downloads" = "ダウンロード";
-
-/* nothing */
-"Uploads" = "アップロード";
-
-/* nothing */
-"Details" = "詳細";
-
-/* nothing */
 "Open Folder..." = "フォルダーを開く...";
 
 /* nothing */
-"XChat: File Send List" = "XChat: ファイル送信一覧";
-
-/* nothing */
-"To/From" = "宛先/送信元";
+"XChat: DCC Chat List" = "XChat: DCC チャット一覧";
 
 /* nothing */
 "Recv" = "受取";
@@ -2202,9 +2133,6 @@
 
 /* nothing */
 "Start Time" = "開始時間";
-
-/* nothing */
-"XChat: DCC Chat List" = "XChat: DCC チャット一覧";
 
 /* nothing */
 "*NEW*" = "*新規*";
@@ -2259,6 +2187,18 @@
 
 /* nothing */
 "Open an irc://server:port/channel URL" = "URL irc://server:port/channel を開く";
+
+/* nothing */
+"Execute command:" = "コマンド実行:";
+
+/* nothing */
+"Open URL or execute command in an existing XChat" = "既存の Xchat でコマンドの実行、もしくは URL を開く";
+
+/* nothing */
+"Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "小さくします。レベル 0=通常 1=アイコン化 2=トレイ";
+
+/* nothing */
+"level" = "レベル";
 
 /* nothing */
 "Show version information" = "バージョン情報を表示する";
@@ -2468,7 +2408,22 @@
 "This server still has %d channels or dialogs associated with it. Close them all?" = "";
 
 /* nothing */
-"No other tabs open, quit xchat?" = "その他のタブを開きません。xchat を終了しますか?";
+"Quit XChat?" = "XChat を終了しますか?";
+
+/* nothing */
+"Don't ask next time." = "次回表示しませんｎ。";
+
+/* nothing */
+"You are connected to %i IRC networks." = "IRC ネットワーク %i に接続しました。";
+
+/* nothing */
+"Are you sure you want to quit?" = "本当に終了しますか?";
+
+/* nothing */
+"Some file transfers are still active." = "いくつかのファイル転送はまだ活動中です。";
+
+/* nothing */
+"_Minimize to Tray" = "タスクトレイへ最小化(_M)";
 
 /* nothing */
 "Insert Attribute or Color Code" = "色コードか属性を挿入する";
@@ -2489,25 +2444,34 @@
 "Colors 8-15" = "色 8 から 15";
 
 /* nothing */
-"Beep on message" = "メッセージでビープ音を鳴らす";
+"_Settings" = "設定(_S)";
 
 /* nothing */
-"Show join/part messages" = "参加/退出メッセージを表示";
+"_Log to Disk" = "ディスクへ記録する(_L)";
 
 /* nothing */
-"Color paste" = "色貼り付け";
+"_Reload Scrollback" = "";
 
 /* nothing */
-"Go to" = "";
+"_Hide Join/Part Messages" = "参加と退出メッセージを隠す(_H)";
 
 /* nothing */
-"_Close Tab" = "タブを閉じる(_C)";
+"_Extra Alerts" = "外部アラート(_E)";
 
 /* nothing */
-"_Detach Tab" = "タブを外す(_D)";
+"Beep on _Message" = "メッセージでビープ音を鳴らす(_M)";
 
 /* nothing */
-"Some file transfers still active, quit xchat?" = "いくつかのファイル転送はまだ活動中です。xchat を終了しますか?";
+"Blink Tray _Icon" = "トレイアイコンを点滅する(_I)";
+
+/* nothing */
+"Blink Task _Bar" = "タスクバーを点滅する(_B)";
+
+/* nothing */
+"_Detach" = "タブを外す(_D)";
+
+/* nothing */
+"_Close" = "閉じる(_C)";
 
 /* nothing */
 "User limit must be a number!\n" = "ユーザー制限は数字でなければなりません!\n";
@@ -2564,13 +2528,16 @@
 "Server:" = "サーバー:";
 
 /* nothing */
-"Away Msg:" = "離席メッセージ:";
-
-/* nothing */
 "%u minutes ago" = "%u 分前";
 
 /* nothing */
 "Last Msg:" = "最後のメッセージ: %s";
+
+/* nothing */
+"Away Msg:" = "離席メッセージ:";
+
+/* nothing */
+"%d nicks selected." = "%d のニックを選択しました。";
 
 /* nothing */
 "The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "";
@@ -2582,10 +2549,19 @@
 "Copy Selected Link" = "選択したリンクをコピーする";
 
 /* nothing */
+"Join Channel" = "チャンネルへ参加";
+
+/* nothing */
 "Part Channel" = "チャンネルを離れる";
 
 /* nothing */
 "Cycle Channel" = "チャンネルをサイクルする";
+
+/* nothing */
+"_Remove from Favorites" = "お気に入りから咲く尾jする(_R)";
+
+/* nothing */
+"_Add to Favorites" = "お気に入りへ追加する(_A)";
 
 /* nothing */
 "XChat: User menu" = "XChat: ユーザーメニュー";
@@ -2597,16 +2573,16 @@
 "Retrieve channel list..." = "チャンネルリストの取得...";
 
 /* nothing */
-"User Commands - Special codes:\n\n%c  =  current channel\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "ユーザーコマンド - 特殊コード: \n\n%c  =  現在のチャンネル\n%m  =  マシン情報\n%n  =  あなたのニック\n%t  =  時間/日付\n%v  =  xchat のバージョン\n%2  =  単語 2\n%3  =  単語 3\n&2  =  単語 2 からファイルの最後まで\n&3  =  単語 3 からファイルの最後まで\n\n例:\n/cmd john hello\n\n%2 は「john」になるでしょう\n&2 は「こんにちは john」です。";
+"User Commands - Special codes:\n\n%c  =  current channel\n%e  =  current network name\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "ユーザーコマンド - 特殊コード: \n\n%c  =  現在のチャンネル\n%e  =  現在のネットワーク名\n%m  =  マシン情報\n%n  =  あなたのニック\n%t  =  時間/日付\n%v  =  xchat のバージョン\n%2  =  単語 2\n%3  =  単語 3\n&2  =  単語 2 から行の最後まで\n&3  =  単語 3 から行の最後まで\n\n例:\n/cmd john hello\n\n%2 は「john」です。\n&2 は「john hello」です。";
 
 /* nothing */
-"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "ユーザー一覧ボタン - 特殊コード:\n\n%a  =  すべての選択済みニック\n%c  =  現在のチャンネル\n%h  =  選択済ニックのホスト名\n%m  =  マシン情報\n%n  =  あなたのニック\n%s  =  選択済ニック\n%t  =  日付/時間\n\n";
+"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "ユーザー一覧ボタン - 特殊コード:\n\n%a  =  すべての選択されたニック\n%c  =  現在のチャンネル\n%e  =  現在のネットワーク名\n%h  =  選択されたニックのホスト名\n%m  =  マシン情報\n%n  =  あなたのニック\n%s  =  選択されたニック\n%t  =  日付/時間\n";
 
 /* nothing */
-"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "ダイアログボタン - 特殊コード:\n\n%a  =  すべての選択済ニック\n%c  =  現在のチャンネル\n%h  =  選択済ニックのホスト名\n%m  =  マシン情報\n%n  =  あなたのニック\n%s  =  選択済ニック\n%t  =  時間/日付\n";
+"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "ダイアログボタン - 特殊コード:\n\n%a  =  すべての選択されたニック\n%c  =  現在のチャンネル\n%e  =  現在のネットワーク名\n%h  =  選択されたニックのホスト名\n%m  =  マシン情報\n%n  =  あなたのニック\n%s  =  選択されたニック\n%t  =  時間/日付\n";
 
 /* nothing */
-"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "CTCP 返信 - 特殊コード:\n\n%d  =  データ (the whole ctcp)\n%m  =  マシン情報\n%s  =  ctcp を送ったニック\n%t  =  時間/日付\n%2  =  単語 2\n%3  =  単語 3\n&2  =  単語 2 から行末\n&3  =  単語 3 から行末\n\n";
+"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%e  =  current network name\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "CTCP 返信 - 特殊コード:\n\n%d  =  データ (the whole ctcp)\n%e  =  現在のネットワーク名\n%m  =  マシン情報\n%s  =  ctcp を送ったニック\n%t  =  時間/日付\n%2  =  単語 2\n%3  =  単語 3\n&2  =  単語 2 から行末\n&3  =  単語 3 から行末\n\n";
 
 /* nothing */
 "URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of XChat" = "";
@@ -2666,19 +2642,22 @@
 "_View" = "閲覧(_V)";
 
 /* nothing */
-"_Menubar" = "メニューバー(_M)";
+"_Menu Bar" = "メニューバー(_M)";
 
 /* nothing */
-"_Topicbar" = "トピックバー(_T)";
+"_Topic Bar" = "トピックバー(_T)";
 
 /* nothing */
-"_Userlist Buttons" = "ユーザー一覧のボタン";
+"_User List" = "ユーザー一覧(_U)";
+
+/* nothing */
+"U_serlist Buttons" = "ユーザー一覧のボタン(_S)";
 
 /* nothing */
 "M_ode Buttons" = "モードボタン(_O)";
 
 /* nothing */
-"_Layout" = "レイアウト(_L)";
+"_Channel Switcher" = "チャンネルリスト...";
 
 /* nothing */
 "_Tabs" = "タブ(_T)";
@@ -2696,9 +2675,6 @@
 "Graph" = "グラフ";
 
 /* nothing */
-"Both" = "両方";
-
-/* nothing */
 "_Server" = "サーバー(_S)";
 
 /* nothing */
@@ -2706,6 +2682,12 @@
 
 /* nothing */
 "_Reconnect" = "再接続する(_R)";
+
+/* nothing */
+"Join a Channel..." = "チャンネルへ参加...";
+
+/* nothing */
+"List of Channels..." = "チャンネルの一覧...";
 
 /* nothing */
 "Marked Away" = "席を離れる";
@@ -2756,9 +2738,6 @@
 "Ban List..." = "バンリスト...";
 
 /* nothing */
-"Channel List..." = "チャンネルリスト...";
-
-/* nothing */
 "Character Chart..." = "文字集合...";
 
 /* nothing */
@@ -2768,10 +2747,10 @@
 "File Transfers..." = "ファイル転送...";
 
 /* nothing */
-"Ignore List..." = "無視一覧...";
+"Friends List..." = "友達一覧...";
 
 /* nothing */
-"Notify List..." = "通知一覧...";
+"Ignore List..." = "無視一覧...";
 
 /* nothing */
 "Plugins and Scripts..." = "プラグインとスクリプト...";
@@ -2801,19 +2780,13 @@
 "_Contents" = "コンテンツ(_C)";
 
 /* nothing */
+"Check for updates" = "更新の確認";
+
+/* nothing */
 "_About" = "XChat について(_A)";
 
 /* nothing */
-"_Attach Window" = "ウィンドウ(_W)";
-
-/* nothing */
-"_Close Window" = "ウィンドウを閉じる(_C)";
-
-/* nothing */
-"User" = "ユーザー";
-
-/* nothing */
-"Server" = "サーバー";
+"_Attach" = "タブをつける(_A)";
 
 /* nothing */
 "Last Seen" = "最近の出会い";
@@ -2825,19 +2798,85 @@
 "Never" = "一度もなし";
 
 /* nothing */
+"%d minutes ago" = "%d 分前";
+
+/* nothing */
 "Online" = "オンライン";
 
 /* nothing */
 "Enter nickname to add:" = "新ニックネームを入力:";
 
 /* nothing */
-"XChat: Notify List" = "XChat: 通知一覧";
+"Notify on these networks:" = "これらのネットワークに通知:";
 
 /* nothing */
-"Remove" = "削除";
+"Comma separated list of networks is accepted." = "カンマ区切りのネットワーク一覧を受け付けました。";
+
+/* nothing */
+"XChat: Friends List" = "XChat: 友達一覧";
 
 /* nothing */
 "Open Dialog" = "ダイアログウィンドウを開く";
+
+/* nothing */
+"Cannot find 'notify-send' to open balloon alerts.\nPlease install libnotify." = "";
+
+/* nothing */
+"XChat: Connected to %u networks and %u channels" = "Xchat: %u のネットワーク、%u のチャンネルに接続しています";
+
+/* nothing */
+"_Restore" = "復元(_R)";
+
+/* nothing */
+"_Hide" = "隠す(_H)";
+
+/* nothing */
+"_Blink on" = "点滅有効(_B)";
+
+/* nothing */
+"Channel Message" = "チャンネルメッセージ";
+
+/* nothing */
+"Private Message" = "プライベートメッセージ";
+
+/* nothing */
+"Highlighted Message" = "ハイライトメッセージ";
+
+/* nothing */
+"_Change status" = "チャンネルの状態(_C)";
+
+/* nothing */
+"_Away" = "離席(_A)";
+
+/* nothing */
+"_Back" = "戻る(_B)";
+
+/* nothing */
+"XChat: Highlighted message from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u highlighted messages, latest from: %s (%s)" = "";
+
+/* nothing */
+"XChat: New public message from: %s (%s)" = "Xchat: 新しい公開メッセージ: %s (%s)";
+
+/* nothing */
+"XChat: %u new public messages." = "XChat: %u 個の新しい公開メッセージです。";
+
+/* nothing */
+"XChat: Private message from: %s (%s)" = "Xchat: プライベートメッセージ 送信元: %s (%s)";
+
+/* nothing */
+"XChat: %u private messages, latest from: %s (%s)" = "XChat: %u 件のプライベートメッセージ 最新の送信元: %s (%s)";
+
+/* nothing */
+"XChat: File offer from: %s (%s)" = "Xchat: ファイル送信の打診: %s (%s)";
+
+/* nothing */
+"XChat: %u file offers, latest from: %s (%s)" = "Xchat: %u 個のファイル送信の打診、最新の打診: %s (%s)";
+
+/* nothing */
+"Version" = "バージョン";
 
 /* nothing */
 "Description" = "詳細";
@@ -2849,13 +2888,10 @@
 "XChat: Plugins and Scripts" = "XChat プラグインとスクリプト";
 
 /* nothing */
-"_Load..." = "ロード...(_L)";
+"_Load..." = "読み込み...(_L)";
 
 /* nothing */
-"_UnLoad" = "アンロード(_U)";
-
-/* nothing */
-"_Close" = "閉じる(_C)";
+"_UnLoad" = "読み込みの破棄(_U)";
 
 /* nothing */
 "Save As..." = "別名で保存...";
@@ -2876,9 +2912,6 @@
 "XChat: Search" = "XChat: 検索";
 
 /* nothing */
-"Find:" = "検索語:";
-
-/* nothing */
 "_Match case" = "";
 
 /* nothing */
@@ -2892,6 +2925,27 @@
 
 /* nothing */
 "Really remove network \"%s\" and all its servers?" = "本当にネットワーク \"%s\" とそのすべてのサーバーを削除しますか?";
+
+/* nothing */
+"#channel" = "#channel";
+
+/* nothing */
+"XChat: Favorite Channels (Auto-Join List)" = "XChat: お気に入りチャンネル一覧 (自動参加一覧)";
+
+/* nothing */
+"These channels will be joined whenever you connect to %s." = "";
+
+/* nothing */
+"Key (Password)" = "鍵 (パスワード)";
+
+/* nothing */
+"_Edit" = "編集(_E)";
+
+/* nothing */
+"%s has been removed." = "%s を削除しました。";
+
+/* nothing */
+"%s has been added." = "%s を追加しました。";
 
 /* nothing */
 "User name and Real name cannot be left blank." = "ユーザー名と本名は空にできません。";
@@ -2933,7 +2987,7 @@
 "Auto connect to this network at startup" = "起動したらこのネットワークに自動接続";
 
 /* nothing */
-"Use a proxy server" = "プロキシサーバーを使う";
+"Bypass proxy server" = "プロキシサーバーを通さない";
 
 /* nothing */
 "Use SSL for all the servers on this network" = "このネットワークのすべてのサーバーへは SSL を使う";
@@ -2942,7 +2996,7 @@
 "Accept invalid SSL certificate" = "不正な証明を受け入れる";
 
 /* nothing */
-"C_hannels to join:" = "チャンネルに参加(_H):";
+"_Favorite channels:" = "お気に入りのチャンネル(_F):";
 
 /* nothing */
 "Channels to join, separated by commas, but not spaces!" = "参加するチャンネルをカンマ(半角空白じゃない!)で区切って入力する";
@@ -2969,9 +3023,6 @@
 "Character set:" = "文字集合:";
 
 /* nothing */
-"_Edit" = "編集(_E)";
-
-/* nothing */
 "XChat: Network List" = "XChat: ネットワーク一覧";
 
 /* nothing */
@@ -2991,6 +3042,9 @@
 
 /* nothing */
 "_Sort" = "ソート(_S)";
+
+/* nothing */
+"Sorts the network list in alphabetical order. Use SHIFT-UP and SHIFT-DOWN keys to move a row." = "";
 
 /* nothing */
 "C_onnect" = "接続(_O)";
@@ -3053,6 +3107,12 @@
 "See strftime manpage for details." = "詳細は strftime の man ページを参照してください。";
 
 /* nothing */
+"A-Z" = "昇順";
+
+/* nothing */
+"Last-spoke order" = "";
+
+/* nothing */
 "Input box" = "入力ボックス";
 
 /* nothing */
@@ -3071,6 +3131,9 @@
 "Nick completion suffix:" = "ニックの補完接頭語:";
 
 /* nothing */
+"Nick completion sorted:" = "ニックの補完接頭語:";
+
+/* nothing */
 "Input Box Codes" = "入力ボックスコード";
 
 /* nothing */
@@ -3083,9 +3146,6 @@
 "A-Z, Ops first" = "昇順, 最初になると";
 
 /* nothing */
-"A-Z" = "昇順";
-
-/* nothing */
 "Z-A, Ops last" = "降順, 最後になると";
 
 /* nothing */
@@ -3095,16 +3155,37 @@
 "Unsorted" = "ソートしない";
 
 /* nothing */
+"Left (Upper)" = "左 (上)";
+
+/* nothing */
+"Left (Lower)" = "左 (下)";
+
+/* nothing */
+"Right (Upper)" = "右 (上)";
+
+/* nothing */
+"Right (Lower)" = "右 (下)";
+
+/* nothing */
+"Top" = "上部";
+
+/* nothing */
+"Bottom" = "ボタン";
+
+/* nothing */
+"Hidden" = "隠す";
+
+/* nothing */
 "User List" = "ユーザーリスト";
 
 /* nothing */
 "Show hostnames in user list" = "ユーザーリストのホスト名を表示する";
 
 /* nothing */
-"Resizable user list" = "ユーザーリストの幅を調節可能にする";
+"User list sorted by:" = "ユーザーリストのソート基準:";
 
 /* nothing */
-"User list sorted by:" = "ユーザーリストのソート基準:";
+"Show user list at:" = "ユーザーリストを表示/隠す";
 
 /* nothing */
 "Away tracking" = "離席追跡";
@@ -3119,28 +3200,10 @@
 "Action Upon Double Click" = "ダブルクリックでの動作";
 
 /* nothing */
-"Execute command:" = "コマンド実行:";
-
-/* nothing */
 "Windows" = "ウィンドウ";
 
 /* nothing */
 "Tabs" = "タブ";
-
-/* nothing */
-"Bottom" = "ボタン";
-
-/* nothing */
-"Top" = "上部";
-
-/* nothing */
-"Left" = "左端";
-
-/* nothing */
-"Right" = "右端";
-
-/* nothing */
-"Hidden" = "隠す";
 
 /* nothing */
 "Always" = "常に";
@@ -3149,31 +3212,37 @@
 "Only requested tabs" = "要求があったタブのみ";
 
 /* nothing */
+"Tree" = "ツリー";
+
+/* nothing */
+"Switcher type:" = "";
+
+/* nothing */
 "Open an extra tab for server messages" = "サーバーからのメッセージは別のタブを開く";
 
 /* nothing */
 "Open an extra tab for server notices" = "サーバーからの通知は別のタブを開く";
 
 /* nothing */
+"Open a new tab when you receive a private message" = "サーバーからのメッセージは別のタブを開く";
+
+/* nothing */
 "Sort tabs in alphabetical order" = "アルファベットオーダーでタブをソート";
 
 /* nothing */
-"Small tabs" = "小さなタブ";
+"Smaller text" = "小さなテキスト";
 
 /* nothing */
 "Focus new tabs:" = "新規タブにフォーカス:";
+
+/* nothing */
+"Show channel switcher at:" = "チャンネルを表示";
 
 /* nothing */
 "Shorten tab labels to:" = "指定文字数でタブラベルを縮める:";
 
 /* nothing */
 "letters." = "文字";
-
-/* nothing */
-"Tabs Location" = "タブの位置";
-
-/* nothing */
-"Show tabs at:" = "タブの表示方法:";
 
 /* nothing */
 "Tabs or Windows" = "タブかウィンドウ";
@@ -3197,7 +3266,7 @@
 "Yes" = "はい";
 
 /* nothing */
-"Browse for save folder every time" = "";
+"Browse for save folder every time" = "常時保存するフォルダーの参照";
 
 /* nothing */
 "Files and Directories" = "ファイルかディレクトリ";
@@ -3260,6 +3329,42 @@
 "All downloads combined:" = "すべてのダウンロードの合計:";
 
 /* nothing */
+"Alerts" = "警告";
+
+/* nothing */
+"Show tray balloons on:" = "タブの表示方法:";
+
+/* nothing */
+"Blink tray icon on:" = "";
+
+/* nothing */
+"Blink task bar on:" = "";
+
+/* nothing */
+"Make a beep sound on:" = "";
+
+/* nothing */
+"Enable system tray icon" = "システムトレイアイコンを有効にする";
+
+/* nothing */
+"Highlighted Messages" = "ハイライトメッセージ";
+
+/* nothing */
+"Highlighted messages are ones where your nickname is mentioned, but also:" = "";
+
+/* nothing */
+"Extra words to highlight:" = "ハイライトする特殊単語:";
+
+/* nothing */
+"Nick names not to highlight:" = "次のニックをハイライトしない:";
+
+/* nothing */
+"Nick names to always highlight:" = "次のニックをハイライトしない:";
+
+/* nothing */
+"Separate multiple words with commas.\nWildcards are accepted." = "コンマで複数単語を区切ります。";
+
+/* nothing */
 "Default Messages" = "デフォルトメッセージ:";
 
 /* nothing */
@@ -3291,36 +3396,6 @@
 
 /* nothing */
 "Unmark yourself as away before sending messages" = "";
-
-/* nothing */
-"(Can be a text file relative to ~/.xchat2/)." = "";
-
-/* nothing */
-"(Can be a text file relative to config dir)." = "";
-
-/* nothing */
-"Alerts" = "警告";
-
-/* nothing */
-"Flash taskbar on highlighted messages" = "メッセージのハイライト時にタスクバーをフラッシュする";
-
-/* nothing */
-"Beep on highlighted messages" = "メッセージのハイライト時にビープを鳴らす";
-
-/* nothing */
-"Beep on private messages" = "プライベートメッセージでビープを鳴らす";
-
-/* nothing */
-"Beep on channel messages" = "チャンネルメッセージでビープ音を鳴らす";
-
-/* nothing */
-"Extra words to highlight on:" = "ハイライトする特殊単語:";
-
-/* nothing */
-"Nicks not to highlight on:" = "次のニックをハイライトしない:";
-
-/* nothing */
-"Separate multiple words with commas." = "コンマで複数単語を区切ります。";
 
 /* nothing */
 "Advanced Settings" = "高度な設定";
@@ -3359,7 +3434,10 @@
 "Logging" = "ログを残す";
 
 /* nothing */
-"Enable logging of conversations" = "会話のログ記録を有効にする";
+"Display scrollback from previous session" = "前のセッションからスクロールバックで表示する";
+
+/* nothing */
+"Enable logging of conversations to disk" = "会話のログ記録を有効にする";
 
 /* nothing */
 "Log filename:" = "ログファイル:";
@@ -3458,6 +3536,9 @@
 "Mark not-identified users with:" = "次の未識別ユーザーをマークする:";
 
 /* nothing */
+"Open Data Folder" = "データフォルダーを開く";
+
+/* nothing */
 "Select color" = "色選択";
 
 /* nothing */
@@ -3539,6 +3620,9 @@
 "User list" = "ユーザーリスト";
 
 /* nothing */
+"Channel switcher" = "チャンネルリスト...";
+
+/* nothing */
 "Colors" = "色";
 
 /* nothing */
@@ -3551,9 +3635,6 @@
 "Sound" = "サウンド";
 
 /* nothing */
-"Network" = "ネットワーク";
-
-/* nothing */
 "Network setup" = "ネットワークセットアップ";
 
 /* nothing */
@@ -3561,6 +3642,9 @@
 
 /* nothing */
 "Categories" = "カテゴリ";
+
+/* nothing */
+"You cannot place the tree on the top or bottom!\nPlease change to the <b>Tabs</b> layout in the <b>View</b> menu first." = "";
 
 /* nothing */
 "Some settings were changed that require a restart to take full effect." = "";
@@ -3612,85 +3696,4 @@
 
 /* nothing */
 "%d ops, %d total" = "%d 個のなると、合計 %d 個";
-
-/* nothing */
-"Open an irc:// url" = "irc:// URL を開く";
-
-/* nothing */
-"irc://server:port/channel" = "irc://server:port/channel";
-
-/* nothing */
-"Execute a xchat command" = "コマンド実行:";
-
-/* nothing */
-"\"Command to execute\"" = "\"実行するコマンド\"";
-
-/* nothing */
-"Prints some text to the current tab/window" = "いくつかのテキストを現在のタブ/ウィンドウに表示する";
-
-/* nothing */
-"\"Text to print\"" = "\"テキストを表示する\"";
-
-/* nothing */
-"Change the context to the channel" = "コンテキストをチャンネルに変更";
-
-/* nothing */
-"channel" = "チャンネル";
-
-/* nothing */
-"Change the context to the server" = "サーバーにコンテキストを変更する";
-
-/* nothing */
-"server" = "サーバー";
-
-/* nothing */
-"Get some informations from xchat" = "いくつかの情報を xchat から取得する";
-
-/* nothing */
-"id" = "ID";
-
-/* nothing */
-"Get settings from xchat" = "xchat から設定を取得する";
-
-/* nothing */
-"name" = "名前";
-
-/* nothing */
-"xchat-remote: %s\nTry `xchat-remote --help' for more information\n" = "xchat-remote: %s\nより多くの情報は「xchat-remote --help」を試してください\n";
-
-/* nothing */
-"Couldn't connect to session bus" = "セッションバスに接続できません";
-
-/* nothing */
-"Failed to complete command" = "コマンドを完了していません";
-
-/* nothing */
-"Failed to complete SetContext" = "SetContext を完了していません";
-
-/* nothing */
-"Failed to complete print" = "印刷を完了していません";
-
-/* nothing */
-"Failed to complete GetInfo" = "GetInfo を完了していません";
-
-/* nothing */
-"Failed to complete GetPrefs" = "GetPrefs を完了していません";
-
-/* nothing */
-"%s doesn't exist\n" = "%s は存在しません\n";
-
-/* nothing */
-"xchat remote access" = "xchat リモートアクセス";
-
-/* nothing */
-"plugin for remote access using DBUS" = "DBUS を用いてリモートアクセスのプラグイン";
-
-/* nothing */
-"Couldn't connect to session bus : %s\n" = "セッションバスに接続できません : %s\n";
-
-/* nothing */
-"Failed to acquire %s: %s\n" = "%s の取得に失敗しました: %s\n";
-
-/* nothing */
-"%s loaded successfully!\n" = "%s の読み込みに成功しました!\n";
 

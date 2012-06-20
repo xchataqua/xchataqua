@@ -1,5 +1,5 @@
 /* nothing */
-"" = "Project-Id-Version: xchat 2.6.3\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2006-05-19 00:25+1000\nPO-Revision-Date: 2006-06-18 00:49+0200\nLast-Translator: Aleksandar Jelenak <jelenak@verizon.net>\nLanguage-Team: Serbian <gnu@prevod.org>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3;    plural=n%10==1 && n%100!=11 ? 0 :    n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n";
+"" = "Project-Id-Version: xchat 2.6.3\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2010-05-30 13:56+1000\nPO-Revision-Date: 2006-06-18 00:49+0200\nLast-Translator: Aleksandar Jelenak <jelenak@verizon.net>\nLanguage-Team: Serbian <gnu@prevod.org>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3;    plural=n%10==1 && n%100!=11 ? 0 :    n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n";
 
 /* nothing */
 "Cannot create ~/.xchat2" = "Није направљен ~/.xchat2";
@@ -35,6 +35,9 @@
 "Cannot access %s\n" = "Нема приступа %s\n";
 
 /* nothing */
+"Error" = "Грешка";
+
+/* nothing */
 "%s is offering \"%s\". Do you want to accept?" = "%s нуди „%s‟. Да ли желите да прихватите?";
 
 /* nothing */
@@ -63,6 +66,12 @@
 
 /* nothing */
 "Not connected. Try /server <host> [<port>]\n" = "Нисте на вези. Пробајте са /server <хост> [<порт>]\n";
+
+/* nothing */
+"Already marked away: %s\n" = "";
+
+/* nothing */
+"Already marked back.\n" = "";
 
 /* nothing */
 "I need /bin/sh to run!\n" = "За покретање треба имати /bin/sh!\n";
@@ -104,10 +113,16 @@
 "AWAY [<reason>], sets you away" = "AWAY [<разлог>], пријављује одсуство";
 
 /* nothing */
+"BACK, sets you back (not away)" = "";
+
+/* nothing */
 "BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "BAN <шаблон> [<врста>], забрана за све кориснике обухваћене шаблоном од приступа каналу. Ако су већ на каналу, не избацује их (за то треба бити „оп‟)";
 
 /* nothing */
-"CLEAR, Clears the current text window" = "CLEAR, брише тренутни прозор са текстом";
+"CHANOPT [-quiet] <variable> [<value>]" = "SET [-quiet] <променљива> [<вредност>]";
+
+/* nothing */
+"CLEAR [ALL|HISTORY], Clears the current text window or command history" = "CLEAR, брише тренутни прозор са текстом";
 
 /* nothing */
 "CLOSE, Closes the current window/tab" = "CLOSE, затвара тренутни прозор/језичак";
@@ -119,7 +134,7 @@
 "CTCP <nick> <message>, send the CTCP message to nick, common messages are VERSION and USERINFO" = "CTCP <име> <порука>, шаље CTCP поруку на дато име, попут VERSION или USERINFO";
 
 /* nothing */
-"CYCLE, parts current channel and immediately rejoins" = "CYCLE, напушта тренутни канал и одмах се враћа назад";
+"CYCLE [<channel>], parts the current or given channel and immediately rejoins" = "CYCLE, напушта тренутни канал и одмах се враћа назад";
 
 /* nothing */
 "\nDCC GET <nick>                      - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file]  - send a file to someone\nDCC PSEND [-maxcps=#] <nick> [file] - send a file using passive mode\nDCC LIST                            - show DCC list\nDCC CHAT <nick>                     - offer DCC CHAT to someone\nDCC PCHAT <nick>                    - offer DCC CHAT using passive mode\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "\nDCC GET <име>                      - прихвати понуђену датотеку\nDCC SEND [-maxcps=#] <име> <дат>   - пошаљи некоме датотеку\nDCC PSEND [-maxcps=#] <име> <дат>   - пошаљи некоме датотеку, пасиван начин\nDCC LIST                           - покажи списак за DCC\nDCC CHAT <име>                     - понуди разговор преко DCC\nDCC PCHAT <име>                     - понуди разговор преко DCC, пасиван начин\nDCC CLOSE <тип> <име> <дат>            пример:\n         /dcc close send пераперић датотека.tar.gz";
@@ -167,7 +182,7 @@
 "GATE <host> [<port>], proxies through a host, port defaults to 23" = "ГАТЕ <рач.> [<порт>], прослеђује преко рач(унара), за порт се узима 23";
 
 /* nothing */
-"GHOST <nick> <password>, Kills a ghosted nickname" = "GHOST <надимак> <лозинка>, Убија „дух“ надимак";
+"GHOST <nick> [password], Kills a ghosted nickname" = "GHOST <надимак> <лозинка>, Убија „дух“ надимак";
 
 /* nothing */
 "HOP <nick>, gives chanhalf-op status to the nick (needs chanop)" = "HOP <име>, даје звање полу-оп овом имену (потребан је оп) ";
@@ -233,7 +248,7 @@
 "NOTICE <nick/channel> <message>, sends a notice. Notices are a type of message that should be auto reacted to" = "NOTICE <име/канал> <порука>, шаље дојаву. Дојава је врста поруке коју треба аутоматски обрадити";
 
 /* nothing */
-"NOTIFY [<nick>], lists your notify list or adds someone to it" = "NOTIFY [<nick>], даје списак имена која ишчекујете или додаје на списак";
+"NOTIFY [-n network1[,network2,...]] [<nick>], displays your notify list or adds someone to it" = "NOTIFY [<nick>], даје списак имена која ишчекујете или додаје на списак";
 
 /* nothing */
 "OP <nick>, gives chanop status to the nick (needs chanop)" = "OP <име>, даје звање оператора овом имену (потребан је оп)";
@@ -245,7 +260,7 @@
 "PING <nick | channel>, CTCP pings nick or channel" = "PING <име | канал>, испитује име или канал CTCP поруком";
 
 /* nothing */
-"QUERY <nick>, opens up a new privmsg window to someone" = "QUERY <име>, отвара нови прозор за личне поруке";
+"QUERY [-nofocus] <nick>, opens up a new privmsg window to someone" = "QUERY <име>, отвара нови прозор за личне поруке";
 
 /* nothing */
 "QUIT [<reason>], disconnects from the current server" = "QUIT [<reason>], искључује са овог сервера";
@@ -281,13 +296,16 @@
 "SERVER <host> [<port>] [<password>], connects to a server, the default port is 6667" = "SERVER <рач.> [<порт>] [<лозинка>], повезује се на сервер, узима да је порт 6667";
 
 /* nothing */
-"SET [-quiet] <variable> [<value>]" = "SET [-quiet] <променљива> [<вредност>]";
+"SET [-e] [-off|-on] [-quiet] <variable> [<value>]" = "SET [-quiet] <променљива> [<вредност>]";
 
 /* nothing */
 "SETCURSOR [-|+]<position>" = "SETCURSOR [-|+]<место>";
 
 /* nothing */
 "TOPIC [<topic>], sets the topic if one is given, else shows the current topic" = "TOPIC [<тема>], поставља тему ако је наведена, иначе прикаже тренутну тему";
+
+/* nothing */
+"\nTRAY -f <timeout> <file1> [<file2>] Blink tray between two icons.\nTRAY -f <filename>                  Set tray to a fixed icon.\nTRAY -i <number>                    Blink tray with an internal icon.\nTRAY -t <text>                      Set the tray tooltip.\nTRAY -b <title> <text>              Set the tray balloon." = "";
 
 /* nothing */
 "UNBAN <mask> [<mask>...], unbans the specified masks." = "UNBAN <шаблон> [<шаблон>...], скида забрану за ове шаблоне";
@@ -362,12 +380,6 @@
 "%C22*%O$t$1 is now known as $2" = "Име %C22*%O$t$1 је промењено у $2";
 
 /* nothing */
-"%C18*$t$1%O $2" = "%C18*$t$1%O $2";
-
-/* nothing */
-"%C21*%O$t%C21%B$1%O%C21 $2" = "%C21*%O$t%C21%B$1%O%C21 $2";
-
-/* nothing */
 "%C22*%O$t$1 sets ban on $2" = "%C22*%O$t$1 поставља забрану на $2";
 
 /* nothing */
@@ -395,19 +407,10 @@
 "%UChannel          Users   Topic" = "%UКанал            Бр.кор. Тема";
 
 /* nothing */
-"%C18%H<%H$4$1%H>%H%O$t$2" = "%C18%H<%H$4$1%H>%H%O$t$2";
-
-/* nothing */
 "%C22*%O$t$1 sets mode $2$3 $4" = "%C22*%O$t$1 поставља приступну ознаку на $2$3 $4";
 
 /* nothing */
 "%C22*%O$t%C22Channel $1 modes: $2" = "%C22*%O$t%C22Канал $1 приступне ознаке: $2";
-
-/* nothing */
-"$4%C21%B%H<%H$1%H>%H%O%C21$t$2" = "$4%C21%B%H<%H$1%H>%H%O%C21$t$2";
-
-/* nothing */
-"%C28-%C29$1/$2%C28-%O$t$3" = "%C28-%C29$1/$2%C28-%O$t$3";
 
 /* nothing */
 "%C22*%O$t%C26$1%O gives channel operator status to%C26 $2" = "%C22*%O$t%C26$1%O додељује звање оператора за%C26 $2";
@@ -548,9 +551,6 @@
 "%C22*%O$tFound your IP: [$1]" = "%C22*%O$tВаш IP број је: [$1]";
 
 /* nothing */
-"$1$t$2" = "$1$t$2";
-
-/* nothing */
 "%O%C26$1%O added to ignore list." = "%O%C26$1%O додат у списак ућутканих.";
 
 /* nothing */
@@ -587,12 +587,6 @@
 "%C22*%O$tYou have been killed by $1 ($2%O%C22)" = "%C22*%O$tОдстранио вас је $1 ($2%O)";
 
 /* nothing */
-"%C19>%O$1%C19<%O$t$2" = "%C19>%O$1%C19<%O$t$2";
-
-/* nothing */
-"%C16*%O$t$1%O" = "%C16*%O$t$1%O";
-
-/* nothing */
 "%C22*%O$t%C22MOTD Skipped." = "%C22*%O$t%C22Прескочили смо вести дана.";
 
 /* nothing */
@@ -608,9 +602,6 @@
 "%C22*%O$tNo process is currently running" = "%C22*%O$tНиједан процес није покренут.";
 
 /* nothing */
-"%C28-%C29$1%C28-%O$t$2" = "%C28-%C29$1%C28-%O$t$2";
-
-/* nothing */
 "$tNotify list is empty." = "$tСписак посматраних је празан.";
 
 /* nothing */
@@ -620,10 +611,10 @@
 "%C22*%O$t$1 users in notify list." = "%C22*%O$t$1 корисници на списку посматраних.";
 
 /* nothing */
-"%C22*%O$tNotify: $1 is offline ($2)." = "%C22*%O$tВест: $1 је на вези ($2).";
+"%C22*%O$tNotify: $1 is offline ($3)." = "%C22*%O$tВест: $1 је на вези ($2).";
 
 /* nothing */
-"%C22*%O$tNotify: $1 is online ($2)." = "%C22*%O$tВест: $1 је на вези ($2).";
+"%C22*%O$tNotify: $1 is online ($3)." = "%C22*%O$tВест: $1 је на вези ($2).";
 
 /* nothing */
 "%C23*%O$t%C23$1 (%O%C23$2) has left $3" = "%C23*%O$t%C23$1 (%O%C23$2) оде $3";
@@ -636,12 +627,6 @@
 
 /* nothing */
 "%C22*%O$tNo ping reply for $1 seconds, disconnecting." = "%C22*%O$tОдзив је изостао за $1 сек., искључујем се.";
-
-/* nothing */
-"%C28*%C29$3$1%C28*$t%O$2" = "%C28*%C29$3$1%C28*$t%O$2";
-
-/* nothing */
-"%C18%H<%H$3$1%H>%H%O$t$2" = "%C18%H<%H$3$1%H>%H%O$t$2";
 
 /* nothing */
 "%C22*%O$tA process is already running" = "%C22*%O$tПроцес је већ покренут";
@@ -660,9 +645,6 @@
 
 /* nothing */
 "%C22*%O$t%C22Connected." = "%C22*%O$t%C22Повезан.";
-
-/* nothing */
-"%C22*%O$t$1" = "%C22*%O$t$1";
 
 /* nothing */
 "%C22*%O$t%C22Looking up $1" = "%C22*%O$t%C22Тражим%C26 $1";
@@ -728,10 +710,10 @@
 "%C22*%O$tYou've invited%C26 $1%O to%C26 $2%O (%C26$3%O)" = "%C22*%O$tЗовете%C26 $1%C на%C26 $2%C (%C26$3%C)";
 
 /* nothing */
-"%C31%H<%H$4$1%H>%H%O%C30$t$2" = "%C31%H<%H$4$1%H>%H%O%C30$t$2";
+"%C22*%O$tYou are now known as $2" = "%C22*%O$tПроменили сте име у $2";
 
 /* nothing */
-"%C22*%O$tYou are now known as $2" = "%C22*%O$tПроменили сте име у $2";
+"Loaded log from" = "";
 
 /* nothing */
 "**** ENDING LOGGING AT %s\n" = "**** КРАЈ ЗАПИСА У ДНЕВНИКУ У %s\n";
@@ -767,10 +749,10 @@
 "Mode char" = "Ознака за приступ";
 
 /* nothing */
-"The text" = "Текст";
+"Identified text" = "Препознат текст";
 
 /* nothing */
-"Identified text" = "Препознат текст";
+"The text" = "Текст";
 
 /* nothing */
 "The message" = "Порука";
@@ -974,6 +956,9 @@
 "Server Name" = "Име сервера";
 
 /* nothing */
+"Raw Numeric or Identifier" = "";
+
+/* nothing */
 "Nick of person who invited you" = "Име особе која је позвала";
 
 /* nothing */
@@ -986,16 +971,13 @@
 "Nick being tried" = "Испробана имена";
 
 /* nothing */
-"Error" = "Грешка";
-
-/* nothing */
 "IP" = "IP";
 
 /* nothing */
 "Port" = "Порт";
 
 /* nothing */
-"PID" = "PID";
+"Network" = "Мрежа";
 
 /* nothing */
 "Modes string" = "Права приступа";
@@ -1814,9 +1796,6 @@
 "United Kingdom" = "Велика Британија";
 
 /* nothing */
-"US Minor Outlying Islands" = "Мања америчка истурена острва";
-
-/* nothing */
 "United States of America" = "Сједињене америчке државе";
 
 /* nothing */
@@ -1874,16 +1853,19 @@
 "Unknown" = "Непознато";
 
 /* nothing */
-"Open Dialog Window" = "Започни разговор";
+"_Open Dialog Window" = "Започни разговор";
 
 /* nothing */
-"Send a File" = "Пошаљи датотеку";
+"_Send a File" = "Пошаљи датотеку";
 
 /* nothing */
-"User Info (WHOIS)" = "Подаци о кориснику (WHOIS)";
+"_User Info (WhoIs)" = "Подаци о кориснику (WHOIS)";
 
 /* nothing */
-"Operator Actions" = "Операторска дејства";
+"_Add to Friends List" = "";
+
+/* nothing */
+"O_perator Actions" = "Операторска дејства";
 
 /* nothing */
 "Give Ops" = "Дај опа";
@@ -1908,87 +1890,6 @@
 
 /* nothing */
 "KickBan" = "Шут и забр.";
-
-/* nothing */
-"Direct client-to-client" = "Директни приступ клијенту";
-
-/* nothing */
-"Send File" = "Пошаљи датотеку";
-
-/* nothing */
-"Offer Chat" = "Понуди разговор";
-
-/* nothing */
-"Abort Chat" = "Прекини разговор";
-
-/* nothing */
-"Version" = "Верзија";
-
-/* nothing */
-"Userinfo" = "Информације";
-
-/* nothing */
-"Clientinfo" = "Инф. о клијенту";
-
-/* nothing */
-"Ping" = "Ping";
-
-/* nothing */
-"Time" = "Време";
-
-/* nothing */
-"Finger" = "Finger";
-
-/* nothing */
-"Oper" = "Опер";
-
-/* nothing */
-"Kill this user" = "Дај реч";
-
-/* nothing */
-"Mode" = "Приступ";
-
-/* nothing */
-"Give Half-Ops" = "Дај полу-опа";
-
-/* nothing */
-"Take Half-Ops" = "Одузми полу-опа";
-
-/* nothing */
-"Ignore" = "Ућуткај";
-
-/* nothing */
-"Ignore User" = "Занемари корисника";
-
-/* nothing */
-"UnIgnore User" = "Врати ућуткане";
-
-/* nothing */
-"Info" = "Информ.";
-
-/* nothing */
-"Who" = "Ко је";
-
-/* nothing */
-"WhoIs" = "WhoIs";
-
-/* nothing */
-"DNS Lookup" = "DNS потрага";
-
-/* nothing */
-"Trace" = "Следи";
-
-/* nothing */
-"UserHost" = "Рачунар";
-
-/* nothing */
-"External" = "Спољњи";
-
-/* nothing */
-"Traceroute" = "Следи";
-
-/* nothing */
-"Telnet" = "Telnet";
 
 /* nothing */
 "Leave Channel" = "Напусти канал";
@@ -2027,6 +1928,9 @@
 "Dialog" = "Разговор";
 
 /* nothing */
+"WhoIs" = "WhoIs";
+
+/* nothing */
 "Send" = "Слање";
 
 /* nothing */
@@ -2036,7 +1940,31 @@
 "Clear" = "Обриши";
 
 /* nothing */
-"About XChat" = "О Иксчету";
+"Ping" = "Ping";
+
+/* nothing */
+"Couldn't connect to session bus" = "Није могуће повезати се са магистралом сесије";
+
+/* nothing */
+"Failed to complete NameHasOwner" = "Није могуће довршити наредбу";
+
+/* nothing */
+"Failed to complete Command" = "Није могуће довршити наредбу";
+
+/* nothing */
+"remote access" = "удаљен приступ иксчету";
+
+/* nothing */
+"plugin for remote access using DBUS" = "додатак за удаљен приступ помоћу DBUSа";
+
+/* nothing */
+"Couldn't connect to session bus: %s\n" = "Није могуће повезати се са магистралом сесије : %s\n";
+
+/* nothing */
+"Failed to acquire %s: %s\n" = "Не може се добавити %s: %s\n";
+
+/* nothing */
+"About " = "_О програму";
 
 /* nothing */
 "A multiplatform IRC Client" = "Преносиви клијент за IRC";
@@ -2049,6 +1977,9 @@
 
 /* nothing */
 "You must select some bans." = "Морате изабрати забране";
+
+/* nothing */
+"Are you sure you want to remove all bans in %s?" = "";
 
 /* nothing */
 "Mask" = "Шаблон";
@@ -2066,7 +1997,7 @@
 "XChat: Ban List (%s)" = "Иксчет: Списак забрана (%s)";
 
 /* nothing */
-"Unban" = "Скини забр.";
+"Remove" = "Уклони";
 
 /* nothing */
 "Crop" = "Исеци";
@@ -2075,67 +2006,67 @@
 "Refresh" = "Освежи";
 
 /* nothing */
-"User and Channel Statistics: %d/%d Users on %d/%d Channels" = "Статистике корисника и канала: корисника ‒ %d/%d, канала ‒%d/%d";
-
-/* nothing */
-"I can't save an empty list!" = "Списак се не снима када је празан!";
+"Displaying %d/%d users on %d/%d channels." = "Статистике корисника и канала: корисника ‒ %d/%d, канала ‒%d/%d";
 
 /* nothing */
 "Select an output filename" = "Изаберите име датотеке за излаз";
 
 /* nothing */
+"_Join Channel" = "Иди на канал";
+
+/* nothing */
+"_Copy Channel Name" = "Име канала";
+
+/* nothing */
+"Copy _Topic Text" = "";
+
+/* nothing */
 "XChat: Channel List (%s)" = "Иксчет: списак канала (%s)";
 
 /* nothing */
-"List display options:" = "Списак опција за приказ";
+"_Search" = "Иксчет: Претрага";
 
 /* nothing */
-"Minimum Users:" = "Мин. корисника";
+"_Download List" = "Преузимања:";
 
 /* nothing */
-"Maximum Users:" = "Макс. корисника";
+"Save _List..." = "Списак рачунара...";
 
 /* nothing */
-"Pattern Match:" = "Образац:";
+"Show only:" = "";
 
 /* nothing */
-"Regex Match:" = "Regex образац";
+"channels with" = "канал";
 
 /* nothing */
-"Apply Match to:" = "Када се поклопи:";
+"to" = "";
 
 /* nothing */
-"Apply" = "Примени";
+"users." = "Корисници";
 
 /* nothing */
-"Refresh the list" = "Освежи списак";
+"Look in:" = "";
 
 /* nothing */
-"Save the list" = "Сними списак";
+"Channel name" = "Име канала";
 
 /* nothing */
-"Join Channel" = "Иди на канал";
+"Search type:" = "Тражи текст...";
+
+/* nothing */
+"Simple Search" = "";
+
+/* nothing */
+"Pattern Match (Wildcards)" = "Образац:";
+
+/* nothing */
+"Regular Expression" = "";
+
+/* nothing */
+"Find:" = "Нађи:";
 
 /* nothing */
 "Send file to %s" = "Шаљи датотеку за %s";
-
-/* nothing */
-"None" = "Ниједна";
-
-/* nothing */
-"File" = "Датотека";
-
-/* nothing */
-"To" = "За";
-
-/* nothing */
-"Address" = "Адреса";
-
-/* nothing */
-"Started" = "Започето";
-
-/* nothing */
-"Speed limit" = "Гранична брзина";
 
 /* nothing */
 "That file is not resumable." = "Датотека се мора преузети изједна.";
@@ -2150,13 +2081,34 @@
 "Cannot resume the same file from two people." = "Не може се наставити пренос исте датотеке од две различите особе.";
 
 /* nothing */
+"XChat: Uploads and Downloads" = "Иксчет: слања и пријеми";
+
+/* nothing */
 "Status" = "Стање";
+
+/* nothing */
+"File" = "Датотека";
 
 /* nothing */
 "ETA" = "ETA";
 
 /* nothing */
-"XChat: File Receive List" = "Иксчет: Списак датотека на пријему";
+"Both" = "Оба";
+
+/* nothing */
+"Uploads" = "Слања";
+
+/* nothing */
+"Downloads" = "Преузимања:";
+
+/* nothing */
+"Details" = "Детаљи";
+
+/* nothing */
+"File:" = "Датотека:";
+
+/* nothing */
+"Address:" = "Адреса";
 
 /* nothing */
 "Abort" = "Обустави";
@@ -2168,31 +2120,10 @@
 "Resume" = "Настави";
 
 /* nothing */
-"Open" = "Отвори";
-
-/* nothing */
-"Ack" = "Потврди";
-
-/* nothing */
-"XChat: Uploads und Downloads" = "Иксчет: слања и пријеми";
-
-/* nothing */
-"Downloads" = "Преузимања:";
-
-/* nothing */
-"Uploads" = "Слања";
-
-/* nothing */
-"Details" = "Детаљи";
-
-/* nothing */
 "Open Folder..." = "Отвори директоријум...";
 
 /* nothing */
-"XChat: File Send List" = "Иксчет: Списак за слање";
-
-/* nothing */
-"To/From" = "Од/за";
+"XChat: DCC Chat List" = "Иксчет: DCC списак разговора";
 
 /* nothing */
 "Recv" = "Пријем";
@@ -2202,9 +2133,6 @@
 
 /* nothing */
 "Start Time" = "Поч. време";
-
-/* nothing */
-"XChat: DCC Chat List" = "Иксчет: DCC списак разговора";
 
 /* nothing */
 "*NEW*" = "*НОВО*";
@@ -2259,6 +2187,18 @@
 
 /* nothing */
 "Open an irc://server:port/channel URL" = "Отвори URL irc://сервер:порт/канал";
+
+/* nothing */
+"Execute command:" = "Пошаљи ову команду:";
+
+/* nothing */
+"Open URL or execute command in an existing XChat" = "";
+
+/* nothing */
+"Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "";
+
+/* nothing */
+"level" = "Никада";
 
 /* nothing */
 "Show version information" = "Прикажи податке о издању";
@@ -2468,7 +2408,22 @@
 "This server still has %d channels or dialogs associated with it. Close them all?" = "Овај сервер има укупно оволико канала: %d или дијалога. Да ли желите да их све затворите?";
 
 /* nothing */
-"No other tabs open, quit xchat?" = "Нема других прозора, желите ли да изађете из Xchat-а?";
+"Quit XChat?" = "О Иксчету";
+
+/* nothing */
+"Don't ask next time." = "";
+
+/* nothing */
+"You are connected to %i IRC networks." = "Повежи се аутоматски када се програм покрене";
+
+/* nothing */
+"Are you sure you want to quit?" = "";
+
+/* nothing */
+"Some file transfers are still active." = "Још увек ради пренос датотека, да ли ипак желите крај рада?";
+
+/* nothing */
+"_Minimize to Tray" = "";
 
 /* nothing */
 "Insert Attribute or Color Code" = "Убаци атрибут или кôд за боју";
@@ -2489,25 +2444,34 @@
 "Colors 8-15" = "Боје 8-15";
 
 /* nothing */
-"Beep on message" = "Звук уз поруку";
+"_Settings" = "П_одешавања";
 
 /* nothing */
-"Show join/part messages" = "Обавести о улазу/излазу";
+"_Log to Disk" = "";
 
 /* nothing */
-"Color paste" = "Залепи и боју";
+"_Reload Scrollback" = "";
 
 /* nothing */
-"Go to" = "Иди на";
+"_Hide Join/Part Messages" = "Сакриј поруке о доласку и одласку";
 
 /* nothing */
-"_Close Tab" = "_Затвори језичак";
+"_Extra Alerts" = "Посебне справице";
 
 /* nothing */
-"_Detach Tab" = "_Откачи језичак";
+"Beep on _Message" = "Звук уз поруку";
 
 /* nothing */
-"Some file transfers still active, quit xchat?" = "Још увек ради пренос датотека, да ли ипак желите крај рада?";
+"Blink Tray _Icon" = "";
+
+/* nothing */
+"Blink Task _Bar" = "";
+
+/* nothing */
+"_Detach" = "_Откачи језичак";
+
+/* nothing */
+"_Close" = "_Затвори";
 
 /* nothing */
 "User limit must be a number!\n" = "Макс. број корисника мора бити унет као број!\n";
@@ -2564,13 +2528,16 @@
 "Server:" = "Рачунар:";
 
 /* nothing */
-"Away Msg:" = "Одсутан:";
-
-/* nothing */
 "%u minutes ago" = "пре оволико минута: %u";
 
 /* nothing */
 "Last Msg:" = "Посл. порука:";
+
+/* nothing */
+"Away Msg:" = "Одсутан:";
+
+/* nothing */
+"%d nicks selected." = "";
 
 /* nothing */
 "The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "Трака са менијем је сада сакривена. Можете је поново приказати притиском на F9 или десним кликом на празни део главне текстуалне обласни.";
@@ -2582,10 +2549,19 @@
 "Copy Selected Link" = "Умножи изабрану везу";
 
 /* nothing */
+"Join Channel" = "Иди на канал";
+
+/* nothing */
 "Part Channel" = "Изађи са канала";
 
 /* nothing */
 "Cycle Channel" = "Понови приступ";
+
+/* nothing */
+"_Remove from Favorites" = "";
+
+/* nothing */
+"_Add to Favorites" = "";
 
 /* nothing */
 "XChat: User menu" = "Иксчет: Корисников мени";
@@ -2597,16 +2573,16 @@
 "Retrieve channel list..." = "Добавка списка канала...";
 
 /* nothing */
-"User Commands - Special codes:\n\n%c  =  current channel\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "Корисникове команде - посебни кодови:\n\n%c  =  тренутни канал\n%m  =  подаци о машини\n%n  =  ваше име\n%t  =  време/датум\n%v  =  верзија програма\n%2  =  реч 2\n%3  =  реч 3\n&2  =  реч 2 и даље до краја линије\n&3  =  реч 3 и даље до краја линије\n\nнпр:\n/cmd john hello\n\n%2 би било \"john\"\n&2 би било \"john hello\".";
+"User Commands - Special codes:\n\n%c  =  current channel\n%e  =  current network name\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "Корисникове команде - посебни кодови:\n\n%c  =  тренутни канал\n%m  =  подаци о машини\n%n  =  ваше име\n%t  =  време/датум\n%v  =  верзија програма\n%2  =  реч 2\n%3  =  реч 3\n&2  =  реч 2 и даље до краја линије\n&3  =  реч 3 и даље до краја линије\n\nнпр:\n/cmd john hello\n\n%2 би било \"john\"\n&2 би било \"john hello\".";
 
 /* nothing */
-"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Корисничка дугмад - посебни кодови:\n\n%a  =  сва изабрана имена\n%c  =  овај канал\n%h  =  рачунар на коме је изабрано име\n%m  =  подаци о рачунару\n%n  =  ваше име\n%s  =  одабрано име\n%t  =  време/датум\n";
+"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Корисничка дугмад - посебни кодови:\n\n%a  =  сва изабрана имена\n%c  =  овај канал\n%h  =  рачунар на коме је изабрано име\n%m  =  подаци о рачунару\n%n  =  ваше име\n%s  =  одабрано име\n%t  =  време/датум\n";
 
 /* nothing */
-"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Дугмад прозорчета - посебни кодови:\n\n%a  =  сва изабрана имена\n%c  =  овај канал\n%h  =  рачунар на коме је изабрано име\n%m  =  подаци о рачунару\n%n  =  ваше име\n%s  =  одабрано име\n%t  =  време/датум\n";
+"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Дугмад прозорчета - посебни кодови:\n\n%a  =  сва изабрана имена\n%c  =  овај канал\n%h  =  рачунар на коме је изабрано име\n%m  =  подаци о рачунару\n%n  =  ваше име\n%s  =  одабрано име\n%t  =  време/датум\n";
 
 /* nothing */
-"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "CTCP одговори - посебни кодови:\n\n%d  =  подаци (цео CTCP)\n%m  =  подаци о рачунару\n%s  =  име онога ко је послао упит\n%t  =  време/датум\n%2  =  друга реч\n%3  =  трећа реч\n&2  =  све почев од друге речи до краја реда\n&3  =  све почев од треће речи до краја реда\n\n";
+"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%e  =  current network name\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "CTCP одговори - посебни кодови:\n\n%d  =  подаци (цео CTCP)\n%m  =  подаци о рачунару\n%s  =  име онога ко је послао упит\n%t  =  време/датум\n%2  =  друга реч\n%3  =  трећа реч\n&2  =  све почев од друге речи до краја реда\n&3  =  све почев од треће речи до краја реда\n\n";
 
 /* nothing */
 "URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of XChat" = "Обрада URLова - посебни кôдови:\n\n%s  =  запис URL-а\n\nСтављање узвичника (!) испред команде\nговори да је треба проследити шкољци\nуместо Иксчету";
@@ -2666,19 +2642,22 @@
 "_View" = "_Преглед";
 
 /* nothing */
-"_Menubar" = "_Трака менија";
+"_Menu Bar" = "_Трака менија";
 
 /* nothing */
-"_Topicbar" = "_Трака за тему";
+"_Topic Bar" = "_Трака за тему";
 
 /* nothing */
-"_Userlist Buttons" = "_Корисничка дугмета";
+"_User List" = "Списак имена";
+
+/* nothing */
+"U_serlist Buttons" = "_Корисничка дугмета";
 
 /* nothing */
 "M_ode Buttons" = "_Дугмета за начин приступа";
 
 /* nothing */
-"_Layout" = "_Изглед";
+"_Channel Switcher" = "Списак канала...";
 
 /* nothing */
 "_Tabs" = "_Језичци";
@@ -2696,9 +2675,6 @@
 "Graph" = "Графичко";
 
 /* nothing */
-"Both" = "Оба";
-
-/* nothing */
 "_Server" = "_Сервер";
 
 /* nothing */
@@ -2706,6 +2682,12 @@
 
 /* nothing */
 "_Reconnect" = "_Опет се повежи";
+
+/* nothing */
+"Join a Channel..." = "Прикључи се...";
+
+/* nothing */
+"List of Channels..." = "Прикључи се...";
 
 /* nothing */
 "Marked Away" = "Објави одсуство";
@@ -2756,9 +2738,6 @@
 "Ban List..." = "Списак забрана...";
 
 /* nothing */
-"Channel List..." = "Списак канала...";
-
-/* nothing */
 "Character Chart..." = "Знаковна табела...";
 
 /* nothing */
@@ -2768,10 +2747,10 @@
 "File Transfers..." = "Преноси датотека...";
 
 /* nothing */
-"Ignore List..." = "Списак ућутканих...";
+"Friends List..." = "Списак забрана...";
 
 /* nothing */
-"Notify List..." = "Списак посматраних...";
+"Ignore List..." = "Списак ућутканих...";
 
 /* nothing */
 "Plugins and Scripts..." = "Додаци и скриптови...";
@@ -2801,19 +2780,13 @@
 "_Contents" = "_Садржај";
 
 /* nothing */
+"Check for updates" = "";
+
+/* nothing */
 "_About" = "_О програму";
 
 /* nothing */
-"_Attach Window" = "_Закачи прозор";
-
-/* nothing */
-"_Close Window" = "За_твори прозор";
-
-/* nothing */
-"User" = "Корисник";
-
-/* nothing */
-"Server" = "Рачунар";
+"_Attach" = "Закачи језичак";
 
 /* nothing */
 "Last Seen" = "Био је ту";
@@ -2825,19 +2798,85 @@
 "Never" = "Никада";
 
 /* nothing */
+"%d minutes ago" = "пре оволико минута: %u";
+
+/* nothing */
 "Online" = "На вези";
 
 /* nothing */
 "Enter nickname to add:" = "Унесите име које треба додати:";
 
 /* nothing */
-"XChat: Notify List" = "Иксчет: Списак посматраних";
+"Notify on these networks:" = "";
 
 /* nothing */
-"Remove" = "Уклони";
+"Comma separated list of networks is accepted." = "";
+
+/* nothing */
+"XChat: Friends List" = "Иксчет: Списак за слање";
 
 /* nothing */
 "Open Dialog" = "Отвори разговор";
+
+/* nothing */
+"Cannot find 'notify-send' to open balloon alerts.\nPlease install libnotify." = "";
+
+/* nothing */
+"XChat: Connected to %u networks and %u channels" = "";
+
+/* nothing */
+"_Restore" = "";
+
+/* nothing */
+"_Hide" = "Сакриј";
+
+/* nothing */
+"_Blink on" = "";
+
+/* nothing */
+"Channel Message" = "Име канала";
+
+/* nothing */
+"Private Message" = "Звук на приватну поруку";
+
+/* nothing */
+"Highlighted Message" = "Звук при означеним порукама";
+
+/* nothing */
+"_Change status" = "";
+
+/* nothing */
+"_Away" = "Одсутан";
+
+/* nothing */
+"_Back" = "";
+
+/* nothing */
+"XChat: Highlighted message from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u highlighted messages, latest from: %s (%s)" = "";
+
+/* nothing */
+"XChat: New public message from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u new public messages." = "";
+
+/* nothing */
+"XChat: Private message from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u private messages, latest from: %s (%s)" = "";
+
+/* nothing */
+"XChat: File offer from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u file offers, latest from: %s (%s)" = "";
+
+/* nothing */
+"Version" = "Верзија";
 
 /* nothing */
 "Description" = "Опис";
@@ -2853,9 +2892,6 @@
 
 /* nothing */
 "_UnLoad" = "У_клони";
-
-/* nothing */
-"_Close" = "_Затвори";
 
 /* nothing */
 "Save As..." = "Сачувај као...";
@@ -2876,9 +2912,6 @@
 "XChat: Search" = "Иксчет: Претрага";
 
 /* nothing */
-"Find:" = "Нађи:";
-
-/* nothing */
 "_Match case" = "_Разликуј мала и велика слова";
 
 /* nothing */
@@ -2892,6 +2925,27 @@
 
 /* nothing */
 "Really remove network \"%s\" and all its servers?" = "Да ли заиста треба брисати мрежу \"%s\" и све сервере у њој?";
+
+/* nothing */
+"#channel" = "канал";
+
+/* nothing */
+"XChat: Favorite Channels (Auto-Join List)" = "Иксчет: списак канала (%s)";
+
+/* nothing */
+"These channels will be joined whenever you connect to %s." = "";
+
+/* nothing */
+"Key (Password)" = "Лозинка:";
+
+/* nothing */
+"_Edit" = "_Уреди";
+
+/* nothing */
+"%s has been removed." = "";
+
+/* nothing */
+"%s has been added." = "";
 
 /* nothing */
 "User name and Real name cannot be left blank." = "Име и право име не могу да буду празни.";
@@ -2933,7 +2987,7 @@
 "Auto connect to this network at startup" = "Повежи се аутоматски када се програм покрене";
 
 /* nothing */
-"Use a proxy server" = "Користи заступника (proxy)";
+"Bypass proxy server" = "Користи заступника (proxy)";
 
 /* nothing */
 "Use SSL for all the servers on this network" = "Користи SSL за све рачунаре у овој мрежи";
@@ -2942,7 +2996,7 @@
 "Accept invalid SSL certificate" = "Прихвати неважећи SSL сертификат.";
 
 /* nothing */
-"C_hannels to join:" = "Приступи _каналима:";
+"_Favorite channels:" = "Напусти канал:";
 
 /* nothing */
 "Channels to join, separated by commas, but not spaces!" = "Канале треба раздвојити запетама, не размацима!";
@@ -2969,9 +3023,6 @@
 "Character set:" = "Скуп знакова:";
 
 /* nothing */
-"_Edit" = "_Уреди";
-
-/* nothing */
 "XChat: Network List" = "Иксчет: списак мрежа";
 
 /* nothing */
@@ -2991,6 +3042,9 @@
 
 /* nothing */
 "_Sort" = "Поређај";
+
+/* nothing */
+"Sorts the network list in alphabetical order. Use SHIFT-UP and SHIFT-DOWN keys to move a row." = "";
 
 /* nothing */
 "C_onnect" = "_Повежи се";
@@ -3053,6 +3107,12 @@
 "See strftime manpage for details." = "Погледајте упутство за strftime.";
 
 /* nothing */
+"A-Z" = "A-Z";
+
+/* nothing */
+"Last-spoke order" = "";
+
+/* nothing */
 "Input box" = "Улазни прозор";
 
 /* nothing */
@@ -3071,6 +3131,9 @@
 "Nick completion suffix:" = "Суфикс за допуну имена:";
 
 /* nothing */
+"Nick completion sorted:" = "Суфикс за допуну имена:";
+
+/* nothing */
 "Input Box Codes" = "Кодови при уносу текста";
 
 /* nothing */
@@ -3083,9 +3146,6 @@
 "A-Z, Ops first" = "A-Z, опови први";
 
 /* nothing */
-"A-Z" = "A-Z";
-
-/* nothing */
 "Z-A, Ops last" = "Z-A, опови последњи";
 
 /* nothing */
@@ -3095,16 +3155,37 @@
 "Unsorted" = "Неуређено";
 
 /* nothing */
+"Left (Upper)" = "";
+
+/* nothing */
+"Left (Lower)" = "";
+
+/* nothing */
+"Right (Upper)" = "";
+
+/* nothing */
+"Right (Lower)" = "";
+
+/* nothing */
+"Top" = "Горе";
+
+/* nothing */
+"Bottom" = "Доле";
+
+/* nothing */
+"Hidden" = "Сакриј";
+
+/* nothing */
 "User List" = "Списак имена";
 
 /* nothing */
 "Show hostnames in user list" = "Покажи имена рачунара";
 
 /* nothing */
-"Resizable user list" = "Променљива величина списка корисника";
+"User list sorted by:" = "Уреди списак корисника према:";
 
 /* nothing */
-"User list sorted by:" = "Уреди списак корисника према:";
+"Show user list at:" = "Покажи/сакриј кориснике";
 
 /* nothing */
 "Away tracking" = "Праћење одсуства";
@@ -3119,28 +3200,10 @@
 "Action Upon Double Click" = "Шта извршити на двоструки клик";
 
 /* nothing */
-"Execute command:" = "Пошаљи ову команду:";
-
-/* nothing */
 "Windows" = "Прозори";
 
 /* nothing */
 "Tabs" = "Језичци";
-
-/* nothing */
-"Bottom" = "Доле";
-
-/* nothing */
-"Top" = "Горе";
-
-/* nothing */
-"Left" = "Слева";
-
-/* nothing */
-"Right" = "Здесна";
-
-/* nothing */
-"Hidden" = "Сакриј";
 
 /* nothing */
 "Always" = "Увек";
@@ -3149,31 +3212,37 @@
 "Only requested tabs" = "Само жељени језичци";
 
 /* nothing */
+"Tree" = "_Дрво";
+
+/* nothing */
+"Switcher type:" = "";
+
+/* nothing */
 "Open an extra tab for server messages" = "Отвори посебан језичак за поруке са сервера";
 
 /* nothing */
 "Open an extra tab for server notices" = "Отвори посебан језичак за вести са сервера";
 
 /* nothing */
+"Open a new tab when you receive a private message" = "Отвори посебан језичак за поруке са сервера";
+
+/* nothing */
 "Sort tabs in alphabetical order" = "Уреди језичке лексикографски";
 
 /* nothing */
-"Small tabs" = "Мали језичци";
+"Smaller text" = "Мали језичци";
 
 /* nothing */
 "Focus new tabs:" = "Фокусирај нове језичке:";
+
+/* nothing */
+"Show channel switcher at:" = "Прати одсутне на каналима са мање од:";
 
 /* nothing */
 "Shorten tab labels to:" = "Скрати језичке на:";
 
 /* nothing */
 "letters." = "слова";
-
-/* nothing */
-"Tabs Location" = "Смештање језичака";
-
-/* nothing */
-"Show tabs at:" = "Прикажи језичке:";
 
 /* nothing */
 "Tabs or Windows" = "Језичци или прозори";
@@ -3260,6 +3329,42 @@
 "All downloads combined:" = "Сва преузимања:";
 
 /* nothing */
+"Alerts" = "Узбуне";
+
+/* nothing */
+"Show tray balloons on:" = "Прикажи језичке:";
+
+/* nothing */
+"Blink tray icon on:" = "";
+
+/* nothing */
+"Blink task bar on:" = "";
+
+/* nothing */
+"Make a beep sound on:" = "";
+
+/* nothing */
+"Enable system tray icon" = "Укључи праћење одсустава";
+
+/* nothing */
+"Highlighted Messages" = "Звук при означеним порукама";
+
+/* nothing */
+"Highlighted messages are ones where your nickname is mentioned, but also:" = "";
+
+/* nothing */
+"Extra words to highlight:" = "Речи које треба нагласити:";
+
+/* nothing */
+"Nick names not to highlight:" = "Имена која не треба нагласити:";
+
+/* nothing */
+"Nick names to always highlight:" = "Имена која не треба нагласити:";
+
+/* nothing */
+"Separate multiple words with commas.\nWildcards are accepted." = "Речи раздвојте запетама.";
+
+/* nothing */
 "Default Messages" = "Подразумеване поруке";
 
 /* nothing */
@@ -3291,36 +3396,6 @@
 
 /* nothing */
 "Unmark yourself as away before sending messages" = "Објави повратак пре слања порука";
-
-/* nothing */
-"(Can be a text file relative to ~/.xchat2/)." = "(Можете користити име датотеке релативно у одн. на ~/.xchat2/).";
-
-/* nothing */
-"(Can be a text file relative to config dir)." = "(Може бити релативно у односу на дир. са подешавањима).";
-
-/* nothing */
-"Alerts" = "Узбуне";
-
-/* nothing */
-"Flash taskbar on highlighted messages" = "Бљесак оквира прозора при означеним порукама";
-
-/* nothing */
-"Beep on highlighted messages" = "Звук при означеним порукама";
-
-/* nothing */
-"Beep on private messages" = "Звук на приватну поруку";
-
-/* nothing */
-"Beep on channel messages" = "Звук при порукама на каналу";
-
-/* nothing */
-"Extra words to highlight on:" = "Речи које треба нагласити:";
-
-/* nothing */
-"Nicks not to highlight on:" = "Имена која не треба нагласити:";
-
-/* nothing */
-"Separate multiple words with commas." = "Речи раздвојте запетама.";
 
 /* nothing */
 "Advanced Settings" = "Напредна подешавања";
@@ -3359,7 +3434,10 @@
 "Logging" = "Записивање";
 
 /* nothing */
-"Enable logging of conversations" = "Дозволи бележење разговора";
+"Display scrollback from previous session" = "";
+
+/* nothing */
+"Enable logging of conversations to disk" = "Дозволи бележење разговора";
 
 /* nothing */
 "Log filename:" = "Име дневника:";
@@ -3458,6 +3536,9 @@
 "Mark not-identified users with:" = "Означи неидентификоване кориснике са:";
 
 /* nothing */
+"Open Data Folder" = "Отвори директоријум...";
+
+/* nothing */
 "Select color" = "Одабери боју";
 
 /* nothing */
@@ -3539,6 +3620,9 @@
 "User list" = "Списак корисника";
 
 /* nothing */
+"Channel switcher" = "Списак канала...";
+
+/* nothing */
 "Colors" = "Боје";
 
 /* nothing */
@@ -3551,9 +3635,6 @@
 "Sound" = "Звук";
 
 /* nothing */
-"Network" = "Мрежа";
-
-/* nothing */
 "Network setup" = "Подешавање мреже";
 
 /* nothing */
@@ -3561,6 +3642,9 @@
 
 /* nothing */
 "Categories" = "Врсте";
+
+/* nothing */
+"You cannot place the tree on the top or bottom!\nPlease change to the <b>Tabs</b> layout in the <b>View</b> menu first." = "";
 
 /* nothing */
 "Some settings were changed that require a restart to take full effect." = "Неке измене ће постати видљиве тек када следећи пут покренете програм.";
@@ -3612,85 +3696,4 @@
 
 /* nothing */
 "%d ops, %d total" = "%d оп., %d ук.";
-
-/* nothing */
-"Open an irc:// url" = "Отвори URL irc://";
-
-/* nothing */
-"irc://server:port/channel" = "irc://сервер:порт/канал";
-
-/* nothing */
-"Execute a xchat command" = "Изврши иксчетову наредбу";
-
-/* nothing */
-"\"Command to execute\"" = "\"Наредба за извршење\"";
-
-/* nothing */
-"Prints some text to the current tab/window" = "Исписује неки текст у тренутни језичак одн. прозор";
-
-/* nothing */
-"\"Text to print\"" = "\"Текст за испис\"";
-
-/* nothing */
-"Change the context to the channel" = "Промена контекста у канал";
-
-/* nothing */
-"channel" = "канал";
-
-/* nothing */
-"Change the context to the server" = "Промена контекста у сервер";
-
-/* nothing */
-"server" = "рачунар";
-
-/* nothing */
-"Get some informations from xchat" = "Добави информације од иксчета";
-
-/* nothing */
-"id" = "иб";
-
-/* nothing */
-"Get settings from xchat" = "Добави подешавања од иксчета";
-
-/* nothing */
-"name" = "име";
-
-/* nothing */
-"xchat-remote: %s\nTry `xchat-remote --help' for more information\n" = "xchat-remote: %s\nПробајте `xchat-remote --help' за више података\n";
-
-/* nothing */
-"Couldn't connect to session bus" = "Није могуће повезати се са магистралом сесије";
-
-/* nothing */
-"Failed to complete command" = "Није могуће довршити наредбу";
-
-/* nothing */
-"Failed to complete SetContext" = "Није могуће довршити поставку контекста";
-
-/* nothing */
-"Failed to complete print" = "Није могуће довршити штампање";
-
-/* nothing */
-"Failed to complete GetInfo" = "Није могуће довршити добавку података";
-
-/* nothing */
-"Failed to complete GetPrefs" = "Није могуће довршити добавку поставки";
-
-/* nothing */
-"%s doesn't exist\n" = "%s не постоји\n";
-
-/* nothing */
-"xchat remote access" = "удаљен приступ иксчету";
-
-/* nothing */
-"plugin for remote access using DBUS" = "додатак за удаљен приступ помоћу DBUSа";
-
-/* nothing */
-"Couldn't connect to session bus : %s\n" = "Није могуће повезати се са магистралом сесије : %s\n";
-
-/* nothing */
-"Failed to acquire %s: %s\n" = "Не може се добавити %s: %s\n";
-
-/* nothing */
-"%s loaded successfully!\n" = "%s је успешно учитан!\n";
 

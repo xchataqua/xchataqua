@@ -1,5 +1,5 @@
 /* nothing */
-"" = "Project-Id-Version: xchat 2.4.2\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2005-03-07 18:50+1100\nPO-Revision-Date: 2005-03-07 20:16+0100\nLast-Translator: Andrej Kacian <andrej@kacian.sk>\nLanguage-Team: Slovak <sk-i18n@lists.linux.sk>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nX-Generator: KBabel 1.10\nPlural-Forms:  nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n";
+"" = "Project-Id-Version: xchat 2.4.5\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2010-05-30 13:56+1000\nPO-Revision-Date: 2005-09-14 12:36+0200\nLast-Translator: Andrej Kacian <andrej@kacian.sk>\nLanguage-Team: Slovak <sk-i18n@lists.linux.sk>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nX-Generator: KBabel 1.10.2\nPlural-Forms:  nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n";
 
 /* nothing */
 "Cannot create ~/.xchat2" = "Nepodarilo sa vytvoriť ~/.xchat2";
@@ -35,6 +35,12 @@
 "Cannot access %s\n" = "Nepodaril sa prístup k %s\n";
 
 /* nothing */
+"Error" = "Chyba";
+
+/* nothing */
+"%s is offering \"%s\". Do you want to accept?" = "";
+
+/* nothing */
 "No active DCCs\n" = "Žiadne DCC spojenie nie je aktívne\n";
 
 /* nothing */
@@ -62,16 +68,25 @@
 "Not connected. Try /server <host> [<port>]\n" = "Nie ste pripojený. Použite /server <hostiteľ> [<port>]\n";
 
 /* nothing */
+"Already marked away: %s\n" = "";
+
+/* nothing */
+"Already marked back.\n" = "";
+
+/* nothing */
 "I need /bin/sh to run!\n" = "Je potrebný program /bin/sh !\n";
 
 /* nothing */
-"\nCommands Available:\n\n  " = "\nDostupné príkazy:\n\n..";
+"Commands Available:" = "Dostupné príkazy:";
 
 /* nothing */
-"\n\nType /HELP <command> for more information, or /HELP -l\n\n" = "\n\nĎalšie informácie získate zadaním /HELP <príkaz> alebo /HELP -l\n\n";
+"User defined commands:" = "Používateľské príkazy:";
 
 /* nothing */
-"User defined commands:\n\n  " = "Používateľské príkazy:\n\n  ";
+"Plugin defined commands:" = "Príkazy definované pluginmi:";
+
+/* nothing */
+"Type /HELP <command> for more information, or /HELP -l" = "Ďalšie informácie získate zadaním /HELP <príkaz> alebo /HELP -l";
 
 /* nothing */
 "Unknown arg '%s' ignored." = "Neznámy argument '%s' ignorovaný.";
@@ -89,16 +104,25 @@
 "ALLCHAN <cmd>, sends a command to all channels you're in" = "ALLCHAN <príkaz>, pošle príkaz do všetkých kanálov, v ktorých ste";
 
 /* nothing */
+"ALLCHANL <cmd>, sends a command to all channels you're in" = "ALLCHANL <príkaz>, pošle príkaz do všetkých kanálov, v ktorých ste";
+
+/* nothing */
 "ALLSERV <cmd>, sends a command to all servers you're in" = "ALLSERV <príkaz>, pošle príkaz na všetky servery, na ktorých ste";
 
 /* nothing */
 "AWAY [<reason>], sets you away" = "AWAY [<dôvod>], označí vás ako neprítomného";
 
 /* nothing */
+"BACK, sets you back (not away)" = "";
+
+/* nothing */
 "BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "BAN <maska> [<typ>], zakáže každého, kto odpovedá maske, z aktuálneho kanála. Ak už sú prihlásení v kanáli, nevykopne ich to (musíte byť chanop)";
 
 /* nothing */
-"CLEAR, Clears the current text window" = "CLEAR, vyčistí aktuálne textové okno";
+"CHANOPT [-quiet] <variable> [<value>]" = "SET [-quiet] <premenná> [<hodnota>]";
+
+/* nothing */
+"CLEAR [ALL|HISTORY], Clears the current text window or command history" = "CLEAR, vyčistí aktuálne textové okno";
 
 /* nothing */
 "CLOSE, Closes the current window/tab" = "CLOSE, zavrie aktuálne okno alebo záložku";
@@ -110,10 +134,10 @@
 "CTCP <nick> <message>, send the CTCP message to nick, common messages are VERSION and USERINFO" = "CTCP <prezývka> <správa>, pošle správu CTCP používateľovi, obvyklé správy sú VERSION a USERINFO";
 
 /* nothing */
-"CYCLE, parts current channel and immediately rejoins" = "CYCLE, opustí aktuálny kanál a hneď sa vráti";
+"CYCLE [<channel>], parts the current or given channel and immediately rejoins" = "CYCLE, opustí aktuálny kanál a hneď sa vráti";
 
 /* nothing */
-"\nDCC GET <nick>                     - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file] - send a file to someone\nDCC LIST                           - show DCC list\nDCC CHAT <nick>                    - offer DCC CHAT to someone\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "\nDCC GET <prezývka>          - príjme ponúkaný súbor\nDCC SEND <prezývka> <súbor> - pošle niekomu súbor\nDCC LIST                     - zobrazí zoznam DCC\nDCC CHAT <prezývka>         - ponúkne niekomu DCC CHAT\nDCC CLOSE <typ> <prezývka> <súbor>         príklad:\n         /dcc close send janko subor.tar.gz";
+"\nDCC GET <nick>                      - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file]  - send a file to someone\nDCC PSEND [-maxcps=#] <nick> [file] - send a file using passive mode\nDCC LIST                            - show DCC list\nDCC CHAT <nick>                     - offer DCC CHAT to someone\nDCC PCHAT <nick>                    - offer DCC CHAT using passive mode\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "\nDCC GET <prezývka>          - príjme ponúkaný súbor\nDCC SEND [-maxcps=#] <prezývka> [súbor]  - pošle niekomu súbor\nDCC PSEND [-maxcps=#] <prezývka> [súbor]  - pošle niekomu súbor v pasívnom režime\nDCC LIST                     - zobrazí zoznam DCC\nDCC CHAT <prezývka>         - ponúkne niekomu DCC CHAT\nDCC CLOSE <typ> <prezývka> <súbor>         príklad:\n         /dcc close send janko subor.tar.gz";
 
 /* nothing */
 "DEHOP <nick>, removes chanhalf-op status from the nick on the current channel (needs chanop)" = "DEHOP <prezývka>, odstráni stav chanhalf-op pre prezývku v aktuálnom kanáli (vyžaduje chanop)";
@@ -158,7 +182,13 @@
 "GATE <host> [<port>], proxies through a host, port defaults to 23" = "GATE <hostiteľ> [<port>], nastaví proxy na hostiteľa, port je štandardne 23";
 
 /* nothing */
+"GHOST <nick> [password], Kills a ghosted nickname" = "";
+
+/* nothing */
 "HOP <nick>, gives chanhalf-op status to the nick (needs chanop)" = "HOP <prezývka>, nastaví stav chanhalf-op pre používateľa (vyžaduje chanop)";
+
+/* nothing */
+"ID <password>, identifies yourself to nickserv" = "ID <heslo>, identifikácia pre nickserv";
 
 /* nothing */
 "IGNORE <mask> <types..> <options..>\n    mask - host mask to ignore, eg: *!*@*.aol.com\n    types - types of data to ignore, one or all of:\n            PRIV, CHAN, NOTI, CTCP, DCC, INVI, ALL\n    options - NOSAVE, QUIET" = "IGNORE <maska> <typy..> <možnosti..>\n    maska - maska ignorovaných hostiteľov, napr.: *!*@*.aol.com\n    typy - typy ignorovaný dát, jedna alebo všetky z:\n            PRIV, CHAN, NOTI, CTCP, DCC, INVI, ALL\n    možnosti - NOSAVE, QUIET";
@@ -182,7 +212,7 @@
 "LASTLOG <string>, searches for a string in the buffer" = "LASTLOG <reťazec>, vyhľadá reťazec v zaznamenanom texte";
 
 /* nothing */
-"LOAD <file>, loads a plugin or script" = "LOAD <súbor>, načíta plugin alebo skript";
+"LOAD [-e] <file>, loads a plugin or script" = "LOAD [-e] <súbor>, načíta plugin alebo skript";
 
 /* nothing */
 "MDEHOP, Mass deop's all chanhalf-ops in the current channel (needs chanop)" = "MDEHOP, hromadne zruší stav všetkým chanhalf-op v aktuálnom kanáli (vyžaduje chanop)";
@@ -209,7 +239,7 @@
 "NCTCP <nick> <message>, Sends a CTCP notice" = "NCTCP <prezývka> <správa>, pošle poznámku CTCP";
 
 /* nothing */
-"NEWSERVER <hostname> [<port>]" = "NEWSERVER <hostiteľ> [<port>]";
+"NEWSERVER [-noconnect] <hostname> [<port>]" = "NEWSERVER <hostiteľ> [<port>]";
 
 /* nothing */
 "NICK <nickname>, sets your nick" = "NICK <prezývka>, nastaví vašu prezývku";
@@ -218,7 +248,7 @@
 "NOTICE <nick/channel> <message>, sends a notice. Notices are a type of message that should be auto reacted to" = "NOTICE <prezývka/kanál> <správa>, pošle poznámku. Poznámky sú typom správy, na ktoré by sa malo automaticky reagovať";
 
 /* nothing */
-"NOTIFY [<nick>], lists your notify list or adds someone to it" = "NOTIFY [<prezývka>], vypíše váš zoznam upozornení, alebo niekoho do tohto zoznamu pridá";
+"NOTIFY [-n network1[,network2,...]] [<nick>], displays your notify list or adds someone to it" = "NOTIFY [<prezývka>], vypíše váš zoznam upozornení, alebo niekoho do tohto zoznamu pridá";
 
 /* nothing */
 "OP <nick>, gives chanop status to the nick (needs chanop)" = "OP <prezývka>, dá stav chanop používateľovi (vyžaduje chanop)";
@@ -230,7 +260,7 @@
 "PING <nick | channel>, CTCP pings nick or channel" = "PING <prezývka | kanál>, pošle CTCP ping používateľovi alebo na kanál";
 
 /* nothing */
-"QUERY <nick>, opens up a new privmsg window to someone" = "QUERY <prezývka>, otvorí nové okno pre súkromné správy niekomu";
+"QUERY [-nofocus] <nick>, opens up a new privmsg window to someone" = "QUERY <prezývka>, otvorí nové okno pre súkromné správy niekomu";
 
 /* nothing */
 "QUIT [<reason>], disconnects from the current server" = "QUIT [<dôvod>], odpojí sa od aktuálneho serveru";
@@ -251,6 +281,9 @@
 "SAY <text>, sends the text to the object in the current window" = "SAY <text>, pošle text objektu v aktuálnom okne";
 
 /* nothing */
+"SEND <nick> [<file>]" = "";
+
+/* nothing */
 "SERVCHAN [-ssl] <host> <port> <channel>, connects and joins a channel" = "SERVCHAN [-ssl] <hostiteľ> <port> <kanál>, pripojí sa a vstúpi na kanál";
 
 /* nothing */
@@ -263,13 +296,16 @@
 "SERVER <host> [<port>] [<password>], connects to a server, the default port is 6667" = "/SERVER <hostiteľ> [<port>] [<heslo>], pripojí sa na server, štandardný port je 6667";
 
 /* nothing */
-"SET [-quiet] <variable> [<value>]" = "SET [-quiet] <premenná> [<hodnota>]";
+"SET [-e] [-off|-on] [-quiet] <variable> [<value>]" = "SET [-quiet] <premenná> [<hodnota>]";
 
 /* nothing */
 "SETCURSOR [-|+]<position>" = "SETCURSOR [-|+]<pozícia>";
 
 /* nothing */
 "TOPIC [<topic>], sets the topic if one is given, else shows the current topic" = "TOPIC [<téma>], nastaví tému, ak je zadaná, inak zobrazí aktuálnu tému";
+
+/* nothing */
+"\nTRAY -f <timeout> <file1> [<file2>] Blink tray between two icons.\nTRAY -f <filename>                  Set tray to a fixed icon.\nTRAY -i <number>                    Blink tray with an internal icon.\nTRAY -t <text>                      Set the tray tooltip.\nTRAY -b <title> <text>              Set the tray balloon." = "";
 
 /* nothing */
 "UNBAN <mask> [<mask>...], unbans the specified masks." = "UNBAN <maska> [<maska>...], zruší zákaz pre zadané masky.";
@@ -282,6 +318,9 @@
 
 /* nothing */
 "URL <url>, opens a URL in your browser" = "URL <adresa>, otvorí URL adresu vo vašom prehliadači";
+
+/* nothing */
+"USELECT [-a] [-s] <nick1> <nick2> etc, highlights nick(s) in channel userlist" = "";
 
 /* nothing */
 "VOICE <nick>, gives voice status to someone (needs chanop)" = "VOICE <prezývka>, udelí niekomu stav voice (vyžaduje chanop)";
@@ -341,12 +380,6 @@
 "%C22*%O$t$1 is now known as $2" = "%C22*%O$t$1 sa premenoval na $2";
 
 /* nothing */
-"%C18*$t$1%O $2" = "%C18*$t$1%O·$2";
-
-/* nothing */
-"%C21*%O$t%C21%B$1%O%C21 $2" = "%C21*%O$t%C21%B$1%O%C21·$2";
-
-/* nothing */
 "%C22*%O$t$1 sets ban on $2" = "%C22*%O$t$1 nastavil zákaz pre $2";
 
 /* nothing */
@@ -374,19 +407,10 @@
 "%UChannel          Users   Topic" = "%UKanál           Používatelia   Téma";
 
 /* nothing */
-"%C18%B%B$4$1%O%C18%O$t$2" = "%C18%B%B$4$1%O%C18%O$t$2";
-
-/* nothing */
 "%C22*%O$t$1 sets mode $2$3 $4" = "%C22*%O$t$1 nastavil mód $2$3 $4";
 
 /* nothing */
 "%C22*%O$t%C22Channel $1 modes: $2" = "%C22*%O$t%C22Kanál $1 módy: $2";
-
-/* nothing */
-"$4%C21%B$1%O$t%C21$2" = "$4%C21%B$1%O$t%C21$2";
-
-/* nothing */
-"%C28-%C29$1/$2%C28-%O$t$3" = "%C28-%C29$1/$2%C28-%O$t$3";
 
 /* nothing */
 "%C22*%O$t%C26$1%O gives channel operator status to%C26 $2" = "%C22*%O$t%C26$1%O dal stav half-operator kanálu používateľovi%C26·$2";
@@ -435,6 +459,9 @@
 
 /* nothing */
 "%C22*%O$tReceived a CTCP Sound $1 from $2" = "%C22*%O$tPrijatý CTCP Sound $1 od $2";
+
+/* nothing */
+"%C22*%O$tReceived a CTCP Sound $1 from $2 (to $3)" = "%C22*%O$tPrijatý CTCP Sound $1 od $2 (to $3)";
 
 /* nothing */
 "%C22*%O$tDCC CHAT to %C26$1%O aborted." = "%C22*%O$tDCC CHAT k %C26$1%O ukončený.";
@@ -524,9 +551,6 @@
 "%C22*%O$tFound your IP: [$1]" = "%C22*%O$tNájdená vaša IP: [$1]";
 
 /* nothing */
-"$1$t$2" = "$1$t$2";
-
-/* nothing */
 "%O%C26$1%O added to ignore list." = "%O%C26$1%O pridaný do zoznamu ignorovaných.";
 
 /* nothing */
@@ -563,12 +587,6 @@
 "%C22*%O$tYou have been killed by $1 ($2%O%C22)" = "%C22*%O$tZabil vás $1 ($2%O%C22)";
 
 /* nothing */
-"%C19>%O$1%C19<%O$t$2%O" = "%C19>%O$1%C19<%O$t$2%O";
-
-/* nothing */
-"%C16*%O$t$1%O" = "%C16*%O$t$1%O";
-
-/* nothing */
 "%C22*%O$t%C22MOTD Skipped." = "%C22*%O$t%C22MOTD preskočená.";
 
 /* nothing */
@@ -584,12 +602,6 @@
 "%C22*%O$tNo process is currently running" = "%C22*%O$tMomentálne nebeží žiadny proces";
 
 /* nothing */
-"%C28-%C29$1%C28-%O$t$2" = "%C28-%C29$1%C28-%O$t$2";
-
-/* nothing */
-"%C19>%O$1%C19<%O$t$2" = "%C19>%O$1%C19<%O$t$2";
-
-/* nothing */
 "$tNotify list is empty." = "$tZoznam upozornení prázdny.";
 
 /* nothing */
@@ -599,16 +611,16 @@
 "%C22*%O$t$1 users in notify list." = "%C22*%O$t$1 používateľov na zozname upozornení.";
 
 /* nothing */
-"%C22*%O$tNotify: $1 is offline ($2)." = "%C22*%O$tUpozornenie: $1 je offline ($2).";
+"%C22*%O$tNotify: $1 is offline ($3)." = "%C22*%O$tUpozornenie: $1 je offline ($2).";
 
 /* nothing */
-"%C22*%O$tNotify: $1 is online ($2)." = "%C22*%O$tUpozornenie: $1 je online ($2).";
+"%C22*%O$tNotify: $1 is online ($3)." = "%C22*%O$tUpozornenie: $1 je online ($2).";
 
 /* nothing */
 "%C23*%O$t%C23$1 (%O%C23$2) has left $3" = "%C23*%O$t%C23$1·(%O%C23$2) opustil $3";
 
 /* nothing */
-"%C23*%O$t%C23$1 (%O%C23$2) has left $3 (%O%C23$4)" = "%C23*%O$t%C23$1·(%O%C23$2) opustil $3 (%O%C23$4)";
+"%C23*%O$t%C23$1 (%O%C23$2) has left $3 (%O%C23%B%B$4%O%C23)" = "%C23*%O$t%C23$1 (%O%C23$2) opustil $3 (%O%C23%B%B$4%O%C23)";
 
 /* nothing */
 "%C22*%O$tPing reply from $1: $2 second(s)" = "%C22*%O$tOdpoveď ping od $1: $2 sekúnd";
@@ -617,16 +629,10 @@
 "%C22*%O$tNo ping reply for $1 seconds, disconnecting." = "%C22*%O$tNeprišla ping odpoveď za $1 sekúnd, odpájam.";
 
 /* nothing */
-"%C28*%C29$3$1%C28*$t%O$2" = "%C28*%C29$3$1%C28*$t%O$2";
-
-/* nothing */
-"%C18%B%B$3$1%O$t$2" = "%C18%B%B$3$1%O$t$2";
-
-/* nothing */
 "%C22*%O$tA process is already running" = "%C22*%O$tA proces už beží";
 
 /* nothing */
-"%C23*%O$t%C23$1 has quit (%O%C23$2)" = "%C23*%O$t%C23$1 skončil (%O%C23$2)";
+"%C23*%O$t%C23$1 has quit (%O%C23%B%B$2%O%C23)" = "%C23*%O$t%C23$1 ukončil (%O%C23%B%B$2%O%C23)";
 
 /* nothing */
 "%C22*%O$t$1 sets modes%B %C30[%O$2%B%C30]" = "%C22*%O$t$1 nastavil módy%B·%C30[%O$2%B%C30]";
@@ -639,9 +645,6 @@
 
 /* nothing */
 "%C22*%O$t%C22Connected." = "%C22*%O$t%C22Pripojený.";
-
-/* nothing */
-"%C22*%O$t$1" = "%C22*%O$t$1";
 
 /* nothing */
 "%C22*%O$t%C22Looking up $1" = "%C22*%O$t%C22Zisťujem $1";
@@ -701,16 +704,16 @@
 "%C23*$tYou have left channel $3" = "%C23*$tOpustili ste kanál $3";
 
 /* nothing */
-"%C23*$tYou have left channel $3 (%O%C23$4%O%C23)" = "%C23*$tOpustili ste kanál $3 (%O%C23$4%O%C23)";
+"%C23*$tYou have left channel $3 (%O%C23%B%B$4%O%C23)" = "%C23*$tOpustili ste kanál $3 (%O%C23%B%B$4%O%C23)";
 
 /* nothing */
 "%C22*%O$tYou've invited%C26 $1%O to%C26 $2%O (%C26$3%O)" = "%C22*%O$tBoli ste pozvaný%C26·$1%O·na%C26·$2%O·(%C26$3%O)";
 
 /* nothing */
-"%C31%B%B$4$1%O$t%C30$2" = "%C31%B%B$4$1%O$t%C30$2";
+"%C22*%O$tYou are now known as $2" = "%C22*%O$tTeraz ste známy ako $2";
 
 /* nothing */
-"%C22*%O$tYou are now known as $2" = "%C22*%O$tTeraz ste známy ako $2";
+"Loaded log from" = "Načítať z";
 
 /* nothing */
 "**** ENDING LOGGING AT %s\n" = "**** KONIEC ZÁZNAMU %s\n";
@@ -743,13 +746,13 @@
 "The action" = "Akcia";
 
 /* nothing */
-"The text" = "Text";
-
-/* nothing */
 "Mode char" = "Znak módu";
 
 /* nothing */
 "Identified text" = "Identifikovaný text";
+
+/* nothing */
+"The text" = "Text";
 
 /* nothing */
 "The message" = "Správa";
@@ -953,6 +956,9 @@
 "Server Name" = "Názov serveru";
 
 /* nothing */
+"Raw Numeric or Identifier" = "";
+
+/* nothing */
 "Nick of person who invited you" = "Prezývka osoby, ktorá vás pozvala";
 
 /* nothing */
@@ -965,19 +971,13 @@
 "Nick being tried" = "Skúšaná prezývka";
 
 /* nothing */
-"Error" = "Chyba";
-
-/* nothing */
 "IP" = "IP";
 
 /* nothing */
 "Port" = "Port";
 
 /* nothing */
-"PID" = "PID";
-
-/* nothing */
-"Channel name" = "Názov kanálu";
+"Network" = "Sieť";
 
 /* nothing */
 "Modes string" = "Reťazec módov";
@@ -1011,9 +1011,6 @@
 
 /* nothing */
 "Number of notify items" = "Počet položiek upozornenia";
-
-/* nothing */
-"Servername" = "Názov serveru";
 
 /* nothing */
 "Old Filename" = "Staré meno súboru";
@@ -1073,6 +1070,9 @@
 "Connection reset by peer" = "Spojenie zrušené druhou stranou";
 
 /* nothing */
+"Ascension Island" = "Kokosové ostrovy";
+
+/* nothing */
 "Andorra" = "Andorra";
 
 /* nothing */
@@ -1122,6 +1122,9 @@
 
 /* nothing */
 "Aruba" = "Aruba";
+
+/* nothing */
+"Aland Islands" = "Falklandské ostrovy";
 
 /* nothing */
 "Azerbaijan" = "Azerbajdžan";
@@ -1289,6 +1292,9 @@
 "Ethiopia" = "Etiópia";
 
 /* nothing */
+"European Union" = "";
+
+/* nothing */
 "Finland" = "Fínsko";
 
 /* nothing */
@@ -1305,9 +1311,6 @@
 
 /* nothing */
 "France" = "Francúzsko";
-
-/* nothing */
-"France, Metropolitan" = "Metropolitné francúzsko";
 
 /* nothing */
 "Gabon" = "Gabon";
@@ -1397,6 +1400,9 @@
 "Israel" = "Izrael";
 
 /* nothing */
+"Isle of Man" = "";
+
+/* nothing */
 "India" = "India";
 
 /* nothing */
@@ -1419,6 +1425,9 @@
 
 /* nothing */
 "Italy" = "Taliansko";
+
+/* nothing */
+"Jersey" = "";
 
 /* nothing */
 "Jamaica" = "Jamajka";
@@ -1598,9 +1607,6 @@
 "Nauru" = "Nauru";
 
 /* nothing */
-"Neutral Zone" = "Neutrálna zóna";
-
-/* nothing */
 "Niue" = "Niue";
 
 /* nothing */
@@ -1754,6 +1760,9 @@
 "Tokelau" = "Tokelau";
 
 /* nothing */
+"East Timor" = "Východný Timor";
+
+/* nothing */
 "Turkmenistan" = "Turkmenistán";
 
 /* nothing */
@@ -1761,9 +1770,6 @@
 
 /* nothing */
 "Tonga" = "Tonga";
-
-/* nothing */
-"East Timor" = "Východný Timor";
 
 /* nothing */
 "Turkey" = "Turecko";
@@ -1788,9 +1794,6 @@
 
 /* nothing */
 "United Kingdom" = "Spojené kráľovstvo";
-
-/* nothing */
-"US Minor Outlying Islands" = "US menšie pobrežné ostrovy";
 
 /* nothing */
 "United States of America" = "USA";
@@ -1850,43 +1853,19 @@
 "Unknown" = "Neznáme";
 
 /* nothing */
-"Direct client-to-client" = "Priamo klient klientovi";
+"_Open Dialog Window" = "Otvoriť dialógové okno";
 
 /* nothing */
-"Send File" = "Odoslať súbor";
+"_Send a File" = "Odoslať súbor";
 
 /* nothing */
-"Offer Chat" = "Ponúknuť rozhovor";
+"_User Info (WhoIs)" = "";
 
 /* nothing */
-"Abort Chat" = "Ukončiť rozhovor";
+"_Add to Friends List" = "";
 
 /* nothing */
-"Version" = "Verzia";
-
-/* nothing */
-"Userinfo" = "Informácie o používateľovi";
-
-/* nothing */
-"Clientinfo" = "Informácie o klientovi";
-
-/* nothing */
-"Ping" = "Ping";
-
-/* nothing */
-"Time" = "Čas";
-
-/* nothing */
-"Finger" = "Finger";
-
-/* nothing */
-"Oper" = "Oper";
-
-/* nothing */
-"Kill this user" = "Zabiť spojenie tomuto používateľovi";
-
-/* nothing */
-"Mode" = "Mód";
+"O_perator Actions" = "";
 
 /* nothing */
 "Give Ops" = "Dať op";
@@ -1895,25 +1874,10 @@
 "Take Ops" = "Zobrať op";
 
 /* nothing */
-"Give Half-Ops" = "Dať half-op";
-
-/* nothing */
-"Take Half-Ops" = "Zobrať half-op";
-
-/* nothing */
 "Give Voice" = "Dať voice";
 
 /* nothing */
 "Take Voice" = "Zobrať voice";
-
-/* nothing */
-"Ignore" = "Ignorovať";
-
-/* nothing */
-"Ignore User" = "Ignorovať používateľa";
-
-/* nothing */
-"UnIgnore User" = "Prestať ignorovať používateľa";
 
 /* nothing */
 "Kick/Ban" = "Vykopnúť/Zakázať";
@@ -1926,42 +1890,6 @@
 
 /* nothing */
 "KickBan" = "Vykopnúť a zakázať";
-
-/* nothing */
-"Info" = "Informácie";
-
-/* nothing */
-"Who" = "Who";
-
-/* nothing */
-"WhoIs" = "WhoIs";
-
-/* nothing */
-"DNS Lookup" = "Vyhľadávanie DNS";
-
-/* nothing */
-"Trace" = "Trasovať";
-
-/* nothing */
-"UserHost" = "UserHost";
-
-/* nothing */
-"External" = "Externé";
-
-/* nothing */
-"Traceroute" = "Traceroute";
-
-/* nothing */
-"Telnet" = "Telnet";
-
-/* nothing */
-"Open Dialog Window" = "Otvoriť dialógové okno";
-
-/* nothing */
-"Disconnect" = "Odpojiť";
-
-/* nothing */
-"Reconnect" = "Znovu pripojiť";
 
 /* nothing */
 "Leave Channel" = "Opustiť kanál";
@@ -2000,6 +1928,9 @@
 "Dialog" = "Dialóg";
 
 /* nothing */
+"WhoIs" = "WhoIs";
+
+/* nothing */
 "Send" = "Odoslať";
 
 /* nothing */
@@ -2009,7 +1940,31 @@
 "Clear" = "Vymazať";
 
 /* nothing */
-"About X-Chat" = "Informácie o X-Chat";
+"Ping" = "Ping";
+
+/* nothing */
+"Couldn't connect to session bus" = "";
+
+/* nothing */
+"Failed to complete NameHasOwner" = "";
+
+/* nothing */
+"Failed to complete Command" = "Nepodarilo sa načítať písmo:\n\n%s";
+
+/* nothing */
+"remote access" = "Nepodaril sa prístup k %s\n";
+
+/* nothing */
+"plugin for remote access using DBUS" = "";
+
+/* nothing */
+"Couldn't connect to session bus: %s\n" = "";
+
+/* nothing */
+"Failed to acquire %s: %s\n" = "Nepodarilo sa načítať písmo:\n\n%s";
+
+/* nothing */
+"About " = "_O Programe";
 
 /* nothing */
 "A multiplatform IRC Client" = "Multiplatformný IRC klient";
@@ -2018,7 +1973,13 @@
 "Character Chart" = "Znaková Tabuľka";
 
 /* nothing */
+"Not connected." = "nepripojovať sa automaticky";
+
+/* nothing */
 "You must select some bans." = "Musíte vybrať nejaké zákazy.";
+
+/* nothing */
+"Are you sure you want to remove all bans in %s?" = "";
 
 /* nothing */
 "Mask" = "Maska";
@@ -2030,10 +1991,13 @@
 "Date" = "Dátum";
 
 /* nothing */
-"X-Chat: Ban List (%s)" = "X-Chat: Zoznam zákazov (%s)";
+"You can only open the Ban List window while in a channel tab." = "";
 
 /* nothing */
-"Unban" = "Odstrániť zákaz";
+"XChat: Ban List (%s)" = "X-Chat: Zoznam zákazov (%s)";
+
+/* nothing */
+"Remove" = "Odstrániť";
 
 /* nothing */
 "Crop" = "Vytiahnuť";
@@ -2042,49 +2006,67 @@
 "Refresh" = "Aktualizovať";
 
 /* nothing */
-"User and Channel Statistics: %d/%d Users on %d/%d Channels" = "Štatistika kanálov a používateľov: %d/%d používateľov na %d/%d kanáloch";
-
-/* nothing */
-"I can't save an empty list!" = "Prázdny zoznam nie je možné uložiť!";
+"Displaying %d/%d users on %d/%d channels." = "Štatistika kanálov a používateľov: %d/%d používateľov na %d/%d kanáloch";
 
 /* nothing */
 "Select an output filename" = "Vyberte meno výstupného súboru";
 
 /* nothing */
-"X-Chat: Channel List (%s)" = "X-Chat: Zoznam kanálov (%s)";
+"_Join Channel" = "Vstúpiť na kanál";
 
 /* nothing */
-"List display options:" = "Možnosti zobrazenia zoznamu:";
+"_Copy Channel Name" = "Názov kanálu";
 
 /* nothing */
-"Minimum Users:" = "Minimálny počet používateľov:";
+"Copy _Topic Text" = "";
 
 /* nothing */
-"Maximum Users:" = "Maximálny počet používateľov:";
+"XChat: Channel List (%s)" = "X-Chat: Zoznam kanálov (%s)";
 
 /* nothing */
-"Regex Match:" = "Regulérny výraz:";
+"_Search" = "";
 
 /* nothing */
-"Apply Match to:" = "Použiť výraz na:";
+"_Download List" = "Prijímať súbory do:";
 
 /* nothing */
-"Apply" = "Použiť";
+"Save _List..." = "Zoznam serverov...";
 
 /* nothing */
-"Refresh the list" = "Aktualizovať zoznam";
+"Show only:" = "";
 
 /* nothing */
-"Save the list" = "Uložiť zoznam";
+"channels with" = "Otvárať kanály v:";
 
 /* nothing */
-"Join Channel" = "Vstúpiť na kanál";
+"to" = "";
+
+/* nothing */
+"users." = "Používatelia";
+
+/* nothing */
+"Look in:" = "";
+
+/* nothing */
+"Channel name" = "Názov kanálu";
+
+/* nothing */
+"Search type:" = "Prehľadať text...";
+
+/* nothing */
+"Simple Search" = "";
+
+/* nothing */
+"Pattern Match (Wildcards)" = "";
+
+/* nothing */
+"Regular Expression" = "";
+
+/* nothing */
+"Find:" = "Hľadať:";
 
 /* nothing */
 "Send file to %s" = "Poslať súbor používateľovi %s";
-
-/* nothing */
-"      File: %s\n   To/From: %s\n      Size: %u\n      Port: %d\n IP Number: %s\nStart Time: %s   Max CPS: %d\n" = "      Súbor: %s\n   K/Od: %s\n      Veľkosť: %u\n      Port: %d\n IP adresa: %s\nZačiatok: %s   Max CPS: %d\n";
 
 /* nothing */
 "That file is not resumable." = "V prenose tohoto súboru nie je možné pokračovať.";
@@ -2099,7 +2081,7 @@
 "Cannot resume the same file from two people." = "Nemôžem sťahovať ten istý súbor od dvoch používateľov.";
 
 /* nothing */
-"MIME Type" = "Typ MIME";
+"XChat: Uploads and Downloads" = "";
 
 /* nothing */
 "Status" = "Stav";
@@ -2111,7 +2093,22 @@
 "ETA" = "ETA";
 
 /* nothing */
-"X-Chat: File Receive List" = "X-Chat: Zoznam prijímaných súborov";
+"Both" = "Oboje";
+
+/* nothing */
+"Uploads" = "";
+
+/* nothing */
+"Downloads" = "Prijímať súbory do:";
+
+/* nothing */
+"Details" = "Vaše Údaje";
+
+/* nothing */
+"File:" = "Súbor:";
+
+/* nothing */
+"Address:" = "Adresa:";
 
 /* nothing */
 "Abort" = "Zrušiť";
@@ -2123,19 +2120,10 @@
 "Resume" = "Pokračovať";
 
 /* nothing */
-"Open" = "Otvoriť";
+"Open Folder..." = "";
 
 /* nothing */
-"Ack" = "Potvr";
-
-/* nothing */
-"To" = "K";
-
-/* nothing */
-"X-Chat: File Send List" = "X-Chat: Zoznam posielaných súborov";
-
-/* nothing */
-"To/From" = "K/Od";
+"XChat: DCC Chat List" = "X-Chat: Zoznam DCC Chat";
 
 /* nothing */
 "Recv" = "Príjem";
@@ -2144,10 +2132,7 @@
 "Sent" = "Odoslané";
 
 /* nothing */
-"StartTime" = "Počiatočný čas";
-
-/* nothing */
-"X-Chat: DCC Chat List" = "X-Chat: Zoznam DCC Chat";
+"Start Time" = "Počiatočný čas";
 
 /* nothing */
 "*NEW*" = "*NOVÝ*";
@@ -2186,28 +2171,37 @@
 "Help" = "Nápoveda";
 
 /* nothing */
-"Options" = "Možnosti";
+"Don't auto connect to servers" = "Automaticky sa znovupripojiť k serveru";
 
 /* nothing */
-"don't auto connect" = "nepripojovať sa automaticky";
+"Use a different config directory" = "použiť iný konfiguračný priečinok";
 
 /* nothing */
-"DIRECTORY" = "PRIEČINOK";
+"Don't auto load any plugins" = "nenahrávať automaticky žiadne pluginy";
 
 /* nothing */
-"use a different config dir" = "použiť iný konfiguračný priečinok";
+"Show plugin auto-load directory" = "zobraziť priečinok pre automatické načítanie plug-inov";
 
 /* nothing */
-"don't auto load any plugins" = "nenahrávať automaticky žiadne pluginy";
+"Show user config directory" = "zobraziť priečinok s používateľským nastavením";
 
 /* nothing */
-"show plugin auto-load dir" = "zobraziť priečinok pre automatické načítanie plug-inov";
+"Open an irc://server:port/channel URL" = "";
 
 /* nothing */
-"show user config dir" = "zobraziť priečinok s používateľským nastavením";
+"Execute command:" = "Vykonať príkaz:";
 
 /* nothing */
-"show version information" = "zobraziť informácie o verzii";
+"Open URL or execute command in an existing XChat" = "";
+
+/* nothing */
+"Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "";
+
+/* nothing */
+"level" = "Nikdy";
+
+/* nothing */
+"Show version information" = "zobraziť informácie o verzii";
 
 /* nothing */
 "Failed to open font:\n\n%s" = "Nepodarilo sa načítať písmo:\n\n%s";
@@ -2217,6 +2211,9 @@
 
 /* nothing */
 "%d bytes" = "%d bajtov";
+
+/* nothing */
+"Network send queue: %d bytes" = "";
 
 /* nothing */
 "The Run Command action runs the data in Data 1 as if it has been typed into the entry box where you pressed the key sequence. Thus it can contain text (which will be sent to the channel/person), commands or user commands. When run all \\n characters in Data 1 are used to deliminate seperate commands so it is possible to run more than one command. If you want a \\ in the actual text run then enter \\\\" = "Akcia Spustiť príkaz pošle dáta do Data 1 ako keby ste ich napísali do vstupného poľa. Preto môže obsahovať text (ktorý je posielaný do kanálu alebo osobe), príkazy alebo používateľské príkazy. Po poslaní sa použijú znaky \\n  pre rozdelenie do príkazov, takže sa dá naraz spustiť viac ako jeden príkaz. Ak chcete priamo do príkazov zadať znaky \\, zadajte ich ako \\\\";
@@ -2279,10 +2276,7 @@
 "Action" = "Akcia";
 
 /* nothing */
-"X-Chat: Keyboard Shortcuts" = "X-Chat: Klávesové skratky";
-
-/* nothing */
-"Add new" = "Pridať nový";
+"XChat: Keyboard Shortcuts" = "X-Chat: Klávesové skratky";
 
 /* nothing */
 "Shift" = "Shift";
@@ -2345,7 +2339,7 @@
 "Enter mask to ignore:" = "Zadajte masku pre ignorovanie:";
 
 /* nothing */
-"X-Chat: Ignore list" = "X-Chat: Zoznam ignorovaných";
+"XChat: Ignore list" = "X-Chat: Zoznam ignorovaných";
 
 /* nothing */
 "Ignore Stats:" = "Štatistika ignorovania:";
@@ -2366,7 +2360,40 @@
 "Invite:" = "Pozvánka:";
 
 /* nothing */
-"Add" = "Pridať";
+"Add..." = "Pridať";
+
+/* nothing */
+"Channel name too short, try again." = "";
+
+/* nothing */
+"XChat: Connection Complete" = "Časový limit pre spojenie vypršal";
+
+/* nothing */
+"Connection to %s complete." = "Spojenie zrušené druhou stranou";
+
+/* nothing */
+"In the Server-List window, no channel (chat room) has been entered to be automatically joined for this network." = "";
+
+/* nothing */
+"What would you like to do next?" = "";
+
+/* nothing */
+"_Nothing, I'll join a channel later." = "";
+
+/* nothing */
+"_Join this channel:" = "Vstúpiť na kanál";
+
+/* nothing */
+"If you know the name of the channel you want to join, enter it here." = "";
+
+/* nothing */
+"O_pen the Channel-List window." = "Otvárať kanály v:";
+
+/* nothing */
+"Retrieving the Channel-List may take a minute or two." = "";
+
+/* nothing */
+"_Always show this dialog after connecting." = "";
 
 /* nothing */
 "Dialog with" = "Dialóg s";
@@ -2378,31 +2405,73 @@
 "No topic is set" = "Nie je nastavená téma";
 
 /* nothing */
-"No other tabs open, quit xchat?" = "Nie sú otvorené žiadne ďalšie záložky, ukončiť xchat?";
+"This server still has %d channels or dialogs associated with it. Close them all?" = "";
 
 /* nothing */
-"Insert color code" = "Vložte kód farby";
+"Quit XChat?" = "Informácie o X-Chat";
 
 /* nothing */
-"Beep on message" = "Zazvoniť pri správe";
+"Don't ask next time." = "";
 
 /* nothing */
-"Show join/part messages" = "Zobrazovať správy o vstupe/odchode";
+"You are connected to %i IRC networks." = "Automaticky pripojiť na túto sieť po štarte";
 
 /* nothing */
-"Color paste" = "Vložiť farbu";
+"Are you sure you want to quit?" = "";
 
 /* nothing */
-"Go to" = "Ísť na";
+"Some file transfers are still active." = "Sú aktívne prenosy súborov, ukončiť xchat?";
 
 /* nothing */
-"Close Tab" = "Zavrieť záložku";
+"_Minimize to Tray" = "";
 
 /* nothing */
-"Detach Tab" = "Odpojiť záložku";
+"Insert Attribute or Color Code" = "Vložte kód farby";
 
 /* nothing */
-"Some file transfers still active, quit xchat?" = "Sú aktívne prenosy súborov, ukončiť xchat?";
+"<b>Bold</b>" = "";
+
+/* nothing */
+"<u>Underline</u>" = "Podčiarknuté";
+
+/* nothing */
+"Normal" = "Nórsko";
+
+/* nothing */
+"Colors 0-7" = "Farby";
+
+/* nothing */
+"Colors 8-15" = "Farby";
+
+/* nothing */
+"_Settings" = "_Nastavenia";
+
+/* nothing */
+"_Log to Disk" = "";
+
+/* nothing */
+"_Reload Scrollback" = "";
+
+/* nothing */
+"_Hide Join/Part Messages" = "Skryť vstupy a odchody z kanálov";
+
+/* nothing */
+"_Extra Alerts" = "Extra pomôcky";
+
+/* nothing */
+"Beep on _Message" = "Zazvoniť pri správe";
+
+/* nothing */
+"Blink Tray _Icon" = "";
+
+/* nothing */
+"Blink Task _Bar" = "";
+
+/* nothing */
+"_Detach" = "Odpojiť záložku";
+
+/* nothing */
+"_Close" = "_Zavrieť";
 
 /* nothing */
 "User limit must be a number!\n" = "Limit používateľov musí byť číslo!\n";
@@ -2432,9 +2501,6 @@
 "User Limit" = "Limit používateľov";
 
 /* nothing */
-"Close this tab/window" = "Zatvoriť toto okno alebo záložku";
-
-/* nothing */
 "Show/Hide userlist" = "Zobraziť alebo skryť zoznam používateľov";
 
 /* nothing */
@@ -2447,37 +2513,43 @@
 "Host unknown" = "Hostiteľ neznámy";
 
 /* nothing */
-"User: %s" = "Používateľ: %s";
+"<tt><b>%-11s</b></tt> %s" = "<tt><b>%-11s</b></tt> %s";
 
 /* nothing */
-"Country: %s" = "Krajina: %s";
+"Real Name:" = "Skutočné meno:";
 
 /* nothing */
-"Realname: %s" = "Skutočné meno: %s";
+"User:" = "Používateľ:";
 
 /* nothing */
-"Server: %s" = "Server: %s";
+"Country:" = "Krajina:";
 
 /* nothing */
-"Last Msg: %s" = "Posledná správa: %s";
+"Server:" = "Server:";
 
 /* nothing */
-"Menu Bar" = "Menu";
+"%u minutes ago" = "";
 
 /* nothing */
-"Topic Bar" = "Panel témy";
+"Last Msg:" = "Posledná správa:";
 
 /* nothing */
-"User List" = "Zoznam používateľov";
+"Away Msg:" = "Dôvod neprítomnosti:";
 
 /* nothing */
-"Mode Buttons" = "Tlačidlá módov";
+"%d nicks selected." = "";
 
 /* nothing */
-"User List Buttons" = "Tlačidlá zoznamu používateľov";
+"The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "";
 
 /* nothing */
-"Copy selected URL" = "Kopírovať zvolenú URL";
+"Open Link in Browser" = "";
+
+/* nothing */
+"Copy Selected Link" = "Kopírovať zvolenú URL";
+
+/* nothing */
+"Join Channel" = "Vstúpiť na kanál";
 
 /* nothing */
 "Part Channel" = "Opustiť kanál";
@@ -2486,61 +2558,67 @@
 "Cycle Channel" = "Cyklovať kanál";
 
 /* nothing */
-"X-Chat: User menu" = "X-Chat: Menu Používatelia";
+"_Remove from Favorites" = "";
+
+/* nothing */
+"_Add to Favorites" = "";
+
+/* nothing */
+"XChat: User menu" = "X-Chat: Menu Používatelia";
 
 /* nothing */
 "Edit This Menu..." = "Upraviť toto menu...";
 
 /* nothing */
-"*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile" = "*VAROVANIE*\nAutomatické prijatie DCC do vášho domovského\npriečinku môže byť nebezpečné. Napríklad:\nniekto by vám mohol poslať súbor .bash_profile.";
+"Retrieve channel list..." = "Zoznam kanálov...";
 
 /* nothing */
-"Settings saved." = "Nastavenia uložené.";
+"User Commands - Special codes:\n\n%c  =  current channel\n%e  =  current network name\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "Používateľské príkazy - Zvláštne kódy:\n\n%c  =  súčasný kanál\n%m  =  info o počítači\n%n  =  vaša prezývka\n%t  =  čas/dátum\n%v  =  verzia xchatu\n%2  =  druhé slovo\n%3  =  tretie slovo\n&2  =  druhé slovo až koniec riadku\n&3  =  tretie slovo až koniec riadku\n\nnapr:\n/cmd john hello\n\n%2 bude \"john\"\n&2 bude \"john hello\".";
 
 /* nothing */
-"User Commands - Special codes:\n\n%c  =  current channel\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "Používateľské príkazy - Zvláštne kódy:\n\n%c  =  súčasný kanál\n%m  =  info o počítači\n%n  =  vaša prezývka\n%t  =  čas/dátum\n%v  =  verzia xchatu\n%2  =  druhé slovo\n%3  =  tretie slovo\n&2  =  druhé slovo až koniec riadku\n&3  =  tretie slovo až koniec riadku\n\nnapr:\n/cmd john hello\n\n%2 bude \"john\"\n&2 bude \"john hello\".";
+"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Tlačidlá zoznam používateľov - Špeciálne kódy:\n\n%a = všetky vybrané prezývky\n%c  =  aktuálny kanál\n%h  =  hostiteľ vybranej prezývky\n%m  =  informácie o počítači\n%n  =  vaša prezývka\n%s  =  vybraná prezývka\n%t  =  čas/dátum\n";
 
 /* nothing */
-"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Tlačidlá zoznam používateľov - Špeciálne kódy:\n\n%a = všetky vybrané prezývky\n%c  =  aktuálny kanál\n%h  =  hostiteľ vybranej prezývky\n%m  =  informácie o počítači\n%n  =  vaša prezývka\n%s  =  vybraná prezývka\n%t  =  čas/dátum\n";
+"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Tlačidlá dialógu - Špeciálne kódy:\n\n%a = všetky vybrané prezývky\n%c  =  aktuálny kanál\n%h  =  hostiteľ vybranej prezývky\n%m  =  informácie o počítači\n%n  =  vaša prezývka\n%s  =  vybraná prezývka\n%t  =  čas/dátum\n";
 
 /* nothing */
-"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Tlačidlá dialógu - Špeciálne kódy:\n\n%a = všetky vybrané prezývky\n%c  =  aktuálny kanál\n%h  =  hostiteľ vybranej prezývky\n%m  =  informácie o počítači\n%n  =  vaša prezývka\n%s  =  vybraná prezývka\n%t  =  čas/dátum\n";
+"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%e  =  current network name\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "Odpovede CTCP - Špeciálne kódy:\n\n%d = dáta (celé ctcp)\n%m  =  informácie o počítači\n%s  =  prezývka odosielateľa ctcp\n%t  =  čas/dátum\n%2 = slovo 2\n%3 = slovo 3\n&2 = slovo 2 do konca riadku\n&3 = slovo 3 do konca riadku\n\n";
 
 /* nothing */
-"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "Odpovede CTCP - Špeciálne kódy:\n\n%d = dáta (celé ctcp)\n%m  =  informácie o počítači\n%s  =  prezývka odosielateľa ctcp\n%t  =  čas/dátum\n%2 = slovo 2\n%3 = slovo 3\n&2 = slovo 2 do konca riadku\n&3 = slovo 3 do konca riadku\n\n";
+"URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of XChat" = "Spracovanie URL - Špeciálne kódy:\n%s = URL\n\nPridaním ! pred príkaz označíte, že sa\nmá poslať do shellu a nie do X-Chat";
 
 /* nothing */
-"URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of X-Chat" = "Spracovanie URL - Špeciálne kódy:\n%s = URL\n\nPridaním ! pred príkaz označíte, že sa\nmá poslať do shellu a nie do X-Chat";
+"XChat: User Defined Commands" = "X-Chat: Používateľské príkazy";
 
 /* nothing */
-"X-Chat: User Defined Commands" = "X-Chat: Používateľské príkazy";
+"XChat: Userlist Popup menu" = "X-Chat: Kontextové menu Zoznam používateľov";
 
 /* nothing */
-"X-Chat: Userlist Popup menu" = "X-Chat: Kontextové menu Zoznam používateľov";
+"Replace with" = "";
 
 /* nothing */
-"X-Chat: Replace" = "X-Chat: Nahradiť";
+"XChat: Replace" = "X-Chat: Nahradiť";
 
 /* nothing */
-"X-Chat: URL Handlers" = "X-Chat: Obsluha URL";
+"XChat: URL Handlers" = "X-Chat: Obsluha URL";
 
 /* nothing */
-"X-Chat: Userlist buttons" = "X-Chat: Tlačidla zoznamu používateľov";
+"XChat: Userlist buttons" = "X-Chat: Tlačidla zoznamu používateľov";
 
 /* nothing */
-"X-Chat: Dialog buttons" = "X-Chat: Tlačidlá dialógu";
+"XChat: Dialog buttons" = "X-Chat: Tlačidlá dialógu";
 
 /* nothing */
-"X-Chat: CTCP Replies" = "X-Chat: CTCP odpovede";
+"XChat: CTCP Replies" = "X-Chat: CTCP odpovede";
 
 /* nothing */
-"_X-Chat" = "_X-Chat";
+"_XChat" = "_X-Chat";
 
 /* nothing */
-"Server List..." = "Zoznam serverov...";
+"Network Li_st..." = "Nastavenie siete";
 
 /* nothing */
-"New" = "Nový";
+"_New" = "Nový";
 
 /* nothing */
 "Server Tab..." = "Záložka serverov...";
@@ -2555,55 +2633,73 @@
 "Channel Window..." = "Okno kanálov...";
 
 /* nothing */
-"Load Plugin or Script..." = "Načítať plugin alebo skript...";
+"_Load Plugin or Script..." = "Načítať plugin alebo skript...";
 
 /* nothing */
-"New Shell Tab..." = "Záložka s novým shellom...";
+"_Quit" = "Ukončiť";
 
 /* nothing */
-"Quit" = "Ukončiť";
+"_View" = "";
 
 /* nothing */
-"_IRC" = "_IRC";
+"_Menu Bar" = "Menu";
 
 /* nothing */
-"Invisible" = "Neviditeľný";
+"_Topic Bar" = "Panel témy";
 
 /* nothing */
-"Receive Wallops" = "Prijímať wallops";
+"_User List" = "Zoznam používateľov";
 
 /* nothing */
-"Receive Server Notices" = "Prijímať správy serveru";
+"U_serlist Buttons" = "Tlačidla zoznamu používateľov...";
 
 /* nothing */
-"Marked Away" = "Som preč";
+"M_ode Buttons" = "Tlačidlá módov";
 
 /* nothing */
-"Auto Rejoin when Kicked" = "Automaticky sa vrátiť po vykopnutí";
+"_Channel Switcher" = "Zoznam kanálov...";
 
 /* nothing */
-"Auto Reconnect to Server" = "Automaticky sa znovupripojiť k serveru";
+"_Tabs" = "Záložky";
 
 /* nothing */
-"Never-give-up ReConnect" = "Neustále pokusy o znovupripojenie";
+"T_ree" = "Trasovať";
 
 /* nothing */
-"Auto Open Dialog Windows" = "Automaticky otvoriť dialógové okná";
+"_Network Meters" = "Nastavenie siete";
 
 /* nothing */
-"Auto Accept Direct Chat" = "Automaticky prijať DCC chat";
+"Off" = "Vypnuté";
 
 /* nothing */
-"Auto Accept Files" = "Automaticky prijať posielaný súbor";
+"Graph" = "Graf";
 
 /* nothing */
 "_Server" = "_Server";
 
 /* nothing */
+"_Disconnect" = "Odpojiť";
+
+/* nothing */
+"_Reconnect" = "Znovu pripojiť";
+
+/* nothing */
+"Join a Channel..." = "Prihlásiť sa na kanál...";
+
+/* nothing */
+"List of Channels..." = "Prihlásiť sa na kanál...";
+
+/* nothing */
+"Marked Away" = "Som preč";
+
+/* nothing */
+"_Usermenu" = "Používateľ";
+
+/* nothing */
 "S_ettings" = "_Nastavenia";
 
 /* nothing */
-"Preferences..." = "Nastavenia...";
+"_Preferences" = "Nastavenia...";
 
 /* nothing */
 "Advanced" = "Pokročilé";
@@ -2636,22 +2732,10 @@
 "Userlist Popup..." = "Menu zoznamu používateľov...";
 
 /* nothing */
-"Reload Settings" = "Znovu načítať nastavenia";
-
-/* nothing */
-"Save Settings now" = "Uložiť nastavenia";
-
-/* nothing */
-"Save Settings on exit" = "Uložiť nastavenia pri ukončení";
-
-/* nothing */
 "_Window" = "_Okno";
 
 /* nothing */
 "Ban List..." = "Zoznam zákazov...";
-
-/* nothing */
-"Channel List..." = "Zoznam kanálov...";
 
 /* nothing */
 "Character Chart..." = "Tabuľka znakov...";
@@ -2660,16 +2744,13 @@
 "Direct Chat..." = "Priamy rozhovor...";
 
 /* nothing */
-"File Receive..." = "Príjem súboru...";
+"File Transfers..." = "Prenos súborov";
 
 /* nothing */
-"File Send..." = "Odosielanie súboru...";
+"Friends List..." = "Zoznam zákazov...";
 
 /* nothing */
 "Ignore List..." = "Zoznam ignorovaných...";
-
-/* nothing */
-"Notify List..." = "Zoznam upozornení...";
 
 /* nothing */
 "Plugins and Scripts..." = "Pluginy a skripty...";
@@ -2699,16 +2780,13 @@
 "_Contents" = "O_bsah";
 
 /* nothing */
+"Check for updates" = "";
+
+/* nothing */
 "_About" = "_O Programe";
 
 /* nothing */
-"Attach Tab" = "Pripojiť záložku";
-
-/* nothing */
-"User" = "Používateľ";
-
-/* nothing */
-"Server" = "Server";
+"_Attach" = "Pripojiť záložku";
 
 /* nothing */
 "Last Seen" = "Naposledy navštívené";
@@ -2720,16 +2798,85 @@
 "Never" = "Nikdy";
 
 /* nothing */
+"%d minutes ago" = "";
+
+/* nothing */
 "Online" = "On-line";
 
 /* nothing */
 "Enter nickname to add:" = "Zadajte prezývku:";
 
 /* nothing */
-"X-Chat: Notify List" = "X-Chat: Zoznam upozornení";
+"Notify on these networks:" = "";
 
 /* nothing */
-"Remove" = "Odstrániť";
+"Comma separated list of networks is accepted." = "";
+
+/* nothing */
+"XChat: Friends List" = "X-Chat: Zoznam posielaných súborov";
+
+/* nothing */
+"Open Dialog" = "Otvoriť dialógové okno";
+
+/* nothing */
+"Cannot find 'notify-send' to open balloon alerts.\nPlease install libnotify." = "";
+
+/* nothing */
+"XChat: Connected to %u networks and %u channels" = "";
+
+/* nothing */
+"_Restore" = "";
+
+/* nothing */
+"_Hide" = "Skryté";
+
+/* nothing */
+"_Blink on" = "";
+
+/* nothing */
+"Channel Message" = "Názov kanálu";
+
+/* nothing */
+"Private Message" = "Zazvoniť pri súkromnej správe";
+
+/* nothing */
+"Highlighted Message" = "Zazvoniť pri zvýraznenej správe";
+
+/* nothing */
+"_Change status" = "";
+
+/* nothing */
+"_Away" = "Neprítomný:";
+
+/* nothing */
+"_Back" = "";
+
+/* nothing */
+"XChat: Highlighted message from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u highlighted messages, latest from: %s (%s)" = "";
+
+/* nothing */
+"XChat: New public message from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u new public messages." = "";
+
+/* nothing */
+"XChat: Private message from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u private messages, latest from: %s (%s)" = "";
+
+/* nothing */
+"XChat: File offer from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u file offers, latest from: %s (%s)" = "";
+
+/* nothing */
+"Version" = "Verzia";
 
 /* nothing */
 "Description" = "Popis";
@@ -2738,7 +2885,7 @@
 "Select a Plugin or Script to load" = "Vyberte plugin alebo skript";
 
 /* nothing */
-"X-Chat: Plugins and Scripts" = "X-Chat: Pluginy a skripty";
+"XChat: Plugins and Scripts" = "X-Chat: Pluginy a skripty";
 
 /* nothing */
 "_Load..." = "_Načítať...";
@@ -2747,34 +2894,31 @@
 "_UnLoad" = "O_dobrať";
 
 /* nothing */
-"_Close" = "_Zavrieť";
+"Save As..." = "Uložiť ako";
 
 /* nothing */
-"Save rawlog" = "Uložiť rawlog";
-
-/* nothing */
-"X-Chat: Rawlog (%s)" = "X-Chat: Rawlog (%s)";
+"XChat: Rawlog (%s)" = "X-Chat: Rawlog (%s)";
 
 /* nothing */
 "Clear rawlog" = "Vyprázdniť rawlog";
 
 /* nothing */
-"Save rawlog..." = "Uložiť rawlog...";
-
-/* nothing */
 "The window you opened this Search for doesn't exist anymore." = "Okno, pre ktoré ste otvorili tento dialóg pre hľadanie, už neexistuje.";
 
 /* nothing */
-"X-Chat: Search" = "X-Chat: Hľadanie";
+"Search hit end, not found." = "";
 
 /* nothing */
-"Find:" = "Hľadať:";
+"XChat: Search" = "X-Chat: Hľadanie";
 
 /* nothing */
-"Find" = "Nájsť";
+"_Match case" = "";
 
 /* nothing */
-"Close" = "Zavrieť";
+"Search _backwards" = "";
+
+/* nothing */
+"_Find" = "Nájsť";
 
 /* nothing */
 "New Network" = "Nová sieť";
@@ -2783,10 +2927,31 @@
 "Really remove network \"%s\" and all its servers?" = "Naozaj odstrániť sieť \"%s\" a všetky príslušné servery?";
 
 /* nothing */
+"#channel" = "Kanál";
+
+/* nothing */
+"XChat: Favorite Channels (Auto-Join List)" = "X-Chat: Zoznam kanálov (%s)";
+
+/* nothing */
+"These channels will be joined whenever you connect to %s." = "";
+
+/* nothing */
+"Key (Password)" = "Heslo:";
+
+/* nothing */
+"_Edit" = "_Upraviť";
+
+/* nothing */
+"%s has been removed." = "";
+
+/* nothing */
+"%s has been added." = "";
+
+/* nothing */
 "User name and Real name cannot be left blank." = "Meno používateľa a Skutočné meno nemôžu ostať prázdne.";
 
 /* nothing */
-"X-Chat: Edit %s" = "X-Chat: Upraviť %s";
+"XChat: Edit %s" = "X-Chat: Upraviť %s";
 
 /* nothing */
 "Servers for %s" = "Servery pre %s";
@@ -2807,10 +2972,13 @@
 "_Nick name:" = "_Prezývka:";
 
 /* nothing */
+"Second choice:" = "Druhá voľba:";
+
+/* nothing */
 "_User name:" = "_Meno používateľa:";
 
 /* nothing */
-"Real na_me:" = "S_kutočné meno:";
+"Rea_l name:" = "S_kutočné meno:";
 
 /* nothing */
 "Connecting" = "Pripájam sa";
@@ -2819,7 +2987,7 @@
 "Auto connect to this network at startup" = "Automaticky pripojiť na túto sieť po štarte";
 
 /* nothing */
-"Use a proxy server" = "Použiť proxy server";
+"Bypass proxy server" = "Použiť proxy server";
 
 /* nothing */
 "Use SSL for all the servers on this network" = "Použiť SSL pre všetky servery na tejto sieti";
@@ -2828,7 +2996,7 @@
 "Accept invalid SSL certificate" = "Akceptovať neplatné SSL certifikáty";
 
 /* nothing */
-"C_hannels to join:" = "Vstúpiť na _kanály:";
+"_Favorite channels:" = "Opustiť kanál:";
 
 /* nothing */
 "Channels to join, separated by commas, but not spaces!" = "Kanály na ktoré vstúpiť, oddelené čiarkami, ale nie medzerami!";
@@ -2843,6 +3011,9 @@
 "Nickserv password:" = "Heslo pre NickServ:";
 
 /* nothing */
+"If your nickname requires a password, enter it here. Not all IRC networks support this." = "";
+
+/* nothing */
 "Server password:" = "Heslo serveru:";
 
 /* nothing */
@@ -2852,28 +3023,19 @@
 "Character set:" = "Znaková sada:";
 
 /* nothing */
-"_Edit" = "_Upraviť";
-
-/* nothing */
-"X-Chat: Server List" = "X-Chat: Zoznam serverov";
+"XChat: Network List" = "X-Chat: Zoznam upozornení";
 
 /* nothing */
 "User Information" = "Informácie o používateľovi";
 
 /* nothing */
-"Second choice:" = "Druhá voľba:";
-
-/* nothing */
 "Third choice:" = "Tretia voľba:";
-
-/* nothing */
-"Rea_l name:" = "S_kutočné meno:";
 
 /* nothing */
 "Networks" = "Siete";
 
 /* nothing */
-"Skip server list on startup" = "Nezobrazovať zoznam serverov pri štarte";
+"Skip network list on startup" = "Nezobrazovať zoznam serverov pri štarte";
 
 /* nothing */
 "_Edit..." = "_Upraviť...";
@@ -2882,10 +3044,10 @@
 "_Sort" = "_Triediť";
 
 /* nothing */
-"C_onnect" = "_Pripojiť";
+"Sorts the network list in alphabetical order. Use SHIFT-UP and SHIFT-DOWN keys to move a row." = "";
 
 /* nothing */
-"Connect in new tab" = "Pripojiť v novej záložke";
+"C_onnect" = "_Pripojiť";
 
 /* nothing */
 "Text Box Appearance" = "Výzor hlavného textového okna";
@@ -2900,7 +3062,10 @@
 "Scrollback lines:" = "Počet riadkov spätného logu:";
 
 /* nothing */
-"Transparent background" = "Priehľadné pozadie";
+"Colored nick names" = "Farebné prezývky";
+
+/* nothing */
+"Give each person on IRC a different color" = "Označiť každého na IRC inou farbou";
 
 /* nothing */
 "Indent nick names" = "Odsadiť prezývky";
@@ -2909,16 +3074,7 @@
 "Make nick names right-justified" = "Prezývky zarovnať do prava";
 
 /* nothing */
-"Tint (shade) transparency" = "Priehľadnosť zafarbenia";
-
-/* nothing */
-"Colored nick names" = "Farebné prezývky";
-
-/* nothing */
-"Give each person on IRC a different color" = "Označiť každého na IRC inou farbou";
-
-/* nothing */
-"Strip mIRC colors" = "Odstrániť mIRC farby";
+"Transparent background" = "Priehľadné pozadie";
 
 /* nothing */
 "Show marker line" = "Zobrazovať značiacu čiaru";
@@ -2927,7 +3083,7 @@
 "Insert a red line after the last read text." = "Zobraziť za posledným prečítaným textom červenú čiaru";
 
 /* nothing */
-"Tint Settings" = "_Nastavenie zafarbenia";
+"Transparency Settings" = "_Nastavenie zafarbenia";
 
 /* nothing */
 "Red:" = "Červená:";
@@ -2942,25 +3098,40 @@
 "Time Stamps" = "Zobrazenie času";
 
 /* nothing */
+"Enable time stamps" = "Zaznamenávať čas";
+
+/* nothing */
 "Time stamp format:" = "Formát zobrazenia času:";
 
 /* nothing */
 "See strftime manpage for details." = "Detaily nájdete v manuálovej stránke pre strftime.";
 
 /* nothing */
-"Enable time stamps" = "Zaznamenávať čas";
+"A-Z" = "A-Z";
+
+/* nothing */
+"Last-spoke order" = "";
+
+/* nothing */
+"Input box" = "Vstupné pole";
+
+/* nothing */
+"Use the Text box font and colors" = "Použiť písmo a farby z textového poľa";
+
+/* nothing */
+"Spell checking" = "";
 
 /* nothing */
 "Nick Completion" = "Dopĺňanie prezývky:";
 
 /* nothing */
-"Automatic nick completion" = "Automatické dokončovanie prezývok";
-
-/* nothing */
-"Completes nick names without using the TAB key" = "Doplniť prezývky bez používania klávesy TAB";
+"Automatic nick completion (without TAB key)" = "Automatické dokončovanie prezývok";
 
 /* nothing */
 "Nick completion suffix:" = "Prípona dokončovania prezývky:";
+
+/* nothing */
+"Nick completion sorted:" = "Prípona dokončovania prezývky:";
 
 /* nothing */
 "Input Box Codes" = "Kódy vstupného poľa";
@@ -2972,28 +3143,7 @@
 "Interpret %C, %B as Color, Bold etc" = "Brať %C,%B ako Color, Bold atď";
 
 /* nothing */
-"Input Box Appearance" = "Výzor vstupného riadku";
-
-/* nothing */
-"Use the Text box font and colors" = "Použiť písmo a farby z textového poľa";
-
-/* nothing */
-"Off" = "Vypnuté";
-
-/* nothing */
-"Graph" = "Graf";
-
-/* nothing */
-"Info text" = "Informácie";
-
-/* nothing */
-"Both" = "Oboje";
-
-/* nothing */
 "A-Z, Ops first" = "A-Z, Ops najprv";
-
-/* nothing */
-"A-Z" = "A-Z";
 
 /* nothing */
 "Z-A, Ops last" = "Z-A, Ops nakoniec";
@@ -3005,22 +3155,43 @@
 "Unsorted" = "Nezotriedené";
 
 /* nothing */
-"User list sorted by:" = "Zoznam používateľov triedený podľa:";
+"Left (Upper)" = "";
+
+/* nothing */
+"Left (Lower)" = "";
+
+/* nothing */
+"Right (Upper)" = "";
+
+/* nothing */
+"Right (Lower)" = "";
+
+/* nothing */
+"Top" = "Hore";
+
+/* nothing */
+"Bottom" = "Dolu";
+
+/* nothing */
+"Hidden" = "Skryté";
+
+/* nothing */
+"User List" = "Zoznam používateľov";
 
 /* nothing */
 "Show hostnames in user list" = "Zobrazovať hostiteľov v zozname používateľov";
 
 /* nothing */
-"User list buttons enabled" = "Tlačidlá zoznamu používateľov zobrazené";
+"User list sorted by:" = "Zoznam používateľov triedený podľa:";
 
 /* nothing */
-"Resizable user list" = "Zoznam používateľov s meniteľnou veľkosťou";
+"Show user list at:" = "Zobraziť alebo skryť zoznam používateľov";
 
 /* nothing */
 "Away tracking" = "Sledovanie neprítomnosti";
 
 /* nothing */
-"Enable away tracking" = "Zapnúť sledovanie neprítomnosti";
+"Track the Away status of users and mark them in a different color" = "";
 
 /* nothing */
 "On channels smaller than:" = "Na kanáloch menších ako:";
@@ -3029,37 +3200,10 @@
 "Action Upon Double Click" = "Akcia pri dvojkliku";
 
 /* nothing */
-"Execute command:" = "Vykonať príkaz:";
-
-/* nothing */
-"Extra Gadgets" = "Extra pomôcky";
-
-/* nothing */
-"Lag meter:" = "Meranie opozdenia:";
-
-/* nothing */
-"Throttle meter:" = "Meranie rýchlosti:";
-
-/* nothing */
 "Windows" = "Okná";
 
 /* nothing */
 "Tabs" = "Záložky";
-
-/* nothing */
-"Bottom" = "Dolu";
-
-/* nothing */
-"Top" = "Hore";
-
-/* nothing */
-"Left" = "Vľavo";
-
-/* nothing */
-"Right" = "Vpravo";
-
-/* nothing */
-"Hidden" = "Skryté";
 
 /* nothing */
 "Always" = "Vždy";
@@ -3068,31 +3212,37 @@
 "Only requested tabs" = "Len požadované záložky";
 
 /* nothing */
+"Tree" = "Trasovať";
+
+/* nothing */
+"Switcher type:" = "";
+
+/* nothing */
 "Open an extra tab for server messages" = "Otvoriť vlastnú záložku pre správy serveru";
 
 /* nothing */
 "Open an extra tab for server notices" = "Otvoriť vlastnú záložku pre oznamy serveru";
 
 /* nothing */
-"Small tabs" = "Malé tabulátory";
+"Open a new tab when you receive a private message" = "Otvoriť vlastnú záložku pre správy serveru";
 
 /* nothing */
 "Sort tabs in alphabetical order" = "Triediť záložky v abecednom poriadku";
 
 /* nothing */
+"Smaller text" = "Malé tabulátory";
+
+/* nothing */
 "Focus new tabs:" = "Nové záložky presunúť do popredia:";
+
+/* nothing */
+"Show channel switcher at:" = "Na kanáloch menších ako:";
 
 /* nothing */
 "Shorten tab labels to:" = "Skrátiť záložky na:";
 
 /* nothing */
 "letters." = "znakov.";
-
-/* nothing */
-"Tabs Location" = "Umiestnenie záložiek";
-
-/* nothing */
-"Show tabs at:" = "Zobraziť záložky:";
 
 /* nothing */
 "Tabs or Windows" = "Záložky alebo okná";
@@ -3110,7 +3260,19 @@
 "Open DCC, Ignore, Notify etc, in tabs or windows?" = "Otvárať DCC, Ignorovanie, Upozornenie atď v záložkách alebo v oknách?";
 
 /* nothing */
+"No" = "Žiadne";
+
+/* nothing */
+"Yes" = "";
+
+/* nothing */
+"Browse for save folder every time" = "";
+
+/* nothing */
 "Files and Directories" = "Súbory a priečinky";
+
+/* nothing */
+"Auto accept file offers:" = "Automaticky prijať posielaný súbor";
 
 /* nothing */
 "Download files to:" = "Prijímať súbory do:";
@@ -3122,10 +3284,13 @@
 "Save nick name in filenames" = "Uložiť prezývku v súboroch";
 
 /* nothing */
-"Convert spaces to underscore before sending" = "Nahradiť podtrhovníky medzerami pred odoslaním";
+"Network Settings" = "Sieťové nastavenia";
 
 /* nothing */
-"Network Settings" = "Sieťové nastavenia";
+"Get my address from the IRC server" = "Získať moju adresu z IRC serveru";
+
+/* nothing */
+"Asks the IRC server for your real address. Use this if you have a 192.168.*.* address!" = "Spýta sa serveru na vašu reálnu adresu. Použite toto ak máte adresu v tvare 192.168.*.* !";
 
 /* nothing */
 "DCC IP address:" = "IP adresa DCC:";
@@ -3140,13 +3305,7 @@
 "Last DCC send port:" = "Posledný port DCC pre odosielanie:";
 
 /* nothing */
-"(Leave ports at zero for full range)." = "(Zadajte nuly pre plný rozsah).";
-
-/* nothing */
-"Get my address from the IRC server" = "Získať moju adresu z IRC serveru";
-
-/* nothing */
-"Asks the IRC server for your real address. Use this if you have a 192.168.*.* address!" = "Spýta sa serveru na vašu reálnu adresu. Použite toto ak máte adresu v tvare 192.168.*.* !";
+"!Leave ports at zero for full range." = "(Zadajte nuly pre plný rozsah).";
 
 /* nothing */
 "Maximum File Transfer Speeds (bytes per second)" = "Maximálna rýchlosť prenosu súborov (bajty za sekundu)";
@@ -3168,6 +3327,42 @@
 
 /* nothing */
 "All downloads combined:" = "Všetky príchodzie prenosy spolu:";
+
+/* nothing */
+"Alerts" = "Upozornenia";
+
+/* nothing */
+"Show tray balloons on:" = "Zobraziť záložky:";
+
+/* nothing */
+"Blink tray icon on:" = "";
+
+/* nothing */
+"Blink task bar on:" = "";
+
+/* nothing */
+"Make a beep sound on:" = "";
+
+/* nothing */
+"Enable system tray icon" = "Zapnúť sledovanie neprítomnosti";
+
+/* nothing */
+"Highlighted Messages" = "Zazvoniť pri zvýraznenej správe";
+
+/* nothing */
+"Highlighted messages are ones where your nickname is mentioned, but also:" = "";
+
+/* nothing */
+"Extra words to highlight:" = "Zvýrazňované slová:";
+
+/* nothing */
+"Nick names not to highlight:" = "Prezývky ktoré nezvýrazňovať:";
+
+/* nothing */
+"Nick names to always highlight:" = "Prezývky ktoré nezvýrazňovať:";
+
+/* nothing */
+"Separate multiple words with commas.\nWildcards are accepted." = "(Oddelte slová čiarkami).";
 
 /* nothing */
 "Default Messages" = "Prednastavené správy";
@@ -3201,33 +3396,6 @@
 
 /* nothing */
 "Unmark yourself as away before sending messages" = "Zrušiť AWAY pred odoslaním správy";
-
-/* nothing */
-"(Can be a text file relative to ~/.xchat2/)." = "(Môže byť textový súbor relatívny k ~/.xchat2/).";
-
-/* nothing */
-"(Can be a text file relative to config dir)." = "(Môže byť textový súbor relatívny k adresáru s nastaveniami).";
-
-/* nothing */
-"Alerts" = "Upozornenia";
-
-/* nothing */
-"Flash taskbar on highlighted messages" = "Blikať na lište pri zvýraznených správach";
-
-/* nothing */
-"Beep on highlighted messages" = "Zazvoniť pri zvýraznenej správe";
-
-/* nothing */
-"Extra words to highlight on:" = "Zvýrazňované slová:";
-
-/* nothing */
-"(Separate multiple words with commas)." = "(Oddelte slová čiarkami).";
-
-/* nothing */
-"Beep on private messages" = "Zazvoniť pri súkromnej správe";
-
-/* nothing */
-"Beep on channel messages" = "Zazvoniť pri správach kanála";
 
 /* nothing */
 "Advanced Settings" = "Pokročilé nastavenia";
@@ -3266,22 +3434,22 @@
 "Logging" = "Logovanie";
 
 /* nothing */
-"Enable logging of conversations" = "Zapnúť ukladanie rozhovorov do log súborov";
+"Display scrollback from previous session" = "";
 
 /* nothing */
-"Log filename mask:" = "Maska mena súboru logu:";
+"Enable logging of conversations to disk" = "Zapnúť ukladanie rozhovorov do log súborov";
 
 /* nothing */
-"(%s=Server %c=Channel %n=Network)." = "(%s=Server %c=Kanál %n=Sieť).";
+"Log filename:" = "Maska mena súboru logu:";
+
+/* nothing */
+"%s=Server %c=Channel %n=Network." = "(%s=Server %c=Kanál %n=Sieť).";
 
 /* nothing */
 "Insert timestamps in logs" = "Zaznamenať čas v logoch";
 
 /* nothing */
 "Log timestamp format:" = "Formát zobrazovania času:";
-
-/* nothing */
-"(See strftime manpage for details)." = "(Detaily nájdete v manuálovej stránke pre strftime).";
 
 /* nothing */
 "(Disabled)" = "(Zakázané)";
@@ -3299,13 +3467,25 @@
 "HTTP" = "HTTP";
 
 /* nothing */
+"MS Proxy (ISA)" = "";
+
+/* nothing */
+"All Connections" = "Pripájam sa";
+
+/* nothing */
+"IRC Server Only" = "Len pozvaní";
+
+/* nothing */
+"DCC Get Only" = "";
+
+/* nothing */
 "Your Address" = "Vaša adresa";
 
 /* nothing */
 "Bind to:" = "Nastaviť na:";
 
 /* nothing */
-"(Only useful for computers with multiple addresses)." = "(Len pre počítače, ktoré majú viac adries).";
+"Only useful for computers with multiple addresses." = "(Len pre počítače, ktoré majú viac adries).";
 
 /* nothing */
 "Proxy Server" = "Proxy server";
@@ -3314,34 +3494,34 @@
 "Hostname:" = "Názov hostiteľa:";
 
 /* nothing */
-"Username:" = "Meno používateľa:";
-
-/* nothing */
-"Password:" = "Heslo:";
-
-/* nothing */
 "Port:" = "Port:";
 
 /* nothing */
 "Type:" = "Typ:";
 
 /* nothing */
-"Authenticate to the proxy server (HTTP and Socks5)" = "Autentizovať na proxy serveri (len HTTP a Socks5)";
+"Use proxy for:" = "Použiť proxy server";
 
 /* nothing */
-"(disabled)" = "(zakázané)";
+"Proxy Authentication" = "";
 
 /* nothing */
-"A star (*)" = "Hviezdička (*)";
+"Use Authentication (MS Proxy, HTTP or Socks5 only)" = "Autentizovať na proxy serveri (len HTTP a Socks5)";
 
 /* nothing */
-"A red star (*)" = "Červená hviezdička (*)";
+"Use Authentication (HTTP or Socks5 only)" = "Autentizovať na proxy serveri (len HTTP a Socks5)";
 
 /* nothing */
-"Underlined" = "Podčiarknuté";
+"Username:" = "Meno používateľa:";
+
+/* nothing */
+"Password:" = "Heslo:";
 
 /* nothing */
 "Select an Image File" = "Vyberte obrazový súbor";
+
+/* nothing */
+"Select Download Folder" = "Vyberte farbu";
 
 /* nothing */
 "Select font" = "Vyberte písmo";
@@ -3356,6 +3536,9 @@
 "Mark not-identified users with:" = "Označiť neidentifikovaných používateľov:";
 
 /* nothing */
+"Open Data Folder" = "";
+
+/* nothing */
 "Select color" = "Vyberte farbu";
 
 /* nothing */
@@ -3365,7 +3548,7 @@
 "mIRC colors:" = "Farby mIRC:";
 
 /* nothing */
-"Extra colors:" = "Extra farby:";
+"Local colors:" = "Extra farby:";
 
 /* nothing */
 "Foreground:" = "Popredie:";
@@ -3434,10 +3617,10 @@
 "Text box" = "Textové pole";
 
 /* nothing */
-"Input box" = "Vstupné pole";
+"User list" = "Zoznam používateľov";
 
 /* nothing */
-"User list" = "Zoznam používateľov";
+"Channel switcher" = "Zoznam kanálov...";
 
 /* nothing */
 "Colors" = "Farby";
@@ -3452,9 +3635,6 @@
 "Sound" = "Zvuky";
 
 /* nothing */
-"Network" = "Sieť";
-
-/* nothing */
 "Network setup" = "Nastavenie siete";
 
 /* nothing */
@@ -3464,10 +3644,16 @@
 "Categories" = "Kategórie";
 
 /* nothing */
+"You cannot place the tree on the top or bottom!\nPlease change to the <b>Tabs</b> layout in the <b>View</b> menu first." = "";
+
+/* nothing */
 "Some settings were changed that require a restart to take full effect." = "Boli vykonané zmeny, ktoré vyžadujú spustiť aplikáciu znovu, aby sa použili.";
 
 /* nothing */
-"X-Chat: Preferences" = "X-Chat: Nastavenia";
+"*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile" = "*VAROVANIE*\nAutomatické prijatie DCC do vášho domovského\npriečinku môže byť nebezpečné. Napríklad:\nniekto by vám mohol poslať súbor .bash_profile.";
+
+/* nothing */
+"XChat: Preferences" = "X-Chat: Nastavenia";
 
 /* nothing */
 "There was an error parsing the string" = "Počas spracovania reťazca nastala chyba";
@@ -3479,16 +3665,13 @@
 "Print Texts File" = "Vytlačiť súbor textov";
 
 /* nothing */
-"$ Number" = "Číslo $";
-
-/* nothing */
 "Edit Events" = "Upraviť udalosti";
 
 /* nothing */
-"Save As" = "Uložiť ako";
+"$ Number" = "Číslo $";
 
 /* nothing */
-"Load From" = "Načítať z";
+"Load From..." = "Načítať z";
 
 /* nothing */
 "Test All" = "Testovať všetky";
@@ -3497,13 +3680,13 @@
 "URL" = "URL";
 
 /* nothing */
-"Select a file to save to" = "Vyberte súbor, kam chcete uložiť";
-
-/* nothing */
-"X-Chat: URL Grabber" = "X-Chat: Zachytenie URL";
+"XChat: URL Grabber" = "X-Chat: Zachytenie URL";
 
 /* nothing */
 "Clear list" = "Vymazať zoznam";
+
+/* nothing */
+"Copy selected URL" = "Kopírovať zvolenú URL";
 
 /* nothing */
 "Copy" = "Kopírovať";

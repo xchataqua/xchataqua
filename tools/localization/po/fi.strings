@@ -1,5 +1,5 @@
 /* nothing */
-"" = "Project-Id-Version: xchat-2.8.4\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2007-06-24 13:05+1000\nPO-Revision-Date: 2007-06-27 20:53+0300\nLast-Translator: Mika Laari <laari@iki.fi>\nLanguage-Team: Finnish <translation-team-fi@lists.sourceforge.net>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nX-Generator: KBabel 1.11.4\n";
+"" = "Project-Id-Version: xchat-2.8.6\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2010-05-30 13:56+1000\nPO-Revision-Date: 2008-07-02 23:02+0200\nLast-Translator: Mika Laari <laari@iki.fi>\nLanguage-Team: Finnish <translation-team-fi@lists.sourceforge.net>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nX-Generator: KBabel 1.11.4\n";
 
 /* nothing */
 "Cannot create ~/.xchat2" = "Hakemiston ~/.xchat2 luominen epäonnistui";
@@ -119,7 +119,7 @@
 "BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "BAN <peite> [<bannityyppi>], bannaa jokaisen peitteeseen täsmäävän käyttäjän nykyiseltä kanavalta. Jos käyttäjät ovat jo kanavalla, tämä komento ei potkaise heitä (vaatii opit)";
 
 /* nothing */
-"Set per channel options\nCHANOPT CONFMODE ON|OFF - Toggle conf mode/showing of join and part messages\nCHANOPT COLORPASTE ON|OFF - Toggle color paste\nCHANOPT BEEP ON|OFF - Toggle beep on message\nCHANOPT TRAY ON|OFF - Toggle tray blink on message" = "Kanavakohtaiset asetukset\nCHANOPT CONFMODE ON|OFF - Liittymis- ja poistumisviestit päälle tai pois\nCHANOPT COLORPASTE ON|OFF - Värien kanssa liittäminen päälle tai pois\nCHANOPT BEEP ON|OFF - Piippaus viestien saapuessa päälle tai pois\nCHANOPT TRAY ON|OFF - Ilmoitusalueella välkytys päälle tai pois";
+"CHANOPT [-quiet] <variable> [<value>]" = "CHANOPT [-quiet] <muuttuja> [<arvo>], asettaa kanavakohtaisia muuttujia";
 
 /* nothing */
 "CLEAR [ALL|HISTORY], Clears the current text window or command history" = "CLEAR [ALL|HISTORY], tyhjentää nykyisen teksti-ikkunan tai komentohistorian";
@@ -182,7 +182,7 @@
 "GATE <host> [<port>], proxies through a host, port defaults to 23" = "GATE <isäntä> [<portti>], käyttää isäntää välipalvelimena, oletusportti 23";
 
 /* nothing */
-"GHOST <nick> <password>, Kills a ghosted nickname" = "GHOST <kutsumanimi> <salasana>, poistaa kummittelemaan jääneen kutsumanimen";
+"GHOST <nick> [password], Kills a ghosted nickname" = "GHOST <kutsumanimi> <salasana>, poistaa kummittelemaan jääneen kutsumanimen";
 
 /* nothing */
 "HOP <nick>, gives chanhalf-op status to the nick (needs chanop)" = "HOP <käyttäjä>, antaa puoliopit käyttäjälle (vaatii opit)";
@@ -296,7 +296,7 @@
 "SERVER <host> [<port>] [<password>], connects to a server, the default port is 6667" = "SERVER <isäntä> [<portti>] [<salasana>], yhdistää palvelimelle, oletusportti on 6667";
 
 /* nothing */
-"SET [-e] [-or] [-quiet] <variable> [<value>]" = "SET [-e] [-or] [-quiet] <muuttuja> [<arvo>], asettaa muuttujan arvon.";
+"SET [-e] [-off|-on] [-quiet] <variable> [<value>]" = "SET [-e] [-or] [-quiet] <muuttuja> [<arvo>], asettaa muuttujan arvon.";
 
 /* nothing */
 "SETCURSOR [-|+]<position>" = "SETCURSOR [-|+]<paikka>, asettaa kursorin haluttuun paikkaan.";
@@ -749,10 +749,10 @@
 "Mode char" = "Tilamerkki";
 
 /* nothing */
-"The text" = "Teksti";
+"Identified text" = "Korostettava teksti";
 
 /* nothing */
-"Identified text" = "Korostettava teksti";
+"The text" = "Teksti";
 
 /* nothing */
 "The message" = "Viesti";
@@ -954,6 +954,9 @@
 
 /* nothing */
 "Server Name" = "Palvelinnimi";
+
+/* nothing */
+"Raw Numeric or Identifier" = "";
 
 /* nothing */
 "Nick of person who invited you" = "Sinut kutsuneen henkilön nimi";
@@ -1850,16 +1853,19 @@
 "Unknown" = "Tuntematon";
 
 /* nothing */
-"Open Dialog Window" = "Avaa keskusteluikkuna";
+"_Open Dialog Window" = "Avaa keskusteluikkuna";
 
 /* nothing */
-"Send a File" = "Lähetä tiedosto";
+"_Send a File" = "Lähetä tiedosto";
 
 /* nothing */
-"User Info (WHOIS)" = "Käyttäjätiedot (WHOIS)";
+"_User Info (WhoIs)" = "Käyttäjätiedot (WhoIs)";
 
 /* nothing */
-"Operator Actions" = "Opin toiminnot";
+"_Add to Friends List" = "Lisää kaveriluetteloon";
+
+/* nothing */
+"O_perator Actions" = "Opin toiminnot";
 
 /* nothing */
 "Give Ops" = "Anna opit";
@@ -1884,87 +1890,6 @@
 
 /* nothing */
 "KickBan" = "Potkaise ja bannaa";
-
-/* nothing */
-"Direct client-to-client" = "Suora vertaisyhteys";
-
-/* nothing */
-"Send File" = "Lähetä tiedosto";
-
-/* nothing */
-"Offer Chat" = "Ehdota keskustelua";
-
-/* nothing */
-"Abort Chat" = "Keskeytä keskustelu";
-
-/* nothing */
-"Version" = "Versio";
-
-/* nothing */
-"Userinfo" = "Käyttäjätiedot";
-
-/* nothing */
-"Clientinfo" = "Asiakasohjelmatiedot";
-
-/* nothing */
-"Ping" = "Ping";
-
-/* nothing */
-"Time" = "Aika";
-
-/* nothing */
-"Finger" = "Tunnustelu";
-
-/* nothing */
-"Oper" = "Operaattori";
-
-/* nothing */
-"Kill this user" = "Tapa tämä käyttäjä";
-
-/* nothing */
-"Mode" = "Tila";
-
-/* nothing */
-"Give Half-Ops" = "Anna puoliopit";
-
-/* nothing */
-"Take Half-Ops" = "Poista puoliopit";
-
-/* nothing */
-"Ignore" = "Jätä huomiotta";
-
-/* nothing */
-"Ignore User" = "Jätä käyttäjä huomiotta";
-
-/* nothing */
-"UnIgnore User" = "Huomioi käyttäjä jälleen";
-
-/* nothing */
-"Info" = "Tiedot";
-
-/* nothing */
-"Who" = "Kuka";
-
-/* nothing */
-"WhoIs" = "KukaOn";
-
-/* nothing */
-"DNS Lookup" = "DNS-haku";
-
-/* nothing */
-"Trace" = "Jäljitä";
-
-/* nothing */
-"UserHost" = "KäyttäjäIsäntä";
-
-/* nothing */
-"External" = "Ulkoiset";
-
-/* nothing */
-"Traceroute" = "Traceroute";
-
-/* nothing */
-"Telnet" = "Telnet";
 
 /* nothing */
 "Leave Channel" = "Poistu kanavalta";
@@ -2003,6 +1928,9 @@
 "Dialog" = "Keskustele";
 
 /* nothing */
+"WhoIs" = "KukaOn";
+
+/* nothing */
 "Send" = "Lähetä";
 
 /* nothing */
@@ -2010,6 +1938,9 @@
 
 /* nothing */
 "Clear" = "Tyhjennä";
+
+/* nothing */
+"Ping" = "Ping";
 
 /* nothing */
 "Couldn't connect to session bus" = "Istuntoväylään ei saatu yhteyttä";
@@ -2033,7 +1964,7 @@
 "Failed to acquire %s: %s\n" = "Virhe palvelussa %s: %s\n";
 
 /* nothing */
-"About XChat" = "Tietoja XChatista";
+"About " = "Tietoja - ";
 
 /* nothing */
 "A multiplatform IRC Client" = "Usealla alustalla toimiva IRC-asiakasohjelma";
@@ -2066,7 +1997,7 @@
 "XChat: Ban List (%s)" = "XChat: Banniluettelo (%s)";
 
 /* nothing */
-"Unban" = "Poista banni";
+"Remove" = "Poista";
 
 /* nothing */
 "Crop" = "Poista muut";
@@ -2258,7 +2189,10 @@
 "Open an irc://server:port/channel URL" = "avaa URLin (irc://palvelin:portti/kanava)";
 
 /* nothing */
-"Open URL in an existing XChat" = "Avaa URL käynnissä olevaan XChattiin";
+"Execute command:" = "Suorita komento:";
+
+/* nothing */
+"Open URL or execute command in an existing XChat" = "Avaa URL tai suorita komento avoimessa XChat-ikkunassa";
 
 /* nothing */
 "Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "Aloita pienennettynä. Taso: 0=tavallinen, 1=kuvakkeena, 2=ilmoitusalueella";
@@ -2510,28 +2444,40 @@
 "Colors 8-15" = "Värit 8–15";
 
 /* nothing */
-"Beep on message" = "Anna äänimerkki viestin saapuessa";
+"_Settings" = "Asetukset";
 
 /* nothing */
-"Blink tray on message" = "Välkytä ilmoitusalueella viestin saapuessa";
+"_Log to Disk" = "Kirjoita loki levylle";
 
 /* nothing */
-"Show join/part messages" = "Näytä liittymis/poistumisviestit";
+"_Reload Scrollback" = "Lataa levyltä rivipuskuriin";
 
 /* nothing */
-"Color paste" = "Liitä väritysten kanssa";
+"_Hide Join/Part Messages" = "Piilota liittymis- ja poistumisviestit";
 
 /* nothing */
-"_Close Tab" = "_Sulje välilehti";
+"_Extra Alerts" = "Lisähälytykset";
 
 /* nothing */
-"_Detach Tab" = "_Irrota välilehti";
+"Beep on _Message" = "Anna äänimerkki viestin saapuessa";
+
+/* nothing */
+"Blink Tray _Icon" = "Välkytä ilmoitusalueen kuvaketta";
+
+/* nothing */
+"Blink Task _Bar" = "Välkytä tehtäväpalkkia";
+
+/* nothing */
+"_Detach" = "_Irrota";
+
+/* nothing */
+"_Close" = "_Sulje";
 
 /* nothing */
 "User limit must be a number!\n" = "Käyttäjärajan tulee olla numero!\n";
 
 /* nothing */
-"Topic Protection" = "Aiheensuojaus";
+"Topic Protection" = "Aiheen suojaus";
 
 /* nothing */
 "No outside messages" = "Ei ulkopuolisia viestejä";
@@ -2582,13 +2528,16 @@
 "Server:" = "Palvelin:";
 
 /* nothing */
-"Away Msg:" = "Poissaoloviesti:";
-
-/* nothing */
 "%u minutes ago" = "%u minuuttia sitten";
 
 /* nothing */
 "Last Msg:" = "Puhunut kanavalla:";
+
+/* nothing */
+"Away Msg:" = "Poissaoloviesti:";
+
+/* nothing */
+"%d nicks selected." = "%d nimeä valittu";
 
 /* nothing */
 "The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "Valikkopalkki on nyt piilossa. Sen saa taas esiin painamalla Ctrl-F9:ää tai hiiren oikeaa painiketta tekstialueen tyhjässä kohdassa.";
@@ -2607,6 +2556,12 @@
 
 /* nothing */
 "Cycle Channel" = "Liity kanavalle uudelleen";
+
+/* nothing */
+"_Remove from Favorites" = "Poista suosikeista";
+
+/* nothing */
+"_Add to Favorites" = "Lisää suosikkeihin";
 
 /* nothing */
 "XChat: User menu" = "XChat: Käyttäjän valikko";
@@ -2729,6 +2684,12 @@
 "_Reconnect" = "Yhdistä uudelleen";
 
 /* nothing */
+"Join a Channel..." = "Liity kanavalle...";
+
+/* nothing */
+"List of Channels..." = "Kanavaluettelo...";
+
+/* nothing */
 "Marked Away" = "Merkitty poissaolevaksi";
 
 /* nothing */
@@ -2777,9 +2738,6 @@
 "Ban List..." = "Banniluettelo...";
 
 /* nothing */
-"Channel List..." = "Kanavaluettelo...";
-
-/* nothing */
 "Character Chart..." = "Merkistökartta...";
 
 /* nothing */
@@ -2789,10 +2747,10 @@
 "File Transfers..." = "Tiedostonsiirrot...";
 
 /* nothing */
-"Ignore List..." = "Huomioimattomuusluettelo...";
+"Friends List..." = "Kaveriluettelo...";
 
 /* nothing */
-"Notify List..." = "Ilmoitusluettelo...";
+"Ignore List..." = "Huomioimattomuusluettelo...";
 
 /* nothing */
 "Plugins and Scripts..." = "Skriptit ja liitännäiset...";
@@ -2822,16 +2780,13 @@
 "_Contents" = "_Sisältö";
 
 /* nothing */
+"Check for updates" = "Tarkista päivitykset";
+
+/* nothing */
 "_About" = "_Tietoja";
 
 /* nothing */
-"_Attach Window" = "Kiinnitä ikkuna";
-
-/* nothing */
-"_Close Window" = "Sulje ikkuna";
-
-/* nothing */
-"User" = "Käyttäjä";
+"_Attach" = "Kiinnitä";
 
 /* nothing */
 "Last Seen" = "Nähty viimeksi";
@@ -2858,10 +2813,7 @@
 "Comma separated list of networks is accepted." = "Pilkuilla eroteltu luettelo IRC-verkkoja.";
 
 /* nothing */
-"XChat: Notify List" = "XChat: Ilmoitusluettelo";
-
-/* nothing */
-"Remove" = "Poista";
+"XChat: Friends List" = "XChat: Kaveriluettelo";
 
 /* nothing */
 "Open Dialog" = "Aloita keskustelu";
@@ -2891,6 +2843,15 @@
 "Highlighted Message" = "Korostettu viesti";
 
 /* nothing */
+"_Change status" = "Vaihda tila";
+
+/* nothing */
+"_Away" = "Pois";
+
+/* nothing */
+"_Back" = "Takaisin";
+
+/* nothing */
 "XChat: Highlighted message from: %s (%s)" = "XChat: Korostettu viesti käyttäjältä %s (%s)";
 
 /* nothing */
@@ -2915,6 +2876,9 @@
 "XChat: %u file offers, latest from: %s (%s)" = "XChat: %u tiedostoa tarjottu, vimeksi käyttäjältä %s (%s)";
 
 /* nothing */
+"Version" = "Versio";
+
+/* nothing */
 "Description" = "Kuvaus";
 
 /* nothing */
@@ -2928,9 +2892,6 @@
 
 /* nothing */
 "_UnLoad" = "_Poista käytöstä";
-
-/* nothing */
-"_Close" = "_Sulje";
 
 /* nothing */
 "Save As..." = "Tallenna...";
@@ -2964,6 +2925,27 @@
 
 /* nothing */
 "Really remove network \"%s\" and all its servers?" = "Haluatko todella poistaa verkon \"%s\" ja kaikki sen palvelimet?";
+
+/* nothing */
+"#channel" = "#kanava";
+
+/* nothing */
+"XChat: Favorite Channels (Auto-Join List)" = "XChat: Suosikkikanavat (Liitytään automaattisesti)";
+
+/* nothing */
+"These channels will be joined whenever you connect to %s." = "Näille kanaville liitytään aina, kun yhdistetään palvelimelle %s.";
+
+/* nothing */
+"Key (Password)" = "Avain (salasana)";
+
+/* nothing */
+"_Edit" = "_Muokkaa";
+
+/* nothing */
+"%s has been removed." = "Palvelin %s poistettiin.";
+
+/* nothing */
+"%s has been added." = "Palvelin %s lisättiin.";
 
 /* nothing */
 "User name and Real name cannot be left blank." = "Käyttäjätunnusta ja oikeaa nimeä ei voi jättää tyhjiksi.";
@@ -3005,7 +2987,7 @@
 "Auto connect to this network at startup" = "Yhdistä valmiiksi, kun X-Chat käynnistyy";
 
 /* nothing */
-"Use a proxy server" = "Käytä välipalvelinta";
+"Bypass proxy server" = "Ohita välipalvelin";
 
 /* nothing */
 "Use SSL for all the servers on this network" = "Käytä SSL-yhteyttä tässä verkossa";
@@ -3014,7 +2996,7 @@
 "Accept invalid SSL certificate" = "Hyväksy epäkelpo varmenne";
 
 /* nothing */
-"C_hannels to join:" = "Avattavat kanavat:";
+"_Favorite channels:" = "Suosikkikanavalta:";
 
 /* nothing */
 "Channels to join, separated by commas, but not spaces!" = "Näille kanaville liitytään automaattisesti. Erota kanavat toisistaan pilkuin (mutta ei välilyönnein!).";
@@ -3039,9 +3021,6 @@
 
 /* nothing */
 "Character set:" = "Merkistö:";
-
-/* nothing */
-"_Edit" = "_Muokkaa";
 
 /* nothing */
 "XChat: Network List" = "XChat: Verkkoluettelo";
@@ -3080,7 +3059,7 @@
 "Background image:" = "Taustakuva:";
 
 /* nothing */
-"Scrollback lines:" = "Vieritettäviä rivejä:";
+"Scrollback lines:" = "Rivipuskurin koko:";
 
 /* nothing */
 "Colored nick names" = "Väritä kutsumanimet";
@@ -3221,9 +3200,6 @@
 "Action Upon Double Click" = "Kaksoisnapsautuksen toiminto";
 
 /* nothing */
-"Execute command:" = "Suorita komento:";
-
-/* nothing */
 "Windows" = "Ikkunat";
 
 /* nothing */
@@ -3236,7 +3212,10 @@
 "Only requested tabs" = "Vain itse avatut";
 
 /* nothing */
-"Channel Switcher" = "Kanavavalitsin";
+"Tree" = "Puu";
+
+/* nothing */
+"Switcher type:" = "Valitsimen tyyppi:";
 
 /* nothing */
 "Open an extra tab for server messages" = "Palvelinviestit omaan välilehteensä";
@@ -3251,7 +3230,7 @@
 "Sort tabs in alphabetical order" = "Välilehdet aakkosjärjestykseen";
 
 /* nothing */
-"Small tabs" = "Pienet korvakkeet";
+"Smaller text" = "Pienempi teksti";
 
 /* nothing */
 "Focus new tabs:" = "Uudet välilehdet etualalle:";
@@ -3383,7 +3362,7 @@
 "Nick names to always highlight:" = "Korosta aina viestit käyttäjiltä:";
 
 /* nothing */
-"Separate multiple words with commas." = "Erota sanat toisistaan pilkuilla.";
+"Separate multiple words with commas.\nWildcards are accepted." = "Erota sanat toisistaan pilkuilla.\nJokerimerkkejäkin voi käyttää.";
 
 /* nothing */
 "Default Messages" = "Oletusilmoitukset";
@@ -3455,7 +3434,10 @@
 "Logging" = "Lokiasetukset";
 
 /* nothing */
-"Enable logging of conversations" = "Pidä keskusteluista lokia";
+"Display scrollback from previous session" = "Näytä edellisen istunnon rivipuskuri";
+
+/* nothing */
+"Enable logging of conversations to disk" = "Kirjoita keskustelut levylle talteen";
 
 /* nothing */
 "Log filename:" = "Lokitiedoston nimi:";
