@@ -16,22 +16,24 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
 @interface SystemVersion : NSObject {
-	NSString * systemVersion;
-	NSString * buildVersion;
-	NSString * systemBranch;
-	uint8_t major;
-	uint8_t minor;
-	uint8_t micro;
+	NSString *systemVersion;
+	NSString *buildVersion;
+	NSString *systemBranch;
+    SInt32 version;
+	SInt32 major;
+	SInt32 minor;
+	SInt32 bugfix;
 }
 
 + (SystemVersion*)sharedInstance;
 
 @property (nonatomic, readonly) NSString *systemVersion, *buildVersion, *systemBranch;
-@property (nonatomic, readonly) uint8_t major, minor, micro;
+@property (nonatomic, readonly) SInt32 version, major, minor, bugfix;
 
-+ (uint8_t)major;
-+ (uint8_t)minor;
-+ (uint8_t)micro;
++ (SInt32)version;
++ (SInt32)major;
++ (SInt32)minor;
++ (SInt32)bugfix;
 + (NSString *)systemVersion;
 + (NSString *)buildVersion;
 + (NSString *)systemBranch;

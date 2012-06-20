@@ -188,7 +188,7 @@ static NSCursor *lr_cursor;
     [palette release];
     palette = [new_palette retain];
     
-    [self setBackgroundColor:[palette getColor:AC_BGCOLOR]];
+    [self setBackgroundColor:[palette getColor:XAColorBackground]];
 }
 
 - (void) setup_margin
@@ -794,7 +794,7 @@ static NSCursor *lr_cursor;
         return;
     }
     
-    [[palette getColor:AC_FGCOLOR] set];
+    [[palette getColor:XAColorForeground] set];
     [[NSGraphicsContext currentContext] setShouldAntialias:false];
     NSBezierPath *p = [NSBezierPath bezierPath];
     [p setLineWidth:1];

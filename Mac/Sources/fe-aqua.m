@@ -187,7 +187,7 @@ static void setupAppSupport ()
     // State 1
     if (xcdir_exists && asdir_exists)
     {
-        printf ("~/.xchat2 and ApplicationSupport/XChat Azure!?");
+        NSLog(@"~/.xchat2 and ApplicationSupport/XChat Azure!?");
         return;
     }
     
@@ -863,7 +863,7 @@ fe_userlist_rehash (struct session *sess, struct User *user)
 void
 fe_dcc_send_filereq (struct session *sess, char *nick, int maxcps, int passive)
 {
-    NSString *s = [SGFileSelection selectWithWindow:[current_sess->gui->controller window]];
+    NSString *s = [SGFileSelection selectWithWindow:[current_sess->gui->controller window]].path;
     if (s)
         dcc_send (sess, nick, (char *) [s UTF8String], maxcps, passive);
 }

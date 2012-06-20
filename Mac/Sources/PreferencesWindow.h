@@ -37,11 +37,7 @@ struct PreferenceItem
     int      type;
 };
 
-@interface PreferencesWindow : UtilityWindow
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSOutlineViewDataSource, NSComboBoxDataSource>
-#endif
-{
+@interface PreferencesWindow : UtilityWindow<NSOutlineViewDataSource, NSComboBoxDataSource, NSOpenSavePanelDelegate> {
     IBOutlet NSTabView    *tabView;
     IBOutlet NSBox *contentBox;
     IBOutlet NSOutlineView *categoryOutlineView;
@@ -188,5 +184,8 @@ struct PreferenceItem
 - (IBAction)applyBackgroundImage:(id)sender;
 - (IBAction)removeBackgroundImage:(id)sender;
 - (IBAction)applyTranparency:(id)sender;
+
+- (IBAction)loadColorFromDefault:(id)sender;
+- (IBAction)loadColorFromFile:(id)sender;
 
 @end
