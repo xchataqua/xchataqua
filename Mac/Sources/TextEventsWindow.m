@@ -117,10 +117,10 @@ extern char *pntevts[];
 
 - (void) loadFrom:(id)sender
 {
-    NSString *fname = [SGFileSelection selectWithWindow:self];
-    if (fname)
+    NSURL *furl = [SGFileSelection selectWithWindow:self];
+    if (furl)
     {
-        pevent_load ((char *) [fname UTF8String]);
+        pevent_load ((char *)furl.path.UTF8String);
         pevent_make_pntevts ();
         [self loadItems];
         [eventTableView reloadData];
@@ -130,9 +130,10 @@ extern char *pntevts[];
 
 - (void) saveAs:(id)sender
 {
-    NSString *fname = [SGFileSelection saveWithWindow:self];
-    if (fname)
-        pevent_save ((char *) [fname UTF8String]);
+    NSURL *furl = [SGFileSelection saveWithWindow:self];
+    if (furl) {
+        pevent_save ((char *)furl.path.UTF8String);
+    }
 }
 
 #pragma mark NSTableView delegate

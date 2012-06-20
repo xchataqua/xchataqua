@@ -380,10 +380,10 @@
     
     if (user->away)
     {
-        attr = [NSDictionary dictionaryWithObject:[palette getColor:AC_AWAY_USER] forKey:NSForegroundColorAttributeName];
+        attr = [NSDictionary dictionaryWithObject:[palette getColor:XAColorAwayUser] forKey:NSForegroundColorAttributeName];
     } else {
         if (prefs.style_namelistgad) {
-            attr = [NSDictionary dictionaryWithObject:[palette getColor:AC_FGCOLOR] forKey:NSForegroundColorAttributeName];
+            attr = [NSDictionary dictionaryWithObject:[palette getColor:XAColorForeground] forKey:NSForegroundColorAttributeName];
         } else {
             attr = [NSDictionary dictionaryWithObject:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
         }
@@ -683,34 +683,33 @@ static NSImage *emptyBulletImage;
 
 - (void) preferencesChanged
 {
+    // init ColorPalette
+    ColorPalette *p = [[AquaChat sharedAquaChat] palette];
     [chatTextView setFont:[[AquaChat sharedAquaChat] font] boldFont:[[AquaChat sharedAquaChat] boldFont]];
+    chatTextView.enclosingScrollView.backgroundColor = [p getColor:XAColorBackground];
     
     if (prefs.style_inputbox)
     {
         [inputTextField setFont:[[AquaChat sharedAquaChat] font]];
         [inputTextField sizeToFit];
-        // init ColorPalette
-        ColorPalette *p = [[AquaChat sharedAquaChat] palette];
         // fg, bg and bezel
-        [inputTextField setTextColor:[p getColor:AC_FGCOLOR]];
-        [inputTextField setBackgroundColor:[p getColor:AC_BGCOLOR]];
+        [inputTextField setTextColor:[p getColor:XAColorForeground]];
+        [inputTextField setBackgroundColor:[p getColor:XAColorBackground]];
         [inputTextField setBezeled:NO];
-        [topicTextField setTextColor:[p getColor:AC_FGCOLOR]];
-        [topicTextField setBackgroundColor:[p getColor:AC_BGCOLOR]];
+        [topicTextField setTextColor:[p getColor:XAColorForeground]];
+        [topicTextField setBackgroundColor:[p getColor:XAColorBackground]];
         [topicTextField setBezeled:YES];
     } else {
         // How to restore this?
     }
     
     if (prefs.style_namelistgad) {
-        // init ColorPalette
-        ColorPalette *p = [[AquaChat sharedAquaChat] palette];
         // fg, bg and bezel        
-        [userlistStatusTextField setTextColor:[p getColor:AC_FGCOLOR]];
-        [userlistStatusTextField setBackgroundColor:[p getColor:AC_BGCOLOR]];
+        [userlistStatusTextField setTextColor:[p getColor:XAColorForeground]];
+        [userlistStatusTextField setBackgroundColor:[p getColor:XAColorBackground]];
         [userlistStatusTextField setBezeled:NO];
         // bg only
-        [userlistTableView setBackgroundColor:[p getColor:AC_BGCOLOR]];
+        [userlistTableView setBackgroundColor:[p getColor:XAColorBackground]];
 
         // I really need to find a way to trigger a redraw of SGOutlineView
     } else {
@@ -721,7 +720,7 @@ static NSImage *emptyBulletImage;
     if (prefs.background && strlen(prefs.background) > 0) {
         palette = [[palette copy] autorelease];
         NSImage *image = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithUTF8String:prefs.background]];
-        [palette setColor:AC_BGCOLOR color:[NSColor colorWithPatternImage:image]];
+        [palette setColor:XAColorBackground color:[NSColor colorWithPatternImage:image]];
         [image release];
     }
     [chatTextView setPalette:palette];
@@ -915,7 +914,7 @@ static NSImage *emptyBulletImage;
     
     if (prefs.tab_layout == 2  && prefs.style_inputbox) {
         ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-        [self.chatView setTabTitleColor:[p getColor:AC_FGCOLOR]];
+        [self.chatView setTabTitleColor:[p getColor:XAColorForeground]];
     }
     
     //[[inputTextField window] makeFirstResponder:inputTextField];
@@ -1048,7 +1047,7 @@ static NSImage *emptyBulletImage;
     [self.chatView setTabTitle:s];
     if (prefs.tab_layout == 2 && prefs.style_inputbox) {
         ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-        [self.chatView setTabTitleColor:[p getColor:AC_FGCOLOR]];
+        [self.chatView setTabTitleColor:[p getColor:XAColorForeground]];
     }
     [myOpOrVoiceIconImageView setHidden:YES];
     [limitTextField setStringValue:@""];
@@ -1162,7 +1161,7 @@ static NSImage *emptyBulletImage;
     NSColor *TTColor;
     
     if (prefs.tab_layout == 2 && prefs.style_inputbox) {
-        TTColor = [p getColor:AC_FGCOLOR];
+        TTColor = [p getColor:XAColorForeground];
     } else {
         TTColor = [NSColor blackColor];
     }
@@ -1181,21 +1180,21 @@ static NSImage *emptyBulletImage;
                 sess->new_data = true;
                 sess->msg_said = false;
                 sess->nick_said = false;
-                [self.chatView setTabTitleColor:[p getColor:AC_NEW_DATA]];
+                [self.chatView setTabTitleColor:[p getColor:XAColorNewData]];
                 break;
                 
             case 2: /* new message arrived in channel (light red) */
                 sess->new_data = false;
                 sess->msg_said = true;
                 sess->nick_said = false;
-                [self.chatView setTabTitleColor:[p getColor:AC_MSG_SAID]];
+                [self.chatView setTabTitleColor:[p getColor:XAColorNewMessage]];
                 break;
                 
             case 3: /* your nick has been seen (blue) */
                 sess->new_data = false;
                 sess->msg_said = false;
                 sess->nick_said = true;
-                [self.chatView setTabTitleColor:[p getColor:AC_NICK_SAID]];
+                [self.chatView setTabTitleColor:[p getColor:XAColorNickMentioned]];
                 break;
         }
     }
@@ -1284,8 +1283,8 @@ static NSImage *emptyBulletImage;
 {
     ColorPalette *palette = [[[AquaChat sharedAquaChat] palette] copy];
     
-    [palette setColor:AC_FGCOLOR color:[NSColor blackColor]];
-    [palette setColor:AC_BGCOLOR color:[NSColor whiteColor]];
+    [palette setColor:XAColorForeground color:[NSColor blackColor]];
+    [palette setColor:XAColorBackground color:[NSColor whiteColor]];
     
     [topicTextField setStringValue:[mIRCString stringWithUTF8String:topic
                                                             palette:palette
@@ -1307,7 +1306,7 @@ static NSImage *emptyBulletImage;
     [self.chatView setTabTitle:channelString];
     if (prefs.tab_layout == 2 && prefs.style_inputbox) {
         ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-        [self.chatView setTabTitleColor:[p getColor:AC_FGCOLOR]];
+        [self.chatView setTabTitleColor:[p getColor:XAColorForeground]];
     }
 }
 

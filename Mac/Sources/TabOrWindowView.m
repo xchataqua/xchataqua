@@ -153,7 +153,7 @@ static float trans = 1;
     if you have a better solution, please share it :)
 
     ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-    [outline setBackgroundColor:[p getColor:AC_BGCOLOR]];
+    [outline setBackgroundColor:[p getColor:XAColorBackground]];
 */
 }
 
