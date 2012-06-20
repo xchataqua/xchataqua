@@ -24,6 +24,7 @@
 #import "PreferencesWindow.h"
 #import "ColorPalette.h"
 #import "ChatViewController.h"
+#import "NSPanelAdditions.h"
 
 #include "text.h"
 #undef TYPE_BOOL
@@ -455,13 +456,22 @@ extern struct EventInfo textEventInfo[];
 
 - (void)loadColorFromFile:(id)sender {
     [self makeFirstResponder:self];
-    NSURL *URL = [SGFileSelection selectWithWindow:self];
-    if (URL != nil) {
+    NSOpenPanel *panel = [NSOpenPanel commonOpenPanel];
+    panel.delegate = self;
+    NSInteger status = [panel runModalForWindow:self];
+    if (status == NSOKButton) {
         ColorPalette *palette = [[ColorPalette alloc] init];
-        [palette loadFromURL:URL];
+        [palette loadFromURL:panel.URL];
         [self populateColorsFromPalette:palette];
         [palette release];
     }
+}
+
+#pragma mark NSOpenPanel delegate
+
+- (BOOL)panel:(id)sender shouldEnableURL:(NSURL *)url {
+    NSString *path = url.absoluteString;
+    return [path hasSuffix:@"/"] || [path hasSuffix:@"/colors.conf"];
 }
 
 #pragma mark NSOutlineView delegate
