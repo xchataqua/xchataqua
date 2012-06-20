@@ -1,5 +1,5 @@
 /* nothing */
-"" = "Project-Id-Version: xchat 2.8.1\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2007-03-28 14:09+1000\nPO-Revision-Date: 2007-05-23 12:27+0300\nLast-Translator: Pavel Piatruk <berserker@neolocation.com>\nLanguage-Team: Belarusian <i18n@mova.org>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nX-Generator: KBabel 1.10.2\n";
+"" = "Project-Id-Version: xchat 2.8.4\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2010-05-30 13:56+1000\nPO-Revision-Date: 2007-06-26 12:02+0300\nLast-Translator: Pavel Piatruk <berserker@neolocation.com>\nLanguage-Team: Belarusian <i18n@mova.org>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nX-Generator: KBabel 1.10.2\n";
 
 /* nothing */
 "Cannot create ~/.xchat2" = "Не магу стварыць ~/.xchat2";
@@ -119,7 +119,7 @@
 "BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "BAN <маска> [<тыпзабароны>], забараняе доступ да канала кожнаму, хто адпавядае маске. Калі гэткія карыстальнікі ўжо на канале, яны не будуць выпхнутыя. (Трэба правы аператара)";
 
 /* nothing */
-"Set per channel options\nCHANOPT CONFMODE ON|OFF - Toggle conf mode/showing of join and part messages\nCHANOPT COLORPASTE ON|OFF - Toggle color paste\nCHANOPT BEEP ON|OFF - Toggle beep on message\nCHANOPT TRAY ON|OFF - Toggle tray blink on message" = "Наладкі адносна канала\nCHANOPT CONFMODE ON|OFF - Пераключыцца паміж рэжымам канферэнцыі і паказам уваходных і выходзячых паведамленняў\nCHANOPT COLORPASTE ON|OFF - Пераключыць устаўку колераў\nCHANOPT BEEP ON|OFF - Пераключыць пішчанне пры паведамленнях \nCHANOPT TRAY ON|OFF - Пераключыць мірганне ў сподку пры паведамленнях";
+"CHANOPT [-quiet] <variable> [<value>]" = "SET [-e] [-or] [-quiet] <пераменная> [<значэнне>]";
 
 /* nothing */
 "CLEAR [ALL|HISTORY], Clears the current text window or command history" = "CLEAR, Ачышчае бягучае тэкставае акно або гісторыю каманд";
@@ -134,7 +134,7 @@
 "CTCP <nick> <message>, send the CTCP message to nick, common messages are VERSION and USERINFO" = "CTCP <мянушка> <паведамленне>, дасылае мянушцы CTCP-паведамленне, напрыклад, VERSION ці USERINFO";
 
 /* nothing */
-"CYCLE, parts current channel and immediately rejoins" = "CYCLE, выйсці з бягучага канала і адразу зайсці зноў";
+"CYCLE [<channel>], parts the current or given channel and immediately rejoins" = "CYCLE [<channel>], выйсці з пазначанага або бягучага канала і адразу зайсці зноў";
 
 /* nothing */
 "\nDCC GET <nick>                      - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file]  - send a file to someone\nDCC PSEND [-maxcps=#] <nick> [file] - send a file using passive mode\nDCC LIST                            - show DCC list\nDCC CHAT <nick>                     - offer DCC CHAT to someone\nDCC PCHAT <nick>                    - offer DCC CHAT using passive mode\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "\nDCC GET <мянушка>                      - дазволіць прапанаваны файл\nDCC SEND [-maxcps=#] <мянушка> [файл]  - даслаць файл камусьці\nDCC PSEND [-maxcps=#] <мянушка> [файл] - даслаць файл у пасіўным рэжыме\nDCC LIST                               - паказаць спіс DCC\nDCC CHAT <мянушка>                     - прапанаваць DCC CHAT камусьці\nDCC PCHAT <мянушка>                    - прапанаваць DCC CHAT у пасіўным рэжыме\nDCC CLOSE <тып> <мянушка> <файл>        напрыклад:\n         /dcc close send johnsmith file.tar.gz";
@@ -182,7 +182,7 @@
 "GATE <host> [<port>], proxies through a host, port defaults to 23" = "GATE <вузел> [<порт>], далучыцца праз вузел, прадвызначаны порт 23";
 
 /* nothing */
-"GHOST <nick> <password>, Kills a ghosted nickname" = "GHOST <мянушка> <пароль>, Выпхнуць з канала карыстальніка-здань";
+"GHOST <nick> [password], Kills a ghosted nickname" = "GHOST <мянушка> <пароль>, Выпхнуць з канала карыстальніка-здань";
 
 /* nothing */
 "HOP <nick>, gives chanhalf-op status to the nick (needs chanop)" = "HOP <мянушка>, даць правы паў-аператара карыстальніку (патрэбна мець правы аператара)";
@@ -296,7 +296,7 @@
 "SERVER <host> [<port>] [<password>], connects to a server, the default port is 6667" = "SERVER <вузел> [<порт>] [<пароль>], злучыцца з серверам, прадвызначаны порт 6667";
 
 /* nothing */
-"SET [-e] [-quiet] <variable> [<value>]" = "SET [-e] [-quiet] <пераменная> [<значэнне>]";
+"SET [-e] [-off|-on] [-quiet] <variable> [<value>]" = "SET [-e] [-or] [-quiet] <пераменная> [<значэнне>]";
 
 /* nothing */
 "SETCURSOR [-|+]<position>" = "SETCURSOR [-|+]<пазіцыя>";
@@ -713,6 +713,9 @@
 "%C22*%O$tYou are now known as $2" = "%C22*%O$tЦяпер вы вядомы як $2";
 
 /* nothing */
+"Loaded log from" = "Журнал загружаны з";
+
+/* nothing */
 "**** ENDING LOGGING AT %s\n" = "**** КАНЕЦ УВАХОДУ НА %s\n";
 
 /* nothing */
@@ -746,10 +749,10 @@
 "Mode char" = "Знак рэжыму";
 
 /* nothing */
-"The text" = "Тэкст";
+"Identified text" = "Вылучаны тэкст";
 
 /* nothing */
-"Identified text" = "Вылучаны тэкст";
+"The text" = "Тэкст";
 
 /* nothing */
 "The message" = "Паведамленне";
@@ -951,6 +954,9 @@
 
 /* nothing */
 "Server Name" = "Назва сервера";
+
+/* nothing */
+"Raw Numeric or Identifier" = "";
 
 /* nothing */
 "Nick of person who invited you" = "Мянушка асобы, якая запрасіла вас";
@@ -1847,16 +1853,19 @@
 "Unknown" = "Невядома";
 
 /* nothing */
-"Open Dialog Window" = "Пачаць дыялог";
+"_Open Dialog Window" = "Пачаць дыялог";
 
 /* nothing */
-"Send a File" = "Даслаць файл";
+"_Send a File" = "Даслаць файл";
 
 /* nothing */
-"User Info (WHOIS)" = "Звесткі (WHOIS)";
+"_User Info (WhoIs)" = "Звесткі (WHOIS)";
 
 /* nothing */
-"Operator Actions" = "Дзеянні аператара";
+"_Add to Friends List" = "";
+
+/* nothing */
+"O_perator Actions" = "Дзеянні аператара";
 
 /* nothing */
 "Give Ops" = "Даць аператара";
@@ -1881,87 +1890,6 @@
 
 /* nothing */
 "KickBan" = "Выпхнуць і забараніць";
-
-/* nothing */
-"Direct client-to-client" = "Прамое дачыненне (DCC)";
-
-/* nothing */
-"Send File" = "Даслаць файл";
-
-/* nothing */
-"Offer Chat" = "Прапанаваць размову";
-
-/* nothing */
-"Abort Chat" = "Перарваць размову";
-
-/* nothing */
-"Version" = "Версія";
-
-/* nothing */
-"Userinfo" = "Звесткі аб карыстальніку";
-
-/* nothing */
-"Clientinfo" = "Звесткі аб кліенце";
-
-/* nothing */
-"Ping" = "Ping";
-
-/* nothing */
-"Time" = "Час";
-
-/* nothing */
-"Finger" = "Водціск";
-
-/* nothing */
-"Oper" = "Аперацыя";
-
-/* nothing */
-"Kill this user" = "Выпхнуць карыстальніка";
-
-/* nothing */
-"Mode" = "Рэжым";
-
-/* nothing */
-"Give Half-Ops" = "Даць паў-аператара";
-
-/* nothing */
-"Take Half-Ops" = "Забраць паў-аператара";
-
-/* nothing */
-"Ignore" = "Ігнараванне";
-
-/* nothing */
-"Ignore User" = "Ігнараваць карыстальніка";
-
-/* nothing */
-"UnIgnore User" = "Не ігнараваць карыстальніка";
-
-/* nothing */
-"Info" = "Інфа";
-
-/* nothing */
-"Who" = "Хто";
-
-/* nothing */
-"WhoIs" = "Хто ёсць";
-
-/* nothing */
-"DNS Lookup" = "Прагляд DNS";
-
-/* nothing */
-"Trace" = "Trace";
-
-/* nothing */
-"UserHost" = "Камп'ютэр карыстальніка";
-
-/* nothing */
-"External" = "Вонкавы";
-
-/* nothing */
-"Traceroute" = "Traceroute";
-
-/* nothing */
-"Telnet" = "Telnet";
 
 /* nothing */
 "Leave Channel" = "Выйсці з канала";
@@ -2000,6 +1928,9 @@
 "Dialog" = "Дыялог";
 
 /* nothing */
+"WhoIs" = "Хто ёсць";
+
+/* nothing */
 "Send" = "Даслаць";
 
 /* nothing */
@@ -2007,6 +1938,9 @@
 
 /* nothing */
 "Clear" = "Ачысціць";
+
+/* nothing */
+"Ping" = "Ping";
 
 /* nothing */
 "Couldn't connect to session bus" = "Немагчыма злучыцца з шынай сесій (session bus)";
@@ -2030,7 +1964,7 @@
 "Failed to acquire %s: %s\n" = "Немагчыма дасягнуць %s : %s\n";
 
 /* nothing */
-"About XChat" = "Аб праграме";
+"About " = "Аб праграме";
 
 /* nothing */
 "A multiplatform IRC Client" = "Шматплатформенны кліент IRC";
@@ -2063,7 +1997,7 @@
 "XChat: Ban List (%s)" = "XChat: спіс забаронаў (%s)";
 
 /* nothing */
-"Unban" = "Дазволіць";
+"Remove" = "Выдаліць";
 
 /* nothing */
 "Crop" = "Сціснуць";
@@ -2255,7 +2189,16 @@
 "Open an irc://server:port/channel URL" = "Адкрыць URL, irc://server:port/channel";
 
 /* nothing */
-"Open URL in an existing XChat" = "Адкрыць URL у існуючым XChat";
+"Execute command:" = "Выканаць каманду:";
+
+/* nothing */
+"Open URL or execute command in an existing XChat" = "Адкрыць URL у існуючым XChat";
+
+/* nothing */
+"Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "Пачатак памяншэння. Узровень 0=Нармальны 1=Значкавы 2=Сподачны";
+
+/* nothing */
+"level" = "узровень";
 
 /* nothing */
 "Show version information" = "Паказаць звесткі аб версіі";
@@ -2465,7 +2408,22 @@
 "This server still has %d channels or dialogs associated with it. Close them all?" = "Гэты сервер мае %d адкрытых каналаў ці дыялогаў. Ці закрыць іх усе?";
 
 /* nothing */
-"No other tabs open, quit xchat?" = "Усе ўкладкі закрытыя, выйсці з xchat?";
+"Quit XChat?" = "Выйсці з Xchat?";
+
+/* nothing */
+"Don't ask next time." = "Не пытаць больш";
+
+/* nothing */
+"You are connected to %i IRC networks." = "Вы злучаны з %i сецівамі IRC.";
+
+/* nothing */
+"Are you sure you want to quit?" = "Ці вы ўпэўнены, што хочаце выйсці?";
+
+/* nothing */
+"Some file transfers are still active." = "Некаторыя перадачы файлаў актыўныя?";
+
+/* nothing */
+"_Minimize to Tray" = "_Паменшыць у сподак";
 
 /* nothing */
 "Insert Attribute or Color Code" = "Пакіньце ўласцівасць ці код колеру";
@@ -2486,25 +2444,34 @@
 "Colors 8-15" = "Колеры 8-15";
 
 /* nothing */
-"Beep on message" = "Гукавы сігнал пры паведамлення";
+"_Settings" = "Наладкі";
 
 /* nothing */
-"Blink tray on message" = "Мірганне ў сподку пры паведамленні";
+"_Log to Disk" = "";
 
 /* nothing */
-"Show join/part messages" = "Паказваць паведамленні аб уваходзе/выхадзе";
+"_Reload Scrollback" = "";
 
 /* nothing */
-"Color paste" = "Колер";
+"_Hide Join/Part Messages" = "Схаваць паведамленні аб уваходзе і адыходзе";
 
 /* nothing */
-"_Close Tab" = "Закрыць укладку";
+"_Extra Alerts" = "Тэрміновыя паведамленні";
 
 /* nothing */
-"_Detach Tab" = "Адлучыць укладку";
+"Beep on _Message" = "Гукавы сігнал пры паведамлення";
 
 /* nothing */
-"Some file transfers still active, quit xchat?" = "Некаторыя перадачы файлаў актыўныя, выйсці з xchat?";
+"Blink Tray _Icon" = "Міргаць сподкавай значкай пры:";
+
+/* nothing */
+"Blink Task _Bar" = "Міргаць сподкам пры:";
+
+/* nothing */
+"_Detach" = "Адлучыць укладку";
+
+/* nothing */
+"_Close" = "_Закрыць";
 
 /* nothing */
 "User limit must be a number!\n" = "Абмежаванне карыстальніка павінна быць лічбай!\n";
@@ -2561,13 +2528,16 @@
 "Server:" = "Сервер:";
 
 /* nothing */
-"Away Msg:" = "Паведамленне адыходу:";
-
-/* nothing */
 "%u minutes ago" = "%u хвілін таму";
 
 /* nothing */
 "Last Msg:" = "Апошняе паведамленне:";
+
+/* nothing */
+"Away Msg:" = "Паведамленне адыходу:";
+
+/* nothing */
+"%d nicks selected." = "";
 
 /* nothing */
 "The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "Меню зараз схована. Яно вернецца, калі націснеце F9 ці шчоўкнеце правай кнопкай мышы на свабоднай прасторы тэкставага акна.";
@@ -2586,6 +2556,12 @@
 
 /* nothing */
 "Cycle Channel" = "Каналы па кругу";
+
+/* nothing */
+"_Remove from Favorites" = "";
+
+/* nothing */
+"_Add to Favorites" = "";
 
 /* nothing */
 "XChat: User menu" = "XChat: Меню карыстальніка";
@@ -2666,19 +2642,22 @@
 "_View" = "Пра_гляд";
 
 /* nothing */
-"_Menubar" = "Меню";
+"_Menu Bar" = "_Меню";
 
 /* nothing */
-"_Topicbar" = "Тэма";
+"_Topic Bar" = "_Тэма";
 
 /* nothing */
-"_Userlist Buttons" = "Кнопкі спісу карыстальнікаў";
+"_User List" = "Спіс _карыстальнікаў";
+
+/* nothing */
+"U_serlist Buttons" = "К_нопкі спісу карыстальнікаў";
 
 /* nothing */
 "M_ode Buttons" = "Кнопкі рэжыму";
 
 /* nothing */
-"_Layout" = "Асяроддзе";
+"_Channel Switcher" = "Пераклю_чнік каналаў";
 
 /* nothing */
 "_Tabs" = "Укладкі";
@@ -2703,6 +2682,12 @@
 
 /* nothing */
 "_Reconnect" = "_Перадалучыцца";
+
+/* nothing */
+"Join a Channel..." = "Увайсці на канал...";
+
+/* nothing */
+"List of Channels..." = "Увайсці на канал...";
 
 /* nothing */
 "Marked Away" = "Пазначыць як \"Адыйшоў\"";
@@ -2753,9 +2738,6 @@
 "Ban List..." = "Спіс забароненых...";
 
 /* nothing */
-"Channel List..." = "Спіс каналаў...";
-
-/* nothing */
 "Character Chart..." = "Палітра літараў...";
 
 /* nothing */
@@ -2765,10 +2747,10 @@
 "File Transfers..." = "Абмен файламі...";
 
 /* nothing */
-"Ignore List..." = "Спіс ігнараванняў..";
+"Friends List..." = "Спіс забароненых...";
 
 /* nothing */
-"Notify List..." = "Спіс абвяшчэнняў...";
+"Ignore List..." = "Спіс ігнараванняў..";
 
 /* nothing */
 "Plugins and Scripts..." = "Плагіны і скрыпты...";
@@ -2798,16 +2780,13 @@
 "_Contents" = "_Змест";
 
 /* nothing */
+"Check for updates" = "";
+
+/* nothing */
 "_About" = "Аб праграме";
 
 /* nothing */
-"_Attach Window" = "_Далучыць акно";
-
-/* nothing */
-"_Close Window" = "_Закрыць акно";
-
-/* nothing */
-"User" = "Карыстальнік";
+"_Attach" = "_Далучыць акно";
 
 /* nothing */
 "Last Seen" = "Апошні прагляд";
@@ -2834,10 +2813,7 @@
 "Comma separated list of networks is accepted." = "Прымаецца спіс сеціваў, падзеленых коскамі.";
 
 /* nothing */
-"XChat: Notify List" = "XChat: спіс абвяшчэнняў";
-
-/* nothing */
-"Remove" = "Выдаліць";
+"XChat: Friends List" = "XChat: Спіс ігнараванняў";
 
 /* nothing */
 "Open Dialog" = "Пачаць дыялог";
@@ -2847,9 +2823,6 @@
 
 /* nothing */
 "XChat: Connected to %u networks and %u channels" = "XChat: злучана з %u сецівамі і %u каналамі";
-
-/* nothing */
-"You are connected to <b>%u</b> IRC networks.\nAre you sure you want to quit?" = "Вы злучаны з <b>%u</b> сецівамі IRC.\nЦі ўпэўнены, што хочаце выйсці?";
 
 /* nothing */
 "_Restore" = "_Вярнуць";
@@ -2870,10 +2843,16 @@
 "Highlighted Message" = "Падсвечаным паведамленні";
 
 /* nothing */
-"Quit..." = "Выхад...";
+"_Change status" = "";
 
 /* nothing */
-"XChat: Highlighed message from: %s (%s)" = "XChat: Падсвечанае паведамленне ад: %s (%s)";
+"_Away" = "Адыход";
+
+/* nothing */
+"_Back" = "";
+
+/* nothing */
+"XChat: Highlighted message from: %s (%s)" = "XChat: Падсвечанае паведамленне ад: %s (%s)";
 
 /* nothing */
 "XChat: %u highlighted messages, latest from: %s (%s)" = "XChat: %u падсвечаных паведамленняў, апошняе ад: %s (%s)";
@@ -2897,6 +2876,9 @@
 "XChat: %u file offers, latest from: %s (%s)" = "XChat: %u прапаноў файлаў, апошняя ад: %s (%s)";
 
 /* nothing */
+"Version" = "Версія";
+
+/* nothing */
 "Description" = "Апісанне";
 
 /* nothing */
@@ -2910,9 +2892,6 @@
 
 /* nothing */
 "_UnLoad" = "_Выгрузіць";
-
-/* nothing */
-"_Close" = "_Закрыць";
 
 /* nothing */
 "Save As..." = "Захаваць як...";
@@ -2946,6 +2925,27 @@
 
 /* nothing */
 "Really remove network \"%s\" and all its servers?" = "Сапраўды выдаліць сеціва \"%s\" і ўсе яго серверы?";
+
+/* nothing */
+"#channel" = "Канал";
+
+/* nothing */
+"XChat: Favorite Channels (Auto-Join List)" = "XChat: Спіс каналаў (%s)";
+
+/* nothing */
+"These channels will be joined whenever you connect to %s." = "";
+
+/* nothing */
+"Key (Password)" = "Пароль:";
+
+/* nothing */
+"_Edit" = "_Рэдагаваць";
+
+/* nothing */
+"%s has been removed." = "";
+
+/* nothing */
+"%s has been added." = "";
 
 /* nothing */
 "User name and Real name cannot be left blank." = "Імя карыстальніка і сапраўднае імя не могуць быць пустымі.";
@@ -2987,7 +2987,7 @@
 "Auto connect to this network at startup" = "Аўтаматычна злучацца з гэтым серверам пры старце";
 
 /* nothing */
-"Use a proxy server" = "Выкарыстоўваць проксі";
+"Bypass proxy server" = "Выкарыстоўваць проксі";
 
 /* nothing */
 "Use SSL for all the servers on this network" = "Ужываць SSL для ўсіх сервераў у гэтым сеціве";
@@ -2996,7 +2996,7 @@
 "Accept invalid SSL certificate" = "Прымаць несапраўдны SSL-сертыфікат";
 
 /* nothing */
-"C_hannels to join:" = "Каналы для ўваходу:";
+"_Favorite channels:" = "Выйсці з канала: ";
 
 /* nothing */
 "Channels to join, separated by commas, but not spaces!" = "Каналы для ўваходу, падзеленыя коскамі, але не прагаламі!";
@@ -3021,9 +3021,6 @@
 
 /* nothing */
 "Character set:" = "Знаказбор:";
-
-/* nothing */
-"_Edit" = "_Рэдагаваць";
 
 /* nothing */
 "XChat: Network List" = "XChat: спіс абвяшчэнняў";
@@ -3158,16 +3155,37 @@
 "Unsorted" = "Не сартаваць";
 
 /* nothing */
+"Left (Upper)" = "Злева (вышэй)";
+
+/* nothing */
+"Left (Lower)" = "Злева (ніжэй)";
+
+/* nothing */
+"Right (Upper)" = "Справа (вышэй)";
+
+/* nothing */
+"Right (Lower)" = "Справа (ніжэй)";
+
+/* nothing */
+"Top" = "Верх";
+
+/* nothing */
+"Bottom" = "Ніз";
+
+/* nothing */
+"Hidden" = "Схаваць";
+
+/* nothing */
 "User List" = "Спіс карыстальнікаў";
 
 /* nothing */
 "Show hostnames in user list" = "Паказваць імёны хастоў у спісе карыстальнікаў";
 
 /* nothing */
-"Resizable user list" = "Змяняемая шырыня спіса карыстальнікаў";
+"User list sorted by:" = "Сартаваць спіс карыстальнікаў па:";
 
 /* nothing */
-"User list sorted by:" = "Сартаваць спіс карыстальнікаў па:";
+"Show user list at:" = "Паказваць спіс карыстальнікаў у:";
 
 /* nothing */
 "Away tracking" = "Сачыць за адышэдшымі";
@@ -3182,34 +3200,22 @@
 "Action Upon Double Click" = "Рэакцыя на падвоены націск мышы";
 
 /* nothing */
-"Execute command:" = "Выканаць каманду:";
-
-/* nothing */
 "Windows" = "Вокны";
 
 /* nothing */
 "Tabs" = "Укладкі";
 
 /* nothing */
-"Bottom" = "Ніз";
-
-/* nothing */
-"Top" = "Верх";
-
-/* nothing */
-"Left" = "Лева";
-
-/* nothing */
-"Right" = "Права";
-
-/* nothing */
-"Hidden" = "Схаваць";
-
-/* nothing */
 "Always" = "Заўсёды";
 
 /* nothing */
 "Only requested tabs" = "Толькі запрошаныя ўкладкі";
+
+/* nothing */
+"Tree" = "Дрэва";
+
+/* nothing */
+"Switcher type:" = "Тып пошуку:";
 
 /* nothing */
 "Open an extra tab for server messages" = "Адкрываць дадатковыя ўкладкі для паведамленняў сервера (message)";
@@ -3224,13 +3230,13 @@
 "Sort tabs in alphabetical order" = "Сартаваць укладкі ў алфавітным парадку";
 
 /* nothing */
-"Small tabs" = "Маленькія ўкладкі";
+"Smaller text" = "Маленькія ўкладкі";
 
 /* nothing */
 "Focus new tabs:" = "Фокус на новыя ўкладкі:";
 
 /* nothing */
-"Show tabs at:" = "Паказваць укладкі:";
+"Show channel switcher at:" = "Паказваць пераключнік каналаў у:";
 
 /* nothing */
 "Shorten tab labels to:" = "Скарачаць укладкі да:";
@@ -3356,7 +3362,7 @@
 "Nick names to always highlight:" = "Мянушкі, тэкст ад якіх заўжды падсвечваць";
 
 /* nothing */
-"Separate multiple words with commas." = "Некалькі словаў, падзеленых коскамі.";
+"Separate multiple words with commas.\nWildcards are accepted." = "Некалькі словаў, падзеленых коскамі.";
 
 /* nothing */
 "Default Messages" = "Прадвызначаныя паведамленні";
@@ -3428,7 +3434,10 @@
 "Logging" = "Журнал";
 
 /* nothing */
-"Enable logging of conversations" = "Дазволіць журналяванне дыялогаў";
+"Display scrollback from previous session" = "";
+
+/* nothing */
+"Enable logging of conversations to disk" = "Дазволіць журналяванне дыялогаў";
 
 /* nothing */
 "Log filename:" = "Імя файла журналу:";
@@ -3609,6 +3618,9 @@
 
 /* nothing */
 "User list" = "Спіс карыстальнікаў";
+
+/* nothing */
+"Channel switcher" = "Пераключнік каналаў";
 
 /* nothing */
 "Colors" = "Колеры";

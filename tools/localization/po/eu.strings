@@ -1,8 +1,8 @@
 /* nothing */
-"" = "Project-Id-Version: xchat 2.4.0pre2\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2004-08-05 16:05+1000\nPO-Revision-Date: 2004-08-16 17:49+0200\nLast-Translator: Mikel Olasagasti <hey_neken@mundurat.net>\nLanguage-Team: Basque <translation-team-eu@lists.sourceforge.net>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n";
+"" = "Project-Id-Version: xchat 2.4.5\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2010-05-30 13:56+1000\nPO-Revision-Date: 2005-08-21 21:10+0200\nLast-Translator: Mikel Olasagasti <hey_neken@mundurat.net>\nLanguage-Team: Basque <translation-team-eu@lists.sourceforge.net>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=iso-8859-1\nContent-Transfer-Encoding: 8bit\n";
 
 /* nothing */
-"Cannot create ~/.xchat2" = "Ezin da ~/.xchat2 sortu\t";
+"Cannot create ~/.xchat2" = "Ezin da ~/.xchat2 sortu";
 
 /* nothing */
 "I'm busy" = "Lanpetuta nabil";
@@ -35,6 +35,12 @@
 "Cannot access %s\n" = "Ezin da %s-ra sartu\n";
 
 /* nothing */
+"Error" = "Errorea";
+
+/* nothing */
+"%s is offering \"%s\". Do you want to accept?" = "";
+
+/* nothing */
 "No active DCCs\n" = "Ez dago DCC aktiborik\n";
 
 /* nothing */
@@ -47,7 +53,7 @@
 "You are being CTCP flooded from %s, ignoring %s\n" = "CTCP ugariegi jasotzen hari zara %s(r)engandik, %s ignoratu egingo da.\n";
 
 /* nothing */
-"You are being MSG flooded from %s, setting autodialog OFF.\n" = "MSG ugariegi jasotzen hari zara %s(r)engandik, auto-elkarrizeketa OFFen ezarri da.\n";
+"You are being MSG flooded from %s, setting gui_auto_open_dialog OFF.\n" = "MSG ugariegi jasotzen hari zara %s(r)engandik, gui_auto_open_dialog ezarpena OFFen ezarria.\n";
 
 /* nothing */
 "  %-20s online\n" = "  %-20s online\n";
@@ -62,16 +68,25 @@
 "Not connected. Try /server <host> [<port>]\n" = "Konektatu gabe. Saiatu /server <ostalaria> [<ataka>]-rekin\n";
 
 /* nothing */
+"Already marked away: %s\n" = "";
+
+/* nothing */
+"Already marked back.\n" = "";
+
+/* nothing */
 "I need /bin/sh to run!\n" = "/bin/sh behar dut abiatzeko!\n";
 
 /* nothing */
-"\nCommands Available:\n\n  " = "\nErabilgarri dauden komandoak:\n\n  ";
+"Commands Available:" = "Erabilgarri dauden komandoak:";
 
 /* nothing */
-"\n\nType /HELP <command> for more information, or /HELP -l\n\n" = "\n\nIdatzi /HELP <komandoa> informazio gehiagorako, edo /HELP -l\n";
+"User defined commands:" = "Erabiltzaileak definitutako komandoak:";
 
 /* nothing */
-"User defined commands:\n\n  " = "Erabiltzaileak definitutako komandoak:\n\n  ";
+"Plugin defined commands:" = "Plugin-ak definitutako komandoak:";
+
+/* nothing */
+"Type /HELP <command> for more information, or /HELP -l" = "Idatzi /HELP <komandoa> informazio gehiagorako, edo /HELP -l";
 
 /* nothing */
 "Unknown arg '%s' ignored." = "Argumentu ezezaguna '%s', ezikusia.";
@@ -89,31 +104,40 @@
 "ALLCHAN <cmd>, sends a command to all channels you're in" = "ALLCHAN <komandoa>, zauden kanal guztietara komando bat bidaltzen du";
 
 /* nothing */
+"ALLCHANL <cmd>, sends a command to all channels you're in" = "ALLCHAN <komandoa>, zauden kanal guztietara komando bat bidaltzen du";
+
+/* nothing */
 "ALLSERV <cmd>, sends a command to all servers you're in" = "ALLSERV <cmd>, zauden zerbitzari guztietara komando bat bidaltzen du";
 
 /* nothing */
 "AWAY [<reason>], sets you away" = "AWAY [<arrazoia>], aldendua jartzen zaitu";
 
 /* nothing */
+"BACK, sets you back (not away)" = "";
+
+/* nothing */
 "BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "";
 
 /* nothing */
-"CLEAR, Clears the current text window" = "CLEAR, uneko testu leihoa garbitzen du";
+"CHANOPT [-quiet] <variable> [<value>]" = "SET [-quiet] <bariablea> [<balorea>]";
+
+/* nothing */
+"CLEAR [ALL|HISTORY], Clears the current text window or command history" = "CLEAR, uneko testu leihoa garbitzen du";
 
 /* nothing */
 "CLOSE, Closes the current window/tab" = "CLOSE, uneko leiho/fitxa itxitzen du";
 
 /* nothing */
-"COUNTRY <code>, finds a country code, eg: au = australia" = "COUNTRY <kodea>, herrialde kode bat aurkitzen du, adib.: au = australia";
+"COUNTRY [-s] <code|wildcard>, finds a country code, eg: au = australia" = "COUNTRY [-s] <kodea|komodina>, herrialde kode bat aurkitzen du, adib.: au = australia";
 
 /* nothing */
 "CTCP <nick> <message>, send the CTCP message to nick, common messages are VERSION and USERINFO" = "";
 
 /* nothing */
-"CYCLE, parts current channel and immediately rejoins" = "";
+"CYCLE [<channel>], parts the current or given channel and immediately rejoins" = "";
 
 /* nothing */
-"\nDCC GET <nick>                     - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file] - send a file to someone\nDCC LIST                           - show DCC list\nDCC CHAT <nick>                    - offer DCC CHAT to someone\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "";
+"\nDCC GET <nick>                      - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file]  - send a file to someone\nDCC PSEND [-maxcps=#] <nick> [file] - send a file using passive mode\nDCC LIST                            - show DCC list\nDCC CHAT <nick>                     - offer DCC CHAT to someone\nDCC PCHAT <nick>                    - offer DCC CHAT using passive mode\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "";
 
 /* nothing */
 "DEHOP <nick>, removes chanhalf-op status from the nick on the current channel (needs chanop)" = "";
@@ -158,7 +182,13 @@
 "GATE <host> [<port>], proxies through a host, port defaults to 23" = "";
 
 /* nothing */
+"GHOST <nick> [password], Kills a ghosted nickname" = "";
+
+/* nothing */
 "HOP <nick>, gives chanhalf-op status to the nick (needs chanop)" = "";
+
+/* nothing */
+"ID <password>, identifies yourself to nickserv" = "";
 
 /* nothing */
 "IGNORE <mask> <types..> <options..>\n    mask - host mask to ignore, eg: *!*@*.aol.com\n    types - types of data to ignore, one or all of:\n            PRIV, CHAN, NOTI, CTCP, DCC, INVI, ALL\n    options - NOSAVE, QUIET" = "";
@@ -182,7 +212,7 @@
 "LASTLOG <string>, searches for a string in the buffer" = "";
 
 /* nothing */
-"LOAD <file>, loads a plugin or script" = "LOAD <fitxategia>, plugin edo skript bat kargatzen du";
+"LOAD [-e] <file>, loads a plugin or script" = "LOAD [-e] <fitxategia>, plugin edo skript bat kargatzen du";
 
 /* nothing */
 "MDEHOP, Mass deop's all chanhalf-ops in the current channel (needs chanop)" = "";
@@ -209,7 +239,7 @@
 "NCTCP <nick> <message>, Sends a CTCP notice" = "NCTCP <ezizena> <mezua>, CTCP mezua bidaltzen dio ezizenari";
 
 /* nothing */
-"NEWSERVER <hostname> [<port>]" = "NEWSERVER <ostalaria> [<ataka>]";
+"NEWSERVER [-noconnect] <hostname> [<port>]" = "NEWSERVER <ostalaria> [<ataka>]";
 
 /* nothing */
 "NICK <nickname>, sets your nick" = "NICK <ezizena>, zure ezizena ezartzen du";
@@ -218,7 +248,7 @@
 "NOTICE <nick/channel> <message>, sends a notice. Notices are a type of message that should be auto reacted to" = "";
 
 /* nothing */
-"NOTIFY [<nick>], lists your notify list or adds someone to it" = "";
+"NOTIFY [-n network1[,network2,...]] [<nick>], displays your notify list or adds someone to it" = "";
 
 /* nothing */
 "OP <nick>, gives chanop status to the nick (needs chanop)" = "OP <ezizena>, chanop egoera ematen dio erabiltzaileari (chanop behar da)";
@@ -230,7 +260,7 @@
 "PING <nick | channel>, CTCP pings nick or channel" = "PING <ezizena | kanala>, CTCP ping egin ezizen edo kanalari";
 
 /* nothing */
-"QUERY <nick>, opens up a new privmsg window to someone" = "";
+"QUERY [-nofocus] <nick>, opens up a new privmsg window to someone" = "";
 
 /* nothing */
 "QUIT [<reason>], disconnects from the current server" = "QUIT [<arrazoia>], deskonektatu egiten da uneko zerbitzaritik";
@@ -251,6 +281,9 @@
 "SAY <text>, sends the text to the object in the current window" = "SAY <testua>, uneko leihoko objektuari testua bidaltzen dio";
 
 /* nothing */
+"SEND <nick> [<file>]" = "";
+
+/* nothing */
 "SERVCHAN [-ssl] <host> <port> <channel>, connects and joins a channel" = "";
 
 /* nothing */
@@ -263,10 +296,16 @@
 "SERVER <host> [<port>] [<password>], connects to a server, the default port is 6667" = "SERVER <ostalaria> [<ataka>] [<pasahitza>], zerbitzari batera konektatzen da, lehenetsitako ataka 6667 da";
 
 /* nothing */
-"SET [-quiet] <variable> [<value>]" = "SET [-quiet] <bariablea> [<balorea>]";
+"SET [-e] [-off|-on] [-quiet] <variable> [<value>]" = "SET [-quiet] <bariablea> [<balorea>]";
+
+/* nothing */
+"SETCURSOR [-|+]<position>" = "SETCURSOR [-|+] <posizioa>";
 
 /* nothing */
 "TOPIC [<topic>], sets the topic if one is given, else shows the current topic" = "TOPIC [<gaia>], zerbait ematen bada gaia hori ezartzen du, bestela uneko gaia erakusten du";
+
+/* nothing */
+"\nTRAY -f <timeout> <file1> [<file2>] Blink tray between two icons.\nTRAY -f <filename>                  Set tray to a fixed icon.\nTRAY -i <number>                    Blink tray with an internal icon.\nTRAY -t <text>                      Set the tray tooltip.\nTRAY -b <title> <text>              Set the tray balloon." = "";
 
 /* nothing */
 "UNBAN <mask> [<mask>...], unbans the specified masks." = "UNBAN <maskara> [<maskara>...], espezifikatutako maskarei debekua kentzen die";
@@ -276,6 +315,12 @@
 
 /* nothing */
 "UNLOAD <name>, unloads a plugin or script" = "UNLOAD <izena>, plugin edo skript-a deskargatzen du";
+
+/* nothing */
+"URL <url>, opens a URL in your browser" = "URL <url>, zure nabigatzailean URLa irekitzen du";
+
+/* nothing */
+"USELECT [-a] [-s] <nick1> <nick2> etc, highlights nick(s) in channel userlist" = "";
 
 /* nothing */
 "VOICE <nick>, gives voice status to someone (needs chanop)" = "VOICE <ezizena>, ahots egoera ematen dio norbaiti (chanop-a behar da)";
@@ -299,7 +344,7 @@
 "Bad arguments for user command.\n" = "Argumentu akastunak erabiltzaile komandoentzat.\n";
 
 /* nothing */
-"Too many recursive usercommands, aborting." = "";
+"Too many recursive usercommands, aborting." = "Erabiltzaile komando errekurtsibo gehiegi, abortatzen.";
 
 /* nothing */
 "Unknown Command. Try /help\n" = "Komando ezezaguna. Saiatu /help ekin\n";
@@ -335,16 +380,10 @@
 "%C22*%O$t$1 is now known as $2" = "%C22*%O$t$1 orain $2 bezala ezaguna";
 
 /* nothing */
-"%C18*$t$1%O $2" = "%C18*$t$1%O $2";
+"%C22*%O$t$1 sets ban on $2" = "%C22*%O$t$1-(e)k debekua jartzen dio $2-(r)i";
 
 /* nothing */
-"%C21*%O$t%C21%B$1%O%C21 $2" = "%C21*%O$t%C21%B$1%O%C21 $2";
-
-/* nothing */
-"%C22*%O$t$1 sets ban on $2" = "";
-
-/* nothing */
-"%C22*%O$tChannel $1 created on $2" = "";
+"%C22*%O$tChannel $1 created on $2" = "%C22*%O$t $1 kanala $2 sortua";
 
 /* nothing */
 "%C22*%O$t%C26$1%O removes channel half-operator status from%C26 $2" = "";
@@ -368,19 +407,10 @@
 "%UChannel          Users   Topic" = "%UKanala          Erabiltzaileak   Gaia";
 
 /* nothing */
-"%C18%B%B$4$1%O%C18%O$t$2" = "%C18%B%B$4$1%O%C18%O$t$2";
-
-/* nothing */
 "%C22*%O$t$1 sets mode $2$3 $4" = "";
 
 /* nothing */
 "%C22*%O$t%C22Channel $1 modes: $2" = "";
-
-/* nothing */
-"$4%C21%B$1%O$t%C21$2" = "%C2<%O$1%C2>%O$t$2%O";
-
-/* nothing */
-"%C28-%C29$1/$2%C28-%O$t$3" = "%C28-%C29$1/$2%C28-%O$t$3";
 
 /* nothing */
 "%C22*%O$t%C26$1%O gives channel operator status to%C26 $2" = "";
@@ -395,7 +425,7 @@
 "%C22*%O$t$1 removes channel keyword" = "";
 
 /* nothing */
-"%C22*%O$t$1 removes user limit" = "";
+"%C22*%O$t$1 removes user limit" = "%C22*%O$t$1-(e)k erabiltzaile muga kendu du";
 
 /* nothing */
 "%C22*%O$t$1 sets channel keyword to $2" = "";
@@ -429,6 +459,9 @@
 
 /* nothing */
 "%C22*%O$tReceived a CTCP Sound $1 from $2" = "";
+
+/* nothing */
+"%C22*%O$tReceived a CTCP Sound $1 from $2 (to $3)" = "";
 
 /* nothing */
 "%C22*%O$tDCC CHAT to %C26$1%O aborted." = "";
@@ -518,9 +551,6 @@
 "%C22*%O$tFound your IP: [$1]" = "%C22*%O$tZure IPa aurkitu da: [$1]";
 
 /* nothing */
-"$1$t$2" = "$1$t$2";
-
-/* nothing */
 "%O%C26$1%O added to ignore list." = "%O%C26$1%O ezikusien zerrendara gehitua.";
 
 /* nothing */
@@ -557,31 +587,19 @@
 "%C22*%O$tYou have been killed by $1 ($2%O%C22)" = "%C22*%O$tHonek hil zaitu $1 ($2%O%C22)";
 
 /* nothing */
-"%C19>%O$1%C19<%O$t$2%O" = "%C19>%O$1%C19<%O$t$2%O";
-
-/* nothing */
-"%C16*%O$t$1%O" = "%C16*%O$t$1%O";
-
-/* nothing */
 "%C22*%O$t%C22MOTD Skipped." = "%C22*%O$t%C22MOTD saltatua.";
 
 /* nothing */
 "%C22*%O$t$1 already in use. Retrying with $2..." = "%C22*%O$t$1 une hontan erabilia. $2-(r)ekin saiatzen...";
 
 /* nothing */
-"%C22*%O$tNickname already in use. Use /NICK to try another." = "";
+"%C22*%O$tNickname already in use. Use /NICK to try another." = "%C22*%O$tEzizena dagoeneko erabilia. Erabili /NICK beste batekin saiatzeko.";
 
 /* nothing */
-"%C22*%O$tNo such DCC." = "";
+"%C22*%O$tNo such DCC." = "%C22*%O$tEz dago alako DCCrik.";
 
 /* nothing */
 "%C22*%O$tNo process is currently running" = "";
-
-/* nothing */
-"%C28-%C29$1%C28-%O$t$2" = "%C28-%C29$1%C28-%O$t$2";
-
-/* nothing */
-"%C19>%O$1%C19<%O$t$2" = "%C19>%O$1%C19<%O$t$2";
 
 /* nothing */
 "$tNotify list is empty." = "$tNotifikazio zerrenda hutsik dago.";
@@ -593,16 +611,16 @@
 "%C22*%O$t$1 users in notify list." = "";
 
 /* nothing */
-"%C22*%O$tNotify: $1 is offline ($2)." = "";
+"%C22*%O$tNotify: $1 is offline ($3)." = "%C22*%O$tDeskonektatua ($1).";
 
 /* nothing */
-"%C22*%O$tNotify: $1 is online ($2)." = "";
+"%C22*%O$tNotify: $1 is online ($3)." = "%C22*%O$tDeskonektatua ($1).";
 
 /* nothing */
 "%C23*%O$t%C23$1 (%O%C23$2) has left $3" = "";
 
 /* nothing */
-"%C23*%O$t%C23$1 (%O%C23$2) has left $3 (%O%C23$4)" = "";
+"%C23*%O$t%C23$1 (%O%C23$2) has left $3 (%O%C23%B%B$4%O%C23)" = "%C23*%O$t%C23$1 (%O%C23$2)-(e)k $3 (%O%C23%B%B$4%O%C23) utzi du";
 
 /* nothing */
 "%C22*%O$tPing reply from $1: $2 second(s)" = "";
@@ -611,16 +629,10 @@
 "%C22*%O$tNo ping reply for $1 seconds, disconnecting." = "";
 
 /* nothing */
-"%C28*%C29$3$1%C28*$t%O$2" = "%C28*%C29$3$1%C28*$t%O$2";
+"%C22*%O$tA process is already running" = "%C22*%O$tDagoeneko prozesu bat abian da";
 
 /* nothing */
-"%C18%B%B$3$1%O$t$2" = "%C18%B%B$3$1%O$t$2";
-
-/* nothing */
-"%C22*%O$tA process is already running" = "";
-
-/* nothing */
-"%C23*%O$t%C23$1 has quit (%O%C23$2)" = "";
+"%C23*%O$t%C23$1 has quit (%O%C23%B%B$2%O%C23)" = "%C23*%O$t%C23$1 irten da (%O%C23%B%B$2%O%C23)";
 
 /* nothing */
 "%C22*%O$t$1 sets modes%B %C30[%O$2%B%C30]" = "";
@@ -635,9 +647,6 @@
 "%C22*%O$t%C22Connected." = "%C22*%O$t%C22Konektatua.";
 
 /* nothing */
-"%C22*%O$t$1" = "%C22*%O$t$1";
-
-/* nothing */
 "%C22*%O$t%C22Looking up $1" = "";
 
 /* nothing */
@@ -647,10 +656,10 @@
 "%C29*%O$t%C29Topic for $1%C %C29is: $2" = "";
 
 /* nothing */
-"%C29*%O$t%C29Topic for $1%C %C29set by $2%C %C29at $3" = "";
+"%C22*%O$t$1 has changed the topic to: $2" = "%C22*%O$t$1-k gaia honakora aldatu du: $2";
 
 /* nothing */
-"%C22*%O$t$1 has changed the topic to: $2" = "%C22*%O$t$1-k gaia honakora aldatu du: $2";
+"%C29*%O$t%C29Topic for $1%C %C29set by $2%C %C29at $3" = "";
 
 /* nothing */
 "%C22*%O$tUnknown host. Maybe you misspelled it?" = "";
@@ -662,6 +671,9 @@
 "%C22*%O$t%C26Users on $1:%C $2" = "";
 
 /* nothing */
+"%C22*%O$t%C28[%O$1%C28] %O$2%C27 $3" = "%C22*%O$t%C28[%O$1%C28] %O$2%C27 $3";
+
+/* nothing */
 "%C22*%O$t%C28[%O$1%C28] %Cis away %C30(%O$2%O%C30)" = "";
 
 /* nothing */
@@ -669,15 +681,6 @@
 
 /* nothing */
 "%C22*%O$t%C28[%O$1%C28] %OEnd of WHOIS list." = "";
-
-/* nothing */
-"%C22*%O$t%C28[%O$1%C28] %O$2" = "%C22*%O$t%C28[%O$1%C28] %O$2";
-
-/* nothing */
-"%C22*%O$t%C28[%O$1%C28] %O$2%C27 $3" = "%C22*%O$t%C28[%O$1%C28] %O$2%C27 $3";
-
-/* nothing */
-"%C22*%O$t%C28[%O$1%C28] %Oreal user@host%C27 $2%O, real IP%C27 $3" = "";
 
 /* nothing */
 "%C22*%O$t%C28[%O$1%C28]%O idle%C26 $2" = "%C22*%O$t%C28[%O$1%C28]%O idle%C26 $2";
@@ -689,25 +692,28 @@
 "%C22*%O$t%C28[%O$1%C28] %C30(%O$2@$3%C30)%O: $4" = "%C22*%O$t%C28[%O$1%C28] %C30(%O$2@$3%C30)%O: $4";
 
 /* nothing */
+"%C22*%O$t%C28[%O$1%C28] %Oreal user@host%C27 $2%O, real IP%C27 $3" = "";
+
+/* nothing */
 "%C19*%O$t%C19Now talking on $2" = "%C19*%O$t%C19Orain hemen hitz egiten $2";
-
-/* nothing */
-"%C23*$tYou have left channel $3" = "";
-
-/* nothing */
-"%C23*$tYou have left channel $3 (%O%C23$4%O%C23)" = "";
 
 /* nothing */
 "%C23*$tYou have been kicked from $2 by $3 ($4%O%C23)" = "";
 
 /* nothing */
+"%C23*$tYou have left channel $3" = "";
+
+/* nothing */
+"%C23*$tYou have left channel $3 (%O%C23%B%B$4%O%C23)" = "";
+
+/* nothing */
 "%C22*%O$tYou've invited%C26 $1%O to%C26 $2%O (%C26$3%O)" = "%C22*%O$tHau gonbidatu duzu%C26 $1%O hona%C26 $2%O (%C26$3%O)";
 
 /* nothing */
-"%C31%B%B$4$1%O$t%C30$2" = "";
+"%C22*%O$tYou are now known as $2" = "";
 
 /* nothing */
-"%C22*%O$tYou are now known as $2" = "";
+"Loaded log from" = "Kargatu hemendik";
 
 /* nothing */
 "**** ENDING LOGGING AT %s\n" = "";
@@ -740,13 +746,13 @@
 "The action" = "akzioa";
 
 /* nothing */
-"The text" = "Testua";
-
-/* nothing */
 "Mode char" = "";
 
 /* nothing */
 "Identified text" = "Identifikatutako testua";
+
+/* nothing */
+"The text" = "Testua";
 
 /* nothing */
 "The message" = "Mezua";
@@ -950,6 +956,9 @@
 "Server Name" = "Zerbitzariaren izena";
 
 /* nothing */
+"Raw Numeric or Identifier" = "";
+
+/* nothing */
 "Nick of person who invited you" = "Gonbidatu zaituenaren ezizena";
 
 /* nothing */
@@ -962,19 +971,13 @@
 "Nick being tried" = "Saiatzen hari den ezizena";
 
 /* nothing */
-"Error" = "Errorea";
-
-/* nothing */
 "IP" = "IP";
 
 /* nothing */
 "Port" = "Ataka";
 
 /* nothing */
-"PID" = "PID";
-
-/* nothing */
-"Channel name" = "Kanalaren izena";
+"Network" = "Sarea";
 
 /* nothing */
 "Modes string" = "";
@@ -1008,9 +1011,6 @@
 
 /* nothing */
 "Number of notify items" = "Notifikazio kopurua";
-
-/* nothing */
-"Servername" = "Zerbitzeriaren izena";
 
 /* nothing */
 "Old Filename" = "Fitxategi zaharra";
@@ -1070,6 +1070,9 @@
 "Connection reset by peer" = "Konexioa bikoteak berrezarria";
 
 /* nothing */
+"Ascension Island" = "Cocos Uharteak";
+
+/* nothing */
 "Andorra" = "Andorra";
 
 /* nothing */
@@ -1119,6 +1122,9 @@
 
 /* nothing */
 "Aruba" = "Aruba";
+
+/* nothing */
+"Aland Islands" = "Malvina Uharteak (Falkland)";
 
 /* nothing */
 "Azerbaijan" = "Azerbaijan";
@@ -1190,6 +1196,9 @@
 "Cocos Islands" = "Cocos Uharteak";
 
 /* nothing */
+"Democratic Republic of Congo" = "";
+
+/* nothing */
 "Central African Republic" = "Ertafrikar Errepublika";
 
 /* nothing */
@@ -1223,7 +1232,7 @@
 "Costa Rica" = "Costa Rica";
 
 /* nothing */
-"Former Czechoslovakia" = "Txekiar Errepublika";
+"Serbia and Montenegro" = "";
 
 /* nothing */
 "Cuba" = "Kuba";
@@ -1283,6 +1292,9 @@
 "Ethiopia" = "Etiopia";
 
 /* nothing */
+"European Union" = "";
+
+/* nothing */
 "Finland" = "Finlandia";
 
 /* nothing */
@@ -1299,9 +1311,6 @@
 
 /* nothing */
 "France" = "Frantzia";
-
-/* nothing */
-"France, Metropolitan" = "Frantzia, Metropolitanoa";
 
 /* nothing */
 "Gabon" = "Gabon";
@@ -1391,6 +1400,9 @@
 "Israel" = "Israel";
 
 /* nothing */
+"Isle of Man" = "";
+
+/* nothing */
 "India" = "India";
 
 /* nothing */
@@ -1413,6 +1425,9 @@
 
 /* nothing */
 "Italy" = "Italia";
+
+/* nothing */
+"Jersey" = "";
 
 /* nothing */
 "Jamaica" = "Jamaika";
@@ -1592,9 +1607,6 @@
 "Nauru" = "Nauru";
 
 /* nothing */
-"Neutral Zone" = "Eremu neutrala";
-
-/* nothing */
 "Niue" = "Niue";
 
 /* nothing */
@@ -1635,6 +1647,9 @@
 
 /* nothing */
 "Puerto Rico" = "Puerto Rico";
+
+/* nothing */
+"Palestinian Territory" = "Palestinar lurraldeak";
 
 /* nothing */
 "Portugal" = "Portugal";
@@ -1745,6 +1760,9 @@
 "Tokelau" = "Tokelau";
 
 /* nothing */
+"East Timor" = "Ekialdeko Timor";
+
+/* nothing */
 "Turkmenistan" = "Turkmenistan";
 
 /* nothing */
@@ -1752,9 +1770,6 @@
 
 /* nothing */
 "Tonga" = "Tonga";
-
-/* nothing */
-"East Timor" = "Ekialdeko Timor";
 
 /* nothing */
 "Turkey" = "Turkia";
@@ -1779,9 +1794,6 @@
 
 /* nothing */
 "United Kingdom" = "Erresuma Batua";
-
-/* nothing */
-"US Minor Outlying Islands" = "United States Minor Outlying Islands";
 
 /* nothing */
 "United States of America" = "Amerikako Estatu Batuak";
@@ -1835,52 +1847,25 @@
 "Zambia" = "Zambia";
 
 /* nothing */
-"Zaire" = "Zaire";
-
-/* nothing */
 "Zimbabwe" = "Zimbabwe";
 
 /* nothing */
 "Unknown" = "Ezezaguna";
 
 /* nothing */
-"Direct client-to-client" = "Bezerotik-bezerora zuzenean";
+"_Open Dialog Window" = "Ireki elkarrizketa leihoa";
 
 /* nothing */
-"Send File" = "Bidali fitxategia";
+"_Send a File" = "Bidali fitxategia";
 
 /* nothing */
-"Offer Chat" = "Eskeini berriketa";
+"_User Info (WhoIs)" = "";
 
 /* nothing */
-"Abort Chat" = "Abortatu berriketa";
+"_Add to Friends List" = "Lotuko den helbidea:";
 
 /* nothing */
-"Version" = "Bertsioa";
-
-/* nothing */
-"Userinfo" = "Erabiltzailearen Informazioa";
-
-/* nothing */
-"Clientinfo" = "Bezeroaren informazioa";
-
-/* nothing */
-"Ping" = "Ping";
-
-/* nothing */
-"Time" = "Ordua";
-
-/* nothing */
-"Finger" = "Finger";
-
-/* nothing */
-"Oper" = "Operatzailea";
-
-/* nothing */
-"Kill this user" = "Hil erabiltzaile hau";
-
-/* nothing */
-"Mode" = "Modua";
+"O_perator Actions" = "";
 
 /* nothing */
 "Give Ops" = "Eman Opak";
@@ -1889,25 +1874,10 @@
 "Take Ops" = "Hartu Op";
 
 /* nothing */
-"Give Half-Ops" = "Eman erdi-Op-ak";
-
-/* nothing */
-"Take Half-Ops" = "Hartu erdi-Op-ak";
-
-/* nothing */
 "Give Voice" = "Eman ahotsa";
 
 /* nothing */
 "Take Voice" = "Hartu ahotsa";
-
-/* nothing */
-"Ignore" = "Ezikusi";
-
-/* nothing */
-"Ignore User" = "Ezikusi erabiltzailea";
-
-/* nothing */
-"UnIgnore User" = "Ez-ignoratu erabiltzailea";
 
 /* nothing */
 "Kick/Ban" = "Kanporatu/debekatu";
@@ -1920,42 +1890,6 @@
 
 /* nothing */
 "KickBan" = "Kanporatu-debekatu";
-
-/* nothing */
-"Info" = "Informazioa";
-
-/* nothing */
-"Who" = "Who";
-
-/* nothing */
-"WhoIs" = "WhoIs";
-
-/* nothing */
-"DNS Lookup" = "DNS bilaketa";
-
-/* nothing */
-"Trace" = "Trace";
-
-/* nothing */
-"UserHost" = "Erabiltzaile-ostalaria";
-
-/* nothing */
-"External" = "Kanpoko";
-
-/* nothing */
-"Traceroute" = "Traceroute";
-
-/* nothing */
-"Telnet" = "Telnet";
-
-/* nothing */
-"Open Dialog Window" = "Ireki elkarrizketa leihoa";
-
-/* nothing */
-"Disconnect" = "Deskonektatu";
-
-/* nothing */
-"Reconnect" = "Berriz konektatu";
 
 /* nothing */
 "Leave Channel" = "Irten kanaletik";
@@ -1994,6 +1928,9 @@
 "Dialog" = "Elkarrizketa";
 
 /* nothing */
+"WhoIs" = "WhoIs";
+
+/* nothing */
 "Send" = "Bidali";
 
 /* nothing */
@@ -2003,7 +1940,31 @@
 "Clear" = "Garbitu";
 
 /* nothing */
-"About X-Chat" = "X-Chat-i buruz";
+"Ping" = "Ping";
+
+/* nothing */
+"Couldn't connect to session bus" = "";
+
+/* nothing */
+"Failed to complete NameHasOwner" = "";
+
+/* nothing */
+"Failed to complete Command" = "Huts egin da letra tipoa irekitzen:\n\n%s";
+
+/* nothing */
+"remote access" = "Ezin da %s-ra sartu\n";
+
+/* nothing */
+"plugin for remote access using DBUS" = "";
+
+/* nothing */
+"Couldn't connect to session bus: %s\n" = "";
+
+/* nothing */
+"Failed to acquire %s: %s\n" = "Huts egin da letra tipoa irekitzen:\n\n%s";
+
+/* nothing */
+"About " = "_Honi buruz";
 
 /* nothing */
 "A multiplatform IRC Client" = "Plataforma anitzentzat IRC bezeroa";
@@ -2012,7 +1973,13 @@
 "Character Chart" = "Karaktere taula";
 
 /* nothing */
+"Not connected." = "Ziklatu konektatu arte";
+
+/* nothing */
 "You must select some bans." = "Debeku batzuk aukeratu behar dituzu.";
+
+/* nothing */
+"Are you sure you want to remove all bans in %s?" = "";
 
 /* nothing */
 "Mask" = "Maskara";
@@ -2024,10 +1991,13 @@
 "Date" = "Data";
 
 /* nothing */
-"X-Chat: Ban List (%s)" = "X-Chat: Debeku zerrenda (%s)";
+"You can only open the Ban List window while in a channel tab." = "";
 
 /* nothing */
-"Unban" = "Debekua kendu";
+"XChat: Ban List (%s)" = "X-Chat: Debeku zerrenda (%s)";
+
+/* nothing */
+"Remove" = "Kendu";
 
 /* nothing */
 "Crop" = "Moztu";
@@ -2036,49 +2006,67 @@
 "Refresh" = "Freskatu";
 
 /* nothing */
-"User and Channel Statistics: %d/%d Users on %d/%d Channels" = "Erabiltzaile eta kanal estatistikak: %d/%d erabiltzaile %d/%d kanaletan";
-
-/* nothing */
-"I can't save an empty list!" = "Ezin duzu zerrenda huts bat gorde!";
+"Displaying %d/%d users on %d/%d channels." = "Erabiltzaile eta kanal estatistikak: %d/%d erabiltzaile %d/%d kanaletan";
 
 /* nothing */
 "Select an output filename" = "Aukeratu irteera fitxategi bat";
 
 /* nothing */
-"X-Chat: Channel List (%s)" = "X-Chat: Kanal zerrenda (%s)";
+"_Join Channel" = "Sartu kanalera";
 
 /* nothing */
-"List display options:" = "Zerrendatu bistaratzaile aukerak";
+"_Copy Channel Name" = "Kanalaren izena";
 
 /* nothing */
-"Minimum Users:" = "Gutxienezko erabiltzaileak:";
+"Copy _Topic Text" = "";
 
 /* nothing */
-"Maximum Users:" = "Gehienezko erabiltzaileak:";
+"XChat: Channel List (%s)" = "X-Chat: Kanal zerrenda (%s)";
 
 /* nothing */
-"Regex Match:" = "";
+"_Search" = "";
 
 /* nothing */
-"Apply Match to:" = "Aplikatu parekotasuna honi:";
+"_Download List" = "Hona jaitsi fitxategiak:";
 
 /* nothing */
-"Apply" = "Aplikatu";
+"Save _List..." = "Zerbitzari zerrenda...";
 
 /* nothing */
-"Refresh the list" = "Freskatu zerrenda";
+"Show only:" = "";
 
 /* nothing */
-"Save the list" = "Gorde zerrenda";
+"channels with" = "Ireki kanalak hemen:";
 
 /* nothing */
-"Join Channel" = "Sartu kanalera";
+"to" = "";
+
+/* nothing */
+"users." = "Erabiltzaileak";
+
+/* nothing */
+"Look in:" = "";
+
+/* nothing */
+"Channel name" = "Kanalaren izena";
+
+/* nothing */
+"Search type:" = "Bilatu testua...";
+
+/* nothing */
+"Simple Search" = "";
+
+/* nothing */
+"Pattern Match (Wildcards)" = "";
+
+/* nothing */
+"Regular Expression" = "";
+
+/* nothing */
+"Find:" = "Bilatu:";
 
 /* nothing */
 "Send file to %s" = "Bidali fitxategia %s-ri";
-
-/* nothing */
-"      File: %s\n   To/From: %s\n      Size: %u\n      Port: %d\n IP Number: %s\nStart Time: %s   Max CPS: %d\n" = "      Fitxategia: %s\n   Norentzat/Norengandik: %s\n      Tamainua: %u\n      Ataka: %d\n IP zenbakia: %s\nHasi den ordua: %s   Max CPS: %d\n";
 
 /* nothing */
 "That file is not resumable." = "Fitxategi hau ez da jarraigaitza";
@@ -2093,7 +2081,7 @@
 "Cannot resume the same file from two people." = "Ezin da bi pertsonen fitxategi berdinarekin jarraitu";
 
 /* nothing */
-"MIME Type" = "MIME Mota";
+"XChat: Uploads and Downloads" = "";
 
 /* nothing */
 "Status" = "Egoera";
@@ -2105,7 +2093,22 @@
 "ETA" = "ETA";
 
 /* nothing */
-"X-Chat: File Receive List" = "X-Chat: Jasotako fitxategien zerrenda";
+"Both" = "Biak";
+
+/* nothing */
+"Uploads" = "";
+
+/* nothing */
+"Downloads" = "Hona jaitsi fitxategiak:";
+
+/* nothing */
+"Details" = "Zure xehetasunak";
+
+/* nothing */
+"File:" = "Fitxategia:";
+
+/* nothing */
+"Address:" = "Helbidea:";
 
 /* nothing */
 "Abort" = "Abortatu";
@@ -2117,19 +2120,10 @@
 "Resume" = "Berrekin";
 
 /* nothing */
-"Open" = "Ireki";
+"Open Folder..." = "";
 
 /* nothing */
-"Ack" = "Ack";
-
-/* nothing */
-"To" = "Nori";
-
-/* nothing */
-"X-Chat: File Send List" = "X-Chat: Bidalitako fitxategien zerrenda";
-
-/* nothing */
-"To/From" = "Nori/Nork";
+"XChat: DCC Chat List" = "X-Chat: DCC elkarrizketa zerrenda";
 
 /* nothing */
 "Recv" = "Jasotakoak";
@@ -2138,10 +2132,7 @@
 "Sent" = "Bidaliak";
 
 /* nothing */
-"StartTime" = "Hasiera ordua";
-
-/* nothing */
-"X-Chat: DCC Chat List" = "X-Chat: DCC elkarrizketa zerrenda";
+"Start Time" = "Hasiera ordua";
 
 /* nothing */
 "*NEW*" = "*BERRIA*";
@@ -2180,22 +2171,37 @@
 "Help" = "Laguntza";
 
 /* nothing */
-"Options" = "Aukerak";
+"Don't auto connect to servers" = "Automatikoki birkonektatu zerbitzarira";
 
 /* nothing */
-"DIRECTORY" = "DIREKTORIOA";
+"Use a different config directory" = "erabili konfiguraziorako beste direktorio bat";
 
 /* nothing */
-"use a different config dir" = "erabili konfiguraziorako beste direktorio bat";
+"Don't auto load any plugins" = "ez kargatu automatikoki plugin-ak";
 
 /* nothing */
-"don't auto connect" = "ez konektatu automatikoki";
+"Show plugin auto-load directory" = "";
 
 /* nothing */
-"don't auto load any plugins" = "ez kargatu automatikoki plugin-ak";
+"Show user config directory" = "eraktusi erabiltzailearen konfigurazio direktorioa";
 
 /* nothing */
-"show version information" = "erakutsi bertsioari buruzko informazioa";
+"Open an irc://server:port/channel URL" = "";
+
+/* nothing */
+"Execute command:" = "Exekutatu komandoa:";
+
+/* nothing */
+"Open URL or execute command in an existing XChat" = "";
+
+/* nothing */
+"Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "";
+
+/* nothing */
+"level" = "Inoiz";
+
+/* nothing */
+"Show version information" = "erakutsi bertsioari buruzko informazioa";
 
 /* nothing */
 "Failed to open font:\n\n%s" = "Huts egin da letra tipoa irekitzen:\n\n%s";
@@ -2205,6 +2211,9 @@
 
 /* nothing */
 "%d bytes" = "%d byte";
+
+/* nothing */
+"Network send queue: %d bytes" = "";
 
 /* nothing */
 "The Run Command action runs the data in Data 1 as if it has been typed into the entry box where you pressed the key sequence. Thus it can contain text (which will be sent to the channel/person), commands or user commands. When run all \\n characters in Data 1 are used to deliminate seperate commands so it is possible to run more than one command. If you want a \\ in the actual text run then enter \\\\" = "";
@@ -2267,10 +2276,7 @@
 "Action" = "Ekintza";
 
 /* nothing */
-"X-Chat: Keyboard Shortcuts" = "X-Chat: Laster-teklak";
-
-/* nothing */
-"Add new" = "Gehitu berria";
+"XChat: Keyboard Shortcuts" = "X-Chat: Laster-teklak";
 
 /* nothing */
 "Shift" = "Shift";
@@ -2333,7 +2339,7 @@
 "Enter mask to ignore:" = "Sartu ignoratu nahi duzun maskara:";
 
 /* nothing */
-"X-Chat: Ignore list" = "X-Chat: Ignoratuen zerrenda";
+"XChat: Ignore list" = "X-Chat: Ignoratuen zerrenda";
 
 /* nothing */
 "Ignore Stats:" = "Ignoratuen estatistikak";
@@ -2354,10 +2360,40 @@
 "Invite:" = "Gonbidatu:";
 
 /* nothing */
-"New" = "Berria";
+"Add..." = "Gehitu";
 
 /* nothing */
-"Delete All" = "Ezabatu guztiak";
+"Channel name too short, try again." = "";
+
+/* nothing */
+"XChat: Connection Complete" = "Konexioa denboraz kanpo";
+
+/* nothing */
+"Connection to %s complete." = "Konexioa bikoteak berrezarria";
+
+/* nothing */
+"In the Server-List window, no channel (chat room) has been entered to be automatically joined for this network." = "";
+
+/* nothing */
+"What would you like to do next?" = "";
+
+/* nothing */
+"_Nothing, I'll join a channel later." = "";
+
+/* nothing */
+"_Join this channel:" = "Sartu kanaletara:";
+
+/* nothing */
+"If you know the name of the channel you want to join, enter it here." = "";
+
+/* nothing */
+"O_pen the Channel-List window." = "Ireki kanalak hemen:";
+
+/* nothing */
+"Retrieving the Channel-List may take a minute or two." = "";
+
+/* nothing */
+"_Always show this dialog after connecting." = "";
 
 /* nothing */
 "Dialog with" = "Elkarrizketatu honekin";
@@ -2369,31 +2405,73 @@
 "No topic is set" = "Ez dago gairik";
 
 /* nothing */
-"No other tabs open, quit xchat?" = "Ez dago beste fitxarik irekita, irten xchat-etik?";
+"This server still has %d channels or dialogs associated with it. Close them all?" = "";
 
 /* nothing */
-"Insert color code" = "Txertatu kolore kodea";
+"Quit XChat?" = "X-Chat-i buruz";
 
 /* nothing */
-"Beep on message" = "Bip egin mezuetan";
+"Don't ask next time." = "";
 
 /* nothing */
-"Show join/part messages" = "Erakutsi sartze/irtete mezuak";
+"You are connected to %i IRC networks." = "Automatikoki konektatu sare hontara abiaratzean";
 
 /* nothing */
-"Color paste" = "Koloreak itsatsi";
+"Are you sure you want to quit?" = "";
 
 /* nothing */
-"Go to" = "Joan hona";
+"Some file transfers are still active." = "Fitxategi transferentzia batzuk aktibo daude oraindek, xchat-etik irten nahi duzu?";
 
 /* nothing */
-"Close Tab" = "Itxi fitxa";
+"_Minimize to Tray" = "";
 
 /* nothing */
-"Detach Tab" = "Kendu fitxa";
+"Insert Attribute or Color Code" = "Txertatu kolore kodea";
 
 /* nothing */
-"Some file transfers still active, quit xchat?" = "Fitxategi transferentzia batzuk aktibo daude oraindek, xchat-etik irten nahi duzu?";
+"<b>Bold</b>" = "";
+
+/* nothing */
+"<u>Underline</u>" = "Azpimarratua";
+
+/* nothing */
+"Normal" = "Norvegia";
+
+/* nothing */
+"Colors 0-7" = "Koloreak";
+
+/* nothing */
+"Colors 8-15" = "Koloreak";
+
+/* nothing */
+"_Settings" = "_Ezarpenak";
+
+/* nothing */
+"_Log to Disk" = "";
+
+/* nothing */
+"_Reload Scrollback" = "";
+
+/* nothing */
+"_Hide Join/Part Messages" = "Ezkutatu sartze/irtete mezuak";
+
+/* nothing */
+"_Extra Alerts" = "Kolore extrak:";
+
+/* nothing */
+"Beep on _Message" = "Bip egin mezuetan";
+
+/* nothing */
+"Blink Tray _Icon" = "";
+
+/* nothing */
+"Blink Task _Bar" = "";
+
+/* nothing */
+"_Detach" = "Kendu fitxa";
+
+/* nothing */
+"_Close" = "_Itxi";
 
 /* nothing */
 "User limit must be a number!\n" = "Erabiltzaile mugak zenbakia izan behar du!\n";
@@ -2423,9 +2501,6 @@
 "User Limit" = "Erabiltzaile limitea";
 
 /* nothing */
-"Close this tab/window" = "Fitxa/leiho hau itxitzen du";
-
-/* nothing */
 "Show/Hide userlist" = "Erakutsi/ezkutatu erabiltzaile zerrenda";
 
 /* nothing */
@@ -2438,37 +2513,43 @@
 "Host unknown" = "Ostalari ezezaguna";
 
 /* nothing */
-"User: %s" = "Erabiltzailea: %s";
+"<tt><b>%-11s</b></tt> %s" = "";
 
 /* nothing */
-"Country: %s" = "Herrialdea %s";
+"Real Name:" = "Benetazko izena:";
 
 /* nothing */
-"Realname: %s" = "Benetazko izena: %s";
+"User:" = "Erabiltzailea:";
 
 /* nothing */
-"Server: %s" = "Zerbitzaria: %s";
+"Country:" = "Herrialdea:";
 
 /* nothing */
-"Last Msg: %s" = "Azken mezua: %s";
+"Server:" = "Zerbitzaria:";
 
 /* nothing */
-"Menu Bar" = "Menu barra";
+"%u minutes ago" = "";
 
 /* nothing */
-"Topic Bar" = "Gai barra";
+"Last Msg:" = "Azken mezua:";
 
 /* nothing */
-"User List" = "Erabiltzaile zerrenda";
+"Away Msg:" = "Aldendutako mezua:";
 
 /* nothing */
-"Mode Buttons" = "Modu botoiak";
+"%d nicks selected." = "";
 
 /* nothing */
-"User List Buttons" = "Erabiltzaile zerrenda botoiak";
+"The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "";
 
 /* nothing */
-"Copy selected URL" = "Kopiatu aukeratutako URLa";
+"Open Link in Browser" = "";
+
+/* nothing */
+"Copy Selected Link" = "Kopiatu aukeratutako URLa";
+
+/* nothing */
+"Join Channel" = "Sartu kanalera";
 
 /* nothing */
 "Part Channel" = "Irten kanaletik";
@@ -2477,58 +2558,67 @@
 "Cycle Channel" = "Kanal zikloa";
 
 /* nothing */
-"X-Chat: User menu" = "X-Chat: erabiltzaile menua";
+"_Remove from Favorites" = "";
+
+/* nothing */
+"_Add to Favorites" = "";
+
+/* nothing */
+"XChat: User menu" = "X-Chat: erabiltzaile menua";
 
 /* nothing */
 "Edit This Menu..." = "Editatu menu hau...";
 
 /* nothing */
-"*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile" = "*OHARRA*\nDCCak automatikoki onartzea zure etxe karpetara\nkaltegarria izan daiteke. Adibidez norbaitek\n.bash_profile fitxategia bidali dezake";
+"Retrieve channel list..." = "Kanal zerrenda...";
 
 /* nothing */
-"Settings saved." = "Hobespenak gordeta.";
+"User Commands - Special codes:\n\n%c  =  current channel\n%e  =  current network name\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "Erabiltzaile komandoak - Kode bereziak:\n\n%c  =  uneko kanala\n%m  =  makinaren informazioa\n%n  =  zure ezizena\n%t  =  ordua/data\n%v  =  xchat bertsioa\n%2  =  2 hitza\n%3  =  3 hitza\n&2  =  2 hitza lerroaren amaieran\n&3  =  3 hitza lerroaren amaieran\n\nadibidez:\n/cmd Mikel Kaixo\n\n%2 hau izango zen \"Mikel\"\n&2 hau izango zen \"Mikel Kaixo\".";
 
 /* nothing */
-"User Commands - Special codes:\n\n%c  =  current channel\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "Erabiltzaile komandoak - Kode bereziak:\n\n%c  =  uneko kanala\n%m  =  makinaren informazioa\n%n  =  zure ezizena\n%t  =  ordua/data\n%v  =  xchat bertsioa\n%2  =  2 hitza\n%3  =  3 hitza\n&2  =  2 hitza lerroaren amaieran\n&3  =  3 hitza lerroaren amaieran\n\nadibidez:\n/cmd Mikel Kaixo\n\n%2 hau izango zen \"Mikel\"\n&2 hau izango zen \"Mikel Kaixo\".";
+"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Erabiltzaile botoiak - Kode bereziak:\n\n%a  =  aukeratutako ezizen guztiak\n%c  =  uneko kanala\n%h  =  aukeratutako ezizenaren ostalaria\n%m  =  makinaren informazioa\n%n  =  zure ezizena\n%s  =  aukeratutako ezizena\n%t  =  ordua/data\n";
 
 /* nothing */
-"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Erabiltzaile botoiak - Kode bereziak:\n\n%a  =  aukeratutako ezizen guztiak\n%c  =  uneko kanala\n%h  =  aukeratutako ezizenaren ostalaria\n%m  =  makinaren informazioa\n%n  =  zure ezizena\n%s  =  aukeratutako ezizena\n%t  =  ordua/data\n";
+"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Erabiltzaile botoiak - Kode bereziak:\n\n%a  =  aukeratutako ezizen guztiak\n%c  =  uneko kanala\n%h  =  aukeratutako ezizenaren ostalaria\n%m  =  makinaren informazioa\n%n  =  zure ezizena\n%s  =  aukeratutako ezizena\n%t  =  ordua/data\n";
 
 /* nothing */
-"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "";
+"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%e  =  current network name\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "Erabiltzaile komandoak - Kode bereziak:\n\n%c  =  uneko kanala\n%m  =  makinaren informazioa\n%n  =  zure ezizena\n%t  =  ordua/data\n%v  =  xchat bertsioa\n%2  =  2 hitza\n%3  =  3 hitza\n&2  =  2 hitza lerroaren amaieran\n&3  =  3 hitza lerroaren amaieran\n\nadibidez:\n/cmd Mikel Kaixo\n\n%2 hau izango zen \"Mikel\"\n&2 hau izango zen \"Mikel Kaixo\".";
 
 /* nothing */
-"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "";
+"URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of XChat" = "URL kudeatzailea - Kode bereziak:\n\n%s  =  URLaren karaktere-katea\n\nKomandoaren aurrean ! jarrita\nshell batera bidalia izan behar dela\nadierazten da, X-Chatera ordez";
 
 /* nothing */
-"URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of X-Chat" = "URL kudeatzailea - Kode bereziak:\n\n%s  =  URLaren karaktere-katea\n\nKomandoaren aurrean ! jarrita\nshell batera bidalia izan behar dela\nadierazten da, X-Chatera ordez";
+"XChat: User Defined Commands" = "X-Chat: Erabiltzaileak definitutako komandoak";
 
 /* nothing */
-"X-Chat: User Defined Commands" = "X-Chat: Erabiltzaileak definitutako komandoak";
+"XChat: Userlist Popup menu" = "X-Chat: Erabiltzaile zerrenda agertarazlearen menua";
 
 /* nothing */
-"X-Chat: Userlist Popup menu" = "X-Chat: Erabiltzaile zerrenda agertarazlearen menua";
+"Replace with" = "";
 
 /* nothing */
-"X-Chat: Replace" = "X-Chat: Ordezkatu";
+"XChat: Replace" = "X-Chat: Ordezkatu";
 
 /* nothing */
-"X-Chat: URL Handlers" = "X-Chat: URL maneiatzaileak";
+"XChat: URL Handlers" = "X-Chat: URL maneiatzaileak";
 
 /* nothing */
-"X-Chat: Userlist buttons" = "X-Chat: Erabiltzaile-zerrenda botoiak";
+"XChat: Userlist buttons" = "X-Chat: Erabiltzaile-zerrenda botoiak";
 
 /* nothing */
-"X-Chat: Dialog buttons" = "X-Chat: Elkarrizketa botoiak";
+"XChat: Dialog buttons" = "X-Chat: Elkarrizketa botoiak";
 
 /* nothing */
-"X-Chat: CTCP Replies" = "X-Chat: CTCP erantzunak";
+"XChat: CTCP Replies" = "X-Chat: CTCP erantzunak";
 
 /* nothing */
-"_X-Chat" = "_X-Chat";
+"_XChat" = "_X-Chat";
 
 /* nothing */
-"Server List..." = "Zerbitzari zerrenda...";
+"Network Li_st..." = "Sare konfigurazioa";
+
+/* nothing */
+"_New" = "Berria";
 
 /* nothing */
 "Server Tab..." = "Zerbitzari fitxa...";
@@ -2543,55 +2633,73 @@
 "Channel Window..." = "Kanalaren leihoa...";
 
 /* nothing */
-"Load Plugin or Script..." = "Kargatu Plugin edo Skript-a...";
+"_Load Plugin or Script..." = "Kargatu Plugin edo Skript-a...";
 
 /* nothing */
-"New Shell Tab..." = "Shell fitxa berria";
+"_Quit" = "Irten";
 
 /* nothing */
-"Quit" = "Irten";
+"_View" = "";
 
 /* nothing */
-"_IRC" = "_IRC";
+"_Menu Bar" = "Menu barra";
 
 /* nothing */
-"Invisible" = "Ikustezina";
+"_Topic Bar" = "Gai barra";
 
 /* nothing */
-"Receive Wallops" = "Jaso Wallop-ak";
+"_User List" = "Erabiltzaile zerrenda";
 
 /* nothing */
-"Receive Server Notices" = "Jaso zerbitzariaren berriak";
+"U_serlist Buttons" = "Erabiltzaile-zerrenda botoiak...";
 
 /* nothing */
-"Marked Away" = "";
+"M_ode Buttons" = "Modu botoiak";
 
 /* nothing */
-"Auto Rejoin when Kicked" = "Automatikoki birsartu kanporatzean";
+"_Channel Switcher" = "Kanal zerrenda...";
 
 /* nothing */
-"Auto Reconnect to Server" = "Automatikoki birkonektatu zerbitzarira";
+"_Tabs" = "Fitxak";
 
 /* nothing */
-"Never-give-up ReConnect" = "Inoiz ez eman amore konektatzerakoan";
+"T_ree" = "Trace";
 
 /* nothing */
-"Auto Open Dialog Windows" = "Automatikoki ireki elkarrizketa leihoak";
+"_Network Meters" = "Sare konfigurazioa";
 
 /* nothing */
-"Auto Accept Direct Chat" = "Automatikoki onartu elkarrizketa zuzenak";
+"Off" = "Off";
 
 /* nothing */
-"Auto Accept Files" = "Automatikoki onartu fitxategiak";
+"Graph" = "Grafikoa";
 
 /* nothing */
 "_Server" = "_Zerbitzaria";
 
 /* nothing */
+"_Disconnect" = "Deskonektatu";
+
+/* nothing */
+"_Reconnect" = "Berriz konektatu";
+
+/* nothing */
+"Join a Channel..." = "Sartu kanalera...";
+
+/* nothing */
+"List of Channels..." = "Sartu kanalera...";
+
+/* nothing */
+"Marked Away" = "Aldenduta jarrita";
+
+/* nothing */
+"_Usermenu" = "Erabiltzaile izena";
+
+/* nothing */
 "S_ettings" = "_Ezarpenak";
 
 /* nothing */
-"Preferences..." = "Hobespenak...";
+"_Preferences" = "Hobespenak...";
 
 /* nothing */
 "Advanced" = "Aurreratua";
@@ -2606,7 +2714,7 @@
 "Dialog Buttons..." = "Elkarrizketa botoiak...";
 
 /* nothing */
-"Keyboard Shortcuts..." = "";
+"Keyboard Shortcuts..." = "Teklatuko laster-teklak...";
 
 /* nothing */
 "Text Events..." = "Testu gertaera";
@@ -2624,22 +2732,10 @@
 "Userlist Popup..." = "Erabiltzaile zerrenda agerrarazi...";
 
 /* nothing */
-"Reload Settings" = "Birkargatu ezarpenak";
-
-/* nothing */
-"Save Settings now" = "Gorde ezarpenak orain";
-
-/* nothing */
-"Save Settings on exit" = "Gorde ezarpenak irteterakoan";
-
-/* nothing */
 "_Window" = "_Leihoa";
 
 /* nothing */
 "Ban List..." = "Debekatuen zerrenda...";
-
-/* nothing */
-"Channel List..." = "Kanal zerrenda...";
 
 /* nothing */
 "Character Chart..." = "Karaktere taula..";
@@ -2648,16 +2744,13 @@
 "Direct Chat..." = "Elkarrizketa zuzena...";
 
 /* nothing */
-"File Receive..." = "Jaso fitxategia...";
+"File Transfers..." = "Fitxategi transferentziak";
 
 /* nothing */
-"File Send..." = "Bidali fitxategiak...";
+"Friends List..." = "Debekatuen zerrenda...";
 
 /* nothing */
 "Ignore List..." = "Ignoratuen zerrenda";
-
-/* nothing */
-"Notify List..." = "Notifikazio zerrenda...";
 
 /* nothing */
 "Plugins and Scripts..." = "Plugin eta script-ak...";
@@ -2687,16 +2780,13 @@
 "_Contents" = "_Edukia";
 
 /* nothing */
+"Check for updates" = "";
+
+/* nothing */
 "_About" = "_Honi buruz";
 
 /* nothing */
-"Attach Tab" = "Fitxa erantsi";
-
-/* nothing */
-"User" = "Erabiltzailea";
-
-/* nothing */
-"Server" = "Zerbitzaria";
+"_Attach" = "Fitxa erantsi";
 
 /* nothing */
 "Last Seen" = "Azkenekoz ikusia";
@@ -2708,19 +2798,85 @@
 "Never" = "Inoiz";
 
 /* nothing */
+"%d minutes ago" = "";
+
+/* nothing */
 "Online" = "Linean";
 
 /* nothing */
 "Enter nickname to add:" = "Sartu gehitu nahi den ezizena:";
 
 /* nothing */
-"X-Chat: Notify List" = "X-Chat: Jakinarazketa zerrenda";
+"Notify on these networks:" = "";
 
 /* nothing */
-"Add" = "Gehitu";
+"Comma separated list of networks is accepted." = "";
 
 /* nothing */
-"Remove" = "Kendu";
+"XChat: Friends List" = "X-Chat: Bidalitako fitxategien zerrenda";
+
+/* nothing */
+"Open Dialog" = "Ireki elkarrizketa leihoa";
+
+/* nothing */
+"Cannot find 'notify-send' to open balloon alerts.\nPlease install libnotify." = "";
+
+/* nothing */
+"XChat: Connected to %u networks and %u channels" = "";
+
+/* nothing */
+"_Restore" = "";
+
+/* nothing */
+"_Hide" = "Ezkutatu";
+
+/* nothing */
+"_Blink on" = "";
+
+/* nothing */
+"Channel Message" = "Kanalaren izena";
+
+/* nothing */
+"Private Message" = "Bip egin mezu pribatuetan";
+
+/* nothing */
+"Highlighted Message" = "Bip egin mezu nabarmenduetan";
+
+/* nothing */
+"_Change status" = "";
+
+/* nothing */
+"_Away" = "Aldenduta";
+
+/* nothing */
+"_Back" = "";
+
+/* nothing */
+"XChat: Highlighted message from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u highlighted messages, latest from: %s (%s)" = "";
+
+/* nothing */
+"XChat: New public message from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u new public messages." = "";
+
+/* nothing */
+"XChat: Private message from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u private messages, latest from: %s (%s)" = "";
+
+/* nothing */
+"XChat: File offer from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u file offers, latest from: %s (%s)" = "";
+
+/* nothing */
+"Version" = "Bertsioa";
 
 /* nothing */
 "Description" = "Azalpena";
@@ -2729,7 +2885,7 @@
 "Select a Plugin or Script to load" = "Aukeratu kargatzeko plugin edo skript bat";
 
 /* nothing */
-"X-Chat: Plugins and Scripts" = "X-Chat: Plugin eta skript-ak";
+"XChat: Plugins and Scripts" = "X-Chat: Plugin eta skript-ak";
 
 /* nothing */
 "_Load..." = "_Kargatu...";
@@ -2738,34 +2894,31 @@
 "_UnLoad" = "_Deskargatu";
 
 /* nothing */
-"_Close" = "_Itxi";
+"Save As..." = "Gorde honela";
 
 /* nothing */
-"Save rawlog" = "Gorde log-laua";
-
-/* nothing */
-"X-Chat: Rawlog (%s)" = "X-Chat: Log laua (%s)";
+"XChat: Rawlog (%s)" = "X-Chat: Log laua (%s)";
 
 /* nothing */
 "Clear rawlog" = "Garbitu log laua";
 
 /* nothing */
-"Save rawlog..." = "Gorde log-laua...";
-
-/* nothing */
 "The window you opened this Search for doesn't exist anymore." = "";
 
 /* nothing */
-"X-Chat: Search" = "X-Chat: Bilatu";
+"Search hit end, not found." = "";
 
 /* nothing */
-"Find:" = "Bilatu:";
+"XChat: Search" = "X-Chat: Bilatu";
 
 /* nothing */
-"Find" = "Bilatu";
+"_Match case" = "";
 
 /* nothing */
-"Close" = "Itxi";
+"Search _backwards" = "";
+
+/* nothing */
+"_Find" = "Bilatu";
 
 /* nothing */
 "New Network" = "Sare berria";
@@ -2774,10 +2927,40 @@
 "Really remove network \"%s\" and all its servers?" = "Benetan ezabatu nahi duzu \"%s\" eta honen zerbitzari guztiak?";
 
 /* nothing */
-"X-Chat: Edit %s" = "X-Chat: Editatu %s";
+"#channel" = "Kanala";
+
+/* nothing */
+"XChat: Favorite Channels (Auto-Join List)" = "X-Chat: Kanal zerrenda (%s)";
+
+/* nothing */
+"These channels will be joined whenever you connect to %s." = "";
+
+/* nothing */
+"Key (Password)" = "Pasahitza:";
+
+/* nothing */
+"_Edit" = "_Editatu";
+
+/* nothing */
+"%s has been removed." = "";
+
+/* nothing */
+"%s has been added." = "";
+
+/* nothing */
+"User name and Real name cannot be left blank." = "";
+
+/* nothing */
+"XChat: Edit %s" = "X-Chat: Editatu %s";
 
 /* nothing */
 "Servers for %s" = "%s-rentzat zerbitzariak";
+
+/* nothing */
+"Connect to selected server only" = "";
+
+/* nothing */
+"Don't cycle through all the servers when the connection fails." = "";
 
 /* nothing */
 "Your Details" = "Zure xehetasunak";
@@ -2789,10 +2972,13 @@
 "_Nick name:" = "_Ezizena:";
 
 /* nothing */
+"Second choice:" = "Bigarren aukera:";
+
+/* nothing */
 "_User name:" = "_Erabiltzaile izena:";
 
 /* nothing */
-"Real na_me:" = "Be_netazko izena:";
+"Rea_l name:" = "Benetazko _izena:";
 
 /* nothing */
 "Connecting" = "Konektatzen";
@@ -2801,7 +2987,7 @@
 "Auto connect to this network at startup" = "Automatikoki konektatu sare hontara abiaratzean";
 
 /* nothing */
-"Use a proxy server" = "Erabili proxy zerbitzari bat";
+"Bypass proxy server" = "Erabili proxy zerbitzari bat";
 
 /* nothing */
 "Use SSL for all the servers on this network" = "Erabili SSL sare hontako zerbitzari guztietan";
@@ -2810,7 +2996,7 @@
 "Accept invalid SSL certificate" = "Onartu baliogabeko SSL zertifikatuak";
 
 /* nothing */
-"C_hannels to join:" = "S_artu nahi diren kanalen izenak:";
+"_Favorite channels:" = "Irten kanaletik:";
 
 /* nothing */
 "Channels to join, separated by commas, but not spaces!" = "Sartuko den kanalak, komaz banandua, baina hutsunerik gabe!";
@@ -2825,6 +3011,9 @@
 "Nickserv password:" = "Nickserv-erako pasahitza:";
 
 /* nothing */
+"If your nickname requires a password, enter it here. Not all IRC networks support this." = "";
+
+/* nothing */
 "Server password:" = "Zerbitzariko pasahitza:";
 
 /* nothing */
@@ -2834,22 +3023,19 @@
 "Character set:" = "Karaktere-jokoa:";
 
 /* nothing */
-"_Edit" = "_Editatu";
+"XChat: Network List" = "X-Chat: Jakinarazketa zerrenda";
 
 /* nothing */
-"X-Chat: Server List" = "X-Chat: Zerbitzari zerrenda";
-
-/* nothing */
-"Second choice:" = "Bigarren aukera:";
+"User Information" = "Erabiltzailearen informazioa";
 
 /* nothing */
 "Third choice:" = "Hirugarren aukera";
 
 /* nothing */
-"Rea_l name:" = "Benetazko _izena:";
+"Networks" = "Sareak";
 
 /* nothing */
-"Skip server list on startup" = "Ez erakutsi zerbitzari zerrenda abiaraztean";
+"Skip network list on startup" = "Ez erakutsi zerbitzari zerrenda abiaraztean";
 
 /* nothing */
 "_Edit..." = "_Editatu...";
@@ -2858,10 +3044,10 @@
 "_Sort" = "_Sailkatu";
 
 /* nothing */
-"C_onnect" = "K_onektatu";
+"Sorts the network list in alphabetical order. Use SHIFT-UP and SHIFT-DOWN keys to move a row." = "";
 
 /* nothing */
-"Connect in new tab" = "Konektatu fitxa berrian";
+"C_onnect" = "K_onektatu";
 
 /* nothing */
 "Text Box Appearance" = "Testu kaxaren itxura";
@@ -2876,7 +3062,10 @@
 "Scrollback lines:" = "Atzera korritze lerro kopurua:";
 
 /* nothing */
-"Transparent background" = "Atzeko plano transparentea";
+"Colored nick names" = "Koloreztatutako ezizenak";
+
+/* nothing */
+"Give each person on IRC a different color" = "";
 
 /* nothing */
 "Indent nick names" = "Koskatu ezizenak";
@@ -2885,16 +3074,7 @@
 "Make nick names right-justified" = "";
 
 /* nothing */
-"Tint (shade) transparency" = "Tindatu transparentzia (itzala)";
-
-/* nothing */
-"Colored nick names" = "Koloreztatutako ezizenak";
-
-/* nothing */
-"Give each person on IRC a different color" = "";
-
-/* nothing */
-"Strip mIRC colors" = "Erantzi mIRC-en koloreak";
+"Transparent background" = "Atzeko plano transparentea";
 
 /* nothing */
 "Show marker line" = "Erakutsi lerro-marka";
@@ -2903,7 +3083,7 @@
 "Insert a red line after the last read text." = "";
 
 /* nothing */
-"Tint Settings" = "Tindatzearen ezarpenak";
+"Transparency Settings" = "Tindatzearen ezarpenak";
 
 /* nothing */
 "Red:" = "Gorria:";
@@ -2918,25 +3098,40 @@
 "Time Stamps" = "Ordu arrastoak";
 
 /* nothing */
+"Enable time stamps" = "Ordu arrastoak gaitu";
+
+/* nothing */
 "Time stamp format:" = "Ordu arrastoaren formatua:";
 
 /* nothing */
 "See strftime manpage for details." = "Ikusi strftime-ren man orria xehetasunetarako.";
 
 /* nothing */
-"Enable time stamps" = "Ordu arrastoak gaitu";
+"A-Z" = "A-Z";
+
+/* nothing */
+"Last-spoke order" = "";
+
+/* nothing */
+"Input box" = "Sarrera kaxa";
+
+/* nothing */
+"Use the Text box font and colors" = "Erabili textu kaxaren letra-tipo eta koloreak";
+
+/* nothing */
+"Spell checking" = "";
 
 /* nothing */
 "Nick Completion" = "Izen betetzea";
 
 /* nothing */
-"Automatic nick completion" = "Ezizen beteketa automatikoa";
-
-/* nothing */
-"Completes nick names without using the TAB key" = "";
+"Automatic nick completion (without TAB key)" = "Ezizen beteketa automatikoa";
 
 /* nothing */
 "Nick completion suffix:" = "Ezizen betetzearen atzizkia:";
+
+/* nothing */
+"Nick completion sorted:" = "Ezizen betetzearen atzizkia:";
 
 /* nothing */
 "Input Box Codes" = "Sarrera kaxaren kodeak";
@@ -2948,28 +3143,7 @@
 "Interpret %C, %B as Color, Bold etc" = "";
 
 /* nothing */
-"Input Box Appearance" = "";
-
-/* nothing */
-"Use the Text box font and colors" = "Erabili textu kaxaren letra-tipo eta koloreak";
-
-/* nothing */
-"Off" = "Off";
-
-/* nothing */
-"Graph" = "Grafikoa";
-
-/* nothing */
-"Info text" = "Informazio testua";
-
-/* nothing */
-"Both" = "Biak";
-
-/* nothing */
 "A-Z, Ops first" = "A-Z, Op-ak aurrena";
-
-/* nothing */
-"A-Z" = "A-Z";
 
 /* nothing */
 "Z-A, Ops last" = "Z-A, Op-ak azkenak";
@@ -2981,22 +3155,43 @@
 "Unsorted" = "Sailkatu gabe";
 
 /* nothing */
-"User list sorted by:" = "Erabiltzaile-zerrenda honela sailkatua:";
+"Left (Upper)" = "";
+
+/* nothing */
+"Left (Lower)" = "";
+
+/* nothing */
+"Right (Upper)" = "";
+
+/* nothing */
+"Right (Lower)" = "";
+
+/* nothing */
+"Top" = "Goian";
+
+/* nothing */
+"Bottom" = "Behean";
+
+/* nothing */
+"Hidden" = "Ezkutatu";
+
+/* nothing */
+"User List" = "Erabiltzaile zerrenda";
 
 /* nothing */
 "Show hostnames in user list" = "Erakutsi ostalari izenak erabiltzaile zerrendan";
 
 /* nothing */
-"User list buttons enabled" = "Erabiltzaile zerrenda botoiak gaituta";
+"User list sorted by:" = "Erabiltzaile-zerrenda honela sailkatua:";
 
 /* nothing */
-"Resizable user list" = "Tamainu aldakorreko erabiltzaile zerrenda";
+"Show user list at:" = "Erakutsi/ezkutatu erabiltzaile zerrenda";
 
 /* nothing */
 "Away tracking" = "Aldentzearen jarraipena";
 
 /* nothing */
-"Enable away tracking" = "";
+"Track the Away status of users and mark them in a different color" = "";
 
 /* nothing */
 "On channels smaller than:" = "Hau baino txikiagoak diren kanaletan:";
@@ -3005,37 +3200,10 @@
 "Action Upon Double Click" = "Klik bikoitza egin ondorengo ekintza";
 
 /* nothing */
-"Execute command:" = "Exekutatu komandoa:";
-
-/* nothing */
-"Extra Gadgets" = "";
-
-/* nothing */
-"Lag meter:" = "Atzerapen neurtzailea:";
-
-/* nothing */
-"Throttle meter:" = "Azelarazio neurtzailea:";
-
-/* nothing */
 "Windows" = "Windows";
 
 /* nothing */
 "Tabs" = "Fitxak";
-
-/* nothing */
-"Bottom" = "Behean";
-
-/* nothing */
-"Top" = "Goian";
-
-/* nothing */
-"Left" = "Ezkerrean";
-
-/* nothing */
-"Right" = "Eskuinean";
-
-/* nothing */
-"Hidden" = "Ezkutatu";
 
 /* nothing */
 "Always" = "Beti";
@@ -3044,31 +3212,37 @@
 "Only requested tabs" = "Eskaria egiten den fitxetan soilik";
 
 /* nothing */
+"Tree" = "Trace";
+
+/* nothing */
+"Switcher type:" = "";
+
+/* nothing */
 "Open an extra tab for server messages" = "Ireki fitxa extra bat zerbitzariaren mezuentzat";
 
 /* nothing */
 "Open an extra tab for server notices" = "Ireki fitxa extra bat zerbitzariaren berrientzat";
 
 /* nothing */
-"Small tabs" = "Fitxa txikiak";
+"Open a new tab when you receive a private message" = "Ireki fitxa extra bat zerbitzariaren mezuentzat";
 
 /* nothing */
 "Sort tabs in alphabetical order" = "Sailkatu fitxak orden alfabetikoan";
 
 /* nothing */
+"Smaller text" = "Fitxa txikiak";
+
+/* nothing */
 "Focus new tabs:" = "";
+
+/* nothing */
+"Show channel switcher at:" = "Hau baino txikiagoak diren kanaletan:";
 
 /* nothing */
 "Shorten tab labels to:" = "Fitxen luzera murriztu:";
 
 /* nothing */
 "letters." = "letra.";
-
-/* nothing */
-"Tabs Location" = "Fitxen kokapena";
-
-/* nothing */
-"Show tabs at:" = "Erakutxi fitxak hemen:";
 
 /* nothing */
 "Tabs or Windows" = "Fitxak ala leihoak";
@@ -3086,7 +3260,19 @@
 "Open DCC, Ignore, Notify etc, in tabs or windows?" = "Ireki DCC, ezikusi, notifikazio etab. fitxetan ala leihoetan?";
 
 /* nothing */
+"No" = "Ezer";
+
+/* nothing */
+"Yes" = "";
+
+/* nothing */
+"Browse for save folder every time" = "";
+
+/* nothing */
 "Files and Directories" = "";
+
+/* nothing */
+"Auto accept file offers:" = "Automatikoki onartu fitxategiak";
 
 /* nothing */
 "Download files to:" = "Hona jaitsi fitxategiak:";
@@ -3098,10 +3284,13 @@
 "Save nick name in filenames" = "Gorde ezizenak fitxategietan";
 
 /* nothing */
-"Convert spaces to underscore before sending" = "Hutsuneak behe-marratxora bihurtu bidali aurretik";
+"Network Settings" = "Sareko ezarpenak";
 
 /* nothing */
-"Network Settings" = "Sareko ezarpenak";
+"Get my address from the IRC server" = "Hartu nire IPa IRC zerbitzaritik";
+
+/* nothing */
+"Asks the IRC server for your real address. Use this if you have a 192.168.*.* address!" = "Galdetu IRC zerbitzariari zure benetako helbidea. Erabili hau 192.168.*.* moduko helbidea baduzu.";
 
 /* nothing */
 "DCC IP address:" = "DCCaren IP helbidea:";
@@ -3116,13 +3305,7 @@
 "Last DCC send port:" = "DCCa bidaltzeok azken ataka:";
 
 /* nothing */
-"(Leave ports at zero for full range)." = "(Utzi atakak zeron denak hartzeko)";
-
-/* nothing */
-"Get my address from the IRC server" = "Hartu nire IPa IRC zerbitzaritik";
-
-/* nothing */
-"Asks the IRC server for your real address. Use this if you have a 192.168.*.* address!" = "Galdetu IRC zerbitzariari zure benetako helbidea. Erabili hau 192.168.*.* moduko helbidea baduzu.";
+"!Leave ports at zero for full range." = "(Utzi atakak zeron denak hartzeko)";
 
 /* nothing */
 "Maximum File Transfer Speeds (bytes per second)" = "";
@@ -3144,6 +3327,42 @@
 
 /* nothing */
 "All downloads combined:" = "Jaitsiera guztiak konbinatuta:";
+
+/* nothing */
+"Alerts" = "Alertak";
+
+/* nothing */
+"Show tray balloons on:" = "Erakutxi fitxak hemen:";
+
+/* nothing */
+"Blink tray icon on:" = "";
+
+/* nothing */
+"Blink task bar on:" = "";
+
+/* nothing */
+"Make a beep sound on:" = "";
+
+/* nothing */
+"Enable system tray icon" = "";
+
+/* nothing */
+"Highlighted Messages" = "Bip egin mezu nabarmenduetan";
+
+/* nothing */
+"Highlighted messages are ones where your nickname is mentioned, but also:" = "";
+
+/* nothing */
+"Extra words to highlight:" = "";
+
+/* nothing */
+"Nick names not to highlight:" = "";
+
+/* nothing */
+"Nick names to always highlight:" = "";
+
+/* nothing */
+"Separate multiple words with commas.\nWildcards are accepted." = "(Banandu komaz hitzak)";
 
 /* nothing */
 "Default Messages" = "Lehenetsitako mezuak";
@@ -3177,33 +3396,6 @@
 
 /* nothing */
 "Unmark yourself as away before sending messages" = "Desmarkatu aldendu egoeratik mezuak bidali aurretik";
-
-/* nothing */
-"(Can be a text file relative to ~/.xchat2/)." = "(~/.xchat2/ -ri erlatiboa den textu fitxategi bat izan daiteke)";
-
-/* nothing */
-"(Can be a text file relative to config dir)." = "(konfigurazio direktorioari erlatiboa den textu fitxategia izan daiteke)";
-
-/* nothing */
-"Alerts" = "Alertak";
-
-/* nothing */
-"Flash taskbar on highlighted messages" = "Flash egin ataza-barran mezu nabarmenduetan";
-
-/* nothing */
-"Beep on highlighted messages" = "Bip egin mezu nabarmenduetan";
-
-/* nothing */
-"Extra words to highlight on:" = "";
-
-/* nothing */
-"(Separate multiple words with commas)." = "(Banandu komaz hitzak)";
-
-/* nothing */
-"Beep on private messages" = "Bip egin mezu pribatuetan";
-
-/* nothing */
-"Beep on channel messages" = "Bip egin kanaletako mezuetan";
 
 /* nothing */
 "Advanced Settings" = "Ezarpen aurreratuak";
@@ -3242,22 +3434,22 @@
 "Logging" = "Logeatzen";
 
 /* nothing */
-"Enable logging of conversations" = "Gaitu elkarrizketen log-eaketa";
+"Display scrollback from previous session" = "";
 
 /* nothing */
-"Log filename mask:" = "";
+"Enable logging of conversations to disk" = "Gaitu elkarrizketen log-eaketa";
 
 /* nothing */
-"(%s=Server %c=Channel %n=Network)." = "(%s=Zerbitzaria %c=Kanala %n=Sarea).";
+"Log filename:" = "Fitxategi-izena";
+
+/* nothing */
+"%s=Server %c=Channel %n=Network." = "(%s=Zerbitzaria %c=Kanala %n=Sarea).";
 
 /* nothing */
 "Insert timestamps in logs" = "Txertatu ordu arrastoak log-etan";
 
 /* nothing */
 "Log timestamp format:" = "";
-
-/* nothing */
-"(See strftime manpage for details)." = "(Ikusi strftime-ren man orria xehetasunetarako).";
 
 /* nothing */
 "(Disabled)" = "(Desgaitua)";
@@ -3275,13 +3467,25 @@
 "HTTP" = "HTTP";
 
 /* nothing */
+"MS Proxy (ISA)" = "";
+
+/* nothing */
+"All Connections" = "Konektatzen";
+
+/* nothing */
+"IRC Server Only" = "Gonbidapenarekin bakarrik";
+
+/* nothing */
+"DCC Get Only" = "";
+
+/* nothing */
 "Your Address" = "Zure helbidea";
 
 /* nothing */
 "Bind to:" = "Lotu honi:";
 
 /* nothing */
-"(Only useful for computers with multiple addresses)." = "(Helbide anitzak dituzten ordenagailuentzat bakarrik erabilgarria)";
+"Only useful for computers with multiple addresses." = "(Helbide anitzak dituzten ordenagailuentzat bakarrik erabilgarria)";
 
 /* nothing */
 "Proxy Server" = "Proxy zerbitzaria";
@@ -3290,34 +3494,34 @@
 "Hostname:" = "Ostalari-izena";
 
 /* nothing */
-"Username:" = "Erabiltzaile izena:";
-
-/* nothing */
-"Password:" = "Pasahitza:";
-
-/* nothing */
 "Port:" = "Ataka:";
 
 /* nothing */
 "Type:" = "Mota:";
 
 /* nothing */
-"Authenticate to the proxy server (HTTP and Socks5)" = "Autentifikatu proxy zerbitzarian (HTTP eta Socks5)";
+"Use proxy for:" = "Erabili proxy zerbitzari bat";
 
 /* nothing */
-"(disabled)" = "(desgaitua)";
+"Proxy Authentication" = "";
 
 /* nothing */
-"A star (*)" = "Izar bat (*)";
+"Use Authentication (MS Proxy, HTTP or Socks5 only)" = "Autentifikatu proxy zerbitzarian (HTTP eta Socks5)";
 
 /* nothing */
-"A red star (*)" = "Izar gorri bat (*)";
+"Use Authentication (HTTP or Socks5 only)" = "Autentifikatu proxy zerbitzarian (HTTP eta Socks5)";
 
 /* nothing */
-"Underlined" = "Azpimarratua";
+"Username:" = "Erabiltzaile izena:";
+
+/* nothing */
+"Password:" = "Pasahitza:";
 
 /* nothing */
 "Select an Image File" = "Aukeratu irudi fitxategi bat";
+
+/* nothing */
+"Select Download Folder" = "Aukeratu kolorea";
 
 /* nothing */
 "Select font" = "Aukeratu letra-tipoa";
@@ -3332,6 +3536,9 @@
 "Mark not-identified users with:" = "";
 
 /* nothing */
+"Open Data Folder" = "";
+
+/* nothing */
 "Select color" = "Aukeratu kolorea";
 
 /* nothing */
@@ -3341,7 +3548,7 @@
 "mIRC colors:" = "mIRC koloreak:";
 
 /* nothing */
-"Extra colors:" = "Kolore extrak:";
+"Local colors:" = "Kolore extrak:";
 
 /* nothing */
 "Foreground:" = "Aurreko planoa:";
@@ -3359,7 +3566,7 @@
 "New data:" = "Datu berria:";
 
 /* nothing */
-"Marker line:" = "";
+"Marker line:" = "Marka lerroa:";
 
 /* nothing */
 "New message:" = "Mezu berria:";
@@ -3410,10 +3617,10 @@
 "Text box" = "Testu kaxa";
 
 /* nothing */
-"Input box" = "Sarrera kaxa";
+"User list" = "Erabiltzaile zerrenda";
 
 /* nothing */
-"User list" = "Erabiltzaile zerrenda";
+"Channel switcher" = "Kanal zerrenda...";
 
 /* nothing */
 "Colors" = "Koloreak";
@@ -3428,9 +3635,6 @@
 "Sound" = "Soinua";
 
 /* nothing */
-"Network" = "Sarea";
-
-/* nothing */
 "Network setup" = "Sare konfigurazioa";
 
 /* nothing */
@@ -3440,10 +3644,16 @@
 "Categories" = "Kategoriak";
 
 /* nothing */
+"You cannot place the tree on the top or bottom!\nPlease change to the <b>Tabs</b> layout in the <b>View</b> menu first." = "";
+
+/* nothing */
 "Some settings were changed that require a restart to take full effect." = "Egindako ezarpen aldaketa batzuk berrabiaraztea behar dute guztizko efektua egin dezaten.";
 
 /* nothing */
-"X-Chat: Preferences" = "X-Chat: Hobespenak";
+"*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile" = "*OHARRA*\nDCCak automatikoki onartzea zure etxe karpetara\nkaltegarria izan daiteke. Adibidez norbaitek\n.bash_profile fitxategia bidali dezake";
+
+/* nothing */
+"XChat: Preferences" = "X-Chat: Hobespenak";
 
 /* nothing */
 "There was an error parsing the string" = "Errore bat gertatu da karaktere-katea parseatzean";
@@ -3455,16 +3665,13 @@
 "Print Texts File" = "Inprimatu testuen fitxategia";
 
 /* nothing */
-"$ Number" = "$ Zenbakia";
-
-/* nothing */
 "Edit Events" = "Editatu gertaerak";
 
 /* nothing */
-"Save As" = "Gorde honela";
+"$ Number" = "$ Zenbakia";
 
 /* nothing */
-"Load From" = "Kargatu hemendik";
+"Load From..." = "Kargatu hemendik";
 
 /* nothing */
 "Test All" = "Egiaztatu denak";
@@ -3473,13 +3680,13 @@
 "URL" = "URL";
 
 /* nothing */
-"Select a file to save to" = "Aukeratu hau gorde nahi den fitxategia";
-
-/* nothing */
-"X-Chat: URL Grabber" = "X-Chat: URL hartzailea";
+"XChat: URL Grabber" = "X-Chat: URL hartzailea";
 
 /* nothing */
 "Clear list" = "Garbitu zerrenda";
+
+/* nothing */
+"Copy selected URL" = "Kopiatu aukeratutako URLa";
 
 /* nothing */
 "Copy" = "Kopiatu";

@@ -1,5 +1,5 @@
 /* nothing */
-"" = "Project-Id-Version: xchat 2.8.0\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2005-07-05 16:21+1000\nPO-Revision-Date: 2007-01-26 13:24+0100\nLast-Translator: Ernest Adrogué <eadrogue@gmx.net>\nLanguage-Team: Catalan <ca@dodds.net>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1\n";
+"" = "Project-Id-Version: xchat 2.8.6\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2010-05-30 13:56+1000\nPO-Revision-Date: 2009-04-26 22:33+0200\nLast-Translator: David Planella <david.planella@gmail.com>\nLanguage-Team: Catalan <ca@dodds.net>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\n";
 
 /* nothing */
 "Cannot create ~/.xchat2" = "No s'ha pogut crear el directori ~/.xchat2";
@@ -11,7 +11,7 @@
 "Leaving" = "Me'n vaig";
 
 /* nothing */
-"* Running IRC as root is stupid! You should\n  create a User Account and use that to login.\n" = "* Connectar-se a l'IRC com a root és estúpid! Hauríeu\n  de crear un compte d'usuari i fer-ho des d'allí.\n";
+"* Running IRC as root is stupid! You should\n  create a User Account and use that to login.\n" = "* No és aconsellable connectar-se a l'IRC com a usuari \n  primari. Hauríeu de crear un compte d'usuari i fer-ho \n  des d'allí.\n";
 
 /* nothing */
 "Waiting" = "Esperant";
@@ -26,13 +26,19 @@
 "Done" = "Fet";
 
 /* nothing */
-"Connect" = "Connecta";
+"Connect" = "Connectat";
 
 /* nothing */
-"Aborted" = "Avortat";
+"Aborted" = "Interromput";
 
 /* nothing */
 "Cannot access %s\n" = "No es pot accedir a %s\n";
+
+/* nothing */
+"Error" = "Error";
+
+/* nothing */
+"%s is offering \"%s\". Do you want to accept?" = "%s us està oferint «%s». Voleu acceptar-ho?";
 
 /* nothing */
 "No active DCCs\n" = "No hi ha connexions DCC actives\n";
@@ -44,10 +50,10 @@
 "NO   " = "NO   ";
 
 /* nothing */
-"You are being CTCP flooded from %s, ignoring %s\n" = "Esteu sent bombardejat amb peticions CTCP des de %s, s'ignorarà %s\n";
+"You are being CTCP flooded from %s, ignoring %s\n" = "Esteu essent bombardejat amb peticions CTCP de %s, s'ignorarà %s\n";
 
 /* nothing */
-"You are being MSG flooded from %s, setting gui_auto_open_dialog OFF.\n" = "Esteu sent atacat amb peticions MSG des de %s, s'ha desactivat l'opció gui_auto_open_dialog.\n";
+"You are being MSG flooded from %s, setting gui_auto_open_dialog OFF.\n" = "Esteu essent atacat amb peticions MSG de %s, s'ha desactivat l'opció gui_auto_open_dialog.\n";
 
 /* nothing */
 "  %-20s online\n" = "  %-20s connectat\n";
@@ -56,13 +62,19 @@
 "  %-20s offline\n" = "  %-20s no connectat\n";
 
 /* nothing */
-"No channel joined. Try /join #<channel>\n" = "No esteu a cap canal. Proveu amb /join #<canal>\n";
+"No channel joined. Try /join #<channel>\n" = "No heu entrat a cap canal. Proveu amb /join #<canal>\n";
 
 /* nothing */
-"Not connected. Try /server <host> [<port>]\n" = "No connectat. Proveu amb /server <màquina> [<port>]\n";
+"Not connected. Try /server <host> [<port>]\n" = "No esteu connectat. Proveu amb /server <màquina> [<port>]\n";
 
 /* nothing */
-"I need /bin/sh to run!\n" = "Es necessita /bin/sh per a executar-lo!\n";
+"Already marked away: %s\n" = "Ja s'ha marcat com a absent: %s\n";
+
+/* nothing */
+"Already marked back.\n" = "Ja s'ha marcat com a retornat.\n";
+
+/* nothing */
+"I need /bin/sh to run!\n" = "Es necessita /bin/sh per a executar-lo\n";
 
 /* nothing */
 "Commands Available:" = "Ordres disponibles:";
@@ -74,7 +86,7 @@
 "Plugin defined commands:" = "Ordres definides pels connectors:";
 
 /* nothing */
-"Type /HELP <command> for more information, or /HELP -l" = "Per a més informació feu /HELP <ordre>, o /HELP -l";
+"Type /HELP <command> for more information, or /HELP -l" = "Per a més informació teclegeu /HELP <ordre>, o /HELP -l";
 
 /* nothing */
 "Unknown arg '%s' ignored." = "S'ignorarà l'argument desconegut «%s».";
@@ -89,67 +101,73 @@
 "ADDBUTTON <name> <action>, adds a button under the user-list" = "ADDBUTTON <nom> <acció>, afegeix un botó sota la llista d'usuaris";
 
 /* nothing */
-"ALLCHAN <cmd>, sends a command to all channels you're in" = "ALLCHAN <cmd>, envia una ordre a tots els canals on estigueu";
+"ALLCHAN <cmd>, sends a command to all channels you're in" = "ALLCHAN <cmd>, envia una ordre a tots els canals on sigueu";
 
 /* nothing */
-"ALLCHANL <cmd>, sends a command to all channels you're in" = "ALLCHAN <cmd>, envia una ordre a tots els canals on estigueu";
+"ALLCHANL <cmd>, sends a command to all channels you're in" = "ALLCHANL <cmd>, envia una ordre a tots els canals on sigueu";
 
 /* nothing */
-"ALLSERV <cmd>, sends a command to all servers you're in" = "ALLSERV <cmd>, envia una ordre a tots els servidors on estigueu";
+"ALLSERV <cmd>, sends a command to all servers you're in" = "ALLSERV <cmd>, envia una ordre a tots els servidors on sigueu";
 
 /* nothing */
 "AWAY [<reason>], sets you away" = "AWAY [<motiu>], marca el vostre sobrenom com a absent";
 
 /* nothing */
-"BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "BAN <màscara> [<tipus>], bandeja tots els usuaris que coincideixin amb la màscara. Si ja es troben el canal amb això no els fareu fora (necessiteu ser operador del canal)";
+"BACK, sets you back (not away)" = "BACK, us marca com a retornat (no absent)";
 
 /* nothing */
-"CLEAR, Clears the current text window" = "CLEAR, Esborra el text de la finestra actual";
+"BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "BAN <màscara> [<tipus>], bandeja tots els usuaris que coincideixin amb la màscara. Si ja es troben en el canal amb això no els fareu fora (heu de ser operador del canal)";
 
 /* nothing */
-"CLOSE, Closes the current window/tab" = "CLOSE, Tanca la finestra o pestanya actual";
+"CHANOPT [-quiet] <variable> [<value>]" = "CHANOPT [-quiet] <variable> [<valor>]";
 
 /* nothing */
-"COUNTRY [-s] <code|wildcard>, finds a country code, eg: au = australia" = "COUNTRY <codi>, cerca un codi de país, p.ex: au = Austràlia";
+"CLEAR [ALL|HISTORY], Clears the current text window or command history" = "CLEAR [ALL|HISTORY], esborra la finestra de text actual o l'historial d'ordres";
 
 /* nothing */
-"CTCP <nick> <message>, send the CTCP message to nick, common messages are VERSION and USERINFO" = "CTCP <sobrenom> <missatge>, envia el missatge CTCP a l'usuari indicat, els missatges més comuns són VERSION i USERINFO";
+"CLOSE, Closes the current window/tab" = "CLOSE, tanca la finestra o pestanya actual";
 
 /* nothing */
-"CYCLE, parts current channel and immediately rejoins" = "CYCLE, surt i retorna immediatament al canal actual";
+"COUNTRY [-s] <code|wildcard>, finds a country code, eg: au = australia" = "COUNTRY [-s] <codi|comodí>, cerca un codi de país, p.ex: au = Austràlia";
 
 /* nothing */
-"\nDCC GET <nick>                      - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file]  - send a file to someone\nDCC PSEND [-maxcps=#] <nick> [file] - send a file using passive mode\nDCC LIST                            - show DCC list\nDCC CHAT <nick>                     - offer DCC CHAT to someone\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "\nDCC GET <sobrenom>                        - accepta un fitxer ofert\nDCC SEND [-maxcps=#] <sobrenom> [fitxer]  - envia un fitxer\nDCC PSEND [-maxcps=#] <sobrenom> [fitxer] - envia un fitxer en mode passiu\nDCC LIST                                  - mostra la llista de connexions DCC\nDCC CHAT <sobrenom>                       - proposa un XAT DCC a algú\nDCC CLOSE <tipus> <sobrenom> <fitxer>        exemple:\n         /dcc close send albanoguer fitxer.tar.gz";
+"CTCP <nick> <message>, send the CTCP message to nick, common messages are VERSION and USERINFO" = "CTCP <sobrenom> <missatge>, envia el missatge CTCP a l'usuari indicat, els missatges més comuns són VERSION (versió) i USERINFO (informació de l'usuari)";
 
 /* nothing */
-"DEHOP <nick>, removes chanhalf-op status from the nick on the current channel (needs chanop)" = "DEHOP <sobrenom>, treu l'estatus de semi-operador del canal al sobrenom indicat (necessiteu ser operador del canal)";
+"CYCLE [<channel>], parts the current or given channel and immediately rejoins" = "CYCLE [<canal>], surt del canal actual i hi torna a entrar immediatament";
+
+/* nothing */
+"\nDCC GET <nick>                      - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file]  - send a file to someone\nDCC PSEND [-maxcps=#] <nick> [file] - send a file using passive mode\nDCC LIST                            - show DCC list\nDCC CHAT <nick>                     - offer DCC CHAT to someone\nDCC PCHAT <nick>                    - offer DCC CHAT using passive mode\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "\nDCC GET <sobrenom>                        - accepta un fitxer ofert\nDCC SEND [-maxcps=#] <sobrenom> [fitxer]  - envia un fitxer\nDCC PSEND [-maxcps=#] <sobrenom> [fitxer] - envia un fitxer en mode passiu\nDCC LIST                                  - mostra la llista de connexions DCC\nDCC CHAT <sobrenom>                       - proposa un XAT DCC a algú\nDCC PCHAT <sobrenom>                      - proposa un XAT DCC a algú en mode passiu\nDCC CLOSE <tipus> <sobrenom> <fitxer>        exemple:\n         /dcc close send albanoguer fitxer.tar.gz";
+
+/* nothing */
+"DEHOP <nick>, removes chanhalf-op status from the nick on the current channel (needs chanop)" = "DEHOP <sobrenom>, treu l'estatus de semi-operador del canal al sobrenom indicat (heu de ser operador del canal)";
 
 /* nothing */
 "DELBUTTON <name>, deletes a button from under the user-list" = "DELBUTTON <nom>, elimina un botó de sota la llista d'usuaris";
 
 /* nothing */
-"DEOP <nick>, removes chanop status from the nick on the current channel (needs chanop)" = "DEOP <sobrenom>, treu l'estatus d'operador del canal al sobrenom indicat (necessiteu ser operador del canal)";
+"DEOP <nick>, removes chanop status from the nick on the current channel (needs chanop)" = "DEOP <sobrenom>, treu l'estatus d'operador del canal al sobrenom indicat (heu de ser operador del canal)";
 
 /* nothing */
 "DEVOICE <nick>, removes voice status from the nick on the current channel (needs chanop)" = "DEVOICE <sobrenom>, treu l'estatus de veu al sobrenom indicat (necessiteu ser operador del canal)";
 
 /* nothing */
-"DISCON, Disconnects from server" = "DISCON, Finalitza la connexió amb el servidor";
+"DISCON, Disconnects from server" = "DISCON, finalitza la connexió amb el servidor";
 
 /* nothing */
-"DNS <nick|host|ip>, Finds a users IP number" = "DNS <sobrenom|màquina|ip>, Cerca l'adreça IP d'un usuari";
+"DNS <nick|host|ip>, Finds a users IP number" = "DNS <sobrenom|màquina|ip>, cerca l'adreça IP d'un usuari";
 
 /* nothing */
-"ECHO <text>, Prints text locally" = "ECHO <text>, Escriu el text localment";
+"ECHO <text>, Prints text locally" = "ECHO <text>, escriu el text localment";
 
 /* nothing */
-"EXEC [-o] <command>, runs the command. If -o flag is used then output is sent to current channel, else is printed to current text box" = "EXEC [-o] <ordre>, executa l'ordre. Si useu l'argument -o s'enviarà la sortida cap al canal actual, si no es mostrarà a la finestra de text actual";
+"EXEC [-o] <command>, runs the command. If -o flag is used then output is sent to current channel, else is printed to current text box" = "EXEC [-o] <ordre>, executa l'ordre. Si feu servir l'argument -o s'enviarà la sortida cap al canal actual, si no es mostrarà a la finestra de text actual";
 
 /* nothing */
 "EXECCONT, sends the process SIGCONT" = "EXECCONT, envia un senyal SIGCONT al procés";
 
 /* nothing */
-"EXECKILL [-9], kills a running exec in the current session. If -9 is given the process is SIGKILL'ed" = "EXECKILL [-9], mata un procés que s'estigui executant en la sessió actual. Si s'empreu -9 el senyal serà SIGKILL";
+"EXECKILL [-9], kills a running exec in the current session. If -9 is given the process is SIGKILL'ed" = "EXECKILL [-9], mata un procés que s'estigui executant en la sessió actual. Si empreu -9 el senyal serà SIGKILL";
 
 /* nothing */
 "EXECSTOP, sends the process SIGSTOP" = "EXECSTOP, envia un senyal SIGSTOP al procés";
@@ -158,88 +176,91 @@
 "EXECWRITE, sends data to the processes stdin" = "EXECWRITE, envia dades als processos en stdin (entrada estàndard)";
 
 /* nothing */
-"FLUSHQ, flushes the current server's send queue" = "FLUSHQ, neteja la cua d'enviaments al servidor actual";
+"FLUSHQ, flushes the current server's send queue" = "FLUSHQ, neteja la cua d'enviaments del servidor actual";
 
 /* nothing */
-"GATE <host> [<port>], proxies through a host, port defaults to 23" = "GATE <màquina> [<port>], usa el servidor intermedi indicat, el port per omissió és el 23";
+"GATE <host> [<port>], proxies through a host, port defaults to 23" = "GATE <màquina> [<port>], fa servir el servidor intermedi indicat, el port per defecte és el 23";
 
 /* nothing */
-"HOP <nick>, gives chanhalf-op status to the nick (needs chanop)" = "HOP <sobrenom>, dóna l'estatus d'operador de canal a l'usuari indicat (necessiteu ser operador del canal)";
+"GHOST <nick> [password], Kills a ghosted nickname" = "GHOST <sobrenom> <contrasenya>, termina una sessió fantasma per a aquest sobrenom";
 
 /* nothing */
-"ID <password>, identifies yourself to nickserv" = "ID <contrasenya>, us identificarà al servidor de sobrenoms nickserv";
+"HOP <nick>, gives chanhalf-op status to the nick (needs chanop)" = "HOP <sobrenom>, dóna l'estatus d'operador de canal a l'usuari indicat (heu de ser operador del canal)";
+
+/* nothing */
+"ID <password>, identifies yourself to nickserv" = "ID <contrasenya>, us identifica al servidor de sobrenoms nickserv";
 
 /* nothing */
 "IGNORE <mask> <types..> <options..>\n    mask - host mask to ignore, eg: *!*@*.aol.com\n    types - types of data to ignore, one or all of:\n            PRIV, CHAN, NOTI, CTCP, DCC, INVI, ALL\n    options - NOSAVE, QUIET" = "IGNORE <màscara> <tipus..> <opcions..>\n    màscara - màscara de la màquina a ignorar, p.ex: *!*@*.pooles.rima-tde.net\n    tipus   - tipus de les dades a ignorar, una de les següents o totes («ALL»):\n              PRIV, CHAN, NOTI, CTCP, DCC, INVI\n    opcions - NOSAVE, QUIET";
 
 /* nothing */
-"INVITE <nick> [<channel>], invites someone to a channel, by default the current channel (needs chanop)" = "INVITE <sobrenom> [<canal>], convida l'usuari indicat a un canal, per omissió al canal actual (necessiteu ser operador del canal)";
+"INVITE <nick> [<channel>], invites someone to a channel, by default the current channel (needs chanop)" = "INVITE <sobrenom> [<canal>], convida l'usuari indicat a un canal, per defecte al canal actual (heu de ser operador del canal)";
 
 /* nothing */
 "JOIN <channel>, joins the channel" = "JOIN <canal>, entra al canal";
 
 /* nothing */
-"KICK <nick>, kicks the nick from the current channel (needs chanop)" = "KICK <sobrenom>, fa fora l'usuari indicat del canal actual (necessiteu ser operador del canal)";
+"KICK <nick>, kicks the nick from the current channel (needs chanop)" = "KICK <sobrenom>, fa fora l'usuari indicat del canal actual (heu de ser operador del canal)";
 
 /* nothing */
-"KICKBAN <nick>, bans then kicks the nick from the current channel (needs chanop)" = "KICKBAN <sobrenom>, bandeja l'usuari indicat després de fer-lo fora del canal (necessiteu ser operador del canal)";
+"KICKBAN <nick>, bans then kicks the nick from the current channel (needs chanop)" = "KICKBAN <sobrenom>, bandeja l'usuari indicat després de fer-lo fora del canal (heu de ser operador del canal)";
 
 /* nothing */
 "LAGCHECK, forces a new lag check" = "LAGCHECK, força una nova comprovació del retard";
 
 /* nothing */
-"LASTLOG <string>, searches for a string in the buffer" = "LASTLOG <cadena>, cerca una cadena de text en el buffer";
+"LASTLOG <string>, searches for a string in the buffer" = "LASTLOG <cadena>, cerca una cadena de text a la memòria intermèdia";
 
 /* nothing */
-"LOAD <file>, loads a plugin or script" = "LOAD <fitxer>, carrega un connector o script";
+"LOAD [-e] <file>, loads a plugin or script" = "LOAD [-e] <fitxer>, carrega un connector o script";
 
 /* nothing */
-"MDEHOP, Mass deop's all chanhalf-ops in the current channel (needs chanop)" = "MDEHOP, Treu l'estatus a tots els semi-operadors del canal en el canal actual (necessiteu ser operador del canal)";
+"MDEHOP, Mass deop's all chanhalf-ops in the current channel (needs chanop)" = "MDEHOP, treu l'estatus a tots els semi-operadors del canal en el canal actual (heu de ser operador del canal)";
 
 /* nothing */
-"MDEOP, Mass deop's all chanops in the current channel (needs chanop)" = "MDEOP, Treu l'estatus a tots els operadors del canal en el canal actual (necessiteu ser operador del canal)";
+"MDEOP, Mass deop's all chanops in the current channel (needs chanop)" = "MDEOP, treu l'estatus a tots els operadors del canal en el canal actual (heu de ser operador del canal)";
 
 /* nothing */
 "ME <action>, sends the action to the current channel (actions are written in the 3rd person, like /me jumps)" = "ME <acció>, anuncia una acció al canal actual (les accions s'escriuen en tercera persona, com ara /me salta d'alegria)";
 
 /* nothing */
-"MKICK, Mass kicks everyone except you in the current channel (needs chanop)" = "MKICK, Fa fora tots els usuaris del canal actual (necessiteu ser operador del canal)";
+"MKICK, Mass kicks everyone except you in the current channel (needs chanop)" = "MKICK, fa fora tots els usuaris del canal actual (heu de ser operador del canal)";
 
 /* nothing */
-"MOP, Mass op's all users in the current channel (needs chanop)" = "MOP, Dóna l'estatus d'operador a tots els usuaris en el canal actual (necessiteu ser operador del canal)";
+"MOP, Mass op's all users in the current channel (needs chanop)" = "MOP, dóna l'estatus d'operador a tots els usuaris en el canal actual (heu de ser operador del canal)";
 
 /* nothing */
 "MSG <nick> <message>, sends a private message" = "MSG <sobrenom> <missatge>, envia un missatge privat";
 
 /* nothing */
-"NAMES, Lists the nicks on the current channel" = "NAMES, Llista els usuaris que hi ha al canal actual";
+"NAMES, Lists the nicks on the current channel" = "NAMES, llista els usuaris que hi ha al canal actual";
 
 /* nothing */
-"NCTCP <nick> <message>, Sends a CTCP notice" = "NCTCP <sobrenom> <missatge>, Envia un avís per CTCP";
+"NCTCP <nick> <message>, Sends a CTCP notice" = "NCTCP <sobrenom> <missatge>, envia un avís per CTCP";
 
 /* nothing */
-"NEWSERVER <hostname> [<port>]" = "NEWSERVER <nom_màquina> [<port>]";
+"NEWSERVER [-noconnect] <hostname> [<port>]" = "NEWSERVER [-noconnect] <nom_màquina> [<port>]";
 
 /* nothing */
 "NICK <nickname>, sets your nick" = "NICK <sobrenom>, canvia el vostre sobrenom";
 
 /* nothing */
-"NOTICE <nick/channel> <message>, sends a notice. Notices are a type of message that should be auto reacted to" = "NOTICE <sobrenom/canal> <missatge>, envia una avís. Els avisos són uns tipus de missatge que no haurien de generar respostes automàtiques";
+"NOTICE <nick/channel> <message>, sends a notice. Notices are a type of message that should be auto reacted to" = "NOTICE <sobrenom/canal> <missatge>, envia una avís. Els avisos són un tipus de missatge que no haurien de generar respostes automàtiques";
 
 /* nothing */
-"NOTIFY [<nick>], lists your notify list or adds someone to it" = "NOTIFY [<sobrenom>], mostra la llista de notificacions o hi afegeix algú";
+"NOTIFY [-n network1[,network2,...]] [<nick>], displays your notify list or adds someone to it" = "NOTIFY [-n xarxa1[,xarxa2,...]] [<sobrenom>], mostra la vostra llista de notificació o hi afegeix algú";
 
 /* nothing */
 "OP <nick>, gives chanop status to the nick (needs chanop)" = "OP <sobrenom>, dóna l'estatus d'operador del canal a l'usuari (necessiteu ser operador del canal)";
 
 /* nothing */
-"PART [<channel>] [<reason>], leaves the channel, by default the current one" = "PART [<canal>] [<motiu>], deixa el canal, per omissió l'actual";
+"PART [<channel>] [<reason>], leaves the channel, by default the current one" = "PART [<canal>] [<motiu>], deixa el canal, per defecte l'actual";
 
 /* nothing */
 "PING <nick | channel>, CTCP pings nick or channel" = "PING <sobrenom | canal>, envia un ping CTCP a l'usuari o canal indicat";
 
 /* nothing */
-"QUERY <nick>, opens up a new privmsg window to someone" = "QUERY <sobrenom>, obre una finestra nova de missatges privats per a algú";
+"QUERY [-nofocus] <nick>, opens up a new privmsg window to someone" = "QUERY [-nofocus] <sobrenom>, obre una finestra de xat privat amb algú";
 
 /* nothing */
 "QUIT [<reason>], disconnects from the current server" = "QUIT [<motiu>], finalitza la connexió amb el servidor actual";
@@ -248,16 +269,19 @@
 "QUOTE <text>, sends the text in raw form to the server" = "QUOTE <text>, envia el text «en cru» cap al servidor";
 
 /* nothing */
-"RECONNECT [-ssl] [<host>] [<port>] [<password>], Can be called just as /RECONNECT to reconnect to the current server or with /RECONNECT ALL to reconnect to all the open servers" = "RECONENCT [-ssl] [<sistema>] [<port>] [<contrasenya>], Pot invocar-se sols amb /RECONNECT per així reconnectar-se al servidor actual o amb /RECONNECT ALL per a reconnectar-se a tots els servidors oberts";
+"RECONNECT [-ssl] [<host>] [<port>] [<password>], Can be called just as /RECONNECT to reconnect to the current server or with /RECONNECT ALL to reconnect to all the open servers" = "RECONNECT [-ssl] [<màquina>] [<port>] [<contrasenya>], pot invocar-se sols amb /RECONNECT per així reconnectar-se al servidor actual o amb /RECONNECT ALL per a reconnectar-se a tots els servidors oberts";
 
 /* nothing */
-"RECONNECT [<host>] [<port>] [<password>], Can be called just as /RECONNECT to reconnect to the current server or with /RECONNECT ALL to reconnect to all the open servers" = "RECONENCT [<sistema>] [<port>] [<contrasenya>], Pot invocar-se sols amb /RECONNECT per així reconnectar-se al servidor actual o amb /RECONNECT ALL per a reconnectar-se a tots els servidors oberts";
+"RECONNECT [<host>] [<port>] [<password>], Can be called just as /RECONNECT to reconnect to the current server or with /RECONNECT ALL to reconnect to all the open servers" = "RECONNECT [<màquina>] [<port>] [<contrasenya>], pot invocar-se sols amb /RECONNECT per així reconnectar-se al servidor actual o amb /RECONNECT ALL per a reconnectar-se a tots els servidors oberts";
 
 /* nothing */
-"RECV <text>, send raw data to xchat, as if it was received from the irc server" = "RECV <text>, envia dades «en brut» a l'X-Chat, com si foren rebudes des del servidor IRC";
+"RECV <text>, send raw data to xchat, as if it was received from the irc server" = "RECV <text>, envia dades «en cru» a l'xchat, com si s'haguessin rebut des del servidor IRC";
 
 /* nothing */
-"SAY <text>, sends the text to the object in the current window" = "SAY <text>, envia el text a l'objecte a la finestra actual";
+"SAY <text>, sends the text to the object in the current window" = "SAY <text>, envia el text a l'objecte de la finestra actual";
+
+/* nothing */
+"SEND <nick> [<file>]" = "SEND <sobrenom> [<fitxer>]";
 
 /* nothing */
 "SERVCHAN [-ssl] <host> <port> <channel>, connects and joins a channel" = "SERVCHAN [-ssl] <màquina> <port> <canal>, connecta i entra en un canal";
@@ -266,19 +290,22 @@
 "SERVCHAN <host> <port> <channel>, connects and joins a channel" = "SERVCHAN <màquina> <port> <canal>, connecta i entra en un canal";
 
 /* nothing */
-"SERVER [-ssl] <host> [<port>] [<password>], connects to a server, the default port is 6667 for normal connections, and 9999 for ssl connections" = "SERVER [-ssl] <màquina> [<port>] [<contrasenya>], connecta amb un servidor, el port per omissió per a connexions normals és el 6667, i el 9999 per a connexions ssl";
+"SERVER [-ssl] <host> [<port>] [<password>], connects to a server, the default port is 6667 for normal connections, and 9999 for ssl connections" = "SERVER [-ssl] <màquina> [<port>] [<contrasenya>], connecta amb un servidor, el port per defecte per a connexions normals és el 6667, i el 9999 per a connexions ssl";
 
 /* nothing */
-"SERVER <host> [<port>] [<password>], connects to a server, the default port is 6667" = "SERVER <màquina> [<port>] [<contrasenya>], connecta amb un servidor, el port per omissió és el 6667";
+"SERVER <host> [<port>] [<password>], connects to a server, the default port is 6667" = "SERVER <màquina> [<port>] [<contrasenya>], connecta amb un servidor, el port per defecte és el 6667";
 
 /* nothing */
-"SET [-quiet] <variable> [<value>]" = "SET [-quiet] <variable> [<valor>]";
+"SET [-e] [-off|-on] [-quiet] <variable> [<value>]" = "SET [-e] [-or] [-quiet] <variable> [<valor>]";
 
 /* nothing */
 "SETCURSOR [-|+]<position>" = "SETCURSOR [-|+]<posició>";
 
 /* nothing */
 "TOPIC [<topic>], sets the topic if one is given, else shows the current topic" = "TOPIC [<tema>], estableix o mostra el tema del canal actual";
+
+/* nothing */
+"\nTRAY -f <timeout> <file1> [<file2>] Blink tray between two icons.\nTRAY -f <filename>                  Set tray to a fixed icon.\nTRAY -i <number>                    Blink tray with an internal icon.\nTRAY -t <text>                      Set the tray tooltip.\nTRAY -b <title> <text>              Set the tray balloon." = "\nTRAY -f <temps-d'espera> <fitxer1> [<fitxer2>] Parpelleja entre dues icones a la safata.\nTRAY -f <filename>                  Defineix una icona fixa a la safata.\nTRAY -i <number>                    Parpelleja a la safata amb una icona del sistema.\nTRAY -t <text>                      Defineix l'indicador de funció de la safata.\nTRAY -b <title> <text>              Defineix la bombolla de notificació de la safata.";
 
 /* nothing */
 "UNBAN <mask> [<mask>...], unbans the specified masks." = "UNBAN <màscara> [<màscara>...], readmet els usuaris indicats al canal.";
@@ -290,10 +317,13 @@
 "UNLOAD <name>, unloads a plugin or script" = "UNLOAD <fitxer>, desactiva un connector o script";
 
 /* nothing */
-"URL <url>, opens a URL in your browser" = "URL <url>, obre una URL en el navegador";
+"URL <url>, opens a URL in your browser" = "URL <url>, obre un URL en el navegador";
 
 /* nothing */
-"VOICE <nick>, gives voice status to someone (needs chanop)" = "VOICE <sobrenom>, dóna l'estatus de veu a algú (necessiteu ser operador del canal)";
+"USELECT [-a] [-s] <nick1> <nick2> etc, highlights nick(s) in channel userlist" = "USELECT [-a] [-s] <sobrenom1> <sobrenom2> etc, realça els sobrenoms a la llista d'usuaris del canal";
+
+/* nothing */
+"VOICE <nick>, gives voice status to someone (needs chanop)" = "VOICE <sobrenom>, dóna l'estatus de veu a algú (heu de ser operador del canal)";
 
 /* nothing */
 "WALLCHAN <message>, writes the message to all channels" = "WALLCHAN <missatge>, escriu un missatge a tots els canals";
@@ -314,7 +344,7 @@
 "Bad arguments for user command.\n" = "Els arguments per a l'ordre d'usuari no són vàlids.\n";
 
 /* nothing */
-"Too many recursive usercommands, aborting." = "Massa ordres d'usuari recursives, s'avorta.";
+"Too many recursive usercommands, aborting." = "Massa ordres d'usuari recursives, s'interromprà.";
 
 /* nothing */
 "Unknown Command. Try /help\n" = "Ordre desconeguda. Proveu /help\n";
@@ -332,28 +362,22 @@
 "Proxy traversal failed.\n" = "Ha fallat la connexió amb el servidor intermediari.\n";
 
 /* nothing */
-"Cycling to next server in %s...\n" = "Passant al següent servidor de %s...\n";
+"Cycling to next server in %s...\n" = "Es passarà al següent servidor de %s...\n";
 
 /* nothing */
-"Warning: \"%s\" character set is unknown. No conversion will be applied for network %s." = "Atenció: El joc de caràcters «%s» és desconegut. No es farà cap conversió per la xarxa %s.";
+"Warning: \"%s\" character set is unknown. No conversion will be applied for network %s." = "Atenció: es desconeix el joc de caràcters «%s». No es farà cap conversió per la xarxa %s.";
 
 /* nothing */
-"%C22*%O$t$1 added to notify list." = "%C22*%O$t$1 ha estat afegit a la llista de notificació.";
+"%C22*%O$t$1 added to notify list." = "%C22*%O$t$1 s'ha afegit a la llista de notificació.";
 
 /* nothing */
-"%C22*%O$t$1 Banlist:%C19 $4%C20 $2%C21 $3" = "%C22*%O$t$1 Llista de bandejats: %C19 $4%C20 $2%C21 $3";
+"%C22*%O$t$1 Banlist:%C19 $4%C20 $2%C21 $3" = "%C22*%O$t$1 Llista de bandejats:%C19 $4%C20 $2%C21 $3";
 
 /* nothing */
 "%C22*%O$tCannot join%C26 %B$1 %O(You are banned)." = "%C22*%O$tNo podeu entrar a%C26 %B$1 %O(heu estat bandejat).";
 
 /* nothing */
 "%C22*%O$t$1 is now known as $2" = "%C22*%O$t$1 ara és conegut com a $2";
-
-/* nothing */
-"%C18*$t$1%O $2" = "%C18*$t$1%O $2";
-
-/* nothing */
-"%C21*%O$t%C21%B$1%O%C21 $2" = "%C21*%O$t%C21%B$1%O%C21 $2";
 
 /* nothing */
 "%C22*%O$t$1 sets ban on $2" = "%C22*%O$t$1 ha bandejat $2";
@@ -380,10 +404,7 @@
 "%C22*%O$t$1 sets invite on $2" = "%C22*%O$t$1 dóna l'estatus de convidat a $2";
 
 /* nothing */
-"%UChannel          Users   Topic" = "%UCanal            Usuaris Tema";
-
-/* nothing */
-"%C18%B%B$4$1%O%C18%O$t$2" = "%C18%B%B$4$1%O%C18%O$t$2";
+"%UChannel          Users   Topic" = "%UCanal           Usuaris  Tema";
 
 /* nothing */
 "%C22*%O$t$1 sets mode $2$3 $4" = "%C22*%O$t$1 assigna el mode $2$3 a $4";
@@ -392,13 +413,7 @@
 "%C22*%O$t%C22Channel $1 modes: $2" = "%C22*%O$t%C22Canal $1 modes: $2";
 
 /* nothing */
-"$4%C21%B$1%O$t%C21$2" = "$4%C21%B$1%O$t%C21$2";
-
-/* nothing */
-"%C28-%C29$1/$2%C28-%O$t$3" = "%C28-%C29$1/$2%C28-%O$t$3";
-
-/* nothing */
-"%C22*%O$t%C26$1%O gives channel operator status to%C26 $2" = "%C22*%O$t%C26$1%O dóna l'estatus d'operador del canal%C26 a $2";
+"%C22*%O$t%C26$1%O gives channel operator status to%C26 $2" = "%C22*%O$t%C26$1%O dóna l'estatus d'operador del canal a%C26 $2";
 
 /* nothing */
 "%C22*%O$t$1 removes exempt on $2" = "%C22*%O$t$1 treu l'estatus d'exempt a $2";
@@ -416,7 +431,7 @@
 "%C22*%O$t$1 sets channel keyword to $2" = "%C22*%O$t$1 defineix la contrasenya del canal com a $2";
 
 /* nothing */
-"%C22*%O$t$1 sets channel limit to $2" = "%C22*%O$t$1 estableix el límit d'usuaris del canal en $2";
+"%C22*%O$t$1 sets channel limit to $2" = "%C22*%O$t$1 estableix el límit d'usuaris del canal a $2";
 
 /* nothing */
 "%C22*%O$t$1 removes ban on $2" = "%C22*%O$t$1 treu l'estatus de bandejat a $2";
@@ -428,7 +443,7 @@
 "%C22*%O$t%C22Connected. Now logging in..." = "%C22*%O$t%C22Connectat. S'està iniciant la sessió...";
 
 /* nothing */
-"%C22*%O$t%C22Connecting to $1 ($2) port $3%O..." = "%C22*%O$t%C22Connectant amb $1 ($2) al port $3%O...";
+"%C22*%O$t%C22Connecting to $1 ($2) port $3%O..." = "%C22*%O$t%C22S'està connectant a $1 ($2) al port $3%O...";
 
 /* nothing */
 "%C21*%O$t%C21Connection failed. Error: $1" = "%C21*%O$t%C21Ha fallat la connexió. Error: $1";
@@ -437,7 +452,7 @@
 "%C22*%O$tReceived a CTCP $1 from $2" = "%C22*%O$tS'ha rebut un CTCP $1 de $2";
 
 /* nothing */
-"%C22*%O$tReceived a CTCP $1 from $2 (to $3)" = "%C22*%O$tS'ha rebut una connexió CTCP $1 de $2 (per a $3)";
+"%C22*%O$tReceived a CTCP $1 from $2 (to $3)" = "%C22*%O$tS'ha rebut un so CTCP $1 de $2 (per a $3)";
 
 /* nothing */
 "%C19>%O$1%C19<%O$tCTCP $2" = "%C19>%O$1%C19<%O$tCTCP $2";
@@ -449,31 +464,31 @@
 "%C22*%O$tReceived a CTCP Sound $1 from $2 (to $3)" = "%C22*%O$tS'ha rebut un so CTCP $1 de $2 (per a $3)";
 
 /* nothing */
-"%C22*%O$tDCC CHAT to %C26$1%O aborted." = "%C22*%O$tXat DCC amb %C26$1%O avortat.";
+"%C22*%O$tDCC CHAT to %C26$1%O aborted." = "%C22*%O$tS'ha interromput el xat directe (DCC Chat) amb %C26$1%O.";
 
 /* nothing */
-"%C22*%O$tDCC CHAT connection established to %C26$1 %C30[%O$2%C30]" = "%C22*%O$tS'ha establert una connexió de xat DCC amb %C26$1 %C30[%O$2%C30]";
+"%C22*%O$tDCC CHAT connection established to %C26$1 %C30[%O$2%C30]" = "%C22*%O$tS'ha establert una connexió de xat directe (DCC Chat) amb %C26$1 %C30[%O$2%C30]";
 
 /* nothing */
-"%C22*%O$tDCC CHAT to %C26$1%O lost ($4)." = "%C22*%O$tS'ha interromput el xat directe (DCC Chat) amb %C26$1%O. ($4)";
+"%C22*%O$tDCC CHAT to %C26$1%O lost ($4)." = "%C22*%O$tS'ha interromput el xat directe (DCC Chat) amb %C26$1%O ($4).";
 
 /* nothing */
 "%C22*%O$tReceived a DCC CHAT offer from $1" = "%C22*%O$tS'ha rebut una oferta de xat directe (DCC CHAT) de $1";
 
 /* nothing */
-"%C22*%O$tOffering DCC CHAT to $1" = "%C22*%O$tS'ha ofert un xat directe (DCC CHAT) a $1";
+"%C22*%O$tOffering DCC CHAT to $1" = "%C22*%O$tS'està oferint un xat directe (DCC CHAT) a $1";
 
 /* nothing */
-"%C22*%O$tAlready offering CHAT to $1" = "%C22*%O$tJa s'ha ofert un xat directe (DCC CHAT) a $1";
+"%C22*%O$tAlready offering CHAT to $1" = "%C22*%O$tJa s'està oferint un xat directe (DCC CHAT) a $1";
 
 /* nothing */
-"%C22*%O$tDCC $1 connect attempt to%C26 $2%O failed (err=$3)." = "%C22*%O$tL'intent de connexió DCC $1 amb%C26 $2%O ha fallat (error=$3).";
+"%C22*%O$tDCC $1 connect attempt to%C26 $2%O failed (err=$3)." = "%C22*%O$tL'intent de connexió DCC $1 amb %C26 $2%O ha fallat (error=$3).";
 
 /* nothing */
 "%C22*%O$tReceived '$1%O' from $2" = "%C22*%O$tS'ha rebut un «$1%O» de $2";
 
 /* nothing */
-"%C24,18 Type  To/From    Status  Size    Pos     File         " = "%C24,18 Tipus Per a/De   Estat   Mida    Pos     Fitxer       ";
+"%C24,18 Type  To/From    Status  Size    Pos     File         " = "%C24,18 Tipus Per a/De   Estat   Mida    Pos     Fitxer         ";
 
 /* nothing */
 "%C22*%O$tReceived a malformed DCC request from %C26$1%O.%010%C22*%O$tContents of packet: $2" = "%C22*%O$tS'ha rebut una petició DCC mal formada de %C26$1%O.%010%C22*%O$tContingut del paquet: $2";
@@ -482,19 +497,19 @@
 "%C22*%O$tOffering%C26 $1%O to%C26 $2" = "%C22*%O$tS'està oferint%C26 $1%O a%C26 $2";
 
 /* nothing */
-"%C22*%O$tNo such DCC offer." = "%C22*%O$tNo existeix tal oferta DCC.";
+"%C22*%O$tNo such DCC offer." = "%C22*%O$tNo existeix tal oferiment de DCC.";
 
 /* nothing */
-"%C22*%O$tDCC RECV%C26 $2%O to%C26 $1%O aborted." = "%C22*%O$tS'ha avortat la recepció del fitxer %C26 $2%O a %C26 $1%O.";
+"%C22*%O$tDCC RECV%C26 $2%O to%C26 $1%O aborted." = "%C22*%O$tS'ha interromput la recepció del fitxer %C26 $2%O a%C26 $1%O.";
 
 /* nothing */
-"%C22*%O$tDCC RECV%C26 $1%O from%C26 $3%O complete %C30[%C26$4%O cps%C30]%O." = "%C22*%O$tS'ha completat la recepció del fitxer%C26 $1%O de%C26 $3%O %C30[%C26$4%O cps%C30]%O.";
+"%C22*%O$tDCC RECV%C26 $1%O from%C26 $3%O complete %C30[%C26$4%O cps%C30]%O." = "%C22*%O$tDCC S'ha completat la recepció del fitxer %C26 $1%O de %C26 $3%O %C30[%C26$4%O cps%C30]%O.";
 
 /* nothing */
-"%C22*%O$tDCC RECV connection established to%C26 $1 %C30[%O$2%C30]" = "%C22*%O$tConnexió DCC RECV establerta amb%C26 $1 %C30[%O$2%C30]";
+"%C22*%O$tDCC RECV connection established to%C26 $1 %C30[%O$2%C30]" = "-%C10-%C11-%O$tConnexió DCC RECV establerta amb %C11$1 %C14[%O$2%C14]%O";
 
 /* nothing */
-"%C22*%O$tDCC RECV%C26 $1%O from%C26 $3%O failed ($4)." = "%C22*%O$tLa recepció del fitxer%C26 $1%O de%C26 $3%O ha fallat ($4).";
+"%C22*%O$tDCC RECV%C26 $1%O from%C26 $3%O failed ($4)." = "%C22*%O$tLa recepció del fitxer%C26 $1%O de%C26 $3%O ha fallat. $4.";
 
 /* nothing */
 "%C22*%O$tDCC RECV: Cannot open $1 for writing ($2)." = "%C22*%O$tRecepció DCC: No s'ha pogut obrir $1 amb permís d'escriptura ($2).";
@@ -503,40 +518,37 @@
 "%C22*%O$tThe file%C26 $1%C already exists, saving it as%C26 $2%O instead." = "%C22*%O$tEl fitxer%C26 $1%C ja existeix, es desarà com a%C26 $2%O.";
 
 /* nothing */
-"%C22*%O$t%C26$1 %Ohas requested to resume%C26 $2 %Cfrom%C26 $3%C." = "%C22*%O$t%C26$1 %Oha demanat reprendre la recepció de%C26 $2 %Cdes de %C26 $3%C.";
+"%C22*%O$t%C26$1 %Ohas requested to resume%C26 $2 %Cfrom%C26 $3%C." = "%C22*%O$t%C26$1 %Oha demanat reprendre la recepció de%C26 $2 %Cdes de%C26 $3%C.";
 
 /* nothing */
-"%C22*%O$tDCC SEND%C26 $2%O to%C26 $1%O aborted." = "%C22*%O$tL'enviament DCC%C26 $2%O a%C26 $1%O ha estat avortat.";
+"%C22*%O$tDCC SEND%C26 $2%O to%C26 $1%O aborted." = "%C22*%O$tL'enviament DCC de%C26 $2%O a%C26 $1%O s'ha interromput.";
 
 /* nothing */
-"%C22*%O$tDCC SEND%C26 $1%O to%C26 $2%O complete %C30[%C26$3%O cps%C30]%O." = "%C22*%O$tL'enviament DCC%C26 $1%O a%C26 $2%O s'ha completat %C30[%C26$3%O cps%C30]%O.";
+"%C22*%O$tDCC SEND%C26 $1%O to%C26 $2%O complete %C30[%C26$3%O cps%C30]%O." = "%C22*%O$tL'enviament DCC %C26 $1%O a%C26 $2%O  s'ha completat %C30[%C26$3%O cps%C30]%O.";
 
 /* nothing */
 "%C22*%O$tDCC SEND connection established to%C26 $1 %C30[%O$2%C30]" = "%C22*%O$tS'ha establert una connexió DCC SEND amb%C26 $1 %C30[%O$2%C30]";
 
 /* nothing */
-"%C22*%O$tDCC SEND%C26 $1%O to%C26 $2%O failed. $3" = "%C22*%O$tL'enviament DCC%C26 $1%O a%C26 $2%O ha fallat. $3";
+"%C22*%O$tDCC SEND%C26 $1%O to%C26 $2%O failed. $3" = "%C22*%O$tL'enviament DCC de%C26 $1%O to%C26 $2%O ha fallat. $3";
 
 /* nothing */
-"%C22*%O$t%C26$1 %Ohas offered%C26 $2 %O(%C26$3 %Obytes)" = "%C22*%O$t%C26$1 %Ous ha ofert el fitxer%C26 $2 %O(%C26$3 %Coctets)";
+"%C22*%O$t%C26$1 %Ohas offered%C26 $2 %O(%C26$3 %Obytes)" = "%C22*%O$t%C26$1 %Ous ha ofert el fitxer%C26 $2 %O(%C26$3 %Obytes)";
 
 /* nothing */
-"%C22*%O$tDCC $1%C26 $2 %Oto%C26 $3 %Cstalled - aborting." = "%C22*%O$tDCC $1%C26 $2 %Oto%C26 $3 %Cencallat - avortant.";
+"%C22*%O$tDCC $1%C26 $2 %Oto%C26 $3 %Cstalled - aborting." = "%C22*%O$tL'enviament DCC $1%C26 $2 %Oa%C26 $3 %Cs'ha encallat- s'interromprà.";
 
 /* nothing */
-"%C22*%O$tDCC $1%C26 $2 %Oto%C26 $3 %Otimed out - aborting." = "%C22*%O$tDCC $1%C26 $2 %Oto%C26 $3 %Oha excedit el temps d'espera - avortant.";
+"%C22*%O$tDCC $1%C26 $2 %Oto%C26 $3 %Otimed out - aborting." = "-%C22*%O$tDCC $1%C26 $2 %Oto%C26 $3 %Oha excedit el temps d'espera - s'interromprà.";
 
 /* nothing */
-"%C22*%O$t$1 deleted from notify list." = "%C22*%O$t$1 ha estat eliminat de la llista de notificació.";
+"%C22*%O$t$1 deleted from notify list." = "%C22*%O$t$1 s'ha suprimit de la llista de notificació.";
 
 /* nothing */
 "%C22*%O$tDisconnected ($1)." = "%C22*%O$tDesconnectat ($1).";
 
 /* nothing */
 "%C22*%O$tFound your IP: [$1]" = "%C22*%O$tS'ha trobat la vostra IP: [$1]";
-
-/* nothing */
-"$1$t$2" = "$1$t$2";
 
 /* nothing */
 "%O%C26$1%O added to ignore list." = "%O%C26$1%O s'ha afegit a la llista d'usuaris ignorats.";
@@ -551,43 +563,37 @@
 "%C24,18 Hostmask                  PRIV NOTI CHAN CTCP DCC  INVI UNIG " = "%C24,18 Màquina                   PRIV NOTI CAN  CTCP DCC  CONV NOIG ";
 
 /* nothing */
-"%O%C26$1%O removed from ignore list." = "%O%C26$1%O ha estat eliminat de la llista d'usuaris ignorats.";
+"%O%C26$1%O removed from ignore list." = "%O%C26$1%O s'ha suprimit de la llista d'usuaris ignorats.";
 
 /* nothing */
 "  Ignore list is empty." = "  La llista d'usuaris ignorats és buida.";
 
 /* nothing */
-"%C22*%O$tCannot join%C26 %B$1 %O(Channel is invite only)." = "%C22*%O$tNo podeu entrar a%C26 %B$1 %O(És un canal només per a convidats).";
+"%C22*%O$tCannot join%C26 %B$1 %O(Channel is invite only)." = "%C22*%O$tNo podeu entrar a%C26 %B$1 %O(és un canal només per a convidats).";
 
 /* nothing */
-"%C22*%O$tYou have been invited to%C26 $1%O by%C26 $2%C (%C26$3%C)" = "%C22*%O$tHeu estat convidat a%C26 $1%O per %C26 $2%C (%C26$3%C)";
+"%C22*%O$tYou have been invited to%C26 $1%O by%C26 $2%C (%C26$3%C)" = "%C22*%O$t%C26 $2%C us ha convidat a%C26 $1%O (%C26$3%C)";
 
 /* nothing */
 "%C19*%O$t%C19%B$1 %B($3) has joined $2" = "%C19*%O$t%C19%B$1 %B($3) ha entrat a $2";
 
 /* nothing */
-"%C22*%O$tCannot join%C26 %B$1 %O(Requires keyword)." = "%C22*%O$tNo podeu entrar a%C26 %B$1 %O(Necessiteu una contrasenya).";
+"%C22*%O$tCannot join%C26 %B$1 %O(Requires keyword)." = "%C22*%O$tNo podeu entrar a%C26 %B$1 %O(cal una contrasenya).";
 
 /* nothing */
 "%C21*%O$t%C21$1 has kicked $2 from $3 ($4%O%C21)" = "%C21*%O$t%C21$1 ha fet fora a $2 de $3 ($4%O%C21)";
 
 /* nothing */
-"%C22*%O$tYou have been killed by $1 ($2%O%C22)" = "%C22*%O$tUs ha matat $1 ($2%O%C22)";
-
-/* nothing */
-"%C19>%O$1%C19<%O$t$2%O" = "%C19>%O$1%C19<%O$t$2%O";
-
-/* nothing */
-"%C16*%O$t$1%O" = "%C16*%O$t$1%O";
+"%C22*%O$tYou have been killed by $1 ($2%O%C22)" = "%C22*%O$tHeu estat terminat per $1 ($2%O%C22))";
 
 /* nothing */
 "%C22*%O$t%C22MOTD Skipped." = "%C22*%O$t%C22S'ha omès el missatge del dia.";
 
 /* nothing */
-"%C22*%O$t$1 already in use. Retrying with $2..." = "%C22*%O$t$1 ja està agafat. S'està reintentant amb $2...";
+"%C22*%O$t$1 already in use. Retrying with $2..." = "%C22*%O$t$1 ja s'està utilitzant. S'està reintentant amb $2...";
 
 /* nothing */
-"%C22*%O$tNickname already in use. Use /NICK to try another." = "%C22*%O$tEl sobrenom ja està agafat. Useu l'ordre /NICK per a provar-ho amb un altre.";
+"%C22*%O$tNickname already in use. Use /NICK to try another." = "%C22*%O$tEl sobrenom ja s'està utilitzant. Feu servir l'ordre /NICK per a provar-ho amb un altre.";
 
 /* nothing */
 "%C22*%O$tNo such DCC." = "%C22*%O$tNo existeix tal connexió DCC.";
@@ -596,13 +602,7 @@
 "%C22*%O$tNo process is currently running" = "%C22*%O$tNo hi ha cap procés executant-se en aquests moments";
 
 /* nothing */
-"%C28-%C29$1%C28-%O$t$2" = "%C28-%C29$1%C28-%O$t$2";
-
-/* nothing */
-"%C19>%O$1%C19<%O$t$2" = "%C19>%O$1%C19<%O$t$2";
-
-/* nothing */
-"$tNotify list is empty." = "$tLa llista de notificació està buida.";
+"$tNotify list is empty." = "$tLa llista de notificació és buida.";
 
 /* nothing */
 "%C24,18 %B  Notify List                           " = "%C24,18 %B  Llista de notificació                           ";
@@ -611,37 +611,31 @@
 "%C22*%O$t$1 users in notify list." = "%C22*%O$t$1 usuari(s) a la llista de notificació.";
 
 /* nothing */
-"%C22*%O$tNotify: $1 is offline ($2)." = "%C22*%O$tNotificació: $1 no està connectat ($2).";
+"%C22*%O$tNotify: $1 is offline ($3)." = "%C22*%O$tNotificació: $1 no està connectat ($2).";
 
 /* nothing */
-"%C22*%O$tNotify: $1 is online ($2)." = "%C22*%O$tNotificació: $1 està en línia ($2).";
+"%C22*%O$tNotify: $1 is online ($3)." = "%C22*%O$tNotificació: $1 està en línia ($2).";
 
 /* nothing */
-"%C23*%O$t%C23$1 (%O%C23$2) has left $3" = "%C23*%O$t%C23$1 (%O%C23$2) ha deixat $3";
+"%C23*%O$t%C23$1 (%O%C23$2) has left $3" = "%C23*%O$t%C23$1 (%O%C23$2) ha sortit de $3";
 
 /* nothing */
-"%C23*%O$t%C23$1 (%O%C23$2) has left $3 (%O%C23$4)" = "%C23*%O$t%C23$1 (%O%C23$2) ha deixat $3 (%O%C23$4)";
+"%C23*%O$t%C23$1 (%O%C23$2) has left $3 (%O%C23%B%B$4%O%C23)" = "%C23*%O$t%C23$1 (%O%C23$2) ha sortit de $3 (%O%C23%B%B$4%O%C23)";
 
 /* nothing */
-"%C22*%O$tPing reply from $1: $2 second(s)" = "%C22*%O$tResposta al ping des de $1: $2 segon(s)";
+"%C22*%O$tPing reply from $1: $2 second(s)" = "%C22*%O$tResposta al ping des de $1 : $2 segon(s)";
 
 /* nothing */
-"%C22*%O$tNo ping reply for $1 seconds, disconnecting." = "%C22*%O$tPing sense resposta després de $1 seconds, desconnectant.";
-
-/* nothing */
-"%C28*%C29$3$1%C28*$t%O$2" = "%C28*%C29$3$1%C28*$t%O$2";
-
-/* nothing */
-"%C18%B%B$3$1%O$t$2" = "%C18%B%B$3$1%O$t$2";
+"%C22*%O$tNo ping reply for $1 seconds, disconnecting." = "%C22*%O$tPing sense resposta després de $1 segons, es desconnectarà.";
 
 /* nothing */
 "%C22*%O$tA process is already running" = "%C22*%O$tJa hi ha un procés en execució";
 
 /* nothing */
-"%C23*%O$t%C23$1 has quit (%O%C23$2)" = "%C23*%O$t%C23$1 s'ha desconectat (%O%C23$2)";
+"%C23*%O$t%C23$1 has quit (%O%C23%B%B$2%O%C23)" = "%C23*%O$t%C23$1 ha sortit %O%C23%B%B$2%O%C23";
 
 /* nothing */
-"%C22*%O$t$1 sets modes%B %C30[%O$2%B%C30]" = "%C22*%O$t$1 estableix els modes%B %C30[%O$2%B%C30]";
+"%C22*%O$t$1 sets modes%B %C30[%O$2%B%C30]" = "%C22*%O$t$1 estableix els modes%C30[%O$2%B%C30]";
 
 /* nothing */
 "%C28-%C29$1/Wallops%C28-%O$t$2" = "%C28-%C29$1/Missatge als operadors%C28-%O$t$2";
@@ -651,9 +645,6 @@
 
 /* nothing */
 "%C22*%O$t%C22Connected." = "%C22*%O$t%C22Connectat.";
-
-/* nothing */
-"%C22*%O$t$1" = "%C22*%O$t$1";
 
 /* nothing */
 "%C22*%O$t%C22Looking up $1" = "%C22*%O$t%C22S'està resolent $1";
@@ -695,16 +686,16 @@
 "%C22*%O$t%C28[%O$1%C28]%O idle%C26 $2" = "%C22*%O$t%C28[%O$1%C28]%O inactiu%C26 $2";
 
 /* nothing */
-"%C22*%O$t%C28[%O$1%C28]%O idle%C26 $2%O, signon:%C26 $3" = "%C22*%O$t%C28[%O$1%C28]%O idle%C26 $2%O, entrada:%C26 $3";
+"%C22*%O$t%C28[%O$1%C28]%O idle%C26 $2%O, signon:%C26 $3" = "%C22*%O$t%C28[%O$1%C28]%O inactiu%C26 $2%O, entrada:%C26 $3";
 
 /* nothing */
 "%C22*%O$t%C28[%O$1%C28] %C30(%O$2@$3%C30)%O: $4" = "%C22*%O$t%C28[%O$1%C28] %C30(%O$2@$3%C30)%O: $4";
 
 /* nothing */
-"%C22*%O$t%C28[%O$1%C28] %Oreal user@host%C27 $2%O, real IP%C27 $3" = "%C22*%O$t%C28[%O$1%C28] %Ousuari@màquina real%C27 $2%O, IP real IP%C27 $3";
+"%C22*%O$t%C28[%O$1%C28] %Oreal user@host%C27 $2%O, real IP%C27 $3" = "%C22*%O$t%C28[%O$1%C28] %Ousuari@màquina real%C27 $2%O, IP real%C27 $3";
 
 /* nothing */
-"%C19*%O$t%C19Now talking on $2" = "%C19*%O$t%C19Ara esteu parlant a $2";
+"%C19*%O$t%C19Now talking on $2" = "%C19*%O$t%C19Ara esteu conversant a $2";
 
 /* nothing */
 "%C23*$tYou have been kicked from $2 by $3 ($4%O%C23)" = "%C23*$tHeu estat expulsat de $2 per $3 ($4%O%C23)";
@@ -713,25 +704,25 @@
 "%C23*$tYou have left channel $3" = "%C23*$tHeu deixat el canal $3";
 
 /* nothing */
-"%C23*$tYou have left channel $3 (%O%C23$4%O%C23)" = "%C23*$tHeu deixat el canal $3 (%O%C23$4%O%C23)";
+"%C23*$tYou have left channel $3 (%O%C23%B%B$4%O%C23)" = "%C23*$tHeu deixat el canal $3 (%O%C23%B%B$4%O%C23)";
 
 /* nothing */
 "%C22*%O$tYou've invited%C26 $1%O to%C26 $2%O (%C26$3%O)" = "%C22*%O$tHeu convidat%C26 $1%O a%C26 $2%O (%C26$3%O)";
 
 /* nothing */
-"%C31%B%B$4$1%O%C30$t$2" = "%C31%B%B$4$1%O%C30$t$2";
+"%C22*%O$tYou are now known as $2" = "%C22*%O$tAra sou conegut com a $2";
 
 /* nothing */
-"%C22*%O$tYou are now known as $2" = "%C22*%O$tAra sou conegut com a $2";
+"Loaded log from" = "S'ha carregat el registre de";
 
 /* nothing */
 "**** ENDING LOGGING AT %s\n" = "**** FINAL DEL REGISTRE A %s\n";
 
 /* nothing */
-"**** BEGIN LOGGING AT %s\n" = "**** INICI EL REGISTRE A %s\n";
+"**** BEGIN LOGGING AT %s\n" = "**** INICI DEL REGISTRE A %s\n";
 
 /* nothing */
-"* Can't open log file(s) for writing. Check the\n  permissions on %s/xchatlogs" = "* No s'ha(n) pogut obrir el(s) fitxer(s) de registre amb permís\n  d'escriptura. Reviseu els permisos de %s/xchatlogs";
+"* Can't open log file(s) for writing. Check the\n  permissions on %s/xchatlogs" = "* No es pot escriure en els fitxers de registre.\n  Reviseu els permisos de %s/xchatlogs";
 
 /* nothing */
 "Left message" = "Missatge de l'esquerra";
@@ -740,7 +731,7 @@
 "Right message" = "Missatge de la dreta";
 
 /* nothing */
-"The nick of the joining person" = "Sobrenom de la persona que entra";
+"The nick of the joining person" = "El sobrenom de la persona que entra";
 
 /* nothing */
 "The channel being joined" = "Canal al qual s'entra";
@@ -752,19 +743,19 @@
 "Nickname" = "Sobrenom";
 
 /* nothing */
-"The action" = "Acció";
-
-/* nothing */
-"The text" = "Text";
+"The action" = "L'acció";
 
 /* nothing */
 "Mode char" = "Caràcter de mode";
 
 /* nothing */
-"Identified text" = "Text identificat";
+"Identified text" = "El text identificat";
 
 /* nothing */
-"The message" = "Missatge";
+"The text" = "El text";
+
+/* nothing */
+"The message" = "El missatge";
 
 /* nothing */
 "Old nickname" = "Sobrenom antic";
@@ -773,7 +764,7 @@
 "New nickname" = "Sobrenom nou";
 
 /* nothing */
-"Nick of person who changed the topic" = "Sobrenom de la persona que ha canviat el tema";
+"Nick of person who changed the topic" = "El sobrenom de la persona que ha canviat el tema";
 
 /* nothing */
 "Topic" = "Tema";
@@ -782,25 +773,25 @@
 "Channel" = "Canal";
 
 /* nothing */
-"The nickname of the kicker" = "Sobrenom de qui l'ha fet fora";
+"The nickname of the kicker" = "El sobrenom de qui l'ha fet fora";
 
 /* nothing */
 "The person being kicked" = "Persona expulsada";
 
 /* nothing */
-"The channel" = "Canal";
+"The channel" = "El canal";
 
 /* nothing */
-"The reason" = "Motiu";
+"The reason" = "El motiu";
 
 /* nothing */
-"The nick of the person leaving" = "Sobrenom de la persona que surt";
+"The nick of the person leaving" = "El sobrenom de la persona que surt";
 
 /* nothing */
-"The time" = "Hora";
+"The time" = "L'hora";
 
 /* nothing */
-"The creator" = "Creador";
+"The creator" = "El creador";
 
 /* nothing */
 "Nick" = "Sobrenom";
@@ -815,22 +806,22 @@
 "Who it's from" = "De qui prové";
 
 /* nothing */
-"The time in x.x format (see below)" = "Hora en format x.x (vegeu més avall)";
+"The time in x.x format (see below)" = "L'hora en format x.x (vegeu més avall)";
 
 /* nothing */
-"The Channel it's going to" = "Canal de destinació";
+"The Channel it's going to" = "El canal de destinació";
 
 /* nothing */
-"The sound" = "So";
+"The sound" = "El so";
 
 /* nothing */
-"The nick of the person" = "Sobrenom de la persona";
+"The nick of the person" = "El sobrenom de la persona";
 
 /* nothing */
-"The CTCP event" = "Esdeveniment CTCP";
+"The CTCP event" = "L'esdeveniment CTCP";
 
 /* nothing */
-"The nick of the person who set the key" = "Sobrenom de la persona que estableix la contrasenya";
+"The nick of the person who set the key" = "El sobrenom de la persona que estableix la contrasenya";
 
 /* nothing */
 "The key" = "La contrasenya";
@@ -839,79 +830,79 @@
 "The nick of the person who set the limit" = "El sobrenom de la persona que estableix el límit";
 
 /* nothing */
-"The limit" = "Límit";
+"The limit" = "El límit";
 
 /* nothing */
-"The nick of the person who did the op'ing" = "Sobrenom de la persona que dóna l'estatus d'operador";
+"The nick of the person who did the op'ing" = "El sobrenom de la persona que dóna l'estatus d'operador";
 
 /* nothing */
-"The nick of the person who has been op'ed" = "Sobrenom de la persona a qui s'ha fet operador";
+"The nick of the person who has been op'ed" = "El sobrenom de la persona a qui s'ha fet operador";
 
 /* nothing */
-"The nick of the person who has been halfop'ed" = "Sobrenom de la persona a qui s'ha fet semi-operador";
+"The nick of the person who has been halfop'ed" = "El sobrenom de la persona a qui s'ha fet semi-operador";
 
 /* nothing */
-"The nick of the person who did the halfop'ing" = "Sobrenom de la persona que dóna l'estatus de semi-operador";
+"The nick of the person who did the halfop'ing" = "El sobrenom de la persona que dóna l'estatus de semi-operador";
 
 /* nothing */
-"The nick of the person who did the voice'ing" = "Sobrenom de la persona que dóna l'estatus de veu";
+"The nick of the person who did the voice'ing" = "El sobrenom de la persona que dóna l'estatus de veu";
 
 /* nothing */
-"The nick of the person who has been voice'ed" = "Sobrenom de la persona a qui s'ha donat veu";
+"The nick of the person who has been voice'ed" = "El sobrenom de la persona a qui s'ha donat veu";
 
 /* nothing */
-"The nick of the person who did the banning" = "Sobrenom de la persona que dóna l'estatus de bandejat";
+"The nick of the person who did the banning" = "El sobrenom de la persona que dóna l'estatus de bandejat";
 
 /* nothing */
 "The ban mask" = "Màscara d'usuaris bandejats";
 
 /* nothing */
-"The nick who removed the key" = "Sobrenom de qui ha eliminat la contrasenya";
+"The nick who removed the key" = "El sobrenom de qui ha eliminat la contrasenya";
 
 /* nothing */
-"The nick who removed the limit" = "Sobrenom de qui ha eliminat el límit";
+"The nick who removed the limit" = "El sobrenom de qui ha eliminat el límit";
 
 /* nothing */
-"The nick of the person of did the deop'ing" = "Sobrenom de la persona que ha tret l'estatus d'operador";
+"The nick of the person of did the deop'ing" = "El sobrenom de la persona que ha tret l'estatus d'operador";
 
 /* nothing */
-"The nick of the person who has been deop'ed" = "Sobrenom de la persona a qui s'ha tret l'estatus d'operador";
+"The nick of the person who has been deop'ed" = "El sobrenom de la persona a qui s'ha tret l'estatus d'operador";
 
 /* nothing */
-"The nick of the person of did the dehalfop'ing" = "Sobrenom de la persona que ha tret l'estatus de semi-operador";
+"The nick of the person of did the dehalfop'ing" = "El sobrenom de la persona que ha tret l'estatus de semi-operador";
 
 /* nothing */
-"The nick of the person who has been dehalfop'ed" = "Sobrenom de la persona a qui s'ha tret l'estatus de semi-operador";
+"The nick of the person who has been dehalfop'ed" = "El sobrenom de la persona a qui s'ha tret l'estatus de semi-operador";
 
 /* nothing */
-"The nick of the person of did the devoice'ing" = "Sobrenom de la persona que ha tret l'estatus de veu";
+"The nick of the person of did the devoice'ing" = "El sobrenom de la persona que ha tret l'estatus de veu";
 
 /* nothing */
-"The nick of the person who has been devoice'ed" = "Sobrenom de la persona a qui s'ha tret l'estatus de veu";
+"The nick of the person who has been devoice'ed" = "El sobrenom de la persona a qui s'ha tret l'estatus de veu";
 
 /* nothing */
-"The nick of the person of did the unban'ing" = "Sobrenom de la persona que ha tret l'estatus de bandejat";
+"The nick of the person of did the unban'ing" = "El sobrenom de la persona que ha tret l'estatus de bandejat";
 
 /* nothing */
-"The nick of the person who did the exempt" = "Sobrenom de la persona que dóna l'estatus d'exempt";
+"The nick of the person who did the exempt" = "El sobrenom de la persona que dóna l'estatus d'exempt";
 
 /* nothing */
-"The exempt mask" = "Màscara d'usuaris als quals es dóna l'estatus d'exempt";
+"The exempt mask" = "La màscara d'usuaris als quals es dóna l'estatus d'exempt";
 
 /* nothing */
-"The nick of the person removed the exempt" = "Sobrenom de la persona a qui s'ha eliminat la exempció";
+"The nick of the person removed the exempt" = "El sobrenom de la persona a qui s'ha eliminat la exempció";
 
 /* nothing */
-"The nick of the person who did the invite" = "Sobrenom de la persona que dóna l'estatus de convidat";
+"The nick of the person who did the invite" = "El sobrenom de la persona que dóna l'estatus de convidat";
 
 /* nothing */
 "The invite mask" = "Màscara de convidats";
 
 /* nothing */
-"The nick of the person removed the invite" = "Sobrenom de la persona que ha tret l'estatus de convidat";
+"The nick of the person removed the invite" = "El sobrenom de la persona que ha tret l'estatus de convidat";
 
 /* nothing */
-"The nick of the person setting the mode" = "Sobrenom de la persona que estableix el mode";
+"The nick of the person setting the mode" = "El sobrenom de la persona que estableix el mode";
 
 /* nothing */
 "The mode's sign (+/-)" = "Senyal del mode (+/-)";
@@ -965,6 +956,9 @@
 "Server Name" = "Nom del servidor";
 
 /* nothing */
+"Raw Numeric or Identifier" = "";
+
+/* nothing */
 "Nick of person who invited you" = "Sobrenom de la persona que us ha convidat";
 
 /* nothing */
@@ -974,10 +968,7 @@
 "Nickname in use" = "Sobrenom en ús";
 
 /* nothing */
-"Nick being tried" = "Provant el sobrenom escollit";
-
-/* nothing */
-"Error" = "Error";
+"Nick being tried" = "Sobrenom que s'està provant";
 
 /* nothing */
 "IP" = "IP";
@@ -986,10 +977,7 @@
 "Port" = "Port";
 
 /* nothing */
-"PID" = "PID";
-
-/* nothing */
-"Channel name" = "Nom del canal";
+"Network" = "Xarxa";
 
 /* nothing */
 "Modes string" = "Cadena de modes";
@@ -1023,9 +1011,6 @@
 
 /* nothing */
 "Number of notify items" = "Nombre d'elements notificats";
-
-/* nothing */
-"Servername" = "Nom del servidor";
 
 /* nothing */
 "Old Filename" = "Nom del fitxer antic";
@@ -1070,7 +1055,7 @@
 "Remote host closed socket" = "La màquina remota ha tancat la connexió";
 
 /* nothing */
-"Connection refused" = "Connexió refusada";
+"Connection refused" = "S'ha refusat la connexió";
 
 /* nothing */
 "No route to host" = "No hi ha cap ruta cap a la màquina";
@@ -1083,6 +1068,9 @@
 
 /* nothing */
 "Connection reset by peer" = "Connexió reiniciada des de l'altre costat";
+
+/* nothing */
+"Ascension Island" = "Illa Ascensió";
 
 /* nothing */
 "Andorra" = "Andorra";
@@ -1134,6 +1122,9 @@
 
 /* nothing */
 "Aruba" = "Aruba";
+
+/* nothing */
+"Aland Islands" = "Illes Aland";
 
 /* nothing */
 "Azerbaijan" = "Azerbaitjan";
@@ -1301,6 +1292,9 @@
 "Ethiopia" = "Etiòpia";
 
 /* nothing */
+"European Union" = "Unió Europea";
+
+/* nothing */
 "Finland" = "Finlàndia";
 
 /* nothing */
@@ -1313,13 +1307,10 @@
 "Micronesia" = "Micronèsia";
 
 /* nothing */
-"Faroe Islands" = "Illes Faroe";
+"Faroe Islands" = "Illes Fèroe";
 
 /* nothing */
 "France" = "França";
-
-/* nothing */
-"France, Metropolitan" = "França, Metropolitana";
 
 /* nothing */
 "Gabon" = "Gabon";
@@ -1409,6 +1400,9 @@
 "Israel" = "Israel";
 
 /* nothing */
+"Isle of Man" = "Illa de Man";
+
+/* nothing */
 "India" = "Índia";
 
 /* nothing */
@@ -1431,6 +1425,9 @@
 
 /* nothing */
 "Italy" = "Itàlia";
+
+/* nothing */
+"Jersey" = "Jersey";
 
 /* nothing */
 "Jamaica" = "Jamaica";
@@ -1610,9 +1607,6 @@
 "Nauru" = "Nauru";
 
 /* nothing */
-"Neutral Zone" = "Zona neutral";
-
-/* nothing */
 "Niue" = "Niue";
 
 /* nothing */
@@ -1622,7 +1616,7 @@
 "Oman" = "Oman";
 
 /* nothing */
-"Internic Non-Profit Organization" = "Organització Internic sense ànim de lucre";
+"Internic Non-Profit Organization" = "Organització sense ànim de lucre Internic";
 
 /* nothing */
 "Panama" = "Panamà";
@@ -1670,7 +1664,7 @@
 "Qatar" = "Qatar";
 
 /* nothing */
-"Reunion" = "Reunion";
+"Reunion" = "Illa de la Reunió";
 
 /* nothing */
 "Romania" = "Romania";
@@ -1766,6 +1760,9 @@
 "Tokelau" = "Tokelau";
 
 /* nothing */
+"East Timor" = "Timor Oriental";
+
+/* nothing */
 "Turkmenistan" = "Turkmenistan";
 
 /* nothing */
@@ -1773,9 +1770,6 @@
 
 /* nothing */
 "Tonga" = "Tonga";
-
-/* nothing */
-"East Timor" = "Timor Oriental";
 
 /* nothing */
 "Turkey" = "Turquia";
@@ -1800,9 +1794,6 @@
 
 /* nothing */
 "United Kingdom" = "Regne Unit";
-
-/* nothing */
-"US Minor Outlying Islands" = "Illes Perifèriques Menors dels EUA";
 
 /* nothing */
 "United States of America" = "Estats Units d'Amèrica";
@@ -1862,43 +1853,19 @@
 "Unknown" = "Desconegut";
 
 /* nothing */
-"Direct client-to-client" = "Directe Client-a-Client";
+"_Open Dialog Window" = "_Obre una finestra de diàleg";
 
 /* nothing */
-"Send File" = "Envia un fitxer";
+"_Send a File" = "_Envia un fitxer";
 
 /* nothing */
-"Offer Chat" = "Ofereix un xat";
+"_User Info (WhoIs)" = "Informació de l'_usuari (WHOIS)";
 
 /* nothing */
-"Abort Chat" = "Avorta el xat";
+"_Add to Friends List" = "_Afegeix a la llista d'amics";
 
 /* nothing */
-"Version" = "Versió";
-
-/* nothing */
-"Userinfo" = "Informació de l'usuari";
-
-/* nothing */
-"Clientinfo" = "Informació del client";
-
-/* nothing */
-"Ping" = "Ping";
-
-/* nothing */
-"Time" = "Hora";
-
-/* nothing */
-"Finger" = "Finger";
-
-/* nothing */
-"Oper" = "Operador";
-
-/* nothing */
-"Kill this user" = "Mata aquest usuari";
-
-/* nothing */
-"Mode" = "Mode";
+"O_perator Actions" = "Opcions de l'o_perador";
 
 /* nothing */
 "Give Ops" = "Dóna l'estatus d'operador";
@@ -1907,25 +1874,10 @@
 "Take Ops" = "Treu l'estatus d'operador";
 
 /* nothing */
-"Give Half-Ops" = "Dóna l'estatus de semi-operador";
-
-/* nothing */
-"Take Half-Ops" = "Treu l'estatus de semi-operador";
-
-/* nothing */
 "Give Voice" = "Dóna l'estatus de veu";
 
 /* nothing */
 "Take Voice" = "Treu l'estatus de veu";
-
-/* nothing */
-"Ignore" = "Ignora";
-
-/* nothing */
-"Ignore User" = "Ignora l'usuari";
-
-/* nothing */
-"UnIgnore User" = "Deixa d'ignorar l'usuari";
 
 /* nothing */
 "Kick/Ban" = "Fes fora/Bandeja";
@@ -1938,42 +1890,6 @@
 
 /* nothing */
 "KickBan" = "Fes fora i bandeja";
-
-/* nothing */
-"Info" = "Informació";
-
-/* nothing */
-"Who" = "Qui";
-
-/* nothing */
-"WhoIs" = "WhoIs (Qui és?)";
-
-/* nothing */
-"DNS Lookup" = "Consulta DNS";
-
-/* nothing */
-"Trace" = "Traça";
-
-/* nothing */
-"UserHost" = "UsuariMàquina";
-
-/* nothing */
-"External" = "Extern";
-
-/* nothing */
-"Traceroute" = "Traceroute";
-
-/* nothing */
-"Telnet" = "Telnet";
-
-/* nothing */
-"Open Dialog Window" = "Obre una finestra de diàleg";
-
-/* nothing */
-"Disconnect" = "Desconnecta";
-
-/* nothing */
-"Reconnect" = "Torna a connectar";
 
 /* nothing */
 "Leave Channel" = "Deixa el canal";
@@ -2012,6 +1928,9 @@
 "Dialog" = "Diàleg";
 
 /* nothing */
+"WhoIs" = "WhoIs (Qui és?)";
+
+/* nothing */
 "Send" = "Envia";
 
 /* nothing */
@@ -2021,109 +1940,139 @@
 "Clear" = "Neteja";
 
 /* nothing */
-"About X-Chat" = "Quant a l'X-Chat";
+"Ping" = "Ping";
+
+/* nothing */
+"Couldn't connect to session bus" = "No s'ha pogut establir connexió amb el bus de la sessió";
+
+/* nothing */
+"Failed to complete NameHasOwner" = "No s'ha pogut completar, el nom té un propietari";
+
+/* nothing */
+"Failed to complete Command" = "No s'ha pogut completar l'ordre";
+
+/* nothing */
+"remote access" = "accés remot";
+
+/* nothing */
+"plugin for remote access using DBUS" = "connector per a l'accés remot a través del DBUS";
+
+/* nothing */
+"Couldn't connect to session bus: %s\n" = "No s'ha pogut establir connexió amb el bus de la sessió: %s\n";
+
+/* nothing */
+"Failed to acquire %s: %s\n" = "No s'ha pogut adquirir %s: %s\n";
+
+/* nothing */
+"About " = "Quant a";
 
 /* nothing */
 "A multiplatform IRC Client" = "Un client d'IRC multiplataforma";
 
 /* nothing */
-"Character Chart" = "Taula de caràcters";
+"Character Chart" = "Mapa de caràcters";
+
+/* nothing */
+"Not connected." = "No connectat.";
 
 /* nothing */
 "You must select some bans." = "Heu de seleccionar algun usuari bandejat.";
 
 /* nothing */
+"Are you sure you want to remove all bans in %s?" = "Esteu segur que voleu suprimir tots els bandejaments a %s?";
+
+/* nothing */
 "Mask" = "Màscara";
 
 /* nothing */
-"From" = "Per";
+"From" = "De";
 
 /* nothing */
 "Date" = "Data";
 
 /* nothing */
-"X-Chat: Ban List (%s)" = "X-Chat: Llista d'usuaris bandejats (%s)";
+"You can only open the Ban List window while in a channel tab." = "Només podeu obrir la llista d'usuaris bandejats mentre sou en una pestanya de canal.";
 
 /* nothing */
-"Unban" = "Readmet";
+"XChat: Ban List (%s)" = "XChat: Llista d'usuaris bandejats (%s)";
 
 /* nothing */
-"Crop" = "Escurça";
+"Remove" = "Suprimeix";
+
+/* nothing */
+"Crop" = "Escapça";
 
 /* nothing */
 "Refresh" = "Refresca";
 
 /* nothing */
-"User and Channel Statistics: %d/%d Users on %d/%d Channels" = "Estadístiques d'usuaris i canals: %d/%d usuaris en %d/%d canals";
-
-/* nothing */
-"I can't save an empty list!" = "No podeu desar una llista buida!";
+"Displaying %d/%d users on %d/%d channels." = "S'estan mostrant %d/%d usuaris en %d/%d canals.";
 
 /* nothing */
 "Select an output filename" = "Seleccioneu un nom de fitxer";
 
 /* nothing */
-"X-Chat: Channel List (%s)" = "X-Chat: Llista de canals (%s)";
+"_Join Channel" = "_Entra al canal";
 
 /* nothing */
-"List display options:" = "Opcions de visualització:";
+"_Copy Channel Name" = "_Copia el nom del canal";
 
 /* nothing */
-"Minimum Users:" = "Mínim d'usuaris:";
+"Copy _Topic Text" = "Copia el _text del tema";
 
 /* nothing */
-"Maximum Users:" = "Màxim d'usuaris:";
+"XChat: Channel List (%s)" = "XChat: Llista de canals a %s";
 
 /* nothing */
-"Regex Match:" = "Filtra amb l'expressió regular:";
+"_Search" = "_Cerca";
 
 /* nothing */
-"Apply Match to:" = "Aplica la coincidència a:";
+"_Download List" = "_Baixa la llista";
 
 /* nothing */
-"Apply" = "Aplica";
+"Save _List..." = "_Desa la llista...";
 
 /* nothing */
-"Refresh the list" = "Refresca la llista";
+"Show only:" = "Mostra només:";
 
 /* nothing */
-"Save the list" = "Desa la llista";
+"channels with" = "els canals amb";
 
 /* nothing */
-"Join Channel" = "Entra al canal";
+"to" = "fins a";
 
 /* nothing */
-"Send file to %s" = "Envia un fitxer a %s";
+"users." = "usuaris.";
 
 /* nothing */
-"None" = "Cap";
+"Look in:" = "Cerca a:";
 
 /* nothing */
-"File:" = "Fitxer:";
+"Channel name" = "Nom del canal";
 
 /* nothing */
-"From:" = "De:";
+"Search type:" = "Tipus de cerca:";
 
 /* nothing */
-"To:" = "A:";
+"Simple Search" = "Cerca simple";
 
 /* nothing */
-"Size:" = "Mida:";
+"Pattern Match (Wildcards)" = "Coincidència de patró (comodins)";
 
 /* nothing */
-"Address:" = "Adreça:";
+"Regular Expression" = "Expressió regular";
 
 /* nothing */
-"Started:" = "Inici:";
+"Find:" = "Cerca:";
 
 /* nothing */
-"Speed limit:" = "Limitació de velocitat:";
+"Send file to %s" = "Envia el fitxer a %s";
 
 /* nothing */
 "That file is not resumable." = "La transferència d'aquest fitxer no es pot reprendre.";
 
 /* nothing */
-"Cannot access file: %s\n%s.\nResuming not possible." = "No s'ha pogut accedir al fitxer: %s\n%s.\nNo es pot continuar.";
+"Cannot access file: %s\n%s.\nResuming not possible." = "No s'ha pogut accedir al fitxer: %s\n%s.\nNo es pot reprendre.";
 
 /* nothing */
 "File in download directory is larger than file offered. Resuming not possible." = "El fitxer del directori de recepcions és més gran que el fitxer ofert. No es pot continuar.";
@@ -2132,7 +2081,7 @@
 "Cannot resume the same file from two people." = "No es pot reprendre la recepció del mateix fitxer des de dues persones diferents.";
 
 /* nothing */
-"MIME Type" = "Tipus MIME";
+"XChat: Uploads and Downloads" = "XChat: pujades i baixades";
 
 /* nothing */
 "Status" = "Estat";
@@ -2144,10 +2093,25 @@
 "ETA" = "ETA";
 
 /* nothing */
-"X-Chat: File Receive List" = "X-Chat: Llista de fitxers rebuts";
+"Both" = "Tots dos";
 
 /* nothing */
-"Abort" = "Avorta";
+"Uploads" = "Pujades";
+
+/* nothing */
+"Downloads" = "Baixades";
+
+/* nothing */
+"Details" = "Detalls";
+
+/* nothing */
+"File:" = "Fitxer:";
+
+/* nothing */
+"Address:" = "Adreça:";
+
+/* nothing */
+"Abort" = "Interromp";
 
 /* nothing */
 "Accept" = "Accepta";
@@ -2156,19 +2120,10 @@
 "Resume" = "Reprèn";
 
 /* nothing */
-"Open" = "Obre";
+"Open Folder..." = "Obre una carpeta...";
 
 /* nothing */
-"Ack" = "Rebut";
-
-/* nothing */
-"To" = "A";
-
-/* nothing */
-"X-Chat: File Send List" = "X-Chat: Llista de fitxers enviats";
-
-/* nothing */
-"To/From" = "A/De";
+"XChat: DCC Chat List" = "XChat: llista de xat DCC";
 
 /* nothing */
 "Recv" = "Rebut";
@@ -2177,10 +2132,7 @@
 "Sent" = "Enviat";
 
 /* nothing */
-"StartTime" = "Hora d'inici";
-
-/* nothing */
-"X-Chat: DCC Chat List" = "X-Chat: Llista de xats DCC";
+"Start Time" = "Hora d'inici";
 
 /* nothing */
 "*NEW*" = "*NOU*";
@@ -2210,7 +2162,7 @@
 "Add New" = "Afegeix";
 
 /* nothing */
-"Delete" = "Esborra";
+"Delete" = "Suprimeix";
 
 /* nothing */
 "Sort" = "Ordena";
@@ -2219,37 +2171,49 @@
 "Help" = "Ajuda";
 
 /* nothing */
-"Options" = "Opcions";
+"Don't auto connect to servers" = "No et connectis automàticament als servidors";
 
 /* nothing */
-"don't auto connect" = "no et connectis automàticament als servidors";
+"Use a different config directory" = "Utilitza un directori de configuració diferent";
 
 /* nothing */
-"DIRECTORY" = "DIRECTORI";
+"Don't auto load any plugins" = "No carreguis automàticament cap connector";
 
 /* nothing */
-"use a different config dir" = "useu un directori de configuració diferent";
+"Show plugin auto-load directory" = "Mostra el directori de càrrega automàtica de connectors";
 
 /* nothing */
-"don't auto load any plugins" = "no carreguis automàticament els connectors";
+"Show user config directory" = "Mostra el directori de configuració de l'usuari";
 
 /* nothing */
-"show plugin auto-load dir" = "mostra el directori de càrrega automàtica de connectors";
+"Open an irc://server:port/channel URL" = "Obre un URL del tipus irc://servidor:port/canal";
 
 /* nothing */
-"show user config dir" = "mostra el directori de configuració de l'usuari";
+"Execute command:" = "Executa l'ordre:";
 
 /* nothing */
-"show version information" = "mostra informació de la versió";
+"Open URL or execute command in an existing XChat" = "Obre l'URL o executa l'ordre en una instància existent de l'XChat";
+
+/* nothing */
+"Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "Inicia minimitzat. Nivell 0 = normal, 1 = com a icona, 2 = a la safata";
+
+/* nothing */
+"level" = "nivell";
+
+/* nothing */
+"Show version information" = "Mostra informació de la versió";
 
 /* nothing */
 "Failed to open font:\n\n%s" = "No s'ha pogut obrir el tipus de lletra:\n\n%s";
 
 /* nothing */
-"Search buffer is empty.\n" = "El buffer de cerca està buit.\n";
+"Search buffer is empty.\n" = "La memòria intermèdia de cerca és buida.\n";
 
 /* nothing */
-"%d bytes" = "%d octets";
+"%d bytes" = "%d bytes";
+
+/* nothing */
+"Network send queue: %d bytes" = "Cua d'enviament de la xarxa: %d bytes";
 
 /* nothing */
 "The Run Command action runs the data in Data 1 as if it has been typed into the entry box where you pressed the key sequence. Thus it can contain text (which will be sent to the channel/person), commands or user commands. When run all \\n characters in Data 1 are used to deliminate seperate commands so it is possible to run more than one command. If you want a \\ in the actual text run then enter \\\\" = "L'acció ^BRun Command^B executa les dades de Dades 1 com si les haguessiu escrit a la línia d'entrada on heu escrit la seqüència de tecles. Pot contenir text (que s'enviarà al canal/persona), ordres, o ordres d'usuari. Durant l'execució tots els caràcters ^B\\n^B de Dades 1 s'utilitzen per delimitar diferents ordres, de manera que se'n pot executar més d'una. Si voleu escriure un signe ^B\\^B en el text heu d'escriure ^B\\\\^B";
@@ -2306,19 +2270,16 @@
 "Mod" = "Modificador";
 
 /* nothing */
-"Key" = "Tecla";
+"Key" = "Contrasenya";
 
 /* nothing */
 "Action" = "Acció";
 
 /* nothing */
-"X-Chat: Keyboard Shortcuts" = "X-Chat: Vincles de tecla";
+"XChat: Keyboard Shortcuts" = "XChat: dreceres de teclat";
 
 /* nothing */
-"Add new" = "Afegeix";
-
-/* nothing */
-"Shift" = "Shift";
+"Shift" = "Maj";
 
 /* nothing */
 "Alt" = "Alt";
@@ -2348,19 +2309,19 @@
 "Key bindings config file is corrupt, load aborted\nPlease fix %s/keybindings.conf\n" = "El fitxer de configuració de vincles de tecla està malmès.\nSi us plau, reviseu %s/keybindings.conf\n\n";
 
 /* nothing */
-"Cannot write to that file." = "No es pot escriure a aquest fitxer.";
+"Cannot write to that file." = "No es pot escriure en aquell fitxer.";
 
 /* nothing */
-"Cannot read that file." = "Aquest fitxer no es pot llegir.";
+"Cannot read that file." = "No es pot llegir aquell fitxer.";
 
 /* nothing */
 "That mask already exists." = "Aquesta màscara ja existeix.";
 
 /* nothing */
-"Private" = "Privats";
+"Private" = "Privat";
 
 /* nothing */
-"Notice" = "Avisos";
+"Notice" = "Avís";
 
 /* nothing */
 "CTCP" = "CTCP";
@@ -2369,37 +2330,70 @@
 "DCC" = "DCC";
 
 /* nothing */
-"Invite" = "Invitacions";
+"Invite" = "Convidat";
 
 /* nothing */
-"Unignore" = "Deixa d'ignorar";
+"Unignore" = "Cancel·la l'ignorament";
 
 /* nothing */
-"Enter mask to ignore:" = "Introduïu una màscara a ignorar:";
+"Enter mask to ignore:" = "Introduïu la màscara a ignorar:";
 
 /* nothing */
-"X-Chat: Ignore list" = "X-Chat: Llista d'usuaris ignorats";
+"XChat: Ignore list" = "XChat: llista d'ignoraments";
 
 /* nothing */
-"Ignore Stats:" = "Estatus d'ignorat:";
+"Ignore Stats:" = "Estadístiques d'ignorament";
 
 /* nothing */
 "Channel:" = "Canal:";
 
 /* nothing */
-"Private:" = "Privats:";
+"Private:" = "Privat:";
 
 /* nothing */
-"Notice:" = "Avisos:";
+"Notice:" = "Avís:";
 
 /* nothing */
 "CTCP:" = "CTCP:";
 
 /* nothing */
-"Invite:" = "Invitacions:";
+"Invite:" = "Convida:";
 
 /* nothing */
-"Add" = "Afegeix";
+"Add..." = "Afegeix...";
+
+/* nothing */
+"Channel name too short, try again." = "El nom del canal és massa curt, torneu-ho a intentar.";
+
+/* nothing */
+"XChat: Connection Complete" = "XChat: s'ha completat la connexió";
+
+/* nothing */
+"Connection to %s complete." = "S'ha completat la connexió a %s.";
+
+/* nothing */
+"In the Server-List window, no channel (chat room) has been entered to be automatically joined for this network." = "A la finestra de la llista de servidors no s'ha introduït cap canal (sala de xat) d'aquesta xarxa per a entrar-hi automàticament.";
+
+/* nothing */
+"What would you like to do next?" = "Què voleu fer com a pas següent?";
+
+/* nothing */
+"_Nothing, I'll join a channel later." = "_Res, entraré a un canal més endavant.";
+
+/* nothing */
+"_Join this channel:" = "_Entra a aquest canal:";
+
+/* nothing */
+"If you know the name of the channel you want to join, enter it here." = "Si sabeu el nom del canal al què vulgueu entrar, introduïu-lo aquí.";
+
+/* nothing */
+"O_pen the Channel-List window." = "_Obre la finestra de la llista de canals.";
+
+/* nothing */
+"Retrieving the Channel-List may take a minute or two." = "Pot ser que la recuperació de la llista de canals trigui una estona.";
+
+/* nothing */
+"_Always show this dialog after connecting." = "_Mostra sempre aquest diàleg després de connectar-se.";
 
 /* nothing */
 "Dialog with" = "Diàleg amb";
@@ -2411,31 +2405,73 @@
 "No topic is set" = "No hi ha cap tema establert";
 
 /* nothing */
-"No other tabs open, quit xchat?" = "No hi ha més pestanyes obertes, voleu sortir de l'X-Chat?";
+"This server still has %d channels or dialogs associated with it. Close them all?" = "Aquest servidor encara té %d canals o diàlegs associats. Voleu tancar-los tots?";
 
 /* nothing */
-"Insert color code" = "Inseriu el codi de color";
+"Quit XChat?" = "Voleu sortir de l'X-Chat?";
 
 /* nothing */
-"Beep on message" = "Avís sonor a cada missatge";
+"Don't ask next time." = "No ho tornis a demanar la propera vegada.";
 
 /* nothing */
-"Show join/part messages" = "Mostra missatges d'entrada/sortida";
+"You are connected to %i IRC networks." = "Esteu connectats a %i xarxes IRC.";
 
 /* nothing */
-"Color paste" = "Enganxa amb color";
+"Are you sure you want to quit?" = "Esteu segur que voleu sortir?";
 
 /* nothing */
-"Go to" = "Vés a";
+"Some file transfers are still active." = "Encara hi ha transferències de fitxers actives.";
 
 /* nothing */
-"Close Tab" = "Tanca la pestanya";
+"_Minimize to Tray" = "_Minimitza a la safata";
 
 /* nothing */
-"Detach Tab" = "Separa la pestanya";
+"Insert Attribute or Color Code" = "Insereix un atribut o un codi de color";
 
 /* nothing */
-"Some file transfers still active, quit xchat?" = "Encara hi ha transferències de fitxers actives, voleu sortir de l'X-Chat?";
+"<b>Bold</b>" = "<b>Negreta</b>";
+
+/* nothing */
+"<u>Underline</u>" = "<u>Subratllat</u>";
+
+/* nothing */
+"Normal" = "Normal";
+
+/* nothing */
+"Colors 0-7" = "Colors 0-7";
+
+/* nothing */
+"Colors 8-15" = "Colors 8-15";
+
+/* nothing */
+"_Settings" = "_Paràmetres";
+
+/* nothing */
+"_Log to Disk" = "_Enregistra al disc";
+
+/* nothing */
+"_Reload Scrollback" = "_Torna a carregar la memòria intermèdia de desplaçament cap enrere";
+
+/* nothing */
+"_Hide Join/Part Messages" = "_Oculta els missatges d'entrada/sortida";
+
+/* nothing */
+"_Extra Alerts" = "_Alertes addicionals";
+
+/* nothing */
+"Beep on _Message" = "Reprodueix un to en rebre un _missatge";
+
+/* nothing */
+"Blink Tray _Icon" = "Fes que parpellegi la icona de la _safata";
+
+/* nothing */
+"Blink Task _Bar" = "Fes que parpellegi la _barra de tasques";
+
+/* nothing */
+"_Detach" = "_Separa";
+
+/* nothing */
+"_Close" = "_Tanca";
 
 /* nothing */
 "User limit must be a number!\n" = "El límit d'usuaris ha de ser un número!\n";
@@ -2444,7 +2480,7 @@
 "Topic Protection" = "Protecció del tema";
 
 /* nothing */
-"No outside messages" = "Cap missatge de fora";
+"No outside messages" = "No admet missatges aliens";
 
 /* nothing */
 "Secret" = "Secret";
@@ -2456,31 +2492,31 @@
 "Moderated" = "Moderat";
 
 /* nothing */
-"Ban List" = "Llista de bandejats";
+"Ban List" = "Llista de bandejaments";
 
 /* nothing */
-"Keyword" = "Contrasenya";
+"Keyword" = "Paraula clau";
 
 /* nothing */
 "User Limit" = "Límit d'usuaris";
 
 /* nothing */
-"Close this tab/window" = "Tanca aquesta pestanya/finestra";
-
-/* nothing */
 "Show/Hide userlist" = "Mostra/Oculta la llista d'usuaris";
 
 /* nothing */
-"Unable to set transparent background!\n\nYou may be using a non-compliant window\nmanager that is not currently supported.\n" = "No s'ha pogut fer transparent el fons!\n\nPotser esteu utilitzant un gestor de finestres\nno compatible que no està soportat.\n";
+"Unable to set transparent background!\n\nYou may be using a non-compliant window\nmanager that is not currently supported.\n" = "No s'ha pogut fer transparent el fons!\n\nPotser esteu utilitzant un gestor de finestres\nno compatible que no està suportat.\n";
 
 /* nothing */
-"Enter new nickname:" = "Introduïu el nou sobrenom:";
+"Enter new nickname:" = "Introduïu el sobrenom nou:";
 
 /* nothing */
-"Host unknown" = "Màquina desconeguda";
+"Host unknown" = "Es desconeix el servidor";
 
 /* nothing */
 "<tt><b>%-11s</b></tt> %s" = "<tt><b>%-11s</b></tt> %s";
+
+/* nothing */
+"Real Name:" = "Nom real:";
 
 /* nothing */
 "User:" = "Usuari:";
@@ -2489,160 +2525,181 @@
 "Country:" = "País:";
 
 /* nothing */
-"Real Name:" = "Nom real:";
+"Server:" = "Servidor:";
 
 /* nothing */
-"Server:" = "Servidor:";
+"%u minutes ago" = "fa %u minuts";
+
+/* nothing */
+"Last Msg:" = "Darrer missatge:";
 
 /* nothing */
 "Away Msg:" = "Missatge d'absència:";
 
 /* nothing */
-"Last Msg:" = "Últim missatge:";
+"%d nicks selected." = "s'han seleccionat %d sobrenoms";
 
 /* nothing */
-"Menu Bar" = "Barra de menú";
+"The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "S'ha ocultat la barra de menú. Podeu tornar-la a mostrar en prémer F9 o bé en fer clic amb el botó dret d'una part en blanc de l'àrea de text principal.";
 
 /* nothing */
-"Topic Bar" = "Barra del tema";
+"Open Link in Browser" = "Obre l'enllaç en el navegador";
 
 /* nothing */
-"User List" = "Llista d'usuaris";
+"Copy Selected Link" = "Copia l'enllaç seleccionat";
 
 /* nothing */
-"Mode Buttons" = "Botons de mode";
+"Join Channel" = "Entra al canal";
 
 /* nothing */
-"User List Buttons" = "Botons de la llista d'usuaris";
+"Part Channel" = "Surt del canal";
 
 /* nothing */
-"Copy selected URL" = "Copia l'URL seleccionat";
+"Cycle Channel" = "Surt i entra al canal fins a connectar-se";
 
 /* nothing */
-"Part Channel" = "Deixa el canal";
+"_Remove from Favorites" = "_Suprimeix dels preferits";
 
 /* nothing */
-"Cycle Channel" = "Canvia de canal";
+"_Add to Favorites" = "_Afegeix als preferits";
 
 /* nothing */
-"X-Chat: User menu" = "X-Chat: Menú d'usuari";
+"XChat: User menu" = "XChat: menú d'usuari";
 
 /* nothing */
 "Edit This Menu..." = "Edita aquest menú...";
 
 /* nothing */
-"*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile" = "*ATENCIÓ*\nAcceptar automàticament DCCs al vostre\ndirectori personal pot ser perillós. P.ex:\nAlgú podria enviar-vos un .bash_profile";
+"Retrieve channel list..." = "Recupera la llista de canals...";
 
 /* nothing */
-"Settings saved." = "S'ha desat la configuració.";
+"User Commands - Special codes:\n\n%c  =  current channel\n%e  =  current network name\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "Ordres d'usuari - codis especials:\n\n%c  =  canal actual\n%e  =  nom de la xarxa actual\n%m  =  informació de la màquina\n%n  =  el vostre sobrenom\n%t  =  hora i data\n%v  =  versió de l'xchat\n%2  =  paraula 2\n%3  =  paraula 3\n&2  =  paraula 2 fins a final de línia\n&3  =  paraula 3 fins a final de línia\n\np.ex:\n/cmd jordi hello\n\n%2 seria «jordi»\n&2 seria «jordi hello».";
 
 /* nothing */
-"User Commands - Special codes:\n\n%c  =  current channel\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "Ordres d'usuari - Codis especials:\n\n%c  =  canal actual\n%m  =  informació de la màquina\n%n  =  el vostre sobrenom\n%t  =  hora i data\n%v  =  versió de l'xchat\n%2  =  paraula 2\n%3  =  paraula 3\n&2  =  paraula 2 fins a final de línia\n&3  =  paraula 3 fins a final de línia\n\np.ex:\n/cmd john hello\n\n%2 seria \"john\"\n&2 seria \"john hello\".";
+"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Botons de la llista d'usuaris - codis especials:\n\n%a  =  tots els sobrenoms seleccionats\n%c  =  canal actual\n%e  =  nom de la xarxa actual\n%h  =  màquina del sobrenom seleccionat\n%m  =  informació de la màquina\n%n  =  el vostre sobrenom\n%s  =  sobrenom seleccionat\n%t  =  hora i data\n";
 
 /* nothing */
-"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Botons de la llista d'usuaris - Codis especials:\n\n%a  =  tots els sobrenoms seleccionats\n%c  =  canal actual\n%h  =  màquina del sobrenom seleccionat\n%m  =  informació de la màquina\n%n  =  el vostre sobrenom\n%s  =  sobrenom seleccionat\n%t  =  hora i data\n";
+"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Botons de diàleg - codis especials:\n\n%a  =  tots els sobrenoms seleccionats\n%c  =  canal actual\n%e  =  nom de la xarxa actual\n%h  =  màquina del sobrenom seleccionat\n%m  =  informació de la màquina\n%n  =  el vostre sobrenom\n%s  =  sobrenom seleccionat\n%t  =  hora i data\n";
 
 /* nothing */
-"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Botons de diàleg - Codis especials:\n\n%a  =  tots els sobrenoms seleccionats\n%c  =  canal actual\n%h  =  màquina del sobrenom seleccionat\n%m  =  informació de la màquina\n%n  =  el vostre sobrenom\n%s  =  sobrenom seleccionat\n%t  =  hora i data\n";
+"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%e  =  current network name\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "Respostes CTCP - Codis especials:\n\n%d  =  dades (el CTCP sencer)\n%e  =  nom de la xarxa actual\n%m  =  informació de la màquina\n%s  =  sobrenom de qui envia el ctcp\n%t  =  hora i data\n%2  =  paraula 2\n%3  =  paraula 3\n&2  =  paraula 2 fins a final de línia\n&3  =  paraula 3 fins a final de línia\n\n";
 
 /* nothing */
-"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "Respostes CTCP - Codis especials:\n\n%d  =  dades (el CTCP sencer)\n%m  =  informació de la màquina\n%s  =  sobrenom de qui envia el ctcp\n%t  =  hora i data\n%2  =  paraula 2\n%3  =  paraula 3\n&2  =  paraula 2 fins a final de línia\n&3  =  paraula 3 fins a final de línia\n\n";
+"URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of XChat" = "Gestor d'URL - codis especials:\n\n%s  = la cadena d'URL\n\nPoseu un ! al davant de l'ordre per a \nindicar que l'ha executar l'intèrpret \nd'ordres en lloc de l'XChat";
 
 /* nothing */
-"URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of X-Chat" = "Gestió d'URLs - Codis especials:\n\n%s  = la cadena d'URL\n\nPoseu un ! al davant de l'ordre per\nindicar que l'ha executar la shell";
+"XChat: User Defined Commands" = "XChat: ordres definides per l'usuari";
 
 /* nothing */
-"X-Chat: User Defined Commands" = "X-Chat: Ordres definides per l'usuari";
+"XChat: Userlist Popup menu" = "XChat: menú emergent de la llista d'usuaris";
 
 /* nothing */
-"X-Chat: Userlist Popup menu" = "X-Chat: Menú emergent de la llista d'usuaris";
+"Replace with" = "Reemplaça per";
 
 /* nothing */
-"X-Chat: Replace" = "X-Chat: Substitueix";
+"XChat: Replace" = "XChat: reemplaçament";
 
 /* nothing */
-"X-Chat: URL Handlers" = "X-Chat: Gestió d'URLs";
+"XChat: URL Handlers" = "XChat: gestors d'URL";
 
 /* nothing */
-"X-Chat: Userlist buttons" = "X-Chat: Botons de la llista d'usuaris";
+"XChat: Userlist buttons" = "XChat: botons de la llista d'usuaris";
 
 /* nothing */
-"X-Chat: Dialog buttons" = "X-Chat: Botons de diàleg";
+"XChat: Dialog buttons" = "XChat: botons de diàleg";
 
 /* nothing */
-"X-Chat: CTCP Replies" = "X-Chat: Respostes CTCP";
+"XChat: CTCP Replies" = "XChat: respostes CTCP";
 
 /* nothing */
-"_X-Chat" = "_X-Chat";
+"_XChat" = "_XChat";
 
 /* nothing */
-"Server List..." = "Llista de servidors...";
+"Network Li_st..." = "_Llista de xarxes...";
 
 /* nothing */
-"New" = "Nou";
+"_New" = "_Nova";
 
 /* nothing */
-"Server Tab..." = "Pestanya de servidor...";
+"Server Tab..." = "Pestanya del servidor...";
 
 /* nothing */
-"Channel Tab..." = "Pestanya de canal...";
+"Channel Tab..." = "Pestanya de canals...";
 
 /* nothing */
-"Server Window..." = "Finestra de servidor...";
+"Server Window..." = "Finestra del servidor...";
 
 /* nothing */
 "Channel Window..." = "Finestra de canals...";
 
 /* nothing */
-"Load Plugin or Script..." = "Carrega un connector o script...";
+"_Load Plugin or Script..." = "_Carrega un connector o script...";
 
 /* nothing */
-"New Shell Tab..." = "Pestanya de shell nova...";
+"_Quit" = "_Surt";
 
 /* nothing */
-"Quit" = "Surt";
+"_View" = "_Visualitza";
 
 /* nothing */
-"_IRC" = "_IRC";
+"_Menu Bar" = "Barra de _menú";
 
 /* nothing */
-"Invisible" = "Invisible";
+"_Topic Bar" = "Barra de _tema";
 
 /* nothing */
-"Receive Wallops" = "Rep wallops";
+"_User List" = "Llista d'_usuaris";
 
 /* nothing */
-"Receive Server Notices" = "Rep els avisos del servidor";
+"U_serlist Buttons" = "Botons de la l_lista d'usuaris";
 
 /* nothing */
-"Marked Away" = "Marca'm _absent";
+"M_ode Buttons" = "Botons de m_ode";
 
 /* nothing */
-"Auto Rejoin when Kicked" = "Reentra automàticament en cas d'expulsió";
+"_Channel Switcher" = "Commutador de _canals";
 
 /* nothing */
-"Auto Reconnect to Server" = "Reconnexió automàtica al servidor";
+"_Tabs" = "Pestan_yes";
 
 /* nothing */
-"Never-give-up ReConnect" = "Intents de reconnexió ad infinitum";
+"T_ree" = "Ar_bre";
 
 /* nothing */
-"Auto Open Dialog Windows" = "Obre finestres de diàleg automàticament";
+"_Network Meters" = "Monitors de la _xarxa";
 
 /* nothing */
-"Auto Accept Direct Chat" = "Accepta automàticament xats DCC";
+"Off" = "Desactivat";
 
 /* nothing */
-"Auto Accept Files" = "Accepta automàticament fitxers";
+"Graph" = "Gràfic";
 
 /* nothing */
 "_Server" = "_Servidor";
 
 /* nothing */
-"S_ettings" = "Conf_iguració";
+"_Disconnect" = "_Desconnecta";
 
 /* nothing */
-"Preferences..." = "Preferències...";
+"_Reconnect" = "To_rna a connectar";
+
+/* nothing */
+"Join a Channel..." = "Entra a un canal...";
+
+/* nothing */
+"List of Channels..." = "Llista de canals...";
+
+/* nothing */
+"Marked Away" = "Marcat com a absent";
+
+/* nothing */
+"_Usermenu" = "Menú de l'_usuari";
+
+/* nothing */
+"S_ettings" = "Pa_ràmetres";
+
+/* nothing */
+"_Preferences" = "_Preferències";
 
 /* nothing */
 "Advanced" = "Avançat";
@@ -2663,10 +2720,10 @@
 "Text Events..." = "Esdeveniments...";
 
 /* nothing */
-"URL Handlers..." = "Gestió d'URLs...";
+"URL Handlers..." = "Gestor d'URLs...";
 
 /* nothing */
-"User Commands..." = "Ordres de l'usuari...";
+"User Commands..." = "Ordres definides per l'usuari...";
 
 /* nothing */
 "Userlist Buttons..." = "Botons de la llista d'usuaris...";
@@ -2675,55 +2732,40 @@
 "Userlist Popup..." = "Menú emergent de la llista d'usuaris...";
 
 /* nothing */
-"Reload Settings" = "Rellegeix la configuració";
-
-/* nothing */
-"Save Settings now" = "Desa la configuració ara";
-
-/* nothing */
-"Save Settings on exit" = "Desa la configuració en sortir";
-
-/* nothing */
 "_Window" = "_Finestra";
 
 /* nothing */
 "Ban List..." = "Llista d'usuaris bandejats...";
 
 /* nothing */
-"Channel List..." = "Llista de canals...";
-
-/* nothing */
-"Character Chart..." = "Taula de caràcters...";
+"Character Chart..." = "Mapa de caràcters...";
 
 /* nothing */
 "Direct Chat..." = "Xat directe...";
 
 /* nothing */
-"File Receive..." = "Fitxers rebuts...";
+"File Transfers..." = "Transferències de fitxers...";
 
 /* nothing */
-"File Send..." = "Fitxer enviats...";
+"Friends List..." = "Llista d'amics...";
 
 /* nothing */
 "Ignore List..." = "Llista d'usuaris ignorats...";
 
 /* nothing */
-"Notify List..." = "Llista de notificació...";
-
-/* nothing */
 "Plugins and Scripts..." = "Connectors i scripts...";
 
 /* nothing */
-"Raw Log..." = "Registre en brut...";
+"Raw Log..." = "Registre brut...";
 
 /* nothing */
-"URL Grabber..." = "Capturador d'URLs...";
+"URL Grabber..." = "Capturador d'URL...";
 
 /* nothing */
-"Reset Marker Line" = "Resitua la línia de separació";
+"Reset Marker Line" = "Reinicia la línia de marcador";
 
 /* nothing */
-"C_lear Text" = "_Neteja el text";
+"C_lear Text" = "Nete_ja el text";
 
 /* nothing */
 "Search Text..." = "Cerca el text...";
@@ -2732,31 +2774,31 @@
 "Save Text..." = "Desa el text...";
 
 /* nothing */
-"_Help" = "_Ajuda";
+"_Help" = "A_juda";
 
 /* nothing */
 "_Contents" = "_Contingut";
 
 /* nothing */
+"Check for updates" = "Comprova si hi ha actualitzacions";
+
+/* nothing */
 "_About" = "_Quant a";
 
 /* nothing */
-"Attach Tab" = "Adjunta una pestanya";
+"_Attach" = "A_djunta";
 
 /* nothing */
-"User" = "Usuari";
+"Last Seen" = "Vist per darrera vegada";
 
 /* nothing */
-"Server" = "Servidor";
-
-/* nothing */
-"Last Seen" = "Vist per últim cop";
-
-/* nothing */
-"Offline" = "Desconnectat";
+"Offline" = "Fora de línia";
 
 /* nothing */
 "Never" = "Mai";
+
+/* nothing */
+"%d minutes ago" = "Fa %d minuts";
 
 /* nothing */
 "Online" = "Connectat";
@@ -2765,10 +2807,76 @@
 "Enter nickname to add:" = "Introduïu el sobrenom a afegir:";
 
 /* nothing */
-"X-Chat: Notify List" = "X-Chat: Llista de notificació";
+"Notify on these networks:" = "NotificaÇm en aquestas xarxes";
 
 /* nothing */
-"Remove" = "Elimina";
+"Comma separated list of networks is accepted." = "S'accepta una llista de xarxes separades per comes.";
+
+/* nothing */
+"XChat: Friends List" = "XChat: llista d'amics";
+
+/* nothing */
+"Open Dialog" = "Obre el diàleg";
+
+/* nothing */
+"Cannot find 'notify-send' to open balloon alerts.\nPlease install libnotify." = "No s'ha trobat l'ordre «notify-send» per a enviar diàlegs emergents d'alerta.\nHauríeu d'instal·lar la biblioteca libnotify.";
+
+/* nothing */
+"XChat: Connected to %u networks and %u channels" = "XChat: connectat a %u xarxes i %u canals";
+
+/* nothing */
+"_Restore" = "_Restaura";
+
+/* nothing */
+"_Hide" = "_Oculta";
+
+/* nothing */
+"_Blink on" = "_Parpelleja en";
+
+/* nothing */
+"Channel Message" = "Missatge del canal";
+
+/* nothing */
+"Private Message" = "Missatge privat";
+
+/* nothing */
+"Highlighted Message" = "Missatge ressaltat";
+
+/* nothing */
+"_Change status" = "_Canvia l'estat";
+
+/* nothing */
+"_Away" = "A_bsent";
+
+/* nothing */
+"_Back" = "_Present";
+
+/* nothing */
+"XChat: Highlighted message from: %s (%s)" = "XChat: missatge ressaltat de: %s (%s)";
+
+/* nothing */
+"XChat: %u highlighted messages, latest from: %s (%s)" = "XChat: %u missatges ressaltats; el darrer de: %s (%s)";
+
+/* nothing */
+"XChat: New public message from: %s (%s)" = "XChat: missatge públic nou de: %s (%s)";
+
+/* nothing */
+"XChat: %u new public messages." = "XChat: %u missatges públics nous.";
+
+/* nothing */
+"XChat: Private message from: %s (%s)" = "XChat: missatge privat de %s (%s)";
+
+/* nothing */
+"XChat: %u private messages, latest from: %s (%s)" = "XChat: %u missatges privats; el darrer de %s (%s)";
+
+/* nothing */
+"XChat: File offer from: %s (%s)" = "XChat: oferiment de fitxer de %s (%s)";
+
+/* nothing */
+"XChat: %u file offers, latest from: %s (%s)" = "XChat: %u oferiments de fitxers; el darrer de %s (%s)";
+
+/* nothing */
+"Version" = "Versió";
 
 /* nothing */
 "Description" = "Descripció";
@@ -2777,7 +2885,7 @@
 "Select a Plugin or Script to load" = "Seleccioneu el connector o script a carregar";
 
 /* nothing */
-"X-Chat: Plugins and Scripts" = "X-Chat: Connectors i scripts";
+"XChat: Plugins and Scripts" = "XChat: connectors i scripts";
 
 /* nothing */
 "_Load..." = "_Carrega...";
@@ -2786,55 +2894,73 @@
 "_UnLoad" = "_Descarrega";
 
 /* nothing */
-"_Close" = "_Tanca";
+"Save As..." = "Anomena i desa...";
 
 /* nothing */
-"Save rawlog" = "Desa un registre brut";
+"XChat: Rawlog (%s)" = "XChat: Registre en brut (%s)";
 
 /* nothing */
-"X-Chat: Rawlog (%s)" = "X-Chat: Registre brut (%s)";
-
-/* nothing */
-"Clear rawlog" = "Neteja";
-
-/* nothing */
-"Save rawlog..." = "Desa el registra brut...";
+"Clear rawlog" = "Neteja el registre en brut";
 
 /* nothing */
 "The window you opened this Search for doesn't exist anymore." = "La finestra que vàreu obrir per aquesta cerca ja no existeix.";
 
 /* nothing */
-"X-Chat: Search" = "X-Chat: Cerca";
+"Search hit end, not found." = "La cerca ha arribat el final; no s'ha trobat cap coincidència.";
 
 /* nothing */
-"Find:" = "Cerca:";
+"XChat: Search" = "XChat: cerca";
 
 /* nothing */
-"Find" = "Cerca";
+"_Match case" = "_Coincidència de majúscules i minúscules";
 
 /* nothing */
-"Close" = "Tanca";
+"Search _backwards" = "Cerca cap en_rera";
+
+/* nothing */
+"_Find" = "_Cerca";
 
 /* nothing */
 "New Network" = "Xarxa nova";
 
 /* nothing */
-"Really remove network \"%s\" and all its servers?" = "Voleu eliminar la xarxa \"%s\" i tots els seus servidors?";
+"Really remove network \"%s\" and all its servers?" = "Voleu eliminar la xarxa «%s» i tots els seus servidors?";
 
 /* nothing */
-"User name and Real name cannot be left blank." = "El nom d'usuari i el nom real no es poden deixar en blanc.";
+"#channel" = "#canal";
 
 /* nothing */
-"X-Chat: Edit %s" = "X-Chat: Detalls de %s";
+"XChat: Favorite Channels (Auto-Join List)" = "XChat: Llista de canals preferits (llista d'entrada automàtica)";
 
 /* nothing */
-"Servers for %s" = "Servidors per a %s";
+"These channels will be joined whenever you connect to %s." = "Entrareu a aquest canals automàticament sempre que us connecteu a %s.";
+
+/* nothing */
+"Key (Password)" = "Clau (contrasenya)";
+
+/* nothing */
+"_Edit" = "_Edita";
+
+/* nothing */
+"%s has been removed." = "S'ha suprimit %s.";
+
+/* nothing */
+"%s has been added." = "S'ha afegit %s.";
+
+/* nothing */
+"User name and Real name cannot be left blank." = "No es poden deixar en blanc el nom d'usuari i el nom real.";
+
+/* nothing */
+"XChat: Edit %s" = "XChat: edita %s";
+
+/* nothing */
+"Servers for %s" = "Servidors de %s";
 
 /* nothing */
 "Connect to selected server only" = "Connectar-se només al servedor seleccionat";
 
 /* nothing */
-"Don't cycle through all the servers when the connection fails." = "Quan falla la connexió, no ho reintenta amb cada un dels servidors.";
+"Don't cycle through all the servers when the connection fails." = "No anar provant amb tots els servidors quan falla la connexió.";
 
 /* nothing */
 "Your Details" = "Les vostres dades";
@@ -2843,31 +2969,34 @@
 "Use global user information" = "Utilitza la informació global d'usuari";
 
 /* nothing */
-"_Nick name:" = "Sobrenom:";
+"_Nick name:" = "Sobre_nom:";
 
 /* nothing */
-"_User name:" = "Nom d'usuari";
+"Second choice:" = "Segona preferència:";
 
 /* nothing */
-"Real na_me:" = "Nom real:";
+"_User name:" = "Nom d'_usuari:";
 
 /* nothing */
-"Connecting" = "Connexió";
+"Rea_l name:" = "No_m real:";
 
 /* nothing */
-"Auto connect to this network at startup" = "Connecta-t'hi automàticament a l'inici";
+"Connecting" = "S'està connectat";
 
 /* nothing */
-"Use a proxy server" = "Utilitza un servidor intermedi";
+"Auto connect to this network at startup" = "Connect_a't a aquesta xarxa automàticament a l'inici";
 
 /* nothing */
-"Use SSL for all the servers on this network" = "Utilitza SSL amb tots els servidors d'aquesta xarxa";
+"Bypass proxy server" = "Omet el servidor intermediari";
 
 /* nothing */
-"Accept invalid SSL certificate" = "Accepta certificats SSL invàlids";
+"Use SSL for all the servers on this network" = "Utilitza l'SSL per a tots els servidors d'aquesta xarxa";
 
 /* nothing */
-"C_hannels to join:" = "Canals on entrar:";
+"Accept invalid SSL certificate" = "Accepta els certificats _SSL no vàlids";
+
+/* nothing */
+"_Favorite channels:" = "Canals _preferits:";
 
 /* nothing */
 "Channels to join, separated by commas, but not spaces!" = "Canals on entrar, separats per comes, però sense espais!";
@@ -2882,49 +3011,43 @@
 "Nickserv password:" = "Contrasenya per al servidor de sobrenoms:";
 
 /* nothing */
-"Server password:" = "Contrasenya per al servidor:";
+"If your nickname requires a password, enter it here. Not all IRC networks support this." = "Si al vostre sobrenom li cal una contrasenya, introduïu-la aquí. No totes les xarxes admeten aquesta funció.";
 
 /* nothing */
-"Password for the server, if in doubt, leave blank." = "Contrasenya per al servidor. En cas de dubte, deixeu-ho en blanc.";
+"Server password:" = "Contrasenya del servidor:";
+
+/* nothing */
+"Password for the server, if in doubt, leave blank." = "Contrasenya pel servidor. En cas de dubte, deixeu-ho en blanc.";
 
 /* nothing */
 "Character set:" = "Joc de caràcters:";
 
 /* nothing */
-"_Edit" = "Edita";
-
-/* nothing */
-"X-Chat: Server List" = "X-Chat: Llista de servidors";
+"XChat: Network List" = "XChat: llista de xarxes";
 
 /* nothing */
 "User Information" = "Informació de l'usuari";
 
 /* nothing */
-"Second choice:" = "Segona opció:";
-
-/* nothing */
-"Third choice:" = "Tercera opció:";
-
-/* nothing */
-"Rea_l name:" = "Nom real:";
+"Third choice:" = "Tercera preferència:";
 
 /* nothing */
 "Networks" = "Xarxes";
 
 /* nothing */
-"Skip server list on startup" = "Omet mostrar la llista de servidors a l'inici";
+"Skip network list on startup" = "No mostris la llista dels servidors a l'inici";
 
 /* nothing */
-"_Edit..." = "Edita...";
+"_Edit..." = "_Edita...";
 
 /* nothing */
-"_Sort" = "Ordena";
+"_Sort" = "_Ordena";
 
 /* nothing */
-"C_onnect" = "Connecta";
+"Sorts the network list in alphabetical order. Use SHIFT-UP and SHIFT-DOWN keys to move a row." = "Ordena la llista de xarxes per ordre alfabètic. Utilitzeu les combinacions de tecles Maj-Fletxa amunt i Maj-Fletxa avall per a moure una fila.";
 
 /* nothing */
-"Connect in new tab" = "Connecta en una pestanya nova";
+"C_onnect" = "C_onnecta";
 
 /* nothing */
 "Text Box Appearance" = "Aparença de la finestra de text";
@@ -2939,7 +3062,10 @@
 "Scrollback lines:" = "Línies fora la finestra:";
 
 /* nothing */
-"Transparent background" = "Fons transparent";
+"Colored nick names" = "Acoloreix els sobrenoms";
+
+/* nothing */
+"Give each person on IRC a different color" = "Assigna un color diferent a cada persona";
 
 /* nothing */
 "Indent nick names" = "Sagna els sobrenoms";
@@ -2948,28 +3074,19 @@
 "Make nick names right-justified" = "Alinea els sobrenoms a la dreta";
 
 /* nothing */
-"Tint (shade) transparency" = "Transparència tintada";
+"Transparent background" = "Fons transparent";
 
 /* nothing */
-"Colored nick names" = "Acoloreix els sobrenoms";
+"Show marker line" = "Mostra la línia de marcador";
 
 /* nothing */
-"Give each person on IRC a different color" = "Assigna un color diferent a cada persona";
+"Insert a red line after the last read text." = "Mostra una línia vermella després del darrer text llegit.";
 
 /* nothing */
-"Strip mIRC colors" = "Treu els colors del mIRC";
+"Transparency Settings" = "Detalls de la transparència";
 
 /* nothing */
-"Show marker line" = "Mostra una línia de separació";
-
-/* nothing */
-"Insert a red line after the last read text." = "Insereix una línia vermella després de l'últim text llegit";
-
-/* nothing */
-"Tint Settings" = "Valors del tint";
-
-/* nothing */
-"Red:" = "Roig:";
+"Red:" = "Vermell:";
 
 /* nothing */
 "Green:" = "Verd:";
@@ -2981,28 +3098,43 @@
 "Time Stamps" = "Data i hora";
 
 /* nothing */
+"Enable time stamps" = "Mostra les marques horàries";
+
+/* nothing */
 "Time stamp format:" = "Format de la data i l'hora";
 
 /* nothing */
 "See strftime manpage for details." = "Per a més detalls consulteu la pàgina del manual strftime (3).";
 
 /* nothing */
-"Enable time stamps" = "Mostra marques horàries";
+"A-Z" = "A-Z";
+
+/* nothing */
+"Last-spoke order" = "Darrera ordre emesa";
+
+/* nothing */
+"Input box" = "Línia d'entrada";
+
+/* nothing */
+"Use the Text box font and colors" = "Usa el tipus de lletra i colors de la finestra de text";
+
+/* nothing */
+"Spell checking" = "Verificació de l'ortografia";
 
 /* nothing */
 "Nick Completion" = "Compleció de sobrenoms";
 
 /* nothing */
-"Automatic nick completion" = "Compleció automàtica de sobrenoms";
-
-/* nothing */
-"Completes nick names without using the TAB key" = "Completa els sobrenoms sense haver d'usar la tecla TAB";
+"Automatic nick completion (without TAB key)" = "Compleció automàtica de sobrenoms (sense la tecla de tabulació)";
 
 /* nothing */
 "Nick completion suffix:" = "Sufix de compleció de sobrenoms:";
 
 /* nothing */
-"Input Box Codes" = "Codis de la caixa d'entrada";
+"Nick completion sorted:" = "Compleció de sobrenoms ordenada:";
+
+/* nothing */
+"Input Box Codes" = "Codis dels quadres d'introducció de text";
 
 /* nothing */
 "Interpret %nnn as an ASCII value" = "Interpreta %nnn com a un valor ASCII";
@@ -3011,28 +3143,7 @@
 "Interpret %C, %B as Color, Bold etc" = "Interpreta %C, %B com a color, negreta, etc";
 
 /* nothing */
-"Input Box Appearance" = "Aparença de la línia d'entrada";
-
-/* nothing */
-"Use the Text box font and colors" = "Usa el tipus de lletra i colors de la finestra de text";
-
-/* nothing */
-"Off" = "Desactivat";
-
-/* nothing */
-"Graph" = "Gràfic";
-
-/* nothing */
-"Info text" = "Text informatiu";
-
-/* nothing */
-"Both" = "Tots dos";
-
-/* nothing */
 "A-Z, Ops first" = "A-Z, primer els operadors";
-
-/* nothing */
-"A-Z" = "A-Z";
 
 /* nothing */
 "Z-A, Ops last" = "Z-A, operadors al final";
@@ -3041,43 +3152,52 @@
 "Z-A" = "Z-A";
 
 /* nothing */
-"Unsorted" = "Desordenat";
+"Unsorted" = "Sense ordenar";
 
 /* nothing */
-"User list sorted by:" = "Ordena la llista d'usuaris amb:";
+"Left (Upper)" = "Esquerra (superior)";
+
+/* nothing */
+"Left (Lower)" = "Esquerra (inferior)";
+
+/* nothing */
+"Right (Upper)" = "Dreta (superior)";
+
+/* nothing */
+"Right (Lower)" = "Dreta (inferior)";
+
+/* nothing */
+"Top" = "A dalt";
+
+/* nothing */
+"Bottom" = "A baix";
+
+/* nothing */
+"Hidden" = "Oculta";
+
+/* nothing */
+"User List" = "Llista d'usuaris";
 
 /* nothing */
 "Show hostnames in user list" = "Mostra els noms de les màquines a la llista d'usuaris";
 
 /* nothing */
-"User list buttons enabled" = "Habilita els botons de la llista d'usuaris";
+"User list sorted by:" = "Ordena la llista d'usuaris amb:";
 
 /* nothing */
-"Resizable user list" = "Llista d'usuaris redimensionable";
+"Show user list at:" = "Mostra la llista d'usuaris a:";
 
 /* nothing */
-"Away tracking" = "Seguiment d'absències";
+"Away tracking" = "Seguiment de l'absència";
 
 /* nothing */
-"Enable away tracking" = "Activa el seguiment d'absències";
+"Track the Away status of users and mark them in a different color" = "Fes un seguiment de l'estat d'absència dels usuari i marca'ls amb eun color diferent";
 
 /* nothing */
-"On channels smaller than:" = "En canals més petits de:";
+"On channels smaller than:" = "A canals menors de:";
 
 /* nothing */
-"Action Upon Double Click" = "Acció per al doble-clic";
-
-/* nothing */
-"Execute command:" = "Executa l'ordre:";
-
-/* nothing */
-"Extra Gadgets" = "Altres andròmines";
-
-/* nothing */
-"Lag meter:" = "Mesurador de retard:";
-
-/* nothing */
-"Throttle meter:" = "Mesurador de velocitat:";
+"Action Upon Double Click" = "Acció en fer doble clic";
 
 /* nothing */
 "Windows" = "Finestres";
@@ -3086,70 +3206,73 @@
 "Tabs" = "Pestanyes";
 
 /* nothing */
-"Bottom" = "Baix";
-
-/* nothing */
-"Top" = "Dalt";
-
-/* nothing */
-"Left" = "A l'esquerra";
-
-/* nothing */
-"Right" = "A la dreta";
-
-/* nothing */
-"Hidden" = "Oculta";
-
-/* nothing */
 "Always" = "Sempre";
 
 /* nothing */
 "Only requested tabs" = "Només les pestanyes demanades";
 
 /* nothing */
+"Tree" = "Arbre";
+
+/* nothing */
+"Switcher type:" = "Tipus de commutador:";
+
+/* nothing */
 "Open an extra tab for server messages" = "Obre una pestanya adicional per als missatges del servidor";
 
 /* nothing */
-"Open an extra tab for server notices" = "Obre una pestanya adicional per als avisos del servidor";
+"Open an extra tab for server notices" = "Obre una pestanya adicional pels avisos del servidor";
 
 /* nothing */
-"Small tabs" = "Pestanyes petites";
+"Open a new tab when you receive a private message" = "Obre una pestanya nova un missatge privat";
 
 /* nothing */
 "Sort tabs in alphabetical order" = "Ordena les pestanyes per ordre alfabètic";
 
 /* nothing */
-"Focus new tabs:" = "Dóna el focus a les pestanyes noves:";
+"Smaller text" = "Text més petit";
 
 /* nothing */
-"Shorten tab labels to:" = "Abreuja el títol a:";
+"Focus new tabs:" = "Enfoca les pestanyes noves:";
+
+/* nothing */
+"Show channel switcher at:" = "Mostra el commutador de canals a:";
+
+/* nothing */
+"Shorten tab labels to:" = "Abrevia el títol a:";
 
 /* nothing */
 "letters." = "lletres com a màxim.";
 
 /* nothing */
-"Tabs Location" = "Posició de les pestanyes";
-
-/* nothing */
-"Show tabs at:" = "Mostra les pestanyes a:";
-
-/* nothing */
 "Tabs or Windows" = "Pestanyes o finestres";
 
 /* nothing */
-"Open channels in:" = "Obre els canals en:";
+"Open channels in:" = "Obre els canals a:";
 
 /* nothing */
-"Open dialogs in:" = "Obre els diàlegs en:";
+"Open dialogs in:" = "Obre els diàlegs a:";
 
 /* nothing */
-"Open utilities in:" = "Obre les utilitats en:";
+"Open utilities in:" = "Obre les utilitats a:";
 
 /* nothing */
 "Open DCC, Ignore, Notify etc, in tabs or windows?" = "Voleu obrir DCCs, notificacions, etc. en pestanyes o finestres?";
 
 /* nothing */
+"No" = "No";
+
+/* nothing */
+"Yes" = "Sí";
+
+/* nothing */
+"Browse for save folder every time" = "Navega per la carpeta de desament cada vegada";
+
+/* nothing */
 "Files and Directories" = "Fitxers i directoris";
+
+/* nothing */
+"Auto accept file offers:" = "Accepta automàticament els oferiments de fitxers:";
 
 /* nothing */
 "Download files to:" = "Desa els fitxers baixats a:";
@@ -3158,16 +3281,19 @@
 "Move completed files to:" = "Mou els fitxers completats a:";
 
 /* nothing */
-"Save nick name in filenames" = "Afegeix el sobrenom en els noms dels fitxers";
-
-/* nothing */
-"Convert spaces to underscore before sending" = "Converteix els espais en guions baixos abans d'enviar";
+"Save nick name in filenames" = "Afegeix el sobrenom del remitent en els noms dels fitxers";
 
 /* nothing */
 "Network Settings" = "Configuració de la xarxa";
 
 /* nothing */
-"DCC IP address:" = "Adreça IP";
+"Get my address from the IRC server" = "Obtingues la meva adreça IP des del servidor IRC";
+
+/* nothing */
+"Asks the IRC server for your real address. Use this if you have a 192.168.*.* address!" = "Pregunta al servidor per la vostra adreça real. Useu això si teniu una adreça 192.168.*.*";
+
+/* nothing */
+"DCC IP address:" = "Adreça IP per a transferències DCC:";
 
 /* nothing */
 "Claim you are at this address when offering files." = "Anuncia aquesta adreça com a pròpia quan s'ofereixin fitxers.";
@@ -3179,16 +3305,10 @@
 "Last DCC send port:" = "Últim port d'enviament DCC:";
 
 /* nothing */
-"(Leave ports at zero for full range)." = "(Deixeu els ports a zero per usar tot l'interval).";
+"!Leave ports at zero for full range." = "Deixeu els ports a zero per a utilitzar tot l'interval.";
 
 /* nothing */
-"Get my address from the IRC server" = "Obtingues la meva adreça IP des del servidor";
-
-/* nothing */
-"Asks the IRC server for your real address. Use this if you have a 192.168.*.* address!" = "Pregunta al servidor per la vostra adreça real. Useu això si teniu una adreça 192.168.*.*";
-
-/* nothing */
-"Maximum File Transfer Speeds (bytes per second)" = "Velocitat màxima de transferència de fitxers (octets per segon)";
+"Maximum File Transfer Speeds (bytes per second)" = "Velocitat màxima de transferència de fitxers (bytes per segon)";
 
 /* nothing */
 "One upload:" = "Un únic enviament:";
@@ -3197,7 +3317,7 @@
 "Maximum speed for one transfer" = "Velocitat màxima per a una transferència";
 
 /* nothing */
-"One download:" = "Una única recepció:";
+"One download:" = "Una baixada:";
 
 /* nothing */
 "All uploads combined:" = "Tots els enviaments combinats:";
@@ -3209,22 +3329,58 @@
 "All downloads combined:" = "Totes les recepcions combinades:";
 
 /* nothing */
-"Default Messages" = "Missatges per defecte";
+"Alerts" = "Alertes";
 
 /* nothing */
-"Quit:" = "En sortir:";
+"Show tray balloons on:" = "Mostra bombolles de notificació en:";
 
 /* nothing */
-"Leave channel:" = "En deixar el canal:";
+"Blink tray icon on:" = "Parpelleja la icona de la safata en:";
 
 /* nothing */
-"Away:" = "Missatge d'absència:";
+"Blink task bar on:" = "Parpelleja la barra de tasques en:";
+
+/* nothing */
+"Make a beep sound on:" = "Reprodueix un to en:";
+
+/* nothing */
+"Enable system tray icon" = "Habilita la icona de la safata del sistema";
+
+/* nothing */
+"Highlighted Messages" = "Missatges realçats";
+
+/* nothing */
+"Highlighted messages are ones where your nickname is mentioned, but also:" = "Els missatges realçats són aquells en què el vostre sobrenom es menciona, però també:";
+
+/* nothing */
+"Extra words to highlight:" = "Paraules addicionals per a activar el realçament:";
+
+/* nothing */
+"Nick names not to highlight:" = "Sobrenoms addicionals que no s'han de ressaltar:";
+
+/* nothing */
+"Nick names to always highlight:" = "Sobrenoms que sempre s'han de realçar:";
+
+/* nothing */
+"Separate multiple words with commas.\nWildcards are accepted." = "Separeu les paraules qmb comes.\nS'admeten comodins.";
+
+/* nothing */
+"Default Messages" = "Missatges predeterminats";
+
+/* nothing */
+"Quit:" = "Sortida:";
+
+/* nothing */
+"Leave channel:" = "Sortida del canal:";
+
+/* nothing */
+"Away:" = "Absència:";
 
 /* nothing */
 "Away" = "Absència";
 
 /* nothing */
-"Announce away messages" = "Anuncia missatge d'absència";
+"Announce away messages" = "Missatges d'anunci absència";
 
 /* nothing */
 "Announce your away messages to all channels" = "Anuncia l'absència a tots els canals";
@@ -3236,43 +3392,13 @@
 "Show identical away messages only once" = "Mostra els anuncis idèntics d'absència una sola vegada";
 
 /* nothing */
-"Automatically unmark away" = "Treu l'estatus d'absent automàticament";
+"Automatically unmark away" = "Desmarca'm com a absent automàticament";
 
 /* nothing */
 "Unmark yourself as away before sending messages" = "Desmarca'm automàticament com a absent abans d'enviar missatges";
 
 /* nothing */
-"(Can be a text file relative to ~/.xchat2/)." = "(Pot ser un fitxer de text relatiu a ~/.xchat2/).";
-
-/* nothing */
-"(Can be a text file relative to config dir)." = "(Pot ser un fitxer de text relatiu al directori de configuració).";
-
-/* nothing */
-"Alerts" = "Alertes";
-
-/* nothing */
-"Flash taskbar on highlighted messages" = "Il·lumina la barra de tasques quan hi hagi missatges realçats";
-
-/* nothing */
-"Beep on highlighted messages" = "Avís sonor quan hi hagi missatges realçats";
-
-/* nothing */
-"Extra words to highlight on:" = "Altres paraules a realçar:";
-
-/* nothing */
-"Nicks not to highlight on:" = "Sobrenoms que no s'han de realçar:";
-
-/* nothing */
-"(Separate multiple words with commas)." = "(Llista de paraules separades per comes).";
-
-/* nothing */
-"Beep on private messages" = "Avís sonor de missatges privats";
-
-/* nothing */
-"Beep on channel messages" = "Avís sonor de missatges al canal";
-
-/* nothing */
-"Advanced Settings" = "Configuració avançada";
+"Advanced Settings" = "Paràmetres avançats";
 
 /* nothing */
 "Auto reconnect delay:" = "Retard de reconnexió automàtica:";
@@ -3287,19 +3413,19 @@
 "Sends a /WHOIS when a user comes online in your notify list" = "Envia un /WHOIS a cada usuari de la llista de notificació quan es connecti";
 
 /* nothing */
-"Hide join and part messages" = "Amaga els missatges d'entrades i sortides";
+"Hide join and part messages" = "Oculta els missatges d'entrada/sortida";
 
 /* nothing */
-"Hide channel join/part messages by default" = "Oculta els missatges d'entrada i sortida del canal";
+"Hide channel join/part messages by default" = "Mostra per defecte els missatges d'entrada/sortida dels canals";
 
 /* nothing */
-"Auto Open DCC Windows" = "Obre finestres DCC automàticament";
+"Auto Open DCC Windows" = "Obre finestres de transferències DCC automàticament";
 
 /* nothing */
 "Send window" = "Finestra d'enviament";
 
 /* nothing */
-"Receive window" = "Finestra de rebudes";
+"Receive window" = "Finestra de recepció";
 
 /* nothing */
 "Chat window" = "Finestra de xat";
@@ -3308,22 +3434,22 @@
 "Logging" = "Enregistrament";
 
 /* nothing */
-"Enable logging of conversations" = "Enregistra les converses";
+"Display scrollback from previous session" = "Mostra la memòria intermèdia de desplaçament cap enrere de la sessió anterior";
 
 /* nothing */
-"Log filename mask:" = "Màscara del fitxer:";
+"Enable logging of conversations to disk" = "Habilita l'enregistrament de les converses al disc";
 
 /* nothing */
-"(%s=Server %c=Channel %n=Network)." = "(%s=Servidor %c=Canal %n=Xarxa).";
+"Log filename:" = "Nom del fitxer de registre:";
+
+/* nothing */
+"%s=Server %c=Channel %n=Network." = "%s=servidor %c=canal %n=xarxa.";
 
 /* nothing */
 "Insert timestamps in logs" = "Afegeix la data i l'hora en el registre";
 
 /* nothing */
 "Log timestamp format:" = "Format de l'informació horària:";
-
-/* nothing */
-"(See strftime manpage for details)." = "(Per a més detalls consulteu la pàgina del manual strftime (3)).";
 
 /* nothing */
 "(Disabled)" = "(Inhabilitat)";
@@ -3341,25 +3467,31 @@
 "HTTP" = "HTTP";
 
 /* nothing */
+"MS Proxy (ISA)" = "Servidor intermediari de Microsoft (ISA)";
+
+/* nothing */
+"All Connections" = "Totes les connexions";
+
+/* nothing */
+"IRC Server Only" = "Només servidor IRC";
+
+/* nothing */
+"DCC Get Only" = "Només DCC Get";
+
+/* nothing */
 "Your Address" = "La vostra adreça";
 
 /* nothing */
 "Bind to:" = "Vincula a:";
 
 /* nothing */
-"(Only useful for computers with multiple addresses)." = "(Només és útil en ordinadors amb múltiples adreces).";
+"Only useful for computers with multiple addresses." = "Només és útil en ordinadors amb múltiples adreces.";
 
 /* nothing */
 "Proxy Server" = "Servidor intermediari";
 
 /* nothing */
-"Hostname:" = "Nom de la màquina:";
-
-/* nothing */
-"Username:" = "Nom d'usuari:";
-
-/* nothing */
-"Password:" = "Contrasenya:";
+"Hostname:" = "Nom del servidor:";
 
 /* nothing */
 "Port:" = "Port:";
@@ -3368,28 +3500,34 @@
 "Type:" = "Tipus:";
 
 /* nothing */
-"Authenticate to the proxy server (HTTP and Socks5)" = "Usa un sistema d'autenticació pel servidor intermedi (HTTP i Socks5)";
+"Use proxy for:" = "Usa un servidor intermediari per a:";
 
 /* nothing */
-"(disabled)" = "(inhabilitat)";
+"Proxy Authentication" = "Autenticació del servidor intermediari";
 
 /* nothing */
-"A star (*)" = "Un asterisc (*)";
+"Use Authentication (MS Proxy, HTTP or Socks5 only)" = "Usa un sistema d'autenticació per al servidor intermediari (només per al servidor intermediari de Microsoft, HTTP o Socks5)";
 
 /* nothing */
-"A red star (*)" = "Un asterisc roig (*)";
+"Use Authentication (HTTP or Socks5 only)" = "Usa un sistema d'autenticació per al servidor intermediari (només HTTP o Socks5)";
 
 /* nothing */
-"Underlined" = "Subratllat";
+"Username:" = "Nom d'usuari:";
+
+/* nothing */
+"Password:" = "Contrasenya:";
 
 /* nothing */
 "Select an Image File" = "Seleccioneu un fitxer d'imatge";
 
 /* nothing */
+"Select Download Folder" = "Seleccioneu la carpeta de baixades";
+
+/* nothing */
 "Select font" = "Seleccioneu un tipus de lletra";
 
 /* nothing */
-"Browse..." = "Vés a...";
+"Browse..." = "Fulleja...";
 
 /* nothing */
 "Mark identified users with:" = "Marca els usuaris identificats amb:";
@@ -3398,16 +3536,19 @@
 "Mark not-identified users with:" = "Marca els usuaris no identificats amb:";
 
 /* nothing */
+"Open Data Folder" = "Obre la carpeta de dades";
+
+/* nothing */
 "Select color" = "Seleccioneu un color";
 
 /* nothing */
 "Text Colors" = "Colors del text";
 
 /* nothing */
-"mIRC colors:" = "Colors del mIRC:";
+"mIRC colors:" = "Colors del mIRC";
 
 /* nothing */
-"Extra colors:" = "Colors adicionals:";
+"Local colors:" = "Colors locals:";
 
 /* nothing */
 "Foreground:" = "Primer pla:";
@@ -3425,31 +3566,31 @@
 "New data:" = "Dades noves:";
 
 /* nothing */
-"Marker line:" = "Línia de separació:";
+"Marker line:" = "Línia de marcador:";
 
 /* nothing */
 "New message:" = "Missatge nou:";
 
 /* nothing */
-"Away user:" = "Usuari absent::";
+"Away user:" = "Usuari absent:";
 
 /* nothing */
-"Highlight:" = "Text realçat:";
+"Highlight:" = "Realçament:";
 
 /* nothing */
 "Event" = "Esdeveniment";
 
 /* nothing */
-"Sound file" = "Fitxer d'àudio";
+"Sound file" = "Fitxer de so";
 
 /* nothing */
-"Select a sound file" = "Seleccioneu un fitxer d'àudio";
+"Select a sound file" = "Seleccioneu un fitxer de so";
 
 /* nothing */
 "Sound playing method:" = "Mètode de reproducció:";
 
 /* nothing */
-"External sound playing _program:" = "Programa extern de reproducció:";
+"External sound playing _program:" = "Programa extern de _reproducció:";
 
 /* nothing */
 "_External program" = "Programa _extern";
@@ -3458,43 +3599,40 @@
 "_Automatic" = "_Automàtic";
 
 /* nothing */
-"Sound files _directory:" = "Directori de fitxers d'àudio:";
+"Sound files _directory:" = "_Directori dels fitxers de so:";
 
 /* nothing */
-"Sound file:" = "Fitxer d'àudio:";
+"Sound file:" = "Fitxer de so:";
 
 /* nothing */
-"_Browse..." = "_Vés a...";
+"_Browse..." = "_Navega...";
 
 /* nothing */
-"_Play" = "Re_produeix";
+"_Play" = "_Reprodueix";
 
 /* nothing */
 "Interface" = "Interfície";
 
 /* nothing */
-"Text box" = "Caixa de text";
-
-/* nothing */
-"Input box" = "Línia d'entrada";
+"Text box" = "Quadre de text";
 
 /* nothing */
 "User list" = "Llista d'usuaris";
 
 /* nothing */
+"Channel switcher" = "Commutador de canals";
+
+/* nothing */
 "Colors" = "Colors";
 
 /* nothing */
-"Chatting" = "Conversacions";
+"Chatting" = "Xat";
 
 /* nothing */
-"General" = "General";
+"General" = "Genegal";
 
 /* nothing */
-"Sound" = "Àudio";
-
-/* nothing */
-"Network" = "Xarxa";
+"Sound" = "So";
 
 /* nothing */
 "Network setup" = "Configuració de la xarxa";
@@ -3506,10 +3644,16 @@
 "Categories" = "Categories";
 
 /* nothing */
+"You cannot place the tree on the top or bottom!\nPlease change to the <b>Tabs</b> layout in the <b>View</b> menu first." = "No podeu posar l'arbre a la part de dalt o a la de baix.\nHauríeu de canviar la disposició de les <b>Pestanyes</b> al menú <b>Visualitza</b> abans de res.";
+
+/* nothing */
 "Some settings were changed that require a restart to take full effect." = "Algunes de les opcions que han canviat requereixen reiniciar l'X-Chat per a tenir efecte.";
 
 /* nothing */
-"X-Chat: Preferences" = "X-Chat: Preferències";
+"*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile" = "*ATENCIÓ*\nAcceptar automàticament DCCs al vostre\ndirectori personal pot ser perillós. P.ex:\nAlgú podria enviar-vos un .bash_profile";
+
+/* nothing */
+"XChat: Preferences" = "XChat: preferències";
 
 /* nothing */
 "There was an error parsing the string" = "S'ha produït un error en analitzar la cadena";
@@ -3521,16 +3665,13 @@
 "Print Texts File" = "Imprimeix un fitxer de text";
 
 /* nothing */
-"$ Number" = "$ Número";
-
-/* nothing */
 "Edit Events" = "Edició d'esdeveniments";
 
 /* nothing */
-"Save As" = "Desa com a";
+"$ Number" = "$ Número";
 
 /* nothing */
-"Load From" = "Carrega des de";
+"Load From..." = "Carrega des de...";
 
 /* nothing */
 "Test All" = "Comprova-ho tot";
@@ -3539,13 +3680,13 @@
 "URL" = "URL";
 
 /* nothing */
-"Select a file to save to" = "Seleccioneu un fitxer on desar-ho";
-
-/* nothing */
-"X-Chat: URL Grabber" = "X-Chat: capturador d'URLs";
+"XChat: URL Grabber" = "XChat: capturador d'URL";
 
 /* nothing */
 "Clear list" = "Neteja la llista";
+
+/* nothing */
+"Copy selected URL" = "Copia l'URL seleccionat";
 
 /* nothing */
 "Copy" = "Copia";
@@ -3555,25 +3696,4 @@
 
 /* nothing */
 "%d ops, %d total" = "%d operadors, %d en total";
-
-/* nothing */
-"      File: %s\n   To/From: %s\n      Size: %u\n      Port: %d\n IP Number: %s\nStart Time: %s   Max CPS: %d\n" = "    Fitxer: %s\n      A/De: %s\n      Mida: %u\n      Port: %d\n Adreça IP: %s\n     Inici: %s   CPS màxim: %d\n";
-
-/* nothing */
-"User: %s" = "Usuari: %s";
-
-/* nothing */
-"Realname: %s" = "Nom real: %s";
-
-/* nothing */
-"Server: %s" = "Servidor: %s";
-
-/* nothing */
-"%C22*%O$t%C28[%O$1%C28] %O$2" = "%C22*%O$t%C28[%O$1%C28] %O$2";
-
-/* nothing */
-"Former Czechoslovakia" = "Antiga Txecoslovàquia";
-
-/* nothing */
-"Zaire" = "Zaire";
 

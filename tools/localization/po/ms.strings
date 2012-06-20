@@ -1,5 +1,5 @@
 /* nothing */
-"" = "Project-Id-Version: xchat 2.0.2pre1\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2004-01-01 23:38+1100\nPO-Revision-Date: 2003-04-20 19:51+0800\nLast-Translator: Hasbullah Bin Pit <sebol@ikhlas.com>\nLanguage-Team: Malay <translation-team-ms@lists.sourceforge.net>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n";
+"" = "Project-Id-Version: xchat 2.0.2pre1\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2010-05-30 13:56+1000\nPO-Revision-Date: 2003-04-20 19:51+0800\nLast-Translator: Hasbullah Bin Pit <sebol@ikhlas.com>\nLanguage-Team: Malay <translation-team-ms@lists.sourceforge.net>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n";
 
 /* nothing */
 "Cannot create ~/.xchat2" = "Tak dapat mencipta ~/.xchat2";
@@ -35,6 +35,12 @@
 "Cannot access %s\n" = "Tak dapat mengakses %s\n";
 
 /* nothing */
+"Error" = "Ralat";
+
+/* nothing */
+"%s is offering \"%s\". Do you want to accept?" = "";
+
+/* nothing */
 "No active DCCs\n" = "Tiada DCC aktif\n";
 
 /* nothing */
@@ -47,7 +53,7 @@
 "You are being CTCP flooded from %s, ignoring %s\n" = "";
 
 /* nothing */
-"You are being MSG flooded from %s, setting autodialog OFF.\n" = "";
+"You are being MSG flooded from %s, setting gui_auto_open_dialog OFF.\n" = "";
 
 /* nothing */
 "  %-20s online\n" = "  %-20s dalamtalian\n";
@@ -62,16 +68,25 @@
 "Not connected. Try /server <host> [<port>]\n" = "Tidak disambung. Cuba /server <hos [<liang>]>\n";
 
 /* nothing */
+"Already marked away: %s\n" = "";
+
+/* nothing */
+"Already marked back.\n" = "";
+
+/* nothing */
 "I need /bin/sh to run!\n" = "Saya perlukan /bin/sh untuk dilaksanakan!\n";
 
 /* nothing */
-"\nCommands Available:\n\n  " = "\nArahan yang Ada:\n\n  ";
+"Commands Available:" = "\nArahan yang Ada:\n\n  ";
 
 /* nothing */
-"\n\nType /HELP <command> for more information, or /HELP -l\n\n" = "\n\nTaip /HELP <arahan> untuk lebih maklumat, atau /HELP -l\n\n";
+"User defined commands:" = "Arahan ditakrif pengguna:\n\n ";
 
 /* nothing */
-"User defined commands:\n\n  " = "Arahan ditakrif pengguna:\n\n ";
+"Plugin defined commands:" = "Arahan ditakrif pengguna:\n\n ";
+
+/* nothing */
+"Type /HELP <command> for more information, or /HELP -l" = "\n\nTaip /HELP <arahan> untuk lebih maklumat, atau /HELP -l\n\n";
 
 /* nothing */
 "Unknown arg '%s' ignored." = "Hujah tidak diketahui '%s' diabaikan.";
@@ -89,31 +104,40 @@
 "ALLCHAN <cmd>, sends a command to all channels you're in" = "ALLCHAN <arahan>, hantar arahan ke semua saluran yang anda sertai";
 
 /* nothing */
+"ALLCHANL <cmd>, sends a command to all channels you're in" = "ALLCHAN <arahan>, hantar arahan ke semua saluran yang anda sertai";
+
+/* nothing */
 "ALLSERV <cmd>, sends a command to all servers you're in" = "ALLSERV <arahan>, hantar arahan ke semua pelkayan yang anda masuk";
 
 /* nothing */
 "AWAY [<reason>], sets you away" = "AWAY [<alasan>], menetapkan anda away";
 
 /* nothing */
+"BACK, sets you back (not away)" = "";
+
+/* nothing */
 "BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "";
 
 /* nothing */
-"CLEAR, Clears the current text window" = "CLEAR, Kosongkan teks tetingkap semasa";
+"CHANOPT [-quiet] <variable> [<value>]" = "";
+
+/* nothing */
+"CLEAR [ALL|HISTORY], Clears the current text window or command history" = "CLEAR, Kosongkan teks tetingkap semasa";
 
 /* nothing */
 "CLOSE, Closes the current window/tab" = "CLOSE, Tutup tetingkap/tab semasa";
 
 /* nothing */
-"COUNTRY <code>, finds a country code, eg: au = australia" = "COUNTRY <kod>, cari kod negara , eg: my = malaysia";
+"COUNTRY [-s] <code|wildcard>, finds a country code, eg: au = australia" = "COUNTRY <kod>, cari kod negara , eg: my = malaysia";
 
 /* nothing */
 "CTCP <nick> <message>, send the CTCP message to nick, common messages are VERSION and USERINFO" = "";
 
 /* nothing */
-"CYCLE, parts current channel and immediately rejoins" = "";
+"CYCLE [<channel>], parts the current or given channel and immediately rejoins" = "";
 
 /* nothing */
-"\nDCC GET <nick>                     - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file] - send a file to someone\nDCC LIST                           - show DCC list\nDCC CHAT <nick>                    - offer DCC CHAT to someone\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "";
+"\nDCC GET <nick>                      - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file]  - send a file to someone\nDCC PSEND [-maxcps=#] <nick> [file] - send a file using passive mode\nDCC LIST                            - show DCC list\nDCC CHAT <nick>                     - offer DCC CHAT to someone\nDCC PCHAT <nick>                    - offer DCC CHAT using passive mode\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "";
 
 /* nothing */
 "DEHOP <nick>, removes chanhalf-op status from the nick on the current channel (needs chanop)" = "";
@@ -158,7 +182,13 @@
 "GATE <host> [<port>], proxies through a host, port defaults to 23" = "";
 
 /* nothing */
+"GHOST <nick> [password], Kills a ghosted nickname" = "";
+
+/* nothing */
 "HOP <nick>, gives chanhalf-op status to the nick (needs chanop)" = "";
+
+/* nothing */
+"ID <password>, identifies yourself to nickserv" = "";
 
 /* nothing */
 "IGNORE <mask> <types..> <options..>\n    mask - host mask to ignore, eg: *!*@*.aol.com\n    types - types of data to ignore, one or all of:\n            PRIV, CHAN, NOTI, CTCP, DCC, INVI, ALL\n    options - NOSAVE, QUIET" = "";
@@ -182,7 +212,7 @@
 "LASTLOG <string>, searches for a string in the buffer" = "";
 
 /* nothing */
-"LOAD <file>, loads a plugin or script" = "";
+"LOAD [-e] <file>, loads a plugin or script" = "";
 
 /* nothing */
 "MDEHOP, Mass deop's all chanhalf-ops in the current channel (needs chanop)" = "";
@@ -209,7 +239,7 @@
 "NCTCP <nick> <message>, Sends a CTCP notice" = "";
 
 /* nothing */
-"NEWSERVER <hostname> [<port>]" = "";
+"NEWSERVER [-noconnect] <hostname> [<port>]" = "";
 
 /* nothing */
 "NICK <nickname>, sets your nick" = "";
@@ -218,7 +248,7 @@
 "NOTICE <nick/channel> <message>, sends a notice. Notices are a type of message that should be auto reacted to" = "";
 
 /* nothing */
-"NOTIFY [<nick>], lists your notify list or adds someone to it" = "";
+"NOTIFY [-n network1[,network2,...]] [<nick>], displays your notify list or adds someone to it" = "";
 
 /* nothing */
 "OP <nick>, gives chanop status to the nick (needs chanop)" = "";
@@ -230,7 +260,7 @@
 "PING <nick | channel>, CTCP pings nick or channel" = "";
 
 /* nothing */
-"QUERY <nick>, opens up a new privmsg window to someone" = "";
+"QUERY [-nofocus] <nick>, opens up a new privmsg window to someone" = "";
 
 /* nothing */
 "QUIT [<reason>], disconnects from the current server" = "";
@@ -251,6 +281,9 @@
 "SAY <text>, sends the text to the object in the current window" = "SAY <teks>, hantar teks ke objek pada tetingkap semasa";
 
 /* nothing */
+"SEND <nick> [<file>]" = "";
+
+/* nothing */
 "SERVCHAN [-ssl] <host> <port> <channel>, connects and joins a channel" = "";
 
 /* nothing */
@@ -263,10 +296,16 @@
 "SERVER <host> [<port>] [<password>], connects to a server, the default port is 6667" = "";
 
 /* nothing */
-"SET <variable> [<value>]" = "";
+"SET [-e] [-off|-on] [-quiet] <variable> [<value>]" = "";
+
+/* nothing */
+"SETCURSOR [-|+]<position>" = "";
 
 /* nothing */
 "TOPIC [<topic>], sets the topic if one is given, else shows the current topic" = "";
+
+/* nothing */
+"\nTRAY -f <timeout> <file1> [<file2>] Blink tray between two icons.\nTRAY -f <filename>                  Set tray to a fixed icon.\nTRAY -i <number>                    Blink tray with an internal icon.\nTRAY -t <text>                      Set the tray tooltip.\nTRAY -b <title> <text>              Set the tray balloon." = "";
 
 /* nothing */
 "UNBAN <mask> [<mask>...], unbans the specified masks." = "";
@@ -276,6 +315,12 @@
 
 /* nothing */
 "UNLOAD <name>, unloads a plugin or script" = "";
+
+/* nothing */
+"URL <url>, opens a URL in your browser" = "";
+
+/* nothing */
+"USELECT [-a] [-s] <nick1> <nick2> etc, highlights nick(s) in channel userlist" = "";
 
 /* nothing */
 "VOICE <nick>, gives voice status to someone (needs chanop)" = "";
@@ -308,6 +353,9 @@
 "No xchat_plugin_init symbol; is this really an xchat plugin?" = "Tiada xchat_plugin_init symbol; is this really an xchat plugin?";
 
 /* nothing */
+"Are you sure this is a SSL capable server and port?\n" = "";
+
+/* nothing */
 "Cannot resolve hostname %s\nCheck your IP Settings!\n" = "";
 
 /* nothing */
@@ -320,385 +368,352 @@
 "Warning: \"%s\" character set is unknown. No conversion will be applied for network %s." = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 added to notify list." = "-%C10-%C11-%O$t$1 ditambah ke senarai notifikasi.";
+"%C22*%O$t$1 added to notify list." = "-%C10-%C11-%O$t$1 ditambah ke senarai notifikasi.";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 Banlist: %C3$4 %C4$2 %C5$3%O" = "";
+"%C22*%O$t$1 Banlist:%C19 $4%C20 $2%C21 $3" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tCannot join%C11 %B$1 %O(You are banned)." = "";
+"%C22*%O$tCannot join%C26 %B$1 %O(You are banned)." = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 is now known as $2" = "-%C10-%C11-%O$t$1 kini dikenali sebagai $2";
+"%C22*%O$t$1 is now known as $2" = "-%C10-%C11-%O$t$1 kini dikenali sebagai $2";
 
 /* nothing */
-"%C13*%O$t$1%O $2%O" = "%C13*%O$t$1 $2%O";
+"%C22*%O$t$1 sets ban on $2" = "-%C10-%C11-%O$t$1 menetapkan ban ban pada $2";
 
 /* nothing */
-"%C13*%O$t%C8%B$1%B%O $2%O" = "%C13*%O$t%C8%B$1%B%O $2%O";
+"%C22*%O$tChannel $1 created on $2" = "-%C10-%C11-%O$tSaluran $1 dicipta pada $2";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 sets ban on $2" = "-%C10-%C11-%O$t$1 menetapkan ban ban pada $2";
+"%C22*%O$t%C26$1%O removes channel half-operator status from%C26 $2" = "-%C10-%C11-%O$t%C11$1%O membuang status semi-operator saluran drpd %C11$2";
 
 /* nothing */
-"-%C10-%C11-%O$tChannel $1 created on $2" = "-%C10-%C11-%O$tSaluran $1 dicipta pada $2";
+"%C22*%O$t%C26$1%O removes channel operator status from%C26 $2" = "-%C10-%C11-%O$t%C11$1%O membuang status operator saluran drpd %C11$2";
 
 /* nothing */
-"-%C10-%C11-%O$t%C11$1%O removes channel half-operator status from %C11$2" = "-%C10-%C11-%O$t%C11$1%O membuang status semi-operator saluran drpd %C11$2";
+"%C22*%O$t%C26$1%O removes voice from%C26 $2" = "-%C10-%C11-%O$t%C11$1%O membuang voice drpd %C11$2";
 
 /* nothing */
-"-%C10-%C11-%O$t%C11$1%O removes channel operator status from %C11$2" = "-%C10-%C11-%O$t%C11$1%O membuang status operator saluran drpd %C11$2";
+"%C22*%O$t$1 sets exempt on $2" = "-%C10-%C11-%O$t$1 menetapkan jemputan pada $2";
 
 /* nothing */
-"-%C10-%C11-%O$t%C11$1%O removes voice from %C11$2" = "-%C10-%C11-%O$t%C11$1%O membuang voice drpd %C11$2";
+"%C22*%O$t%C26$1%O gives channel half-operator status to%C26 $2" = "-%C10-%C11-%O$t%C11$1%O memberi status operator saluran kepada %C11$2";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 sets exempt on $2" = "";
+"%C22*%O$t$1 sets invite on $2" = "-%C10-%C11-%O$t$1 menetapkan jemputan pada $2";
 
 /* nothing */
-"-%C10-%C11-%O$t%C11$1%O gives channel half-operator status to %C11$2" = "";
+"%UChannel          Users   Topic" = "%USaluran          Pengguna   Topik%O";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 sets invite on $2" = "-%C10-%C11-%O$t$1 menetapkan jemputan pada $2";
+"%C22*%O$t$1 sets mode $2$3 $4" = "-%C10-%C11-%O$t$1 menetapkan mod $2$3 $4";
 
 /* nothing */
-"%UChannel          Users   Topic%O" = "%USaluran          Pengguna   Topik%O";
+"%C22*%O$t%C22Channel $1 modes: $2" = "-%C10-%C11-%O$tSaluran $1 mod: $2";
 
 /* nothing */
-"%C2<%O$1%C2>%O$t$2%O" = "%C2<%O$1%C2>%O$t$2%O";
+"%C22*%O$t%C26$1%O gives channel operator status to%C26 $2" = "-%C10-%C11-%O$t%C11$1%O memberi status operator saluran kepada %C11$2";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 sets mode $2$3 $4" = "-%C10-%C11-%O$t$1 menetapkan mod $2$3 $4";
+"%C22*%O$t$1 removes exempt on $2" = "-%C10-%C11-%O$t$1 membuang ban pada $2";
 
 /* nothing */
-"-%C10-%C11-%O$tChannel $1 modes: $2" = "-%C10-%C11-%O$tSaluran $1 mod: $2";
+"%C22*%O$t$1 removes invite on $2" = "-%C10-%C11-%O$t$1 membuang jemputan pada $2";
 
 /* nothing */
-"%C2<%C8%B$1%B%C2>%O$t$2%O" = "%C2<%C8%B$1%B%C2>%O$t$2%O";
+"%C22*%O$t$1 removes channel keyword" = "-%C10-%C11-%O$t$1 membuang katakunci saluran";
 
 /* nothing */
-"%C12-%C13$1/$2%C12-%O$t$3%O" = "%C12-%C13$1/$2%C12-%O$t$3%O";
+"%C22*%O$t$1 removes user limit" = "-%C10-%C11-%O$t$1 membuang had pengguna";
 
 /* nothing */
-"-%C10-%C11-%O$t%C11$1%O gives channel operator status to %C11$2" = "-%C10-%C11-%O$t%C11$1%O memberi status operator saluran kepada %C11$2";
+"%C22*%O$t$1 sets channel keyword to $2" = "-%C10-%C11-%O$t$1 menetapkan katakunci saluran kepada $2";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 removes exempt on $2" = "";
+"%C22*%O$t$1 sets channel limit to $2" = "-%C10-%C11-%O$t$1 menetapkan had saluran kepada $2";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 removes invite on $2" = "-%C10-%C11-%O$t$1 membuang jemputan pada $2";
+"%C22*%O$t$1 removes ban on $2" = "-%C10-%C11-%O$t$1 membuang ban pada $2";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 removes channel keyword" = "-%C10-%C11-%O$t$1 membuang katakunci saluran";
+"%C22*%O$t%C26$1%O gives voice to%C26 $2" = "-%C10-%C11-%O$t%C11$1%O memberi voice kepada %C11$2";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 removes user limit" = "-%C10-%C11-%O$t$1 membuang had pengguna";
+"%C22*%O$t%C22Connected. Now logging in..." = "-%C10-%C11-%O$tTersambung. Kini menglogmasuk..";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 sets channel keyword to $2" = "-%C10-%C11-%O$t$1 menetapkan katakunci saluran kepada $2";
+"%C22*%O$t%C22Connecting to $1 ($2) port $3%O..." = "-%C10-%C11-%O$tMenyambung ke %C11$1 %C14(%C11$2%C14)%C liang %C11$3%C..";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 sets channel limit to $2" = "-%C10-%C11-%O$t$1 menetapkan had saluran kepada $2";
+"%C21*%O$t%C21Connection failed. Error: $1" = "-%C10-%C11-%O$tSambungan gagal. Ralat: $1";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 removes ban on $2" = "-%C10-%C11-%O$t$1 membuang ban pada $2";
+"%C22*%O$tReceived a CTCP $1 from $2" = "-%C10-%C11-%O$tMenerima CTCP $1 drpd $2";
 
 /* nothing */
-"-%C10-%C11-%O$t%C11$1%O gives voice to %C11$2" = "-%C10-%C11-%O$t%C11$1%O memberi voice kepada %C11$2";
+"%C22*%O$tReceived a CTCP $1 from $2 (to $3)" = "-%C10-%C11-%O$tMenerima CTCP $1 drpd $2 (ke $3)";
 
 /* nothing */
-"-%C10-%C11-%O$tConnected. Now logging in.." = "-%C10-%C11-%O$tTersambung. Kini menglogmasuk..";
+"%C19>%O$1%C19<%O$tCTCP $2" = "%C3>%O$1%C3<%O$tCTCP $2%O";
 
 /* nothing */
-"-%C10-%C11-%O$tConnecting to %C11$1 %C14(%C11$2%C14)%C port %C11$3%C.." = "-%C10-%C11-%O$tMenyambung ke %C11$1 %C14(%C11$2%C14)%C liang %C11$3%C..";
+"%C22*%O$tReceived a CTCP Sound $1 from $2" = "-%C10-%C11-%O$tMenerima CTCP Sound $1 drpd $2";
 
 /* nothing */
-"-%C10-%C11-%O$tConnection failed. Error: $1" = "-%C10-%C11-%O$tSambungan gagal. Ralat: $1";
+"%C22*%O$tReceived a CTCP Sound $1 from $2 (to $3)" = "-%C10-%C11-%O$tMenerima CTCP $1 drpd $2 (ke $3)";
 
 /* nothing */
-"-%C10-%C11-%O$tReceived a CTCP $1 from $2" = "-%C10-%C11-%O$tMenerima CTCP $1 drpd $2";
+"%C22*%O$tDCC CHAT to %C26$1%O aborted." = "-%C10-%C11-%O$tDCC CHAT kepada %C11$1%O dibatalkan.";
 
 /* nothing */
-"-%C10-%C11-%O$tReceived a CTCP $1 from $2 (to $3)" = "-%C10-%C11-%O$tMenerima CTCP $1 drpd $2 (ke $3)";
+"%C22*%O$tDCC CHAT connection established to %C26$1 %C30[%O$2%C30]" = "-%C10-%C11-%O$tSambungan DCC CHAT terjalin dengan %C11$1 %C14[%O$2%C14]%O";
 
 /* nothing */
-"%C3>%O$1%C3<%O$tCTCP $2%O" = "%C3>%O$1%C3<%O$tCTCP $2%O";
+"%C22*%O$tDCC CHAT to %C26$1%O lost ($4)." = "-%C10-%C11-%O$tDCC CHAT dengan %C11$1%O hilang. $4.";
 
 /* nothing */
-"-%C10-%C11-%O$tReceived a CTCP Sound $1 from $2" = "-%C10-%C11-%O$tMenerima CTCP Sound $1 drpd $2";
+"%C22*%O$tReceived a DCC CHAT offer from $1" = "-%C10-%C11-%O$tReceived a DCC CHAT offer from $1";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC CHAT to %C11$1%O aborted." = "-%C10-%C11-%O$tDCC CHAT kepada %C11$1%O dibatalkan.";
+"%C22*%O$tOffering DCC CHAT to $1" = "-%C10-%C11-%O$tMenawarkan  DCC CHAT kepadad $1";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC CHAT connection established to %C11$1 %C14[%O$2%C14]%O" = "-%C10-%C11-%O$tSambungan DCC CHAT terjalin dengan %C11$1 %C14[%O$2%C14]%O";
+"%C22*%O$tAlready offering CHAT to $1" = "-%C10-%C11-%O$tTersedia menawarkan CHAT kepada $1";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC CHAT to %C11$1%O lost. $4." = "-%C10-%C11-%O$tDCC CHAT dengan %C11$1%O hilang. $4.";
+"%C22*%O$tDCC $1 connect attempt to%C26 $2%O failed (err=$3)." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tReceived a DCC CHAT offer from $1" = "-%C10-%C11-%O$tReceived a DCC CHAT offer from $1";
+"%C22*%O$tReceived '$1%O' from $2" = "-%C10-%C11-%O$tDiterima '$1%O' drpd $2";
 
 /* nothing */
-"-%C10-%C11-%O$tOffering DCC CHAT to $1" = "-%C10-%C11-%O$tMenawarkan  DCC CHAT kepadad $1";
+"%C24,18 Type  To/From    Status  Size    Pos     File         " = "";
 
 /* nothing */
-"-%C10-%C11-%O$tAlready offering CHAT to $1" = "-%C10-%C11-%O$tTersedia menawarkan CHAT kepada $1";
+"%C22*%O$tReceived a malformed DCC request from %C26$1%O.%010%C22*%O$tContents of packet: $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC $1 connect attempt to %C11$2%O failed (err=$3)." = "";
+"%C22*%O$tOffering%C26 $1%O to%C26 $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tReceived '$1%O' from $2" = "-%C10-%C11-%O$tDiterima '$1%O' drpd $2";
+"%C22*%O$tNo such DCC offer." = "";
 
 /* nothing */
-"%C8,2 Type  To/From    Status  Size    Pos     File      %O%010%B%C9----------------------------------------------------%O" = "";
+"%C22*%O$tDCC RECV%C26 $2%O to%C26 $1%O aborted." = "-%C10-%C11-%O$tDCC CHAT kepada %C11$1%O dibatalkan.";
 
 /* nothing */
-"-%C10-%C11-%O$tReceived a malformed DCC request from %C11$1%O.%010-%C10-%C11-%O$tContents of packet: $2" = "";
+"%C22*%O$tDCC RECV%C26 $1%O from%C26 $3%O complete %C30[%C26$4%O cps%C30]%O." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tOffering %C11$1 %Cto %C11$2%O" = "";
+"%C22*%O$tDCC RECV connection established to%C26 $1 %C30[%O$2%C30]" = "-%C10-%C11-%O$tSambungan DCC CHAT terjalin dengan %C11$1 %C14[%O$2%C14]%O";
 
 /* nothing */
-"-%C10-%C11-%O$tNo such DCC offer." = "";
+"%C22*%O$tDCC RECV%C26 $1%O from%C26 $3%O failed ($4)." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC RECV %C11$2%O to %C11$1%O aborted." = "";
+"%C22*%O$tDCC RECV: Cannot open $1 for writing ($2)." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC RECV %C11$1%O from %C11$3%O complete %C14[%C11$4%O cps%C14]%O." = "";
+"%C22*%O$tThe file%C26 $1%C already exists, saving it as%C26 $2%O instead." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC RECV connection established to %C11$1 %C14[%O$2%C14]%O" = "";
+"%C22*%O$t%C26$1 %Ohas requested to resume%C26 $2 %Cfrom%C26 $3%C." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC RECV %C11$1%O from %C11$3%O failed. $4." = "";
+"%C22*%O$tDCC SEND%C26 $2%O to%C26 $1%O aborted." = "-%C10-%C11-%O$tDCC CHAT kepada %C11$1%O dibatalkan.";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC RECV: Cannot open $1 for writing ($2)." = "-%C10-%C11-%O$tDCC CHAT dengan %C11$1%O hilang. $4.";
+"%C22*%O$tDCC SEND%C26 $1%O to%C26 $2%O complete %C30[%C26$3%O cps%C30]%O." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tThe file %C11$1%C already exists, saving it as %C11$2%O instead." = "";
+"%C22*%O$tDCC SEND connection established to%C26 $1 %C30[%O$2%C30]" = "-%C10-%C11-%O$tSambungan DCC CHAT terjalin dengan %C11$1 %C14[%O$2%C14]%O";
 
 /* nothing */
-"-%C10-%C11-%O$t%C11$1 %Chas requested to resume %C11$2 %Cfrom %C11$3%C." = "";
+"%C22*%O$tDCC SEND%C26 $1%O to%C26 $2%O failed. $3" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC SEND %C11$2%O to %C11$1%O aborted." = "";
+"%C22*%O$t%C26$1 %Ohas offered%C26 $2 %O(%C26$3 %Obytes)" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC SEND %C11$1%O to %C11$2%O complete %C14[%C11$3%O cps%C14]%O." = "";
+"%C22*%O$tDCC $1%C26 $2 %Oto%C26 $3 %Cstalled - aborting." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC SEND connection established to %C11$1 %C14[%O$2%C14]%O" = "";
+"%C22*%O$tDCC $1%C26 $2 %Oto%C26 $3 %Otimed out - aborting." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC SEND %C11$1%O to %C11$2%O failed. $3" = "";
+"%C22*%O$t$1 deleted from notify list." = "-%C10-%C11-%O$t$1 ditambah ke senarai notifikasi.";
 
 /* nothing */
-"-%C10-%C11-%O$t%C11$1 %Chas offered %C11$2 %C(%C11$3 %Cbytes)" = "";
+"%C22*%O$tDisconnected ($1)." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC $1 %C11$2 %Cto %C11$3 %Cstalled - aborting." = "";
+"%C22*%O$tFound your IP: [$1]" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDCC $1 %C11$2 %Cto %C11$3 %Ctimed out - aborting." = "";
+"%O%C26$1%O added to ignore list." = "-%C10-%C11-%O$t$1 ditambah ke senarai notifikasi.";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 deleted from notify list." = "";
+"Ignore on %C26$1%O changed." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tDisconnected ($1)." = "";
+"%C24,18                                                              " = "";
 
 /* nothing */
-"-%C10-%C11-%O$tFound your IP: [$1]" = "";
+"%C24,18 Hostmask                  PRIV NOTI CHAN CTCP DCC  INVI UNIG " = "";
 
 /* nothing */
-"$1$t$2" = "";
-
-/* nothing */
-"%O%C11$1%O added to ignore list." = "";
-
-/* nothing */
-"Ignore on %C11$1%O changed." = "";
-
-/* nothing */
-"%C08,02                                                              %O" = "";
-
-/* nothing */
-"%C08,02 Hostmask                  PRIV NOTI CHAN CTCP DCC  INVI UNIG %O" = "";
-
-/* nothing */
-"%O%C11$1%O removed from ignore list." = "";
+"%O%C26$1%O removed from ignore list." = "";
 
 /* nothing */
 "  Ignore list is empty." = "  Senarai abai kosong.";
 
 /* nothing */
-"-%C10-%C11-%O$tCannot join%C11 %B$1 %O(Channel is invite only)." = "";
+"%C22*%O$tCannot join%C26 %B$1 %O(Channel is invite only)." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tYou have been invited to %C11$1%C by %C11$2%C (%C11$3%C)" = "";
+"%C22*%O$tYou have been invited to%C26 $1%O by%C26 $2%C (%C26$3%C)" = "";
 
 /* nothing */
-"-%C10-%C11>%O$t%B$1%B %C14(%C10$3%C14)%C has joined $2" = "";
+"%C19*%O$t%C19%B$1 %B($3) has joined $2" = "%C13*%O$t%C8%B$1%B%O $2%O";
 
 /* nothing */
-"-%C10-%C11-%O$tCannot join%C11 %B$1 %O(Requires keyword)." = "";
+"%C22*%O$tCannot join%C26 %B$1 %O(Requires keyword)." = "";
 
 /* nothing */
-"<%C10-%C11-%O$t$1 has kicked $2 from $3 ($4%O)" = "";
+"%C21*%O$t%C21$1 has kicked $2 from $3 ($4%O%C21)" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tYou have been killed by $1 ($2%O)" = "";
+"%C22*%O$tYou have been killed by $1 ($2%O%C22)" = "";
 
 /* nothing */
-"%C3>%O$1%C3<%O$t$2%O" = "";
+"%C22*%O$t%C22MOTD Skipped." = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1%O" = "";
+"%C22*%O$t$1 already in use. Retrying with $2..." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tMOTD Skipped." = "";
+"%C22*%O$tNickname already in use. Use /NICK to try another." = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 already in use. Retrying with $2.." = "";
+"%C22*%O$tNo such DCC." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tNickname already in use. Use /NICK to try another." = "";
+"%C22*%O$tNo process is currently running" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tNo such DCC." = "";
+"$tNotify list is empty." = "  Senarai abai kosong.";
 
 /* nothing */
-"-%C10-%C11-%O$tNo process is currently running" = "";
+"%C24,18 %B  Notify List                           " = "";
 
 /* nothing */
-"%C12-%C13$1%C12-%O$t$2%O" = "";
+"%C22*%O$t$1 users in notify list." = "-%C10-%C11-%O$t$1 ditambah ke senarai notifikasi.";
 
 /* nothing */
-"-%C10-%C11-%O$tNotify list is empty." = "";
+"%C22*%O$tNotify: $1 is offline ($3)." = "";
 
 /* nothing */
-"%C08,02 %B-- Notify List --------------- %O" = "";
+"%C22*%O$tNotify: $1 is online ($3)." = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 users in notify list." = "";
+"%C23*%O$t%C23$1 (%O%C23$2) has left $3" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tNotify: $1 is offline ($2)." = "";
+"%C23*%O$t%C23$1 (%O%C23$2) has left $3 (%O%C23%B%B$4%O%C23)" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tNotify: $1 is online ($2)." = "";
+"%C22*%O$tPing reply from $1: $2 second(s)" = "";
 
 /* nothing */
-"<%C10-%C11-%O$t$1 %C14(%O$2%C14)%C has left $3" = "";
+"%C22*%O$tNo ping reply for $1 seconds, disconnecting." = "";
 
 /* nothing */
-"<%C10-%C11-%O$t$1 %C14(%O$2%C14)%C has left $3 %C14(%O$4%C14)%O" = "";
+"%C22*%O$tA process is already running" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tPing reply from $1 : $2 second(s)" = "";
+"%C23*%O$t%C23$1 has quit (%O%C23%B%B$2%O%C23)" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tNo ping reply for $1 seconds, disconnecting." = "";
+"%C22*%O$t$1 sets modes%B %C30[%O$2%B%C30]" = "";
 
 /* nothing */
-"%C12*%C13$1%C12*$t%O$2%O" = "";
+"%C28-%C29$1/Wallops%C28-%O$t$2" = "%C12-%C13$1/$2%C12-%O$t$3%O";
 
 /* nothing */
-"-%C10-%C11-%O$tA process is already running" = "";
+"%C22*%O$tLooking up IP number for%C26 $1%O..." = "";
 
 /* nothing */
-"<%C10-%C11-%O$t$1 has quit %C14(%O$2%O%C14)%O" = "";
+"%C22*%O$t%C22Connected." = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 sets modes%B %C14[%O$2%B%C14]%O" = "";
+"%C22*%O$t%C22Looking up $1" = "";
 
 /* nothing */
-"%C12-%C13$1/Wallops%C12-%O$t$2%O" = "";
+"%C22*%O$tStopped previous connection attempt (pid=$1)" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tLooking up IP number for%C11 $1%O.." = "";
+"%C29*%O$t%C29Topic for $1%C %C29is: $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tConnected." = "";
+"%C22*%O$t$1 has changed the topic to: $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tLooking up %C11$1%C.." = "";
+"%C29*%O$t%C29Topic for $1%C %C29set by $2%C %C29at $3" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tStopped previous connection attempt (pid=$1)" = "";
+"%C22*%O$tUnknown host. Maybe you misspelled it?" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tTopic for %C11$1%C is %C11$2%O" = "";
+"%C22*%O$tCannot join%C26 %B$1 %O(User limit reached)." = "";
 
 /* nothing */
-"-%C10-%C11-%O$tTopic for %C11$1%C set by %C11$2%C at %C11$3%O" = "";
+"%C22*%O$t%C26Users on $1:%C $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t$1 has changed the topic to: $2%O" = "";
+"%C22*%O$t%C28[%O$1%C28] %O$2%C27 $3" = "%C13*%O$t%C8%B$1%B%O $2%O";
 
 /* nothing */
-"-%C10-%C11-%O$tUnknown host. Maybe you misspelled it?" = "";
+"%C22*%O$t%C28[%O$1%C28] %Cis away %C30(%O$2%O%C30)" = "";
 
 /* nothing */
-"-%C10-%C11-%O$tCannot join%C11 %B$1 %O(User limit reached)." = "";
+"%C22*%O$t%C28[%O$1%C28]%O $2" = "%C13*%O$t%C8%B$1%B%O $2%O";
 
 /* nothing */
-"-%C10-%C11-%O$t%C11Users on $1:%C $2" = "";
+"%C22*%O$t%C28[%O$1%C28] %OEnd of WHOIS list." = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C12[%O$1%C12] %Cis away %C14(%O$2%O%C14)" = "";
+"%C22*%O$t%C28[%O$1%C28]%O idle%C26 $2" = "%C13*%O$t%C8%B$1%B%O $2%O";
 
 /* nothing */
-"-%C10-%C11-%O$t%C12[%O$1%C12]%C $2" = "";
+"%C22*%O$t%C28[%O$1%C28]%O idle%C26 $2%O, signon:%C26 $3" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C12[%O$1%C12] %CEnd of WHOIS list." = "";
+"%C22*%O$t%C28[%O$1%C28] %C30(%O$2@$3%C30)%O: $4" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C12[%O$1%C12] %O$2" = "-%C10-%C11-%O$t%C11$1%O memberi voice kepada %C11$2";
+"%C22*%O$t%C28[%O$1%C28] %Oreal user@host%C27 $2%O, real IP%C27 $3" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C12[%O$1%C12] %O$2 %C11$3%O" = "-%C10-%C11-%O$t%C11$1%O memberi voice kepada %C11$2";
+"%C19*%O$t%C19Now talking on $2" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C12[%O$1%C12] %Oreal user@host %C11$2%O, real IP %C11$3%O" = "";
+"%C23*$tYou have been kicked from $2 by $3 ($4%O%C23)" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C12[%O$1%C12]%O idle %C11$2%O" = "";
+"%C23*$tYou have left channel $3" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C12[%O$1%C12]%O idle %C11$2%O, signon: %C11$3%O" = "";
+"%C23*$tYou have left channel $3 (%O%C23%B%B$4%O%C23)" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C12[%O$1%C12] %C14(%O$2@$3%C14) %O: $4%O" = "";
+"%C22*%O$tYou've invited%C26 $1%O to%C26 $2%O (%C26$3%O)" = "";
 
 /* nothing */
-"-%C10-%C11-%O$t%C12[%O$1%C12]%O $2" = "";
+"%C22*%O$tYou are now known as $2" = "-%C10-%C11-%O$t$1 kini dikenali sebagai $2";
 
 /* nothing */
-"-%C10-%C11>%O$t%BYou%B are now talking on %C11$2%O" = "";
-
-/* nothing */
-"-%C10-%C11-%O$tYou have left channel $3" = "";
-
-/* nothing */
-"-%C10-%C11-%O$tYou have left channel $3 %C14(%O$4%C14)%O" = "";
-
-/* nothing */
-"-%C10-%C11-%O$tYou have been kicked from $2 by $3 ($4%O)" = "";
-
-/* nothing */
-"-%C10-%C11-%O$tYou're inviting %C11$1%C to %C11$2%C (%C11$3%C)" = "";
-
-/* nothing */
-"%C6<%O$1%C6>%O$t$2%O" = "";
-
-/* nothing */
-"-%C10-%C11-%O$tYou are now known as $2" = "";
+"Loaded log from" = "Muatkan Dari";
 
 /* nothing */
 "**** ENDING LOGGING AT %s\n" = "**** AKHIR LOG PADA %s\n";
@@ -731,10 +746,13 @@
 "The action" = "Aksi";
 
 /* nothing */
-"The text" = "Teks";
+"Mode char" = "Aksara mod";
 
 /* nothing */
-"Mode char" = "Aksara mod";
+"Identified text" = "Teks maklumat";
+
+/* nothing */
+"The text" = "Teks";
 
 /* nothing */
 "The message" = "Mesej";
@@ -938,6 +956,9 @@
 "Server Name" = "Nama Pelayan";
 
 /* nothing */
+"Raw Numeric or Identifier" = "";
+
+/* nothing */
 "Nick of person who invited you" = "Gelaran orang yang anda ingin jemput";
 
 /* nothing */
@@ -950,19 +971,13 @@
 "Nick being tried" = "Gelaran sedang dicuba";
 
 /* nothing */
-"Error" = "Ralat";
-
-/* nothing */
 "IP" = "IP";
 
 /* nothing */
 "Port" = "Liang";
 
 /* nothing */
-"PID" = "PID";
-
-/* nothing */
-"Channel name" = "Nama saluran";
+"Network" = "Rangkaian";
 
 /* nothing */
 "Modes string" = "Rentetan mod";
@@ -998,9 +1013,6 @@
 "Number of notify items" = "Bilangan item makluman";
 
 /* nothing */
-"Servername" = "Nama Pelayan";
-
-/* nothing */
 "Old Filename" = "Namafail Lama";
 
 /* nothing */
@@ -1034,7 +1046,7 @@
 "Ban time" = "Masa ban";
 
 /* nothing */
-"Error parsing event %s.\nLoading default" = "Ralat menetapkan kekunci %s kembali ke default: %s\n";
+"Error parsing event %s.\nLoading default." = "Ralat menetapkan kekunci %s kembali ke default: %s\n";
 
 /* nothing */
 "Cannot read sound file:\n%s" = "Tidak dapat membaca fail itu.";
@@ -1056,6 +1068,9 @@
 
 /* nothing */
 "Connection reset by peer" = "Sambungan ditolak";
+
+/* nothing */
+"Ascension Island" = "Kepulauan Coco";
 
 /* nothing */
 "Andorra" = "Andorra";
@@ -1107,6 +1122,9 @@
 
 /* nothing */
 "Aruba" = "Aruba";
+
+/* nothing */
+"Aland Islands" = "Kepulauan Falkland";
 
 /* nothing */
 "Azerbaijan" = "Azerbaijan";
@@ -1178,6 +1196,9 @@
 "Cocos Islands" = "Kepulauan Coco";
 
 /* nothing */
+"Democratic Republic of Congo" = "";
+
+/* nothing */
 "Central African Republic" = "Republik Afrika Tengah";
 
 /* nothing */
@@ -1187,7 +1208,7 @@
 "Switzerland" = "Switzerland";
 
 /* nothing */
-"Cote D'ivoire" = "Cote D'ivoire";
+"Cote d'Ivoire" = "Cote D'ivoire";
 
 /* nothing */
 "Cook Islands" = "Kepulauan Cook";
@@ -1211,7 +1232,7 @@
 "Costa Rica" = "Costa Rica";
 
 /* nothing */
-"Former Czechoslovakia" = "Bekas Czechoslovakia";
+"Serbia and Montenegro" = "";
 
 /* nothing */
 "Cuba" = "Cuba";
@@ -1271,6 +1292,9 @@
 "Ethiopia" = "Ethiopia";
 
 /* nothing */
+"European Union" = "";
+
+/* nothing */
 "Finland" = "Finland";
 
 /* nothing */
@@ -1287,9 +1311,6 @@
 
 /* nothing */
 "France" = "Perancis";
-
-/* nothing */
-"France, Metropolitan" = "";
 
 /* nothing */
 "Gabon" = "Gabon";
@@ -1337,7 +1358,7 @@
 "Greece" = "Greek";
 
 /* nothing */
-"S. Georgia and S. Sandwich Isles." = "S. Georgia dan S. Sandwich Isles.";
+"S. Georgia and S. Sandwich Isles" = "S. Georgia dan S. Sandwich Isles.";
 
 /* nothing */
 "Guatemala" = "Guatemala";
@@ -1379,6 +1400,9 @@
 "Israel" = "Israel";
 
 /* nothing */
+"Isle of Man" = "";
+
+/* nothing */
 "India" = "India";
 
 /* nothing */
@@ -1401,6 +1425,9 @@
 
 /* nothing */
 "Italy" = "Itali";
+
+/* nothing */
+"Jersey" = "";
 
 /* nothing */
 "Jamaica" = "Jamaica";
@@ -1580,9 +1607,6 @@
 "Nauru" = "Nauru";
 
 /* nothing */
-"Neutral Zone" = "Zon Berkecuali";
-
-/* nothing */
 "Niue" = "Niue";
 
 /* nothing */
@@ -1623,6 +1647,9 @@
 
 /* nothing */
 "Puerto Rico" = "Puerto Rico";
+
+/* nothing */
+"Palestinian Territory" = "Wilayah Utara";
 
 /* nothing */
 "Portugal" = "Portugal";
@@ -1733,6 +1760,9 @@
 "Tokelau" = "Tokelau";
 
 /* nothing */
+"East Timor" = "Timor Larose";
+
+/* nothing */
 "Turkmenistan" = "Turkmenistan";
 
 /* nothing */
@@ -1740,9 +1770,6 @@
 
 /* nothing */
 "Tonga" = "Tonga";
-
-/* nothing */
-"East Timor" = "Timor Larose";
 
 /* nothing */
 "Turkey" = "Turki";
@@ -1769,9 +1796,6 @@
 "United Kingdom" = "United Kingdom";
 
 /* nothing */
-"US Minor Outlying Islands" = "Kepulauan Society";
-
-/* nothing */
 "United States of America" = "Amerika Syarikat";
 
 /* nothing */
@@ -1784,7 +1808,7 @@
 "Vatican City State" = "Vatican City";
 
 /* nothing */
-"St. Vincent and the grenadines" = "St. Vincent and the Grenadines";
+"St. Vincent and the Grenadines" = "St. Vincent and the Grenadines";
 
 /* nothing */
 "Venezuela" = "Venezuela";
@@ -1823,58 +1847,25 @@
 "Zambia" = "Zambia";
 
 /* nothing */
-"Zaire" = "Zaire";
-
-/* nothing */
 "Zimbabwe" = "Zimbabwe";
 
 /* nothing */
 "Unknown" = "Entah";
 
 /* nothing */
-"Direct client-to-client" = "";
+"_Open Dialog Window" = "Buka Tetingkap Dialog";
 
 /* nothing */
-"Send File" = "Kirim fail kepada %s";
+"_Send a File" = "Kirim fail kepada %s";
 
 /* nothing */
-"Offer Chat" = "";
+"_User Info (WhoIs)" = "";
 
 /* nothing */
-"Abort Chat" = "Perihal X-Chat";
+"_Add to Friends List" = "Alamat untuk diikat:";
 
 /* nothing */
-"Version" = "Versi";
-
-/* nothing */
-"Userinfo" = "Pengguna";
-
-/* nothing */
-"Clientinfo" = "";
-
-/* nothing */
-"Ping" = "Ping";
-
-/* nothing */
-"Time" = "Masa";
-
-/* nothing */
-"Finger" = "Niger";
-
-/* nothing */
-"Oper" = "Buka";
-
-/* nothing */
-"Kill this user" = "";
-
-/* nothing */
-"Mode" = "Mod";
-
-/* nothing */
-"Give Voice" = "";
-
-/* nothing */
-"Take Voice" = "";
+"O_perator Actions" = "";
 
 /* nothing */
 "Give Ops" = "Beri Ops";
@@ -1883,13 +1874,10 @@
 "Take Ops" = "Ambil Ops";
 
 /* nothing */
-"Ignore" = "Abai";
+"Give Voice" = "";
 
 /* nothing */
-"Ignore User" = "Abaikan Pengguna";
-
-/* nothing */
-"UnIgnore User" = "Nyah-abai Pengguna";
+"Take Voice" = "";
 
 /* nothing */
 "Kick/Ban" = "Tendang/Ban";
@@ -1902,42 +1890,6 @@
 
 /* nothing */
 "KickBan" = "";
-
-/* nothing */
-"Info" = "Maklumat";
-
-/* nothing */
-"Who" = "Siapa";
-
-/* nothing */
-"WhoIs" = "";
-
-/* nothing */
-"DNS Lookup" = "Carian DNS";
-
-/* nothing */
-"Trace" = "Surih";
-
-/* nothing */
-"UserHost" = "HosPengguna";
-
-/* nothing */
-"External" = "Luaran";
-
-/* nothing */
-"Traceroute" = "Traceroute";
-
-/* nothing */
-"Telnet" = "Telnet";
-
-/* nothing */
-"Open Dialog Window" = "Buka Tetingkap Dialog";
-
-/* nothing */
-"Disconnect" = "Putus";
-
-/* nothing */
-"Reconnect" = "UlangSambung";
 
 /* nothing */
 "Leave Channel" = "Saluran";
@@ -1976,6 +1928,9 @@
 "Dialog" = "Dialog";
 
 /* nothing */
+"WhoIs" = "";
+
+/* nothing */
 "Send" = "Hantar";
 
 /* nothing */
@@ -1985,7 +1940,31 @@
 "Clear" = "Kosongkan";
 
 /* nothing */
-"About X-Chat" = "Perihal X-Chat";
+"Ping" = "Ping";
+
+/* nothing */
+"Couldn't connect to session bus" = "";
+
+/* nothing */
+"Failed to complete NameHasOwner" = "";
+
+/* nothing */
+"Failed to complete Command" = "Gagal membuka font:\n\n%s";
+
+/* nothing */
+"remote access" = "Tak dapat mengakses %s\n";
+
+/* nothing */
+"plugin for remote access using DBUS" = "";
+
+/* nothing */
+"Couldn't connect to session bus: %s\n" = "";
+
+/* nothing */
+"Failed to acquire %s: %s\n" = "Gagal membuka font:\n\n%s";
+
+/* nothing */
+"About " = "_Perihal";
 
 /* nothing */
 "A multiplatform IRC Client" = "";
@@ -1994,7 +1973,13 @@
 "Character Chart" = "Carta Aksara";
 
 /* nothing */
+"Not connected." = "Kitar sehingga disambung";
+
+/* nothing */
 "You must select some bans." = "";
+
+/* nothing */
+"Are you sure you want to remove all bans in %s?" = "";
 
 /* nothing */
 "Mask" = "Topengan";
@@ -2006,10 +1991,13 @@
 "Date" = "Tarikh";
 
 /* nothing */
-"X-Chat: Ban List (%s)" = "Chat dengan %s";
+"You can only open the Ban List window while in a channel tab." = "";
 
 /* nothing */
-"Unban" = "";
+"XChat: Ban List (%s)" = "Chat dengan %s";
+
+/* nothing */
+"Remove" = "Buang";
 
 /* nothing */
 "Crop" = "Crop";
@@ -2018,49 +2006,67 @@
 "Refresh" = "Segarkan";
 
 /* nothing */
-"User and Channel Statistics: %d/%d Users on %d/%d Channels" = "Statistik Pengguna dan Saluran: %d/%d Pengguna pada %d/%d Saluran";
-
-/* nothing */
-"I can't save an empty list!" = "Saya tak dapat simpan senarai kosong";
+"Displaying %d/%d users on %d/%d channels." = "Statistik Pengguna dan Saluran: %d/%d Pengguna pada %d/%d Saluran";
 
 /* nothing */
 "Select an output filename" = "Pilih fail output";
 
 /* nothing */
-"X-Chat: Channel List (%s)" = "X-Chat: Senarai Saluran (%s)";
+"_Join Channel" = "Sertai Saluran";
 
 /* nothing */
-"List display options:" = "Tak dapat memapar opsyen:";
+"_Copy Channel Name" = "Nama Saluran";
 
 /* nothing */
-"Minimum Users:" = "Pengguna Minimum:";
+"Copy _Topic Text" = "";
 
 /* nothing */
-"Maximum Users:" = "Pengguna Maksimum:";
+"XChat: Channel List (%s)" = "X-Chat: Senarai Saluran (%s)";
 
 /* nothing */
-"Regex Match:" = "Padanan regexp: ";
+"_Search" = "";
 
 /* nothing */
-"Apply Match to:" = "Terapkan Padanan ke:";
+"_Download List" = "Muatturun fail ke:";
 
 /* nothing */
-"Apply" = "Terap";
+"Save _List..." = "Senarai Pelayan...";
 
 /* nothing */
-"Refresh the list" = "Segarkan senarai";
+"Show only:" = "";
 
 /* nothing */
-"Save the list" = "Simpan senarai";
+"channels with" = "Buka saluran pada:";
 
 /* nothing */
-"Join Channel" = "Sertai Saluran";
+"to" = "";
+
+/* nothing */
+"users." = "Pengguna";
+
+/* nothing */
+"Look in:" = "";
+
+/* nothing */
+"Channel name" = "Nama saluran";
+
+/* nothing */
+"Search type:" = "Teks Carian...";
+
+/* nothing */
+"Simple Search" = "";
+
+/* nothing */
+"Pattern Match (Wildcards)" = "";
+
+/* nothing */
+"Regular Expression" = "";
+
+/* nothing */
+"Find:" = "Cari:";
 
 /* nothing */
 "Send file to %s" = "Kirim fail kepada %s";
-
-/* nothing */
-"      File: %s\n   To/From: %s\n      Size: %u\n      Port: %d\n IP Number: %s\nStart Time: %s   Max CPS: %d\n" = "      Fail: %s\n  Kpd/Drpd: %s\n      Saiz: %u\n     Liang: %d\n Nombor IP: %s\n Masa Mula: %s  Max CPS: %d\n";
 
 /* nothing */
 "That file is not resumable." = "";
@@ -2075,7 +2081,7 @@
 "Cannot resume the same file from two people." = "";
 
 /* nothing */
-"MIME Type" = "Jenis MIME";
+"XChat: Uploads and Downloads" = "";
 
 /* nothing */
 "Status" = "Status";
@@ -2087,7 +2093,22 @@
 "ETA" = "ETA";
 
 /* nothing */
-"X-Chat: File Receive List" = "";
+"Both" = "Bawah";
+
+/* nothing */
+"Uploads" = "";
+
+/* nothing */
+"Downloads" = "Muatturun fail ke:";
+
+/* nothing */
+"Details" = "";
+
+/* nothing */
+"File:" = "Fail";
+
+/* nothing */
+"Address:" = "Alamat IP";
 
 /* nothing */
 "Abort" = "Abai";
@@ -2099,19 +2120,10 @@
 "Resume" = "Sambung";
 
 /* nothing */
-"Open" = "Buka";
+"Open Folder..." = "";
 
 /* nothing */
-"Ack" = "Ack";
-
-/* nothing */
-"To" = "Kepada";
-
-/* nothing */
-"X-Chat: File Send List" = "";
-
-/* nothing */
-"To/From" = "Kpd/Drpd";
+"XChat: DCC Chat List" = "X-Chat: Senarai DCC Chat";
 
 /* nothing */
 "Recv" = "Terima";
@@ -2120,10 +2132,7 @@
 "Sent" = "Hantar";
 
 /* nothing */
-"StartTime" = "MasaMula";
-
-/* nothing */
-"X-Chat: DCC Chat List" = "X-Chat: Senarai DCC Chat";
+"Start Time" = "MasaMula";
 
 /* nothing */
 "*NEW*" = "*BARU*";
@@ -2162,22 +2171,37 @@
 "Help" = "Bantuan";
 
 /* nothing */
-"Options" = "Aksi";
+"Don't auto connect to servers" = "Auto Sambung semula ke Pelayan";
 
 /* nothing */
-"DIRECTORY" = "";
+"Use a different config directory" = "";
 
 /* nothing */
-"use a different config dir" = "";
+"Don't auto load any plugins" = "";
 
 /* nothing */
-"don't auto connect" = "";
+"Show plugin auto-load directory" = "";
 
 /* nothing */
-"don't auto load any plugins" = "";
+"Show user config directory" = "";
 
 /* nothing */
-"show version information" = "Maklumat Pelayan";
+"Open an irc://server:port/channel URL" = "";
+
+/* nothing */
+"Execute command:" = "Arahan  Sambungan:";
+
+/* nothing */
+"Open URL or execute command in an existing XChat" = "";
+
+/* nothing */
+"Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "";
+
+/* nothing */
+"level" = "Tidak sekali";
+
+/* nothing */
+"Show version information" = "Maklumat Pelayan";
 
 /* nothing */
 "Failed to open font:\n\n%s" = "Gagal membuka font:\n\n%s";
@@ -2189,6 +2213,9 @@
 "%d bytes" = "";
 
 /* nothing */
+"Network send queue: %d bytes" = "";
+
+/* nothing */
 "The Run Command action runs the data in Data 1 as if it has been typed into the entry box where you pressed the key sequence. Thus it can contain text (which will be sent to the channel/person), commands or user commands. When run all \\n characters in Data 1 are used to deliminate seperate commands so it is possible to run more than one command. If you want a \\ in the actual text run then enter \\\\" = "";
 
 /* nothing */
@@ -2198,7 +2225,7 @@
 "The Insert in Buffer command will insert the contents of Data 1 into the entry where the key sequence was pressed at the current cursor position" = "";
 
 /* nothing */
-"The Scroll Page command scrolls the text widget up or down one page. If Data 1 is set to anything the page scrolls up, else it scrolls down" = "";
+"The Scroll Page command scrolls the text widget up or down one page or one line. Set Data 1 to either Up, Down, +1 or -1." = "";
 
 /* nothing */
 "The Set Buffer command sets the entry where the key sequence was entered to the contents of Data 1" = "";
@@ -2249,10 +2276,7 @@
 "Action" = "Aksi";
 
 /* nothing */
-"X-Chat: Edit Key Bindings" = "X-Chat: Edit Ikatan kekunci";
-
-/* nothing */
-"Add new" = "Tambah baru";
+"XChat: Keyboard Shortcuts" = "";
 
 /* nothing */
 "Shift" = "Shif";
@@ -2315,7 +2339,7 @@
 "Enter mask to ignore:" = "";
 
 /* nothing */
-"X-Chat: Ignore list" = "Dalam Senarai Abaikan";
+"XChat: Ignore list" = "Dalam Senarai Abaikan";
 
 /* nothing */
 "Ignore Stats:" = "Abaikan Stat:";
@@ -2336,10 +2360,43 @@
 "Invite:" = "Jemput:";
 
 /* nothing */
-"New" = "Baru";
+"Add..." = "Tambah";
 
 /* nothing */
-"Delete All" = "Padam";
+"Channel name too short, try again." = "";
+
+/* nothing */
+"XChat: Connection Complete" = "Sambungan melebihi hadmasa ";
+
+/* nothing */
+"Connection to %s complete." = "Sambungan ditolak";
+
+/* nothing */
+"In the Server-List window, no channel (chat room) has been entered to be automatically joined for this network." = "";
+
+/* nothing */
+"What would you like to do next?" = "";
+
+/* nothing */
+"_Nothing, I'll join a channel later." = "";
+
+/* nothing */
+"_Join this channel:" = "Sertai Saluran:";
+
+/* nothing */
+"If you know the name of the channel you want to join, enter it here." = "";
+
+/* nothing */
+"O_pen the Channel-List window." = "Buka saluran pada:";
+
+/* nothing */
+"Retrieving the Channel-List may take a minute or two." = "";
+
+/* nothing */
+"_Always show this dialog after connecting." = "";
+
+/* nothing */
+"Dialog with" = "Dialog";
 
 /* nothing */
 "Topic for %s is: %s" = "Topik bagi %s ialah: %s";
@@ -2348,31 +2405,73 @@
 "No topic is set" = "Tiada topik ditetapkan";
 
 /* nothing */
-"No other tabs open, quit xchat?" = "Tiada tab lain dibuka, keluar xchat?";
+"This server still has %d channels or dialogs associated with it. Close them all?" = "";
 
 /* nothing */
-"Insert color code" = "Masukkan kod warna";
+"Quit XChat?" = "Perihal X-Chat";
 
 /* nothing */
-"Close Tab" = "Tutup Tab";
+"Don't ask next time." = "";
 
 /* nothing */
-"Detach Tab" = "Leraikan Tab";
+"You are connected to %i IRC networks." = "";
 
 /* nothing */
-"Beep on message" = "Beep pada Mesej";
+"Are you sure you want to quit?" = "";
 
 /* nothing */
-"Show join/part messages" = "Hantar dan Terima mesej";
+"Some file transfers are still active." = "";
 
 /* nothing */
-"Color paste" = "Xterm warna (xterm-color)";
+"_Minimize to Tray" = "";
 
 /* nothing */
-"Go to" = "";
+"Insert Attribute or Color Code" = "Masukkan kod warna";
 
 /* nothing */
-"Some file transfers still active, quit xchat?" = "";
+"<b>Bold</b>" = "";
+
+/* nothing */
+"<u>Underline</u>" = "";
+
+/* nothing */
+"Normal" = "Norway";
+
+/* nothing */
+"Colors 0-7" = "Warna";
+
+/* nothing */
+"Colors 8-15" = "Warna";
+
+/* nothing */
+"_Settings" = "_Tetapan";
+
+/* nothing */
+"_Log to Disk" = "";
+
+/* nothing */
+"_Reload Scrollback" = "";
+
+/* nothing */
+"_Hide Join/Part Messages" = "Hantar dan Terima mesej";
+
+/* nothing */
+"_Extra Alerts" = "";
+
+/* nothing */
+"Beep on _Message" = "Beep pada Mesej";
+
+/* nothing */
+"Blink Tray _Icon" = "";
+
+/* nothing */
+"Blink Task _Bar" = "";
+
+/* nothing */
+"_Detach" = "Leraikan Tab";
+
+/* nothing */
+"_Close" = "_Tutup";
 
 /* nothing */
 "User limit must be a number!\n" = "Item menu mesti mempunyai nama";
@@ -2402,9 +2501,6 @@
 "User Limit" = "Had Pengguna";
 
 /* nothing */
-"Close this tab/window" = "Tutup tetingkap ini";
-
-/* nothing */
 "Show/Hide userlist" = "Sorok/Papar Opsyen";
 
 /* nothing */
@@ -2417,34 +2513,43 @@
 "Host unknown" = "Hos tak diketahui";
 
 /* nothing */
-"User: %s" = "Pengguna: %s";
+"<tt><b>%-11s</b></tt> %s" = "";
 
 /* nothing */
-"Country: %s" = "Negara: %s";
+"Real Name:" = "Nama Sebenar:";
 
 /* nothing */
-"Realname: %s" = "Nama sebenar: %s";
+"User:" = "Pengguna";
 
 /* nothing */
-"Server: %s" = "Pelayan: %s";
+"Country:" = "Negara: %s";
 
 /* nothing */
-"Last Msg: %s" = "Msj Terakhir: %s";
+"Server:" = "Pelayan";
 
 /* nothing */
-"Menu Bar" = "Bar Menu";
+"%u minutes ago" = "";
 
 /* nothing */
-"Topic Bar" = "Bar Topik";
+"Last Msg:" = "Msj Terakhir: %s";
 
 /* nothing */
-"User List" = "Senarai Pengguna";
+"Away Msg:" = "Alasan away";
 
 /* nothing */
-"Mode Buttons" = "Butang Dialog...";
+"%d nicks selected." = "";
 
 /* nothing */
-"User List Buttons" = "Sempadan sekeliling butang";
+"The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "";
+
+/* nothing */
+"Open Link in Browser" = "";
+
+/* nothing */
+"Copy Selected Link" = "";
+
+/* nothing */
+"Join Channel" = "Sertai Saluran";
 
 /* nothing */
 "Part Channel" = "Saluran";
@@ -2453,58 +2558,67 @@
 "Cycle Channel" = "Saluran";
 
 /* nothing */
-"X-Chat: User menu" = "X-Chat: Menu pengguna";
+"_Remove from Favorites" = "";
+
+/* nothing */
+"_Add to Favorites" = "";
+
+/* nothing */
+"XChat: User menu" = "X-Chat: Menu pengguna";
 
 /* nothing */
 "Edit This Menu..." = "Edit Menu Ini...";
 
 /* nothing */
-"*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile" = "";
+"Retrieve channel list..." = "Senarai Saluran...";
 
 /* nothing */
-"Settings saved." = "Tetapan disimpan.";
+"User Commands - Special codes:\n\n%c  =  current channel\n%e  =  current network name\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "";
 
 /* nothing */
-"User Commands - Special codes:\n\n%c  =  current channel\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "";
+"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "";
 
 /* nothing */
-"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "";
+"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "";
 
 /* nothing */
-"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "";
+"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%e  =  current network name\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "";
 
 /* nothing */
-"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "";
+"URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of XChat" = "";
 
 /* nothing */
-"URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of X-Chat" = "";
+"XChat: User Defined Commands" = "Arahan Pengguna";
 
 /* nothing */
-"X-Chat: User Defined Commands" = "Arahan Pengguna";
+"XChat: Userlist Popup menu" = "X-Chat: Menu pengguna";
 
 /* nothing */
-"X-Chat: Userlist Popup menu" = "";
+"Replace with" = "";
 
 /* nothing */
-"X-Chat: Replace" = "Tak Ganti";
+"XChat: Replace" = "Tak Ganti";
 
 /* nothing */
-"X-Chat: URL Handlers" = "X-Chat: Pengendali URL";
+"XChat: URL Handlers" = "X-Chat: Pengendali URL";
 
 /* nothing */
-"X-Chat: Userlist buttons" = "X-Chat: Butang Senarai pengguna";
+"XChat: Userlist buttons" = "X-Chat: Butang Senarai pengguna";
 
 /* nothing */
-"X-Chat: Dialog buttons" = "X-Chat: Butang dialog";
+"XChat: Dialog buttons" = "X-Chat: Butang dialog";
 
 /* nothing */
-"X-Chat: CTCP Replies" = "X-Chat: Balasan CTCP";
+"XChat: CTCP Replies" = "X-Chat: Balasan CTCP";
 
 /* nothing */
-"_X-Chat" = "_X-Chat";
+"_XChat" = "_X-Chat";
 
 /* nothing */
-"Server List..." = "Senarai Pelayan...";
+"Network Li_st..." = "Tetapan rangkaian";
+
+/* nothing */
+"_New" = "Baru";
 
 /* nothing */
 "Server Tab..." = "Tab Pelayan...";
@@ -2519,58 +2633,76 @@
 "Channel Window..." = "Tetingkap Saluran...";
 
 /* nothing */
-"Load Plugin or Script..." = "Muatkan Plugin atau skrip...";
+"_Load Plugin or Script..." = "Muatkan Plugin atau skrip...";
 
 /* nothing */
-"New Shell Tab..." = "Tab Shell Baru...";
+"_Quit" = "Keluar";
 
 /* nothing */
-"Quit" = "Keluar";
+"_View" = "";
 
 /* nothing */
-"_IRC" = "_IRC";
+"_Menu Bar" = "Bar Menu";
 
 /* nothing */
-"Invisible" = "Ghaib";
+"_Topic Bar" = "Bar Topik";
 
 /* nothing */
-"Receive Wallops" = "Terima Wallop";
+"_User List" = "Senarai Pengguna";
 
 /* nothing */
-"Receive Server Notices" = "Terima Notis Pelayan";
+"U_serlist Buttons" = "Butang Senarai Pengguna...";
 
 /* nothing */
-"Marked Away" = "Ditanda Away";
+"M_ode Buttons" = "Butang Dialog...";
 
 /* nothing */
-"Auto Rejoin when Kicked" = "Auto Sertai bila Ditendang";
+"_Channel Switcher" = "Senarai Saluran...";
 
 /* nothing */
-"Auto Reconnect to Server" = "Auto Sambung semula ke Pelayan";
+"_Tabs" = "Tab";
 
 /* nothing */
-"Never-give-up ReConnect" = "Ulang Sambung Jangan-putus-asa";
+"T_ree" = "Surih";
 
 /* nothing */
-"Auto Open Dialog Windows" = "Auto Buka Tetingkap Dialog";
+"_Network Meters" = "Tetapan rangkaian";
 
 /* nothing */
-"Auto Accept Direct Chat" = "Auto Terima Chat  Langsung";
+"Off" = "LuarTalian";
 
 /* nothing */
-"Auto Accept Files" = "Auto Terima Fail";
+"Graph" = "Graf";
 
 /* nothing */
 "_Server" = "_Pelayan";
 
 /* nothing */
+"_Disconnect" = "Putus";
+
+/* nothing */
+"_Reconnect" = "UlangSambung";
+
+/* nothing */
+"Join a Channel..." = "Sertai Saluran...";
+
+/* nothing */
+"List of Channels..." = "Sertai Saluran...";
+
+/* nothing */
+"Marked Away" = "Ditanda Away";
+
+/* nothing */
+"_Usermenu" = "Namapengguna";
+
+/* nothing */
 "S_ettings" = "_Tetapan";
 
 /* nothing */
-"Preferences..." = "Keutamaan...";
+"_Preferences" = "Keutamaan...";
 
 /* nothing */
-"Lists" = "Senarai";
+"Advanced" = "";
 
 /* nothing */
 "Auto Replace..." = "Auto Ganti...";
@@ -2582,7 +2714,7 @@
 "Dialog Buttons..." = "Butang Dialog...";
 
 /* nothing */
-"Key Bindings..." = "Ikatan Kekunci...";
+"Keyboard Shortcuts..." = "";
 
 /* nothing */
 "Text Events..." = "Acara Teks...";
@@ -2600,22 +2732,10 @@
 "Userlist Popup..." = "Popup Senarai Pengguna...";
 
 /* nothing */
-"Reload Settings" = "Ulangmuat Tetapan";
-
-/* nothing */
-"Save Settings now" = "Simpan Tetapan sekarang";
-
-/* nothing */
-"Save Settings on exit" = "Simpan Tetapan bila keluar";
-
-/* nothing */
 "_Window" = "_Tetingkap";
 
 /* nothing */
 "Ban List..." = "Senarai Ban";
-
-/* nothing */
-"Channel List..." = "Senarai Saluran...";
 
 /* nothing */
 "Character Chart..." = "";
@@ -2624,16 +2744,13 @@
 "Direct Chat..." = "Chat Langsung...";
 
 /* nothing */
-"File Receive..." = "Fail Diterima...";
+"File Transfers..." = "Pemindahan fail";
 
 /* nothing */
-"File Send..." = "Fail Dihantar...";
+"Friends List..." = "Senarai Ban";
 
 /* nothing */
 "Ignore List..." = "Senarai Abaikan...";
-
-/* nothing */
-"Notify List..." = "Senarai Makluman...";
 
 /* nothing */
 "Plugins and Scripts..." = "";
@@ -2643,6 +2760,9 @@
 
 /* nothing */
 "URL Grabber..." = "Penggenggam URL";
+
+/* nothing */
+"Reset Marker Line" = "";
 
 /* nothing */
 "C_lear Text" = "Teks Je_rnih";
@@ -2660,16 +2780,13 @@
 "_Contents" = "_Kandungan";
 
 /* nothing */
+"Check for updates" = "";
+
+/* nothing */
 "_About" = "_Perihal";
 
 /* nothing */
-"Attach Tab" = "";
-
-/* nothing */
-"User" = "Pengguna";
-
-/* nothing */
-"Server" = "Pelayan";
+"_Attach" = "";
 
 /* nothing */
 "Last Seen" = "Terakhir Dilihat";
@@ -2681,19 +2798,85 @@
 "Never" = "Tidak sekali";
 
 /* nothing */
+"%d minutes ago" = "";
+
+/* nothing */
 "Online" = "DalamTalian";
 
 /* nothing */
 "Enter nickname to add:" = "Masukkan nama gelaran untuk ditambah:";
 
 /* nothing */
-"X-Chat: Notify List" = "X-Chat: Senarai Makluman";
+"Notify on these networks:" = "";
 
 /* nothing */
-"Add" = "Tambah";
+"Comma separated list of networks is accepted." = "";
 
 /* nothing */
-"Remove" = "Buang";
+"XChat: Friends List" = "X-Chat: Senarai Pelayan";
+
+/* nothing */
+"Open Dialog" = "Buka Tetingkap Dialog";
+
+/* nothing */
+"Cannot find 'notify-send' to open balloon alerts.\nPlease install libnotify." = "";
+
+/* nothing */
+"XChat: Connected to %u networks and %u channels" = "";
+
+/* nothing */
+"_Restore" = "";
+
+/* nothing */
+"_Hide" = "Tersembunyi";
+
+/* nothing */
+"_Blink on" = "";
+
+/* nothing */
+"Channel Message" = "Nama Saluran";
+
+/* nothing */
+"Private Message" = "Hantar dan Terima mesej";
+
+/* nothing */
+"Highlighted Message" = "Hantar dan Terima mesej";
+
+/* nothing */
+"_Change status" = "";
+
+/* nothing */
+"_Away" = "";
+
+/* nothing */
+"_Back" = "";
+
+/* nothing */
+"XChat: Highlighted message from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u highlighted messages, latest from: %s (%s)" = "";
+
+/* nothing */
+"XChat: New public message from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u new public messages." = "";
+
+/* nothing */
+"XChat: Private message from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u private messages, latest from: %s (%s)" = "";
+
+/* nothing */
+"XChat: File offer from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u file offers, latest from: %s (%s)" = "";
+
+/* nothing */
+"Version" = "Versi";
 
 /* nothing */
 "Description" = "Huraian";
@@ -2702,7 +2885,7 @@
 "Select a Plugin or Script to load" = "Pilih Plugin atau skrip  untuk dimuatkan";
 
 /* nothing */
-"X-Chat: Plugins and Scripts" = "Plugin";
+"XChat: Plugins and Scripts" = "Plugin";
 
 /* nothing */
 "_Load..." = "_Muat ...";
@@ -2711,37 +2894,31 @@
 "_UnLoad" = "_Nyahmuat";
 
 /* nothing */
-"_Close" = "_Tutup";
+"Save As..." = "Simpan Sebagai";
 
 /* nothing */
-"Save rawlog" = "Simpan log mentah";
-
-/* nothing */
-"X-Chat: Rawlog (%s)" = "X-Chat: Log Mentah (%s)";
+"XChat: Rawlog (%s)" = "X-Chat: Log Mentah (%s)";
 
 /* nothing */
 "Clear rawlog" = "Kosongkan log mentah";
 
 /* nothing */
-"Save rawlog..." = "Simpanlog mentah...";
-
-/* nothing */
 "The window you opened this Search for doesn't exist anymore." = "";
 
 /* nothing */
-"X-Chat: Search" = "X-Chat: Carian";
+"Search hit end, not found." = "";
 
 /* nothing */
-"Find:" = "Cari:";
+"XChat: Search" = "X-Chat: Carian";
 
 /* nothing */
-"Find" = "Cari";
+"_Match case" = "";
 
 /* nothing */
-"Close" = "Tutup";
+"Search _backwards" = "";
 
 /* nothing */
-"Settings for %s" = "Tetapan";
+"_Find" = "Cari";
 
 /* nothing */
 "New Network" = "Rangkaian Baru";
@@ -2750,94 +2927,130 @@
 "Really remove network \"%s\" and all its servers?" = "";
 
 /* nothing */
-"_Remove \"%s\"" = "_Buang \"%s\"";
+"#channel" = "Saluran";
 
 /* nothing */
-"_Add new server" = "_Tambah pelayan baru";
+"XChat: Favorite Channels (Auto-Join List)" = "X-Chat: Senarai Saluran (%s)";
 
 /* nothing */
-"Move \"%s\" _down" = "";
+"These channels will be joined whenever you connect to %s." = "";
 
 /* nothing */
-"Move \"%s\" _up" = "Naikkan \"%s\"  ke _atas";
+"Key (Password)" = "katakunci";
 
 /* nothing */
-"_Add new network" = "_Tambah rangkaian baru";
+"_Edit" = "";
 
 /* nothing */
-"Global User Info" = "Ulangtetap semua Tetapan pengguna";
+"%s has been removed." = "";
 
 /* nothing */
-"Nick Names:" = "Nama Gelaran:";
+"%s has been added." = "";
 
 /* nothing */
-"User Name:" = "Nama Pengguna:";
+"User name and Real name cannot be left blank." = "";
 
 /* nothing */
-"Real Name:" = "Nama Sebenar:";
+"XChat: Edit %s" = "Chat dengan %s";
 
 /* nothing */
-"C_onnect" = "S_ambung";
+"Servers for %s" = "Pelayan: %s";
 
 /* nothing */
-"Connect in a _new tab" = "Sambung di tab ba_ru";
+"Connect to selected server only" = "";
 
 /* nothing */
-"Servers" = "Pelayan";
+"Don't cycle through all the servers when the connection fails." = "";
 
 /* nothing */
-"Character Set:" = "Set Aksara:";
+"Your Details" = "";
 
 /* nothing */
-"Nick Name:" = "Nama Gelaran:";
+"Use global user information" = "Ulangtetap semua Tetapan pengguna";
 
 /* nothing */
-"Server Password:" = "Katalaluan Pelayan:";
+"_Nick name:" = "Nama Gelaran:";
 
 /* nothing */
-"Join Channels:" = "Sertai Saluran:";
+"Second choice:" = "Fail bunyi: ";
+
+/* nothing */
+"_User name:" = "Nama Pengguna:";
+
+/* nothing */
+"Rea_l name:" = "Nama Sebenar:";
+
+/* nothing */
+"Connecting" = "Sambung";
+
+/* nothing */
+"Auto connect to this network at startup" = "Sambung Gabber pada permulaan secara automatik";
+
+/* nothing */
+"Bypass proxy server" = "Guna pelayan proksi";
+
+/* nothing */
+"Use SSL for all the servers on this network" = "";
+
+/* nothing */
+"Accept invalid SSL certificate" = "Terima sijil yg tidak sah";
+
+/* nothing */
+"_Favorite channels:" = "Sertai Saluran:";
 
 /* nothing */
 "Channels to join, separated by commas, but not spaces!" = "";
 
 /* nothing */
-"Connect Command:" = "Arahan  Sambungan:";
+"Connect command:" = "Arahan  Sambungan:";
 
 /* nothing */
-"Command to execute after connecting. Can be used to authenticate to NickServ" = "";
+"Extra command to execute after connecting. If you need more than one, set this to LOAD -e <filename>, where <filename> is a text-file full of commands to execute." = "";
 
 /* nothing */
-"Cycle until connected" = "Kitar sehingga disambung";
+"Nickserv password:" = "Katalaluan Pelayan:";
 
 /* nothing */
-"Use global user info" = "Ulangtetap semua Tetapan pengguna";
+"If your nickname requires a password, enter it here. Not all IRC networks support this." = "";
 
 /* nothing */
-"Use secure SSL" = "Guna SSL selamat";
+"Server password:" = "Katalaluan Pelayan:";
 
 /* nothing */
-"Auto connect at startup" = "Sambung Gabber pada permulaan secara automatik";
+"Password for the server, if in doubt, leave blank." = "";
 
 /* nothing */
-"Use a proxy server" = "Guna pelayan proksi";
+"Character set:" = "Set Aksara:";
 
 /* nothing */
-"Accept invalid cert." = "Terima sijil yg tidak sah";
+"XChat: Network List" = "X-Chat: Senarai Makluman";
 
 /* nothing */
-"Settings for Selected Network" = "Cari Teks dipilih di Google";
+"User Information" = "Maklumat Pelayan";
 
 /* nothing */
-"Edit mode" = "Mod edit";
+"Third choice:" = "";
 
 /* nothing */
 "Networks" = "Rangkaian";
 
 /* nothing */
-"No server list on startup" = "Tiada senarai pelayan pada permulaan";
+"Skip network list on startup" = "Tiada senarai pelayan pada permulaan";
 
 /* nothing */
-"X-Chat: Server List" = "X-Chat: Senarai Pelayan";
+"_Edit..." = "_Muat ...";
+
+/* nothing */
+"_Sort" = "Isih";
+
+/* nothing */
+"Sorts the network list in alphabetical order. Use SHIFT-UP and SHIFT-DOWN keys to move a row." = "";
+
+/* nothing */
+"C_onnect" = "S_ambung";
+
+/* nothing */
+"Text Box Appearance" = "";
 
 /* nothing */
 "Font:" = "Font:";
@@ -2846,73 +3059,91 @@
 "Background image:" = "Imej latarbelakang:";
 
 /* nothing */
+"Scrollback lines:" = "Baris skrol belakang:";
+
+/* nothing */
+"Colored nick names" = "Gelaran berwarna";
+
+/* nothing */
+"Give each person on IRC a different color" = "";
+
+/* nothing */
+"Indent nick names" = "Inden gelaran";
+
+/* nothing */
+"Make nick names right-justified" = "";
+
+/* nothing */
+"Transparent background" = "Latar belakang telus";
+
+/* nothing */
+"Show marker line" = "Papar away sekali";
+
+/* nothing */
+"Insert a red line after the last read text." = "";
+
+/* nothing */
+"Transparency Settings" = "Telus";
+
+/* nothing */
+"Red:" = "";
+
+/* nothing */
+"Green:" = "Greenland";
+
+/* nothing */
+"Blue:" = "";
+
+/* nothing */
+"Time Stamps" = "Teks setem masa";
+
+/* nothing */
+"Enable time stamps" = "Selit fail teks";
+
+/* nothing */
 "Time stamp format:" = "Format setem masa";
 
 /* nothing */
 "See strftime manpage for details." = "";
 
 /* nothing */
-"Time stamp text" = "Teks setem masa";
+"A-Z" = "A-Z";
 
 /* nothing */
-"Transparent background" = "Latar belakang telus";
+"Last-spoke order" = "";
 
 /* nothing */
-"Indent nicks" = "Inden gelaran";
-
-/* nothing */
-"Tint transparency" = "Telus";
-
-/* nothing */
-"Colored nicks" = "Gelaran berwarna";
-
-/* nothing */
-"Strip mIRC color" = "Warna utama:";
-
-/* nothing */
-"Scrollback lines:" = "Baris skrol belakang:";
-
-/* nothing */
-"Tint red:" = "";
-
-/* nothing */
-"Tint green:" = "";
-
-/* nothing */
-"Tint blue:" = "";
-
-/* nothing */
-"Interpret %nnn as an ASCII value" = "Tafsir %nnn sebagai nilai ASCII";
-
-/* nothing */
-"Automatic nick completion" = "Auto sempurna gelaran";
-
-/* nothing */
-"Interpret %C, %B as Color, Bold etc" = "Tafsir %C, %B sebagai Warna, Bold dll";
+"Input box" = "kotak input";
 
 /* nothing */
 "Use the Text box font and colors" = "Guna font kekotak teks";
 
 /* nothing */
+"Spell checking" = "";
+
+/* nothing */
+"Nick Completion" = "Suffik penyempurnaan gelaran";
+
+/* nothing */
+"Automatic nick completion (without TAB key)" = "Auto sempurna gelaran";
+
+/* nothing */
 "Nick completion suffix:" = "Suffik penyempurnaan gelaran";
 
 /* nothing */
-"Off" = "LuarTalian";
+"Nick completion sorted:" = "Suffik penyempurnaan gelaran";
 
 /* nothing */
-"Graph" = "Graf";
+"Input Box Codes" = "kotak input";
 
 /* nothing */
-"Info text" = "Teks maklumat";
+"Interpret %nnn as an ASCII value" = "Tafsir %nnn sebagai nilai ASCII";
 
 /* nothing */
-"Both" = "Bawah";
+"Interpret %C, %B as Color, Bold etc" = "Tafsir %C, %B sebagai Warna, Bold dll";
 
 /* nothing */
 "A-Z, Ops first" = "A-Z, Op dahulu";
-
-/* nothing */
-"A-Z" = "A-Z";
 
 /* nothing */
 "Z-A, Ops last" = "Z-A, Op Akhir";
@@ -2924,28 +3155,49 @@
 "Unsorted" = "Tidak Diisih";
 
 /* nothing */
-"Lag meter:" = "";
+"Left (Upper)" = "";
 
 /* nothing */
-"Throttle meter:" = "Padaman Jadual";
+"Left (Lower)" = "";
 
 /* nothing */
-"Userlist sorted by:" = "Fail ditawarkan oleh:";
+"Right (Upper)" = "";
 
 /* nothing */
-"Double-click command:" = "Sela masa dwi-klik";
+"Right (Lower)" = "";
 
 /* nothing */
-"Show hostnames in userlist" = "Papar dalam senarai";
+"Top" = "Atas";
 
 /* nothing */
-"Userlist buttons enabled" = "Hidebuttons dihidupkan";
+"Bottom" = "Bawah";
 
 /* nothing */
-"Resizable userlist" = "Sorok/Papar Opsyen";
+"Hidden" = "Tersembunyi";
 
 /* nothing */
-"Track away-status on channels smaller than:" = "";
+"User List" = "Senarai Pengguna";
+
+/* nothing */
+"Show hostnames in user list" = "Papar dalam senarai";
+
+/* nothing */
+"User list sorted by:" = "Fail ditawarkan oleh:";
+
+/* nothing */
+"Show user list at:" = "Sorok/Papar Opsyen";
+
+/* nothing */
+"Away tracking" = "Alasan away";
+
+/* nothing */
+"Track the Away status of users and mark them in a different color" = "";
+
+/* nothing */
+"On channels smaller than:" = "Buka saluran pada:";
+
+/* nothing */
+"Action Upon Double Click" = "";
 
 /* nothing */
 "Windows" = "Tetingkap";
@@ -2954,22 +3206,46 @@
 "Tabs" = "Tab";
 
 /* nothing */
-"Bottom" = "Bawah";
+"Always" = "";
 
 /* nothing */
-"Top" = "Atas";
+"Only requested tabs" = "";
 
 /* nothing */
-"Left" = "Kiri";
+"Tree" = "Surih";
 
 /* nothing */
-"Right" = "Kanan";
+"Switcher type:" = "";
 
 /* nothing */
-"Hidden" = "Tersembunyi";
+"Open an extra tab for server messages" = "Buka tab tambahan untuk notis pelayan";
 
 /* nothing */
-"Show tabs at:" = "Papar Tab pada:";
+"Open an extra tab for server notices" = "Buka tab tambahan untuk notis pelayan";
+
+/* nothing */
+"Open a new tab when you receive a private message" = "";
+
+/* nothing */
+"Sort tabs in alphabetical order" = "";
+
+/* nothing */
+"Smaller text" = "Teks Je_rnih";
+
+/* nothing */
+"Focus new tabs:" = "";
+
+/* nothing */
+"Show channel switcher at:" = "";
+
+/* nothing */
+"Shorten tab labels to:" = "Papar Tab pada:";
+
+/* nothing */
+"letters." = "";
+
+/* nothing */
+"Tabs or Windows" = "Tetingkap";
 
 /* nothing */
 "Open channels in:" = "Buka saluran pada:";
@@ -2984,25 +3260,37 @@
 "Open DCC, Ignore, Notify etc, in tabs or windows?" = "";
 
 /* nothing */
-"Open tab for server messages" = "Buka tab tambahan untuk notis pelayan";
+"No" = "";
 
 /* nothing */
-"Open tab for server notices" = "Buka tab tambahan untuk notis pelayan";
+"Yes" = "";
 
 /* nothing */
-"Pop new tabs to front" = "Buka tab baru dihadapan";
+"Browse for save folder every time" = "";
 
 /* nothing */
-"Shorten tabs to:" = "Papar Tab pada:";
+"Files and Directories" = "";
 
 /* nothing */
-"letters." = "";
+"Auto accept file offers:" = "Auto Terima Fail";
 
 /* nothing */
 "Download files to:" = "Muatturun fail ke:";
 
 /* nothing */
 "Move completed files to:" = "Muatturun fail ke:";
+
+/* nothing */
+"Save nick name in filenames" = "Simpan sebagai nama fail asal";
+
+/* nothing */
+"Network Settings" = "Ulangmuat Tetapan";
+
+/* nothing */
+"Get my address from the IRC server" = "Dapatkan IP saya dari pelayan IRC";
+
+/* nothing */
+"Asks the IRC server for your real address. Use this if you have a 192.168.*.* address!" = "/WHOIS siri anda untuk mencari alamat sebenar anda";
 
 /* nothing */
 "DCC IP address:" = "Alamat IP DCC:";
@@ -3017,91 +3305,79 @@
 "Last DCC send port:" = "Liang hantaran DCC Akhir:";
 
 /* nothing */
-"(Leave ports at zero for full range)." = "";
+"!Leave ports at zero for full range." = "";
 
 /* nothing */
-"Auto open DCC send list" = "Auto buka senarai hantaran DCC";
+"Maximum File Transfer Speeds (bytes per second)" = "";
 
 /* nothing */
-"Convert spaces to underscore" = "Tukar ruang ke underscore";
+"One upload:" = "";
 
 /* nothing */
-"In filenames, before sending" = "Pada namafail, sebelum menghantar";
+"Maximum speed for one transfer" = "Kelajuan maksimum bagi satu penghantaran";
 
 /* nothing */
-"Auto open DCC chat list" = "Auto buka senarai chat DCC";
+"One download:" = "";
 
 /* nothing */
-"Save nickname in filenames" = "Simpan sebagai nama fail asal";
+"All uploads combined:" = "";
 
 /* nothing */
-"Auto open DCC receive list" = "Auto buka senarai penerimaan DCC";
+"Maximum speed for all files" = "Kelajuan maksimum bagi satu penghantaran";
 
 /* nothing */
-"Get my IP from IRC server" = "Dapatkan IP saya dari pelayan IRC";
+"All downloads combined:" = "";
 
 /* nothing */
-"/WHOIS yourself to find your real address. Use this if you have a 192.168.*.* address!" = "/WHOIS siri anda untuk mencari alamat sebenar anda";
+"Alerts" = "Alt";
 
 /* nothing */
-"Max. send CPS:" = "";
+"Show tray balloons on:" = "Papar Tab pada:";
 
 /* nothing */
-"Max. speed for one transfer" = "Kelajuan maksimum bagi satu penghantaran";
+"Blink tray icon on:" = "";
 
 /* nothing */
-"Max. receive CPS:" = "";
+"Blink task bar on:" = "";
 
 /* nothing */
-"Max. global send CPS:" = "";
+"Make a beep sound on:" = "";
 
 /* nothing */
-"Max. speed for all traffic" = "";
+"Enable system tray icon" = "";
 
 /* nothing */
-"Max. global receive CPS:" = "";
+"Highlighted Messages" = "Hantar dan Terima mesej";
 
 /* nothing */
-"(Leave at zero for full speed file transfers)." = "";
+"Highlighted messages are ones where your nickname is mentioned, but also:" = "";
 
 /* nothing */
-"Default quit message:" = "Mesej keluar pelayan default:";
+"Extra words to highlight:" = "";
 
 /* nothing */
-"Default part message:" = "Mesej keluar saluran default:";
+"Nick names not to highlight:" = "";
 
 /* nothing */
-"Default away message:" = "Mesej away default:";
+"Nick names to always highlight:" = "";
 
 /* nothing */
-"(Can be a text file relative to ~/.xchat2/)." = "";
+"Separate multiple words with commas.\nWildcards are accepted." = "";
 
 /* nothing */
-"(Can be a text file relative to config dir)." = "";
+"Default Messages" = "Mesej keluar pelayan default:";
 
 /* nothing */
-"Extra words to highlight on:" = "";
+"Quit:" = "Keluar";
 
 /* nothing */
-"(Separate multiple words with commas)." = "";
+"Leave channel:" = "Saluran";
 
 /* nothing */
-"Show away once" = "Papar away sekali";
+"Away:" = "";
 
 /* nothing */
-"Show identical away messages only once" = "Papar hanya mesej";
-
-/* nothing */
-"Beep on private messages" = "Hantar dan Terima mesej";
-
-/* nothing */
-"Automatically unmark away" = "_Automatik kemaskini setiap";
-
-/* nothing */
-"Unmark yourself as away before sending messages" = "";
-
-/* nothing */
-"Beep on channel messages" = "Karang mesej baru";
+"Away" = "Norway";
 
 /* nothing */
 "Announce away messages" = "Mesej Auto Ketika Tiada: ";
@@ -3110,7 +3386,22 @@
 "Announce your away messages to all channels" = "Umumkan mesej away ke semua saluran";
 
 /* nothing */
-"Beep on highlighted messages" = "Hantar dan Terima mesej";
+"Show away once" = "Papar away sekali";
+
+/* nothing */
+"Show identical away messages only once" = "Papar hanya mesej";
+
+/* nothing */
+"Automatically unmark away" = "_Automatik kemaskini setiap";
+
+/* nothing */
+"Unmark yourself as away before sending messages" = "";
+
+/* nothing */
+"Advanced Settings" = "Ulangmuat Tetapan";
+
+/* nothing */
+"Auto reconnect delay:" = "Selang masa Auto ulang sambung:";
 
 /* nothing */
 "Display MODEs in raw form" = "Papar pakej dalam format senarai";
@@ -3122,31 +3413,43 @@
 "Sends a /WHOIS when a user comes online in your notify list" = "";
 
 /* nothing */
-"Hide join/part messages" = "Hantar dan Terima mesej";
+"Hide join and part messages" = "Hantar dan Terima mesej";
 
 /* nothing */
 "Hide channel join/part messages by default" = "Hantar dan Terima mesej";
 
 /* nothing */
-"Auto reconnect delay:" = "Selang masa Auto ulang sambung:";
+"Auto Open DCC Windows" = "Auto Buka Tetingkap Dialog";
 
 /* nothing */
-"Log filename mask:" = "Nama fail ikon:";
+"Send window" = "Kirim fail kepada %s";
 
 /* nothing */
-"(%s=Server %c=Channel %n=Network)." = "";
+"Receive window" = "Penerima";
 
 /* nothing */
-"Log timestamp format:" = "Papar hanya mesej";
+"Chat window" = "Tetingkap Saluran...";
 
 /* nothing */
-"(See strftime manpage for details)." = "";
+"Logging" = "Menglog";
 
 /* nothing */
-"Enable logging of conversations" = "Papar operasi fail";
+"Display scrollback from previous session" = "";
+
+/* nothing */
+"Enable logging of conversations to disk" = "Papar operasi fail";
+
+/* nothing */
+"Log filename:" = "Nama fail ikon:";
+
+/* nothing */
+"%s=Server %c=Channel %n=Network." = "";
 
 /* nothing */
 "Insert timestamps in logs" = "Selit fail teks";
+
+/* nothing */
+"Log timestamp format:" = "Papar hanya mesej";
 
 /* nothing */
 "(Disabled)" = "(Dimatikan)";
@@ -3164,22 +3467,31 @@
 "HTTP" = "HTTP";
 
 /* nothing */
-"Address to bind to:" = "Alamat untuk diikat:";
+"MS Proxy (ISA)" = "";
 
 /* nothing */
-"(Only useful for computers with multiple addresses)." = "";
+"All Connections" = "Sambungan ditolak";
 
 /* nothing */
-"Proxy server" = "Pelayan proksi:";
+"IRC Server Only" = "Jemputan Sahaja";
+
+/* nothing */
+"DCC Get Only" = "";
+
+/* nothing */
+"Your Address" = "Alamat IP";
+
+/* nothing */
+"Bind to:" = "Cari:";
+
+/* nothing */
+"Only useful for computers with multiple addresses." = "";
+
+/* nothing */
+"Proxy Server" = "Pelayan proksi:";
 
 /* nothing */
 "Hostname:" = "Namahos";
-
-/* nothing */
-"Username:" = "Namapengguna";
-
-/* nothing */
-"Password:" = "Katalaluan Pelayan:";
 
 /* nothing */
 "Port:" = "Liang";
@@ -3188,10 +3500,28 @@
 "Type:" = "Jenis DCC";
 
 /* nothing */
-"Authenticate to the proxy server (only HTTP)" = "";
+"Use proxy for:" = "Guna pelayan proksi";
+
+/* nothing */
+"Proxy Authentication" = "";
+
+/* nothing */
+"Use Authentication (MS Proxy, HTTP or Socks5 only)" = "";
+
+/* nothing */
+"Use Authentication (HTTP or Socks5 only)" = "";
+
+/* nothing */
+"Username:" = "Namapengguna";
+
+/* nothing */
+"Password:" = "Katalaluan Pelayan:";
 
 /* nothing */
 "Select an Image File" = "Pilih fail output";
+
+/* nothing */
+"Select Download Folder" = "Pilih warna";
 
 /* nothing */
 "Select font" = "Pilih font";
@@ -3200,10 +3530,25 @@
 "Browse..." = "Lungsur...";
 
 /* nothing */
+"Mark identified users with:" = "";
+
+/* nothing */
+"Mark not-identified users with:" = "";
+
+/* nothing */
+"Open Data Folder" = "";
+
+/* nothing */
 "Select color" = "Pilih warna";
 
 /* nothing */
+"Text Colors" = "Warna";
+
+/* nothing */
 "mIRC colors:" = "Warna mIRC:";
+
+/* nothing */
+"Local colors:" = "Warna mIRC:";
 
 /* nothing */
 "Foreground:" = "LatarDepan:";
@@ -3212,22 +3557,58 @@
 "Background:" = "Latar _Belakang";
 
 /* nothing */
-"Mark fore:" = "Tetapkan Tanda";
+"Marking Text" = "Teks Je_rnih";
 
 /* nothing */
-"Mark back:" = "Kad semula:";
+"Interface Colors" = "Antaramuka";
 
 /* nothing */
-"New Data:" = "Data Baru:";
+"New data:" = "Data Baru:";
 
 /* nothing */
-"New Message:" = "Mesej Baru:";
+"Marker line:" = "Tetapkan Tanda";
+
+/* nothing */
+"New message:" = "Mesej Baru:";
+
+/* nothing */
+"Away user:" = "";
 
 /* nothing */
 "Highlight:" = "";
 
 /* nothing */
-"Away User:" = "";
+"Event" = "Acara";
+
+/* nothing */
+"Sound file" = "Fail bunyi: ";
+
+/* nothing */
+"Select a sound file" = "Pilih fail output";
+
+/* nothing */
+"Sound playing method:" = "";
+
+/* nothing */
+"External sound playing _program:" = "";
+
+/* nothing */
+"_External program" = "Luaran";
+
+/* nothing */
+"_Automatic" = "Antarctika";
+
+/* nothing */
+"Sound files _directory:" = "Muatturun fail ke:";
+
+/* nothing */
+"Sound file:" = "Fail bunyi: ";
+
+/* nothing */
+"_Browse..." = "Lungsur...";
+
+/* nothing */
+"_Play" = "Palau";
 
 /* nothing */
 "Interface" = "Antaramuka";
@@ -3236,10 +3617,10 @@
 "Text box" = "Kekotak teks";
 
 /* nothing */
-"Input box" = "kotak input";
+"User list" = "Senarai pengguna";
 
 /* nothing */
-"User list" = "Senarai pengguna";
+"Channel switcher" = "Senarai Saluran...";
 
 /* nothing */
 "Colors" = "Warna";
@@ -3251,10 +3632,7 @@
 "General" = "Umum";
 
 /* nothing */
-"Logging" = "Menglog";
-
-/* nothing */
-"Network" = "Rangkaian";
+"Sound" = "Bunyi";
 
 /* nothing */
 "Network setup" = "Tetapan rangkaian";
@@ -3266,10 +3644,16 @@
 "Categories" = "Kategori";
 
 /* nothing */
+"You cannot place the tree on the top or bottom!\nPlease change to the <b>Tabs</b> layout in the <b>View</b> menu first." = "";
+
+/* nothing */
 "Some settings were changed that require a restart to take full effect." = "";
 
 /* nothing */
-"X-Chat: Preferences" = "X-Chat: Keutamaan";
+"*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile" = "";
+
+/* nothing */
+"XChat: Preferences" = "X-Chat: Keutamaan";
 
 /* nothing */
 "There was an error parsing the string" = "Terdapat ralat menghantar rentetan";
@@ -3281,25 +3665,13 @@
 "Print Texts File" = "Cetak Fail Teks";
 
 /* nothing */
-"Event" = "Acara";
-
-/* nothing */
-"Sound" = "Bunyi";
+"Edit Events" = "Edit Acara";
 
 /* nothing */
 "$ Number" = "$ Nombor";
 
 /* nothing */
-"Edit Events" = "Edit Acara";
-
-/* nothing */
-"Sound file: " = "Fail bunyi: ";
-
-/* nothing */
-"Save As" = "Simpan Sebagai";
-
-/* nothing */
-"Load From" = "Muatkan Dari";
+"Load From..." = "Muatkan Dari";
 
 /* nothing */
 "Test All" = "Uji Semua";
@@ -3308,10 +3680,7 @@
 "URL" = "";
 
 /* nothing */
-"Select a file to save to" = "Pilih fail untuk disimpan";
-
-/* nothing */
-"X-Chat: URL Grabber" = "X-Chat: Penggenggam URL";
+"XChat: URL Grabber" = "X-Chat: Penggenggam URL";
 
 /* nothing */
 "Clear list" = "Kosongkan senarai";

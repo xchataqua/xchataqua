@@ -1,5 +1,5 @@
 /* nothing */
-"" = "Project-Id-Version: xchat-2.4.2\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2005-03-07 18:50+1100\nPO-Revision-Date: 2005-05-04 12:50+0530\nLast-Translator: Rajesh Ranjan <rranjan@redhat.com>\nLanguage-Team: Hindi <fedora-trans-hi@redhat.com>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nX-Generator: KBabel 1.9.1\n";
+"" = "Project-Id-Version: xchat-2.4.2\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2010-05-30 13:56+1000\nPO-Revision-Date: 2005-05-04 12:50+0530\nLast-Translator: Rajesh Ranjan <rranjan@redhat.com>\nLanguage-Team: Hindi <fedora-trans-hi@redhat.com>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nX-Generator: KBabel 1.9.1\n";
 
 /* nothing */
 "Cannot create ~/.xchat2" = "~/.xchat2 बना नहीं सकता है";
@@ -35,6 +35,12 @@
 "Cannot access %s\n" = "%s का अभिगम नहीं कर सकता\n";
 
 /* nothing */
+"Error" = "त्रुटि";
+
+/* nothing */
+"%s is offering \"%s\". Do you want to accept?" = "";
+
+/* nothing */
 "No active DCCs\n" = "कोई सक्रिय DCC नहीं\n";
 
 /* nothing */
@@ -62,16 +68,25 @@
 "Not connected. Try /server <host> [<port>]\n" = "संबंधित नहीं. /server <host> [<port>] की कोशिश करें\n";
 
 /* nothing */
+"Already marked away: %s\n" = "";
+
+/* nothing */
+"Already marked back.\n" = "";
+
+/* nothing */
 "I need /bin/sh to run!\n" = "मुझे /bin/sh चलाने की जरूरत है!\n";
 
 /* nothing */
-"\nCommands Available:\n\n  " = "\nसमादेश उपलब्ध:\n\n  ";
+"Commands Available:" = "\nसमादेश उपलब्ध:\n\n  ";
 
 /* nothing */
-"\n\nType /HELP <command> for more information, or /HELP -l\n\n" = "\n\nज्यादा जानकारी के लिये /HELP <command>, या /HELP -l टंकित करें\n\n";
+"User defined commands:" = "उपयोक्ता परिभाषित समादेश:\n\n  ";
 
 /* nothing */
-"User defined commands:\n\n  " = "उपयोक्ता परिभाषित समादेश:\n\n  ";
+"Plugin defined commands:" = "उपयोक्ता परिभाषित समादेश:\n\n  ";
+
+/* nothing */
+"Type /HELP <command> for more information, or /HELP -l" = "\n\nज्यादा जानकारी के लिये /HELP <command>, या /HELP -l टंकित करें\n\n";
 
 /* nothing */
 "Unknown arg '%s' ignored." = "अज्ञात arg '%s' अनदेखा किया गया.";
@@ -89,16 +104,25 @@
 "ALLCHAN <cmd>, sends a command to all channels you're in" = "ALLCHAN <cmd>, आपके द्वारा शामिल सभी चैनल में समादेश भेजें";
 
 /* nothing */
+"ALLCHANL <cmd>, sends a command to all channels you're in" = "ALLCHAN <cmd>, आपके द्वारा शामिल सभी चैनल में समादेश भेजें";
+
+/* nothing */
 "ALLSERV <cmd>, sends a command to all servers you're in" = "ALLSERV <cmd>, आपके द्वारा शामिल सभी सर्वर में समादेश भेजें";
 
 /* nothing */
 "AWAY [<reason>], sets you away" = "AWAY [<reason>], आपको दूर सेट करता है";
 
 /* nothing */
+"BACK, sets you back (not away)" = "";
+
+/* nothing */
 "BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "BAN <mask> [<bantype>], मौजूदा चैनल से मास्क से मिलान करने वाले हर को प्रतिबंधित करता है. अगर वे पहले से चैनल पर हैं तो यह उनको किक नहीं करता है (chanop होना आवश्यक)";
 
 /* nothing */
-"CLEAR, Clears the current text window" = "CLEAR, मौजूदा पाठ विंडो को साफ करता है";
+"CHANOPT [-quiet] <variable> [<value>]" = "SET [-quiet] <variable> [<value>]";
+
+/* nothing */
+"CLEAR [ALL|HISTORY], Clears the current text window or command history" = "CLEAR, मौजूदा पाठ विंडो को साफ करता है";
 
 /* nothing */
 "CLOSE, Closes the current window/tab" = "CLOSE, मौजूदा विंडो/टैब को बंद करता है";
@@ -110,10 +134,10 @@
 "CTCP <nick> <message>, send the CTCP message to nick, common messages are VERSION and USERINFO" = "CTCP <nick> <message>, CTCP संदेश निक को भेजें, सामान्य संदेश VERSION और USERINFO हैं";
 
 /* nothing */
-"CYCLE, parts current channel and immediately rejoins" = "CYCLE, मौजूदा चैनल से तुरत अलग होकर उससे जुड़ता है";
+"CYCLE [<channel>], parts the current or given channel and immediately rejoins" = "CYCLE, मौजूदा चैनल से तुरत अलग होकर उससे जुड़ता है";
 
 /* nothing */
-"\nDCC GET <nick>                     - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file] - send a file to someone\nDCC LIST                           - show DCC list\nDCC CHAT <nick>                    - offer DCC CHAT to someone\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "\nDCC GET <nick>                     - दिये जा रहा फाइल स्वीकार करता है\nDCC SEND [-maxcps=#] <nick> [file] - किसी को फाइल भेजता है\nDCC LIST                           - DCC सूची दिखायें\nDCC CHAT <nick>                    - किसी को DCC CHAT का प्रस्ताव देता है\nDCC CLOSE <type> <nick> <file>         उदाहरण:\n         /dcc close send johnsmith file.tar.gz";
+"\nDCC GET <nick>                      - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file]  - send a file to someone\nDCC PSEND [-maxcps=#] <nick> [file] - send a file using passive mode\nDCC LIST                            - show DCC list\nDCC CHAT <nick>                     - offer DCC CHAT to someone\nDCC PCHAT <nick>                    - offer DCC CHAT using passive mode\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "\nDCC GET <nick>                     - दिये जा रहा फाइल स्वीकार करता है\nDCC SEND [-maxcps=#] <nick> [file] - किसी को फाइल भेजता है\nDCC LIST                           - DCC सूची दिखायें\nDCC CHAT <nick>                    - किसी को DCC CHAT का प्रस्ताव देता है\nDCC CLOSE <type> <nick> <file>         उदाहरण:\n         /dcc close send johnsmith file.tar.gz";
 
 /* nothing */
 "DEHOP <nick>, removes chanhalf-op status from the nick on the current channel (needs chanop)" = "DEHOP <nick>, मौजूदा चैनल पर उपनाम से चैनल आधा ऑपरेटर स्थिति हटाता है (chanop होना जरूरी)";
@@ -158,7 +182,13 @@
 "GATE <host> [<port>], proxies through a host, port defaults to 23" = "GATE <host> [<port>], मेजबान के द्वारा प्रॉक्सी करता है, 23 में मूलभूत पोर्ट करता है";
 
 /* nothing */
+"GHOST <nick> [password], Kills a ghosted nickname" = "";
+
+/* nothing */
 "HOP <nick>, gives chanhalf-op status to the nick (needs chanop)" = "HOP <nick>, chanhalf-op स्थिति उपनाम को देता है (chanop होना जरूरत है)";
+
+/* nothing */
+"ID <password>, identifies yourself to nickserv" = "";
 
 /* nothing */
 "IGNORE <mask> <types..> <options..>\n    mask - host mask to ignore, eg: *!*@*.aol.com\n    types - types of data to ignore, one or all of:\n            PRIV, CHAN, NOTI, CTCP, DCC, INVI, ALL\n    options - NOSAVE, QUIET" = "IGNORE <mask> <types..> <options..>\n    मास्क - अनदेखा करने के लिये मेजबान मास्क करें, उदा: *!*@*.aol.com\n    प्रकार - अनदेखा करने के लिये आंकड़ा प्रकार, एक या सभी का:\n            PRIV, CHAN, NOTI, CTCP, DCC, INVI, ALL\n    विकल्प - NOSAVE, QUIET";
@@ -182,7 +212,7 @@
 "LASTLOG <string>, searches for a string in the buffer" = "LASTLOG <string>, बफर में स्ट्रिंग खोजता है";
 
 /* nothing */
-"LOAD <file>, loads a plugin or script" = "LOAD <file>, एक प्लगिन या स्क्रिप्ट लोड करता है";
+"LOAD [-e] <file>, loads a plugin or script" = "LOAD <file>, एक प्लगिन या स्क्रिप्ट लोड करता है";
 
 /* nothing */
 "MDEHOP, Mass deop's all chanhalf-ops in the current channel (needs chanop)" = "MDEHOP, मौजूदा चैनल में सभी चैनलहाफ ऑपरेटर की ऑपरेटर स्थिति लेना (chanop होना जरूरी है)";
@@ -209,7 +239,7 @@
 "NCTCP <nick> <message>, Sends a CTCP notice" = "NCTCP <nick> <message>, एक CTCP सूचना भेजता है";
 
 /* nothing */
-"NEWSERVER <hostname> [<port>]" = "NEWSERVER <hostname> [<port>]";
+"NEWSERVER [-noconnect] <hostname> [<port>]" = "NEWSERVER <hostname> [<port>]";
 
 /* nothing */
 "NICK <nickname>, sets your nick" = "NICK <nickname>, आपका उपनाम सेट करता है";
@@ -218,7 +248,7 @@
 "NOTICE <nick/channel> <message>, sends a notice. Notices are a type of message that should be auto reacted to" = "NOTICE <nick/channel> <message>, सूचना भेजता है. सूचना एक प्रकार का संदेश है जो इससे स्वतः अनुक्रिया करना चाहिये";
 
 /* nothing */
-"NOTIFY [<nick>], lists your notify list or adds someone to it" = "NOTIFY [<nick>], आपके नोटिफाई सूची को सूचीबद्ध करता है और इसमें कुछ को जोड़ता है";
+"NOTIFY [-n network1[,network2,...]] [<nick>], displays your notify list or adds someone to it" = "NOTIFY [<nick>], आपके नोटिफाई सूची को सूचीबद्ध करता है और इसमें कुछ को जोड़ता है";
 
 /* nothing */
 "OP <nick>, gives chanop status to the nick (needs chanop)" = "OP <nick>, उपनाम को चैनल ऑपरेटर स्थिति देता है (chanop की आवश्यकता है)";
@@ -230,7 +260,7 @@
 "PING <nick | channel>, CTCP pings nick or channel" = "PING <nick | channel>, CTCP उपनाम या चैनल पिंग करता है";
 
 /* nothing */
-"QUERY <nick>, opens up a new privmsg window to someone" = "QUERY <nick>, किसी के लिये निजी संदेश विंडो खोलता है";
+"QUERY [-nofocus] <nick>, opens up a new privmsg window to someone" = "QUERY <nick>, किसी के लिये निजी संदेश विंडो खोलता है";
 
 /* nothing */
 "QUIT [<reason>], disconnects from the current server" = "QUIT [<reason>], मौजूदा सर्वर से विसंबंधित करता है";
@@ -251,6 +281,9 @@
 "SAY <text>, sends the text to the object in the current window" = "SAY <text>, मौजूदा विंडो में वस्तु को पाठ भेजता है";
 
 /* nothing */
+"SEND <nick> [<file>]" = "";
+
+/* nothing */
 "SERVCHAN [-ssl] <host> <port> <channel>, connects and joins a channel" = "SERVCHAN [-ssl] <host> <port> <channel>, एक चैनल से संबंधित होता है औऱ शामिल होता है";
 
 /* nothing */
@@ -263,13 +296,16 @@
 "SERVER <host> [<port>] [<password>], connects to a server, the default port is 6667" = "SERVER <host> [<port>] [<password>], एक सर्वर से जोड़ता है, मूलभूत पोर्ट 6667 है";
 
 /* nothing */
-"SET [-quiet] <variable> [<value>]" = "SET [-quiet] <variable> [<value>]";
+"SET [-e] [-off|-on] [-quiet] <variable> [<value>]" = "SET [-quiet] <variable> [<value>]";
 
 /* nothing */
 "SETCURSOR [-|+]<position>" = "SETCURSOR [-|+]<position>";
 
 /* nothing */
 "TOPIC [<topic>], sets the topic if one is given, else shows the current topic" = "TOPIC [<topic>], अगर एक दिया हुआ है तो टॉपिक सेट करता है, अन्यथा मौजूदा टॉपिक दिखाता है";
+
+/* nothing */
+"\nTRAY -f <timeout> <file1> [<file2>] Blink tray between two icons.\nTRAY -f <filename>                  Set tray to a fixed icon.\nTRAY -i <number>                    Blink tray with an internal icon.\nTRAY -t <text>                      Set the tray tooltip.\nTRAY -b <title> <text>              Set the tray balloon." = "";
 
 /* nothing */
 "UNBAN <mask> [<mask>...], unbans the specified masks." = "UNBAN <mask> [<mask>...], निर्दिष्ट मास्क पर से प्रतिबंध हटाता है.";
@@ -282,6 +318,9 @@
 
 /* nothing */
 "URL <url>, opens a URL in your browser" = "URL <url>, URL में ब्रॉउजर खोलता है";
+
+/* nothing */
+"USELECT [-a] [-s] <nick1> <nick2> etc, highlights nick(s) in channel userlist" = "";
 
 /* nothing */
 "VOICE <nick>, gives voice status to someone (needs chanop)" = "VOICE <nick>, किसी को ध्वनि स्थिति देता है (chanop की आवश्यकता है)";
@@ -341,12 +380,6 @@
 "%C22*%O$t$1 is now known as $2" = "%C22*%O$t$1 अब $2 के रूप में जाना जाता है";
 
 /* nothing */
-"%C18*$t$1%O $2" = "%C18*$t$1%O $2";
-
-/* nothing */
-"%C21*%O$t%C21%B$1%O%C21 $2" = "%C21*%O$t%C21%B$1%O%C21 $2";
-
-/* nothing */
 "%C22*%O$t$1 sets ban on $2" = "%C22*%O$t$1 $2 पर प्रतिबंध सेट करता है";
 
 /* nothing */
@@ -374,19 +407,10 @@
 "%UChannel          Users   Topic" = "%UChannel          उपयोक्ता    विषय";
 
 /* nothing */
-"%C18%B%B$4$1%O%C18%O$t$2" = "%C18%B%B$4$1%O%C18%O$t$2";
-
-/* nothing */
 "%C22*%O$t$1 sets mode $2$3 $4" = "%C22*%O$t$1 $2$3 $4 मोड सेट करता है";
 
 /* nothing */
 "%C22*%O$t%C22Channel $1 modes: $2" = "%C22*%O$t%C22चैनल $1 मोड: $2";
-
-/* nothing */
-"$4%C21%B$1%O$t%C21$2" = "$4%C21%B$1%O$t%C21$2";
-
-/* nothing */
-"%C28-%C29$1/$2%C28-%O$t$3" = "%C28-%C29$1/$2%C28-%O$t$3";
 
 /* nothing */
 "%C22*%O$t%C26$1%O gives channel operator status to%C26 $2" = "%C22*%O$t%C26$1%O चैनल ऑपरेटर स्थिति %C26 $2 को देता है";
@@ -435,6 +459,9 @@
 
 /* nothing */
 "%C22*%O$tReceived a CTCP Sound $1 from $2" = "%C22*%O$tएक CTCP ध्वनि $1 $2 से पाता है";
+
+/* nothing */
+"%C22*%O$tReceived a CTCP Sound $1 from $2 (to $3)" = "%C22*%O$tएक CTCP $1 $2 (to $3) से प्राप्त करता है";
 
 /* nothing */
 "%C22*%O$tDCC CHAT to %C26$1%O aborted." = "%C22*%O$tDCC %C26$1%O में बातचीत विफल रही.";
@@ -524,9 +551,6 @@
 "%C22*%O$tFound your IP: [$1]" = "%C22*%O$tआपका IP पाया: [$1]";
 
 /* nothing */
-"$1$t$2" = "$1$t$2";
-
-/* nothing */
 "%O%C26$1%O added to ignore list." = "%O%C26$1%O अनदेखे सूची में जोड़ा.";
 
 /* nothing */
@@ -563,12 +587,6 @@
 "%C22*%O$tYou have been killed by $1 ($2%O%C22)" = "%C22*%O$tआप इसके द्वारा किल किये गये हैं $1 ($2%O%C22)";
 
 /* nothing */
-"%C19>%O$1%C19<%O$t$2%O" = "%C19>%O$1%C19<%O$t$2%O";
-
-/* nothing */
-"%C16*%O$t$1%O" = "%C16*%O$t$1%O";
-
-/* nothing */
 "%C22*%O$t%C22MOTD Skipped." = "%C22*%O$t%C22MOTD छोड़ आगे बढा.";
 
 /* nothing */
@@ -584,12 +602,6 @@
 "%C22*%O$tNo process is currently running" = "%C22*%O$tकोई प्रक्रिया अभी चल नहीं रही है";
 
 /* nothing */
-"%C28-%C29$1%C28-%O$t$2" = "%C28-%C29$1%C28-%O$t$2";
-
-/* nothing */
-"%C19>%O$1%C19<%O$t$2" = "%C19>%O$1%C19<%O$t$2";
-
-/* nothing */
 "$tNotify list is empty." = "$tसूचना सूची खाली है.";
 
 /* nothing */
@@ -599,16 +611,16 @@
 "%C22*%O$t$1 users in notify list." = "%C22*%O$t$1 सूचना सूची में उपयोक्ता.";
 
 /* nothing */
-"%C22*%O$tNotify: $1 is offline ($2)." = "%C22*%O$tNotify: $1 ऑफलाइन है ($2).";
+"%C22*%O$tNotify: $1 is offline ($3)." = "%C22*%O$tNotify: $1 ऑफलाइन है ($2).";
 
 /* nothing */
-"%C22*%O$tNotify: $1 is online ($2)." = "%C22*%O$tNotify: $1 ऑनलाइन है ($2).";
+"%C22*%O$tNotify: $1 is online ($3)." = "%C22*%O$tNotify: $1 ऑनलाइन है ($2).";
 
 /* nothing */
 "%C23*%O$t%C23$1 (%O%C23$2) has left $3" = "%C23*%O$t%C23$1 (%O%C23$2) ने $3 को छोड़ दिया";
 
 /* nothing */
-"%C23*%O$t%C23$1 (%O%C23$2) has left $3 (%O%C23$4)" = "%C23*%O$t%C23$1 (%O%C23$2) ने $3 (%O%C23$4) को छोड़ा है";
+"%C23*%O$t%C23$1 (%O%C23$2) has left $3 (%O%C23%B%B$4%O%C23)" = "%C23*%O$t%C23$1 (%O%C23$2) ने $3 (%O%C23$4) को छोड़ा है";
 
 /* nothing */
 "%C22*%O$tPing reply from $1: $2 second(s)" = "%C22*%O$t $1 से पिंग जवाब: $2 सेकेंड";
@@ -617,16 +629,10 @@
 "%C22*%O$tNo ping reply for $1 seconds, disconnecting." = "%C22*%O$tकोई पिंग जबाव $1 सेकेंड के लिये नहीं, विसंबंधित हो रहा है.";
 
 /* nothing */
-"%C28*%C29$3$1%C28*$t%O$2" = "%C28*%C29$3$1%C28*$t%O$2";
-
-/* nothing */
-"%C18%B%B$3$1%O$t$2" = "%C18%B%B$3$1%O$t$2";
-
-/* nothing */
 "%C22*%O$tA process is already running" = "%C22*%O$tA प्रक्रिया पहले से चल रहा है";
 
 /* nothing */
-"%C23*%O$t%C23$1 has quit (%O%C23$2)" = "%C23*%O$t%C23$1 ने छोड़ दिया (%O%C23$2)";
+"%C23*%O$t%C23$1 has quit (%O%C23%B%B$2%O%C23)" = "%C23*%O$t%C23$1 ने छोड़ दिया (%O%C23$2)";
 
 /* nothing */
 "%C22*%O$t$1 sets modes%B %C30[%O$2%B%C30]" = "%C22*%O$t$1 मोड %B %C30[%O$2%B%C30] सेट करता है";
@@ -639,9 +645,6 @@
 
 /* nothing */
 "%C22*%O$t%C22Connected." = "%C22*%O$t%C22Connected.";
-
-/* nothing */
-"%C22*%O$t$1" = "%C22*%O$t$1";
 
 /* nothing */
 "%C22*%O$t%C22Looking up $1" = "%C22*%O$t%C22 $1 को देख रहा है";
@@ -701,16 +704,16 @@
 "%C23*$tYou have left channel $3" = "%C23*$tआपने चैनल छोड़ा है $3";
 
 /* nothing */
-"%C23*$tYou have left channel $3 (%O%C23$4%O%C23)" = "%C23*$tआपने चैनल छोड़ा है $3 (%O%C23$4%O%C23)";
+"%C23*$tYou have left channel $3 (%O%C23%B%B$4%O%C23)" = "%C23*$tआपने चैनल छोड़ा है $3 (%O%C23$4%O%C23)";
 
 /* nothing */
 "%C22*%O$tYou've invited%C26 $1%O to%C26 $2%O (%C26$3%O)" = "%C22*%O$tआपने आमंत्रित किया है%C26 $1%O to%C26 $2%O (%C26$3%O)";
 
 /* nothing */
-"%C31%B%B$4$1%O$t%C30$2" = "%C31%B%B$4$1%O$t%C30$2";
+"%C22*%O$tYou are now known as $2" = "%C22*%O$tआप अब $2 के रूप में जाने जायेंगे";
 
 /* nothing */
-"%C22*%O$tYou are now known as $2" = "%C22*%O$tआप अब $2 के रूप में जाने जायेंगे";
+"Loaded log from" = "इससे लोड करें";
 
 /* nothing */
 "**** ENDING LOGGING AT %s\n" = "**** इसपर लॉगिंग समाप्त कर रहा है %s\n";
@@ -743,13 +746,13 @@
 "The action" = "क्रिया";
 
 /* nothing */
-"The text" = "पाठ";
-
-/* nothing */
 "Mode char" = "मोड चार";
 
 /* nothing */
 "Identified text" = "पहचाना गया पाठ";
+
+/* nothing */
+"The text" = "पाठ";
 
 /* nothing */
 "The message" = "संदेश";
@@ -953,6 +956,9 @@
 "Server Name" = "सर्वर नाम";
 
 /* nothing */
+"Raw Numeric or Identifier" = "";
+
+/* nothing */
 "Nick of person who invited you" = "आपको आमंत्रित करने वाले का उपनाम";
 
 /* nothing */
@@ -965,19 +971,13 @@
 "Nick being tried" = "उपनाम के लिये कोशिश की गई";
 
 /* nothing */
-"Error" = "त्रुटि";
-
-/* nothing */
 "IP" = "आईपी";
 
 /* nothing */
 "Port" = "पोर्ट";
 
 /* nothing */
-"PID" = "पीआईडी";
-
-/* nothing */
-"Channel name" = "चैनल नाम";
+"Network" = "संजाल";
 
 /* nothing */
 "Modes string" = "मोड स्ट्रिंग";
@@ -1011,9 +1011,6 @@
 
 /* nothing */
 "Number of notify items" = "सूचना मद की संख्या";
-
-/* nothing */
-"Servername" = "सर्वरनाम";
 
 /* nothing */
 "Old Filename" = "पुराना फाइलनाम";
@@ -1073,6 +1070,9 @@
 "Connection reset by peer" = "संबंधी द्वारा संबंधन फिर सेट";
 
 /* nothing */
+"Ascension Island" = "कोकोस द्वीप";
+
+/* nothing */
 "Andorra" = "अंडोरा";
 
 /* nothing */
@@ -1122,6 +1122,9 @@
 
 /* nothing */
 "Aruba" = "अरूबा";
+
+/* nothing */
+"Aland Islands" = "फाकलैंड द्वीप";
 
 /* nothing */
 "Azerbaijan" = "अजरबैजान";
@@ -1289,6 +1292,9 @@
 "Ethiopia" = "इथोपिया";
 
 /* nothing */
+"European Union" = "";
+
+/* nothing */
 "Finland" = "फिनलैंड";
 
 /* nothing */
@@ -1305,9 +1311,6 @@
 
 /* nothing */
 "France" = "फ्रांस";
-
-/* nothing */
-"France, Metropolitan" = "फ्रांस, महानगर";
 
 /* nothing */
 "Gabon" = "गैबन";
@@ -1397,6 +1400,9 @@
 "Israel" = "इज़राइल";
 
 /* nothing */
+"Isle of Man" = "";
+
+/* nothing */
 "India" = "भारत";
 
 /* nothing */
@@ -1419,6 +1425,9 @@
 
 /* nothing */
 "Italy" = "इटली";
+
+/* nothing */
+"Jersey" = "";
 
 /* nothing */
 "Jamaica" = "जमैका";
@@ -1598,9 +1607,6 @@
 "Nauru" = "नौरू";
 
 /* nothing */
-"Neutral Zone" = "मध्यस्थ क्षेत्र";
-
-/* nothing */
 "Niue" = "निवे";
 
 /* nothing */
@@ -1754,6 +1760,9 @@
 "Tokelau" = "टोकेलाऊ";
 
 /* nothing */
+"East Timor" = "पूर्वीय टाईमोर";
+
+/* nothing */
 "Turkmenistan" = "तुर्कमेनिस्तान";
 
 /* nothing */
@@ -1761,9 +1770,6 @@
 
 /* nothing */
 "Tonga" = "टोन्गा";
-
-/* nothing */
-"East Timor" = "पूर्वीय टाईमोर";
 
 /* nothing */
 "Turkey" = "तुर्की";
@@ -1788,9 +1794,6 @@
 
 /* nothing */
 "United Kingdom" = "यूनाइटेड किंगडम";
-
-/* nothing */
-"US Minor Outlying Islands" = "US माइनर बाहरी द्वीप";
 
 /* nothing */
 "United States of America" = "युनाइटेड स्टेट आफ अमेरिका";
@@ -1850,43 +1853,19 @@
 "Unknown" = "अज्ञात";
 
 /* nothing */
-"Direct client-to-client" = "Direct client-to-client";
+"_Open Dialog Window" = "संवाद विंडो खोलें";
 
 /* nothing */
-"Send File" = "फाइल भेजें";
+"_Send a File" = "फाइल भेजें";
 
 /* nothing */
-"Offer Chat" = "बातचीत का प्रस्ताव दें";
+"_User Info (WhoIs)" = "";
 
 /* nothing */
-"Abort Chat" = "बातचीत विफल करें";
+"_Add to Friends List" = "";
 
 /* nothing */
-"Version" = "संस्करण";
-
-/* nothing */
-"Userinfo" = "Userinfo";
-
-/* nothing */
-"Clientinfo" = "Clientinfo";
-
-/* nothing */
-"Ping" = "पिंग";
-
-/* nothing */
-"Time" = "समय";
-
-/* nothing */
-"Finger" = "फिंगर";
-
-/* nothing */
-"Oper" = "आपरेटर";
-
-/* nothing */
-"Kill this user" = "उपयोक्ता खत्म करें";
-
-/* nothing */
-"Mode" = "मोड";
+"O_perator Actions" = "";
 
 /* nothing */
 "Give Ops" = "ऑपरेटर दर्जा दें";
@@ -1895,25 +1874,10 @@
 "Take Ops" = "ऑपरेटर दर्जा लें";
 
 /* nothing */
-"Give Half-Ops" = "आधा ऑपरेटर दर्जा दें";
-
-/* nothing */
-"Take Half-Ops" = "आधा ऑपरेटर दर्जा लें";
-
-/* nothing */
 "Give Voice" = "आवाज दें";
 
 /* nothing */
 "Take Voice" = "आवाज लें";
-
-/* nothing */
-"Ignore" = "नज़रअंदाज़ करें";
-
-/* nothing */
-"Ignore User" = "उपयोक्ता नजरअंदाज करें";
-
-/* nothing */
-"UnIgnore User" = "उपयोक्ता अनदेखा न करें";
 
 /* nothing */
 "Kick/Ban" = "किक/प्रतिबंध";
@@ -1926,42 +1890,6 @@
 
 /* nothing */
 "KickBan" = "KickBan";
-
-/* nothing */
-"Info" = "जानकारी";
-
-/* nothing */
-"Who" = "कौन";
-
-/* nothing */
-"WhoIs" = "WhoIs";
-
-/* nothing */
-"DNS Lookup" = "DNS Lookup";
-
-/* nothing */
-"Trace" = "ट्रेस";
-
-/* nothing */
-"UserHost" = "UserHost";
-
-/* nothing */
-"External" = "बाहरी";
-
-/* nothing */
-"Traceroute" = "ट्रेसरूट";
-
-/* nothing */
-"Telnet" = "टेलनेट";
-
-/* nothing */
-"Open Dialog Window" = "संवाद विंडो खोलें";
-
-/* nothing */
-"Disconnect" = "विसंबंधित";
-
-/* nothing */
-"Reconnect" = "फिर से जुड़ें";
 
 /* nothing */
 "Leave Channel" = "चैनल छोड़ें";
@@ -2000,6 +1928,9 @@
 "Dialog" = "संवाद";
 
 /* nothing */
+"WhoIs" = "WhoIs";
+
+/* nothing */
 "Send" = "भेजें";
 
 /* nothing */
@@ -2009,7 +1940,31 @@
 "Clear" = "खाली";
 
 /* nothing */
-"About X-Chat" = "X-Chat के बारे में";
+"Ping" = "पिंग";
+
+/* nothing */
+"Couldn't connect to session bus" = "";
+
+/* nothing */
+"Failed to complete NameHasOwner" = "";
+
+/* nothing */
+"Failed to complete Command" = "पोर्ट खोलने में विफल:\n\n%s";
+
+/* nothing */
+"remote access" = "%s का अभिगम नहीं कर सकता\n";
+
+/* nothing */
+"plugin for remote access using DBUS" = "";
+
+/* nothing */
+"Couldn't connect to session bus: %s\n" = "";
+
+/* nothing */
+"Failed to acquire %s: %s\n" = "पोर्ट खोलने में विफल:\n\n%s";
+
+/* nothing */
+"About " = "के बारे में (_A)";
 
 /* nothing */
 "A multiplatform IRC Client" = "मल्टीप्लेटफॉर्म IRC क्लाइंट";
@@ -2018,7 +1973,13 @@
 "Character Chart" = "संप्रतीक चार्ट";
 
 /* nothing */
+"Not connected." = "स्वतः न जोड़ें";
+
+/* nothing */
 "You must select some bans." = "आपको अवश्य कुछ प्रतिबंध चुनना चाहिये";
+
+/* nothing */
+"Are you sure you want to remove all bans in %s?" = "";
 
 /* nothing */
 "Mask" = "मास्क";
@@ -2030,10 +1991,13 @@
 "Date" = "तारीख़";
 
 /* nothing */
-"X-Chat: Ban List (%s)" = "X-Chat: सूची प्रतिबंधित करें (%s)";
+"You can only open the Ban List window while in a channel tab." = "";
 
 /* nothing */
-"Unban" = "प्रतिबंध हटायें";
+"XChat: Ban List (%s)" = "X-Chat: सूची प्रतिबंधित करें (%s)";
+
+/* nothing */
+"Remove" = "हटाएं";
 
 /* nothing */
 "Crop" = "क्रॉप";
@@ -2042,49 +2006,67 @@
 "Refresh" = "ताज़ा करें";
 
 /* nothing */
-"User and Channel Statistics: %d/%d Users on %d/%d Channels" = "उपयोक्ता व चैनल सांख्यिकी: %d/%d %d/%d पर चैनल";
-
-/* nothing */
-"I can't save an empty list!" = "मैं एक खाली सूची सहेज नहीं सकता!";
+"Displaying %d/%d users on %d/%d channels." = "उपयोक्ता व चैनल सांख्यिकी: %d/%d %d/%d पर चैनल";
 
 /* nothing */
 "Select an output filename" = "एक आउटपुट फाइल नाम चुनें";
 
 /* nothing */
-"X-Chat: Channel List (%s)" = "X-Chat: चैनल सूची (%s)";
+"_Join Channel" = "चैनल में शामिल हों";
 
 /* nothing */
-"List display options:" = "प्रदर्शन विकल्प सूचीबद्ध करें:";
+"_Copy Channel Name" = "चैनल नाम";
 
 /* nothing */
-"Minimum Users:" = "न्यूनतम उपयोक्ता:";
+"Copy _Topic Text" = "";
 
 /* nothing */
-"Maximum Users:" = "अधिकतम उपयोक्ता:";
+"XChat: Channel List (%s)" = "X-Chat: चैनल सूची (%s)";
 
 /* nothing */
-"Regex Match:" = "Regex मिलान:";
+"_Search" = "";
 
 /* nothing */
-"Apply Match to:" = "इसमें मैच लगायें:";
+"_Download List" = "यहां फाइल डाउनलोड करें:";
 
 /* nothing */
-"Apply" = "लागू करो";
+"Save _List..." = "सर्वर सूची...";
 
 /* nothing */
-"Refresh the list" = "सूची ताजा करें";
+"Show only:" = "";
 
 /* nothing */
-"Save the list" = "सूची सहेजें";
+"channels with" = "इसमें चैनल खोलें:";
 
 /* nothing */
-"Join Channel" = "चैनल में शामिल हों";
+"to" = "";
+
+/* nothing */
+"users." = "उपयोक्ता";
+
+/* nothing */
+"Look in:" = "";
+
+/* nothing */
+"Channel name" = "चैनल नाम";
+
+/* nothing */
+"Search type:" = "पाठ खोजें...";
+
+/* nothing */
+"Simple Search" = "";
+
+/* nothing */
+"Pattern Match (Wildcards)" = "";
+
+/* nothing */
+"Regular Expression" = "";
+
+/* nothing */
+"Find:" = "ढूंढें:";
 
 /* nothing */
 "Send file to %s" = "%s में फाइल भेजें";
-
-/* nothing */
-"      File: %s\n   To/From: %s\n      Size: %u\n      Port: %d\n IP Number: %s\nStart Time: %s   Max CPS: %d\n" = "      फाइल: %s\n   प्रति/प्रेषक: %s\n      आकार: %u\n      पोर्ट: %d\n IP संख्या: %s\nआरंभ करने का समय: %s   Max CPS: %d\n";
 
 /* nothing */
 "That file is not resumable." = "वह फाइल नहीं संभव है.";
@@ -2099,7 +2081,7 @@
 "Cannot resume the same file from two people." = "दो व्यक्ति से समान फाइल नहीं ले सकता.";
 
 /* nothing */
-"MIME Type" = "माइम प्रकार";
+"XChat: Uploads and Downloads" = "";
 
 /* nothing */
 "Status" = "स्थिति";
@@ -2111,7 +2093,22 @@
 "ETA" = "ETA";
 
 /* nothing */
-"X-Chat: File Receive List" = "X-Chat: फाइल प्राप्त सूची";
+"Both" = "दोनों";
+
+/* nothing */
+"Uploads" = "";
+
+/* nothing */
+"Downloads" = "यहां फाइल डाउनलोड करें:";
+
+/* nothing */
+"Details" = "आपका विवरण";
+
+/* nothing */
+"File:" = "फाइल";
+
+/* nothing */
+"Address:" = "आपका पता";
 
 /* nothing */
 "Abort" = "छोड़ें";
@@ -2123,19 +2120,10 @@
 "Resume" = "पुनरारंभ";
 
 /* nothing */
-"Open" = "खोलें";
+"Open Folder..." = "";
 
 /* nothing */
-"Ack" = "Ack";
-
-/* nothing */
-"To" = "को";
-
-/* nothing */
-"X-Chat: File Send List" = "X-Chat: फाइल प्रेषण सूची";
-
-/* nothing */
-"To/From" = "प्रति/प्रेषक";
+"XChat: DCC Chat List" = "X-Chat: DCC चैट सूची";
 
 /* nothing */
 "Recv" = "Recv";
@@ -2144,10 +2132,7 @@
 "Sent" = "भेजी-डाक";
 
 /* nothing */
-"StartTime" = "StartTime";
-
-/* nothing */
-"X-Chat: DCC Chat List" = "X-Chat: DCC चैट सूची";
+"Start Time" = "StartTime";
 
 /* nothing */
 "*NEW*" = "*NEW*";
@@ -2186,28 +2171,37 @@
 "Help" = "मदद";
 
 /* nothing */
-"Options" = "विकल्प";
+"Don't auto connect to servers" = "सर्वर से स्वतः जुड़ें";
 
 /* nothing */
-"don't auto connect" = "स्वतः न जोड़ें";
+"Use a different config directory" = "अलग कॉन्फिग निर्देशिका प्रयोग करें";
 
 /* nothing */
-"DIRECTORY" = "DIRECTORY";
+"Don't auto load any plugins" = "किसी प्लगिन को स्वतः लोड न करें";
 
 /* nothing */
-"use a different config dir" = "अलग कॉन्फिग निर्देशिका प्रयोग करें";
+"Show plugin auto-load directory" = "प्लगिन ऑटोलोड निर्देशिका";
 
 /* nothing */
-"don't auto load any plugins" = "किसी प्लगिन को स्वतः लोड न करें";
+"Show user config directory" = "उपयोक्ता कॉन्फिग निर्देशिका दिखायें";
 
 /* nothing */
-"show plugin auto-load dir" = "प्लगिन ऑटोलोड निर्देशिका";
+"Open an irc://server:port/channel URL" = "";
 
 /* nothing */
-"show user config dir" = "उपयोक्ता कॉन्फिग निर्देशिका दिखायें";
+"Execute command:" = "समादेस चलायें:";
 
 /* nothing */
-"show version information" = "संस्कऱम सूचना दिखायें";
+"Open URL or execute command in an existing XChat" = "";
+
+/* nothing */
+"Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "";
+
+/* nothing */
+"level" = "कभी नहीं";
+
+/* nothing */
+"Show version information" = "संस्कऱम सूचना दिखायें";
 
 /* nothing */
 "Failed to open font:\n\n%s" = "पोर्ट खोलने में विफल:\n\n%s";
@@ -2217,6 +2211,9 @@
 
 /* nothing */
 "%d bytes" = "%d बाइट्";
+
+/* nothing */
+"Network send queue: %d bytes" = "";
 
 /* nothing */
 "The Run Command action runs the data in Data 1 as if it has been typed into the entry box where you pressed the key sequence. Thus it can contain text (which will be sent to the channel/person), commands or user commands. When run all \\n characters in Data 1 are used to deliminate seperate commands so it is possible to run more than one command. If you want a \\ in the actual text run then enter \\\\" = "The Run Command action runs the data in Data 1 as if it has been typed into the entry box where you pressed the key sequence. Thus it can contain text (which will be sent to the channel/person), commands or user commands. When run all \\n characters in Data 1 are used to deliminate seperate commands so it is possible to run more than one command. If you want a \\ in the actual text run then enter \\\\";
@@ -2279,10 +2276,7 @@
 "Action" = "क्रिया";
 
 /* nothing */
-"X-Chat: Keyboard Shortcuts" = "X-Chat: कीबोर्ड शॉर्टकट";
-
-/* nothing */
-"Add new" = "नया जोड़ें";
+"XChat: Keyboard Shortcuts" = "X-Chat: कीबोर्ड शॉर्टकट";
 
 /* nothing */
 "Shift" = "शिफ्ट";
@@ -2345,7 +2339,7 @@
 "Enter mask to ignore:" = "अनदेखा करने के लिये मास्क दें: ";
 
 /* nothing */
-"X-Chat: Ignore list" = "X-Chat: अनदेखा सूची";
+"XChat: Ignore list" = "X-Chat: अनदेखा सूची";
 
 /* nothing */
 "Ignore Stats:" = "अनदेखा स्थिति:";
@@ -2366,7 +2360,40 @@
 "Invite:" = "आमंत्रण करें:";
 
 /* nothing */
-"Add" = "जोड़ें";
+"Add..." = "जोड़ें";
+
+/* nothing */
+"Channel name too short, try again." = "";
+
+/* nothing */
+"XChat: Connection Complete" = "कनेक्शन टाइम आउट हो गया";
+
+/* nothing */
+"Connection to %s complete." = "संबंधी द्वारा संबंधन फिर सेट";
+
+/* nothing */
+"In the Server-List window, no channel (chat room) has been entered to be automatically joined for this network." = "";
+
+/* nothing */
+"What would you like to do next?" = "";
+
+/* nothing */
+"_Nothing, I'll join a channel later." = "";
+
+/* nothing */
+"_Join this channel:" = "चैनल में शामिल हों";
+
+/* nothing */
+"If you know the name of the channel you want to join, enter it here." = "";
+
+/* nothing */
+"O_pen the Channel-List window." = "इसमें चैनल खोलें:";
+
+/* nothing */
+"Retrieving the Channel-List may take a minute or two." = "";
+
+/* nothing */
+"_Always show this dialog after connecting." = "";
 
 /* nothing */
 "Dialog with" = "इसके साथ संवाद";
@@ -2378,31 +2405,73 @@
 "No topic is set" = "कोई टापिक सेच नहीं है";
 
 /* nothing */
-"No other tabs open, quit xchat?" = "कोई अलग टैब खुला नहीं है,xchat छोड़ें?";
+"This server still has %d channels or dialogs associated with it. Close them all?" = "";
 
 /* nothing */
-"Insert color code" = "रंग कोड डालें";
+"Quit XChat?" = "X-Chat के बारे में";
 
 /* nothing */
-"Beep on message" = "संदेश पर बीप करें";
+"Don't ask next time." = "";
 
 /* nothing */
-"Show join/part messages" = "join/part संदेश दिखायें";
+"You are connected to %i IRC networks." = "आरंभ में संजाल से स्वतः जुड़ें";
 
 /* nothing */
-"Color paste" = "रंग पेस्ट";
+"Are you sure you want to quit?" = "";
 
 /* nothing */
-"Go to" = "यहाँ जाएँ";
+"Some file transfers are still active." = "कुछ फाइल स्थानांतरण अभी भी सक्रिय है, xchat छोड़ें?";
 
 /* nothing */
-"Close Tab" = "टैब बंद करें";
+"_Minimize to Tray" = "";
 
 /* nothing */
-"Detach Tab" = "टैब निकालें";
+"Insert Attribute or Color Code" = "रंग कोड डालें";
 
 /* nothing */
-"Some file transfers still active, quit xchat?" = "कुछ फाइल स्थानांतरण अभी भी सक्रिय है, xchat छोड़ें?";
+"<b>Bold</b>" = "";
+
+/* nothing */
+"<u>Underline</u>" = "रेखांकित";
+
+/* nothing */
+"Normal" = "नार्वे";
+
+/* nothing */
+"Colors 0-7" = "रंग";
+
+/* nothing */
+"Colors 8-15" = "रंग";
+
+/* nothing */
+"_Settings" = "जमावट (_e)";
+
+/* nothing */
+"_Log to Disk" = "";
+
+/* nothing */
+"_Reload Scrollback" = "";
+
+/* nothing */
+"_Hide Join/Part Messages" = "शामिल व अलग संदेश छुपायें";
+
+/* nothing */
+"_Extra Alerts" = "अतिरिक्त गैजट";
+
+/* nothing */
+"Beep on _Message" = "संदेश पर बीप करें";
+
+/* nothing */
+"Blink Tray _Icon" = "";
+
+/* nothing */
+"Blink Task _Bar" = "";
+
+/* nothing */
+"_Detach" = "टैब निकालें";
+
+/* nothing */
+"_Close" = "बंद करें (_C)";
 
 /* nothing */
 "User limit must be a number!\n" = "उपयोक्ता सीमा अवश्य एक संख्या होनी चाहिये!\n";
@@ -2432,9 +2501,6 @@
 "User Limit" = "उपयोक्ता सीमा";
 
 /* nothing */
-"Close this tab/window" = "इस tab/window बंद करें";
-
-/* nothing */
 "Show/Hide userlist" = "userlist दिखायें/छुपायें";
 
 /* nothing */
@@ -2447,37 +2513,43 @@
 "Host unknown" = "मेजबान नाम";
 
 /* nothing */
-"User: %s" = "उपयोक्ता: %s";
+"<tt><b>%-11s</b></tt> %s" = "";
 
 /* nothing */
-"Country: %s" = "देश: %s";
+"Real Name:" = "वास्तविक नाम (_m):";
 
 /* nothing */
-"Realname: %s" = "वास्तविक नाम: %s";
+"User:" = "उपयोक्ता";
 
 /* nothing */
-"Server: %s" = "सर्वर :%s";
+"Country:" = "देश: %s";
 
 /* nothing */
-"Last Msg: %s" = "अंतिम संदेश: %s";
+"Server:" = "सर्वर";
 
 /* nothing */
-"Menu Bar" = "सूची पट्टी";
+"%u minutes ago" = "";
 
 /* nothing */
-"Topic Bar" = "टॉपिक पट्टी";
+"Last Msg:" = "अंतिम संदेश: %s";
 
 /* nothing */
-"User List" = "उपयोक्ता सूची";
+"Away Msg:" = "दूर उपयोक्ता:";
 
 /* nothing */
-"Mode Buttons" = "मोड बटन";
+"%d nicks selected." = "";
 
 /* nothing */
-"User List Buttons" = "उपयोक्ता सूची बटन";
+"The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "";
 
 /* nothing */
-"Copy selected URL" = "चुनें गये URL को कॉपी करें";
+"Open Link in Browser" = "";
+
+/* nothing */
+"Copy Selected Link" = "चुनें गये URL को कॉपी करें";
+
+/* nothing */
+"Join Channel" = "चैनल में शामिल हों";
 
 /* nothing */
 "Part Channel" = "चैनल छोड़ें";
@@ -2486,61 +2558,67 @@
 "Cycle Channel" = "चक्रीय चैनल";
 
 /* nothing */
-"X-Chat: User menu" = "X-Chat: उपयोक्ता मेनू";
+"_Remove from Favorites" = "";
+
+/* nothing */
+"_Add to Favorites" = "";
+
+/* nothing */
+"XChat: User menu" = "X-Chat: उपयोक्ता मेनू";
 
 /* nothing */
 "Edit This Menu..." = "यह मीनू संपादित करें...";
 
 /* nothing */
-"*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile" = "*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile";
+"Retrieve channel list..." = "चैनल सूची";
 
 /* nothing */
-"Settings saved." = "जमावट सहेजा गया.";
+"User Commands - Special codes:\n\n%c  =  current channel\n%e  =  current network name\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "User Commands - Special codes:\n\n%c  =  current channel\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\".";
 
 /* nothing */
-"User Commands - Special codes:\n\n%c  =  current channel\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "User Commands - Special codes:\n\n%c  =  current channel\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\".";
+"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n";
 
 /* nothing */
-"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n";
+"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n";
 
 /* nothing */
-"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n";
+"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%e  =  current network name\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n";
 
 /* nothing */
-"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n";
+"URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of XChat" = "URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of X-Chat";
 
 /* nothing */
-"URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of X-Chat" = "URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of X-Chat";
+"XChat: User Defined Commands" = "X-Chat: उपयोक्ता परिभाषित समादेश";
 
 /* nothing */
-"X-Chat: User Defined Commands" = "X-Chat: उपयोक्ता परिभाषित समादेश";
+"XChat: Userlist Popup menu" = "X-Chat: उपयोक्ता सूची मेनू";
 
 /* nothing */
-"X-Chat: Userlist Popup menu" = "X-Chat: उपयोक्ता सूची मेनू";
+"Replace with" = "";
 
 /* nothing */
-"X-Chat: Replace" = "X-Chat: बदलें";
+"XChat: Replace" = "X-Chat: बदलें";
 
 /* nothing */
-"X-Chat: URL Handlers" = "X-Chat: URL नियंत्रक";
+"XChat: URL Handlers" = "X-Chat: URL नियंत्रक";
 
 /* nothing */
-"X-Chat: Userlist buttons" = "X-Chat: उपयोक्ता सूची बटन";
+"XChat: Userlist buttons" = "X-Chat: उपयोक्ता सूची बटन";
 
 /* nothing */
-"X-Chat: Dialog buttons" = "X-Chat: संवाद बटन";
+"XChat: Dialog buttons" = "X-Chat: संवाद बटन";
 
 /* nothing */
-"X-Chat: CTCP Replies" = "X-Chat: CTCP उत्तर";
+"XChat: CTCP Replies" = "X-Chat: CTCP उत्तर";
 
 /* nothing */
-"_X-Chat" = "_X-Chat";
+"_XChat" = "_X-Chat";
 
 /* nothing */
-"Server List..." = "सर्वर सूची...";
+"Network Li_st..." = "संजाल सेटअप";
 
 /* nothing */
-"New" = "नया";
+"_New" = "नया";
 
 /* nothing */
 "Server Tab..." = "सर्वर टैब...";
@@ -2555,55 +2633,73 @@
 "Channel Window..." = "चैनल विंडो...";
 
 /* nothing */
-"Load Plugin or Script..." = "प्लगिन या स्क्रिप्ट भारित करें...";
+"_Load Plugin or Script..." = "प्लगिन या स्क्रिप्ट भारित करें...";
 
 /* nothing */
-"New Shell Tab..." = "नया शेल टैब...";
+"_Quit" = "बाहर";
 
 /* nothing */
-"Quit" = "बाहर";
+"_View" = "";
 
 /* nothing */
-"_IRC" = "_IRC";
+"_Menu Bar" = "सूची पट्टी";
 
 /* nothing */
-"Invisible" = "अदृश्य";
+"_Topic Bar" = "टॉपिक पट्टी";
 
 /* nothing */
-"Receive Wallops" = "वैलॉप पायें";
+"_User List" = "उपयोक्ता सूची";
 
 /* nothing */
-"Receive Server Notices" = "सर्वर सूचना पायें";
+"U_serlist Buttons" = "उपयोक्ता सूची बटन...";
 
 /* nothing */
-"Marked Away" = "दूर रूप में चिह्नित";
+"M_ode Buttons" = "मोड बटन";
 
 /* nothing */
-"Auto Rejoin when Kicked" = "किक किये जाने पर स्वतः जुड़ें";
+"_Channel Switcher" = "चैनल सूची";
 
 /* nothing */
-"Auto Reconnect to Server" = "सर्वर से स्वतः जुड़ें";
+"_Tabs" = "टॉब्स";
 
 /* nothing */
-"Never-give-up ReConnect" = "पुनः जुड़ें को कभी न छोड़ें";
+"T_ree" = "ट्रेस";
 
 /* nothing */
-"Auto Open Dialog Windows" = "स्वतः संवाद विंडो खोलें";
+"_Network Meters" = "संजाल सेटअप";
 
 /* nothing */
-"Auto Accept Direct Chat" = "सीधी बात के लिये स्वतः स्वीकृति दें";
+"Off" = "बंद";
 
 /* nothing */
-"Auto Accept Files" = "फाइल स्वतः स्वीकारें";
+"Graph" = "ग्राफ";
 
 /* nothing */
 "_Server" = "सर्वर (_S)";
 
 /* nothing */
+"_Disconnect" = "विसंबंधित";
+
+/* nothing */
+"_Reconnect" = "फिर से जुड़ें";
+
+/* nothing */
+"Join a Channel..." = "चैनल से जुड़ें...";
+
+/* nothing */
+"List of Channels..." = "चैनल से जुड़ें...";
+
+/* nothing */
+"Marked Away" = "दूर रूप में चिह्नित";
+
+/* nothing */
+"_Usermenu" = "उपयोक्तानाम";
+
+/* nothing */
 "S_ettings" = "जमावट (_e)";
 
 /* nothing */
-"Preferences..." = "प्राथमिकताएं...";
+"_Preferences" = "प्राथमिकताएं...";
 
 /* nothing */
 "Advanced" = "विस्तृत";
@@ -2636,22 +2732,10 @@
 "Userlist Popup..." = "उपयोक्ता सूची पॉपअप...";
 
 /* nothing */
-"Reload Settings" = "जमावट फिर भारित करें";
-
-/* nothing */
-"Save Settings now" = "अब जमावट सहेजें";
-
-/* nothing */
-"Save Settings on exit" = "बाहर निकलने पर जमावट सहेजें";
-
-/* nothing */
 "_Window" = "विंडो (_W)";
 
 /* nothing */
 "Ban List..." = "प्रतिबंध सूची...";
-
-/* nothing */
-"Channel List..." = "चैनल सूची";
 
 /* nothing */
 "Character Chart..." = "संप्रतीक चार्ट...";
@@ -2660,16 +2744,13 @@
 "Direct Chat..." = "सीधी बात...";
 
 /* nothing */
-"File Receive..." = "फाइल पायें...";
+"File Transfers..." = "फाइल स्थानांतरण";
 
 /* nothing */
-"File Send..." = "फाइल भेजें...";
+"Friends List..." = "प्रतिबंध सूची...";
 
 /* nothing */
 "Ignore List..." = "सूची अनदेखा करें...";
-
-/* nothing */
-"Notify List..." = "सूची को बतायें...";
 
 /* nothing */
 "Plugins and Scripts..." = "प्लगिन और स्क्रिप्ट...";
@@ -2699,16 +2780,13 @@
 "_Contents" = "विषय सूची (_C)";
 
 /* nothing */
+"Check for updates" = "";
+
+/* nothing */
 "_About" = "के बारे में (_A)";
 
 /* nothing */
-"Attach Tab" = "टैब जोड़ें";
-
-/* nothing */
-"User" = "उपयोक्ता";
-
-/* nothing */
-"Server" = "सर्वर";
+"_Attach" = "टैब जोड़ें";
 
 /* nothing */
 "Last Seen" = "पिछली बार देखा गया";
@@ -2720,16 +2798,85 @@
 "Never" = "कभी नहीं";
 
 /* nothing */
+"%d minutes ago" = "";
+
+/* nothing */
 "Online" = "ऑनलाइन";
 
 /* nothing */
 "Enter nickname to add:" = "पता में उपनाम जोड़ें:";
 
 /* nothing */
-"X-Chat: Notify List" = "X-Chat: सूची को बतायें";
+"Notify on these networks:" = "";
 
 /* nothing */
-"Remove" = "हटाएं";
+"Comma separated list of networks is accepted." = "";
+
+/* nothing */
+"XChat: Friends List" = "X-Chat: फाइल प्रेषण सूची";
+
+/* nothing */
+"Open Dialog" = "संवाद विंडो खोलें";
+
+/* nothing */
+"Cannot find 'notify-send' to open balloon alerts.\nPlease install libnotify." = "";
+
+/* nothing */
+"XChat: Connected to %u networks and %u channels" = "";
+
+/* nothing */
+"_Restore" = "";
+
+/* nothing */
+"_Hide" = "छुपा हुआ";
+
+/* nothing */
+"_Blink on" = "";
+
+/* nothing */
+"Channel Message" = "चैनल नाम";
+
+/* nothing */
+"Private Message" = "निजी संदेश पर बीप";
+
+/* nothing */
+"Highlighted Message" = "हाइलाइट किये संदेश पर बीप करें";
+
+/* nothing */
+"_Change status" = "";
+
+/* nothing */
+"_Away" = "दूर";
+
+/* nothing */
+"_Back" = "";
+
+/* nothing */
+"XChat: Highlighted message from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u highlighted messages, latest from: %s (%s)" = "";
+
+/* nothing */
+"XChat: New public message from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u new public messages." = "";
+
+/* nothing */
+"XChat: Private message from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u private messages, latest from: %s (%s)" = "";
+
+/* nothing */
+"XChat: File offer from: %s (%s)" = "";
+
+/* nothing */
+"XChat: %u file offers, latest from: %s (%s)" = "";
+
+/* nothing */
+"Version" = "संस्करण";
 
 /* nothing */
 "Description" = "वर्णन";
@@ -2738,7 +2885,7 @@
 "Select a Plugin or Script to load" = "भारित करने के लिये प्लगिन या स्क्रिप्ट चुनें";
 
 /* nothing */
-"X-Chat: Plugins and Scripts" = "X-Chat: प्लगिन और स्क्रिप्ट";
+"XChat: Plugins and Scripts" = "X-Chat: प्लगिन और स्क्रिप्ट";
 
 /* nothing */
 "_Load..." = "लोड (_L)...";
@@ -2747,34 +2894,31 @@
 "_UnLoad" = "अनलोड करें (_U)";
 
 /* nothing */
-"_Close" = "बंद करें (_C)";
+"Save As..." = "इस रूप में सहेजें";
 
 /* nothing */
-"Save rawlog" = "rawlog सहेजें";
-
-/* nothing */
-"X-Chat: Rawlog (%s)" = "X-Chat: Rawlog (%s)";
+"XChat: Rawlog (%s)" = "X-Chat: Rawlog (%s)";
 
 /* nothing */
 "Clear rawlog" = "rawlog साफ करें";
 
 /* nothing */
-"Save rawlog..." = "कच्चा लॉग सहेजें...";
-
-/* nothing */
 "The window you opened this Search for doesn't exist anymore." = "The window you opened this Search for doesn't exist anymore.";
 
 /* nothing */
-"X-Chat: Search" = "X-Chat: खोजें";
+"Search hit end, not found." = "";
 
 /* nothing */
-"Find:" = "ढूंढें:";
+"XChat: Search" = "X-Chat: खोजें";
 
 /* nothing */
-"Find" = "ढूंढें";
+"_Match case" = "";
 
 /* nothing */
-"Close" = "बन्द करो";
+"Search _backwards" = "";
+
+/* nothing */
+"_Find" = "ढूंढें";
 
 /* nothing */
 "New Network" = "नया संजाल";
@@ -2783,10 +2927,31 @@
 "Really remove network \"%s\" and all its servers?" = "वास्तव में संजाल \"%s\" और इसके सारे सर्वर को हटाता है?";
 
 /* nothing */
+"#channel" = "चैनेल";
+
+/* nothing */
+"XChat: Favorite Channels (Auto-Join List)" = "X-Chat: चैनल सूची (%s)";
+
+/* nothing */
+"These channels will be joined whenever you connect to %s." = "";
+
+/* nothing */
+"Key (Password)" = "शब्दकूट:";
+
+/* nothing */
+"_Edit" = "संपादन (_E)";
+
+/* nothing */
+"%s has been removed." = "";
+
+/* nothing */
+"%s has been added." = "";
+
+/* nothing */
 "User name and Real name cannot be left blank." = "उपयोक्ता नाम व वास्तविक नाम को खाली नहीं छोड़ा जा सकता.";
 
 /* nothing */
-"X-Chat: Edit %s" = "X-Chat: संपादन %s";
+"XChat: Edit %s" = "X-Chat: संपादन %s";
 
 /* nothing */
 "Servers for %s" = "%s के लिये सर्वर";
@@ -2807,10 +2972,13 @@
 "_Nick name:" = "उपनाम (_N):";
 
 /* nothing */
+"Second choice:" = "दूसरा विकल्प:";
+
+/* nothing */
 "_User name:" = "उपयोक्ता नाम (_U):";
 
 /* nothing */
-"Real na_me:" = "वास्तविक नाम (_m):";
+"Rea_l name:" = "वास्तविक नाम (_l):";
 
 /* nothing */
 "Connecting" = "जोड़ हो रहा है";
@@ -2819,7 +2987,7 @@
 "Auto connect to this network at startup" = "आरंभ में संजाल से स्वतः जुड़ें";
 
 /* nothing */
-"Use a proxy server" = "प्रॉक्सी सर्वर का प्रयोग करें";
+"Bypass proxy server" = "प्रॉक्सी सर्वर का प्रयोग करें";
 
 /* nothing */
 "Use SSL for all the servers on this network" = "इस संजाल पर सभी सर्वर के लिये SSL का प्रयोग करें";
@@ -2828,7 +2996,7 @@
 "Accept invalid SSL certificate" = "अमान्य SSL प्रमाणपत्र स्वीकारें";
 
 /* nothing */
-"C_hannels to join:" = "जुड़ने के लिये चैनल (_h):";
+"_Favorite channels:" = "चैनल छोड़े:";
 
 /* nothing */
 "Channels to join, separated by commas, but not spaces!" = "शामिल होने के लिये चैनल, कौमा से पृथक, लेकिन स्थान नहीं!";
@@ -2843,6 +3011,9 @@
 "Nickserv password:" = "निकसर्व शब्दकूट:";
 
 /* nothing */
+"If your nickname requires a password, enter it here. Not all IRC networks support this." = "";
+
+/* nothing */
 "Server password:" = "सर्वर पासवर्ड:";
 
 /* nothing */
@@ -2852,28 +3023,19 @@
 "Character set:" = "संप्रतीक सेट:";
 
 /* nothing */
-"_Edit" = "संपादन (_E)";
-
-/* nothing */
-"X-Chat: Server List" = "X-Chat: सर्वर सूची";
+"XChat: Network List" = "X-Chat: सूची को बतायें";
 
 /* nothing */
 "User Information" = "उपयोक्ता जानकारी";
 
 /* nothing */
-"Second choice:" = "दूसरा विकल्प:";
-
-/* nothing */
 "Third choice:" = "तीसरा विकल्प:";
-
-/* nothing */
-"Rea_l name:" = "वास्तविक नाम (_l):";
 
 /* nothing */
 "Networks" = "संजाल";
 
 /* nothing */
-"Skip server list on startup" = "आरंभ में सर्वर सूची छोड़कर बढ़ें";
+"Skip network list on startup" = "आरंभ में सर्वर सूची छोड़कर बढ़ें";
 
 /* nothing */
 "_Edit..." = "संपादित करें (_E)...";
@@ -2882,10 +3044,10 @@
 "_Sort" = "क्रमबद्ध करें (_S)";
 
 /* nothing */
-"C_onnect" = "जोड़ें (_o)";
+"Sorts the network list in alphabetical order. Use SHIFT-UP and SHIFT-DOWN keys to move a row." = "";
 
 /* nothing */
-"Connect in new tab" = "नये टैब मे जोड़ें";
+"C_onnect" = "जोड़ें (_o)";
 
 /* nothing */
 "Text Box Appearance" = "पाठ बॉक्स प्रकटन";
@@ -2900,7 +3062,10 @@
 "Scrollback lines:" = "स्क्रॉलबैक पंक्ति:";
 
 /* nothing */
-"Transparent background" = "पारदर्शी पृष्ठभूमि";
+"Colored nick names" = "रंग किया गया उपनाम";
+
+/* nothing */
+"Give each person on IRC a different color" = "IRC पर हर आदमी को अलग रंग दें";
 
 /* nothing */
 "Indent nick names" = "प्रमाणित उपनाम";
@@ -2909,16 +3074,7 @@
 "Make nick names right-justified" = "उपनाम को राइट जस्टीफाइड बनायें";
 
 /* nothing */
-"Tint (shade) transparency" = "टिंट (shade) पारदर्शी";
-
-/* nothing */
-"Colored nick names" = "रंग किया गया उपनाम";
-
-/* nothing */
-"Give each person on IRC a different color" = "IRC पर हर आदमी को अलग रंग दें";
-
-/* nothing */
-"Strip mIRC colors" = "स्ट्रिप mIRC रंग";
+"Transparent background" = "पारदर्शी पृष्ठभूमि";
 
 /* nothing */
 "Show marker line" = "मार्कर पंक्ति दिखायें";
@@ -2927,7 +3083,7 @@
 "Insert a red line after the last read text." = "अंतिम पढ़े गये पाठ के बाद लाल रेखा दें";
 
 /* nothing */
-"Tint Settings" = "टिंट जमावट";
+"Transparency Settings" = "टिंट जमावट";
 
 /* nothing */
 "Red:" = "लाल:";
@@ -2942,25 +3098,40 @@
 "Time Stamps" = "समय चिह्न";
 
 /* nothing */
+"Enable time stamps" = "काल पदचाप सक्रिय करें";
+
+/* nothing */
 "Time stamp format:" = "काल पदचाप प्रारूप:";
 
 /* nothing */
 "See strftime manpage for details." = "विवरण के लिये strftime मैनपेज देखें.";
 
 /* nothing */
-"Enable time stamps" = "काल पदचाप सक्रिय करें";
+"A-Z" = "A-Z";
+
+/* nothing */
+"Last-spoke order" = "";
+
+/* nothing */
+"Input box" = "इनपुट बॉक्स";
+
+/* nothing */
+"Use the Text box font and colors" = "पाठ बॉक्स फंट व रंग का प्रयोग करें";
+
+/* nothing */
+"Spell checking" = "";
 
 /* nothing */
 "Nick Completion" = "उपनाम समाप्ति";
 
 /* nothing */
-"Automatic nick completion" = "स्वतः उपनाम समाप्ति";
-
-/* nothing */
-"Completes nick names without using the TAB key" = "बिना टैब कुंजी के प्रयोग के उपनाम पूरी करें";
+"Automatic nick completion (without TAB key)" = "स्वतः उपनाम समाप्ति";
 
 /* nothing */
 "Nick completion suffix:" = "उपनाम समाप्ति प्रत्यय:";
+
+/* nothing */
+"Nick completion sorted:" = "उपनाम समाप्ति प्रत्यय:";
 
 /* nothing */
 "Input Box Codes" = "इनपुट बॉक्स कोड";
@@ -2972,28 +3143,7 @@
 "Interpret %C, %B as Color, Bold etc" = "%C, %B को रंग, गहरा आदि के रूप में देखें";
 
 /* nothing */
-"Input Box Appearance" = "इनपुट बॉक्स प्रकटन";
-
-/* nothing */
-"Use the Text box font and colors" = "पाठ बॉक्स फंट व रंग का प्रयोग करें";
-
-/* nothing */
-"Off" = "बंद";
-
-/* nothing */
-"Graph" = "ग्राफ";
-
-/* nothing */
-"Info text" = "सूचना पाठ";
-
-/* nothing */
-"Both" = "दोनों";
-
-/* nothing */
 "A-Z, Ops first" = "A-Z, ऑपरेटर पहले";
-
-/* nothing */
-"A-Z" = "A-Z";
 
 /* nothing */
 "Z-A, Ops last" = "Z-A, ऑपरेटर अंतिम";
@@ -3005,22 +3155,43 @@
 "Unsorted" = "बिना छांटा";
 
 /* nothing */
-"User list sorted by:" = "इस रूप में उपयोक्ता सूची छांटी गई:";
+"Left (Upper)" = "";
+
+/* nothing */
+"Left (Lower)" = "";
+
+/* nothing */
+"Right (Upper)" = "";
+
+/* nothing */
+"Right (Lower)" = "";
+
+/* nothing */
+"Top" = "ऊपर";
+
+/* nothing */
+"Bottom" = "नीचे";
+
+/* nothing */
+"Hidden" = "छुपा हुआ";
+
+/* nothing */
+"User List" = "उपयोक्ता सूची";
 
 /* nothing */
 "Show hostnames in user list" = "उपयोक्ता सूची में मेजबाननाम दिखायें";
 
 /* nothing */
-"User list buttons enabled" = "उपयोक्ता सूची बटन सक्रिय";
+"User list sorted by:" = "इस रूप में उपयोक्ता सूची छांटी गई:";
 
 /* nothing */
-"Resizable user list" = "आकार बदलने योग्य उपयोक्ता सूची";
+"Show user list at:" = "userlist दिखायें/छुपायें";
 
 /* nothing */
 "Away tracking" = "दूर ट्रैकिंग";
 
 /* nothing */
-"Enable away tracking" = "दूर ट्रैकिंग सक्रिय करें";
+"Track the Away status of users and mark them in a different color" = "";
 
 /* nothing */
 "On channels smaller than:" = "इससे छोटे चैनल पर:";
@@ -3029,37 +3200,10 @@
 "Action Upon Double Click" = "दोहरे क्लिक पर क्रिया";
 
 /* nothing */
-"Execute command:" = "समादेस चलायें:";
-
-/* nothing */
-"Extra Gadgets" = "अतिरिक्त गैजट";
-
-/* nothing */
-"Lag meter:" = "लैग मीटर:";
-
-/* nothing */
-"Throttle meter:" = "थ्रोट्ल मीटर:";
-
-/* nothing */
 "Windows" = "विंडोज़";
 
 /* nothing */
 "Tabs" = "टॉब्स";
-
-/* nothing */
-"Bottom" = "नीचे";
-
-/* nothing */
-"Top" = "ऊपर";
-
-/* nothing */
-"Left" = "बायाँ";
-
-/* nothing */
-"Right" = "दाहिना";
-
-/* nothing */
-"Hidden" = "छुपा हुआ";
 
 /* nothing */
 "Always" = "हमेशा";
@@ -3068,31 +3212,37 @@
 "Only requested tabs" = "सिर्प आग्रहित टैब";
 
 /* nothing */
+"Tree" = "ट्रेस";
+
+/* nothing */
+"Switcher type:" = "";
+
+/* nothing */
 "Open an extra tab for server messages" = "सर्वर संदेश के लिये एक अलग टैब खोलें";
 
 /* nothing */
 "Open an extra tab for server notices" = "सर्वर सूचना के लिये एक अलग टैब खोलें";
 
 /* nothing */
-"Small tabs" = "छोटा टैब";
+"Open a new tab when you receive a private message" = "सर्वर संदेश के लिये एक अलग टैब खोलें";
 
 /* nothing */
 "Sort tabs in alphabetical order" = "अकारादि क्रम में सजायें";
 
 /* nothing */
+"Smaller text" = "छोटा टैब";
+
+/* nothing */
 "Focus new tabs:" = "नया टैब पर फोकस करें:";
+
+/* nothing */
+"Show channel switcher at:" = "इससे छोटे चैनल पर:";
 
 /* nothing */
 "Shorten tab labels to:" = "इसमें टैब लेबल का छोटा करें:";
 
 /* nothing */
 "letters." = "अक्षर";
-
-/* nothing */
-"Tabs Location" = "टैब अवस्थिति";
-
-/* nothing */
-"Show tabs at:" = "यहां टैब दिखायें:";
 
 /* nothing */
 "Tabs or Windows" = "टैब या विंडो";
@@ -3110,7 +3260,19 @@
 "Open DCC, Ignore, Notify etc, in tabs or windows?" = "Open DCC, Ignore, Notify etc, in tabs or windows?";
 
 /* nothing */
+"No" = "";
+
+/* nothing */
+"Yes" = "";
+
+/* nothing */
+"Browse for save folder every time" = "";
+
+/* nothing */
 "Files and Directories" = "फाइल और निर्देशिका";
+
+/* nothing */
+"Auto accept file offers:" = "फाइल स्वतः स्वीकारें";
 
 /* nothing */
 "Download files to:" = "यहां फाइल डाउनलोड करें:";
@@ -3122,10 +3284,13 @@
 "Save nick name in filenames" = "फाइलनाम में उपनाम सहेजें";
 
 /* nothing */
-"Convert spaces to underscore before sending" = "भेजने से पहले स्थान को अंडरस्कोर में बदलें";
+"Network Settings" = "नेटवर्क विन्यास ";
 
 /* nothing */
-"Network Settings" = "नेटवर्क विन्यास ";
+"Get my address from the IRC server" = "IRC सर्वर से मेरा पता लीजिये";
+
+/* nothing */
+"Asks the IRC server for your real address. Use this if you have a 192.168.*.* address!" = "आपके वास्तविक पता के लिये IRC सर्वर से पूछता है. इसका उपयोग करें अगर आपके पास 192.168.*.* पता है!";
 
 /* nothing */
 "DCC IP address:" = "DCC IP पता:";
@@ -3140,13 +3305,7 @@
 "Last DCC send port:" = "अंतिम DCC प्रेषण पोर्ट:";
 
 /* nothing */
-"(Leave ports at zero for full range)." = "(पूरे रेंज के लिये पोर्ट शून्य पर छोड़ें).";
-
-/* nothing */
-"Get my address from the IRC server" = "IRC सर्वर से मेरा पता लीजिये";
-
-/* nothing */
-"Asks the IRC server for your real address. Use this if you have a 192.168.*.* address!" = "आपके वास्तविक पता के लिये IRC सर्वर से पूछता है. इसका उपयोग करें अगर आपके पास 192.168.*.* पता है!";
+"!Leave ports at zero for full range." = "(पूरे रेंज के लिये पोर्ट शून्य पर छोड़ें).";
 
 /* nothing */
 "Maximum File Transfer Speeds (bytes per second)" = "अधिकतम फाइल स्थानांतरण गति (बाइट्स प्रति सेकेंड)";
@@ -3168,6 +3327,42 @@
 
 /* nothing */
 "All downloads combined:" = "सभी डाउनलोड संयुक्त रूप से:";
+
+/* nothing */
+"Alerts" = "चेतावनी";
+
+/* nothing */
+"Show tray balloons on:" = "यहां टैब दिखायें:";
+
+/* nothing */
+"Blink tray icon on:" = "";
+
+/* nothing */
+"Blink task bar on:" = "";
+
+/* nothing */
+"Make a beep sound on:" = "";
+
+/* nothing */
+"Enable system tray icon" = "दूर ट्रैकिंग सक्रिय करें";
+
+/* nothing */
+"Highlighted Messages" = "हाइलाइट किये संदेश पर बीप करें";
+
+/* nothing */
+"Highlighted messages are ones where your nickname is mentioned, but also:" = "";
+
+/* nothing */
+"Extra words to highlight:" = "हाइलाइट करने के लिये अतिरिक्त शब्द:";
+
+/* nothing */
+"Nick names not to highlight:" = "हाइलाइट करने के लिये अतिरिक्त शब्द:";
+
+/* nothing */
+"Nick names to always highlight:" = "";
+
+/* nothing */
+"Separate multiple words with commas.\nWildcards are accepted." = "(कौमा के साथ पृथक बहु शब्द).";
 
 /* nothing */
 "Default Messages" = "मूलभूत संदेश";
@@ -3201,33 +3396,6 @@
 
 /* nothing */
 "Unmark yourself as away before sending messages" = "संदेश भेजने के पहले स्वयं को दूर के रूप में अचिह्नित करें";
-
-/* nothing */
-"(Can be a text file relative to ~/.xchat2/)." = "(~/.xchat2/ के संदर्भ में एक पाठ फाइल हो सकता है).";
-
-/* nothing */
-"(Can be a text file relative to config dir)." = "(कॉन्फिग dir के संदर्भ में एक पाठ फाइल हो सकता है).";
-
-/* nothing */
-"Alerts" = "चेतावनी";
-
-/* nothing */
-"Flash taskbar on highlighted messages" = "हाइलाइट किये संदेश पर कार्यपट्टी फ्लैश करें";
-
-/* nothing */
-"Beep on highlighted messages" = "हाइलाइट किये संदेश पर बीप करें";
-
-/* nothing */
-"Extra words to highlight on:" = "हाइलाइट करने के लिये अतिरिक्त शब्द:";
-
-/* nothing */
-"(Separate multiple words with commas)." = "(कौमा के साथ पृथक बहु शब्द).";
-
-/* nothing */
-"Beep on private messages" = "निजी संदेश पर बीप";
-
-/* nothing */
-"Beep on channel messages" = "चैनल संदेश पर बीप";
 
 /* nothing */
 "Advanced Settings" = "विस्तृत विन्यास";
@@ -3266,22 +3434,22 @@
 "Logging" = "लॉगिंग";
 
 /* nothing */
-"Enable logging of conversations" = "बातचीत के लॉगिंग को समर्थ करें";
+"Display scrollback from previous session" = "";
 
 /* nothing */
-"Log filename mask:" = "फाइलनाम मास्क लॉग करें:";
+"Enable logging of conversations to disk" = "बातचीत के लॉगिंग को समर्थ करें";
 
 /* nothing */
-"(%s=Server %c=Channel %n=Network)." = "(%s=सर्वर %c=चैनल %n=संजाल).";
+"Log filename:" = "फाइलनाम मास्क लॉग करें:";
+
+/* nothing */
+"%s=Server %c=Channel %n=Network." = "(%s=सर्वर %c=चैनल %n=संजाल).";
 
 /* nothing */
 "Insert timestamps in logs" = "लॉग में टाइमस्टैंप दाखिल करें";
 
 /* nothing */
 "Log timestamp format:" = "टाइमस्टैंप प्रारूप को लॉग करें:";
-
-/* nothing */
-"(See strftime manpage for details)." = "(विवरण के लिये strftime मैनपेज देखें).";
 
 /* nothing */
 "(Disabled)" = "(निष्क्रिय)";
@@ -3299,13 +3467,25 @@
 "HTTP" = "HTTP";
 
 /* nothing */
+"MS Proxy (ISA)" = "";
+
+/* nothing */
+"All Connections" = "जोड़ हो रहा है";
+
+/* nothing */
+"IRC Server Only" = "सिर्फ आमंत्रण";
+
+/* nothing */
+"DCC Get Only" = "";
+
+/* nothing */
 "Your Address" = "आपका पता";
 
 /* nothing */
 "Bind to:" = "इससे जोड़ें:";
 
 /* nothing */
-"(Only useful for computers with multiple addresses)." = "(बहु पता के साथ के कंप्यूटर के लिये सिर्फ उपयोगी).";
+"Only useful for computers with multiple addresses." = "(बहु पता के साथ के कंप्यूटर के लिये सिर्फ उपयोगी).";
 
 /* nothing */
 "Proxy Server" = "प्रॉक्सी सर्वर";
@@ -3314,34 +3494,34 @@
 "Hostname:" = "मेजबाननाम:";
 
 /* nothing */
-"Username:" = "उपयोक्ता नाम:";
-
-/* nothing */
-"Password:" = "शब्दकूट:";
-
-/* nothing */
 "Port:" = "पोर्टः";
 
 /* nothing */
 "Type:" = "प्रकार:";
 
 /* nothing */
-"Authenticate to the proxy server (HTTP and Socks5)" = "प्रॉक्सी सर्वर से सत्यापित करें (HTTP और Socks5)";
+"Use proxy for:" = "प्रॉक्सी सर्वर का प्रयोग करें";
 
 /* nothing */
-"(disabled)" = "(निष्क्रिय)";
+"Proxy Authentication" = "";
 
 /* nothing */
-"A star (*)" = "तारा (*)";
+"Use Authentication (MS Proxy, HTTP or Socks5 only)" = "प्रॉक्सी सर्वर से सत्यापित करें (HTTP और Socks5)";
 
 /* nothing */
-"A red star (*)" = "लाल तारा (*)";
+"Use Authentication (HTTP or Socks5 only)" = "प्रॉक्सी सर्वर से सत्यापित करें (HTTP और Socks5)";
 
 /* nothing */
-"Underlined" = "रेखांकित";
+"Username:" = "उपयोक्ता नाम:";
+
+/* nothing */
+"Password:" = "शब्दकूट:";
 
 /* nothing */
 "Select an Image File" = "चित्र फाइल चुनें";
+
+/* nothing */
+"Select Download Folder" = "रंग चुनें";
 
 /* nothing */
 "Select font" = "फंट चुनें";
@@ -3356,6 +3536,9 @@
 "Mark not-identified users with:" = "इसके साथ नहीं पहचाने गये उपयोक्ता को चिह्नित करें:";
 
 /* nothing */
+"Open Data Folder" = "";
+
+/* nothing */
 "Select color" = "रंग चुनें";
 
 /* nothing */
@@ -3365,7 +3548,7 @@
 "mIRC colors:" = "mIRC रंग:";
 
 /* nothing */
-"Extra colors:" = "अतिरिक्त रंग:";
+"Local colors:" = "अतिरिक्त रंग:";
 
 /* nothing */
 "Foreground:" = "अग्रभूमि:";
@@ -3434,10 +3617,10 @@
 "Text box" = "पाठ बॉक्स";
 
 /* nothing */
-"Input box" = "इनपुट बॉक्स";
+"User list" = "उपयोक्ता सूची";
 
 /* nothing */
-"User list" = "उपयोक्ता सूची";
+"Channel switcher" = "चैनल सूची";
 
 /* nothing */
 "Colors" = "रंग";
@@ -3452,9 +3635,6 @@
 "Sound" = "ध्वनि";
 
 /* nothing */
-"Network" = "संजाल";
-
-/* nothing */
 "Network setup" = "संजाल सेटअप";
 
 /* nothing */
@@ -3464,10 +3644,16 @@
 "Categories" = "श्रेणियां";
 
 /* nothing */
+"You cannot place the tree on the top or bottom!\nPlease change to the <b>Tabs</b> layout in the <b>View</b> menu first." = "";
+
+/* nothing */
 "Some settings were changed that require a restart to take full effect." = "Some settings were changed that require a restart to take full effect.";
 
 /* nothing */
-"X-Chat: Preferences" = "X-Chat: प्राथमिकतायें";
+"*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile" = "*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile";
+
+/* nothing */
+"XChat: Preferences" = "X-Chat: प्राथमिकतायें";
 
 /* nothing */
 "There was an error parsing the string" = "स्ट्रिंग की व्याख्या में त्रुटि थी";
@@ -3479,16 +3665,13 @@
 "Print Texts File" = "पाठ फाइल मुद्रित करें";
 
 /* nothing */
-"$ Number" = "$ संख्या";
-
-/* nothing */
 "Edit Events" = "घटना संपादित करें";
 
 /* nothing */
-"Save As" = "इस रूप में सहेजें";
+"$ Number" = "$ संख्या";
 
 /* nothing */
-"Load From" = "इससे लोड करें";
+"Load From..." = "इससे लोड करें";
 
 /* nothing */
 "Test All" = "सबको जांचें";
@@ -3497,13 +3680,13 @@
 "URL" = "URL";
 
 /* nothing */
-"Select a file to save to" = "इसमें सहेजेने के लिये फाइल चुनें";
-
-/* nothing */
-"X-Chat: URL Grabber" = "X-Chat: URL Grabber";
+"XChat: URL Grabber" = "X-Chat: URL Grabber";
 
 /* nothing */
 "Clear list" = "सूची साफ करें";
+
+/* nothing */
+"Copy selected URL" = "चुनें गये URL को कॉपी करें";
 
 /* nothing */
 "Copy" = "कॉपी";

@@ -1,5 +1,5 @@
 /* nothing */
-"" = "Project-Id-Version: xchat 2.8.4\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2007-06-24 13:05+1000\nPO-Revision-Date: 2007-11-04 21:08+0100\nLast-Translator: Kjartan Maraas <kmaraas@gnome.org>\nLanguage-Team: Norwegian Bokmaal <i18n-nb@lister.ping.uio.no>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8-bit\n";
+"" = "Project-Id-Version: xchat 2.8.8\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2010-05-30 13:56+1000\nPO-Revision-Date: 2011-12-05 22:32+0100\nLast-Translator: Petter Reinholdtsen <pere@hungry.com>\nLanguage-Team: Norwegian Bokmaal <i18n-nb@lister.ping.uio.no>\nLanguage: Norwegian Bokmaal\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8-bit\nX-Generator: Lokalize 1.0\nPlural-Forms: nplurals=2; plural=n != 1;\n";
 
 /* nothing */
 "Cannot create ~/.xchat2" = "Kan ikke opprette ~/.xchat2";
@@ -38,7 +38,7 @@
 "Error" = "Feil";
 
 /* nothing */
-"%s is offering \"%s\". Do you want to accept?" = "";
+"%s is offering \"%s\". Do you want to accept?" = "%s tilbyr \"%s\".  Ønsker du å akseptere?";
 
 /* nothing */
 "No active DCCs\n" = "Ingen aktive DCC\n";
@@ -56,10 +56,10 @@
 "You are being MSG flooded from %s, setting gui_auto_open_dialog OFF.\n" = "";
 
 /* nothing */
-"  %-20s online\n" = "";
+"  %-20s online\n" = " %-20s tilkoblet\n";
 
 /* nothing */
-"  %-20s offline\n" = "";
+"  %-20s offline\n" = " %-20s frakoblet\n";
 
 /* nothing */
 "No channel joined. Try /join #<channel>\n" = "";
@@ -74,7 +74,7 @@
 "Already marked back.\n" = "";
 
 /* nothing */
-"I need /bin/sh to run!\n" = "";
+"I need /bin/sh to run!\n" = "Jeg trenger /bin/sh for å kjøre!\n";
 
 /* nothing */
 "Commands Available:" = "Tilgjengelige kommandoer:";
@@ -119,7 +119,7 @@
 "BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "";
 
 /* nothing */
-"Set per channel options\nCHANOPT CONFMODE ON|OFF - Toggle conf mode/showing of join and part messages\nCHANOPT COLORPASTE ON|OFF - Toggle color paste\nCHANOPT BEEP ON|OFF - Toggle beep on message\nCHANOPT TRAY ON|OFF - Toggle tray blink on message" = "";
+"CHANOPT [-quiet] <variable> [<value>]" = "";
 
 /* nothing */
 "CLEAR [ALL|HISTORY], Clears the current text window or command history" = "";
@@ -182,7 +182,7 @@
 "GATE <host> [<port>], proxies through a host, port defaults to 23" = "";
 
 /* nothing */
-"GHOST <nick> <password>, Kills a ghosted nickname" = "";
+"GHOST <nick> [password], Kills a ghosted nickname" = "";
 
 /* nothing */
 "HOP <nick>, gives chanhalf-op status to the nick (needs chanop)" = "";
@@ -296,7 +296,7 @@
 "SERVER <host> [<port>] [<password>], connects to a server, the default port is 6667" = "";
 
 /* nothing */
-"SET [-e] [-or] [-quiet] <variable> [<value>]" = "";
+"SET [-e] [-off|-on] [-quiet] <variable> [<value>]" = "";
 
 /* nothing */
 "SETCURSOR [-|+]<position>" = "";
@@ -338,7 +338,7 @@
 "\nNo help available on that command.\n" = "";
 
 /* nothing */
-"No such command.\n" = "";
+"No such command.\n" = "Ingen slik kommando.\n";
 
 /* nothing */
 "Bad arguments for user command.\n" = "";
@@ -347,13 +347,13 @@
 "Too many recursive usercommands, aborting." = "";
 
 /* nothing */
-"Unknown Command. Try /help\n" = "";
+"Unknown Command. Try /help\n" = "Ukjent kommando.  Forsøk /help\n";
 
 /* nothing */
 "No xchat_plugin_init symbol; is this really an xchat plugin?" = "";
 
 /* nothing */
-"Are you sure this is a SSL capable server and port?\n" = "";
+"Are you sure this is a SSL capable server and port?\n" = "Er du sikker på at dette er en tjener og port med SSL-støtte?\n";
 
 /* nothing */
 "Cannot resolve hostname %s\nCheck your IP Settings!\n" = "";
@@ -362,7 +362,7 @@
 "Proxy traversal failed.\n" = "";
 
 /* nothing */
-"Cycling to next server in %s...\n" = "";
+"Cycling to next server in %s...\n" = "Roterer til neste tjener i %s...\n";
 
 /* nothing */
 "Warning: \"%s\" character set is unknown. No conversion will be applied for network %s." = "";
@@ -749,10 +749,10 @@
 "Mode char" = "";
 
 /* nothing */
-"The text" = "Teksten";
+"Identified text" = "Identifisert tekst";
 
 /* nothing */
-"Identified text" = "Identifisert tekst";
+"The text" = "Teksten";
 
 /* nothing */
 "The message" = "Meldingen";
@@ -954,6 +954,9 @@
 
 /* nothing */
 "Server Name" = "Navn på tjener";
+
+/* nothing */
+"Raw Numeric or Identifier" = "";
 
 /* nothing */
 "Nick of person who invited you" = "Kallenavn for personen som inviterte deg";
@@ -1850,16 +1853,19 @@
 "Unknown" = "Ukjent";
 
 /* nothing */
-"Open Dialog Window" = "Åpne dialogvindu";
+"_Open Dialog Window" = "_Åpne dialogvindu ";
 
 /* nothing */
-"Send a File" = "Send en fil";
+"_Send a File" = "_Send en fil";
 
 /* nothing */
-"User Info (WHOIS)" = "Brukerinformasjon (WHOIS)";
+"_User Info (WhoIs)" = "_Brukerinformasjon (Whois)";
 
 /* nothing */
-"Operator Actions" = "Operatørhandlinger";
+"_Add to Friends List" = "_Legg til venne-listen";
+
+/* nothing */
+"O_perator Actions" = "O_peratørhandlinger";
 
 /* nothing */
 "Give Ops" = "Gi operatørstatus";
@@ -1884,87 +1890,6 @@
 
 /* nothing */
 "KickBan" = "Spark og bannlys";
-
-/* nothing */
-"Direct client-to-client" = "Direkte klient-til-klient";
-
-/* nothing */
-"Send File" = "Send fil";
-
-/* nothing */
-"Offer Chat" = "Tilby prat";
-
-/* nothing */
-"Abort Chat" = "Avbryt X-Chat";
-
-/* nothing */
-"Version" = "Versjon";
-
-/* nothing */
-"Userinfo" = "Brukerinformasjon";
-
-/* nothing */
-"Clientinfo" = "Informasjon om klienten";
-
-/* nothing */
-"Ping" = "Ping";
-
-/* nothing */
-"Time" = "Tid";
-
-/* nothing */
-"Finger" = "Finger";
-
-/* nothing */
-"Oper" = "Operatør";
-
-/* nothing */
-"Kill this user" = "Terminer denne brukeren";
-
-/* nothing */
-"Mode" = "Modus";
-
-/* nothing */
-"Give Half-Ops" = "";
-
-/* nothing */
-"Take Half-Ops" = "";
-
-/* nothing */
-"Ignore" = "Ignorer";
-
-/* nothing */
-"Ignore User" = "Ignorer bruker";
-
-/* nothing */
-"UnIgnore User" = "";
-
-/* nothing */
-"Info" = "Info";
-
-/* nothing */
-"Who" = "Hvem";
-
-/* nothing */
-"WhoIs" = "";
-
-/* nothing */
-"DNS Lookup" = "DNS-oppslag";
-
-/* nothing */
-"Trace" = "";
-
-/* nothing */
-"UserHost" = "";
-
-/* nothing */
-"External" = "Ekstern";
-
-/* nothing */
-"Traceroute" = "Traceroute";
-
-/* nothing */
-"Telnet" = "Telnet";
 
 /* nothing */
 "Leave Channel" = "Forlat kanal";
@@ -2003,6 +1928,9 @@
 "Dialog" = "Dialog";
 
 /* nothing */
+"WhoIs" = "Whois";
+
+/* nothing */
 "Send" = "Send";
 
 /* nothing */
@@ -2012,7 +1940,10 @@
 "Clear" = "Tøm";
 
 /* nothing */
-"Couldn't connect to session bus" = "";
+"Ping" = "Ping";
+
+/* nothing */
+"Couldn't connect to session bus" = "Klarte ikke koble seg til øktbussen";
 
 /* nothing */
 "Failed to complete NameHasOwner" = "";
@@ -2027,13 +1958,13 @@
 "plugin for remote access using DBUS" = "";
 
 /* nothing */
-"Couldn't connect to session bus: %s\n" = "";
+"Couldn't connect to session bus: %s\n" = "Klarte ikke koble seg til øktbussen: %s\n";
 
 /* nothing */
 "Failed to acquire %s: %s\n" = "";
 
 /* nothing */
-"About XChat" = "Om XChat";
+"About " = "Om ";
 
 /* nothing */
 "A multiplatform IRC Client" = "En IRC-klient for flere plattformer";
@@ -2066,10 +1997,10 @@
 "XChat: Ban List (%s)" = "X-Chat: Rediger tastaturbindinger";
 
 /* nothing */
-"Unban" = "";
+"Remove" = "Fjern";
 
 /* nothing */
-"Crop" = "";
+"Crop" = "Klipp";
 
 /* nothing */
 "Refresh" = "Oppdater";
@@ -2129,7 +2060,7 @@
 "Pattern Match (Wildcards)" = "";
 
 /* nothing */
-"Regular Expression" = "";
+"Regular Expression" = "Regulæruttrykk";
 
 /* nothing */
 "Find:" = "Finn:";
@@ -2165,13 +2096,13 @@
 "Both" = "Begge";
 
 /* nothing */
-"Uploads" = "";
+"Uploads" = "Opplastinger";
 
 /* nothing */
-"Downloads" = "";
+"Downloads" = "Nedlastinger";
 
 /* nothing */
-"Details" = "";
+"Details" = "Detaljer";
 
 /* nothing */
 "File:" = "Fil:";
@@ -2240,10 +2171,10 @@
 "Help" = "Hjelp";
 
 /* nothing */
-"Don't auto connect to servers" = "Koble til igjen automatisk";
+"Don't auto connect to servers" = "Ikke koble automatisk til tjenere";
 
 /* nothing */
-"Use a different config directory" = "";
+"Use a different config directory" = "Bruk en annen oppsettkatalog";
 
 /* nothing */
 "Don't auto load any plugins" = "";
@@ -2252,13 +2183,16 @@
 "Show plugin auto-load directory" = "";
 
 /* nothing */
-"Show user config directory" = "Lydfil: ";
+"Show user config directory" = "Vis brukers oppsettkatalog";
 
 /* nothing */
 "Open an irc://server:port/channel URL" = "";
 
 /* nothing */
-"Open URL in an existing XChat" = "";
+"Execute command:" = "Kjør kommando:";
+
+/* nothing */
+"Open URL or execute command in an existing XChat" = "";
 
 /* nothing */
 "Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "";
@@ -2267,7 +2201,7 @@
 "level" = "nivå";
 
 /* nothing */
-"Show version information" = "Informasjon om tjener";
+"Show version information" = "Vis versjonsinformasjon";
 
 /* nothing */
 "Failed to open font:\n\n%s" = "";
@@ -2387,7 +2321,7 @@
 "Private" = "Privat";
 
 /* nothing */
-"Notice" = "";
+"Notice" = "Merk";
 
 /* nothing */
 "CTCP" = "CTCP";
@@ -2417,7 +2351,7 @@
 "Private:" = "Privat:";
 
 /* nothing */
-"Notice:" = "";
+"Notice:" = "Merk:";
 
 /* nothing */
 "CTCP:" = "CTCP:";
@@ -2432,16 +2366,16 @@
 "Channel name too short, try again." = "";
 
 /* nothing */
-"XChat: Connection Complete" = "Tidsavbrudd for tilkobling";
+"XChat: Connection Complete" = "XChat: Oppkobling fullført";
 
 /* nothing */
-"Connection to %s complete." = "Tilkobling nullstillt av vert";
+"Connection to %s complete." = "Oppkobling til %s fullført.";
 
 /* nothing */
 "In the Server-List window, no channel (chat room) has been entered to be automatically joined for this network." = "";
 
 /* nothing */
-"What would you like to do next?" = "";
+"What would you like to do next?" = "Hva vil du gjøre som neste steg?";
 
 /* nothing */
 "_Nothing, I'll join a channel later." = "";
@@ -2462,7 +2396,7 @@
 "_Always show this dialog after connecting." = "";
 
 /* nothing */
-"Dialog with" = "";
+"Dialog with" = "Dialog med";
 
 /* nothing */
 "Topic for %s is: %s" = "Emne for %s er: %s";
@@ -2495,10 +2429,10 @@
 "Insert Attribute or Color Code" = "";
 
 /* nothing */
-"<b>Bold</b>" = "";
+"<b>Bold</b>" = "<b>Fet</b>";
 
 /* nothing */
-"<u>Underline</u>" = "Tilkoblet";
+"<u>Underline</u>" = "<u>Understrekning</u>";
 
 /* nothing */
 "Normal" = "Normal";
@@ -2510,25 +2444,37 @@
 "Colors 8-15" = "Farge 8-15";
 
 /* nothing */
-"Beep on message" = "Pip ved melding";
+"_Settings" = "_Innstillinger";
 
 /* nothing */
-"Blink tray on message" = "Pip ved private meldinger";
+"_Log to Disk" = "";
 
 /* nothing */
-"Show join/part messages" = "Pip ved private meldinger";
+"_Reload Scrollback" = "";
 
 /* nothing */
-"Color paste" = "Lim inn farge";
+"_Hide Join/Part Messages" = "";
 
 /* nothing */
-"_Close Tab" = "_Lukk fane";
+"_Extra Alerts" = "_Ekstra varsler";
 
 /* nothing */
-"_Detach Tab" = "";
+"Beep on _Message" = "Pip ved _melding";
 
 /* nothing */
-"User limit must be a number!\n" = "";
+"Blink Tray _Icon" = "Pip ved private meldinger";
+
+/* nothing */
+"Blink Task _Bar" = "";
+
+/* nothing */
+"_Detach" = "_Koble fra";
+
+/* nothing */
+"_Close" = "L_ukk";
+
+/* nothing */
+"User limit must be a number!\n" = "Brukergrense må være et tall!\n";
 
 /* nothing */
 "Topic Protection" = "";
@@ -2537,7 +2483,7 @@
 "No outside messages" = "";
 
 /* nothing */
-"Secret" = "";
+"Secret" = "Hemmelig";
 
 /* nothing */
 "Invite Only" = "";
@@ -2582,13 +2528,16 @@
 "Server:" = "Tjener:";
 
 /* nothing */
-"Away Msg:" = "Borteårsak";
-
-/* nothing */
 "%u minutes ago" = "%u minutter siden";
 
 /* nothing */
 "Last Msg:" = "Siste melding:";
+
+/* nothing */
+"Away Msg:" = "Borteårsak";
+
+/* nothing */
+"%d nicks selected." = "";
 
 /* nothing */
 "The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "";
@@ -2607,6 +2556,12 @@
 
 /* nothing */
 "Cycle Channel" = "";
+
+/* nothing */
+"_Remove from Favorites" = "_Fjern fra favoritter";
+
+/* nothing */
+"_Add to Favorites" = "_Legg til favoritter";
 
 /* nothing */
 "XChat: User menu" = "XChat: Brukermeny";
@@ -2723,10 +2678,16 @@
 "_Server" = "_Tjener";
 
 /* nothing */
-"_Disconnect" = "Koble fra";
+"_Disconnect" = "_Koble fra";
 
 /* nothing */
 "_Reconnect" = "Koble til på nytt";
+
+/* nothing */
+"Join a Channel..." = "Bli med i kanal...";
+
+/* nothing */
+"List of Channels..." = "Bli med i kanal...";
 
 /* nothing */
 "Marked Away" = "Merket som borte";
@@ -2777,9 +2738,6 @@
 "Ban List..." = "";
 
 /* nothing */
-"Channel List..." = "Kanalliste...";
-
-/* nothing */
 "Character Chart..." = "Tegnkart...";
 
 /* nothing */
@@ -2789,10 +2747,10 @@
 "File Transfers..." = "Filoverføringer...";
 
 /* nothing */
-"Ignore List..." = "Ignorer-liste...";
+"Friends List..." = "Ignorer-liste...";
 
 /* nothing */
-"Notify List..." = "Meldingsliste...";
+"Ignore List..." = "Ignorer-liste...";
 
 /* nothing */
 "Plugins and Scripts..." = "Liste over tillegg...";
@@ -2822,16 +2780,13 @@
 "_Contents" = "_Innhold";
 
 /* nothing */
+"Check for updates" = "Sjekk etter oppdateringer";
+
+/* nothing */
 "_About" = "_Om";
 
 /* nothing */
-"_Attach Window" = "_Vindu";
-
-/* nothing */
-"_Close Window" = "_Vindu";
-
-/* nothing */
-"User" = "Bruker";
+"_Attach" = "_Vindu";
 
 /* nothing */
 "Last Seen" = "Sist sett";
@@ -2843,7 +2798,7 @@
 "Never" = "Aldri";
 
 /* nothing */
-"%d minutes ago" = "";
+"%d minutes ago" = "%d minutter siden";
 
 /* nothing */
 "Online" = "Tilkoblet";
@@ -2858,10 +2813,7 @@
 "Comma separated list of networks is accepted." = "";
 
 /* nothing */
-"XChat: Notify List" = "Meldingsliste...";
-
-/* nothing */
-"Remove" = "Fjern";
+"XChat: Friends List" = "X-Chat: tjenerliste";
 
 /* nothing */
 "Open Dialog" = "Åpne dialog";
@@ -2891,6 +2843,15 @@
 "Highlighted Message" = "Pip ved private meldinger";
 
 /* nothing */
+"_Change status" = "_Endre status";
+
+/* nothing */
+"_Away" = "_Borte";
+
+/* nothing */
+"_Back" = "_Tilbake";
+
+/* nothing */
 "XChat: Highlighted message from: %s (%s)" = "";
 
 /* nothing */
@@ -2915,6 +2876,9 @@
 "XChat: %u file offers, latest from: %s (%s)" = "";
 
 /* nothing */
+"Version" = "Versjon";
+
+/* nothing */
 "Description" = "Beskrivelse";
 
 /* nothing */
@@ -2928,9 +2892,6 @@
 
 /* nothing */
 "_UnLoad" = "Last _ut";
-
-/* nothing */
-"_Close" = "L_ukk";
 
 /* nothing */
 "Save As..." = "Lagre som...";
@@ -2966,6 +2927,27 @@
 "Really remove network \"%s\" and all its servers?" = "";
 
 /* nothing */
+"#channel" = "#kanal";
+
+/* nothing */
+"XChat: Favorite Channels (Auto-Join List)" = "XChat: Kanalliste (%s)";
+
+/* nothing */
+"These channels will be joined whenever you connect to %s." = "";
+
+/* nothing */
+"Key (Password)" = "Nøkkel (passord)";
+
+/* nothing */
+"_Edit" = "R_ediger";
+
+/* nothing */
+"%s has been removed." = "%s har blitt fjernet.";
+
+/* nothing */
+"%s has been added." = "%s har blitt lagt til.";
+
+/* nothing */
 "User name and Real name cannot be left blank." = "";
 
 /* nothing */
@@ -2984,7 +2966,7 @@
 "Your Details" = "Dine detaljer";
 
 /* nothing */
-"Use global user information" = "";
+"Use global user information" = "Bruk global brukerinformasjon";
 
 /* nothing */
 "_Nick name:" = "Kalle_navn:";
@@ -3005,16 +2987,16 @@
 "Auto connect to this network at startup" = "Koble til igjen automatisk";
 
 /* nothing */
-"Use a proxy server" = "Bruk en proxy-tjener";
+"Bypass proxy server" = "Bruk en proxy-tjener";
 
 /* nothing */
-"Use SSL for all the servers on this network" = "";
+"Use SSL for all the servers on this network" = "Bruk SSL for alle tjenerne på dette nettverket";
 
 /* nothing */
-"Accept invalid SSL certificate" = "";
+"Accept invalid SSL certificate" = "Aksepter ugyldig SSL-sertifikat";
 
 /* nothing */
-"C_hannels to join:" = "Kanal:";
+"_Favorite channels:" = "_Favorittkanaler:";
 
 /* nothing */
 "Channels to join, separated by commas, but not spaces!" = "";
@@ -3039,9 +3021,6 @@
 
 /* nothing */
 "Character set:" = "Tegnsett:";
-
-/* nothing */
-"_Edit" = "R_ediger";
 
 /* nothing */
 "XChat: Network List" = "XChat: nettverksliste";
@@ -3098,7 +3077,7 @@
 "Transparent background" = "Gjennomsiktig bakgrunn";
 
 /* nothing */
-"Show marker line" = "Vis borte én gang";
+"Show marker line" = "Vis markørlinje";
 
 /* nothing */
 "Insert a red line after the last read text." = "";
@@ -3125,7 +3104,7 @@
 "Time stamp format:" = "";
 
 /* nothing */
-"See strftime manpage for details." = "";
+"See strftime manpage for details." = "Se stdftime-manualsiden for detaljer.";
 
 /* nothing */
 "A-Z" = "A-Å";
@@ -3221,9 +3200,6 @@
 "Action Upon Double Click" = "";
 
 /* nothing */
-"Execute command:" = "Kommando ved tilkobling:";
-
-/* nothing */
 "Windows" = "Vinduer";
 
 /* nothing */
@@ -3236,7 +3212,10 @@
 "Only requested tabs" = "";
 
 /* nothing */
-"Channel Switcher" = "Kanalliste...";
+"Tree" = "Tre";
+
+/* nothing */
+"Switcher type:" = "Type søk:";
 
 /* nothing */
 "Open an extra tab for server messages" = "Bruk en separat fane/vindu for tjenermeldinger";
@@ -3251,7 +3230,7 @@
 "Sort tabs in alphabetical order" = "";
 
 /* nothing */
-"Small tabs" = "";
+"Smaller text" = "Mindre tekst";
 
 /* nothing */
 "Focus new tabs:" = "";
@@ -3290,7 +3269,7 @@
 "Browse for save folder every time" = "";
 
 /* nothing */
-"Files and Directories" = "";
+"Files and Directories" = "Filer og kataloger";
 
 /* nothing */
 "Auto accept file offers:" = "Godta DCC-send automatisk";
@@ -3305,10 +3284,10 @@
 "Save nick name in filenames" = "Bruk avsenders kallenavn i innkommende filnavn";
 
 /* nothing */
-"Network Settings" = "Gjenles innstillinger";
+"Network Settings" = "Nettverksinnstillinger";
 
 /* nothing */
-"Get my address from the IRC server" = "";
+"Get my address from the IRC server" = "Hent min adresse fra IRC-tjener";
 
 /* nothing */
 "Asks the IRC server for your real address. Use this if you have a 192.168.*.* address!" = "";
@@ -3332,25 +3311,25 @@
 "Maximum File Transfer Speeds (bytes per second)" = "";
 
 /* nothing */
-"One upload:" = "";
+"One upload:" = "En opplasting:";
 
 /* nothing */
-"Maximum speed for one transfer" = "";
+"Maximum speed for one transfer" = "Maksimal hastighet for en overføring";
 
 /* nothing */
-"One download:" = "";
+"One download:" = "En nedlasting:";
 
 /* nothing */
 "All uploads combined:" = "";
 
 /* nothing */
-"Maximum speed for all files" = "";
+"Maximum speed for all files" = "Maksimal hastighet for alle filer";
 
 /* nothing */
 "All downloads combined:" = "";
 
 /* nothing */
-"Alerts" = "";
+"Alerts" = "Varsler";
 
 /* nothing */
 "Show tray balloons on:" = "";
@@ -3383,16 +3362,16 @@
 "Nick names to always highlight:" = "";
 
 /* nothing */
-"Separate multiple words with commas." = "(separér med komma)";
+"Separate multiple words with commas.\nWildcards are accepted." = "(separér med komma)";
 
 /* nothing */
 "Default Messages" = "Sluttmelding:";
 
 /* nothing */
-"Quit:" = "Avslutt";
+"Quit:" = "Avslutt:";
 
 /* nothing */
-"Leave channel:" = "Kanalen";
+"Leave channel:" = "Forlat kanalen:";
 
 /* nothing */
 "Away:" = "Borte:";
@@ -3419,7 +3398,7 @@
 "Unmark yourself as away before sending messages" = "";
 
 /* nothing */
-"Advanced Settings" = "Gjenles innstillinger";
+"Advanced Settings" = "Avanserte innstillinger";
 
 /* nothing */
 "Auto reconnect delay:" = "Pause før automatisk gjenoppkobling";
@@ -3449,13 +3428,16 @@
 "Receive window" = "Mottaker";
 
 /* nothing */
-"Chat window" = "Kanalvindu...";
+"Chat window" = "Pratevindu";
 
 /* nothing */
 "Logging" = "Logging";
 
 /* nothing */
-"Enable logging of conversations" = "Slå på logging av samtaler til disk";
+"Display scrollback from previous session" = "";
+
+/* nothing */
+"Enable logging of conversations to disk" = "Slå på logging av samtaler til disk";
 
 /* nothing */
 "Log filename:" = "Maske for loggnavn:";
@@ -3491,7 +3473,7 @@
 "All Connections" = "Alle tilkoblinger";
 
 /* nothing */
-"IRC Server Only" = "";
+"IRC Server Only" = "Kun IRC-tjener";
 
 /* nothing */
 "DCC Get Only" = "";
@@ -3500,13 +3482,13 @@
 "Your Address" = "Din adresse";
 
 /* nothing */
-"Bind to:" = "Finn:";
+"Bind to:" = "Bind til:";
 
 /* nothing */
 "Only useful for computers with multiple addresses." = "";
 
 /* nothing */
-"Proxy Server" = "Proxy-tjener:";
+"Proxy Server" = "Proxy-tjener";
 
 /* nothing */
 "Hostname:" = "Vertsnavn:";
@@ -3539,7 +3521,7 @@
 "Select an Image File" = "";
 
 /* nothing */
-"Select Download Folder" = "Velg farge";
+"Select Download Folder" = "Velg nedlastingskatalog";
 
 /* nothing */
 "Select font" = "Velg skrift";
@@ -3554,7 +3536,7 @@
 "Mark not-identified users with:" = "";
 
 /* nothing */
-"Open Data Folder" = "";
+"Open Data Folder" = "Åpne datakatalog";
 
 /* nothing */
 "Select color" = "Velg farge";
@@ -3575,7 +3557,7 @@
 "Background:" = "Bakgrunn:";
 
 /* nothing */
-"Marking Text" = "";
+"Marking Text" = "Markerer tekst";
 
 /* nothing */
 "Interface Colors" = "Farger for grensesnitt";
@@ -3584,7 +3566,7 @@
 "New data:" = "Nye data:";
 
 /* nothing */
-"Marker line:" = "Vis borte én gang";
+"Marker line:" = "Marker linje:";
 
 /* nothing */
 "New message:" = "Ny melding:";
@@ -3617,7 +3599,7 @@
 "_Automatic" = "_Automatisk";
 
 /* nothing */
-"Sound files _directory:" = "Lydfil: ";
+"Sound files _directory:" = "Katalog for lydfiler:";
 
 /* nothing */
 "Sound file:" = "Lydfil:";

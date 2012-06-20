@@ -1,5 +1,5 @@
 /* nothing */
-"" = "Project-Id-Version: xchat-2.6.7\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2006-10-04 13:56+1000\nPO-Revision-Date: 2006-10-11 01:00+0200\nLast-Translator: Eros Palberti-Fabio Viola : How-Tux Team <admin@how-tux.com>\nLanguage-Team: Italian\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n";
+"" = "Project-Id-Version: xchat-2.8.8\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2010-05-30 13:56+1000\nPO-Revision-Date: 2010-10-26 11:51+0200\nLast-Translator: Claudio Arseni <claudio.arseni@gmail.com>\nLanguage-Team: Italian <tp@lists.linux.it>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\n";
 
 /* nothing */
 "Cannot create ~/.xchat2" = "Impossibile creare ~/.xchat2";
@@ -11,7 +11,7 @@
 "Leaving" = "Sto andando via";
 
 /* nothing */
-"* Running IRC as root is stupid! You should\n  create a User Account and use that to login.\n" = "* Eseguire IRC come root non è saggio.\n  Sarebbe preferibile creare un account utente\n  e utilizzare tale utente per effettuare il login.\n";
+"* Running IRC as root is stupid! You should\n  create a User Account and use that to login.\n" = "* L'utilizzo di IRC come «root» non è consigliato.\n  È preferibile creare un account utente da utilizzare \n  per effettuare l'accesso.\n";
 
 /* nothing */
 "Waiting" = "In attesa";
@@ -20,13 +20,13 @@
 "Active" = "Attivo";
 
 /* nothing */
-"Failed" = "Fallito";
+"Failed" = "Non riuscito";
 
 /* nothing */
 "Done" = "Completato";
 
 /* nothing */
-"Connect" = "Connessione";
+"Connect" = "Connetti";
 
 /* nothing */
 "Aborted" = "Interrotto";
@@ -38,7 +38,7 @@
 "Error" = "Errore";
 
 /* nothing */
-"%s is offering \"%s\". Do you want to accept?" = "%s sta offrendo \"%s\". Vuoi accettare?";
+"%s is offering \"%s\". Do you want to accept?" = "%s sta offrendo «%s». Accettare?";
 
 /* nothing */
 "No active DCCs\n" = "Nessun DCC attivo\n";
@@ -50,25 +50,31 @@
 "NO   " = "NO   ";
 
 /* nothing */
-"You are being CTCP flooded from %s, ignoring %s\n" = "Hai ricevuto un flood CTCP da parte di %s. %s ignorato\n";
+"You are being CTCP flooded from %s, ignoring %s\n" = "Hai ricevuto un flood CTCP da parte di %s. %s viene ignorato\n";
 
 /* nothing */
 "You are being MSG flooded from %s, setting gui_auto_open_dialog OFF.\n" = "Hai ricevuto un flood MSG da parte di %s. gui_auto_open_dialog impostato a OFF.\n";
 
 /* nothing */
-"  %-20s online\n" = "  %-20s connesso\n";
+"  %-20s online\n" = "  %-20s in linea\n";
 
 /* nothing */
-"  %-20s offline\n" = "  %-20s non connesso\n";
+"  %-20s offline\n" = "  %-20s non in linea\n";
 
 /* nothing */
-"No channel joined. Try /join #<channel>\n" = "Non sei in nessun canale. Prova prima /join #<canale>\n";
+"No channel joined. Try /join #<channel>\n" = "Nessun canale aperto. Provare /join #<canale>\n";
 
 /* nothing */
-"Not connected. Try /server <host> [<port>]\n" = "Non connesso. Prova prima /server <host> [<porta>]\n";
+"Not connected. Try /server <host> [<port>]\n" = "Non connessi. Provare /server <host> [<porta>]\n";
 
 /* nothing */
-"I need /bin/sh to run!\n" = "È necessario /bin/sh per l'esecuzione!\n";
+"Already marked away: %s\n" = "Già impostato come assente: %s\n";
+
+/* nothing */
+"Already marked back.\n" = "Già tolto lo stato di assenza\n";
+
+/* nothing */
+"I need /bin/sh to run!\n" = "È necessario /bin/sh per l'esecuzione\n";
 
 /* nothing */
 "Commands Available:" = "Comandi disponibili:";
@@ -77,88 +83,91 @@
 "User defined commands:" = "Comandi definiti dall'utente:";
 
 /* nothing */
-"Plugin defined commands:" = "Plugin definiti dall'utente:";
+"Plugin defined commands:" = "Comandi definiti dal plugin:";
 
 /* nothing */
-"Type /HELP <command> for more information, or /HELP -l" = "Digita /HELP <comando> per ulteriori informazioni, oppure /HELP -l";
+"Type /HELP <command> for more information, or /HELP -l" = "Digitare /HELP <comando> per ulteriori informazioni, oppure /HELP -l";
 
 /* nothing */
-"Unknown arg '%s' ignored." = "Argomento sconosciuto '%s' ignorato.";
+"Unknown arg '%s' ignored." = "Argomento sconosciuto «%s» ignorato.";
 
 /* nothing */
 "No such plugin found.\n" = "Plugin non trovato.\n";
 
 /* nothing */
-"That plugin is refusing to unload.\n" = "Questo plugin si rifiuta di terminare.\n";
+"That plugin is refusing to unload.\n" = "Impossibile disattivare questo plugin.\n";
 
 /* nothing */
-"ADDBUTTON <name> <action>, adds a button under the user-list" = "ADDBUTTON <nome> <azione>, aggiunge un pulsante sotto la lista utenti";
+"ADDBUTTON <name> <action>, adds a button under the user-list" = "ADDBUTTON <nome> <azione>, aggiunge un pulsante sotto l'elenco utenti";
 
 /* nothing */
-"ALLCHAN <cmd>, sends a command to all channels you're in" = "ALLCHAN <cmd>, invia un comando a tutti i canali in cui sei presente";
+"ALLCHAN <cmd>, sends a command to all channels you're in" = "ALLCHAN <cmd>, invia un comando a tutti i canali in cui si è presenti";
 
 /* nothing */
-"ALLCHANL <cmd>, sends a command to all channels you're in" = "ALLCHANL <cmd>, invia un comando a tutti i canali in cui sei presente";
+"ALLCHANL <cmd>, sends a command to all channels you're in" = "ALLCHANL <cmd>, invia un comando a tutti i canali in cui si è presenti";
 
 /* nothing */
-"ALLSERV <cmd>, sends a command to all servers you're in" = "ALLSERV <cmd>, invia un comando a tutti i server ai quali sei collegato";
+"ALLSERV <cmd>, sends a command to all servers you're in" = "ALLSERV <cmd>, invia un comando a tutti i server ai quali si è collegati";
 
 /* nothing */
 "AWAY [<reason>], sets you away" = "AWAY [<motivo>], cambia il tuo stato in assente";
 
 /* nothing */
-"BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "BAN <mask> [<tipo_di_ban>], allontana dal canale corrente tutti coloro che corrispondono alla maschera di rete specificata. Se essi sono già connessi al canale, questo non li espelle (kick). Bisogna essere operatore.";
+"BACK, sets you back (not away)" = "BACK, imposta lo stato di presenza";
 
 /* nothing */
-"Set per channel options\nCHANOPT CONFMODE ON|OFF - Toggle conf mode/showing of join and part messages\nCHANOPT COLORPASTE ON|OFF - Toggle color paste\nCHANOPT BEEP ON|OFF - Toggle beep on message" = "Opzioni del canale\nCHANOPT CONFMODE ON|OFF - Imposta la modalità visiva dei messaggi di entrata e uscita dai canali\nCHANOPT COLORPASTE ON|OFF - Imposta il colore dei messaggi incollati\nCHANOPT BEEP ON|OFF - Imposta il beep sui messaggi ricevuti";
+"BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "BAN <mask> [<tipo_di_ban>], allontana dal canale attuale tutti coloro che corrispondono alla maschera di rete specificata. Se sono già connessi al canale, questo non li espelle (kick). Bisogna essere operatore.";
 
 /* nothing */
-"CLEAR [ALL|HISTORY], Clears the current text window or command history" = "CLEAR [ALL|HISTORY], Pulisce la finestra di testo corrente o i comandi recenti";
+"CHANOPT [-quiet] <variable> [<value>]" = "CHANOPT [-quiet] <variable> [<value>]";
 
 /* nothing */
-"CLOSE, Closes the current window/tab" = "CLOSE, chiude la finestra/scheda corrente";
+"CLEAR [ALL|HISTORY], Clears the current text window or command history" = "CLEAR [ALL|HISTORY], ripulisce la finestra di testo corrente o la cronologia dei comandi recenti";
 
 /* nothing */
-"COUNTRY [-s] <code|wildcard>, finds a country code, eg: au = australia" = "COUNTRY [-s] <codice|wildcard>, cerca un codice paese, per es.: au = Australia";
+"CLOSE, Closes the current window/tab" = "CLOSE, chiude la finestra/scheda attuale";
 
 /* nothing */
-"CTCP <nick> <message>, send the CTCP message to nick, common messages are VERSION and USERINFO" = "CTCP <nick> <messaggio>, invia il messaggio CTCP al nick indicato, messaggi comuni sono VERSION e USERINFO";
+"COUNTRY [-s] <code|wildcard>, finds a country code, eg: au = australia" = "COUNTRY [-s] <codice|wildcard>, cerca un codice paese, per es.: it = Italia";
 
 /* nothing */
-"CYCLE, parts current channel and immediately rejoins" = "CYCLE, abbandona il canale corrente e vi rientra immediatamente";
+"CTCP <nick> <message>, send the CTCP message to nick, common messages are VERSION and USERINFO" = "CTCP <soprannome> <messaggio>, invia il messaggio CTCP al soprannome indicato, messaggi comuni sono VERSION e USERINFO";
 
 /* nothing */
-"\nDCC GET <nick>                      - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file]  - send a file to someone\nDCC PSEND [-maxcps=#] <nick> [file] - send a file using passive mode\nDCC LIST                            - show DCC list\nDCC CHAT <nick>                     - offer DCC CHAT to someone\nDCC PCHAT <nick>                    - offer DCC CHAT using passive mode\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "\nDCC GET <nick>                     - accetta un file offerto\nDCC SEND [-maxcps=#] <nick> [file] - invia un file a qualcuno\nDCC PSEND [-maxcps=#] <nick> [file] - invia un file utilizzando la modalità passiva\nDCC LIST                           - visualizza la lista dei collegamenti DCC\nDCC CHAT <nick>                    - propone una DCC CHAT a qualcuno\nDCC PCHAT <nick>                    - propone una DCC CHAT utilizzando la modalità passiva\nDCC CLOSE <tipo> <nick> <file>         esempio:\n         /dcc close send johnsmith file.tar.gz";
+"CYCLE [<channel>], parts the current or given channel and immediately rejoins" = "CYCLE [<canale>], abbandona il canale corrente e vi rientra immediatamente";
 
 /* nothing */
-"DEHOP <nick>, removes chanhalf-op status from the nick on the current channel (needs chanop)" = "DEHOP <nick>, rimuove lo stato di semi-operatore sul canale corrente per il nick indicato (bisogna essere operatore)";
+"\nDCC GET <nick>                      - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file]  - send a file to someone\nDCC PSEND [-maxcps=#] <nick> [file] - send a file using passive mode\nDCC LIST                            - show DCC list\nDCC CHAT <nick>                     - offer DCC CHAT to someone\nDCC PCHAT <nick>                    - offer DCC CHAT using passive mode\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "\nDCC GET <soprannome>                      - accetta un file offerto\nDCC SEND [-maxcps=#] <soprannome> [file]  - invia un file a qualcuno\nDCC PSEND [-maxcps=#] <soprannome> [file] - invia un file utilizzando la modalità passiva\nDCC LIST                                  - visualizza l'elenco dei collegamenti DCC\nDCC CHAT <soprannome>                     - propone una CHAT DCC a qualcuno\nDCC PCHAT <soprannome>                    - propone una CHAT DCC utilizzando la modalità passiva\nDCC CLOSE <tipo> <soprannome> <file>        per esempio:\n         /dcc close send mariorossi file.tar.gz";
 
 /* nothing */
-"DELBUTTON <name>, deletes a button from under the user-list" = "DELBUTTON <nome>, cancella un pulsante sotto la lista utenti";
+"DEHOP <nick>, removes chanhalf-op status from the nick on the current channel (needs chanop)" = "DEHOP <soprannome>, rimuove lo stato di semi-operatore sul canale attuale al soprannome indicato (bisogna essere operatore)";
 
 /* nothing */
-"DEOP <nick>, removes chanop status from the nick on the current channel (needs chanop)" = "DEOP <nick>, rimuove lo stato di operatore sul canale corrente per il nick indicato (bisogna essere operatore)";
+"DELBUTTON <name>, deletes a button from under the user-list" = "DELBUTTON <nome>, elimina un pulsante dall'elenco utenti";
 
 /* nothing */
-"DEVOICE <nick>, removes voice status from the nick on the current channel (needs chanop)" = "DEVOICE <nick>, toglie la parola al nick indicato sul canale corrente (bisogna essere operatore)";
+"DEOP <nick>, removes chanop status from the nick on the current channel (needs chanop)" = "DEOP <soprannome>, rimuove lo stato di operatore sul canale attuale al soprannome indicato (bisogna essere operatore)";
+
+/* nothing */
+"DEVOICE <nick>, removes voice status from the nick on the current channel (needs chanop)" = "DEVOICE <soprannome>, toglie la parola al soprannome indicato sul canale attuale (bisogna essere operatore)";
 
 /* nothing */
 "DISCON, Disconnects from server" = "DISCON, disconnette dal server";
 
 /* nothing */
-"DNS <nick|host|ip>, Finds a users IP number" = "DNS <nick|host|ip>, cerca l'indirizzo IP di un utente";
+"DNS <nick|host|ip>, Finds a users IP number" = "DNS <soprannome|host|ip>, trova l'indirizzo IP di un utente";
 
 /* nothing */
-"ECHO <text>, Prints text locally" = "ECHO <testo>, stampa un testo in locale";
+"ECHO <text>, Prints text locally" = "ECHO <testo>, stampa un testo localmente";
 
 /* nothing */
-"EXEC [-o] <command>, runs the command. If -o flag is used then output is sent to current channel, else is printed to current text box" = "EXEC [-o] <comando>, esegue il comando. Se si utilizza l'opzione -o, l'output è inviato al canale corrente, altrimenti è stampato nella corrente text box";
+"EXEC [-o] <command>, runs the command. If -o flag is used then output is sent to current channel, else is printed to current text box" = "EXEC [-o] <comando>, esegue il comando. Se si utilizza l'opzione -o, l'output è inviato al canale attuale, altrimenti è stampato nell'area di testo corrente";
 
 /* nothing */
 "EXECCONT, sends the process SIGCONT" = "EXECCONT, invia un SIGCONT al processo";
 
 /* nothing */
-"EXECKILL [-9], kills a running exec in the current session. If -9 is given the process is SIGKILL'ed" = "EXECKILL [-9], uccide un'istanza exec nella sessione corrente. Se è specificato -9, il processo è ucciso con SIGKILL";
+"EXECKILL [-9], kills a running exec in the current session. If -9 is given the process is SIGKILL'ed" = "EXECKILL [-9], termina (kill) un'istanza exec nella sessione attuale. Se è specificato -9, il processo è terminato con SIGKILL";
 
 /* nothing */
 "EXECSTOP, sends the process SIGSTOP" = "EXECSTOP, invia un SIGSTOP al processo";
@@ -167,34 +176,34 @@
 "EXECWRITE, sends data to the processes stdin" = "EXECWRITE, invia dati allo stdin del processo";
 
 /* nothing */
-"FLUSHQ, flushes the current server's send queue" = "FLUSHQ, svuota la coda di invio del server corrente";
+"FLUSHQ, flushes the current server's send queue" = "FLUSHQ, svuota la coda di invio del server attuale";
 
 /* nothing */
 "GATE <host> [<port>], proxies through a host, port defaults to 23" = "GATE <host> [<porta>], utilizza un host come proxy, la porta predefinita è la 23";
 
 /* nothing */
-"GHOST <nick> <password>, Kills a ghosted nickname" = "GHOST <nick> <password>, Uccide il nickname fantasma";
+"GHOST <nick> [password], Kills a ghosted nickname" = "GHOST <soprannome> <password>, uccide un soprannome fantasma";
 
 /* nothing */
-"HOP <nick>, gives chanhalf-op status to the nick (needs chanop)" = "HOP <nick>, dà lo stato di semi-operatore al nick (bisogna essere operatore)";
+"HOP <nick>, gives chanhalf-op status to the nick (needs chanop)" = "HOP <soprannomme>, dà lo stato di semi-operatore al soprannome (bisogna essere operatore)";
 
 /* nothing */
 "ID <password>, identifies yourself to nickserv" = "ID <password>, ti identifica presso il nickserv";
 
 /* nothing */
-"IGNORE <mask> <types..> <options..>\n    mask - host mask to ignore, eg: *!*@*.aol.com\n    types - types of data to ignore, one or all of:\n            PRIV, CHAN, NOTI, CTCP, DCC, INVI, ALL\n    options - NOSAVE, QUIET" = "IGNORE <maschera> <tipi..> <opzioni..>\n    maschera - host maschera da ignorare, per es.: *!*@*.aol.com\n    tipi - tipi di dato da ignorare, uno o più tra:\n              PRIV, CHAN, NOTI, CTCP,DCC, INVI, ALL\n    opzioni - NOSAVE, QUIET";
+"IGNORE <mask> <types..> <options..>\n    mask - host mask to ignore, eg: *!*@*.aol.com\n    types - types of data to ignore, one or all of:\n            PRIV, CHAN, NOTI, CTCP, DCC, INVI, ALL\n    options - NOSAVE, QUIET" = "IGNORE <maschera> <tipi..> <opzioni..>\n    maschera - host maschera da ignorare, per es.: *!*@*.aol.com\n    tipi - tipi di dati da ignorare, uno o più tra:\n              PRIV, CHAN, NOTI, CTCP,DCC, INVI, ALL\n    opzioni - NOSAVE, QUIET";
 
 /* nothing */
-"INVITE <nick> [<channel>], invites someone to a channel, by default the current channel (needs chanop)" = "INVITE <nick> [<canale>], invita qualcuno in un canale, la regola predefinta è per il canale corrente (bisogna essere operatore del canale)";
+"INVITE <nick> [<channel>], invites someone to a channel, by default the current channel (needs chanop)" = "INVITE <soprannome> [<canale>], invita qualcuno in un canale, la regola predefinita è per il canale attuale (bisogna essere operatore del canale)";
 
 /* nothing */
 "JOIN <channel>, joins the channel" = "JOIN <canale>, entra nel canale";
 
 /* nothing */
-"KICK <nick>, kicks the nick from the current channel (needs chanop)" = "KICK <nick>, espelle il nick dal canale corrente (bisogna essere operatore del canale)";
+"KICK <nick>, kicks the nick from the current channel (needs chanop)" = "KICK <soprannome>, espelle il soprannome dal canale attuale (bisogna essere operatore del canale)";
 
 /* nothing */
-"KICKBAN <nick>, bans then kicks the nick from the current channel (needs chanop)" = "KICKBAN <nick>, allontana (ban) e poi espelle (kick) il nick dal canale corrente (bisogna essere operatore del canale)";
+"KICKBAN <nick>, bans then kicks the nick from the current channel (needs chanop)" = "KICKBAN <soprannome>, allontana (ban) e poi espelle (kick) il soprannome dal canale attuale (bisogna essere operatore del canale)";
 
 /* nothing */
 "LAGCHECK, forces a new lag check" = "LAGCHECK, forza un nuovo controllo del ritardo (lag)";
@@ -206,73 +215,73 @@
 "LOAD [-e] <file>, loads a plugin or script" = "LOAD [-e] <file>, carica un plugin o uno script";
 
 /* nothing */
-"MDEHOP, Mass deop's all chanhalf-ops in the current channel (needs chanop)" = "MDEHOP, toglie lo stato a tutti i semi-operatori del canale corrente (bisogna essere operatore del canale)";
+"MDEHOP, Mass deop's all chanhalf-ops in the current channel (needs chanop)" = "MDEHOP, toglie lo stato a tutti i semi-operatori del canale attuale (bisogna essere operatore del canale)";
 
 /* nothing */
-"MDEOP, Mass deop's all chanops in the current channel (needs chanop)" = "MDEOP, toglie lo stato a tutti gli operatori del canale corrente (bisogna essere operatore del canale)";
+"MDEOP, Mass deop's all chanops in the current channel (needs chanop)" = "MDEOP, toglie lo stato a tutti gli operatori del canale attuale (bisogna essere operatore del canale)";
 
 /* nothing */
-"ME <action>, sends the action to the current channel (actions are written in the 3rd person, like /me jumps)" = "ME <azione>, invia l'azione al canale corrente (le azioni sono scritte in terza persona, es. /me jumps)";
+"ME <action>, sends the action to the current channel (actions are written in the 3rd person, like /me jumps)" = "ME <azione>, invia l'azione al canale attuale (le azioni sono scritte in terza persona, es. /me saluta tutti)";
 
 /* nothing */
-"MKICK, Mass kicks everyone except you in the current channel (needs chanop)" = "MKICK, espelle dal canale corrente tutti gli utenti tranne te (bisogna essere operatore del canale)";
+"MKICK, Mass kicks everyone except you in the current channel (needs chanop)" = "MKICK, espelle dal canale attuale tutti gli utenti tranne te (bisogna essere operatore del canale)";
 
 /* nothing */
-"MOP, Mass op's all users in the current channel (needs chanop)" = "MOP, rende operatori tutti gli utenti nel canale corrente (bisogna essere operatore del canale)";
+"MOP, Mass op's all users in the current channel (needs chanop)" = "MOP, rende operatori tutti gli utenti nel canale attuale (bisogna essere operatore del canale)";
 
 /* nothing */
-"MSG <nick> <message>, sends a private message" = "MSG <nick> <messaggio>, invia un messaggio privato";
+"MSG <nick> <message>, sends a private message" = "MSG <soprannome> <messaggio>, invia un messaggio privato";
 
 /* nothing */
-"NAMES, Lists the nicks on the current channel" = "NAMES, elenca i nick presenti sul canale corrente";
+"NAMES, Lists the nicks on the current channel" = "NAMES, elenca i soprannomi presenti nel canale attuale";
 
 /* nothing */
-"NCTCP <nick> <message>, Sends a CTCP notice" = "NCTCP <nick> <messaggio>, invia una notifica CTCP";
+"NCTCP <nick> <message>, Sends a CTCP notice" = "NCTCP <soprannome> <messaggio>, invia una notifica CTCP";
 
 /* nothing */
-"NEWSERVER [-noconnect] <hostname> [<port>]" = "NEWSERVER <nome host> [<porta>]";
+"NEWSERVER [-noconnect] <hostname> [<port>]" = "NEWSERVER [-noconnect] <nome host> [<porta>]";
 
 /* nothing */
-"NICK <nickname>, sets your nick" = "NICK <nickname>, imposta il tuo nick";
+"NICK <nickname>, sets your nick" = "NICK <soprannome>, imposta il proprio soprannome";
 
 /* nothing */
-"NOTICE <nick/channel> <message>, sends a notice. Notices are a type of message that should be auto reacted to" = "NOTICE <nick/canale> <messaggio>, invia una notifica. Le notifiche sono un tipo di messaggio che dovrebbe ottenere una reazione automatica";
+"NOTICE <nick/channel> <message>, sends a notice. Notices are a type of message that should be auto reacted to" = "NOTICE <soprannome/canale> <messaggio>, invia una notifica. Le notifiche sono un tipo di messaggio che dovrebbe ottenere una reazione automatica";
 
 /* nothing */
-"NOTIFY [-n network1[,network2,...]] [<nick>], displays your notify list or adds someone to it" = "NOTIFY [-n network1[,network2,...]] [<nick>], mostra la tua lista di notifica o aggiunge qualcuno ad essa";
+"NOTIFY [-n network1[,network2,...]] [<nick>], displays your notify list or adds someone to it" = "NOTIFY [-n rete1[,rete2,...]] [<soprannome>], mostra l'elenco di notifica o aggiunge qualcuno a esso";
 
 /* nothing */
-"OP <nick>, gives chanop status to the nick (needs chanop)" = "OP <nick>, dà lo stato di operatore al nick indicato (bisogna essere operatore del canale)";
+"OP <nick>, gives chanop status to the nick (needs chanop)" = "OP <soprannome>, dà lo stato di operatore al soprannome indicato (bisogna essere operatore del canale)";
 
 /* nothing */
-"PART [<channel>] [<reason>], leaves the channel, by default the current one" = "PART [<canale>] [<motivo>], abbandona il canale. Se non specificato, quello corrente";
+"PART [<channel>] [<reason>], leaves the channel, by default the current one" = "PART [<canale>] [<motivo>], abbandona il canale. Se non specificato, quello attuale";
 
 /* nothing */
-"PING <nick | channel>, CTCP pings nick or channel" = "PING <nick | canale>, invia un ping CTCP al nick o al canale";
+"PING <nick | channel>, CTCP pings nick or channel" = "PING <soprannome | canale>, invia un ping CTCP al soprannome o al canale";
 
 /* nothing */
-"QUERY [-nofocus] <nick>, opens up a new privmsg window to someone" = "QUERY [-nofocus] <nick>, apre una chat privata con il nick indicato";
+"QUERY [-nofocus] <nick>, opens up a new privmsg window to someone" = "QUERY [-nofocus] <soprannome>, apre una nuova finestra privata con il soprannome indicato";
 
 /* nothing */
-"QUIT [<reason>], disconnects from the current server" = "QUIT [<motivo>], disconnette dal server corrente";
+"QUIT [<reason>], disconnects from the current server" = "QUIT [<motivo>], disconnette dal server attuale";
 
 /* nothing */
 "QUOTE <text>, sends the text in raw form to the server" = "QUOTE <testo>, invia il testo in forma grezza al server";
 
 /* nothing */
-"RECONNECT [-ssl] [<host>] [<port>] [<password>], Can be called just as /RECONNECT to reconnect to the current server or with /RECONNECT ALL to reconnect to all the open servers" = "RECONNECT [-ssl] [<host>] [<porta>] [<password>], può essere richiamato semplicemente come /RECONNECT per riconnettersi al server corrente o con /RECONNECT ALL per riconnettersi a tutti i server aperti";
+"RECONNECT [-ssl] [<host>] [<port>] [<password>], Can be called just as /RECONNECT to reconnect to the current server or with /RECONNECT ALL to reconnect to all the open servers" = "RECONNECT [-ssl] [<host>] [<porta>] [<password>], può essere richiamato semplicemente come /RECONNECT per riconnettersi al server attuale o con /RECONNECT ALL per riconnettersi a tutti i server aperti";
 
 /* nothing */
-"RECONNECT [<host>] [<port>] [<password>], Can be called just as /RECONNECT to reconnect to the current server or with /RECONNECT ALL to reconnect to all the open servers" = "RECONNECT [<host>] [<porta>] [<password>], può essere richiamato semplicemente come /RECONNECT per riconnettersi al server corrente o con /RECONNECT ALL per riconnettersi a tutti i server aperti";
+"RECONNECT [<host>] [<port>] [<password>], Can be called just as /RECONNECT to reconnect to the current server or with /RECONNECT ALL to reconnect to all the open servers" = "RECONNECT [<host>] [<porta>] [<password>], può essere richiamato semplicemente come /RECONNECT per riconnettersi al server attuale o con /RECONNECT ALL per riconnettersi a tutti i server aperti";
 
 /* nothing */
 "RECV <text>, send raw data to xchat, as if it was received from the irc server" = "RECV <testo>, invia il testo sotto forma di dati grezzi a xchat, come se fosse stato ricevuto dal server irc";
 
 /* nothing */
-"SAY <text>, sends the text to the object in the current window" = "SAY <testo>, invia il testo all'oggetto a cui corrisponde la finestra corrente";
+"SAY <text>, sends the text to the object in the current window" = "SAY <testo>, invia il testo all'oggetto a cui corrisponde la finestra attuale";
 
 /* nothing */
-"SEND <nick> [<file>]" = "SEND <nick> [<file>]";
+"SEND <nick> [<file>]" = "SEND <soprannome> [<file>]";
 
 /* nothing */
 "SERVCHAN [-ssl] <host> <port> <channel>, connects and joins a channel" = "SERVCHAN [-ssl] <host> <porta> <canale>, si connette ed entra nel canale";
@@ -287,13 +296,16 @@
 "SERVER <host> [<port>] [<password>], connects to a server, the default port is 6667" = "SERVER <host> [<porta>] [<password>], si connette al server, la porta predefinita è la 6667";
 
 /* nothing */
-"SET [-e] [-quiet] <variable> [<value>]" = "SET [-e] [-quiet] <variabile> [<valore>]";
+"SET [-e] [-off|-on] [-quiet] <variable> [<value>]" = "SET [-e] [-off|-on] [-quiet] <variabile> [<valore>]";
 
 /* nothing */
 "SETCURSOR [-|+]<position>" = "SETCURSOR [-|+]<posizione>";
 
 /* nothing */
 "TOPIC [<topic>], sets the topic if one is given, else shows the current topic" = "TOPIC [<argomento>], imposta l'argomento, se specificato, altrimenti mostra quello attuale";
+
+/* nothing */
+"\nTRAY -f <timeout> <file1> [<file2>] Blink tray between two icons.\nTRAY -f <filename>                  Set tray to a fixed icon.\nTRAY -i <number>                    Blink tray with an internal icon.\nTRAY -t <text>                      Set the tray tooltip.\nTRAY -b <title> <text>              Set the tray balloon." = "\nTRAY -f <timeout> <file1> [<file2>] Imposta due icone lampeggianti nell'area di notifica.\nTRAY -f <nomefile>                  Imposta l'area di notifica a un'icona fissa.\nTRAY -i <numero>                    Imposta un'icona interna lampeggiante nell'area di notifica.\nTRAY -t <testo>                     Imposta il suggerimento dell'area di notifica.\nTRAY -t <titolo> <testo>            Imposta l'avviso per l'area di notifica.";
 
 /* nothing */
 "UNBAN <mask> [<mask>...], unbans the specified masks." = "UNBAN <maschera> [<maschera>...], rimuove il ban per la maschera specificata";
@@ -305,19 +317,19 @@
 "UNLOAD <name>, unloads a plugin or script" = "UNLOAD <nome>, termina un plugin o uno script";
 
 /* nothing */
-"URL <url>, opens a URL in your browser" = "URL <url>, apre uno URL nel tuo browser";
+"URL <url>, opens a URL in your browser" = "URL <url>, apre uno URL nel browser";
 
 /* nothing */
-"USELECT [-a] [-s] <nick1> <nick2> etc, highlights nick(s) in channel userlist" = "USELECT [-a] [-s] <nick1> <nick2> ecc., evidenzia i(l) nick nella lista utenti del canale";
+"USELECT [-a] [-s] <nick1> <nick2> etc, highlights nick(s) in channel userlist" = "USELECT [-a] [-s] <soprannome1> <soprannome2> ecc., evidenzia i soprannomi nell'elenco utenti del canale";
 
 /* nothing */
-"VOICE <nick>, gives voice status to someone (needs chanop)" = "VOICE <nick>, dà la parola a qualcuno (bisogna essere operatore del canale)";
+"VOICE <nick>, gives voice status to someone (needs chanop)" = "VOICE <soprannome>, dà la parola a qualcuno (bisogna essere operatore del canale)";
 
 /* nothing */
 "WALLCHAN <message>, writes the message to all channels" = "WALLCHAN <messaggio>, scrive il messaggio su tutti i canali";
 
 /* nothing */
-"WALLCHOP <message>, sends the message to all chanops on the current channel" = "WALLCHOP <messaggio>, invia il messaggio a tutti gli operatori del canale corrente";
+"WALLCHOP <message>, sends the message to all chanops on the current channel" = "WALLCHOP <messaggio>, invia il messaggio a tutti gli operatori del canale attuale";
 
 /* nothing */
 "Usage: %s\n" = "Uso: %s\n";
@@ -332,37 +344,37 @@
 "Bad arguments for user command.\n" = "Argomenti del comando non corretti.\n";
 
 /* nothing */
-"Too many recursive usercommands, aborting." = "Troppi comandi ricorsivi. Annullati.";
+"Too many recursive usercommands, aborting." = "Troppi comandi ricorsivi. Interruzione.";
 
 /* nothing */
-"Unknown Command. Try /help\n" = "Comando sconosciuto. Prova con /help\n";
+"Unknown Command. Try /help\n" = "Comando sconosciuto. Provare con /help\n";
 
 /* nothing */
 "No xchat_plugin_init symbol; is this really an xchat plugin?" = "Nessun simbolo xchat_plugin_init; è veramente un plugin di xchat?";
 
 /* nothing */
-"Are you sure this is a SSL capable server and port?\n" = "Sei sicuro che il server e la porta supportano SSL?\n";
+"Are you sure this is a SSL capable server and port?\n" = "Il server e la porta supportano veramente SSL?\n";
 
 /* nothing */
-"Cannot resolve hostname %s\nCheck your IP Settings!\n" = "Impossibile risolvere l'hostname %s\nVerifica le tue impostazioni IP!\n";
+"Cannot resolve hostname %s\nCheck your IP Settings!\n" = "Impossibile risolvere il nome host %s\nControllare le impostazioni dell'IP.\n";
 
 /* nothing */
-"Proxy traversal failed.\n" = "Attraversamento del proxy fallito.\n";
+"Proxy traversal failed.\n" = "Attraversamento del proxy non riuscito.\n";
 
 /* nothing */
-"Cycling to next server in %s...\n" = "Nuovo tentativo con il server successivo di %s in corso...\n";
+"Cycling to next server in %s...\n" = "Nuovo tentativo con il server successivo di %s...\n";
 
 /* nothing */
-"Warning: \"%s\" character set is unknown. No conversion will be applied for network %s." = "Attenzione: il set di caratteri \"%s\" è sconosciuto. Non verrà effettuata alcuna conversione per il network %s.";
+"Warning: \"%s\" character set is unknown. No conversion will be applied for network %s." = "Attenzione: il set di caratteri «%s» non è conosciuto. Non verrà effettuata alcuna conversione per la rete %s.";
 
 /* nothing */
-"%C22*%O$t$1 added to notify list." = "%C22*%O$t$1 aggiunto alla lista di notifica.";
+"%C22*%O$t$1 added to notify list." = "%C22*%O$t$1 aggiunto all'elenco di notifica.";
 
 /* nothing */
-"%C22*%O$t$1 Banlist:%C19 $4%C20 $2%C21 $3" = "%C22*%O$t$1 Lista ban:%C19 $4%C20 $2%C21 $3";
+"%C22*%O$t$1 Banlist:%C19 $4%C20 $2%C21 $3" = "%C22*%O$t$1 Elenco dei ban:%C19 $4%C20 $2%C21 $3";
 
 /* nothing */
-"%C22*%O$tCannot join%C26 %B$1 %O(You are banned)." = "%C22*%O$tImpossibile entrare in%C26 %B$1 %O(Sei bannato).";
+"%C22*%O$tCannot join%C26 %B$1 %O(You are banned)." = "%C22*%O$tImpossibile entrare in%C26 %B$1 %O(Hai ricevuto un ban).";
 
 /* nothing */
 "%C22*%O$t$1 is now known as $2" = "%C22*%O$t$1 è ora conosciuto come $2";
@@ -377,7 +389,7 @@
 "%C22*%O$t%C26$1%O removes channel half-operator status from%C26 $2" = "%C22*%O$t%C26$1%O ha tolto lo stato di semi-operatore del canale a%C26 $2";
 
 /* nothing */
-"%C22*%O$t%C26$1%O removes channel operator status from%C26 $2" = "%C22*%O$t%C26$1%O ha tolto lo stato di operatore del canale da%C26 $2";
+"%C22*%O$t%C26$1%O removes channel operator status from%C26 $2" = "%C22*%O$t%C26$1%O ha tolto lo stato di operatore del canale a%C26 $2";
 
 /* nothing */
 "%C22*%O$t%C26$1%O removes voice from%C26 $2" = "%C22*%O$t%C26$1%O ha tolto la parola a%C26 $2";
@@ -392,7 +404,7 @@
 "%C22*%O$t$1 sets invite on $2" = "%C22*%O$t$1 ha impostato l'invito su $2";
 
 /* nothing */
-"%UChannel          Users   Topic" = "%UCanale Utenti Argomento";
+"%UChannel          Users   Topic" = "%UCanale          Utenti   Argomento";
 
 /* nothing */
 "%C22*%O$t$1 sets mode $2$3 $4" = "%C22*%O$t$1 ha impostato la modalità $2$3 $4";
@@ -428,13 +440,13 @@
 "%C22*%O$t%C26$1%O gives voice to%C26 $2" = "%C22*%O$t%C26$1%O ha dato la parola a%C26 $2";
 
 /* nothing */
-"%C22*%O$t%C22Connected. Now logging in..." = "%C22*%O$t%C22Connesso. Login in corso..";
+"%C22*%O$t%C22Connected. Now logging in..." = "%C22*%O$t%C22Connesso. Accesso in corso...";
 
 /* nothing */
 "%C22*%O$t%C22Connecting to $1 ($2) port $3%O..." = "%C22*%O$t%C22Connessione a $1 ($2) porta $3%O...";
 
 /* nothing */
-"%C21*%O$t%C21Connection failed. Error: $1" = "%C21*%O$t%C21Connessione fallita. Errore: $1";
+"%C21*%O$t%C21Connection failed. Error: $1" = "%C21*%O$t%C21Connessione non riuscita. Errore: $1";
 
 /* nothing */
 "%C22*%O$tReceived a CTCP $1 from $2" = "%C22*%O$tRicevuto un CTCP $1 da $2";
@@ -455,10 +467,10 @@
 "%C22*%O$tDCC CHAT to %C26$1%O aborted." = "%C22*%O$tDCC CHAT con %C26$1%O interrotta.";
 
 /* nothing */
-"%C22*%O$tDCC CHAT connection established to %C26$1 %C30[%O$2%C30]" = "%C22*%O$tConnessione DCC CHAT stabilita con %C26$1 %C30[%O$2%C30]";
+"%C22*%O$tDCC CHAT connection established to %C26$1 %C30[%O$2%C30]" = "%C22*%O$tConnessione CHAT DCC con %C26$1 %C30[%O$2%C30] stabilita";
 
 /* nothing */
-"%C22*%O$tDCC CHAT to %C26$1%O lost ($4)." = "%C22*%O$tDCC CHAT con %C26$1%O perduta ($4).";
+"%C22*%O$tDCC CHAT to %C26$1%O lost ($4)." = "%C22*%O$tCHAT DCC con %C26$1%O persa ($4).";
 
 /* nothing */
 "%C22*%O$tReceived a DCC CHAT offer from $1" = "%C22*%O$tRicevuta una richiesta di CHAT DCC da $1";
@@ -470,10 +482,10 @@
 "%C22*%O$tAlready offering CHAT to $1" = "%C22*%O$tInvito alla CHAT per $1 già effettuato";
 
 /* nothing */
-"%C22*%O$tDCC $1 connect attempt to%C26 $2%O failed (err=$3)." = "%C22*%O$tDCC Tentativo di connessione DCC $1 a %C26 $2%O fallito (err=$3).";
+"%C22*%O$tDCC $1 connect attempt to%C26 $2%O failed (err=$3)." = "%C22*%O$tTentativo di connessione DCC $1 a %C26 $2%O fallito (err=$3).";
 
 /* nothing */
-"%C22*%O$tReceived '$1%O' from $2" = "%C22*%O$tRicevuto '$1%O' da $2";
+"%C22*%O$tReceived '$1%O' from $2" = "%C22*%O$tRicevuto «$1%O» da $2";
 
 /* nothing */
 "%C24,18 Type  To/From    Status  Size    Pos     File         " = "%C24,18 Tipo  Per/Da    Stato  Dimensione    Pos     File         ";
@@ -497,16 +509,16 @@
 "%C22*%O$tDCC RECV connection established to%C26 $1 %C30[%O$2%C30]" = "%C22*%O$tConnessione DCC RECV stabilita con%C26 $1 %C30[%O$2%C30]";
 
 /* nothing */
-"%C22*%O$tDCC RECV%C26 $1%O from%C26 $3%O failed ($4)." = "%C22*%O$tDCC RECV di%C26 $1%O da%C26 $3%O fallito ($4).";
+"%C22*%O$tDCC RECV%C26 $1%O from%C26 $3%O failed ($4)." = "%C22*%O$tDCC RECV di%C26 $1%O da%C26 $3%O non riuscito ($4).";
 
 /* nothing */
-"%C22*%O$tDCC RECV: Cannot open $1 for writing ($2)." = "%C22*%O$tDCC RECV: Impossibile aprire $1 in scrittura ($2).";
+"%C22*%O$tDCC RECV: Cannot open $1 for writing ($2)." = "%C22*%O$tDCC RECV: impossibile aprire $1 in scrittura ($2).";
 
 /* nothing */
 "%C22*%O$tThe file%C26 $1%C already exists, saving it as%C26 $2%O instead." = "%C22*%O$tIl file%C26 $1%C esiste già, verrà salvato come %C26 $2%O.";
 
 /* nothing */
-"%C22*%O$t%C26$1 %Ohas requested to resume%C26 $2 %Cfrom%C26 $3%C." = "%C22*%O$t%C26$1 %Oha richiesto di continuare%C26 $2 %Cda%C26 $3%C.";
+"%C22*%O$t%C26$1 %Ohas requested to resume%C26 $2 %Cfrom%C26 $3%C." = "%C22*%O$t%C26$1 %Oha richiesto di ripristinare%C26 $2 %Cda%C26 $3%C.";
 
 /* nothing */
 "%C22*%O$tDCC SEND%C26 $2%O to%C26 $1%O aborted." = "%C22*%O$tDCC SEND%C26 $2%O per%C26 $1%O interrotto.";
@@ -515,10 +527,10 @@
 "%C22*%O$tDCC SEND%C26 $1%O to%C26 $2%O complete %C30[%C26$3%O cps%C30]%O." = "%C22*%O$tDCC SEND%C26 $1%O per%C26 $2%O completato %C30[%C26$3%O cps%C30]%O.";
 
 /* nothing */
-"%C22*%O$tDCC SEND connection established to%C26 $1 %C30[%O$2%C30]" = "%C22*%O$tDCC SEND connessione stabilita con%C26 $1 %C30[%O$2%C30]";
+"%C22*%O$tDCC SEND connection established to%C26 $1 %C30[%O$2%C30]" = "%C22*%O$tDCC SEND Connessione stabilita con%C26 $1 %C30[%O$2%C30]";
 
 /* nothing */
-"%C22*%O$tDCC SEND%C26 $1%O to%C26 $2%O failed. $3" = "%C22*%O$tDCC SEND%C26 $1%O con%C26 $2%O fallito. $3";
+"%C22*%O$tDCC SEND%C26 $1%O to%C26 $2%O failed. $3" = "%C22*%O$tDCC SEND%C26 $1%O con%C26 $2%O non riuscito. $3";
 
 /* nothing */
 "%C22*%O$t%C26$1 %Ohas offered%C26 $2 %O(%C26$3 %Obytes)" = "%C22*%O$t%C26$1 %Oha offerto%C26 $2 %O(%C26$3 %Obyte)";
@@ -530,16 +542,16 @@
 "%C22*%O$tDCC $1%C26 $2 %Oto%C26 $3 %Otimed out - aborting." = "%C22*%O$tDCC $1%C26 $2 %Oper%C26 $3 %Oscaduto - interruzione in corso.";
 
 /* nothing */
-"%C22*%O$t$1 deleted from notify list." = "%C22*%O$t$1 rimosso dalla lista di notifica.";
+"%C22*%O$t$1 deleted from notify list." = "%C22*%O$t$1 rimosso dall'elenco di notifica.";
 
 /* nothing */
-"%C22*%O$tDisconnected ($1)." = "%C22*%O$tDisconnesso ($1).";
+"%C22*%O$tDisconnected ($1)." = "%C22*%O$tDisconnessi ($1).";
 
 /* nothing */
-"%C22*%O$tFound your IP: [$1]" = "%C22*%O$tTrovato il tuo IP: [$1]";
+"%C22*%O$tFound your IP: [$1]" = "%C22*%O$tTrovato l'indirizzo IP: [$1]";
 
 /* nothing */
-"%O%C26$1%O added to ignore list." = "%O%C26$1%O aggiunto alla lista utenti ignorati.";
+"%O%C26$1%O added to ignore list." = "%O%C26$1%O aggiunto all'elenco degli utenti ignorati.";
 
 /* nothing */
 "Ignore on %C26$1%O changed." = "Lo stato degli utenti ignorati su %C26$1%O è cambiato.";
@@ -551,52 +563,52 @@
 "%C24,18 Hostmask                  PRIV NOTI CHAN CTCP DCC  INVI UNIG " = "%C24,18 Hostmask                  PRIV NOTI CHAN CTCP DCC  INVI UNIG ";
 
 /* nothing */
-"%O%C26$1%O removed from ignore list." = "%O%C26$1%O rimosso dalla lista utenti ignorati.";
+"%O%C26$1%O removed from ignore list." = "%O%C26$1%O rimosso dall'elenco degli utenti ignorati.";
 
 /* nothing */
-"  Ignore list is empty." = "  La lista utenti ignorati è vuota.";
+"  Ignore list is empty." = "  L'elenco utenti ignorati è vuoto.";
 
 /* nothing */
 "%C22*%O$tCannot join%C26 %B$1 %O(Channel is invite only)." = "%C22*%O$tImpossibile entrare in%C26 %B$1 %O(L'accesso al canale è solamente su invito).";
 
 /* nothing */
-"%C22*%O$tYou have been invited to%C26 $1%O by%C26 $2%C (%C26$3%C)" = "%C22*%O$tSei stato invitato su%C26 $1%O da%C26 $2%C (%C26$3%C)";
+"%C22*%O$tYou have been invited to%C26 $1%O by%C26 $2%C (%C26$3%C)" = "%C22*%O$tHai ricevuto un invito per%C26 $1%O da%C26 $2%C (%C26$3%C)";
 
 /* nothing */
-"%C19*%O$t%C19%B$1 %B($3) has joined $2" = "%C19*%O$t%C19%B$1 %B($3) è entrato in $2";
+"%C19*%O$t%C19%B$1 %B($3) has joined $2" = "%C19*%O$t%C19%B$1 %B($3) entra in $2";
 
 /* nothing */
-"%C22*%O$tCannot join%C26 %B$1 %O(Requires keyword)." = "%C22*%O$tImpossibile entrare in%C26 %B$1 %O(Richiesta parola chiave).";
+"%C22*%O$tCannot join%C26 %B$1 %O(Requires keyword)." = "%C22*%O$tImpossibile entrare in%C26 %B$1 %O(Richiesta una parola chiave).";
 
 /* nothing */
-"%C21*%O$t%C21$1 has kicked $2 from $3 ($4%O%C21)" = "%C21*%O$t%C21$1 ha espulso $2 da $3 ($4%O%C21)";
+"%C21*%O$t%C21$1 has kicked $2 from $3 ($4%O%C21)" = "%C21*%O$t%C21$1 ha espulso (kick) $2 da $3 ($4%O%C21)";
 
 /* nothing */
-"%C22*%O$tYou have been killed by $1 ($2%O%C22)" = "%C22*%O$tSei stato ucciso (kill) da $1 ($2%O%C22)";
+"%C22*%O$tYou have been killed by $1 ($2%O%C22)" = "%C22*%O$t$1 ti ha ucciso (kill)($2%O%C22)";
 
 /* nothing */
-"%C22*%O$t%C22MOTD Skipped." = "%C22*%O$t%C22MOTD Saltato.";
+"%C22*%O$t%C22MOTD Skipped." = "%C22*%O$t%C22MOTD saltato.";
 
 /* nothing */
-"%C22*%O$t$1 already in use. Retrying with $2..." = "%C22*%O$t$1 è gia in uso. Ritento con $2...";
+"%C22*%O$t$1 already in use. Retrying with $2..." = "%C22*%O$t$1 è gia in uso. Nuovo tentativo con $2...";
 
 /* nothing */
-"%C22*%O$tNickname already in use. Use /NICK to try another." = "%C22*%O$tNickname già in uso. Utilizza /NICK per sceglierne un altro.";
+"%C22*%O$tNickname already in use. Use /NICK to try another." = "%C22*%O$tSoprannome già in uso. Utilizzare /NICK per sceglierne un altro.";
 
 /* nothing */
-"%C22*%O$tNo such DCC." = "%C22*%O$tDCC non esistente.";
+"%C22*%O$tNo such DCC." = "%C22*%O$tDCC inesistente.";
 
 /* nothing */
 "%C22*%O$tNo process is currently running" = "%C22*%O$tNessun processo attualmente in esecuzione";
 
 /* nothing */
-"$tNotify list is empty." = "$tLa lista di notifica è vuota.";
+"$tNotify list is empty." = "$tL'elenco di notifica è vuoto.";
 
 /* nothing */
-"%C24,18 %B  Notify List                           " = "%C24,18 %B  Lista di notifica                           ";
+"%C24,18 %B  Notify List                           " = "%C24,18 %B  Elenco di notifica                           ";
 
 /* nothing */
-"%C22*%O$t$1 users in notify list." = "%C22*%O$t$1 utenti nella lista di notifica.";
+"%C22*%O$t$1 users in notify list." = "%C22*%O$t$1 utenti nell'elenco di notifica.";
 
 /* nothing */
 "%C22*%O$tNotify: $1 is offline ($3)." = "%C22*%O$tNotifica: $1 non è connesso ($3).";
@@ -620,7 +632,7 @@
 "%C22*%O$tA process is already running" = "%C22*%O$tUn processo è già in esecuzione";
 
 /* nothing */
-"%C23*%O$t%C23$1 has quit (%O%C23%B%B$2%O%C23)" = "%C23*%O$t%C23$1 è uscito (%O%C23%B%B$2%O%C23)";
+"%C23*%O$t%C23$1 has quit (%O%C23%B%B$2%O%C23)" = "%C23*%O$t%C23$1 ha chiuso la connessione (%O%C23%B%B$2%O%C23)";
 
 /* nothing */
 "%C22*%O$t$1 sets modes%B %C30[%O$2%B%C30]" = "%C22*%O$t$1 ha impostato le modalità%B %C30[%O$2%B%C30]";
@@ -629,10 +641,10 @@
 "%C28-%C29$1/Wallops%C28-%O$t$2" = "%C28-%C29$1/Wallops%C28-%O$t$2";
 
 /* nothing */
-"%C22*%O$tLooking up IP number for%C26 $1%O..." = "%C22*%O$tRicerca dell'indirizzo IP per%C26 $1%O in corso...";
+"%C22*%O$tLooking up IP number for%C26 $1%O..." = "%C22*%O$tRicerca dell'indirizzo IP per%C26 $1%O...";
 
 /* nothing */
-"%C22*%O$t%C22Connected." = "%C22*%O$t%C22Connesso.";
+"%C22*%O$t%C22Connected." = "%C22*%O$t%C22Connessi.";
 
 /* nothing */
 "%C22*%O$t%C22Looking up $1" = "%C22*%O$t%C22Ricerca di $1";
@@ -647,7 +659,7 @@
 "%C22*%O$t$1 has changed the topic to: $2" = "%C22*%O$t$1 ha scelto come argomento: $2";
 
 /* nothing */
-"%C29*%O$t%C29Topic for $1%C %C29set by $2%C %C29at $3" = "%C29*%O$t%C29Argomento per $1%C %C29impostato da $2%C %C29a $3";
+"%C29*%O$t%C29Topic for $1%C %C29set by $2%C %C29at $3" = "%C29*%O$t%C29Argomento per $1%C %C29scelto da $2%C %C29a $3";
 
 /* nothing */
 "%C22*%O$tUnknown host. Maybe you misspelled it?" = "%C22*%O$tHost sconosciuto. Forse è scritto male?";
@@ -668,46 +680,49 @@
 "%C22*%O$t%C28[%O$1%C28]%O $2" = "%C22*%O$t%C28[%O$1%C28]%O $2";
 
 /* nothing */
-"%C22*%O$t%C28[%O$1%C28] %OEnd of WHOIS list." = "%C22*%O$t%C28[%O$1%C28] %OFine della lista WHOIS.";
+"%C22*%O$t%C28[%O$1%C28] %OEnd of WHOIS list." = "%C22*%O$t%C28[%O$1%C28] %OFine dell'elenco WHOIS.";
 
 /* nothing */
-"%C22*%O$t%C28[%O$1%C28]%O idle%C26 $2" = "%C22*%O$t%C28[%O$1%C28]%O inattivo%C26 $2";
+"%C22*%O$t%C28[%O$1%C28]%O idle%C26 $2" = "%C22*%O$t%C28[%O$1%C28]%O inattivo da%C26 $2";
 
 /* nothing */
-"%C22*%O$t%C28[%O$1%C28]%O idle%C26 $2%O, signon:%C26 $3" = "%C22*%O$t%C28[%O$1%C28]%O inattivo%C26 $2%O, connesso:%C26 $3";
+"%C22*%O$t%C28[%O$1%C28]%O idle%C26 $2%O, signon:%C26 $3" = "%C22*%O$t%C28[%O$1%C28]%O inattivo da%C26 $2%O, connesso da:%C26 $3";
 
 /* nothing */
 "%C22*%O$t%C28[%O$1%C28] %C30(%O$2@$3%C30)%O: $4" = "%C22*%O$t%C28[%O$1%C28] %C30(%O$2@$3%C30)%O: $4";
 
 /* nothing */
-"%C22*%O$t%C28[%O$1%C28] %Oreal user@host%C27 $2%O, real IP%C27 $3" = "%C22*%O$t%C28[%O$1%C28] %Oreale user@host%C27 $2%O, reale IP%C27 $3";
+"%C22*%O$t%C28[%O$1%C28] %Oreal user@host%C27 $2%O, real IP%C27 $3" = "%C22*%O$t%C28[%O$1%C28] %Ouser@host effettivo%C27 $2%O, IP effettivo%C27 $3";
 
 /* nothing */
-"%C19*%O$t%C19Now talking on $2" = "%C19*%O$t%C19Ora parla su $2";
+"%C19*%O$t%C19Now talking on $2" = "%C19*%O$t%C19Parla in $2";
 
 /* nothing */
-"%C23*$tYou have been kicked from $2 by $3 ($4%O%C23)" = "%C23*$tSei stato espulso (kick) da $2 da $3 ($4%O%C23)";
+"%C23*$tYou have been kicked from $2 by $3 ($4%O%C23)" = "%C23*$t$2 ti ha espulso (kick) da $3 ($4%O%C23)";
 
 /* nothing */
-"%C23*$tYou have left channel $3" = "%C23*$tSei uscito dal canale $3";
+"%C23*$tYou have left channel $3" = "%C23*$tHai lasciato il canale $3";
 
 /* nothing */
-"%C23*$tYou have left channel $3 (%O%C23%B%B$4%O%C23)" = "%C23*$tSei uscito dal canale $3 (%O%C23%B%B$4%O%C23)";
+"%C23*$tYou have left channel $3 (%O%C23%B%B$4%O%C23)" = "%C23*$tHai lasciato il canale $3 (%O%C23%B%B$4%O%C23)";
 
 /* nothing */
 "%C22*%O$tYou've invited%C26 $1%O to%C26 $2%O (%C26$3%O)" = "%C22*%O$tHai invitato%C26 $1%O in%C26 $2%O (%C26$3%O)";
 
 /* nothing */
-"%C22*%O$tYou are now known as $2" = "%C22*%O$tSei ora conosciuto come $2";
+"%C22*%O$tYou are now known as $2" = "%C22*%O$tIl tuo soprannome è ora $2";
 
 /* nothing */
-"**** ENDING LOGGING AT %s\n" = "**** FINE DEL LOG %s\n";
+"Loaded log from" = "Registro caricato da";
 
 /* nothing */
-"**** BEGIN LOGGING AT %s\n" = "**** INIZIO DEL LOG %s\n";
+"**** ENDING LOGGING AT %s\n" = "**** FINE REGISTRAZIONE: %s\n";
 
 /* nothing */
-"* Can't open log file(s) for writing. Check the\n  permissions on %s/xchatlogs" = "* Impossibile aprire i file di log in scrittura.\n  Verifica i permessi su %s/xchatlogs";
+"**** BEGIN LOGGING AT %s\n" = "**** INIZIO REGISTRAZIONE: %s\n";
+
+/* nothing */
+"* Can't open log file(s) for writing. Check the\n  permissions on %s/xchatlogs" = "* Impossibile aprire i file di registro in scrittura.\n  Verificare i permessi su %s/xchatlogs";
 
 /* nothing */
 "Left message" = "Messaggio a sinistra";
@@ -716,7 +731,7 @@
 "Right message" = "Messaggio a destra";
 
 /* nothing */
-"The nick of the joining person" = "Il nick della persona che è entrata";
+"The nick of the joining person" = "Il soprannome della persona che è entrata";
 
 /* nothing */
 "The channel being joined" = "Il canale nel quale sta entrando";
@@ -725,7 +740,7 @@
 "The host of the person" = "L'host della persona";
 
 /* nothing */
-"Nickname" = "Nickname";
+"Nickname" = "Soprannome";
 
 /* nothing */
 "The action" = "L'azione";
@@ -734,22 +749,22 @@
 "Mode char" = "Il carattere della modalità";
 
 /* nothing */
-"The text" = "Il testo";
+"Identified text" = "Testo identificato";
 
 /* nothing */
-"Identified text" = "Testo identificato";
+"The text" = "Il testo";
 
 /* nothing */
 "The message" = "Il messaggio";
 
 /* nothing */
-"Old nickname" = "Vecchio nickname";
+"Old nickname" = "Vecchio soprannome";
 
 /* nothing */
-"New nickname" = "Nuovo nickname";
+"New nickname" = "Nuovo soprannome";
 
 /* nothing */
-"Nick of person who changed the topic" = "Nick dell'utente che ha cambiato l'argomento";
+"Nick of person who changed the topic" = "Soprannome dell'utente che ha cambiato l'argomento";
 
 /* nothing */
 "Topic" = "Argomento";
@@ -758,7 +773,7 @@
 "Channel" = "Canale";
 
 /* nothing */
-"The nickname of the kicker" = "Il nickname di chi ha effettuato il kick";
+"The nickname of the kicker" = "Il soprannome di chi ha effettuato il kick";
 
 /* nothing */
 "The person being kicked" = "La persona che ha ricevuto il kick";
@@ -770,7 +785,7 @@
 "The reason" = "Il motivo";
 
 /* nothing */
-"The nick of the person leaving" = "Il nick della persona che è andata via";
+"The nick of the person leaving" = "Il soprannome della persona che è andata via";
 
 /* nothing */
 "The time" = "L'ora";
@@ -779,7 +794,7 @@
 "The creator" = "Il creatore";
 
 /* nothing */
-"Nick" = "Nick";
+"Nick" = "Soprannome";
 
 /* nothing */
 "Reason" = "Motivo";
@@ -791,7 +806,7 @@
 "Who it's from" = "Da chi è stato fatto";
 
 /* nothing */
-"The time in x.x format (see below)" = "L'ora nel formato x.x (vedi più giù)";
+"The time in x.x format (see below)" = "L'ora nel formato x.x (vedi sotto)";
 
 /* nothing */
 "The Channel it's going to" = "Il canale al quale è destinato";
@@ -800,94 +815,94 @@
 "The sound" = "Il suono";
 
 /* nothing */
-"The nick of the person" = "Il nick della persona";
+"The nick of the person" = "Il soprannome della persona";
 
 /* nothing */
 "The CTCP event" = "L'evento CTCP";
 
 /* nothing */
-"The nick of the person who set the key" = "Il nick della persona che ha impostato la chiave";
+"The nick of the person who set the key" = "Il soprannome della persona che ha impostato la chiave";
 
 /* nothing */
 "The key" = "La chiave";
 
 /* nothing */
-"The nick of the person who set the limit" = "Il nick della persona che ha impostato il limite";
+"The nick of the person who set the limit" = "Il soprannome della persona che ha impostato il limite";
 
 /* nothing */
 "The limit" = "Il limite";
 
 /* nothing */
-"The nick of the person who did the op'ing" = "Il nick della persona che ha impostato l'op";
+"The nick of the person who did the op'ing" = "Il soprannome della persona che ha impostato lo stato di operatore";
 
 /* nothing */
-"The nick of the person who has been op'ed" = "Il nick della persona che è stata resa op";
+"The nick of the person who has been op'ed" = "Il soprannome della persona che è stata resa operatore";
 
 /* nothing */
-"The nick of the person who has been halfop'ed" = "Il nick della persona che è stata resa halfop";
+"The nick of the person who has been halfop'ed" = "Il soprannome della persona che è stata resa semi-operatore";
 
 /* nothing */
-"The nick of the person who did the halfop'ing" = "Il nick della persona che ha impostato l'halfop";
+"The nick of the person who did the halfop'ing" = "Il soprannome della persona che ha impostato lo stato di semi-operatore";
 
 /* nothing */
-"The nick of the person who did the voice'ing" = "Il nick della persona che ha dato la parola";
+"The nick of the person who did the voice'ing" = "Il soprannome della persona che ha dato la parola";
 
 /* nothing */
-"The nick of the person who has been voice'ed" = "Il nick della persona che ha ricevuto la parola";
+"The nick of the person who has been voice'ed" = "Il soprannome della persona che ha ricevuto la parola";
 
 /* nothing */
-"The nick of the person who did the banning" = "Il nick della persona che ha impostato il ban";
+"The nick of the person who did the banning" = "Il soprannome della persona che ha impostato il ban";
 
 /* nothing */
 "The ban mask" = "La maschera del ban";
 
 /* nothing */
-"The nick who removed the key" = "Il nick della persona che ha rimosso la chiave";
+"The nick who removed the key" = "Il soprannome della persona che ha rimosso la chiave";
 
 /* nothing */
-"The nick who removed the limit" = "Il nick della persona che ha rimosso il limite";
+"The nick who removed the limit" = "Il soprannome della persona che ha rimosso il limite";
 
 /* nothing */
-"The nick of the person of did the deop'ing" = "Il nick della persona che ha rimosso l'op";
+"The nick of the person of did the deop'ing" = "Il soprannome della persona che ha rimosso lo stato di operatore";
 
 /* nothing */
-"The nick of the person who has been deop'ed" = "Il nick della persona che è stata rimossa da op";
+"The nick of the person who has been deop'ed" = "Il soprannome della persona che è stata rimossa dallo stato di operatore";
 
 /* nothing */
-"The nick of the person of did the dehalfop'ing" = "Il nick della persona che ha rimosso lo stato di semi-operatore";
+"The nick of the person of did the dehalfop'ing" = "Il soprannome della persona che ha rimosso lo stato di semi-operatore";
 
 /* nothing */
-"The nick of the person who has been dehalfop'ed" = "Il nick della persona che è stata rimossa da halfop";
+"The nick of the person who has been dehalfop'ed" = "Il soprannome della persona che è stata rimossa dallo stato di semi-operatore";
 
 /* nothing */
-"The nick of the person of did the devoice'ing" = "Il nick della persona che ha tolto la parola";
+"The nick of the person of did the devoice'ing" = "Il soprannome della persona che ha tolto la parola";
 
 /* nothing */
-"The nick of the person who has been devoice'ed" = "Il nick della persona a cui è stata tolta la parola";
+"The nick of the person who has been devoice'ed" = "Il soprannome della persona a cui è stata tolta la parola";
 
 /* nothing */
-"The nick of the person of did the unban'ing" = "Il nick della persona che ha rimosso il ban";
+"The nick of the person of did the unban'ing" = "Il soprannome della persona che ha rimosso il ban";
 
 /* nothing */
-"The nick of the person who did the exempt" = "Il nick della persona che ha impostato l'exempt";
+"The nick of the person who did the exempt" = "Il soprannome della persona che ha impostato l'exempt";
 
 /* nothing */
 "The exempt mask" = "La maschera di exempt";
 
 /* nothing */
-"The nick of the person removed the exempt" = "Il nick della persona che ha rimosso l'exempt";
+"The nick of the person removed the exempt" = "Il soprannome della persona che ha rimosso l'exempt";
 
 /* nothing */
-"The nick of the person who did the invite" = "Il nick della persona che ha impostato l'invito";
+"The nick of the person who did the invite" = "Il soprannome della persona che ha fatto l'invito";
 
 /* nothing */
 "The invite mask" = "La maschera di invito";
 
 /* nothing */
-"The nick of the person removed the invite" = "Il nick della persona che ha rimosso l'invito";
+"The nick of the person removed the invite" = "Il soprannome della persona che ha rimosso l'invito";
 
 /* nothing */
-"The nick of the person setting the mode" = "Il nick della persona che ha impostato la modalità";
+"The nick of the person setting the mode" = "Il soprannome della persona che ha impostato la modalità";
 
 /* nothing */
 "The mode's sign (+/-)" = "Il segno della modalità (+/-)";
@@ -941,16 +956,19 @@
 "Server Name" = "Nome del server";
 
 /* nothing */
-"Nick of person who invited you" = "Nick della persona che ti ha invitato";
+"Raw Numeric or Identifier" = "Numerico grezzo o identificatore";
+
+/* nothing */
+"Nick of person who invited you" = "Soprannome della persona che ti ha invitato";
 
 /* nothing */
 "Users" = "Utenti";
 
 /* nothing */
-"Nickname in use" = "Nickname già in uso";
+"Nickname in use" = "Soprannome già in uso";
 
 /* nothing */
-"Nick being tried" = "Nick in via di prova";
+"Nick being tried" = "Soprannome in via di prova";
 
 /* nothing */
 "IP" = "IP";
@@ -992,7 +1010,7 @@
 "DCC String" = "Stringa DCC";
 
 /* nothing */
-"Number of notify items" = "Numero degli utenti nella lista di notifica";
+"Number of notify items" = "Numero degli utenti nell'elenco di notifica";
 
 /* nothing */
 "Old Filename" = "Vecchio nome del file";
@@ -1016,10 +1034,10 @@
 "Seconds" = "Secondi";
 
 /* nothing */
-"Nick of person who have been invited" = "Nick della persona che è stata invitata";
+"Nick of person who have been invited" = "Soprannome della persona che è stata invitata";
 
 /* nothing */
-"Banmask" = "Maschera dei ban";
+"Banmask" = "Maschera del ban";
 
 /* nothing */
 "Who set the ban" = "Chi ha impostato il ban";
@@ -1028,7 +1046,7 @@
 "Ban time" = "Ora del ban";
 
 /* nothing */
-"Error parsing event %s.\nLoading default." = "Errore nell'analisi dell'evento %s.\nVerranno caricati i valori predefiniti.";
+"Error parsing event %s.\nLoading default." = "Errore nell'analizzare l'evento %s.\nVerranno caricati i valori predefiniti.";
 
 /* nothing */
 "Cannot read sound file:\n%s" = "Impossibile leggere il file audio:\n%s";
@@ -1052,7 +1070,7 @@
 "Connection reset by peer" = "Connessione interrotta dall'host remoto";
 
 /* nothing */
-"Ascension Island" = "Isole Cocos";
+"Ascension Island" = "Isola di Ascensione";
 
 /* nothing */
 "Andorra" = "Andorra";
@@ -1076,7 +1094,7 @@
 "Armenia" = "Armenia";
 
 /* nothing */
-"Netherlands Antilles" = "Antille Olandesi";
+"Netherlands Antilles" = "Antille olandesi";
 
 /* nothing */
 "Angola" = "Angola";
@@ -1091,7 +1109,7 @@
 "Reverse DNS" = "DNS inverso";
 
 /* nothing */
-"American Samoa" = "Samoa Americane";
+"American Samoa" = "Samoa americane";
 
 /* nothing */
 "Austria" = "Austria";
@@ -1106,13 +1124,13 @@
 "Aruba" = "Aruba";
 
 /* nothing */
-"Aland Islands" = "Isole Falkland";
+"Aland Islands" = "Isole Aland";
 
 /* nothing */
 "Azerbaijan" = "Azerbaijan";
 
 /* nothing */
-"Bosnia and Herzegovina" = "Bosnia-Herzegovina";
+"Bosnia and Herzegovina" = "Bosnia ed Erzegovina";
 
 /* nothing */
 "Barbados" = "Barbados";
@@ -1136,7 +1154,7 @@
 "Burundi" = "Burundi";
 
 /* nothing */
-"Businesses" = "Businesses";
+"Businesses" = "Aziende";
 
 /* nothing */
 "Benin" = "Benin";
@@ -1181,7 +1199,7 @@
 "Democratic Republic of Congo" = "Repubblica Democratica del Congo";
 
 /* nothing */
-"Central African Republic" = "Repubblica Centrafricana";
+"Central African Republic" = "Repubblica Centro-africana";
 
 /* nothing */
 "Congo" = "Congo";
@@ -1223,7 +1241,7 @@
 "Cape Verde" = "Capo Verde";
 
 /* nothing */
-"Christmas Island" = "Isola Christmas";
+"Christmas Island" = "Isola di Natale";
 
 /* nothing */
 "Cyprus" = "Cipro";
@@ -1262,7 +1280,7 @@
 "Egypt" = "Egitto";
 
 /* nothing */
-"Western Sahara" = "Sahara Occidentale";
+"Western Sahara" = "Sahara occidentale";
 
 /* nothing */
 "Eritrea" = "Eritrea";
@@ -1334,13 +1352,13 @@
 "Guadeloupe" = "Guadalupa";
 
 /* nothing */
-"Equatorial Guinea" = "Guinea Equatoriale";
+"Equatorial Guinea" = "Guinea equatoriale";
 
 /* nothing */
 "Greece" = "Grecia";
 
 /* nothing */
-"S. Georgia and S. Sandwich Isles" = "Isole S.Georgia e S.Sandwich";
+"S. Georgia and S. Sandwich Isles" = "Isole S. Georgia e S. Sandwich";
 
 /* nothing */
 "Guatemala" = "Guatemala";
@@ -1358,7 +1376,7 @@
 "Hong Kong" = "Hong Kong";
 
 /* nothing */
-"Heard and McDonald Islands" = "Isole Heard and McDonald";
+"Heard and McDonald Islands" = "Isole Heard e McDonald";
 
 /* nothing */
 "Honduras" = "Honduras";
@@ -1382,7 +1400,7 @@
 "Israel" = "Israele";
 
 /* nothing */
-"Isle of Man" = "Isle of Man";
+"Isle of Man" = "Isola di Man";
 
 /* nothing */
 "India" = "India";
@@ -1523,7 +1541,7 @@
 "Macau" = "Macao";
 
 /* nothing */
-"Northern Mariana Islands" = "Isole Marianne del Nord";
+"Northern Mariana Islands" = "Isole Marianne settentronali";
 
 /* nothing */
 "Martinique" = "Martinica";
@@ -1538,7 +1556,7 @@
 "Malta" = "Malta";
 
 /* nothing */
-"Mauritius" = "Muritius";
+"Mauritius" = "Mauritius";
 
 /* nothing */
 "Maldives" = "Maldive";
@@ -1565,7 +1583,7 @@
 "Niger" = "Niger";
 
 /* nothing */
-"Internic Network" = "Network Internic";
+"Internic Network" = "Rete Internic";
 
 /* nothing */
 "Norfolk Island" = "Isola Norfolk";
@@ -1610,7 +1628,7 @@
 "French Polynesia" = "Polinesia Francese";
 
 /* nothing */
-"Papua New Guinea" = "Papua - Nuova Guinea";
+"Papua New Guinea" = "Papua Nuova Guinea";
 
 /* nothing */
 "Philippines" = "Filippine";
@@ -1622,7 +1640,7 @@
 "Poland" = "Polonia";
 
 /* nothing */
-"St. Pierre and Miquelon" = "St. Pierre e Miquelon";
+"St. Pierre and Miquelon" = "S. Pierre e Miquelon";
 
 /* nothing */
 "Pitcairn" = "Pitcairn";
@@ -1778,9 +1796,6 @@
 "United Kingdom" = "Regno Unito";
 
 /* nothing */
-"US Minor Outlying Islands" = "Isole esterne minori americane";
-
-/* nothing */
 "United States of America" = "Stati Uniti d'America";
 
 /* nothing */
@@ -1793,7 +1808,7 @@
 "Vatican City State" = "Città del Vaticano";
 
 /* nothing */
-"St. Vincent and the Grenadines" = "St. Vincent e le Grenadine";
+"St. Vincent and the Grenadines" = "S. Vincent e le Grenadine";
 
 /* nothing */
 "Venezuela" = "Venezuela";
@@ -1838,28 +1853,31 @@
 "Unknown" = "Sconosciuto";
 
 /* nothing */
-"Open Dialog Window" = "Apri la finestra di dialogo";
+"_Open Dialog Window" = "_Apri finestra di dialogo";
 
 /* nothing */
-"Send a File" = "Invia un File";
+"_Send a File" = "_Invia un file";
 
 /* nothing */
-"User Info (WHOIS)" = "Informazione Utente (WHOIS)";
+"_User Info (WhoIs)" = "Informazioni _utente (WHOIS)";
 
 /* nothing */
-"Operator Actions" = "Opzioni";
+"_Add to Friends List" = "A_ggiungi all'elenco degli amici";
 
 /* nothing */
-"Give Ops" = "Assegna lo stato di Op";
+"O_perator Actions" = "Azioni dell'o_peratore";
 
 /* nothing */
-"Take Ops" = "Rimuovi lo stato di Op";
+"Give Ops" = "Dai lo stato di operatore";
 
 /* nothing */
-"Give Voice" = "Dai la parola (voice)";
+"Take Ops" = "Togli lo stato di operatore";
 
 /* nothing */
-"Take Voice" = "Prendi la parola (voice)";
+"Give Voice" = "Dai la parola";
+
+/* nothing */
+"Take Voice" = "Togli la parola";
 
 /* nothing */
 "Kick/Ban" = "Kick/Ban";
@@ -1874,100 +1892,19 @@
 "KickBan" = "KickBan";
 
 /* nothing */
-"Direct client-to-client" = "Client-to-client diretto";
-
-/* nothing */
-"Send File" = "Invia un File";
-
-/* nothing */
-"Offer Chat" = "Invita ad una discussione";
-
-/* nothing */
-"Abort Chat" = "Abbandona la discussione";
-
-/* nothing */
-"Version" = "Versione";
-
-/* nothing */
-"Userinfo" = "Informazioni utente";
-
-/* nothing */
-"Clientinfo" = "Informazioni sul client";
-
-/* nothing */
-"Ping" = "Ping";
-
-/* nothing */
-"Time" = "Tempo";
-
-/* nothing */
-"Finger" = "Finger";
-
-/* nothing */
-"Oper" = "Operatore";
-
-/* nothing */
-"Kill this user" = "Uccidi (kill) questo utente";
-
-/* nothing */
-"Mode" = "Modalità";
-
-/* nothing */
-"Give Half-Ops" = "Assegna lo stato di Half-Op";
-
-/* nothing */
-"Take Half-Ops" = "Rimuovi lo stato di Half-Op";
-
-/* nothing */
-"Ignore" = "Ignora";
-
-/* nothing */
-"Ignore User" = "Ignora utente";
-
-/* nothing */
-"UnIgnore User" = "Annulla ignora utente";
-
-/* nothing */
-"Info" = "Info";
-
-/* nothing */
-"Who" = "Who";
-
-/* nothing */
-"WhoIs" = "WhoIs";
-
-/* nothing */
-"DNS Lookup" = "Risoluzione DNS";
-
-/* nothing */
-"Trace" = "Trace";
-
-/* nothing */
-"UserHost" = "Host dell'utente";
-
-/* nothing */
-"External" = "Esterni";
-
-/* nothing */
-"Traceroute" = "Traceroute";
-
-/* nothing */
-"Telnet" = "Telnet";
-
-/* nothing */
 "Leave Channel" = "Esci dal canale";
 
 /* nothing */
 "Join Channel..." = "Entra nel canale...";
 
 /* nothing */
-"Enter Channel to Join:" = "Nome del canale nel quale entrare:";
+"Enter Channel to Join:" = "Digitare il canale in cui entrare:";
 
 /* nothing */
-"Server Links" = "Link dei server";
+"Server Links" = "Collegamenti ai server";
 
 /* nothing */
-"Ping Server" = "Fai ping sul server";
+"Ping Server" = "Ping server";
 
 /* nothing */
 "Hide Version" = "Nascondi versione";
@@ -1979,16 +1916,19 @@
 "DeOp" = "DeOp";
 
 /* nothing */
-"bye" = "arrivederci";
+"bye" = "ciao";
 
 /* nothing */
-"Enter reason to kick %s:" = "Immetti il motivo per il kick a %s :";
+"Enter reason to kick %s:" = "Motivo per il kick a %s:";
 
 /* nothing */
-"Sendfile" = "Invia un file";
+"Sendfile" = "Invia file";
 
 /* nothing */
 "Dialog" = "Dialogo";
+
+/* nothing */
+"WhoIs" = "WhoIs";
 
 /* nothing */
 "Send" = "Invia";
@@ -2000,31 +1940,31 @@
 "Clear" = "Pulisci";
 
 /* nothing */
-"Couldn't connect to session bus" = "Impossibile collegarsi al bus di sessione";
+"Ping" = "Ping";
 
 /* nothing */
-"Failed to complete NameHasOwner" = "Completamento di NameHasOwner fallito";
+"Couldn't connect to session bus" = "Impossibile connettersi al bus di sessione";
 
 /* nothing */
-"Failed to complete Command" = "Completamento del comando fallito";
+"Failed to complete NameHasOwner" = "Completamento di NameHasOwner non riuscito";
+
+/* nothing */
+"Failed to complete Command" = "Completamento del comando non riuscito";
 
 /* nothing */
 "remote access" = "accesso remoto";
 
 /* nothing */
-"plugin for remote access using DBUS" = "plugin per l'accesso remoto usando DBUS";
+"plugin for remote access using DBUS" = "plugin per l'accesso remoto usando D-Bus";
 
 /* nothing */
-"Couldn't connect to session bus: %s\n" = "Impossibile collegarsi al bus di sessione: %s\n";
+"Couldn't connect to session bus: %s\n" = "Impossibile connettersi al bus di sessione: %s\n";
 
 /* nothing */
-"Failed to acquire %s: %s\n" = "Fallita acquisizione %s: %s\n";
+"Failed to acquire %s: %s\n" = "Acquisizione di %s non riuscita: %s\n";
 
 /* nothing */
-"%s loaded successfully!\n" = "%s caricamento riuscito!\n";
-
-/* nothing */
-"About XChat" = "Informazioni su XChat";
+"About " = "Informazioni";
 
 /* nothing */
 "A multiplatform IRC Client" = "Client IRC multipiattaforma";
@@ -2033,13 +1973,13 @@
 "Character Chart" = "Tabella caratteri";
 
 /* nothing */
-"Not connected." = "Non connesso";
+"Not connected." = "Non connesso.";
 
 /* nothing */
-"You must select some bans." = "Devi selezionare alcuni ban.";
+"You must select some bans." = "È necessario selezionare alcuni ban.";
 
 /* nothing */
-"Are you sure you want to remove all bans in %s?" = "Sei sicuro di voler rimuovere tutti i ban in %s?";
+"Are you sure you want to remove all bans in %s?" = "Rimuovere veramente tutti i ban in %s?";
 
 /* nothing */
 "Mask" = "Maschera";
@@ -2051,103 +1991,124 @@
 "Date" = "Data";
 
 /* nothing */
-"You can only open the Ban List window while in a channel tab." = "Puoi aprire la finestra Lista dei Ban solamente mentre sei nella scheda di un canale";
+"You can only open the Ban List window while in a channel tab." = "È possibile aprire la finestra con l'elenco dei ban solo mentre si è nella scheda di un canale";
 
 /* nothing */
-"XChat: Ban List (%s)" = "XChat: Lista dei Ban (%s)";
+"XChat: Ban List (%s)" = "XChat: elenco dei ban (%s)";
 
 /* nothing */
-"Unban" = "Rimuovi Ban";
+"Remove" = "Rimuovi";
 
 /* nothing */
-"Crop" = "Rimuovi i Ban esclusa selezione";
+"Crop" = "Crop";
 
 /* nothing */
 "Refresh" = "Aggiorna";
 
 /* nothing */
-"User and Channel Statistics: %d/%d Users on %d/%d Channels" = "Statistiche Utente e Canale: %d/%d Utenti su %d/%d Canali";
+"Displaying %d/%d users on %d/%d channels." = "Mostra utenti %d/%d su %d/%d canali";
 
 /* nothing */
-"I can't save an empty list!" = "Non posso salvare una lista vuota!";
+"Select an output filename" = "Scegliere il nome del file di output";
 
 /* nothing */
-"Select an output filename" = "Scegli il nome di un file di output";
+"_Join Channel" = "_Entra nel canale";
 
 /* nothing */
-"XChat: Channel List (%s)" = "XChat: Lista Canali (%s)";
+"_Copy Channel Name" = "_Copia il nome del canale";
 
 /* nothing */
-"List display options:" = "Lista opzioni display:";
+"Copy _Topic Text" = "Copia l'argomen_to del canale";
 
 /* nothing */
-"Minimum Users:" = "Utenti Minimi";
+"XChat: Channel List (%s)" = "XChat: elenco canali (%s)";
 
 /* nothing */
-"Maximum Users:" = "Utenti Massimi";
+"_Search" = "Ce_rca";
 
 /* nothing */
-"Pattern Match:" = "Riscontro Pattern:";
+"_Download List" = "E_lenco scaricamenti";
 
 /* nothing */
-"Regex Match:" = "Frase da cercare:";
+"Save _List..." = "Salva e_lenco...";
 
 /* nothing */
-"Apply Match to:" = "Applica Riscontro a:";
+"Show only:" = "Mostra solo:";
 
 /* nothing */
-"Apply" = "Applica";
+"channels with" = "canali con";
 
 /* nothing */
-"Refresh the list" = "Aggiorna la lista";
+"to" = "a";
 
 /* nothing */
-"Save the list" = "Salva la lista";
+"users." = "utenti.";
 
 /* nothing */
-"Join Channel" = "Entra nel canale";
+"Look in:" = "Cerca in:";
 
 /* nothing */
-"Send file to %s" = "Invia un file a %s";
+"Channel name" = "Nome canale";
 
 /* nothing */
-"None" = "Niente";
+"Search type:" = "Tipo di ricerca:";
 
 /* nothing */
-"File" = "File";
+"Simple Search" = "Ricerca semplice";
 
 /* nothing */
-"To" = "A";
+"Pattern Match (Wildcards)" = "Corrispondenza modello (meta-caratteri)";
 
 /* nothing */
-"Address" = "Indirizzo";
+"Regular Expression" = "Espressione regolare";
 
 /* nothing */
-"Started" = "Avviato";
+"Find:" = "Trova:";
 
 /* nothing */
-"Speed limit" = "Limite di Velocità";
+"Send file to %s" = "Invia file a %s";
 
 /* nothing */
-"That file is not resumable." = "Questo file non è ripristinabile.";
+"That file is not resumable." = "Impossibile ripristinare il file.";
 
 /* nothing */
-"Cannot access file: %s\n%s.\nResuming not possible." = "Impossibile accedere al file: %s\n%s.\nRipristino non possibile.";
+"Cannot access file: %s\n%s.\nResuming not possible." = "Impossibile accedere al file: %s\n%s.\nImpossibile ripristinarlo.";
 
 /* nothing */
-"File in download directory is larger than file offered. Resuming not possible." = "Il file nella cartella di download è più grande di quello offerto. Ripristino non possibile.";
+"File in download directory is larger than file offered. Resuming not possible." = "Il file nella directory di scaricamento è più grande di quello offerto. Impossibile ripristinarlo.";
 
 /* nothing */
-"Cannot resume the same file from two people." = "Impossibile ripristinare lo stesso file da due persone";
+"Cannot resume the same file from two people." = "Impossibile ripristinare lo stesso file da due persone.";
+
+/* nothing */
+"XChat: Uploads and Downloads" = "XChat: trasferimenti file";
 
 /* nothing */
 "Status" = "Stato";
 
 /* nothing */
-"ETA" = "Tempo Mancante";
+"File" = "File";
 
 /* nothing */
-"XChat: File Receive List" = "XChat: Lista File Ricevuti";
+"ETA" = "Tempo mancante";
+
+/* nothing */
+"Both" = "Entrambi";
+
+/* nothing */
+"Uploads" = "Caricamenti";
+
+/* nothing */
+"Downloads" = "Scaricamenti";
+
+/* nothing */
+"Details" = "Dettagli";
+
+/* nothing */
+"File:" = "File:";
+
+/* nothing */
+"Address:" = "Indirizzo:";
 
 /* nothing */
 "Abort" = "Interrompi";
@@ -2159,31 +2120,10 @@
 "Resume" = "Ripristina";
 
 /* nothing */
-"Open" = "Apri";
+"Open Folder..." = "Apri cartella...";
 
 /* nothing */
-"Ack" = "Trasferito";
-
-/* nothing */
-"XChat: Uploads and Downloads" = "XChat: Upload e Download";
-
-/* nothing */
-"Downloads" = "Download";
-
-/* nothing */
-"Uploads" = "Upload";
-
-/* nothing */
-"Details" = "Dettagli";
-
-/* nothing */
-"Open Folder..." = "Apri Cartella...";
-
-/* nothing */
-"XChat: File Send List" = "XChat: Lista File Inviata";
-
-/* nothing */
-"To/From" = "A/Da";
+"XChat: DCC Chat List" = "XChat: elenco chat DCC";
 
 /* nothing */
 "Recv" = "Ricevuto";
@@ -2192,13 +2132,10 @@
 "Sent" = "Inviato";
 
 /* nothing */
-"Start Time" = "Inizio Tempo";
+"Start Time" = "Ora d'inizio";
 
 /* nothing */
-"XChat: DCC Chat List" = "XChat: Lista Chat DCC";
-
-/* nothing */
-"*NEW*" = "NUOVO*";
+"*NEW*" = "*NUOVO*";
 
 /* nothing */
 "EDIT ME" = "MODIFICAMI";
@@ -2210,19 +2147,19 @@
 "Command" = "Comando";
 
 /* nothing */
-"Move Up" = "Muovi Su";
+"Move Up" = "Sposta in alto";
 
 /* nothing */
-"Move Dn" = "Muovi Giu";
+"Move Dn" = "Sposta in basso";
 
 /* nothing */
-"Cancel" = "Cancella";
+"Cancel" = "Annulla";
 
 /* nothing */
 "Save" = "Salva";
 
 /* nothing */
-"Add New" = "Aggiungi Nuovo";
+"Add New" = "Aggiungi nuovo";
 
 /* nothing */
 "Delete" = "Cancella";
@@ -2240,19 +2177,28 @@
 "Use a different config directory" = "Usa una cartella di configurazione diversa";
 
 /* nothing */
-"Don't auto load any plugins" = "Impossibile caricare automaticamente alcun plugin";
+"Don't auto load any plugins" = "Non caricare automaticamente i plugin";
 
 /* nothing */
-"Show plugin auto-load directory" = "Mostra la cartella di auto-caricamento dei plugin";
+"Show plugin auto-load directory" = "Mostra cartella dei plugin caricati automaticamente";
 
 /* nothing */
-"Show user config directory" = "Mostra la cartella di configurazione utente";
+"Show user config directory" = "Mostra cartella di configurazione utente";
 
 /* nothing */
 "Open an irc://server:port/channel URL" = "Apri un URL irc://server:port/channel";
 
 /* nothing */
-"Open URL in an existing XChat" = "Apri URL in XChat esistente";
+"Execute command:" = "Eseguire comando:";
+
+/* nothing */
+"Open URL or execute command in an existing XChat" = "Apri URL o esegui comando in una istanza di XChat esistente";
+
+/* nothing */
+"Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "Avvia minimizzato. Livello 0=normale 1=ridotto a icona 2=nell'area di notifica";
+
+/* nothing */
+"level" = "livello";
 
 /* nothing */
 "Show version information" = "Mostra informazioni sulla versione";
@@ -2261,64 +2207,64 @@
 "Failed to open font:\n\n%s" = "Impossibile aprire il carattere:\n\n%s";
 
 /* nothing */
-"Search buffer is empty.\n" = "Il buffer di ricerca è vuoto.\n";
+"Search buffer is empty.\n" = "Buffer di ricerca vuoto.\n";
 
 /* nothing */
 "%d bytes" = "%d byte";
 
 /* nothing */
-"Network send queue: %d bytes" = "Coda di invio: %d byte";
+"Network send queue: %d bytes" = "Coda di invio rete: %d byte";
 
 /* nothing */
-"The Run Command action runs the data in Data 1 as if it has been typed into the entry box where you pressed the key sequence. Thus it can contain text (which will be sent to the channel/person), commands or user commands. When run all \\n characters in Data 1 are used to deliminate seperate commands so it is possible to run more than one command. If you want a \\ in the actual text run then enter \\\\" = "Il comando Run Command esegue il contenuto di Data 1 come se fosse stato digitato dentro la casella dove hai digitato la sequenza chiave. Quindi può contenere testo (che verrà inviato al canale/persona), comandi o comandi utente. Quando esegue tutti \\n caratteri in Data 1 sono usati per delimitare comandi separati in modo da eseguire più di un comando. Se vuoi \\ nel testo attuale allora premi invio \\\\";
+"The Run Command action runs the data in Data 1 as if it has been typed into the entry box where you pressed the key sequence. Thus it can contain text (which will be sent to the channel/person), commands or user commands. When run all \\n characters in Data 1 are used to deliminate seperate commands so it is possible to run more than one command. If you want a \\ in the actual text run then enter \\\\" = "La funzione Run Command esegue il contenuto di «Dati 1» come se fosse stato digitato nella casella di testo dove è stata premuta la combinazione di tasti. Può contenere testo (che verrà inviato ad un canale/utente), comandi o comandi utente. Quando in «Dati 1» sono presenti più comandi, i caratteri \\n vengono utilizzati per separali, in modo da eseguire più di un comando. Per inserire \\ nell'attuale esecuzione testuale digitare \\\\";
 
 /* nothing */
-"The Change Page command switches between pages in the notebook. Set Data 1 to the page you want to switch to. If Data 2 is set to anything then the switch will be relative to the current position" = "Il comando Change Page cambia pagine. Imposta Data 1 alla pagina a cui vuoi cambiare. Se Data 2 è impostata a qualcosa allora il cambio sarà relativo alla posizione corrente";
+"The Change Page command switches between pages in the notebook. Set Data 1 to the page you want to switch to. If Data 2 is set to anything then the switch will be relative to the current position" = "La funzione Change Page consente di spostarsi tra le pagine aperte. Inserire in «Dati 1» la pagina a cui si vuole accedere. Se «Dati 2» è impostato il cambio sarà relativo alla posizione attuale";
 
 /* nothing */
-"The Insert in Buffer command will insert the contents of Data 1 into the entry where the key sequence was pressed at the current cursor position" = "Il comando Insert in Buffer inserirà il contenuto di Data 1 nella casella dove la sequenza chiave è stata premuta nella posizione corrente del cursore";
+"The Insert in Buffer command will insert the contents of Data 1 into the entry where the key sequence was pressed at the current cursor position" = "La funzione Insert in Buffer inserirà il contenuto di «Dati 1» nella casella di testo dove è stata eseguita la combinazione di tasti nella posizione attuale del cursore";
 
 /* nothing */
-"The Scroll Page command scrolls the text widget up or down one page or one line. Set Data 1 to either Up, Down, +1 or -1." = "Il comando Scroll Page scorre l'oggetto testo su o giu di una pagina o una linea. Imposta Data 1 a su, giu, +1 o -1.";
+"The Scroll Page command scrolls the text widget up or down one page or one line. Set Data 1 to either Up, Down, +1 or -1." = "La funzione Scroll Page scorre il testo verso l'alto o verso il basso di una pagina o di una riga. Impostare «Dati 1» a «su» o «giù» per le pagine e a «+1» o «-1» per le righe.";
 
 /* nothing */
-"The Set Buffer command sets the entry where the key sequence was entered to the contents of Data 1" = "Il comando Set Buffer imposta la casella dove è stata digitata la sequenza chiave nel contenuto di Data 1";
+"The Set Buffer command sets the entry where the key sequence was entered to the contents of Data 1" = "La funzione Set Buffer inserisce nella casella di testo dove viene premuta la combinazione di tasti il valore contenuto in «Dati 1»";
 
 /* nothing */
-"The Last Command command sets the entry to contain the last command entered - the same as pressing up in a shell" = "Il Last Command comando imposta la casella per contenere l'ultimo comando digitato - corrispondente a premere il tasto su nella shell";
+"The Last Command command sets the entry to contain the last command entered - the same as pressing up in a shell" = "La funzione Last Command inserisce nella casella di testo l'ultimo comando disponibile digitato - così come accade premendo il tasto «freccia su» in un terminale";
 
 /* nothing */
-"The Next Command command sets the entry to contain the next command entered - the same as pressing down in a shell" = "Il Next Command comando imposta la casella per contenere il successivo comando digitato- corrispondente a premere il tasto giu nella shell";
+"The Next Command command sets the entry to contain the next command entered - the same as pressing down in a shell" = "La funzione Next Command inserisce nella casella di testo il successivo comando disponibile - così come accade premendo il tasto «freccia giù» in un terminale";
 
 /* nothing */
-"This command changes the text in the entry to finish an incomplete nickname or command. If Data 1 is set then double-tabbing in a string will select the last nick, not the next" = "Qeusto comando cambia il testo nella casella per finire un nick o un comando incompleto. Se Data 1 è impostato allora la doppia pressione sul tasto TAB in una stringa selezionerà l'ultimo nick, non il prossimo";
+"This command changes the text in the entry to finish an incomplete nickname or command. If Data 1 is set then double-tabbing in a string will select the last nick, not the next" = "Questo comando modifica il testo digitato per completare automaticamente un soprannome o un comando. Se «Dati 1» è configurato, la doppia pressione del tasto «Tab» in una stringa selezionerà l'ultimo soprannome e non il successivo.";
 
 /* nothing */
-"This command scrolls up and down through the list of nicks. If Data 1 is set to anything it will scroll up, else it scrolls down" = "Questo comando scorre su e giù attraverso la lista dei nick. Se Data 1 è impostato a qualcosa scorrerà verso l'altro, altrimenti verso il basso";
+"This command scrolls up and down through the list of nicks. If Data 1 is set to anything it will scroll up, else it scrolls down" = "Questo comando scorre l'elenco dei soprannomi. Se «Dati 1» è impostato lo scorrimento avverrà verso l'altro, altrimenti verso il basso";
 
 /* nothing */
-"This command checks the last word entered in the entry against the replace list and replaces it if it finds a match" = "Questo comando confronta l'ultima parola inserita con la lista dei sostituti e rimpiazza se trova parole coincidenti";
+"This command checks the last word entered in the entry against the replace list and replaces it if it finds a match" = "Questo comando controlla l'ultima parola inserita nella casella di testo con l'elenco delle risposte, se viene trovata una corrispondenza viene sostituita";
 
 /* nothing */
-"This command moves the front tab left by one" = "Questo comando muove la scheda davanti a sinistra di uno";
+"This command moves the front tab left by one" = "Questo comando sposta la scheda verso sinistra";
 
 /* nothing */
-"This command moves the front tab right by one" = "Questo comando muove la scheda davanti a destra di uno";
+"This command moves the front tab right by one" = "Questo comando sposta la scheda verso destra";
 
 /* nothing */
-"This command moves the current tab family to the left" = "Questo comando muove i tab correnti a sinistra";
+"This command moves the current tab family to the left" = "Questo comando sposta il gruppo di schede attuale verso sinistra";
 
 /* nothing */
-"This command moves the current tab family to the right" = "Questo comando muove i tab correnti a destra";
+"This command moves the current tab family to the right" = "Questo comando sposta il gruppo di schede attuale verso destra";
 
 /* nothing */
-"Push input line into history but doesn't send to server" = "Inserisci la linea di input nella cronologia ma non inviarla al server";
+"Push input line into history but doesn't send to server" = "Inserisci la riga di inserimento nella cronologia ma senza inviarla al server";
 
 /* nothing */
-"There was an error loading key bindings configuration" = "E' avvenuto un errore durante il caricamento della mappatura della tastiera";
+"There was an error loading key bindings configuration" = "Si è verificato un errore caricando la configurazione delle combinazioni di tasti";
 
 /* nothing */
-"<none>" = "<none>";
+"<none>" = "<vuoto>";
 
 /* nothing */
 "Mod" = "Mod";
@@ -2330,7 +2276,7 @@
 "Action" = "Azione";
 
 /* nothing */
-"XChat: Keyboard Shortcuts" = "XChat: Scorciatoie di Tastiera";
+"XChat: Keyboard Shortcuts" = "XChat: scorciatoie da tastiera";
 
 /* nothing */
 "Shift" = "Shift";
@@ -2348,34 +2294,34 @@
 "Data 2" = "Dati 2";
 
 /* nothing */
-"Error opening keys config file\n" = "Errore nell'apertura del file di configurazione dei tasti\n";
+"Error opening keys config file\n" = "Errore durante l'apertura del file di configurazione tasti\n";
 
 /* nothing */
-"Unknown keyname %s in key bindings config file\nLoad aborted, please fix %s/keybindings.conf\n" = "Nome del tasto %s sconosciuto nel file di configurazione\nCaricamento interrotto, per favore controlla %s/keybindings.conf\n";
+"Unknown keyname %s in key bindings config file\nLoad aborted, please fix %s/keybindings.conf\n" = "Nome del tasto %s sconosciuto nel file di configurazione delle combinazioni\nCaricamento interrotto, modificare %s/keybindings.conf\n";
 
 /* nothing */
-"Unknown action %s in key bindings config file\nLoad aborted, Please fix %s/keybindings\n" = "Azione %s sconosciuta nel file di configurazione\nCaricamento interrotto, per favore controlla %s/keybindings\n";
+"Unknown action %s in key bindings config file\nLoad aborted, Please fix %s/keybindings\n" = "Azione %s sconosciuta nel file di configurazione delle combinazioni\nCaricamento interrotto, modificare %s/keybindings\n";
 
 /* nothing */
-"Expecting Data line (beginning Dx{:|!}) but got:\n%s\n\nLoad aborted, Please fix %s/keybindings\n" = "Aspetto linea dati (inizio Dx{:|!}) ma ottenuto:\n%s\n\nCaricamento interrotto, per favore controlla %s/keybindings\n";
+"Expecting Data line (beginning Dx{:|!}) but got:\n%s\n\nLoad aborted, Please fix %s/keybindings\n" = "Attesa riga dati (inizio Dx{:|!}) ma ottenuto:\n%s\n\nCaricamento interrotto, modificare %s/keybindings\n";
 
 /* nothing */
-"Key bindings config file is corrupt, load aborted\nPlease fix %s/keybindings.conf\n" = "Il file di configurazione dei tasti è corrotto, caricamento interrotto\nPer favore controlla %s/keybindings.conf\n";
+"Key bindings config file is corrupt, load aborted\nPlease fix %s/keybindings.conf\n" = "Il file di configurazione delle combinazioni di tasti è danneggiato, caricamento interrotto\nModificare %s/keybindings.conf\n";
 
 /* nothing */
-"Cannot write to that file." = "Impossibile scrivere su quel file";
+"Cannot write to that file." = "Impossibile scrivere su quel file.";
 
 /* nothing */
-"Cannot read that file." = "Impossibile leggere quel file";
+"Cannot read that file." = "Impossibile leggere quel file.";
 
 /* nothing */
-"That mask already exists." = "Quella maschera esiste già.";
+"That mask already exists." = "Maschera già esistente.";
 
 /* nothing */
 "Private" = "Privato";
 
 /* nothing */
-"Notice" = "Notizia";
+"Notice" = "Avviso";
 
 /* nothing */
 "CTCP" = "CTCP";
@@ -2387,16 +2333,16 @@
 "Invite" = "Invita";
 
 /* nothing */
-"Unignore" = "Annulla ignora";
+"Unignore" = "Non ignorare";
 
 /* nothing */
-"Enter mask to ignore:" = "Inserisci maschera da ignorare:";
+"Enter mask to ignore:" = "Inserire maschera da ignorare:";
 
 /* nothing */
-"XChat: Ignore list" = "XChat: Lista utenti ignorati";
+"XChat: Ignore list" = "XChat: elenco utenti ignorati";
 
 /* nothing */
-"Ignore Stats:" = "Stato utenti ignorati:";
+"Ignore Stats:" = "Statistiche utenti ignorati:";
 
 /* nothing */
 "Channel:" = "Canale:";
@@ -2405,7 +2351,7 @@
 "Private:" = "Privato:";
 
 /* nothing */
-"Notice:" = "Notizia:";
+"Notice:" = "Avviso:";
 
 /* nothing */
 "CTCP:" = "CTCP:";
@@ -2417,55 +2363,70 @@
 "Add..." = "Aggiungi...";
 
 /* nothing */
-"Channel name too short, try again." = "Nome del canale troppo corto, prova di nuovo.";
+"Channel name too short, try again." = "Nome del canale troppo corto, riprovare.";
 
 /* nothing */
-"XChat: Connection Complete" = "XChat: Connessione completata";
+"XChat: Connection Complete" = "XChat: connessione completata";
 
 /* nothing */
 "Connection to %s complete." = "Connessione a %s completata.";
 
 /* nothing */
-"In the Server-List window, no channel (chat room) has been entered to be automatically joined for this network." = "Nella finestra Lista-Server, nessun canale (chat room) è stato inserito nel quale entrare automaticamente per questa rete.";
+"In the Server-List window, no channel (chat room) has been entered to be automatically joined for this network." = "Nella finestra elenco server, non è stato scelto alcun canale (chat room) nel quale entrare automaticamente.";
 
 /* nothing */
-"What would you like to do next?" = "Cosa vuoi fare dopo?";
+"What would you like to do next?" = "Cosa fare successivamente?";
 
 /* nothing */
-"_Nothing, I'll join a channel later." = "_Niente, Entrerò nel canale dopo.";
+"_Nothing, I'll join a channel later." = "_Niente, verrà selezionato successivamente un canale.";
 
 /* nothing */
 "_Join this channel:" = "_Entra in questo canale:";
 
 /* nothing */
-"If you know the name of the channel you want to join, enter it here." = "Se conosci il nome del canale nel quale vuoi entrare, scrivilo qui.";
+"If you know the name of the channel you want to join, enter it here." = "Se si conosce il nome del canale nel quale si vuole entrare, digitarlo qui.";
 
 /* nothing */
-"O_pen the Channel-List window." = "A_pri la finestra Lista-Canali.";
+"O_pen the Channel-List window." = "A_pri la finestra elenco canali.";
 
 /* nothing */
-"Retrieving the Channel-List may take a minute or two." = "Richiamare la Lista-Canali potrebbe richiedere un minuto o due.";
+"Retrieving the Channel-List may take a minute or two." = "Il recupero dell'elenco dei canali potrebbe richiedere un minuto o due.";
 
 /* nothing */
-"_Always show this dialog after connecting." = "_Mostra sempre questa finestra dopo la connessione.";
+"_Always show this dialog after connecting." = "Mostr_a sempre questo dialogo dopo la connessione.";
 
 /* nothing */
 "Dialog with" = "Dialoga con";
 
 /* nothing */
-"Topic for %s is: %s" = "Argomento per %s è: %s";
+"Topic for %s is: %s" = "L'argomento di %s è: %s";
 
 /* nothing */
-"No topic is set" = "Nessun argomento è impostato";
+"No topic is set" = "Nessun argomento impostato";
 
 /* nothing */
-"This server still has %d channels or dialogs associated with it. Close them all?" = "Questo server ha ancora %d canali o dialoghi associati ad esso. Chiudere tutto?";
+"This server still has %d channels or dialogs associated with it. Close them all?" = "Questo server ha ancora %d canali o dialoghi associati. Chiudere tutto?";
 
 /* nothing */
-"No other tabs open, quit xchat?" = "Nessuna altra scheda aperta, chiudere xchat?";
+"Quit XChat?" = "Chiusura di XChat";
 
 /* nothing */
-"Insert Attribute or Color Code" = "Inserisci Attributo o Codice colore";
+"Don't ask next time." = "Non chiedere la prossima volta.";
+
+/* nothing */
+"You are connected to %i IRC networks." = "Connesso a %i reti IRC.";
+
+/* nothing */
+"Are you sure you want to quit?" = "Chiudere veramente l'applicazione?";
+
+/* nothing */
+"Some file transfers are still active." = "Alcuni trasferimenti di file sono ancora in corso.";
+
+/* nothing */
+"_Minimize to Tray" = "_Minimizza nell'area di notifica";
+
+/* nothing */
+"Insert Attribute or Color Code" = "Inserisci attributo o codice colore";
 
 /* nothing */
 "<b>Bold</b>" = "<b>Grassetto</b>";
@@ -2483,61 +2444,70 @@
 "Colors 8-15" = "Colori 8-15";
 
 /* nothing */
-"Beep on message" = "Beep sul messaggio";
+"_Settings" = "Impo_stazioni";
 
 /* nothing */
-"Show join/part messages" = "Mostra messaggi di entrata/uscita";
+"_Log to Disk" = "Registra su_l disco";
 
 /* nothing */
-"Color paste" = "Incolla colore";
+"_Reload Scrollback" = "_Ricarica conversazioni precedenti";
 
 /* nothing */
-"Go to" = "Vai a";
+"_Hide Join/Part Messages" = "_Nascondi messaggi di entrata e uscita";
 
 /* nothing */
-"_Close Tab" = "_Chiudi Scheda";
+"_Extra Alerts" = "Avvisi a_ggiuntivi";
 
 /* nothing */
-"_Detach Tab" = "_Stacca Scheda";
+"Beep on _Message" = "Suono sul _messaggio";
 
 /* nothing */
-"Some file transfers still active, quit xchat?" = "Alcuni file sono ancora in trasferimento, chiudere xchat?";
+"Blink Tray _Icon" = "_Icona lampeggiante nell'area di notifica";
 
 /* nothing */
-"User limit must be a number!\n" = "Il limite utenti deve essere un numero!\n";
+"Blink Task _Bar" = "_Barra delle attività lampeggiante";
 
 /* nothing */
-"Topic Protection" = "Protezione Argomento";
+"_Detach" = "_Separa";
 
 /* nothing */
-"No outside messages" = "Nessun fuori messaggio";
+"_Close" = "_Chiudi";
+
+/* nothing */
+"User limit must be a number!\n" = "Il limite utenti deve essere un numero.\n";
+
+/* nothing */
+"Topic Protection" = "Argomento protetto";
+
+/* nothing */
+"No outside messages" = "Nessun messaggio esterno";
 
 /* nothing */
 "Secret" = "Segreto";
 
 /* nothing */
-"Invite Only" = "Solo Invito";
+"Invite Only" = "Solo su invito";
 
 /* nothing */
 "Moderated" = "Moderato";
 
 /* nothing */
-"Ban List" = "Lista Ban";
+"Ban List" = "Elenco dei ban";
 
 /* nothing */
-"Keyword" = "Parola Chiave";
+"Keyword" = "Parola chiave";
 
 /* nothing */
-"User Limit" = "Limite Utenti";
+"User Limit" = "Limite utenti";
 
 /* nothing */
-"Show/Hide userlist" = "Mostra/Nascondi lista utenti";
+"Show/Hide userlist" = "Mostra/Nascondi elenco utenti";
 
 /* nothing */
-"Unable to set transparent background!\n\nYou may be using a non-compliant window\nmanager that is not currently supported.\n" = "Impossibile impostare la trasparenza dello sfondo!\n\nPotresti usare un window manager\ncorrentemente non supportato.\n";
+"Unable to set transparent background!\n\nYou may be using a non-compliant window\nmanager that is not currently supported.\n" = "Impossibile impostare lo sfondo trasparente.\n\nÈ possibile che sia in uso un gestore finestre\nnon compatibile che non è attualmente supportato.\n";
 
 /* nothing */
-"Enter new nickname:" = "Inserisci il nuovo nickname:";
+"Enter new nickname:" = "Nuovo soprannome:";
 
 /* nothing */
 "Host unknown" = "Host sconosciuto";
@@ -2546,7 +2516,7 @@
 "<tt><b>%-11s</b></tt> %s" = "<tt><b>%-11s</b></tt> %s";
 
 /* nothing */
-"Real Name:" = "Nome Reale:";
+"Real Name:" = "Nome vero:";
 
 /* nothing */
 "User:" = "Utente:";
@@ -2558,100 +2528,112 @@
 "Server:" = "Server:";
 
 /* nothing */
-"Away Msg:" = "Messaggio di assenza";
-
-/* nothing */
 "%u minutes ago" = "%u minuti fa";
 
 /* nothing */
-"Last Msg:" = "Ultimo Messaggio:";
+"Last Msg:" = "Ultimo messaggio:";
 
 /* nothing */
-"The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "La barra dei menù è nascosta. Puoi mostrarla nuovamente premendo F9 o cliccandocon il tasto destro in uno spazio bianco dell'area testo.";
+"Away Msg:" = "Messaggio di assenza:";
 
 /* nothing */
-"Open Link in Browser" = "Apri collegamento nel Browser";
+"%d nicks selected." = "%d soprannomi selezionati.";
+
+/* nothing */
+"The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "La barra dei menù è ora nascosta. Per visualizzarla nuovamente premere F9 o fare clic col tasto destro del mouse in uno spazio vuoto dell'area testo principale.";
+
+/* nothing */
+"Open Link in Browser" = "Apri il collegamento nel browser";
 
 /* nothing */
 "Copy Selected Link" = "Copia collegamento selezionato";
 
 /* nothing */
-"Part Channel" = "Abbandona Canale";
+"Join Channel" = "Entra nel canale";
 
 /* nothing */
-"Cycle Channel" = "Cicla Canale";
+"Part Channel" = "Abbandona il canale";
 
 /* nothing */
-"XChat: User menu" = "XChat: Menù utente";
+"Cycle Channel" = "Prova il canale";
+
+/* nothing */
+"_Remove from Favorites" = "_Rimuovi dai preferiti";
+
+/* nothing */
+"_Add to Favorites" = "_Aggiungi ai preferiti";
+
+/* nothing */
+"XChat: User menu" = "XChat: menù utente";
 
 /* nothing */
 "Edit This Menu..." = "Modifica questo menù...";
 
 /* nothing */
-"Retrieve channel list..." = "Richiama lista canali...";
+"Retrieve channel list..." = "Recupera elenco canali...";
 
 /* nothing */
-"User Commands - Special codes:\n\n%c  =  current channel\n%e  =  current network name\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "Comandi utente - Codici speciali:\n\n%c  =  canale corrente\n%e  =  nome della rete corrente\n%m  =  informazioni sul computer\n%n  =  tuo nick\n%t  =  ora/data\n%v  =  versione xchat\n%2  =  parola 2\n%3  =  parola 3\n&2  =  parola 2 alla fine della linea\n&3  =  parola 3 alla fine della linea\n\nesempio:\n/cmd john hello\n\n%2 è \"john\"\n&2 è \"john hello\".";
+"User Commands - Special codes:\n\n%c  =  current channel\n%e  =  current network name\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "Comandi utente - Codici speciali:\n\n%c  =  canale attuale\n%e  =  nome della rete attuale\n%m  =  informazioni sulla macchina\n%n  =  proprio soprannome\n%t  =  ora/data\n%v  =  versione xchat\n%2  =  parola 2\n%3  =  parola 3\n&2  =  parola 2 alla fine della riga\n&3  =  parola 3 alla fine della riga\n\nesempio:\n/cmd john hello\n\n%2 dovrebbe essere \"john\"\n&2 dovrebbe essere \"john hello\".";
 
 /* nothing */
-"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Pulsanti lista utenti - Codici speciali:\n\n%a  =  tutti i nick selezionati\n%c  =  canale corrente\n%e  =  nome della rete corrente\n%h  =  hostname del nick selezionato\n%m  =  informazioni sul computer\n%n  =  tuo nick\n%s  =  nick selezionato\n%t  =  ora/data\n";
+"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Pulsanti elenco utenti - Codici speciali:\n\n%a  =  tutti i soprannomi selezionati\n%c  =  canale attuale\n%e  =  nome della rete attuale\n%h  =  nome host del soprannome selezionato\n%m  =  informazioni sulla macchina\n%n  =  proprio soprannome\n%s  =  soprannome selezionato\n%t  =  ora/data\n";
 
 /* nothing */
-"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Pulsanti dialoghi - Codici speciali:\n\n%a  =  tutti i nick selezionati\n%c  =  canale corrente\n%e  =  nome della rete corrente\n%h  =  hostname del nick selezionato\n%m  =  informazioni sul computer\n%n  =  tuo nick\n%s  =  nick selezionato\n%t  =  ora/data\n";
+"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Pulsanti dialogo - Codici speciali:\n\n%a  =  tutti i soprannomi selezionati\n%c  =  canale attuale\n%e  =  nome della rete attuale\n%h  =  nome host del soprannome selezionato\n%m  =  informazioni sulla macchina\n%n  =  proprio soprannome\n%s  =  soprannome selezionato\n%t  =  ora/data\n";
 
 /* nothing */
-"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%e  =  current network name\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "Repliche CTCP - Codici speciali:\n\n%d  =  dati (ctcp intero)\n%e  =  nome della rete corrente\n%m  =  informazioni sul computer\n%s  =  nick che ha inviato il ctcp\n%t  =  ora/data\n%2  =  parola 2\n%3  =  parola 3\n&2  =  parola 2 alla fine della linea\n&3  =  parola 3 allafine della linea\n\n";
+"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%e  =  current network name\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "Risposte CTCP - Codici speciali:\n\n%d  =  dati (tutto il ctcp)\n%e  =  nome della rete corrente\n%m  =  informazioni sulla macchina\n%s  =  soprannome di chi ha inviato il ctcp\n%t  =  ora/data\n%2  =  parola 2\n%3  =  parola 3\n&2  =  parola 2 alla fine della riga\n&3  =  parola 3 alla fine della riga\n\n";
 
 /* nothing */
-"URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of XChat" = "Gestore URL - Codici speciali:\n\n%s  =  stringa dell'URL\n\nInserire ! davanti al comando\nindica che dovrebbe essere inviato\nad una shell invece che ad XChat";
+"URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of XChat" = "Gestori URL - Codici speciali:\n\n%s  =  stringa dell'URL\n\nInserire un «!» davanti al comando\nindica che deve essere inviato\nad un terminale invece che ad XChat";
 
 /* nothing */
-"XChat: User Defined Commands" = "XChat: Comandi definiti dall'utente";
+"XChat: User Defined Commands" = "XChat: comandi definiti dall'utente";
 
 /* nothing */
-"XChat: Userlist Popup menu" = "XChat: Menà popup lista utente";
+"XChat: Userlist Popup menu" = "XChat: menù pop-up elenco utenti";
 
 /* nothing */
 "Replace with" = "Sostituisci con";
 
 /* nothing */
-"XChat: Replace" = "XChat: Sostituisci";
+"XChat: Replace" = "XChat: sostituisci";
 
 /* nothing */
-"XChat: URL Handlers" = "XChat: Gestore URL";
+"XChat: URL Handlers" = "XChat: gestori URL";
 
 /* nothing */
-"XChat: Userlist buttons" = "XChat: Pulsanti lista utente";
+"XChat: Userlist buttons" = "XChat: pulsanti elenco utenti";
 
 /* nothing */
-"XChat: Dialog buttons" = "XChat: Pulsanti dialogo";
+"XChat: Dialog buttons" = "XChat: pulsanti dialogo";
 
 /* nothing */
-"XChat: CTCP Replies" = "XChat: Repliche CTCP";
+"XChat: CTCP Replies" = "XChat: risposte CTCP";
 
 /* nothing */
 "_XChat" = "_XChat";
 
 /* nothing */
-"Network Li_st..." = "Li_sta Reti...";
+"Network Li_st..." = "_Elenco reti...";
 
 /* nothing */
-"_New" = "_Nuovo";
+"_New" = "_Nuova";
 
 /* nothing */
-"Server Tab..." = "Scheda Server...";
+"Server Tab..." = "Scheda server...";
 
 /* nothing */
-"Channel Tab..." = "Scheda Canale...";
+"Channel Tab..." = "Scheda canale...";
 
 /* nothing */
-"Server Window..." = "Finestra Server...";
+"Server Window..." = "Finestra server...";
 
 /* nothing */
-"Channel Window..." = "Finestra Canale...";
+"Channel Window..." = "Finestra canale...";
 
 /* nothing */
-"_Load Plugin or Script..." = "C_arica Plugin o Script";
+"_Load Plugin or Script..." = "C_arica plugin o script...";
 
 /* nothing */
 "_Quit" = "_Esci";
@@ -2660,37 +2642,37 @@
 "_View" = "_Visualizza";
 
 /* nothing */
-"_Menubar" = "Barra del _Menù";
+"_Menu Bar" = "Barra dei _menù";
 
 /* nothing */
-"_Topicbar" = "Barra Argomen_to";
+"_Topic Bar" = "Barra dell'argomen_to";
 
 /* nothing */
-"_Userlist Buttons" = "Pulsanti Lista _Utenti";
+"_User List" = "Elenco _utenti";
 
 /* nothing */
-"M_ode Buttons" = "Pulsanti M_oredatori";
+"U_serlist Buttons" = "Pulsanti elenco _utenti";
 
 /* nothing */
-"_Layout" = "_Disposizione";
+"M_ode Buttons" = "Pulsanti m_odalità";
+
+/* nothing */
+"_Channel Switcher" = "Elenco _canali";
 
 /* nothing */
 "_Tabs" = "_Schede";
 
 /* nothing */
-"T_ree" = "_Albero";
+"T_ree" = "Albe_ro";
 
 /* nothing */
-"_Network Meters" = "Test _Rete";
+"_Network Meters" = "A_nalizzatore rete";
 
 /* nothing */
 "Off" = "Disattivato";
 
 /* nothing */
 "Graph" = "Grafico";
-
-/* nothing */
-"Both" = "Entrambi";
 
 /* nothing */
 "_Server" = "_Server";
@@ -2702,10 +2684,16 @@
 "_Reconnect" = "_Riconnetti";
 
 /* nothing */
-"Marked Away" = "Segna Assenza";
+"Join a Channel..." = "Accedi a un canale...";
 
 /* nothing */
-"_Usermenu" = "Menù _Utente";
+"List of Channels..." = "Elenco canali...";
+
+/* nothing */
+"Marked Away" = "Imposta come «assente»";
+
+/* nothing */
+"_Usermenu" = "Menù _utente";
 
 /* nothing */
 "S_ettings" = "_Impostazioni";
@@ -2717,262 +2705,328 @@
 "Advanced" = "Avanzate";
 
 /* nothing */
-"Auto Replace..." = "Risposta Automatica...";
+"Auto Replace..." = "Sostituzione automatica...";
 
 /* nothing */
-"CTCP Replies..." = "Repliche CTCP...";
+"CTCP Replies..." = "Risposte CTCP...";
 
 /* nothing */
-"Dialog Buttons..." = "Pulsanti Dialogo...";
+"Dialog Buttons..." = "Pulsanti dialogo...";
 
 /* nothing */
-"Keyboard Shortcuts..." = "Scorciatoie di Tastiera...";
+"Keyboard Shortcuts..." = "Scorciatoie da tastiera...";
 
 /* nothing */
-"Text Events..." = "Eventi Testuali...";
+"Text Events..." = "Eventi testuali...";
 
 /* nothing */
-"URL Handlers..." = "Gestore URL...";
+"URL Handlers..." = "Gestori URL...";
 
 /* nothing */
-"User Commands..." = "Comandi Utente...";
+"User Commands..." = "Comandi utente...";
 
 /* nothing */
-"Userlist Buttons..." = "Pulsanti Lista Utenti...";
+"Userlist Buttons..." = "Pulsanti elenco utenti...";
 
 /* nothing */
-"Userlist Popup..." = "Popup Lista Utenti...";
+"Userlist Popup..." = "Pop-up elenco utenti...";
 
 /* nothing */
 "_Window" = "_Finestra";
 
 /* nothing */
-"Ban List..." = "Lista dei Ban...";
+"Ban List..." = "Elenco dei ban...";
 
 /* nothing */
-"Channel List..." = "Lista Canali...";
+"Character Chart..." = "Tabella caratteri...";
 
 /* nothing */
-"Character Chart..." = "Tabella Caratteri...";
+"Direct Chat..." = "Chat diretta...";
 
 /* nothing */
-"Direct Chat..." = "Chat Diretta...";
+"File Transfers..." = "Trasferimenti file...";
 
 /* nothing */
-"File Transfers..." = "Trasferimento File...";
+"Friends List..." = "Elenco amici...";
 
 /* nothing */
-"Ignore List..." = "Lista utenti ignorati...";
+"Ignore List..." = "Elenco utenti ignorati...";
 
 /* nothing */
-"Notify List..." = "Lista Notifiche...";
+"Plugins and Scripts..." = "Plugin e script...";
 
 /* nothing */
-"Plugins and Scripts..." = "Plugin e Script...";
+"Raw Log..." = "Registro in forma grezza...";
 
 /* nothing */
-"Raw Log..." = "Raw Log...";
+"URL Grabber..." = "URL collezionati...";
 
 /* nothing */
-"URL Grabber..." = "URL Raccolti...";
+"Reset Marker Line" = "Azzera linea di demarcazione";
 
 /* nothing */
-"Reset Marker Line" = "Reset linea di demarcazione";
+"C_lear Text" = "Pu_lisci testo";
 
 /* nothing */
-"C_lear Text" = "Cance_lla Testo";
+"Search Text..." = "Cerca testo...";
 
 /* nothing */
-"Search Text..." = "Cerca Testo...";
+"Save Text..." = "Salva testo...";
 
 /* nothing */
-"Save Text..." = "Salva Testo...";
-
-/* nothing */
-"_Help" = "_Aiuto";
+"_Help" = "A_iuto";
 
 /* nothing */
 "_Contents" = "_Contenuti";
 
 /* nothing */
+"Check for updates" = "Controlla aggiornamenti";
+
+/* nothing */
 "_About" = "_Informazioni";
 
 /* nothing */
-"_Attach Window" = "_Attacca Finestra";
-
-/* nothing */
-"_Close Window" = "_Chiudi Finestra";
-
-/* nothing */
-"User" = "Utente";
+"_Attach" = "_Riunisci";
 
 /* nothing */
 "Last Seen" = "Ultima volta visto";
 
 /* nothing */
-"Offline" = "Non collegato";
+"Offline" = "Non in linea";
 
 /* nothing */
 "Never" = "Mai";
 
 /* nothing */
-"Online" = "Collegato";
+"%d minutes ago" = "%d minuti fa";
 
 /* nothing */
-"Enter nickname to add:" = "Inserisci nickname da aggiungere:";
+"Online" = "In linea";
 
 /* nothing */
-"Notify on these networks:" = "Notifica su queste reti:";
+"Enter nickname to add:" = "Inserire soprannome da aggiungere:";
 
 /* nothing */
-"Comma separated list of networks is accepted." = "E' accettata la virgola per separare la lista delle reti.";
+"Notify on these networks:" = "Notificare su queste reti:";
 
 /* nothing */
-"XChat: Notify List" = "XChat: Lista Notifiche";
+"Comma separated list of networks is accepted." = "Elenco di reti, separate da virgole.";
 
 /* nothing */
-"Remove" = "Rimuovi";
+"XChat: Friends List" = "XChat: elenco amici";
 
 /* nothing */
-"Open Dialog" = "Apri Dialogo";
+"Open Dialog" = "Apri dialogo";
+
+/* nothing */
+"Cannot find 'notify-send' to open balloon alerts.\nPlease install libnotify." = "Impossibile trovare «notify-send» per le notifiche.\nInstallare «libnotify».";
+
+/* nothing */
+"XChat: Connected to %u networks and %u channels" = "XChat: reti connesse %u, canali %u";
+
+/* nothing */
+"_Restore" = "_Ripristina";
+
+/* nothing */
+"_Hide" = "_Nascondi";
+
+/* nothing */
+"_Blink on" = "_Lampeggia per";
+
+/* nothing */
+"Channel Message" = "Messaggio del canale";
+
+/* nothing */
+"Private Message" = "Messaggio privato";
+
+/* nothing */
+"Highlighted Message" = "Messaggio evidenziato";
+
+/* nothing */
+"_Change status" = "_Cambia stato";
+
+/* nothing */
+"_Away" = "_Assente";
+
+/* nothing */
+"_Back" = "_Presente";
+
+/* nothing */
+"XChat: Highlighted message from: %s (%s)" = "XChat: messaggio evidenziato da: %s (%s)";
+
+/* nothing */
+"XChat: %u highlighted messages, latest from: %s (%s)" = "XChat: %u messaggi evidenziati, l'ultimo da: %s (%s)";
+
+/* nothing */
+"XChat: New public message from: %s (%s)" = "XChat: nuovo messaggio pubblico da: %s (%s)";
+
+/* nothing */
+"XChat: %u new public messages." = "XChat: %u nuovi messaggi pubblici.";
+
+/* nothing */
+"XChat: Private message from: %s (%s)" = "XChat: messaggio privato da: %s (%s)";
+
+/* nothing */
+"XChat: %u private messages, latest from: %s (%s)" = "XChat: %u messaggi privati, l'ultimo da: %s (%s)";
+
+/* nothing */
+"XChat: File offer from: %s (%s)" = "XChat: file offerto da: %s (%s)";
+
+/* nothing */
+"XChat: %u file offers, latest from: %s (%s)" = "XChat: %u file offerti, l'ultimo da: %s (%s)";
+
+/* nothing */
+"Version" = "Versione";
 
 /* nothing */
 "Description" = "Descrizione";
 
 /* nothing */
-"Select a Plugin or Script to load" = "Seleziona il Plugin o lo Script da caricare";
+"Select a Plugin or Script to load" = "Seleziona il plugin o lo script da caricare";
 
 /* nothing */
-"XChat: Plugins and Scripts" = "XChat: Plugin e Script";
+"XChat: Plugins and Scripts" = "XChat: plugin e script";
 
 /* nothing */
 "_Load..." = "_Carica...";
 
 /* nothing */
-"_UnLoad" = "_Scarica";
+"_UnLoad" = "Sca_rica";
 
 /* nothing */
-"_Close" = "_Chiudi";
+"Save As..." = "Salva come...";
 
 /* nothing */
-"Save As..." = "Salva Come...";
+"XChat: Rawlog (%s)" = "XChat: registro in forma grezza (%s)";
 
 /* nothing */
-"XChat: Rawlog (%s)" = "XChat: Rawlog (%s)";
+"Clear rawlog" = "Cancella registro in forma grezza";
 
 /* nothing */
-"Clear rawlog" = "Cancella rawlog";
+"The window you opened this Search for doesn't exist anymore." = "La finestra aperta per questa ricerca ricerca non esiste più.";
 
 /* nothing */
-"The window you opened this Search for doesn't exist anymore." = "La finestra che hai aperto per questa ricerca non esiste più.";
+"Search hit end, not found." = "Ricerca terminata, nessuna corrispondenza.";
 
 /* nothing */
-"Search hit end, not found." = "Ricerca finita, non trovato.";
+"XChat: Search" = "XChat: cerca";
 
 /* nothing */
-"XChat: Search" = "XChat: Cerca";
+"_Match case" = "_Maiuscole/minuscole";
 
 /* nothing */
-"Find:" = "Trova:";
-
-/* nothing */
-"_Match case" = "_Riscontro caso";
-
-/* nothing */
-"Search _backwards" = "Cerca _dietro";
+"Search _backwards" = "Cerca in_dietro";
 
 /* nothing */
 "_Find" = "_Trova";
 
 /* nothing */
-"New Network" = "Nuova Rete";
+"New Network" = "Nuova rete";
 
 /* nothing */
-"Really remove network \"%s\" and all its servers?" = "Vuoi veramente rimuovere la rete \"%s\" e tutti i suoi server?";
+"Really remove network \"%s\" and all its servers?" = "Rimuovere veramente la rete «%s» e tutti i relativi server?";
 
 /* nothing */
-"User name and Real name cannot be left blank." = "Nome utente e nome reale non possono essere vuoti.";
+"#channel" = "#canale";
 
 /* nothing */
-"XChat: Edit %s" = "XChat: Modifica %s";
+"XChat: Favorite Channels (Auto-Join List)" = "XChat: elenco canali preferiti (accesso automatico)";
 
 /* nothing */
-"Servers for %s" = "Server per %s";
+"These channels will be joined whenever you connect to %s." = "Verrà effettuato l'accesso a questi canali al momento della connessione a %s.";
 
 /* nothing */
-"Connect to selected server only" = "Connetti solo al server selezionato";
-
-/* nothing */
-"Don't cycle through all the servers when the connection fails." = "Non ricollegarsi attraverso i server quando la connessione fallisce.";
-
-/* nothing */
-"Your Details" = "Tuoi Dettagli";
-
-/* nothing */
-"Use global user information" = "Usa informazioni utente globali";
-
-/* nothing */
-"_Nick name:" = "_Nick name:";
-
-/* nothing */
-"Second choice:" = "Seconda scelta:";
-
-/* nothing */
-"_User name:" = "Nome _Utente:";
-
-/* nothing */
-"Rea_l name:" = "Nome Rea_le:";
-
-/* nothing */
-"Connecting" = "Connessione";
-
-/* nothing */
-"Auto connect to this network at startup" = "Connetti automaticamente a questa rete all'avvio";
-
-/* nothing */
-"Use a proxy server" = "Usa un server proxy";
-
-/* nothing */
-"Use SSL for all the servers on this network" = "Usa SSL per tutti i server di questa rete";
-
-/* nothing */
-"Accept invalid SSL certificate" = "Accetta certificati SSL invalidi";
-
-/* nothing */
-"C_hannels to join:" = "C_anale nel quale entrare:";
-
-/* nothing */
-"Channels to join, separated by commas, but not spaces!" = "Canali nei quali entrare, separati da virgola, ma senza spazi!";
-
-/* nothing */
-"Connect command:" = "Comando dopo connessione:";
-
-/* nothing */
-"Extra command to execute after connecting. If you need more than one, set this to LOAD -e <filename>, where <filename> is a text-file full of commands to execute." = "Comando extra da eseguire dopo la connessione. Se necessiti di più comandi, imposta questo per caricare -e <filename>, dove <filename> è un file di testo con tutti i comandi da eseguire.";
-
-/* nothing */
-"Nickserv password:" = "Password del Nickserv:";
-
-/* nothing */
-"If your nickname requires a password, enter it here. Not all IRC networks support this." = "Se il tuo nickname richiede una password, inseriscila qui. Non tutte le reti IRC lo supportano.";
-
-/* nothing */
-"Server password:" = "Password del Server:";
-
-/* nothing */
-"Password for the server, if in doubt, leave blank." = "Password per il server, in caso di dubbio, lasciare vuoto.";
-
-/* nothing */
-"Character set:" = "Imposta Carattere:";
+"Key (Password)" = "Chiave (password):";
 
 /* nothing */
 "_Edit" = "_Modifica";
 
 /* nothing */
-"XChat: Network List" = "XChat: Lista Reti";
+"%s has been removed." = "%s è stato rimosso.";
 
 /* nothing */
-"User Information" = "Informazioni Utente";
+"%s has been added." = "%s è stato aggiunto.";
+
+/* nothing */
+"User name and Real name cannot be left blank." = "Il nome utente e il vero nome non possono essere vuoti.";
+
+/* nothing */
+"XChat: Edit %s" = "XChat: modifica %s";
+
+/* nothing */
+"Servers for %s" = "Server %s";
+
+/* nothing */
+"Connect to selected server only" = "Connettere solo al server selezionato";
+
+/* nothing */
+"Don't cycle through all the servers when the connection fails." = "Non provare tutti i server quando la connessione non riesce.";
+
+/* nothing */
+"Your Details" = "Dettagli";
+
+/* nothing */
+"Use global user information" = "Usare informazioni utente globali";
+
+/* nothing */
+"_Nick name:" = "Sopra_nnome:";
+
+/* nothing */
+"Second choice:" = "Seconda scelta:";
+
+/* nothing */
+"_User name:" = "Nome _utente:";
+
+/* nothing */
+"Rea_l name:" = "Nome _vero:";
+
+/* nothing */
+"Connecting" = "Connessione";
+
+/* nothing */
+"Auto connect to this network at startup" = "Connettere automaticamente a questa rete all'avvio";
+
+/* nothing */
+"Bypass proxy server" = "Scavalcare il server proxy";
+
+/* nothing */
+"Use SSL for all the servers on this network" = "Usare SSL per tutti i server di questa rete";
+
+/* nothing */
+"Accept invalid SSL certificate" = "Accettare certificato SSL non valido";
+
+/* nothing */
+"_Favorite channels:" = "Canali pre_feriti:";
+
+/* nothing */
+"Channels to join, separated by commas, but not spaces!" = "Canali nei quali entrare, separati da virgole, ma senza spazi.";
+
+/* nothing */
+"Connect command:" = "Comando dopo la connessione:";
+
+/* nothing */
+"Extra command to execute after connecting. If you need more than one, set this to LOAD -e <filename>, where <filename> is a text-file full of commands to execute." = "Comando aggiuntivo da eseguire dopo la connessione. Se sono necessari più comandi, utilizzare LOAD -e <nome file>, sostituendo <nome file> con il file dove è contenuto l'elenco dei comandi da eseguire.";
+
+/* nothing */
+"Nickserv password:" = "Password del Nickserv:";
+
+/* nothing */
+"If your nickname requires a password, enter it here. Not all IRC networks support this." = "Se il soprannome usato richiede una password, inserirla qui. Non tutte le reti IRC supportano questa funzione.";
+
+/* nothing */
+"Server password:" = "Password del server:";
+
+/* nothing */
+"Password for the server, if in doubt, leave blank." = "Password per il server, in caso di dubbio, lasciare vuoto.";
+
+/* nothing */
+"Character set:" = "Set di caratteri:";
+
+/* nothing */
+"XChat: Network List" = "XChat: elenco reti";
+
+/* nothing */
+"User Information" = "Informazioni utente";
 
 /* nothing */
 "Third choice:" = "Terza scelta:";
@@ -2981,7 +3035,7 @@
 "Networks" = "Reti";
 
 /* nothing */
-"Skip network list on startup" = "Salta lista reti all'avvio";
+"Skip network list on startup" = "Non visualizzare l'elenco reti all'avvio";
 
 /* nothing */
 "_Edit..." = "_Modifica...";
@@ -2990,10 +3044,13 @@
 "_Sort" = "_Ordina";
 
 /* nothing */
-"C_onnect" = "_Connetti";
+"Sorts the network list in alphabetical order. Use SHIFT-UP and SHIFT-DOWN keys to move a row." = "Ordina l'elenco reti alfabeticamente. Utilizzare le combinazioni di tasti Maiusc-su e Maiusc-giù per muovere una sola riga.";
 
 /* nothing */
-"Text Box Appearance" = "Aspetto Area Testo";
+"C_onnect" = "C_onnetti";
+
+/* nothing */
+"Text Box Appearance" = "Aspetto area di testo";
 
 /* nothing */
 "Font:" = "Carattere:";
@@ -3002,31 +3059,31 @@
 "Background image:" = "Immagine di sfondo:";
 
 /* nothing */
-"Scrollback lines:" = "Linee visibili:";
+"Scrollback lines:" = "Righe precedenti visibili:";
 
 /* nothing */
-"Colored nick names" = "Nickname colorati";
+"Colored nick names" = "Soprannomi colorati";
 
 /* nothing */
-"Give each person on IRC a different color" = "Assegna a ciascuna persona su IRC un colore differente";
+"Give each person on IRC a different color" = "Assegna a ciascun utente su IRC un colore differente";
 
 /* nothing */
-"Indent nick names" = "Rientra nickname";
+"Indent nick names" = "Indentare soprannomi";
 
 /* nothing */
-"Make nick names right-justified" = "Nickname giustificati a destra";
+"Make nick names right-justified" = "Allinea i soprannomi a destra";
 
 /* nothing */
-"Transparent background" = "Trasparenza di sfondo";
+"Transparent background" = "Sfondo trasparente";
 
 /* nothing */
-"Show marker line" = "Mostra linea di demarcazione";
+"Show marker line" = "Mostrare riga di demarcazione";
 
 /* nothing */
-"Insert a red line after the last read text." = "Inserisci una linea rossa dopo l'ultimo messaggio letto.";
+"Insert a red line after the last read text." = "Inserisce una riga rossa dopo l'ultimo messaggio letto.";
 
 /* nothing */
-"Transparency Settings" = "Impostazioni Trasparenza";
+"Transparency Settings" = "Impostazioni trasparenza";
 
 /* nothing */
 "Red:" = "Rosso:";
@@ -3038,46 +3095,46 @@
 "Blue:" = "Blu:";
 
 /* nothing */
-"Time Stamps" = "Stampa Ora";
+"Time Stamps" = "Orario";
 
 /* nothing */
-"Enable time stamps" = "Attiva stampa ora";
+"Enable time stamps" = "Attiva orario";
 
 /* nothing */
-"Time stamp format:" = "Formato stampa ora:";
+"Time stamp format:" = "Formato orario:";
 
 /* nothing */
-"See strftime manpage for details." = "Vedi la guida di strftime per dettagli.";
+"See strftime manpage for details." = "Per maggiori informazioni, consultare il manuale di strftime.";
 
 /* nothing */
-"A-Z" = "A-Z";
+"A-Z" = "alfabeticamente (A-Z)";
 
 /* nothing */
-"Last-spoke order" = "Ordina per ultimo che ha parlato";
+"Last-spoke order" = "prima l'ultimo che ha parlato";
 
 /* nothing */
-"Input box" = "Area Input";
+"Input box" = "Area di input";
 
 /* nothing */
-"Use the Text box font and colors" = "Usa carattere e colori dell'area testo";
+"Use the Text box font and colors" = "Usare caratteri e colori dell'area testo";
 
 /* nothing */
-"Spell checking" = "Controllo del periodo";
+"Spell checking" = "Controllo ortografico";
 
 /* nothing */
-"Nick Completion" = "Completa Nick";
+"Nick Completion" = "Completamento dei soprannomi";
 
 /* nothing */
-"Automatic nick completion (without TAB key)" = "Completa automaticamente il nick (senza tasto TAB)";
+"Automatic nick completion (without TAB key)" = "Completare automaticamente i soprannomi (senza utilizzare il tasto TAB)";
 
 /* nothing */
-"Nick completion suffix:" = "Suffisso al completamento nick:";
+"Nick completion suffix:" = "Suffisso al completamento dei soprannomi:";
 
 /* nothing */
-"Nick completion sorted:" = "Completamento nick ordinati:";
+"Nick completion sorted:" = "Ordinare i soprannomi completati:";
 
 /* nothing */
-"Input Box Codes" = "Codici Area Input";
+"Input Box Codes" = "Codici area di input";
 
 /* nothing */
 "Interpret %nnn as an ASCII value" = "Interpreta %nnn come un valore ASCII";
@@ -3086,43 +3143,61 @@
 "Interpret %C, %B as Color, Bold etc" = "Interpreta %C, %B come Colore, Grassetto ecc.";
 
 /* nothing */
-"A-Z, Ops first" = "A-Z, Prima gli Op";
+"A-Z, Ops first" = "alfabeticamente (A-Z), operatori all'inizio";
 
 /* nothing */
-"Z-A, Ops last" = "Z-A, Dopo gli Op";
+"Z-A, Ops last" = "alfabeticamente (Z-A), operatori alla fine";
 
 /* nothing */
-"Z-A" = "Z-A";
+"Z-A" = "alfabeticamente (Z-A)";
 
 /* nothing */
-"Unsorted" = "Non ordinare";
+"Unsorted" = "non ordinare";
 
 /* nothing */
-"User List" = "Lista utenti";
+"Left (Upper)" = "a sinistra (in alto)";
 
 /* nothing */
-"Show hostnames in user list" = "Mostra hostname nella lista utenti";
+"Left (Lower)" = "a sinistra (in basso)";
 
 /* nothing */
-"Resizable user list" = "Lista utenti adattabile";
+"Right (Upper)" = "a destra (in alto)";
 
 /* nothing */
-"User list sorted by:" = "Lista utenti ordinata per:";
+"Right (Lower)" = "a destra (in basso)";
 
 /* nothing */
-"Away tracking" = "Traccia delle assenze";
+"Top" = "in alto";
 
 /* nothing */
-"Track the Away status of users and mark them in a different color" = "Trova lo stato di assenza degli utenti e segnali con colore differente";
+"Bottom" = "in basso";
+
+/* nothing */
+"Hidden" = "nascosto";
+
+/* nothing */
+"User List" = "Elenco utenti";
+
+/* nothing */
+"Show hostnames in user list" = "Mostrare nome host nell'elenco utenti";
+
+/* nothing */
+"User list sorted by:" = "Ordinare elenco utenti:";
+
+/* nothing */
+"Show user list at:" = "Posizionare elenco utenti:";
+
+/* nothing */
+"Away tracking" = "Stato di assenza";
+
+/* nothing */
+"Track the Away status of users and mark them in a different color" = "Individuare lo stato di assenza degli utenti e segnarli con colore differente";
 
 /* nothing */
 "On channels smaller than:" = "Sui canali più piccoli di:";
 
 /* nothing */
-"Action Upon Double Click" = "Azione per doppio click";
-
-/* nothing */
-"Execute command:" = "Esegui comando:";
+"Action Upon Double Click" = "Azione da eseguire sul doppio clic";
 
 /* nothing */
 "Windows" = "Finestre";
@@ -3131,106 +3206,97 @@
 "Tabs" = "Schede";
 
 /* nothing */
-"Bottom" = "Parte inferiore";
-
-/* nothing */
-"Top" = "Alta";
-
-/* nothing */
-"Left" = "Sinistra";
-
-/* nothing */
-"Right" = "Destra";
-
-/* nothing */
-"Hidden" = "Nascondi";
-
-/* nothing */
 "Always" = "Sempre";
 
 /* nothing */
 "Only requested tabs" = "Solo schede richieste";
 
 /* nothing */
-"Open an extra tab for server messages" = "Apri una scheda extra per i messaggi del server";
+"Tree" = "Albero";
 
 /* nothing */
-"Open an extra tab for server notices" = "Apri una scheda extra per le notizie del server";
+"Switcher type:" = "Tipo di selettore canali:";
 
 /* nothing */
-"Open a new tab when you receive a private message" = "Apri una nuova scheda quando ricevi un messaggio privato";
+"Open an extra tab for server messages" = "Aprire una scheda aggiuntiva per i messaggi del server";
 
 /* nothing */
-"Sort tabs in alphabetical order" = "Ordina schede in modo alfabetico";
+"Open an extra tab for server notices" = "Aprire una scheda aggiuntiva per le notizie del server";
 
 /* nothing */
-"Small tabs" = "Schede piccole";
+"Open a new tab when you receive a private message" = "Aprire una nuova scheda quando si riceve un messaggio privato";
 
 /* nothing */
-"Focus new tabs:" = "Apri la nuova scheda:";
+"Sort tabs in alphabetical order" = "Ordinare le schede in modo alfabetico";
 
 /* nothing */
-"Show tabs at:" = "Mostra schede a:";
+"Smaller text" = "Ridurre le dimensioni del testo";
 
 /* nothing */
-"Shorten tab labels to:" = "Caratteri nomi schede:";
+"Focus new tabs:" = "Focus nuove schede:";
+
+/* nothing */
+"Show channel switcher at:" = "Posizionare elenco canali:";
+
+/* nothing */
+"Shorten tab labels to:" = "Etichette schede abbreviate a:";
 
 /* nothing */
 "letters." = "lettere.";
 
 /* nothing */
-"Tabs or Windows" = "Schede o Finestre";
+"Tabs or Windows" = "Schede o finestre";
 
 /* nothing */
-"Open channels in:" = "Apri canali in:";
+"Open channels in:" = "Aprire canali in:";
 
 /* nothing */
-"Open dialogs in:" = "Apri dialoghi in:";
+"Open dialogs in:" = "Aprire dialoghi in:";
 
 /* nothing */
-"Open utilities in:" = "Apri utilità in:";
+"Open utilities in:" = "Aprire utilità in:";
 
 /* nothing */
-"Open DCC, Ignore, Notify etc, in tabs or windows?" = "Apri DCC, lista ignorati, notifiche ecc, in schede o finestre?";
+"Open DCC, Ignore, Notify etc, in tabs or windows?" = "Aprire DCC, elenco ignorati, notifiche ecc, in schede o finestre?";
 
 /* nothing */
 "No" = "No";
 
 /* nothing */
-"Yes" = "Si";
+"Yes" = "Sì";
 
 /* nothing */
-"Browse for save folder every time" = "Sfoglia per cartelle da salvare ogni momento";
+"Browse for save folder every time" = "Scegliere ogni volta la cartella dove salvare i file";
 
 /* nothing */
-"Files and Directories" = "File e Cartelle";
+"Files and Directories" = "File e cartelle";
 
 /* nothing */
-"Auto accept file offers:" = "Accetta automaticamente i file offerti:";
+"Auto accept file offers:" = "Accettare automaticamente i file offerti:";
 
 /* nothing */
-"Download files to:" = "Download file in:";
+"Download files to:" = "Scaricare i file in:";
 
 /* nothing */
-"Move completed files to:" = "Muovi file completi in:";
+"Move completed files to:" = "Spostare i file completi in:";
 
 /* nothing */
-"Save nick name in filenames" = "Salva nickname nei nomi dei file ";
+"Save nick name in filenames" = "Salvare il soprannome nei nomi dei file";
 
 /* nothing */
-"Network Settings" = "Impostazioni Rete";
+"Network Settings" = "Impostazioni rete";
 
 /* nothing */
-"Get my address from the IRC server" = "Prendi il mio indirizzo dal server IRC";
+"Get my address from the IRC server" = "Ottenere l'indirizzo dal server IRC";
 
 /* nothing */
-"Asks the IRC server for your real address. Use this if you have a 192.168.*.* address!" = "Chiedi al server IRC il tuo indirizzo reale. Usa questo se hai un indirizzo 192.168.*.*!";
+"Asks the IRC server for your real address. Use this if you have a 192.168.*.* address!" = "Chiede al server IRC il vero indirizzo. Abilitare questa funzione se si utilizza un indirizzo 192.168.*.*";
 
 /* nothing */
-"DCC IP address:" = "DCC indirizzo IP:";
+"DCC IP address:" = "Indirizzo IP per DCC:";
 
 /* nothing */
-"Claim you are at this address when offering files." = "Segnala questo indirizzo quando offri file.";
+"Claim you are at this address when offering files." = "Mostra questo indirizzo quando si offrono file.";
 
 /* nothing */
 "First DCC send port:" = "Prima porta invio DCC:";
@@ -3239,148 +3305,154 @@
 "Last DCC send port:" = "Ultima porta invio DCC:";
 
 /* nothing */
-"!Leave ports at zero for full range." = "!Lascia porte a zero per range pieno.";
+"!Leave ports at zero for full range." = "!Impostare le porte a zero per utilizzare l'intervallo completo.";
 
 /* nothing */
-"Maximum File Transfer Speeds (bytes per second)" = "Velocità di trasferimento file massima (byte per secondo)";
+"Maximum File Transfer Speeds (bytes per second)" = "Velocità massima di trasferimento file (byte per secondo)";
 
 /* nothing */
-"One upload:" = "Un Upload:";
+"One upload:" = "Un caricamento:";
 
 /* nothing */
 "Maximum speed for one transfer" = "Velocità massima per un trasferimento";
 
 /* nothing */
-"One download:" = "Un download:";
+"One download:" = "Uno scaricamento:";
 
 /* nothing */
-"All uploads combined:" = "Tutti gli upload combinati:";
+"All uploads combined:" = "Tutti i caricamenti combinati:";
 
 /* nothing */
 "Maximum speed for all files" = "Velocità massima per tutti i file";
 
 /* nothing */
-"All downloads combined:" = "Tutti i download combinati:";
-
-/* nothing */
-"Default Messages" = "Messaggi di default";
-
-/* nothing */
-"Quit:" = "Esci:";
-
-/* nothing */
-"Leave channel:" = "Lascia canale:";
-
-/* nothing */
-"Away:" = "Assente:";
-
-/* nothing */
-"Away" = "Assente";
-
-/* nothing */
-"Announce away messages" = "Annuncia messaggi di assenza";
-
-/* nothing */
-"Announce your away messages to all channels" = "Annuncia i tuoi messaggi di assenza a tutti i canali";
-
-/* nothing */
-"Show away once" = "Mostra una volta il messaggio di assenza";
-
-/* nothing */
-"Show identical away messages only once" = "Mostra i messaggi di assenza identici una volta";
-
-/* nothing */
-"Automatically unmark away" = "Togli automaticamente lo stato di assenza";
-
-/* nothing */
-"Unmark yourself as away before sending messages" = "Togli l'assenza prima di mandare messaggi";
-
-/* nothing */
-"(Can be a text file relative to ~/.xchat2/)." = "(Può essere un file di testo relativo a ~/.xchat2/).";
-
-/* nothing */
-"(Can be a text file relative to config dir)." = "(Può essere un file di testo relativo alla cartella di configurazione).";
+"All downloads combined:" = "Tutti gli scaricamenti combinati:";
 
 /* nothing */
 "Alerts" = "Avvisi";
 
 /* nothing */
-"Flash taskbar on highlighted messages" = "Taskbar lampeggiante ai messaggi evidenziati";
+"Show tray balloons on:" = "Mostrare notifiche per:";
 
 /* nothing */
-"Flash taskbar on any private messages" = "Taskbar lampeggiante ai messaggi evidenziati";
+"Blink tray icon on:" = "Icona lampeggiante nell'area di notifica per:";
 
 /* nothing */
-"Beep on highlighted messages" = "Emetti un beep per messaggio evidenziato";
+"Blink task bar on:" = "Barra delle attività lampeggiante per:";
 
 /* nothing */
-"Beep on private messages" = "Emetti un beep per messaggio privato ricevuto";
+"Make a beep sound on:" = "Emettere un suono per:";
 
 /* nothing */
-"Beep on channel messages" = "Emetti un beep per messaggio ricevuto in canale";
+"Enable system tray icon" = "Abilitare icona nell'area di notifica";
 
 /* nothing */
-"Extra words to highlight on:" = "Parole extra da evidenziare su:";
+"Highlighted Messages" = "Messaggi evidenziati";
 
 /* nothing */
-"Nicks not to highlight on:" = "Nick da non evidenziare su:";
+"Highlighted messages are ones where your nickname is mentioned, but also:" = "I messaggi evidenziati sono quelli in cui compare il proprio soprannome, ma anche:";
 
 /* nothing */
-"Separate multiple words with commas." = "Separa più parole con virgole";
+"Extra words to highlight:" = "Altre parole da evidenziare:";
 
 /* nothing */
-"Advanced Settings" = "Impostazioni Avanzate";
+"Nick names not to highlight:" = "Soprannomi da non evidenziare:";
 
 /* nothing */
-"Auto reconnect delay:" = "Connettiti automaticamente dopo:";
+"Nick names to always highlight:" = "Soprannomi da evidenziare sempre:";
 
 /* nothing */
-"Display MODEs in raw form" = "Mostra modalità in forma raw";
+"Separate multiple words with commas.\nWildcards are accepted." = "Separare le parole con virgole.\nSono ammessi i meta-caratteri.";
 
 /* nothing */
-"Whois on notify" = "Esegui Whois su notifica";
+"Default Messages" = "Messaggi predefiniti";
 
 /* nothing */
-"Sends a /WHOIS when a user comes online in your notify list" = "Invia un /WHOIS quando un utente della tua lista di notifica si collega";
+"Quit:" = "Uscita:";
+
+/* nothing */
+"Leave channel:" = "Abbandono del canale:";
+
+/* nothing */
+"Away:" = "Assenza:";
+
+/* nothing */
+"Away" = "Assenza";
+
+/* nothing */
+"Announce away messages" = "Comunicare lo stato di assenza";
+
+/* nothing */
+"Announce your away messages to all channels" = "Comunica i messaggi di assenza a tutti i canali";
+
+/* nothing */
+"Show away once" = "Mostrare lo stato di assenza una sola volta";
+
+/* nothing */
+"Show identical away messages only once" = "Mostra i messaggi di assenza identici una sola volta";
+
+/* nothing */
+"Automatically unmark away" = "Togliere automaticamente lo stato di assenza";
+
+/* nothing */
+"Unmark yourself as away before sending messages" = "Toglie lo stato di assenza prima di inviare messaggi";
+
+/* nothing */
+"Advanced Settings" = "Impostazioni avanzate";
+
+/* nothing */
+"Auto reconnect delay:" = "Attesa prima della riconnessione automatica:";
+
+/* nothing */
+"Display MODEs in raw form" = "Mostra le «modalità» in forma grezza";
+
+/* nothing */
+"Whois on notify" = "Whois per notifica";
+
+/* nothing */
+"Sends a /WHOIS when a user comes online in your notify list" = "Invia il comando /WHOIS quando un utente presente nell'elenco di notifica si collega";
 
 /* nothing */
 "Hide join and part messages" = "Nascondi messaggi di entrata e uscita";
 
 /* nothing */
-"Hide channel join/part messages by default" = "Nascondi i messaggi di entrata/uscita nei canali";
+"Hide channel join/part messages by default" = "Nasconde i messaggi di entrata e uscita nei canali in maniera predefinita";
 
 /* nothing */
 "Auto Open DCC Windows" = "Apri automaticamente finestre DCC";
 
 /* nothing */
-"Send window" = "Finestra d'invio";
+"Send window" = "Finestra di invio";
 
 /* nothing */
 "Receive window" = "Finestra di ricezione";
 
 /* nothing */
-"Chat window" = "Finestra Chat";
+"Chat window" = "Finestra di chat";
 
 /* nothing */
-"Logging" = "Logging";
+"Logging" = "Registrazione";
 
 /* nothing */
-"Enable logging of conversations" = "Attiva log delle conversazioni";
+"Display scrollback from previous session" = "Mostrare conversazioni della sessione precedente";
 
 /* nothing */
-"Log filename:" = "File di Log:";
+"Enable logging of conversations to disk" = "Abilitare registrazione delle conversazioni sul disco";
+
+/* nothing */
+"Log filename:" = "Nome file del registro:";
 
 /* nothing */
 "%s=Server %c=Channel %n=Network." = "%s=Server %c=Canale %n=Rete.";
 
 /* nothing */
-"Insert timestamps in logs" = "Inserisci orario nei log";
+"Insert timestamps in logs" = "Inserire orario nei registri";
 
 /* nothing */
-"Log timestamp format:" = "Formato stampa ora dei Log:";
+"Log timestamp format:" = "Formato orario del registro:";
 
 /* nothing */
-"(Disabled)" = "(Disabilitato)";
+"(Disabled)" = "(disabilitato)";
 
 /* nothing */
 "Wingate" = "Wingate";
@@ -3398,28 +3470,28 @@
 "MS Proxy (ISA)" = "MS Proxy (ISA)";
 
 /* nothing */
-"All Connections" = "Tutte le connessioni";
+"All Connections" = "tutte le connessioni";
 
 /* nothing */
-"IRC Server Only" = "Solo Server IRC";
+"IRC Server Only" = "solo server IRC";
 
 /* nothing */
-"DCC Get Only" = "Ricevi solo DCC";
+"DCC Get Only" = "solo per DCC";
 
 /* nothing */
-"Your Address" = "Tuo Indirizzo";
+"Your Address" = "Proprio indirizzo";
 
 /* nothing */
-"Bind to:" = "Abbina a:";
+"Bind to:" = "Associare a:";
 
 /* nothing */
-"Only useful for computers with multiple addresses." = "Utile solo per computer con indirizzi multipli";
+"Only useful for computers with multiple addresses." = "Utile solo per computer con indirizzi multipli.";
 
 /* nothing */
-"Proxy Server" = "Proxy Server";
+"Proxy Server" = "Server proxy";
 
 /* nothing */
-"Hostname:" = "Hostname:";
+"Hostname:" = "Nome host:";
 
 /* nothing */
 "Port:" = "Porta:";
@@ -3428,31 +3500,31 @@
 "Type:" = "Tipo:";
 
 /* nothing */
-"Use proxy for:" = "Usa proxy per:";
+"Use proxy for:" = "Usare proxy per:";
 
 /* nothing */
-"Proxy Authentication" = "Autenticazione Proxy";
+"Proxy Authentication" = "Autenticazione proxy";
 
 /* nothing */
-"Use Authentication (MS Proxy, HTTP or Socks5 only)" = "Usa autenticazione (MS Proxy, HTTP o solo Socks5)";
+"Use Authentication (MS Proxy, HTTP or Socks5 only)" = "Usare autenticazione (MS Proxy, HTTP o solo Socks5)";
 
 /* nothing */
-"Use Authentication (HTTP or Socks5 only)" = "Usa autenticazione (HTTP o solo Socks5)";
+"Use Authentication (HTTP or Socks5 only)" = "Usare autenticazione (HTTP o solo Socks5)";
 
 /* nothing */
-"Username:" = "Username:";
+"Username:" = "Nome utente:";
 
 /* nothing */
 "Password:" = "Password:";
 
 /* nothing */
-"Select an Image File" = "Seleziona un File Immagine";
+"Select an Image File" = "Seleziona un'immagine";
 
 /* nothing */
-"Select Download Folder" = "Seleziona Cartella di Download";
+"Select Download Folder" = "Seleziona la cartella di scaricamento";
 
 /* nothing */
-"Select font" = "Seleziona carattere";
+"Select font" = "Seleziona il carattere";
 
 /* nothing */
 "Browse..." = "Sfoglia...";
@@ -3464,34 +3536,37 @@
 "Mark not-identified users with:" = "Segna utenti non identificati con:";
 
 /* nothing */
+"Open Data Folder" = "Apri cartella dati...";
+
+/* nothing */
 "Select color" = "Seleziona un colore";
 
 /* nothing */
-"Text Colors" = "Colore del testo";
+"Text Colors" = "Colori del testo";
 
 /* nothing */
 "mIRC colors:" = "Colori di mIRC:";
 
 /* nothing */
-"Local colors:" = "Colori locali";
+"Local colors:" = "Colori locali:";
 
 /* nothing */
-"Foreground:" = "Primo piano";
+"Foreground:" = "Primo piano:";
 
 /* nothing */
-"Background:" = "Sfondo";
+"Background:" = "Sfondo:";
 
 /* nothing */
-"Marking Text" = "Seleziona testo";
+"Marking Text" = "Testo selezionato";
 
 /* nothing */
-"Interface Colors" = "Interfaccia Colori";
+"Interface Colors" = "Colori dell'intefaccia";
 
 /* nothing */
-"New data:" = "Nuova data:";
+"New data:" = "Nuovi dati:";
 
 /* nothing */
-"Marker line:" = "Seleziona linea:";
+"Marker line:" = "Linea di demarcazione:";
 
 /* nothing */
 "New message:" = "Nuovo messaggio:";
@@ -3500,22 +3575,22 @@
 "Away user:" = "Utente assente:";
 
 /* nothing */
-"Highlight:" = "Evidenziazione:";
+"Highlight:" = "Evidenzia:";
 
 /* nothing */
 "Event" = "Evento";
 
 /* nothing */
-"Sound file" = "Suona file";
+"Sound file" = "File sonoro";
 
 /* nothing */
-"Select a sound file" = "Seleziona un file musicale";
+"Select a sound file" = "Seleziona un file sonoro";
 
 /* nothing */
 "Sound playing method:" = "Metodo esecuzione suono:";
 
 /* nothing */
-"External sound playing _program:" = "_Programma di suono esterno";
+"External sound playing _program:" = "_Programma di riproduzione esterno:";
 
 /* nothing */
 "_External program" = "Programma _esterno";
@@ -3524,31 +3599,34 @@
 "_Automatic" = "_Automatico";
 
 /* nothing */
-"Sound files _directory:" = "Suona file _cartella:";
+"Sound files _directory:" = "_Directory file sonoro:";
 
 /* nothing */
-"Sound file:" = "Suona file:";
+"Sound file:" = "File sonoro:";
 
 /* nothing */
 "_Browse..." = "_Sfoglia...";
 
 /* nothing */
-"_Play" = "_Play";
+"_Play" = "Ri_produci";
 
 /* nothing */
 "Interface" = "Interfaccia";
 
 /* nothing */
-"Text box" = "Area testo";
+"Text box" = "Area di testo";
 
 /* nothing */
-"User list" = "Lista utenti";
+"User list" = "Elenco utenti";
+
+/* nothing */
+"Channel switcher" = "Elenco canali";
 
 /* nothing */
 "Colors" = "Colori";
 
 /* nothing */
-"Chatting" = "Chatting";
+"Chatting" = "Finestra di chat";
 
 /* nothing */
 "General" = "Generale";
@@ -3557,61 +3635,64 @@
 "Sound" = "Suono";
 
 /* nothing */
-"Network setup" = "Setup Rete";
+"Network setup" = "Impostazioni rete";
 
 /* nothing */
-"File transfers" = "File trasferiti";
+"File transfers" = "Trasferimenti di file";
 
 /* nothing */
 "Categories" = "Categorie";
 
 /* nothing */
-"Some settings were changed that require a restart to take full effect." = "Alcune impostazioni sono state cambiate e richiedono il riavvio per essere attuate.";
+"You cannot place the tree on the top or bottom!\nPlease change to the <b>Tabs</b> layout in the <b>View</b> menu first." = "Impossibile posizionare l'albero in alto o in basso.\nSelezionare prima la vista a <b>Schede</b> nel menù <b>Visualizza</b>.";
 
 /* nothing */
-"*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile" = "*ATTENZIONE*\nL'auto accettazione DCC nella tua cartella home\npuò essere pericoloso e soggetto a exploit. Esempio:\nQualcuno può mandarti un .bash_profile";
+"Some settings were changed that require a restart to take full effect." = "Alcune impostazioni sono state modificate e richiedono il riavvio per essere applicate.";
 
 /* nothing */
-"XChat: Preferences" = "XChat: Preferenze";
+"*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile" = "*ATTENZIONE*\nAccettare automaticamente DCC nella propria home\npotrebbe essere pericoloso. Esempio:\nQualcuno potrebbe inserire un file .bash_profile";
 
 /* nothing */
-"There was an error parsing the string" = "C'è stato un errore analizzando la stringa";
+"XChat: Preferences" = "XChat: preferenze";
 
 /* nothing */
-"This signal is only passed %d args, $%d is invalid" = "Questo segnale ha passato solo %d argomenti, $%d non è valido";
+"There was an error parsing the string" = "Si è verificato un errore analizzando la stringa";
 
 /* nothing */
-"Print Texts File" = "Stampa testo su un file";
+"This signal is only passed %d args, $%d is invalid" = "A questo segnale vengono passati solo %d argomenti, $%d non è valido";
 
 /* nothing */
-"Edit Events" = "Modifica Eventi";
+"Print Texts File" = "Salva in un file di testo";
+
+/* nothing */
+"Edit Events" = "Modifica eventi";
 
 /* nothing */
 "$ Number" = "$ Numero";
 
 /* nothing */
-"Load From..." = "Carica Da...";
+"Load From..." = "Carica da...";
 
 /* nothing */
-"Test All" = "Testa Tutto";
+"Test All" = "Prova tutto";
 
 /* nothing */
 "URL" = "URL";
 
 /* nothing */
-"XChat: URL Grabber" = "XChat: URL Raccolto";
+"XChat: URL Grabber" = "XChat: URL collezionati";
 
 /* nothing */
-"Clear list" = "Cancella lista";
+"Clear list" = "Pulisci elenco";
 
 /* nothing */
-"Copy selected URL" = "Copia URL selezionato";
+"Copy selected URL" = "Copia l'URL selezionato";
 
 /* nothing */
 "Copy" = "Copia";
 
 /* nothing */
-"Save list to a file" = "Salva lista su un file";
+"Save list to a file" = "Salva l'elenco in un file";
 
 /* nothing */
 "%d ops, %d total" = "%d op, %d totali";
