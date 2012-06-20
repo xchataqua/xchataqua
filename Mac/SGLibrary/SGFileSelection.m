@@ -16,12 +16,12 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
 #import "SGFileSelection.h"
+#import "SystemVersion.h"
+#import "NSPanelAdditions.h"
 
-static NSString *fixPath (NSString *path)
+static NSString *SGFileSelectionFixPath (NSString *path)
 {
-    if ( path == nil ) return nil;
-        
-    if ( [path isAbsolutePath] ) return path;
+    if ([path isAbsolutePath]) return path;
     
     // Assume it's relative to the dir with the app bundle
     return [NSString stringWithFormat:@"%@/../%@", [[NSBundle mainBundle] bundlePath], path];
@@ -29,87 +29,51 @@ static NSString *fixPath (NSString *path)
 
 @implementation SGFileSelection
 
-+ (NSString *) selectWithWindow:(NSWindow *) win
++ (NSURL *) selectWithWindow:(NSWindow *) win
 {
     return [self selectWithWindow:win inDirectory:nil];
 }
 
-+ (NSString *) selectWithWindow:(NSWindow *) win inDirectory:(NSString *) dir
++ (NSURL *) selectWithWindow:(NSWindow *) win inDirectory:(NSString *) dir
 {
-    dir = fixPath (dir);
-    
-    NSOpenPanel *panel = [NSOpenPanel openPanel];
-
-    [panel setCanChooseFiles:YES];
-    [panel setResolvesAliases:NO];
-    [panel setCanChooseDirectories:NO];
-    [panel setAllowsMultipleSelection:NO];
+    NSOpenPanel *panel = [NSOpenPanel commonOpenPanel];
 
     if (dir) {
-        [panel setDirectoryURL:[NSURL fileURLWithPath:dir isDirectory:YES]];
+        NSString *fixedDirectory = SGFileSelectionFixPath(dir);
+        if ([SystemVersion minor] > 5) {
+            [panel setDirectoryURL:[NSURL fileURLWithPath:fixedDirectory isDirectory:YES]];
+        } else {
+            [panel setDirectory:fixedDirectory];
+        }
     }
     
     NSInteger sts;
-    if (win)
-    {
-        SInt32 version = 0;
-        Gestalt(gestaltSystemVersion, &version);
-        if ( version > 0x1050 ) { // >= snow leopard
-            [panel beginSheetModalForWindow:win completionHandler:NULL];
-            sts = [panel runModal];
-            [NSApp endSheet:panel];
-        } else {
-            // ignore deprecated warning. this is legacy support runtime code.
-            [panel beginSheetForDirectory:dir file:nil types:nil modalForWindow:win
-                        modalDelegate:nil didEndSelector:nil contextInfo:nil];
-            sts = [NSApp runModalForWindow:panel];
-            [NSApp endSheet:panel];
-        }
+    if (win) {
+        sts = [panel runModalForWindow:win];
+    } else {
+        sts = [panel runModal];
     }
-    else {
-        sts = [panel runModal] == NSOKButton;
-    }
-    
-    [panel orderOut:self];
 
-    if (sts)
+    if (sts == NSOKButton)
     {
         NSURL *URL = [[panel URLs] objectAtIndex:0];
-        return URL.path;
-        
+        return URL;   
     }
 
     return nil;
 }
 
-+ (NSString *) saveWithWindow:(NSWindow *) win
++ (NSURL *) saveWithWindow:(NSWindow *) win
 {
     NSSavePanel *p = [NSSavePanel savePanel];
     
     [p setPrompt:NSLocalizedStringFromTable(@"Select", @"xchataqua", @"")];
     
-    NSInteger sts;
-    SInt32 version = 0;
-    Gestalt(gestaltSystemVersion, &version);
-    if (version > 0x1050) { // >= snow leopard
-        [p beginSheetModalForWindow:win completionHandler:NULL];
-        sts = [p runModal];
-        [NSApp endSheet:p];
-    } else {
-        // ignore deprecated warning. this is legacy support runtime code.
-        [p beginSheetForDirectory:nil file:nil modalForWindow:win
-                    modalDelegate:nil didEndSelector:nil contextInfo:nil];
-        sts = [NSApp runModalForWindow:p];
-        [NSApp endSheet:p];
-    }
-
-    [p orderOut:self];
+    NSInteger sts = [p runModalForWindow:win];
 
     if (sts) {
-        NSURL *URL = [p URL];
-        return URL.path;
-    }
-    
+        return p.URL;
+    }    
     return nil;
 }
 
@@ -133,30 +97,23 @@ static NSString *fixPath (NSString *path)
     [panel setCanChooseDirectories:dir];
     [panel setCanChooseFiles:!dir];
     
-    [panel beginSheetForDirectory:nil file:nil
-                   modalForWindow:nil modalDelegate:nil didEndSelector:nil
-                      contextInfo:nil];
-    
-    NSInteger sts = [NSApp runModalForWindow:panel];
-    
-    [NSApp endSheet:panel];
-    
-    [panel orderOut:self];
-    
-    if (sts)
-    {
+    NSInteger sts = [panel runModal];
+        
+    if (sts == NSOKButton) {
         if(flags & FRF_MULTIPLE)
         {
-            NSArray *filenames=[panel filenames];
-            for(NSUInteger i=0;i<[filenames count];++i)
-            {
-                callback(userdata, (char *) [[filenames objectAtIndex:i] UTF8String]);
+            for (NSURL *URL in [panel URLs]) {
+                NSString *filename = URL.path;
+                callback(userdata, (char *)filename.UTF8String);
             }
             callback(userdata, 0);
-        }else
-            callback(userdata, (char *) [[panel filename] UTF8String]);
-    }else
+        } else {
+            NSURL *URL = [[panel URLs] objectAtIndex:0];
+            callback(userdata, (char *) URL.path.UTF8String);
+        }
+    } else {
         callback(userdata, 0);
+    }
 }
 
 @end

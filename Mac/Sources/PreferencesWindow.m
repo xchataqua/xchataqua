@@ -24,6 +24,7 @@
 #import "PreferencesWindow.h"
 #import "ColorPalette.h"
 #import "ChatViewController.h"
+#import "NSPanelAdditions.h"
 
 #include "text.h"
 #undef TYPE_BOOL
@@ -140,6 +141,7 @@ extern struct EventInfo textEventInfo[];
 @interface PreferencesWindow (Private)
 
 - (void)populate;
+- (void)populateColorsFromPalette:(ColorPalette *)palette;
 - (void)fillColorWellsFromTag;
 - (void)loadSounds;
 - (void)makeSoundMenu;
@@ -437,12 +439,39 @@ extern struct EventInfo textEventInfo[];
 - (void) applyBackgroundImage:(id)sender
 {
     [self makeFirstResponder:self];
-    [backgroundImageTextField setStringValue:[SGFileSelection selectWithWindow:self]];
+    [backgroundImageTextField setStringValue:[SGFileSelection selectWithWindow:self].path];
 }
 
 - (void) removeBackgroundImage:(id)sender
 {
     [backgroundImageTextField setStringValue:@""];
+}
+
+- (void)loadColorFromDefault:(id)sender {
+    ColorPalette *palette = [[ColorPalette alloc] init];
+    [palette loadDefaults];
+    [self populateColorsFromPalette:palette];
+    [palette release];
+}
+
+- (void)loadColorFromFile:(id)sender {
+    [self makeFirstResponder:self];
+    NSOpenPanel *panel = [NSOpenPanel commonOpenPanel];
+    panel.delegate = self;
+    NSInteger status = [panel runModalForWindow:self];
+    if (status == NSOKButton) {
+        ColorPalette *palette = [[ColorPalette alloc] init];
+        [palette loadFromURL:panel.URL];
+        [self populateColorsFromPalette:palette];
+        [palette release];
+    }
+}
+
+#pragma mark NSOpenPanel delegate
+
+- (BOOL)panel:(id)sender shouldEnableURL:(NSURL *)url {
+    NSString *path = url.absoluteString;
+    return [path hasSuffix:@"/"] || [path hasSuffix:@"/colors.conf"];
 }
 
 #pragma mark NSOutlineView delegate
@@ -604,6 +633,10 @@ extern struct EventInfo textEventInfo[];
     if ([palette numberOfColors] != (sizeof(colorWells)/sizeof(colorWells[0])))
         NSLog(@"COLOR MAP OUT OF SYNC\n");
     
+    [self populateColorsFromPalette:palette];
+}
+
+- (void)populateColorsFromPalette:(ColorPalette *)palette {
     for (NSUInteger i = 0; i < [palette numberOfColors]; i ++)
         [colorWells[i] setColor:[palette getColor:i]];
 }

@@ -111,7 +111,7 @@ AquaChat *AquaChatShared;
     self->soundCache = [[NSMutableDictionary alloc] init];
     
     self->palette = [[ColorPalette alloc] init];
-    [self->palette load];
+    [self->palette loadFromConfiguration];
     
     [self loadMenuPreferences];
     
@@ -584,7 +584,7 @@ AquaChat *AquaChatShared;
 
 - (void) loadPlugin:(id)sender
 {
-    NSString *f = [SGFileSelection selectWithWindow:nil inDirectory:@"Plugins"];
+    NSString *f = [SGFileSelection selectWithWindow:nil inDirectory:@"Plugins"].path;
     if (f)
     {
         NSString *cmd = [NSString stringWithFormat:@"LOAD \"%@\"", f];
@@ -1015,7 +1015,7 @@ AquaChat *AquaChatShared;
 
 - (void) saveBuffer:(id)sender
 {
-    NSString *filename = [SGFileSelection saveWithWindow:[current_sess->gui->controller window]];
+    NSString *filename = [SGFileSelection saveWithWindow:[current_sess->gui->controller window]].path;
     if ( filename != nil )
         [current_sess->gui->controller saveBuffer:filename];
 }

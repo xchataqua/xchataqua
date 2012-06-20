@@ -597,6 +597,8 @@
 		388C8EAD13C6E10500AAF20D /* TextEventsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C8A0413C6E10100AAF20D /* TextEventsWindow.xib */; };
 		388C8EAF13C6E10500AAF20D /* UrlGrabberWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C8A0613C6E10200AAF20D /* UrlGrabberWindow.xib */; };
 		388C8EB113C6E10500AAF20D /* UserCommandsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C8A0813C6E10200AAF20D /* UserCommandsWindow.xib */; };
+		3894C1B31590D93C00BCD762 /* NSPanelAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3894C1B21590D6F400BCD762 /* NSPanelAdditions.m */; };
+		3894C1B41590D93D00BCD762 /* NSPanelAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3894C1B21590D6F400BCD762 /* NSPanelAdditions.m */; };
 		38BC97B6154A994D005894EF /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5A8F154A687400480EC6 /* ShortcutRecorder.framework */; };
 		38BC97B7154A996F005894EF /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5A8F154A687400480EC6 /* ShortcutRecorder.framework */; };
 		38BC97B8154A996F005894EF /* Growl.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5AC5154A70E300480EC6 /* Growl.framework */; };
@@ -1550,8 +1552,8 @@
 		388BDCB613C6A0CB00B95036 /* SGRowColView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGRowColView.m; sourceTree = "<group>"; };
 		388BDCB913C6A0CB00B95036 /* SGTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGTableView.h; sourceTree = "<group>"; };
 		388BDCBA13C6A0CB00B95036 /* SGTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGTableView.m; sourceTree = "<group>"; };
-		388BDCBB13C6A0CB00B95036 /* SGTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGTabView.h; path = ../SGLibrary/SGTabView.h; sourceTree = "<group>"; };
-		388BDCBC13C6A0CB00B95036 /* SGTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGTabView.m; path = ../SGLibrary/SGTabView.m; sourceTree = "<group>"; };
+		388BDCBB13C6A0CB00B95036 /* SGTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGTabView.h; sourceTree = "<group>"; };
+		388BDCBC13C6A0CB00B95036 /* SGTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGTabView.m; sourceTree = "<group>"; };
 		388BDCBD13C6A0CB00B95036 /* SGVBoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGVBoxView.h; sourceTree = "<group>"; };
 		388BDCBE13C6A0CB00B95036 /* SGVBoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGVBoxView.m; sourceTree = "<group>"; };
 		388BDCBF13C6A0CB00B95036 /* SGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGView.h; sourceTree = "<group>"; };
@@ -2505,6 +2507,8 @@
 		388C8E6D13C6E10400AAF20D /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/TextEventsWindow.xib; sourceTree = "<group>"; };
 		388C8E6E13C6E10400AAF20D /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/UrlGrabberWindow.xib; sourceTree = "<group>"; };
 		388C8E6F13C6E10400AAF20D /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/UserCommandsWindow.xib; sourceTree = "<group>"; };
+		3894C1B11590D6F400BCD762 /* NSPanelAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSPanelAdditions.h; sourceTree = "<group>"; };
+		3894C1B21590D6F400BCD762 /* NSPanelAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSPanelAdditions.m; sourceTree = "<group>"; };
 		38BC97BF154A9B2C005894EF /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Mac/Aqua/Frameworks/Sparkle/Sparkle.framework; sourceTree = "<group>"; };
 		38CE5A63154A551600480EC6 /* alt_completion.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = alt_completion.pl; path = xchat/plugins/perl/alt_completion.pl; sourceTree = SOURCE_ROOT; };
 		38CE5A64154A551600480EC6 /* char_count.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = char_count.pl; path = xchat/plugins/perl/char_count.pl; sourceTree = SOURCE_ROOT; };
@@ -2765,13 +2769,13 @@
 				2D6D421E121E85470082F2EF /* Prefix.pch */,
 				38E57378158EBD03007943DA /* xchatext.m */,
 				2DC6AC8F118774E60048B7C7 /* Utility Windows */,
+				3894C1B01590D4B300BCD762 /* GUI Control */,
 				0F2FEFB60E1FC5A800DE4D41 /* SystemVersion.h */,
 				0F2FEFB70E1FC5A800DE4D41 /* SystemVersion.m */,
 				D406B462129D789400EF6B2B /* fe-aqua_common.h */,
 				0F8EA3CE0CFAF7E2001AE9AE /* fe-aqua.m */,
 				2D7817C810E872D200C71AF8 /* fe-aqua_utility.h */,
 				2D7817C910E872D200C71AF8 /* fe-aqua_utility.m */,
-				D46631D3129DC3B1004B66B8 /* UtilityTableViewDragAndDrop.inc.m */,
 				0F8EA6C10CFB347B001AE9AE /* identd.c */,
 				0F30611F0D83C5830084F2CA /* AquaChat.h */,
 				0F8EA5F80CFB2500001AE9AE /* AquaChat.m */,
@@ -2781,39 +2785,19 @@
 				0F8EA6AC0CFB3398001AE9AE /* ChatViewController.m */,
 				0F8EA6B70CFB33C9001AE9AE /* ColorPalette.h */,
 				0F8EA6B80CFB33C9001AE9AE /* ColorPalette.m */,
-				0F8EA6AD0CFB3398001AE9AE /* CLLevelIndicator.h */,
-				0F8EA6AE0CFB3398001AE9AE /* CLLevelIndicator.m */,
-				0F8EA6AF0CFB3398001AE9AE /* CLLevelIndicatorCell.h */,
-				0F8EA6B00CFB3398001AE9AE /* CLLevelIndicatorCell.m */,
-				3839010213C06619004D20BC /* CLTabCell.h */,
-				3839010313C06619004D20BC /* CLTabCell.m */,
-				3839010513C0667B004D20BC /* CLTabViewButtonCell.h */,
-				3839010613C0667B004D20BC /* CLTabViewButtonCell.m */,
 				0F8EA6BF0CFB347B001AE9AE /* GLikeTimer.h */,
 				0F8EA6C00CFB347B001AE9AE /* GLikeTimer.m */,
 				0F8EA6C30CFB347B001AE9AE /* MenuMaker.h */,
 				0F8EA6C40CFB347B001AE9AE /* MenuMaker.m */,
 				0F8EA6C50CFB347B001AE9AE /* mIRCString.h */,
 				0F8EA6C60CFB347B001AE9AE /* mIRCString.m */,
-				0F8EA6D80CFB347B001AE9AE /* TabOrWindowView.h */,
-				0F8EA6D90CFB347B001AE9AE /* TabOrWindowView.m */,
-				D487239C128F9DBC00647D7B /* UtilityWindow.h */,
-				D487239D128F9DBC00647D7B /* UtilityWindow.m */,
-				0F8EA6C70CFB347B001AE9AE /* XAChatTextView.h */,
-				0F8EA6C80CFB347B001AE9AE /* XAChatTextView.m */,
 				0F8EA6C90CFB347B001AE9AE /* XACommon.h */,
 				0F8EA6CA0CFB347B001AE9AE /* XACommon.m */,
-				0F8EA6CD0CFB347B001AE9AE /* XATabView.h */,
-				0F8EA6CE0CFB347B001AE9AE /* XATabView.m */,
-				387676921589BC41007366B7 /* XATabWindow.h */,
-				387676931589BC41007366B7 /* XATabWindow.m */,
-				388BDCBB13C6A0CB00B95036 /* SGTabView.h */,
-				388BDCBC13C6A0CB00B95036 /* SGTabView.m */,
-				387676901589B61A007366B7 /* XAUserList.h */,
-				387676911589B61A007366B7 /* XAUserList.m */,
 				0F8EA6CB0CFB347B001AE9AE /* XADefaults.h */,
 				0F8EA6CC0CFB347B001AE9AE /* XAPrefs.h */,
 				0F8EA6CF0CFB347B001AE9AE /* XAVars.h */,
+				3894C1B11590D6F400BCD762 /* NSPanelAdditions.h */,
+				3894C1B21590D6F400BCD762 /* NSPanelAdditions.m */,
 			);
 			name = Sources;
 			path = Mac/Sources;
@@ -2938,6 +2922,7 @@
 				0FC8F3D10DEEC33D00504F31 /* Plugins */,
 				0F8EA6580CFB2F71001AE9AE /* SGLibrary */,
 				388BDC9D13C69F8D00B95036 /* SGLibrary-Mac */,
+				3894C1AF1590D2C200BCD762 /* SGView */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				B07C7AB20F4395E200E11B58 /* BuildNumber.xcconfig */,
@@ -2959,6 +2944,9 @@
 		2DC6AC8F118774E60048B7C7 /* Utility Windows */ = {
 			isa = PBXGroup;
 			children = (
+				D487239C128F9DBC00647D7B /* UtilityWindow.h */,
+				D487239D128F9DBC00647D7B /* UtilityWindow.m */,
+				D46631D3129DC3B1004B66B8 /* UtilityTableViewDragAndDrop.inc.m */,
 				0F8EA6240CFB2E0A001AE9AE /* AsciiWindow.h */,
 				0F8EA6250CFB2E0A001AE9AE /* AsciiWindow.m */,
 				0F8EA6260CFB2E0A001AE9AE /* BanWindow.h */,
@@ -3510,16 +3498,20 @@
 				380B9D1913C6E5D70029CE25 /* SGFileUtility.m */,
 				388BDCAA13C6A0CB00B95036 /* SGGuiUtility.h */,
 				388BDCAB13C6A0CB00B95036 /* SGGuiUtility.m */,
-				388BDCB013C6A0CB00B95036 /* SGLockableTextField.h */,
-				388BDCB113C6A0CB00B95036 /* SGLockableTextField.m */,
 				388BDCB313C6A0CB00B95036 /* SGRequest.h */,
 				388BDCB413C6A0CB00B95036 /* SGRequest.m */,
-				388BDCB513C6A0CB00B95036 /* SGRowColView.h */,
-				388BDCB613C6A0CB00B95036 /* SGRowColView.m */,
-				388BDCB913C6A0CB00B95036 /* SGTableView.h */,
-				388BDCBA13C6A0CB00B95036 /* SGTableView.m */,
+			);
+			name = "SGLibrary-Mac";
+			path = Mac/SGLibrary;
+			sourceTree = "<group>";
+		};
+		3894C1AF1590D2C200BCD762 /* SGView */ = {
+			isa = PBXGroup;
+			children = (
 				388BDCBF13C6A0CB00B95036 /* SGView.h */,
 				388BDCC013C6A0CB00B95036 /* SGView.m */,
+				388BDCB513C6A0CB00B95036 /* SGRowColView.h */,
+				388BDCB613C6A0CB00B95036 /* SGRowColView.m */,
 				388BDCA813C6A0CB00B95036 /* SGFormView.h */,
 				388BDCA913C6A0CB00B95036 /* SGFormView.m */,
 				388BDCA413C6A0CB00B95036 /* SGBoxView.h */,
@@ -3531,8 +3523,39 @@
 				388BDCC113C6A0CB00B95036 /* SGWrapView.h */,
 				388BDCC213C6A0CB00B95036 /* SGWrapView.m */,
 			);
-			name = "SGLibrary-Mac";
+			name = SGView;
 			path = Mac/SGLibrary;
+			sourceTree = "<group>";
+		};
+		3894C1B01590D4B300BCD762 /* GUI Control */ = {
+			isa = PBXGroup;
+			children = (
+				0F8EA6AD0CFB3398001AE9AE /* CLLevelIndicator.h */,
+				0F8EA6AE0CFB3398001AE9AE /* CLLevelIndicator.m */,
+				0F8EA6AF0CFB3398001AE9AE /* CLLevelIndicatorCell.h */,
+				0F8EA6B00CFB3398001AE9AE /* CLLevelIndicatorCell.m */,
+				3839010213C06619004D20BC /* CLTabCell.h */,
+				3839010313C06619004D20BC /* CLTabCell.m */,
+				3839010513C0667B004D20BC /* CLTabViewButtonCell.h */,
+				3839010613C0667B004D20BC /* CLTabViewButtonCell.m */,
+				388BDCBB13C6A0CB00B95036 /* SGTabView.h */,
+				388BDCBC13C6A0CB00B95036 /* SGTabView.m */,
+				388BDCB013C6A0CB00B95036 /* SGLockableTextField.h */,
+				388BDCB113C6A0CB00B95036 /* SGLockableTextField.m */,
+				388BDCB913C6A0CB00B95036 /* SGTableView.h */,
+				388BDCBA13C6A0CB00B95036 /* SGTableView.m */,
+				0F8EA6C70CFB347B001AE9AE /* XAChatTextView.h */,
+				0F8EA6C80CFB347B001AE9AE /* XAChatTextView.m */,
+				0F8EA6CD0CFB347B001AE9AE /* XATabView.h */,
+				0F8EA6CE0CFB347B001AE9AE /* XATabView.m */,
+				387676921589BC41007366B7 /* XATabWindow.h */,
+				387676931589BC41007366B7 /* XATabWindow.m */,
+				387676901589B61A007366B7 /* XAUserList.h */,
+				387676911589B61A007366B7 /* XAUserList.m */,
+				0F8EA6D80CFB347B001AE9AE /* TabOrWindowView.h */,
+				0F8EA6D90CFB347B001AE9AE /* TabOrWindowView.m */,
+			);
+			name = "GUI Control";
 			sourceTree = "<group>";
 		};
 		38CE5A62154A54C800480EC6 /* src */ = {
@@ -4782,6 +4805,7 @@
 				387676961589BC48007366B7 /* XAUserList.m in Sources */,
 				38E5737F158EEF38007943DA /* xchatext.m in Sources */,
 				38E573E2158F1A76007943DA /* AquaPlugins.m in Sources */,
+				3894C1B31590D93C00BCD762 /* NSPanelAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4871,6 +4895,7 @@
 				387676971589BC49007366B7 /* XAUserList.m in Sources */,
 				38E57380158EEF39007943DA /* xchatext.m in Sources */,
 				38E573E1158F1A76007943DA /* AquaPlugins.m in Sources */,
+				3894C1B41590D93D00BCD762 /* NSPanelAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
