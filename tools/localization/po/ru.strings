@@ -1,17 +1,17 @@
 /* nothing */
-"" = "Project-Id-Version: xchat-2.8.4\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2008-06-12 18:39+1000\nPO-Revision-Date: 2010-05-13 03:41+0700\nLast-Translator: Алекс <davian818@gmail.com>\nLanguage-Team: Russian <gnu@mx.ru>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n";
+"" = "Project-Id-Version: xchat-2.8.4\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2010-05-30 13:56+1000\nPO-Revision-Date: 2008-05-30 08:56+0300\nLast-Translator: Peter Astakhov <astakhovp@mail.ru>\nLanguage-Team: Russian <gnu@mx.ru>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nX-Generator: KBabel 1.10.2\nPlural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n";
 
 /* nothing */
-"Cannot create ~/.xchat2" = "Не удалось создать ~/.xchat2";
+"Cannot create ~/.xchat2" = "Не могу создать ~/.xchat2";
 
 /* nothing */
 "I'm busy" = "Я занят";
 
 /* nothing */
-"Leaving" = "Ухожу я от вас";
+"Leaving" = "Ухожу я от вас (xchat 2.4.5 или старше)";
 
 /* nothing */
-"* Running IRC as root is stupid! You should\n  create a User Account and use that to login.\n" = "* Глупо запускать IRC под пользователем root! Вы должны\n  создать пользовательскую учетную запись и работать под ним.\n";
+"* Running IRC as root is stupid! You should\n  create a User Account and use that to login.\n" = "* Глупо запускать IRC под пользователем root! Вы должны\n  создать пользовательский вход и работать под ним.\n";
 
 /* nothing */
 "Waiting" = "Ожидание";
@@ -68,10 +68,10 @@
 "Not connected. Try /server <host> [<port>]\n" = "Нет соединения. Наберите /server <адрес> [<порт>]\n";
 
 /* nothing */
-"Already marked away: %s\n" = "Вы уже отсутствуете: %s\n";
+"Already marked away: %s\n" = "";
 
 /* nothing */
-"Already marked back.\n" = "Вы уже вернулись.\n";
+"Already marked back.\n" = "";
 
 /* nothing */
 "I need /bin/sh to run!\n" = "Отсутствует /bin/sh для запуска!\n";
@@ -113,13 +113,13 @@
 "AWAY [<reason>], sets you away" = "AWAY [<причина>], устанавливает флаг отсутствия";
 
 /* nothing */
-"BACK, sets you back (not away)" = "BACK, сбрасывает флаг остутствия";
+"BACK, sets you back (not away)" = "";
 
 /* nothing */
 "BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "BAN <маска> [<тип>], блокирует доступ на текущий канал для каждого, совпадающего с маской. Если они уже на канале, то они не будут скинуты (для этого нужно быть оператором канала)";
 
 /* nothing */
-"CHANOPT [-quiet] <variable> [<value>]" = "CHANOPT [-quiet] <переменная> [<значение>]";
+"CHANOPT [-quiet] <variable> [<value>]" = "SET [-e] [-or] [-quiet] <переменная> [<значение>]";
 
 /* nothing */
 "CLEAR [ALL|HISTORY], Clears the current text window or command history" = "CLEAR  [ALL|HISTORY], очищает текущее окно или историю команд";
@@ -137,7 +137,7 @@
 "CYCLE [<channel>], parts the current or given channel and immediately rejoins" = "CYCLE [<channel>], выйти с текущего канала и немедленно зайти";
 
 /* nothing */
-"\nDCC GET <nick>                      - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file]  - send a file to someone\nDCC PSEND [-maxcps=#] <nick> [file] - send a file using passive mode\nDCC LIST                            - show DCC list\nDCC CHAT <nick>                     - offer DCC CHAT to someone\nDCC PCHAT <nick>                    - offer DCC CHAT using passive mode\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "\nDCC GET <имя>                      - принять отправляемый файл\nDCC SEND [-maxcps=#] <имя> <файл>  - отправить файл получателю\nDCC PSEND [-maxcps=#] <имя> [файл] - отправить файл в пассивном режиме\nDCC LIST                           - показать список DCC\nDCC CHAT <имя>                     - запросить разговор через DCC\nDCC PCHAT <nick>                   - запросить разговор в пассивном режиме\nDCC CLOSE <тип> <имя> <файл>         пример:\n         /dcc close send johnsmith file.tar.gz";
+"\nDCC GET <nick>                      - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file]  - send a file to someone\nDCC PSEND [-maxcps=#] <nick> [file] - send a file using passive mode\nDCC LIST                            - show DCC list\nDCC CHAT <nick>                     - offer DCC CHAT to someone\nDCC PCHAT <nick>                    - offer DCC CHAT using passive mode\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "\nDCC GET <имя>          - принять отправляемый файл\nDCC SEND <имя> <имя файла>  - отправить файл получателю\nDCC LIST                - показать список DCC\nDCC CHAT <имя>         - запросить разговор через DCC\nDCC CLOSE <тип> <имя> <файл>         пример:\n         /dcc close send johnsmith file.tar.gz";
 
 /* nothing */
 "DEHOP <nick>, removes chanhalf-op status from the nick on the current channel (needs chanop)" = "DEHOP <имя>, удаляет chanhalf-op статус у имени на текущем канале\n(нужны права администратора канала)";
@@ -182,7 +182,7 @@
 "GATE <host> [<port>], proxies through a host, port defaults to 23" = "GATE <адрес> [<порт>], прокси через хост, порт по умолчанию - 23";
 
 /* nothing */
-"GHOST <nick> <password>, Kills a ghosted nickname" = "GHOST <имя> <пароль>, Убрать фантомное имя пользователя";
+"GHOST <nick> [password], Kills a ghosted nickname" = "";
 
 /* nothing */
 "HOP <nick>, gives chanhalf-op status to the nick (needs chanop)" = "HOP <Ник>, дает статус полуоператора канала пользователю (требуются права оператора)";
@@ -296,7 +296,7 @@
 "SERVER <host> [<port>] [<password>], connects to a server, the default port is 6667" = "SERVER <адрес> [<порт>] [<пароль>] соединяет с сервером. Порт по умолчанию 6667";
 
 /* nothing */
-"SET [-e] [-or] [-quiet] <variable> [<value>]" = "SET [-e] [-or] [-quiet] <переменная> [<значение>]";
+"SET [-e] [-off|-on] [-quiet] <variable> [<value>]" = "SET [-e] [-or] [-quiet] <переменная> [<значение>]";
 
 /* nothing */
 "SETCURSOR [-|+]<position>" = "SETCURSOR [-|+]<позиция>";
@@ -305,13 +305,13 @@
 "TOPIC [<topic>], sets the topic if one is given, else shows the current topic" = "TOPIC [<тема>], устанавливает тему, если она указана. Иначе отображает текущую тему";
 
 /* nothing */
-"\nTRAY -f <timeout> <file1> [<file2>] Blink tray between two icons.\nTRAY -f <filename>                  Set tray to a fixed icon.\nTRAY -i <number>                    Blink tray with an internal icon.\nTRAY -t <text>                      Set the tray tooltip.\nTRAY -b <title> <text>              Set the tray balloon." = "\nTRAY -f <интервал> <файл1> [<файл2>] Blink tray between two icons.\nTRAY -f <имя_файла>                  Set tray to a fixed icon.\nTRAY -i <число>                      Blink tray with an internal icon.\nTRAY -t <текст>                      Set the tray tooltip.\nTRAY -b <заголовок> <текст>          Set the tray balloon.";
+"\nTRAY -f <timeout> <file1> [<file2>] Blink tray between two icons.\nTRAY -f <filename>                  Set tray to a fixed icon.\nTRAY -i <number>                    Blink tray with an internal icon.\nTRAY -t <text>                      Set the tray tooltip.\nTRAY -b <title> <text>              Set the tray balloon." = "";
 
 /* nothing */
 "UNBAN <mask> [<mask>...], unbans the specified masks." = "UNBAN <маска> [<маска>...], снять запрет для специфической маски";
 
 /* nothing */
-"UNIGNORE <mask> [QUIET]" = "UNIGNORE <маска> [QUIET]";
+"UNIGNORE <mask> [QUIET]" = "UNIGNORE <маска> [QUIET] - снять игнорирование сообщений с определенной маски";
 
 /* nothing */
 "UNLOAD <name>, unloads a plugin or script" = "UNLOAD <имя>, выгрузить плагин или скрипт";
@@ -320,7 +320,7 @@
 "URL <url>, opens a URL in your browser" = "URL <адрес>, открыть ссылку в браузере";
 
 /* nothing */
-"USELECT [-a] [-s] <nick1> <nick2> etc, highlights nick(s) in channel userlist" = "USELECT [-a] [-s] <имя1> <имя2> и т.д., выделить имена в списке пользователей";
+"USELECT [-a] [-s] <nick1> <nick2> etc, highlights nick(s) in channel userlist" = "";
 
 /* nothing */
 "VOICE <nick>, gives voice status to someone (needs chanop)" = "VOICE <Ник>, дает право голоса кому-либо (требуются права оператора)";
@@ -350,7 +350,7 @@
 "Unknown Command. Try /help\n" = "Неизвестная команда. Попробуйте /help\n";
 
 /* nothing */
-"No xchat_plugin_init symbol; is this really an xchat plugin?" = "Нет символа xchat_plugin_init; вы уверены, что это плагин для xchat?";
+"No xchat_plugin_init symbol; is this really an xchat plugin?" = "Нет xchat_plugin_init символов; вы уверены, что это плагин для xchat?";
 
 /* nothing */
 "Are you sure this is a SSL capable server and port?\n" = "Вы уверены, что сервер и порт поддерживают SSL?\n";
@@ -374,7 +374,7 @@
 "%C22*%O$t$1 Banlist:%C19 $4%C20 $2%C21 $3" = "%C22*%O$t$1 список банов:%C19 $4%C20 $2%C21 $3";
 
 /* nothing */
-"%C22*%O$tCannot join%C26 %B$1 %O(You are banned)." = "%C22*%O$tНе получается войти на%C26 %B$1 %O(Вы забанены).";
+"%C22*%O$tCannot join%C26 %B$1 %O(You are banned)." = "%C22*%O$tНе получается войти%C26 %B$1 %O(Вы забанены).";
 
 /* nothing */
 "%C22*%O$t$1 is now known as $2" = "%C22*%O$t$1 теперь известен как $2";
@@ -491,13 +491,13 @@
 "%C24,18 Type  To/From    Status  Size    Pos     File         " = "%C24,18 Type  В/От    Состояние  Размер    Позиция     Файл         ";
 
 /* nothing */
-"%C22*%O$tReceived a malformed DCC request from %C26$1%O.%010%C22*%O$tContents of packet: $2" = "%C22*%O$tПринят неверный DCC-запрос от %C26$1%O.%010%C22*%O$tСодержимое пакета: $2";
+"%C22*%O$tReceived a malformed DCC request from %C26$1%O.%010%C22*%O$tContents of packet: $2" = "%C22*%O$tПринят malformed DCC запрос от %C26$1%O.%010%C22*%O$tСодержимое пакета: $2";
 
 /* nothing */
 "%C22*%O$tOffering%C26 $1%O to%C26 $2" = "%C22*%O$tПредлагаем%C26 $1%O для%C26 $2";
 
 /* nothing */
-"%C22*%O$tNo such DCC offer." = "%C22*%O$tНет такого предложения DCC.";
+"%C22*%O$tNo such DCC offer." = "%C22*%O$tНет такого DCC предложения.";
 
 /* nothing */
 "%C22*%O$tDCC RECV%C26 $2%O to%C26 $1%O aborted." = "%C22*%O$tDCC RECV%C26 $2%O с%C26 $1%O прервано.";
@@ -533,10 +533,10 @@
 "%C22*%O$tDCC SEND%C26 $1%O to%C26 $2%O failed. $3" = "%C22*%O$tDCC SEND%C26 $1%O для%C26 $2%O провален. $3";
 
 /* nothing */
-"%C22*%O$t%C26$1 %Ohas offered%C26 $2 %O(%C26$3 %Obytes)" = "%C22*%O$t%C26$1 %Oпредложил(а)%C26 $2 %O(%C26$3 %Oбайт)";
+"%C22*%O$t%C26$1 %Ohas offered%C26 $2 %O(%C26$3 %Obytes)" = "";
 
 /* nothing */
-"%C22*%O$tDCC $1%C26 $2 %Oto%C26 $3 %Cstalled - aborting." = "%C22*%O$tDCC $1%C26 $2 %Oto%C26 $3 %Cнет данных - прервано.";
+"%C22*%O$tDCC $1%C26 $2 %Oto%C26 $3 %Cstalled - aborting." = "";
 
 /* nothing */
 "%C22*%O$tDCC $1%C26 $2 %Oto%C26 $3 %Otimed out - aborting." = "%C22*%O$tDCC $1%C26 $2 %Oс%C26 $3 %Oпрерывание по таймауту.";
@@ -584,7 +584,7 @@
 "%C21*%O$t%C21$1 has kicked $2 from $3 ($4%O%C21)" = "%C21*%O$t%C21$1 выкинул $2 с $3 ($4%O%C21)";
 
 /* nothing */
-"%C22*%O$tYou have been killed by $1 ($2%O%C22)" = "%C22*%O$t$1 изгнал вас с канала ($2%O%C22)";
+"%C22*%O$tYou have been killed by $1 ($2%O%C22)" = "%C22*%O$t$1выкинул вас с канала ($2%O%C22)";
 
 /* nothing */
 "%C22*%O$t%C22MOTD Skipped." = "%C22*%O$t%C22MOTD Пропущен.";
@@ -692,22 +692,22 @@
 "%C22*%O$t%C28[%O$1%C28] %C30(%O$2@$3%C30)%O: $4" = "%C22*%O$t%C28[%O$1%C28] %C30(%O$2@$3%C30)%O: $4";
 
 /* nothing */
-"%C22*%O$t%C28[%O$1%C28] %Oreal user@host%C27 $2%O, real IP%C27 $3" = "%C22*%O$t%C28[%O$1%C28] %Oнастоящие пользователь@машина%C27 $2%O, настоящий IP%C27 $3";
+"%C22*%O$t%C28[%O$1%C28] %Oreal user@host%C27 $2%O, real IP%C27 $3" = "-%C10-%C11-%O$t%C12[%O$1%C12] %Oнастоящий пользователь@домен %C11$2%O, настоящий IP %C11$3%O";
 
 /* nothing */
 "%C19*%O$t%C19Now talking on $2" = "%C19*%O$t%C19Сейчас общаетесь на $2";
 
 /* nothing */
-"%C23*$tYou have been kicked from $2 by $3 ($4%O%C23)" = "%C23*$t$3 изгнал вас из канала $2 ($4%O%C23)";
+"%C23*$tYou have been kicked from $2 by $3 ($4%O%C23)" = "-%C10-%C11-%O$tВас вышвырнул $3 с канала $2 ($4%O)";
 
 /* nothing */
 "%C23*$tYou have left channel $3" = "%C23*$tВы ушли с канала $3";
 
 /* nothing */
-"%C23*$tYou have left channel $3 (%O%C23%B%B$4%O%C23)" = "%C23*$tВы ушли из канала $3 (%O%C23%B%B$4%O%C23)";
+"%C23*$tYou have left channel $3 (%O%C23%B%B$4%O%C23)" = "-%C10-%C11-%O$tВы ушли с канала $3 %C14(%O$4%C14)%O";
 
 /* nothing */
-"%C22*%O$tYou've invited%C26 $1%O to%C26 $2%O (%C26$3%O)" = "%C22*%O$tВы пришласили%C26 $1%O на канал%C26 $2%O (%C26$3%O)";
+"%C22*%O$tYou've invited%C26 $1%O to%C26 $2%O (%C26$3%O)" = "-%C10-%C11-%O$tВы приглашаете %C11$1%C на %C11$2%C (%C11$3%C)";
 
 /* nothing */
 "%C22*%O$tYou are now known as $2" = "%C22*%O$tТеперь вы известны как $2";
@@ -749,10 +749,10 @@
 "Mode char" = "Символ режима";
 
 /* nothing */
-"The text" = "Текст";
+"Identified text" = "Информация";
 
 /* nothing */
-"Identified text" = "Выявленный текст";
+"The text" = "Текст";
 
 /* nothing */
 "The message" = "Сообщение";
@@ -956,6 +956,9 @@
 "Server Name" = "Имя сервера";
 
 /* nothing */
+"Raw Numeric or Identifier" = "";
+
+/* nothing */
 "Nick of person who invited you" = "Ник персоны, пригласившей вас";
 
 /* nothing */
@@ -1043,7 +1046,7 @@
 "Ban time" = "Продолжительность бана";
 
 /* nothing */
-"Error parsing event %s.\nLoading default." = "Ошибка разбора события %s.\nЗагружаем по умолчанию.";
+"Error parsing event %s.\nLoading default." = "Ошибка разбора события %s.\nЗагружаем по-умолчанию";
 
 /* nothing */
 "Cannot read sound file:\n%s" = "Невозможно прочитать звуковой файл:\n%s";
@@ -1289,7 +1292,7 @@
 "Ethiopia" = "Эфиопия";
 
 /* nothing */
-"European Union" = "Европейский Союз";
+"European Union" = "";
 
 /* nothing */
 "Finland" = "Финляндия";
@@ -1850,19 +1853,19 @@
 "Unknown" = "Неизвестно";
 
 /* nothing */
-"_Open Dialog Window" = "Начать ра_зговор";
+"_Open Dialog Window" = "Открыть диалоговое окно";
 
 /* nothing */
-"_Send a File" = "Отправить _файл";
+"_Send a File" = "Послать файл";
 
 /* nothing */
-"_User Info (WhoIs)" = "_Информация (WHOIS)";
+"_User Info (WhoIs)" = "Информация о пользователе (WHOIS)";
 
 /* nothing */
-"_Add to Friends List" = "Добавить в дру_зья";
+"_Add to Friends List" = "";
 
 /* nothing */
-"O_perator Actions" = "Действия опе_ратора";
+"O_perator Actions" = "Настройки";
 
 /* nothing */
 "Give Ops" = "Дать оператора";
@@ -1940,25 +1943,25 @@
 "Ping" = "Ping";
 
 /* nothing */
-"Couldn't connect to session bus" = "Не удалось подключиться к сеансовой шине";
+"Couldn't connect to session bus" = "";
 
 /* nothing */
-"Failed to complete NameHasOwner" = "Не удалось завершить NameHasOwner";
+"Failed to complete NameHasOwner" = "";
 
 /* nothing */
-"Failed to complete Command" = "Не удалось выполнить команду";
+"Failed to complete Command" = "Ошибка открытия шрифта:\n\n%s";
 
 /* nothing */
 "remote access" = "удаленный доступ";
 
 /* nothing */
-"plugin for remote access using DBUS" = "модуль для удаленного доступа через DBUS";
+"plugin for remote access using DBUS" = "";
 
 /* nothing */
-"Couldn't connect to session bus: %s\n" = "Не удалось подключиться к сеансовой шине: %s\n";
+"Couldn't connect to session bus: %s\n" = "";
 
 /* nothing */
-"Failed to acquire %s: %s\n" = "Не удалось получить %s: %s\n";
+"Failed to acquire %s: %s\n" = "Ошибка открытия шрифта:\n\n%s";
 
 /* nothing */
 "About " = "О программе";
@@ -1970,7 +1973,7 @@
 "Character Chart" = "Кодировка";
 
 /* nothing */
-"Not connected." = "Нет соединения.";
+"Not connected." = "Не соединяться автоматически ";
 
 /* nothing */
 "You must select some bans." = "Вы должны выбрать баны.";
@@ -1988,7 +1991,7 @@
 "Date" = "Дата";
 
 /* nothing */
-"You can only open the Ban List window while in a channel tab." = "Список банов можно отктыть только при открытой вкладке канала.";
+"You can only open the Ban List window while in a channel tab." = "";
 
 /* nothing */
 "XChat: Ban List (%s)" = "X-Chat: Список банов (%s)";
@@ -2012,10 +2015,10 @@
 "_Join Channel" = "Зайти на канал";
 
 /* nothing */
-"_Copy Channel Name" = "Копировать имя _канала";
+"_Copy Channel Name" = "Имя канала";
 
 /* nothing */
-"Copy _Topic Text" = "Скопировать _тему общения";
+"Copy _Topic Text" = "";
 
 /* nothing */
 "XChat: Channel List (%s)" = "X-Chat: Список каналов (%s)";
@@ -2024,40 +2027,40 @@
 "_Search" = "Поиск";
 
 /* nothing */
-"_Download List" = "_Загрузить список";
+"_Download List" = "Загрузить файлы в:";
 
 /* nothing */
-"Save _List..." = "Со_хранить список...";
+"Save _List..." = "Список серверов...";
 
 /* nothing */
 "Show only:" = "Показывать только:";
 
 /* nothing */
-"channels with" = "Открывать каналы как:";
+"channels with" = "Открыть каналы в:";
 
 /* nothing */
-"to" = "к";
+"to" = "";
 
 /* nothing */
 "users." = "пользователи.";
 
 /* nothing */
-"Look in:" = "Поиск в:";
+"Look in:" = "";
 
 /* nothing */
 "Channel name" = "Имя канала";
 
 /* nothing */
-"Search type:" = "Тип поиска:";
+"Search type:" = "Найти...";
 
 /* nothing */
 "Simple Search" = "Простой поиск";
 
 /* nothing */
-"Pattern Match (Wildcards)" = "Использовать шаблоны";
+"Pattern Match (Wildcards)" = "";
 
 /* nothing */
-"Regular Expression" = "Регулярное выражение";
+"Regular Expression" = "";
 
 /* nothing */
 "Find:" = "Поиск:";
@@ -2078,7 +2081,7 @@
 "Cannot resume the same file from two people." = "Не могу продолжить одинаковый файл от 2 пользователей.";
 
 /* nothing */
-"XChat: Uploads and Downloads" = "XChat: Прием и передача файлов";
+"XChat: Uploads and Downloads" = "";
 
 /* nothing */
 "Status" = "Статус";
@@ -2093,13 +2096,13 @@
 "Both" = "Оба";
 
 /* nothing */
-"Uploads" = "Отгрузки";
+"Uploads" = "";
 
 /* nothing */
-"Downloads" = "Загрузки";
+"Downloads" = "Загрузить файлы в:";
 
 /* nothing */
-"Details" = "Подробно";
+"Details" = "Ваши детали";
 
 /* nothing */
 "File:" = "Файл:";
@@ -2168,7 +2171,7 @@
 "Help" = "Помощь";
 
 /* nothing */
-"Don't auto connect to servers" = "Не подключаться к серверам";
+"Don't auto connect to servers" = "Автоматически подключаться к серверу";
 
 /* nothing */
 "Use a different config directory" = "используется другой конфигурационный каталог";
@@ -2180,19 +2183,19 @@
 "Show plugin auto-load directory" = "показать каталог автозагружаемых плагинов";
 
 /* nothing */
-"Show user config directory" = "показать каталог пользовательских настроек";
+"Show user config directory" = "используется другой конфигурационный каталог";
 
 /* nothing */
-"Open an irc://server:port/channel URL" = "Открывает URL вида irc://сервер:порт/канал";
+"Open an irc://server:port/channel URL" = "";
 
 /* nothing */
 "Execute command:" = "Выполнить команду:";
 
 /* nothing */
-"Open URL or execute command in an existing XChat" = "Открыть URL или выполнить команду в запущенном XChat";
+"Open URL or execute command in an existing XChat" = "";
 
 /* nothing */
-"Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "Вид окна при запуске. Ур. 0=обычное 1=свернутое 2=значок";
+"Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "";
 
 /* nothing */
 "level" = "уровень";
@@ -2210,7 +2213,7 @@
 "%d bytes" = "%d байт";
 
 /* nothing */
-"Network send queue: %d bytes" = "Очередь отправки, байт: %d";
+"Network send queue: %d bytes" = "";
 
 /* nothing */
 "The Run Command action runs the data in Data 1 as if it has been typed into the entry box where you pressed the key sequence. Thus it can contain text (which will be sent to the channel/person), commands or user commands. When run all \\n characters in Data 1 are used to deliminate seperate commands so it is possible to run more than one command. If you want a \\ in the actual text run then enter \\\\" = "Команда Run запускает данные в Data 1 как если бы они были впечатаны в поле ввода Где нажата последовательность клавиш. Может содержать текст (который можно послать на канал/персоне), команды или команды пользователя. Когда запускает все символы в Data 1 использует для разделения команд, если возможно запустить больше одной команды Если вы хотите использовать \\ iв тексте, вводите\\\\";
@@ -2222,7 +2225,7 @@
 "The Insert in Buffer command will insert the contents of Data 1 into the entry where the key sequence was pressed at the current cursor position" = "Команда  Вставить в буфер  вставит содержимое Данные 1 в текущую позицию курсора";
 
 /* nothing */
-"The Scroll Page command scrolls the text widget up or down one page or one line. Set Data 1 to either Up, Down, +1 or -1." = "Команда  Пролистать страницу  пролистывает текст вверх или вниз. Возможные значения Данные 1: Up (вверх), Down (вниз), +1 или -1.";
+"The Scroll Page command scrolls the text widget up or down one page or one line. Set Data 1 to either Up, Down, +1 or -1." = "Команда  Пролистать страницу  пролистывает текст вверх или вниз. Если Данные 1 установлены, страница пролистывается вверх, иначе вниз.";
 
 /* nothing */
 "The Set Buffer command sets the entry where the key sequence was entered to the contents of Data 1" = "Команда  Установить буфер содержит последовательность, содержащуюся в Данные 1";
@@ -2261,7 +2264,7 @@
 "There was an error loading key bindings configuration" = "Ошибка загрузки конфигурации клавиш";
 
 /* nothing */
-"<none>" = "<нет>";
+"<none>" = "<none>";
 
 /* nothing */
 "Mod" = "Mod";
@@ -2300,10 +2303,10 @@
 "Unknown action %s in key bindings config file\nLoad aborted, Please fix %s/keybindings\n" = "Неизвестное действие %s в конфигурационном файле.\nЗагрузка прекращена, поправьте файл %s/keybindings.conf\n";
 
 /* nothing */
-"Expecting Data line (beginning Dx{:|!}) but got:\n%s\n\nLoad aborted, Please fix %s/keybindings\n" = "Требуется строка с данными (начинается на Dx{:|!}), но вместо нее:\n%s\n\nЗагрузка прервана, исправьте %s/keybindings\n";
+"Expecting Data line (beginning Dx{:|!}) but got:\n%s\n\nLoad aborted, Please fix %s/keybindings\n" = "Требуемая строка (начинается на Dx{:|!}), а содержит:\n%s\n\nЗагрузка прервана, Поправьте %s/keybindings\n";
 
 /* nothing */
-"Key bindings config file is corrupt, load aborted\nPlease fix %s/keybindings.conf\n" = "Конфигурационный файл настроек клавиш поврежден, загрузка прекращена\nИсправьте файл %s/keybindings.conf\n";
+"Key bindings config file is corrupt, load aborted\nPlease fix %s/keybindings.conf\n" = "Конфигурационный файл настроек клавиш поврежден, загрузка прекращена\nПоправьте файл %s/keybindings.conf\n";
 
 /* nothing */
 "Cannot write to that file." = "Невозможно записать в этот файл.";
@@ -2315,7 +2318,7 @@
 "That mask already exists." = "Такая маска уже существует.";
 
 /* nothing */
-"Private" = "Личный";
+"Private" = "Приватный";
 
 /* nothing */
 "Notice" = "Сообщение";
@@ -2336,7 +2339,7 @@
 "Enter mask to ignore:" = "Введите маску для игнорирования:";
 
 /* nothing */
-"XChat: Ignore list" = "X-Chat: Черный список";
+"XChat: Ignore list" = "X-Chat: Список игнорирования";
 
 /* nothing */
 "Ignore Stats:" = "Состояние игнорирования:";
@@ -2360,7 +2363,7 @@
 "Add..." = "Добавить...";
 
 /* nothing */
-"Channel name too short, try again." = "Имя канала недостаточно длинное.";
+"Channel name too short, try again." = "";
 
 /* nothing */
 "XChat: Connection Complete" = "XChat: Соединение завершено";
@@ -2369,28 +2372,28 @@
 "Connection to %s complete." = "Соединение с %s завершено.";
 
 /* nothing */
-"In the Server-List window, no channel (chat room) has been entered to be automatically joined for this network." = "В списке серверов для данной сети не были указаны каналы, в которые следует автоматически войти.";
+"In the Server-List window, no channel (chat room) has been entered to be automatically joined for this network." = "";
 
 /* nothing */
-"What would you like to do next?" = "Что вы хотите сделать теперь?";
+"What would you like to do next?" = "";
 
 /* nothing */
-"_Nothing, I'll join a channel later." = "_Ничего, я войду на канал позднее.";
+"_Nothing, I'll join a channel later." = "";
 
 /* nothing */
 "_Join this channel:" = "Зайти на канал:";
 
 /* nothing */
-"If you know the name of the channel you want to join, enter it here." = "Если вы знаете имя канала, на который хотите зайти, укажите его здесь.";
+"If you know the name of the channel you want to join, enter it here." = "";
 
 /* nothing */
-"O_pen the Channel-List window." = "_Открыть список каналов";
+"O_pen the Channel-List window." = "Открыть каналы в:";
 
 /* nothing */
-"Retrieving the Channel-List may take a minute or two." = "Получение списка каналов займет минуту-две.";
+"Retrieving the Channel-List may take a minute or two." = "";
 
 /* nothing */
-"_Always show this dialog after connecting." = "Пока_зывать этот диалог при соединении.";
+"_Always show this dialog after connecting." = "";
 
 /* nothing */
 "Dialog with" = "Диалог с";
@@ -2402,7 +2405,7 @@
 "No topic is set" = "Тема не установлена";
 
 /* nothing */
-"This server still has %d channels or dialogs associated with it. Close them all?" = "Для этого сервера открыто %d каналов или разговоров. Закрыть их все?";
+"This server still has %d channels or dialogs associated with it. Close them all?" = "";
 
 /* nothing */
 "Quit XChat?" = "Выйти из XChat?";
@@ -2411,28 +2414,28 @@
 "Don't ask next time." = "Не спрашивать в следующий раз";
 
 /* nothing */
-"You are connected to %i IRC networks." = "Вы подключены к %i IRC-сетям.";
+"You are connected to %i IRC networks." = "Авто Соединение при запуске";
 
 /* nothing */
 "Are you sure you want to quit?" = "Вы действительно хотите выйти?";
 
 /* nothing */
-"Some file transfers are still active." = "Некоторые передачи файлов еще активны.";
+"Some file transfers are still active." = "Некоторые передачи файлов еще активны, выйти из XChat?";
 
 /* nothing */
-"_Minimize to Tray" = "Свернуть в з_начок";
+"_Minimize to Tray" = "";
 
 /* nothing */
-"Insert Attribute or Color Code" = "Вставить аттрибут или код цвета";
+"Insert Attribute or Color Code" = "Вставить код цвета";
 
 /* nothing */
 "<b>Bold</b>" = "<b>Жирный</b>";
 
 /* nothing */
-"<u>Underline</u>" = "<u>Подчеркнутый</u>";
+"<u>Underline</u>" = "Подчеркнутый";
 
 /* nothing */
-"Normal" = "Обычный";
+"Normal" = "Норвегия";
 
 /* nothing */
 "Colors 0-7" = "Цвета 0-7";
@@ -2441,31 +2444,31 @@
 "Colors 8-15" = "Цвета 8-15";
 
 /* nothing */
-"_Settings" = "_Настройки";
+"_Settings" = "Настройка";
 
 /* nothing */
-"_Log to Disk" = "Запись _журнала";
+"_Log to Disk" = "";
 
 /* nothing */
-"_Reload Scrollback" = "За_гружать буфер";
+"_Reload Scrollback" = "";
 
 /* nothing */
-"_Hide Join/Part Messages" = "_Скрыть сообщения о приходе/уходе";
+"_Hide Join/Part Messages" = "Скрыть сообщения о приходе/уходе";
 
 /* nothing */
-"_Extra Alerts" = "Опове_щения";
+"_Extra Alerts" = "Дополнительные гаджеты";
 
 /* nothing */
-"Beep on _Message" = "_Звуковой сигнал при личном сообщении";
+"Beep on _Message" = "Звуковой сигнал при получении сообщений";
 
 /* nothing */
-"Blink Tray _Icon" = "_Мигание значка при личном сообщении";
+"Blink Tray _Icon" = "Звуковой сигнал при получении сообщений";
 
 /* nothing */
-"Blink Task _Bar" = "Мерцание _окна";
+"Blink Task _Bar" = "";
 
 /* nothing */
-"_Detach" = "Отсо_единить";
+"_Detach" = "Отцепить вкладку";
 
 /* nothing */
 "_Close" = "Закрыть";
@@ -2534,10 +2537,10 @@
 "Away Msg:" = "Сообщение об отсутствии:";
 
 /* nothing */
-"%d nicks selected." = "Выделено имен: %d.";
+"%d nicks selected." = "";
 
 /* nothing */
-"The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "Строка меню была скрыта. Чтобы увидеть ее снова, нажмите F9 или щелкните правой кнопкой по свободному месту в окне.";
+"The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "";
 
 /* nothing */
 "Open Link in Browser" = "Открыть ссылку в браузере";
@@ -2555,10 +2558,10 @@
 "Cycle Channel" = "Каналы по кругу";
 
 /* nothing */
-"_Remove from Favorites" = "_Удалить из Избранного";
+"_Remove from Favorites" = "";
 
 /* nothing */
-"_Add to Favorites" = "_Добавить в избранное";
+"_Add to Favorites" = "";
 
 /* nothing */
 "XChat: User menu" = "X-Chat: Пользовательское меню";
@@ -2567,19 +2570,19 @@
 "Edit This Menu..." = "Редактировать это меню..";
 
 /* nothing */
-"Retrieve channel list..." = "Получение списка каналов...";
+"Retrieve channel list..." = "Список каналов...";
 
 /* nothing */
-"User Commands - Special codes:\n\n%c  =  current channel\n%e  =  current network name\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "Команды пользователя - Специальные коды:\n\n%c  =  текущий канал\n%e  =  имя текущей сети\n%m  =  информация о компьютере\n%n  =  ваш ник\n%t  =  время и дата\n%v  =  версия XChat\n%2  =  слово 2\n%3  =  слово 3\n&2  =  слово 2 до конца строки\n&3  =  слово 3 до конца строки\n\nнапример:\n/cmd john hello\n\n%2 должно быть \"john\"\n&2 должно быть \"john hello\".";
+"User Commands - Special codes:\n\n%c  =  current channel\n%e  =  current network name\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "Команды пользователя - Специальные коды:\n\n%c  =  текущий канал\n%m  = информация о компьютере\n%n  =  ваш ник\n%t  =  время/дата\n%v  =  версия XChat\n%2  =  слово 2\n%3  =  слово 3\n&2  =  слово 2 до конца строки\n&3  =  слово 3 до конца строки\n\nнапример:\n/cmd john hello\n\n%2 должно быть \"john\"\n&2 должно быть \"john hello\".";
 
 /* nothing */
-"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Кнопки списка пользователей - Специальные коды:\n\n%a  =  все выбранные ники\n%c  =  текущий канал\n%e  =  имя текущей сети\n%h  =  адреса выбранных ников\n%m  =  информация о компьютере\n%n  =  ваш ник\n%s  =  выбранный ник\n%t  =  время и дата\n";
+"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Кнопки списка пользователей - Специальные коды:\n\n%a  =  все выбранные ники\n%c  =  текущий канал\n%h  =  адреса выбранных ников\n%m  = информация о компьютере\n%n  =  ваш ник\n%s  =  выбранный ник\n%t  =  время/дата\n";
 
 /* nothing */
-"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Кнопки диалога - Специальные коды:\n\n%a  =  все выбранные ники\n%c  =  текущий канал\n%e  =  имя текущей сети\n%h  =  имя машин выбранного ника\n%m  =  информация о компьютере\n%n  =  ваш ник\n%s  =  выбранный ник\n%t  =  время и дата\n";
+"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Кнопки диалога - Специальные коды:\n\n%a  =  все выбранные ники\n%c  =  текущий канал\n%h  =  адреса выбранных ников\n%m  = информация о компьютере\n%n  =  ваш ник\n%s  =  выбранный ник\n%t  =  время/дата\n";
 
 /* nothing */
-"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%e  =  current network name\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "Ответы CTCP - Специальные коды:\n\n%d  =  данные (целый ctcp)\n%e  =  имя текущей сети\n%m  =  инфо о компьютере\n%s  =  ник пославшего ctcp\n%t  =  время/дата\n%2  =  слово 2\n%3  =  слово 3\n&2  =  слово 2 до конца строки\n&3  =  слово 3 до конца строки\n\n";
+"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%e  =  current network name\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "Ответы CTCP - Специальные коды:\n\n%d  =  данные (целый ctcp)\n%m  =  инфо о компьютере\n%s  =  ник пославшего ctcp\n%t  =  время/дата\n%2  =  слово 2\n%3  =  слово 3\n&2  =  слово 2 до конца строки\n&3  =  слово 3 до конца строки\n\n";
 
 /* nothing */
 "URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of XChat" = "Обработчики URL - Специальные коды:\n\n%s  =  строка URL\n\nДобавление ! перед командой\nпоказывает, что будет отправлено \nоболочке вместо X-Chat";
@@ -2600,7 +2603,7 @@
 "XChat: URL Handlers" = "XChat: Обработчики URL";
 
 /* nothing */
-"XChat: Userlist buttons" = "XChat: Кнопки списка пользователей";
+"XChat: Userlist buttons" = "Кнопки списка пользователей..";
 
 /* nothing */
 "XChat: Dialog buttons" = "XChat: Кнопки диалога";
@@ -2630,40 +2633,40 @@
 "Channel Window..." = "Окно канала...";
 
 /* nothing */
-"_Load Plugin or Script..." = "_Загрузить модуль или сценарий...";
+"_Load Plugin or Script..." = "Загрузить скрипт или плагин";
 
 /* nothing */
 "_Quit" = "Выход";
 
 /* nothing */
-"_View" = "_Вид";
+"_View" = "";
 
 /* nothing */
 "_Menu Bar" = "Панел_ь меню";
 
 /* nothing */
-"_Topic Bar" = "Т_ема";
+"_Topic Bar" = "Панель темы";
 
 /* nothing */
-"_User List" = "Список _пользователей";
+"_User List" = "Список Пользователей";
 
 /* nothing */
-"U_serlist Buttons" = "Кнопки _списка пользователей";
+"U_serlist Buttons" = "Кнопки списка пользователей...";
 
 /* nothing */
-"M_ode Buttons" = "Кнопки _режима канала";
+"M_ode Buttons" = "Кнопки Режима Канала";
 
 /* nothing */
-"_Channel Switcher" = "Список _каналов";
+"_Channel Switcher" = "Список каналов...";
 
 /* nothing */
 "_Tabs" = "Закладки";
 
 /* nothing */
-"T_ree" = "Де_рево";
+"T_ree" = "Трассировка";
 
 /* nothing */
-"_Network Meters" = "_Монитор сети";
+"_Network Meters" = "Настройки сети";
 
 /* nothing */
 "Off" = "Выключено";
@@ -2684,13 +2687,13 @@
 "Join a Channel..." = "Зайти на канал...";
 
 /* nothing */
-"List of Channels..." = "Список каналов...";
+"List of Channels..." = "Зайти на канал...";
 
 /* nothing */
 "Marked Away" = "Пометить как \"Отошел\"";
 
 /* nothing */
-"_Usermenu" = "_Меню пользователя";
+"_Usermenu" = "Имя пользователя";
 
 /* nothing */
 "S_ettings" = "Настройка";
@@ -2744,7 +2747,7 @@
 "File Transfers..." = "Передачи файлов...";
 
 /* nothing */
-"Friends List..." = "Список друзей...";
+"Friends List..." = "Список банов...";
 
 /* nothing */
 "Ignore List..." = "Список игнорирования...";
@@ -2777,13 +2780,13 @@
 "_Contents" = "Содержание";
 
 /* nothing */
-"Check for updates" = "Проверка обновлений";
+"Check for updates" = "";
 
 /* nothing */
 "_About" = "О программе";
 
 /* nothing */
-"_Attach" = "Присо_единить";
+"_Attach" = "Прицепить вкладку";
 
 /* nothing */
 "Last Seen" = "Последний раз";
@@ -2804,31 +2807,31 @@
 "Enter nickname to add:" = "Введите ник для добавления:";
 
 /* nothing */
-"Notify on these networks:" = "Уведомлять на данных сетях:";
+"Notify on these networks:" = "";
 
 /* nothing */
-"Comma separated list of networks is accepted." = "Укажите разделенный запятыми список сетей.";
+"Comma separated list of networks is accepted." = "";
 
 /* nothing */
-"XChat: Friends List" = "X-Chat: Список друзей";
+"XChat: Friends List" = "X-Chat: Список отправляемых файлов";
 
 /* nothing */
-"Open Dialog" = "Начать разговор";
+"Open Dialog" = "Открыть диалоговое окно";
 
 /* nothing */
-"Cannot find 'notify-send' to open balloon alerts.\nPlease install libnotify." = "Не удалось найти 'notify-send' для всплывающих оповещений.\nТребуется установить libnotify.";
+"Cannot find 'notify-send' to open balloon alerts.\nPlease install libnotify." = "";
 
 /* nothing */
-"XChat: Connected to %u networks and %u channels" = "XChat: Подключен; сети: %u, каналы: %u";
+"XChat: Connected to %u networks and %u channels" = "";
 
 /* nothing */
-"_Restore" = "_Восстановить";
+"_Restore" = "";
 
 /* nothing */
 "_Hide" = "Скрыть";
 
 /* nothing */
-"_Blink on" = "_Мигать при сообщениях";
+"_Blink on" = "";
 
 /* nothing */
 "Channel Message" = "Сообщение канала";
@@ -2840,37 +2843,37 @@
 "Highlighted Message" = "Выделенные сообщения";
 
 /* nothing */
-"_Change status" = "Состо_яние";
+"_Change status" = "";
 
 /* nothing */
-"_Away" = "Ото_шел";
+"_Away" = "Отошел";
 
 /* nothing */
-"_Back" = "_Вернулся";
+"_Back" = "";
 
 /* nothing */
-"XChat: Highlighted message from: %s (%s)" = "XChat: Выделенное сообщение от %s (%s)";
+"XChat: Highlighted message from: %s (%s)" = "";
 
 /* nothing */
-"XChat: %u highlighted messages, latest from: %s (%s)" = "XChat: %u выделенных сообщения, последнее от %s (%s)";
+"XChat: %u highlighted messages, latest from: %s (%s)" = "";
 
 /* nothing */
-"XChat: New public message from: %s (%s)" = "XChat: Новое публичное сообщение от %s (%s)";
+"XChat: New public message from: %s (%s)" = "";
 
 /* nothing */
-"XChat: %u new public messages." = "XChat: %u новых публичных сообщений.";
+"XChat: %u new public messages." = "";
 
 /* nothing */
-"XChat: Private message from: %s (%s)" = "XChat: Личное сообщение от %s (%s)";
+"XChat: Private message from: %s (%s)" = "";
 
 /* nothing */
-"XChat: %u private messages, latest from: %s (%s)" = "XChat: %u личных сообщения, последнее от %s (%s)";
+"XChat: %u private messages, latest from: %s (%s)" = "";
 
 /* nothing */
-"XChat: File offer from: %s (%s)" = "XChat: Предложен файл: %s (%s)";
+"XChat: File offer from: %s (%s)" = "";
 
 /* nothing */
-"XChat: %u file offers, latest from: %s (%s)" = "XChat: %u предложения файлов, последнее от %s (%s)";
+"XChat: %u file offers, latest from: %s (%s)" = "";
 
 /* nothing */
 "Version" = "Версия";
@@ -2894,7 +2897,7 @@
 "Save As..." = "Сохранить как...";
 
 /* nothing */
-"XChat: Rawlog (%s)" = "X-Chat: Журнал передачи (%s)";
+"XChat: Rawlog (%s)" = "X-Chat: Монитор сети (%s)";
 
 /* nothing */
 "Clear rawlog" = "Очистить окно";
@@ -2903,16 +2906,16 @@
 "The window you opened this Search for doesn't exist anymore." = "Открытое вами окно поиска больше не существует.";
 
 /* nothing */
-"Search hit end, not found." = "Просмотр завершен, текст не найден.";
+"Search hit end, not found." = "";
 
 /* nothing */
 "XChat: Search" = "X-Chat: Поиск";
 
 /* nothing */
-"_Match case" = "С учетом _регистра";
+"_Match case" = "";
 
 /* nothing */
-"Search _backwards" = "В о_братном порядке";
+"Search _backwards" = "";
 
 /* nothing */
 "_Find" = "Поиск";
@@ -2924,31 +2927,31 @@
 "Really remove network \"%s\" and all its servers?" = "Удалить сеть \"%s\" и все ее сервера?";
 
 /* nothing */
-"#channel" = "#канал";
+"#channel" = "Канал";
 
 /* nothing */
-"XChat: Favorite Channels (Auto-Join List)" = "XChat: Избранные каналы (автоматический вход)";
+"XChat: Favorite Channels (Auto-Join List)" = "X-Chat: Список каналов (%s)";
 
 /* nothing */
-"These channels will be joined whenever you connect to %s." = "Вы автоматически зайдете на эти каналы при подключении к %s.";
+"These channels will be joined whenever you connect to %s." = "";
 
 /* nothing */
-"Key (Password)" = "Ключ (пароль):";
+"Key (Password)" = "Пароль:";
 
 /* nothing */
 "_Edit" = "Редактировать";
 
 /* nothing */
-"%s has been removed." = "%s был удален.";
+"%s has been removed." = "";
 
 /* nothing */
-"%s has been added." = "Добавлен %s.";
+"%s has been added." = "";
 
 /* nothing */
 "User name and Real name cannot be left blank." = "Имя пользователя и реальное имя нельзя оставлять пустым.";
 
 /* nothing */
-"XChat: Edit %s" = "X-Chat: Редактирование: %s";
+"XChat: Edit %s" = "X-Chat: Список банов (%s)";
 
 /* nothing */
 "Servers for %s" = "Серверы для %s";
@@ -2984,16 +2987,16 @@
 "Auto connect to this network at startup" = "Автоматически соединяться сэтой сетью при запуске программы";
 
 /* nothing */
-"Bypass proxy server" = "Обходить прокси-сервер";
+"Bypass proxy server" = "Использовать прокси";
 
 /* nothing */
 "Use SSL for all the servers on this network" = "Использовать SSL для всех серверов в этой сети";
 
 /* nothing */
-"Accept invalid SSL certificate" = "Принимать недействительные SSL-сертификаты";
+"Accept invalid SSL certificate" = "Разрешать плохие сертификаты.";
 
 /* nothing */
-"_Favorite channels:" = "_Избранные каналы:";
+"_Favorite channels:" = "Уйти с канала:";
 
 /* nothing */
 "Channels to join, separated by commas, but not spaces!" = "Каналы для подключения, разделенные запятыми, но не пробелами!";
@@ -3008,7 +3011,7 @@
 "Nickserv password:" = "Пароль для Nickserv:";
 
 /* nothing */
-"If your nickname requires a password, enter it here. Not all IRC networks support this." = "Если у вас есть пароль, введите его тут. Не все IRC-сети поддерживают этот метод.";
+"If your nickname requires a password, enter it here. Not all IRC networks support this." = "";
 
 /* nothing */
 "Server password:" = "Пароль сервера:";
@@ -3041,7 +3044,7 @@
 "_Sort" = "Сортировать";
 
 /* nothing */
-"Sorts the network list in alphabetical order. Use SHIFT-UP and SHIFT-DOWN keys to move a row." = "Сортировка списка сетей по алфавиту. Для перемещения строк используйте SHIFT-стрелка вверх/вниз.";
+"Sorts the network list in alphabetical order. Use SHIFT-UP and SHIFT-DOWN keys to move a row." = "";
 
 /* nothing */
 "C_onnect" = "Подключить";
@@ -3056,13 +3059,13 @@
 "Background image:" = "Фоновое изображение:";
 
 /* nothing */
-"Scrollback lines:" = "Строк в буфере:";
+"Scrollback lines:" = "Линии прокрутки:";
 
 /* nothing */
 "Colored nick names" = "Цветные ники";
 
 /* nothing */
-"Give each person on IRC a different color" = "Дать каждому участнику канала свой цвет";
+"Give each person on IRC a different color" = "Дать каждой персоне на IRC свой цвет";
 
 /* nothing */
 "Indent nick names" = "Выравнивать ники";
@@ -3074,7 +3077,7 @@
 "Transparent background" = "Прозрачный фон";
 
 /* nothing */
-"Show marker line" = "Показывать разделительную черту";
+"Show marker line" = "";
 
 /* nothing */
 "Insert a red line after the last read text." = "Вставить красную линию после последней прочитанной строки.";
@@ -3092,7 +3095,7 @@
 "Blue:" = "Голубой:";
 
 /* nothing */
-"Time Stamps" = "Метки времени";
+"Time Stamps" = "Ставить время/дату сообщений";
 
 /* nothing */
 "Enable time stamps" = "Включить отметки времени";
@@ -3107,7 +3110,7 @@
 "A-Z" = "A-Z";
 
 /* nothing */
-"Last-spoke order" = "По времени";
+"Last-spoke order" = "";
 
 /* nothing */
 "Input box" = "Поле ввода ";
@@ -3116,7 +3119,7 @@
 "Use the Text box font and colors" = "Использовать цвета и шрифт текстовой надписи";
 
 /* nothing */
-"Spell checking" = "Проверка орфографии";
+"Spell checking" = "";
 
 /* nothing */
 "Nick Completion" = "Автодополнение ников";
@@ -3128,10 +3131,10 @@
 "Nick completion suffix:" = "Суффикс дополнения ников:";
 
 /* nothing */
-"Nick completion sorted:" = "Сортировать варианты имен:";
+"Nick completion sorted:" = "Суффикс дополнения ников:";
 
 /* nothing */
-"Input Box Codes" = "Укажите символы рамок";
+"Input Box Codes" = "";
 
 /* nothing */
 "Interpret %nnn as an ASCII value" = "Рассматривать %nnn как ASCII-код";
@@ -3152,16 +3155,16 @@
 "Unsorted" = "Не сортировать";
 
 /* nothing */
-"Left (Upper)" = "Слева вверху";
+"Left (Upper)" = "";
 
 /* nothing */
-"Left (Lower)" = "Слева внизу";
+"Left (Lower)" = "";
 
 /* nothing */
-"Right (Upper)" = "Справа вверху";
+"Right (Upper)" = "";
 
 /* nothing */
-"Right (Lower)" = "Справа внизу";
+"Right (Lower)" = "";
 
 /* nothing */
 "Top" = "Вверху";
@@ -3182,13 +3185,13 @@
 "User list sorted by:" = "Сортировать  спиоса пользователе пой ";
 
 /* nothing */
-"Show user list at:" = "Список пользователей:";
+"Show user list at:" = "Показать/Скрыть список пользователей";
 
 /* nothing */
-"Away tracking" = "Проверка присутствия";
+"Away tracking" = "";
 
 /* nothing */
-"Track the Away status of users and mark them in a different color" = "Следить за ушедшими пользователями и выделять их цветом";
+"Track the Away status of users and mark them in a different color" = "";
 
 /* nothing */
 "On channels smaller than:" = "На каналах меньше, чем:";
@@ -3209,10 +3212,10 @@
 "Only requested tabs" = "Только запрошенные закладки";
 
 /* nothing */
-"Tree" = "Дерево";
+"Tree" = "Трассировка";
 
 /* nothing */
-"Switcher type:" = "Вид списка:";
+"Switcher type:" = "Найти...";
 
 /* nothing */
 "Open an extra tab for server messages" = "Открыть вкладку для сообщений сервера";
@@ -3227,31 +3230,31 @@
 "Sort tabs in alphabetical order" = "Сортировать вкладки в алфавитном порядке";
 
 /* nothing */
-"Smaller text" = "Мелкий шрифт";
+"Smaller text" = "Маленькие вкладки";
 
 /* nothing */
-"Focus new tabs:" = "Переходить на новые вкладки:";
+"Focus new tabs:" = "";
 
 /* nothing */
-"Show channel switcher at:" = "Переключатель каналов:";
+"Show channel switcher at:" = "На каналах меньше, чем:";
 
 /* nothing */
 "Shorten tab labels to:" = "Сократить метки вкладок до:";
 
 /* nothing */
-"letters." = "букв.";
+"letters." = "буквы.";
 
 /* nothing */
 "Tabs or Windows" = "Вкладки или окна";
 
 /* nothing */
-"Open channels in:" = "Открывать каналы как:";
+"Open channels in:" = "Открыть каналы в:";
 
 /* nothing */
-"Open dialogs in:" = "Открывать разговоры как:";
+"Open dialogs in:" = "Открыть диалог в:";
 
 /* nothing */
-"Open utilities in:" = "Открывать утилиты как:";
+"Open utilities in:" = "Открыть утилиты в:";
 
 /* nothing */
 "Open DCC, Ignore, Notify etc, in tabs or windows?" = "Открыть как закладки DCC, Игнорирования, Уведомлений и т.д. или в окне?";
@@ -3263,7 +3266,7 @@
 "Yes" = "Да";
 
 /* nothing */
-"Browse for save folder every time" = "Запрашивать каталог сохранения";
+"Browse for save folder every time" = "";
 
 /* nothing */
 "Files and Directories" = "Файлы и каталоги";
@@ -3329,37 +3332,37 @@
 "Alerts" = "Предупреждения";
 
 /* nothing */
-"Show tray balloons on:" = "Показывать уведомления при:";
+"Show tray balloons on:" = "Показывать закладки с:";
 
 /* nothing */
-"Blink tray icon on:" = "Мигание значка при:";
+"Blink tray icon on:" = "";
 
 /* nothing */
-"Blink task bar on:" = "Мигание окна при:";
+"Blink task bar on:" = "";
 
 /* nothing */
-"Make a beep sound on:" = "Звуковой сигнал при:";
+"Make a beep sound on:" = "";
 
 /* nothing */
-"Enable system tray icon" = "Значок в области уведомлений";
+"Enable system tray icon" = "Разрешить отслеживание отсутствия";
 
 /* nothing */
 "Highlighted Messages" = "Выделенные сообщения";
 
 /* nothing */
-"Highlighted messages are ones where your nickname is mentioned, but also:" = "Выделяются сообщения, в которых упомянуто ваше имя, кроме того:";
+"Highlighted messages are ones where your nickname is mentioned, but also:" = "";
 
 /* nothing */
-"Extra words to highlight:" = "Выделять следующие слова:";
+"Extra words to highlight:" = "Дополнительные слова (выделенные):";
 
 /* nothing */
-"Nick names not to highlight:" = "Не выделять имена:";
+"Nick names not to highlight:" = "Дополнительные слова (выделенные):";
 
 /* nothing */
-"Nick names to always highlight:" = "Всегда выделять имена:";
+"Nick names to always highlight:" = "";
 
 /* nothing */
-"Separate multiple words with commas.\nWildcards are accepted." = "Разделяйте слова запятыми.\nМожно использовать шаблоны.";
+"Separate multiple words with commas.\nWildcards are accepted." = "Разделять слова запятыми.";
 
 /* nothing */
 "Default Messages" = "Сообщения по умолчанию";
@@ -3431,13 +3434,13 @@
 "Logging" = "Протоколирование";
 
 /* nothing */
-"Display scrollback from previous session" = "Загрузить буфер прошлого разговора";
+"Display scrollback from previous session" = "";
 
 /* nothing */
-"Enable logging of conversations to disk" = "Запись журнала разговора";
+"Enable logging of conversations to disk" = "Включить протоколирование разговоров";
 
 /* nothing */
-"Log filename:" = "Имя файла журнала:";
+"Log filename:" = "Маска имени лог файлов:";
 
 /* nothing */
 "%s=Server %c=Channel %n=Network." = "%s=Сервер %c=Канал %n=Сеть.";
@@ -3464,7 +3467,7 @@
 "HTTP" = "HTTP";
 
 /* nothing */
-"MS Proxy (ISA)" = "MS Proxy (ISA)";
+"MS Proxy (ISA)" = "";
 
 /* nothing */
 "All Connections" = "Все соединения";
@@ -3473,7 +3476,7 @@
 "IRC Server Only" = "Только IRC серверы";
 
 /* nothing */
-"DCC Get Only" = "Только DCC Get";
+"DCC Get Only" = "";
 
 /* nothing */
 "Your Address" = "Ваш адрес";
@@ -3503,7 +3506,7 @@
 "Proxy Authentication" = "Авторизация прокси";
 
 /* nothing */
-"Use Authentication (MS Proxy, HTTP or Socks5 only)" = "Вход на сервер (только для MS Proxy, HTTP или Socks5)";
+"Use Authentication (MS Proxy, HTTP or Socks5 only)" = "Проверка на прокси сервере (только HTTP и Socks5)";
 
 /* nothing */
 "Use Authentication (HTTP or Socks5 only)" = "Использовать авторизацию  (только HTTP и Socks5)";
@@ -3533,7 +3536,7 @@
 "Mark not-identified users with:" = "Отметить неидентифицированных пользователей:";
 
 /* nothing */
-"Open Data Folder" = "Открыть каталог с данными";
+"Open Data Folder" = "";
 
 /* nothing */
 "Select color" = "Выбрать цвет";
@@ -3545,7 +3548,7 @@
 "mIRC colors:" = "Цвета mIRC:";
 
 /* nothing */
-"Local colors:" = "Локальные цвета:";
+"Local colors:" = "Дополнительные цвета:";
 
 /* nothing */
 "Foreground:" = "Передний план:";
@@ -3617,7 +3620,7 @@
 "User list" = "Список пользователей";
 
 /* nothing */
-"Channel switcher" = "Список каналов";
+"Channel switcher" = "Список каналов...";
 
 /* nothing */
 "Colors" = "Цвета";
@@ -3641,7 +3644,7 @@
 "Categories" = "Категории";
 
 /* nothing */
-"You cannot place the tree on the top or bottom!\nPlease change to the <b>Tabs</b> layout in the <b>View</b> menu first." = "Дерево нельзя поместить сверху или снизу!\nСначала замените его на <b>Вкладки</b> в меню <b>Вид</b>.";
+"You cannot place the tree on the top or bottom!\nPlease change to the <b>Tabs</b> layout in the <b>View</b> menu first." = "";
 
 /* nothing */
 "Some settings were changed that require a restart to take full effect." = "Изменение некоторых настроек требует перезапуска программы для их использования.";
@@ -3656,7 +3659,7 @@
 "There was an error parsing the string" = "Ошибка при разборе строки";
 
 /* nothing */
-"This signal is only passed %d args, $%d is invalid" = "Этот сигнал передал только %d аргумента, $%d отсутствует.";
+"This signal is only passed %d args, $%d is invalid" = "Этот сигнал принимает только аргумент %d , $%d - неправильный.";
 
 /* nothing */
 "Print Texts File" = "Печатать текстовый файл";

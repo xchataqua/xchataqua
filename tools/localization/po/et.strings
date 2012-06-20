@@ -1,5 +1,5 @@
 /* nothing */
-"" = "Project-Id-Version: xchat-2.8.4\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2007-06-24 13:05+1000\nPO-Revision-Date: 2008-02-14 13:57+0200\nLast-Translator: Urmet Saar <urmet.saar@gmail.com>\nLanguage-Team: Estonian <linux-ee@lists.eenet.ee>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nX-Poedit-Language: Estonian\nX-Poedit-Country: ESTONIA\n";
+"" = "Project-Id-Version: xchat-2.8.6\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2010-05-30 13:56+1000\nPO-Revision-Date: 2008-07-29 09:38+0300\nLast-Translator: Urmet Saar <urmet.saar@gmail.com>\nLanguage-Team: Estonian <linux-ee@lists.eenet.ee>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nX-Poedit-Language: Estonian\nX-Poedit-Country: ESTONIA\nX-Generator: Lokalize 0.2\nPlural-Forms: nplurals=2; plural=(n != 1);\n";
 
 /* nothing */
 "Cannot create ~/.xchat2" = "Ei saa luua kataloogi ~/.xchat2";
@@ -77,7 +77,7 @@
 "I need /bin/sh to run!\n" = "Vajan käivitamiseks programmi /bin/sh!\n";
 
 /* nothing */
-"Commands Available:" = "Võimalikud käsud:  ";
+"Commands Available:" = "Sisseehitatud käsud:  ";
 
 /* nothing */
 "User defined commands:" = "Kasutaja tekitatud käsud:  ";
@@ -119,7 +119,7 @@
 "BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "BAN <mask> [<keelu tüüp>], keelab hosti maskiga sobivatel kasutajatel kanaliga liitumise. Kui mõni selline kasutaja on kanalis, siis see käsk ei viska neid automaatselt välja (selleks vajad chanop-õigusi)";
 
 /* nothing */
-"Set per channel options\nCHANOPT CONFMODE ON|OFF - Toggle conf mode/showing of join and part messages\nCHANOPT COLORPASTE ON|OFF - Toggle color paste\nCHANOPT BEEP ON|OFF - Toggle beep on message\nCHANOPT TRAY ON|OFF - Toggle tray blink on message" = "Seadista kanalipõhiseid seadeid\nCHANOPT CONFMODE ON|OFF - Vali ühinemis- ja lahkumisteadete näitamine \nCHANOPT COLORPASTE ON|OFF - Koos värvikoodidega teksti asetamine\nCHANOPT BEEP ON|OFF - Piiksu tegemine sõnumi saamisel\nCHANOPT TRAY ON|OFF - Süsteemisalve vilgutamine sõnumi saamisel";
+"CHANOPT [-quiet] <variable> [<value>]" = "CHANOPT [-quiet] <muutuja> [<väärtus>]";
 
 /* nothing */
 "CLEAR [ALL|HISTORY], Clears the current text window or command history" = "CLEAR [ALL|HISTORY], Puhastab aktiivse tekstiakna või sisestuskasti mälu";
@@ -182,7 +182,7 @@
 "GATE <host> [<port>], proxies through a host, port defaults to 23" = "GATE <host> [<port>], loob proksiühenduse hosti kaudu, vaikeport on 23";
 
 /* nothing */
-"GHOST <nick> <password>, Kills a ghosted nickname" = "GHOST <hüüdnimi> <parool>, tapab kummituse";
+"GHOST <nick> [password], Kills a ghosted nickname" = "GHOST <hüüdnimi> <parool>, tapab kummituse";
 
 /* nothing */
 "HOP <nick>, gives chanhalf-op status to the nick (needs chanop)" = "HOP <kasutaja>, annab kasutajale chanhalf-op õiguse (vajab chanop õigust)";
@@ -296,7 +296,7 @@
 "SERVER <host> [<port>] [<password>], connects to a server, the default port is 6667" = "SERVER <host> [<port>] [<salasõna>], loob serveriga ühenduse, vaikimisi port on 6667";
 
 /* nothing */
-"SET [-e] [-or] [-quiet] <variable> [<value>]" = "SET [-e] [-or] [-quiet] <muutuja> [<väärtus>]";
+"SET [-e] [-off|-on] [-quiet] <variable> [<value>]" = "SET [-e] [-or] [-quiet] <muutuja> [<väärtus>]";
 
 /* nothing */
 "SETCURSOR [-|+]<position>" = "SETCURSOR [-|+]<positsioon>";
@@ -629,7 +629,7 @@
 "%C22*%O$tNo ping reply for $1 seconds, disconnecting." = "%C22*%O$tPingile pole $1 sekundi jooksul vastatud, katkestan ühenduse.";
 
 /* nothing */
-"%C22*%O$tA process is already running" = "";
+"%C22*%O$tA process is already running" = "%C22*%O$tÜks programm juba käib";
 
 /* nothing */
 "%C23*%O$t%C23$1 has quit (%O%C23%B%B$2%O%C23)" = "%C23*%O$t%C23$1 lahkus (%O%C23%B%B$2%O%C23)";
@@ -641,7 +641,7 @@
 "%C28-%C29$1/Wallops%C28-%O$t$2" = "%C28-%C29$1/Wallops%C28-%O$t$2";
 
 /* nothing */
-"%C22*%O$tLooking up IP number for%C26 $1%O..." = "";
+"%C22*%O$tLooking up IP number for%C26 $1%O..." = "%C22*%O$tOtsin IP numbrit nimele%C26 $1%O...";
 
 /* nothing */
 "%C22*%O$t%C22Connected." = "%C22*%O$t%C22Ühendatud.";
@@ -692,7 +692,7 @@
 "%C22*%O$t%C28[%O$1%C28] %C30(%O$2@$3%C30)%O: $4" = "%C22*%O$t%C28[%O$1%C28] %C30(%O$2@$3%C30)%O: $4";
 
 /* nothing */
-"%C22*%O$t%C28[%O$1%C28] %Oreal user@host%C27 $2%O, real IP%C27 $3" = "";
+"%C22*%O$t%C28[%O$1%C28] %Oreal user@host%C27 $2%O, real IP%C27 $3" = "%C22*%O$t%C28[%O$1%C28] %Opäris kasutaja@host%C27 $2%O, päris IP%C27 $3";
 
 /* nothing */
 "%C19*%O$t%C19Now talking on $2" = "%C19*%O$t%C19Vestled nüüd kanalis $2";
@@ -749,10 +749,10 @@
 "Mode char" = "Moodi sümbol";
 
 /* nothing */
-"The text" = "Tekst";
+"Identified text" = "Tuvastatud tekst";
 
 /* nothing */
-"Identified text" = "Tuvastatud tekst";
+"The text" = "Tekst";
 
 /* nothing */
 "The message" = "Teade";
@@ -920,7 +920,7 @@
 "Full name" = "Täisnimi";
 
 /* nothing */
-"Channel Membership/\"is an IRC operator\"" = "";
+"Channel Membership/\"is an IRC operator\"" = "Kanali liikmestaatus/\"IRC operator\"";
 
 /* nothing */
 "Server Information" = "Serveri info";
@@ -956,6 +956,9 @@
 "Server Name" = "Serveri nimi";
 
 /* nothing */
+"Raw Numeric or Identifier" = "";
+
+/* nothing */
 "Nick of person who invited you" = "Sind kutsunud kasutaja";
 
 /* nothing */
@@ -977,7 +980,7 @@
 "Network" = "Võrk";
 
 /* nothing */
-"Modes string" = "";
+"Modes string" = "Modes string";
 
 /* nothing */
 "IP address" = "IP aadress";
@@ -995,7 +998,7 @@
 "CPS" = "CPS";
 
 /* nothing */
-"Pathname" = "";
+"Pathname" = "Asukoht";
 
 /* nothing */
 "Position" = "Positsioon";
@@ -1007,7 +1010,7 @@
 "DCC String" = "DCC string";
 
 /* nothing */
-"Number of notify items" = "";
+"Number of notify items" = "Märguandenimekirja kirjete arv";
 
 /* nothing */
 "Old Filename" = "Vana failinimi";
@@ -1067,7 +1070,7 @@
 "Connection reset by peer" = "Peer katkestas ühenduse";
 
 /* nothing */
-"Ascension Island" = "Kookossaared";
+"Ascension Island" = "";
 
 /* nothing */
 "Andorra" = "Andorra";
@@ -1103,7 +1106,7 @@
 "Argentina" = "Argentina";
 
 /* nothing */
-"Reverse DNS" = "";
+"Reverse DNS" = "IP DNS nimeks lahendamine";
 
 /* nothing */
 "American Samoa" = "Ameerika samoa";
@@ -1112,7 +1115,7 @@
 "Austria" = "Austria";
 
 /* nothing */
-"Nato Fiel" = "";
+"Nato Fiel" = "Nato Fiel";
 
 /* nothing */
 "Australia" = "Austraalia";
@@ -1223,7 +1226,7 @@
 "Colombia" = "Kolumbia";
 
 /* nothing */
-"Internic Commercial" = "";
+"Internic Commercial" = "Internic Commercial";
 
 /* nothing */
 "Costa Rica" = "Costa Rica";
@@ -1355,7 +1358,7 @@
 "Greece" = "Kreeka";
 
 /* nothing */
-"S. Georgia and S. Sandwich Isles" = "";
+"S. Georgia and S. Sandwich Isles" = "Lõuna-Georgia ja Lõuna-Sandwichi saared";
 
 /* nothing */
 "Guatemala" = "Guatemala";
@@ -1511,7 +1514,7 @@
 "Moldova" = "Moldova";
 
 /* nothing */
-"United States Medical" = "";
+"United States Medical" = "Ühendriikide Meditsiin";
 
 /* nothing */
 "Madagascar" = "Madagaskar";
@@ -1580,7 +1583,7 @@
 "Niger" = "Niger";
 
 /* nothing */
-"Internic Network" = "";
+"Internic Network" = "Internic Network";
 
 /* nothing */
 "Norfolk Island" = "Norfolk";
@@ -1613,7 +1616,7 @@
 "Oman" = "Omaan";
 
 /* nothing */
-"Internic Non-Profit Organization" = "";
+"Internic Non-Profit Organization" = "Internic mittetulundusorganisatsioon";
 
 /* nothing */
 "Panama" = "Panama";
@@ -1850,16 +1853,19 @@
 "Unknown" = "Tundmatu";
 
 /* nothing */
-"Open Dialog Window" = "Ava dialoogiaken";
+"_Open Dialog Window" = "_Ava dialoogiaken";
 
 /* nothing */
-"Send a File" = "Saada fail ";
+"_Send a File" = "_Saada fail ";
 
 /* nothing */
-"User Info (WHOIS)" = "Kasutaja info (WHOIS)";
+"_User Info (WhoIs)" = "_Kasutaja info (WHOIS)";
 
 /* nothing */
-"Operator Actions" = "Operaatori tegevused";
+"_Add to Friends List" = "_Lisa sõprade nimekirja";
+
+/* nothing */
+"O_perator Actions" = "O_peraatori tegevused";
 
 /* nothing */
 "Give Ops" = "Tee operaatoriks";
@@ -1884,87 +1890,6 @@
 
 /* nothing */
 "KickBan" = "KikkBänni";
-
-/* nothing */
-"Direct client-to-client" = "";
-
-/* nothing */
-"Send File" = "Saada fail";
-
-/* nothing */
-"Offer Chat" = "Paku vestlust";
-
-/* nothing */
-"Abort Chat" = "Katkesta vestlus";
-
-/* nothing */
-"Version" = "Versioon";
-
-/* nothing */
-"Userinfo" = "Kasutaja info";
-
-/* nothing */
-"Clientinfo" = "Kliendi info";
-
-/* nothing */
-"Ping" = "Ping";
-
-/* nothing */
-"Time" = "Aeg";
-
-/* nothing */
-"Finger" = "Finger";
-
-/* nothing */
-"Oper" = "Operaator";
-
-/* nothing */
-"Kill this user" = "Tapa see kasutaja";
-
-/* nothing */
-"Mode" = "Mood";
-
-/* nothing */
-"Give Half-Ops" = "Anna pool-op";
-
-/* nothing */
-"Take Half-Ops" = "Võta pool-op";
-
-/* nothing */
-"Ignore" = "Ignoreeri";
-
-/* nothing */
-"Ignore User" = "Ignoreeri kasutajat";
-
-/* nothing */
-"UnIgnore User" = "Ära ignoreeri kasutajat";
-
-/* nothing */
-"Info" = "Info";
-
-/* nothing */
-"Who" = "Who";
-
-/* nothing */
-"WhoIs" = "KesOn";
-
-/* nothing */
-"DNS Lookup" = "";
-
-/* nothing */
-"Trace" = "Jälitus";
-
-/* nothing */
-"UserHost" = "Kasutaja host";
-
-/* nothing */
-"External" = "Väline";
-
-/* nothing */
-"Traceroute" = "";
-
-/* nothing */
-"Telnet" = "Telnet";
 
 /* nothing */
 "Leave Channel" = "Lahku kanalist";
@@ -1997,10 +1922,13 @@
 "Enter reason to kick %s:" = "Põhjus %s väljaviskamiseks:";
 
 /* nothing */
-"Sendfile" = "";
+"Sendfile" = "Saada fail";
 
 /* nothing */
 "Dialog" = "Dialoog";
+
+/* nothing */
+"WhoIs" = "KesOn";
 
 /* nothing */
 "Send" = "Saada";
@@ -2012,10 +1940,13 @@
 "Clear" = "Puhasta";
 
 /* nothing */
-"Couldn't connect to session bus" = "";
+"Ping" = "Ping";
 
 /* nothing */
-"Failed to complete NameHasOwner" = "";
+"Couldn't connect to session bus" = "Seansisiiniga ühendumine nurjus";
+
+/* nothing */
+"Failed to complete NameHasOwner" = "NameHasOwner täitmine nurjus";
 
 /* nothing */
 "Failed to complete Command" = "Käsu täitmine ebaõnnestus";
@@ -2024,16 +1955,16 @@
 "remote access" = "kaugligipääs";
 
 /* nothing */
-"plugin for remote access using DBUS" = "";
+"plugin for remote access using DBUS" = "plugin DBUS abil kaugligipääsuks";
 
 /* nothing */
-"Couldn't connect to session bus: %s\n" = "";
+"Couldn't connect to session bus: %s\n" = "Seansisiiniga ühendumine nurjus: %s\n";
 
 /* nothing */
-"Failed to acquire %s: %s\n" = "Ei suuda avada fonti:\n\n%s";
+"Failed to acquire %s: %s\n" = "%s omandamine nurjus: %s\n";
 
 /* nothing */
-"About XChat" = "XChati info";
+"About " = "Info";
 
 /* nothing */
 "A multiplatform IRC Client" = "Multiplatvormne IRC klient";
@@ -2066,10 +1997,10 @@
 "XChat: Ban List (%s)" = "XChat: bännitute nimekiri (%s)";
 
 /* nothing */
-"Unban" = "Eemalda bänn";
+"Remove" = "Eemalda";
 
 /* nothing */
-"Crop" = "";
+"Crop" = "Kärbi";
 
 /* nothing */
 "Refresh" = "Värskenda";
@@ -2096,7 +2027,7 @@
 "_Search" = "_Otsi";
 
 /* nothing */
-"_Download List" = "Allalaadimised";
+"_Download List" = "Lae nimekiri _alla";
 
 /* nothing */
 "Save _List..." = "Salvesta _nimekiri...";
@@ -2108,13 +2039,13 @@
 "channels with" = "kanalid, kus on";
 
 /* nothing */
-"to" = "";
+"to" = "kuni";
 
 /* nothing */
 "users." = "kasutajat.";
 
 /* nothing */
-"Look in:" = "";
+"Look in:" = "Otsimiskoht:";
 
 /* nothing */
 "Channel name" = "Kanali nimi";
@@ -2126,7 +2057,7 @@
 "Simple Search" = "Lihtne otsing";
 
 /* nothing */
-"Pattern Match (Wildcards)" = "";
+"Pattern Match (Wildcards)" = "Mustri kokkulangevus (metamärgid)";
 
 /* nothing */
 "Regular Expression" = "Regulaaravaldis";
@@ -2258,7 +2189,10 @@
 "Open an irc://server:port/channel URL" = "Ava irc://server:port/kanal URL";
 
 /* nothing */
-"Open URL in an existing XChat" = "Ava URL juba töötavas XChatis";
+"Execute command:" = "Käivita käsk:";
+
+/* nothing */
+"Open URL or execute command in an existing XChat" = "Ava URL või käivita käsk juba töötavas XChatis";
 
 /* nothing */
 "Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "Käivitu peidetult. Tase 0=tavaline 1=tegumiribal 2=süsteemisalves";
@@ -2282,40 +2216,40 @@
 "Network send queue: %d bytes" = "Võrgu saatmisjärjekord: %d baiti";
 
 /* nothing */
-"The Run Command action runs the data in Data 1 as if it has been typed into the entry box where you pressed the key sequence. Thus it can contain text (which will be sent to the channel/person), commands or user commands. When run all \\n characters in Data 1 are used to deliminate seperate commands so it is possible to run more than one command. If you want a \\ in the actual text run then enter \\\\" = "";
+"The Run Command action runs the data in Data 1 as if it has been typed into the entry box where you pressed the key sequence. Thus it can contain text (which will be sent to the channel/person), commands or user commands. When run all \\n characters in Data 1 are used to deliminate seperate commands so it is possible to run more than one command. If you want a \\ in the actual text run then enter \\\\" = "Run Command käsklus käivitab \"Andmed 1\" väljas oleva käsu nagu oleks see kiirklahvi vajutamise ajal sisestuskasti trükitud. See võib sisaldada ka teksti, mis saadetakse kanalisse/kasutajale, kasutaja defineeritud käsklusi või muud. Kõiki \\n märke \"Andmed 1\" väljas loetakse eri käskude eraldajaks ja seeläbi saab korraga käivitada mitu käsklust. \\ käskluses kasutamiseks tuleb sisestada \\\\";
 
 /* nothing */
-"The Change Page command switches between pages in the notebook. Set Data 1 to the page you want to switch to. If Data 2 is set to anything then the switch will be relative to the current position" = "";
+"The Change Page command switches between pages in the notebook. Set Data 1 to the page you want to switch to. If Data 2 is set to anything then the switch will be relative to the current position" = "Change Page vahetab fookust eri sakkide vahel. \"Andmed 1\" välja kirjuta saki number, kuhu vahetus toimuma peaks. Kui \"Andmed 2\" väljal on väärtus, siis toimub liikumine suhteliselt aktiivse saki asukohaga.";
 
 /* nothing */
-"The Insert in Buffer command will insert the contents of Data 1 into the entry where the key sequence was pressed at the current cursor position" = "";
+"The Insert in Buffer command will insert the contents of Data 1 into the entry where the key sequence was pressed at the current cursor position" = "Insert in Buffer käsklus sisestab \"Andmed 1\" välja sisu aktiivsele tekstiväljale.";
 
 /* nothing */
-"The Scroll Page command scrolls the text widget up or down one page or one line. Set Data 1 to either Up, Down, +1 or -1." = "";
+"The Scroll Page command scrolls the text widget up or down one page or one line. Set Data 1 to either Up, Down, +1 or -1." = "Scroll Page kerib tekstiakent lehekülje või rea kaupa. \"Andmed 1\" väärtusteks kasuta kas Up, Down, +1 või -1.";
 
 /* nothing */
-"The Set Buffer command sets the entry where the key sequence was entered to the contents of Data 1" = "";
+"The Set Buffer command sets the entry where the key sequence was entered to the contents of Data 1" = "Set Buffer käsklus asendab aktiivse tekstivälja sisu \"Andmed 1\" välja sisuga.";
 
 /* nothing */
-"The Last Command command sets the entry to contain the last command entered - the same as pressing up in a shell" = "";
+"The Last Command command sets the entry to contain the last command entered - the same as pressing up in a shell" = "Last Command käsklus toob sisestuskastis ette eelmisena sisestatud rea - samamoodi nagu terminaliaknas nool üles vajutamisel.";
 
 /* nothing */
-"The Next Command command sets the entry to contain the next command entered - the same as pressing down in a shell" = "";
+"The Next Command command sets the entry to contain the next command entered - the same as pressing down in a shell" = "Next Command käsklus toob sisestuskastis ette järgmisena sisestatud rea - samamoodi nagu terminaliaknas nool alla vajutamisel.";
 
 /* nothing */
-"This command changes the text in the entry to finish an incomplete nickname or command. If Data 1 is set then double-tabbing in a string will select the last nick, not the next" = "";
+"This command changes the text in the entry to finish an incomplete nickname or command. If Data 1 is set then double-tabbing in a string will select the last nick, not the next" = "See käsklus muudab sisestuskasti viimast sõna nii, et see lõpetaks pooleli oleva hüüdnime või käskluse kirjutamise. Kui \"Andmed 1\" väljal on väärtus, siis käsu kahekordsel järjest esilekutsumisel valitakse viimane hüüdnimi nimekirjas mitte järgmine.";
 
 /* nothing */
-"This command scrolls up and down through the list of nicks. If Data 1 is set to anything it will scroll up, else it scrolls down" = "";
+"This command scrolls up and down through the list of nicks. If Data 1 is set to anything it will scroll up, else it scrolls down" = "See käsk kerib kasutajate nimekirja. Kui \"Andmed 1\" lahtris on suvaline väärtus, siis keritakse üles, vastasel juhul alla.";
 
 /* nothing */
-"This command checks the last word entered in the entry against the replace list and replaces it if it finds a match" = "";
+"This command checks the last word entered in the entry against the replace list and replaces it if it finds a match" = "See käsk kontrollib, kas viimasena sisestatud sõna esineb automaatasenduse loetelus ja asendab selle vajadusel";
 
 /* nothing */
-"This command moves the front tab left by one" = "See korraldus liigutab aktiivset sakki koha võrra vasakule.";
+"This command moves the front tab left by one" = "See käsk liigutab aktiivset sakki koha võrra vasakule.";
 
 /* nothing */
-"This command moves the front tab right by one" = "See korraldus liigutab aktiivset sakki koha võrra paremale.";
+"This command moves the front tab right by one" = "See käsk liigutab aktiivset sakki koha võrra paremale.";
 
 /* nothing */
 "This command moves the current tab family to the left" = "See käsk liigutab aktiivse sakigrupi vasakule";
@@ -2333,7 +2267,7 @@
 "<none>" = "<tühi>";
 
 /* nothing */
-"Mod" = "";
+"Mod" = "Mod";
 
 /* nothing */
 "Key" = "Nupp";
@@ -2435,7 +2369,7 @@
 "XChat: Connection Complete" = "XChat: Ühendatud";
 
 /* nothing */
-"Connection to %s complete." = "";
+"Connection to %s complete." = "Võrguga %s ühendatud.";
 
 /* nothing */
 "In the Server-List window, no channel (chat room) has been entered to be automatically joined for this network." = "Serverite nimekirja aknas pole määratud ühtegi kanalit millega automaatselt ühineda peale sellesse võrku ühendumist.";
@@ -2486,7 +2420,7 @@
 "Are you sure you want to quit?" = "Kas sa tahad kindlasti väljuda?";
 
 /* nothing */
-"Some file transfers are still active." = "";
+"Some file transfers are still active." = "Mõned failivahetused käivad veel.";
 
 /* nothing */
 "_Minimize to Tray" = "_Peida süsteemisalve";
@@ -2510,22 +2444,34 @@
 "Colors 8-15" = "Värvid 8-15";
 
 /* nothing */
-"Beep on message" = "Tee piiks sõnumi saabumisel";
+"_Settings" = "S_eadistused";
 
 /* nothing */
-"Blink tray on message" = "Vilguta sõnumi saabumisel";
+"_Log to Disk" = "Logi _kettale";
 
 /* nothing */
-"Show join/part messages" = "Näita liitujaid/lahkujaid";
+"_Reload Scrollback" = "_Lae tagasikerimisajalugu uuesti";
 
 /* nothing */
-"Color paste" = "Värviline asetamine";
+"_Hide Join/Part Messages" = "_Peida liitumis- ja lahkumisteated";
 
 /* nothing */
-"_Close Tab" = "Sulge _sakk";
+"_Extra Alerts" = "_Märguanded";
 
 /* nothing */
-"_Detach Tab" = "_Eralda sakk";
+"Beep on _Message" = "Tee _piiks sõnumi saabumisel";
+
+/* nothing */
+"Blink Tray _Icon" = "_Vilguta salveikooni";
+
+/* nothing */
+"Blink Task _Bar" = "Vilguta _tegumiriba";
+
+/* nothing */
+"_Detach" = "_Eralda peaaknast";
+
+/* nothing */
+"_Close" = "_Sulge";
 
 /* nothing */
 "User limit must be a number!\n" = "Kasutajapiirang peab olema number!\n";
@@ -2582,13 +2528,16 @@
 "Server:" = "Server:";
 
 /* nothing */
-"Away Msg:" = "Eemal:";
-
-/* nothing */
 "%u minutes ago" = "%u minutit tagasi";
 
 /* nothing */
 "Last Msg:" = "Viimane sõnum:";
+
+/* nothing */
+"Away Msg:" = "Eemal:";
+
+/* nothing */
+"%d nicks selected." = "%d hüüdnime valitud.";
 
 /* nothing */
 "The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "Menüüriba on nüüd peidus. Selle saab uuesti nähtavaks teha F9 klahviga või tehes paremklõpsu tühjal alal ja hüpikmenüüst sisse lülitades.";
@@ -2606,7 +2555,13 @@
 "Part Channel" = "Lahku kanalist";
 
 /* nothing */
-"Cycle Channel" = "";
+"Cycle Channel" = "Lahku hetkeks kanalist";
+
+/* nothing */
+"_Remove from Favorites" = "_Eemalda lemmikute seast";
+
+/* nothing */
+"_Add to Favorites" = "_Lisa lemmikute sekka";
 
 /* nothing */
 "XChat: User menu" = "XChat: Kasutja menüü";
@@ -2630,7 +2585,7 @@
 "CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%e  =  current network name\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "CTCP vastused - spetsiaalkoodid:\n\n%d  =  andmed (kogu CTCP)\n%e = aktiivse võrgu nimi\n%m  =  masina info\n%s  =  CTCP saatja hüüdnimi\n%t  =  kell/kuupäev\n%2  =  sõna 2\n%3  =  sõna 3\n&2  =  alates 2. sõnast kuni rea lõpuni\n&3  =  alates 3. sõnast kuni rea lõpuni\n\n";
 
 /* nothing */
-"URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of XChat" = "";
+"URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of XChat" = "URL'i käsitleja - Erikoodid:\n\n%s = URL ise\n\nKäsu ette ! lisamine käivitab\nkäskluse kestprogrammis\nmitte XChatis";
 
 /* nothing */
 "XChat: User Defined Commands" = "XChat: kasutaja määratud käsud";
@@ -2639,7 +2594,7 @@
 "XChat: Userlist Popup menu" = "X-Chat: kasutajate nimekirja popup";
 
 /* nothing */
-"Replace with" = "";
+"Replace with" = "Asendus";
 
 /* nothing */
 "XChat: Replace" = "XChat: asenda";
@@ -2720,13 +2675,19 @@
 "Graph" = "Graafik";
 
 /* nothing */
-"_Server" = "Server";
+"_Server" = "_Server";
 
 /* nothing */
 "_Disconnect" = "Ühenda lahti";
 
 /* nothing */
 "_Reconnect" = "Taasühenda";
+
+/* nothing */
+"Join a Channel..." = "Liitu kanaliga...";
+
+/* nothing */
+"List of Channels..." = "Kanalite nimekiri...";
 
 /* nothing */
 "Marked Away" = "Eemal";
@@ -2777,9 +2738,6 @@
 "Ban List..." = "Bännitute nimekiri...";
 
 /* nothing */
-"Channel List..." = "Kanalite nimekiri...";
-
-/* nothing */
 "Character Chart..." = "Märgitabel...";
 
 /* nothing */
@@ -2789,10 +2747,10 @@
 "File Transfers..." = "Failide edastus...";
 
 /* nothing */
-"Ignore List..." = "Ignoreeritavate nimekiri...";
+"Friends List..." = "Sõprade nimekiri...";
 
 /* nothing */
-"Notify List..." = "Märguandenimekiri...";
+"Ignore List..." = "Ignoreeritavate nimekiri...";
 
 /* nothing */
 "Plugins and Scripts..." = "Pluginad ja skriptid...";
@@ -2819,19 +2777,16 @@
 "_Help" = "A_bi";
 
 /* nothing */
-"_Contents" = "_Sisu";
+"_Contents" = "_Sisukord";
+
+/* nothing */
+"Check for updates" = "Kontrolli uuendusi";
 
 /* nothing */
 "_About" = "_Programmist";
 
 /* nothing */
-"_Attach Window" = "_Liida aknad";
-
-/* nothing */
-"_Close Window" = "Sulge _aken";
-
-/* nothing */
-"User" = "Kasutaja";
+"_Attach" = "_Liida aknad";
 
 /* nothing */
 "Last Seen" = "Viimati nähtud";
@@ -2858,16 +2813,13 @@
 "Comma separated list of networks is accepted." = "Mitu võrgunime eralda komadega.";
 
 /* nothing */
-"XChat: Notify List" = "XChat: märguandenimekiri";
-
-/* nothing */
-"Remove" = "Eemalda";
+"XChat: Friends List" = "XChat: sõprade nimekiri";
 
 /* nothing */
 "Open Dialog" = "Ava dialoog";
 
 /* nothing */
-"Cannot find 'notify-send' to open balloon alerts.\nPlease install libnotify." = "";
+"Cannot find 'notify-send' to open balloon alerts.\nPlease install libnotify." = "Ei leia märguandemullikeste saatmiseks vajalikku programmi \"notify-send\".\nPalun paigalda libnotify.";
 
 /* nothing */
 "XChat: Connected to %u networks and %u channels" = "XChat: Ühendatud %u võrgu ja %u kanaliga";
@@ -2879,7 +2831,7 @@
 "_Hide" = "_Peida";
 
 /* nothing */
-"_Blink on" = "";
+"_Blink on" = "Vil_guta";
 
 /* nothing */
 "Channel Message" = "Sõnum kanalis";
@@ -2891,13 +2843,22 @@
 "Highlighted Message" = "Esiletõstetud sõnum";
 
 /* nothing */
+"_Change status" = "_Muuda olekut";
+
+/* nothing */
+"_Away" = "_Eemal";
+
+/* nothing */
+"_Back" = "_Tagasi";
+
+/* nothing */
 "XChat: Highlighted message from: %s (%s)" = "XChat: Esiletõstetud sõnum: %s (%s)";
 
 /* nothing */
 "XChat: %u highlighted messages, latest from: %s (%s)" = "XChat: %u esiletõstetud sõnumit, viimane: %s (%s)";
 
 /* nothing */
-"XChat: New public message from: %s (%s)" = "";
+"XChat: New public message from: %s (%s)" = "XChat: Uus avalik sõnum: %s (%s)";
 
 /* nothing */
 "XChat: %u new public messages." = "XChat: %u uut avalikku sõnumit";
@@ -2915,6 +2876,9 @@
 "XChat: %u file offers, latest from: %s (%s)" = "XChat: %u faili pakkumist. Viimane kasutajalt: %s (%s)";
 
 /* nothing */
+"Version" = "Versioon";
+
+/* nothing */
 "Description" = "Kirjeldus";
 
 /* nothing */
@@ -2928,9 +2892,6 @@
 
 /* nothing */
 "_UnLoad" = "_Eemalda";
-
-/* nothing */
-"_Close" = "_Sulge";
 
 /* nothing */
 "Save As..." = "Salvesta kui...";
@@ -2964,6 +2925,27 @@
 
 /* nothing */
 "Really remove network \"%s\" and all its servers?" = "kas tõesti soovid eemaldada võrgu \"%s\" ja kõik selle serverid?";
+
+/* nothing */
+"#channel" = "#kanal";
+
+/* nothing */
+"XChat: Favorite Channels (Auto-Join List)" = "XChat: lemmikkanalid (automaatse liitumise nimekiri)";
+
+/* nothing */
+"These channels will be joined whenever you connect to %s." = "Nende kanalitega liitutakse automaatselt võrguga %s ühendumisel.";
+
+/* nothing */
+"Key (Password)" = "Võti (parool):";
+
+/* nothing */
+"_Edit" = "_Muuda";
+
+/* nothing */
+"%s has been removed." = "%s eemaldati.";
+
+/* nothing */
+"%s has been added." = "%s lisati.";
 
 /* nothing */
 "User name and Real name cannot be left blank." = "Kasutajanime ja päris nime väljad peavad olema täidetud.";
@@ -3005,7 +2987,7 @@
 "Auto connect to this network at startup" = "Ühenda automaatselt programmi käivitamisel";
 
 /* nothing */
-"Use a proxy server" = "Kasuta proxy serverit";
+"Bypass proxy server" = "Ära kasuta proxy serverit";
 
 /* nothing */
 "Use SSL for all the servers on this network" = "Kasuta SSL ühendust kõigi selle võrgu serverite jaoks";
@@ -3014,7 +2996,7 @@
 "Accept invalid SSL certificate" = "Luba vigaseid SSL sertifikaate";
 
 /* nothing */
-"C_hannels to join:" = "Kanalid, millega _liituda:";
+"_Favorite channels:" = "_Lemmikkanalid:";
 
 /* nothing */
 "Channels to join, separated by commas, but not spaces!" = "Kanalite nimekiri, millega soovid ühineda. Kanaleid eralda komaga, aga mitte tühikuga!";
@@ -3039,9 +3021,6 @@
 
 /* nothing */
 "Character set:" = "Märgistik:";
-
-/* nothing */
-"_Edit" = "_Muuda";
 
 /* nothing */
 "XChat: Network List" = "XChat: serverite nimekiri";
@@ -3218,10 +3197,7 @@
 "On channels smaller than:" = "Kanalites, kus on vähem liikmeid kui:";
 
 /* nothing */
-"Action Upon Double Click" = "Topeltkliki tegevus";
-
-/* nothing */
-"Execute command:" = "Käivita käsk:";
+"Action Upon Double Click" = "Hüüdnimel topeltkliki tegemisel";
 
 /* nothing */
 "Windows" = "Aknad";
@@ -3236,7 +3212,10 @@
 "Only requested tabs" = "Ainult ise loodud sakid";
 
 /* nothing */
-"Channel Switcher" = "Kanalite _nimekiri";
+"Tree" = "Puu";
+
+/* nothing */
+"Switcher type:" = "Kanalivahetaja tüüp:";
 
 /* nothing */
 "Open an extra tab for server messages" = "Ava sakk serveri sõnumite jaoks";
@@ -3251,7 +3230,7 @@
 "Sort tabs in alphabetical order" = "Sorteeri sakid tähestiku järgi";
 
 /* nothing */
-"Small tabs" = "Väikesed sakid";
+"Smaller text" = "Väiksem tekst";
 
 /* nothing */
 "Focus new tabs:" = "Fookus uuele sakile:";
@@ -3350,16 +3329,16 @@
 "All downloads combined:" = "Kõik allalaadimised kokku:";
 
 /* nothing */
-"Alerts" = "Hoiatused";
+"Alerts" = "Märguanded";
 
 /* nothing */
 "Show tray balloons on:" = "Näita süsteemisalve mullikesi:";
 
 /* nothing */
-"Blink tray icon on:" = "";
+"Blink tray icon on:" = "Vilguta süsteemisalve ikooni:";
 
 /* nothing */
-"Blink task bar on:" = "";
+"Blink task bar on:" = "Vilguta tegumiriba:";
 
 /* nothing */
 "Make a beep sound on:" = "Tee piiks:";
@@ -3383,7 +3362,7 @@
 "Nick names to always highlight:" = "Hüüdnimed mida alati esile tõsta:";
 
 /* nothing */
-"Separate multiple words with commas." = "Eralda erinevad sõnad komaga.";
+"Separate multiple words with commas.\nWildcards are accepted." = "Eralda erinevad sõnad komaga.\nMetamärgid on lubatud.";
 
 /* nothing */
 "Default Messages" = "Vaikimisi põhjendused:";
@@ -3425,10 +3404,10 @@
 "Auto reconnect delay:" = "Ooteaeg enne autoühendust:";
 
 /* nothing */
-"Display MODEs in raw form" = "";
+"Display MODEs in raw form" = "Näita MODE võtmeid ilustamata kujul";
 
 /* nothing */
-"Whois on notify" = "";
+"Whois on notify" = "Saada NOTIFY vastuseks WHOIS";
 
 /* nothing */
 "Sends a /WHOIS when a user comes online in your notify list" = "Saada /WHOIS, kui meeldetuletusnimekirjas olev kasutaja serveriga ühineb";
@@ -3455,7 +3434,10 @@
 "Logging" = "Logimine";
 
 /* nothing */
-"Enable logging of conversations" = "Luba vestluste logimine";
+"Display scrollback from previous session" = "Näita tagasikerimisajalugu eelmisest seansist";
+
+/* nothing */
+"Enable logging of conversations to disk" = "Luba vestluste kettale logimine";
 
 /* nothing */
 "Log filename:" = "Logi failinimi:";
@@ -3485,7 +3467,7 @@
 "HTTP" = "HTTP";
 
 /* nothing */
-"MS Proxy (ISA)" = "";
+"MS Proxy (ISA)" = "MS puhverserver (ISA)";
 
 /* nothing */
 "All Connections" = "Kõik ühendused";
@@ -3677,7 +3659,7 @@
 "There was an error parsing the string" = "Viga stringi töötlemisel";
 
 /* nothing */
-"This signal is only passed %d args, $%d is invalid" = "";
+"This signal is only passed %d args, $%d is invalid" = "Sellele signaalile on ainult %d argumenti, $%d on vale.";
 
 /* nothing */
 "Print Texts File" = "";

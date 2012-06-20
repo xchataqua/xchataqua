@@ -1,5 +1,5 @@
 /* nothing */
-"" = "Project-Id-Version: xchat 2.6.3\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2006-05-19 00:25+1000\nPO-Revision-Date: 2006-06-02 08:26+0100\nLast-Translator: Luk Claes <luk@debian.org>\nLanguage-Team: Dutch <vertaling@vrijschrift.org>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n";
+"" = "Project-Id-Version: xchat-2.8.8\nReport-Msgid-Bugs-To: www.xchat.org\nPOT-Creation-Date: 2010-05-30 13:56+1000\nPO-Revision-Date: 2010-08-25 22:09+0200\nLast-Translator: Benno Schulenberg <benno@vertaalt.nl>\nLanguage-Team: Dutch <vertaling@vrijschrift.org>\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nX-Generator: Lokalize 1.0\nPlural-Forms: nplurals=2; plural=(n != 1);\n";
 
 /* nothing */
 "Cannot create ~/.xchat2" = "Kan ~/.xchat2 niet aanmaken";
@@ -11,10 +11,10 @@
 "Leaving" = "Ik ga weg";
 
 /* nothing */
-"* Running IRC as root is stupid! You should\n  create a User Account and use that to login.\n" = "* IRC uitvoeren als root is dom! U moet een\n  gebruikersaccount aanmaken en daarmee inloggen.\n";
+"* Running IRC as root is stupid! You should\n  create a User Account and use that to login.\n" = "* IRC uitvoeren als root is stom!  U kunt beter een\n  gebruikersaccount aanmaken en daarmee inloggen.\n";
 
 /* nothing */
-"Waiting" = "Bezig met wachten";
+"Waiting" = "Wachten";
 
 /* nothing */
 "Active" = "Actief";
@@ -32,13 +32,16 @@
 "Aborted" = "Afgebroken";
 
 /* nothing */
-"Cannot access %s\n" = "Kan %s niet benaderen\n";
+"Cannot access %s\n" = "Kan geen toegang krijgen tot %s\n";
 
 /* nothing */
-"%s is offering \"%s\". Do you want to accept?" = "%s bied je \"%s\" aan. Wil je dit aanvaarden?";
+"Error" = "Fout";
 
 /* nothing */
-"No active DCCs\n" = "Geen DCCs actief\n";
+"%s is offering \"%s\". Do you want to accept?" = "%s biedt u \"%s\" aan.  Wilt u dit aanvaarden?";
+
+/* nothing */
+"No active DCCs\n" = "Geen actieve DCC's\n";
 
 /* nothing */
 "YES  " = "JA   ";
@@ -47,10 +50,10 @@
 "NO   " = "NEE  ";
 
 /* nothing */
-"You are being CTCP flooded from %s, ignoring %s\n" = "U wordt overspoeld met CTCP-verkeer van %s, nu wordt %s genegeerd\n";
+"You are being CTCP flooded from %s, ignoring %s\n" = "U wordt overspoeld met CTCP-verkeer van %s; %s wordt nu genegeerd.\n";
 
 /* nothing */
-"You are being MSG flooded from %s, setting gui_auto_open_dialog OFF.\n" = "U wordt overspoeld met MSG-verkeer van %s, gui_auto_open_dialog wordt UIT-gezet.\n";
+"You are being MSG flooded from %s, setting gui_auto_open_dialog OFF.\n" = "U wordt overspoeld met MSG-verkeer van %s; gui_auto_open_dialog is UIT-gezet.\n";
 
 /* nothing */
 "  %-20s online\n" = "  %-20s online\n";
@@ -59,208 +62,220 @@
 "  %-20s offline\n" = "  %-20s offline\n";
 
 /* nothing */
-"No channel joined. Try /join #<channel>\n" = "Niet in een kanaal. Probeer /join #<kanaal>\n";
+"No channel joined. Try /join #<channel>\n" = "Niet in een kanaal.  Probeer /join #<kanaal>\n";
 
 /* nothing */
-"Not connected. Try /server <host> [<port>]\n" = "Niet verbonden. Probeer /server <host> [<poort>]\n";
+"Not connected. Try /server <host> [<port>]\n" = "Niet verbonden.  Probeer /server <host> [<poort>]\n";
 
 /* nothing */
-"I need /bin/sh to run!\n" = "Ik heb /bin/sh nodig om te werken!\n";
+"Already marked away: %s\n" = "Reeds als afwezig gemarkeerd: %s\n";
 
 /* nothing */
-"Commands Available:" = "Beschikbare opdrachten:  ";
+"Already marked back.\n" = "Reeds als terug gemarkeerd.\n";
 
 /* nothing */
-"User defined commands:" = "Door de gebruiker gedefinieerde opdrachten:  ";
+"I need /bin/sh to run!\n" = "Om te kunnen werken is /bin/sh nodig.\n";
 
 /* nothing */
-"Plugin defined commands:" = "Door de gebruiker gedefinieerde opdrachten:  ";
+"Commands Available:" = "Beschikbare opdrachten:";
 
 /* nothing */
-"Type /HELP <command> for more information, or /HELP -l" = "Tik /HELP <opdracht> voor meer info, of /HELP -l";
+"User defined commands:" = "Door de gebruiker gedefinieerde opdrachten:";
 
 /* nothing */
-"Unknown arg '%s' ignored." = "Onbekend argument '%s' genegeerd.";
+"Plugin defined commands:" = "Door plugins gedefinieerde opdrachten:";
 
 /* nothing */
-"No such plugin found.\n" = "Plugin niet gevonden.\n";
+"Type /HELP <command> for more information, or /HELP -l" = "Typ /HELP <opdracht> voor meer informatie, of /HELP -l";
 
 /* nothing */
-"That plugin is refusing to unload.\n" = "Die plugin weigert te ontladen.\n";
+"Unknown arg '%s' ignored." = "Onbekend argument '%s' is genegeerd.";
 
 /* nothing */
-"ADDBUTTON <name> <action>, adds a button under the user-list" = "ADDBUTTON <naam> <actie>, voegt een knop toe onder de gebruikerslijst";
+"No such plugin found.\n" = "Plugin is niet gevonden.\n";
 
 /* nothing */
-"ALLCHAN <cmd>, sends a command to all channels you're in" = "ALLCHAN <opdr>, stuurt een opdracht naar alle kanalen waar je in zit";
+"That plugin is refusing to unload.\n" = "Die plugin weigert zich te deactiveren.\n";
 
 /* nothing */
-"ALLCHANL <cmd>, sends a command to all channels you're in" = "ALLCHANL <opdr>, stuurt een opdracht naar alle kanalen waar je in zit";
+"ADDBUTTON <name> <action>, adds a button under the user-list" = "ADDBUTTON <naam> <actie>, een knop toevoegen onder de gebruikerslijst";
 
 /* nothing */
-"ALLSERV <cmd>, sends a command to all servers you're in" = "ALLSERV <opdr>, stuurt een opdracht naar alle servers waarop je bent ingelogd";
+"ALLCHAN <cmd>, sends a command to all channels you're in" = "ALLCHAN <opdracht>, een opdracht sturen naar alle kanalen waar u in zit";
 
 /* nothing */
-"AWAY [<reason>], sets you away" = "AWAY [<reden>], zegt dat je weg bent";
+"ALLCHANL <cmd>, sends a command to all channels you're in" = "ALLCHANL <opdracht>, een opdracht sturen naar alle kanalen waar u in zit";
 
 /* nothing */
-"BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "BAN <masker> [<verbansoort>], verbant iedereen die voldoet aan het masker uit het huidige kanaal. Als ze al in het huidige kanaal zitten worden ze niet weggeschopt (kanaal-operator vereist)";
+"ALLSERV <cmd>, sends a command to all servers you're in" = "ALLSERV <opdracht>, een opdracht sturen naar alle servers waarop u bent ingelogd";
 
 /* nothing */
-"CLEAR, Clears the current text window" = "CLEAR, maakt het huidige tekstvenster schoon";
+"AWAY [<reason>], sets you away" = "AWAY [<reden>], aangeven dat u afwezig bent";
 
 /* nothing */
-"CLOSE, Closes the current window/tab" = "CLOSE, sluit het huidige venster/tabblad";
+"BACK, sets you back (not away)" = "BACK, aangeven dat u terug bent (niet meer afwezig)";
 
 /* nothing */
-"COUNTRY [-s] <code|wildcard>, finds a country code, eg: au = australia" = "COUNTRY [-s] <code|wildcard>, zoek een landcode, bijvoorbeeld be = België en nl = Nederland";
+"BAN <mask> [<bantype>], bans everyone matching the mask from the current channel. If they are already on the channel this doesn't kick them (needs chanop)" = "BAN <masker> [<verbanningssoort>], iedereen die voldoet aan het masker uit het huidige kanaal verbannen (vereist kanaaloperatorstatus); in het huidige kanaal zitten, worden ze niet buitengeschopt";
 
 /* nothing */
-"CTCP <nick> <message>, send the CTCP message to nick, common messages are VERSION and USERINFO" = "CTCP <persoon> <bericht>, een CTCP bericht naar de persoon sturen. Veel voorkomende berichten zijn VERSION en USERINFO";
+"CHANOPT [-quiet] <variable> [<value>]" = "CHANOPT [-quiet] <variabele> [<waarde>]";
 
 /* nothing */
-"CYCLE, parts current channel and immediately rejoins" = "CYCLE, het huidige kanaal verlaten en direct terugkeren";
+"CLEAR [ALL|HISTORY], Clears the current text window or command history" = "CLEAR [ALL|HISTORY], het huidige tekstvenster of de opdrachtgeschiedenis wissen";
 
 /* nothing */
-"\nDCC GET <nick>                      - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file]  - send a file to someone\nDCC PSEND [-maxcps=#] <nick> [file] - send a file using passive mode\nDCC LIST                            - show DCC list\nDCC CHAT <nick>                     - offer DCC CHAT to someone\nDCC PCHAT <nick>                    - offer DCC CHAT using passive mode\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "\nDCC GET <persoon>         - een aangeboden bestand accepteren\nDCC SEND [-maxcps=#] <persoon> [bestand] - een bestand naar iemand sturen\nDCC PSEND [-maxcps=#] <persoon> [bestand] - een bestand sturen gebruik makend van de passieve modus\nDCC LIST           - DCC lijst weergeven\nDCC CHAT <persoon>        - iemand DCC CHAT aanbieden\nDCC PCHAT <persoon>       - DCC CHAT aanbieden gebruikmakend van de passieve modus\nDCC CLOSE <soort> <persoon> <bestand>     voorbeeld:\n      /dcc close send janjanssen bestand.tar.gz";
+"CLOSE, Closes the current window/tab" = "CLOSE, het huidige venster of tabblad sluiten";
 
 /* nothing */
-"DEHOP <nick>, removes chanhalf-op status from the nick on the current channel (needs chanop)" = "DEHOP <persoon>, de kanaal-halfoperator status van de persoon in het huidige kanaal verwijderen (kanaal-operator vereist)";
+"COUNTRY [-s] <code|wildcard>, finds a country code, eg: au = australia" = "COUNTRY [-s] <code|jokerteken>, een landcode opzoeken; bijvoorbeeld be geeft België, nl geeft Nederland";
 
 /* nothing */
-"DELBUTTON <name>, deletes a button from under the user-list" = "DELBUTTON <naam>, een knop van de gebruikerslijst wissen";
+"CTCP <nick> <message>, send the CTCP message to nick, common messages are VERSION and USERINFO" = "CTCP <bijnaam> <bericht>, een CTCP-bericht naar de bijnaam sturen; veelvoorkomende berichten zijn VERSION en USERINFO";
 
 /* nothing */
-"DEOP <nick>, removes chanop status from the nick on the current channel (needs chanop)" = "DEOP <persoon>, kanaal-operatorstatus van de persoon in het huidige kanaal verwijderen (kanaal-operator vereist)";
+"CYCLE [<channel>], parts the current or given channel and immediately rejoins" = "CYCLE [<kanaal>], het huidige of gegeven kanaal verlaten en direct weer binnengaan";
 
 /* nothing */
-"DEVOICE <nick>, removes voice status from the nick on the current channel (needs chanop)" = "DEVOICE <persoon>, de stemstatus van de persoon in het huidige kanaal verwijderen (kanaal-operator vereist)";
+"\nDCC GET <nick>                      - accept an offered file\nDCC SEND [-maxcps=#] <nick> [file]  - send a file to someone\nDCC PSEND [-maxcps=#] <nick> [file] - send a file using passive mode\nDCC LIST                            - show DCC list\nDCC CHAT <nick>                     - offer DCC CHAT to someone\nDCC PCHAT <nick>                    - offer DCC CHAT using passive mode\nDCC CLOSE <type> <nick> <file>         example:\n         /dcc close send johnsmith file.tar.gz" = "\nDCC GET <bijnaam>                         - een aangeboden bestand accepteren\nDCC SEND [-maxcps=#] <bijnaam> [bestand]  - een bestand naar iemand sturen\nDCC PSEND [-maxcps=#] <bijnaam> [bestand] - een bestand via passieve modus sturen\nDCC LIST                                  - DCC-lijst tonen\nDCC CHAT <bijnaam>                        - iemand een directe chat aanbieden\nDCC PCHAT <bijnaam>                       - DCC CHAT aanbieden via passieve modus\nDCC CLOSE <soort> <bijnaam> <bestand>\n  Voorbeeld:  /dcc close send janjanssen bestand.tar.gz";
+
+/* nothing */
+"DEHOP <nick>, removes chanhalf-op status from the nick on the current channel (needs chanop)" = "DEHOP <bijnaam>, de half-operatorstatus intrekken van de bijnaam in het huidige kanaal (vereist kanaaloperatorstatus)";
+
+/* nothing */
+"DELBUTTON <name>, deletes a button from under the user-list" = "DELBUTTON <naam>, een knop van onder de gebruikerslijst verwijderen";
+
+/* nothing */
+"DEOP <nick>, removes chanop status from the nick on the current channel (needs chanop)" = "DEOP <bijnaam>, kanaaloperatorstatus van de bijnaam in het huidige kanaal intrekken (vereist kanaaloperatorstatus)";
+
+/* nothing */
+"DEVOICE <nick>, removes voice status from the nick on the current channel (needs chanop)" = "DEVOICE <bijnaam>, de spreekstatus intrekken van de bijnaam in het huidige kanaal (vereist kanaaloperatorstatus)";
 
 /* nothing */
 "DISCON, Disconnects from server" = "DISCON, de verbinding met de server verbreken";
 
 /* nothing */
-"DNS <nick|host|ip>, Finds a users IP number" = "DNS <persoon|host|ip>, het IP-adres van een gebruiker vinden";
+"DNS <nick|host|ip>, Finds a users IP number" = "DNS <bijnaam|host|ip>, het IP-adres van een gebruiker opzoeken";
 
 /* nothing */
-"ECHO <text>, Prints text locally" = "ECHO <tekst>, lokaal een tekst afdrukken";
+"ECHO <text>, Prints text locally" = "ECHO <tekst>, een tekst lokaal weergeven";
 
 /* nothing */
-"EXEC [-o] <command>, runs the command. If -o flag is used then output is sent to current channel, else is printed to current text box" = "EXEC [-o] <opdracht>, een opdracht uitvoeren. Als de -o vlag meegegeven is, wordt de uitvoer naar het huidige kanaal gestuurd, anders naar het huidige tekstvenster";
+"EXEC [-o] <command>, runs the command. If -o flag is used then output is sent to current channel, else is printed to current text box" = "EXEC [-o] <opdracht>, een opdracht uitvoeren; als de optie -o is meegegeven, wordt de uitvoer naar het huidige kanaal gestuurd, anders naar het huidige tekstvenster";
 
 /* nothing */
-"EXECCONT, sends the process SIGCONT" = "EXECCONT, het proces SIGCONT sturen";
+"EXECCONT, sends the process SIGCONT" = "EXECCONT, het signaal SIGCONT naar het proces sturen";
 
 /* nothing */
-"EXECKILL [-9], kills a running exec in the current session. If -9 is given the process is SIGKILL'ed" = "EXECKILL [-9], een lopende exec in de huidige sessie stoppen. Als -9 is meegegeven wordt het proces geSIGKILLd";
+"EXECKILL [-9], kills a running exec in the current session. If -9 is given the process is SIGKILL'ed" = "EXECKILL [-9], een lopende exec in de huidige sessie stoppen; als -9 is meegegeven, wordt het proces met SIGKILL geëlimineerd";
 
 /* nothing */
-"EXECSTOP, sends the process SIGSTOP" = "EXECSTOP, het proces SIGSTOP sturen";
+"EXECSTOP, sends the process SIGSTOP" = "EXECSTOP, het signaal SIGSTOP naar het proces sturen";
 
 /* nothing */
-"EXECWRITE, sends data to the processes stdin" = "EXECWRITE, gegevens naar stdin sturen van het proces";
+"EXECWRITE, sends data to the processes stdin" = "EXECWRITE, gegevens naar de standaardinvoer van het proces sturen";
 
 /* nothing */
-"FLUSHQ, flushes the current server's send queue" = "FLUSHQ, de verzendrij van de huidige server doerspoelen";
+"FLUSHQ, flushes the current server's send queue" = "FLUSHQ, de verzendrij voor de huidige server doorspoelen";
 
 /* nothing */
-"GATE <host> [<port>], proxies through a host, port defaults to 23" = "GATE <host> [<poort>], verbinding maken door een proxy, de poort is standaard 23";
+"GATE <host> [<port>], proxies through a host, port defaults to 23" = "GATE <host> [<poort>], verbinding maken via een proxy; de standaardpoort is 23";
 
 /* nothing */
-"GHOST <nick> <password>, Kills a ghosted nickname" = "GHOST <bijnaam> <wachtwoord>, doodt een spook-bijnaam";
+"GHOST <nick> [password], Kills a ghosted nickname" = "GHOST <bijnaam> [<wachtwoord>], een spook-bijnaam elimineren";
 
 /* nothing */
-"HOP <nick>, gives chanhalf-op status to the nick (needs chanop)" = "HOP <persoon>, geeft kanaal-halfoperator status aan de persoon (kanaal-operator vereist)";
+"HOP <nick>, gives chanhalf-op status to the nick (needs chanop)" = "HOP <bijnaam>, half-operatorstatus geven aan de bijnaam (vereist kanaaloperatorstatus)";
 
 /* nothing */
-"ID <password>, identifies yourself to nickserv" = "ID <wachtwoord>, identificeert u bij nickserv";
+"ID <password>, identifies yourself to nickserv" = "ID <wachtwoord>, uzelf bij Nickserv identificeren";
 
 /* nothing */
-"IGNORE <mask> <types..> <options..>\n    mask - host mask to ignore, eg: *!*@*.aol.com\n    types - types of data to ignore, one or all of:\n            PRIV, CHAN, NOTI, CTCP, DCC, INVI, ALL\n    options - NOSAVE, QUIET" = "IGNORE <masker> <soorten..> <opties..>\n    masker - host masker om te negeren, bijv.: *!*@*.aol.com\n    soorten - soorten gegevens om te negeren, een of meer van:\n            PRIV, CHAN, NOTI, CTCP, DCC, INVI, ALL\n    opties - NOSAVE, QUIET";
+"IGNORE <mask> <types..> <options..>\n    mask - host mask to ignore, eg: *!*@*.aol.com\n    types - types of data to ignore, one or all of:\n            PRIV, CHAN, NOTI, CTCP, DCC, INVI, ALL\n    options - NOSAVE, QUIET" = "IGNORE <masker> <soorten...> <opties...>\n    masker  - te negeren hostmasker, bijvoorbeeld: *!*@*.aol.com\n    soorten - te negeren soorten gegevens, een of meer van:\n                PRIV, CHAN, NOTI, CTCP, DCC, INVI, ALL\n    opties  - NOSAVE (niet opslaan), QUIET (stil)";
 
 /* nothing */
-"INVITE <nick> [<channel>], invites someone to a channel, by default the current channel (needs chanop)" = "INVITE <persoon> [<kanaal>], iemand uitnodigen een kanaal te openen, standaard het huidige kanaal (kanaal-operator vereist)";
+"INVITE <nick> [<channel>], invites someone to a channel, by default the current channel (needs chanop)" = "INVITE <bijnaam> [<kanaal>], iemand uitnodigen naar een kanaal, standaard het huidige kanaal (vereist kanaaloperatorstatus)";
 
 /* nothing */
 "JOIN <channel>, joins the channel" = "JOIN <kanaal>, het kanaal binnengaan";
 
 /* nothing */
-"KICK <nick>, kicks the nick from the current channel (needs chanop)" = "KICK <persoon>, de persoon uit het huidige kanaal schoppen (kanaal-operator vereist)";
+"KICK <nick>, kicks the nick from the current channel (needs chanop)" = "KICK <bijnaam>, de bijnaam uit het huidige kanaal schoppen (vereist kanaaloperatorstatus)";
 
 /* nothing */
-"KICKBAN <nick>, bans then kicks the nick from the current channel (needs chanop)" = "KICKBAR <persoon>, een persoon eerst verbannen en dan uit het huidige kanaal schoppen (kanaal operator vereist)";
+"KICKBAN <nick>, bans then kicks the nick from the current channel (needs chanop)" = "KICKBAN <bijnaam>, de bijnaam verbannen én uit het huidige kanaal schoppen (vereist kanaaloperatorstatus)";
 
 /* nothing */
-"LAGCHECK, forces a new lag check" = "LAGCHECK, een nieuwe controle op achterstand forceren";
+"LAGCHECK, forces a new lag check" = "LAGCHECK, een nieuwe controle op vertraging uitvoeren";
 
 /* nothing */
-"LASTLOG <string>, searches for a string in the buffer" = "LASTLOG <tekst>, een tekst zoeken in de buffer";
+"LASTLOG <string>, searches for a string in the buffer" = "LASTLOG <tekst>, de tekst in de buffer opzoeken";
 
 /* nothing */
-"LOAD [-e] <file>, loads a plugin or script" = "LOAD [-e] <bestand>, laadt een plugin of script";
+"LOAD [-e] <file>, loads a plugin or script" = "LOAD [-e] <bestand>, een plugin of script laden";
 
 /* nothing */
-"MDEHOP, Mass deop's all chanhalf-ops in the current channel (needs chanop)" = "MDEHOP, massaal van alle kanaal-halfops op-status verwijderen in huidige kanaal (kanaal-operator vereist)";
+"MDEHOP, Mass deop's all chanhalf-ops in the current channel (needs chanop)" = "MDEHOP, de half-operatorstatus intrekken van alle half-operators in het huidige kanaal (vereist kanaaloperatorstatus)";
 
 /* nothing */
-"MDEOP, Mass deop's all chanops in the current channel (needs chanop)" = "MDEOP, massaal van alle kanaal-ops op-status verwijderen in huidige kanaal (kanaal-operator vereist)";
+"MDEOP, Mass deop's all chanops in the current channel (needs chanop)" = "MDEOP, de operatorstatus intrekken van alle operators in het huidige kanaal (vereist kanaaloperatorstatus)";
 
 /* nothing */
-"ME <action>, sends the action to the current channel (actions are written in the 3rd person, like /me jumps)" = "ME <actie>, stuurt de actie naar het huidige kanaal (acties worden geschreven in de 3e persoon, bijv: /me springt)";
+"ME <action>, sends the action to the current channel (actions are written in the 3rd person, like /me jumps)" = "ME <handeling>, deze handeling naar het huidige kanaal sturen (handelingen worden geschreven in de derde persoon, bijvoorbeeld: /me springt)";
 
 /* nothing */
-"MKICK, Mass kicks everyone except you in the current channel (needs chanop)" = "MKICK, massaal iedereen behalve jezelf uit huidige kanaal schoppen (kanaal-operator vereist)";
+"MKICK, Mass kicks everyone except you in the current channel (needs chanop)" = "MKICK, iedereen behalve uzelf uit het huidige kanaal schoppen (vereist kanaaloperatorstatus)";
 
 /* nothing */
-"MOP, Mass op's all users in the current channel (needs chanop)" = "MOP, massaal alle gebruikers in huidige kanaal op-status geven (kanaal-operator vereist)";
+"MOP, Mass op's all users in the current channel (needs chanop)" = "MOP, iedereen in het huidige kanaal de operatorstatus geven (vereist kanaaloperatorstatus)";
 
 /* nothing */
-"MSG <nick> <message>, sends a private message" = "MSG <persoon> <bericht>, een privéberichtje sturen";
+"MSG <nick> <message>, sends a private message" = "MSG <bijnaam> <bericht>, een privébericht sturen";
 
 /* nothing */
-"NAMES, Lists the nicks on the current channel" = "NAMES, geef de lijst met personen in het huidige kanaal";
+"NAMES, Lists the nicks on the current channel" = "NAMES, lijst tonen met de bijnamen in het huidige kanaal";
 
 /* nothing */
-"NCTCP <nick> <message>, Sends a CTCP notice" = "NCTCP <persoon> <bericht>, een CTCP-melding sturen";
+"NCTCP <nick> <message>, Sends a CTCP notice" = "NCTCP <bijnaam> <bericht>, een CTCP-melding sturen";
 
 /* nothing */
 "NEWSERVER [-noconnect] <hostname> [<port>]" = "NEWSERVER [-noconnect] <hostnaam> [<poort>]";
 
 /* nothing */
-"NICK <nickname>, sets your nick" = "NICK <bijnaam>, je bijnaam instellen";
+"NICK <nickname>, sets your nick" = "NICK <bijnaam>, uw bijnaam instellen";
 
 /* nothing */
-"NOTICE <nick/channel> <message>, sends a notice. Notices are a type of message that should be auto reacted to" = "NOTICE <persoon/kanaal> <bericht>, een melding sturen. Meldingen zijn het soort berichten waarop automatisch gereageerd zou moeten worden.";
+"NOTICE <nick/channel> <message>, sends a notice. Notices are a type of message that should be auto reacted to" = "NOTICE <bijnaam|kanaal> <bericht>, een kennisgeving sturen; kennisgevingen zijn een soort berichten waarop automatisch gereageerd zou moeten worden";
 
 /* nothing */
-"NOTIFY [<nick>], lists your notify list or adds someone to it" = "NOTIFY [<persoon>], een lijst geven van de waarschuwingslijst of iemand er aan toevoegen";
+"NOTIFY [-n network1[,network2,...]] [<nick>], displays your notify list or adds someone to it" = "NOTIFY [-n <netwerk1>[,<netwerk2>,...]] [<bijnaam>], de meldingslijst tonen, of er iemand aan toevoegen";
 
 /* nothing */
-"OP <nick>, gives chanop status to the nick (needs chanop)" = "OP <persoon>, de kanaal-operator status aan de persoon geven (kanaal-operator vereist)";
+"OP <nick>, gives chanop status to the nick (needs chanop)" = "OP <bijnaam>, kanaaloperatorstatus aan de bijnaam geven (vereist kanaaloperatorstatus)";
 
 /* nothing */
-"PART [<channel>] [<reason>], leaves the channel, by default the current one" = "PART [<kanaal>] [<reden>], het kanaal verlaten, standaard het huidige kanaal.";
+"PART [<channel>] [<reason>], leaves the channel, by default the current one" = "PART [<kanaal>] [<reden>], het kanaal verlaten, standaard het huidige";
 
 /* nothing */
-"PING <nick | channel>, CTCP pings nick or channel" = "PING <persoon | kanaal>, een persoon of kanaal CTCP pingen";
+"PING <nick | channel>, CTCP pings nick or channel" = "PING <bijnaam|kanaal>, een CTCP-ping versturen naar een bijnaam of kanaal";
 
 /* nothing */
-"QUERY <nick>, opens up a new privmsg window to someone" = "QUERY <persoon>, een nieuw privé berichtvenster naar iemand openen";
+"QUERY [-nofocus] <nick>, opens up a new privmsg window to someone" = "QUERY [-nofocus] <bijnaam>, een nieuw privéberichtvenster naar iemand openen";
 
 /* nothing */
 "QUIT [<reason>], disconnects from the current server" = "QUIT [<reden>], verbinding met de huidige server verbreken";
 
 /* nothing */
-"QUOTE <text>, sends the text in raw form to the server" = "QUOTE <tekst>, tekst in ruw formaat naar de server sturen";
+"QUOTE <text>, sends the text in raw form to the server" = "QUOTE <tekst>, de gegeven tekst onbewerkt naar de server sturen";
 
 /* nothing */
-"RECONNECT [-ssl] [<host>] [<port>] [<password>], Can be called just as /RECONNECT to reconnect to the current server or with /RECONNECT ALL to reconnect to all the open servers" = "RECONNECT [-ssl] [<host>] [<poort>] [<wachtwoord>], kan net als /RECONNECT gebruikt worden om opnieuw te verbinden met de huidige server, of met /RECONNECT ALL om met alle open servers een nieuwe verbinding te maken";
+"RECONNECT [-ssl] [<host>] [<port>] [<password>], Can be called just as /RECONNECT to reconnect to the current server or with /RECONNECT ALL to reconnect to all the open servers" = "RECONNECT [-ssl] [<host>] [<poort>] [<wachtwoord>], opnieuw verbinden met de huidige server; of /RECONNECT ALL om met alle verbonden servers een nieuwe verbinding te maken";
 
 /* nothing */
-"RECONNECT [<host>] [<port>] [<password>], Can be called just as /RECONNECT to reconnect to the current server or with /RECONNECT ALL to reconnect to all the open servers" = "RECONNECT [<host>] [<poort>] [<wachtwoord>], kan net als /RECONNECT gebruikt worden om opnieuw te verbinden met de huidige server, of met /RECONNECT ALL om met alle open servers een nieuwe verbinding te maken";
+"RECONNECT [<host>] [<port>] [<password>], Can be called just as /RECONNECT to reconnect to the current server or with /RECONNECT ALL to reconnect to all the open servers" = "RECONNECT [<host>] [<poort>] [<wachtwoord>], opnieuw verbinden met de huidige server; of /RECONNECT ALL om met alle verbonden servers een nieuwe verbinding te maken";
 
 /* nothing */
-"RECV <text>, send raw data to xchat, as if it was received from the irc server" = "RECV <tekst>, ruwe gegevens naar X-Chat sturen, alsof het verstuurd was door de irc server";
+"RECV <text>, send raw data to xchat, as if it was received from the irc server" = "RECV <tekst>, de gegeven tekst onbewerkt door XChat laten ontvangen, alsof het verstuurd was door de IRC-server";
 
 /* nothing */
 "SAY <text>, sends the text to the object in the current window" = "SAY <tekst>, de tekst naar het object in het huidige venster sturen";
@@ -269,115 +284,112 @@
 "SEND <nick> [<file>]" = "SEND <bijnaam> [<bestand>]";
 
 /* nothing */
-"SERVCHAN [-ssl] <host> <port> <channel>, connects and joins a channel" = "SERVCHAN [-ssl] <host> <poort> <kanaal>, verbinding maken en een kanaal openen";
+"SERVCHAN [-ssl] <host> <port> <channel>, connects and joins a channel" = "SERVCHAN [-ssl] <host> <poort> <kanaal>, verbinding maken en een kanaal binnengaan";
 
 /* nothing */
-"SERVCHAN <host> <port> <channel>, connects and joins a channel" = "SERVCHAN  <host> <poort> <kanaal>, verbinding maken en een kanaal openen";
+"SERVCHAN <host> <port> <channel>, connects and joins a channel" = "SERVCHAN <host> <poort> <kanaal>, verbinding maken en een kanaal binnengaan";
 
 /* nothing */
-"SERVER [-ssl] <host> [<port>] [<password>], connects to a server, the default port is 6667 for normal connections, and 9999 for ssl connections" = "SERVER [-ssl] <host> [<poort>] [<paswoord>], verbinding maken met een server, de standaard poort is 6667 voor gewone verbindingen, 9999 voor ssl verbindingen";
+"SERVER [-ssl] <host> [<port>] [<password>], connects to a server, the default port is 6667 for normal connections, and 9999 for ssl connections" = "SERVER [-ssl] <host> [<poort>] [<wachtwoord>], verbinding maken met een server; de standaardpoort is 6667 voor gewone verbindingen, 9999 voor SSL-verbindingen";
 
 /* nothing */
-"SERVER <host> [<port>] [<password>], connects to a server, the default port is 6667" = "SERVER <host> [<poort>] [<paswoord>], verbinding maken met een server, de standaard poort is 6667 voor gewone verbindingen";
+"SERVER <host> [<port>] [<password>], connects to a server, the default port is 6667" = "SERVER <host> [<poort>] [<wachtwoord>], verbinding maken met een server; de standaardpoort is 6667";
 
 /* nothing */
-"SET [-quiet] <variable> [<value>]" = "SET [-quiet] <variabel> [<waarde>]";
+"SET [-e] [-off|-on] [-quiet] <variable> [<value>]" = "SET [-e] [-off|-on] [-quiet] <variabele> [<waarde>]";
 
 /* nothing */
-"SETCURSOR [-|+]<position>" = "SETCURSOR [-|+]<positie>";
+"SETCURSOR [-|+]<position>" = "SETCURSOR [-|+]<positie>, aanwijzer op deze positie plaatsen";
 
 /* nothing */
-"TOPIC [<topic>], sets the topic if one is given, else shows the current topic" = "TOPIC [<topic>], het onderwerp opeven als topic gespecifiëerd is, anders het huidige onderwerp laten zien";
+"TOPIC [<topic>], sets the topic if one is given, else shows the current topic" = "TOPIC [<onderwerp>], het onderwerp instellen als er een argument gegeven is, anders het huidige onderwerp laten zien";
+
+/* nothing */
+"\nTRAY -f <timeout> <file1> [<file2>] Blink tray between two icons.\nTRAY -f <filename>                  Set tray to a fixed icon.\nTRAY -i <number>                    Blink tray with an internal icon.\nTRAY -t <text>                      Set the tray tooltip.\nTRAY -b <title> <text>              Set the tray balloon." = "\nTRAY -f <timeout> <bestand1> [<bestand2>]  Systeemvak laten knipperen tussen twee pictogrammen.\nTRAY -f <bestandsnaam>                     Vast pictogram gebruiken in systeemvak.\nTRAY -i <getal>                            Systeemvak laten knipperen met intern pictogram.\nTRAY -t <tekst>                            Tekst voor hulptekstballon.\nTRAY -b <titel> <tekst>                    Tekst voor systeemvaktekstballon.";
 
 /* nothing */
 "UNBAN <mask> [<mask>...], unbans the specified masks." = "UNBAN <masker> [<masker>...], de opgegeven maskers weer toelaten";
 
 /* nothing */
-"UNIGNORE <mask> [QUIET]" = "UNIGNORE <mask> [QUIET]";
+"UNIGNORE <mask> [QUIET]" = "UNIGNORE <masker> [QUIET]";
 
 /* nothing */
-"UNLOAD <name>, unloads a plugin or script" = "UNLOAD <naam>, een plugin of script laden";
+"UNLOAD <name>, unloads a plugin or script" = "UNLOAD <naam>, een plugin of script deactiveren";
 
 /* nothing */
-"URL <url>, opens a URL in your browser" = "URL <url> opent een URL in uw browser";
+"URL <url>, opens a URL in your browser" = "URL <url>, een URL in uw browser openen";
 
 /* nothing */
-"USELECT [-a] [-s] <nick1> <nick2> etc, highlights nick(s) in channel userlist" = "USELECT [-a] [-s] <bijnaam1> <bijnaam2> enz, laat bijnamen oplichten in gebruikerslijst van het kanaal";
+"USELECT [-a] [-s] <nick1> <nick2> etc, highlights nick(s) in channel userlist" = "USELECT [-a] [-s] <bijnaam1> <bijnaam2>..., deze bijnamen accentueren in de gebruikerslijst van het kanaal";
 
 /* nothing */
-"VOICE <nick>, gives voice status to someone (needs chanop)" = "VOICE <persoon>, geef de stemstatus aan iemand (kanaal operator vereist)";
+"VOICE <nick>, gives voice status to someone (needs chanop)" = "VOICE <bijnaam>, iemand spreekstatus geven (vereist kanaaloperatorstatus)";
 
 /* nothing */
 "WALLCHAN <message>, writes the message to all channels" = "WALLCHAN <bericht>, het bericht naar alle kanalen sturen";
 
 /* nothing */
-"WALLCHOP <message>, sends the message to all chanops on the current channel" = "WALLCHOP <bericht>, een bericht naar alle kanaaloperatoren op het huidige kanaal";
+"WALLCHOP <message>, sends the message to all chanops on the current channel" = "WALLCHOP <bericht>, het bericht naar alle kanaaloperatoren in het huidige kanaal sturen";
 
 /* nothing */
 "Usage: %s\n" = "Gebruik: %s\n";
 
 /* nothing */
-"\nNo help available on that command.\n" = "\nGeen help beschikbaar over die opdracht.\n";
+"\nNo help available on that command.\n" = "\nEr is geen hulp beschikbaar voor die opdracht.\n";
 
 /* nothing */
-"No such command.\n" = "Nietbestaande opdracht.\n";
+"No such command.\n" = "Niet-bestaande opdracht.\n";
 
 /* nothing */
-"Bad arguments for user command.\n" = "Foute argumenten voor gebruikersgedefiniëerde opdracht.\n";
+"Bad arguments for user command.\n" = "Onjuiste argumenten voor gebruikersgedefinieerde opdracht.\n";
 
 /* nothing */
-"Too many recursive usercommands, aborting." = "Teveel recursieve gebruikersgedefiniëerde opdrachten, afbrekende.";
+"Too many recursive usercommands, aborting." = "Te veel recursieve gebruikersgedefinieerde opdrachten — gestopt.";
 
 /* nothing */
-"Unknown Command. Try /help\n" = "Onbekende opdracht. Probeer /help\n";
+"Unknown Command. Try /help\n" = "Onbekende opdracht.  Probeer /help\n";
 
 /* nothing */
-"No xchat_plugin_init symbol; is this really an xchat plugin?" = "Geen xchat_plugin_init symbol gevonden; is dit een echte xchat plugin?";
+"No xchat_plugin_init symbol; is this really an xchat plugin?" = "Geen xchat_plugin_init symbol gevonden; is dit een echte xchat-plugin?";
 
 /* nothing */
 "Are you sure this is a SSL capable server and port?\n" = "Weet u zeker dat deze server en poort SSL ondersteunen?\n";
 
 /* nothing */
-"Cannot resolve hostname %s\nCheck your IP Settings!\n" = "Kan hostnaam %s niet oplossen\nControleer uw IP instellingen!\n";
+"Cannot resolve hostname %s\nCheck your IP Settings!\n" = "Kan hostnaam %s niet herleiden.\nControleer uw IP-instellingen!\n";
 
 /* nothing */
-"Proxy traversal failed.\n" = "Proxy doorkruising mislukt.\n";
+"Proxy traversal failed.\n" = "Proxy-doorkruising is mislukt.\n";
 
 /* nothing */
 "Cycling to next server in %s...\n" = "Overschakelen naar volgende server in %s...\n";
 
 /* nothing */
-"Warning: \"%s\" character set is unknown. No conversion will be applied for network %s." = "Waarschuwing: tekenset \"%s\" is onbekend. Er zal geen conversie worden toegepast voor netwerk %s.";
+"Warning: \"%s\" character set is unknown. No conversion will be applied for network %s." = "Waarschuwing: tekenset \"%s\" is onbekend.  Er zal geen conversie worden toegepast voor netwerk %s.";
 
 /* nothing */
-"%C22*%O$t$1 added to notify list." = "%C22*%O$t$1 toegevoegd aan waarschuwingslijst.";
+"%C22*%O$t$1 added to notify list." = "%C22*%O$t$1 is toegevoegd aan meldingslijst.";
 
 /* nothing */
-"%C22*%O$t$1 Banlist:%C19 $4%C20 $2%C21 $3" = "%C22*%O$t$1 Verbanlijst:%C19 $4%C20 $2%C21 $3";
+"%C22*%O$t$1 Banlist:%C19 $4%C20 $2%C21 $3" = "%C22*%O$t$1 Verbanningslijst:%C19 $4%C20 $2%C21 $3";
 
 /* nothing */
-"%C22*%O$tCannot join%C26 %B$1 %O(You are banned)." = "%C22*%O$tKan niet binnengaan%C26 %B$1 %O(U bent verbannen).";
+"%C22*%O$tCannot join%C26 %B$1 %O(You are banned)." = "%C22*%O$tKan%C26 niet binnengaan %B$1 %O(u bent verbannen).";
 
 /* nothing */
 "%C22*%O$t$1 is now known as $2" = "%C22*%O$t$1 is nu bekend als $2";
 
 /* nothing */
-"%C18*$t$1%O $2" = "%C18*$t$1%O $2";
-
-/* nothing */
-"%C21*%O$t%C21%B$1%O%C21 $2" = "%C21*%O$t%C21%B$1%O%C21 $2";
-
-/* nothing */
 "%C22*%O$t$1 sets ban on $2" = "%C22*%O$t$1 verbant $2";
 
 /* nothing */
-"%C22*%O$tChannel $1 created on $2" = "%C22*%O$tKanaal $1 gemaakt op $2";
+"%C22*%O$tChannel $1 created on $2" = "%C22*%O$tKanaal $1 is aangemaakt op $2";
 
 /* nothing */
-"%C22*%O$t%C26$1%O removes channel half-operator status from%C26 $2" = "%C22*%O$t%C26$1%O verwijdert kanaal-half-operator status van%C26 $2";
+"%C22*%O$t%C26$1%O removes channel half-operator status from%C26 $2" = "%C22*%O$t%C26$1%O verwijdert halve kanaaloperatorstatus van%C26 $2";
 
 /* nothing */
-"%C22*%O$t%C26$1%O removes channel operator status from%C26 $2" = "%C22*%O$t%C26$1%O verwijdert kanaal-operator status van%C26 $2";
+"%C22*%O$t%C26$1%O removes channel operator status from%C26 $2" = "%C22*%O$t%C26$1%O verwijdert kanaaloperatorstatus van%C26 $2";
 
 /* nothing */
 "%C22*%O$t%C26$1%O removes voice from%C26 $2" = "%C22*%O$t%C26$1%O verwijdert stem van%C26 $2";
@@ -386,7 +398,7 @@
 "%C22*%O$t$1 sets exempt on $2" = "%C22*%O$t$1 zet vrijstelling op $2";
 
 /* nothing */
-"%C22*%O$t%C26$1%O gives channel half-operator status to%C26 $2" = "%C22*%O$t%C26$1%O geeft kanaal-half-operator status aan%C26 $2";
+"%C22*%O$t%C26$1%O gives channel half-operator status to%C26 $2" = "%C22*%O$t%C26$1%O geeft halve kanaaloperatorstatus aan%C26 $2";
 
 /* nothing */
 "%C22*%O$t$1 sets invite on $2" = "%C22*%O$t$1 zet uitnodigen op $2";
@@ -395,22 +407,13 @@
 "%UChannel          Users   Topic" = "%UKanaal           Gebruikers  Onderwerp";
 
 /* nothing */
-"%C18%H<%H$4$1%H>%H%O$t$2" = "%C18%H<%H$4$1%H>%H%O$t$2";
-
-/* nothing */
 "%C22*%O$t$1 sets mode $2$3 $4" = "%C22*%O$t$1 zet modus op $2$3 $4";
 
 /* nothing */
 "%C22*%O$t%C22Channel $1 modes: $2" = "%C22*%O$t%C22Kanaal $1 modi: $2";
 
 /* nothing */
-"$4%C21%B%H<%H$1%H>%H%O%C21$t$2" = "$4%C21%B%H<%H$1%H>%H%O%C21$t$2";
-
-/* nothing */
-"%C28-%C29$1/$2%C28-%O$t$3" = "%C28-%C29$1/$2%C28-%O$t$3";
-
-/* nothing */
-"%C22*%O$t%C26$1%O gives channel operator status to%C26 $2" = "%C22*%O$t%C26$1%O geeft kanaal-operator status aan%C26 $2";
+"%C22*%O$t%C26$1%O gives channel operator status to%C26 $2" = "%C22*%O$t%C26$1%O geeft kanaaloperatorstatus aan%C26 $2";
 
 /* nothing */
 "%C22*%O$t$1 removes exempt on $2" = "%C22*%O$t$1 verwijdert vrijstelling van $2";
@@ -422,13 +425,13 @@
 "%C22*%O$t$1 removes channel keyword" = "%C22*%O$t$1 verwijdert kanaalsleutelwoord";
 
 /* nothing */
-"%C22*%O$t$1 removes user limit" = "%C22*%O$t$1 verwijdert gebruikersgrens";
+"%C22*%O$t$1 removes user limit" = "%C22*%O$t$1 verwijdert gebruikerslimiet";
 
 /* nothing */
 "%C22*%O$t$1 sets channel keyword to $2" = "%C22*%O$t$1 zet kanaalsleutelwoord op $2";
 
 /* nothing */
-"%C22*%O$t$1 sets channel limit to $2" = "%C22*%O$t$1 zet kanaalgrens op $2";
+"%C22*%O$t$1 sets channel limit to $2" = "%C22*%O$t$1 zet kanaallimiet op $2";
 
 /* nothing */
 "%C22*%O$t$1 removes ban on $2" = "%C22*%O$t$1 verwijdert verbanning van $2";
@@ -437,13 +440,13 @@
 "%C22*%O$t%C26$1%O gives voice to%C26 $2" = "%C22*%O$t%C26$1%O geeft stem aan%C26 $2";
 
 /* nothing */
-"%C22*%O$t%C22Connected. Now logging in..." = "%C22*%O$t%C22Verbonden. Nu bezig met aanmelden...";
+"%C22*%O$t%C22Connected. Now logging in..." = "%C22*%O$t%C22Verbonden.  Nu bezig met aanmelden...";
 
 /* nothing */
-"%C22*%O$t%C22Connecting to $1 ($2) port $3%O..." = "%C22*%O$t%C22Bezig met verbinden met $1 ($2) poort $3%O...";
+"%C22*%O$t%C22Connecting to $1 ($2) port $3%O..." = "%C22*%O$t%C22Verbinding maken met $1 ($2) op poort $3%O...";
 
 /* nothing */
-"%C21*%O$t%C21Connection failed. Error: $1" = "%C21*%O$t%C21Verbinden mislukt. Fout: $1";
+"%C21*%O$t%C21Connection failed. Error: $1" = "%C21*%O$t%C21Verbinden is mislukt.  Fout: $1";
 
 /* nothing */
 "%C22*%O$tReceived a CTCP $1 from $2" = "%C22*%O$tEr is een CTCP $1 ontvangen van $2";
@@ -461,28 +464,28 @@
 "%C22*%O$tReceived a CTCP Sound $1 from $2 (to $3)" = "%C22*%O$tEr is een CTCP-geluid $1 ontvangen van $2 (aan $3)";
 
 /* nothing */
-"%C22*%O$tDCC CHAT to %C26$1%O aborted." = "%C22*%O$tDCC CHAT met %C26$1%O afgebroken.";
+"%C22*%O$tDCC CHAT to %C26$1%O aborted." = "%C22*%O$tDCC CHAT met %C26$1%O is afgebroken.";
 
 /* nothing */
-"%C22*%O$tDCC CHAT connection established to %C26$1 %C30[%O$2%C30]" = "%C22*%O$tDCC CHAT-verbinding tot stand gebracht met %C26$1 %C30[%O$2%C30]";
+"%C22*%O$tDCC CHAT connection established to %C26$1 %C30[%O$2%C30]" = "%C22*%O$tDCC CHAT-verbinding is tot stand gebracht met %C26$1 %C30[%O$2%C30]";
 
 /* nothing */
-"%C22*%O$tDCC CHAT to %C26$1%O lost ($4)." = "%C22*%O$tDCC CHAT met %C26$1%O verloren ($4).";
+"%C22*%O$tDCC CHAT to %C26$1%O lost ($4)." = "%C22*%O$tDCC CHAT met %C26$1%O is verloren ($4).";
 
 /* nothing */
 "%C22*%O$tReceived a DCC CHAT offer from $1" = "%C22*%O$tEr is een DCC CHAT-aanbod ontvangen van $1";
 
 /* nothing */
-"%C22*%O$tOffering DCC CHAT to $1" = "%C22*%O$tBezig met aanbieden DCC CHAT aan $1";
+"%C22*%O$tOffering DCC CHAT to $1" = "%C22*%O$tAanbieden van DCC CHAT aan $1";
 
 /* nothing */
 "%C22*%O$tAlready offering CHAT to $1" = "%C22*%O$tEr wordt al een CHAT aangeboden aan $1";
 
 /* nothing */
-"%C22*%O$tDCC $1 connect attempt to%C26 $2%O failed (err=$3)." = "%C22*%O$tDCC $1 verbindingspoging met%C26 $2%O mislukt (err=$3).";
+"%C22*%O$tDCC $1 connect attempt to%C26 $2%O failed (err=$3)." = "%C22*%O$tDCC $1 verbindingspoging met%C26 $2%O is mislukt (err=$3).";
 
 /* nothing */
-"%C22*%O$tReceived '$1%O' from $2" = "%C22*%O$tOntvangen '$1%O' van $2";
+"%C22*%O$tReceived '$1%O' from $2" = "%C22*%O$tEr is een '$1%O' ontvangen van $2";
 
 /* nothing */
 "%C24,18 Type  To/From    Status  Size    Pos     File         " = "%C24,18 Soort  Naar/Van  Status  Grootte Pos     Bestand      ";
@@ -491,22 +494,22 @@
 "%C22*%O$tReceived a malformed DCC request from %C26$1%O.%010%C22*%O$tContents of packet: $2" = "%C22*%O$tEr is een misvormd DCC-verzoek ontvangen van %C26$1%O.%010%C22*%O$tInhoud van pakket: $2";
 
 /* nothing */
-"%C22*%O$tOffering%C26 $1%O to%C26 $2" = "%C22*%O$tBezig met aanbieden%C26 $1%O aan%C26 $2";
+"%C22*%O$tOffering%C26 $1%O to%C26 $2" = "%C22*%O$tAanbieden van%C26 $1%O aan%C26 $2";
 
 /* nothing */
 "%C22*%O$tNo such DCC offer." = "%C22*%O$tDCC-aanbod niet gevonden.";
 
 /* nothing */
-"%C22*%O$tDCC RECV%C26 $2%O to%C26 $1%O aborted." = "%C22*%O$tDCC RECV%C26 $2%O to%C26 $1%O afgebroken.";
+"%C22*%O$tDCC RECV%C26 $2%O to%C26 $1%O aborted." = "%C22*%O$tDCC RECV%C26 $2%O naar%C26 $1%O is afgebroken.";
 
 /* nothing */
-"%C22*%O$tDCC RECV%C26 $1%O from%C26 $3%O complete %C30[%C26$4%O cps%C30]%O." = "%C22*%O$tDCC RECV%C26 $1%O van%C26 $3%O voltooid %C30[%C26$4%O cps%C30]%O.";
+"%C22*%O$tDCC RECV%C26 $1%O from%C26 $3%O complete %C30[%C26$4%O cps%C30]%O." = "%C22*%O$tDCC RECV%C26 $1%O van%C26 $3%O is voltooid %C30[%C26$4%O cps%C30]%O.";
 
 /* nothing */
-"%C22*%O$tDCC RECV connection established to%C26 $1 %C30[%O$2%C30]" = "%C22*%O$tDCC RECV-verbinding tot stand gebracht met%C26 $1 %C30[%O$2%C30]";
+"%C22*%O$tDCC RECV connection established to%C26 $1 %C30[%O$2%C30]" = "%C22*%O$tDCC RECV-verbinding is tot stand gebracht met%C26 $1 %C30[%O$2%C30]";
 
 /* nothing */
-"%C22*%O$tDCC RECV%C26 $1%O from%C26 $3%O failed ($4)." = "%C22*%O$tDCC RECV%C26 $1%O van%C26 $3%O mislukt ($4).";
+"%C22*%O$tDCC RECV%C26 $1%O from%C26 $3%O failed ($4)." = "%C22*%O$tDCC RECV%C26 $1%O van%C26 $3%O is mislukt ($4).";
 
 /* nothing */
 "%C22*%O$tDCC RECV: Cannot open $1 for writing ($2)." = "%C22*%O$tDCC RECV: Kan $1 niet openen om te schrijven ($2).";
@@ -515,46 +518,43 @@
 "%C22*%O$tThe file%C26 $1%C already exists, saving it as%C26 $2%O instead." = "%C22*%O$tHet bestand%C26 $1%C bestaat al; wordt opgeslagen als%C26 $2%O.";
 
 /* nothing */
-"%C22*%O$t%C26$1 %Ohas requested to resume%C26 $2 %Cfrom%C26 $3%C." = "%C22*%O$t%C26$1 %Oheeft verzocht om%C26 $2 %Cvan%C26 $3%C te pauzeren.";
+"%C22*%O$t%C26$1 %Ohas requested to resume%C26 $2 %Cfrom%C26 $3%C." = "%C22*%O$t%C26$1 %Oheeft verzocht om%C26 $2 %Cvan%C26 $3%C te hervatten.";
 
 /* nothing */
-"%C22*%O$tDCC SEND%C26 $2%O to%C26 $1%O aborted." = "%C22*%O$tDCC SEND%C26 $2%O naar%C26 $1%O afgebroken.";
+"%C22*%O$tDCC SEND%C26 $2%O to%C26 $1%O aborted." = "%C22*%O$tDCC SEND%C26 $2%O naar%C26 $1%O is afgebroken.";
 
 /* nothing */
-"%C22*%O$tDCC SEND%C26 $1%O to%C26 $2%O complete %C30[%C26$3%O cps%C30]%O." = "%C22*%O$tDCC SEND%C26 $1%O naar%C26 $2%O voltooid %C30[%C26$3%O cps%C30]%O.";
+"%C22*%O$tDCC SEND%C26 $1%O to%C26 $2%O complete %C30[%C26$3%O cps%C30]%O." = "%C22*%O$tDCC SEND%C26 $1%O naar%C26 $2%O is voltooid %C30[%C26$3%O cps%C30]%O.";
 
 /* nothing */
-"%C22*%O$tDCC SEND connection established to%C26 $1 %C30[%O$2%C30]" = "%C22*%O$tDCC SEND-verbinding tot stand gebracht met%C26 $1 %C30[%O$2%C30]";
+"%C22*%O$tDCC SEND connection established to%C26 $1 %C30[%O$2%C30]" = "%C22*%O$tDCC SEND-verbinding is tot stand gebracht met%C26 $1 %C30[%O$2%C30]";
 
 /* nothing */
-"%C22*%O$tDCC SEND%C26 $1%O to%C26 $2%O failed. $3" = "%C22*%O$tDCC SEND%C26 $1%O naar%C26 $2%O mislukt. $3";
+"%C22*%O$tDCC SEND%C26 $1%O to%C26 $2%O failed. $3" = "%C22*%O$tDCC SEND%C26 $1%O naar%C26 $2%O is mislukt. $3";
 
 /* nothing */
-"%C22*%O$t%C26$1 %Ohas offered%C26 $2 %O(%C26$3 %Obytes)" = "%C22*%O$t%C26$1 %Oheeft%C26 $2 %O aangeboden (%C26$3 %Obytes)";
+"%C22*%O$t%C26$1 %Ohas offered%C26 $2 %O(%C26$3 %Obytes)" = "%C22*%O$t%C26$1 %Oheeft%C26 $2 %Oaangeboden (%C26$3 %Obytes)";
 
 /* nothing */
-"%C22*%O$tDCC $1%C26 $2 %Oto%C26 $3 %Cstalled - aborting." = "%C22*%O$tDCC $1%C26 $2 %Omet%C26 $3 %Cis opgehouden - afbreken.";
+"%C22*%O$tDCC $1%C26 $2 %Oto%C26 $3 %Cstalled - aborting." = "%C22*%O$tDCC $1%C26 $2 %Omet%C26 $3 %Cis opgehouden — gestopt.";
 
 /* nothing */
-"%C22*%O$tDCC $1%C26 $2 %Oto%C26 $3 %Otimed out - aborting." = "%C22*%O$tDCC $1%C26 $2 %Omet%C26 $3 %Oheeft time-out - afbreken.";
+"%C22*%O$tDCC $1%C26 $2 %Oto%C26 $3 %Otimed out - aborting." = "%C22*%O$tDCC $1%C26 $2 %Omet%C26 $3 %Ois verlopen — gestopt.";
 
 /* nothing */
-"%C22*%O$t$1 deleted from notify list." = "%C22*%O$t$1 verwijderd uit waarschuwingslijst.";
+"%C22*%O$t$1 deleted from notify list." = "%C22*%O$t$1 is verwijderd uit meldingslijst.";
 
 /* nothing */
-"%C22*%O$tDisconnected ($1)." = "%C22*%O$tVerbinding verbroken ($1).";
+"%C22*%O$tDisconnected ($1)." = "%C22*%O$tVerbinding is verbroken ($1).";
 
 /* nothing */
 "%C22*%O$tFound your IP: [$1]" = "%C22*%O$tUw IP is gevonden: [$1]";
 
 /* nothing */
-"$1$t$2" = "$1$t$2";
+"%O%C26$1%O added to ignore list." = "%O%C26$1%O is toegevoegd aan negeerlijst.";
 
 /* nothing */
-"%O%C26$1%O added to ignore list." = "%O%C26$1%O toegevoegd aan negeerlijst.";
-
-/* nothing */
-"Ignore on %C26$1%O changed." = "Negeren van %C26$1%O gewijzigd.";
+"Ignore on %C26$1%O changed." = "Negeren van %C26$1%O is gewijzigd.";
 
 /* nothing */
 "%C24,18                                                              " = "%C24,18                                                              ";
@@ -569,37 +569,31 @@
 "  Ignore list is empty." = "  Negeerlijst is leeg.";
 
 /* nothing */
-"%C22*%O$tCannot join%C26 %B$1 %O(Channel is invite only)." = "%C22*%O$tKan niet binnengaan%C26 %B$1 %O(Kanaal is alleen-uitnodigen).";
+"%C22*%O$tCannot join%C26 %B$1 %O(Channel is invite only)." = "%C22*%O$tKan%C26 niet binnengaan %B$1 %O(kanaal is alleen-op-uitnodiging).";
 
 /* nothing */
-"%C22*%O$tYou have been invited to%C26 $1%O by%C26 $2%C (%C26$3%C)" = "%C22*%O$tU bent uitgenodigd bij%C26 $1%O door%C26 $2%C (%C26$3%C)";
+"%C22*%O$tYou have been invited to%C26 $1%O by%C26 $2%C (%C26$3%C)" = "%C22*%O$tU bent uitgenodigd in%C26 $1%O door%C26 $2%C (%C26$3%C)";
 
 /* nothing */
-"%C19*%O$t%C19%B$1 %B($3) has joined $2" = "%C19*%O$t%C19%B$1 %B($3) is binnengekomen bij $2";
+"%C19*%O$t%C19%B$1 %B($3) has joined $2" = "%C19*%O$t%C19%B$1 %B($3) is binnengekomen in $2";
 
 /* nothing */
-"%C22*%O$tCannot join%C26 %B$1 %O(Requires keyword)." = "%C22*%O$tKan niet binnengaan bij%C26 %B$1 %O(Sleutelwoord vereist).";
+"%C22*%O$tCannot join%C26 %B$1 %O(Requires keyword)." = "%C22*%O$tKan%C26 niet binnengaan %B$1 %O(vereist een sleutelwoord).";
 
 /* nothing */
 "%C21*%O$t%C21$1 has kicked $2 from $3 ($4%O%C21)" = "%C21*%O$t%C21$1 heeft $2 uit $3 geschopt ($4%O%C21)";
 
 /* nothing */
-"%C22*%O$tYou have been killed by $1 ($2%O%C22)" = "%C22*%O$tU bent gedood door $1 ($2%O%C22)";
+"%C22*%O$tYou have been killed by $1 ($2%O%C22)" = "%C22*%O$tU bent geëlimineerd door $1 ($2%O%C22)";
 
 /* nothing */
-"%C19>%O$1%C19<%O$t$2" = "%C19>%O$1%C19<%O$t$2";
+"%C22*%O$t%C22MOTD Skipped." = "%C22*%O$t%C22MOTD is overgeslagen.";
 
 /* nothing */
-"%C16*%O$t$1%O" = "%C16*%O$t$1%O";
+"%C22*%O$t$1 already in use. Retrying with $2..." = "%C22*%O$t$1 is al in gebruik.  Nieuwe poging met $2...";
 
 /* nothing */
-"%C22*%O$t%C22MOTD Skipped." = "%C22*%O$t%C22MOTD Overgeslagen.";
-
-/* nothing */
-"%C22*%O$t$1 already in use. Retrying with $2..." = "%C22*%O$t$1 al in gebruik. Opnieuw proberen met $2...";
-
-/* nothing */
-"%C22*%O$tNickname already in use. Use /NICK to try another." = "%C22*%O$tBijnaam al in gebruik. Gebruik /NICK om een andere te proberen.";
+"%C22*%O$tNickname already in use. Use /NICK to try another." = "%C22*%O$tBijnaam is al in gebruik.  Gebruik /NICK om een andere te proberen.";
 
 /* nothing */
 "%C22*%O$tNo such DCC." = "%C22*%O$tDCC niet gevonden.";
@@ -608,22 +602,19 @@
 "%C22*%O$tNo process is currently running" = "%C22*%O$tEr loopt op dit moment geen proces";
 
 /* nothing */
-"%C28-%C29$1%C28-%O$t$2" = "%C28-%C29$1%C28-%O$t$2";
+"$tNotify list is empty." = "$tMeldingslijst is leeg.";
 
 /* nothing */
-"$tNotify list is empty." = "$tWaarschuwingslijst is leeg.";
+"%C24,18 %B  Notify List                           " = "%C24,18 %B  Meldingslijst                         ";
 
 /* nothing */
-"%C24,18 %B  Notify List                           " = "%C24,18 %B  Waarschuwingslijst                    ";
+"%C22*%O$t$1 users in notify list." = "%C22*%O$t$1 gebruikers in meldingslijst.";
 
 /* nothing */
-"%C22*%O$t$1 users in notify list." = "%C22*%O$t$1 gebruikers in waarschuwingslijst.";
+"%C22*%O$tNotify: $1 is offline ($3)." = "%C22*%O$tMelding: $1 is offline ($3).";
 
 /* nothing */
-"%C22*%O$tNotify: $1 is offline ($2)." = "%C22*%O$tWaarschuwing: $1 is off-line ($2).";
-
-/* nothing */
-"%C22*%O$tNotify: $1 is online ($2)." = "%C22*%O$tWaarschuwing: $1 is on-line ($2).";
+"%C22*%O$tNotify: $1 is online ($3)." = "%C22*%O$tMelding: $1 is online ($3).";
 
 /* nothing */
 "%C23*%O$t%C23$1 (%O%C23$2) has left $3" = "%C23*%O$t%C23$1 (%O%C23$2) heeft $3 verlaten";
@@ -635,19 +626,13 @@
 "%C22*%O$tPing reply from $1: $2 second(s)" = "%C22*%O$tPing-antwoord van $1: $2 second(en)";
 
 /* nothing */
-"%C22*%O$tNo ping reply for $1 seconds, disconnecting." = "%C22*%O$tGeen ping-antwoord gedurende $1 seconden, verbinding verbroken.";
-
-/* nothing */
-"%C28*%C29$3$1%C28*$t%O$2" = "%C28*%C29$3$1%C28*$t%O$2";
-
-/* nothing */
-"%C18%H<%H$3$1%H>%H%O$t$2" = "%C18%H<%H$3$1%H>%H%O$t$2";
+"%C22*%O$tNo ping reply for $1 seconds, disconnecting." = "%C22*%O$tGeen ping-antwoord gedurende $1 seconden; verbinding wordt verbroken.";
 
 /* nothing */
 "%C22*%O$tA process is already running" = "%C22*%O$tEr loopt al een proces";
 
 /* nothing */
-"%C23*%O$t%C23$1 has quit (%O%C23%B%B$2%O%C23)" = "%C23*%O$t%C23$1 heeft verlaten (%O%C23%B%B$2%O%C23)";
+"%C23*%O$t%C23$1 has quit (%O%C23%B%B$2%O%C23)" = "%C23*%O$t%C23$1 is weggegaan (%O%C23%B%B$2%O%C23)";
 
 /* nothing */
 "%C22*%O$t$1 sets modes%B %C30[%O$2%B%C30]" = "%C22*%O$t$1 zet modi%B %C30[%O$2%B%C30]";
@@ -656,19 +641,16 @@
 "%C28-%C29$1/Wallops%C28-%O$t$2" = "%C28-%C29$1/Wallops%C28-%O$t$2";
 
 /* nothing */
-"%C22*%O$tLooking up IP number for%C26 $1%O..." = "%C22*%O$tBezig met opzoeken IP-nummer voor%C26 $1%O...";
+"%C22*%O$tLooking up IP number for%C26 $1%O..." = "%C22*%O$tOpzoeken van IP-nummer voor%C26 $1%O...";
 
 /* nothing */
 "%C22*%O$t%C22Connected." = "%C22*%O$t%C22Verbonden.";
 
 /* nothing */
-"%C22*%O$t$1" = "%C22*%O$t$1";
+"%C22*%O$t%C22Looking up $1" = "%C22*%O$t%C22Opzoeken van $1";
 
 /* nothing */
-"%C22*%O$t%C22Looking up $1" = "%C22*%O$t%C22Bezig met opzoeken $1";
-
-/* nothing */
-"%C22*%O$tStopped previous connection attempt (pid=$1)" = "%C22*%O$tVorige verbindingspoging gestopt (pid=$1)";
+"%C22*%O$tStopped previous connection attempt (pid=$1)" = "%C22*%O$tVorige verbindingspoging is gestopt (PID=$1)";
 
 /* nothing */
 "%C29*%O$t%C29Topic for $1%C %C29is: $2" = "%C29*%O$t%C29Onderwerp voor $1%C %C29is: $2";
@@ -680,19 +662,19 @@
 "%C29*%O$t%C29Topic for $1%C %C29set by $2%C %C29at $3" = "%C29*%O$t%C29Onderwerp voor $1%C %C29is ingesteld door $2%C %C29op $3";
 
 /* nothing */
-"%C22*%O$tUnknown host. Maybe you misspelled it?" = "%C22*%O$tOnbekende host. Heeft u het goed gespeld?";
+"%C22*%O$tUnknown host. Maybe you misspelled it?" = "%C22*%O$tOnbekende host.  Hebt u het goed gespeld?";
 
 /* nothing */
-"%C22*%O$tCannot join%C26 %B$1 %O(User limit reached)." = "%C22*%O$tKan%C26 niet binnengaan %B$1 %O(Gebruikersgrens bereikt).";
+"%C22*%O$tCannot join%C26 %B$1 %O(User limit reached)." = "%C22*%O$tKan%C26 niet binnengaan %B$1 %O(gebruikerslimiet is bereikt).";
 
 /* nothing */
-"%C22*%O$t%C26Users on $1:%C $2" = "%C22*%O$t%C26Gebruikers op $1:%C $2";
+"%C22*%O$t%C26Users on $1:%C $2" = "%C22*%O$t%C26Gebruikers in $1:%C $2";
 
 /* nothing */
 "%C22*%O$t%C28[%O$1%C28] %O$2%C27 $3" = "%C22*%O$t%C28[%O$1%C28] %O$2%C27 $3";
 
 /* nothing */
-"%C22*%O$t%C28[%O$1%C28] %Cis away %C30(%O$2%O%C30)" = "%C22*%O$t%C28[%O$1%C28] %Cis weg %C30(%O$2%O%C30)";
+"%C22*%O$t%C28[%O$1%C28] %Cis away %C30(%O$2%O%C30)" = "%C22*%O$t%C28[%O$1%C28] %Cis afwezig %C30(%O$2%O%C30)";
 
 /* nothing */
 "%C22*%O$t%C28[%O$1%C28]%O $2" = "%C22*%O$t%C28[%O$1%C28]%O $2";
@@ -713,25 +695,25 @@
 "%C22*%O$t%C28[%O$1%C28] %Oreal user@host%C27 $2%O, real IP%C27 $3" = "%C22*%O$t%C28[%O$1%C28] %Oechte gebruiker@host%C27 $2%O, echte IP%C27 $3";
 
 /* nothing */
-"%C19*%O$t%C19Now talking on $2" = "%C19*%O$t%C19U praat nu op $2";
+"%C19*%O$t%C19Now talking on $2" = "%C19*%O$t%C19U bent nu in $2";
 
 /* nothing */
-"%C23*$tYou have been kicked from $2 by $3 ($4%O%C23)" = "%C23*$tU bent door $3 van $2 geschopt ($4%O%C23)";
+"%C23*$tYou have been kicked from $2 by $3 ($4%O%C23)" = "%C23*$tU bent door $3 uit $2 geschopt ($4%O%C23)";
 
 /* nothing */
-"%C23*$tYou have left channel $3" = "%C23*$tU heeft kanaal $3 verlaten";
+"%C23*$tYou have left channel $3" = "%C23*$tU hebt kanaal $3 verlaten";
 
 /* nothing */
-"%C23*$tYou have left channel $3 (%O%C23%B%B$4%O%C23)" = "%C23*$tU heeft kanaal $3 verlaten (%O%C23%B%B$4%O%C23)";
+"%C23*$tYou have left channel $3 (%O%C23%B%B$4%O%C23)" = "%C23*$tU hebt kanaal $3 verlaten (%O%C23%B%B$4%O%C23)";
 
 /* nothing */
-"%C22*%O$tYou've invited%C26 $1%O to%C26 $2%O (%C26$3%O)" = "%C22*%O$tU heeft%C26 $1%O uitgenodigd bij%C26 $2%O (%C26$3%O)";
-
-/* nothing */
-"%C31%H<%H$4$1%H>%H%O%C30$t$2" = "%C31%H<%H$4$1%H>%H%O%C30$t$2";
+"%C22*%O$tYou've invited%C26 $1%O to%C26 $2%O (%C26$3%O)" = "%C22*%O$tU hebt%C26 $1%O uitgenodigd in%C26 $2%O (%C26$3%O)";
 
 /* nothing */
 "%C22*%O$tYou are now known as $2" = "%C22*%O$tU bent nu bekend als $2";
+
+/* nothing */
+"Loaded log from" = "Logbestand is geladen uit";
 
 /* nothing */
 "**** ENDING LOGGING AT %s\n" = "**** LOGGEN GESTOPT OM %s\n";
@@ -740,19 +722,19 @@
 "**** BEGIN LOGGING AT %s\n" = "**** LOGGEN GESTART OP %s\n";
 
 /* nothing */
-"* Can't open log file(s) for writing. Check the\n  permissions on %s/xchatlogs" = "* Kan logbestand(en) niet openen om te schrijven. Controleer\n  de toegangsrechten van %s/xchatlogs";
+"* Can't open log file(s) for writing. Check the\n  permissions on %s/xchatlogs" = "* Kan logbestand(en) niet openen om te schrijven.\n  Controleer de toegangsrechten van %s/xchatlogs";
 
 /* nothing */
-"Left message" = "Linkerbericht";
+"Left message" = "Linker bericht";
 
 /* nothing */
-"Right message" = "Rechterbericht";
+"Right message" = "Rechter bericht";
 
 /* nothing */
 "The nick of the joining person" = "De bijnaam van de persoon die binnenkomt";
 
 /* nothing */
-"The channel being joined" = "Het kanaal dat geopend wordt";
+"The channel being joined" = "Het kanaal dat wordt binnengegaan";
 
 /* nothing */
 "The host of the person" = "De host van de persoon";
@@ -764,13 +746,13 @@
 "The action" = "De actie";
 
 /* nothing */
-"Mode char" = "Moduskarakter";
-
-/* nothing */
-"The text" = "De tekst";
+"Mode char" = "Modusletter";
 
 /* nothing */
 "Identified text" = "Geïdentificeerde tekst";
+
+/* nothing */
+"The text" = "De tekst";
 
 /* nothing */
 "The message" = "Het bericht";
@@ -782,7 +764,7 @@
 "New nickname" = "Nieuwe bijnaam";
 
 /* nothing */
-"Nick of person who changed the topic" = "Bijnaam van de persoon die het onderwerp veranderde";
+"Nick of person who changed the topic" = "De bijnaam van de persoon die het onderwerp veranderde";
 
 /* nothing */
 "Topic" = "Onderwerp";
@@ -791,10 +773,10 @@
 "Channel" = "Kanaal";
 
 /* nothing */
-"The nickname of the kicker" = "Bijnaam van de kicker";
+"The nickname of the kicker" = "De bijnaam van de buitenschopper";
 
 /* nothing */
-"The person being kicked" = "De persoon die gekickt wordt";
+"The person being kicked" = "De bijnaam van de persoon die buitengeschopt wordt";
 
 /* nothing */
 "The channel" = "Het kanaal";
@@ -821,13 +803,13 @@
 "Host" = "Host";
 
 /* nothing */
-"Who it's from" = "Van wie het is";
+"Who it's from" = "Van wie het afkomstig is";
 
 /* nothing */
-"The time in x.x format (see below)" = "De tijd in x.x-formaat";
+"The time in x.x format (see below)" = "De tijd in x.x-opmaak (zie hieronder)";
 
 /* nothing */
-"The Channel it's going to" = "Het kanaal waar het heen gaat";
+"The Channel it's going to" = "Het kanaal waar het naar toe gaat";
 
 /* nothing */
 "The sound" = "Het geluid";
@@ -851,7 +833,7 @@
 "The limit" = "De limiet";
 
 /* nothing */
-"The nick of the person who did the op'ing" = "De bijnaam van de persoon die de op heeft uitgevoerd";
+"The nick of the person who did the op'ing" = "De bijnaam van de persoon die de 'op' heeft uitgevoerd";
 
 /* nothing */
 "The nick of the person who has been op'ed" = "De bijnaam van de persoon die is ge'opt";
@@ -860,55 +842,55 @@
 "The nick of the person who has been halfop'ed" = "De bijnaam van de persoon die is ge'halfopt";
 
 /* nothing */
-"The nick of the person who did the halfop'ing" = "De bijnaam van de persoon die de halfop heeft uitgevoerd";
+"The nick of the person who did the halfop'ing" = "De bijnaam van de persoon die de 'halfop' heeft uitgevoerd";
 
 /* nothing */
-"The nick of the person who did the voice'ing" = "De bijnaam van de persoon die de voice heeft uitgevoerd";
+"The nick of the person who did the voice'ing" = "De bijnaam van de persoon die de 'voice' heeft uitgevoerd";
 
 /* nothing */
 "The nick of the person who has been voice'ed" = "De bijnaam van de persoon die is ge'voicet";
 
 /* nothing */
-"The nick of the person who did the banning" = "De bijnaam van de persoon die de ban heeft uitgevoerd";
+"The nick of the person who did the banning" = "De bijnaam van de persoon die de 'ban' heeft uitgevoerd";
 
 /* nothing */
 "The ban mask" = "Het ban-masker";
 
 /* nothing */
-"The nick who removed the key" = "De bijnaam die de sleutel heeft verwijderd";
+"The nick who removed the key" = "De bijnaam van de persoon die de sleutel heeft verwijderd";
 
 /* nothing */
-"The nick who removed the limit" = "De bijnaam die de limiet heeft verwijderd";
+"The nick who removed the limit" = "De bijnaam van de persoon die de limiet heeft verwijderd";
 
 /* nothing */
-"The nick of the person of did the deop'ing" = "De bijnaam van de persoon die de deop heeft uitgevoerd";
+"The nick of the person of did the deop'ing" = "De bijnaam van de persoon die de 'deop' heeft uitgevoerd";
 
 /* nothing */
 "The nick of the person who has been deop'ed" = "De bijnaam van de persoon die is ge'deopt";
 
 /* nothing */
-"The nick of the person of did the dehalfop'ing" = "De bijnaam van de persoon die de dehalfop heeft uitgevoerd";
+"The nick of the person of did the dehalfop'ing" = "De bijnaam van de persoon die de 'dehalfop' heeft uitgevoerd";
 
 /* nothing */
 "The nick of the person who has been dehalfop'ed" = "De bijnaam van de persoon die is ge'dehalfopt";
 
 /* nothing */
-"The nick of the person of did the devoice'ing" = "De bijnaam van de persoon die de devoice heeft uitgevoerd";
+"The nick of the person of did the devoice'ing" = "De bijnaam van de persoon die de 'devoice' heeft uitgevoerd";
 
 /* nothing */
 "The nick of the person who has been devoice'ed" = "De bijnaam van de persoon die is ge'devoicet";
 
 /* nothing */
-"The nick of the person of did the unban'ing" = "De bijnaam van de persoon die de unban heeft uitgevoerd";
+"The nick of the person of did the unban'ing" = "De bijnaam van de persoon die de 'unban' heeft uitgevoerd";
 
 /* nothing */
-"The nick of the person who did the exempt" = "De bijnaam van de persoon die de exempt heeft uitgevoerd";
+"The nick of the person who did the exempt" = "De bijnaam van de persoon die de 'exempt' heeft uitgevoerd";
 
 /* nothing */
 "The exempt mask" = "Het exempt-masker";
 
 /* nothing */
-"The nick of the person removed the exempt" = "De bijnaam van de persoon die de exempt heeft verwijderd";
+"The nick of the person removed the exempt" = "De bijnaam van de persoon die de 'exempt' heeft verwijderd";
 
 /* nothing */
 "The nick of the person who did the invite" = "De bijnaam van de persoon die de uitnodiging heeft gedaan";
@@ -923,10 +905,10 @@
 "The nick of the person setting the mode" = "De bijnaam van de persoon die de modus heeft ingesteld";
 
 /* nothing */
-"The mode's sign (+/-)" = "Het teken van de modus (+/-)";
+"The mode's sign (+/-)" = "Het modusteken (+/-)";
 
 /* nothing */
-"The mode letter" = "De letter van de modus";
+"The mode letter" = "De modusletter";
 
 /* nothing */
 "The channel it's being set on" = "Het kanaal waarop het wordt ingesteld";
@@ -938,19 +920,19 @@
 "Full name" = "Volledige naam";
 
 /* nothing */
-"Channel Membership/\"is an IRC operator\"" = "Kanaal deelnemerschap/\"is een IRC operator\"";
+"Channel Membership/\"is an IRC operator\"" = "Kanaallidmaatschap/\"is een IRC-operator\"";
 
 /* nothing */
 "Server Information" = "Serverinformatie";
 
 /* nothing */
-"Idle time" = "Inactieve tijd";
+"Idle time" = "Tijd inactief";
 
 /* nothing */
-"Signon time" = "Aanmeldtijd";
+"Signon time" = "Aanmeldingstijd";
 
 /* nothing */
-"Away reason" = "Reden van afwezigheid:";
+"Away reason" = "Reden van afwezigheid";
 
 /* nothing */
 "Message" = "Bericht";
@@ -965,7 +947,7 @@
 "Real IP" = "Echte IP";
 
 /* nothing */
-"Channel Name" = "Kanaalsnaam";
+"Channel Name" = "Kanaalnaam";
 
 /* nothing */
 "Text" = "Tekst";
@@ -974,19 +956,19 @@
 "Server Name" = "Servernaam";
 
 /* nothing */
-"Nick of person who invited you" = "Bijnaam van de persoon die je uitnodigde";
+"Raw Numeric or Identifier" = "Nummer of ID";
+
+/* nothing */
+"Nick of person who invited you" = "Bijnaam van de persoon die u uitnodigde";
 
 /* nothing */
 "Users" = "Gebruikers";
 
 /* nothing */
-"Nickname in use" = "Gebruikte bijnaam";
+"Nickname in use" = "Bijnaam is in gebruik";
 
 /* nothing */
 "Nick being tried" = "Bijnaam die geprobeerd wordt";
-
-/* nothing */
-"Error" = "Fout";
 
 /* nothing */
 "IP" = "IP";
@@ -995,13 +977,13 @@
 "Port" = "Poort";
 
 /* nothing */
-"PID" = "PID";
+"Network" = "Netwerk";
 
 /* nothing */
-"Modes string" = "Modistring";
+"Modes string" = "Modusstring";
 
 /* nothing */
-"IP address" = "IP-Adres";
+"IP address" = "IP-adres";
 
 /* nothing */
 "DCC Type" = "DCC-type";
@@ -1025,10 +1007,10 @@
 "Size" = "Grootte";
 
 /* nothing */
-"DCC String" = "DCC Tekst";
+"DCC String" = "DCC-tekst";
 
 /* nothing */
-"Number of notify items" = "Aantal meldingen";
+"Number of notify items" = "Aantal meldingsitems";
 
 /* nothing */
 "Old Filename" = "Oude bestandsnaam";
@@ -1049,7 +1031,7 @@
 "The Packet" = "Het pakket";
 
 /* nothing */
-"Seconds" = "Seconden";
+"Seconds" = "seconden";
 
 /* nothing */
 "Nick of person who have been invited" = "Bijnaam van de persoon die uitgenodigd is";
@@ -1061,10 +1043,10 @@
 "Who set the ban" = "Degene die de ban heeft ingesteld";
 
 /* nothing */
-"Ban time" = "Bantijd";
+"Ban time" = "Verbanningstijd";
 
 /* nothing */
-"Error parsing event %s.\nLoading default." = "Fout bij inlezen gebeurtenis %s.\nStandaard wordt geladen.";
+"Error parsing event %s.\nLoading default." = "Fout bij ontleden van gebeurtenis %s.\nDe standaard wordt geladen.";
 
 /* nothing */
 "Cannot read sound file:\n%s" = "Kan geluidsbestand niet lezen:\n%s";
@@ -1073,19 +1055,19 @@
 "Remote host closed socket" = "Host op afstand heeft socket gesloten";
 
 /* nothing */
-"Connection refused" = "Verbinding geweigerd";
+"Connection refused" = "Verbinding is geweigerd";
 
 /* nothing */
-"No route to host" = "Geen route naar host";
+"No route to host" = "Er bestaat geen route naar de host";
 
 /* nothing */
-"Connection timed out" = "Verbinding kreeg een timeout";
+"Connection timed out" = "Verbinding is verlopen";
 
 /* nothing */
 "Cannot assign that address" = "Kan dat adres niet toewijzen";
 
 /* nothing */
-"Connection reset by peer" = "Verbinding verbroken door peer";
+"Connection reset by peer" = "Verbinding is weggevallen";
 
 /* nothing */
 "Ascension Island" = "Ascension";
@@ -1097,7 +1079,7 @@
 "United Arab Emirates" = "Verenigde Arabische Emiraten";
 
 /* nothing */
-"Afghanistan" = "Afganistan";
+"Afghanistan" = "Afghanistan";
 
 /* nothing */
 "Antigua and Barbuda" = "Antigua en Barbuda";
@@ -1124,16 +1106,16 @@
 "Argentina" = "Argentinië";
 
 /* nothing */
-"Reverse DNS" = "Omgekeerde DNS";
+"Reverse DNS" = "omgekeerde DNS";
 
 /* nothing */
-"American Samoa" = "Amerikaans Samoa";
+"American Samoa" = "Amerikaans-Samoa";
 
 /* nothing */
 "Austria" = "Oostenrijk";
 
 /* nothing */
-"Nato Fiel" = "Nato Fiel";
+"Nato Fiel" = "NATO-fiel";
 
 /* nothing */
 "Australia" = "Australië";
@@ -1142,10 +1124,10 @@
 "Aruba" = "Aruba";
 
 /* nothing */
-"Aland Islands" = "Alandseilanden";
+"Aland Islands" = "Ålandseilanden";
 
 /* nothing */
-"Azerbaijan" = "Azerbeidjan";
+"Azerbaijan" = "Azerbeidzjan";
 
 /* nothing */
 "Bosnia and Herzegovina" = "Bosnië en Herzegovina";
@@ -1172,7 +1154,7 @@
 "Burundi" = "Burundi";
 
 /* nothing */
-"Businesses" = "Bedrijven";
+"Businesses" = "bedrijven";
 
 /* nothing */
 "Benin" = "Benin";
@@ -1181,10 +1163,10 @@
 "Bermuda" = "Bermuda";
 
 /* nothing */
-"Brunei Darussalam" = "Brunei Darussalam";
+"Brunei Darussalam" = "Brunei";
 
 /* nothing */
-"Bolivia" = "Bolivië";
+"Bolivia" = "Bolivia";
 
 /* nothing */
 "Brazil" = "Brazilië";
@@ -1196,7 +1178,7 @@
 "Bhutan" = "Bhutan";
 
 /* nothing */
-"Bouvet Island" = "Bouvet-eiland";
+"Bouvet Island" = "Bouvet";
 
 /* nothing */
 "Botswana" = "Botswana";
@@ -1244,7 +1226,7 @@
 "Colombia" = "Colombia";
 
 /* nothing */
-"Internic Commercial" = "Internic Commercieel";
+"Internic Commercial" = "commercieel";
 
 /* nothing */
 "Costa Rica" = "Costa Rica";
@@ -1256,10 +1238,10 @@
 "Cuba" = "Cuba";
 
 /* nothing */
-"Cape Verde" = "Kaapverdische Eilanden";
+"Cape Verde" = "Kaapverdië";
 
 /* nothing */
-"Christmas Island" = "Kerstmis-eiland";
+"Christmas Island" = "Christmaseiland";
 
 /* nothing */
 "Cyprus" = "Cyprus";
@@ -1289,7 +1271,7 @@
 "Ecuador" = "Ecuador";
 
 /* nothing */
-"Educational Institution" = "Educatieve instelling";
+"Educational Institution" = "educatieve instelling";
 
 /* nothing */
 "Estonia" = "Estland";
@@ -1319,13 +1301,13 @@
 "Fiji" = "Fiji";
 
 /* nothing */
-"Falkland Islands" = "Falkland eilanden";
+"Falkland Islands" = "Falklandeilanden";
 
 /* nothing */
 "Micronesia" = "Micronesië";
 
 /* nothing */
-"Faroe Islands" = "Faroër Eilanden";
+"Faroe Islands" = "Faeröer";
 
 /* nothing */
 "France" = "Frankrijk";
@@ -1334,7 +1316,7 @@
 "Gabon" = "Gabon";
 
 /* nothing */
-"Great Britain" = "England";
+"Great Britain" = "Groot-Brittannië";
 
 /* nothing */
 "Grenada" = "Grenada";
@@ -1343,10 +1325,10 @@
 "Georgia" = "Georgië";
 
 /* nothing */
-"French Guiana" = "Frans Guyana";
+"French Guiana" = "Frans-Guyana";
 
 /* nothing */
-"British Channel Isles" = "Briste kanaaleilanden";
+"British Channel Isles" = "Kanaaleilanden";
 
 /* nothing */
 "Ghana" = "Ghana";
@@ -1361,22 +1343,22 @@
 "Gambia" = "Gambia";
 
 /* nothing */
-"Guinea" = "Guinea";
+"Guinea" = "Guinee";
 
 /* nothing */
-"Government" = "Overheid";
+"Government" = "overheid";
 
 /* nothing */
 "Guadeloupe" = "Guadeloupe";
 
 /* nothing */
-"Equatorial Guinea" = "Equatoriaal Guinee";
+"Equatorial Guinea" = "Equatoriaal-Guinea";
 
 /* nothing */
 "Greece" = "Griekenland";
 
 /* nothing */
-"S. Georgia and S. Sandwich Isles" = "Z.-Georgië en de Z. Sandwich-eilanden";
+"S. Georgia and S. Sandwich Isles" = "Zuid-Georgië en de Zuidelijke Sandwicheilanden";
 
 /* nothing */
 "Guatemala" = "Guatemala";
@@ -1391,10 +1373,10 @@
 "Guyana" = "Guyana";
 
 /* nothing */
-"Hong Kong" = "Hong Kong";
+"Hong Kong" = "Hongkong";
 
 /* nothing */
-"Heard and McDonald Islands" = "Heard en McDonald eilanden";
+"Heard and McDonald Islands" = "Heardeiland en McDonaldeilanden";
 
 /* nothing */
 "Honduras" = "Honduras";
@@ -1415,7 +1397,7 @@
 "Ireland" = "Ierland";
 
 /* nothing */
-"Israel" = "Israel";
+"Israel" = "Israël";
 
 /* nothing */
 "Isle of Man" = "Eiland Man";
@@ -1424,13 +1406,13 @@
 "India" = "India";
 
 /* nothing */
-"Informational" = "Informatie";
+"Informational" = "informatie";
 
 /* nothing */
-"International" = "Internationaal";
+"International" = "internationaal";
 
 /* nothing */
-"British Indian Ocean Territory" = "Brits-Indische Oceaan Territorium";
+"British Indian Ocean Territory" = "Brits Territorium in de Indische Oceaan";
 
 /* nothing */
 "Iraq" = "Irak";
@@ -1469,7 +1451,7 @@
 "Kiribati" = "Kiribati";
 
 /* nothing */
-"Comoros" = "Komoren";
+"Comoros" = "Comoren";
 
 /* nothing */
 "St. Kitts and Nevis" = "St.-Kitts en Nevis";
@@ -1484,7 +1466,7 @@
 "Kuwait" = "Koeweit";
 
 /* nothing */
-"Cayman Islands" = "Kaaimaneilanden";
+"Cayman Islands" = "Caymaneilanden";
 
 /* nothing */
 "Kazakhstan" = "Kazachstan";
@@ -1496,7 +1478,7 @@
 "Lebanon" = "Libanon";
 
 /* nothing */
-"Saint Lucia" = "Santa Lucia";
+"Saint Lucia" = "Saint Lucia";
 
 /* nothing */
 "Liechtenstein" = "Liechtenstein";
@@ -1532,16 +1514,16 @@
 "Moldova" = "Moldavië";
 
 /* nothing */
-"United States Medical" = "Verenigde Staten Medisch";
+"United States Medical" = "medisch (Verenigde Staten)";
 
 /* nothing */
-"Madagascar" = "Madagascar";
+"Madagascar" = "Madagaskar";
 
 /* nothing */
-"Marshall Islands" = "Marshall-eilanden";
+"Marshall Islands" = "Marshalleilanden";
 
 /* nothing */
-"Military" = "Militair";
+"Military" = "militair";
 
 /* nothing */
 "Macedonia" = "Macedonië";
@@ -1550,16 +1532,16 @@
 "Mali" = "Mali";
 
 /* nothing */
-"Myanmar" = "Myanmar";
+"Myanmar" = "Myanmar (Birma)";
 
 /* nothing */
 "Mongolia" = "Mongolië";
 
 /* nothing */
-"Macau" = "Macaõ";
+"Macau" = "Macau";
 
 /* nothing */
-"Northern Mariana Islands" = "Noordelijke Mariana-eilanden";
+"Northern Mariana Islands" = "Noordelijke Marianen";
 
 /* nothing */
 "Martinique" = "Martinique";
@@ -1595,16 +1577,16 @@
 "Namibia" = "Namibië";
 
 /* nothing */
-"New Caledonia" = "Nieuw Caledonië";
+"New Caledonia" = "Nieuw-Caledonië";
 
 /* nothing */
 "Niger" = "Niger";
 
 /* nothing */
-"Internic Network" = "Internic Netwerk";
+"Internic Network" = "netwerk";
 
 /* nothing */
-"Norfolk Island" = "Norfolk-eiland";
+"Norfolk Island" = "Norfolkeiland";
 
 /* nothing */
 "Nigeria" = "Nigeria";
@@ -1634,7 +1616,7 @@
 "Oman" = "Oman";
 
 /* nothing */
-"Internic Non-Profit Organization" = "Internic Non-profit organisatie";
+"Internic Non-Profit Organization" = "non-profitorganisatie";
 
 /* nothing */
 "Panama" = "Panama";
@@ -1643,10 +1625,10 @@
 "Peru" = "Peru";
 
 /* nothing */
-"French Polynesia" = "Frans-Polinesië";
+"French Polynesia" = "Frans-Polynesië";
 
 /* nothing */
-"Papua New Guinea" = "Papoea Nieuw-Guinee";
+"Papua New Guinea" = "Papoea-Nieuw-Guinea";
 
 /* nothing */
 "Philippines" = "Filipijnen";
@@ -1661,13 +1643,13 @@
 "St. Pierre and Miquelon" = "St.-Pierre en Miquelon";
 
 /* nothing */
-"Pitcairn" = "Pitcairn";
+"Pitcairn" = "Pitcairneilanden";
 
 /* nothing */
 "Puerto Rico" = "Puerto Rico";
 
 /* nothing */
-"Palestinian Territory" = "Bezette Palestijnse Gebieden";
+"Palestinian Territory" = "Palestijnse Gebieden";
 
 /* nothing */
 "Portugal" = "Portugal";
@@ -1682,13 +1664,13 @@
 "Qatar" = "Qatar";
 
 /* nothing */
-"Reunion" = "Reunion";
+"Reunion" = "Réunion";
 
 /* nothing */
 "Romania" = "Roemenië";
 
 /* nothing */
-"Old School ARPAnet" = "Oude school ARPAnet";
+"Old School ARPAnet" = "ouderwets ARPAnet";
 
 /* nothing */
 "Russian Federation" = "Rusland";
@@ -1700,7 +1682,7 @@
 "Saudi Arabia" = "Saoedi-Arabië";
 
 /* nothing */
-"Solomon Islands" = "Solomon-eilanden";
+"Solomon Islands" = "Salomonseilanden";
 
 /* nothing */
 "Seychelles" = "Seychellen";
@@ -1721,7 +1703,7 @@
 "Slovenia" = "Slovenië";
 
 /* nothing */
-"Svalbard and Jan Mayen Islands" = "Svalbard en Jan Mayen eilanden";
+"Svalbard and Jan Mayen Islands" = "Svalbard en Jan Mayen-eilanden";
 
 /* nothing */
 "Slovak Republic" = "Slowakije";
@@ -1742,10 +1724,10 @@
 "Suriname" = "Suriname";
 
 /* nothing */
-"Sao Tome and Principe" = "Sao Tome en Principe";
+"Sao Tome and Principe" = "Sao Tomé en Principe";
 
 /* nothing */
-"Former USSR" = "Vroegere USSR";
+"Former USSR" = "vroegere USSR";
 
 /* nothing */
 "El Salvador" = "El Salvador";
@@ -1757,13 +1739,13 @@
 "Swaziland" = "Swaziland";
 
 /* nothing */
-"Turks and Caicos Islands" = "Turkse en Caicos-eilanden";
+"Turks and Caicos Islands" = "Turks- en Caicoseilanden";
 
 /* nothing */
 "Chad" = "Tsjaad";
 
 /* nothing */
-"French Southern Territories" = "Franse Zuidelijke Territoriën";
+"French Southern Territories" = "Franse Zuidelijke en Antarctische Gebieden";
 
 /* nothing */
 "Togo" = "Togo";
@@ -1772,10 +1754,10 @@
 "Thailand" = "Thailand";
 
 /* nothing */
-"Tajikistan" = "Tadjikistan";
+"Tajikistan" = "Tadzjikistan";
 
 /* nothing */
-"Tokelau" = "Tokelau";
+"Tokelau" = "Tokelau-eilanden";
 
 /* nothing */
 "East Timor" = "Oost-Timor";
@@ -1802,7 +1784,7 @@
 "Taiwan" = "Taiwan";
 
 /* nothing */
-"Tanzania" = "Tanzanië";
+"Tanzania" = "Tanzania";
 
 /* nothing */
 "Ukraine" = "Oekraïne";
@@ -1812,9 +1794,6 @@
 
 /* nothing */
 "United Kingdom" = "Verenigd Koninkrijk";
-
-/* nothing */
-"US Minor Outlying Islands" = "VS kleine afgelegen eilanden";
 
 /* nothing */
 "United States of America" = "Verenigde Staten van Amerika";
@@ -1838,7 +1817,7 @@
 "British Virgin Islands" = "Britse Maagdeneilanden";
 
 /* nothing */
-"US Virgin Islands" = "VS Maagdeneilanden";
+"US Virgin Islands" = "Amerikaanse Maagdeneilanden";
 
 /* nothing */
 "Vietnam" = "Vietnam";
@@ -1871,136 +1850,58 @@
 "Zimbabwe" = "Zimbabwe";
 
 /* nothing */
-"Unknown" = "Onbekend";
+"Unknown" = "[onbekend]";
 
 /* nothing */
-"Open Dialog Window" = "Dialoogvenster openen";
+"_Open Dialog Window" = "Dialoogvenster _openen";
 
 /* nothing */
-"Send a File" = "Verzend een bestand";
+"_Send a File" = "Een bestand _verzenden";
 
 /* nothing */
-"User Info (WHOIS)" = "Gebruikersinfo (WHOIS)";
+"_User Info (WhoIs)" = "_Gebruikersinfo (WhoIs)";
 
 /* nothing */
-"Operator Actions" = "Operatoracties";
+"_Add to Friends List" = "Aan vriendenlijst _toevoegen";
 
 /* nothing */
-"Give Ops" = "Ops geven";
+"O_perator Actions" = "Operator_acties";
 
 /* nothing */
-"Take Ops" = "Ops nemen";
+"Give Ops" = "Operatorstatus geven";
 
 /* nothing */
-"Give Voice" = "Stem geven";
+"Take Ops" = "Operatorstatus nemen";
 
 /* nothing */
-"Take Voice" = "Stem nemen";
+"Give Voice" = "Spreekstatus geven";
 
 /* nothing */
-"Kick/Ban" = "Wegschoppen/Verbannen";
+"Take Voice" = "Spreekstatus nemen";
 
 /* nothing */
-"Kick" = "Wegschoppen";
+"Kick/Ban" = "Kicken/Verbannen";
+
+/* nothing */
+"Kick" = "Kicken";
 
 /* nothing */
 "Ban" = "Verbannen";
 
 /* nothing */
-"KickBan" = "Wegschoppen/Verbannen";
-
-/* nothing */
-"Direct client-to-client" = "Direct tussen personen";
-
-/* nothing */
-"Send File" = "Bestand verzenden";
-
-/* nothing */
-"Offer Chat" = "Chat aanbieden";
-
-/* nothing */
-"Abort Chat" = "Chat afbreken";
-
-/* nothing */
-"Version" = "Versie";
-
-/* nothing */
-"Userinfo" = "Gebruikersinfo";
-
-/* nothing */
-"Clientinfo" = "Programma-info";
-
-/* nothing */
-"Ping" = "Ping";
-
-/* nothing */
-"Time" = "Tijd";
-
-/* nothing */
-"Finger" = "Finger";
-
-/* nothing */
-"Oper" = "Oper";
-
-/* nothing */
-"Kill this user" = "Deze gebruiker doden";
-
-/* nothing */
-"Mode" = "Modus";
-
-/* nothing */
-"Give Half-Ops" = "Half-Ops geven";
-
-/* nothing */
-"Take Half-Ops" = "Half-Ops nemen";
-
-/* nothing */
-"Ignore" = "Negeren";
-
-/* nothing */
-"Ignore User" = "Gebruiker negeren";
-
-/* nothing */
-"UnIgnore User" = "Niet langer negeren";
-
-/* nothing */
-"Info" = "Informatie";
-
-/* nothing */
-"Who" = "Wie";
-
-/* nothing */
-"WhoIs" = "Whois";
-
-/* nothing */
-"DNS Lookup" = "DNS opzoeken";
-
-/* nothing */
-"Trace" = "Traceren";
-
-/* nothing */
-"UserHost" = "GebruikerHost";
-
-/* nothing */
-"External" = "Extern";
-
-/* nothing */
-"Traceroute" = "Traceroute";
-
-/* nothing */
-"Telnet" = "Telnet";
+"KickBan" = "Kicken en verbannen";
 
 /* nothing */
 "Leave Channel" = "Kanaal verlaten";
 
 /* nothing */
-"Join Channel..." = "Kanaal openen...";
+"Join Channel..." = "Kanaal binnengaan...";
 
 /* nothing */
-"Enter Channel to Join:" = "Geef het te openen kanaal:";
+"Enter Channel to Join:" = "Geef het binnen te gaan kanaal:";
 
 /* nothing */
-"Server Links" = "Server koppelingen";
+"Server Links" = "Serverkoppelingen";
 
 /* nothing */
 "Ping Server" = "Server pingen";
@@ -2018,13 +1919,16 @@
 "bye" = "doei";
 
 /* nothing */
-"Enter reason to kick %s:" = "Geef reden voor wegschoppen %s:";
+"Enter reason to kick %s:" = "Geef reden voor kicken van %s:";
 
 /* nothing */
 "Sendfile" = "Bestand verzenden";
 
 /* nothing */
 "Dialog" = "Dialoog";
+
+/* nothing */
+"WhoIs" = "Whois";
 
 /* nothing */
 "Send" = "Verzenden";
@@ -2036,19 +1940,46 @@
 "Clear" = "Wissen";
 
 /* nothing */
-"About XChat" = "Over XChat";
+"Ping" = "Pingen";
 
 /* nothing */
-"A multiplatform IRC Client" = "Een multiplatform IRC-client";
+"Couldn't connect to session bus" = "Kan geen verbinding maken met sessiebus";
 
 /* nothing */
-"Character Chart" = "Overzicht tekens";
+"Failed to complete NameHasOwner" = "Vervolledigen van 'NameHasOwner' is mislukt";
+
+/* nothing */
+"Failed to complete Command" = "Vervolledigen van opdracht is mislukt";
+
+/* nothing */
+"remote access" = "toegang op afstand";
+
+/* nothing */
+"plugin for remote access using DBUS" = "plugin voor toegang op afstand (maakt gebruik van DBUS)";
+
+/* nothing */
+"Couldn't connect to session bus: %s\n" = "Kan geen verbinding maken met sessiebus: %s\n";
+
+/* nothing */
+"Failed to acquire %s: %s\n" = "Verkrijgen van %s is mislukt: %s\n";
+
+/* nothing */
+"About " = "Over ";
+
+/* nothing */
+"A multiplatform IRC Client" = "een multiplatform IRC-cliënt";
+
+/* nothing */
+"Character Chart" = "Beschikbare tekens";
 
 /* nothing */
 "Not connected." = "Niet verbonden.";
 
 /* nothing */
 "You must select some bans." = "Het is nodig om enkele verbanningen selecteren.";
+
+/* nothing */
+"Are you sure you want to remove all bans in %s?" = "Alle verbanningen in %s verwijderen?";
 
 /* nothing */
 "Mask" = "Masker";
@@ -2060,13 +1991,13 @@
 "Date" = "Datum";
 
 /* nothing */
-"You can only open the Ban List window while in a channel tab." = "U kunt het Ban List venster enkel openen wanneer u zich in een kanaaltab bevindt.";
+"You can only open the Ban List window while in a channel tab." = "U kunt de verbanningslijst alleen openen wanneer u zich in een kanaaltab bevindt.";
 
 /* nothing */
-"XChat: Ban List (%s)" = "XChat: verbanlijst (%s)";
+"XChat: Ban List (%s)" = "XChat: Verbanningslijst (%s)";
 
 /* nothing */
-"Unban" = "Verbanning ongedaan maken";
+"Remove" = "Verwijderen";
 
 /* nothing */
 "Crop" = "Knippen";
@@ -2075,88 +2006,109 @@
 "Refresh" = "Verversen";
 
 /* nothing */
-"User and Channel Statistics: %d/%d Users on %d/%d Channels" = "Gebruikers- en kanaalstatistieken: %d/%d Gebruikers op %d/%d Kanalen";
-
-/* nothing */
-"I can't save an empty list!" = "Kan geen lege lijst opslaan!";
+"Displaying %d/%d users on %d/%d channels." = "Statistieken: %d/%d gebruikers in %d/%d kanalen.";
 
 /* nothing */
 "Select an output filename" = "Kies een bestandsnaam";
 
 /* nothing */
-"XChat: Channel List (%s)" = "XChat: Kanaallijst (%s)";
+"_Join Channel" = "Kanaal _binnengaan";
 
 /* nothing */
-"List display options:" = "Lijstweergave opties:";
+"_Copy Channel Name" = "Kanaalnaam _kopiëren";
 
 /* nothing */
-"Minimum Users:" = "Minimaal aantal gebruikers: ";
+"Copy _Topic Text" = "Onderwerp _kopiëren";
 
 /* nothing */
-"Maximum Users:" = "Maximum aantal gebruikers: ";
+"XChat: Channel List (%s)" = "XChat: Kanalenlijst (%s)";
 
 /* nothing */
-"Pattern Match:" = "Pattroon overeenkomst:";
+"_Search" = "_Zoeken";
 
 /* nothing */
-"Regex Match:" = "Regex overeenkomst:";
+"_Download List" = "_Downloads";
 
 /* nothing */
-"Apply Match to:" = "Overeenkomst toepassen op:";
+"Save _List..." = "_Lijst opslaan...";
 
 /* nothing */
-"Apply" = "Toepassen";
+"Show only:" = "Alleen tonen:";
 
 /* nothing */
-"Refresh the list" = "De lijst vernieuwen";
+"channels with" = "kanalen met";
 
 /* nothing */
-"Save the list" = "De lijst bewaren";
+"to" = "tot";
 
 /* nothing */
-"Join Channel" = "Kanaal binnengaan";
+"users." = "gebruikers.";
+
+/* nothing */
+"Look in:" = "Kijken in:";
+
+/* nothing */
+"Channel name" = "Kanaalnaam";
+
+/* nothing */
+"Search type:" = "Zoektype:";
+
+/* nothing */
+"Simple Search" = "letterlijk zoeken";
+
+/* nothing */
+"Pattern Match (Wildcards)" = "patronen (met jokertekens)";
+
+/* nothing */
+"Regular Expression" = "reguliere expressies";
+
+/* nothing */
+"Find:" = "Zoeken naar:";
 
 /* nothing */
 "Send file to %s" = "Bestand versturen naar %s";
 
 /* nothing */
-"None" = "Geen";
+"That file is not resumable." = "Dat bestand kan niet hervat worden.";
 
 /* nothing */
-"File" = "Bestand";
+"Cannot access file: %s\n%s.\nResuming not possible." = "Kan geen toegang krijgen tot bestand: %s\n%s.\nHervatten is niet mogelijk.";
 
 /* nothing */
-"To" = "Naar";
+"File in download directory is larger than file offered. Resuming not possible." = "Bestand in downloadmap is groter dan aangeboden bestand.  Hervatten is niet mogelijk.";
 
 /* nothing */
-"Address" = "Adres";
+"Cannot resume the same file from two people." = "Kan hetzelfde bestand niet van twee personen tegelijk hervatten.";
 
 /* nothing */
-"Started" = "Gestart";
-
-/* nothing */
-"Speed limit" = "Snelheidslimiet";
-
-/* nothing */
-"That file is not resumable." = "Dat bestand is niet pauzeerbaar.";
-
-/* nothing */
-"Cannot access file: %s\n%s.\nResuming not possible." = "Kan geen toegang krijgen tot bestand: %s\n%s.\nPauzeren is niet mogelijk.";
-
-/* nothing */
-"File in download directory is larger than file offered. Resuming not possible." = "Bestand in downloadmap is groter dan aangeboden bestand. Pauzeren is niet mogelijk.";
-
-/* nothing */
-"Cannot resume the same file from two people." = "Kan hetzelfde bestand van twee personen niet pauzeren.";
+"XChat: Uploads and Downloads" = "XChat: Uploads en downloads";
 
 /* nothing */
 "Status" = "Status";
 
 /* nothing */
+"File" = "Bestand";
+
+/* nothing */
 "ETA" = "ETA";
 
 /* nothing */
-"XChat: File Receive List" = "XChat: Lijst binnenkomende bestanden";
+"Both" = "Beide";
+
+/* nothing */
+"Uploads" = "Uploads";
+
+/* nothing */
+"Downloads" = "Downloads";
+
+/* nothing */
+"Details" = "Details";
+
+/* nothing */
+"File:" = "Bestand:";
+
+/* nothing */
+"Address:" = "Adres:";
 
 /* nothing */
 "Abort" = "Afbreken";
@@ -2168,43 +2120,19 @@
 "Resume" = "Doorgaan";
 
 /* nothing */
-"Open" = "Openen";
+"Open Folder..." = "Map openen...";
 
 /* nothing */
-"Ack" = "Ack";
+"XChat: DCC Chat List" = "XChat: DCC-chatlijst";
 
 /* nothing */
-"XChat: Uploads und Downloads" = "XChat: uploads en downloads";
-
-/* nothing */
-"Downloads" = "Downloads";
-
-/* nothing */
-"Uploads" = "Uploads";
-
-/* nothing */
-"Details" = "Details";
-
-/* nothing */
-"Open Folder..." = "Open Map...";
-
-/* nothing */
-"XChat: File Send List" = "XChat: Lijst uitgaande bestanden";
-
-/* nothing */
-"To/From" = "Aan/Van";
-
-/* nothing */
-"Recv" = "Recv";
+"Recv" = "Ontvangen";
 
 /* nothing */
 "Sent" = "Verzonden";
 
 /* nothing */
 "Start Time" = "Starttijd";
-
-/* nothing */
-"XChat: DCC Chat List" = "XChat: DCC Chat lijst";
 
 /* nothing */
 "*NEW*" = "*NIEUW*";
@@ -2219,7 +2147,7 @@
 "Command" = "Opdracht";
 
 /* nothing */
-"Move Up" = "Naar boven";
+"Move Up" = "Omhoog";
 
 /* nothing */
 "Move Dn" = "Omlaag";
@@ -2228,13 +2156,13 @@
 "Cancel" = "Annuleren";
 
 /* nothing */
-"Save" = "Bewaar";
+"Save" = "Opslaan";
 
 /* nothing */
-"Add New" = "Nieuw toevoegen";
+"Add New" = "Toevoegen";
 
 /* nothing */
-"Delete" = "Verwijder";
+"Delete" = "Verwijderen";
 
 /* nothing */
 "Sort" = "Sorteren";
@@ -2246,25 +2174,37 @@
 "Don't auto connect to servers" = "Niet automatisch herverbinden met servers";
 
 /* nothing */
-"Use a different config directory" = "Gebruik een andere configmap";
+"Use a different config directory" = "Een andere configuratiemap gebruiken";
 
 /* nothing */
-"Don't auto load any plugins" = "Geen plugins auto-laden";
+"Don't auto load any plugins" = "Plugins niet automatisch laden";
 
 /* nothing */
-"Show plugin auto-load directory" = "Toon map voor plugin auto-load";
+"Show plugin auto-load directory" = "Map voor automatisch te laden plugins tonen";
 
 /* nothing */
-"Show user config directory" = "Toon gebruikersconfiguratiemap";
+"Show user config directory" = "Gebruikersconfiguratiemap tonen";
 
 /* nothing */
-"Open an irc://server:port/channel URL" = "Open een irc://server:poort/kanaal URL";
+"Open an irc://server:port/channel URL" = "Een URL van het type 'irc://server:poort/kanaal' openen";
+
+/* nothing */
+"Execute command:" = "Uit te voeren opdracht:";
+
+/* nothing */
+"Open URL or execute command in an existing XChat" = "Een URL openen of een opdracht uitvoeren in een bestaande XChat";
+
+/* nothing */
+"Begin minimized. Level 0=Normal 1=Iconified 2=Tray" = "Geminimaliseerd beginnen.  (niveau 0=normaal, 1=pictogram, 2=systeemvak)";
+
+/* nothing */
+"level" = "niveau";
 
 /* nothing */
 "Show version information" = "Versie-informatie weergeven";
 
 /* nothing */
-"Failed to open font:\n\n%s" = "Openen lettertype mislukt:\n\n%s";
+"Failed to open font:\n\n%s" = "Openen van lettertype is mislukt:\n\n%s";
 
 /* nothing */
 "Search buffer is empty.\n" = "De zoekbuffer is leeg.\n";
@@ -2273,55 +2213,55 @@
 "%d bytes" = "%d bytes";
 
 /* nothing */
-"Network send queue: %d bytes" = "Netwerk zendwachtrij: %d bytes";
+"Network send queue: %d bytes" = "Zendwachtrij voor netwerk: %d bytes";
 
 /* nothing */
-"The Run Command action runs the data in Data 1 as if it has been typed into the entry box where you pressed the key sequence. Thus it can contain text (which will be sent to the channel/person), commands or user commands. When run all \\n characters in Data 1 are used to deliminate seperate commands so it is possible to run more than one command. If you want a \\ in the actual text run then enter \\\\" = "De Opdracht uitvoeren actie voert de gegevens in Data 1 uit alsof die is ingevoerd in het invoervak waar u de toetsencombinatie indrukte. Het kan dus tekst (die zal worden verzonden naar het kanaal/de persoon), opdrachten of gebruikersopdrachten bevatten. Als dit wordt uitgevoerd, worden alle \\n tekens in Data 1 gebruikt om verschillende opdrachten te onderscheiden zodat het mogelijk is om meerdere opdrachten uit te voeren. Als u een \\ in de tekst wilt, gebruikt dan \\\\";
+"The Run Command action runs the data in Data 1 as if it has been typed into the entry box where you pressed the key sequence. Thus it can contain text (which will be sent to the channel/person), commands or user commands. When run all \\n characters in Data 1 are used to deliminate seperate commands so it is possible to run more than one command. If you want a \\ in the actual text run then enter \\\\" = "De actie Opdracht uitvoeren voert de gegevens in Data-1 uit alsof die zijn ingevoerd in het invoervak waar u de toetsencombinatie indrukte.  Het kan dus tekst (te verzenden naar kanaal of persoon), opdrachten of gebruikersopdrachten bevatten.  Bij uitvoering worden alle \\n-tekens in Data-1 als opdrachtscheiders begrepen, zodat het mogelijk is om meerdere opdrachten uit te voeren.  Als u een letterlijke \\ in de tekst wilt, gebruikt dan \\\\.";
 
 /* nothing */
-"The Change Page command switches between pages in the notebook. Set Data 1 to the page you want to switch to. If Data 2 is set to anything then the switch will be relative to the current position" = "De Pagina schakelen opdracht schakelt tussen pagina's. Stel Data 1 in op de pagina waarnaar u wilt overschakelen. Als Data 2 ergens op is ingesteld, zal de overschakeling relatief zijn ten opzichte van de huidige positie";
+"The Change Page command switches between pages in the notebook. Set Data 1 to the page you want to switch to. If Data 2 is set to anything then the switch will be relative to the current position" = "De actie Pagina schakelen schakelt tussen pagina's.  Stel Data-1 in op de pagina waarnaar u wilt overschakelen.  Als Data-2 is ingesteld, zal de overschakeling relatief zijn ten opzichte van de huidige positie.";
 
 /* nothing */
-"The Insert in Buffer command will insert the contents of Data 1 into the entry where the key sequence was pressed at the current cursor position" = "De Invoegen in buffer opdracht zal de inhoud van Data 1 invoegen in de ingang waar de toetsencombinatie was ingedrukt op de huidige aanwijzerpositie";
+"The Insert in Buffer command will insert the contents of Data 1 into the entry where the key sequence was pressed at the current cursor position" = "De actie Invoegen in buffer zal de inhoud van Data-1 invoegen op de huidige aanwijzerpositie in de invoer waar de toetsencombinatie werd ingedrukt.";
 
 /* nothing */
-"The Scroll Page command scrolls the text widget up or down one page or one line. Set Data 1 to either Up, Down, +1 or -1." = "De Pagina schuiven opdracht schuift de tekst in het tekstvak een pagina of regel omhoog of omlaag. Stel Data 1 op Omhoog, Omlaag, +1 of -1.";
+"The Scroll Page command scrolls the text widget up or down one page or one line. Set Data 1 to either Up, Down, +1 or -1." = "De actie Pagina schuiven schuift de tekst in het tekstvak een regel of pagina omhoog of omlaag.  Stel Data-1 in op 'Up', 'Down', '+1' of '-1'.";
 
 /* nothing */
-"The Set Buffer command sets the entry where the key sequence was entered to the contents of Data 1" = "De Buffer instellen opdracht stelt de ingang waar de toetsencombinatie is ingedrukt in op de inhoud van Data 1";
+"The Set Buffer command sets the entry where the key sequence was entered to the contents of Data 1" = "De actie Buffer instellen stelt de invoer waar de toetsencombinatie werd ingedrukt in op de inhoud van Data-1.";
 
 /* nothing */
-"The Last Command command sets the entry to contain the last command entered - the same as pressing up in a shell" = "De Laatste opdracht opdracht stelt de ingang in op de laatst ingevoerde opdracht - hetzelfde als pijltje omhoog in een shell";
+"The Last Command command sets the entry to contain the last command entered - the same as pressing up in a shell" = "De actie Laatste opdracht stelt de invoer in op de laatst ingevoerde opdracht – hetzelfde als pijltje omhoog in een shell.";
 
 /* nothing */
-"The Next Command command sets the entry to contain the next command entered - the same as pressing down in a shell" = "De Volgende opdracht opdracht stelt de ingang in op de volgend ingevoerde opdracht - hetzelfde als pijltje omlaag in een shell";
+"The Next Command command sets the entry to contain the next command entered - the same as pressing down in a shell" = "De actie Volgende opdracht stelt de invoer in op de volgende ingevoerde opdracht – hetzelfde als pijltje omlaag in een shell.";
 
 /* nothing */
-"This command changes the text in the entry to finish an incomplete nickname or command. If Data 1 is set then double-tabbing in a string will select the last nick, not the next" = "Deze opdracht wijzigt de tekst in de ingang zodat een incomplete bijnaam of opdracht wordt voltooid. Als Data 1 is ingesteld, dan selecteert tweemaal tab indrukken de laatste bijnaam, niet de volgende";
+"This command changes the text in the entry to finish an incomplete nickname or command. If Data 1 is set then double-tabbing in a string will select the last nick, not the next" = "Deze actie wijzigt de tekst in de invoer zodanig dat een incomplete bijnaam of opdracht wordt voltooid.  Als Data-1 is ingesteld, dan selecteert tweemaal Tab indrukken de laatste bijnaam, niet de volgende.";
 
 /* nothing */
-"This command scrolls up and down through the list of nicks. If Data 1 is set to anything it will scroll up, else it scrolls down" = "Deze opdracht schuift omhoog en omlaag in de lijst met bijnamen. Als Data 1 ergens op is ingesteld, wordt er omhoog geschoven, anders omlaag.";
+"This command scrolls up and down through the list of nicks. If Data 1 is set to anything it will scroll up, else it scrolls down" = "Deze actie schuift omhoog en omlaag in de lijst met bijnamen.  Als Data-1 is ingesteld, wordt er omhoog geschoven, anders omlaag.";
 
 /* nothing */
-"This command checks the last word entered in the entry against the replace list and replaces it if it finds a match" = "Deze opdracht vergelijkt het laatst ingevoerde woord ingevoerd in de ingang, met de vervangingslijst, en vervangt als er een overeenkomst is";
+"This command checks the last word entered in the entry against the replace list and replaces it if it finds a match" = "Deze actie vergelijkt het laatst ingevoerde woord met de vervangingslijst, en vervangt het als er een overeenkomst is.";
 
 /* nothing */
-"This command moves the front tab left by one" = "Deze opdracht verplaatst het voorste tabblad een stap naar links";
+"This command moves the front tab left by one" = "Deze actie verplaatst het voorste tabblad een stap naar links.";
 
 /* nothing */
-"This command moves the front tab right by one" = "Deze opdracht verplaatst het voorste tabblad een stap naar rechts";
+"This command moves the front tab right by one" = "Deze actie verplaatst het voorste tabblad een stap naar rechts.";
 
 /* nothing */
-"This command moves the current tab family to the left" = "Deze opdracht verplaatst de huidige tabblad-familie naar links";
+"This command moves the current tab family to the left" = "Deze actie verplaatst de huidige tabblad-familie naar links.";
 
 /* nothing */
-"This command moves the current tab family to the right" = "Deze opdracht verplaatst de huidige tabblad-familie naar rechts";
+"This command moves the current tab family to the right" = "Deze actie verplaatst de huidige tabblad-familie naar rechts.";
 
 /* nothing */
-"Push input line into history but doesn't send to server" = "Invoerregel naar geschiedenis duwen maar niet naar server verzenden";
+"Push input line into history but doesn't send to server" = "Invoerregel aan geschiedenis toevoegen maar niet naar server verzenden.";
 
 /* nothing */
-"There was an error loading key bindings configuration" = "Er is een fout opgetreden bij het laden van de configuratie van de toetsenbordkoppelingen";
+"There was an error loading key bindings configuration" = "Er is een fout opgetreden bij het laden de toetsbindingen";
 
 /* nothing */
 "<none>" = "<geen>";
@@ -2339,7 +2279,7 @@
 "XChat: Keyboard Shortcuts" = "XChat: Sneltoetsen";
 
 /* nothing */
-"Shift" = "Verschuiven";
+"Shift" = "Shift";
 
 /* nothing */
 "Alt" = "Alt";
@@ -2348,28 +2288,28 @@
 "Ctrl" = "Ctrl";
 
 /* nothing */
-"Data 1" = "Data 1";
+"Data 1" = "Data-1";
 
 /* nothing */
-"Data 2" = "Data 2";
+"Data 2" = "Data-2";
 
 /* nothing */
-"Error opening keys config file\n" = "Fout bij openen toetsen config bestand\n";
+"Error opening keys config file\n" = "Fout bij openen van toetsbindingenbestand\n";
 
 /* nothing */
-"Unknown keyname %s in key bindings config file\nLoad aborted, please fix %s/keybindings.conf\n" = "Onbekende toetsnaam %s in toetsenverbindingen config bestand\nLaden afgebroken, repareer a.u.b. %s/keybindings.conf\n";
+"Unknown keyname %s in key bindings config file\nLoad aborted, please fix %s/keybindings.conf\n" = "Onbekende toetsnaam %s in toetsbindingenbestand.\nLaden is afgebroken; repareer %s/keybindings.conf\n";
 
 /* nothing */
-"Unknown action %s in key bindings config file\nLoad aborted, Please fix %s/keybindings\n" = "Onbekende actie %s in toetsenverbindingen config bestand\nLaden afgebroken, repareer a.u.b. %s/keybindings\n";
+"Unknown action %s in key bindings config file\nLoad aborted, Please fix %s/keybindings\n" = "Onbekende actie %s in toetsbindingenbestand.\nLaden is afgebroken; repareer %s/keybindings.conf\n";
 
 /* nothing */
 "Expecting Data line (beginning Dx{:|!}) but got:\n%s\n\nLoad aborted, Please fix %s/keybindings\n" = "Verwacht Data-regel (beginnend met Dx{:|!}) maar gekregen:\n%s\n\nLaden afgebroken, repareer a.u.b. %s/keybindings\n";
 
 /* nothing */
-"Key bindings config file is corrupt, load aborted\nPlease fix %s/keybindings.conf\n" = "Toetsenverbindingen config bestand is kapot, laden afgebroken\nRepareer a.u.b. %s/keybindings.conf\n";
+"Key bindings config file is corrupt, load aborted\nPlease fix %s/keybindings.conf\n" = "Het toetsbindingenbestand is beschadigd.\nLaden is afgebroken; repareer %s/keybindings.conf\n";
 
 /* nothing */
-"Cannot write to that file." = "Kan niet schrijven naar dat bestand.";
+"Cannot write to that file." = "Kan niet naar dat bestand schrijven.";
 
 /* nothing */
 "Cannot read that file." = "Kan dat bestand niet lezen.";
@@ -2378,7 +2318,7 @@
 "That mask already exists." = "Dat masker bestaat al.";
 
 /* nothing */
-"Private" = "Prive";
+"Private" = "Privé";
 
 /* nothing */
 "Notice" = "Melding";
@@ -2390,10 +2330,10 @@
 "DCC" = "DCC";
 
 /* nothing */
-"Invite" = "Uitnodigen";
+"Invite" = "Uitnodiging";
 
 /* nothing */
-"Unignore" = "Niet langer negeren";
+"Unignore" = "Niet negeren";
 
 /* nothing */
 "Enter mask to ignore:" = "Geef het te negeren masker:";
@@ -2402,7 +2342,7 @@
 "XChat: Ignore list" = "XChat: Negeerlijst";
 
 /* nothing */
-"Ignore Stats:" = "Negeer stats:";
+"Ignore Stats:" = "Negeerstatistieken:";
 
 /* nothing */
 "Channel:" = "Kanaal:";
@@ -2417,43 +2357,43 @@
 "CTCP:" = "CTCP:";
 
 /* nothing */
-"Invite:" = "Uitnodigen:";
+"Invite:" = "Uitnodiging:";
 
 /* nothing */
-"Add..." = "Voeg toe...";
+"Add..." = "Toevoegen...";
 
 /* nothing */
-"Channel name too short, try again." = "Naam van kanaal is te kort, probeer opnieuw.";
+"Channel name too short, try again." = "Naam van kanaal is te kort, probeer het opnieuw.";
 
 /* nothing */
-"XChat: Connection Complete" = "XChat: verbinding vervolledigd";
+"XChat: Connection Complete" = "XChat: Verbonden";
 
 /* nothing */
-"Connection to %s complete." = "Verbinding naar %s vervolledigd.";
+"Connection to %s complete." = "De verbinding met %s is gemaakt.";
 
 /* nothing */
-"In the Server-List window, no channel (chat room) has been entered to be automatically joined for this network." = "Er is voor dit netwerk geen kanaal (chat room) om automatisch te vervoegen, opgegeven in het Server-List venster.";
+"In the Server-List window, no channel (chat room) has been entered to be automatically joined for this network." = "In de Netwerkenlijst is er voor dit netwerk geen favoriet kanaal opgegeven om direct binnen te gaan.";
 
 /* nothing */
-"What would you like to do next?" = "Wat wilt u vervolgens doen?";
+"What would you like to do next?" = "Wat wilt u nu doen?";
 
 /* nothing */
-"_Nothing, I'll join a channel later." = "_Niets, ik zal later een kanaal vervoegen.";
+"_Nothing, I'll join a channel later." = "_Niets, ik zal later een kanaal binnengaan.";
 
 /* nothing */
-"_Join this channel:" = "Kanaal vervoegen (_J):";
+"_Join this channel:" = "Dit kanaal _binnengaan:";
 
 /* nothing */
-"If you know the name of the channel you want to join, enter it here." = "Als u de naam van het kanaal dat u wilt vervoegen kent, geef het dan hier op.";
+"If you know the name of the channel you want to join, enter it here." = "Als u de naam van het kanaal dat u wilt binnengaan kent, geef het dan hier op.";
 
 /* nothing */
-"O_pen the Channel-List window." = "O_pen het Channel-List venster.";
+"O_pen the Channel-List window." = "_Kanalenlijstvenster openen.";
 
 /* nothing */
-"Retrieving the Channel-List may take a minute or two." = "De Channel-List opvragen, kan één of twee minuten duren.";
+"Retrieving the Channel-List may take a minute or two." = "Het opvragen van de lijst met kanalen kan een minuut of twee duren.";
 
 /* nothing */
-"_Always show this dialog after connecting." = "_Altijd deze dialoog tonen na het verbinden.";
+"_Always show this dialog after connecting." = "Deze dialoog _altijd tonen na het verbinden.";
 
 /* nothing */
 "Dialog with" = "Dialoog met";
@@ -2465,10 +2405,25 @@
 "No topic is set" = "Er is geen onderwerp ingesteld";
 
 /* nothing */
-"This server still has %d channels or dialogs associated with it. Close them all?" = "Er zijn nog steeds %d kanalen of dialogen met deze server geassocieerd. Wilt u ze allemaal sluiten?";
+"This server still has %d channels or dialogs associated with it. Close them all?" = "Er zijn nog steeds %d kanalen of dialogen met deze server geassocieerd.  Wilt u ze allemaal sluiten?";
 
 /* nothing */
-"No other tabs open, quit xchat?" = "Geen andere tabbladen open, programma afsluiten?";
+"Quit XChat?" = "XChat afsluiten?";
+
+/* nothing */
+"Don't ask next time." = "Deze vraag niet meer stellen";
+
+/* nothing */
+"You are connected to %i IRC networks." = "U bent verbonden met %i IRC-netwerken.";
+
+/* nothing */
+"Are you sure you want to quit?" = "Weet u zeker dat u wilt afsluiten?";
+
+/* nothing */
+"Some file transfers are still active." = "Sommige bestandoverdrachten zijn nog actief.";
+
+/* nothing */
+"_Minimize to Tray" = "_Minimaliseren";
 
 /* nothing */
 "Insert Attribute or Color Code" = "Attribuut- of kleurcode invoegen";
@@ -2489,31 +2444,40 @@
 "Colors 8-15" = "Kleuren 8-15";
 
 /* nothing */
-"Beep on message" = "Pieptoon bij bericht";
+"_Settings" = "_Instellingen";
 
 /* nothing */
-"Show join/part messages" = "Bericht binnengaan/verlaten weergeven";
+"_Log to Disk" = "_Loggen naar schijf";
 
 /* nothing */
-"Color paste" = "Plakken met kleur";
+"_Reload Scrollback" = "Tekstgeschiedenis _herladen";
 
 /* nothing */
-"Go to" = "Ga naar";
+"_Hide Join/Part Messages" = "Binnenkomst- en verlatingsberichten _verbergen";
 
 /* nothing */
-"_Close Tab" = "Tabblad sluiten (_C)";
+"_Extra Alerts" = "_Extra waarschuwingen";
 
 /* nothing */
-"_Detach Tab" = "Tabbla_d losmaken";
+"Beep on _Message" = "_Piepen bij bericht";
 
 /* nothing */
-"Some file transfers still active, quit xchat?" = "Sommige bestandoverdrachten zijn nog actief, toch programma afsluiten?";
+"Blink Tray _Icon" = "_Systeemvakpictogram laten knipperen";
 
 /* nothing */
-"User limit must be a number!\n" = "Gebruikersgrens moet een getal zijn!\n";
+"Blink Task _Bar" = "_Taakbalk laten knipperen";
 
 /* nothing */
-"Topic Protection" = "Onderwerp bescherming";
+"_Detach" = "Tabbla_d losmaken";
+
+/* nothing */
+"_Close" = "Sl_uiten";
+
+/* nothing */
+"User limit must be a number!\n" = "Gebruikerslimiet moet een getal zijn.\n";
+
+/* nothing */
+"Topic Protection" = "Onderwerpbescherming";
 
 /* nothing */
 "No outside messages" = "Geen berichten van buiten";
@@ -2522,13 +2486,13 @@
 "Secret" = "Geheim";
 
 /* nothing */
-"Invite Only" = "Alleen-uitnodigen";
+"Invite Only" = "Alleen-op-uitnodiging";
 
 /* nothing */
 "Moderated" = "Gemodereerd";
 
 /* nothing */
-"Ban List" = "Banlijst";
+"Ban List" = "Verbanningslijst";
 
 /* nothing */
 "Keyword" = "Sleutelwoord";
@@ -2537,13 +2501,13 @@
 "User Limit" = "Gebruikerslimiet";
 
 /* nothing */
-"Show/Hide userlist" = "Laat de gebruikerslijst wel/niet zien";
+"Show/Hide userlist" = "Gebruikerslijst tonen/verbergen";
 
 /* nothing */
-"Unable to set transparent background!\n\nYou may be using a non-compliant window\nmanager that is not currently supported.\n" = "Kan transparante achtergrond niet instellen!\n\nMogelijk gebruikt u een niet-overeenstemmende\nvensterbeheerder die nu niet wordt ondersteund.\n";
+"Unable to set transparent background!\n\nYou may be using a non-compliant window\nmanager that is not currently supported.\n" = "Kan geen transparante achtergrond instellen.\n\nMogelijk gebruikt u een niet-passende vensterbeheerder\ndie momenteel niet wordt ondersteund.\n";
 
 /* nothing */
-"Enter new nickname:" = "Nieuwe bijnaam invullen";
+"Enter new nickname:" = "Nieuwe bijnaam:";
 
 /* nothing */
 "Host unknown" = "Host onbekend";
@@ -2564,22 +2528,28 @@
 "Server:" = "Server:";
 
 /* nothing */
-"Away Msg:" = "Afwezigheidsboodschap:";
-
-/* nothing */
 "%u minutes ago" = "%u minuten geleden";
 
 /* nothing */
 "Last Msg:" = "Laatste bericht:";
 
 /* nothing */
-"The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "De Menubar is nu verborgen. U kunt die opnieuw laten zien door op F9 te drukken of door rechts te klikken in een blanco deel van het tekstgebied.";
+"Away Msg:" = "Afwezigheidsboodschap:";
 
 /* nothing */
-"Open Link in Browser" = "Open Link in Browser";
+"%d nicks selected." = "%d bijnamen geselecteerd.";
+
+/* nothing */
+"The Menubar is now hidden. You can show it again by pressing F9 or right-clicking in a blank part of the main text area." = "De menubalk is nu verborgen.  U kunt die opnieuw laten zien door op F9 te drukken of door rechts te klikken in een blanco deel van het tekstgebied.";
+
+/* nothing */
+"Open Link in Browser" = "URL in browser openen";
 
 /* nothing */
 "Copy Selected Link" = "Geselecteerde URL kopiëren";
+
+/* nothing */
+"Join Channel" = "Kanaal binnengaan";
 
 /* nothing */
 "Part Channel" = "Kanaal verlaten";
@@ -2588,145 +2558,157 @@
 "Cycle Channel" = "Kanaal ronddraaien";
 
 /* nothing */
+"_Remove from Favorites" = "_Verwijderen uit favorieten";
+
+/* nothing */
+"_Add to Favorites" = "_Toevoegen aan favorieten";
+
+/* nothing */
 "XChat: User menu" = "XChat: Gebruikersmenu";
 
 /* nothing */
 "Edit This Menu..." = "Dit menu bewerken...";
 
 /* nothing */
-"Retrieve channel list..." = "Haal kanaallijst af...";
+"Retrieve channel list..." = "Kanalenlijst opvragen...";
 
 /* nothing */
-"User Commands - Special codes:\n\n%c  =  current channel\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "Gebruikersopdrachten - Speciale codes:\n\n%c  =  huidige kanaal\n%m  =  machine info\n%n  =  uw bijnaam\n%t  =  tijd/datum\n%v  =  xchat versie\n%2  =  woord 2\n%3  =  woord 3\n&2  =  woord 2 tot einde regel\n&3  =  woord 3 tot einde regel\n\nbijv.:\n/cmd jan hallo\n\n%2 zou zijn \"jan\"\n&2 zou zijn \"jan hallo\".";
+"User Commands - Special codes:\n\n%c  =  current channel\n%e  =  current network name\n%m  =  machine info\n%n  =  your nick\n%t  =  time/date\n%v  =  xchat version\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\neg:\n/cmd john hello\n\n%2 would be \"john\"\n&2 would be \"john hello\"." = "Gebruikersopdrachten — speciale codes:\n\n%c  =  huidige kanaal\n%e  =  naam van huidig netwerk \n%m  =  machine-info\n%n  =  uw bijnaam\n%t  =  tijd/datum\n%v  =  versie van XChat\n%2  =  tweede woord\n%3  =  derde woord\n&2  =  tweede woord tot einde van regel\n&3  =  derde woord tot einde van regel\n\nVoorbeeld:\n/cmd jan hallo\n\n%2 zou zijn \"jan\"\n&2 zou zijn \"jan hallo\".";
 
 /* nothing */
-"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Gebruikerslijst knoppen - Speciale codes:\n\n%a  =  alle geselecteerde bijnamen\n%c  =  huidige kanaal\n%h  =  hostnaam geselecteerde bijnaam\n%m  =  machine info\n%n  =  uw bijnaam\n%s  =  geselecteerde bijnaam\n%t  =  tijd/datum\n";
+"Userlist Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Gebruikerslijstknoppen — speciale codes:\n\n%a  =  alle geselecteerde bijnamen\n%c  =  huidige kanaal\n%e  =  naam van huidig netwerk \n%h  =  hostnaam van geselecteerde bijnaam\n%m  =  machine-info\n%n  =  uw bijnaam\n%s  =  geselecteerde bijnaam\n%t  =  tijd/datum\n";
 
 /* nothing */
-"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Dialoogknoppen - Speciale codes:\n\n%a  =  alle geselecteerde bijnamen\n%c  =  huidige kanaal\n%h  =  hostnaam geselecteerde bijnaam\n%m  =  machine info\n%n  =  uw bijnaam\n%s  =  geselecteerde bijnaam\n%t  =  tijd/datum\n";
+"Dialog Buttons - Special codes:\n\n%a  =  all selected nicks\n%c  =  current channel\n%e  =  current network name\n%h  =  selected nick's hostname\n%m  =  machine info\n%n  =  your nick\n%s  =  selected nick\n%t  =  time/date\n" = "Dialoogknoppen — speciale codes:\n\n%a  =  alle geselecteerde bijnamen\n%c  =  huidige kanaal\n%e  =  naam van huidig netwerk \n%h  =  hostnaam van geselecteerde bijnaam\n%m  =  machine-info\n%n  =  uw bijnaam\n%s  =  geselecteerde bijnaam\n%t  =  tijd/datum\n";
 
 /* nothing */
-"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "CTCP antwoorden - Speciale codes:\n\n%d  =  gegevens (de gehele ctcp)\n%m  =  machine info\n%s  =  bijnaam die u de ctcp heeft gezonden\n%t  =  tijd/datum\n%2  =  woord 2\n%3  =  woord 3\n&2  =  woord 2 tot einde regel\n&3  =  woord 3 tot einde regel\n\n";
+"CTCP Replies - Special codes:\n\n%d  =  data (the whole ctcp)\n%e  =  current network name\n%m  =  machine info\n%s  =  nick who sent the ctcp\n%t  =  time/date\n%2  =  word 2\n%3  =  word 3\n&2  =  word 2 to the end of line\n&3  =  word 3 to the end of line\n\n" = "CTCP-antwoorden — speciale codes:\n\n%d  =  gegevens (de gehele CTCP)\n%e  =  naam van huidig netwerk \n%m  =  machine-info\n%s  =  bijnaam die u de CTCP heeft gezonden\n%t  =  tijd/datum\n%2  =  tweede woord\n%3  =  derde woord\n&2  =  tweede woord tot einde van regel\n&3  =  derde woord tot einde van regel\n\n";
 
 /* nothing */
-"URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of XChat" = "URL helpers - Speciale codes:\n\n%s  =  de URL-tekst\n\nEen ! zetten voor de opdracht\ngeeft aan dat deze naar een shell\ni.p.v. naar XChat moet worden\ngestuurd";
+"URL Handlers - Special codes:\n\n%s  =  the URL string\n\nPutting a ! infront of the command\nindicates it should be sent to a\nshell instead of XChat" = "URL-programma's — speciale codes:\n\n%s  =  de URL-tekst\n\nEen ! voor de opdracht zetten\ngeeft aan dat deze naar een shell\nin plaats van naar XChat gestuurd\nmoet worden.";
 
 /* nothing */
 "XChat: User Defined Commands" = "XChat: Door gebruiker gedefinieerde opdrachten";
 
 /* nothing */
-"XChat: Userlist Popup menu" = "XChat Gebruikerslijst Popup menu";
+"XChat: Userlist Popup menu" = "XChat: Gebruikerslijstcontextmenu";
 
 /* nothing */
-"Replace with" = "Vervang met";
+"Replace with" = "Vervangen door";
 
 /* nothing */
 "XChat: Replace" = "XChat: Vervangen";
 
 /* nothing */
-"XChat: URL Handlers" = "XChat: URL Programma's";
+"XChat: URL Handlers" = "XChat: URL-programma's";
 
 /* nothing */
-"XChat: Userlist buttons" = "XChat: Gebruikerslijst Knoppen";
+"XChat: Userlist buttons" = "XChat: Gebruikerslijstknoppen";
 
 /* nothing */
 "XChat: Dialog buttons" = "XChat: Dialoogknoppen";
 
 /* nothing */
-"XChat: CTCP Replies" = "XChat: CTCP Antwoorden";
+"XChat: CTCP Replies" = "XChat: CTCP-antwoorden";
 
 /* nothing */
 "_XChat" = "_XChat";
 
 /* nothing */
-"Network Li_st..." = "Netwerklij_st...";
+"Network Li_st..." = "Netwerkenlij_st...";
 
 /* nothing */
 "_New" = "_Nieuw";
 
 /* nothing */
-"Server Tab..." = "Server tabblad...";
+"Server Tab..." = "Servertabblad...";
 
 /* nothing */
-"Channel Tab..." = "Kanaal tabblad...";
+"Channel Tab..." = "Kanaaltabblad...";
 
 /* nothing */
-"Server Window..." = "Server venster...";
+"Server Window..." = "Servervenster...";
 
 /* nothing */
-"Channel Window..." = "Kanaal venster...";
+"Channel Window..." = "Kanaalvenster...";
 
 /* nothing */
 "_Load Plugin or Script..." = "Plugin of script _laden...";
 
 /* nothing */
-"_Quit" = "Afsluiten (_Q)";
+"_Quit" = "_Afsluiten";
 
 /* nothing */
-"_View" = "Beeld (_V)";
+"_View" = "Beel_d";
 
 /* nothing */
-"_Menubar" = "_Menubalk";
+"_Menu Bar" = "_Menubalk";
 
 /* nothing */
-"_Topicbar" = "Onderwerpbalk (_T)";
+"_Topic Bar" = "_Onderwerpbalk";
 
 /* nothing */
-"_Userlist Buttons" = "Gebr_uikerslijst Knoppen...";
+"_User List" = "_Gebruikerslijst";
 
 /* nothing */
-"M_ode Buttons" = "M_odus knoppen";
+"U_serlist Buttons" = "Gebruikerslijst_knoppen";
 
 /* nothing */
-"_Layout" = "_Layout";
+"M_ode Buttons" = "_Modusknoppen";
+
+/* nothing */
+"_Channel Switcher" = "_Kanalenwisselaar";
 
 /* nothing */
 "_Tabs" = "_Tabs";
 
 /* nothing */
-"T_ree" = "Boom (_r)";
+"T_ree" = "_Boom";
 
 /* nothing */
-"_Network Meters" = "_Netwerkinstellingen";
+"_Network Meters" = "_Netwerkmeters";
 
 /* nothing */
-"Off" = "Offline";
+"Off" = "Uit";
 
 /* nothing */
 "Graph" = "Grafiek";
 
 /* nothing */
-"Both" = "Beide";
-
-/* nothing */
 "_Server" = "_Server";
 
 /* nothing */
-"_Disconnect" = "Verbin_ding verbreken";
+"_Disconnect" = "Verbinding _verbreken";
 
 /* nothing */
-"_Reconnect" = "Opnieuw ve_rbinden";
+"_Reconnect" = "_Herverbinden";
 
 /* nothing */
-"Marked Away" = "Als weg markeren";
+"Join a Channel..." = "Kanaal _binnengaan...";
 
 /* nothing */
-"_Usermenu" = "Gebr_uikersmenu";
+"List of Channels..." = "_Kanalenlijst...";
 
 /* nothing */
-"S_ettings" = "Inst_ellingen";
+"Marked Away" = "Als _afwezig markeren";
 
 /* nothing */
-"_Preferences" = "Voorkeuren (_P)";
+"_Usermenu" = "_Gebruikersmenu";
 
 /* nothing */
-"Advanced" = "Uitgebreid";
+"S_ettings" = "_Instellingen";
 
 /* nothing */
-"Auto Replace..." = "Auto vervangen...";
+"_Preferences" = "_Voorkeuren";
 
 /* nothing */
-"CTCP Replies..." = "CTCP Antwoorden...";
+"Advanced" = "_Uitgebreid";
+
+/* nothing */
+"Auto Replace..." = "Automatisch vervangen...";
+
+/* nothing */
+"CTCP Replies..." = "CTCP-antwoorden...";
 
 /* nothing */
 "Dialog Buttons..." = "Dialoogknoppen...";
@@ -2735,43 +2717,40 @@
 "Keyboard Shortcuts..." = "Sneltoetsen...";
 
 /* nothing */
-"Text Events..." = "Tekst gebeurtenissen...";
+"Text Events..." = "Tekstgebeurtenissen...";
 
 /* nothing */
-"URL Handlers..." = "URL Programma's...";
+"URL Handlers..." = "URL-programma's...";
 
 /* nothing */
-"User Commands..." = "Gebruikerscommando's...";
+"User Commands..." = "Gebruikersopdrachten...";
 
 /* nothing */
-"Userlist Buttons..." = "Gebruikerslijst Knoppen...";
+"Userlist Buttons..." = "Gebruikerslijstknoppen...";
 
 /* nothing */
-"Userlist Popup..." = "Gebruikerslijst Popup menu...";
+"Userlist Popup..." = "Gebruikerslijstcontextmenu...";
 
 /* nothing */
-"_Window" = "Venster (_W)";
+"_Window" = "_Venster";
 
 /* nothing */
-"Ban List..." = "Verbanlijst...";
-
-/* nothing */
-"Channel List..." = "Kanaallijst...";
+"Ban List..." = "Verbanningslijst...";
 
 /* nothing */
 "Character Chart..." = "Speciale tekens...";
 
 /* nothing */
-"Direct Chat..." = "Direct chat...";
+"Direct Chat..." = "Directe chat...";
 
 /* nothing */
 "File Transfers..." = "Bestandsoverdrachten...";
 
 /* nothing */
-"Ignore List..." = "Negeerlijst...";
+"Friends List..." = "Vriendenlijst...";
 
 /* nothing */
-"Notify List..." = "Waarschuwingslijst...";
+"Ignore List..." = "Negeerlijst...";
 
 /* nothing */
 "Plugins and Scripts..." = "Plugins en scripts...";
@@ -2780,40 +2759,34 @@
 "Raw Log..." = "Ruw log...";
 
 /* nothing */
-"URL Grabber..." = "URL grijper...";
+"URL Grabber..." = "URL-pakker...";
 
 /* nothing */
 "Reset Marker Line" = "Markeringslijn opnieuw instellen";
 
 /* nothing */
-"C_lear Text" = "Tekst wissen (_l)";
+"C_lear Text" = "Tekst _wissen";
 
 /* nothing */
-"Search Text..." = "Tekst zoeken...";
+"Search Text..." = "Tekst _zoeken...";
 
 /* nothing */
-"Save Text..." = "Tekst opslaan...";
+"Save Text..." = "Tekst op_slaan...";
 
 /* nothing */
 "_Help" = "_Hulp";
 
 /* nothing */
-"_Contents" = "Inhoud (_C)";
+"_Contents" = "In_houd";
 
 /* nothing */
-"_About" = "Info (_A)";
+"Check for updates" = "Controleren of er updates zijn";
 
 /* nothing */
-"_Attach Window" = "Venster _aanhechten";
+"_About" = "I_nfo";
 
 /* nothing */
-"_Close Window" = "Venster sluiten (_C)";
-
-/* nothing */
-"User" = "Gebruiker";
-
-/* nothing */
-"Server" = "Server";
+"_Attach" = "Tabblad _vastmaken";
 
 /* nothing */
 "Last Seen" = "Laatst gezien";
@@ -2825,25 +2798,91 @@
 "Never" = "Nooit";
 
 /* nothing */
+"%d minutes ago" = "%d minuten geleden";
+
+/* nothing */
 "Online" = "Online";
 
 /* nothing */
-"Enter nickname to add:" = "Geef bijnaam om toe te voegen:";
+"Enter nickname to add:" = "Geef de toe te voegen bijnaam:";
 
 /* nothing */
-"XChat: Notify List" = "XChat: Waarschuwingsvenster";
+"Notify on these networks:" = "Melden op deze netwerken:";
 
 /* nothing */
-"Remove" = "Verwijderen";
+"Comma separated list of networks is accepted." = "Een kommagescheiden lijst van netwerken wordt geaccepteerd.";
+
+/* nothing */
+"XChat: Friends List" = "XChat: Vriendenlijst";
 
 /* nothing */
 "Open Dialog" = "Dialoogvenster openen";
 
 /* nothing */
+"Cannot find 'notify-send' to open balloon alerts.\nPlease install libnotify." = "Kan geen tekstballonnen maken omdat 'notify-send' ontbreekt.\nInstalleer 'libnotify'.";
+
+/* nothing */
+"XChat: Connected to %u networks and %u channels" = "XChat: Verbonden met %u netwerken en %u kanalen";
+
+/* nothing */
+"_Restore" = "_Herstellen";
+
+/* nothing */
+"_Hide" = "_Verbergen";
+
+/* nothing */
+"_Blink on" = "_Knipperen bij";
+
+/* nothing */
+"Channel Message" = "kanaalbericht";
+
+/* nothing */
+"Private Message" = "privébericht";
+
+/* nothing */
+"Highlighted Message" = "geaccentueerd bericht";
+
+/* nothing */
+"_Change status" = "Status _veranderen";
+
+/* nothing */
+"_Away" = "_afwezig";
+
+/* nothing */
+"_Back" = "_terug";
+
+/* nothing */
+"XChat: Highlighted message from: %s (%s)" = "XChat: Geaccentueerd bericht van: %s (%s)";
+
+/* nothing */
+"XChat: %u highlighted messages, latest from: %s (%s)" = "XChat: %u geaccentueerde berichten, laatste van: %s (%s)";
+
+/* nothing */
+"XChat: New public message from: %s (%s)" = "XChat: Nieuw publiek bericht van: %s (%s)";
+
+/* nothing */
+"XChat: %u new public messages." = "XChat: %u publieke berichten.";
+
+/* nothing */
+"XChat: Private message from: %s (%s)" = "XChat: Privébericht van: %s (%s)";
+
+/* nothing */
+"XChat: %u private messages, latest from: %s (%s)" = "XChat: %u privéberichten, laatste van: %s (%s)";
+
+/* nothing */
+"XChat: File offer from: %s (%s)" = "XChat: Bestandsaanbieding van: %s (%s)";
+
+/* nothing */
+"XChat: %u file offers, latest from: %s (%s)" = "XChat: %u bestandsaanbiedingen, laatste van: %s (%s)";
+
+/* nothing */
+"Version" = "Versie";
+
+/* nothing */
 "Description" = "Omschrijving";
 
 /* nothing */
-"Select a Plugin or Script to load" = "Kies een Plugin of Script om te laden";
+"Select a Plugin or Script to load" = "Kies een plugin of script om te laden";
 
 /* nothing */
 "XChat: Plugins and Scripts" = "XChat: Plugins en scripts";
@@ -2852,13 +2891,10 @@
 "_Load..." = "_Laden...";
 
 /* nothing */
-"_UnLoad" = "Ontladen (_U)";
+"_UnLoad" = "_Deactiveren";
 
 /* nothing */
-"_Close" = "Sluiten (_C)";
-
-/* nothing */
-"Save As..." = "Opslaan Als...";
+"Save As..." = "Opslaan als...";
 
 /* nothing */
 "XChat: Rawlog (%s)" = "XChat: Ruw log (%s)";
@@ -2867,43 +2903,61 @@
 "Clear rawlog" = "Ruw log wissen";
 
 /* nothing */
-"The window you opened this Search for doesn't exist anymore." = "Het venster waarvoor dit venster geopend was bestaat niet meer.";
+"The window you opened this Search for doesn't exist anymore." = "Het venster waarvoor dit zoekvenster geopend werd bestaat niet meer.";
 
 /* nothing */
-"Search hit end, not found." = "Zoekopdracht heeft einde bereikt, niet gevonden.";
+"Search hit end, not found." = "Zoekopdracht heeft einde bereikt – niets gevonden.";
 
 /* nothing */
 "XChat: Search" = "XChat: Zoeken";
 
 /* nothing */
-"Find:" = "Zoeken:";
+"_Match case" = "_Hoofdlettergevoelig";
 
 /* nothing */
-"_Match case" = "Hoofdlettergevoelig (_M)";
+"Search _backwards" = "_Achterwaarts zoeken";
 
 /* nothing */
-"Search _backwards" = "Achterwaarts zoeken (_b)";
+"_Find" = "_Zoeken";
 
 /* nothing */
-"_Find" = "Zoek (_F)";
+"New Network" = "Nieuw netwerk";
 
 /* nothing */
-"New Network" = "Nieuw Netwerk";
+"Really remove network \"%s\" and all its servers?" = "Netwerk \"%s\" en al zijn servers verwijderen?";
 
 /* nothing */
-"Really remove network \"%s\" and all its servers?" = "Zeker het netwerk \"%s\" en al zijn servers verwijderen?";
+"#channel" = "#kanaalnaam";
+
+/* nothing */
+"XChat: Favorite Channels (Auto-Join List)" = "XChat: Favoriete kanalen (automatisch binnengaan)";
+
+/* nothing */
+"These channels will be joined whenever you connect to %s." = "Deze kanalen worden direct binnengegaan wanneer u verbinding maakt met %s.";
+
+/* nothing */
+"Key (Password)" = "Sleutelwoord (soort wachtwoord)";
+
+/* nothing */
+"_Edit" = "Be_werken";
+
+/* nothing */
+"%s has been removed." = "%s is verwijderd.";
+
+/* nothing */
+"%s has been added." = "%s is toegevoegd.";
 
 /* nothing */
 "User name and Real name cannot be left blank." = "Gebruikersnaam en echte naam mogen niet blanco gelaten worden.";
 
 /* nothing */
-"XChat: Edit %s" = "XChat: %s bewerken";
+"XChat: Edit %s" = "XChat: Bewerken van %s";
 
 /* nothing */
 "Servers for %s" = "Servers voor %s";
 
 /* nothing */
-"Connect to selected server only" = "Verbind enkel met geselecteerde server";
+"Connect to selected server only" = "Alleen met de geselecteerde server verbinden";
 
 /* nothing */
 "Don't cycle through all the servers when the connection fails." = "Niet alle servers afgaan wanneer verbinden mislukt.";
@@ -2918,94 +2972,94 @@
 "_Nick name:" = "Bij_naam:";
 
 /* nothing */
-"Second choice:" = "Tweede keuze:";
+"Second choice:" = "Tweede keus:";
 
 /* nothing */
-"_User name:" = "Gebr_uikersnaam:";
+"_User name:" = "_Gebruikersnaam:";
 
 /* nothing */
-"Rea_l name:" = "Echte naam (_l):";
+"Rea_l name:" = "_Echte naam:";
 
 /* nothing */
-"Connecting" = "Bezig met verbinden";
+"Connecting" = "Verbinden";
 
 /* nothing */
-"Auto connect to this network at startup" = "Auto-verbinden met dit netwerk bij opstarten";
+"Auto connect to this network at startup" = "Bij opstarten automatisch met dit netwerk verbinden";
 
 /* nothing */
-"Use a proxy server" = "Een Proxy Server gebruiken";
+"Bypass proxy server" = "Proxy-server omzeilen";
 
 /* nothing */
 "Use SSL for all the servers on this network" = "SSL gebruiken voor alle servers op dit netwerk";
 
 /* nothing */
-"Accept invalid SSL certificate" = "Onjuist SSL certificaat accepteren";
+"Accept invalid SSL certificate" = "Een onjuist SSL-certificaat accepteren";
 
 /* nothing */
-"C_hannels to join:" = "Kanalen om binnen te gaan (_h):";
+"_Favorite channels:" = "_Favoriete kanalen:";
 
 /* nothing */
-"Channels to join, separated by commas, but not spaces!" = "Kanalen om binnen te gaan, gescheiden door komma's, maar geen spaties!";
+"Channels to join, separated by commas, but not spaces!" = "Kanalen om automatisch binnen te gaan (gescheiden door komma's, zonder spaties)";
 
 /* nothing */
-"Connect command:" = "Verbindopdracht:";
+"Connect command:" = "_Eerste opdracht:";
 
 /* nothing */
-"Extra command to execute after connecting. If you need more than one, set this to LOAD -e <filename>, where <filename> is a text-file full of commands to execute." = "Extra uit te voeren opdracht na verbinden. Als u er meerdere nodig heeft, kunt u dit instellen op LOAD -e <bestandsnaam>, waar <bestandsnaam> een tekstbestand is met de uit te voeren opdrachten.";
+"Extra command to execute after connecting. If you need more than one, set this to LOAD -e <filename>, where <filename> is a text-file full of commands to execute." = "Een extra uit te voeren opdracht zodra de verbinding gemaakt is.  Als u meerdere opdrachten nodig hebt, kunt u dit veld instellen op 'LOAD -e <bestandsnaam>', waar <bestandsnaam> een tekstbestand is met de uit te voeren opdrachten.";
 
 /* nothing */
-"Nickserv password:" = "Bijnaamserver wachtwoord:";
+"Nickserv password:" = "Wachtwoord voor _Nickserv:";
 
 /* nothing */
-"If your nickname requires a password, enter it here. Not all IRC networks support this." = "Als uw bijnaam een wachtwoord vereist, geef het dan hier in. Niet alle IRC-netwerken ondersteuenen dit.";
+"If your nickname requires a password, enter it here. Not all IRC networks support this." = "Als uw bijnaam een wachtwoord vereist, geef het dan hier in.  Niet alle IRC-netwerken ondersteuenen dit.";
 
 /* nothing */
-"Server password:" = "Serverwachtwoord:";
+"Server password:" = "_Serverwachtwoord:";
 
 /* nothing */
-"Password for the server, if in doubt, leave blank." = "Wachtwoord voor de server. Bij twijfel leeglaten.";
+"Password for the server, if in doubt, leave blank." = "Wachtwoord voor de server.  Bij twijfel leeglaten.";
 
 /* nothing */
 "Character set:" = "Tekenset:";
 
 /* nothing */
-"_Edit" = "B_ewerken";
-
-/* nothing */
-"XChat: Network List" = "XChat: Netwerklijst";
+"XChat: Network List" = "XChat: Netwerkenlijst";
 
 /* nothing */
 "User Information" = "Gebruikersinformatie";
 
 /* nothing */
-"Third choice:" = "Derde keuze:";
+"Third choice:" = "Derde keus:";
 
 /* nothing */
 "Networks" = "Netwerken";
 
 /* nothing */
-"Skip network list on startup" = "Netwerklijst overslaan bij opstarten";
+"Skip network list on startup" = "Deze lijst overslaan bij opstarten";
 
 /* nothing */
-"_Edit..." = "B_ewerken...";
+"_Edit..." = "Be_werken...";
 
 /* nothing */
 "_Sort" = "_Sorteren";
 
 /* nothing */
-"C_onnect" = "Verbinden (_o)";
+"Sorts the network list in alphabetical order. Use SHIFT-UP and SHIFT-DOWN keys to move a row." = "De netwerkenlijst op alfabetische volgorde sorteren.  Gebruik Shift+Omhoog en Shift+Omlaag om een rij te verschuiven.";
 
 /* nothing */
-"Text Box Appearance" = "Tekstvak uiterlijk";
+"C_onnect" = "Ver_binden";
+
+/* nothing */
+"Text Box Appearance" = "Uiterlijk van tekstvak";
 
 /* nothing */
 "Font:" = "Lettertype:";
 
 /* nothing */
-"Background image:" = "Achtergrond Afbeelding:";
+"Background image:" = "Achtergrondafbeelding:";
 
 /* nothing */
-"Scrollback lines:" = "Terugschuif regels:";
+"Scrollback lines:" = "Aantal te onthouden regels:";
 
 /* nothing */
 "Colored nick names" = "Gekleurde bijnamen";
@@ -3020,16 +3074,16 @@
 "Make nick names right-justified" = "Bijnamen rechts uitlijnen";
 
 /* nothing */
-"Transparent background" = "Achtergrond doozichtig";
+"Transparent background" = "Transparante achtergrond";
 
 /* nothing */
 "Show marker line" = "Markeringslijn weergeven";
 
 /* nothing */
-"Insert a red line after the last read text." = "Rode lijn invoegen na laatste gelezen tekst.";
+"Insert a red line after the last read text." = "Rode lijn invoegen na laatst gelezen tekst.";
 
 /* nothing */
-"Transparency Settings" = "Instellingen transparantheid";
+"Transparency Settings" = "Transparantie-instellingen";
 
 /* nothing */
 "Red:" = "Rood:";
@@ -3044,82 +3098,106 @@
 "Time Stamps" = "Tijdsstempels";
 
 /* nothing */
-"Enable time stamps" = "Tijdsstempels aan zetten";
+"Enable time stamps" = "Tijdsstempels inschakelen";
 
 /* nothing */
-"Time stamp format:" = "Tijdstampformaat:";
+"Time stamp format:" = "Tijdstempelopmaak:";
 
 /* nothing */
-"See strftime manpage for details." = "Zie strftime handboekpagina voor details.";
+"See strftime manpage for details." = "Zie de man-pagina van strftime() voor de details.";
+
+/* nothing */
+"A-Z" = "van A naar Z";
+
+/* nothing */
+"Last-spoke order" = "laatste spreker eerst";
 
 /* nothing */
 "Input box" = "Invoervak";
 
 /* nothing */
-"Use the Text box font and colors" = "Tekstvak lettertype en kleuren gebruiken";
+"Use the Text box font and colors" = "Lettertype en kleuren van tekstvak gebruiken";
 
 /* nothing */
-"Spell checking" = "spelling checken";
+"Spell checking" = "Spelling controleren";
 
 /* nothing */
-"Nick Completion" = "Bijnaam-afmaken";
+"Nick Completion" = "Aanvullen van bijnaam";
 
 /* nothing */
-"Automatic nick completion (without TAB key)" = "Automatische Bijnaamaanvulling (zonder TAB-toets)";
+"Automatic nick completion (without TAB key)" = "Automatische bijnaamaanvulling (zonder Tab-toets)";
 
 /* nothing */
-"Nick completion suffix:" = "Nicknaam-aanvullen achtervoegsel:";
+"Nick completion suffix:" = "Achtervoegsel na bijnaamaanvulling:";
 
 /* nothing */
-"Input Box Codes" = "Invoervak codes";
+"Nick completion sorted:" = "Volgorde van bijnaamaanvulling:";
 
 /* nothing */
-"Interpret %nnn as an ASCII value" = "Interpreteer %nnn als een ASCII waarde";
+"Input Box Codes" = "Invoervakcodes";
 
 /* nothing */
-"Interpret %C, %B as Color, Bold etc" = "%C, %B als kleur, vet etc. interpreteren";
+"Interpret %nnn as an ASCII value" = "%nnn als een ASCII-waarde interpreteren";
 
 /* nothing */
-"A-Z, Ops first" = "A-Z, Ops eerst";
+"Interpret %C, %B as Color, Bold etc" = "%C en %B als kleur en vet interpreteren, enzovoort";
 
 /* nothing */
-"A-Z" = "A-Z";
+"A-Z, Ops first" = "van A naar Z, operators eerst";
 
 /* nothing */
-"Z-A, Ops last" = "Z-A, Ops als laatste";
+"Z-A, Ops last" = "van Z naar A, operators laatst";
 
 /* nothing */
-"Z-A" = "Z-A";
+"Z-A" = "van Z naar A";
 
 /* nothing */
-"Unsorted" = "Ongesorteerd";
+"Unsorted" = "ongesorteerd";
 
 /* nothing */
-"User List" = "Gebruikers Lijst";
+"Left (Upper)" = "links (boven)";
 
 /* nothing */
-"Show hostnames in user list" = "Hostnamen in gebruikerslijst weergeven";
+"Left (Lower)" = "links (onder)";
 
 /* nothing */
-"Resizable user list" = "Schaalbare gebruikerslijst";
+"Right (Upper)" = "rechts (boven)";
 
 /* nothing */
-"User list sorted by:" = "Gebruikerslijst gesorteerd op:";
+"Right (Lower)" = "rechts (onder)";
 
 /* nothing */
-"Away tracking" = "Afwezigheidsbijhouding";
+"Top" = "bovenaan";
 
 /* nothing */
-"Track the Away status of users and mark them in a different color" = "Houdt de Away-status van gebruikers bij en markeer ze in een andere kleur";
+"Bottom" = "onderaan";
+
+/* nothing */
+"Hidden" = "verborgen";
+
+/* nothing */
+"User List" = "Gebruikerslijst";
+
+/* nothing */
+"Show hostnames in user list" = "Hostnamen in gebruikerslijst tonen";
+
+/* nothing */
+"User list sorted by:" = "Volgorde van gebruikerslijst:";
+
+/* nothing */
+"Show user list at:" = "Gebruikerslijst tonen:";
+
+/* nothing */
+"Away tracking" = "Afwezigheidsadministratie";
+
+/* nothing */
+"Track the Away status of users and mark them in a different color" = "Afwezigheidsstatus van gebruikers bijhouden en met andere kleur markeren";
 
 /* nothing */
 "On channels smaller than:" = "Bij kanalen kleiner dan:";
 
 /* nothing */
-"Action Upon Double Click" = "Activeren met dubbel-klikken";
-
-/* nothing */
-"Execute command:" = "Opdracht uitvoeren:";
+"Action Upon Double Click" = "Actie bij dubbelklikken";
 
 /* nothing */
 "Windows" = "Vensters";
@@ -3128,82 +3206,73 @@
 "Tabs" = "Tabs";
 
 /* nothing */
-"Bottom" = "Onderkant";
-
-/* nothing */
-"Top" = "Bovenkant";
-
-/* nothing */
-"Left" = "Links";
-
-/* nothing */
-"Right" = "Rechts";
-
-/* nothing */
-"Hidden" = "Verborgen";
-
-/* nothing */
 "Always" = "Altijd";
 
 /* nothing */
 "Only requested tabs" = "Alleen gevraagde tabbladen";
 
 /* nothing */
+"Tree" = "Boom";
+
+/* nothing */
+"Switcher type:" = "Wisselaarstype:";
+
+/* nothing */
 "Open an extra tab for server messages" = "Extra tabblad openen voor serverberichten";
 
 /* nothing */
-"Open an extra tab for server notices" = "Extra tabblad openen voor servermeldingen";
+"Open an extra tab for server notices" = "Extra tabblad openen voor serverkennisgevingen";
+
+/* nothing */
+"Open a new tab when you receive a private message" = "Nieuw tabblad openen bij ontvangst van privébericht";
 
 /* nothing */
 "Sort tabs in alphabetical order" = "Tabbladen alfabetisch ordenen";
 
 /* nothing */
-"Small tabs" = "Kleine tabbladen";
+"Smaller text" = "Kleinere tekst gebruiken";
 
 /* nothing */
 "Focus new tabs:" = "Nieuwe tabbladen focusseren:";
 
 /* nothing */
-"Shorten tab labels to:" = "Tabbladlabels verkorten tot:";
+"Show channel switcher at:" = "Kanaalwisselaar tonen:";
+
+/* nothing */
+"Shorten tab labels to:" = "Tabbladlabels afkorten op:";
 
 /* nothing */
 "letters." = "letters.";
 
 /* nothing */
-"Tabs Location" = "Tabbladen positie";
+"Tabs or Windows" = "Tabbladen of vensters";
 
 /* nothing */
-"Show tabs at:" = "Tabs laten zien op:";
+"Open channels in:" = "Kanalen openen in:";
 
 /* nothing */
-"Tabs or Windows" = "Tabbladen of Vensters";
-
-/* nothing */
-"Open channels in:" = "Open kanalen in:";
-
-/* nothing */
-"Open dialogs in:" = "Open dialoog vensters in:";
+"Open dialogs in:" = "Dialoogvensters openen in:";
 
 /* nothing */
 "Open utilities in:" = "Gereedschappen openen in:";
 
 /* nothing */
-"Open DCC, Ignore, Notify etc, in tabs or windows?" = "DCC, Negeren, berichten openen in tabbladen of vensters?";
+"Open DCC, Ignore, Notify etc, in tabs or windows?" = "DCC, Negeren, en Meldingen openen in tabbladen of vensters?";
 
 /* nothing */
-"No" = "Nee";
+"No" = "nee";
 
 /* nothing */
-"Yes" = "Ja";
+"Yes" = "ja";
 
 /* nothing */
-"Browse for save folder every time" = "Blader elke keer voor bewaarmap";
+"Browse for save folder every time" = "elke keer naar een bewaarmap bladeren";
 
 /* nothing */
 "Files and Directories" = "Bestanden en mappen";
 
 /* nothing */
-"Auto accept file offers:" = "Auto accepteren bestandsaanbiedingen:";
+"Auto accept file offers:" = "Bestandsaanbiedingen automatisch accepteren:";
 
 /* nothing */
 "Download files to:" = "Gedownloade bestanden opslaan in:";
@@ -3212,28 +3281,28 @@
 "Move completed files to:" = "Volledig gedownloade bestanden verplaatsen naar:";
 
 /* nothing */
-"Save nick name in filenames" = "Bijnaam opslaan in bestandsnamen";
+"Save nick name in filenames" = "Bijnaam toevoegen aan bestandsnamen";
 
 /* nothing */
 "Network Settings" = "Netwerkinstellingen";
 
 /* nothing */
-"Get my address from the IRC server" = "Mijn adres van de IRC server halen";
+"Get my address from the IRC server" = "Mijn adres van de IRC-server halen";
 
 /* nothing */
-"Asks the IRC server for your real address. Use this if you have a 192.168.*.* address!" = "De IRC-server om uw echte adres vragen. Gebruik dit als u een 192.168.*.* adres heeft!";
+"Asks the IRC server for your real address. Use this if you have a 192.168.*.* address!" = "De IRC-server om uw echte adres vragen.  Gebruik dit als u een 192.168.*.* adres hebt!";
 
 /* nothing */
-"DCC IP address:" = "DCC IP Adres:";
+"DCC IP address:" = "DCC IP-adres:";
 
 /* nothing */
-"Claim you are at this address when offering files." = "Doe alsof u op dit adres bent bij het aanbieden van bestanden.";
+"Claim you are at this address when offering files." = "Doen alsof u op dit adres bent bij het aanbieden van bestanden.";
 
 /* nothing */
-"First DCC send port:" = "Eerste DCC verstuurpoort:";
+"First DCC send port:" = "Eerste DCC-verzendingspoort:";
 
 /* nothing */
-"Last DCC send port:" = "Laatste DCC verstuurpoort:";
+"Last DCC send port:" = "Laatste DCC-verzendingspoort:";
 
 /* nothing */
 "!Leave ports at zero for full range." = "!Poorten op nul laten voor volledig bereik.";
@@ -3260,94 +3329,100 @@
 "All downloads combined:" = "Alle downloads samen:";
 
 /* nothing */
+"Alerts" = "Waarschuwingen";
+
+/* nothing */
+"Show tray balloons on:" = "Tekstballonnen in systeemvak tonen bij:";
+
+/* nothing */
+"Blink tray icon on:" = "Pictogram in systeemvak laten knipperen bij:";
+
+/* nothing */
+"Blink task bar on:" = "Taakbalk laten knipperen bij:";
+
+/* nothing */
+"Make a beep sound on:" = "Een piep laten horen bij:";
+
+/* nothing */
+"Enable system tray icon" = "Systeemvakpictogram inschakelen";
+
+/* nothing */
+"Highlighted Messages" = "Geaccentueerde berichten";
+
+/* nothing */
+"Highlighted messages are ones where your nickname is mentioned, but also:" = "Geaccentueerde berichten zijn die waar uw bijnaam in genoemd wordt, maar ook:";
+
+/* nothing */
+"Extra words to highlight:" = "Te accentueren extra woorden:";
+
+/* nothing */
+"Nick names not to highlight:" = "Niet te accentueren bijnamen:";
+
+/* nothing */
+"Nick names to always highlight:" = "Altijd te accentueren bijnamen:";
+
+/* nothing */
+"Separate multiple words with commas.\nWildcards are accepted." = "Plaats komma's tussen de woorden.\nJokertekens zijn toegestaan.";
+
+/* nothing */
 "Default Messages" = "Standaardberichten";
 
 /* nothing */
-"Quit:" = "Afsluiten:";
+"Quit:" = "Bij afsluiten:";
 
 /* nothing */
-"Leave channel:" = "Kanaal verlaten:";
+"Leave channel:" = "Bij verlaten van kanaal:";
 
 /* nothing */
-"Away:" = "Weg:";
+"Away:" = "Bij afwezigheid:";
 
 /* nothing */
-"Away" = "Weg";
+"Away" = "Afwezigheid";
 
 /* nothing */
-"Announce away messages" = "Weg-berichten aankondigen";
+"Announce away messages" = "Afwezigheidsbericht aankondigen";
 
 /* nothing */
-"Announce your away messages to all channels" = "Uw weg-berichten aankondigen bij alle kanalen";
+"Announce your away messages to all channels" = "Uw afwezigheidsbericht melden aan alle kanalen";
 
 /* nothing */
-"Show away once" = "Laat 'away' slechts een keer";
+"Show away once" = "Afwezigheid één keer tonen";
 
 /* nothing */
 "Show identical away messages only once" = "Identieke afwezigheidsberichten slechts eenmaal laten zien";
 
 /* nothing */
-"Automatically unmark away" = "Automatisch afwezig de-markeren";
+"Automatically unmark away" = "Afwezigheid automatisch ongedaan maken";
 
 /* nothing */
-"Unmark yourself as away before sending messages" = "Uzelf niet meer als afwezig markeren alvorens berichten te verzenden";
-
-/* nothing */
-"(Can be a text file relative to ~/.xchat2/)." = "(Kan een tekstbestand zijn relatief tot ~/.xchat2/).";
-
-/* nothing */
-"(Can be a text file relative to config dir)." = "(Kan een tekstbestand zijn relatief tot config map).";
-
-/* nothing */
-"Alerts" = "Waarschuwingen";
-
-/* nothing */
-"Flash taskbar on highlighted messages" = "Taakbalk laten flitsen bij opgelichte berichten";
-
-/* nothing */
-"Beep on highlighted messages" = "Pieptoon bij opgelichte berichten";
-
-/* nothing */
-"Beep on private messages" = "Pieptoon bij Prive Berichten";
-
-/* nothing */
-"Beep on channel messages" = "Pieptoon bij Kanaalberichten";
-
-/* nothing */
-"Extra words to highlight on:" = "Extra Woorden om op te lichten:";
-
-/* nothing */
-"Nicks not to highlight on:" = "Niet op te lichten bijnamen:";
-
-/* nothing */
-"Separate multiple words with commas." = "Plaats komma's tussen de woorden.";
+"Unmark yourself as away before sending messages" = "Uw afwezigsheidsstatus automatisch uitschakelen zodra u een bericht verzendt";
 
 /* nothing */
 "Advanced Settings" = "Uitgebreide instellingen";
 
 /* nothing */
-"Auto reconnect delay:" = "Vertraging bij auto-herverbinden:";
+"Auto reconnect delay:" = "Vertraging bij automatisch herverbinden:";
 
 /* nothing */
 "Display MODEs in raw form" = "MODEs weergeven in ruwe vorm";
 
 /* nothing */
-"Whois on notify" = "Whois bij waarschuwen";
+"Whois on notify" = "Whois bij melding";
 
 /* nothing */
-"Sends a /WHOIS when a user comes online in your notify list" = "Een /WHOIS verzenden als een gebruiker uit uw lijst online komt";
+"Sends a /WHOIS when a user comes online in your notify list" = "Een /WHOIS verzenden wanneer een gebruiker uit uw meldingslijst online komt";
 
 /* nothing */
-"Hide join and part messages" = "Binnengaan/verlaten berichten verbergen";
+"Hide join and part messages" = "Binnenkomst- en verlatingsberichten verbergen";
 
 /* nothing */
-"Hide channel join/part messages by default" = "Standaard kanaal binnengaan/verlaten berichten verbergen";
+"Hide channel join/part messages by default" = "Berichten over binnenkomen en verlaten van kanaal standaard verbergen";
 
 /* nothing */
-"Auto Open DCC Windows" = "DCC-vensters auto-openen";
+"Auto Open DCC Windows" = "DCC-vensters automatisch openen";
 
 /* nothing */
-"Send window" = "Verzendvenster";
+"Send window" = "Verzendingsvenster";
 
 /* nothing */
 "Receive window" = "Ontvangstvenster";
@@ -3359,22 +3434,25 @@
 "Logging" = "Loggen";
 
 /* nothing */
-"Enable logging of conversations" = "Loggen van gesprekken aanzetten";
+"Display scrollback from previous session" = "Tekstgeschiedenis uit vorige sessie tonen";
+
+/* nothing */
+"Enable logging of conversations to disk" = "Loggen van gesprekken naar schijf inschakelen";
 
 /* nothing */
 "Log filename:" = "Logbestandsnaam:";
 
 /* nothing */
-"%s=Server %c=Channel %n=Network." = "%s=Server %c=Kanaal %n=Netwerk.";
+"%s=Server %c=Channel %n=Network." = "%s=server   %c=kanaal   %n=netwerk.";
 
 /* nothing */
-"Insert timestamps in logs" = "Tijdsstempels in logs invoegen";
+"Insert timestamps in logs" = "Tijdsstempels in logbestanden invoegen";
 
 /* nothing */
-"Log timestamp format:" = "Log tijdsstempel formaat:";
+"Log timestamp format:" = "Opmaak van tijdsstempel in logbestand:";
 
 /* nothing */
-"(Disabled)" = "(Uitgezet)";
+"(Disabled)" = "(uitgeschakeld)";
 
 /* nothing */
 "Wingate" = "Wingate";
@@ -3392,46 +3470,46 @@
 "MS Proxy (ISA)" = "MS Proxy (ISA)";
 
 /* nothing */
-"All Connections" = "Alle verbindingen";
+"All Connections" = "alle verbindingen";
 
 /* nothing */
-"IRC Server Only" = "Enkel IRC Server";
+"IRC Server Only" = "alleen IRC-server";
 
 /* nothing */
-"DCC Get Only" = "DCC Get Only";
+"DCC Get Only" = "alleen DCC Get";
 
 /* nothing */
 "Your Address" = "Uw adres";
 
 /* nothing */
-"Bind to:" = "Verbinden met:";
+"Bind to:" = "Binden aan:";
 
 /* nothing */
-"Only useful for computers with multiple addresses." = "Alleen bruikbaar voor computers met meerdere adressen.";
+"Only useful for computers with multiple addresses." = "Alleen nuttig voor computers met meerdere IP-adressen.";
 
 /* nothing */
 "Proxy Server" = "Proxy-server";
 
 /* nothing */
-"Hostname:" = "Hostnaam:";
+"Hostname:" = "Servernaam:";
 
 /* nothing */
 "Port:" = "Poort:";
 
 /* nothing */
-"Type:" = "Soort";
+"Type:" = "Type:";
 
 /* nothing */
-"Use proxy for:" = "Een Proxy Server gebruiken voor:";
+"Use proxy for:" = "Proxy-server gebruiken voor:";
 
 /* nothing */
 "Proxy Authentication" = "Proxy-authenticatie";
 
 /* nothing */
-"Use Authentication (MS Proxy, HTTP or Socks5 only)" = "Gebruik authenticatie (enkel MS Proxy, HTTP of Socks5)";
+"Use Authentication (MS Proxy, HTTP or Socks5 only)" = "Authenticatie gebruiken (alleen MS Proxy, HTTP of Socks5)";
 
 /* nothing */
-"Use Authentication (HTTP or Socks5 only)" = "Gebruik authenticatie (enkel HTTP of Socks5)";
+"Use Authentication (HTTP or Socks5 only)" = "Authenticatie gebruiken (alleen HTTP of Socks5)";
 
 /* nothing */
 "Username:" = "Gebruikersnaam:";
@@ -3440,13 +3518,13 @@
 "Password:" = "Wachtwoord:";
 
 /* nothing */
-"Select an Image File" = "Selecteer een afbeeldingsbestand";
+"Select an Image File" = "Kies een afbeeldingsbestand";
 
 /* nothing */
-"Select Download Folder" = "Kies downloadmap";
+"Select Download Folder" = "Kies een downloadmap";
 
 /* nothing */
-"Select font" = "Kies een Lettertype";
+"Select font" = "Kies een lettertype";
 
 /* nothing */
 "Browse..." = "Bladeren...";
@@ -3458,13 +3536,16 @@
 "Mark not-identified users with:" = "Niet-geïdentificeerde gebruikers markeren met:";
 
 /* nothing */
+"Open Data Folder" = "Gegevensmap openen";
+
+/* nothing */
 "Select color" = "Kies een kleur";
 
 /* nothing */
 "Text Colors" = "Tekstkleuren";
 
 /* nothing */
-"mIRC colors:" = "mIRC kleuren:";
+"mIRC colors:" = "mIRC-kleuren:";
 
 /* nothing */
 "Local colors:" = "Lokale kleuren:";
@@ -3491,10 +3572,10 @@
 "New message:" = "Nieuw bericht:";
 
 /* nothing */
-"Away user:" = "Gebruiker weg:";
+"Away user:" = "Afwezige gebruiker:";
 
 /* nothing */
-"Highlight:" = "Oplichting:";
+"Highlight:" = "Accentuering:";
 
 /* nothing */
 "Event" = "Gebeurtenis";
@@ -3503,10 +3584,10 @@
 "Sound file" = "Geluidsbestand";
 
 /* nothing */
-"Select a sound file" = "Kies een geluidsnaam";
+"Select a sound file" = "Kies een geluidsbestand";
 
 /* nothing */
-"Sound playing method:" = "Geluidsafspeelmethode:";
+"Sound playing method:" = "Afspeelmethode voor geluid:";
 
 /* nothing */
 "External sound playing _program:" = "Extern geluidsafspeel_programma:";
@@ -3518,7 +3599,7 @@
 "_Automatic" = "_Automatisch";
 
 /* nothing */
-"Sound files _directory:" = "Geluidsbestan_den map:";
+"Sound files _directory:" = "_Map met geluidsbestanden:";
 
 /* nothing */
 "Sound file:" = "Geluidsbestand:";
@@ -3539,6 +3620,9 @@
 "User list" = "Gebruikerslijst";
 
 /* nothing */
+"Channel switcher" = "Kanaalwisselaar";
+
+/* nothing */
 "Colors" = "Kleuren";
 
 /* nothing */
@@ -3551,9 +3635,6 @@
 "Sound" = "Geluid";
 
 /* nothing */
-"Network" = "Netwerk";
-
-/* nothing */
 "Network setup" = "Netwerkinstellingen";
 
 /* nothing */
@@ -3563,19 +3644,22 @@
 "Categories" = "Categorieën";
 
 /* nothing */
-"Some settings were changed that require a restart to take full effect." = "Sommige instellingen die zijn veranderd worden pas actief na het opnieuw starten.";
+"You cannot place the tree on the top or bottom!\nPlease change to the <b>Tabs</b> layout in the <b>View</b> menu first." = "De boom kan niet boven- of onderaan geplaatst worden.\nKies in het <b>Beeld</b>-menu eerst de <b>Tabs</b>-optie.";
 
 /* nothing */
-"*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile" = "*WAARSCHUWING*\nAuto accepteren van DCC naar uw persoonlijke\nmap is gevaarlijk en er kan misbruik van worden\ngemaakt.\nIemand kan u bijvoorbeeld een .bash_profile\nbestand opsturen.";
+"Some settings were changed that require a restart to take full effect." = "Sommige instellingen die zijn veranderd worden pas actief na een herstart van XChat.";
+
+/* nothing */
+"*WARNING*\nAuto accepting DCC to your home directory\ncan be dangerous and is exploitable. Eg:\nSomeone could send you a .bash_profile" = "*WAARSCHUWING*\nHet automatisch accepteren van DCC naar uw\npersoonlijke map is gevaarlijk: er kan\nmisbruik van gemaakt worden.  Iemand zou u\nbijvoorbeeld een .bash_profile-bestand toe\nkunnen sturen.";
 
 /* nothing */
 "XChat: Preferences" = "XChat: Voorkeuren";
 
 /* nothing */
-"There was an error parsing the string" = "Er is een fout opgetreden bij het parsen van de string";
+"There was an error parsing the string" = "Er is een fout opgetreden bij het ontleden van de string";
 
 /* nothing */
-"This signal is only passed %d args, $%d is invalid" = "Dit signaal is slechts %d argumenten gegeven, $%d is onjuist";
+"This signal is only passed %d args, $%d is invalid" = "Dit signaal hoort slechts %d argumenten te krijgen, %d is ongeldig";
 
 /* nothing */
 "Print Texts File" = "Tekstbestand afdrukken";
@@ -3590,13 +3674,13 @@
 "Load From..." = "Laden vanaf...";
 
 /* nothing */
-"Test All" = "Allemaal Testen";
+"Test All" = "Alles testen";
 
 /* nothing */
 "URL" = "URL";
 
 /* nothing */
-"XChat: URL Grabber" = "XChat: URL Grijper";
+"XChat: URL Grabber" = "XChat: URL-pakker";
 
 /* nothing */
 "Clear list" = "Lijst wissen";
@@ -3612,85 +3696,4 @@
 
 /* nothing */
 "%d ops, %d total" = "%d ops, %d totaal";
-
-/* nothing */
-"Open an irc:// url" = "Open een irc:// url";
-
-/* nothing */
-"irc://server:port/channel" = "irc://server:poort/kanaal";
-
-/* nothing */
-"Execute a xchat command" = "Voer een xchat-opdracht uit";
-
-/* nothing */
-"\"Command to execute\"" = "\"Uit te voeren commando\"";
-
-/* nothing */
-"Prints some text to the current tab/window" = "Print tekst naar de huidige tab/venster";
-
-/* nothing */
-"\"Text to print\"" = "\"Af te drukken tekst\"";
-
-/* nothing */
-"Change the context to the channel" = "Wijzig de context naar het kanaal";
-
-/* nothing */
-"channel" = "kanaal";
-
-/* nothing */
-"Change the context to the server" = "Wijzig de context naar de server";
-
-/* nothing */
-"server" = "server";
-
-/* nothing */
-"Get some informations from xchat" = "Verkrijg informatie van xchat";
-
-/* nothing */
-"id" = "id";
-
-/* nothing */
-"Get settings from xchat" = "Verkrijg instellingen van xchat";
-
-/* nothing */
-"name" = "naam";
-
-/* nothing */
-"xchat-remote: %s\nTry `xchat-remote --help' for more information\n" = "xchat-remote: %s\nProbeer `xchat-remote --help' voor meer informatie\n";
-
-/* nothing */
-"Couldn't connect to session bus" = "Kon niet connecteren op sessie-bus";
-
-/* nothing */
-"Failed to complete command" = "Commando vervolledigen mislukt";
-
-/* nothing */
-"Failed to complete SetContext" = "SetContext vervolledigen mislukt";
-
-/* nothing */
-"Failed to complete print" = "Vervolledigen afdruk mislukt";
-
-/* nothing */
-"Failed to complete GetInfo" = "Vervolledigen GetInfo mislukt";
-
-/* nothing */
-"Failed to complete GetPrefs" = "Vervolledigen GetPrefs mislukt";
-
-/* nothing */
-"%s doesn't exist\n" = "%s bestaat niet\n";
-
-/* nothing */
-"xchat remote access" = "xchat toegang op afstand";
-
-/* nothing */
-"plugin for remote access using DBUS" = "plugin voor toegang op afstand gebruikmakend van DBUS";
-
-/* nothing */
-"Couldn't connect to session bus : %s\n" = "Kon niet connecteren op sessie-bus: %s\n";
-
-/* nothing */
-"Failed to acquire %s: %s\n" = "Faalde bij het ophalen van %s: %s\n";
-
-/* nothing */
-"%s loaded successfully!\n" = "%s succesvol geladen!\n";
 
