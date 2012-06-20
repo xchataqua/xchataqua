@@ -37,11 +37,7 @@ struct PreferenceItem
     int      type;
 };
 
-@interface PreferencesWindow : UtilityWindow
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSOutlineViewDataSource, NSComboBoxDataSource>
-#endif
-{
+@interface PreferencesWindow : UtilityWindow<NSOutlineViewDataSource, NSComboBoxDataSource, NSOpenSavePanelDelegate> {
     IBOutlet NSTabView    *tabView;
     IBOutlet NSBox *contentBox;
     IBOutlet NSOutlineView *categoryOutlineView;
