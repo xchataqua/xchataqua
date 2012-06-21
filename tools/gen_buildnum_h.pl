@@ -114,6 +114,8 @@ print OUT <<__eof__;
 
 ${prefix}_VERSION = ${verstring}
 ${prefix}_VERSION_INTERNAL = ${major}.${minor}.${revis}.${internal_build}
+${prefix}_VERSION_BUNDLE = ${major}.${minor}.${revis}
+${prefix}_VERSION_SHORT = ${major}.${minor}
 __eof__
 close OUT or die $!;
 
