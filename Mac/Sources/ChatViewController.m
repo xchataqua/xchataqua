@@ -18,13 +18,14 @@
 #import "AquaChat.h"
 #import "ChatViewController.h"
 #import "ColorPalette.h"
-#import "mIRCString.h"
+#import "MIRCString.h"
 #import "MenuMaker.h"
 #import "UtilityWindow.h"
 
 #include "outbound.h"
 #include "util.h"
-#include "XACommon.h"
+
+#include "fe-aqua_common.h"
 
 
 #pragma mark Objects for tab auto-complete
@@ -1286,7 +1287,7 @@ static NSImage *emptyBulletImage;
     [palette setColor:XAColorForeground color:[NSColor blackColor]];
     [palette setColor:XAColorBackground color:[NSColor whiteColor]];
     
-    [topicTextField setStringValue:[mIRCString stringWithUTF8String:topic
+    [topicTextField setStringValue:[MIRCString stringWithUTF8String:topic
                                                             palette:palette
                                                                font:nil
                                                            boldFont:nil]];

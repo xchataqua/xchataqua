@@ -29,7 +29,7 @@
 
 #import "ViewerWindow.h"
 
-#import "XACommon.h"
+#import "fe-aqua_common.h"
 #include "outbound.h"
 #include "util.h"
 #include "server.h"

@@ -16,7 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
 #import "ColorPalette.h"
-#import "mIRCString.h"
+#import "MIRCString.h"
 
 //////////////////////////////////////////////////////////////////////
 
@@ -51,7 +51,7 @@ static int get_mirc_value (const char **x, const char *stop_at)
     return val;
 }
 
-@interface NSMutableAttributedString (mIRCString)
+@interface NSMutableAttributedString (MIRCString)
 
 - (NSInteger)appendText:(const char *)text length:(int)len
         foregroundColor:(int)fg backgroundColor:(int)bg reverse:(bool)reverse
@@ -60,7 +60,7 @@ static int get_mirc_value (const char **x, const char *stop_at)
 
 @end
 
-@implementation mIRCString
+@implementation MIRCString
 
 NSFont *sharedHiddenFont;
 
@@ -79,7 +79,7 @@ NSFont *sharedHiddenFont;
                        font:(NSFont *) font
                    boldFont:(NSFont *) boldFont;
 {
-    mIRCString *msgString = [[NSMutableAttributedString alloc] init]; // how to fake well?
+    NSMutableAttributedString *msgString = [[NSMutableAttributedString alloc] init];
  
     NSInteger fg = -1;
     NSInteger bg = -1;
@@ -208,7 +208,7 @@ NSFont *sharedHiddenFont;
 
 @end
 
-@implementation NSMutableAttributedString (mIRCString)
+@implementation NSMutableAttributedString (MIRCString)
 
 - (NSInteger)appendText:(const char *)text length:(int)len
         foregroundColor:(int)fg backgroundColor:(int)bg reverse:(bool)reverse
@@ -258,7 +258,7 @@ NSFont *sharedHiddenFont;
     
     if (hidden)
     {
-        [attr setObject:[mIRCString hiddenFont] forKey:NSFontAttributeName];
+        [attr setObject:[MIRCString hiddenFont] forKey:NSFontAttributeName];
         [attr setObject:[NSColor colorWithDeviceWhite:1.0 alpha:0.0] forKey:NSForegroundColorAttributeName];
     }
     else if (bold && boldFont)

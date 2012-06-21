@@ -24,7 +24,7 @@
 
 #import "AquaChat.h"
 #import "ColorPalette.h"
-#import "mIRCString.h"
+#import "MIRCString.h"
 #import "ChannelWindow.h"
 
 //////////////////////////////////////////////////////////////////////
@@ -46,13 +46,13 @@ const char* sortSelectorNames[] = {
 @public
     NSString *channel;
     NSString *numberOfUsersString;
-    mIRCString *topic;
+    MIRCString *topic;
     NSInteger numberOfUsers;    // For sorting.. is it really helping?
     NSSize size;
 }
 
 @property (nonatomic, readonly) NSString *channel, *numberOfUsersString;
-@property (nonatomic, readonly) mIRCString *topic;
+@property (nonatomic, readonly) MIRCString *topic;
 @property (nonatomic, readonly) NSInteger numberOfUsers;
 
 + (id) entryWithChannel:(NSString *)channel numberOfUsers:(NSString *)numberOfUsersString topic:(NSString *)topic colorPalette:(ColorPalette *)palette;
@@ -108,7 +108,7 @@ static const char * strip_crap (const char *s)
         entry->numberOfUsersString = [numberOfUsersString retain];
         entry->size = NSZeroSize;
         
-        entry->topic = [[mIRCString stringWithUTF8String:strip_crap([aTopic UTF8String]) palette:palette font:nil boldFont:nil] retain];
+        entry->topic = [[MIRCString stringWithUTF8String:strip_crap([aTopic UTF8String]) palette:palette font:nil boldFont:nil] retain];
         
         entry->numberOfUsers = [entry->numberOfUsersString integerValue];
     }
