@@ -176,8 +176,7 @@ static NSImage *getCloseImage()
 
 #pragma mark -
 
-@interface SGTabViewOutlineView : NSOutlineView
-@end
+@interface SGTabViewOutlineView : NSOutlineView @end
 
 @implementation SGTabViewOutlineView
 
@@ -659,7 +658,7 @@ NSNib *SGTabViewItemTabMenuNib;
 
 @implementation SGTabViewItem
 @synthesize label;
-@synthesize titleColor=_titleColor;
+@synthesize titleColorIndex=_titleColorIndex;
 @synthesize view=_view;
 @synthesize initialFirstResponder=_initialFirstResponder;
 
@@ -674,6 +673,7 @@ NSNib *SGTabViewItemTabMenuNib;
     self = [super init];
     if (self != nil) {    
         [SGTabViewItemTabMenuNib instantiateNibWithOwner:self topLevelObjects:nil];
+        self->_titleColorIndex = XAColorForeground;
     }
     return self;
 }
@@ -681,7 +681,6 @@ NSNib *SGTabViewItemTabMenuNib;
 - (void) dealloc
 {
     self.label = nil;
-    self.titleColor = nil;
     self.view = nil;
     [button release];
     [ctxMenu release];
@@ -731,13 +730,16 @@ NSNib *SGTabViewItemTabMenuNib;
     [button setHideCloseButton:hidem];
 }
 
-- (void) setTitleColor:(NSColor *) color
-{
-    [_titleColor autorelease];
-    _titleColor = [color retain];
-    if (button) {
-        [button setTitleColor:color];
+- (NSColor *)titleColor {
+    if (!prefs.style_namelistgad && self.titleColorIndex == XAColorForeground) {
+        return [NSColor blackColor];
     }
+    return [[[AquaChat sharedAquaChat] palette] getColor:self.titleColorIndex];
+}
+
+- (void)setTitleColorIndex:(NSInteger)index {
+    if (_titleColorIndex == index) return;
+    self->_titleColorIndex = index;
     [parent.tabOutlineView reloadData];
 }
 
@@ -845,6 +847,26 @@ NSNib *SGTabViewItemTabMenuNib;
     [_tabViewItems release];
     [groups release];
     [super dealloc];
+}
+
+- (void)preferencesChanged {
+    CGFloat fontSize = [NSFont smallSystemFontSize];
+    if (prefs.tab_small) {
+        fontSize *= 0.86;
+    }
+    NSFont *font = [NSFont systemFontOfSize:fontSize];
+    SGTabViewOutlineCell *dataCell = [[_tabOutlineView.tableColumns objectAtIndex:0] dataCell];
+    dataCell.font = font;
+
+    NSLayoutManager *layoutManager=[[NSLayoutManager new] autorelease];
+    [_tabOutlineView setRowHeight:[layoutManager defaultLineHeightForFont:font] + 1];
+    
+    ColorPalette *p = [[AquaChat sharedAquaChat] palette];
+    if (prefs.style_namelistgad) {
+        dataCell.textColor = [p getColor:XAColorForeground];
+        self.tabOutlineView.backgroundColor = [p getColor:XAColorBackground];
+    }
+    [self.tabOutlineView drawRect:self.bounds];
 }
 
 - (void) setOutlineWidth:(CGFloat) width
@@ -960,24 +982,10 @@ NSNib *SGTabViewItemTabMenuNib;
 }
 
 - (void) makeOutline
-{    
-    ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-
+{
     [_tabOutlineView enclosingScrollView].frame = NSMakeRect(.0, .0, prefs.xa_outline_width, self.frame.size.height);    
     
-    CGFloat fontSize = [NSFont smallSystemFontSize];
-    if (prefs.tab_small) {
-        fontSize *= 0.86;
-    }
-    NSFont *font = [NSFont systemFontOfSize:fontSize];
-    SGTabViewOutlineCell *dataCell = [[_tabOutlineView.tableColumns objectAtIndex:0] dataCell];
-    dataCell.font = font;
-
-    NSLayoutManager *layoutManager=[[NSLayoutManager new] autorelease];
-
     [_tabOutlineView setOutlineTableColumn:[_tabOutlineView.tableColumns objectAtIndex:0]];
-    [_tabOutlineView setRowHeight:[layoutManager defaultLineHeightForFont:font] + 1];
-
     [_tabOutlineView reloadData];
         
     for (SGTabViewGroupInfo *info in groups)
@@ -985,10 +993,6 @@ NSNib *SGTabViewItemTabMenuNib;
 
     NSInteger row = [_tabOutlineView rowForItem:self.selectedTabViewItem];
     [_tabOutlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
-    if (prefs.style_namelistgad) {
-        dataCell.textColor = [p getColor:XAColorForeground];
-        _tabOutlineView.backgroundColor = [p getColor:XAColorBackground];
-    }
 }
 
 - (void) setTabViewType:(NSTabViewType) new_tabViewType
@@ -1358,24 +1362,17 @@ enum {
 
 - (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item
 {
-    NSColor *color;
-    if (prefs.tab_layout == 2 && prefs.style_namelistgad) {
-        ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-        color = [p getColor:XAColorForeground];
-    } else {
-        color = [NSColor blackColor];
-    }
-
     if ([item isKindOfClass:[SGTabViewItem class]]) {
-        NSColor *c = [item titleColor];
-        if (c)
-            color = c;
+        [cell setTextColor:[item titleColor]];
         [cell setHasClose:!hideClose];
     } else {
+        if (prefs.tab_layout == 2 && prefs.style_namelistgad) {
+            [cell setTextColor:[[[AquaChat sharedAquaChat] palette] getColor:XAColorForeground]];
+        } else {
+            [cell setTextColor:[NSColor blackColor]];
+        }
         [cell setHasClose:NO];
     }
-
-    [cell setTextColor:color];
 }
 
 - (void) outlineViewSelectionDidChange:(NSNotification *) notification

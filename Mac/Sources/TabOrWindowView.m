@@ -322,10 +322,11 @@ static float trans = 1;
         [tabViewItem setLabel:tabTitle];
 }
 
-- (void) setTabTitleColor:(NSColor *) color
+- (void) setTabTitleColorIndex:(NSInteger)color
 {
-    if (tabViewItem)
-        [tabViewItem setTitleColor:color];
+    if (tabViewItem) {
+        [tabViewItem setTitleColorIndex:color];
+    }
 }
 
 - (BOOL)isFrontTab
