@@ -34,6 +34,7 @@
 #endif
 {
     ColorPalette *_palette;
+    NSMutableParagraphStyle *_style;
     NSFont *normalFont;
     NSFont *boldFont;
     NSRect lineRect;
