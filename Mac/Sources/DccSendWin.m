@@ -21,7 +21,8 @@
 
 #include "network.h"
 #include "dcc.h"
-#import "XACommon.h"
+
+#import "fe-aqua_common.h"
 
 #import "DccSendWin.h"
 

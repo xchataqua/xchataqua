@@ -18,44 +18,38 @@
 #include "text.h"
 #include "url.h"
 // TBD: This is for urlhander_list Should we pass this in?
-#import "XACommon.h"
+#import "fe-aqua_common.h"
 
 #import "XAChatTextView.h"
 #import "ColorPalette.h"
 #import "ChatViewController.h"
-#import "mIRCString.h"
+#import "MIRCString.h"
 #import "MenuMaker.h"
 
-static NSAttributedString *newline;
+static NSAttributedString *XAChatTextViewNewLine;
 //static NSAttributedString *tab;
-static NSCursor *lr_cursor;
+static NSCursor *XAChatTextViewSizableCursor;
 
 @implementation XAChatTextView
-@synthesize palette;
+@synthesize palette=_palette;
+@synthesize style=_style;
 
 + (void)initialize {
     [super initialize];
-    newline = [[NSAttributedString alloc] initWithString:@"\n"];
+    XAChatTextViewNewLine = [[NSAttributedString alloc] initWithString:@"\n"];
     //tab = [[NSAttributedString alloc] initWithString:@"\t"];
     
-    lr_cursor = [[NSCursor alloc] initWithImage:[NSImage imageNamed:@"lr_cursor.tiff"]
-                                        hotSpot:NSMakePoint (8,8)];   
+    XAChatTextViewSizableCursor = [[NSCursor alloc] initWithImage:[NSImage imageNamed:@"lr_cursor.tiff"] hotSpot:NSMakePoint (8,8)];
 }
 
-- (id) initWithFrame:(NSRect) frameRect
+- (id)initWithFrame:(NSRect)frameRect
 {
-    if ((self = [super initWithFrame:frameRect]) != nil) {
-        palette = nil;
-        normalFont = nil;
-        boldFont = nil;
+    self = [super initWithFrame:frameRect];
+    if (self != nil) {
         wordRange = NSMakeRange(NSNotFound, 0);
-        wordType = 0;
-        word = nil;
-        mouseEventRequestId = nil;
         fontWidth = 10;
-        pendingEditing = NO;
             
-        style = [[NSMutableParagraphStyle alloc] init];
+        _style = [[NSMutableParagraphStyle alloc] init];
         
         [self setRichText:YES];
         [self setEditable:NO];
@@ -82,14 +76,15 @@ static NSCursor *lr_cursor;
 
 - (void) dealloc
 {
-    [palette release];
+    self.palette = nil;
+    self.style = nil;
     [normalFont release];
     [boldFont release];
-    [style release];
     [word release];
     
-    if (mouseEventRequestId)
+    if (mouseEventRequestId) {
         [NSApp cancelRequestEvents:mouseEventRequestId];
+    }
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
@@ -103,8 +98,7 @@ static NSCursor *lr_cursor;
     // Setup the pasteboard
     NSPasteboard *pb = [NSPasteboard generalPasteboard];
 
-    NSArray *types = [NSArray arrayWithObjects:
-        NSStringPboardType, NSRTFPboardType, nil];
+    NSArray *types = [NSArray arrayWithObjects:NSStringPboardType, NSRTFPboardType, nil];
     [pb declareTypes:types owner:self];
 
     NSRange selection = [self selectedRange];
@@ -135,7 +129,7 @@ static NSCursor *lr_cursor;
                  longestEffectiveRange:&ret
                                inRange:range];
 
-        if (font == [mIRCString hiddenFont])
+        if (font == [MIRCString hiddenFont])
         {
             [rstripped deleteCharactersInRange:ret];
             range.length -= ret.length;
@@ -182,68 +176,65 @@ static NSCursor *lr_cursor;
     return [dropHandler processFileDrop:info forUser:nil];
 }
 
-- (void) setPalette:(ColorPalette *) new_palette
+- (void)setPalette:(ColorPalette *)object
 {
-    if ( palette == new_palette ) return;
-    [palette release];
-    palette = [new_palette retain];
+    [_palette autorelease];
+    _palette = [object retain];
     
-    [self setBackgroundColor:[palette getColor:XAColorBackground]];
+    [self setBackgroundColor:[_palette getColor:XAColorBackground]];
 }
 
-- (void) setup_margin
+- (void)adjustMargin
 {
-    CGFloat x = prefs.xa_text_manual_indent_chars * fontWidth;
-    NSMutableAttributedString *s = [self textStorage];
-    NSRange whole = NSMakeRange (0, [s length]);
+    CGFloat indent = prefs.xa_text_manual_indent_chars * fontWidth;
     
-    [style release];
-    style = [[NSMutableParagraphStyle alloc] init];
-    NSTextTab *tabStop = [[NSTextTab alloc] initWithType:NSRightTabStopType location:x];
+    NSMutableParagraphStyle *style = self.style = [[[NSMutableParagraphStyle alloc] init] autorelease];
+    NSTextTab *tabStop = [[[NSTextTab alloc] initWithType:NSRightTabStopType location:indent] autorelease];
     [style setTabStops:[NSArray arrayWithObject:tabStop]];
-    [tabStop release];
     
-    x += fontWidth;
+    indent += fontWidth;
 
-    lineRect.origin.x = floor (x + fontWidth * 2 / 3) - 1;
+    lineRect.origin.x = floor (indent + fontWidth * 2 / 3) - 1;
 
-    x += fontWidth;
+    indent += fontWidth;
 
-    [style setHeadIndent:x];
+    [style setHeadIndent:indent];
     for (NSInteger i = 0; i < 30; i ++)
     {
-        [style addTabStop:[[[NSTextTab alloc] 
-            initWithType:NSLeftTabStopType location:x] autorelease]];
-        x += fontWidth;
+        NSTextTab *tabStop = [[[NSTextTab alloc] initWithType:NSLeftTabStopType location:indent] autorelease];
+        [style addTabStop:tabStop];
+        indent += fontWidth;
     }
     
-    [s beginEditing];
-    [s removeAttribute:NSParagraphStyleAttributeName
+    NSMutableAttributedString *storage = [self textStorage];
+    NSRange whole = NSMakeRange (0, storage.length);
+    [storage beginEditing];
+    [storage removeAttribute:NSParagraphStyleAttributeName
         range:whole];
-    [s addAttribute:NSParagraphStyleAttributeName
+    [storage addAttribute:NSParagraphStyleAttributeName
         value:style range:whole];
-    [s endEditing];
+    [storage endEditing];
 
     [[self window] invalidateCursorRectsForView:self];
     [self setNeedsDisplay:true];
 }
 
-- (void) setFont:(NSFont *) new_font boldFont:(NSFont *) new_boldFont
+- (void)setFont:(NSFont *)new_font boldFont:(NSFont *)new_boldFont
 {
-    NSFont *old_font = normalFont;
-    NSFont *old_boldFont = boldFont;
+    NSFont *old_font = [normalFont autorelease];
+//    NSFont *old_boldFont = [boldFont autorelease];
     
     normalFont = [new_font retain];
     boldFont = [new_boldFont retain];
 
-    NSDictionary *tmp = 
-        [NSDictionary dictionaryWithObject:normalFont forKey:NSFontAttributeName];
-    NSSize sz = [@"-" sizeWithAttributes:tmp];
+    NSDictionary *attr = [NSDictionary dictionaryWithObject:normalFont forKey:NSFontAttributeName];
+    NSSize sz = [@"-" sizeWithAttributes:attr];
     
     fontWidth = sz.width;
     
-    if (![new_font isEqual:old_font])   // CL: setup_margin is VERY expensive, don't do it unless necessary
-        [self setup_margin];
+    if (![new_font isEqual:old_font]) {   // CL: setup_margin is VERY expensive, don't do it unless necessary
+        [self adjustMargin];
+    }
 
     // Apply changes
 #if 0
@@ -270,16 +261,21 @@ static NSCursor *lr_cursor;
         i += r.length;
     }
 #endif
-    [old_font release];
-    [old_boldFont release];
 }
 
-- (void) clear_lines_really
-{        
+- (void)clearLinesIfFlooded
+{
+    if (prefs.max_lines == 0)
+        return;
+
+    int threshhold = prefs.max_lines + prefs.max_lines * 0.1;
+    if (numberOfLines < threshhold)
+        return;
+    
     NSTextStorage *stg = [self textStorage];
-
+    
     [stg beginEditing];
-
+    
     while (numberOfLines > prefs.max_lines)
     {
         NSString *s = [stg mutableString];
@@ -293,21 +289,7 @@ static NSCursor *lr_cursor;
     [stg endEditing];
 }
 
-- (void) clear_lines
-{
-    if (prefs.max_lines == 0)
-        return;
-
-    int threshhold = prefs.max_lines + prefs.max_lines * 0.1;
-    if (numberOfLines < threshhold)
-        return;
-    
-    [self performSelector:@selector(clear_lines_really) withObject:nil];
-}
-
-- (void) print_line:(char *) text
-             length:(int) len
-              stamp:(time_t) stamp
+- (void)printLine:(char *)text length:(int)len stamp:(time_t)stamp
 {
     NSMutableAttributedString *stg = [self textStorage];    
 
@@ -344,28 +326,28 @@ static NSCursor *lr_cursor;
         tmp ++;
     }
 
-    mIRCString *pre_str = [mIRCString stringWithUTF8String:buff
+    MIRCString *pre_str = [MIRCString stringWithUTF8String:buff
                                                     length:prepend - buff
-                                                   palette:palette
+                                                   palette:self.palette
                                                       font:normalFont
                                                   boldFont:boldFont];
 
-    mIRCString *msgString = [mIRCString stringWithUTF8String:text
+    MIRCString *msgString = [MIRCString stringWithUTF8String:text
                                                       length:len
-                                                     palette:palette
+                                                     palette:self.palette
                                                         font:normalFont
                                                     boldFont:boldFont];
     [pre_str appendAttributedString:msgString];
-    [pre_str appendAttributedString:newline];
+    [pre_str appendAttributedString:XAChatTextViewNewLine];
 
     [pre_str addAttribute:NSParagraphStyleAttributeName
-                    value:style range:NSMakeRange (0, [pre_str length])];
+                    value:self.style range:NSMakeRange (0, [pre_str length])];
 
     [stg appendAttributedString:pre_str];
     
     numberOfLines ++;
     
-    [self clear_lines];
+    [self clearLinesIfFlooded];
 
     [stg endEditing];
 }
@@ -376,10 +358,9 @@ static NSCursor *lr_cursor;
     pendingEditing = NO;
 }
 
-- (void) print_line:(char *) text
-             length:(int) len
+- (void) printLine:(char *)text length:(int)len
 {
-    [self print_line:text length:len stamp:time(NULL)];
+    [self printLine:text length:len stamp:time(NULL)];
 }
 
 - (void) printText:(NSString *)const_text
@@ -391,8 +372,7 @@ static NSCursor *lr_cursor;
 {
     NSMutableAttributedString *stg = [self textStorage];    
     // TBD: Yuck!! Cast away const.  fe-gtk does this so it must be ok..
-    const char *const_text = [aText UTF8String];
-    char *text = (char *)const_text;
+    char *text = (char *)[aText UTF8String];
 
     char *last_text = text;
     int len = 0;
@@ -411,7 +391,7 @@ static NSCursor *lr_cursor;
         switch (*text)
         {
             case '\n':
-                [self print_line:last_text length:len];
+                [self printLine:last_text length:len];
                 text++;
                 last_text = text;
                 len = 0;
@@ -419,26 +399,27 @@ static NSCursor *lr_cursor;
             case '\007':                        
                 *text = ' ';
                 if (!prefs.filterbeep) 
-                    NSBeep ();
+                    NSBeep();
             default:
                 text++;
                 len++;
         } 
     }
 
-    if (len)
-        [self print_line:last_text length:len];
+    if (len) {
+        [self printLine:last_text length:len];
+    }
 }
 
-- (void) clearText
+- (void)clearText
 {
     numberOfLines = 0;
     [self setString:@""];
 }
 
-- (void) layoutManager:(NSLayoutManager *) aLayoutManager 
-    didCompleteLayoutForTextContainer:(NSTextContainer *) aTextContainer
-    atEnd:(BOOL) flag
+- (void)layoutManager:(NSLayoutManager *)aLayoutManager 
+    didCompleteLayoutForTextContainer:(NSTextContainer *)aTextContainer
+    atEnd:(BOOL)flag
 {
     SGLog(FALSE, @"didCompleteLayoutForTextContainer %d\n", atBottom);
     if (atBottom)
@@ -454,7 +435,7 @@ static NSCursor *lr_cursor;
     }
 }
 
-- (void) updateAtBottom:(NSNotification *) notif
+- (void)updateAtBottom:(NSNotification *)notification
 {
     NSClipView *clipView = (NSClipView *)[self superview];
     NSRect documentRect = [clipView documentRect];
@@ -468,18 +449,19 @@ static NSCursor *lr_cursor;
     SGLog(FALSE, @"Update at bottom: dmax=%f, cmax=%f, at_bottom=%d\n", dmax, cmax, atBottom);
 }
 
-- (void) viewDidMoveToWindow
+- (void)viewDidMoveToWindow
 {
-    if (mouseEventRequestId)
+    if (mouseEventRequestId) {
         [NSApp cancelRequestEvents:mouseEventRequestId];
+    }
 
     [[self window] setAcceptsMouseMovedEvents:true];
 
     mouseEventRequestId = [NSApp requestEvents:NSMouseMoved
-                  forWindow:[self window]
-                                forView:nil
-                               selector:@selector (myMouseMoved:)
-                                 object:self];
+                                     forWindow:[self window]
+                                       forView:nil
+                                      selector:@selector (myMouseMoved:)
+                                        object:self];
 
     // Docs say that characterIndexForPoint will return -1 for a point that is out of range.
     // Practice says otherwise.  
@@ -488,14 +470,14 @@ static NSCursor *lr_cursor;
     //illegal_index = [self characterIndexForPoint:NSMakePoint (-100,-100)];
 }
 
-- (void) clear_hot_word
+- (void)clear_hot_word
 {
     if (word)
     {
         NSTextStorage *stg = [self textStorage];
-        if (NSMaxRange(wordRange) <= [stg length])
-            [stg removeAttribute:NSUnderlineStyleAttributeName 
-                   range:wordRange];
+        if (NSMaxRange(wordRange) <= [stg length]) {
+            [stg removeAttribute:NSUnderlineStyleAttributeName range:wordRange];
+        }
         [word release];
         word = nil;
         wordRange = NSMakeRange(NSNotFound, 0);
@@ -504,23 +486,20 @@ static NSCursor *lr_cursor;
 
 - (void) resetCursorRects
 {
-    NSRect b = [self visibleRect];
-    
-    lineRect.origin.y = b.origin.y;
-    lineRect.size.width = 3;
-    lineRect.size.height = b.size.height;
+    NSRect rect = self.visibleRect;
+    lineRect = NSMakeRect(lineRect.origin.x, rect.origin.y, 3, rect.size.height);
 
-    [self addCursorRect:lineRect cursor:lr_cursor];
+    [self addCursorRect:lineRect cursor:XAChatTextViewSizableCursor];
 }
 
 /* CL: use our real session if possible, otherwise fall back on current_sess */
 - (session *)currentSession
 {
-    ChatViewController *controller = (ChatViewController *)[self delegate];
+    id controller = [self delegate];
     if (![controller isKindOfClass:[ChatViewController class]]) {
         controller = nil;
     }
-    return (controller ? [controller session] : current_sess);
+    return (controller ? [(ChatViewController *)controller session] : current_sess);
 }
 
 - (void) do_link
@@ -552,6 +531,7 @@ static NSCursor *lr_cursor;
     [self clear_hot_word];
 }
 
+// nick indent
 - (void) mouseDown:(NSEvent *) theEvent
 {
     NSPoint point = [theEvent locationInWindow];
@@ -560,8 +540,9 @@ static NSCursor *lr_cursor;
     if (!NSPointInRect (where, lineRect))
     {
         [super mouseDown:theEvent];    // Superclass will block until mouseUp
-        if (word && [self selectedRange].length == 0 && [self currentSession])
+        if (word && [self selectedRange].length == 0 && [self currentSession]) {
             [self do_link];
+        }
         return;
     }
 
@@ -569,8 +550,7 @@ static NSCursor *lr_cursor;
     
     for (;;)
     {
-        NSEvent *nextEvent = [[self window] nextEventMatchingMask:NSLeftMouseUpMask |
-                                                                 NSLeftMouseDraggedMask];
+        NSEvent *nextEvent = [[self window] nextEventMatchingMask:NSLeftMouseUpMask|NSLeftMouseDraggedMask];
 
         if ([nextEvent type] == NSLeftMouseUp)
             break;
@@ -583,7 +563,7 @@ static NSCursor *lr_cursor;
         {
             margin = new_margin;
             prefs.xa_text_manual_indent_chars = margin;
-            [self setup_margin];
+            [self adjustMargin];
         }
     }
 }
@@ -794,7 +774,7 @@ static NSCursor *lr_cursor;
         return;
     }
     
-    [[palette getColor:XAColorForeground] set];
+    [[self.palette getColor:XAColorForeground] set];
     [[NSGraphicsContext currentContext] setShouldAntialias:false];
     NSBezierPath *p = [NSBezierPath bezierPath];
     [p setLineWidth:1];

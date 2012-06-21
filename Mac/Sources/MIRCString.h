@@ -17,7 +17,7 @@
 
 @class ColorPalette;
 
-@interface mIRCString : NSMutableAttributedString
+@interface MIRCString : NSMutableAttributedString
 
 + (id) stringWithUTF8String:(const char *) string
                      length:(NSInteger) length
