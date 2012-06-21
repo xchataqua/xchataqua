@@ -312,10 +312,11 @@ extern struct EventInfo textEventInfo[];
                          [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"General", @"xchat", @"") pane:7],
                          [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"Logging", @"xchat", @"") pane:8],
                          [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"Events/Sounds", @"xchataqua", @"") pane:9],
+                         [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"Advanced", @"xchat", @"") pane:10],
                          nil];
     NSArray  *network = [NSArray arrayWithObjects:NSLocalizedStringFromTable(@"Network", @"xchat", @""),
-                         [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"Network setup", @"xchat", @"") pane:10],
-                         [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"File transfers", @"xchat", @"") pane:11],
+                         [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"Network setup", @"xchat", @"") pane:11],
+                         [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"File transfers", @"xchat", @"") pane:12],
                          nil];
     categories = [[NSArray alloc] initWithObjects:interface, chatting, network, nil];
     
