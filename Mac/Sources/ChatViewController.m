@@ -659,15 +659,17 @@ static NSImage *emptyBulletImage;
     
     if (prefs.style_inputbox)
     {
-        [inputTextField setFont:[[AquaChat sharedAquaChat] font]];
+        inputTextField.font = [[AquaChat sharedAquaChat] font];
         [inputTextField sizeToFit];
+        
         // fg, bg and bezel
-        [inputTextField setTextColor:[p getColor:XAColorForeground]];
-        [inputTextField setBackgroundColor:[p getColor:XAColorBackground]];
-        [inputTextField setBezeled:NO];
-        [topicTextField setTextColor:[p getColor:XAColorForeground]];
-        [topicTextField setBackgroundColor:[p getColor:XAColorBackground]];
-        [topicTextField setBezeled:YES];
+        inputTextField.textColor = [p getColor:XAColorForeground];
+        inputTextField.backgroundColor = [p getColor:XAColorBackground];
+        topicTextField.textColor = [p getColor:XAColorForeground];
+        topicTextField.backgroundColor = [p getColor:XAColorBackground];
+        
+        nickTextField.textColor = [p getColor:XAColorForeground];
+        self.view.window.backgroundColor = [p getColor:XAColorBackground];
     } else {
         // How to restore this?
     }
