@@ -19,7 +19,7 @@
 #include "userlist.h"
 #include "server.h"
 
-#include "XACommon.h"
+#include "fe-aqua_common.h"
 
 void change_channel_flag (struct session *sess, char flag, int enabled)
 {

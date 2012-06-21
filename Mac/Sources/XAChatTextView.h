@@ -33,11 +33,10 @@
 <NSLayoutManagerDelegate>
 #endif
 {
-    ColorPalette    *palette;
-    NSFont  *normalFont;
-    NSFont  *boldFont;
-    NSMutableParagraphStyle *style;
-    NSRect      lineRect;
+    ColorPalette *_palette;
+    NSFont *normalFont;
+    NSFont *boldFont;
+    NSRect lineRect;
     NSRange     wordRange;
     int         wordType;
     NSString    *word;
@@ -49,12 +48,13 @@
     BOOL        pendingEditing;
 }
 
-@property(nonatomic, assign, setter=setPalette:) ColorPalette *palette;
+@property(nonatomic, retain) ColorPalette *palette;
+@property(nonatomic, retain ) NSMutableParagraphStyle *style;
 
 - (void) printText:(NSString *)text;
 - (void) printText:(NSString *)text stamp:(time_t)stamp;
 - (void) clearText;
-- (void) setFont:(NSFont *)font boldFont:(NSFont *) boldFont;
+- (void) setFont:(NSFont *)font boldFont:(NSFont *)boldFont;
 - (void) setDropHandler:(id)dropHandler;
 - (void) updateAtBottom:(NSNotification *) notif;
 

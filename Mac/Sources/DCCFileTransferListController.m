@@ -8,7 +8,7 @@
 
 #include "dcc.h"
 
-#import "XACommon.h"
+#import "fe-aqua_common.h"
 #import "DCCFileTransferListController.h"
 
 @implementation DCCFileItem
