@@ -46,7 +46,7 @@ for po_strings in "$PO_STRINGS_DIR"/*.strings; do
 	
 	for strings in "$BASE_XIB_STRINGS_DIR"/*.xib.strings; do
 		newstrings="$XIB_STRINGS_DIR/$locale/"`basename "$strings"`
-		if [ "$newstrings" -nt "$strings" ] && [ "$newstrings" -nt "$xibstring" ] && [ "$newstrings" -nt "$PO_STRINGS_DIR/$locale.strings" ]; then
+		if [ "$newstrings" -nt "$strings" ] && [ "$newstrings" -nt "$xibstrings" ] && [ "$newstrings" -nt "$PO_STRINGS_DIR/$locale.strings" ]; then
 			continue
 		fi
 		cmd="sed -f '$sedtemp' '$strings'"
