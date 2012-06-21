@@ -191,6 +191,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     NSMutableParagraphStyle *style = self.style = [[[NSMutableParagraphStyle alloc] init] autorelease];
     NSTextTab *tabStop = [[[NSTextTab alloc] initWithType:NSRightTabStopType location:indent] autorelease];
     [style setTabStops:[NSArray arrayWithObject:tabStop]];
+    [style setLineHeightMultiple:1.34];
     
     indent += fontWidth;
 
