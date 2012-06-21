@@ -1,15 +1,15 @@
 //
-//  XAUserList.m
+//  UserListTableView.m
 //  XChatAqua
 //
 //  Created by Jeong YunWon on 12. 6. 14..
 //  Copyright (c) 2012 youknowone.org All rights reserved.
 //
 
-#import "XAUserList.h"
+#import "UserListTableView.h"
 #import "ChatViewController.h"
 
-@implementation XAUserList
+@implementation UserListTableView
 
 - (void)rightMouseDown:(NSEvent *)theEvent
 {
@@ -32,3 +32,29 @@
 
 @end
 
+#pragma mark -
+
+@implementation UserlistButton
+@synthesize popup;
+
+- (id) initWithPopup:(struct popup *) pop
+{
+    if ((self = [super init]) != nil) {
+        self->popup = pop;
+        
+        [self setButtonType:NSMomentaryPushButton];
+        [self setTitle:[NSString stringWithUTF8String:popup->name]];
+        [self setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
+        [[self cell] setControlSize:NSSmallControlSize];
+        [self setImagePosition:NSNoImage];
+        [self setBezelStyle:NSTexturedSquareBezelStyle];
+        [self sizeToFit];
+    }
+    return self;
+}
+
++ (UserlistButton *) buttonWithPopup:(struct popup *)popup {
+    return [[[self alloc] initWithPopup:popup] autorelease];
+}
+
+@end

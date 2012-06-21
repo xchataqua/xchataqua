@@ -20,6 +20,7 @@
 #import "TabOrWindowView.h"
 
 @class ChatSplitView;
+@class UserListTableView;
 
 @interface ChatViewController : NSViewController
 #if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
@@ -29,7 +30,7 @@
     IBOutlet XAChatTextView     *chatTextView;
     IBOutlet NSTextField        *inputTextField;
     IBOutlet NSTextField        *nickTextField;
-    IBOutlet NSTableView        *userlistTableView;
+    IBOutlet UserListTableView *userlistTableView;
     IBOutlet NSScrollView       *chatScrollView;
     
     NSButton *tButton, *nButton, *sButton, *iButton, *pButton, *mButton, 
@@ -73,7 +74,7 @@
 @property (nonatomic, retain)   NSTextField *limitTextField, *keyTextField;
 
 - (IBAction) doMircColor:(id)sender;
-- (IBAction) doConferenceMode:(id)sender;
+- (IBAction)toggleConferenceMode:(id)sender;
 
 - (id) initWithSession:(struct session *)sess;
 - (void) insertText:(NSString *)text;

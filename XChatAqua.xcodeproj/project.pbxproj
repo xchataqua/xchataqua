@@ -548,8 +548,8 @@
 		38763F2613DD460E008C40DB /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 38763F2513DD460E008C40DB /* libperl.dylib */; };
 		387676941589BC41007366B7 /* XATabWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 387676931589BC41007366B7 /* XATabWindow.m */; };
 		387676951589BC41007366B7 /* XATabWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 387676931589BC41007366B7 /* XATabWindow.m */; };
-		387676961589BC48007366B7 /* XAUserList.m in Sources */ = {isa = PBXBuildFile; fileRef = 387676911589B61A007366B7 /* XAUserList.m */; };
-		387676971589BC49007366B7 /* XAUserList.m in Sources */ = {isa = PBXBuildFile; fileRef = 387676911589B61A007366B7 /* XAUserList.m */; };
+		387676961589BC48007366B7 /* UserListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 387676911589B61A007366B7 /* UserListTableView.m */; };
+		387676971589BC49007366B7 /* UserListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 387676911589B61A007366B7 /* UserListTableView.m */; };
 		387676991589CA0F007366B7 /* ChatWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 387676981589CA0F007366B7 /* ChatWindow.xib */; };
 		3876769A1589CA0F007366B7 /* ChatWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 387676981589CA0F007366B7 /* ChatWindow.xib */; };
 		3882282015930240000AB63D /* theme in Resources */ = {isa = PBXBuildFile; fileRef = 3882281F15930240000AB63D /* theme */; };
@@ -1516,8 +1516,8 @@
 		38763F2213DD40D6008C40DB /* perl-lion.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-lion.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		38763F2313DD45D3008C40DB /* perl-lion-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "perl-lion-Info.plist"; sourceTree = "<group>"; };
 		38763F2513DD460E008C40DB /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = "build/XChatAqua.build/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib"; sourceTree = SOURCE_ROOT; };
-		387676901589B61A007366B7 /* XAUserList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XAUserList.h; sourceTree = "<group>"; };
-		387676911589B61A007366B7 /* XAUserList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XAUserList.m; sourceTree = "<group>"; };
+		387676901589B61A007366B7 /* UserListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserListTableView.h; sourceTree = "<group>"; };
+		387676911589B61A007366B7 /* UserListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserListTableView.m; sourceTree = "<group>"; };
 		387676921589BC41007366B7 /* XATabWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XATabWindow.h; sourceTree = "<group>"; };
 		387676931589BC41007366B7 /* XATabWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XATabWindow.m; sourceTree = "<group>"; };
 		387676981589CA0F007366B7 /* ChatWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatWindow.xib; sourceTree = "<group>"; };
@@ -3502,8 +3502,8 @@
 				0F8EA6CE0CFB347B001AE9AE /* XATabView.m */,
 				387676921589BC41007366B7 /* XATabWindow.h */,
 				387676931589BC41007366B7 /* XATabWindow.m */,
-				387676901589B61A007366B7 /* XAUserList.h */,
-				387676911589B61A007366B7 /* XAUserList.m */,
+				387676901589B61A007366B7 /* UserListTableView.h */,
+				387676911589B61A007366B7 /* UserListTableView.m */,
 				0F8EA6D80CFB347B001AE9AE /* TabOrWindowView.h */,
 				0F8EA6D90CFB347B001AE9AE /* TabOrWindowView.m */,
 			);
@@ -4752,7 +4752,7 @@
 				3876253913C7024F00850913 /* SGWrapView.m in Sources */,
 				3876253A13C7024F00850913 /* SGFileUtility.m in Sources */,
 				387676951589BC41007366B7 /* XATabWindow.m in Sources */,
-				387676961589BC48007366B7 /* XAUserList.m in Sources */,
+				387676961589BC48007366B7 /* UserListTableView.m in Sources */,
 				38E5737F158EEF38007943DA /* xchatext.m in Sources */,
 				38E573E2158F1A76007943DA /* AquaPlugins.m in Sources */,
 				3894C1B31590D93C00BCD762 /* NSPanelAdditions.m in Sources */,
@@ -4842,7 +4842,7 @@
 				388BDCD413C6A0CB00B95036 /* SGWrapView.m in Sources */,
 				380B9D1A13C6E5D70029CE25 /* SGFileUtility.m in Sources */,
 				387676941589BC41007366B7 /* XATabWindow.m in Sources */,
-				387676971589BC49007366B7 /* XAUserList.m in Sources */,
+				387676971589BC49007366B7 /* UserListTableView.m in Sources */,
 				38E57380158EEF39007943DA /* xchatext.m in Sources */,
 				38E573E1158F1A76007943DA /* AquaPlugins.m in Sources */,
 				3894C1B41590D93D00BCD762 /* NSPanelAdditions.m in Sources */,
