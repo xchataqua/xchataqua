@@ -21,6 +21,7 @@
 #import "MIRCString.h"
 #import "MenuMaker.h"
 #import "UtilityWindow.h"
+#import "UserListTableView.h"
 
 #include "outbound.h"
 #include "util.h"
@@ -30,15 +31,14 @@
 
 #pragma mark Objects for tab auto-complete
 
-@interface OneCompletion : NSObject
-{
-    NSString *stringValue;
+@interface TabCompletionItem : NSObject {
+    NSString *_stringValue;
 }
 
 @property (nonatomic, retain) NSString* stringValue;
 
-+ (OneCompletion *) completionWithValue:(NSString *)value;
-- (id) initWithValue:(NSString *)value;
++ (id)completionWithValue:(NSString *)value;
+- (id)initWithValue:(NSString *)value;
 
 @end
 
@@ -48,11 +48,11 @@
  * Used for commands and channels; nicks have a specific subclass.
  *
  */
-@implementation OneCompletion
-@synthesize stringValue; // NSString where we stash the actual text value.
+@implementation TabCompletionItem
+@synthesize stringValue=_stringValue; // NSString where we stash the actual text value.
 
 /*
- * Designated initializer for OneCompletion objects.
+ * Designated initializer for TabCompletionItem objects.
  *
  * Takes a const char* from C land and stashes it in self.value as NSString.
  * ???: Is const char* really directly interchangeable with NSString?
@@ -60,37 +60,42 @@
  */
 + (id) completionWithValue:(NSString *) val
 {
-    return [[[OneCompletion alloc] initWithValue:val] autorelease];
+    return [[[TabCompletionItem alloc] initWithValue:val] autorelease];
 }
 
 /*
- * Actual initializer for OneCompletion objects.
+ * Actual initializer for TabCompletionItem objects.
  *
  * Takes the const char*, calls super's init, and stashes the NSString in .value.
  *
  */
-- (id) initWithValue:(NSString *) val
-{
-    if ((self = [super init]) != nil) {
-        self.stringValue = val;
+- (id)initWithValue:(NSString *)value {
+    self = [super init];
+    if (self != nil) {
+        self.stringValue = value;
     }
     return self;
 }
 
+- (void)dealloc {
+    self.stringValue = nil;
+    [super dealloc];
+}
+
 
 /*
- * Selector called by NSarray when sorting OneCompletion objects.
+ * Selector called by NSarray when sorting TabCompletionItem objects.
  *
  * Essentially just compares NSString objects alphabetically (case insensitive).
  *
- * Needs to specify its argument as id because OneNickCompletion's compare:
- * calls super's (our) compare: with a OneNickCompletion argument in some cases;
- * which in turn means we have to cast to OneCompletion.
+ * Needs to specify its argument as id because NickCompletionItem's compare:
+ * calls super's (our) compare: with a NickCompletionItem argument in some cases;
+ * which in turn means we have to cast to TabCompletionItem.
  *
  */
 - (NSComparisonResult) compare:(id) aCompletion
 {
-    OneCompletion *other = (OneCompletion *) aCompletion;
+    TabCompletionItem *other = (TabCompletionItem *) aCompletion;
     
     // TODO: rfc compare
     // For me it's not important (bug is around [ { and others symbols which in
@@ -104,44 +109,44 @@
  * Serialize ourself as text.
  *
  * -description: is what gets called when you ask Cocoa to treat an object as a
- * string to serialize itself as text. For OneCompletion objects, that's just
+ * string to serialize itself as text. For TabCompletionItem objects, that's just
  * the nicks that match so we dump out the completion's stringValue.
  */
 - (NSString *) description
 {
-    return stringValue;
+    return self.stringValue;
 }
 
 @end
 
 #pragma mark -
 
-@interface OneNickCompletion : OneCompletion
+@interface NickCompletionItem : TabCompletionItem
 {
     time_t lasttalk;
 }
 
-+ (OneNickCompletion *) nickWithNick:(NSString *)nick lasttalk:(time_t)timestamp;
-- (id) initWithNick:(NSString *)nick lasttalk:(time_t)timestamp;
++ (id)nickWithNick:(NSString *)nick lasttalk:(time_t)timestamp;
+- (id)initWithNick:(NSString *)nick lasttalk:(time_t)timestamp;
 
 @property (nonatomic, assign) time_t lasttalk;
 
 @end
 
 /*
- * Subclass of OneCompletion specifically for nicks.
+ * Subclass of TabCompletionItem specifically for nicks.
  *
  */
-@implementation OneNickCompletion
+@implementation NickCompletionItem
 
 @synthesize lasttalk;
 
-+ (id) nickWithNick:(NSString *)nick lasttalk:(time_t)lt
++ (id)nickWithNick:(NSString *)nick lasttalk:(time_t)lt
 {
-    return [[[OneNickCompletion alloc] initWithNick:nick lasttalk:lt] autorelease];
+    return [[[self alloc] initWithNick:nick lasttalk:lt] autorelease];
 }
 
-- (id) initWithNick:(NSString *)nick lasttalk:(time_t)lt
+- (id)initWithNick:(NSString *)nick lasttalk:(time_t)lt
 {
     if ((self = [super initWithValue:nick]) != nil) {
         self.lasttalk = lt;
@@ -151,7 +156,7 @@
 
 - (NSComparisonResult) compare:(id) aNick
 {
-    OneNickCompletion *other = (OneNickCompletion *) aNick;
+    NickCompletionItem *other = (NickCompletionItem *) aNick;
     
     if (prefs.completion_sort == 1) {
         if (other.lasttalk == self.lasttalk) {
@@ -290,45 +295,6 @@
 
 #pragma mark -
 
-@interface UserlistButton : NSButton
-{
-    struct popup *popup;
-}
-
-@property (nonatomic, readonly) struct popup *popup;
-
-- (id) initWithPopup:(struct popup *)popup;
-+ (UserlistButton *)buttonWithPopup:(struct popup *)popup;
-
-@end
-
-@implementation UserlistButton
-@synthesize popup;
-
-- (id) initWithPopup:(struct popup *) pop
-{
-    if ((self = [super init]) != nil) {
-        self->popup = pop;
-        
-        [self setButtonType:NSMomentaryPushButton];
-        [self setTitle:[NSString stringWithUTF8String:popup->name]];
-        [self setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
-        [[self cell] setControlSize:NSSmallControlSize];
-        [self setImagePosition:NSNoImage];
-        [self setBezelStyle:NSTexturedSquareBezelStyle];
-        [self sizeToFit];
-    }
-    return self;
-}
-
-+ (UserlistButton *) buttonWithPopup:(struct popup *)popup {
-    return [[[self alloc] initWithPopup:popup] autorelease];
-}
-
-@end
-
-#pragma mark -
-
 @interface ChannelUser : NSObject
 {
 @public
@@ -377,18 +343,18 @@
     NSString *nickString = [NSString stringWithUTF8String:user->nick];
     NSString *hostString = user->hostname ? [NSString stringWithUTF8String:user->hostname] : @"";
     ColorPalette *palette = [[AquaChat sharedAquaChat] palette];
-    NSDictionary *attr = nil;
     
-    if (user->away)
-    {
-        attr = [NSDictionary dictionaryWithObject:[palette getColor:XAColorAwayUser] forKey:NSForegroundColorAttributeName];
+    NSColor *color;
+    if (user->away) {
+        color = [palette getColor:XAColorAwayUser];
     } else {
         if (prefs.style_namelistgad) {
-            attr = [NSDictionary dictionaryWithObject:[palette getColor:XAColorForeground] forKey:NSForegroundColorAttributeName];
+            color = [palette getColor:XAColorForeground];
         } else {
-            attr = [NSDictionary dictionaryWithObject:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
+            color = [NSColor blackColor];
         }
     }
+    NSDictionary *attr = [NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
     
     nick = [[NSAttributedString alloc] initWithString:nickString attributes:attr];
     host = [[NSAttributedString alloc] initWithString:hostString attributes:attr];
@@ -454,13 +420,15 @@ static NSImage *emptyBulletImage;
 @synthesize tButton, nButton, sButton, iButton, pButton, mButton, bButton, lButton, kButton, CButton, NButton, uButton;
 @synthesize limitTextField, keyTextField;
 
-+ (void) initialize {
-    redBulletImage = [[NSImage imageNamed:@"red.tiff"] retain];
-    purpleBulletImage = [[NSImage imageNamed:@"purple.tiff"] retain];
-    greenBulletImage = [[NSImage imageNamed:@"green.tiff"] retain];
-    blueBulletImage = [[NSImage imageNamed:@"blue.tiff"] retain];
-    yellowBulletImage = [[NSImage imageNamed:@"yellow.tiff"] retain];
-    emptyBulletImage = [[NSImage alloc] initWithSize:NSMakeSize(1.0f,1.0f)];    
++ (void)initialize {
+    if (self == [ChatViewController class]) {
+        redBulletImage = [[NSImage imageNamed:@"red.tiff"] retain];
+        purpleBulletImage = [[NSImage imageNamed:@"purple.tiff"] retain];
+        greenBulletImage = [[NSImage imageNamed:@"green.tiff"] retain];
+        blueBulletImage = [[NSImage imageNamed:@"blue.tiff"] retain];
+        yellowBulletImage = [[NSImage imageNamed:@"yellow.tiff"] retain];
+        emptyBulletImage = [[NSImage alloc] initWithSize:NSMakeSize(1.0f,1.0f)];
+    }
 }
 
 - (id) initWithSession:(struct session *)aSession
@@ -711,8 +679,10 @@ static NSImage *emptyBulletImage;
         [userlistStatusTextField setBezeled:NO];
         // bg only
         [userlistTableView setBackgroundColor:[p getColor:XAColorBackground]];
-
-        // I really need to find a way to trigger a redraw of SGOutlineView
+        
+        for (ChannelUser *user in self->users) {
+            [self rehashUserAndUpdateLayout:user];
+        }
     } else {
         // How to restore this?
     }
@@ -740,15 +710,16 @@ static NSImage *emptyBulletImage;
     }
     [self performSelector:setupModeButtons];
     
-    if (sess->type != SESS_CHANNEL || prefs.hideuserlist)
+    if (sess->type != SESS_CHANNEL || prefs.hideuserlist) {
         [bodyBoxView setSplitPosition:0];
-    else if (prefs.xa_paned_pos > 0)
+    } else if (prefs.xa_paned_pos > 0) {
         [bodyBoxView setSplitPosition:prefs.xa_paned_pos];
-    else
+    } else {
         [bodyBoxView setSplitPosition:150];
+    }
 }
 
-- (void) doConferenceMode:(id)sender
+- (void)toggleConferenceMode:(id)sender
 {
     sess->text_hidejoinpart = !sess->text_hidejoinpart;
     [sender setState:sess->text_hidejoinpart ? NSOnState : NSOffState];
@@ -1939,7 +1910,7 @@ static NSImage *emptyBulletImage;
     
     NSString *shortestPrefix = [[matches objectAtIndex:0] stringValue];
     
-    for (OneCompletion *thisItem in matches) {
+    for (TabCompletionItem *thisItem in matches) {
         NSString *commonPrefix = [thisItem.stringValue commonPrefixWithString:shortestPrefix options:NSCaseInsensitiveSearch];
         if ([commonPrefix length] < [shortestPrefix length]) {
             shortestPrefix = commonPrefix;
@@ -1961,7 +1932,7 @@ static NSImage *emptyBulletImage;
         struct popup *pop = (struct popup *) list->data;
         int this_len = strlen (pop->name);
         if (len <= this_len && strncasecmp (utf, pop->name, len) == 0)
-            [matchArray addObject:[OneCompletion completionWithValue:[NSString stringWithUTF8String:pop->name]]];
+            [matchArray addObject:[TabCompletionItem completionWithValue:[NSString stringWithUTF8String:pop->name]]];
     }
     
     for (int i = 0; xc_cmds[i].name; i ++)
@@ -1969,7 +1940,7 @@ static NSImage *emptyBulletImage;
         char *cmd = xc_cmds[i].name;
         int this_len = strlen (cmd);
         if (len <= this_len && strncasecmp (utf, cmd, len) == 0)
-            [matchArray addObject:[OneCompletion completionWithValue:[NSString stringWithUTF8String:cmd]]];
+            [matchArray addObject:[TabCompletionItem completionWithValue:[NSString stringWithUTF8String:cmd]]];
     }
     
     return [matchArray allObjects];
@@ -1989,7 +1960,7 @@ static NSImage *emptyBulletImage;
             [matchArray release];
             return nil;
         }
-        [matchArray addObject:[OneCompletion completionWithValue:[NSString stringWithUTF8String:sess->channel]]];
+        [matchArray addObject:[TabCompletionItem completionWithValue:[NSString stringWithUTF8String:sess->channel]]];
     }
     else
     {
@@ -1997,7 +1968,7 @@ static NSImage *emptyBulletImage;
             struct User *user = u->user;
             int this_len = strlen (user->nick);
             if (len <= this_len && rfc_ncasecmp ((char *) utf, user->nick, len) == 0)
-                [matchArray addObject:[OneNickCompletion nickWithNick:[NSString stringWithUTF8String:user->nick] lasttalk:user->lasttalk]];
+                [matchArray addObject:[NickCompletionItem nickWithNick:[NSString stringWithUTF8String:user->nick] lasttalk:user->lasttalk]];
         }
     }
     
@@ -2019,7 +1990,7 @@ static NSImage *emptyBulletImage;
         {
             int this_len = strlen (tmp_sess->channel);
             if (len <= this_len && strncasecmp (utf, tmp_sess->channel, len) == 0)
-                [matchArray addObject:[OneCompletion completionWithValue:[NSString stringWithUTF8String:tmp_sess->channel]]];
+                [matchArray addObject:[TabCompletionItem completionWithValue:[NSString stringWithUTF8String:tmp_sess->channel]]];
         }
     }
     
