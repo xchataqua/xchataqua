@@ -42,6 +42,8 @@
 @property(nonatomic, retain) id chatView;
 @property(nonatomic, readonly) SGTabViewItem *selectedTabViewItem;
 
+- (void)preferencesChanged;
+
 // NSTabView emulation methods
 - (void) addTabViewItem:(SGTabViewItem *) tabViewItem;
 - (void) removeTabViewItem:(SGTabViewItem *) tabViewItem;
@@ -76,9 +78,9 @@
 
 @interface SGTabViewItem : NSObject
 {
-    NSView      *_view;
-    NSColor     *_titleColor;
-    id          _initialFirstResponder;
+    NSView *_view;
+    NSInteger _titleColorIndex;
+    id _initialFirstResponder;
 @public    // TODO - fix this
     SGTabViewButton *button;
     NSString    *label;
@@ -87,7 +89,8 @@
     IBOutlet NSMenu *ctxMenu;
 }
 
-@property(nonatomic, retain) NSColor *titleColor;
+@property(nonatomic, assign) NSInteger titleColorIndex;
+@property(nonatomic, readonly) NSColor *titleColor;
 @property(nonatomic, retain) NSString *label;
 @property(nonatomic, retain) NSView *view;
 @property(nonatomic, readonly) SGTabView *tabView;

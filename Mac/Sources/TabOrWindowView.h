@@ -51,10 +51,10 @@
 
 - (void) makeKeyAndOrderFront:(id)sender;
 
-- (void) close;
-- (void) setTabTitleColor:(NSColor *) color;
-- (BOOL) isFrontTab;
+- (void)close;
+- (void)setTabTitleColorIndex:(NSInteger)index;
+- (BOOL)isFrontTab;
 
-- (void) setInitialFirstResponder:(NSView *) responder;
+- (void)setInitialFirstResponder:(NSView *) responder;
 
 @end

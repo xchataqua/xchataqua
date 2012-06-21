@@ -913,11 +913,6 @@ static NSImage *emptyBulletImage;
             [self.chatView becomeWindowAndShow:true];
     }
     
-    if (prefs.tab_layout == 2  && prefs.style_inputbox) {
-        ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-        [self.chatView setTabTitleColor:[p getColor:XAColorForeground]];
-    }
-    
     //[[inputTextField window] makeFirstResponder:inputTextField];
 }
 
@@ -1031,8 +1026,7 @@ static NSImage *emptyBulletImage;
 {
     NSString *s;
     
-    if (sess->waitchannel[0])
-    {
+    if (sess->waitchannel[0]) {
         NSMutableString *s2 = [NSMutableString stringWithUTF8String:sess->waitchannel];
         if (prefs.truncchans > 2 && [s2 length] > prefs.truncchans)
         {
@@ -1041,15 +1035,13 @@ static NSImage *emptyBulletImage;
             [s2 replaceCharactersInRange:NSMakeRange(start, len) withString:@".."];
         }
         s = [NSString stringWithFormat:@"(%@)", s2];
-    }
-    else
+    } else {
         s = NSLocalizedStringFromTable(@"<none>", @"xchat", @"");
+    }
     
     [self.chatView setTabTitle:s];
-    if (prefs.tab_layout == 2 && prefs.style_inputbox) {
-        ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-        [self.chatView setTabTitleColor:[p getColor:XAColorForeground]];
-    }
+    [self.chatView setTabTitleColorIndex:XAColorForeground];
+
     [myOpOrVoiceIconImageView setHidden:YES];
     [limitTextField setStringValue:@""];
     
@@ -1158,14 +1150,6 @@ static NSImage *emptyBulletImage;
 
 - (void) setTabColor:(int)col flash:(BOOL)flash
 {
-    ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-    NSColor *TTColor;
-    
-    if (prefs.tab_layout == 2 && prefs.style_inputbox) {
-        TTColor = [p getColor:XAColorForeground];
-    } else {
-        TTColor = [NSColor blackColor];
-    }
     if (col == 0 || sess != current_tab)
     {
         switch (col)
@@ -1174,28 +1158,28 @@ static NSImage *emptyBulletImage;
                 sess->new_data = false;
                 sess->msg_said = false;
                 sess->nick_said = false;
-                [self.chatView setTabTitleColor:TTColor];
+                [self.chatView setTabTitleColorIndex:XAColorForeground];
                 break;
                 
             case 1: /* new data has been displayed (dark red) */
                 sess->new_data = true;
                 sess->msg_said = false;
                 sess->nick_said = false;
-                [self.chatView setTabTitleColor:[p getColor:XAColorNewData]];
+                [self.chatView setTabTitleColorIndex:XAColorNewData];
                 break;
                 
             case 2: /* new message arrived in channel (light red) */
                 sess->new_data = false;
                 sess->msg_said = true;
                 sess->nick_said = false;
-                [self.chatView setTabTitleColor:[p getColor:XAColorNewMessage]];
+                [self.chatView setTabTitleColorIndex:XAColorNewMessage];
                 break;
                 
             case 3: /* your nick has been seen (blue) */
                 sess->new_data = false;
                 sess->msg_said = false;
                 sess->nick_said = true;
-                [self.chatView setTabTitleColor:[p getColor:XAColorNickMentioned]];
+                [self.chatView setTabTitleColorIndex:XAColorNickMentioned];
                 break;
         }
     }
@@ -1294,7 +1278,7 @@ static NSImage *emptyBulletImage;
     [palette release];
 }
 
-- (void) setChannel
+- (void)setChannel
 {
     NSMutableString *channelString = [NSMutableString stringWithUTF8String:sess->channel];
     
@@ -1305,10 +1289,7 @@ static NSImage *emptyBulletImage;
         [channelString replaceCharactersInRange:NSMakeRange (start, len) withString:@".."];
     }
     [self.chatView setTabTitle:channelString];
-    if (prefs.tab_layout == 2 && prefs.style_inputbox) {
-        ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-        [self.chatView setTabTitleColor:[p getColor:XAColorForeground]];
-    }
+    [self.chatView setTabTitleColorIndex:XAColorForeground];
 }
 
 - (void) setNonchannel:(bool) state

@@ -143,6 +143,8 @@ AquaChat *AquaChatShared;
 {
     [self setFont:prefs.font_normal];
     
+    [[XATabWindow defaultTabWindow].tabView preferencesChanged];
+    
     [TabOrWindowView preferencesChanged];
     
     // This is a real-time pref.. it's already set when we get here.. we just need to make

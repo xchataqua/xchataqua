@@ -222,18 +222,12 @@ objectValueForTableColumn:(NSTableColumn *) aTableColumn
     
     int dcc_status_color = dccstat[status].color;
     if (dcc_status_color == 1) dcc_status_color = 8; /* we still want to show that something new happened */
-    NSColor *color = [[[AquaChat sharedAquaChat] palette] getColor:dcc_status_color];
-    [dccListView setTabTitleColor:color];
+    [dccListView setTabTitleColorIndex:dcc_status_color];
 }
 
 - (void)windowDidBecomeKey:(NSNotification *)aNotification
 {
-    if (prefs.tab_layout == 2 && prefs.style_inputbox) {
-        ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-        [dccListView setTabTitleColor:[p getColor:XAColorForeground]];
-    } else {
-        [dccListView setTabTitleColor:[NSColor blackColor]];
-    }
+    [dccListView setTabTitleColorIndex:XAColorForeground];
 }
 
 @end
