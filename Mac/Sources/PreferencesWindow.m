@@ -458,6 +458,7 @@ extern struct EventInfo textEventInfo[];
     [self makeFirstResponder:self];
     NSOpenPanel *panel = [NSOpenPanel commonOpenPanel];
     panel.delegate = self;
+    panel.directoryURL = [[[NSBundle mainBundle] resourceURL] URLByAppendingPathComponent:@"theme"];
     NSInteger status = [panel runModalForWindow:self];
     if (status == NSOKButton) {
         ColorPalette *palette = [[ColorPalette alloc] init];
@@ -471,7 +472,7 @@ extern struct EventInfo textEventInfo[];
 
 - (BOOL)panel:(id)sender shouldEnableURL:(NSURL *)url {
     NSString *path = url.absoluteString;
-    return [path hasSuffix:@"/"] || [path hasSuffix:@"/colors.conf"];
+    return [path hasSuffix:@"/"] || [path hasSuffix:@"colors.conf"];
 }
 
 #pragma mark NSOutlineView delegate
