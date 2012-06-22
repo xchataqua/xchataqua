@@ -406,7 +406,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     }
 
     if (len) {
-        [self printLine:last_text length:len];
+        [self printLine:last_text length:len stamp:stamp];
     }
 }
 
