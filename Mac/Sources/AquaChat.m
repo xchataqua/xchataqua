@@ -115,9 +115,6 @@ AquaChat *AquaChatShared;
     
     [self loadMenuPreferences];
     
-    // See comment in preferencesChanged
-    [TabOrWindowView setTransparency:prefs.transparent ? prefs.tint_red : 255];
-    
     [self preferencesChanged];
     
     [NSApp requestEvents:NSKeyDown forWindow:nil forView:nil selector:@selector (myKeyDown:) object:self];
@@ -139,17 +136,11 @@ AquaChat *AquaChatShared;
     _badgeCount = value;
 }
 
-- (void) preferencesChanged
-{
+- (void)preferencesChanged {
     [self setFont:prefs.font_normal];
     
-    [[XATabWindow defaultTabWindow].tabView preferencesChanged];
-    
+    [[XATabWindow defaultTabWindow] preferencesChanged];
     [TabOrWindowView preferencesChanged];
-    
-    // This is a real-time pref.. it's already set when we get here.. we just need to make
-    // sure it get's set at startup too.
-    //[TabOrWindowView setTransparency:prefs.transparent ? prefs.tint_red : 255];
     
     if (prefs.autodccsend == 1 && !strcasecmp ((char *)g_get_home_dir (), prefs.dccdir))
     {

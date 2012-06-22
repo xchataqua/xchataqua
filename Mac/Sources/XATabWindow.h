@@ -15,6 +15,7 @@
 @property(nonatomic, readonly) SGTabView *tabView;
 
 + (XATabWindow *)defaultTabWindow;
+- (void)preferencesChanged;
 
 @end
 
