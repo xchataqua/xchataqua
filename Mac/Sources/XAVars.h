@@ -12,6 +12,7 @@
 {"outline_width", P_OFFINT (xa_outline_width), TYPE_INT},  
 {"text_manual_indent_chars", P_OFFINT (xa_text_manual_indent_chars), TYPE_INT},
 {"part_on_sleep", P_OFFINT (xa_partonsleep), TYPE_INT},
+{"line_height", P_OFFINT (xa_line_height), TYPE_INT},
 {"tab_left_key", P_OFFINT (tab_left_key), TYPE_INT},
 {"tab_left_modifiers", P_OFFINT (tab_left_modifiers), TYPE_INT},
 {"tab_right_key", P_OFFINT (tab_right_key), TYPE_INT},

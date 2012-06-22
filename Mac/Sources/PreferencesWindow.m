@@ -181,6 +181,7 @@ extern struct EventInfo textEventInfo[];
     {
         // Text box
         { textBoxFontTextField, &prefs.font_normal, MYPREF_STRING },
+        { lineHeightTextField, &prefs.xa_line_height, MYPREF_INT },
         { backgroundImageTextField, &prefs.background, MYPREF_STRING },
         { maxLinesTextField, &prefs.max_lines, MYPREF_INT },
         { scrollbackStripColorCheckBox, &prefs.text_replay_strip_color, MYPREF_INT },
@@ -192,9 +193,6 @@ extern struct EventInfo textEventInfo[];
         { transparentSlider, &prefs.tint_red, MYPREF_INT },
         { timeStampCheckBox, &prefs.timestamp, MYPREF_INT },
         { timeStampFormatTextField, &prefs.stamp_format, MYPREF_STRING },
-        { urlLinkCommandTextField, &prefs.xa_urlcommand, MYPREF_STRING },
-        { nickLinkCommandTextField, &prefs.xa_nickcommand, MYPREF_STRING },
-        { channelLinkCommandTextField, &prefs.xa_channelcommand, MYPREF_STRING },
         // Input box
         { inputBoxUseTextBoxFontCheckBox, &prefs.style_inputbox, MYPREF_INT },
         { userlistUseTextBoxFontCheckBox, &prefs.style_namelistgad, MYPREF_INT },
@@ -229,6 +227,9 @@ extern struct EventInfo textEventInfo[];
         // Other
         { showChannelModeButtonsCheckBox, &prefs.chanmodebuttons, MYPREF_INT },
         { defaultCharsetTextField, &prefs.xa_default_charset, MYPREF_STRING },
+        { urlLinkCommandTextField, &prefs.xa_urlcommand, MYPREF_STRING },
+        { nickLinkCommandTextField, &prefs.xa_nickcommand, MYPREF_STRING },
+        { channelLinkCommandTextField, &prefs.xa_channelcommand, MYPREF_STRING },
         // Colors
         // Alerts
         { beepOnChannelCheckBox, &prefs.input_beep_chans, MYPREF_INT },
