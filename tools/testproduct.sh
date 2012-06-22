@@ -1,2 +1,4 @@
 #!/bin/bash
-installer -pkg '../build/Release/XChat Azure.pkg' -target '/'
+version=`git describe --tags`
+version=${version#appstore-}
+installer -pkg "../build/Release/XChat Azure $version.pkg" -target '/'
