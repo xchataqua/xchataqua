@@ -53,7 +53,7 @@ struct PreferenceItem
     
     // Text box
     //  Text Box Appearance
-    IBOutlet NSTextField *textBoxFontTextField, *backgroundImageTextField, *maxLinesTextField;
+    IBOutlet NSTextField *textBoxFontTextField, *lineHeightTextField, *backgroundImageTextField, *maxLinesTextField;
     IBOutlet NSButton *scrollbackStripColorCheckBox;
     IBOutlet NSButton *coloredNicksCheckBox, *indentNicksCheckBox, *showSeparatorCheckBox, *stripMircColorCheckBox;
     //  Transparency Settings
@@ -62,9 +62,7 @@ struct PreferenceItem
     //  Time Stamps
     IBOutlet NSButton *timeStampCheckBox;
     IBOutlet NSTextField *timeStampFormatTextField;
-    //  Command - fe-aqua
-    IBOutlet NSTextField *urlLinkCommandTextField, *nickLinkCommandTextField, *channelLinkCommandTextField;
-    
+ 
     // Input box
     //  Input box
     IBOutlet NSButton *inputBoxUseTextBoxFontCheckBox, *spellCheckingCheckBox;
@@ -105,6 +103,9 @@ struct PreferenceItem
     // Others - not in fe-gtk
     IBOutlet NSButton *showChannelModeButtonsCheckBox;
     IBOutlet NSTextField *defaultCharsetTextField;    // fe-aqua
+    
+    //  Command - fe-aqua
+    IBOutlet NSTextField *urlLinkCommandTextField, *nickLinkCommandTextField, *channelLinkCommandTextField;
     
     // Colors
     //  Text Colors
@@ -172,7 +173,7 @@ struct PreferenceItem
     IBOutlet NSPopUpButton *autoAcceptDccChatPopUp;
     IBOutlet NSButton *autoOpenDccChatCheckBox, *autoOpenDccReceiveCheckBox, *autoOpenDccSendCheckBox;
     
-    struct PreferenceItem preferenceItems[96];
+    struct PreferenceItem preferenceItems[97];
 }
 
 - (IBAction)applyPreferences:(id)sender;
