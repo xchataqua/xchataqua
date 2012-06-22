@@ -115,6 +115,7 @@ static int TimerThingSequence = 1;
 + (id)timerWithInterval:(int)the_interval callback:(timer_callback)the_callback
                userdata:(void *)the_userdata
 {
+    SGAssert(the_callback != NULL);
     TimerThing *thing = [[TimerThing alloc] init];
     
     thing->interval = (NSTimeInterval) the_interval / 1000;
@@ -149,6 +150,7 @@ static int TimerThingSequence = 1;
     [self invalidate];
     self->callback = NULL;     // We'll use this to detect released
     [TimerThingLock lock];
+    [[self retain] autorelease];
     [TimerThingItems removeObjectIdenticalTo:self];
     [TimerThingLock unlock];
 }
@@ -182,29 +184,15 @@ static int TimerThingSequence = 1;
     [timer invalidate];
     timer = nil;
     
-    [self retain];    // Retain ourselvs just in case he decides
-    // to release us in the callback.
-    
-    if (callback == NULL) {
-        // XXX: do not run below if callback is NULL
-        // then, so what should i do if it is NULL?
-        SGLog(TRUE, @"XXX: callback is null the app killer");
-    }
-    else if (callback (userdata) == 0)
-    {
+    if (callback(userdata) == 0) {
         // Only honour his request to destroy this timer only if
         // he did not already do it in the callback.  We NULL out
         // the callback when he removes a timer to signal us here
         // not to release.
-        if (callback != NULL)
-            [self release];
-    }
-    else
-    {
+        [self remove];
+    } else {
         [self schedule];
     }
-    
-    [self release];
 }
 
 @end
