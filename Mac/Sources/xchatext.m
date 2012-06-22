@@ -22,11 +22,6 @@ char *get_appdir_fs(void)
     return (char *)[[[NSBundle mainBundle] bundlePath] UTF8String];
 }
 
-char *get_appplugindir_fs(void)
-{
-    return (char *)[[[NSBundle mainBundle] builtInPlugInsPath] UTF8String];
-}
-
 char *get_plugin_bundle_path(char *filename) {
     NSString *bundlePath = [NSString stringWithUTF8String:filename];
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
