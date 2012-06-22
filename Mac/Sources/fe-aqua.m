@@ -51,19 +51,21 @@ static void init_plugins_once()
     // if this is first runtime, install builtin plugins.
     NSString *supportDirectory = [SGFileUtility findApplicationSupportFor:@PRODUCT_NAME];
     const char *currentVersion = [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] UTF8String];
+    #ifdef CONFIG_Azure
     if (strcmp(prefs.xa_builtin_plugins_version, "1.11") < 0 && currentVersion[0] == '1') {
         int result = system([[NSString stringWithFormat:@"/bin/rm -r '%@/plugins'", supportDirectory] UTF8String]);
         if (result == 0) {
             NSLog(@PRODUCT_NAME" removed auto-installed old libraries");
         }
     }
+    #endif
     if (strcmp(prefs.xa_builtin_plugins_version, currentVersion) != 0) {
+        system([[NSString stringWithFormat:@"mkdir '%@/plugins'", supportDirectory] UTF8String]);
         // install builtin plugins
         NSString *pack = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"plugins.tar"];
         int result = 0;
         if ([[NSFileManager defaultManager] fileExistsAtPath:pack]) {
             // install when embedded archive exists
-            system([[NSString stringWithFormat:@"mkdir '%@/plugins'", supportDirectory] UTF8String]);
             result = system([[NSString stringWithFormat:@"/usr/bin/tar xf '%@' -C '%@'", pack, supportDirectory] UTF8String]);
         }
         if (0 == result) {
