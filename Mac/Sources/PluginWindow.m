@@ -153,11 +153,11 @@ extern GSList *plugin_list;
 
 - (void)showBundledItemsInFinder:(id)sender {
     NSString *path;
-    if ([@PRODUCT_NAME isEqualToString:@"XChat Azure"]) {
-        path = [[SGFileUtility findApplicationSupportFor:@PRODUCT_NAME] stringByAppendingPathComponent:@"plugins-bundled"];
-    } else {
-        path = [[NSBundle mainBundle] builtInPlugInsPath];
-    }
+#ifdef CONFIG_Azure
+    path = [[SGFileUtility findApplicationSupportFor:@PRODUCT_NAME] stringByAppendingPathComponent:@"plugins-bundled"];
+#else
+    path = [[NSBundle mainBundle] builtInPlugInsPath];
+#endif
     [[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:path isDirectory:YES]];
 }
 
