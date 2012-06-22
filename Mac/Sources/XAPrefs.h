@@ -11,6 +11,7 @@ char xa_default_charset[256];
 unsigned int xa_outline_width;
 unsigned int xa_text_manual_indent_chars;
 unsigned int xa_partonsleep;
+unsigned int xa_line_height;
 long tab_left_key;
 long tab_left_modifiers;
 long tab_right_key;

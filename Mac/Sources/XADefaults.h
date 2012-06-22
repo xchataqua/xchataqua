@@ -1,6 +1,7 @@
 prefs.xa_text_manual_indent_chars = 15;
 prefs.xa_outline_width = 150;
 prefs.xa_partonsleep = 1;
+prefs.xa_line_height = 120;
 prefs.tab_left_key = 33;
 prefs.tab_left_modifiers = 1 << 20 | 1 << 17;
 prefs.tab_right_key = 30;
