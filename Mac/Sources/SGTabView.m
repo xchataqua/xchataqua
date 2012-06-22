@@ -850,7 +850,7 @@ NSNib *SGTabViewItemTabMenuNib;
 }
 
 - (void)preferencesChanged {
-    CGFloat fontSize = [NSFont smallSystemFontSize];
+    CGFloat fontSize = prefs.style_namelistgad ? [AquaChat sharedAquaChat].font.pointSize * 0.9 : [NSFont smallSystemFontSize];
     if (prefs.tab_small) {
         fontSize *= 0.86;
     }
@@ -859,7 +859,7 @@ NSNib *SGTabViewItemTabMenuNib;
     dataCell.font = font;
 
     NSLayoutManager *layoutManager=[[NSLayoutManager new] autorelease];
-    [_tabOutlineView setRowHeight:[layoutManager defaultLineHeightForFont:font] + 1];
+    [_tabOutlineView setRowHeight:[layoutManager defaultLineHeightForFont:font] * 1.2 + 1];
     
     ColorPalette *p = [[AquaChat sharedAquaChat] palette];
     if (prefs.style_namelistgad) {

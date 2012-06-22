@@ -130,6 +130,8 @@ static float trans = 1;
 
 + (void) preferencesChanged
 {
+    [TabOrWindowView setTransparency:prefs.transparent ? prefs.tint_red : 255];
+    
     if ( prefs.tab_layout == 2 ) {
         tabViewType = SGOutlineTabs;
     } else {
