@@ -47,7 +47,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     self = [super initWithFrame:frameRect];
     if (self != nil) {
         wordRange = NSMakeRange(NSNotFound, 0);
-        fontWidth = 10;
+        fontSize = NSMakeSize(10, 20);
             
         _style = [[NSMutableParagraphStyle alloc] init];
         
@@ -186,25 +186,25 @@ static NSCursor *XAChatTextViewSizableCursor;
 
 - (void)adjustMargin
 {
-    CGFloat indent = prefs.xa_text_manual_indent_chars * fontWidth;
+    CGFloat indent = prefs.xa_text_manual_indent_chars * fontSize.width;
     
     NSMutableParagraphStyle *style = self.style = [[[NSMutableParagraphStyle alloc] init] autorelease];
     NSTextTab *tabStop = [[[NSTextTab alloc] initWithType:NSRightTabStopType location:indent] autorelease];
     [style setTabStops:[NSArray arrayWithObject:tabStop]];
     [style setLineHeightMultiple:1.34];
     
-    indent += fontWidth;
+    indent += fontSize.width;
 
-    lineRect.origin.x = floor (indent + fontWidth * 2 / 3) - 1;
+    lineRect.origin.x = floor (indent + fontSize.width * 2 / 3) - 1;
 
-    indent += fontWidth;
+    indent += fontSize.width;
 
     [style setHeadIndent:indent];
     for (NSInteger i = 0; i < 30; i ++)
     {
         NSTextTab *tabStop = [[[NSTextTab alloc] initWithType:NSLeftTabStopType location:indent] autorelease];
         [style addTabStop:tabStop];
-        indent += fontWidth;
+        indent += fontSize.width;
     }
     
     NSMutableAttributedString *storage = [self textStorage];
@@ -229,9 +229,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     boldFont = [new_boldFont retain];
 
     NSDictionary *attr = [NSDictionary dictionaryWithObject:normalFont forKey:NSFontAttributeName];
-    NSSize sz = [@"-" sizeWithAttributes:attr];
-    
-    fontWidth = sz.width;
+    fontSize = [@"-" sizeWithAttributes:attr];
     
     if (![new_font isEqual:old_font]) {   // CL: setup_margin is VERY expensive, don't do it unless necessary
         [self adjustMargin];
@@ -439,13 +437,11 @@ static NSCursor *XAChatTextViewSizableCursor;
 - (void)updateAtBottom:(NSNotification *)notification
 {
     NSClipView *clipView = (NSClipView *)[self superview];
-    NSRect documentRect = [clipView documentRect];
-    NSRect clipRect = [clipView documentVisibleRect];
     
-    CGFloat dmax = NSMaxY(documentRect);
-    CGFloat cmax = NSMaxY(clipRect);
+    CGFloat dmax = NSMaxY(clipView.documentRect);
+    CGFloat cmax = NSMaxY(clipView.documentVisibleRect);
 
-    atBottom = dmax == cmax;
+    atBottom = dmax < cmax + fontSize.height * 2;
 
     SGLog(FALSE, @"Update at bottom: dmax=%f, cmax=%f, at_bottom=%d\n", dmax, cmax, atBottom);
 }
@@ -558,7 +554,7 @@ static NSCursor *XAChatTextViewSizableCursor;
         
         NSPoint mouseLoc = [self convertPoint:[nextEvent locationInWindow] fromView:nil];
         
-        int new_margin = (int)(mouseLoc.x / fontWidth) - 1;
+        int new_margin = (int)(mouseLoc.x / fontSize.width) - 1;
         
         if (new_margin > 2 && new_margin < 50 && new_margin != margin)
         {
