@@ -650,8 +650,7 @@ static NSImage *emptyBulletImage;
     [headerBoxView sizeToFit];
 }
 
-- (void) preferencesChanged
-{
+- (void)preferencesChanged {
     // init ColorPalette
     ColorPalette *p = [[AquaChat sharedAquaChat] palette];
     [chatTextView setFont:[[AquaChat sharedAquaChat] font] boldFont:[[AquaChat sharedAquaChat] boldFont]];
@@ -669,7 +668,6 @@ static NSImage *emptyBulletImage;
         topicTextField.backgroundColor = [p getColor:XAColorBackground];
         
         nickTextField.textColor = [p getColor:XAColorForeground];
-        self.view.window.backgroundColor = [p getColor:XAColorBackground];
     } else {
         // How to restore this?
     }

@@ -7,6 +7,8 @@
 //
 
 #import "XATabWindow.h"
+#import "AquaChat.h"
+#import "ColorPalette.h"
 
 XATabWindow *XATabWindowDefaultWindow;
 
@@ -51,6 +53,12 @@ XATabWindow *XATabWindowDefaultWindow;
 
 + (XATabWindow *)defaultTabWindow {
     return XATabWindowDefaultWindow;
+}
+
+- (void)preferencesChanged {
+    self.backgroundColor = [[[AquaChat sharedAquaChat] palette] getColor:XAColorBackground];
+    
+    [self.tabView preferencesChanged];
 }
 
 @end

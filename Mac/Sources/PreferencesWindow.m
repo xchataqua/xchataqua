@@ -399,7 +399,7 @@ extern struct EventInfo textEventInfo[];
         }
     }
     
-    prefs.tab_layout = [switcherTypePopUp indexOfSelectedItem]*2; // 1 is reserved
+    prefs.tab_layout = [switcherTypePopUp indexOfSelectedItem] * 2; // 1 is reserved
     
     KeyCombo left_combo = [tabLeftRecorderCell keyCombo];
     prefs.tab_left_modifiers = left_combo.flags;
@@ -409,12 +409,10 @@ extern struct EventInfo textEventInfo[];
     prefs.tab_right_modifiers = right_combo.flags;
     prefs.tab_right_key = right_combo.code;
     
-    ColorPalette *palette = [[ColorPalette alloc] init];
-    for (NSUInteger i = 0; i < [palette numberOfColors]; i++)
+    ColorPalette *palette = [[AquaChat sharedAquaChat] palette];
+    for (NSUInteger i = 0; i < [palette numberOfColors]; i++) {
         [palette setColor:i color:[colorWells[i] color]];
-    [[AquaChat sharedAquaChat] setPalette:palette];
-    [palette release];
-    
+    }
     [[AquaChat sharedAquaChat] preferencesChanged];
 }
 
@@ -639,8 +637,9 @@ extern struct EventInfo textEventInfo[];
 }
 
 - (void)populateColorsFromPalette:(ColorPalette *)palette {
-    for (NSUInteger i = 0; i < [palette numberOfColors]; i ++)
+    for (NSUInteger i = 0; i < [palette numberOfColors]; i ++) {
         [colorWells[i] setColor:[palette getColor:i]];
+    }
 }
 
 - (void) fillColorWellsFromTag
