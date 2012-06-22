@@ -54,7 +54,7 @@ struct PreferenceItem
     // Text box
     //  Text Box Appearance
     IBOutlet NSTextField *textBoxFontTextField, *backgroundImageTextField, *maxLinesTextField;
-    //  TODO: background image in fe-gtk
+    IBOutlet NSButton *scrollbackStripColorCheckBox;
     IBOutlet NSButton *coloredNicksCheckBox, *indentNicksCheckBox, *showSeparatorCheckBox, *stripMircColorCheckBox;
     //  Transparency Settings
     IBOutlet NSButton *transparentCheckBox;    // not in fe-aqua
@@ -172,7 +172,7 @@ struct PreferenceItem
     IBOutlet NSPopUpButton *autoAcceptDccChatPopUp;
     IBOutlet NSButton *autoOpenDccChatCheckBox, *autoOpenDccReceiveCheckBox, *autoOpenDccSendCheckBox;
     
-    struct PreferenceItem preferenceItems[95];
+    struct PreferenceItem preferenceItems[96];
 }
 
 - (IBAction)applyPreferences:(id)sender;

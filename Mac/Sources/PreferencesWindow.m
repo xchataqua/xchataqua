@@ -183,6 +183,7 @@ extern struct EventInfo textEventInfo[];
         { textBoxFontTextField, &prefs.font_normal, MYPREF_STRING },
         { backgroundImageTextField, &prefs.background, MYPREF_STRING },
         { maxLinesTextField, &prefs.max_lines, MYPREF_INT },
+        { scrollbackStripColorCheckBox, &prefs.text_replay_strip_color, MYPREF_INT },
         { coloredNicksCheckBox, &prefs.colorednicks, MYPREF_INT },
         { indentNicksCheckBox, &prefs.indent_nicks, MYPREF_INT },
         { showSeparatorCheckBox, &prefs.show_separator, MYPREF_INT },
