@@ -43,7 +43,7 @@
     NSString    *word;
     id          mouseEventRequestId;
     ChatViewController  *dropHandler;
-    CGFloat     fontWidth;
+    NSSize      fontSize;
     BOOL        atBottom;
     NSInteger   numberOfLines;
     BOOL        pendingEditing;
