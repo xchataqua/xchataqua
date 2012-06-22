@@ -56,7 +56,9 @@ XATabWindow *XATabWindowDefaultWindow;
 }
 
 - (void)preferencesChanged {
-    self.backgroundColor = [[[AquaChat sharedAquaChat] palette] getColor:XAColorBackground];
+    if (prefs.style_inputbox) {
+        self.backgroundColor = [[[AquaChat sharedAquaChat] palette] getColor:XAColorBackground];
+    }
     
     [self.tabView preferencesChanged];
 }
