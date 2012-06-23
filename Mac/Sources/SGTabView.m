@@ -909,12 +909,12 @@ NSNib *SGTabViewItemTabMenuNib;
 }
 
 #define kBackgroundStyleGroup   0
-#define kBackgroundStyleGL      1
+#define kBackgroundStyleCL      1
 #define kBackgroundStyleTheme   2
 enum {
     kTabBorderInset = 9 /* the exact value which matches the NSBox look is 11; however, since we have very little space between the box and the window border, using 9 gives a better visual balance */
 };
-#define BACKGROUND_VERSION  kBackgroundStyleGL
+#define BACKGROUND_VERSION  kBackgroundStyleCL
 
 - (void) drawBackground
 {
@@ -923,7 +923,7 @@ enum {
         
     NSRect r = _selectedTabViewItem.view.frame;
     //NSRect br = [hbox frame];
-#if BACKGROUND_VERSION == kBackgroundStyleGroud
+#if BACKGROUND_VERSION == kBackgroundStyleGroup
     //  const float dy = 12;    // floor (br.size.height / [hbox rowCount] / 2)
     //  const float dx = 12;    // floor (br.size.width / [hbox rowCount] / 2)
     const float dr = 12;
@@ -931,7 +931,7 @@ enum {
     const float d2 = -3;
     const float dr = kTabBorderInset - d2 - 1;
     r = NSInsetRect(r, d2, d2);
-#else
+#elif BACKGROUND_VERSION == kBackgroundStyleCL
     const float dr = kTabBorderInset;
 #endif
 
@@ -992,8 +992,13 @@ enum {
 
 - (void) drawRect:(NSRect) aRect
 {
-    if (_selectedTabViewItem == nil)
+    if (prefs.style_inputbox) {
         return;
+    }
+    
+    if (_selectedTabViewItem == nil) {
+        return;
+    }
 
     if (self->tabViewType != SGOutlineTabs) {
         [self drawBackground];
