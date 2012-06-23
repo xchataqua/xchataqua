@@ -27,8 +27,6 @@
 #import "SGTabView.h"
 #import "CLTabViewButtonCell.h"
 
-static NSMutableDictionary *labelDictionary;
-
 //////////////////////////////////////////////////////////////////////
 
 typedef OSStatus 
@@ -38,14 +36,6 @@ typedef OSStatus
       CGContextRef                    inContext,
       HIThemeOrientation              inOrientation);
 
-static ThemeDrawSegmentProc MyThemeDrawSegment;
-
-static ThemeDrawState MySegmentHilightFlag;
-static ThemeDrawState MySegmentFGSelectedFlag;
-static ThemeDrawState MySegmentNormalFlag;
-static ThemeDrawState MySegmentBGSelectedFlag;
-
-static CGFloat MySegmentHeight;
 
 //////////////////////////////////////////////////////////////////////
 
@@ -309,268 +299,6 @@ HIThemeSegmentPosition positionTable[2][2] =
     /* Left cap       */   { kHIThemeSegmentPositionFirst,  kHIThemeSegmentPositionOnly },
 };
 
-@interface SGTabViewButtonCell : NSButtonCell
-{
-    NSColor *titleColor;
-    BOOL     hideClose;
-    BOOL     left_cap;
-    BOOL     right_cap;
-    NSRect   close_rect;
-    NSPoint  textPoint;
-    NSButtonCell *closeCell;
-    NSSize    cellSize;
-    HIThemeSegmentDrawInfo drawInfo;
-}
-
-@property (nonatomic, retain) NSColor *titleColor;
-@property (nonatomic, readonly) NSSize cellSize;
-
-@end
-
-#pragma mark -
-
-@implementation SGTabViewButtonCell
-@synthesize cellSize, titleColor;
-
-+ (void) initialize
-{
-    labelDictionary = [[NSMutableDictionary alloc] init];
-    [labelDictionary setObject:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]] forKey:NSFontAttributeName];
-
-    // Setup stuff for drawing the segments.
-    //
-    // NOTE to Camillo.. if you're still alive and wondering why I didn't use your patch,
-    // let me tell you (and anyone else that wonders WTF is going on here).
-    //
-    // I like the idea of drawing segments rather than tabs (even thought they look the same)
-    // for a few reasons.
-    //    1.  The same code works on 10.3 and 10.4.
-    //    2.  It's much simpler in implementation.
-    //    3.  If 10.5 changes tabs in any drastic way, we'd be broken.  In other words, my
-    //      tab view is pretty much dependant on the way tabs work on 10.4.  i.e. with segments.
-    //
-    // Now I know what you're thinking.. we're using private APIs and that's bogus!  You're right
-    // but the odds of Apple changing 10.3 or even 10.4 at this time isn't very likely.  If they
-    // do change things, then we're screwed but hopefully they also fix the bugs for 10.4 at the
-    // same time.  I thought about this problem for quite some time and I feel this is the lesser
-    // of the evils.  Please feel free to awake from the dead and tell me what you think.
-        
-    SInt32 version = 0;
-    Gestalt(gestaltSystemVersion, &version);
-    
-    #if 0
-    if (version < 0x1040)
-    {
-        // 10.3 has this API, but it's a private API.
-        // We know from GDB that that the public API on 10.4 just 
-        // calls the private function without any parameter
-        // differences so we feel pretty good about using the private API.
-        //
-        // (gdb) disass HIThemeDrawSegment
-        // Dump of assembler code for function HIThemeDrawSegment:
-        // 0x92f57234 <HIThemeDrawSegment+0>:      push   %ebp
-        // 0x92f57235 <HIThemeDrawSegment+1>:      mov    %esp,%ebp
-        // 0x92f57237 <HIThemeDrawSegment+3>:      pop    %ebp
-        // 0x92f57238 <HIThemeDrawSegment+4>:      jmp    0x92e4d6e4 <_HIThemeDrawSegment>
-        
-        MyThemeDrawSegment = (ThemeDrawSegmentProc) dlsym (RTLD_DEFAULT, "_HIThemeDrawSegment");
-    }
-    else
-    #endif
-    {
-        // So yea.. this is technically the same as the 10.3 case but it may not
-        // be the same on 10.5..
-        MyThemeDrawSegment = (ThemeDrawSegmentProc) dlsym (RTLD_DEFAULT, "HIThemeDrawSegment");
-    }
-
-    // As for this, the public (and private) APIs have bugs.  The documented
-    // flags don't work.  These were discovered by CL.  If Apple ever fixes
-    // the bugs, then we can change these flags in the proper gestalt block.
-    
-    MySegmentHilightFlag = 0xc0000000;
-    MySegmentFGSelectedFlag = 0x80000000;
-    MySegmentNormalFlag = 0;
-    MySegmentBGSelectedFlag = 0x80000001;
-    
-    // The theme APIs for getting the segment height is broken too.
-    // Just get a cell and ask it...
-    NSSegmentedCell *cell = [[NSSegmentedCell alloc] initTextCell:@""];
-    MySegmentHeight = [cell cellSize].height;
-    [cell release];
-}
-
-- (id) initTextCell:(NSString *) aString
-{
-    if ((self = [super initTextCell:aString]) != nil) {
-        closeCell = [[NSButtonCell tabViewCloseCell] retain];
-        self->hideClose = false;
-    }
-    return self;
-}
-
-- (void) dealloc
-{
-    [titleColor release];
-    [super dealloc];
-}
-
-// Undocumented method used to update the cell when the window is activated/deactivated
-- (BOOL) _needRedrawOnWindowChangedKeyState
-{
-    return YES;
-}
-
-- (void) setHideCloseButton:(BOOL) hideit
-{
-    self->hideClose = hideit;
-    [self calcDrawInfo:NSMakeRect(0.0f, 0.0f, 1.0f, 1.0f)];
-}
-
-- (void) setHasLeftCap:(BOOL) b
-{
-    if (left_cap == b) return;
-    
-    left_cap = b;
-    [self calcDrawInfo:NSMakeRect(0.0f, 0.0f, 1.0f, 1.0f)];
-}
-
-- (void) setHasRightCap:(BOOL) b
-{
-    if (right_cap == b) return;
-
-    right_cap = b;
-    [self calcDrawInfo:NSMakeRect(0.0f, 0.0f, 1.0f, 1.0f)];
-}
-
-- (void) setCloseAction:(SEL) act
-{
-    [closeCell setAction:act];
-}
-
-- (void) setCloseTarget:(id) targ
-{
-    [closeCell setTarget:targ];
-}
-
-- (void) doClose:(id)sender
-{
-    [[closeCell target] performSelector:[closeCell action]];
-}
-
-- (void) calcDrawInfo:(NSRect) aRect
-{
-    // [super init] calls us before we are ready
-    if (!closeCell)
-        return;
-
-    cellSize.height = MySegmentHeight;
-    
-    NSSize sz = [[self title] sizeWithAttributes:labelDictionary];
-
-    if (hideClose)
-    {
-        close_rect = NSMakeRect(0.0f, 0.0f, 1.0f, 1.0f);
-        textPoint.x = 7.0f + 2.0f;
-        textPoint.y = (cellSize.height - sz.height) / 2;
-    }
-    else
-    {
-        NSSize closeSize = [closeCell cellSize];
-
-        close_rect.size = closeSize;
-        close_rect.origin.x = 7.0f;
-        close_rect.origin.y = (cellSize.height - close_rect.size.height) / 2;
-
-        textPoint.x = close_rect.origin.x + closeSize.width + 3;
-        textPoint.y = (cellSize.height - sz.height) / 2;
-    }
-
-    cellSize.width = floor (sz.width + textPoint.x + 7 + 2);
-    
-    drawInfo.version = 1;
-    drawInfo.value = kThemeButtonOn;
-    drawInfo.size = kHIThemeSegmentSizeNormal;
-    drawInfo.kind = kHIThemeSegmentKindNormal;
-    drawInfo.position = positionTable[left_cap][right_cap];
-
-    drawInfo.adornment = (left_cap ? kHIThemeSegmentAdornmentNone : kHIThemeSegmentAdornmentLeadingSeparator) |
-                         (right_cap ? kHIThemeSegmentAdornmentNone : kHIThemeSegmentAdornmentTrailingSeparator);
-}
-
-- (void) setTitle:(NSString *) aString
-{
-    [super setTitle:aString];
-    [self calcDrawInfo:NSMakeRect(0.0f, 0.0f, 1.0f, 1.0f)];
-}
-
-- (void) drawCellBodyWithFrame:(NSRect)cellFrame inView:(NSView *)controlView
-{
-    BOOL selected = [self state] == NSOnState;
-    BOOL hilight = [self isHighlighted];
-    
-    if ([[controlView window] isMainWindow])
-    {
-        drawInfo.state = hilight ? MySegmentHilightFlag : 
-            selected ? MySegmentFGSelectedFlag : MySegmentNormalFlag;
-    }
-    else
-    {
-        drawInfo.state = selected ? MySegmentBGSelectedFlag : MySegmentNormalFlag;
-    }
-
-    HIRect cellRect;
-    cellRect.origin.x = cellFrame.origin.x;
-    cellRect.origin.y = cellFrame.origin.y;
-    cellRect.size.width = cellFrame.size.width;
-    cellRect.size.height = cellFrame.size.height;
-
-    HIThemeOrientation orientation = [controlView isFlipped] ? kHIThemeOrientationNormal : kHIThemeOrientationInverted;
-
-    NSGraphicsContext *ctx = [NSGraphicsContext currentContext];
-    MyThemeDrawSegment(&cellRect, &drawInfo, (CGContextRef)[ctx graphicsPort], orientation);
-}
-
-- (void) drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView
-{
-    [self drawCellBodyWithFrame:cellFrame inView:controlView];
-    
-    if (!hideClose)
-        [closeCell drawWithFrame:close_rect inView:controlView];
-
-    // I'm not sure if this actually even does anything
-    if (prefs.tab_layout == 2 && prefs.style_namelistgad) {
-        ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-        [labelDictionary setObject:(titleColor?titleColor:[p getColor:XAColorForeground]) forKey:NSForegroundColorAttributeName];
-    } else {
-        [labelDictionary setObject:(titleColor?titleColor:[NSColor blackColor]) forKey:NSForegroundColorAttributeName];
-    }
-
-    [[self title] drawAtPoint:textPoint withAttributes:labelDictionary];
-}
-
-- (void) mouseDown:(NSEvent *)event controlView:(NSView *) controlView
-{
-    NSButtonCell *track_cell;
-    NSRect track_rect;
-    
-    NSPoint p = [controlView convertPoint:[event locationInWindow] fromView:nil];
-    BOOL mouseIn = NSMouseInRect (p, close_rect, [controlView isFlipped]);
-    
-    if (!hideClose && mouseIn)
-    {
-        track_cell = closeCell;
-        track_rect = close_rect;
-    }
-    else
-    {
-        track_cell = self;
-        track_rect = [controlView bounds];
-    }
-
-    [SGGuiUtility trackButtonCell:track_cell withEvent:event inRect:track_rect controlView:controlView];
-}
-
-@end
 
 #pragma mark -
 
@@ -593,7 +321,8 @@ HIThemeSegmentPosition positionTable[2][2] =
 - (id) init
 {
     if ((self = [super init]) != nil) {
-        [self setCell:[[[CLTabViewButtonCell alloc] init] autorelease]];
+        CLTabViewButtonCell *cell = [[[CLTabViewButtonCell alloc] init] autorelease];
+        [self setCell:cell];
         [self setButtonType:NSOnOffButton];
         [[self cell] setControlSize:NSSmallControlSize];
         CGFloat fontSize = [NSFont smallSystemFontSize];
@@ -698,6 +427,7 @@ NSNib *SGTabViewItemTabMenuNib;
     [button setCloseTarget:self];
     [button setHideCloseButton:!with_close];
     [[button cell] setMenu:ctxMenu];
+    [[button cell] setDelegate:self];
     
     [box addSubview:button];
     [box setOrder:where forView:button];
