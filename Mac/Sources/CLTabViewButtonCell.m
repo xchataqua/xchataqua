@@ -32,6 +32,7 @@ enum {
 };
 
 @implementation CLTabViewButtonCell
+@synthesize delegate=_delegate;
 
 - (void) dealloc
 {
@@ -98,15 +99,17 @@ enum {
     [closeTarget performSelector:closeAction];
 }
 
-- (void) setTitleColor:(NSColor *)color
-{
-    NSMutableAttributedString *attrTitle = [[self attributedTitle] mutableCopy];
-    [attrTitle beginEditing];
-    [attrTitle removeAttribute:NSForegroundColorAttributeName range:NSMakeRange(0, [attrTitle length])];
-    if (color) [attrTitle addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, [attrTitle length])];
-    [attrTitle endEditing];
-    [self setAttributedTitle:attrTitle];
-    [attrTitle release];
+- (NSAttributedString *)attributedTitle {
+    NSMutableAttributedString *title = [[super attributedTitle] mutableCopy];
+
+    [title beginEditing];
+    [title removeAttribute:NSForegroundColorAttributeName range:NSMakeRange(0, title.length)];
+    NSColor *titleColor = [_delegate titleColor];
+    if (titleColor) {
+        [title addAttribute:NSForegroundColorAttributeName value:titleColor range:NSMakeRange(0, title.length)];
+    }
+    [title endEditing];
+    return title;
 }
 
 - (void) setTitle:(NSString *) aString
