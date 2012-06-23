@@ -34,7 +34,10 @@
     BOOL closeRectValid;
     SEL closeAction;
     id closeTarget;
+    id _delegate;
 }
+
+@property(nonatomic, assign) id delegate;
 
 - (void)setHasCloseButton:(BOOL)has;
 - (void)setHasLeftCap:(BOOL)left;
@@ -42,8 +45,8 @@
 - (void)setCloseAction:(SEL)action;
 - (void)setCloseTarget:(id)target;
 - (void)doClose:(id)sender;
-- (void)setTitleColor:(NSColor *)color;
 - (void)mouseDown:(NSEvent *)theEvent inRect:(NSRect)cellFrame ofView:(NSView *)controlView;
+- (void)mouseDown:(NSEvent *)theEvent controlView:(NSView *)view;
 
 @end
 
