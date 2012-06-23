@@ -614,6 +614,10 @@ AquaChat *AquaChatShared;
     [current_sess->gui->controller jumpToSelection];
 }
 
+- (void)insertMIRCFormat:(id)sender {
+    [current_sess->gui->controller doMircColor:sender];
+}
+
 - (void) toggleAway:(id)sender
 {
     handle_command (current_sess, "away", FALSE);

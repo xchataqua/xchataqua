@@ -154,6 +154,7 @@ extern struct EventInfo textEventInfo[];
 - (IBAction) findPrevious:(id)sender;
 - (IBAction) useSelectionForFind:(id)sender;
 - (IBAction) jumpToSelection:(id)sender;
+- (IBAction) insertMIRCFormat:(id)sender;
 // IRC menu
 - (IBAction) toggleInvisible:(id)sender;
 - (IBAction) toggleReceiveWallops:(id)sender;
