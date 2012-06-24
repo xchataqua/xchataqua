@@ -574,6 +574,8 @@ NSNib *SGTabViewItemTabMenuNib;
 
 - (void) dealloc
 {
+    self.chatView = nil;
+    self.tabOutlineView = nil;
     [_tabViewItems release];
     [groups release];
     [super dealloc];
