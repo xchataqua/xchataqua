@@ -574,6 +574,8 @@ NSNib *SGTabViewItemTabMenuNib;
 
 - (void) dealloc
 {
+    self.chatView = nil;
+    self.tabOutlineView = nil;
     [_tabViewItems release];
     [groups release];
     [super dealloc];
@@ -1009,10 +1011,6 @@ enum {
 
 - (void) drawRect:(NSRect) aRect
 {
-    if (prefs.style_inputbox) {
-        return;
-    }
-    
     if (_selectedTabViewItem == nil) {
         return;
     }
