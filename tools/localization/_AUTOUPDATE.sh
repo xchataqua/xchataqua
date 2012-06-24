@@ -6,7 +6,7 @@ if [ "$ACTION" = clean ]; then
 fi
 
 if [ "$params" = 'clean' ]; then
-	echo 'clean localizataion ifles'
+	echo 'clean localizataion files'
 fi
 
 . set_variables.sh
