@@ -178,61 +178,60 @@
 
 @interface ChatSplitView : NSSplitView
 
-@property (nonatomic, assign) int splitPosition;
+@property (nonatomic, assign) NSInteger splitPosition;
 
 @end
 
 @implementation ChatSplitView
+
+- (void)viewDidResized:(id)sender {
+    NSInteger position = self.splitPosition;
+    NSSplitViewDividerStyle dividerStyle;
+    if (position < 10) {
+        position = 1;
+        prefs.xa_paned_pos = 30;
+        prefs.hideuserlist = 1;
+        self.splitPosition = 0;
+        dividerStyle = NSSplitViewDividerStyleThick;
+    } else {
+        prefs.xa_paned_pos = self.splitPosition;
+        prefs.hideuserlist = 0;
+        dividerStyle = NSSplitViewDividerStyleThin;
+    }
+    self.dividerStyle = dividerStyle;
+}
 
 - (NSRect) dividerRect
 {
     NSView *first = [[self subviews] objectAtIndex:0];
     
     NSRect firstRect = [first frame];
-    firstRect.origin.x += firstRect.size.width;
-    firstRect.size.width = [self dividerThickness];
+    firstRect.origin.x = firstRect.size.width - 1;
+    firstRect.size.width = [self dividerThickness] + 1;
     
     return firstRect;
 }
 
 - (void) mouseDown:(NSEvent *) theEvent
 {
+    [super mouseDown:theEvent];
     NSPoint where = [theEvent locationInWindow];
     where = [self convertPoint:where fromView:nil];
-    if (!NSPointInRect(where, [self dividerRect]))
+    NSRect divider = [self dividerRect];
+    
+    if (!NSPointInRect(where, divider))
     {        
-        [super mouseDown:theEvent];
         return;
     }
     
     if ([theEvent clickCount] == 2)
     {
-        if ([self splitPosition] > 0)
-            [self setSplitPosition:0];
-        else
+        if (prefs.hideuserlist) {
             [self setSplitPosition:prefs.xa_paned_pos];
-    }
-    else
-    {
-        int oldPosition = [self splitPosition];
-        [super mouseDown:theEvent];
-        int newPosition = [self splitPosition];
-        
-        // Only set the pref if we moved.  Double click might have moved the pane
-        // but not changed the prefs.  Lets not muck the pref when we double click again.
-        
-        if (oldPosition != newPosition)
-        {
-            if (newPosition < 10 && newPosition > 0)
-            {
-                newPosition = 0;
-                [self setSplitPosition:0];
-                if (oldPosition == 0)        // It didn't really move, so put it back
-                    return;                // and don't change prefs.
-            }
-            
-            prefs.xa_paned_pos = newPosition;
-            prefs.hideuserlist = prefs.xa_paned_pos == 0;
+            [self viewDidResized:self];
+        } else {
+            [self setSplitPosition:1];
+            [self viewDidResized:self];
         }
     }
 }
@@ -266,14 +265,14 @@
 
 #pragma mark Propertyies
 
-- (int) splitPosition
+- (NSInteger)splitPosition
 {
     NSView *second = [[self subviews] objectAtIndex:1];
     NSRect secondFrame = [second frame];
     return (int)secondFrame.size.width;
 }
 
-- (void) setSplitPosition:(int) position
+- (void)setSplitPosition:(NSInteger)position
 {
     NSView *first = [[self subviews] objectAtIndex:0];
     NSView *second = [[self subviews] objectAtIndex:1];
@@ -650,6 +649,16 @@ static NSImage *emptyBulletImage;
     [headerBoxView sizeToFit];
 }
 
+- (void)adjustSplitBar {
+    if (sess->type != SESS_CHANNEL || prefs.hideuserlist) {
+        [userlistSplitView setSplitPosition:1];
+    } else if (prefs.xa_paned_pos > 0) {
+        [userlistSplitView setSplitPosition:prefs.xa_paned_pos];
+    } else {
+        [userlistSplitView setSplitPosition:150];
+    }
+}
+
 - (void)preferencesChanged {
     // init ColorPalette
     ColorPalette *p = [[AquaChat sharedAquaChat] palette];
@@ -710,13 +719,7 @@ static NSImage *emptyBulletImage;
     }
     [self performSelector:setupModeButtons];
     
-    if (sess->type != SESS_CHANNEL || prefs.hideuserlist) {
-        [bodyBoxView setSplitPosition:0];
-    } else if (prefs.xa_paned_pos > 0) {
-        [bodyBoxView setSplitPosition:prefs.xa_paned_pos];
-    } else {
-        [bodyBoxView setSplitPosition:150];
-    }
+    [self adjustSplitBar];
 }
 
 - (void)toggleConferenceMode:(id)sender
@@ -2275,6 +2278,22 @@ static NSImage *emptyBulletImage;
     }
     
     return didHandleSelector;
+}
+
+- (void)viewDidMoveToSuperview:(NSView *)view {
+    if (sess->type != SESS_CHANNEL) return;
+    if (view.superview == nil) {
+        userlistSplitView.delegate = nil;
+    } else {
+        [self adjustSplitBar];
+        userlistSplitView.delegate = self;
+    }
+}
+
+#pragma mark -
+
+- (void)splitViewDidResizeSubviews:(NSNotification *)notification {
+    [notification.object viewDidResized:self];
 }
 
 @end

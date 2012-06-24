@@ -43,7 +43,7 @@
     IBOutlet NSTextField    *userlistStatusTextField;
     IBOutlet NSTextField    *topicTextField;
     IBOutlet SGHBoxView     *headerBoxView;
-    IBOutlet ChatSplitView  *bodyBoxView;
+    IBOutlet ChatSplitView  *userlistSplitView;
     IBOutlet SGRowColView   *buttonBoxView;
     IBOutlet NSProgressIndicator *progressIndicator;
     IBOutlet NSControl      *throttleIndicator;
@@ -85,6 +85,7 @@
 - (void) jumpToSelection;
 - (BOOL) processFileDrop:(id<NSDraggingInfo>)info forUser:(NSString *) nick;
 - (NSMenu *)menuForEvent:(NSEvent *)theEvent rowIndexes:(NSIndexSet *)rows;
+- (void)adjustSplitBar;
 
 // Front end methods
 - (void) closeWindow;
