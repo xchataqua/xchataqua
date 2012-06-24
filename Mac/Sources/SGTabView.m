@@ -1009,10 +1009,6 @@ enum {
 
 - (void) drawRect:(NSRect) aRect
 {
-    if (prefs.style_inputbox) {
-        return;
-    }
-    
     if (_selectedTabViewItem == nil) {
         return;
     }
