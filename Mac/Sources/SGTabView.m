@@ -597,6 +597,22 @@ NSNib *SGTabViewItemTabMenuNib;
         self.tabOutlineView.backgroundColor = [p getColor:XAColorBackground];
     }
     [self.tabOutlineView drawRect:self.bounds];
+    
+    if ( prefs.tab_layout == 2 ) {
+        tabViewType = SGOutlineTabs;
+    } else {
+        switch ( prefs._tabs_position ) {
+            case 0: tabViewType = NSBottomTabsBezelBorder; break;
+            case 1: tabViewType = NSTopTabsBezelBorder; break;
+            case 2: tabViewType = NSRightTabsBezelBorder; break;
+            case 3: tabViewType = NSLeftTabsBezelBorder; break;
+            default:tabViewType = NSBottomTabsBezelBorder; break;
+        }
+    }
+    
+    [self setTabViewType:tabViewType];
+    [self setHideCloseButtons:prefs.xa_hide_tab_close_buttons];
+    [self setOutlineWidth:prefs.xa_outline_width];
 }
 
 - (void) setOutlineWidth:(CGFloat) width
@@ -708,6 +724,7 @@ NSNib *SGTabViewItemTabMenuNib;
     
     [self setCaps];
     
+    // No prefs?
     [_selectedTabViewItem setSelected:YES];
 }
 

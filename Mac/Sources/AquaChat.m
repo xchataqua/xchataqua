@@ -50,14 +50,14 @@ extern struct text_event te[];
 extern void identd_start ();
 extern void identd_stop ();
 
-struct menuPreferenceItem
+struct XAMenuPreferenceItem
 {
     NSMenuItem *menuItem;
     unsigned int *preference;
     int reverse;
 };
 
-static struct menuPreferenceItem menuPreferenceItems [6];
+static struct XAMenuPreferenceItem menuPreferenceItems[6];
 
 struct EventInfo textEventInfo[NUM_XP];
 
@@ -1003,7 +1003,7 @@ AquaChat *AquaChatShared;
 
 - (void) toggleMenuItem:(id)sender
 {
-    struct menuPreferenceItem *pref = &menuPreferenceItems[[sender tag]];
+    struct XAMenuPreferenceItem *pref = &menuPreferenceItems[[sender tag]];
     *pref->preference = !*pref->preference;
     NSCellStateValue shownValue = *pref->preference ? NSOnState : NSOffState;
     if (pref->reverse) shownValue = !shownValue;
@@ -1027,7 +1027,7 @@ AquaChat *AquaChatShared;
 
 - (void) loadMenuPreferences
 {
-    struct menuPreferenceItem tempPreferences [] =
+    struct XAMenuPreferenceItem tempPreferences [] =
     {
         // IRC menu
         { invisibleMenuItem, &prefs.invisible, NO },
@@ -1042,7 +1042,7 @@ AquaChat *AquaChatShared;
     for (NSUInteger i = 0; i < sizeof(menuPreferenceItems) / sizeof(menuPreferenceItems[0]); i ++)
     {
         menuPreferenceItems [i] = tempPreferences [i];
-        struct menuPreferenceItem *pref = &menuPreferenceItems [i];
+        struct XAMenuPreferenceItem *pref = &menuPreferenceItems [i];
         NSCellStateValue shownValue = *pref->preference ? NSOnState : NSOffState;
         if (pref->reverse) shownValue = !shownValue;
         [pref->menuItem setState:shownValue];

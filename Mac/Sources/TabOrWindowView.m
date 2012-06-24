@@ -31,7 +31,6 @@
 
 @class TabOrWindowViewTabDelegate;
 
-static NSTabViewType tabViewType = NSBottomTabsBezelBorder;
 static float trans = 1;
 
 //////////////////////////////////////////////////////////////////////
@@ -100,7 +99,7 @@ static float trans = 1;
     }
 }
 
-- (void) tabView:(SGTabView *)tabView didSelectTabViewItem:(SGTabViewItem *)tabViewItem
+- (void)tabView:(SGTabView *)tabView didSelectTabViewItem:(SGTabViewItem *)tabViewItem
 {
     NSString *title = [(TabOrWindowView *)[tabViewItem view] title];
     if (title)
@@ -128,29 +127,14 @@ static float trans = 1;
 @synthesize delegate;
 @synthesize title, tabTitle;
 
+- (void)viewDidMoveToSuperview {
+    [self.delegate viewDidMoveToSuperview:self];
+}
+
 + (void) preferencesChanged
 {
     [TabOrWindowView setTransparency:prefs.transparent ? prefs.tint_red : 255];
-    
-    if ( prefs.tab_layout == 2 ) {
-        tabViewType = SGOutlineTabs;
-    } else {
-        switch ( prefs._tabs_position ) {
-            case 0: tabViewType = NSBottomTabsBezelBorder; break;
-            case 1: tabViewType = NSTopTabsBezelBorder; break;
-            case 2: tabViewType = NSRightTabsBezelBorder; break;
-            case 3: tabViewType = NSLeftTabsBezelBorder; break;
-            default:tabViewType = NSBottomTabsBezelBorder; break;
-        }
-    }
-    
-    if ([XATabWindow defaultTabWindow])
-    {
-        SGTabView *tabView = [[XATabWindow defaultTabWindow] tabView];
-        [tabView setTabViewType:tabViewType];
-        [tabView setHideCloseButtons:prefs.xa_hide_tab_close_buttons];
-        [tabView setOutlineWidth:prefs.xa_outline_width];
-    }
+
 /*    This doesn't work because I can't reference outline in the way I just did,
     if you have a better solution, please share it :)
 
