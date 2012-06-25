@@ -10,17 +10,14 @@
 
 @class SGTabView;
 
-@interface XATabWindow : NSWindow
+@interface XATabWindow : NSWindow<XAEventChain>
 
 @property(nonatomic, readonly) SGTabView *tabView;
-
-+ (XATabWindow *)defaultTabWindow;
-- (void)preferencesChanged;
 
 @end
 
 @protocol XATabWindowDelegate<NSObject>
 
-- (void)closeTab;
+- (void)windowCloseTab:(XATabWindow *)window;
 
 @end
