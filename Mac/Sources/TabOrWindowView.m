@@ -15,70 +15,53 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-//
-// TBD:  Too much repeated code in here!!!!!
-//
-
-///////////////////////////////////////////////////////////////////////
-
-#include "fe-aqua_common.h"
-
+#import "AquaChat.h"
 #import "ColorPalette.h"
 #import "TabOrWindowView.h"
 #import "XATabWindow.h"
+#import "SGTabView.h"
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
 @class TabOrWindowViewTabDelegate;
 
 static float trans = 1;
 
-//////////////////////////////////////////////////////////////////////
+#pragma mark -
 
-@interface TabOrWindowViewTabDelegate : NSObject<SGTabViewDelegate
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-,NSWindowDelegate
-#endif
->
+@interface TabOrWindowViewTabDelegate : NSObject<SGTabViewDelegate, NSWindowDelegate>
+
 @end
 
 @implementation TabOrWindowViewTabDelegate
 
-- (void) windowDidResize:(NSNotification *) notification
-{
-    for (SGTabViewItem *item in [[XATabWindow defaultTabWindow].tabView tabViewItems]) {
+- (void)windowDidResize:(NSNotification *)notification {
+    XATabWindow *window = notification.object;
+    for (SGTabViewItem *item in window.tabView.tabViewItems) {
         id delegate = ((TabOrWindowView *)item.view).delegate;
         if ([delegate respondsToSelector:@selector (windowDidResize:)])
             [delegate windowDidResize:notification];
     }
 }
 
-- (void) windowDidMove:(NSNotification *) notification
-{
-    for (SGTabViewItem *item in [[XATabWindow defaultTabWindow].tabView tabViewItems]) {
+- (void)windowDidMove:(NSNotification *)notification {
+    XATabWindow *window = notification.object;
+    for (SGTabViewItem *item in window.tabView.tabViewItems) {
         id delegate = ((TabOrWindowView *)item.view).delegate;
         if ([delegate respondsToSelector:@selector (windowDidMove:)])
             [delegate windowDidMove:notification];
     }
 }
 
-- (void)closeTab
-{
-    SGTabViewItem *item = [[XATabWindow defaultTabWindow].tabView selectedTabViewItem];
-    [self tabWantsToClose:item];
+- (void)windowCloseTab:(XATabWindow *)window {
+    SGTabViewItem *item = window.tabView.selectedTabViewItem;
+    [item performClose:window];
 }
 
-- (void) windowDidBecomeKey:(NSNotification *) notification
-{
-    TabOrWindowView *view = (TabOrWindowView *)[[[XATabWindow defaultTabWindow].tabView selectedTabViewItem] view];
+- (void)windowDidBecomeKey:(NSNotification *)notification {
+    XATabWindow *window = notification.object;
+    TabOrWindowView *view = (TabOrWindowView *)window.tabView.selectedTabViewItem.view;
     [[view delegate] windowDidBecomeKey:notification];
-}
-
-// NOTE: This func closes the tab
-- (void) tabWantsToClose:(SGTabViewItem *) item
-{
-    TabOrWindowView *me = (TabOrWindowView *)[item view];
-    [me close];
 }
 
 - (void) link_delink:(SGTabViewItem *) item
@@ -92,18 +75,19 @@ static float trans = 1;
     // NOTE: This raise part-on-quit problem on XChat Aqua
     // Cmd-Q goes AquaChat -applicationWillTerminate: first, so no problem
     // Clicking Red button on Chat windows trigget this directly, so part over all channels
-    
-    while ([XATabWindow defaultTabWindow].tabView.tabViewItems.count) {
-        SGTabViewItem *item = [[XATabWindow defaultTabWindow].tabView tabViewItemAtIndex:0];
-        [self tabWantsToClose:item];
+    XATabWindow *window = notification.object;
+    while (window.tabView.tabViewItems.count) {
+        SGTabViewItem *item = [window.tabView tabViewItemAtIndex:0];
+        [item performClose:self];
     }
 }
 
 - (void)tabView:(SGTabView *)tabView didSelectTabViewItem:(SGTabViewItem *)tabViewItem
 {
     NSString *title = [(TabOrWindowView *)[tabViewItem view] title];
-    if (title)
-        [[XATabWindow defaultTabWindow] setTitle:title];
+    if (title) {
+        [tabView.window setTitle:title];
+    }
     
     current_tab = NULL;        // Set this to NULL.. the next line of code will
     // do the right thing IF it's a chat window!!
@@ -128,19 +112,14 @@ static float trans = 1;
 @synthesize title, tabTitle;
 
 - (void)viewDidMoveToSuperview {
-    [self.delegate viewDidMoveToSuperview:self];
+    SEL action = @selector(viewDidMoveToSuperview:);
+    if ([self.delegate respondsToSelector:action]) {
+        [self.delegate performSelector:action withObject:self];
+    }
 }
 
-+ (void) preferencesChanged
-{
++ (void)applyPreferences:(id)sender {
     [TabOrWindowView setTransparency:prefs.transparent ? prefs.tint_red : 255];
-
-/*    This doesn't work because I can't reference outline in the way I just did,
-    if you have a better solution, please share it :)
-
-    ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-    [outline setBackgroundColor:[p getColor:XAColorBackground]];
-*/
 }
 
 + (void) setTransparency:(NSInteger)transparency
@@ -149,7 +128,7 @@ static float trans = 1;
     
     for (NSWindow *win in [NSApp windows])
     {
-        if (win == [XATabWindow defaultTabWindow] || [[win contentView] isKindOfClass:[TabOrWindowView class]])
+        if (win == [[AquaChat sharedAquaChat] mainWindow] || [[win contentView] isKindOfClass:[TabOrWindowView class]])
             [win setAlphaValue:trans];
     }
 }
@@ -179,28 +158,11 @@ static float trans = 1;
 }
 #endif
 
-+ (BOOL) selectTabByIndex:(NSUInteger)index
-{
-    SGTabView *tabView = [XATabWindow defaultTabWindow].tabView;
-    if (!tabView)
-        return FALSE;
-    
-    SGTabViewItem *item = [tabView tabViewItemAtIndex:index];
-    
-    if (!item)
-        return FALSE;
-    
-    [tabView selectTabViewItem:item];
-    
-    return TRUE;
-}
-
-+ (void) cycleWindow:(int) direction
-{
++ (void)cycleWindow:(int)direction {
+    NSWindow *mainWindow = [AquaChat sharedAquaChat].mainWindow;
     NSWindow *win = [NSApp keyWindow];
     
-    if (win == [XATabWindow defaultTabWindow])
-    {
+    if (win == mainWindow) {
         SGTabView *tabView = [win contentView];
         NSInteger tabItemIndex = [tabView indexOfTabViewItem:[tabView selectedTabViewItem]];
         if (direction > 0)
@@ -237,8 +199,7 @@ static float trans = 1;
     
     [win makeKeyAndOrderFront:self];
     
-    if (win == [XATabWindow defaultTabWindow])
-    {
+    if (win == mainWindow) {
         SGTabView *tabView = [win contentView];
         [tabView selectTabViewItemAtIndex:(direction>0) ? 0 : tabView.tabViewItems.count - 1];
     }
@@ -248,7 +209,7 @@ static float trans = 1;
 {
     NSWindow *win = [NSApp keyWindow];
     
-    if (win == [XATabWindow defaultTabWindow])
+    if (win == [[AquaChat sharedAquaChat] mainWindow])
     {
         SGTabViewItem *item = [(SGTabView *)[win contentView] selectedTabViewItem];
         TabOrWindowView *view = (TabOrWindowView *)[item view];
@@ -266,9 +227,9 @@ static float trans = 1;
 
 + (void) updateGroupNameForServer:(struct server *) server
 {
-    if ([XATabWindow defaultTabWindow])
-    {
-        SGTabView *tabView = [XATabWindow defaultTabWindow].tabView;
+    NSWindow *mainWindow = [[AquaChat sharedAquaChat] mainWindow];
+    if (mainWindow != nil) {
+        SGTabView *tabView = mainWindow.contentView;
         NSString *groupName = [NSString stringWithUTF8String:server->servername];
         [tabView setName:groupName forGroup:server->gui->tabGroup];
     }
@@ -292,11 +253,14 @@ static float trans = 1;
     [self->title release];
     self->title = [aTitle retain];
     
-    if (window)
+    if (window) {
         [window setTitle:title];
-    NSWindow *tabWindow = [XATabWindow defaultTabWindow];
-    if (tabWindow && [(SGTabView *)[tabWindow contentView] selectedTabViewItem] == tabViewItem)
+    }
+    
+    NSWindow *tabWindow = [AquaChat sharedAquaChat].mainWindow;
+    if (tabWindow && [(SGTabView *)[tabWindow contentView] selectedTabViewItem] == tabViewItem) {
         [tabWindow setTitle:title];
+    }
 }
 
 - (void) setTabTitle:(NSString *) aTitle
@@ -343,7 +307,7 @@ static float trans = 1;
 {
     if (tabViewItem)
     {
-        XATabWindow *tabWindow = [XATabWindow defaultTabWindow];
+        XATabWindow *tabWindow = [AquaChat sharedAquaChat].mainWindow;
         [tabWindow.tabView removeTabViewItem:tabViewItem];
         
         tabViewItem = nil;
@@ -390,8 +354,9 @@ static float trans = 1;
     if (window)
     {
         [window makeKeyAndOrderFront:sender];
-    } else if ([XATabWindow defaultTabWindow]) {
-        [[XATabWindow defaultTabWindow].tabView selectTabViewItem:tabViewItem];
+    } else {
+        XATabWindow *mainWindow = [AquaChat sharedAquaChat].mainWindow;
+        [mainWindow.tabView selectTabViewItem:tabViewItem];
         
         // Don't order the tab window front.. just the tab itself.
         //[tabWindow makeKeyAndOrderFront:sender];
@@ -418,14 +383,14 @@ static float trans = 1;
             [tabViewItem setLabel:tabTitle];
         }
         
-        SGTabView *tabView = [XATabWindow defaultTabWindow].tabView;
+        SGTabView *tabView = [AquaChat sharedAquaChat].mainWindow.tabView;
         
         NSInteger tabGroup = self->server ? self->server->gui->tabGroup : 0;
         
         [tabView addTabViewItem:tabViewItem toGroup:tabGroup];
         [tabViewItem release];
         
-        if ([tabView groupName:tabGroup] == nil)
+        if ([[tabView groupForIdentifier:tabGroup] name] == nil)
         {
             NSString *groupName;
             
@@ -457,7 +422,7 @@ static float trans = 1;
     {
         [self retain];
         
-        XATabWindow *tabWindow = [XATabWindow defaultTabWindow];
+        XATabWindow *tabWindow = [AquaChat sharedAquaChat].mainWindow;
         [tabWindow.tabView removeTabViewItem:tabViewItem];
         tabViewItem = nil;
         if ([[tabWindow.tabView tabViewItems] count] == 0)

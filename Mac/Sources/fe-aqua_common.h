@@ -15,8 +15,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-@class ChatViewController;
+@protocol XAEventChain
 
+- (void)applyPreferences:(id)sender;
+
+@end
+
+@class ChatViewController;
 struct session_gui
 {
     ChatViewController *controller;
@@ -25,6 +30,12 @@ struct session_gui
 struct server_gui
 {
     NSInteger tabGroup;    // assume sizeof(NSInteger) > sizeof(struct server *)
+};
+
+struct XATextEventItem {
+    NSInteger growl;
+    NSInteger show;
+    NSInteger bounce;
 };
 
 void nick_command_parse (struct session *sess, const char *cmd, const char *nick, const char *allnick);

@@ -23,9 +23,7 @@
 @class UserListTableView;
 
 @interface ChatViewController : NSViewController
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSTextViewDelegate,NSTextFieldDelegate,NSTableViewDataSource,NSTableViewDelegate,NSSplitViewDelegate>
-#endif
+<XAEventChain,NSTextViewDelegate,NSTextFieldDelegate,NSTableViewDataSource,NSTableViewDelegate,NSSplitViewDelegate>
 {
     IBOutlet XAChatTextView     *chatTextView;
     IBOutlet NSTextField        *inputTextField;
@@ -78,7 +76,6 @@
 
 - (id) initWithSession:(struct session *)sess;
 - (void) insertText:(NSString *)text;
-- (void) preferencesChanged;
 - (void) saveBuffer:(NSString *)filename;
 - (void) find:(NSString *)string caseSensitive:(BOOL)YesOrNo backward:(BOOL)YesOrNo;
 - (void) useSelectionForFind;

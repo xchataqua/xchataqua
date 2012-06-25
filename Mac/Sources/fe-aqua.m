@@ -25,7 +25,6 @@
 
 #include "servlist.h"
 
-#import "fe-aqua_common.h"
 #import "fe-aqua_utility.h"
 #import "AquaChat.h"
 #import "ChatViewController.h"
@@ -769,19 +768,19 @@ fe_ignore_update (int level)
 int
 fe_dcc_open_recv_win (int passive)
 {
-    return [[AquaChat sharedAquaChat] openDccRecieveWindowAndShow:!passive];
+    return [[AquaChat sharedAquaChat] openDCCRecieveWindowAndShow:!passive];
 }
 
 int
 fe_dcc_open_send_win (int passive)
 {
-    return [[AquaChat sharedAquaChat] openDccSendWindowAndShow:!passive];
+    return [[AquaChat sharedAquaChat] openDCCSendWindowAndShow:!passive];
 }
 
 int
 fe_dcc_open_chat_win (int passive)
 {
-    return [[AquaChat sharedAquaChat] openDccChatWindowAndShow:!passive];
+    return [[AquaChat sharedAquaChat] openDCCChatWindowAndShow:!passive];
 }
 
 void
