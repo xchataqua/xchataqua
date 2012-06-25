@@ -273,7 +273,6 @@ extern struct EventInfo textEventInfo[];
         { autoReconnectCheckBox, &prefs.autoreconnect, MYPREF_INT },
         { neverGiveUpReconnectionCheckBox, &prefs.autoreconnectonfail, MYPREF_INT },
         { identdCheckBox, &prefs.identd, MYPREF_INT },
-        { checkNewVersionCheckBox, &prefs.xa_checkvers, MYPREF_INT },
         // File transfers
         { autoAcceptDccPopUp, &prefs.autodccsend, MYPREF_MENU },
         { downloadsDirectoryTextField, &prefs.dccdir, MYPREF_STRING },

@@ -5,7 +5,6 @@
 {"channelcommand", P_OFFSET (xa_channelcommand), TYPE_STR},  
 {"sleepmessage", P_OFFSET (xa_sleepmessage), TYPE_STR},  
 {"tab_completion", P_OFFINT (xa_tab_completion), TYPE_BOOL},  
-{"checkvers", P_OFFINT (xa_checkvers), TYPE_BOOL},
 {"scrolling_completion", P_OFFINT (xa_scrolling_completion), TYPE_BOOL},  
 {"show_myservers", P_OFFINT (xa_show_myservers), TYPE_BOOL},  
 {"default_charset", P_OFFSET (xa_default_charset), TYPE_STR},  
