@@ -159,7 +159,6 @@ struct PreferenceItem
     //  Other - not in fe-gtk
     IBOutlet NSTextField *autoReconnectDelayTextField;
     IBOutlet NSButton *autoReconnectCheckBox, *neverGiveUpReconnectionCheckBox, *identdCheckBox;
-    IBOutlet NSButton *checkNewVersionCheckBox; // fe-aqua
     
     // File transfers
     //  Files and Directories
@@ -173,7 +172,7 @@ struct PreferenceItem
     IBOutlet NSPopUpButton *autoAcceptDccChatPopUp;
     IBOutlet NSButton *autoOpenDccChatCheckBox, *autoOpenDccReceiveCheckBox, *autoOpenDccSendCheckBox;
     
-    struct PreferenceItem preferenceItems[97];
+    struct PreferenceItem preferenceItems[96];
 }
 
 - (IBAction)applyPreferences:(id)sender;
