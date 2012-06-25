@@ -6,7 +6,7 @@ if [ "$ACTION" = clean ]; then
 fi
 
 if [ "$params" = 'clean' ]; then
-	echo 'clean localizataion ifles'
+	echo 'clean localizataion files'
 fi
 
 . set_variables.sh
@@ -17,7 +17,7 @@ echo ""
 #echo "-generate .strings from .po"
 #ruby po_to_strings.rb  this script has bug
 #echo ""
-mkdir $COMMON_RES_DIR
+mkdir -p $COMMON_RES_DIR
 echo "-copy .strings to Localization"
 ruby copy_strings.rb
 echo ""
