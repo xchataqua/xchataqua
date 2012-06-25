@@ -15,34 +15,35 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#import "SGBoxView.h"
 
-@class SGTabViewItem;
 @class SGWrapView;
+@class SGTabViewItem;
+@class SGTabViewGroup;
+@class SGTabViewOutlineView;
 
 #define SGOutlineTabs ((NSTabViewType) 99)
 
 @protocol SGTabViewDelegate;
-@interface SGTabView : NSView<NSOutlineViewDelegate, NSOutlineViewDataSource, NSSplitViewDelegate> {
-    SGWrapView      *_tabButtonView;
-    NSOutlineView   *_tabOutlineView;
-    NSMutableArray  *_tabViewItems;
-    SGTabViewItem   *_selectedTabViewItem;
+@interface SGTabView : NSView<NSOutlineViewDelegate, NSOutlineViewDataSource, NSSplitViewDelegate, XAEventChain> {
+    NSTabViewType tabViewType;
+    // tabs
+    SGTabViewOutlineView *_tabOutlineView;
+    SGWrapView *_tabButtonView;
+    // items
+    NSMutableArray *_groups;
+    NSMutableArray *_tabViewItems;
+    SGTabViewItem *_selectedTabViewItem;
+    //
     IBOutlet SGBoxView *_chatViewContainer;
-    
-@public    // TODO - fix this
-    NSMutableArray  *groups;    // For outline view only
+@public
     id<NSObject,SGTabViewDelegate> _delegate;
-    NSTabViewType   tabViewType;
-    bool            hideClose;
 }
 
 @property(nonatomic, assign) IBOutlet id delegate;
-@property(nonatomic, retain) IBOutlet NSOutlineView *tabOutlineView;
+@property(nonatomic, retain) IBOutlet SGTabViewOutlineView *tabOutlineView;
 @property(nonatomic, retain) id chatView;
 @property(nonatomic, readonly) SGTabViewItem *selectedTabViewItem;
-
-- (void)preferencesChanged;
+@property(nonatomic, readonly) NSArray *tabViewItems;
 
 // NSTabView emulation methods
 - (void) addTabViewItem:(SGTabViewItem *) tabViewItem;
@@ -53,7 +54,6 @@
 - (void) selectPreviousTabViewItem:(id)sender;
 - (SGTabViewItem *) tabViewItemAtIndex:(NSInteger) index;
 - (SGTabViewItem *) selectedTabViewItem;
-- (NSArray *) tabViewItems;
 - (void) setTabViewType:(NSTabViewType) tabViewType;
 - (NSInteger) indexOfTabViewItem:(SGTabViewItem *) tabViewItem;
 
@@ -61,13 +61,12 @@
 - (void) addTabViewItem:(SGTabViewItem *) tabViewItem toGroup:(NSInteger) group;
 - (void) setHideCloseButtons:(BOOL) hidem;
 - (void) setName:(NSString *) name forGroup:(NSInteger) group;
-- (NSString *) groupName:(NSInteger) group;
 - (void) setOutlineWidth:(CGFloat) width;
+- (SGTabViewGroup *)groupForIdentifier:(NSInteger)identifier;
 
 @end
 
 @protocol SGTabViewDelegate
-- (void) tabWantsToClose:(SGTabViewItem *) item;
 - (void) tabView:(SGTabView *)tabView didSelectTabViewItem:(SGTabViewItem *)tabViewItem;
 - (void) tabViewDidResizeOutlne:(int) width;
 @end
@@ -80,27 +79,28 @@
 {
     NSView *_view;
     NSInteger _titleColorIndex;
+    SGTabView* _tabView;
+    NSString* _label;
+    NSInteger _groupIdentifier;
     id _initialFirstResponder;
 @public    // TODO - fix this
     SGTabViewButton *button;
-    NSString    *label;
-    SGTabView   *parent;
-    NSInteger   group;
-    IBOutlet NSMenu *ctxMenu;
+    IBOutlet NSMenu *contextMenu;
 }
 
 @property(nonatomic, assign) NSInteger titleColorIndex;
 @property(nonatomic, readonly) NSColor *titleColor;
 @property(nonatomic, retain) NSString *label;
+@property(nonatomic, assign) NSInteger groupIdentifier;
 @property(nonatomic, retain) NSView *view;
-@property(nonatomic, readonly) SGTabView *tabView;
+@property(nonatomic, assign) SGTabView *tabView;
 @property(nonatomic, assign) id initialFirstResponder;
 @property(nonatomic, readonly, getter=isFrontTab) BOOL frontTab;
 
 - (id)initWithIdentifier:(id) identifier;
 - (void)setHideCloseButton:(BOOL) hidem;
 
-- (IBAction)doClose:(id)sender;
+- (IBAction)performClose:(id)sender;
 - (IBAction)link_delink:(id)sender;
 
 @end

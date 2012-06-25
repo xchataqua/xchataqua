@@ -8,7 +8,6 @@
 
 #include "dcc.h"
 
-#import "fe-aqua_common.h"
 #import "DCCFileTransferListController.h"
 
 @implementation DCCFileItem

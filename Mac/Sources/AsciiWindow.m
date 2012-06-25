@@ -20,8 +20,6 @@
  * Correspond to main menu: Window -> Character Chart...
  */
 
-#include "fe-aqua_common.h"
-
 #import "ChatViewController.h"
 #import "AsciiWindow.h"
 

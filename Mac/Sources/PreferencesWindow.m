@@ -20,8 +20,8 @@
  * Correspond to main menu: Application -> Preferences...
  */
 
-#import "AquaChat.h"
 #import "PreferencesWindow.h"
+#import "AquaChat.h"
 #import "ColorPalette.h"
 #import "ChatViewController.h"
 #import "NSPanelAdditions.h"
@@ -32,7 +32,7 @@
 
 extern char *sound_files[];
 extern struct text_event te[];
-extern struct EventInfo textEventInfo[];
+extern struct XATextEventItem XATextEvents[];
 
 @interface PreferenceLeaf : NSObject
 {
@@ -83,7 +83,8 @@ extern struct EventInfo textEventInfo[];
 @implementation SoundEvent
 
 - (id)initWithSoundEvent:(int)event sounds:(NSArray *)sounds {
-    if ((self = [super init]) != nil) {
+    self = [super init];
+    if (self != nil) {
         self->name = [[NSString alloc] initWithUTF8String:te[event].name];
         
         int soundIndex = 0;
@@ -93,7 +94,7 @@ extern struct EventInfo textEventInfo[];
             soundIndex = [sounds indexOfObject:[NSString stringWithUTF8String:sound_files[event]]];
         }
         
-        struct EventInfo *info = &textEventInfo[event];
+        struct XATextEventItem *info = &XATextEvents[event];
         
         self->sound = [[NSNumber alloc] initWithInteger:soundIndex];
         self->growl = [[NSNumber alloc] initWithInt:info->growl];
@@ -415,7 +416,7 @@ extern struct EventInfo textEventInfo[];
     for (NSUInteger i = 0; i < [palette numberOfColors]; i++) {
         [palette setColor:i color:[colorWells[i] color]];
     }
-    [[AquaChat sharedAquaChat] preferencesChanged];
+    [[AquaChat sharedAquaChat] applyPreferences:sender];
 }
 
 - (void) performOK:(id)sender
@@ -574,19 +575,19 @@ extern struct EventInfo textEventInfo[];
         case 2:
             [item->growl release];
             item->growl = [object retain];
-            textEventInfo[row].growl = [item->growl intValue];
+            XATextEvents[row].growl = [item->growl intValue];
             break;
             
         case 3:
             [item->bounce release];
             item->bounce = [object retain];
-            textEventInfo[row].bounce = [item->bounce intValue];
+            XATextEvents[row].bounce = [item->bounce intValue];
             break;
             
         case 4:
             [item->show release];
             item->show = [object retain];
-            textEventInfo[row].show = [item->show intValue];
+            XATextEvents[row].show = [item->show intValue];
             break;
     }
 }
