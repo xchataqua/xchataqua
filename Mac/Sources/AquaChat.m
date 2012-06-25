@@ -97,17 +97,6 @@ AquaChat *AquaChatShared;
     
     [self loadEventInfo];
     
-
-//    alertImage = [appImage copy];
-//    NSImage *badgeImage = [NSImage imageNamed:@"warning.tiff"];
-//    [alertImage lockFocus];
-//    NSSize alertSize = [alertImage size];
-//    NSSize badgeSize = [badgeImage size];
-//    [badgeImage compositeToPoint:NSMakePoint(alertSize.width - badgeSize.width, alertSize.height - badgeSize.height) 
-//                       operation:NSCompositeSourceOver 
-//                        fraction:1];
-//    [alertImage unlockFocus];
-    
     self->soundCache = [[NSMutableDictionary alloc] init];
     
     self->palette = [[ColorPalette alloc] init];
