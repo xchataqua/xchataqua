@@ -59,11 +59,11 @@
 		0F8EA62E0CFB2E0A001AE9AE /* AsciiWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6250CFB2E0A001AE9AE /* AsciiWindow.m */; };
 		0F8EA62F0CFB2E0A001AE9AE /* BanWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6270CFB2E0A001AE9AE /* BanWindow.m */; };
 		0F8EA6300CFB2E0A001AE9AE /* ChannelWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6290CFB2E0A001AE9AE /* ChannelWindow.m */; };
-		0F8EA6320CFB2E0A001AE9AE /* DccChatWin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA62D0CFB2E0A001AE9AE /* DccChatWin.m */; };
+		0F8EA6320CFB2E0A001AE9AE /* DCCChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA62D0CFB2E0A001AE9AE /* DCCChatController.m */; };
 		0F8EA64C0CFB2F5C001AE9AE /* DCCFileTransferListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6350CFB2F5C001AE9AE /* DCCFileTransferListController.m */; };
 		0F8EA64D0CFB2F5C001AE9AE /* DCCListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6370CFB2F5C001AE9AE /* DCCListController.m */; };
-		0F8EA64E0CFB2F5C001AE9AE /* DccRecvWin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6390CFB2F5C001AE9AE /* DccRecvWin.m */; };
-		0F8EA64F0CFB2F5C001AE9AE /* DccSendWin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA63B0CFB2F5C001AE9AE /* DccSendWin.m */; };
+		0F8EA64E0CFB2F5C001AE9AE /* DCCFileRecieveController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6390CFB2F5C001AE9AE /* DCCFileRecieveController.m */; };
+		0F8EA64F0CFB2F5C001AE9AE /* DCCFileSendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA63B0CFB2F5C001AE9AE /* DCCFileSendController.m */; };
 		0F8EA6500CFB2F5C001AE9AE /* TextEventsWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA63D0CFB2F5C001AE9AE /* TextEventsWindow.m */; };
 		0F8EA6510CFB2F5C001AE9AE /* EditListWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA63F0CFB2F5C001AE9AE /* EditListWindow.m */; };
 		0F8EA6520CFB2F5C001AE9AE /* IgnoreWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6410CFB2F5C001AE9AE /* IgnoreWindow.m */; };
@@ -86,38 +86,27 @@
 		0F8EA6EB0CFB347B001AE9AE /* MIRCString.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6C60CFB347B001AE9AE /* MIRCString.m */; };
 		0F8EA6EC0CFB347B001AE9AE /* XAChatTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6C80CFB347B001AE9AE /* XAChatTextView.m */; };
 		0F8EA6ED0CFB347B001AE9AE /* fe-aqua_common.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6CA0CFB347B001AE9AE /* fe-aqua_common.m */; };
-		0F8EA6EE0CFB347B001AE9AE /* XATabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6CE0CFB347B001AE9AE /* XATabView.m */; };
 		0F8EA6F00CFB347B001AE9AE /* PreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6D30CFB347B001AE9AE /* PreferencesWindow.m */; };
 		0F8EA6F20CFB347B001AE9AE /* NetworkWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6D70CFB347B001AE9AE /* NetworkWindow.m */; };
 		0F8EA6F30CFB347B001AE9AE /* TabOrWindowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6D90CFB347B001AE9AE /* TabOrWindowView.m */; };
 		0F8EA6F40CFB347B001AE9AE /* UrlGrabberWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6DB0CFB347B001AE9AE /* UrlGrabberWindow.m */; };
 		0F8EA6F60CFB347B001AE9AE /* UserCommandsWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6DF0CFB347B001AE9AE /* UserCommandsWindow.m */; };
 		0F8EA70B0CFB384A001AE9AE /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8EA70A0CFB384A001AE9AE /* Carbon.framework */; };
-		0F8EA7430CFB6B7A001AE9AE /* 0_off.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA73C0CFB6B7A001AE9AE /* 0_off.tiff */; };
-		0F8EA7440CFB6B7A001AE9AE /* 1_off_high_fg.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA73D0CFB6B7A001AE9AE /* 1_off_high_fg.tiff */; };
-		0F8EA7450CFB6B7A001AE9AE /* 2_on_high_fg.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA73E0CFB6B7A001AE9AE /* 2_on_high_fg.tiff */; };
-		0F8EA7460CFB6B7A001AE9AE /* 3_on_fg.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA73F0CFB6B7A001AE9AE /* 3_on_fg.tiff */; };
-		0F8EA7470CFB6B7A001AE9AE /* 4_on_bg.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7400CFB6B7A001AE9AE /* 4_on_bg.tiff */; };
 		0F8EA7580CFB6BB7001AE9AE /* blue.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA74B0CFB6BB7001AE9AE /* blue.tiff */; };
 		0F8EA75A0CFB6BB7001AE9AE /* close.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA74D0CFB6BB7001AE9AE /* close.tiff */; };
-		0F8EA75B0CFB6BB7001AE9AE /* confirm.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA74E0CFB6BB7001AE9AE /* confirm.tiff */; };
 		0F8EA75C0CFB6BB7001AE9AE /* connect.tif in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA74F0CFB6BB7001AE9AE /* connect.tif */; };
-		0F8EA7600CFB6BB7001AE9AE /* dimple.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7530CFB6BB7001AE9AE /* dimple.tiff */; };
 		0F8EA7610CFB6BB7001AE9AE /* down.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7540CFB6BB7001AE9AE /* down.tiff */; };
 		0F8EA7800CFB6C9A001AE9AE /* green.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7700CFB6C9A001AE9AE /* green.tiff */; };
 		0F8EA7810CFB6C9A001AE9AE /* heart.tif in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7710CFB6C9A001AE9AE /* heart.tif */; };
 		0F8EA7830CFB6C9A001AE9AE /* link.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7730CFB6C9A001AE9AE /* link.tiff */; };
 		0F8EA7840CFB6C9A001AE9AE /* lock.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7740CFB6C9A001AE9AE /* lock.tiff */; };
 		0F8EA7860CFB6C9A001AE9AE /* lr_cursor.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7760CFB6C9A001AE9AE /* lr_cursor.tiff */; };
-		0F8EA7870CFB6C9A001AE9AE /* notice.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7770CFB6C9A001AE9AE /* notice.tiff */; };
 		0F8EA78B0CFB6C9A001AE9AE /* purple.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA77B0CFB6C9A001AE9AE /* purple.tiff */; };
 		0F8EA78D0CFB6C9A001AE9AE /* red.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA77D0CFB6C9A001AE9AE /* red.tiff */; };
 		0F8EA79C0CFB6CF9001AE9AE /* unlock.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7920CFB6CF9001AE9AE /* unlock.tiff */; };
-		0F8EA79E0CFB6CF9001AE9AE /* warning.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7940CFB6CF9001AE9AE /* warning.tiff */; };
 		0F8EA79F0CFB6CF9001AE9AE /* X-Chat Aqua.scriptSuite in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7950CFB6CF9001AE9AE /* X-Chat Aqua.scriptSuite */; };
 		0F8EA7A00CFB6CF9001AE9AE /* X-Chat Aqua.scriptTerminology in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7960CFB6CF9001AE9AE /* X-Chat Aqua.scriptTerminology */; };
 		0F8EA7A10CFB6CF9001AE9AE /* xchat.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7970CFB6CF9001AE9AE /* xchat.icns */; };
-		0F8EA7A20CFB6CF9001AE9AE /* xchat.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7980CFB6CF9001AE9AE /* xchat.tiff */; };
 		0F8EA7A30CFB6CF9001AE9AE /* yellow.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7990CFB6CF9001AE9AE /* yellow.tiff */; };
 		0F8F06DD0E1FDAA100359159 /* perl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F06C10E1FDA5E00359159 /* perl.c */; };
 		0F8F07CF0E1FDDBF00359159 /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8F07CE0E1FDDBF00359159 /* libperl.dylib */; };
@@ -186,7 +175,6 @@
 		380B9D1A13C6E5D70029CE25 /* SGFileUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 380B9D1913C6E5D70029CE25 /* SGFileUtility.m */; };
 		3839010413C06619004D20BC /* CLTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3839010313C06619004D20BC /* CLTabCell.m */; };
 		3839010713C0667B004D20BC /* CLTabViewButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3839010613C0667B004D20BC /* CLTabViewButtonCell.m */; };
-		3839010913C06722004D20BC /* CLclose13.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3839010813C06722004D20BC /* CLclose13.tiff */; };
 		384A96461588F2CC00268814 /* xchat-ruby.c in Sources */ = {isa = PBXBuildFile; fileRef = 384A963E1588F2CC00268814 /* xchat-ruby.c */; };
 		384A964B1588F6FE00268814 /* DEVELOPERS in CopyFiles */ = {isa = PBXBuildFile; fileRef = 384A96341588F2CC00268814 /* DEVELOPERS */; };
 		384A964C1588F6FE00268814 /* rubyenv in CopyFiles */ = {isa = PBXBuildFile; fileRef = 384A96481588F66100268814 /* rubyenv */; };
@@ -431,11 +419,11 @@
 		387624FC13C7024F00850913 /* AsciiWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6250CFB2E0A001AE9AE /* AsciiWindow.m */; };
 		387624FD13C7024F00850913 /* BanWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6270CFB2E0A001AE9AE /* BanWindow.m */; };
 		387624FE13C7024F00850913 /* ChannelWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6290CFB2E0A001AE9AE /* ChannelWindow.m */; };
-		387624FF13C7024F00850913 /* DccChatWin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA62D0CFB2E0A001AE9AE /* DccChatWin.m */; };
+		387624FF13C7024F00850913 /* DCCChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA62D0CFB2E0A001AE9AE /* DCCChatController.m */; };
 		3876250013C7024F00850913 /* DCCFileTransferListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6350CFB2F5C001AE9AE /* DCCFileTransferListController.m */; };
 		3876250113C7024F00850913 /* DCCListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6370CFB2F5C001AE9AE /* DCCListController.m */; };
-		3876250213C7024F00850913 /* DccRecvWin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6390CFB2F5C001AE9AE /* DccRecvWin.m */; };
-		3876250313C7024F00850913 /* DccSendWin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA63B0CFB2F5C001AE9AE /* DccSendWin.m */; };
+		3876250213C7024F00850913 /* DCCFileRecieveController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6390CFB2F5C001AE9AE /* DCCFileRecieveController.m */; };
+		3876250313C7024F00850913 /* DCCFileSendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA63B0CFB2F5C001AE9AE /* DCCFileSendController.m */; };
 		3876250413C7024F00850913 /* TextEventsWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA63D0CFB2F5C001AE9AE /* TextEventsWindow.m */; };
 		3876250513C7024F00850913 /* EditListWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA63F0CFB2F5C001AE9AE /* EditListWindow.m */; };
 		3876250613C7024F00850913 /* IgnoreWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6410CFB2F5C001AE9AE /* IgnoreWindow.m */; };
@@ -458,7 +446,6 @@
 		3876251713C7024F00850913 /* MIRCString.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6C60CFB347B001AE9AE /* MIRCString.m */; };
 		3876251813C7024F00850913 /* XAChatTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6C80CFB347B001AE9AE /* XAChatTextView.m */; };
 		3876251913C7024F00850913 /* fe-aqua_common.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6CA0CFB347B001AE9AE /* fe-aqua_common.m */; };
-		3876251A13C7024F00850913 /* XATabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6CE0CFB347B001AE9AE /* XATabView.m */; };
 		3876251B13C7024F00850913 /* PreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6D30CFB347B001AE9AE /* PreferencesWindow.m */; };
 		3876251C13C7024F00850913 /* NetworkWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6D70CFB347B001AE9AE /* NetworkWindow.m */; };
 		3876251D13C7024F00850913 /* TabOrWindowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6D90CFB347B001AE9AE /* TabOrWindowView.m */; };
@@ -496,36 +483,24 @@
 		3876254013C7024F00850913 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */; };
 		3876254113C7024F00850913 /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937F00FFB0D34009370B5 /* libssl.dylib */; };
 		3876254613C7024F00850913 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FBD9C512E458C4003EA441 /* WebKit.framework */; };
-		3876254813C7024F00850913 /* 0_off.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA73C0CFB6B7A001AE9AE /* 0_off.tiff */; };
-		3876254913C7024F00850913 /* 1_off_high_fg.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA73D0CFB6B7A001AE9AE /* 1_off_high_fg.tiff */; };
-		3876254A13C7024F00850913 /* 2_on_high_fg.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA73E0CFB6B7A001AE9AE /* 2_on_high_fg.tiff */; };
-		3876254B13C7024F00850913 /* 3_on_fg.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA73F0CFB6B7A001AE9AE /* 3_on_fg.tiff */; };
-		3876254C13C7024F00850913 /* 4_on_bg.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7400CFB6B7A001AE9AE /* 4_on_bg.tiff */; };
 		3876254D13C7024F00850913 /* blue.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA74B0CFB6BB7001AE9AE /* blue.tiff */; };
 		3876254E13C7024F00850913 /* close.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA74D0CFB6BB7001AE9AE /* close.tiff */; };
-		3876254F13C7024F00850913 /* confirm.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA74E0CFB6BB7001AE9AE /* confirm.tiff */; };
 		3876255013C7024F00850913 /* connect.tif in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA74F0CFB6BB7001AE9AE /* connect.tif */; };
-		3876255113C7024F00850913 /* dimple.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7530CFB6BB7001AE9AE /* dimple.tiff */; };
 		3876255213C7024F00850913 /* down.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7540CFB6BB7001AE9AE /* down.tiff */; };
 		3876255313C7024F00850913 /* green.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7700CFB6C9A001AE9AE /* green.tiff */; };
 		3876255413C7024F00850913 /* heart.tif in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7710CFB6C9A001AE9AE /* heart.tif */; };
 		3876255513C7024F00850913 /* link.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7730CFB6C9A001AE9AE /* link.tiff */; };
 		3876255613C7024F00850913 /* lock.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7740CFB6C9A001AE9AE /* lock.tiff */; };
 		3876255713C7024F00850913 /* lr_cursor.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7760CFB6C9A001AE9AE /* lr_cursor.tiff */; };
-		3876255813C7024F00850913 /* notice.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7770CFB6C9A001AE9AE /* notice.tiff */; };
 		3876255913C7024F00850913 /* purple.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA77B0CFB6C9A001AE9AE /* purple.tiff */; };
 		3876255A13C7024F00850913 /* red.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA77D0CFB6C9A001AE9AE /* red.tiff */; };
 		3876255B13C7024F00850913 /* unlock.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7920CFB6CF9001AE9AE /* unlock.tiff */; };
-		3876255C13C7024F00850913 /* warning.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7940CFB6CF9001AE9AE /* warning.tiff */; };
 		3876255D13C7024F00850913 /* X-Chat Aqua.scriptSuite in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7950CFB6CF9001AE9AE /* X-Chat Aqua.scriptSuite */; };
 		3876255E13C7024F00850913 /* X-Chat Aqua.scriptTerminology in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7960CFB6CF9001AE9AE /* X-Chat Aqua.scriptTerminology */; };
 		3876255F13C7024F00850913 /* xchat.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7970CFB6CF9001AE9AE /* xchat.icns */; };
-		3876256013C7024F00850913 /* xchat.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7980CFB6CF9001AE9AE /* xchat.tiff */; };
 		3876256113C7024F00850913 /* yellow.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7990CFB6CF9001AE9AE /* yellow.tiff */; };
 		3876256213C7024F00850913 /* Changes in Resources */ = {isa = PBXBuildFile; fileRef = 0F7065530E1FA32E00FEA21C /* Changes */; };
-		3876256413C7024F00850913 /* xchat512.icns in Resources */ = {isa = PBXBuildFile; fileRef = D4A86A1F12DE29A1000C201C /* xchat512.icns */; };
 		3876256513C7024F00850913 /* ViewerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4FBD93D12E449D5003EA441 /* ViewerWindow.xib */; };
-		3876256613C7024F00850913 /* CLclose13.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3839010813C06722004D20BC /* CLclose13.tiff */; };
 		3876256D13C7024F00850913 /* BanWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C89DE13C6E10100AAF20D /* BanWindow.xib */; };
 		3876256E13C7024F00850913 /* ChannelWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C89E013C6E10100AAF20D /* ChannelWindow.xib */; };
 		3876256F13C7024F00850913 /* ChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C89E213C6E10100AAF20D /* ChatView.xib */; };
@@ -644,7 +619,6 @@
 		B0D937F20FFB0D34009370B5 /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937F00FFB0D34009370B5 /* libssl.dylib */; };
 		B0E85AC20FFFC0AF0064D049 /* sparkle.pem in Resources */ = {isa = PBXBuildFile; fileRef = B0E85AC10FFFC0AF0064D049 /* sparkle.pem */; };
 		D487239E128F9DBC00647D7B /* UtilityWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D487239D128F9DBC00647D7B /* UtilityWindow.m */; };
-		D4A86A2012DE29A1000C201C /* xchat512.icns in Resources */ = {isa = PBXBuildFile; fileRef = D4A86A1F12DE29A1000C201C /* xchat512.icns */; };
 		D4FBD93E12E449D5003EA441 /* ViewerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4FBD93D12E449D5003EA441 /* ViewerWindow.xib */; };
 		D4FBD95912E44CD0003EA441 /* ViewerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FBD93912E44946003EA441 /* ViewerWindow.m */; };
 		D4FBD9C612E458C4003EA441 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FBD9C512E458C4003EA441 /* WebKit.framework */; };
@@ -1039,16 +1013,16 @@
 		0F8EA6270CFB2E0A001AE9AE /* BanWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BanWindow.m; sourceTree = "<group>"; };
 		0F8EA6280CFB2E0A001AE9AE /* ChannelWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelWindow.h; sourceTree = "<group>"; };
 		0F8EA6290CFB2E0A001AE9AE /* ChannelWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelWindow.m; sourceTree = "<group>"; };
-		0F8EA62C0CFB2E0A001AE9AE /* DccChatWin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DccChatWin.h; sourceTree = "<group>"; };
-		0F8EA62D0CFB2E0A001AE9AE /* DccChatWin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DccChatWin.m; sourceTree = "<group>"; };
+		0F8EA62C0CFB2E0A001AE9AE /* DCCChatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCCChatController.h; sourceTree = "<group>"; };
+		0F8EA62D0CFB2E0A001AE9AE /* DCCChatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCCChatController.m; sourceTree = "<group>"; };
 		0F8EA6340CFB2F5C001AE9AE /* DCCFileTransferListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCCFileTransferListController.h; sourceTree = "<group>"; };
 		0F8EA6350CFB2F5C001AE9AE /* DCCFileTransferListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCCFileTransferListController.m; sourceTree = "<group>"; };
 		0F8EA6360CFB2F5C001AE9AE /* DCCListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCCListController.h; sourceTree = "<group>"; };
 		0F8EA6370CFB2F5C001AE9AE /* DCCListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCCListController.m; sourceTree = "<group>"; };
-		0F8EA6380CFB2F5C001AE9AE /* DccRecvWin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DccRecvWin.h; sourceTree = "<group>"; };
-		0F8EA6390CFB2F5C001AE9AE /* DccRecvWin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DccRecvWin.m; sourceTree = "<group>"; };
-		0F8EA63A0CFB2F5C001AE9AE /* DccSendWin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DccSendWin.h; sourceTree = "<group>"; };
-		0F8EA63B0CFB2F5C001AE9AE /* DccSendWin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DccSendWin.m; sourceTree = "<group>"; };
+		0F8EA6380CFB2F5C001AE9AE /* DCCFileRecieveController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCCFileRecieveController.h; sourceTree = "<group>"; };
+		0F8EA6390CFB2F5C001AE9AE /* DCCFileRecieveController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCCFileRecieveController.m; sourceTree = "<group>"; };
+		0F8EA63A0CFB2F5C001AE9AE /* DCCFileSendController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCCFileSendController.h; sourceTree = "<group>"; };
+		0F8EA63B0CFB2F5C001AE9AE /* DCCFileSendController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCCFileSendController.m; sourceTree = "<group>"; };
 		0F8EA63C0CFB2F5C001AE9AE /* TextEventsWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextEventsWindow.h; sourceTree = "<group>"; };
 		0F8EA63D0CFB2F5C001AE9AE /* TextEventsWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextEventsWindow.m; sourceTree = "<group>"; };
 		0F8EA63E0CFB2F5C001AE9AE /* EditListWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditListWindow.h; sourceTree = "<group>"; };
@@ -1096,8 +1070,6 @@
 		0F8EA6CA0CFB347B001AE9AE /* fe-aqua_common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "fe-aqua_common.m"; sourceTree = "<group>"; };
 		0F8EA6CB0CFB347B001AE9AE /* XADefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XADefaults.h; sourceTree = "<group>"; };
 		0F8EA6CC0CFB347B001AE9AE /* XAPrefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XAPrefs.h; sourceTree = "<group>"; };
-		0F8EA6CD0CFB347B001AE9AE /* XATabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XATabView.h; sourceTree = "<group>"; };
-		0F8EA6CE0CFB347B001AE9AE /* XATabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XATabView.m; sourceTree = "<group>"; };
 		0F8EA6CF0CFB347B001AE9AE /* XAVars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XAVars.h; sourceTree = "<group>"; };
 		0F8EA6D20CFB347B001AE9AE /* PreferencesWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindow.h; sourceTree = "<group>"; };
 		0F8EA6D30CFB347B001AE9AE /* PreferencesWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindow.m; sourceTree = "<group>"; };
@@ -1110,31 +1082,21 @@
 		0F8EA6DE0CFB347B001AE9AE /* UserCommandsWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCommandsWindow.h; sourceTree = "<group>"; };
 		0F8EA6DF0CFB347B001AE9AE /* UserCommandsWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCommandsWindow.m; sourceTree = "<group>"; };
 		0F8EA70A0CFB384A001AE9AE /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
-		0F8EA73C0CFB6B7A001AE9AE /* 0_off.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = 0_off.tiff; path = Resources/0_off.tiff; sourceTree = "<group>"; };
-		0F8EA73D0CFB6B7A001AE9AE /* 1_off_high_fg.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = 1_off_high_fg.tiff; path = Resources/1_off_high_fg.tiff; sourceTree = "<group>"; };
-		0F8EA73E0CFB6B7A001AE9AE /* 2_on_high_fg.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = 2_on_high_fg.tiff; path = Resources/2_on_high_fg.tiff; sourceTree = "<group>"; };
-		0F8EA73F0CFB6B7A001AE9AE /* 3_on_fg.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = 3_on_fg.tiff; path = Resources/3_on_fg.tiff; sourceTree = "<group>"; };
-		0F8EA7400CFB6B7A001AE9AE /* 4_on_bg.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = 4_on_bg.tiff; path = Resources/4_on_bg.tiff; sourceTree = "<group>"; };
 		0F8EA74B0CFB6BB7001AE9AE /* blue.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = blue.tiff; path = Resources/blue.tiff; sourceTree = "<group>"; };
 		0F8EA74D0CFB6BB7001AE9AE /* close.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = close.tiff; path = Resources/close.tiff; sourceTree = "<group>"; };
-		0F8EA74E0CFB6BB7001AE9AE /* confirm.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = confirm.tiff; path = Resources/confirm.tiff; sourceTree = "<group>"; };
 		0F8EA74F0CFB6BB7001AE9AE /* connect.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = connect.tif; path = Resources/connect.tif; sourceTree = "<group>"; };
-		0F8EA7530CFB6BB7001AE9AE /* dimple.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = dimple.tiff; path = Resources/dimple.tiff; sourceTree = "<group>"; };
 		0F8EA7540CFB6BB7001AE9AE /* down.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = down.tiff; path = Resources/down.tiff; sourceTree = "<group>"; };
 		0F8EA7700CFB6C9A001AE9AE /* green.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = green.tiff; path = Resources/green.tiff; sourceTree = "<group>"; };
 		0F8EA7710CFB6C9A001AE9AE /* heart.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = heart.tif; path = Resources/heart.tif; sourceTree = "<group>"; };
 		0F8EA7730CFB6C9A001AE9AE /* link.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = link.tiff; path = Resources/link.tiff; sourceTree = "<group>"; };
 		0F8EA7740CFB6C9A001AE9AE /* lock.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lock.tiff; path = Resources/lock.tiff; sourceTree = "<group>"; };
 		0F8EA7760CFB6C9A001AE9AE /* lr_cursor.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = lr_cursor.tiff; path = Resources/lr_cursor.tiff; sourceTree = "<group>"; };
-		0F8EA7770CFB6C9A001AE9AE /* notice.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = notice.tiff; path = Resources/notice.tiff; sourceTree = "<group>"; };
 		0F8EA77B0CFB6C9A001AE9AE /* purple.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = purple.tiff; path = Resources/purple.tiff; sourceTree = "<group>"; };
 		0F8EA77D0CFB6C9A001AE9AE /* red.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = red.tiff; path = Resources/red.tiff; sourceTree = "<group>"; };
 		0F8EA7920CFB6CF9001AE9AE /* unlock.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = unlock.tiff; path = Resources/unlock.tiff; sourceTree = "<group>"; };
-		0F8EA7940CFB6CF9001AE9AE /* warning.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = warning.tiff; path = Resources/warning.tiff; sourceTree = "<group>"; };
 		0F8EA7950CFB6CF9001AE9AE /* X-Chat Aqua.scriptSuite */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.scriptSuite; path = "X-Chat Aqua.scriptSuite"; sourceTree = "<group>"; };
 		0F8EA7960CFB6CF9001AE9AE /* X-Chat Aqua.scriptTerminology */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.scriptTerminology; path = "X-Chat Aqua.scriptTerminology"; sourceTree = "<group>"; };
 		0F8EA7970CFB6CF9001AE9AE /* xchat.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = xchat.icns; path = Resources/xchat.icns; sourceTree = "<group>"; };
-		0F8EA7980CFB6CF9001AE9AE /* xchat.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = xchat.tiff; path = Resources/xchat.tiff; sourceTree = "<group>"; };
 		0F8EA7990CFB6CF9001AE9AE /* yellow.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = yellow.tiff; path = Resources/yellow.tiff; sourceTree = "<group>"; };
 		0F8F06C10E1FDA5E00359159 /* perl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = perl.c; path = xchat/plugins/perl/perl.c; sourceTree = SOURCE_ROOT; };
 		0F8F06D70E1FDA8500359159 /* perl-leopard.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-leopard.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1225,7 +1187,6 @@
 		3839010313C06619004D20BC /* CLTabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTabCell.m; sourceTree = "<group>"; };
 		3839010513C0667B004D20BC /* CLTabViewButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTabViewButtonCell.h; sourceTree = "<group>"; };
 		3839010613C0667B004D20BC /* CLTabViewButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTabViewButtonCell.m; sourceTree = "<group>"; };
-		3839010813C06722004D20BC /* CLclose13.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = CLclose13.tiff; path = Resources/CLclose13.tiff; sourceTree = "<group>"; };
 		384A96321588F2B700268814 /* ruby-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ruby-Info.plist"; path = "../ruby-Info.plist"; sourceTree = "<group>"; };
 		384A96341588F2CC00268814 /* DEVELOPERS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DEVELOPERS; sourceTree = "<group>"; };
 		384A963C1588F2CC00268814 /* xchat-plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "xchat-plugin.h"; sourceTree = "<group>"; };
@@ -2876,14 +2837,14 @@
 				0F8EA6290CFB2E0A001AE9AE /* ChannelWindow.m */,
 				0F8EA6360CFB2F5C001AE9AE /* DCCListController.h */,
 				0F8EA6370CFB2F5C001AE9AE /* DCCListController.m */,
-				0F8EA62C0CFB2E0A001AE9AE /* DccChatWin.h */,
-				0F8EA62D0CFB2E0A001AE9AE /* DccChatWin.m */,
+				0F8EA62C0CFB2E0A001AE9AE /* DCCChatController.h */,
+				0F8EA62D0CFB2E0A001AE9AE /* DCCChatController.m */,
 				0F8EA6340CFB2F5C001AE9AE /* DCCFileTransferListController.h */,
 				0F8EA6350CFB2F5C001AE9AE /* DCCFileTransferListController.m */,
-				0F8EA6380CFB2F5C001AE9AE /* DccRecvWin.h */,
-				0F8EA6390CFB2F5C001AE9AE /* DccRecvWin.m */,
-				0F8EA63A0CFB2F5C001AE9AE /* DccSendWin.h */,
-				0F8EA63B0CFB2F5C001AE9AE /* DccSendWin.m */,
+				0F8EA6380CFB2F5C001AE9AE /* DCCFileRecieveController.h */,
+				0F8EA6390CFB2F5C001AE9AE /* DCCFileRecieveController.m */,
+				0F8EA63A0CFB2F5C001AE9AE /* DCCFileSendController.h */,
+				0F8EA63B0CFB2F5C001AE9AE /* DCCFileSendController.m */,
 				0F8EA63E0CFB2F5C001AE9AE /* EditListWindow.h */,
 				0F8EA63F0CFB2F5C001AE9AE /* EditListWindow.m */,
 				0F8EA6440CFB2F5C001AE9AE /* FriendWindow.h */,
@@ -2956,31 +2917,20 @@
 			isa = PBXGroup;
 			children = (
 				0F8EA7920CFB6CF9001AE9AE /* unlock.tiff */,
-				0F8EA7940CFB6CF9001AE9AE /* warning.tiff */,
 				0F8EA7970CFB6CF9001AE9AE /* xchat.icns */,
 				D4A86A1F12DE29A1000C201C /* xchat512.icns */,
-				0F8EA7980CFB6CF9001AE9AE /* xchat.tiff */,
 				0F8EA7990CFB6CF9001AE9AE /* yellow.tiff */,
 				0F8EA7700CFB6C9A001AE9AE /* green.tiff */,
 				0F8EA7710CFB6C9A001AE9AE /* heart.tif */,
 				0F8EA7730CFB6C9A001AE9AE /* link.tiff */,
 				0F8EA7740CFB6C9A001AE9AE /* lock.tiff */,
 				0F8EA7760CFB6C9A001AE9AE /* lr_cursor.tiff */,
-				0F8EA7770CFB6C9A001AE9AE /* notice.tiff */,
 				0F8EA77B0CFB6C9A001AE9AE /* purple.tiff */,
 				0F8EA77D0CFB6C9A001AE9AE /* red.tiff */,
 				0F8EA74B0CFB6BB7001AE9AE /* blue.tiff */,
 				0F8EA74D0CFB6BB7001AE9AE /* close.tiff */,
-				0F8EA74E0CFB6BB7001AE9AE /* confirm.tiff */,
 				0F8EA74F0CFB6BB7001AE9AE /* connect.tif */,
-				0F8EA7530CFB6BB7001AE9AE /* dimple.tiff */,
 				0F8EA7540CFB6BB7001AE9AE /* down.tiff */,
-				0F8EA73C0CFB6B7A001AE9AE /* 0_off.tiff */,
-				0F8EA73D0CFB6B7A001AE9AE /* 1_off_high_fg.tiff */,
-				0F8EA73E0CFB6B7A001AE9AE /* 2_on_high_fg.tiff */,
-				0F8EA73F0CFB6B7A001AE9AE /* 3_on_fg.tiff */,
-				0F8EA7400CFB6B7A001AE9AE /* 4_on_bg.tiff */,
-				3839010813C06722004D20BC /* CLclose13.tiff */,
 			);
 			name = images;
 			path = ..;
@@ -3460,16 +3410,14 @@
 				3839010313C06619004D20BC /* CLTabCell.m */,
 				3839010513C0667B004D20BC /* CLTabViewButtonCell.h */,
 				3839010613C0667B004D20BC /* CLTabViewButtonCell.m */,
-				388BDCBB13C6A0CB00B95036 /* SGTabView.h */,
-				388BDCBC13C6A0CB00B95036 /* SGTabView.m */,
 				388BDCB013C6A0CB00B95036 /* SGLockableTextField.h */,
 				388BDCB113C6A0CB00B95036 /* SGLockableTextField.m */,
 				388BDCB913C6A0CB00B95036 /* SGTableView.h */,
 				388BDCBA13C6A0CB00B95036 /* SGTableView.m */,
+				388BDCBB13C6A0CB00B95036 /* SGTabView.h */,
+				388BDCBC13C6A0CB00B95036 /* SGTabView.m */,
 				0F8EA6C70CFB347B001AE9AE /* XAChatTextView.h */,
 				0F8EA6C80CFB347B001AE9AE /* XAChatTextView.m */,
-				0F8EA6CD0CFB347B001AE9AE /* XATabView.h */,
-				0F8EA6CE0CFB347B001AE9AE /* XATabView.m */,
 				387676921589BC41007366B7 /* XATabWindow.h */,
 				387676931589BC41007366B7 /* XATabWindow.m */,
 				387676901589B61A007366B7 /* UserListTableView.h */,
@@ -4184,36 +4132,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3876254813C7024F00850913 /* 0_off.tiff in Resources */,
-				3876254913C7024F00850913 /* 1_off_high_fg.tiff in Resources */,
-				3876254A13C7024F00850913 /* 2_on_high_fg.tiff in Resources */,
-				3876254B13C7024F00850913 /* 3_on_fg.tiff in Resources */,
-				3876254C13C7024F00850913 /* 4_on_bg.tiff in Resources */,
 				3876254D13C7024F00850913 /* blue.tiff in Resources */,
 				3876254E13C7024F00850913 /* close.tiff in Resources */,
-				3876254F13C7024F00850913 /* confirm.tiff in Resources */,
 				3876255013C7024F00850913 /* connect.tif in Resources */,
-				3876255113C7024F00850913 /* dimple.tiff in Resources */,
 				3876255213C7024F00850913 /* down.tiff in Resources */,
 				3876255313C7024F00850913 /* green.tiff in Resources */,
 				3876255413C7024F00850913 /* heart.tif in Resources */,
 				3876255513C7024F00850913 /* link.tiff in Resources */,
 				3876255613C7024F00850913 /* lock.tiff in Resources */,
 				3876255713C7024F00850913 /* lr_cursor.tiff in Resources */,
-				3876255813C7024F00850913 /* notice.tiff in Resources */,
 				3876255913C7024F00850913 /* purple.tiff in Resources */,
 				3876255A13C7024F00850913 /* red.tiff in Resources */,
 				3876255B13C7024F00850913 /* unlock.tiff in Resources */,
-				3876255C13C7024F00850913 /* warning.tiff in Resources */,
 				3876255D13C7024F00850913 /* X-Chat Aqua.scriptSuite in Resources */,
 				3876255E13C7024F00850913 /* X-Chat Aqua.scriptTerminology in Resources */,
 				3876255F13C7024F00850913 /* xchat.icns in Resources */,
-				3876256013C7024F00850913 /* xchat.tiff in Resources */,
 				3876256113C7024F00850913 /* yellow.tiff in Resources */,
 				3876256213C7024F00850913 /* Changes in Resources */,
-				3876256413C7024F00850913 /* xchat512.icns in Resources */,
 				3876256513C7024F00850913 /* ViewerWindow.xib in Resources */,
-				3876256613C7024F00850913 /* CLclose13.tiff in Resources */,
 				3876256D13C7024F00850913 /* BanWindow.xib in Resources */,
 				3876256E13C7024F00850913 /* ChannelWindow.xib in Resources */,
 				3876256F13C7024F00850913 /* ChatView.xib in Resources */,
@@ -4261,37 +4197,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F8EA7430CFB6B7A001AE9AE /* 0_off.tiff in Resources */,
-				0F8EA7440CFB6B7A001AE9AE /* 1_off_high_fg.tiff in Resources */,
-				0F8EA7450CFB6B7A001AE9AE /* 2_on_high_fg.tiff in Resources */,
-				0F8EA7460CFB6B7A001AE9AE /* 3_on_fg.tiff in Resources */,
-				0F8EA7470CFB6B7A001AE9AE /* 4_on_bg.tiff in Resources */,
 				0F8EA7580CFB6BB7001AE9AE /* blue.tiff in Resources */,
 				0F8EA75A0CFB6BB7001AE9AE /* close.tiff in Resources */,
-				0F8EA75B0CFB6BB7001AE9AE /* confirm.tiff in Resources */,
 				0F8EA75C0CFB6BB7001AE9AE /* connect.tif in Resources */,
-				0F8EA7600CFB6BB7001AE9AE /* dimple.tiff in Resources */,
 				0F8EA7610CFB6BB7001AE9AE /* down.tiff in Resources */,
 				0F8EA7800CFB6C9A001AE9AE /* green.tiff in Resources */,
 				0F8EA7810CFB6C9A001AE9AE /* heart.tif in Resources */,
 				0F8EA7830CFB6C9A001AE9AE /* link.tiff in Resources */,
 				0F8EA7840CFB6C9A001AE9AE /* lock.tiff in Resources */,
 				0F8EA7860CFB6C9A001AE9AE /* lr_cursor.tiff in Resources */,
-				0F8EA7870CFB6C9A001AE9AE /* notice.tiff in Resources */,
 				0F8EA78B0CFB6C9A001AE9AE /* purple.tiff in Resources */,
 				0F8EA78D0CFB6C9A001AE9AE /* red.tiff in Resources */,
 				0F8EA79C0CFB6CF9001AE9AE /* unlock.tiff in Resources */,
-				0F8EA79E0CFB6CF9001AE9AE /* warning.tiff in Resources */,
 				0F8EA79F0CFB6CF9001AE9AE /* X-Chat Aqua.scriptSuite in Resources */,
 				0F8EA7A00CFB6CF9001AE9AE /* X-Chat Aqua.scriptTerminology in Resources */,
 				0F8EA7A10CFB6CF9001AE9AE /* xchat.icns in Resources */,
-				0F8EA7A20CFB6CF9001AE9AE /* xchat.tiff in Resources */,
 				0F8EA7A30CFB6CF9001AE9AE /* yellow.tiff in Resources */,
 				0F7065540E1FA32E00FEA21C /* Changes in Resources */,
 				B0E85AC20FFFC0AF0064D049 /* sparkle.pem in Resources */,
-				D4A86A2012DE29A1000C201C /* xchat512.icns in Resources */,
 				D4FBD93E12E449D5003EA441 /* ViewerWindow.xib in Resources */,
-				3839010913C06722004D20BC /* CLclose13.tiff in Resources */,
 				388C8E8713C6E10500AAF20D /* BanWindow.xib in Resources */,
 				388C8E8913C6E10500AAF20D /* ChannelWindow.xib in Resources */,
 				388C8E8B13C6E10500AAF20D /* ChatView.xib in Resources */,
@@ -4662,11 +4586,11 @@
 				387624FC13C7024F00850913 /* AsciiWindow.m in Sources */,
 				387624FD13C7024F00850913 /* BanWindow.m in Sources */,
 				387624FE13C7024F00850913 /* ChannelWindow.m in Sources */,
-				387624FF13C7024F00850913 /* DccChatWin.m in Sources */,
+				387624FF13C7024F00850913 /* DCCChatController.m in Sources */,
 				3876250013C7024F00850913 /* DCCFileTransferListController.m in Sources */,
 				3876250113C7024F00850913 /* DCCListController.m in Sources */,
-				3876250213C7024F00850913 /* DccRecvWin.m in Sources */,
-				3876250313C7024F00850913 /* DccSendWin.m in Sources */,
+				3876250213C7024F00850913 /* DCCFileRecieveController.m in Sources */,
+				3876250313C7024F00850913 /* DCCFileSendController.m in Sources */,
 				3876250413C7024F00850913 /* TextEventsWindow.m in Sources */,
 				3876250513C7024F00850913 /* EditListWindow.m in Sources */,
 				3876250613C7024F00850913 /* IgnoreWindow.m in Sources */,
@@ -4689,7 +4613,6 @@
 				3876251713C7024F00850913 /* MIRCString.m in Sources */,
 				3876251813C7024F00850913 /* XAChatTextView.m in Sources */,
 				3876251913C7024F00850913 /* fe-aqua_common.m in Sources */,
-				3876251A13C7024F00850913 /* XATabView.m in Sources */,
 				3876251B13C7024F00850913 /* PreferencesWindow.m in Sources */,
 				3876251C13C7024F00850913 /* NetworkWindow.m in Sources */,
 				3876251D13C7024F00850913 /* TabOrWindowView.m in Sources */,
@@ -4752,11 +4675,11 @@
 				0F8EA62E0CFB2E0A001AE9AE /* AsciiWindow.m in Sources */,
 				0F8EA62F0CFB2E0A001AE9AE /* BanWindow.m in Sources */,
 				0F8EA6300CFB2E0A001AE9AE /* ChannelWindow.m in Sources */,
-				0F8EA6320CFB2E0A001AE9AE /* DccChatWin.m in Sources */,
+				0F8EA6320CFB2E0A001AE9AE /* DCCChatController.m in Sources */,
 				0F8EA64C0CFB2F5C001AE9AE /* DCCFileTransferListController.m in Sources */,
 				0F8EA64D0CFB2F5C001AE9AE /* DCCListController.m in Sources */,
-				0F8EA64E0CFB2F5C001AE9AE /* DccRecvWin.m in Sources */,
-				0F8EA64F0CFB2F5C001AE9AE /* DccSendWin.m in Sources */,
+				0F8EA64E0CFB2F5C001AE9AE /* DCCFileRecieveController.m in Sources */,
+				0F8EA64F0CFB2F5C001AE9AE /* DCCFileSendController.m in Sources */,
 				0F8EA6500CFB2F5C001AE9AE /* TextEventsWindow.m in Sources */,
 				0F8EA6510CFB2F5C001AE9AE /* EditListWindow.m in Sources */,
 				0F8EA6520CFB2F5C001AE9AE /* IgnoreWindow.m in Sources */,
@@ -4779,7 +4702,6 @@
 				0F8EA6EB0CFB347B001AE9AE /* MIRCString.m in Sources */,
 				0F8EA6EC0CFB347B001AE9AE /* XAChatTextView.m in Sources */,
 				0F8EA6ED0CFB347B001AE9AE /* fe-aqua_common.m in Sources */,
-				0F8EA6EE0CFB347B001AE9AE /* XATabView.m in Sources */,
 				0F8EA6F00CFB347B001AE9AE /* PreferencesWindow.m in Sources */,
 				0F8EA6F20CFB347B001AE9AE /* NetworkWindow.m in Sources */,
 				0F8EA6F30CFB347B001AE9AE /* TabOrWindowView.m in Sources */,

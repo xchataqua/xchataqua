@@ -15,34 +15,20 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-/* DccSendWin.m
+/* DCCFileSendController.m
  * Correspond to main menu: Window -> File Send...
  */
 
 #include "network.h"
 #include "dcc.h"
 
-#import "fe-aqua_common.h"
-
-#import "DccSendWin.h"
+#import "DCCFileSendController.h"
 
 extern int dcc_sendcpssum;
 
 //////////////////////////////////////////////////////////////////////
 
-@interface DccSendItem : DCCFileItem
-{
-    //struct DCC         *dcc;
-    //unsigned char prev_dccstat;
-    
-    //NSMutableString    *status;
-    //NSMutableString    *file;
-    //NSMutableString    *size;
-    //NSMutableString    *position;
-    //NSMutableString    *per;
-    //NSMutableString    *kbs;
-    //NSMutableString    *eta;
-    
+@interface DCCFileSendItem : DCCFileItem {
     NSString    *ack;
     NSString    *to;
 }
@@ -54,7 +40,7 @@ extern int dcc_sendcpssum;
 
 @end
 
-@implementation DccSendItem
+@implementation DCCFileSendItem
 @synthesize ack, to;
 
 - (id) initWithDCC:(struct DCC *) the_dcc
@@ -85,7 +71,7 @@ extern int dcc_sendcpssum;
 
 //////////////////////////////////////////////////////////////////////
 
-@implementation DccSendWin
+@implementation DCCFileSendController
 
 - (id) init
 {
@@ -97,7 +83,7 @@ extern int dcc_sendcpssum;
 - (DCCItem *)itemWithDCC:(struct DCC *) dcc
 {
     if (dcc->type != TYPE_SEND) return nil;
-    else return [[[DccSendItem alloc] initWithDCC:dcc] autorelease];
+    else return [[[DCCFileSendItem alloc] initWithDCC:dcc] autorelease];
 }
 
 - (void) awakeFromNib
@@ -114,7 +100,7 @@ extern int dcc_sendcpssum;
     NSInteger row = [itemTableView selectedRow];
     if (row >= 0)
     {
-        DccSendItem *item = [dccItems objectAtIndex:row];
+        DCCFileSendItem *item = [dccItems objectAtIndex:row];
         
         struct DCC *dcc = item->dcc;
         
@@ -152,7 +138,7 @@ extern int dcc_sendcpssum;
 objectValueForTableColumn:(NSTableColumn *)aTableColumn
              row:(NSInteger) rowIndex
 {
-    DccSendItem *item = [dccItems objectAtIndex:rowIndex];
+    DCCFileSendItem *item = [dccItems objectAtIndex:rowIndex];
     
     switch ( [[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn] )
     {
