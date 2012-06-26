@@ -26,8 +26,8 @@
 - (id)initTextCell:(NSString *)aString
 {
     if ((self = [super initTextCell:aString]) != nil) {
-        self.lockImage   = [NSImage imageNamed:@"lock.tiff"];
-        self.unlockImage = [NSImage imageNamed:@"unlock.tiff"];
+        self.lockImage   = [NSImage imageNamed:NSImageNameLockLockedTemplate];
+        self.unlockImage = [NSImage imageNamed:NSImageNameLockUnlockedTemplate];
     }
     return self;
 }
