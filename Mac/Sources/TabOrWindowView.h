@@ -34,11 +34,10 @@
 @property (nonatomic,retain) NSString *title, *tabTitle;
 
 + (void) cycleWindow:(int) direction;
-+ (BOOL) selectTabByIndex:(NSUInteger)index;
 + (void) link_delink;   // Frontmost view
 + (void) updateGroupNameForServer:(struct server *)server;
 
-+ (void) preferencesChanged;
++ (void)applyPreferences:(id)sender;
 + (void) setTransparency:(NSInteger)transparency;
 
 - (void) link_delink:(id)sender;

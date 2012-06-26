@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
-/* AquaChat */
 
 #import <Growl/GrowlApplicationBridge.h>
 #include "dcc.h"
@@ -44,22 +43,13 @@
 
 #define UtilityWindowKey(KEY, ADDR) [KEY stringByAppendingFormat:@"_%x", ADDR]
 
-struct EventInfo
-{
-    int growl;
-    int show;
-    int bounce;
-};
-
-extern struct EventInfo textEventInfo[];
-
 @class ColorPalette;
-@class DccSendWin;
-@class DccRecvWin;
-@class DccChatWin;
+@class DCCFileSendController;
+@class DCCFileRecieveController;
+@class DCCChatController;
+@class XATabWindow;
 
-@interface AquaChat : NSObject <GrowlApplicationBridgeDelegate, NSApplicationDelegate>
-{
+@interface AquaChat : NSObject <GrowlApplicationBridgeDelegate, NSApplicationDelegate, XAEventChain> {
 @public
     //Main menu
     // File menu
@@ -81,25 +71,25 @@ extern struct EventInfo textEventInfo[];
     
     NSString *searchString;
     
-    ColorPalette *palette;
+    ColorPalette *_palette;
     
     NSFont *font;
     NSFont *boldFont;
     
-    DccSendWin *dcc_send_window;
-    DccRecvWin *dcc_recv_window;
-    DccChatWin *dcc_chat_window;
+    DCCFileSendController *dcc_send_window;
+    DCCFileRecieveController *dcc_recv_window;
+    DCCChatController *dcc_chat_window;
     
     NSMutableDictionary *soundCache;
     
     NSInteger _badgeCount;
+    XATabWindow *_mainWindow;
 }
 
 @property (nonatomic, readonly) NSFont *font, *boldFont;
 @property (nonatomic, retain) ColorPalette *palette;
 @property (nonatomic, assign) NSInteger badgeCount;
-
-- (void) preferencesChanged;
+@property (nonatomic, readonly) XATabWindow *mainWindow;
 
 - (void) event:(int) event args:(char **) args session:(struct session *) sess;
 
@@ -118,9 +108,9 @@ extern struct EventInfo textEventInfo[];
 - (void) updateDcc:(struct DCC *) dcc;
 - (void) addDcc:(struct DCC *) dcc;
 - (void) removeDcc:(struct DCC *) dcc;
-- (int) openDccSendWindowAndShow:(BOOL)show;
-- (int) openDccRecieveWindowAndShow:(BOOL)show;
-- (int) openDccChatWindowAndShow:(BOOL)show;
+- (BOOL)openDCCSendWindowAndShow:(BOOL)show;
+- (BOOL)openDCCRecieveWindowAndShow:(BOOL)show;
+- (BOOL)openDCCChatWindowAndShow:(BOOL)show;
 - (void) addUrl:(const char *) url;
 - (void) playWaveNamed:(const char *)filename;
 - (void) openNetworkWindowForSession:(struct session *) sess;

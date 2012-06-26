@@ -10,16 +10,7 @@
 #import "AquaChat.h"
 #import "ColorPalette.h"
 
-XATabWindow *XATabWindowDefaultWindow;
-
 @implementation XATabWindow
-
-+ (void)initialize {
-    if (self == [XATabWindow class]) {
-        NSWindowController *controller = [[NSWindowController alloc] initWithWindowNibName:@"ChatWindow"];
-        XATabWindowDefaultWindow = (id)controller.window;
-    }
-}
 
 - (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag {
     contentRect = NSMakeRect(prefs.mainwindow_left, prefs.mainwindow_top, prefs.mainwindow_width, prefs.mainwindow_height);
@@ -44,18 +35,14 @@ XATabWindow *XATabWindowDefaultWindow;
 
 - (void) performClose:(id)sender
 {
-    if ([sender class] == [NSMenuItem class]) {
-        [(id<XATabWindowDelegate>)[self delegate] closeTab];
+    if ([sender isKindOfClass:[NSMenuItem class]]) {
+        [(id<XATabWindowDelegate>)[self delegate] windowCloseTab:self];
     } else {
         [super performClose:sender];
     }
 }
 
-+ (XATabWindow *)defaultTabWindow {
-    return XATabWindowDefaultWindow;
-}
-
-- (void)preferencesChanged {
+- (void)applyPreferences:(id)sender {
     if (prefs.style_inputbox) {
         if (prefs.tab_layout == 2) {
             self.backgroundColor = [[[AquaChat sharedAquaChat] palette] getColor:XAColorBackground];
@@ -66,7 +53,7 @@ XATabWindow *XATabWindowDefaultWindow;
         self.backgroundColor = nil;
     }
     
-    [self.tabView preferencesChanged];
+    [self.tabView applyPreferences:sender];
 }
 
 @end

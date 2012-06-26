@@ -26,9 +26,6 @@
 #include "outbound.h"
 #include "util.h"
 
-#include "fe-aqua_common.h"
-
-
 #pragma mark Objects for tab auto-complete
 
 @interface TabCompletionItem : NSObject {
@@ -184,7 +181,7 @@
 
 @implementation ChatSplitView
 
-- (void)viewDidResized:(id)sender {
+- (void)viewDidResize:(id)sender {
     NSInteger position = self.splitPosition;
     NSSplitViewDividerStyle dividerStyle;
     if (position < 10) {
@@ -228,10 +225,10 @@
     {
         if (prefs.hideuserlist) {
             [self setSplitPosition:prefs.xa_paned_pos];
-            [self viewDidResized:self];
+            [self viewDidResize:self];
         } else {
             [self setSplitPosition:1];
-            [self viewDidResized:self];
+            [self viewDidResize:self];
         }
     }
 }
@@ -335,7 +332,7 @@
 
 - (void) rehash
 {
-    //    I'm not sure how to or if I should call rehash on preferencesChanged it seems a bit irrelevant as eventually this will catch up and flip nick/host colors for us
+    //    I'm not sure how to or if I should call rehash on applyPreferences: it seems a bit irrelevant as eventually this will catch up and flip nick/host colors for us
     [nick release];
     [host release];
     
@@ -659,7 +656,7 @@ static NSImage *emptyBulletImage;
     }
 }
 
-- (void)preferencesChanged {
+- (void)applyPreferences:(id)sender {
     // init ColorPalette
     ColorPalette *p = [[AquaChat sharedAquaChat] palette];
     [chatTextView setFont:[[AquaChat sharedAquaChat] font] boldFont:[[AquaChat sharedAquaChat] boldFont]];
@@ -793,7 +790,7 @@ static NSImage *emptyBulletImage;
     
     [headerBoxView layoutNow];
     
-    [self preferencesChanged];
+    [self applyPreferences:nil];
     
     [self.chatView setServer:sess->server];
     [self.chatView setInitialFirstResponder:inputTextField];
@@ -2293,7 +2290,7 @@ static NSImage *emptyBulletImage;
 #pragma mark -
 
 - (void)splitViewDidResizeSubviews:(NSNotification *)notification {
-    [notification.object viewDidResized:self];
+    [notification.object viewDidResize:self];
 }
 
 @end

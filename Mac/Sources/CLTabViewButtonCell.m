@@ -56,7 +56,7 @@ enum {
     if (hasCloseCell == has) return;
     hasCloseCell = has;
     if (hasCloseCell && !closeCell) {
-        closeCell = [[NSButtonCell alloc] initImageCell:[NSImage imageNamed:@"CLclose13.tiff"]];
+        closeCell = [[NSButtonCell alloc] initImageCell:[NSImage imageNamed:@"close.tiff"]];
         [closeCell setButtonType:NSMomentaryLightButton];
         [closeCell setImagePosition:NSImageOnly];
         [closeCell setBordered:false];

@@ -15,10 +15,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#import "DCCListController.h"
+/* DCCFileSendController.h
+ * Correspond to main menu: Window -> File Send...
+ */
 
-@interface DccChatWin : DCCListController 
+#import "DCCFileTransferListController.h"
 
-- (IBAction) doAccept:(id)sender;
+@interface DCCFileSendController : DCCFileTransferListController
+
+- (IBAction)doInfo:(id)sender;
 
 @end

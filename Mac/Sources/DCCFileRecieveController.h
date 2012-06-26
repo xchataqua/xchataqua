@@ -15,29 +15,17 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-@interface XATabViewItem : NSTabViewItem
-{
-    NSRect  close_rect;
-    NSColor *color;
-}
+/* DCCFileRecieveController.h
+ * Correspond to main menu: Window -> File Receive...
+ */
 
-- (BOOL) mouseInClose:(NSPoint) p;
-- (void) setTitleColor:(NSColor *) c;
+#import "DCCFileTransferListController.h"
 
-@end
+@interface DCCFileRecieveController : DCCFileTransferListController
 
-@protocol XATabViewDelegate;
-@interface XATabView : NSTabView
-{
-    XATabViewItem *in_close_item;
-}
+- (IBAction) doReveal:(id)sender;
+- (IBAction) doAccept:(id)sender;
+- (IBAction) doResume:(id)sender;
+- (IBAction) doInfo:(id)sender;
 
-- (XATabViewItem *) mouseInClose:(NSEvent *) e;
-
-@property (nonatomic, assign) id<XATabViewDelegate> delegate;
-
-@end
-
-@protocol XATabViewDelegate
-- (void) tabWantsToClose:(XATabViewItem *) item;
 @end

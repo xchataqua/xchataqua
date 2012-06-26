@@ -18,7 +18,6 @@
 #include "text.h"
 #include "url.h"
 // TBD: This is for urlhander_list Should we pass this in?
-#import "fe-aqua_common.h"
 
 #import "XAChatTextView.h"
 #import "ColorPalette.h"
