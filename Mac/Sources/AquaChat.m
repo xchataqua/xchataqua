@@ -20,7 +20,6 @@
 #include "cfgfiles.h"
 #include "util.h"
 #include "text.h"
-#include "fe-aqua_common.h"
 
 #import <ShortcutRecorder/ShortcutRecorder.h>
 
@@ -28,6 +27,7 @@
 #import "AutoAwayController.h"
 #import "MenuMaker.h"
 #import "XATabWindow.h"
+#import "SGTabView.h"
 
 // Utility Window
 #import "AsciiWindow.h"
@@ -35,9 +35,9 @@
 #import "ChannelWindow.h"
 #import "ColorPalette.h"
 #import "ChatViewController.h"
-#import "DccSendWin.h"
-#import "DccRecvWin.h"
-#import "DccChatWin.h"
+#import "DCCFileSendController.h"
+#import "DCCFileRecieveController.h"
+#import "DCCChatController.h"
 #import "EditListWindow.h"
 #import "FriendWindow.h"
 #import "IgnoreWindow.h"
@@ -59,7 +59,7 @@ struct XAMenuPreferenceItem
 
 static struct XAMenuPreferenceItem menuPreferenceItems[6];
 
-struct EventInfo textEventInfo[NUM_XP];
+struct XATextEventItem XATextEvents[NUM_XP];
 
 #pragma mark -
 
@@ -79,7 +79,9 @@ struct EventInfo textEventInfo[NUM_XP];
 AquaChat *AquaChatShared;
 
 @implementation AquaChat
-@synthesize font, boldFont, palette;
+@synthesize font, boldFont;
+@synthesize palette=_palette;
+@synthesize mainWindow=_mainWindow;
 
 - (void) post_init
 {    
@@ -97,25 +99,17 @@ AquaChat *AquaChatShared;
     
     [self loadEventInfo];
     
-
-//    alertImage = [appImage copy];
-//    NSImage *badgeImage = [NSImage imageNamed:@"warning.tiff"];
-//    [alertImage lockFocus];
-//    NSSize alertSize = [alertImage size];
-//    NSSize badgeSize = [badgeImage size];
-//    [badgeImage compositeToPoint:NSMakePoint(alertSize.width - badgeSize.width, alertSize.height - badgeSize.height) 
-//                       operation:NSCompositeSourceOver 
-//                        fraction:1];
-//    [alertImage unlockFocus];
-    
     self->soundCache = [[NSMutableDictionary alloc] init];
     
-    self->palette = [[ColorPalette alloc] init];
-    [self->palette loadFromConfiguration];
+    self->_palette = [[ColorPalette alloc] init];
+    [self->_palette loadFromConfiguration];
     
     [self loadMenuPreferences];
     
-    [self preferencesChanged];
+    NSWindowController *controller = [[NSWindowController alloc] initWithWindowNibName:@"ChatWindow"];
+    self->_mainWindow = (id)controller.window;
+    
+    [self applyPreferences:nil];
     
     [NSApp requestEvents:NSKeyDown forWindow:nil forView:nil selector:@selector (myKeyDown:) object:self];
 }
@@ -136,11 +130,11 @@ AquaChat *AquaChatShared;
     _badgeCount = value;
 }
 
-- (void)preferencesChanged {
+- (void)applyPreferences:(id)sender {
     [self setFont:prefs.font_normal];
     
-    [[XATabWindow defaultTabWindow] preferencesChanged];
-    [TabOrWindowView preferencesChanged];
+    [self.mainWindow applyPreferences:sender];
+    [TabOrWindowView applyPreferences:sender];
     
     if (prefs.autodccsend == 1 && !strcasecmp ((char *)g_get_home_dir (), prefs.dccdir))
     {
@@ -152,8 +146,11 @@ AquaChat *AquaChatShared;
     for (GSList *list = sess_list; list; list = list->next)
     {
         struct session *sess = (struct session *)list->data;
-        [sess->gui->controller preferencesChanged];
+        [sess->gui->controller applyPreferences:sender];
     }
+    
+    // Toggle menu has no effect anymore
+    if ([sender isKindOfClass:[NSMenuItem class]]) return;
     
     NSString* keyCodeString;
     keyCodeString = SRStringForKeyCode(prefs.tab_left_key);
@@ -189,7 +186,13 @@ AquaChat *AquaChatShared;
         return NO;
     
     NSUInteger num = text[0] - '1';
-    return [TabOrWindowView selectTabByIndex:num];
+    if (num >= self.mainWindow.tabView.tabViewItems.count) {
+        return NO;
+    }
+    
+    [self.mainWindow.tabView selectTabViewItemAtIndex:num];
+    return YES;
+    
 }
 
 //TODO sparkle here
@@ -211,7 +214,7 @@ AquaChat *AquaChatShared;
 
 - (void) event:(int) event args:(char **) args session:(session *) sess
 {
-    struct EventInfo *info = textEventInfo + event;
+    struct XATextEventItem *info = XATextEvents + event;
     BOOL bg = ![NSApp isActive];
     
     // Pref can be
@@ -371,7 +374,7 @@ AquaChat *AquaChatShared;
 
 - (void) cleanup
 {
-    [palette save];
+    [self.palette save];
     [self saveEventInfo];
 }
 
@@ -461,36 +464,36 @@ AquaChat *AquaChatShared;
     }
 }
 
-- (int) openDccSendWindowAndShow:(BOOL)show
-{
-    bool is_new = dcc_send_window != nil;
+- (BOOL)openDCCSendWindowAndShow:(BOOL)show {
+    BOOL is_new = dcc_send_window != nil;
     
-    if (!dcc_send_window)
-        dcc_send_window = [[DccSendWin alloc] init];
+    if (!dcc_send_window) {
+        dcc_send_window = [[DCCFileSendController alloc] init];
+    }
     
     [dcc_send_window show:show];
     
     return is_new;
 }
 
-- (int) openDccRecieveWindowAndShow:(BOOL)show
-{
-    bool is_new = dcc_recv_window != nil;
+- (BOOL)openDCCRecieveWindowAndShow:(BOOL)show {
+    BOOL is_new = dcc_recv_window != nil;
     
-    if (!dcc_recv_window)
-        dcc_recv_window = [[DccRecvWin alloc] init];
+    if (!dcc_recv_window) {
+        dcc_recv_window = [[DCCFileRecieveController alloc] init];
+    }
     
     [dcc_recv_window show:show];
     
     return is_new;
 }
 
-- (int) openDccChatWindowAndShow:(BOOL)show
-{
-    bool is_new = dcc_chat_window != nil;
+- (BOOL)openDCCChatWindowAndShow:(BOOL)show {
+    BOOL is_new = dcc_chat_window != nil;
     
-    if (!dcc_chat_window)
-        dcc_chat_window = [[DccChatWin alloc] init];
+    if (!dcc_chat_window) {
+        dcc_chat_window = [[DCCChatController alloc] init];
+    }
     
     [dcc_chat_window show:show];
     
@@ -630,17 +633,17 @@ AquaChat *AquaChatShared;
 
 - (void) showDccRecieveWindow:(id)sender
 {
-    [self openDccRecieveWindowAndShow:YES];
+    [self openDCCRecieveWindowAndShow:YES];
 }
 
 - (void) showDccChatWindow:(id)sender
 {
-    [self openDccChatWindowAndShow:YES];
+    [self openDCCChatWindowAndShow:YES];
 }
 
 - (void) showDccSendWindow:(id)sender
 {
-    [self openDccSendWindowAndShow:YES];
+    [self openDCCSendWindowAndShow:YES];
 }
 
 - (void) showRawLogWindow:(id)sender
@@ -695,7 +698,7 @@ AquaChat *AquaChatShared;
 
 - (void) toggleMenuItemAndReloadPreferences:(id)sender {
     [self toggleMenuItem:sender];
-    [self preferencesChanged];
+    [self applyPreferences:sender];
 }
 
 - (void) toggleInvisible:(id)sender
@@ -953,25 +956,17 @@ AquaChat *AquaChatShared;
 {
     NSString *fn = [NSString stringWithFormat:@"%s/xcaevents.conf", get_xdir_fs ()];
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:fn];
-    
-    if (!dict)
+    if (dict == nil) {
         return;
+    }
     
-    for (int i = 0; i < NUM_XP; i++)
-    {
-        struct EventInfo *event = &textEventInfo[i];
+    for (NSInteger i = 0; i < NUM_XP; i++) {
+        struct XATextEventItem *event = &XATextEvents[i];
         char *name = te[i].name;
         
-        id gval = [dict objectForKey:[NSString stringWithFormat:@"%s_growl", name]];
-        id sval = [dict objectForKey:[NSString stringWithFormat:@"%s_show", name]];
-        id bval = [dict objectForKey:[NSString stringWithFormat:@"%s_bounce", name]];
-        
-        if (gval)
-            event->growl = [gval intValue];
-        if (sval)
-            event->show = [sval intValue];
-        if (bval)
-            event->bounce = [bval intValue];
+        event->growl = [[dict objectForKey:[NSString stringWithFormat:@"%s_growl", name]] integerValue];
+        event->show = [[dict objectForKey:[NSString stringWithFormat:@"%s_show", name]] integerValue];
+        event->bounce = [[dict objectForKey:[NSString stringWithFormat:@"%s_bounce", name]] integerValue];
     }
 }
 
@@ -980,7 +975,7 @@ AquaChat *AquaChatShared;
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:NUM_XP];
     for (int i = 0; i < NUM_XP; i++)
     {
-        struct EventInfo *event = &textEventInfo[i];
+        struct XATextEventItem *event = &XATextEvents[i];
         char *name = te[i].name;
         
         if (event->growl)

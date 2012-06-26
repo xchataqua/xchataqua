@@ -22,14 +22,11 @@
 	This class handles menu generation.
 */
 
-#include "fe-aqua_common.h"
-
 #import "MenuMaker.h"
 #import "ChatViewController.h"
 
 #import "ViewerWindow.h"
 
-#import "fe-aqua_common.h"
 #include "outbound.h"
 #include "util.h"
 #include "server.h"
