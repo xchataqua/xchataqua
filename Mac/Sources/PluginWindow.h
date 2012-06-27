@@ -22,11 +22,7 @@
 
 #import "UtilityWindow.h"
 
-@interface PluginWindow : UtilityWindow
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSTableViewDataSource>
-#endif
-{
+@interface PluginWindow : UtilityWindow <NSTableViewDataSource> {
     IBOutlet NSTableView *pluginTableView;
     NSMutableArray *plugins;
 }
