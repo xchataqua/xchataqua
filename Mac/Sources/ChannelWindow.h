@@ -24,11 +24,7 @@
 #import "UtilityWindow.h"
 
 @class ColorPalette;
-@interface ChannelWindow : UtilityTabOrWindowView
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSTableViewDataSource, NSTableViewDelegate>
-#endif
-{
+@interface ChannelWindow : UtilityTabOrWindowView <NSTableViewDataSource, NSTableViewDelegate> {
     IBOutlet NSTableView *channelTableView;
     IBOutlet NSTextField *captionTextField;
     IBOutlet NSButton *refreshButton;

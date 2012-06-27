@@ -17,11 +17,7 @@
 
 #import "UtilityWindow.h"
 
-@interface UserCommandsWindow : UtilityWindow
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSTableViewDelegate>
-#endif
-{
+@interface UserCommandsWindow : UtilityWindow <NSTableViewDelegate> {
     IBOutlet NSTableView    *commandTableView;
     IBOutlet NSTextView     *commandTextView;
     

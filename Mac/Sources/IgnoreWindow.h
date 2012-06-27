@@ -22,11 +22,7 @@
 
 #import "UtilityWindow.h"
 
-@interface IgnoreWindow : UtilityTabOrWindowView
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSTableViewDataSource>
-#endif
-{
+@interface IgnoreWindow : UtilityTabOrWindowView <NSTableViewDataSource> {
     IBOutlet NSTableView *ignoreTableView;
     
     // ignored field

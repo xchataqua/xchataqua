@@ -664,11 +664,7 @@ extern struct XATextEventItem XATextEvents[];
     
     NSString *directoryName = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/../Sounds"]; // weird path
     NSFileManager *manager = [NSFileManager defaultManager];
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_4
     NSArray *files = [manager contentsOfDirectoryAtPath:directoryName error:NULL];
-#else
-    NSArray *files = [manager directoryContentsAtPath:directoryName];
-#endif
     
     for ( NSString *sound in files ) {
         NSString *fullPath = [directoryName stringByAppendingFormat:@"/%@", sound];

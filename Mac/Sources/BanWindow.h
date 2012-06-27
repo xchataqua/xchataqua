@@ -22,11 +22,7 @@
 
 #import "UtilityWindow.h"
 
-@interface BanWindow : UtilityTabOrWindowView
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSTableViewDataSource>
-#endif
-{
+@interface BanWindow : UtilityTabOrWindowView <NSTableViewDataSource> {
     IBOutlet NSTableView *banTableView;
     IBOutlet NSButton *refreshButton;
     NSMutableArray  *bans;
