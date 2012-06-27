@@ -7,31 +7,16 @@
 //
 
 #import "NSPanelAdditions.h"
-#import "SystemVersion.h"
 
 @implementation NSSavePanel (XChatAqua)
 
 - (NSInteger)runModalForWindow:(NSWindow *)window {
     NSInteger status;
     
-    if ([SystemVersion minor] > 5) { // >= snow leopard
-        [self beginSheetModalForWindow:window completionHandler:NULL];
-        status = [self runModal];
-        [NSApp endSheet:self];
-    } else {
-        // ignore deprecated warning. this is legacy support runtime code.
-        if ([self isKindOfClass:[NSOpenPanel class]]) {
-            [(NSOpenPanel *)self beginSheetForDirectory:self.directory file:nil types:nil modalForWindow:window
-                           modalDelegate:nil didEndSelector:nil contextInfo:nil];
-        } else {
-            [self beginSheetForDirectory:nil file:nil modalForWindow:window
-                           modalDelegate:nil didEndSelector:nil contextInfo:nil];
-        }
-        
-        status = [NSApp runModalForWindow:self];
-        [NSApp endSheet:self];
-        [self orderOut:self];
-    }
+    [self beginSheetModalForWindow:window completionHandler:NULL];
+    status = [self runModal];
+    [NSApp endSheet:self];
+
     return status;
 }
 
