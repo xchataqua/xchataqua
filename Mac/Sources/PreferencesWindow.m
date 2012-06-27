@@ -274,7 +274,6 @@ extern struct XATextEventItem XATextEvents[];
         { autoReconnectCheckBox, &prefs.autoreconnect, MYPREF_INT },
         { neverGiveUpReconnectionCheckBox, &prefs.autoreconnectonfail, MYPREF_INT },
         { identdCheckBox, &prefs.identd, MYPREF_INT },
-        { checkNewVersionCheckBox, &prefs.xa_checkvers, MYPREF_INT },
         // File transfers
         { autoAcceptDccPopUp, &prefs.autodccsend, MYPREF_MENU },
         { downloadsDirectoryTextField, &prefs.dccdir, MYPREF_STRING },
@@ -665,11 +664,7 @@ extern struct XATextEventItem XATextEvents[];
     
     NSString *directoryName = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/../Sounds"]; // weird path
     NSFileManager *manager = [NSFileManager defaultManager];
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_4
     NSArray *files = [manager contentsOfDirectoryAtPath:directoryName error:NULL];
-#else
-    NSArray *files = [manager directoryContentsAtPath:directoryName];
-#endif
     
     for ( NSString *sound in files ) {
         NSString *fullPath = [directoryName stringByAppendingFormat:@"/%@", sound];

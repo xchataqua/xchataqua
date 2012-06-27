@@ -23,11 +23,7 @@
 #import "UtilityWindow.h"
 
 @class FriendAdditionPanel;
-@interface FriendWindow : UtilityTabOrWindowView
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSTableViewDataSource>
-#endif
-{
+@interface FriendWindow : UtilityTabOrWindowView <NSTableViewDataSource> {
     IBOutlet NSTableView *friendTableView;
     IBOutlet FriendAdditionPanel *friendAdditionPanel;
     NSMutableArray *friends;
@@ -45,11 +41,7 @@
 
 #pragma mark -
 
-@interface FriendAdditionPanel : NSPanel
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSWindowDelegate>
-#endif
-{
+@interface FriendAdditionPanel : NSPanel <NSWindowDelegate> {
     IBOutlet NSTextField *friendAdditionNickTextField;
     IBOutlet NSTextField *friendAdditionNetworkTextField;
 }

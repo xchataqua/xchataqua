@@ -4,7 +4,6 @@ char xa_urlcommand[256];
 char xa_channelcommand[256];
 char xa_sleepmessage[256];
 unsigned int xa_tab_completion;
-unsigned int xa_checkvers;
 unsigned int xa_scrolling_completion;
 unsigned int xa_show_myservers;
 char xa_default_charset[256];
