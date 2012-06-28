@@ -182,10 +182,8 @@
 @implementation ChatSplitView
 
 - (void)viewDidResize:(id)sender {
-    NSInteger position = self.splitPosition;
     NSSplitViewDividerStyle dividerStyle;
-    if (position < 10) {
-        position = 1;
+    if (self.splitPosition < 10) {
         prefs.xa_paned_pos = 30;
         prefs.hideuserlist = 1;
         self.splitPosition = 0;
