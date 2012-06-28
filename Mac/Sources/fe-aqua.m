@@ -74,13 +74,6 @@ static void init_plugins_once()
     }
     
     plugin_add (current_sess, NULL, NULL, (void *) XAInitInternalPlugin, NULL, NULL, FALSE);
-
-    // TODO: Disable the version check here if the user has set that preference.
-    /*
-     if (prefs.xa_checkvers)
-     {
-     }
-     */
     
     done = true;
 }

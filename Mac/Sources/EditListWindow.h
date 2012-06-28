@@ -22,11 +22,7 @@
 #include <glib/glib.h>
 #import "UtilityWindow.h"
 
-@interface EditListWindow : UtilityWindow    
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSTableViewDataSource, NSTableViewDelegate>
-#endif
-{
+@interface EditListWindow : UtilityWindow <NSTableViewDataSource, NSTableViewDelegate> {
     GSList*  *slist;
     NSString *filename;
     NSMutableArray *items;
@@ -52,9 +48,6 @@
 
 @end
 
-@interface UserlistButtonsWindowDelegate : NSObject
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSWindowDelegate>
-#endif
+@interface UserlistButtonsWindowDelegate : NSObject <NSWindowDelegate>
 
 @end

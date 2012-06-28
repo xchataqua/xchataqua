@@ -16,7 +16,6 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
 #import "SGFileSelection.h"
-#import "SystemVersion.h"
 #import "NSPanelAdditions.h"
 
 static NSString *SGFileSelectionFixPath (NSString *path)
@@ -40,11 +39,7 @@ static NSString *SGFileSelectionFixPath (NSString *path)
 
     if (dir) {
         NSString *fixedDirectory = SGFileSelectionFixPath(dir);
-        if ([SystemVersion minor] > 5) {
-            [panel setDirectoryURL:[NSURL fileURLWithPath:fixedDirectory isDirectory:YES]];
-        } else {
-            [panel setDirectory:fixedDirectory];
-        }
+        [panel setDirectoryURL:[NSURL fileURLWithPath:fixedDirectory isDirectory:YES]];
     }
     
     NSInteger sts;
