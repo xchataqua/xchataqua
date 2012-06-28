@@ -22,11 +22,7 @@
 
 #import "UtilityWindow.h"
 
-@interface UrlGrabberWindow : UtilityTabOrWindowView
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSTableViewDataSource>
-#endif
-{
+@interface UrlGrabberWindow : UtilityTabOrWindowView <NSTableViewDataSource> {
     IBOutlet NSTableView *urlTableView;
     NSMutableArray *urls;
 }
