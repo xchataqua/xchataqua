@@ -580,8 +580,6 @@
 		38BC97BC154A9AD4005894EF /* perl-snowleopard.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */; };
 		38BC97BD154A9AD4005894EF /* ruby.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 38D1414013D800E60026B7B5 /* ruby.bundle */; };
 		38BC97BE154A9AD4005894EF /* perl-lion.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 38763F2213DD40D6008C40DB /* perl-lion.bundle */; };
-		38BC97C0154A9B2C005894EF /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38BC97BF154A9B2C005894EF /* Sparkle.framework */; };
-		38BC97C2154A9BB5005894EF /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 38BC97BF154A9B2C005894EF /* Sparkle.framework */; };
 		38BF61A615786A7500D26D1C /* google.pl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 380F1EF113E29C930033E3AC /* google.pl */; };
 		38CE5A95154A689F00480EC6 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5A8F154A687400480EC6 /* ShortcutRecorder.framework */; };
 		38CE5AE2154A718500480EC6 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5AC5154A70E300480EC6 /* Growl.framework */; };
@@ -617,7 +615,6 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		B0D937F10FFB0D34009370B5 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */; };
 		B0D937F20FFB0D34009370B5 /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937F00FFB0D34009370B5 /* libssl.dylib */; };
-		B0E85AC20FFFC0AF0064D049 /* sparkle.pem in Resources */ = {isa = PBXBuildFile; fileRef = B0E85AC10FFFC0AF0064D049 /* sparkle.pem */; };
 		D487239E128F9DBC00647D7B /* UtilityWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D487239D128F9DBC00647D7B /* UtilityWindow.m */; };
 		D4FBD93E12E449D5003EA441 /* ViewerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4FBD93D12E449D5003EA441 /* ViewerWindow.xib */; };
 		D4FBD95912E44CD0003EA441 /* ViewerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FBD93912E44946003EA441 /* ViewerWindow.m */; };
@@ -888,7 +885,6 @@
 			files = (
 				38BC97B7154A996F005894EF /* ShortcutRecorder.framework in Copy Frameworks */,
 				38BC97B8154A996F005894EF /* Growl.framework in Copy Frameworks */,
-				38BC97C2154A9BB5005894EF /* Sparkle.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1003,7 +999,7 @@
 		0F2FEFB70E1FC5A800DE4D41 /* SystemVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemVersion.m; sourceTree = "<group>"; };
 		0F30611F0D83C5830084F2CA /* AquaChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AquaChat.h; sourceTree = "<group>"; };
 		0F7065530E1FA32E00FEA21C /* Changes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Changes; path = ../Changes; sourceTree = "<group>"; };
-		0F8EA3660CFAA49B001AE9AE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Mac/Aqua/Info.plist; sourceTree = "<group>"; };
+		0F8EA3660CFAA49B001AE9AE /* Aqua-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Aqua-Info.plist"; path = "Mac/Aqua-Info.plist"; sourceTree = "<group>"; };
 		0F8EA3830CFAA896001AE9AE /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = xchat/config.h; sourceTree = "<group>"; };
 		0F8EA3CE0CFAF7E2001AE9AE /* fe-aqua.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "fe-aqua.m"; sourceTree = "<group>"; };
 		0F8EA5F80CFB2500001AE9AE /* AquaChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AquaChat.m; sourceTree = "<group>"; };
@@ -2394,7 +2390,6 @@
 		388C8E6F13C6E10400AAF20D /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/UserCommandsWindow.xib; sourceTree = "<group>"; };
 		3894C1B11590D6F400BCD762 /* NSPanelAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSPanelAdditions.h; sourceTree = "<group>"; };
 		3894C1B21590D6F400BCD762 /* NSPanelAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSPanelAdditions.m; sourceTree = "<group>"; };
-		38BC97BF154A9B2C005894EF /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Mac/Aqua/Frameworks/Sparkle/Sparkle.framework; sourceTree = "<group>"; };
 		38CE5A63154A551600480EC6 /* alt_completion.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = alt_completion.pl; path = xchat/plugins/perl/alt_completion.pl; sourceTree = SOURCE_ROOT; };
 		38CE5A64154A551600480EC6 /* char_count.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = char_count.pl; path = xchat/plugins/perl/char_count.pl; sourceTree = SOURCE_ROOT; };
 		38CE5A65154A551600480EC6 /* irc.pm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = irc.pm.h; path = xchat/plugins/perl/irc.pm.h; sourceTree = SOURCE_ROOT; };
@@ -2460,9 +2455,8 @@
 		B07C7AD70F4398FC00E11B58 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = /usr/lib/libcrypto.dylib; sourceTree = "<absolute>"; };
 		B0D937F00FFB0D34009370B5 /* libssl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.dylib; path = /usr/lib/libssl.dylib; sourceTree = "<absolute>"; };
-		B0E85AC10FFFC0AF0064D049 /* sparkle.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sparkle.pem; path = Mac/Aqua/sparkle.pem; sourceTree = "<group>"; };
 		D406B462129D789400EF6B2B /* fe-aqua_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "fe-aqua_common.h"; sourceTree = "<group>"; };
-		D439129912DE2569009BE73C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Mac/Azure/Info.plist; sourceTree = "<group>"; };
+		D439129912DE2569009BE73C /* Azure-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Azure-Info.plist"; path = "Mac/Azure-Info.plist"; sourceTree = "<group>"; };
 		D46631D3129DC3B1004B66B8 /* UtilityTableViewDragAndDrop.inc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityTableViewDragAndDrop.inc.m; sourceTree = "<group>"; };
 		D487239C128F9DBC00647D7B /* UtilityWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityWindow.h; sourceTree = "<group>"; };
 		D487239D128F9DBC00647D7B /* UtilityWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityWindow.m; sourceTree = "<group>"; };
@@ -2570,7 +2564,6 @@
 				D4FBD9C612E458C4003EA441 /* WebKit.framework in Frameworks */,
 				38BC97B6154A994D005894EF /* ShortcutRecorder.framework in Frameworks */,
 				38E34015154A74C2005B59F8 /* Growl.framework in Frameworks */,
-				38BC97C0154A9B2C005894EF /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2750,7 +2743,6 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				38BC97BF154A9B2C005894EF /* Sparkle.framework */,
 				B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */,
 				B0D937F00FFB0D34009370B5 /* libssl.dylib */,
 				385F766D155148FC00689E6E /* libiconv.dylib */,
@@ -2797,8 +2789,8 @@
 				38CE5A85154A687300480EC6 /* ShortcutRecorder.xcodeproj */,
 				38CE5AA4154A70E100480EC6 /* Growl.xcodeproj */,
 				385F774A155158BB00689E6E /* staticlib */,
-				380AD16C13C6967B003EEE3D /* Aqua */,
-				380AD16D13C69682003EEE3D /* Azure */,
+				0F8EA3660CFAA49B001AE9AE /* Aqua-Info.plist */,
+				D439129912DE2569009BE73C /* Azure-Info.plist */,
 				0F8EA3640CFAA429001AE9AE /* Sources */,
 				2DC6AD151187773F0048B7C7 /* Resources */,
 				0FC8F3D10DEEC33D00504F31 /* Plugins */,
@@ -2934,23 +2926,6 @@
 			);
 			name = images;
 			path = ..;
-			sourceTree = "<group>";
-		};
-		380AD16C13C6967B003EEE3D /* Aqua */ = {
-			isa = PBXGroup;
-			children = (
-				0F8EA3660CFAA49B001AE9AE /* Info.plist */,
-				B0E85AC10FFFC0AF0064D049 /* sparkle.pem */,
-			);
-			name = Aqua;
-			sourceTree = "<group>";
-		};
-		380AD16D13C69682003EEE3D /* Azure */ = {
-			isa = PBXGroup;
-			children = (
-				D439129912DE2569009BE73C /* Info.plist */,
-			);
-			name = Azure;
 			sourceTree = "<group>";
 		};
 		384A96331588F2CC00268814 /* src */ = {
@@ -4214,7 +4189,6 @@
 				0F8EA7A10CFB6CF9001AE9AE /* xchat.icns in Resources */,
 				0F8EA7A30CFB6CF9001AE9AE /* yellow.tiff in Resources */,
 				0F7065540E1FA32E00FEA21C /* Changes in Resources */,
-				B0E85AC20FFFC0AF0064D049 /* sparkle.pem in Resources */,
 				D4FBD93E12E449D5003EA441 /* ViewerWindow.xib in Resources */,
 				388C8E8713C6E10500AAF20D /* BanWindow.xib in Resources */,
 				388C8E8913C6E10500AAF20D /* ChannelWindow.xib in Resources */,
@@ -6352,7 +6326,7 @@
 					glib,
 				);
 				IBC_PLUGIN_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
-				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
+				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_CODE = Azure;
 				PRODUCT_NAME = "XChat Azure";
@@ -6380,7 +6354,7 @@
 					glib,
 				);
 				IBC_PLUGIN_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
-				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
+				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_CODE = Azure;
 				PRODUCT_NAME = "XChat Azure";
@@ -6559,7 +6533,7 @@
 					xchat/src,
 				);
 				IBC_PLUGIN_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
-				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
+				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}-Info.plist";
 				PRODUCT_CODE = Aqua;
 				PRODUCT_NAME = "X-Chat Aqua";
 				USER_HEADER_SEARCH_PATHS = "$(TARGET_PLATFORM) xchat/src glib";
@@ -6588,7 +6562,7 @@
 					xchat/src,
 				);
 				IBC_PLUGIN_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
-				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
+				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}-Info.plist";
 				PRODUCT_CODE = Aqua;
 				PRODUCT_NAME = "X-Chat Aqua";
 				USER_HEADER_SEARCH_PATHS = "$(TARGET_PLATFORM) xchat/src glib";
