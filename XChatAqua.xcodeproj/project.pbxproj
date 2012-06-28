@@ -108,9 +108,6 @@
 		0F8EA7A00CFB6CF9001AE9AE /* X-Chat Aqua.scriptTerminology in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7960CFB6CF9001AE9AE /* X-Chat Aqua.scriptTerminology */; };
 		0F8EA7A10CFB6CF9001AE9AE /* xchat.icns in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7970CFB6CF9001AE9AE /* xchat.icns */; };
 		0F8EA7A30CFB6CF9001AE9AE /* yellow.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA7990CFB6CF9001AE9AE /* yellow.tiff */; };
-		0F8F06DD0E1FDAA100359159 /* perl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F06C10E1FDA5E00359159 /* perl.c */; };
-		0F8F07CF0E1FDDBF00359159 /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8F07CE0E1FDDBF00359159 /* libperl.dylib */; };
-		0F8F07DB0E1FDEFF00359159 /* DynaLoader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8F07DA0E1FDEFF00359159 /* DynaLoader.a */; };
 		0F8F08180E1FE01800359159 /* Tcl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8F08170E1FE01800359159 /* Tcl.framework */; };
 		0F8F082A0E1FE06800359159 /* tclplugin.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F08280E1FE06800359159 /* tclplugin.c */; };
 		0FC8F5C40DEEEA3E00504F31 /* libxchat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC8F4AE0DEEE51700504F31 /* libxchat.a */; };
@@ -982,15 +979,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		38CE5A77154A55DA00480EC6 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -1095,7 +1083,6 @@
 		0F8EA7970CFB6CF9001AE9AE /* xchat.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = xchat.icns; path = Resources/xchat.icns; sourceTree = "<group>"; };
 		0F8EA7990CFB6CF9001AE9AE /* yellow.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = yellow.tiff; path = Resources/yellow.tiff; sourceTree = "<group>"; };
 		0F8F06C10E1FDA5E00359159 /* perl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = perl.c; path = xchat/plugins/perl/perl.c; sourceTree = SOURCE_ROOT; };
-		0F8F06D70E1FDA8500359159 /* perl-leopard.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-leopard.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F8F07CE0E1FDDBF00359159 /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = "build/XChatAqua.build/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib"; sourceTree = SOURCE_ROOT; };
 		0F8F07DA0E1FDEFF00359159 /* DynaLoader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = DynaLoader.a; path = "build/XChatAqua.build/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a"; sourceTree = SOURCE_ROOT; };
 		0F8F08110E1FE00800359159 /* tcl.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tcl.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1118,7 +1105,6 @@
 		2D7817C810E872D200C71AF8 /* fe-aqua_utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "fe-aqua_utility.h"; sourceTree = "<group>"; };
 		2D7817C910E872D200C71AF8 /* fe-aqua_utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "fe-aqua_utility.m"; sourceTree = "<group>"; };
 		2DDC6FA21231733E0015A26C /* build_number.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = build_number.h; sourceTree = "<group>"; };
-		2DE5D5C210EBE2260024D2A4 /* perl-leopard-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "perl-leopard-Info.plist"; sourceTree = "<group>"; };
 		2DE5D5C410EBE2300024D2A4 /* perl-snowleopard-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "perl-snowleopard-Info.plist"; sourceTree = "<group>"; };
 		2DE5D5C610EBE23E0024D2A4 /* python-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "python-Info.plist"; sourceTree = "<group>"; };
 		2DE5D5C810EBE24C0024D2A4 /* tcl-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "tcl-Info.plist"; sourceTree = "<group>"; };
@@ -2476,15 +2462,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0F8F06D50E1FDA8500359159 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0F8F07CF0E1FDDBF00359159 /* libperl.dylib in Frameworks */,
-				0F8F07DB0E1FDEFF00359159 /* DynaLoader.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		0F8F080F0E1FE00800359159 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2701,7 +2678,6 @@
 		0F8F06BE0E1FD99400359159 /* perl */ = {
 			isa = PBXGroup;
 			children = (
-				2DE5D5C210EBE2260024D2A4 /* perl-leopard-Info.plist */,
 				2DE5D5C410EBE2300024D2A4 /* perl-snowleopard-Info.plist */,
 				38763F2313DD45D3008C40DB /* perl-lion-Info.plist */,
 				0F8F07DA0E1FDEFF00359159 /* DynaLoader.a */,
@@ -2772,7 +2748,6 @@
 				0FC8F4AE0DEEE51700504F31 /* libxchat.a */,
 				0F8F08110E1FE00800359159 /* tcl.bundle */,
 				0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */,
-				0F8F06D70E1FDA8500359159 /* perl-leopard.bundle */,
 				2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */,
 				38763F2213DD40D6008C40DB /* perl-lion.bundle */,
 				38D1414013D800E60026B7B5 /* ruby.bundle */,
@@ -3668,25 +3643,6 @@
 			productReference = 0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
-		0F8F06D60E1FDA8500359159 /* perl-leopard */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0F8F06DC0E1FDA8600359159 /* Build configuration list for PBXNativeTarget "perl-leopard" */;
-			buildPhases = (
-				2DCBED2C11AA140E00388F47 /* Generate Symlink For Leopard Perl Library & XChat Plugin Headers */,
-				0F8F06D30E1FDA8500359159 /* Resources */,
-				0F8F06D40E1FDA8500359159 /* Sources */,
-				0F8F06D50E1FDA8500359159 /* Frameworks */,
-				38CE5A77154A55DA00480EC6 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "perl-leopard";
-			productName = "perl-leopard";
-			productReference = 0F8F06D70E1FDA8500359159 /* perl-leopard.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
 		0F8F08100E1FE00800359159 /* tcl */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F8F08160E1FE00800359159 /* Build configuration list for PBXNativeTarget "tcl" */;
@@ -3950,7 +3906,6 @@
 				0FC8F4AD0DEEE51700504F31 /* xchat */,
 				0F8F08100E1FE00800359159 /* tcl */,
 				0F2FEF2A0E1FAB1500DE4D41 /* python */,
-				0F8F06D60E1FDA8500359159 /* perl-leopard */,
 				2D78137F10E77C6400C71AF8 /* perl-snowleopard */,
 				38763F1813DD40D6008C40DB /* perl-lion */,
 				38D1413613D800E60026B7B5 /* ruby */,
@@ -4076,13 +4031,6 @@
 
 /* Begin PBXResourcesBuildPhase section */
 		0F2FEF270E1FAB1500DE4D41 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0F8F06D30E1FDA8500359159 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -4236,20 +4184,6 @@
 			shellPath = /bin/bash;
 			shellScript = "TARGET_DIR=\"$PROJECT_TEMP_DIR\"\nrm -rf \"$TARGET_DIR/Perl/5.10.0\"\nmkdir -p \"$TARGET_DIR/Perl/5.10.0/darwin-thread-multi-2level/CORE/\"\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\tln -s '/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib' \"$TARGET_DIR/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib\"\nelse\n\tln -s \"$PROJECT_DIR/Mac/contrib/System/Library/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib\" \"$TARGET_DIR/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib\"\nfi\n\ncd \"$PROJECT_DIR/xchat/plugins/perl\"\n./generate_header\n\nexit # old script\n\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\texit\nfi\n\ntar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Snowleopard.tar\" -P\n\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\texit\nfi\n\nsudo tar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Snowleopard.tar\" -P\n\nif [ -e '/System/Library/Perl/5.10.0/' ]; then\n\texit\nfi\n\necho 'input password for sudo to install leopard library to user system'\n\n/usr/bin/osascript > /dev/null <<ASCPT\ntell application \"Terminal\"\n\tactivate\n\tdo script with command \"sudo tar xvf \\\"$PROJECT_DIR/contrib/systemlib/Perl-Snowleopard.tar\\\" -P\"\nend tell\nASCPT\n\necho 'after running script, redo build please.'\n\nexit 1";
 		};
-		2DCBED2C11AA140E00388F47 /* Generate Symlink For Leopard Perl Library & XChat Plugin Headers */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Generate Symlink For Leopard Perl Library & XChat Plugin Headers";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "TARGET_DIR=\"$PROJECT_TEMP_DIR\"\nrm -rf \"$TARGET_DIR/Perl/5.8.8\"\nmkdir -p \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/CORE/\"\nmkdir -p \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/\"\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\tln -s '/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib' \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib\"\n\tln -s '/System/Library/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a' \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a\"\nelse\n\tln -s \"$PROJECT_DIR/Mac/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib\" \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/CORE/libperl.dylib\"\n\tln -s \"$PROJECT_DIR/Mac/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a\" \"$TARGET_DIR/Perl/5.8.8/darwin-thread-multi-2level/auto/DynaLoader/DynaLoader.a\"\nfi\n\ncd \"$PROJECT_DIR/xchat/plugins/perl\"\n./generate_header\n\nexit # old script\n\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\ntar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\" -P\n\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\nsudo tar xvf \"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\" -P\n\nif [ -e '/System/Library/Perl/5.8.8/' ]; then\n\texit\nfi\n\necho 'input password for sudo to install leopard library to user system'\n\n/usr/bin/osascript > /dev/null <<ASCPT\ntell application \"Terminal\"\n\tactivate\n\tdo script with command \"sudo tar xvf \\\"$PROJECT_DIR/contrib/systemlib/Perl-Leopard.tar\\\" -P\"\nend tell\nASCPT\n\necho 'after running script, redo build please.'\n\nexit 1";
-		};
 		2DDC6FEA1231BD760015A26C /* Generate Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4370,14 +4304,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F2FEF340E1FAB9100DE4D41 /* python.c in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0F8F06D40E1FDA8500359159 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0F8F06DD0E1FDAA100359159 /* perl.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5947,77 +5873,6 @@
 			};
 			name = Release;
 		};
-		0F8F06DA0E1FDA8600359159 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				GCC_WARN_PEDANTIC = NO;
-				GCC_WARN_UNUSED_VALUE = NO;
-				GCC_WARN_UNUSED_VARIABLE = NO;
-				HEADER_SEARCH_PATHS = (
-					Mac,
-					Mac/contrib/include,
-					"/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
-					"$(PROJECT_DIR)/Mac/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
-					xchat/src/common,
-					xchat/plugins/perl,
-				);
-				INFOPLIST_FILE = "Mac/Plugins/perl/perl-leopard-Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SYSTEM_LIBRARY_DIR)/Perl/lib/5.8\"",
-				);
-				OTHER_LDFLAGS = (
-					"-undefined",
-					dynamic_lookup,
-				);
-				PRODUCT_NAME = "perl-leopard";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		0F8F06DB0E1FDA8600359159 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				GCC_WARN_PEDANTIC = NO;
-				GCC_WARN_UNUSED_VALUE = NO;
-				GCC_WARN_UNUSED_VARIABLE = NO;
-				HEADER_SEARCH_PATHS = (
-					Mac,
-					Mac/contrib/include,
-					"/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
-					"$(PROJECT_DIR)/Mac/contrib/System/Library/Perl/5.8.8/darwin-thread-multi-2level/CORE",
-					xchat/src/common,
-					xchat/plugins/perl,
-				);
-				INFOPLIST_FILE = "Mac/Plugins/perl/perl-leopard-Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SYSTEM_LIBRARY_DIR)/Perl/lib/5.8\"",
-				);
-				OTHER_LDFLAGS = (
-					"-undefined",
-					dynamic_lookup,
-				);
-				PRODUCT_NAME = "perl-leopard";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
 		0F8F08140E1FE00800359159 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -6628,15 +6483,6 @@
 			buildConfigurations = (
 				0F2FEF2E0E1FAB1500DE4D41 /* Debug */,
 				0F2FEF2F0E1FAB1500DE4D41 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0F8F06DC0E1FDA8600359159 /* Build configuration list for PBXNativeTarget "perl-leopard" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0F8F06DA0E1FDA8600359159 /* Debug */,
-				0F8F06DB0E1FDA8600359159 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
