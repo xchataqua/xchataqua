@@ -16,11 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
 @class SGTabViewItem;
-@interface TabOrWindowView : NSView
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSWindowDelegate>
-#endif
-{
+@interface TabOrWindowView : NSView <NSWindowDelegate> {
     id              delegate;
     NSWindow        *window;
     SGTabViewItem   *tabViewItem;

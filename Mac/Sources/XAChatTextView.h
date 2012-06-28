@@ -28,11 +28,7 @@
 @class ColorPalette;
 @class ChatViewController;
 
-@interface XAChatTextView : NSTextView
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSLayoutManagerDelegate>
-#endif
-{
+@interface XAChatTextView : NSTextView <NSLayoutManagerDelegate> {
     ColorPalette *_palette;
     NSMutableParagraphStyle *_style;
     NSFont *normalFont;

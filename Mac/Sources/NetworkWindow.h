@@ -22,11 +22,7 @@
 
 #import "UtilityWindow.h"
 
-@interface NetworkWindow : UtilityWindow
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSTableViewDataSource,NSTableViewDelegate>
-#endif
-{
+@interface NetworkWindow : UtilityWindow <NSTableViewDataSource,NSTableViewDelegate> {
     IBOutlet NSComboBox     *charsetComboBox;
     IBOutlet NSButton       *connectNewButton;
     IBOutlet NSButton       *networkSelectedOnlyToggleButton;

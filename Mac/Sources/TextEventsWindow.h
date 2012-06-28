@@ -18,11 +18,7 @@
 #import "UtilityWindow.h"
 
 @class XAChatTextView;
-@interface TextEventsWindow : UtilityWindow
-#if MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-<NSTableViewDataSource,NSTableViewDelegate>
-#endif
-{
+@interface TextEventsWindow : UtilityWindow <NSTableViewDataSource,NSTableViewDelegate> {
     IBOutlet NSTableView *eventTableView;
     IBOutlet NSTableView *helpTableView;
     IBOutlet XAChatTextView *testTextView;
