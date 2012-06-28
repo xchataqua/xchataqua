@@ -171,7 +171,6 @@
 - (IBAction) openHomepage:(id)sender;
 - (IBAction) openDownload:(id)sender;
 - (IBAction) showReleaseNotes:(id)sender;
-- (IBAction) openOnlineDocs:(id)sender;
 - (IBAction) openIssues:(id)sender;
 
 @end
