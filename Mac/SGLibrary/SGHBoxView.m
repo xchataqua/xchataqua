@@ -83,17 +83,4 @@
 	return [self majorOutterMargin];
 }
 
-#if 0
-- (void) drawRect:(NSRect) aRect
-{
-	[super drawRect:aRect];
-	
-	[[NSColor redColor] set];
-	[[NSGraphicsContext currentContext] setShouldAntialias:false];
-	NSBezierPath *p = [NSBezierPath bezierPathWithRect:[self bounds]];
-	[p setLineWidth:5];
-	[p stroke];
-}
-#endif
-
 @end
