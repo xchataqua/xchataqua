@@ -664,31 +664,47 @@ static NSImage *emptyBulletImage;
     {
         inputTextField.font = [[AquaChat sharedAquaChat] font];
         [inputTextField sizeToFit];
-        
-        // fg, bg and bezel
+
+        // fg, bg
         inputTextField.textColor = [p getColor:XAColorForeground];
         inputTextField.backgroundColor = [p getColor:XAColorBackground];
         topicTextField.textColor = [p getColor:XAColorForeground];
         topicTextField.backgroundColor = [p getColor:XAColorBackground];
-        
-        nickTextField.textColor = [p getColor:XAColorForeground];
     } else {
-        // How to restore this?
+        inputTextField.font = [NSFont controlContentFontOfSize:0];
+        [inputTextField sizeToFit];
+        
+        // fg, bg
+        inputTextField.textColor = [NSColor textColor];
+        inputTextField.backgroundColor = [NSColor textBackgroundColor];
+        topicTextField.textColor = [NSColor textColor];
+        topicTextField.backgroundColor = [NSColor textBackgroundColor];
     }
-    
+
     if (prefs.style_namelistgad) {
-        // fg, bg and bezel        
-        [userlistStatusTextField setTextColor:[p getColor:XAColorForeground]];
-        [userlistStatusTextField setBackgroundColor:[p getColor:XAColorBackground]];
-        [userlistStatusTextField setBezeled:NO];
         // bg only
         [userlistTableView setBackgroundColor:[p getColor:XAColorBackground]];
-        
+
+        // fg, bg and bezel
+        [userlistStatusTextField setTextColor:[NSColor windowFrameTextColor]];
+        [userlistStatusTextField setBackgroundColor:[NSColor windowBackgroundColor]];
+        [userlistStatusTextField setBezeled:NO];
+
         for (ChannelUser *user in self->users) {
             [self rehashUserAndUpdateLayout:user];
         }
     } else {
-        // How to restore this?
+        // bg only
+        [userlistTableView setBackgroundColor:[NSColor textBackgroundColor]];
+        
+        // fg, bg and bezel
+        [userlistStatusTextField setTextColor:[NSColor windowFrameTextColor]];
+        [userlistStatusTextField setBackgroundColor:[NSColor windowBackgroundColor]];
+        [userlistStatusTextField setBezeled:NO];
+        
+        for (ChannelUser *user in self->users) {
+            [self rehashUserAndUpdateLayout:user];
+        }
     }
     
     ColorPalette *palette = [[AquaChat sharedAquaChat] palette];
