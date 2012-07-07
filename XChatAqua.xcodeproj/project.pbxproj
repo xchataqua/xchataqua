@@ -583,6 +583,8 @@
 		388C8EB113C6E10500AAF20D /* UserCommandsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C8A0813C6E10200AAF20D /* UserCommandsWindow.xib */; };
 		3894C1B31590D93C00BCD762 /* NSPanelAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3894C1B21590D6F400BCD762 /* NSPanelAdditions.m */; };
 		3894C1B41590D93D00BCD762 /* NSPanelAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3894C1B21590D6F400BCD762 /* NSPanelAdditions.m */; };
+		38A690A015A84485008CC31F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A6909F15A84485008CC31F /* QuartzCore.framework */; };
+		38A690A115A844A4008CC31F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A6909F15A84485008CC31F /* QuartzCore.framework */; };
 		38BC97B6154A994D005894EF /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5A8F154A687400480EC6 /* ShortcutRecorder.framework */; };
 		38BC97B7154A996F005894EF /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5A8F154A687400480EC6 /* ShortcutRecorder.framework */; };
 		38BC97B8154A996F005894EF /* Growl.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5AC5154A70E300480EC6 /* Growl.framework */; };
@@ -2399,6 +2401,7 @@
 		388C8E6F13C6E10400AAF20D /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/UserCommandsWindow.xib; sourceTree = "<group>"; };
 		3894C1B11590D6F400BCD762 /* NSPanelAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSPanelAdditions.h; sourceTree = "<group>"; };
 		3894C1B21590D6F400BCD762 /* NSPanelAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSPanelAdditions.m; sourceTree = "<group>"; };
+		38A6909F15A84485008CC31F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		38CE5A63154A551600480EC6 /* alt_completion.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = alt_completion.pl; path = xchat/plugins/perl/alt_completion.pl; sourceTree = SOURCE_ROOT; };
 		38CE5A64154A551600480EC6 /* char_count.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = char_count.pl; path = xchat/plugins/perl/char_count.pl; sourceTree = SOURCE_ROOT; };
 		38CE5A65154A551600480EC6 /* irc.pm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = irc.pm.h; path = xchat/plugins/perl/irc.pm.h; sourceTree = SOURCE_ROOT; };
@@ -2519,6 +2522,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38A690A015A84485008CC31F /* QuartzCore.framework in Frameworks */,
 				385F81471551616800689E6E /* libiconv.dylib in Frameworks */,
 				385F783B15515CE500689E6E /* libintl.a in Frameworks */,
 				385F783A15515CE500689E6E /* libglib.a in Frameworks */,
@@ -2564,6 +2568,7 @@
 				D4FBD9C612E458C4003EA441 /* WebKit.framework in Frameworks */,
 				38BC97B6154A994D005894EF /* ShortcutRecorder.framework in Frameworks */,
 				38E34015154A74C2005B59F8 /* Growl.framework in Frameworks */,
+				38A690A115A844A4008CC31F /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2746,6 +2751,7 @@
 				0F8EA70A0CFB384A001AE9AE /* Carbon.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				D4FBD9C512E458C4003EA441 /* WebKit.framework */,
+				38A6909F15A84485008CC31F /* QuartzCore.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -6642,6 +6648,7 @@
 				38771A5915A7D71D0046929E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		38876EB8154C6FC9000B7E27 /* Build configuration list for PBXAggregateTarget "Azure PlugIns" */ = {
 			isa = XCConfigurationList;

@@ -26,6 +26,7 @@
 <XAEventChain,NSTextViewDelegate,NSTextFieldDelegate,NSTableViewDataSource,NSTableViewDelegate,NSSplitViewDelegate>
 {
     IBOutlet XAChatTextView     *chatTextView;
+    IBOutlet NSView             *inputContainerView;
     IBOutlet NSTextField        *inputTextField;
     IBOutlet NSTextField        *nickTextField;
     IBOutlet UserListTableView *userlistTableView;
