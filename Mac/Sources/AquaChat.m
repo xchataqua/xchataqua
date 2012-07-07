@@ -940,6 +940,10 @@ AquaChat *AquaChatShared;
             nil];
 }
 
+- (BOOL)hasNetworkClientEntitlement {
+    return YES;
+}
+
 @end
 
 #pragma mark -
