@@ -30,7 +30,7 @@
 }
 
 - (SGTabView *)tabView {
-    return (id)self->_contentView;
+    return (id)self.contentView;
 }
 
 - (void) performClose:(id)sender
