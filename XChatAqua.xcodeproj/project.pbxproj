@@ -371,6 +371,7 @@
 		385F8153155167C200689E6E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 385F766D155148FC00689E6E /* libiconv.dylib */; };
 		385FCFB515984EFC0058F381 /* RawLogWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 385FCFB415984EFC0058F381 /* RawLogWindow.xib */; };
 		385FCFB615984EFC0058F381 /* RawLogWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 385FCFB415984EFC0058F381 /* RawLogWindow.xib */; };
+		3870142915AA8F630046FA0E /* xchat512.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3870142815AA8F630046FA0E /* xchat512.icns */; };
 		387624FC13C7024F00850913 /* AsciiWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6250CFB2E0A001AE9AE /* AsciiWindow.m */; };
 		387624FD13C7024F00850913 /* BanWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6270CFB2E0A001AE9AE /* BanWindow.m */; };
 		387624FE13C7024F00850913 /* ChannelWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6290CFB2E0A001AE9AE /* ChannelWindow.m */; };
@@ -1374,6 +1375,7 @@
 		385F7EF715515DCA00689E6E /* localcharset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = localcharset.h; sourceTree = "<group>"; };
 		385F814515515FE000689E6E /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		385FCFB415984EFC0058F381 /* RawLogWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RawLogWindow.xib; sourceTree = "<group>"; };
+		3870142815AA8F630046FA0E /* xchat512.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = xchat512.icns; path = ../xchat512.icns; sourceTree = "<group>"; };
 		3876258B13C7024F00850913 /* XChat Azure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XChat Azure.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		38763F2213DD40D6008C40DB /* perl-lion.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-lion.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		38763F2313DD45D3008C40DB /* perl-lion-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "perl-lion-Info.plist"; sourceTree = "<group>"; };
@@ -2359,7 +2361,6 @@
 		D46631D3129DC3B1004B66B8 /* UtilityTableViewDragAndDrop.inc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityTableViewDragAndDrop.inc.m; sourceTree = "<group>"; };
 		D487239C128F9DBC00647D7B /* UtilityWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityWindow.h; sourceTree = "<group>"; };
 		D487239D128F9DBC00647D7B /* UtilityWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityWindow.m; sourceTree = "<group>"; };
-		D4A86A1F12DE29A1000C201C /* xchat512.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = xchat512.icns; path = Resources/xchat512.icns; sourceTree = "<group>"; };
 		D4FBD93812E44946003EA441 /* ViewerWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewerWindow.h; sourceTree = "<group>"; };
 		D4FBD93912E44946003EA441 /* ViewerWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewerWindow.m; sourceTree = "<group>"; };
 		D4FBD93D12E449D5003EA441 /* ViewerWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewerWindow.xib; sourceTree = "<group>"; };
@@ -2789,7 +2790,7 @@
 			children = (
 				0F8EA7920CFB6CF9001AE9AE /* unlock.tiff */,
 				0F8EA7970CFB6CF9001AE9AE /* xchat.icns */,
-				D4A86A1F12DE29A1000C201C /* xchat512.icns */,
+				3870142815AA8F630046FA0E /* xchat512.icns */,
 				0F8EA7990CFB6CF9001AE9AE /* yellow.tiff */,
 				0F8EA7700CFB6C9A001AE9AE /* green.tiff */,
 				0F8EA7710CFB6C9A001AE9AE /* heart.tif */,
@@ -3910,6 +3911,7 @@
 				3882282115930240000AB63D /* theme in Resources */,
 				385FCFB615984EFC0058F381 /* RawLogWindow.xib in Resources */,
 				38771A4215A7B7DB0046929E /* container-migration.plist in Resources */,
+				3870142915AA8F630046FA0E /* xchat512.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5869,6 +5871,7 @@
 					gettext,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = glib;
 			};
 			name = Debug;
@@ -5892,6 +5895,7 @@
 					gettext,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = glib;
 			};
 			name = Release;
@@ -5920,7 +5924,6 @@
 					glib,
 					gettext,
 				);
-				IBC_PLUGIN_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_CODE = Azure;
@@ -5951,7 +5954,6 @@
 					glib,
 					gettext,
 				);
-				IBC_PLUGIN_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_CODE = Azure;
@@ -6138,7 +6140,6 @@
 					xchat/src,
 					gettext,
 				);
-				IBC_PLUGIN_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
 				PRODUCT_CODE = Aqua;
 				PRODUCT_NAME = "X-Chat Aqua";
@@ -6169,7 +6170,6 @@
 					xchat/src,
 					gettext,
 				);
-				IBC_PLUGIN_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
 				PRODUCT_CODE = Aqua;
 				PRODUCT_NAME = "X-Chat Aqua";
