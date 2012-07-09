@@ -1,10 +1,9 @@
 
 #import <Foundation/Foundation.h>
+#include "libintl.h"
 
 char *gettext(char *cstring) {
-    NSString *sourceString = [NSString stringWithUTF8String:cstring];
-    NSString *resultString = NSLocalizedStringFromTable(sourceString, @"xchat", @"");
-    return (char *)resultString.UTF8String;
+    return dgettext("xchat", cstring);
 }
 
 char *dgettext(char *domain, char *cstring) {
@@ -25,4 +24,4 @@ void bindtextdomain(const char *foo, const char *bar) { }
 
 void bind_textdomain_codeset(const char *foo, const char *bar) { }
 
-const char *textdomain(const char *foo) { return NULL; }
+const char *textdomain(const char *foo) { return "xchat"; }
