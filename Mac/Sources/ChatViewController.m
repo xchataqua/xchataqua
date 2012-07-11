@@ -659,36 +659,63 @@ static NSImage *emptyBulletImage;
     ColorPalette *p = [[AquaChat sharedAquaChat] palette];
     [chatTextView setFont:[[AquaChat sharedAquaChat] font] boldFont:[[AquaChat sharedAquaChat] boldFont]];
     chatTextView.enclosingScrollView.backgroundColor = [p getColor:XAColorBackground];
-    
+
+    NSColor *foregroundColor = [p getColor:XAColorForeground];
+    NSColor *backgroundColor = [p getColor:XAColorBackground];
     if (prefs.style_inputbox)
     {
         inputTextField.font = [[AquaChat sharedAquaChat] font];
         [inputTextField sizeToFit];
-        
-        // fg, bg and bezel
-        inputTextField.textColor = [p getColor:XAColorForeground];
-        inputTextField.backgroundColor = [p getColor:XAColorBackground];
-        topicTextField.textColor = [p getColor:XAColorForeground];
-        topicTextField.backgroundColor = [p getColor:XAColorBackground];
-        
-        nickTextField.textColor = [p getColor:XAColorForeground];
+        if (prefs.tab_layout == 2) {
+            [inputContainerView setWantsLayer:YES];
+            [inputContainerView.layer setBackgroundColor:CGColorCreateGenericRGB(backgroundColor.redComponent, backgroundColor.greenComponent, backgroundColor.blueComponent, backgroundColor.alphaComponent)];
+        } else {
+            [inputContainerView setWantsLayer:NO];
+            [inputContainerView.layer setBackgroundColor:CGColorCreateGenericRGB(0, 0, 0, 0 )];            
+        }
+
+        // fg, bg
+        inputTextField.textColor = foregroundColor;
+        inputTextField.backgroundColor = backgroundColor;
+        topicTextField.textColor = foregroundColor;
+        topicTextField.backgroundColor = backgroundColor;
     } else {
-        // How to restore this?
-    }
-    
-    if (prefs.style_namelistgad) {
-        // fg, bg and bezel        
-        [userlistStatusTextField setTextColor:[p getColor:XAColorForeground]];
-        [userlistStatusTextField setBackgroundColor:[p getColor:XAColorBackground]];
-        [userlistStatusTextField setBezeled:NO];
-        // bg only
-        [userlistTableView setBackgroundColor:[p getColor:XAColorBackground]];
+        [inputContainerView setWantsLayer:NO];
+        [inputContainerView.layer setBackgroundColor:CGColorCreateGenericRGB(0, 0, 0, 0 )];
+        inputTextField.font = [NSFont controlContentFontOfSize:0];
+        [inputTextField sizeToFit];
         
+        // fg, bg
+        inputTextField.textColor = [NSColor textColor];
+        inputTextField.backgroundColor = [NSColor textBackgroundColor];
+        topicTextField.textColor = [NSColor textColor];
+        topicTextField.backgroundColor = [NSColor textBackgroundColor];
+    }
+
+    if (prefs.style_namelistgad) {
+        // bg only
+        [userlistTableView setBackgroundColor:backgroundColor];
+
+        // fg, bg and bezel
+        [userlistStatusTextField setTextColor:[NSColor windowFrameTextColor]];
+        [userlistStatusTextField setBackgroundColor:[NSColor windowBackgroundColor]];
+        [userlistStatusTextField setBezeled:NO];
+
         for (ChannelUser *user in self->users) {
             [self rehashUserAndUpdateLayout:user];
         }
     } else {
-        // How to restore this?
+        // bg only
+        [userlistTableView setBackgroundColor:[NSColor textBackgroundColor]];
+        
+        // fg, bg and bezel
+        [userlistStatusTextField setTextColor:[NSColor windowFrameTextColor]];
+        [userlistStatusTextField setBackgroundColor:[NSColor windowBackgroundColor]];
+        [userlistStatusTextField setBezeled:NO];
+        
+        for (ChannelUser *user in self->users) {
+            [self rehashUserAndUpdateLayout:user];
+        }
     }
     
     ColorPalette *palette = [[AquaChat sharedAquaChat] palette];
@@ -787,6 +814,7 @@ static NSImage *emptyBulletImage;
     [chatTextView setFrame:[chatScrollView documentVisibleRect]];
     
     [headerBoxView layoutNow];
+    self->inputContainerView.layer = [CALayer layer];
     
     [self applyPreferences:nil];
     

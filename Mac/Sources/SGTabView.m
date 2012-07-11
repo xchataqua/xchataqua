@@ -203,6 +203,17 @@ NSImage *SGTabViewOutlineCellCloseImage;
     return [super menuForEvent:theEvent];
 }
 
+/*
+ * Applies the currently set preferences when changed
+ *
+ * When the user presses "Apply" or "Ok" in the Preferences window,
+ * applyPreferences: is called to actually make them live. Mostly this matters
+ * for fonts and colors and other visually apparent changes.
+ *
+ * The call chain for this is a bit fuzzy: not sure how it's propogated to
+ * every object that needs it.
+ *
+ */
 - (void)applyPreferences:(id)sender {
     CGFloat fontSize = prefs.style_namelistgad ? [AquaChat sharedAquaChat].font.pointSize * 0.9 : [NSFont smallSystemFontSize];
     if (prefs.tab_small) {
@@ -219,6 +230,9 @@ NSImage *SGTabViewOutlineCellCloseImage;
     if (prefs.style_namelistgad) {
         dataCell.textColor = [p getColor:XAColorForeground];
         self.backgroundColor = [p getColor:XAColorBackground];
+    } else {
+        dataCell.textColor = [NSColor textColor];
+        self.backgroundColor = [NSColor textBackgroundColor];
     }
     [self drawRect:self.bounds];
 }

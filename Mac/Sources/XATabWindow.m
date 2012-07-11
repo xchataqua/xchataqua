@@ -30,7 +30,7 @@
 }
 
 - (SGTabView *)tabView {
-    return (id)self->_contentView;
+    return (id)self.contentView;
 }
 
 - (void) performClose:(id)sender
@@ -43,16 +43,6 @@
 }
 
 - (void)applyPreferences:(id)sender {
-    if (prefs.style_inputbox) {
-        if (prefs.tab_layout == 2) {
-            self.backgroundColor = [[[AquaChat sharedAquaChat] palette] getColor:XAColorBackground];
-        } else {
-            self.backgroundColor = nil;
-        }
-    } else {
-        self.backgroundColor = nil;
-    }
-    
     [self.tabView applyPreferences:sender];
 }
 
