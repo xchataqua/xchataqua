@@ -261,6 +261,7 @@ extern struct XATextEventItem XATextEvents[];
         { timestampsInLogsCheckBox, &prefs.timestamp_logs, MYPREF_INT },
         { timestampInLogsFormatTextField, &prefs.timestamp_log_format, MYPREF_STRING },
         // Sound
+        { bounceCountinuouslyCheckBox, &prefs.xa_bounce_continuously, MYPREF_INT },
         // Network setup
         { bindAddressTextField, &prefs.hostname, MYPREF_STRING },
         { proxyPortTextField, &prefs.proxy_port, MYPREF_INT },

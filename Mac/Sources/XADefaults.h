@@ -9,6 +9,7 @@ prefs.tab_right_modifiers = 1 << 20 | 1 << 17;
 prefs.xa_auto_away = 0;
 prefs.xa_auto_away_delay = 10;
 prefs.xa_tab_completion = 1;
+prefs.xa_bounce_continuously = 1;
 strcpy (prefs.xa_urlcommand, "browser %s");
 strcpy (prefs.xa_nickcommand, "query %s");
 strcpy (prefs.xa_channelcommand, "join %s");

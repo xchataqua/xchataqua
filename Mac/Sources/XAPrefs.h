@@ -18,4 +18,5 @@ long tab_right_modifiers;
 unsigned int xa_auto_away;
 unsigned int xa_auto_away_delay;
 unsigned int xa_paned_pos;
+unsigned int xa_bounce_continuously;
 char xa_builtin_plugins_version[10];
