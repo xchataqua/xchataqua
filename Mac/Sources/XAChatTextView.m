@@ -459,6 +459,10 @@ static NSCursor *XAChatTextViewSizableCursor;
                                       selector:@selector (myMouseMoved:)
                                         object:self];
 
+    if (atBottom)
+    {
+        [self scrollPoint:NSMakePoint(0, NSMaxY([self bounds]))];
+    }
     // Docs say that characterIndexForPoint will return -1 for a point that is out of range.
     // Practice says otherwise.  
     // 24 Jan 06 - SBG
