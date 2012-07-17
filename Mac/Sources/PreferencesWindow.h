@@ -144,6 +144,7 @@ struct PreferenceItem
     // Sound
     //  missing Sound playing method and external player stubs in fe-gtk
     IBOutlet NSTableView *soundsTableView;
+    IBOutlet NSButton *bounceCountinuouslyCheckBox;
     
     //Network
     
@@ -172,7 +173,7 @@ struct PreferenceItem
     IBOutlet NSPopUpButton *autoAcceptDccChatPopUp;
     IBOutlet NSButton *autoOpenDccChatCheckBox, *autoOpenDccReceiveCheckBox, *autoOpenDccSendCheckBox;
     
-    struct PreferenceItem preferenceItems[96];
+    struct PreferenceItem preferenceItems[97];
 }
 
 - (IBAction)applyPreferences:(id)sender;

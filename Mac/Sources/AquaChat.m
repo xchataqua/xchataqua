@@ -241,7 +241,7 @@ AquaChat *AquaChatShared;
     
     if (info->bounce && (info->bounce == -1 || bg))
     {
-        [NSApp requestUserAttention:NSCriticalRequest];
+        [NSApp requestUserAttention:prefs.xa_bounce_continuously ? NSCriticalRequest : NSInformationalRequest];
     }
     
     if (info->show && (info->show == -1 || bg))
