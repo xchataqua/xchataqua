@@ -182,6 +182,7 @@
 		380AD1F413C698E1003EEE3D /* xchat.h in Headers */ = {isa = PBXBuildFile; fileRef = 380AD1E813C698E1003EEE3D /* xchat.h */; };
 		380AD1F513C698E1003EEE3D /* xchatc.h in Headers */ = {isa = PBXBuildFile; fileRef = 380AD1E913C698E1003EEE3D /* xchatc.h */; };
 		380B9D1A13C6E5D70029CE25 /* SGFileUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 380B9D1913C6E5D70029CE25 /* SGFileUtility.m */; };
+		3834677E15C9884F00497A27 /* XPCServices in Copy Growl XPC */ = {isa = PBXBuildFile; fileRef = 3834677C15C987F700497A27 /* XPCServices */; };
 		3839010413C06619004D20BC /* CLTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3839010313C06619004D20BC /* CLTabCell.m */; };
 		3839010713C0667B004D20BC /* CLTabViewButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3839010613C0667B004D20BC /* CLTabViewButtonCell.m */; };
 		384A96461588F2CC00268814 /* xchat-ruby.c in Sources */ = {isa = PBXBuildFile; fileRef = 384A963E1588F2CC00268814 /* xchat-ruby.c */; };
@@ -851,6 +852,17 @@
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3834677D15C9882800497A27 /* Copy Growl XPC */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = Contents;
+			dstSubfolderSpec = 1;
+			files = (
+				3834677E15C9884F00497A27 /* XPCServices in Copy Growl XPC */,
+			);
+			name = "Copy Growl XPC";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		384A964A1588F6C200268814 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1128,6 +1140,7 @@
 		380B9D1913C6E5D70029CE25 /* SGFileUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFileUtility.m; sourceTree = "<group>"; };
 		380F1EF013E29C930033E3AC /* browser.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = browser.pl; sourceTree = "<group>"; };
 		380F1EF113E29C930033E3AC /* google.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = google.pl; sourceTree = "<group>"; };
+		3834677C15C987F700497A27 /* XPCServices */ = {isa = PBXFileReference; lastKnownFileType = folder; name = XPCServices; path = Mac/contrib/XPCServices; sourceTree = SOURCE_ROOT; };
 		3839010213C06619004D20BC /* CLTabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTabCell.h; sourceTree = "<group>"; };
 		3839010313C06619004D20BC /* CLTabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTabCell.m; sourceTree = "<group>"; };
 		3839010513C0667B004D20BC /* CLTabViewButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTabViewButtonCell.h; sourceTree = "<group>"; };
@@ -2750,6 +2763,7 @@
 			children = (
 				38FC93C913CAF46E006CB5C8 /* locale */,
 				3882281F15930240000AB63D /* theme */,
+				3834677C15C987F700497A27 /* XPCServices */,
 				2DEA303D0F87235400D6DC0D /* images */,
 				38FC92B713CAF449006CB5C8 /* xchat.strings */,
 				38FC92CB13CAF449006CB5C8 /* libsg.strings */,
@@ -3551,6 +3565,7 @@
 				3876254713C7024F00850913 /* Resources */,
 				3876258513C7024F00850913 /* Copy Frameworks */,
 				38876F3D154C7727000B7E27 /* Copy PlugIns Archive */,
+				3834677D15C9882800497A27 /* Copy Growl XPC */,
 			);
 			buildRules = (
 			);
