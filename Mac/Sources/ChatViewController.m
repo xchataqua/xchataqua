@@ -670,9 +670,13 @@ static NSImage *emptyBulletImage;
         if (prefs.tab_layout == 2) {
             [inputContainerView setWantsLayer:YES];
             [inputContainerView.layer setBackgroundColor:CGColorCreateGenericRGB(backgroundColor.redComponent, backgroundColor.greenComponent, backgroundColor.blueComponent, backgroundColor.alphaComponent)];
+            nickTextField.textColor = foregroundColor;
+            nickTextField.backgroundColor = backgroundColor;
         } else {
             [inputContainerView setWantsLayer:NO];
-            [inputContainerView.layer setBackgroundColor:CGColorCreateGenericRGB(0, 0, 0, 0 )];            
+            [inputContainerView.layer setBackgroundColor:CGColorCreateGenericRGB(0, 0, 0, 0 )];
+            nickTextField.textColor = [NSColor textColor];
+            nickTextField.backgroundColor = [NSColor textBackgroundColor];
         }
 
         // fg, bg
