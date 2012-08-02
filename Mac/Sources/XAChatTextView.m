@@ -633,7 +633,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     for (;;)
     {
         char *cword = (char *)[[text substringWithRange:*range] UTF8String];
-        int len = strlen(cword);// range->length;
+        size_t len = strlen(cword);// range->length;
 
         // Let common have first crack at it.
         int ret = url_check_word (cword, len);    /* common/url.c */
@@ -728,8 +728,8 @@ static NSCursor *XAChatTextViewSizableCursor;
     
     // From this point, we know we have a selection...
     
-    unsigned int word_start = idx;
-    unsigned int word_stop = idx;
+    NSUInteger word_start = idx;
+    NSUInteger word_stop = idx;
     
     while (word_start > 0 && !isspace ([s characterAtIndex:word_start-1]))    /* CL: maybe this should be iswspace, or a test using whitespaceAndNewlineCharacterSet? */
         word_start --;

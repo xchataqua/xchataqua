@@ -3,39 +3,39 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1070</int>
 		<string key="IBDocument.SystemVersion">11E53</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2182</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2549</string>
 		<string key="IBDocument.AppKitVersion">1138.47</string>
 		<string key="IBDocument.HIToolboxVersion">569.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2182</string>
+			<string key="NS.object.0">2549</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
-			<string>NSColorWell</string>
-			<string>NSTabView</string>
-			<string>NSMenu</string>
-			<string>NSSliderCell</string>
+			<string>NSBox</string>
 			<string>NSButton</string>
-			<string>NSTableHeaderView</string>
-			<string>NSStepper</string>
+			<string>NSButtonCell</string>
+			<string>NSColorWell</string>
 			<string>NSCustomObject</string>
+			<string>NSMenu</string>
+			<string>NSMenuItem</string>
+			<string>NSOutlineView</string>
+			<string>NSPopUpButton</string>
+			<string>NSPopUpButtonCell</string>
+			<string>NSScrollView</string>
+			<string>NSScroller</string>
 			<string>NSSlider</string>
+			<string>NSSliderCell</string>
+			<string>NSStepper</string>
+			<string>NSStepperCell</string>
+			<string>NSTabView</string>
+			<string>NSTabViewItem</string>
+			<string>NSTableColumn</string>
+			<string>NSTableHeaderView</string>
 			<string>NSTableView</string>
 			<string>NSTextField</string>
-			<string>NSWindowTemplate</string>
 			<string>NSTextFieldCell</string>
-			<string>NSStepperCell</string>
-			<string>NSButtonCell</string>
-			<string>NSTableColumn</string>
-			<string>NSBox</string>
-			<string>NSPopUpButtonCell</string>
-			<string>NSOutlineView</string>
 			<string>NSView</string>
-			<string>NSScrollView</string>
-			<string>NSTabViewItem</string>
-			<string>NSScroller</string>
-			<string>NSPopUpButton</string>
-			<string>NSMenuItem</string>
+			<string>NSWindowTemplate</string>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -430,7 +430,7 @@
 																<string key="NSFrame">{{161, 89}, {220, 19}}</string>
 																<reference key="NSSuperview" ref="715816214"/>
 																<reference key="NSWindow"/>
-																<reference key="NSNextKeyView" ref="1053574686"/>
+																<reference key="NSNextKeyView" ref="665353132"/>
 																<bool key="NSEnabled">YES</bool>
 																<object class="NSTextFieldCell" key="NSCell" id="280211799">
 																	<int key="NSCellFlags">-1804468671</int>
@@ -489,7 +489,7 @@
 															<object class="NSTextField" id="195567578">
 																<reference key="NSNextResponder" ref="715816214"/>
 																<int key="NSvFlags">266</int>
-																<string key="NSFrame">{{161, 304}, {160, 19}}</string>
+																<string key="NSFrame">{{161, 304}, {159, 19}}</string>
 																<reference key="NSSuperview" ref="715816214"/>
 																<reference key="NSWindow"/>
 																<reference key="NSNextKeyView" ref="311130897"/>
@@ -552,7 +552,7 @@
 															<object class="NSButton" id="311130897">
 																<reference key="NSNextResponder" ref="715816214"/>
 																<int key="NSvFlags">265</int>
-																<string key="NSFrame">{{321, 304}, {19, 19}}</string>
+																<string key="NSFrame">{{320, 303}, {21, 21}}</string>
 																<reference key="NSSuperview" ref="715816214"/>
 																<reference key="NSWindow"/>
 																<reference key="NSNextKeyView" ref="619505271"/>
@@ -3153,6 +3153,63 @@
 																	<reference key="NSTextColor" ref="725989266"/>
 																</object>
 															</object>
+															<object class="NSColorWell" id="840033143">
+																<reference key="NSNextResponder" ref="402415888"/>
+																<int key="NSvFlags">269</int>
+																<set class="NSMutableSet" key="NSDragTypes">
+																	<object class="NSMutableString">
+																		<characters key="NS.bytes">NSColor pasteboard type</characters>
+																	</object>
+																</set>
+																<string key="NSFrame">{{106, 301}, {20, 20}}</string>
+																<reference key="NSSuperview" ref="402415888"/>
+																<reference key="NSNextKeyView" ref="208667344"/>
+																<int key="NSTag">16</int>
+																<bool key="NSEnabled">YES</bool>
+																<bool key="NSIsBordered">YES</bool>
+																<object class="NSColor" key="NSColor">
+																	<int key="NSColorSpace">1</int>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																</object>
+															</object>
+															<object class="NSColorWell" id="208667344">
+																<reference key="NSNextResponder" ref="402415888"/>
+																<int key="NSvFlags">269</int>
+																<set class="NSMutableSet" key="NSDragTypes">
+																	<object class="NSMutableString">
+																		<characters key="NS.bytes">NSColor pasteboard type</characters>
+																	</object>
+																</set>
+																<string key="NSFrame">{{127, 301}, {20, 20}}</string>
+																<reference key="NSSuperview" ref="402415888"/>
+																<reference key="NSNextKeyView" ref="489144235"/>
+																<int key="NSTag">17</int>
+																<bool key="NSEnabled">YES</bool>
+																<bool key="NSIsBordered">YES</bool>
+																<object class="NSColor" key="NSColor">
+																	<int key="NSColorSpace">1</int>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																</object>
+															</object>
+															<object class="NSColorWell" id="489144235">
+																<reference key="NSNextResponder" ref="402415888"/>
+																<int key="NSvFlags">269</int>
+																<set class="NSMutableSet" key="NSDragTypes">
+																	<object class="NSMutableString">
+																		<characters key="NS.bytes">NSColor pasteboard type</characters>
+																	</object>
+																</set>
+																<string key="NSFrame">{{148, 301}, {20, 20}}</string>
+																<reference key="NSSuperview" ref="402415888"/>
+																<reference key="NSNextKeyView" ref="765851134"/>
+																<int key="NSTag">18</int>
+																<bool key="NSEnabled">YES</bool>
+																<bool key="NSIsBordered">YES</bool>
+																<object class="NSColor" key="NSColor">
+																	<int key="NSColorSpace">1</int>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																</object>
+															</object>
 															<object class="NSColorWell" id="765851134">
 																<reference key="NSNextResponder" ref="402415888"/>
 																<int key="NSvFlags">269</int>
@@ -3165,25 +3222,6 @@
 																<reference key="NSSuperview" ref="402415888"/>
 																<reference key="NSNextKeyView" ref="1026900652"/>
 																<int key="NSTag">19</int>
-																<bool key="NSEnabled">YES</bool>
-																<bool key="NSIsBordered">YES</bool>
-																<object class="NSColor" key="NSColor">
-																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
-																</object>
-															</object>
-															<object class="NSColorWell" id="350511929">
-																<reference key="NSNextResponder" ref="402415888"/>
-																<int key="NSvFlags">269</int>
-																<set class="NSMutableSet" key="NSDragTypes">
-																	<object class="NSMutableString">
-																		<characters key="NS.bytes">NSColor pasteboard type</characters>
-																	</object>
-																</set>
-																<string key="NSFrame">{{400, 301}, {20, 20}}</string>
-																<reference key="NSSuperview" ref="402415888"/>
-																<reference key="NSNextKeyView" ref="968109138"/>
-																<int key="NSTag">30</int>
 																<bool key="NSEnabled">YES</bool>
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
@@ -3229,7 +3267,7 @@
 																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
 																</object>
 															</object>
-															<object class="NSColorWell" id="78293204">
+															<object class="NSColorWell" id="233102631">
 																<reference key="NSNextResponder" ref="402415888"/>
 																<int key="NSvFlags">269</int>
 																<set class="NSMutableSet" key="NSDragTypes">
@@ -3237,105 +3275,10 @@
 																		<characters key="NS.bytes">NSColor pasteboard type</characters>
 																	</object>
 																</set>
-																<string key="NSFrame">{{274, 301}, {20, 20}}</string>
+																<string key="NSFrame">{{232, 301}, {20, 20}}</string>
 																<reference key="NSSuperview" ref="402415888"/>
-																<reference key="NSNextKeyView" ref="782529362"/>
-																<int key="NSTag">24</int>
-																<bool key="NSEnabled">YES</bool>
-																<bool key="NSIsBordered">YES</bool>
-																<object class="NSColor" key="NSColor">
-																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
-																</object>
-															</object>
-															<object class="NSColorWell" id="576768000">
-																<reference key="NSNextResponder" ref="402415888"/>
-																<int key="NSvFlags">269</int>
-																<set class="NSMutableSet" key="NSDragTypes">
-																	<object class="NSMutableString">
-																		<characters key="NS.bytes">NSColor pasteboard type</characters>
-																	</object>
-																</set>
-																<string key="NSFrame">{{337, 301}, {20, 20}}</string>
-																<reference key="NSSuperview" ref="402415888"/>
-																<reference key="NSNextKeyView" ref="44841208"/>
-																<int key="NSTag">27</int>
-																<bool key="NSEnabled">YES</bool>
-																<bool key="NSIsBordered">YES</bool>
-																<object class="NSColor" key="NSColor">
-																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
-																</object>
-															</object>
-															<object class="NSColorWell" id="489144235">
-																<reference key="NSNextResponder" ref="402415888"/>
-																<int key="NSvFlags">269</int>
-																<set class="NSMutableSet" key="NSDragTypes">
-																	<object class="NSMutableString">
-																		<characters key="NS.bytes">NSColor pasteboard type</characters>
-																	</object>
-																</set>
-																<string key="NSFrame">{{148, 301}, {20, 20}}</string>
-																<reference key="NSSuperview" ref="402415888"/>
-																<reference key="NSNextKeyView" ref="765851134"/>
-																<int key="NSTag">18</int>
-																<bool key="NSEnabled">YES</bool>
-																<bool key="NSIsBordered">YES</bool>
-																<object class="NSColor" key="NSColor">
-																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
-																</object>
-															</object>
-															<object class="NSColorWell" id="208667344">
-																<reference key="NSNextResponder" ref="402415888"/>
-																<int key="NSvFlags">269</int>
-																<set class="NSMutableSet" key="NSDragTypes">
-																	<object class="NSMutableString">
-																		<characters key="NS.bytes">NSColor pasteboard type</characters>
-																	</object>
-																</set>
-																<string key="NSFrame">{{127, 301}, {20, 20}}</string>
-																<reference key="NSSuperview" ref="402415888"/>
-																<reference key="NSNextKeyView" ref="489144235"/>
-																<int key="NSTag">17</int>
-																<bool key="NSEnabled">YES</bool>
-																<bool key="NSIsBordered">YES</bool>
-																<object class="NSColor" key="NSColor">
-																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
-																</object>
-															</object>
-															<object class="NSColorWell" id="282776959">
-																<reference key="NSNextResponder" ref="402415888"/>
-																<int key="NSvFlags">269</int>
-																<set class="NSMutableSet" key="NSDragTypes">
-																	<object class="NSMutableString">
-																		<characters key="NS.bytes">NSColor pasteboard type</characters>
-																	</object>
-																</set>
-																<string key="NSFrame">{{379, 301}, {20, 20}}</string>
-																<reference key="NSSuperview" ref="402415888"/>
-																<reference key="NSNextKeyView" ref="350511929"/>
-																<int key="NSTag">29</int>
-																<bool key="NSEnabled">YES</bool>
-																<bool key="NSIsBordered">YES</bool>
-																<object class="NSColor" key="NSColor">
-																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
-																</object>
-															</object>
-															<object class="NSColorWell" id="840033143">
-																<reference key="NSNextResponder" ref="402415888"/>
-																<int key="NSvFlags">269</int>
-																<set class="NSMutableSet" key="NSDragTypes">
-																	<object class="NSMutableString">
-																		<characters key="NS.bytes">NSColor pasteboard type</characters>
-																	</object>
-																</set>
-																<string key="NSFrame">{{106, 301}, {20, 20}}</string>
-																<reference key="NSSuperview" ref="402415888"/>
-																<reference key="NSNextKeyView" ref="208667344"/>
-																<int key="NSTag">16</int>
+																<reference key="NSNextKeyView" ref="350197855"/>
+																<int key="NSTag">22</int>
 																<bool key="NSEnabled">YES</bool>
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
@@ -3362,7 +3305,7 @@
 																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
 																</object>
 															</object>
-															<object class="NSColorWell" id="44841208">
+															<object class="NSColorWell" id="78293204">
 																<reference key="NSNextResponder" ref="402415888"/>
 																<int key="NSvFlags">269</int>
 																<set class="NSMutableSet" key="NSDragTypes">
@@ -3370,10 +3313,10 @@
 																		<characters key="NS.bytes">NSColor pasteboard type</characters>
 																	</object>
 																</set>
-																<string key="NSFrame">{{358, 301}, {20, 20}}</string>
+																<string key="NSFrame">{{274, 301}, {20, 20}}</string>
 																<reference key="NSSuperview" ref="402415888"/>
-																<reference key="NSNextKeyView" ref="282776959"/>
-																<int key="NSTag">28</int>
+																<reference key="NSNextKeyView" ref="782529362"/>
+																<int key="NSTag">24</int>
 																<bool key="NSEnabled">YES</bool>
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
@@ -3400,25 +3343,6 @@
 																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
 																</object>
 															</object>
-															<object class="NSColorWell" id="233102631">
-																<reference key="NSNextResponder" ref="402415888"/>
-																<int key="NSvFlags">269</int>
-																<set class="NSMutableSet" key="NSDragTypes">
-																	<object class="NSMutableString">
-																		<characters key="NS.bytes">NSColor pasteboard type</characters>
-																	</object>
-																</set>
-																<string key="NSFrame">{{232, 301}, {20, 20}}</string>
-																<reference key="NSSuperview" ref="402415888"/>
-																<reference key="NSNextKeyView" ref="350197855"/>
-																<int key="NSTag">22</int>
-																<bool key="NSEnabled">YES</bool>
-																<bool key="NSIsBordered">YES</bool>
-																<object class="NSColor" key="NSColor">
-																	<int key="NSColorSpace">1</int>
-																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
-																</object>
-															</object>
 															<object class="NSColorWell" id="216298000">
 																<reference key="NSNextResponder" ref="402415888"/>
 																<int key="NSvFlags">269</int>
@@ -3431,6 +3355,82 @@
 																<reference key="NSSuperview" ref="402415888"/>
 																<reference key="NSNextKeyView" ref="576768000"/>
 																<int key="NSTag">26</int>
+																<bool key="NSEnabled">YES</bool>
+																<bool key="NSIsBordered">YES</bool>
+																<object class="NSColor" key="NSColor">
+																	<int key="NSColorSpace">1</int>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																</object>
+															</object>
+															<object class="NSColorWell" id="576768000">
+																<reference key="NSNextResponder" ref="402415888"/>
+																<int key="NSvFlags">269</int>
+																<set class="NSMutableSet" key="NSDragTypes">
+																	<object class="NSMutableString">
+																		<characters key="NS.bytes">NSColor pasteboard type</characters>
+																	</object>
+																</set>
+																<string key="NSFrame">{{337, 301}, {20, 20}}</string>
+																<reference key="NSSuperview" ref="402415888"/>
+																<reference key="NSNextKeyView" ref="44841208"/>
+																<int key="NSTag">27</int>
+																<bool key="NSEnabled">YES</bool>
+																<bool key="NSIsBordered">YES</bool>
+																<object class="NSColor" key="NSColor">
+																	<int key="NSColorSpace">1</int>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																</object>
+															</object>
+															<object class="NSColorWell" id="44841208">
+																<reference key="NSNextResponder" ref="402415888"/>
+																<int key="NSvFlags">269</int>
+																<set class="NSMutableSet" key="NSDragTypes">
+																	<object class="NSMutableString">
+																		<characters key="NS.bytes">NSColor pasteboard type</characters>
+																	</object>
+																</set>
+																<string key="NSFrame">{{358, 301}, {20, 20}}</string>
+																<reference key="NSSuperview" ref="402415888"/>
+																<reference key="NSNextKeyView" ref="282776959"/>
+																<int key="NSTag">28</int>
+																<bool key="NSEnabled">YES</bool>
+																<bool key="NSIsBordered">YES</bool>
+																<object class="NSColor" key="NSColor">
+																	<int key="NSColorSpace">1</int>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																</object>
+															</object>
+															<object class="NSColorWell" id="282776959">
+																<reference key="NSNextResponder" ref="402415888"/>
+																<int key="NSvFlags">269</int>
+																<set class="NSMutableSet" key="NSDragTypes">
+																	<object class="NSMutableString">
+																		<characters key="NS.bytes">NSColor pasteboard type</characters>
+																	</object>
+																</set>
+																<string key="NSFrame">{{379, 301}, {20, 20}}</string>
+																<reference key="NSSuperview" ref="402415888"/>
+																<reference key="NSNextKeyView" ref="350511929"/>
+																<int key="NSTag">29</int>
+																<bool key="NSEnabled">YES</bool>
+																<bool key="NSIsBordered">YES</bool>
+																<object class="NSColor" key="NSColor">
+																	<int key="NSColorSpace">1</int>
+																	<bytes key="NSRGB">MC4wNTgxMzA0OTg5OCAwLjA1NTU0MTg5OTA2IDEAA</bytes>
+																</object>
+															</object>
+															<object class="NSColorWell" id="350511929">
+																<reference key="NSNextResponder" ref="402415888"/>
+																<int key="NSvFlags">269</int>
+																<set class="NSMutableSet" key="NSDragTypes">
+																	<object class="NSMutableString">
+																		<characters key="NS.bytes">NSColor pasteboard type</characters>
+																	</object>
+																</set>
+																<string key="NSFrame">{{400, 301}, {20, 20}}</string>
+																<reference key="NSSuperview" ref="402415888"/>
+																<reference key="NSNextKeyView" ref="968109138"/>
+																<int key="NSTag">30</int>
 																<bool key="NSEnabled">YES</bool>
 																<bool key="NSIsBordered">YES</bool>
 																<object class="NSColor" key="NSColor">
@@ -3807,7 +3807,7 @@
 																<int key="NSvFlags">291</int>
 																<string key="NSFrame">{{225, 12}, {210, 32}}</string>
 																<reference key="NSSuperview" ref="402415888"/>
-																<reference key="NSNextKeyView" ref="665353132"/>
+																<reference key="NSNextKeyView" ref="1053574686"/>
 																<string key="NSReuseIdentifierKey">_NS:9</string>
 																<bool key="NSEnabled">YES</bool>
 																<object class="NSButtonCell" key="NSCell" id="329783002">
@@ -4626,7 +4626,6 @@
 																<int key="NSvFlags">268</int>
 																<string key="NSFrame">{{192, 204}, {240, 11}}</string>
 																<reference key="NSSuperview" ref="57587199"/>
-																<reference key="NSNextKeyView" ref="665353132"/>
 																<bool key="NSEnabled">YES</bool>
 																<object class="NSTextFieldCell" key="NSCell" id="926272167">
 																	<int key="NSCellFlags">68288064</int>
@@ -4663,7 +4662,7 @@
 																				<int key="NSvFlags">256</int>
 																				<string key="NSFrameSize">{407, 296}</string>
 																				<reference key="NSSuperview" ref="433990135"/>
-																				<reference key="NSNextKeyView" ref="1011610652"/>
+																				<reference key="NSNextKeyView" ref="470130271"/>
 																				<bool key="NSEnabled">YES</bool>
 																				<object class="NSTableHeaderView" key="NSHeaderView" id="577402709">
 																					<reference key="NSNextResponder" ref="470130271"/>
@@ -4863,7 +4862,7 @@
 																</array>
 																<string key="NSFrame">{{20, 70}, {409, 314}}</string>
 																<reference key="NSSuperview" ref="208408466"/>
-																<reference key="NSNextKeyView" ref="470130271"/>
+																<reference key="NSNextKeyView" ref="433990135"/>
 																<int key="NSsFlags">133170</int>
 																<reference key="NSVScroller" ref="754821796"/>
 																<reference key="NSHScroller" ref="1011610652"/>
@@ -7903,20 +7902,8 @@
 							<reference ref="83455403"/>
 							<reference ref="340464604"/>
 							<reference ref="765851134"/>
-							<reference ref="350511929"/>
-							<reference ref="1026900652"/>
-							<reference ref="258665417"/>
-							<reference ref="78293204"/>
 							<reference ref="576768000"/>
-							<reference ref="489144235"/>
-							<reference ref="208667344"/>
-							<reference ref="282776959"/>
-							<reference ref="840033143"/>
-							<reference ref="350197855"/>
 							<reference ref="44841208"/>
-							<reference ref="782529362"/>
-							<reference ref="233102631"/>
-							<reference ref="216298000"/>
 							<reference ref="968109138"/>
 							<reference ref="686202698"/>
 							<reference ref="180153678"/>
@@ -7938,6 +7925,18 @@
 							<reference ref="690043882"/>
 							<reference ref="44557163"/>
 							<reference ref="831000751"/>
+							<reference ref="840033143"/>
+							<reference ref="208667344"/>
+							<reference ref="489144235"/>
+							<reference ref="350511929"/>
+							<reference ref="233102631"/>
+							<reference ref="1026900652"/>
+							<reference ref="258665417"/>
+							<reference ref="782529362"/>
+							<reference ref="216298000"/>
+							<reference ref="350197855"/>
+							<reference ref="78293204"/>
+							<reference ref="282776959"/>
 							<reference ref="501949360"/>
 						</array>
 						<reference key="parent" ref="625907395"/>
@@ -8889,7 +8888,6 @@
 							<reference ref="195567578"/>
 							<reference ref="312647408"/>
 							<reference ref="619505271"/>
-							<reference ref="311130897"/>
 							<reference ref="232859697"/>
 							<reference ref="452140972"/>
 							<reference ref="180817061"/>
@@ -8906,6 +8904,7 @@
 							<reference ref="539390510"/>
 							<reference ref="228398657"/>
 							<reference ref="781764471"/>
+							<reference ref="311130897"/>
 						</array>
 						<reference key="parent" ref="815118087"/>
 					</object>
@@ -12742,7 +12741,7 @@
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.InterfaceBuilder3</string>
-			<real value="4000" key="NS.object.0"/>
+			<real value="4400" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>

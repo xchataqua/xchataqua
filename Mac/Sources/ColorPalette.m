@@ -153,9 +153,9 @@ static int color_remap [] =
     // 24 * 4 = 96
     BOOL remap = [dict count] == 24 * 4;
     
-    for (NSUInteger i = 0; i < [self numberOfColors]; i++)
+    for (int i = 0; i < [self numberOfColors]; i++)
     {
-        NSUInteger x = remap ? color_remap [i] : i;
+        int x = remap ? color_remap [i] : i;
 
         id rid = [dict objectForKey:[NSString stringWithFormat:@"color_%d_red", x]];
         id gid = [dict objectForKey:[NSString stringWithFormat:@"color_%d_green", x]];
@@ -185,18 +185,18 @@ static int color_remap [] =
     char *cfg = malloc(filestat.st_size + 1);
     if (cfg != NULL) {
         cfg[0]  = '\0';
-        int cfglen = read(file, cfg, filestat.st_size);
+        ssize_t cfglen = read(file, cfg, filestat.st_size);
         if (cfglen >= 0)
             cfg[cfglen] = '\0';
         
         int red, green, blue;
-        for (NSInteger i = 0; i < 32; i++) {
+        for (int i = 0; i < 32; i++) {
             const char *name = [[NSString stringWithFormat:@"color_%d", i] UTF8String];
             cfg_get_color(cfg, (char *)name, &red, &green, &blue);
             [colors[i] release];
             colors[i] = [[NSColor colorWithDeviceRed:(CGFloat)red/0xffff green:(CGFloat)green/0xffff blue:(CGFloat)blue/0xffff alpha:1.0f] retain];
         }
-        for (NSInteger i = 256, j = 32; j < [self numberOfColors]; i++, j++) {
+        for (int i = 256, j = 32; j < [self numberOfColors]; i++, j++) {
             const char *name = [[NSString stringWithFormat:@"color_%d", i] UTF8String];
             cfg_get_color(cfg, (char *)name, &red, &green, &blue);
             [colors[j] release];
@@ -228,14 +228,14 @@ static int color_remap [] =
 	if (file != -1)
 	{
 		/* mIRC colors 0-31 are here */
-		for (NSInteger i = 0; i < 32; i++)
+		for (int i = 0; i < 32; i++)
 		{
             const char *name = [[NSString stringWithFormat:@"color_%d", i] UTF8String];
 			cfg_put_color(file, colors[i].redComponent * 0xffff, colors[i].greenComponent * 0xffff, colors[i].blueComponent * 0xffff, (char *)name);
 		}
         
 		/* our special colors are mapped at 256+ */
-		for (NSInteger i = 256, j = 32; j < self.numberOfColors; i++, j++)
+		for (int i = 256, j = 32; j < self.numberOfColors; i++, j++)
 		{
 			const char *name = [[NSString stringWithFormat:@"color_%d", i] UTF8String];
 			cfg_put_color (file, colors[j].redComponent * 0xffff, colors[j].greenComponent * 0xffff, colors[j].blueComponent * 0xffff, (char *)name);

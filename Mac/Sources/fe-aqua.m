@@ -906,7 +906,7 @@ void fe_set_inputbox_contents (struct session *sess, char *text)
 
 int fe_get_inputbox_cursor (struct session *sess)
 {
-    return [sess->gui->controller inputTextPosition];
+    return (int)[sess->gui->controller inputTextPosition];
 }
 
 void fe_set_inputbox_cursor (struct session *sess, int delta, int pos)
