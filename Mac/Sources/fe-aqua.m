@@ -83,6 +83,7 @@ fe_new_window (struct session *sess, int focus)
 {
     sess->gui = (struct session_gui *) malloc (sizeof (struct session_gui));
     sess->gui->controller = [[ChatViewController alloc] initWithSession:sess];
+    [sess->gui->controller view]; // force load views
     
     if (!current_sess)
         current_sess = sess;
