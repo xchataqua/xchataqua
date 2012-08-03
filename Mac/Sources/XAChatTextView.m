@@ -461,7 +461,13 @@ static NSCursor *XAChatTextViewSizableCursor;
 
     if (atBottom)
     {
-        [self scrollPoint:NSMakePoint(0, NSMaxY([self bounds]))];
+        // Fake styling to refresh scrolling down
+        NSTextStorage *stg = [self textStorage];
+        if (stg.length > 1) {
+            [stg addAttribute:NSBackgroundColorAttributeName
+                        value:[NSColor clearColor]
+                        range:NSMakeRange(stg.length-1, 1)];
+        }
     }
     // Docs say that characterIndexForPoint will return -1 for a point that is out of range.
     // Practice says otherwise.  
