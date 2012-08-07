@@ -125,7 +125,7 @@ AquaChat *AquaChatShared;
     if (value == 0) {
         tile.badgeLabel = nil;
     } else {
-        tile.badgeLabel = [NSString stringWithFormat:@"%d", value];
+        tile.badgeLabel = [NSString stringWithFormat:@"%ld", value];
     }
     _badgeCount = value;
 }
@@ -319,7 +319,7 @@ AquaChat *AquaChatShared;
     // ensure window delegates get windowWillClose: messages
     // shouldn't this happen automatically? it doesn't :(
     NSArray *windows = [[NSApplication sharedApplication] windows];
-    unsigned count = [windows count];
+    NSUInteger count = [windows count];
     
     while (count--) {
         [[windows objectAtIndex:count] close];
@@ -978,15 +978,15 @@ AquaChat *AquaChatShared;
         
         if (event->growl)
         {
-            [dict setObject:[NSNumber numberWithInt:event->growl] forKey:[NSString stringWithFormat:@"%s_growl", name]];
+            [dict setObject:[NSNumber numberWithInteger:event->growl] forKey:[NSString stringWithFormat:@"%s_growl", name]];
         }
         if (event->show)
         {
-            [dict setObject:[NSNumber numberWithInt:event->show] forKey:[NSString stringWithFormat:@"%s_show", name]];
+            [dict setObject:[NSNumber numberWithInteger:event->show] forKey:[NSString stringWithFormat:@"%s_show", name]];
         }
         if (event->bounce)
         {
-            [dict setObject:[NSNumber numberWithInt:event->bounce] forKey:[NSString stringWithFormat:@"%s_bounce", name]];
+            [dict setObject:[NSNumber numberWithInteger:event->bounce] forKey:[NSString stringWithFormat:@"%s_bounce", name]];
         }
         
     }

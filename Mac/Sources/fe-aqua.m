@@ -48,30 +48,24 @@ static void init_plugins_once()
         return;
     
     // if this is first runtime, install builtin plugins.
+    #ifdef CONFIG_Azure
     NSString *supportDirectory = [SGFileUtility findApplicationSupportFor:@PRODUCT_NAME];
     const char *currentVersion = [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] UTF8String];
-    #ifdef CONFIG_Azure
+
     if (strcmp(prefs.xa_builtin_plugins_version, "1.11") < 0 && currentVersion[0] == '1') {
         int result = system([[NSString stringWithFormat:@"/bin/rm -r '%@/plugins'", supportDirectory] UTF8String]);
         if (result == 0) {
-            NSLog(@PRODUCT_NAME" removed auto-installed old libraries");
+            NSLog(@PRODUCT_NAME" removed auto-installed old plugins");
         }
+    }
+    if (strcmp(prefs.xa_builtin_plugins_version, "") != 0) {
+        int result = system([[NSString stringWithFormat:@"/bin/rm -r '%@/plugins-bundled'", supportDirectory] UTF8String]);
+        if (result == 0) {
+            NSLog(@PRODUCT_NAME" removed auto-installed pre-bundled plugins");
+        }
+        strcpy(prefs.xa_builtin_plugins_version, "");
     }
     #endif
-    if (strcmp(prefs.xa_builtin_plugins_version, currentVersion) != 0) {
-        system([[NSString stringWithFormat:@"mkdir '%@/plugins'", supportDirectory] UTF8String]);
-        // install builtin plugins
-        NSString *pack = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"plugins.tar"];
-        int result = 0;
-        if ([[NSFileManager defaultManager] fileExistsAtPath:pack]) {
-            // install when embedded archive exists
-            result = system([[NSString stringWithFormat:@"/usr/bin/tar xf '%@' -C '%@'", pack, supportDirectory] UTF8String]);
-        }
-        if (0 == result) {
-            // save current version
-            strcpy(prefs.xa_builtin_plugins_version, currentVersion);
-        }
-    }
     
     plugin_add (current_sess, NULL, NULL, (void *) XAInitInternalPlugin, NULL, NULL, FALSE);
     
@@ -906,7 +900,7 @@ void fe_set_inputbox_contents (struct session *sess, char *text)
 
 int fe_get_inputbox_cursor (struct session *sess)
 {
-    return [sess->gui->controller inputTextPosition];
+    return (int)[sess->gui->controller inputTextPosition];
 }
 
 void fe_set_inputbox_cursor (struct session *sess, int delta, int pos)

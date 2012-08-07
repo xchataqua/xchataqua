@@ -64,7 +64,7 @@
 }
 
 @property (nonatomic, readonly) TabOrWindowView *chatView;
-@property (nonatomic, readonly) int inputTextPosition;
+@property (nonatomic, readonly) NSUInteger inputTextPosition;
 @property (nonatomic, assign)   NSString *inputText;
 @property (nonatomic, readonly) NSWindow *window;
 @property (nonatomic, readonly) struct session *session;

@@ -158,9 +158,10 @@
         while (*cmd)
         {
             const char *cr = strchr (cmd, '\n');
-            int len = cr ? cr - cmd : strlen (cmd);
-            if (len)
-                fprintf (f, "NAME %s\nCMD %.*s\n\n", [[item name] UTF8String], len, cmd);
+            size_t len = cr ? cr - cmd : strlen (cmd);
+            if (len) {
+                fprintf (f, "NAME %s\nCMD %.*s\n\n", [[item name] UTF8String], (int)len, cmd);
+            }
             cmd += len;
             if (cr) cmd++;
         }

@@ -49,10 +49,10 @@
                               backing:NSBackingStoreBuffered
                                 defer:NO];
     
-    if ( self != nil ) {
+    if (self != nil) {
         NSView *asciiView = [[NSView alloc] initWithFrame:windowRect];
         
-        for (NSInteger y = 0; y < AWNumberOfColumns; y ++)
+        for (int y = 0; y < AWNumberOfColumns; y ++)
         {
             NSTextField *lineTextField = [[NSTextField alloc] init];
             [lineTextField setEditable:NO];

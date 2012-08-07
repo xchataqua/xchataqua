@@ -153,11 +153,7 @@ extern GSList *plugin_list;
 
 - (void)showBundledItemsInFinder:(id)sender {
     NSString *path;
-#ifdef CONFIG_Azure
-    path = [[SGFileUtility findApplicationSupportFor:@PRODUCT_NAME] stringByAppendingPathComponent:@"plugins-bundled"];
-#else
     path = [[NSBundle mainBundle] builtInPlugInsPath];
-#endif
     [[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:path isDirectory:YES]];
 }
 

@@ -461,7 +461,13 @@ static NSCursor *XAChatTextViewSizableCursor;
 
     if (atBottom)
     {
-        [self scrollPoint:NSMakePoint(0, NSMaxY([self bounds]))];
+        // Fake styling to refresh scrolling down
+        NSTextStorage *stg = [self textStorage];
+        if (stg.length > 1) {
+            [stg addAttribute:NSBackgroundColorAttributeName
+                        value:[NSColor clearColor]
+                        range:NSMakeRange(stg.length-1, 1)];
+        }
     }
     // Docs say that characterIndexForPoint will return -1 for a point that is out of range.
     // Practice says otherwise.  
@@ -633,7 +639,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     for (;;)
     {
         char *cword = (char *)[[text substringWithRange:*range] UTF8String];
-        int len = strlen(cword);// range->length;
+        size_t len = strlen(cword);// range->length;
 
         // Let common have first crack at it.
         int ret = url_check_word (cword, len);    /* common/url.c */
@@ -728,8 +734,8 @@ static NSCursor *XAChatTextViewSizableCursor;
     
     // From this point, we know we have a selection...
     
-    unsigned int word_start = idx;
-    unsigned int word_stop = idx;
+    NSUInteger word_start = idx;
+    NSUInteger word_stop = idx;
     
     while (word_start > 0 && !isspace ([s characterAtIndex:word_start-1]))    /* CL: maybe this should be iswspace, or a test using whitespaceAndNewlineCharacterSet? */
         word_start --;

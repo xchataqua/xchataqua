@@ -74,7 +74,7 @@ extern char *pntevts[];
 @interface TextEventsWindow (Private)
 
 - (void)loadItems;
-- (void)testOne:(int)row;
+- (void)testOne:(NSInteger)row;
 
 @end
 
@@ -143,8 +143,9 @@ extern char *pntevts[];
     [helpTableView reloadData];
     [testTextView setString:@""];
     NSInteger row = [eventTableView selectedRow];
-    if (row >= 0)
+    if (row >= 0) {
         [self testOne:row];
+    }
 }
 
 #pragma mark NSTableView dataSource
@@ -233,7 +234,7 @@ extern char *pntevts[];
                 if (pntevts[rowIndex])
                     free(pntevts[rowIndex]);
 
-                int len = strlen (text);
+                size_t len = strlen (text);
                 pntevts_text[rowIndex] = (char *) malloc (len + 1);
                 memcpy(pntevts_text[rowIndex], text, len + 1);
                 pntevts[rowIndex] = output;
@@ -262,7 +263,7 @@ extern char *pntevts[];
     }
 }
 
-- (void) testOne:(int) row
+- (void)testOne:(NSInteger)row
 {
     const char *text = pntevts_text[row];
     char *output = strdup(text);

@@ -87,7 +87,7 @@ extern struct XATextEventItem XATextEvents[];
     if (self != nil) {
         self->name = [[NSString alloc] initWithUTF8String:te[event].name];
         
-        int soundIndex = 0;
+        NSUInteger soundIndex = 0;
         
         if (sound_files && sound_files[event])
         {
@@ -97,9 +97,9 @@ extern struct XATextEventItem XATextEvents[];
         struct XATextEventItem *info = &XATextEvents[event];
         
         self->sound = [[NSNumber alloc] initWithInteger:soundIndex];
-        self->growl = [[NSNumber alloc] initWithInt:info->growl];
-        self->show  = [[NSNumber alloc] initWithInt:info->show];
-        self->bounce= [[NSNumber alloc] initWithInt:info->bounce];
+        self->growl = [[NSNumber alloc] initWithInteger:info->growl];
+        self->show  = [[NSNumber alloc] initWithInteger:info->show];
+        self->bounce= [[NSNumber alloc] initWithInteger:info->bounce];
     }
     return self;
 }
@@ -381,7 +381,7 @@ extern struct XATextEventItem XATextEvents[];
 {
     NSUInteger numberOfItems = sizeof (preferenceItems) / sizeof (preferenceItems [0]);
     
-    for (NSUInteger i = 0; i < numberOfItems; i ++)
+    for (int i = 0; i < numberOfItems; i ++)
     {
         switch (preferenceItems[i].type)
         {
@@ -397,12 +397,12 @@ extern struct XATextEventItem XATextEvents[];
             }
                 
             case MYPREF_MENU:
-                * (int *) preferenceItems [i].pref = [preferenceItems [i].item indexOfSelectedItem];
+                * (int *) preferenceItems [i].pref = (int)[preferenceItems [i].item indexOfSelectedItem];
                 break;
         }
     }
     
-    prefs.tab_layout = [switcherTypePopUp indexOfSelectedItem] * 2; // 1 is reserved
+    prefs.tab_layout = (int)[switcherTypePopUp indexOfSelectedItem] * 2; // 1 is reserved
     
     KeyCombo left_combo = [tabLeftRecorderCell keyCombo];
     prefs.tab_left_modifiers = left_combo.flags;
@@ -645,13 +645,11 @@ extern struct XATextEventItem XATextEvents[];
     }
 }
 
-- (void) fillColorWellsFromTag
-{
-    // TBD: Magic number here!!!! '5'
-    
+- (void)fillColorWellsFromTag
+{    
     NSView *colorsView = [colorsTabViewItem view];
     
-    for ( NSView *view in [colorsView subviews] ) {        
+    for (NSView *view in [colorsView subviews]) {
         if (![view isKindOfClass:[NSColorWell class]]) continue;
         NSInteger colorIndex = [view tag];
         colorWells[colorIndex] = (NSColorWell *)view;
@@ -698,7 +696,7 @@ extern struct XATextEventItem XATextEvents[];
 {
     [soundEvents removeAllObjects];
     
-    for (NSUInteger i = 0; i < NUM_XP; i ++)
+    for (int i = 0; i < NUM_XP; i ++)
     {
         [soundEvents addObject:[SoundEvent soundEventWithEvent:i sounds:sounds]];
     }
