@@ -62,7 +62,7 @@
 {
     [[label window] makeKeyAndOrderFront:self];
     NSModalSession session = [NSApp beginModalSessionForWindow:[label window]];
-    int ret;
+    NSInteger ret;
     while ((ret = [NSApp runModalSession:session]) == NSRunContinuesResponse)
         ;
     [NSApp endModalSession:session];     

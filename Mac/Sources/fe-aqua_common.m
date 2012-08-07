@@ -80,7 +80,7 @@ nick_command_parse (struct session *sess, const char *cmd, const char *nick, con
     char *buf;
     const char *host = [NSLocalizedStringFromTable(@"Host unknown", @"xchat", @"") UTF8String];
     struct User *user;
-    int len;
+    size_t len;
     
     user = userlist_find (sess, (char *)nick);
     if (user && user->hostname)
@@ -90,7 +90,7 @@ nick_command_parse (struct session *sess, const char *cmd, const char *nick, con
     len = strlen (cmd) + strlen (nick) + strlen (allnick) + 512;
     buf = (char *) malloc (len);
     
-    auto_insert (buf, len, (unsigned char *) cmd, 0, 0, (char *)allnick, sess->channel, "",
+    auto_insert (buf, (int)len, (unsigned char *) cmd, 0, 0, (char *)allnick, sess->channel, "",
                  server_get_network (sess->server, TRUE), (char*)host,
                  sess->server->nick, (char *)nick);
     

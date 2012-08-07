@@ -101,7 +101,7 @@ typedef struct SGFormConstraint
     self = [super initWithCoder:decoder];
     [self initAsSGFormMetaView];
     [self setIdentifier:[decoder decodeObjectForKey:@"identifier"]];
-    for (NSInteger i = 0; i < SGFormViewEdgeCount; i ++)
+    for (int i = 0; i < SGFormViewEdgeCount; i ++)
     {
         self->constraints[i].location = [decoder decodeFloatForKey:[NSString stringWithFormat:@"location_%d", i]];
         self->constraints[i].attachment = [decoder decodeIntForKey:[NSString stringWithFormat:@"attachment_%d", i]];
@@ -121,7 +121,7 @@ typedef struct SGFormConstraint
 {
     [super encodeWithCoder:encoder];
     [encoder encodeObject:identifier forKey:@"identifier"];
-    for (NSInteger i = 0; i < SGFormViewEdgeCount; i ++)
+    for (int i = 0; i < SGFormViewEdgeCount; i ++)
     {
         [encoder encodeFloat:self->constraints[i].location forKey:[NSString stringWithFormat:@"location_%d", i]];
         [encoder encodeInt:self->constraints[i].attachment forKey:[NSString stringWithFormat:@"attachment_%d", i]];
@@ -415,7 +415,7 @@ recompute_our_size:(BOOL) recompute_our_size
             my_bounds:(CGFloat *) my_bounds
    recompute_our_size:(BOOL) recompute_our_size
 {
-    for (NSInteger edge = 0; edge < SGFormViewEdgeCount; edge ++)
+    for (int edge = 0; edge < SGFormViewEdgeCount; edge ++)
         [self layout_edge:env 
                        fc:fc
                      edge:edge

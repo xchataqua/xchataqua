@@ -189,7 +189,7 @@
         self.splitPosition = 0;
         dividerStyle = NSSplitViewDividerStyleThick;
     } else {
-        prefs.xa_paned_pos = self.splitPosition;
+        prefs.xa_paned_pos = (int)self.splitPosition;
         prefs.hideuserlist = 0;
         dividerStyle = NSSplitViewDividerStyleThin;
     }
@@ -1832,7 +1832,7 @@ static NSImage *emptyBulletImage;
     [[[inputTextField window] firstResponder] moveToEndOfParagraph:self];
 }
 
-- (int) inputTextPosition
+- (NSUInteger) inputTextPosition
 {
     NSWindow *win = [inputTextField window];
     NSTextView *view = (NSTextView*)[win firstResponder];
@@ -1956,7 +1956,7 @@ static NSImage *emptyBulletImage;
 - (NSArray *) command_complete:(NSTextView *) view start:(NSString *) start
 {
     const char *utf = [start UTF8String];
-    int len = strlen (utf);
+    size_t len = strlen (utf);
     
     // Use a set because stupid user commands appear multiple times!
     NSMutableSet *matchArray = [NSMutableSet set];
@@ -1964,7 +1964,7 @@ static NSImage *emptyBulletImage;
     for (GSList *list = command_list; list; list = list->next)
     {
         struct popup *pop = (struct popup *) list->data;
-        int this_len = strlen (pop->name);
+        size_t this_len = strlen (pop->name);
         if (len <= this_len && strncasecmp (utf, pop->name, len) == 0)
             [matchArray addObject:[TabCompletionItem completionWithValue:[NSString stringWithUTF8String:pop->name]]];
     }
@@ -1972,7 +1972,7 @@ static NSImage *emptyBulletImage;
     for (int i = 0; xc_cmds[i].name; i ++)
     {
         char *cmd = xc_cmds[i].name;
-        int this_len = strlen (cmd);
+        size_t this_len = strlen (cmd);
         if (len <= this_len && strncasecmp (utf, cmd, len) == 0)
             [matchArray addObject:[TabCompletionItem completionWithValue:[NSString stringWithUTF8String:cmd]]];
     }
@@ -1983,13 +1983,13 @@ static NSImage *emptyBulletImage;
 - (NSArray *) nick_complete:(NSTextView *) view start:(NSString *) start
 {
     const char *utf = [start UTF8String];
-    int len = strlen (utf);
+    size_t len = strlen (utf);
     
     NSMutableArray *matchArray = [[NSMutableArray alloc] init];
     
     if (sess->type == SESS_DIALOG)
     {
-        int this_len = strlen (sess->channel);
+        size_t this_len = strlen (sess->channel);
         if (len > this_len || rfc_ncasecmp ((char *) utf, sess->channel, len) != 0) {
             [matchArray release];
             return nil;
@@ -2000,7 +2000,7 @@ static NSImage *emptyBulletImage;
     {
         for (ChannelUser *u in users) {
             struct User *user = u->user;
-            int this_len = strlen (user->nick);
+            size_t this_len = strlen (user->nick);
             if (len <= this_len && rfc_ncasecmp ((char *) utf, user->nick, len) == 0)
                 [matchArray addObject:[NickCompletionItem nickWithNick:[NSString stringWithUTF8String:user->nick] lasttalk:user->lasttalk]];
         }
@@ -2012,7 +2012,7 @@ static NSImage *emptyBulletImage;
 - (NSArray *) channel_complete:(NSTextView *)view start:(NSString *) start
 {
     const char *utf = [start UTF8String];
-    int len = strlen (utf);
+    size_t len = strlen (utf);
     
     NSMutableArray *matchArray = [[NSMutableArray alloc] init];
     
@@ -2022,7 +2022,7 @@ static NSImage *emptyBulletImage;
         
         if (tmp_sess->type == SESS_CHANNEL)
         {
-            int this_len = strlen (tmp_sess->channel);
+            size_t this_len = strlen (tmp_sess->channel);
             if (len <= this_len && strncasecmp (utf, tmp_sess->channel, len) == 0)
                 [matchArray addObject:[TabCompletionItem completionWithValue:[NSString stringWithUTF8String:tmp_sess->channel]]];
         }

@@ -34,7 +34,7 @@
     self.per  = [NSString stringWithFormat:@"%.0f%%", floor((float) dcc->pos / dcc->size * 100.00)];    // the floor is to ensure that the percent does not display 100% until the file is really finished
     self.kbs = [NSString stringWithFormat:@"%.1f", (float) dcc->cps / 1024];
     if ( dcc->cps ) {
-        int to_go = (dcc->size - dcc->ack) / dcc->cps;
+        int to_go = (int)(dcc->size - dcc->ack) / dcc->cps;
         self.eta = [NSString stringWithFormat:@"%.2d:%.2d:%.2d", to_go / 3600, (to_go / 60) % 60, to_go % 60];
     }
     else {

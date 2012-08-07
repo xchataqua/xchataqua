@@ -530,7 +530,7 @@ static NSString *charsets[] =
     if (sender == connectNewButton || !is_session (sess))
         sess = NULL;
     
-    network->ircNet->selected = [networkServerTableView selectedRow];    // This kinda stinks. Boo Peter!
+    network->ircNet->selected = (int)[networkServerTableView selectedRow];    // This kinda stinks. Boo Peter!
     // Why can't it be an arg to
     // servlist_connect!?
     servlist_connect (sess, network->ircNet, true);
@@ -715,7 +715,7 @@ static NSString *charsets[] =
     
     [network->servers removeObjectAtIndex:serverIndex];
     
-    servlist_server_remove (network->ircNet, (struct ircserver *) g_slist_nth (network->ircNet->servlist, serverIndex)->data);
+    servlist_server_remove (network->ircNet, (struct ircserver *) g_slist_nth (network->ircNet->servlist, (guint)serverIndex)->data);
     
     [networkServerTableView reloadData];
 }
@@ -857,13 +857,13 @@ static NSString *charsets[] =
     {
         // Figure out what was selected from the allNetworks
         NetworkItem *network = [filteredNetworks objectAtIndex:networkIndex];
-        prefs.slist_select = [allNetworks indexOfObject:network];
+        prefs.slist_select = (int)[allNetworks indexOfObject:network];
         [self populateEditor];
     }
     else if ([notification object] == networkServerTableView)
     {
         NetworkItem *network = [filteredNetworks objectAtIndex:networkIndex];
-        network->ircNet->selected = [networkServerTableView selectedRow];
+        network->ircNet->selected = (int)[networkServerTableView selectedRow];
     }
 }
 

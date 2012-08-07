@@ -87,7 +87,7 @@
         ign->type &= ~type;
 }
 
-- (void) setValue:(id)value forField:(int)field
+- (void) setValue:(id)value forField:(NSInteger)field
 {
     switch (field)
     {
