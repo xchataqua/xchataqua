@@ -26,6 +26,9 @@ It should be annoying job to keep these on X-Chat Aqua.
 
 # I lost all configurations after update to 1.11 or later
 
+* Your configuration has gone?
+* Your configuration is not saved when you quit the application?
+
 ## Auto-recovery script
   1. Download the [Script](http://xchataqua.github.com/downloads/fixdata.tar)
   2. Run the script: It will show the result. No bad message mean Good result.
