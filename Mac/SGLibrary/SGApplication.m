@@ -17,6 +17,8 @@
 
 #import "SGApplication.h"
 
+#import <objc/runtime.h>
+
 @interface ObjSel : NSObject
 {
   @public
@@ -73,7 +75,7 @@
 {
 	if ([anEvent type] == type && (!win || [anEvent window] == win))
 	{
-		if (!view || [SGApplication event:anEvent inView:view])
+		if (!view || [NSApplication event:anEvent inView:view])
 		{
 			BOOL (*doit)(id, SEL, id) = (BOOL (*)(id, SEL, id)) [object methodForSelector:sel];
 			return doit (object, sel, anEvent);
@@ -87,7 +89,9 @@
 
 #pragma mark -
 
-@implementation SGApplication
+NSMutableArray *SGApplicationCustomers = nil;
+
+@implementation NSApplication (SGApplication)
 
 + (BOOL) event:(NSEvent *)event inView:(NSView *)view
 {
@@ -96,13 +100,22 @@
 	return [view mouse:point inRect:[view bounds]];
 }
 
-- (id) init
+- (void) cancelRequestEvents:(id) req_id
 {
-	if ((self = [super init]) != nil) {
-		customers = [[NSMutableArray alloc] init];
-		//after_events = [[NSMutableArray alloc] init];
-	}
-	return self;
+	[SGApplicationCustomers removeObject:req_id];
+}
+
+- (void)sendOriginalEvent:(NSEvent *)anEvent {
+    SGAssert(NO);
+}
+
+- (void)sendXAEvent:(NSEvent *)anEvent {
+    for (id customer in SGApplicationCustomers) {
+        if ([customer sendCopy:anEvent]) {
+            return;
+        }
+    }
+    [self sendOriginalEvent:anEvent];
 }
 
 - (id) requestEvents:(NSEventType)type
@@ -112,26 +125,25 @@
 			  object:(id)obj
 {
 	SGApplicationCustomer *customer = [SGApplicationCustomer customerWithType:type
-												forWindow:win
-												  forView:view
-												 selector:sel
-												   object:obj];
-	[customers addObject:customer];
-	return customer;
-}
-
-- (void) cancelRequestEvents:(id) req_id
-{
-	[customers removeObject:req_id];
-}
-
-- (void) sendEvent:(NSEvent *) anEvent
-{
-	for (id customer in customers)
-		if ([customer sendCopy:anEvent])
-			return;
-	
-	[super sendEvent:anEvent];
+                                                                    forWindow:win
+                                                                      forView:view
+                                                                     selector:sel
+                                                                       object:obj];
+    if (SGApplicationCustomers == nil) {
+        SGApplicationCustomers = [[NSMutableArray alloc] init];
+        Class class = [NSApplication class];
+        Method originalMethod = class_getInstanceMethod(class, @selector(sendEvent:));
+        Method overrideMethod = class_getInstanceMethod(class, @selector(sendXAEvent:));
+        Method backupMethod = class_getInstanceMethod(class, @selector(sendOriginalEvent:));
+        IMP originalImplementation = method_getImplementation(originalMethod);
+        IMP overrideImplementation = method_getImplementation(overrideMethod);
+        if (originalImplementation != overrideImplementation) {
+            method_setImplementation(backupMethod, originalImplementation);
+            method_setImplementation(originalMethod, overrideImplementation);
+        }
+    }
+    [SGApplicationCustomers addObject:customer];
+    return customer;
 }
 
 @end
