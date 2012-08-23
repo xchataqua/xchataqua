@@ -169,50 +169,59 @@ static void setupAppSupport ()
     NSString *asdir = [SGFileUtility findApplicationSupportFor:@PRODUCT_NAME];
     NSString *xcdir = [NSString stringWithUTF8String:get_xdir_utf8()];
     
-    bool xclink_exists = [SGFileUtility isSymLink:xcdir];    
-    bool xcdir_exists = [SGFileUtility isDirectory:xcdir];
-    bool asdir_exists = [SGFileUtility isDirectory:asdir];
-    
-    // State 1
-    if (xcdir_exists && asdir_exists)
-    {
-        NSLog(@"~/.xchat2 and ApplicationSupport/XChat Azure!?");
-        return;
-    }
-    
-    // State 2
-    if (xcdir_exists && !asdir_exists)
-    {
-        rename (get_xdir_utf8 (), [asdir fileSystemRepresentation]);
-        #ifdef CONFIG_Aqua
-        symlink ([asdir fileSystemRepresentation], get_xdir_utf8 ());
-        #endif
-        return;
-    }
-    
-    // State 3
-    if (!xclink_exists && !xcdir_exists && asdir_exists)
-    {
-        #ifdef CONFIG_Aqua
-        symlink ([asdir fileSystemRepresentation], get_xdir_utf8 ());
-        #endif
-        return;
-    }
-    
-    // State 4
-    if (!xclink_exists && !xcdir_exists && !asdir_exists)
-    {
-        mkdir ([asdir fileSystemRepresentation], 0755);
-        #ifdef CONFIG_Aqua
-        symlink ([asdir fileSystemRepresentation], get_xdir_utf8 ());
-        #endif
-        return;
-    }
-    
-    // State 6
-    if (xclink_exists && !asdir_exists)
-    {
-        mkdir ([asdir fileSystemRepresentation], 0755);
+    if ([asdir isEqualToString:xcdir]) {
+        NSFileManager *manager = [NSFileManager defaultManager];
+        BOOL isDirectory;
+        BOOL exist = [manager fileExistsAtPath:asdir isDirectory:&isDirectory];
+        if (!exist) {
+            [manager createDirectoryAtPath:asdir withIntermediateDirectories:YES attributes:nil error:NULL];
+        }
+    } else {
+        bool xclink_exists = [SGFileUtility isSymLink:xcdir];
+        bool xcdir_exists = [SGFileUtility isDirectory:xcdir];
+        bool asdir_exists = [SGFileUtility isDirectory:asdir];
+        
+        // State 1
+        if (xcdir_exists && asdir_exists)
+        {
+            NSLog(@"~/.xchat2 and ApplicationSupport/XChat Azure!?");
+            return;
+        }
+        
+        // State 2
+        if (xcdir_exists && !asdir_exists)
+        {
+            rename (get_xdir_utf8 (), [asdir fileSystemRepresentation]);
+            #ifdef CONFIG_Aqua
+            symlink ([asdir fileSystemRepresentation], get_xdir_utf8 ());
+            #endif
+            return;
+        }
+        
+        // State 3
+        if (!xclink_exists && !xcdir_exists && asdir_exists)
+        {
+            #ifdef CONFIG_Aqua
+            symlink ([asdir fileSystemRepresentation], get_xdir_utf8 ());
+            #endif
+            return;
+        }
+        
+        // State 4
+        if (!xclink_exists && !xcdir_exists && !asdir_exists)
+        {
+            mkdir ([asdir fileSystemRepresentation], 0755);
+            #ifdef CONFIG_Aqua
+            symlink ([asdir fileSystemRepresentation], get_xdir_utf8 ());
+            #endif
+            return;
+        }
+        
+        // State 6
+        if (xclink_exists && !asdir_exists)
+        {
+            mkdir ([asdir fileSystemRepresentation], 0755);
+        }
     }
 }
 
@@ -323,6 +332,20 @@ fe_init (void)
     
     NSString *bundle = [[NSBundle mainBundle] bundlePath];
     chdir ([[NSString stringWithFormat:@"%@/..", bundle] fileSystemRepresentation]);
+    
+#if CONFIG_Azure
+    NSString *configDirectory = [SGFileUtility findApplicationSupportFor:@PRODUCT_NAME];
+    if ([SGFileUtility isSymLink:configDirectory]) {
+        if ([SGAlert confirmWithString:NSLocalizedStringFromTable(
+            @"This version of " @PRODUCT_NAME @" is sandboxed. "
+            @PRODUCT_NAME" tried to migrate you configuration but it seems to be failed. "
+            @"Do you want to download recovery script for this problem?", @"xchataqua", @"")])
+        {
+            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/xchataqua/xchataqua/blob/master/README.md#i-lost-all-configurations-after-update-to-111-or-later"]];
+            [NSApp terminate:nil];
+        }
+    }
+#endif
 }
 
 #import <Foundation/NSDebug.h>
