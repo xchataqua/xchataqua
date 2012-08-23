@@ -24,7 +24,31 @@ Also, where was several other issues because I didn't want to change X-Chat Aqua
 
 It should be annoying job to keep these on X-Chat Aqua.
 
+# I lost all configurations after update to 1.11 or later
+
+## Auto-recovery script
+  1. Download the [Script](http://xchataqua.github.com/downloads/fixdata.tar)
+  2. Run the script: It will show the result. No bad message mean Good result.
+
+## For profesional
+
+After Azure 1.11, it is using App sandboxing by Apple Appstore policy.
+
+In most of case, this is occured because your Azure configuration directory is symlink to other one.
+
+To recover this, find the original configuration and replace symlink to original one.
+
+1. Quit Azure
+2. Remove all the configurations from sandbox container
+  * rm -rf ~/Library/Containers/org.3rddev.xchatazure
+3. Find your original configuration. Candidates are:
+  1. ~/.xchat2 (If you moved from ancient Aqua or GTK)
+  2. ~/Library/Application Support/X-Chat Aqua (If you moved from Aqua)
+  3. ~/Library/Application Support/XChat Azure (If something goes wrong with Azure)
+
 # Move GTK xchat2 or XChat Aqua to Azure
+
+NOTE: DO NOT TRY THIS IF YOU DON'T UNDERSTAND WHAT YOU ARE DOING
 
 If you are now using XChat GTK or X-Chat Aqua, and now you want to move to XChat Azure, you should do some work.
 
@@ -42,30 +66,3 @@ So if you want to keep your configuration, you should move it, copy it, or make 
 5. Copy, if you will use different configuration on Aqua and Azure, or you want to test Azure and get back to original X-Chat Aqua.
   * For GTK: cp -R ~/.xchat2 ~/Library/Application\ Support/XChat\ Azure
   * For Aqua: cp -R ~/Library/Application\ Support/X-Chat\ Aqua ~/Library/Application\ Support/XChat\ Azure
-
-# I lost all configurations after update to 1.11 or later
-
-## Auto-recovery script
-  1. Download the [Script](http://xchataqua.github.com/downloads/fixdata.tar)
-  2. Run the script: It will show the result. No bad message mean Good result.
-
-## For profesional
-
-After Azure 1.11, it is using App sandboxing by Apple Appstore policy.
-
-In most of case, this is occured because your Azure configuration directory is symlink to other one.
-
-To recover this, follow these step.
-
-1. Quit Azure
-2. Remove all the configurations from sandbox container
-  * rm -rf ~/Library/Containers/org.3rddev.xchatazure
-3. Find your original configuration
-  1. Open Terminal.app to do this job. You can find it on Spotlight.
-    * open -a Finder ~/Library/Application\ Support
-  2. if 'X-Chat Aqua' exists and not a symlink (aka shortcut), rename it to 'XChat Azure'
-  3. if not, go ahead...
-    * ls -l -a ~ | grep xchat
-  4. if you don't see '.xchat2 -> ...', it is the original one. run next.
-    * mv ~/.xchat2 ~/Library/Application\ Support/XChat\ Azure
-  5. Not resolved yet? Report please.
