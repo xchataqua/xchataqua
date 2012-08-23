@@ -21,7 +21,7 @@
 @interface PluginItem : NSObject {
     NSString *_name;
     NSString *_version;
-    NSString *_fiiename;
+    NSString *_filename;
     NSString *_description;
 }
 
