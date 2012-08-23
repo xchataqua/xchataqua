@@ -701,7 +701,7 @@ static NSCursor *XAChatTextViewSizableCursor;
 {
     // TBD: The use of 'superview' below assumes we live in a scroll view
     //      which is not always true.
-    if (![self window] || ![SGApplication event:theEvent inView:[self superview]])
+    if (![self window] || ![NSApplication event:theEvent inView:[self superview]])
     {
         [self clear_hot_word];
         return NO;
