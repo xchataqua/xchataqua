@@ -930,6 +930,10 @@ AquaChat *AquaChatShared;
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://github.com/xchataqua/xchataqua/issues"]];
 }
 
+- (void)openIRCChannel:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"irc://irc.freenode.org/#xchat-aqua"]];
+}
+
 #pragma mark GrowlApplicationBridgeDelegate
 
 - (NSDictionary *) registrationDictionaryForGrowl
