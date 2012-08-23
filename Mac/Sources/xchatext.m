@@ -8,6 +8,11 @@
 
 #import "SystemVersion.h"
 
+#import "PluginManager.h"
+
+#include "text.h"
+#include "plugin.h"
+
 char *get_xdir_fs(void)
 {
     static NSString *applicationSupportDirectory = nil;
@@ -36,4 +41,28 @@ char *get_plugin_bundle_path(char *filename) {
     
     NSString *path = [bundle executablePath];
     return (char *)[path fileSystemRepresentation];
+}
+
+void aqua_plugin_auto_load_item(struct session *ps, const char *filename) {
+    char *pMsg = plugin_load (ps, (char *)filename, NULL);
+	if (pMsg)
+	{
+		PrintTextf (ps, "AutoLoad failed for: %s\n", filename);
+		PrintText (ps, pMsg);
+	}
+}
+
+void aqua_plugin_auto_load(struct session *ps) {
+    PluginFileManager *manager = [EmbeddedPluginManager sharedPluginManager];
+    for (PluginItem *item in manager.items) {
+        if ([manager hasAutoloadItem:item]) {
+            aqua_plugin_auto_load_item(ps, item.filename.UTF8String);
+        }
+    }
+    manager = [UserPluginManager sharedPluginManager];
+    for (PluginItem *item in manager.items) {
+        if ([manager hasAutoloadItem:item]) {
+            aqua_plugin_auto_load_item(ps, item.filename.UTF8String);
+        }
+    }
 }

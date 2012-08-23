@@ -23,16 +23,26 @@
 #import "UtilityWindow.h"
 
 @interface PluginWindow : UtilityWindow <NSTableViewDataSource> {
-    IBOutlet NSTableView *pluginTableView;
-    NSMutableArray *plugins;
+    IBOutlet NSTableView *embeddedPluginTableView;
+    IBOutlet NSTableView *userPluginTableView;
+    IBOutlet NSTableView *loadedPluginTableView;
+    IBOutlet id tableViewDataSource;
 }
+
+@property(nonatomic, retain) id tableViewDataSource;
+
+- (IBAction)addUserPlugin:(id)sender;
+- (IBAction)removeUserPlugin:(id)sender;
 
 - (IBAction)loadPlugin:(id)sender;
 - (IBAction)unloadPlugin:(id)sender;
 
-- (IBAction)showStartupItemsInFinder:(id)sender;
-- (IBAction)showBundledItemsInFinder:(id)sender;
-
 - (void)update;
+
+@end
+
+@interface PluginFileTableViewDataSource: NSObject<NSTableViewDataSource> {
+    IBOutlet PluginWindow *window;
+}
 
 @end

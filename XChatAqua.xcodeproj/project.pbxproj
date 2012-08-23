@@ -352,6 +352,9 @@
 		385F8153155167C200689E6E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 385F766D155148FC00689E6E /* libiconv.dylib */; };
 		385FCFB515984EFC0058F381 /* RawLogWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 385FCFB415984EFC0058F381 /* RawLogWindow.xib */; };
 		385FCFB615984EFC0058F381 /* RawLogWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 385FCFB415984EFC0058F381 /* RawLogWindow.xib */; };
+		3864594B15E509E500C4CA45 /* PluginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3864594A15E509E500C4CA45 /* PluginManager.m */; };
+		3864594C15E509E500C4CA45 /* PluginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3864594A15E509E500C4CA45 /* PluginManager.m */; };
+		3864594D15E545CB00C4CA45 /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC8F3F50DEEDAB300504F31 /* Python.framework */; };
 		38701AD015C99AE400FB3EAC /* xchat.icns in Resources */ = {isa = PBXBuildFile; fileRef = 38701ACF15C99AE400FB3EAC /* xchat.icns */; };
 		38701AD115C99AE400FB3EAC /* xchat.icns in Resources */ = {isa = PBXBuildFile; fileRef = 38701ACF15C99AE400FB3EAC /* xchat.icns */; };
 		387624FC13C7024F00850913 /* AsciiWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6250CFB2E0A001AE9AE /* AsciiWindow.m */; };
@@ -1375,6 +1378,8 @@
 		385F7EF715515DCA00689E6E /* localcharset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = localcharset.h; sourceTree = "<group>"; };
 		385F814515515FE000689E6E /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		385FCFB415984EFC0058F381 /* RawLogWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RawLogWindow.xib; sourceTree = "<group>"; };
+		3864594915E509E400C4CA45 /* PluginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluginManager.h; sourceTree = "<group>"; };
+		3864594A15E509E500C4CA45 /* PluginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PluginManager.m; sourceTree = "<group>"; };
 		38701ACF15C99AE400FB3EAC /* xchat.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = xchat.icns; sourceTree = SOURCE_ROOT; };
 		3876258B13C7024F00850913 /* XChat Azure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XChat Azure.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		38763F2213DD40D6008C40DB /* perl-lion.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-lion.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2414,6 +2419,7 @@
 				3876254613C7024F00850913 /* WebKit.framework in Frameworks */,
 				38CE5A95154A689F00480EC6 /* ShortcutRecorder.framework in Frameworks */,
 				38CE5AE2154A718500480EC6 /* Growl.framework in Frameworks */,
+				3864594D15E545CB00C4CA45 /* Python.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2546,6 +2552,8 @@
 				0F8EA6B50CFB33AF001AE9AE /* AutoAwayController.m */,
 				0F8EA6B70CFB33C9001AE9AE /* ColorPalette.h */,
 				0F8EA6B80CFB33C9001AE9AE /* ColorPalette.m */,
+				3864594915E509E400C4CA45 /* PluginManager.h */,
+				3864594A15E509E500C4CA45 /* PluginManager.m */,
 				0F8EA6BF0CFB347B001AE9AE /* GLikeTimer.h */,
 				0F8EA6C00CFB347B001AE9AE /* GLikeTimer.m */,
 				0F8EA6C30CFB347B001AE9AE /* MenuMaker.h */,
@@ -2672,8 +2680,8 @@
 				38771A4515A7C04C0046929E /* Azure */,
 				385F774A155158BB00689E6E /* staticlib */,
 				0F8EA3640CFAA429001AE9AE /* Sources */,
-				2DC6AD151187773F0048B7C7 /* Resources */,
 				0FC8F3D10DEEC33D00504F31 /* Plugins */,
+				2DC6AD151187773F0048B7C7 /* Resources */,
 				0F8EA6580CFB2F71001AE9AE /* SGLibrary */,
 				388BDC9D13C69F8D00B95036 /* SGLibrary-Mac */,
 				3894C1AF1590D2C200BCD762 /* SGView */,
@@ -4346,6 +4354,7 @@
 				38E5737F158EEF38007943DA /* xchatext.m in Sources */,
 				38E573E2158F1A76007943DA /* AquaPlugins.m in Sources */,
 				3894C1B31590D93C00BCD762 /* NSPanelAdditions.m in Sources */,
+				3864594C15E509E500C4CA45 /* PluginManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4434,6 +4443,7 @@
 				38E57380158EEF39007943DA /* xchatext.m in Sources */,
 				38E573E1158F1A76007943DA /* AquaPlugins.m in Sources */,
 				3894C1B41590D93D00BCD762 /* NSPanelAdditions.m in Sources */,
+				3864594B15E509E500C4CA45 /* PluginManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
