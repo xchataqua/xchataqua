@@ -311,7 +311,7 @@ fe_init (void)
 #if USE_GLIKE_TIMER
     [GLikeTimer self];
 #endif
-    [SGApplication sharedApplication];
+    [NSApplication sharedApplication];
     NSString *mainNibFile = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"NSMainNibFile"];
     [NSBundle loadNibNamed:mainNibFile owner:NSApp];
     
