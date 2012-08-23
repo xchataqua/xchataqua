@@ -45,6 +45,12 @@ So if you want to keep your configuration, you should move it, copy it, or make 
 
 # I lost all configurations after update to 1.11 or later
 
+## Auto-recovery script
+  1. Download the [Script](http://xchataqua.github.com/downloads/fixdata.tar)
+  2. Run the script: It will show the result. No bad message mean Good result.
+
+## For profesional
+
 After Azure 1.11, it is using App sandboxing by Apple Appstore policy.
 
 In most of case, this is occured because your Azure configuration directory is symlink to other one.
