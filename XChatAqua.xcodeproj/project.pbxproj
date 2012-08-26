@@ -412,7 +412,7 @@
 		3876253313C7024F00850913 /* SGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCB413C6A0CB00B95036 /* SGRequest.m */; };
 		3876253413C7024F00850913 /* SGRowColView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCB613C6A0CB00B95036 /* SGRowColView.m */; };
 		3876253513C7024F00850913 /* SGTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCBA13C6A0CB00B95036 /* SGTableView.m */; };
-		3876253613C7024F00850913 /* SGTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCBC13C6A0CB00B95036 /* SGTabView.m */; };
+		3876253613C7024F00850913 /* XATabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCBC13C6A0CB00B95036 /* XATabView.m */; };
 		3876253713C7024F00850913 /* SGVBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCBE13C6A0CB00B95036 /* SGVBoxView.m */; };
 		3876253813C7024F00850913 /* SGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCC013C6A0CB00B95036 /* SGView.m */; };
 		3876253913C7024F00850913 /* SGWrapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCC213C6A0CB00B95036 /* SGWrapView.m */; };
@@ -483,7 +483,7 @@
 		388BDCCD13C6A0CB00B95036 /* SGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCB413C6A0CB00B95036 /* SGRequest.m */; };
 		388BDCCE13C6A0CB00B95036 /* SGRowColView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCB613C6A0CB00B95036 /* SGRowColView.m */; };
 		388BDCD013C6A0CB00B95036 /* SGTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCBA13C6A0CB00B95036 /* SGTableView.m */; };
-		388BDCD113C6A0CB00B95036 /* SGTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCBC13C6A0CB00B95036 /* SGTabView.m */; };
+		388BDCD113C6A0CB00B95036 /* XATabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCBC13C6A0CB00B95036 /* XATabView.m */; };
 		388BDCD213C6A0CB00B95036 /* SGVBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCBE13C6A0CB00B95036 /* SGVBoxView.m */; };
 		388BDCD313C6A0CB00B95036 /* SGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCC013C6A0CB00B95036 /* SGView.m */; };
 		388BDCD413C6A0CB00B95036 /* SGWrapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCC213C6A0CB00B95036 /* SGWrapView.m */; };
@@ -1423,8 +1423,8 @@
 		388BDCB613C6A0CB00B95036 /* SGRowColView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGRowColView.m; sourceTree = "<group>"; };
 		388BDCB913C6A0CB00B95036 /* SGTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGTableView.h; sourceTree = "<group>"; };
 		388BDCBA13C6A0CB00B95036 /* SGTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGTableView.m; sourceTree = "<group>"; };
-		388BDCBB13C6A0CB00B95036 /* SGTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGTabView.h; sourceTree = "<group>"; };
-		388BDCBC13C6A0CB00B95036 /* SGTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGTabView.m; sourceTree = "<group>"; };
+		388BDCBB13C6A0CB00B95036 /* XATabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XATabView.h; sourceTree = "<group>"; };
+		388BDCBC13C6A0CB00B95036 /* XATabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XATabView.m; sourceTree = "<group>"; };
 		388BDCBD13C6A0CB00B95036 /* SGVBoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGVBoxView.h; sourceTree = "<group>"; };
 		388BDCBE13C6A0CB00B95036 /* SGVBoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGVBoxView.m; sourceTree = "<group>"; };
 		388BDCBF13C6A0CB00B95036 /* SGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGView.h; sourceTree = "<group>"; };
@@ -3228,8 +3228,8 @@
 				388BDCB113C6A0CB00B95036 /* SGLockableTextField.m */,
 				388BDCB913C6A0CB00B95036 /* SGTableView.h */,
 				388BDCBA13C6A0CB00B95036 /* SGTableView.m */,
-				388BDCBB13C6A0CB00B95036 /* SGTabView.h */,
-				388BDCBC13C6A0CB00B95036 /* SGTabView.m */,
+				388BDCBB13C6A0CB00B95036 /* XATabView.h */,
+				388BDCBC13C6A0CB00B95036 /* XATabView.m */,
 				0F8EA6C70CFB347B001AE9AE /* XAChatTextView.h */,
 				0F8EA6C80CFB347B001AE9AE /* XAChatTextView.m */,
 				387676921589BC41007366B7 /* XATabWindow.h */,
@@ -4344,7 +4344,7 @@
 				3876253313C7024F00850913 /* SGRequest.m in Sources */,
 				3876253413C7024F00850913 /* SGRowColView.m in Sources */,
 				3876253513C7024F00850913 /* SGTableView.m in Sources */,
-				3876253613C7024F00850913 /* SGTabView.m in Sources */,
+				3876253613C7024F00850913 /* XATabView.m in Sources */,
 				3876253713C7024F00850913 /* SGVBoxView.m in Sources */,
 				3876253813C7024F00850913 /* SGView.m in Sources */,
 				3876253913C7024F00850913 /* SGWrapView.m in Sources */,
@@ -4433,7 +4433,7 @@
 				388BDCCD13C6A0CB00B95036 /* SGRequest.m in Sources */,
 				388BDCCE13C6A0CB00B95036 /* SGRowColView.m in Sources */,
 				388BDCD013C6A0CB00B95036 /* SGTableView.m in Sources */,
-				388BDCD113C6A0CB00B95036 /* SGTabView.m in Sources */,
+				388BDCD113C6A0CB00B95036 /* XATabView.m in Sources */,
 				388BDCD213C6A0CB00B95036 /* SGVBoxView.m in Sources */,
 				388BDCD313C6A0CB00B95036 /* SGView.m in Sources */,
 				388BDCD413C6A0CB00B95036 /* SGWrapView.m in Sources */,

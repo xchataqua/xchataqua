@@ -29,7 +29,7 @@
     return self;
 }
 
-- (SGTabView *)tabView {
+- (XATabView *)tabView {
     return (id)self.contentView;
 }
 

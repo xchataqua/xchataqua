@@ -17,74 +17,74 @@
 
 
 @class SGWrapView;
-@class SGTabViewItem;
-@class SGTabViewGroup;
-@class SGTabViewOutlineView;
+@class XATabViewItem;
+@class XATabViewGroup;
+@class XATabViewOutlineView;
 
-#define SGOutlineTabs ((NSTabViewType) 99)
+#define XATabViewTypeOutline ((NSTabViewType) 99)
 
-@protocol SGTabViewDelegate;
-@interface SGTabView : NSView<NSOutlineViewDelegate, NSOutlineViewDataSource, NSSplitViewDelegate, XAEventChain> {
+@protocol XATabViewDelegate;
+@interface XATabView : NSView<NSOutlineViewDelegate, NSOutlineViewDataSource, NSSplitViewDelegate, XAEventChain> {
     NSTabViewType tabViewType;
     // tabs
-    SGTabViewOutlineView *_tabOutlineView;
+    XATabViewOutlineView *_tabOutlineView;
     SGWrapView *_tabButtonView;
     // items
     NSMutableArray *_groups;
     NSMutableArray *_tabViewItems;
-    SGTabViewItem *_selectedTabViewItem;
+    XATabViewItem *_selectedTabViewItem;
     //
     IBOutlet SGBoxView *_chatViewContainer;
 @public
-    id<NSObject,SGTabViewDelegate> _delegate;
+    id<NSObject,XATabViewDelegate> _delegate;
 }
 
 @property(nonatomic, assign) IBOutlet id delegate;
-@property(nonatomic, retain) IBOutlet SGTabViewOutlineView *tabOutlineView;
+@property(nonatomic, retain) IBOutlet XATabViewOutlineView *tabOutlineView;
 @property(nonatomic, retain) id chatView;
-@property(nonatomic, readonly) SGTabViewItem *selectedTabViewItem;
+@property(nonatomic, readonly) XATabViewItem *selectedTabViewItem;
 @property(nonatomic, readonly) NSArray *tabViewItems;
 
 // NSTabView emulation methods
-- (void) addTabViewItem:(SGTabViewItem *) tabViewItem;
-- (void) removeTabViewItem:(SGTabViewItem *) tabViewItem;
-- (void) selectTabViewItem:(SGTabViewItem *) tabViewItem;
+- (void) addTabViewItem:(XATabViewItem *) tabViewItem;
+- (void) removeTabViewItem:(XATabViewItem *) tabViewItem;
+- (void) selectTabViewItem:(XATabViewItem *) tabViewItem;
 - (void) selectTabViewItemAtIndex:(NSInteger) index;
 - (void) selectNextTabViewItem:(id)sender;
 - (void) selectPreviousTabViewItem:(id)sender;
-- (SGTabViewItem *) tabViewItemAtIndex:(NSInteger) index;
-- (SGTabViewItem *) selectedTabViewItem;
+- (XATabViewItem *) tabViewItemAtIndex:(NSInteger) index;
+- (XATabViewItem *) selectedTabViewItem;
 - (void) setTabViewType:(NSTabViewType) tabViewType;
-- (NSInteger) indexOfTabViewItem:(SGTabViewItem *) tabViewItem;
+- (NSInteger) indexOfTabViewItem:(XATabViewItem *) tabViewItem;
 
-// SGTabView only methods
-- (void) addTabViewItem:(SGTabViewItem *) tabViewItem toGroup:(NSInteger) group;
+// XATabView only methods
+- (void) addTabViewItem:(XATabViewItem *) tabViewItem toGroup:(NSInteger) group;
 - (void) setHideCloseButtons:(BOOL) hidem;
 - (void) setName:(NSString *) name forGroup:(NSInteger) group;
 - (void) setOutlineWidth:(CGFloat) width;
-- (SGTabViewGroup *)groupForIdentifier:(NSInteger)identifier;
+- (XATabViewGroup *)groupForIdentifier:(NSInteger)identifier;
 
 @end
 
-@protocol SGTabViewDelegate
-- (void) tabView:(SGTabView *)tabView didSelectTabViewItem:(SGTabViewItem *)tabViewItem;
+@protocol XATabViewDelegate
+- (void) tabView:(XATabView *)tabView didSelectTabViewItem:(XATabViewItem *)tabViewItem;
 - (void) tabViewDidResizeOutlne:(int) width;
 @end
 
 #pragma mark -
 
-@class SGTabViewButton;
+@class XATabViewButton;
 
-@interface SGTabViewItem : NSObject
+@interface XATabViewItem : NSObject
 {
     NSView *_view;
     NSInteger _titleColorIndex;
-    SGTabView* _tabView;
+    XATabView* _tabView;
     NSString* _label;
     NSInteger _groupIdentifier;
     id _initialFirstResponder;
 @public    // TODO - fix this
-    SGTabViewButton *button;
+    XATabViewButton *button;
     IBOutlet NSMenu *contextMenu;
 }
 
@@ -93,7 +93,7 @@
 @property(nonatomic, retain) NSString *label;
 @property(nonatomic, assign) NSInteger groupIdentifier;
 @property(nonatomic, retain) NSView *view;
-@property(nonatomic, assign) SGTabView *tabView;
+@property(nonatomic, assign) XATabView *tabView;
 @property(nonatomic, assign) id initialFirstResponder;
 @property(nonatomic, readonly, getter=isFrontTab) BOOL frontTab;
 

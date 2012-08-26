@@ -27,7 +27,7 @@
 #import "AutoAwayController.h"
 #import "MenuMaker.h"
 #import "XATabWindow.h"
-#import "SGTabView.h"
+#import "XATabView.h"
 
 // Utility Window
 #import "AsciiWindow.h"
@@ -76,7 +76,7 @@ struct XATextEventItem XATextEvents[NUM_XP];
 
 @end
 
-AquaChat *AquaChatShared;
+AquaChat *AquaChatSharedObject;
 
 @implementation AquaChat
 @synthesize font, boldFont;
@@ -93,7 +93,7 @@ AquaChat *AquaChatShared;
 
 - (void) awakeFromNib
 {   
-    AquaChatShared = self;
+    AquaChatSharedObject = self;
     
     [GrowlApplicationBridge setGrowlDelegate:self];
     
@@ -110,8 +110,6 @@ AquaChat *AquaChatShared;
     self->_mainWindow = (id)controller.window;
     
     [self applyPreferences:nil];
-    
-    [NSApp requestEvents:NSKeyDown forWindow:nil forView:nil selector:@selector (myKeyDown:) object:self];
 }
 
 - (NSInteger)badgeCount {
@@ -274,7 +272,7 @@ AquaChat *AquaChatShared;
 
 + (AquaChat *) sharedAquaChat
 {
-    return AquaChatShared;
+    return AquaChatSharedObject;
 }
 
 #pragma mark NSApplication delegate
@@ -292,6 +290,8 @@ AquaChat *AquaChatShared;
                selector:@selector(workspaceDidWake:)
                    name:NSWorkspaceDidWakeNotification
                  object:nil];
+    
+    [NSApp requestEvents:NSKeyDown forWindow:nil forView:nil selector:@selector (myKeyDown:) object:self];
 }
 
 - (void) applicationDidBecomeActive:(NSNotification *) aNotification

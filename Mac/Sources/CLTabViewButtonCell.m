@@ -18,7 +18,7 @@
 /*
  CLTabViewButtonCell.m
  Created by Camillo Lugaresi on 15/01/06.
- This class implements the SGTabViewButtonCell API using a CLTabCell, which
+ This class implements the XATabViewButtonCell API using a CLTabCell, which
  is theme-compliant.
  */
 
