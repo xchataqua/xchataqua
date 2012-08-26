@@ -46,27 +46,7 @@ static void init_plugins_once()
     static bool done;
     if (done)
         return;
-    
-    // if this is first runtime, install builtin plugins.
-    #ifdef CONFIG_Azure
-    NSString *supportDirectory = [SGFileUtility findApplicationSupportFor:@PRODUCT_NAME];
-    const char *currentVersion = [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] UTF8String];
-
-    if (strcmp(prefs.xa_builtin_plugins_version, "1.11") < 0 && currentVersion[0] == '1') {
-        int result = system([[NSString stringWithFormat:@"/bin/rm -r '%@/plugins'", supportDirectory] UTF8String]);
-        if (result == 0) {
-            NSLog(@PRODUCT_NAME" removed auto-installed old plugins");
-        }
-    }
-    if (strcmp(prefs.xa_builtin_plugins_version, "") != 0) {
-        int result = system([[NSString stringWithFormat:@"/bin/rm -r '%@/plugins-bundled'", supportDirectory] UTF8String]);
-        if (result == 0) {
-            NSLog(@PRODUCT_NAME" removed auto-installed pre-bundled plugins");
-        }
-        strcpy(prefs.xa_builtin_plugins_version, "");
-    }
-    #endif
-    
+        
     plugin_add (current_sess, NULL, NULL, (void *) XAInitInternalPlugin, NULL, NULL, FALSE);
     
     done = true;
