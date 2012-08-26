@@ -221,8 +221,7 @@ fe_args (int argc, char *argv[])
     // Find the default charset pref.. 
     // This is really gross but we need it really early!
     char buff[128];
-    sprintf (buff, "%s/xchat.conf", get_xdir_fs());
-    FILE *f = fopen (buff, "r");
+    FILE *f = fopen ([[NSString stringWithFormat:@"%s/xchat.conf", get_xdir_fs()] UTF8String], "r");
     if (f)
     {
         while (fgets (buff, sizeof(buff), f))
