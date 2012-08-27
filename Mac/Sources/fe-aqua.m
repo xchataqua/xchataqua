@@ -535,7 +535,7 @@ fe_update_mode_buttons (struct session *sess, char mode, char sign)
 void
 fe_update_channel_key (struct session *sess)
 {
-    printf ("update channel key\n");
+    sess->gui->controller.keyTextField.stringValue = [NSString stringWithUTF8String:sess->channelkey];
 }
 
 void

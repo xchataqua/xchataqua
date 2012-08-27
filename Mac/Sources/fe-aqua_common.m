@@ -49,12 +49,16 @@ void set_l_flag (struct session *sess, int enabled, int value)
     }
 }
 
-void set_k_flag (struct session *sess, int enabled, char *value)
-{
-    if (sess->server->connected && sess->channel[0])
-    {
-        char d = enabled ? '+' : '-';
-        tcp_sendf (sess->server, "MODE %s %ck %s\r\n", sess->channel, d, value);
+void set_k_flag (struct session *sess, int enabled, char *value) {
+    struct server *serv = sess->server;
+    if (serv->connected && sess->channel[0]) {
+        char modes[512];
+        snprintf(modes, sizeof(modes), "-k %s", sess->channelkey);
+        serv->p_mode(serv, sess->channel, modes);
+        if (enabled) {
+            snprintf(modes, sizeof(modes), "+k %s", value);
+            serv->p_mode(serv, sess->channel, modes);
+        }
     }
 }
 
