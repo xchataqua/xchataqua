@@ -14,3 +14,6 @@ strcpy (prefs.xa_urlcommand, "browser %s");
 strcpy (prefs.xa_nickcommand, "query %s");
 strcpy (prefs.xa_channelcommand, "join %s");
 strcpy (prefs.xa_sleepmessage, "This computer has gone to sleep");
+char *downloaddir = get_downloaddir_fs();
+strcpy (prefs.dcc_completed_dir, downloaddir);
+free(downloaddir);
