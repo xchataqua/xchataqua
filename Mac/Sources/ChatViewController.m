@@ -638,8 +638,10 @@ static NSImage *emptyBulletImage;
     self.bButton = [self modeButtonForFlag:'b' selector:@selector (doBButton:)];
     self.lButton = [self modeButtonForFlag:'l' selector:@selector (doLButton:)];
     self.limitTextField = [self modeTextFieldForSelector:@selector (doLimitTextField:)];
+    self.limitTextField.stringValue = [NSString stringWithFormat:@"%d", self->sess->limit];
     self.kButton = [self modeButtonForFlag:'k' selector:@selector (doKButton:)];
     self.keyTextField = [self modeTextFieldForSelector:@selector (doKeyTextField:)];
+    self.keyTextField.stringValue = [NSString stringWithUTF8String:self->sess->channelkey];
     
     [headerBoxView sizeToFit];
 }
