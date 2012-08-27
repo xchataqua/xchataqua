@@ -83,8 +83,8 @@
     NSString* _label;
     NSInteger _groupIdentifier;
     id _initialFirstResponder;
+    XATabViewButton *_tabButton;
 @public    // TODO - fix this
-    XATabViewButton *button;
     IBOutlet NSMenu *contextMenu;
 }
 
@@ -94,11 +94,13 @@
 @property(nonatomic, assign) NSInteger groupIdentifier;
 @property(nonatomic, retain) NSView *view;
 @property(nonatomic, assign) XATabView *tabView;
+@property(nonatomic, readonly) XATabViewButton *tabButton;
 @property(nonatomic, assign) id initialFirstResponder;
 @property(nonatomic, readonly, getter=isFrontTab) BOOL frontTab;
 
 - (id)initWithIdentifier:(id) identifier;
 - (void)setHideCloseButton:(BOOL) hidem;
+- (void)redrawTitle;
 
 - (IBAction)performClose:(id)sender;
 - (IBAction)link_delink:(id)sender;

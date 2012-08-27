@@ -58,20 +58,20 @@
 	return (HIThemeDrawSegment != NULL);
 }
 
-- (id)init
-{
+- (id)init {
 	self = [super init];
-	drawInfo.version = 1;
-	drawInfo.direction = kThemeTabNorth;
-	drawInfo.size = kHIThemeTabSizeNormal;
-	drawInfo.adornment = kHIThemeTabAdornmentNone;
-	drawInfo.kind = kHIThemeTabKindNormal;
-	drawInfo.position = kHIThemeTabPositionOnly;
+    if (self != nil) {
+        drawInfo.version = 1;
+        drawInfo.direction = kThemeTabNorth;
+        drawInfo.size = kHIThemeTabSizeNormal;
+        drawInfo.adornment = kHIThemeTabAdornmentNone;
+        drawInfo.kind = kHIThemeTabKindNormal;
+        drawInfo.position = kHIThemeTabPositionOnly;
+    }
 	return self;
 }
 
-- (HIThemeTabPosition)position
-{
+- (HIThemeTabPosition)position {
 	return drawInfo.position;
 }
 
