@@ -364,6 +364,7 @@ NSNib *XATabViewItemTabMenuNib;
 @synthesize label=_label;
 @synthesize groupIdentifier=_groupIdentifier;
 @synthesize tabView=_tabView;
+@synthesize tabButton=_tabButton;
 @synthesize titleColorIndex=_titleColorIndex;
 @synthesize initialFirstResponder=_initialFirstResponder;
 
@@ -387,34 +388,35 @@ NSNib *XATabViewItemTabMenuNib;
 {
     self.label = nil;
     self.view = nil;
-    [button release];
+    [self->_tabButton release];
     [contextMenu release];
     [super dealloc];
 }
 
 - (void)makeButton:(SGWrapView *)box order:(NSUInteger)order {
-    button = [[XATabViewButton alloc] init]; // ???: not released here?
-    [button setAction:@selector(performSelect:)];
-    [button setTarget:self];
-    [button setHideCloseButton:prefs.xa_hide_tab_close_buttons];
-    [[button cell] setCloseAction:@selector(performClose:)];
-    [[button cell] setCloseTarget:self];
-    [[button cell] setMenu:contextMenu];
-    [[button cell] setDelegate:self];
+    self->_tabButton = [[XATabViewButton alloc] init]; // ???: not released here?
+    [self->_tabButton setAction:@selector(performSelect:)];
+    [self->_tabButton setTarget:self];
+    [self->_tabButton setHideCloseButton:prefs.xa_hide_tab_close_buttons];
+    id cell = [self->_tabButton cell];
+    [cell setCloseAction:@selector(performClose:)];
+    [cell setCloseTarget:self];
+    [cell setMenu:contextMenu];
+    [cell setDelegate:self];
     
-    [box addSubview:button];
-    [box setOrder:order forView:button];
+    [box addSubview:self->_tabButton];
+    [box setOrder:order forView:self->_tabButton];
 
     self.label = _label; // refresh with bad convention
 }
 
 - (void)removeButton
 {
-    if (button)
+    if (self->_tabButton != nil)
     {
-        [button removeFromSuperview];
-        [button release];
-        button = nil;
+        [self->_tabButton removeFromSuperview];
+        [self->_tabButton release];
+        self->_tabButton = nil;
     }
 }
 
@@ -424,7 +426,19 @@ NSNib *XATabViewItemTabMenuNib;
 
 - (void) setHideCloseButton:(BOOL) hidem
 {
-    [button setHideCloseButton:hidem];
+    [self->_tabButton setHideCloseButton:hidem];
+}
+
+- (void)redrawTitle {
+    if (self->_tabButton)
+    {
+        [self->_tabButton setTitle:self->_label];
+        [self->_tabButton sizeToFit];
+    }
+    else
+    {
+        [self.tabView.tabOutlineView reloadData];
+    }
 }
 
 - (NSColor *)titleColor {
@@ -437,7 +451,7 @@ NSNib *XATabViewItemTabMenuNib;
 - (void)setTitleColorIndex:(NSInteger)index {
     if (_titleColorIndex == index) return;
     self->_titleColorIndex = index;
-    [self.tabView.tabOutlineView reloadData];
+    [self redrawTitle];
 }
 
 - (void)performClose:(id)sender {
@@ -452,7 +466,7 @@ NSNib *XATabViewItemTabMenuNib;
 
 - (void)performSelect:(id)sender {
     if (self.tabView) {
-        [button setIntegerValue:1];
+        [self->_tabButton setIntegerValue:1];
         [self.tabView selectTabViewItem:self];
     }
 }
@@ -461,21 +475,13 @@ NSNib *XATabViewItemTabMenuNib;
     [_label autorelease];
     _label = [label retain];
     
-    if (button)
-    {
-        [button setTitle:label];
-        [button sizeToFit];
-    }
-    else
-    {
-        [self.tabView.tabOutlineView reloadData];
-    }
+    [self redrawTitle];
 }
 
 - (void) setSelected:(BOOL) selected
 {
-    if (button) {
-        [button setIntegerValue:selected];
+    if (self->_tabButton) {
+        [self->_tabButton setIntegerValue:selected];
     }
 }
 
@@ -590,7 +596,7 @@ NSNib *XATabViewItemTabMenuNib;
     [_chatViewContainer setStretchView:chatView];
     
     SGAssert(_tabButtonView);
-    SGLogRect(_tabButtonView, @"tab button view", _tabButtonView.frame);
+    SGLogRect(0 && _tabButtonView, @"tab button view", _tabButtonView.frame);
     
     if (self->tabViewType != XATabViewTypeOutline) {
         [_chatViewContainer addSubview:_tabButtonView];
@@ -633,13 +639,13 @@ NSNib *XATabViewItemTabMenuNib;
 - (void)setTabButtonCaps {
     for (XATabViewGroup *group in _groups) {
         for (XATabViewItem *tabItem in group.tabItems) {
-            [tabItem->button setHasLeftCap:NO];
-            [tabItem->button setHasRightCap:NO];
+            [tabItem.tabButton setHasLeftCap:NO];
+            [tabItem.tabButton setHasRightCap:NO];
         }
         XATabViewItem *firstItem = [group.tabItems objectAtIndex:0];
-        [firstItem->button setHasLeftCap:YES];
+        [firstItem.tabButton setHasLeftCap:YES];
         XATabViewItem *lastItem = [group.tabItems lastObject];
-        [lastItem->button setHasRightCap:YES];
+        [lastItem.tabButton setHasRightCap:YES];
     }
 }
 
