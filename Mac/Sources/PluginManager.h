@@ -69,4 +69,6 @@
 
 @interface UserPluginManager : PluginFileManager
 
+- (void)addItemWithFilename:(NSString *)filename;
+
 @end
