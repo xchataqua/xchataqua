@@ -81,8 +81,8 @@ extern GSList *plugin_list;
 - (void)addUserPlugin:(id)sender {
     NSString *f = [SGFileSelection selectWithWindow:nil inDirectory:@"Plugins"].path;
     if (f) {
-        PluginFileManager *manager = [UserPluginManager sharedPluginManager];
-        [manager.items addObject:[PluginItem pluginWithPath:f]];
+        UserPluginManager *manager = [UserPluginManager sharedPluginManager];
+        [manager addItemWithFilename:f];
         [manager save];
     }
 }
@@ -188,7 +188,7 @@ extern GSList *plugin_list;
         case 0: return [NSNumber numberWithBool:[manager hasAutoloadItem:item]];
         case 1: return item.name;
         case 2: return item.version;
-        case 3: return item.filename;
+        case 3: return [item.filename lastPathComponent];
     }
     SGAssert(NO);
     return @"";

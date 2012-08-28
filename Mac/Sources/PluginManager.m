@@ -148,8 +148,7 @@ LoadedPluginManager *LoadedPluginManagerSharedObject;
 - (void)load {
     [self->_items removeAllObjects];
     
-    for (GSList *list = plugin_list; list; list = list->next)
-    {
+    for (GSList *list = plugin_list; list; list = list->next) {
         xchat_plugin *pl = (xchat_plugin *) list->data;
         if (pl->version && pl->version [0]) {
             [self->_items addObject:[PluginItem pluginWithXChatPlugin:pl]];
@@ -170,6 +169,8 @@ LoadedPluginManager *LoadedPluginManagerSharedObject;
 
 - (void)loadAutoItems;
 - (void)saveAutoItems;
+
+- (void)addPluginForFilename:(NSString *)filename;
 
 @end
 
@@ -240,11 +241,10 @@ LoadedPluginManager *LoadedPluginManagerSharedObject;
     [self->_autoItems writeToFile:filename atomically:YES];
 }
 
-@end
-
-@interface EmbeddedPluginManager ()
-
-- (void)addPluginForFilename:(NSString *)filename;
+- (void)addPluginForFilename:(NSString *)filename {
+    PluginItem *item = [PluginItem pluginWithPath:filename];
+    [self->_items addObject:item];
+}
 
 @end
 
@@ -283,13 +283,8 @@ EmbeddedPluginManager *EmbeddedPluginManagerSharedObject;
     NSString *path = [[NSBundle mainBundle] builtInPlugInsPath];
     const char *cpath = path.UTF8String;
     EmbeddedPluginManagerLoadCallbackReceiver = self;
-	for_files ((char *)cpath, "*.bundle", EmbeddedPluginManagerLoadCallback);
-	for_files ((char *)cpath, "*.??", EmbeddedPluginManagerLoadCallback);
-}
-
-- (void)addPluginForFilename:(NSString *)filename {
-    PluginItem *item = [PluginItem pluginWithPath:filename];
-    [self->_items addObject:item];
+    for_files ((char *)cpath, "*.bundle", EmbeddedPluginManagerLoadCallback);
+    for_files ((char *)cpath, "*.??", EmbeddedPluginManagerLoadCallback);
 }
 
 - (void)addAutoloadItem:(PluginItem *)item {
@@ -306,16 +301,18 @@ EmbeddedPluginManager *EmbeddedPluginManagerSharedObject;
 
 @end
 
-NSString *UserPluginCandidatesConfigurationFilename;
 NSString *UserPluginConfigurationFilename;
 UserPluginManager *UserPluginManagerSharedObject;
+UserPluginManager *UserPluginManagerLoadCallbackReceiver;
+void UserPluginManagerLoadCallback(char *filename) {
+    [EmbeddedPluginManagerLoadCallbackReceiver addPluginForFilename:[NSString stringWithUTF8String:filename]];
+}
 
 @implementation UserPluginManager
 
 + (void)initialize {
     if (self != [UserPluginManager class]) return;
 
-    UserPluginCandidatesConfigurationFilename = [[[SGFileUtility findApplicationSupportFor:@PRODUCT_NAME] stringByAppendingPathComponent:@"plugins.plist"] copy];
     UserPluginConfigurationFilename = [[[SGFileUtility findApplicationSupportFor:@PRODUCT_NAME] stringByAppendingPathComponent:@"pluginsauto.plist"] copy];
     UserPluginManagerSharedObject = [[self alloc] init];
 }
@@ -330,19 +327,22 @@ UserPluginManager *UserPluginManagerSharedObject;
 
 - (void)loadItems {
     [self->_items removeAllObjects];
-    
-    NSArray *list = [NSArray arrayWithContentsOfFile:UserPluginCandidatesConfigurationFilename];
-    for (NSString *filename in list) {
-        [self->_items addObject:[PluginItem pluginWithPath:filename]];
-    }
+    NSString *path = [[SGFileUtility findApplicationSupportFor:@PRODUCT_NAME] stringByAppendingPathComponent:@"plugins"];
+    const char *cpath = path.UTF8String;
+    UserPluginManagerLoadCallbackReceiver = self;
+    for_files ((char *)cpath, "*.bundle", UserPluginManagerLoadCallback);
+    for_files ((char *)cpath, "*.??", UserPluginManagerLoadCallback);
 }
 
-- (void)saveItems {
-    NSMutableArray *list = [NSMutableArray array];
-    for (PluginItem *item in self->_items) {
-        [list addObject:item.filename];
-    }
-    [list writeToFile:UserPluginCandidatesConfigurationFilename atomically:YES];
+- (void)addItemWithFilename:(NSString *)filename {
+    NSString *name = [filename lastPathComponent];
+    NSString *pluginDirectory = [[SGFileUtility findApplicationSupportFor:@PRODUCT_NAME] stringByAppendingPathComponent:@"plugins"];
+    NSString *pluginFilename = [pluginDirectory stringByAppendingPathComponent:name];
+    NSString *cmd = [NSString stringWithFormat:@"rm -rf '%@'", pluginFilename];
+    system(cmd.UTF8String); // if directory...
+    cmd = [NSString stringWithFormat:@"cp -R '%@' '%@'", filename, [pluginDirectory stringByAppendingString:@"/"]];
+    system(cmd.UTF8String); // install
+    [self.items addObject:[PluginItem pluginWithFilename:pluginFilename]];
 }
 
 @end
