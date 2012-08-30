@@ -63,6 +63,7 @@
 - (void) setName:(NSString *) name forGroup:(NSInteger) group;
 - (void) setOutlineWidth:(CGFloat) width;
 - (XATabViewGroup *)groupForIdentifier:(NSInteger)identifier;
+- (void)redrawTabItems;
 
 @end
 
