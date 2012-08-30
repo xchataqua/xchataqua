@@ -430,13 +430,10 @@ NSNib *XATabViewItemTabMenuNib;
 }
 
 - (void)redrawTitle {
-    if (self->_tabButton)
-    {
+    if (prefs.tab_layout == 0) {
         [self->_tabButton setTitle:self->_label];
         [self->_tabButton sizeToFit];
-    }
-    else
-    {
+    } else {
         [self.tabView.tabOutlineView reloadData];
     }
 }
@@ -516,9 +513,11 @@ NSNib *XATabViewItemTabMenuNib;
 - (id) initWithFrame:(NSRect) frameRect
 {
     self = [super initWithFrame:frameRect];
-    [self XATabViewInit];
-    [self makeOutline];
-    [self makeTabs];
+    if (self != nil) {
+        [self XATabViewInit];
+        [self makeOutline];
+        [self makeTabs];
+    }
     return self;
 }
 
@@ -559,7 +558,7 @@ NSNib *XATabViewItemTabMenuNib;
     [self setTabViewType:tabViewType];
     [self setHideCloseButtons:prefs.xa_hide_tab_close_buttons];
     [self setOutlineWidth:prefs.xa_outline_width];
-    
+    [self redrawTabItems];
     SGLogRect(0, @"tab view frame", self.frame);
 }
 
@@ -618,7 +617,7 @@ NSNib *XATabViewItemTabMenuNib;
         [_groups addObject:group];
         [group release];
         
-        [_tabOutlineView reloadData];
+        [self redrawTabItems];
         [_tabOutlineView expandItem:group];
     }
     
@@ -627,7 +626,7 @@ NSNib *XATabViewItemTabMenuNib;
 
 - (void)setName:(NSString *)name forGroup:(NSInteger)identifier {
     [[self groupForIdentifier:identifier] setName:name];
-    [_tabOutlineView reloadData];
+    [self redrawTabItems];
 }
 
 - (void)setHideCloseButtons:(BOOL)hide {
@@ -860,6 +859,15 @@ NSNib *XATabViewItemTabMenuNib;
 - (BOOL) mouseDownCanMoveWindow
 {
     return NO;
+}
+
+- (void)redrawTabItems {
+    for (XATabViewItem *item in self.tabViewItems) {
+        [item redrawTitle];
+    }
+    for (XATabViewGroup *group in self->_groups) {
+        [self.tabOutlineView reloadData];
+    }
 }
 
 #define kBackgroundStyleGroup   0
