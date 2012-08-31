@@ -34,14 +34,16 @@ static inline CGRect CGRectFromNSRect(NSRect nsRect)
 - (id)init
 {
 	self = [super init];
-	[self setType:NSTextCellType];	/* NSCell only manages values for text cells, so advertise ourselves as such */
-	drawInfo.version = 0;
-	drawInfo.kind = kThemeProgressBarMedium;
-	drawInfo.min = 0;
-	drawInfo.max = 1000000;
-	drawInfo.reserved = 0;
-	drawInfo.filler1 = 0;
-	drawInfo.trackInfo.progress.phase = 0;
+    if (self != nil) {
+        [self setType:NSTextCellType];	/* NSCell only manages values for text cells, so advertise ourselves as such */
+        drawInfo.version = 0;
+        drawInfo.kind = kThemeProgressBarMedium;
+        drawInfo.min = 0;
+        drawInfo.max = 1000000;
+        drawInfo.reserved = 0;
+        drawInfo.filler1 = 0;
+        drawInfo.trackInfo.progress.phase = 0;
+    }
 	return self;
 }
 

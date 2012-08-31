@@ -8,11 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class SGTabView;
+@class XATabView;
 
 @interface XATabWindow : NSWindow<XAEventChain>
 
-@property(nonatomic, readonly) SGTabView *tabView;
+@property(nonatomic, readonly) XATabView *tabView;
 
 @end
 

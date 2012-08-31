@@ -33,71 +33,18 @@ extern GSList *plugin_list;
 #import "AquaChat.h"
 #import "PluginWindow.h"
 
-@interface PluginItem : NSObject
-{
-@public
-    NSString *name, *vers, *file, *desc;
-}
-
-- (id)initWithPlugin:(xchat_plugin *)plugin;
-+ (id)pluginWithPlugin:(xchat_plugin *)plugin;
-
-@end
-
-@implementation PluginItem
-
-- (id)initWithPlugin:(xchat_plugin *) plugin
-{
-    if ((self=[super init]) != nil) {
-        name = [[NSString alloc] initWithUTF8String:plugin->name];
-        vers = [[NSString alloc] initWithUTF8String:plugin->version];
-        file = [[NSString alloc] initWithUTF8String:file_part(plugin->filename)];
-        desc = [[NSString alloc] initWithUTF8String:plugin->desc];
-    }
-    return self;
-}
-
-- (void)dealloc
-{
-    [name release];
-    [vers release];
-    [file release];
-    [desc release];
-    [super dealloc];
-}
-
-+ (id)pluginWithPlugin:(xchat_plugin *)plugin
-{
-    return [[[self alloc] initWithPlugin:plugin] autorelease];
-}
-
-@end
+#import "PluginManager.h"
 
 #pragma mark -
 
+@interface PluginWindow ()
+
+- (void)unloadPluginWithName:(NSString *)name;
+
+@end
+
 @implementation PluginWindow
-
-- (id)initAsPluginWindow {
-    self->plugins = [[NSMutableArray alloc] init];
-    return self;
-}
-
-- (id) initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    return [self initAsPluginWindow];
-}
-
-- (id) initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag {
-    self = [super initWithContentRect:contentRect styleMask:aStyle backing:bufferingType defer:flag];
-    return [self initAsPluginWindow];
-}
-
-- (void) dealloc
-{
-    [self->pluginTableView setDataSource:nil];
-    [self->plugins release];
-    [super dealloc];
-}
+@synthesize tableViewDataSource;
 
 - (void) awakeFromNib
 {
@@ -107,43 +54,62 @@ extern GSList *plugin_list;
 
 - (void) update
 {
-    [plugins removeAllObjects];
-    
-    for (GSList *list = plugin_list; list; list = list->next)
+    [self->embeddedPluginTableView reloadData];
+    [self->userPluginTableView reloadData];
+    PluginManager *manager = [LoadedPluginManager sharedPluginManager];
+    [manager load];
+    [self->loadedPluginTableView reloadData];
+}
+
+- (void)unloadPluginWithName:(NSString *)name {
+    NSUInteger len = name.length;
+    char *cString = (char *)name.UTF8String;
+    if (len > 3 && strcasecmp (cString + len - 3, ".so") == 0)
     {
-        xchat_plugin *pl = (xchat_plugin *) list->data;
-        if (pl->version && pl->version [0]) {
-            [plugins addObject:[PluginItem pluginWithPlugin:pl]];
-        }
+        if (plugin_kill (cString, false) == 2)
+            [SGAlert alertWithString:NSLocalizedStringFromTable(@"That plugin is refusing to unload.\n", @"xchat", @"") andWait:false];
     }
-    
-    [self->pluginTableView reloadData];
+    else
+    {
+        NSString *cmd = [NSString stringWithFormat:@"UNLOAD \"%@\"", name];
+        handle_command (current_sess, (char *)[cmd UTF8String], false);
+    }
 }
 
 #pragma mark IBAction
+
+- (void)addUserPlugin:(id)sender {
+    NSString *f = [SGFileSelection selectWithWindow:nil inDirectory:@"Plugins"].path;
+    if (f) {
+        UserPluginManager *manager = [UserPluginManager sharedPluginManager];
+        [manager addItemWithFilename:f];
+        [manager save];
+    }
+}
+
+- (void)removeUserPlugin:(id)sender {
+    NSInteger row = [self->userPluginTableView selectedRow];
+    if (row < 0)
+        return;
+    PluginFileManager *manager = [UserPluginManager sharedPluginManager];
+    PluginItem *item = [manager.items objectAtIndex:row];
+
+    [manager.items removeObject:item];
+    [manager save];
+}
 
 - (void) loadPlugin:(id)sender {
     [[AquaChat sharedAquaChat] loadPlugin:sender];
 }
 
 - (void) unloadPlugin:(id)sender {
-    NSInteger row = [self->pluginTableView selectedRow];
+    NSInteger row = [self->loadedPluginTableView selectedRow];
     if (row < 0)
         return;
     
-    PluginItem *item = [plugins objectAtIndex:row];
-    
-    NSUInteger len = [item->file length];
-    if (len > 3 && strcasecmp ([item->file UTF8String] + len - 3, ".so") == 0)
-    {
-        if (plugin_kill ((char *) [item->name UTF8String], false) == 2)
-            [SGAlert alertWithString:NSLocalizedStringFromTable(@"That plugin is refusing to unload.\n", @"xchat", @"") andWait:false];
-    }
-    else
-    {
-        NSString *cmd = [NSString stringWithFormat:@"UNLOAD \"%@\"", item->file];
-        handle_command (current_sess, (char *)[cmd UTF8String], false);
-    }
+    PluginManager *manager = [UserPluginManager sharedPluginManager];
+    PluginItem *item = [manager.items objectAtIndex:row];
+    [self unloadPluginWithName:item.filename];
 }
 
 - (void)showStartupItemsInFinder:(id)sender {
@@ -153,34 +119,103 @@ extern GSList *plugin_list;
 
 - (void)showBundledItemsInFinder:(id)sender {
     NSString *path;
-#ifdef CONFIG_Azure
-    path = [[SGFileUtility findApplicationSupportFor:@PRODUCT_NAME] stringByAppendingPathComponent:@"plugins-bundled"];
-#else
     path = [[NSBundle mainBundle] builtInPlugInsPath];
-#endif
     [[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:path isDirectory:YES]];
 }
 
 #pragma mark NSTableView DataSource
 
-- (NSInteger) numberOfRowsInTableView:(NSTableView *)aTableView
-{
-    return [plugins count];
+- (NSInteger) numberOfRowsInTableView:(NSTableView *)aTableView {
+    PluginManager *manager = [LoadedPluginManager sharedPluginManager];
+    return manager.items.count;
 }
 
-- (id) tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
-{
-    PluginItem *item = [plugins objectAtIndex:rowIndex];
+- (id) tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
+    PluginManager *manager = [LoadedPluginManager sharedPluginManager];
+
+    PluginItem *item = [manager.items objectAtIndex:rowIndex];
     
     switch ([[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn])
     {
-        case 0: return item->name;
-        case 1: return item->vers;
-        case 2: return item->file;
-        case 3: return item->desc;
+        case 0: return item.name;
+        case 1: return item.version;
+        case 2: return item.filename;
+        case 3: return item.description;
     }
     SGAssert(NO);
     return @"";
+}
+
+@end
+
+@interface PluginWindow (TableView)
+
+@property(nonatomic, readonly) NSTableView *embeddedPluginTableView, *userPluginTableView, *loadedPluginTableView;
+
+@end
+
+@implementation PluginWindow (TableView)
+
+- (NSTableView *)embeddedPluginTableView { return self->embeddedPluginTableView; }
+- (NSTableView *)userPluginTableView { return self->userPluginTableView; }
+- (NSTableView *)loadedPluginTableView { return self->loadedPluginTableView; }
+
+@end
+
+@implementation PluginFileTableViewDataSource
+
+- (PluginFileManager *)managerForTableView:(NSTableView *)aTableView {
+    PluginFileManager *manager = nil;
+    if (aTableView == self->window.embeddedPluginTableView) {
+        manager = [EmbeddedPluginManager sharedPluginManager];
+    } else if (aTableView == self->window.userPluginTableView) {
+        manager = [UserPluginManager sharedPluginManager];
+    }
+    return manager;
+}
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
+    return [self managerForTableView:tableView].items.count;
+}
+
+- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    PluginFileManager *manager = [self managerForTableView:tableView];
+    
+    PluginItem *item = [manager.items objectAtIndex:row];
+    
+    switch ([[tableView tableColumns] indexOfObjectIdenticalTo:tableColumn])
+    {
+        case 0: return [NSNumber numberWithBool:[manager hasAutoloadItem:item]];
+        case 1: return item.name;
+        case 2: return item.version;
+        case 3: return [item.filename lastPathComponent];
+    }
+    SGAssert(NO);
+    return @"";
+}
+
+- (void) tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
+    PluginFileManager *manager = [self managerForTableView:aTableView];
+    PluginItem *item = [manager.items objectAtIndex:rowIndex];
+    
+    NSInteger column = [[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn];
+    switch (column) {
+        case 0: {
+            if ([anObject boolValue]) {
+                [manager addAutoloadItem:item];
+                NSString *cmd = [NSString stringWithFormat:@"LOAD \"%@\"", item.filename];
+                handle_command (current_sess, (char *)cmd.UTF8String, FALSE);
+            } else {
+                [manager removeAutoloadItem:item];
+                NSString *cmd = [NSString stringWithFormat:@"UNLOAD \"%@\"", item.name];
+                handle_command (current_sess, (char *)cmd.UTF8String, FALSE);
+            }
+            [self->window update];
+        }   break;
+        default:
+            return;
+    }
+    [manager save];
 }
 
 @end

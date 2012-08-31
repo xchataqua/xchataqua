@@ -8,8 +8,12 @@
 
 #import "SystemVersion.h"
 
-char *get_xdir_fs(void)
-{
+#import "PluginManager.h"
+
+#include "text.h"
+#include "plugin.h"
+
+char *get_xdir_fs(void) {
     static NSString *applicationSupportDirectory = nil;
     if (applicationSupportDirectory == nil) {
         applicationSupportDirectory = [[SGFileUtility findApplicationSupportFor:@PRODUCT_NAME] retain];
@@ -17,9 +21,19 @@ char *get_xdir_fs(void)
     return (char *)[applicationSupportDirectory UTF8String];
 }
 
-char *get_appdir_fs(void)
-{
+char *get_appdir_fs(void) {
     return (char *)[[[NSBundle mainBundle] bundlePath] UTF8String];
+}
+
+char *get_downloaddir_fs(void) {
+    FSRef ref;
+    if (FSFindFolder(kUserDomain, kDownloadsFolderType, false, &ref) != noErr)
+        return NULL;
+    UInt8 *path = malloc(sizeof(UInt8) * PATH_MAX);
+    if (FSRefMakePath(&ref, path, sizeof(UInt8) * PATH_MAX) != noErr)
+        return NULL;
+    
+    return (char *)path;
 }
 
 char *get_plugin_bundle_path(char *filename) {
@@ -36,4 +50,28 @@ char *get_plugin_bundle_path(char *filename) {
     
     NSString *path = [bundle executablePath];
     return (char *)[path fileSystemRepresentation];
+}
+
+void aqua_plugin_auto_load_item(struct session *ps, const char *filename) {
+    char *pMsg = plugin_load (ps, (char *)filename, NULL);
+	if (pMsg)
+	{
+		PrintTextf (ps, "AutoLoad failed for: %s\n", filename);
+		PrintText (ps, pMsg);
+	}
+}
+
+void aqua_plugin_auto_load(struct session *ps) {
+    PluginFileManager *manager = [EmbeddedPluginManager sharedPluginManager];
+    for (PluginItem *item in manager.items) {
+        if ([manager hasAutoloadItem:item]) {
+            aqua_plugin_auto_load_item(ps, item.filename.UTF8String);
+        }
+    }
+    manager = [UserPluginManager sharedPluginManager];
+    for (PluginItem *item in manager.items) {
+        if ([manager hasAutoloadItem:item]) {
+            aqua_plugin_auto_load_item(ps, item.filename.UTF8String);
+        }
+    }
 }

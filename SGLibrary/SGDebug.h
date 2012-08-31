@@ -24,11 +24,12 @@
 #endif
 
 #ifdef SG_DEBUG
-#	define SGLog(TAG, ...)		{ if ( TAG ) [SGDebug log:[NSString stringWithFormat:__VA_ARGS__] file:__FILE__ line:__LINE__]; }
-#	define SGAssert(ASSERTION)	assert(ASSERTION)
+#   define SGLog(TAG, ...)		{ if ( TAG ) [SGDebug log:[NSString stringWithFormat:__VA_ARGS__] file:__FILE__ line:__LINE__]; }
+#   define SGLogRect(TAG, NAME, RECT) { SGLog(TAG, NAME @": origin<%.0f,%.0f> size<%.0f,%.0f>", RECT.origin.x, RECT.origin.y, RECT.size.width, RECT.size.height); }
+#   define SGAssert(ASSERTION)	assert(ASSERTION)
 #else
-#	define SGLog(TAG, ...)
-#	define SGAssert(ASSERTION)
+#   define SGLog(TAG, ...)
+#   define SGAssert(ASSERTION)
 #endif
 
 @interface SGDebug : NSObject 

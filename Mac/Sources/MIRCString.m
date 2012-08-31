@@ -53,8 +53,8 @@ static int get_mirc_value (const char **x, const char *stop_at)
 
 @interface NSMutableAttributedString (MIRCString)
 
-- (NSInteger)appendText:(const char *)text length:(int)len
-        foregroundColor:(int)fg backgroundColor:(int)bg reverse:(bool)reverse
+- (NSInteger)appendText:(const char *)text length:(NSUInteger)len
+        foregroundColor:(NSInteger)fg backgroundColor:(NSInteger)bg reverse:(bool)reverse
                underbar:(bool)under bold:(bool)bold hidden:(bool)hidden
            colorPalette:(ColorPalette *)p font:(NSFont *)font boldFont:(NSFont *)boldFont;
 
@@ -210,14 +210,11 @@ NSFont *sharedHiddenFont;
 
 @implementation NSMutableAttributedString (MIRCString)
 
-- (NSInteger)appendText:(const char *)text length:(int)len
-        foregroundColor:(int)fg backgroundColor:(int)bg reverse:(bool)reverse
+- (NSInteger)appendText:(const char *)text length:(NSUInteger)len
+        foregroundColor:(NSInteger)fg backgroundColor:(NSInteger)bg reverse:(bool)reverse
                underbar:(bool)under bold:(bool)bold hidden:(bool)hidden
            colorPalette:(ColorPalette *)p font:(NSFont *)font boldFont:(NSFont *)boldFont
-{
-    if (len < 0)
-        len = strlen (text);
-    
+{    
     if (len == 0)
         return 0;
     
@@ -238,7 +235,7 @@ NSFont *sharedHiddenFont;
         if (bg < 0)
             bg = XAColorBackground;
         
-        int xx = fg;
+        NSInteger xx = fg;
         fg = bg;
         bg = xx;
     }

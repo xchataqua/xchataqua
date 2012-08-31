@@ -49,12 +49,16 @@ void set_l_flag (struct session *sess, int enabled, int value)
     }
 }
 
-void set_k_flag (struct session *sess, int enabled, char *value)
-{
-    if (sess->server->connected && sess->channel[0])
-    {
-        char d = enabled ? '+' : '-';
-        tcp_sendf (sess->server, "MODE %s %ck %s\r\n", sess->channel, d, value);
+void set_k_flag (struct session *sess, int enabled, char *value) {
+    struct server *serv = sess->server;
+    if (serv->connected && sess->channel[0]) {
+        char modes[512];
+        snprintf(modes, sizeof(modes), "-k %s", sess->channelkey);
+        serv->p_mode(serv, sess->channel, modes);
+        if (enabled) {
+            snprintf(modes, sizeof(modes), "+k %s", value);
+            serv->p_mode(serv, sess->channel, modes);
+        }
     }
 }
 
@@ -80,7 +84,7 @@ nick_command_parse (struct session *sess, const char *cmd, const char *nick, con
     char *buf;
     const char *host = [NSLocalizedStringFromTable(@"Host unknown", @"xchat", @"") UTF8String];
     struct User *user;
-    int len;
+    size_t len;
     
     user = userlist_find (sess, (char *)nick);
     if (user && user->hostname)
@@ -90,7 +94,7 @@ nick_command_parse (struct session *sess, const char *cmd, const char *nick, con
     len = strlen (cmd) + strlen (nick) + strlen (allnick) + 512;
     buf = (char *) malloc (len);
     
-    auto_insert (buf, len, (unsigned char *) cmd, 0, 0, (char *)allnick, sess->channel, "",
+    auto_insert (buf, (int)len, (unsigned char *) cmd, 0, 0, (char *)allnick, sess->channel, "",
                  server_get_network (sess->server, TRUE), (char*)host,
                  sess->server->nick, (char *)nick);
     

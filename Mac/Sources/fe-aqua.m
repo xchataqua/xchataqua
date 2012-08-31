@@ -47,32 +47,10 @@ static void init_plugins_once()
     if (done)
         return;
     
-    // if this is first runtime, install builtin plugins.
     NSString *supportDirectory = [SGFileUtility findApplicationSupportFor:@PRODUCT_NAME];
-    const char *currentVersion = [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] UTF8String];
-    #ifdef CONFIG_Azure
-    if (strcmp(prefs.xa_builtin_plugins_version, "1.11") < 0 && currentVersion[0] == '1') {
-        int result = system([[NSString stringWithFormat:@"/bin/rm -r '%@/plugins'", supportDirectory] UTF8String]);
-        if (result == 0) {
-            NSLog(@PRODUCT_NAME" removed auto-installed old libraries");
-        }
-    }
-    #endif
-    if (strcmp(prefs.xa_builtin_plugins_version, currentVersion) != 0) {
-        system([[NSString stringWithFormat:@"mkdir '%@/plugins'", supportDirectory] UTF8String]);
-        // install builtin plugins
-        NSString *pack = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"plugins.tar"];
-        int result = 0;
-        if ([[NSFileManager defaultManager] fileExistsAtPath:pack]) {
-            // install when embedded archive exists
-            result = system([[NSString stringWithFormat:@"/usr/bin/tar xf '%@' -C '%@'", pack, supportDirectory] UTF8String]);
-        }
-        if (0 == result) {
-            // save current version
-            strcpy(prefs.xa_builtin_plugins_version, currentVersion);
-        }
-    }
-    
+    NSString *cmd = [NSString stringWithFormat:@"mkdir '%@'", [supportDirectory stringByAppendingPathComponent:@"plugins"]];
+    system(cmd.UTF8String);
+        
     plugin_add (current_sess, NULL, NULL, (void *) XAInitInternalPlugin, NULL, NULL, FALSE);
     
     done = true;
@@ -83,6 +61,7 @@ fe_new_window (struct session *sess, int focus)
 {
     sess->gui = (struct session_gui *) malloc (sizeof (struct session_gui));
     sess->gui->controller = [[ChatViewController alloc] initWithSession:sess];
+    [sess->gui->controller view]; // force load views
     
     if (!current_sess)
         current_sess = sess;
@@ -174,50 +153,59 @@ static void setupAppSupport ()
     NSString *asdir = [SGFileUtility findApplicationSupportFor:@PRODUCT_NAME];
     NSString *xcdir = [NSString stringWithUTF8String:get_xdir_utf8()];
     
-    bool xclink_exists = [SGFileUtility isSymLink:xcdir];    
-    bool xcdir_exists = [SGFileUtility isDirectory:xcdir];
-    bool asdir_exists = [SGFileUtility isDirectory:asdir];
-    
-    // State 1
-    if (xcdir_exists && asdir_exists)
-    {
-        NSLog(@"~/.xchat2 and ApplicationSupport/XChat Azure!?");
-        return;
-    }
-    
-    // State 2
-    if (xcdir_exists && !asdir_exists)
-    {
-        rename (get_xdir_utf8 (), [asdir fileSystemRepresentation]);
-        #ifdef CONFIG_Aqua
-        symlink ([asdir fileSystemRepresentation], get_xdir_utf8 ());
-        #endif
-        return;
-    }
-    
-    // State 3
-    if (!xclink_exists && !xcdir_exists && asdir_exists)
-    {
-        #ifdef CONFIG_Aqua
-        symlink ([asdir fileSystemRepresentation], get_xdir_utf8 ());
-        #endif
-        return;
-    }
-    
-    // State 4
-    if (!xclink_exists && !xcdir_exists && !asdir_exists)
-    {
-        mkdir ([asdir fileSystemRepresentation], 0755);
-        #ifdef CONFIG_Aqua
-        symlink ([asdir fileSystemRepresentation], get_xdir_utf8 ());
-        #endif
-        return;
-    }
-    
-    // State 6
-    if (xclink_exists && !asdir_exists)
-    {
-        mkdir ([asdir fileSystemRepresentation], 0755);
+    if ([asdir isEqualToString:xcdir]) {
+        NSFileManager *manager = [NSFileManager defaultManager];
+        BOOL isDirectory;
+        BOOL exist = [manager fileExistsAtPath:asdir isDirectory:&isDirectory];
+        if (!exist) {
+            [manager createDirectoryAtPath:asdir withIntermediateDirectories:YES attributes:nil error:NULL];
+        }
+    } else {
+        bool xclink_exists = [SGFileUtility isSymLink:xcdir];
+        bool xcdir_exists = [SGFileUtility isDirectory:xcdir];
+        bool asdir_exists = [SGFileUtility isDirectory:asdir];
+        
+        // State 1
+        if (xcdir_exists && asdir_exists)
+        {
+            NSLog(@"~/.xchat2 and ApplicationSupport/XChat Azure!?");
+            return;
+        }
+        
+        // State 2
+        if (xcdir_exists && !asdir_exists)
+        {
+            rename (get_xdir_utf8 (), [asdir fileSystemRepresentation]);
+            #ifdef CONFIG_Aqua
+            symlink ([asdir fileSystemRepresentation], get_xdir_utf8 ());
+            #endif
+            return;
+        }
+        
+        // State 3
+        if (!xclink_exists && !xcdir_exists && asdir_exists)
+        {
+            #ifdef CONFIG_Aqua
+            symlink ([asdir fileSystemRepresentation], get_xdir_utf8 ());
+            #endif
+            return;
+        }
+        
+        // State 4
+        if (!xclink_exists && !xcdir_exists && !asdir_exists)
+        {
+            mkdir ([asdir fileSystemRepresentation], 0755);
+            #ifdef CONFIG_Aqua
+            symlink ([asdir fileSystemRepresentation], get_xdir_utf8 ());
+            #endif
+            return;
+        }
+        
+        // State 6
+        if (xclink_exists && !asdir_exists)
+        {
+            mkdir ([asdir fileSystemRepresentation], 0755);
+        }
     }
 }
 
@@ -237,8 +225,7 @@ fe_args (int argc, char *argv[])
     // Find the default charset pref.. 
     // This is really gross but we need it really early!
     char buff[128];
-    sprintf (buff, "%s/xchat.conf", get_xdir_fs());
-    FILE *f = fopen (buff, "r");
+    FILE *f = fopen ([[NSString stringWithFormat:@"%s/xchat.conf", get_xdir_fs()] UTF8String], "r");
     if (f)
     {
         while (fgets (buff, sizeof(buff), f))
@@ -316,7 +303,7 @@ fe_init (void)
 #if USE_GLIKE_TIMER
     [GLikeTimer self];
 #endif
-    [SGApplication sharedApplication];
+    [NSApplication sharedApplication];
     NSString *mainNibFile = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"NSMainNibFile"];
     [NSBundle loadNibNamed:mainNibFile owner:NSApp];
     
@@ -328,6 +315,20 @@ fe_init (void)
     
     NSString *bundle = [[NSBundle mainBundle] bundlePath];
     chdir ([[NSString stringWithFormat:@"%@/..", bundle] fileSystemRepresentation]);
+    
+#if CONFIG_Azure
+    NSString *configDirectory = [SGFileUtility findApplicationSupportFor:@PRODUCT_NAME];
+    if ([SGFileUtility isSymLink:configDirectory]) {
+        if ([SGAlert confirmWithString:NSLocalizedStringFromTable(
+            @"This version of " @PRODUCT_NAME @" is sandboxed. "
+            @PRODUCT_NAME" tried to migrate you configuration but it seems to be failed. "
+            @"Do you want to download recovery script for this problem?", @"xchataqua", @"")])
+        {
+            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/xchataqua/xchataqua/blob/master/README.md#i-lost-all-configurations-after-update-to-111-or-later"]];
+            [NSApp terminate:nil];
+        }
+    }
+#endif
 }
 
 #import <Foundation/NSDebug.h>
@@ -538,7 +539,7 @@ fe_update_mode_buttons (struct session *sess, char mode, char sign)
 void
 fe_update_channel_key (struct session *sess)
 {
-    printf ("update channel key\n");
+    sess->gui->controller.keyTextField.stringValue = [NSString stringWithUTF8String:sess->channelkey];
 }
 
 void
@@ -905,7 +906,7 @@ void fe_set_inputbox_contents (struct session *sess, char *text)
 
 int fe_get_inputbox_cursor (struct session *sess)
 {
-    return [sess->gui->controller inputTextPosition];
+    return (int)[sess->gui->controller inputTextPosition];
 }
 
 void fe_set_inputbox_cursor (struct session *sess, int delta, int pos)
@@ -977,7 +978,7 @@ void fe_set_color_paste (session *sess, int status)
 
 void fe_flash_window (struct session *sess)
 {
-    [[NSApplication sharedApplication] requestUserAttention:NSCriticalRequest];
+    [[NSApplication sharedApplication] requestUserAttention:prefs.xa_bounce_continuously ? NSCriticalRequest : NSInformationalRequest];
 }
 void fe_get_file (const char *title, char *initial,
                   void (*callback) (void *userdata, char *file), void *userdata,

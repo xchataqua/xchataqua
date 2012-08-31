@@ -188,7 +188,7 @@ NSRect NSRectFlip (NSRect rect)
     NSRect r = [self bounds];
     
     SGLog (DEBUG_BOXVIEW, @"I am %f %f %f %f %p\n", r.origin.x, r.origin.y, r.size.width, r.size.height, self);
-    SGLog (DEBUG_BOXVIEW, @"I have %d children\n", [metaViews count]);
+    SGLog (DEBUG_BOXVIEW, @"I have %ld children\n", [metaViews count]);
     
     if (orientation == SGBoxOrientationVertical)
         r = NSRectFlip(r);
@@ -246,7 +246,7 @@ NSRect NSRectFlip (NSRect rect)
             if (orientation == SGBoxOrientationVertical)
                 b = NSRectFlip (b);
     
-            SGLog (DEBUG_BOXVIEW, @"Setting 0x%x to %f %f %f %f\n",
+            SGLog (DEBUG_BOXVIEW, @"Setting %p to %f %f %f %f\n",
                      metaView, b.origin.x, b.origin.y, b.size.width, b.size.height);
                 
             [metaView setFrame:b];
@@ -269,7 +269,7 @@ NSRect NSRectFlip (NSRect rect)
                 if (orientation == SGBoxOrientationVertical)
                     b = NSRectFlip (b);
 
-                SGLog (DEBUG_BOXVIEW, @"Setting 0x%x to %f %f %f %f\n",
+                SGLog (DEBUG_BOXVIEW, @"Setting %p to %f %f %f %f\n",
                          metaView, b.origin.x, b.origin.y, b.size.width, b.size.height);
 
                 [metaView setFrame:b];
@@ -306,7 +306,7 @@ NSRect NSRectFlip (NSRect rect)
             if (orientation == SGBoxOrientationVertical)
                 b = NSRectFlip (b);
 
-            SGLog (DEBUG_BOXVIEW, @"Setting 0x%x to %f %f %f %f\n",
+            SGLog (DEBUG_BOXVIEW, @"Setting %p to %f %f %f %f\n",
                      metaView, b.origin.x, b.origin.y, b.size.width, b.size.height);
 
             [metaView setFrame:b];
@@ -333,7 +333,7 @@ NSRect NSRectFlip (NSRect rect)
         if (orientation == SGBoxOrientationVertical)
             b = NSRectFlip (b);
 
-        SGLog (DEBUG_BOXVIEW, @"Setting 0x%x to %f %f %f %f\n",
+        SGLog (DEBUG_BOXVIEW, @"Setting %p to %f %f %f %f\n",
                  metaView, b.origin.x, b.origin.y, b.size.width, b.size.height);
 
         [metaView setFrame:b];

@@ -27,7 +27,7 @@
 #import "AutoAwayController.h"
 #import "MenuMaker.h"
 #import "XATabWindow.h"
-#import "SGTabView.h"
+#import "XATabView.h"
 
 // Utility Window
 #import "AsciiWindow.h"
@@ -76,7 +76,7 @@ struct XATextEventItem XATextEvents[NUM_XP];
 
 @end
 
-AquaChat *AquaChatShared;
+AquaChat *AquaChatSharedObject;
 
 @implementation AquaChat
 @synthesize font, boldFont;
@@ -93,7 +93,7 @@ AquaChat *AquaChatShared;
 
 - (void) awakeFromNib
 {   
-    AquaChatShared = self;
+    AquaChatSharedObject = self;
     
     [GrowlApplicationBridge setGrowlDelegate:self];
     
@@ -110,8 +110,6 @@ AquaChat *AquaChatShared;
     self->_mainWindow = (id)controller.window;
     
     [self applyPreferences:nil];
-    
-    [NSApp requestEvents:NSKeyDown forWindow:nil forView:nil selector:@selector (myKeyDown:) object:self];
 }
 
 - (NSInteger)badgeCount {
@@ -125,7 +123,7 @@ AquaChat *AquaChatShared;
     if (value == 0) {
         tile.badgeLabel = nil;
     } else {
-        tile.badgeLabel = [NSString stringWithFormat:@"%d", value];
+        tile.badgeLabel = [NSString stringWithFormat:@"%ld", value];
     }
     _badgeCount = value;
 }
@@ -241,7 +239,7 @@ AquaChat *AquaChatShared;
     
     if (info->bounce && (info->bounce == -1 || bg))
     {
-        [NSApp requestUserAttention:NSCriticalRequest];
+        fe_flash_window(sess);
     }
     
     if (info->show && (info->show == -1 || bg))
@@ -274,7 +272,7 @@ AquaChat *AquaChatShared;
 
 + (AquaChat *) sharedAquaChat
 {
-    return AquaChatShared;
+    return AquaChatSharedObject;
 }
 
 #pragma mark NSApplication delegate
@@ -292,6 +290,8 @@ AquaChat *AquaChatShared;
                selector:@selector(workspaceDidWake:)
                    name:NSWorkspaceDidWakeNotification
                  object:nil];
+    
+    [NSApp requestEvents:NSKeyDown forWindow:nil forView:nil selector:@selector (myKeyDown:) object:self];
 }
 
 - (void) applicationDidBecomeActive:(NSNotification *) aNotification
@@ -319,7 +319,7 @@ AquaChat *AquaChatShared;
     // ensure window delegates get windowWillClose: messages
     // shouldn't this happen automatically? it doesn't :(
     NSArray *windows = [[NSApplication sharedApplication] windows];
-    unsigned count = [windows count];
+    NSUInteger count = [windows count];
     
     while (count--) {
         [[windows objectAtIndex:count] close];
@@ -930,6 +930,10 @@ AquaChat *AquaChatShared;
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://github.com/xchataqua/xchataqua/issues"]];
 }
 
+- (void)openIRCChannel:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"irc://irc.freenode.org/#xchat-aqua"]];
+}
+
 #pragma mark GrowlApplicationBridgeDelegate
 
 - (NSDictionary *) registrationDictionaryForGrowl
@@ -978,15 +982,15 @@ AquaChat *AquaChatShared;
         
         if (event->growl)
         {
-            [dict setObject:[NSNumber numberWithInt:event->growl] forKey:[NSString stringWithFormat:@"%s_growl", name]];
+            [dict setObject:[NSNumber numberWithInteger:event->growl] forKey:[NSString stringWithFormat:@"%s_growl", name]];
         }
         if (event->show)
         {
-            [dict setObject:[NSNumber numberWithInt:event->show] forKey:[NSString stringWithFormat:@"%s_show", name]];
+            [dict setObject:[NSNumber numberWithInteger:event->show] forKey:[NSString stringWithFormat:@"%s_show", name]];
         }
         if (event->bounce)
         {
-            [dict setObject:[NSNumber numberWithInt:event->bounce] forKey:[NSString stringWithFormat:@"%s_bounce", name]];
+            [dict setObject:[NSNumber numberWithInteger:event->bounce] forKey:[NSString stringWithFormat:@"%s_bounce", name]];
         }
         
     }
