@@ -239,7 +239,7 @@ AquaChat *AquaChatSharedObject;
     
     if (info->bounce && (info->bounce == -1 || bg))
     {
-        [NSApp requestUserAttention:prefs.xa_bounce_continuously ? NSCriticalRequest : NSInformationalRequest];
+        fe_flash_window(sess);
     }
     
     if (info->show && (info->show == -1 || bg))

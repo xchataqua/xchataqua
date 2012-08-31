@@ -978,7 +978,7 @@ void fe_set_color_paste (session *sess, int status)
 
 void fe_flash_window (struct session *sess)
 {
-    [[NSApplication sharedApplication] requestUserAttention:NSCriticalRequest];
+    [[NSApplication sharedApplication] requestUserAttention:prefs.xa_bounce_continuously ? NSCriticalRequest : NSInformationalRequest];
 }
 void fe_get_file (const char *title, char *initial,
                   void (*callback) (void *userdata, char *file), void *userdata,
