@@ -788,13 +788,6 @@
 			remoteGlobalIDString = 34F60EAA078E1CD500CECA86;
 			remoteInfo = Growl.framework;
 		};
-		38E4A0E015CBAB79000312D1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 38771A5615A7D71D0046929E;
-			remoteInfo = "Growl XPCService";
-		};
 		38E4A0E215CBABA5000312D1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -829,13 +822,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 38D1413613D800E60026B7B5;
 			remoteInfo = ruby;
-		};
-		38E4A0EC15CBABD5000312D1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 38771A5615A7D71D0046929E;
-			remoteInfo = "Growl XPCService";
 		};
 		DBA1A62611A5CCB2000B408C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -3616,6 +3602,7 @@
 				3876258513C7024F00850913 /* Copy Frameworks */,
 				38E4A0DE15CB9F3D000312D1 /* Remove PlugIns embedded provision file */,
 				38876F3D154C7727000B7E27 /* Copy PlugIns */,
+				387C689315F2623C00811A98 /* Build Growl XPCService */,
 				3834677D15C9882800497A27 /* Copy Growl XPC */,
 			);
 			buildRules = (
@@ -3630,7 +3617,6 @@
 				38E4A0E915CBABA5000312D1 /* PBXTargetDependency */,
 				381A6D7515F053AB00E76478 /* PBXTargetDependency */,
 				38E4A0EB15CBABA5000312D1 /* PBXTargetDependency */,
-				38E4A0E115CBAB79000312D1 /* PBXTargetDependency */,
 			);
 			name = "XChat Azure";
 			productInstallPath = "$(HOME)/Applications";
@@ -3686,6 +3672,7 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				0F8EA7C40CFB6EC9001AE9AE /* Copy Frameworks */,
 				38BC97B9154A9AAC005894EF /* Copy Plugins */,
+				387C689215F261A900811A98 /* Build Growl XPCService */,
 				38E4A0EE15CBABE6000312D1 /* Copy Growl XPC */,
 			);
 			buildRules = (
@@ -3700,7 +3687,6 @@
 				38BC97B1154A9937005894EF /* PBXTargetDependency */,
 				381A6D7715F053CF00E76478 /* PBXTargetDependency */,
 				38BC97B3154A9937005894EF /* PBXTargetDependency */,
-				38E4A0ED15CBABD5000312D1 /* PBXTargetDependency */,
 			);
 			name = "XChat Aqua";
 			productInstallPath = "$(HOME)/Applications";
@@ -4177,6 +4163,34 @@
 			shellPath = /bin/sh;
 			shellScript = "echo \"############################### NOTE ###################################\"\necho \"# if you fail here with bundler install, do 'sudo gem install bundler' #\"\necho \"# if you still fail, try Cmd+, -> Locationd -> Advanced -> Legacy      #\"\necho \"########################################################################\"\necho \"\"\n\nXPC_START=\"$PROJECT_DIR/Mac/Growl/build/$CONFIGURATION\"\nXPC_SCRIPT=\"$PROJECT_DIR/Mac/Growl/scripts/xpc-rename-move.rb\"\nruby \"$XPC_SCRIPT\" \"$XPC_START\" \"$BUILT_PRODUCTS_DIR/XChat Azure.app\" \"$CODE_SIGN_IDENTITY\"\nrm -rf \"$BUILT_PRODUCTS_DIR/XPCServices\"\nmv \"$BUILT_PRODUCTS_DIR/XChat Azure.app/Contents/XPCServices\" \"$BUILT_PRODUCTS_DIR/\"\nPROVISION=\"$BUILT_PRODUCTS_DIR/XPCServices/org.3rddev.xchatazure.GNTPClientService.xpc/Contents/embedded.provisionprofile\"\nif [ -e \"$PROVISION\" ]; then\n    rm \"$PROVISION\"\nfi\n";
 		};
+		387C689215F261A900811A98 /* Build Growl XPCService */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Growl XPCService";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"$PROJECT_DIR\"\nxcodebuild -project XChatAqua.xcodeproj -target 'Growl XPCService'";
+		};
+		387C689315F2623C00811A98 /* Build Growl XPCService */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Growl XPCService";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
 		389DC407155569EB003BA8D9 /* Generate XChat Package Name */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4613,11 +4627,6 @@
 			name = Growl.framework;
 			targetProxy = 38E34013154A74B0005B59F8 /* PBXContainerItemProxy */;
 		};
-		38E4A0E115CBAB79000312D1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 38771A5615A7D71D0046929E /* Growl XPCService */;
-			targetProxy = 38E4A0E015CBAB79000312D1 /* PBXContainerItemProxy */;
-		};
 		38E4A0E315CBABA5000312D1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0F8F08100E1FE00800359159 /* tcl */;
@@ -4642,11 +4651,6 @@
 			isa = PBXTargetDependency;
 			target = 38D1413613D800E60026B7B5 /* ruby */;
 			targetProxy = 38E4A0EA15CBABA5000312D1 /* PBXContainerItemProxy */;
-		};
-		38E4A0ED15CBABD5000312D1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 38771A5615A7D71D0046929E /* Growl XPCService */;
-			targetProxy = 38E4A0EC15CBABD5000312D1 /* PBXContainerItemProxy */;
 		};
 		DBA1A62711A5CCB2000B408C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
