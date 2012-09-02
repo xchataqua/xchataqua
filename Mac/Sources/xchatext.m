@@ -30,9 +30,10 @@ char *get_downloaddir_fs(void) {
     if (FSFindFolder(kUserDomain, kDownloadsFolderType, false, &ref) != noErr)
         return NULL;
     UInt8 *path = malloc(sizeof(UInt8) * PATH_MAX);
-    if (FSRefMakePath(&ref, path, sizeof(UInt8) * PATH_MAX) != noErr)
+    if (FSRefMakePath(&ref, path, sizeof(UInt8) * PATH_MAX) != noErr) {
+        free(path);
         return NULL;
-    
+    }
     return (char *)path;
 }
 
