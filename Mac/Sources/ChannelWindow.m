@@ -187,7 +187,7 @@ static const char * strip_crap (const char *s)
     }
 }
 
-- (id) initAsChannelWindow {
+- (void) setupAsChannelWindow {
     [self setServer:current_sess->server];
     self->filteredChannels = [[NSMutableArray alloc] init];
     self->allChannels = [[NSMutableArray alloc] init];
@@ -195,19 +195,18 @@ static const char * strip_crap (const char *s)
     
     [self->colorPalette setColor:XAColorForeground color:[NSColor blackColor]];
     [self->colorPalette setColor:XAColorBackground color:[NSColor whiteColor]];
-    
-    return self;    
 }
 
 - (id) initWithFrame:(NSRect)frameRect {
     self = [super initWithFrame:frameRect];
-    return [self initAsChannelWindow];
+    [self setupAsChannelWindow];
+    return self;
 }
 
-- (id) initWithCoder:(NSCoder *)aDecoder
-{
+- (id) initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    return [self initAsChannelWindow];
+    [self setupAsChannelWindow];
+    return self;
 }
 
 - (void) dealloc

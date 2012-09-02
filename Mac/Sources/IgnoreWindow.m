@@ -119,20 +119,20 @@
 
 @implementation IgnoreWindow
 
-- (id) initAsIgnoreWindow {
+- (void) setupAsIgnoreWindow {
     ignores = [[NSMutableArray alloc] init];
-    return self;
 }
 
 - (id) initWithFrame:(NSRect)frameRect {
     self = [super initWithFrame:frameRect];
-    return [self initAsIgnoreWindow];
+    [self setupAsIgnoreWindow];
+    return self;
 }
 
-- (id) initWithCoder:(NSCoder *)aDecoder
-{
+- (id) initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    return [self initAsIgnoreWindow];
+    [self setupAsIgnoreWindow];
+    return self;
 }
 
 - (void) dealloc

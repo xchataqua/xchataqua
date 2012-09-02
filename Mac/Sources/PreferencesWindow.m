@@ -152,20 +152,21 @@ extern struct XATextEventItem XATextEvents[];
 
 @implementation PreferencesWindow
 
-- (id) initAsPreferencesWindow {
+- (void) setupAsPreferencesWindow {
     sounds = [[NSMutableArray alloc] init];
     soundEvents = [[NSMutableArray alloc] init];
-    return self;
 }
 
 - (id) initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    return [self initAsPreferencesWindow];
+    [self setupAsPreferencesWindow];
+    return self;
 }
 
 - (id) initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag {
     self = [super initWithContentRect:contentRect styleMask:aStyle backing:bufferingType defer:flag];
-    return [self initAsPreferencesWindow];
+    [self setupAsPreferencesWindow];
+    return self;
 }
 
 - (void) dealloc
