@@ -47,7 +47,7 @@
 -(SGLockableTextFieldCell *) copyWithZone:(NSZone *) zone
 {
     SGLockableTextFieldCell *cell = [super copyWithZone:zone];
-    cell.lockCell = [self.lockCell copyWithZone:zone];
+    cell.lockCell = [[self.lockCell copyWithZone:zone] autorelease];
     return cell;
 }
 

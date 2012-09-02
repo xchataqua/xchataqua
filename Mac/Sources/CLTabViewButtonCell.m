@@ -109,7 +109,7 @@ enum {
         [title addAttribute:NSForegroundColorAttributeName value:titleColor range:NSMakeRange(0, title.length)];
     }
     [title endEditing];
-    return title;
+    return [title autorelease];
 }
 
 - (void) setTitle:(NSString *) aString
