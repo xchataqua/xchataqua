@@ -407,7 +407,9 @@ NSNib *XATabViewItemTabMenuNib;
     [box addSubview:self->_tabButton];
     [box setOrder:order forView:self->_tabButton];
 
-    self.label = _label; // refresh with bad convention
+    if (prefs.tab_layout == 0) {
+        [self redrawTitle];
+    }
 }
 
 - (void)removeButton
@@ -843,8 +845,10 @@ NSNib *XATabViewItemTabMenuNib;
     
     if (_selectedTabViewItem.view)
     {
-        if ([_selectedTabViewItem initialFirstResponder])
-            [[self window] makeFirstResponder:[_selectedTabViewItem initialFirstResponder]];
+        id responder = _selectedTabViewItem.initialFirstResponder;
+        if (responder) {
+            [[self window] makeFirstResponder:responder];
+        }
     }
         
     if ([_delegate respondsToSelector:@selector(tabView:didSelectTabViewItem:)]) {
@@ -1082,8 +1086,9 @@ typedef OSStatus
 - (void) outlineViewSelectionDidChange:(NSNotification *) notification
 {
     id item = [_tabOutlineView itemAtRow:[_tabOutlineView selectedRow]];
-    if (item && [item isKindOfClass:[XATabViewItem class]])
+    if (item && [item isKindOfClass:[XATabViewItem class]]) {
         [self selectTabViewItem:item];
+    }
 }
 
 #pragma mark - NSSplitView
