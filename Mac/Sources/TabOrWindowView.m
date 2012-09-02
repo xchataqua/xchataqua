@@ -309,7 +309,6 @@ static float trans = 1;
         if ([[[tabWindow contentView] tabViewItems] count] == 0)
         {
             [tabWindow orderOut:self];
-            [tabWindow autorelease];
             tabWindow = nil;
         }
     }
@@ -421,8 +420,7 @@ static float trans = 1;
         if ([[tabWindow.tabView tabViewItems] count] == 0)
         {
             [tabWindow orderOut:self];  // TODO - Should this be [tabWindow close]?
-            [tabWindow autorelease];    // Must be autorelase because of 
-            tabWindow = nil;            // windowWillClose below...
+            tabWindow = nil;
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:NSWindowWillCloseNotification object:self];
         if ([delegate respondsToSelector:@selector (windowWillClose:)])
