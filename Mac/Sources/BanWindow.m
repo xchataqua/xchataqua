@@ -80,20 +80,20 @@
 
 @implementation BanWindow
 
-- (void) setupAsBanWindow {
+- (void)BanWindowInit {
     self->sess = current_sess;
     bans = [[NSMutableArray alloc] init];
 }
 
-- (id) initWithFrame:(NSRect)frameRect {
+- (id)initWithFrame:(NSRect)frameRect {
     self = [super initWithFrame:frameRect];
-    [self setupAsBanWindow];
+    [self BanWindowInit];
     return self;
 }
 
 - (id) initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    [self setupAsBanWindow];
+    [self BanWindowInit];
     return self;
 }
 

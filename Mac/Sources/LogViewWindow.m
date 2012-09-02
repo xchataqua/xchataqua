@@ -98,20 +98,20 @@
 
 @implementation LogViewWindow
 
-- (void) setupAsLogViewWindow {
+- (void)LogViewWindowInit {
     filteredLogs = [[NSMutableArray alloc] init];
     allLogs = [[NSMutableArray alloc] init];
 }
 
 - (id) initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    [self setupAsLogViewWindow];
+    [self LogViewWindowInit];
     return self;
 }
 
 - (id) initWithFrame:(NSRect)frameRect {
     self = [super initWithFrame:frameRect];
-    [self setupAsLogViewWindow];
+    [self LogViewWindowInit];
     return self;
 }
 

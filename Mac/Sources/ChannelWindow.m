@@ -187,7 +187,7 @@ static const char * strip_crap (const char *s)
     }
 }
 
-- (void) setupAsChannelWindow {
+- (void)ChannelWindowInit {
     [self setServer:current_sess->server];
     self->filteredChannels = [[NSMutableArray alloc] init];
     self->allChannels = [[NSMutableArray alloc] init];
@@ -199,13 +199,13 @@ static const char * strip_crap (const char *s)
 
 - (id) initWithFrame:(NSRect)frameRect {
     self = [super initWithFrame:frameRect];
-    [self setupAsChannelWindow];
+    [self ChannelWindowInit];
     return self;
 }
 
 - (id) initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    [self setupAsChannelWindow];
+    [self ChannelWindowInit];
     return self;
 }
 

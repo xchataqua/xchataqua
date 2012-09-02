@@ -78,19 +78,19 @@
 @implementation FriendWindow
 @synthesize friendAdditionPanel;
 
-- (void) setupAsFriendWindow {
+- (void)FriendWindowInit {
     friends = [[NSMutableArray alloc] init];
 }
 
 - (id) initWithFrame:(NSRect)frameRect {
     self = [super initWithFrame:frameRect];
-    [self setupAsFriendWindow];
+    [self FriendWindowInit];
     return self;
 }
 
 - (id) initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    [self setupAsFriendWindow];
+    [self FriendWindowInit];
     return self;
 }
 

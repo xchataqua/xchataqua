@@ -119,19 +119,19 @@
 
 @implementation IgnoreWindow
 
-- (void) setupAsIgnoreWindow {
+- (void)IgnoreWindowInit {
     ignores = [[NSMutableArray alloc] init];
 }
 
 - (id) initWithFrame:(NSRect)frameRect {
     self = [super initWithFrame:frameRect];
-    [self setupAsIgnoreWindow];
+    [self IgnoreWindowInit];
     return self;
 }
 
 - (id) initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
-    [self setupAsIgnoreWindow];
+    [self IgnoreWindowInit];
     return self;
 }
 
