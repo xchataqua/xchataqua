@@ -66,7 +66,7 @@ extern GSList *plugin_list;
 - (id)initWithBundleInfo:(NSDictionary *)infoDictionary filename:(NSString *)filename {
     self = [super init];
     if (self != nil) {
-        NSString *bundleIdentifier = [[infoDictionary objectForKey:@"CFBundleIdentifier"] copy];
+        NSString *bundleIdentifier = [infoDictionary objectForKey:@"CFBundleIdentifier"];
         self->_name = [[[bundleIdentifier componentsSeparatedByString:@"."] lastObject] copy];
         self->_version = [[infoDictionary objectForKey:@"XChatAquaMacOSVersionBranch"] copy];
         self->_filename = [filename copy];
