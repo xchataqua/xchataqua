@@ -671,12 +671,16 @@ static NSImage *emptyBulletImage;
         nickTextField.font = [[AquaChat sharedAquaChat] font];
         if (prefs.tab_layout == 2) {
             [inputContainerView setWantsLayer:YES];
-            [inputContainerView.layer setBackgroundColor:CGColorCreateGenericRGB(backgroundColor.redComponent, backgroundColor.greenComponent, backgroundColor.blueComponent, backgroundColor.alphaComponent)];
+            CGColorRef layerBackground = CGColorCreateGenericRGB(backgroundColor.redComponent, backgroundColor.greenComponent, backgroundColor.blueComponent, backgroundColor.alphaComponent);
+            [inputContainerView.layer setBackgroundColor:layerBackground];
+            CGColorRelease(layerBackground);
             nickTextField.textColor = foregroundColor;
             nickTextField.backgroundColor = backgroundColor;
         } else {
             [inputContainerView setWantsLayer:NO];
-            [inputContainerView.layer setBackgroundColor:CGColorCreateGenericRGB(0, 0, 0, 0 )];
+            CGColorRef layerBackground = CGColorCreateGenericRGB(0, 0, 0, 0);
+            [inputContainerView.layer setBackgroundColor:layerBackground];
+            CGColorRelease(layerBackground);
             nickTextField.textColor = [NSColor textColor];
             nickTextField.backgroundColor = [NSColor textBackgroundColor];
         }
@@ -688,7 +692,9 @@ static NSImage *emptyBulletImage;
         topicTextField.backgroundColor = backgroundColor;
     } else {
         [inputContainerView setWantsLayer:NO];
-        [inputContainerView.layer setBackgroundColor:CGColorCreateGenericRGB(0, 0, 0, 0 )];
+        CGColorRef layerBackground = CGColorCreateGenericRGB(0, 0, 0, 0);
+        [inputContainerView.layer setBackgroundColor:layerBackground];
+        CGColorRelease(layerBackground);
         inputTextField.font = [NSFont controlContentFontOfSize:0];
         [inputTextField sizeToFit];
         nickTextField.font = [NSFont controlContentFontOfSize:0];
