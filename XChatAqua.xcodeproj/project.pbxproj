@@ -163,6 +163,8 @@
 		380AD1F413C698E1003EEE3D /* xchat.h in Headers */ = {isa = PBXBuildFile; fileRef = 380AD1E813C698E1003EEE3D /* xchat.h */; };
 		380AD1F513C698E1003EEE3D /* xchatc.h in Headers */ = {isa = PBXBuildFile; fileRef = 380AD1E913C698E1003EEE3D /* xchatc.h */; };
 		380B9D1A13C6E5D70029CE25 /* SGFileUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 380B9D1913C6E5D70029CE25 /* SGFileUtility.m */; };
+		381A6D6A15F052BF00E76478 /* perl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F06C10E1FDA5E00359159 /* perl.c */; };
+		381A6D6C15F052BF00E76478 /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 38763F2513DD460E008C40DB /* libperl.dylib */; };
 		3839010413C06619004D20BC /* CLTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3839010313C06619004D20BC /* CLTabCell.m */; };
 		3839010713C0667B004D20BC /* CLTabViewButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3839010613C0667B004D20BC /* CLTabViewButtonCell.m */; };
 		384A96461588F2CC00268814 /* xchat-ruby.c in Sources */ = {isa = PBXBuildFile; fileRef = 384A963E1588F2CC00268814 /* xchat-ruby.c */; };
@@ -354,6 +356,8 @@
 		385FCFB615984EFC0058F381 /* RawLogWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 385FCFB415984EFC0058F381 /* RawLogWindow.xib */; };
 		3864594B15E509E500C4CA45 /* PluginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3864594A15E509E500C4CA45 /* PluginManager.m */; };
 		3864594C15E509E500C4CA45 /* PluginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3864594A15E509E500C4CA45 /* PluginManager.m */; };
+		386A4FA415F0550E00A15022 /* perl-mountainlion.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 381A6D7115F052BF00E76478 /* perl-mountainlion.bundle */; };
+		386A4FA515F0551C00A15022 /* perl-mountainlion.bundle in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 381A6D7115F052BF00E76478 /* perl-mountainlion.bundle */; };
 		38701AD015C99AE400FB3EAC /* xchat.icns in Resources */ = {isa = PBXBuildFile; fileRef = 38701ACF15C99AE400FB3EAC /* xchat.icns */; };
 		38701AD115C99AE400FB3EAC /* xchat.icns in Resources */ = {isa = PBXBuildFile; fileRef = 38701ACF15C99AE400FB3EAC /* xchat.icns */; };
 		387624FC13C7024F00850913 /* AsciiWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6250CFB2E0A001AE9AE /* AsciiWindow.m */; };
@@ -574,6 +578,20 @@
 			remoteGlobalIDString = 0FC8F4AD0DEEE51700504F31;
 			remoteInfo = xchat;
 		};
+		381A6D7415F053AB00E76478 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 381A6D6615F052BF00E76478;
+			remoteInfo = "perl-mountainlion";
+		};
+		381A6D7615F053CF00E76478 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 381A6D6615F052BF00E76478;
+			remoteInfo = "perl-mountainlion";
+		};
 		387624FA13C7024F00850913 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -770,13 +788,6 @@
 			remoteGlobalIDString = 34F60EAA078E1CD500CECA86;
 			remoteInfo = Growl.framework;
 		};
-		38E4A0E015CBAB79000312D1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 38771A5615A7D71D0046929E;
-			remoteInfo = "Growl XPCService";
-		};
 		38E4A0E215CBABA5000312D1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -812,13 +823,6 @@
 			remoteGlobalIDString = 38D1413613D800E60026B7B5;
 			remoteInfo = ruby;
 		};
-		38E4A0EC15CBABD5000312D1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 38771A5615A7D71D0046929E;
-			remoteInfo = "Growl XPCService";
-		};
 		DBA1A62611A5CCB2000B408C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -839,6 +843,15 @@
 				38BC97B8154A996F005894EF /* Growl.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		381A6D6D15F052BF00E76478 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		3834677D15C9882800497A27 /* Copy Growl XPC */ = {
@@ -881,6 +894,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				386A4FA515F0551C00A15022 /* perl-mountainlion.bundle in Copy PlugIns */,
 				38E4A0D315CB9BD9000312D1 /* tcl.bundle in Copy PlugIns */,
 				38E4A0D415CB9BD9000312D1 /* python.bundle in Copy PlugIns */,
 				38E4A0D515CB9BD9000312D1 /* perl-snowleopard.bundle in Copy PlugIns */,
@@ -902,6 +916,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				386A4FA415F0550E00A15022 /* perl-mountainlion.bundle in Copy Plugins */,
 				38BC97BA154A9AD4005894EF /* python.bundle in Copy Plugins */,
 				38BC97BB154A9AD4005894EF /* tcl.bundle in Copy Plugins */,
 				38BC97BC154A9AD4005894EF /* perl-snowleopard.bundle in Copy Plugins */,
@@ -1129,6 +1144,8 @@
 		380B9D1913C6E5D70029CE25 /* SGFileUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFileUtility.m; sourceTree = "<group>"; };
 		380F1EF013E29C930033E3AC /* browser.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = browser.pl; sourceTree = "<group>"; };
 		380F1EF113E29C930033E3AC /* google.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = google.pl; sourceTree = "<group>"; };
+		381A6D7115F052BF00E76478 /* perl-mountainlion.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-mountainlion.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		381A6D7315F0530E00E76478 /* perl-mountainlion-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "perl-mountainlion-Info.plist"; sourceTree = "<group>"; };
 		3839010213C06619004D20BC /* CLTabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTabCell.h; sourceTree = "<group>"; };
 		3839010313C06619004D20BC /* CLTabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTabCell.m; sourceTree = "<group>"; };
 		3839010513C0667B004D20BC /* CLTabViewButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTabViewButtonCell.h; sourceTree = "<group>"; };
@@ -2395,6 +2412,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		381A6D6B15F052BF00E76478 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				381A6D6C15F052BF00E76478 /* libperl.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		385F782F15515C3F00689E6E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2592,6 +2617,7 @@
 			children = (
 				2DE5D5C410EBE2300024D2A4 /* perl-snowleopard-Info.plist */,
 				38763F2313DD45D3008C40DB /* perl-lion-Info.plist */,
+				381A6D7315F0530E00E76478 /* perl-mountainlion-Info.plist */,
 				2D78138B10E77D1A00C71AF8 /* libperl.dylib */,
 				38763F2513DD460E008C40DB /* libperl.dylib */,
 				380F1EF013E29C930033E3AC /* browser.pl */,
@@ -2664,6 +2690,7 @@
 				38D1414013D800E60026B7B5 /* ruby.bundle */,
 				38876EF4154C766A000B7E27 /* XPCServices */,
 				385F783215515C3F00689E6E /* libglib.a */,
+				381A6D7115F052BF00E76478 /* perl-mountainlion.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3529,6 +3556,25 @@
 			productReference = 2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
+		381A6D6615F052BF00E76478 /* perl-mountainlion */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 381A6D6E15F052BF00E76478 /* Build configuration list for PBXNativeTarget "perl-mountainlion" */;
+			buildPhases = (
+				381A6D6715F052BF00E76478 /* Generate Symlink For Lion Perl Library & XChat Plugin Headers */,
+				381A6D6815F052BF00E76478 /* Resources */,
+				381A6D6915F052BF00E76478 /* Sources */,
+				381A6D6B15F052BF00E76478 /* Frameworks */,
+				381A6D6D15F052BF00E76478 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "perl-mountainlion";
+			productName = "perl-snowleopard";
+			productReference = 381A6D7115F052BF00E76478 /* perl-mountainlion.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 		385F783115515C3F00689E6E /* glib */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 385F783315515C4000689E6E /* Build configuration list for PBXNativeTarget "glib" */;
@@ -3556,6 +3602,7 @@
 				3876258513C7024F00850913 /* Copy Frameworks */,
 				38E4A0DE15CB9F3D000312D1 /* Remove PlugIns embedded provision file */,
 				38876F3D154C7727000B7E27 /* Copy PlugIns */,
+				387C689315F2623C00811A98 /* Build Growl XPCService */,
 				3834677D15C9882800497A27 /* Copy Growl XPC */,
 			);
 			buildRules = (
@@ -3568,8 +3615,8 @@
 				38E4A0E515CBABA5000312D1 /* PBXTargetDependency */,
 				38E4A0E715CBABA5000312D1 /* PBXTargetDependency */,
 				38E4A0E915CBABA5000312D1 /* PBXTargetDependency */,
+				381A6D7515F053AB00E76478 /* PBXTargetDependency */,
 				38E4A0EB15CBABA5000312D1 /* PBXTargetDependency */,
-				38E4A0E115CBAB79000312D1 /* PBXTargetDependency */,
 			);
 			name = "XChat Azure";
 			productInstallPath = "$(HOME)/Applications";
@@ -3625,6 +3672,7 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				0F8EA7C40CFB6EC9001AE9AE /* Copy Frameworks */,
 				38BC97B9154A9AAC005894EF /* Copy Plugins */,
+				387C689215F261A900811A98 /* Build Growl XPCService */,
 				38E4A0EE15CBABE6000312D1 /* Copy Growl XPC */,
 			);
 			buildRules = (
@@ -3637,8 +3685,8 @@
 				38BC97AB154A9937005894EF /* PBXTargetDependency */,
 				38BC97AF154A9937005894EF /* PBXTargetDependency */,
 				38BC97B1154A9937005894EF /* PBXTargetDependency */,
+				381A6D7715F053CF00E76478 /* PBXTargetDependency */,
 				38BC97B3154A9937005894EF /* PBXTargetDependency */,
-				38E4A0ED15CBABD5000312D1 /* PBXTargetDependency */,
 			);
 			name = "XChat Aqua";
 			productInstallPath = "$(HOME)/Applications";
@@ -3730,6 +3778,7 @@
 				0F2FEF2A0E1FAB1500DE4D41 /* python */,
 				2D78137F10E77C6400C71AF8 /* perl-snowleopard */,
 				38763F1813DD40D6008C40DB /* perl-lion */,
+				381A6D6615F052BF00E76478 /* perl-mountainlion */,
 				38D1413613D800E60026B7B5 /* ruby */,
 				2DDC70011231DA230015A26C /* printenv */,
 				38771A5615A7D71D0046929E /* Growl XPCService */,
@@ -3868,6 +3917,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2D78137C10E77C6400C71AF8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		381A6D6815F052BF00E76478 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -4050,6 +4106,20 @@
 			shellPath = /bin/sh;
 			shellScript = "# shell script goes here\nexit 0";
 		};
+		381A6D6715F052BF00E76478 /* Generate Symlink For Lion Perl Library & XChat Plugin Headers */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Symlink For Lion Perl Library & XChat Plugin Headers";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "TARGET_DIR=\"$PROJECT_TEMP_DIR\"\nrm -rf \"$TARGET_DIR/Perl/5.12\"\nmkdir -p \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/\"\nif [ -e '/System/Library/Perl/5.12/' ]; then\n\tln -s '/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib' \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\"\nelse\n\tln -s \"$PROJECT_DIR/Mac/contrib/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\" \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\"\nfi\n\ncd \"$PROJECT_DIR/xchat/plugins/perl\"\n./generate_header\n\nexit";
+		};
 		384A964D1588FBD100268814 /* Generate rubyenv */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4092,6 +4162,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "echo \"############################### NOTE ###################################\"\necho \"# if you fail here with bundler install, do 'sudo gem install bundler' #\"\necho \"# if you still fail, try Cmd+, -> Locationd -> Advanced -> Legacy      #\"\necho \"########################################################################\"\necho \"\"\n\nXPC_START=\"$PROJECT_DIR/Mac/Growl/build/$CONFIGURATION\"\nXPC_SCRIPT=\"$PROJECT_DIR/Mac/Growl/scripts/xpc-rename-move.rb\"\nruby \"$XPC_SCRIPT\" \"$XPC_START\" \"$BUILT_PRODUCTS_DIR/XChat Azure.app\" \"$CODE_SIGN_IDENTITY\"\nrm -rf \"$BUILT_PRODUCTS_DIR/XPCServices\"\nmv \"$BUILT_PRODUCTS_DIR/XChat Azure.app/Contents/XPCServices\" \"$BUILT_PRODUCTS_DIR/\"\nPROVISION=\"$BUILT_PRODUCTS_DIR/XPCServices/org.3rddev.xchatazure.GNTPClientService.xpc/Contents/embedded.provisionprofile\"\nif [ -e \"$PROVISION\" ]; then\n    rm \"$PROVISION\"\nfi\n";
+		};
+		387C689215F261A900811A98 /* Build Growl XPCService */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Growl XPCService";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"$PROJECT_DIR\"\nxcodebuild -project XChatAqua.xcodeproj -target 'Growl XPCService'";
+		};
+		387C689315F2623C00811A98 /* Build Growl XPCService */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Growl XPCService";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
 		};
 		389DC407155569EB003BA8D9 /* Generate XChat Package Name */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4191,6 +4289,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D78138A10E77CC700C71AF8 /* perl.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		381A6D6915F052BF00E76478 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				381A6D6A15F052BF00E76478 /* perl.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4451,6 +4557,16 @@
 			target = 0FC8F4AD0DEEE51700504F31 /* xchat */;
 			targetProxy = 0FC8F5C20DEEEA3B00504F31 /* PBXContainerItemProxy */;
 		};
+		381A6D7515F053AB00E76478 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 381A6D6615F052BF00E76478 /* perl-mountainlion */;
+			targetProxy = 381A6D7415F053AB00E76478 /* PBXContainerItemProxy */;
+		};
+		381A6D7715F053CF00E76478 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 381A6D6615F052BF00E76478 /* perl-mountainlion */;
+			targetProxy = 381A6D7615F053CF00E76478 /* PBXContainerItemProxy */;
+		};
 		387624F913C7024F00850913 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0FC8F4AD0DEEE51700504F31 /* xchat */;
@@ -4511,11 +4627,6 @@
 			name = Growl.framework;
 			targetProxy = 38E34013154A74B0005B59F8 /* PBXContainerItemProxy */;
 		};
-		38E4A0E115CBAB79000312D1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 38771A5615A7D71D0046929E /* Growl XPCService */;
-			targetProxy = 38E4A0E015CBAB79000312D1 /* PBXContainerItemProxy */;
-		};
 		38E4A0E315CBABA5000312D1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0F8F08100E1FE00800359159 /* tcl */;
@@ -4540,11 +4651,6 @@
 			isa = PBXTargetDependency;
 			target = 38D1413613D800E60026B7B5 /* ruby */;
 			targetProxy = 38E4A0EA15CBABA5000312D1 /* PBXContainerItemProxy */;
-		};
-		38E4A0ED15CBABD5000312D1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 38771A5615A7D71D0046929E /* Growl XPCService */;
-			targetProxy = 38E4A0EC15CBABD5000312D1 /* PBXContainerItemProxy */;
 		};
 		DBA1A62711A5CCB2000B408C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5864,6 +5970,79 @@
 			};
 			name = Release;
 		};
+		381A6D6F15F052BF00E76478 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_WARN_PEDANTIC = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					Mac,
+					Mac/contrib/include,
+					"/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
+					"Mac/contrib/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
+					xchat/src/common,
+					xchat/plugins/perl,
+				);
+				INFOPLIST_FILE = "Mac/Plugins/perl/perl-mountainlion-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				LIBRARY_SEARCH_PATHS = (
+					"\"/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE\"",
+					"\"$(SRCROOT)/build/XChatAqua.build/Perl/5.12/darwin-thread-multi-2level/CORE\"",
+				);
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				PRODUCT_NAME = "perl-mountainlion";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "Mac Mac/contrib/include";
+			};
+			name = Debug;
+		};
+		381A6D7015F052BF00E76478 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_WARN_PEDANTIC = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					Mac,
+					Mac/contrib/include,
+					"/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
+					"Mac/contrib/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
+					xchat/src/common,
+					xchat/plugins/perl,
+				);
+				INFOPLIST_FILE = "Mac/Plugins/perl/perl-mountainlion-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				LIBRARY_SEARCH_PATHS = (
+					"\"/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE\"",
+					"\"$(SRCROOT)/build/XChatAqua.build/Perl/5.12/darwin-thread-multi-2level/CORE\"",
+				);
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				PRODUCT_NAME = "perl-mountainlion";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "Mac Mac/contrib/include";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		385F783415515C4000689E6E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -6284,6 +6463,15 @@
 			buildConfigurations = (
 				2DDC70021231DA230015A26C /* Debug */,
 				2DDC70031231DA230015A26C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		381A6D6E15F052BF00E76478 /* Build configuration list for PBXNativeTarget "perl-mountainlion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				381A6D6F15F052BF00E76478 /* Debug */,
+				381A6D7015F052BF00E76478 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
