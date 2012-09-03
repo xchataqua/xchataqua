@@ -16,8 +16,6 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
 
-#import <Carbon/Carbon.h>
-
 #undef TYPE_BOOL
 #include "cfgfiles.h"
 #include "util.h"
@@ -309,12 +307,11 @@ fe_init (void)
     NSString *mainNibFile = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"NSMainNibFile"];
     [NSBundle loadNibNamed:mainNibFile owner:NSApp];
     
-    // This is not just for debug.
-#if !CLX_BUILD
-    if (GetCurrentKeyModifiers () & (optionKey | rightOptionKey))
-#endif
+    // Do not connect to network if app is launched while holding the Option key
+    if ([NSEvent modifierFlags] & NSAlternateKeyMask) {
         arg_dont_autoconnect = true;
-    
+    }
+
     NSString *bundle = [[NSBundle mainBundle] bundlePath];
     chdir ([[NSString stringWithFormat:@"%@/..", bundle] fileSystemRepresentation]);
     
