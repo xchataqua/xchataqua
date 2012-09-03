@@ -46,7 +46,7 @@ static void init_plugins_once()
     static bool done;
     if (done)
         return;
-    
+
     NSString *supportDirectory = [SGFileUtility findApplicationSupportFor:@PRODUCT_NAME];
     NSString *cmd = [NSString stringWithFormat:@"mkdir '%@'", [supportDirectory stringByAppendingPathComponent:@"plugins"]];
     system(cmd.UTF8String);
