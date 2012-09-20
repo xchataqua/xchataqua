@@ -47,14 +47,6 @@ static char **argv;
 
 extern struct text_event te[];
 
-NSString *confPath = nil; 
-char *get_xdir_fs(void) {
-    if (confPath == nil) {
-        confPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] retain];
-    }
-    return (char *)[confPath UTF8String];
-}
-
 /////////////////////////////////////////////////////////////////////////////
 
 #define APPLESCRIPT_HELP "Usage: APPLESCRIPT [-o] <script>"
