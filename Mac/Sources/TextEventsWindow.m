@@ -21,6 +21,7 @@
 #import "XAChatTextView.h"
 #import "AquaChat.h"
 #import "TextEventsWindow.h"
+#import "NSPanelAdditions.h"
 
 extern struct text_event te[];
 extern char *pntevts_text[];
@@ -117,23 +118,26 @@ extern char *pntevts[];
 
 - (void) loadFrom:(id)sender
 {
-    NSURL *furl = [SGFileSelection selectWithWindow:self];
-    if (furl)
-    {
-        pevent_load ((char *)furl.path.UTF8String);
-        pevent_make_pntevts ();
-        [self loadItems];
-        [eventTableView reloadData];
-        [helpTableView reloadData];
-    }
+    NSOpenPanel *panel = [NSOpenPanel commonOpenPanel];
+    [panel beginSheetModalForWindow:self completionHandler:^(NSInteger result) {
+        if (result == NSOKButton) {
+            NSURL *URL = panel.URL;
+            const char *path = URL.path.UTF8String;
+            pevent_load ((char *)path);
+            pevent_make_pntevts ();
+            [self loadItems];
+            [eventTableView reloadData];
+            [helpTableView reloadData];
+        }
+    }];
 }
 
 - (void) saveAs:(id)sender
 {
-    NSURL *furl = [SGFileSelection saveWithWindow:self];
-    if (furl) {
-        pevent_save ((char *)furl.path.UTF8String);
-    }
+    NSSavePanel *panel = [NSSavePanel savePanel];
+    [panel beginSheetModalForWindow:self completionHandler:^(NSInteger result) {
+        pevent_save ((char *)panel.URL.path.UTF8String);
+    }];
 }
 
 #pragma mark NSTableView delegate
