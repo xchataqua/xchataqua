@@ -21,6 +21,8 @@
 #include "util.h"
 #include "text.h"
 
+#import "NSPanelAdditions.h"
+
 #import <ShortcutRecorder/ShortcutRecorder.h>
 
 #import "AquaChat.h"
@@ -578,16 +580,6 @@ AquaChat *AquaChatSharedObject;
     [[UtilityWindow utilityByKey:PreferencesWindowKey windowNibName:@"PreferencesWindow"] makeKeyAndOrderFront:self];
 }
 
-- (void) loadPlugin:(id)sender
-{
-    NSString *f = [SGFileSelection selectWithWindow:nil inDirectory:@"Plugins"].path;
-    if (f)
-    {
-        NSString *cmd = [NSString stringWithFormat:@"LOAD \"%@\"", f];
-        handle_command (current_sess, (char *) [cmd UTF8String], FALSE);
-    }
-}
-
 - (void) showSearchPanel:(id)sender
 {
     [searchString autorelease];
@@ -785,6 +777,20 @@ AquaChat *AquaChatSharedObject;
 {
     [[UtilityWindow utilityByKey:UserCommandsWindowKey windowNibName:@"UserCommandsWindow"] makeKeyAndOrderFront:self];
 }
+
+- (void) saveBuffer:(id)sender
+{
+    NSSavePanel *panel = [NSSavePanel savePanel];
+    
+    //    [p setPrompt:NSLocalizedStringFromTable(@"Select", @"xchataqua", @"")];
+    
+    [panel beginSheetModalForWindow:[current_sess->gui->controller window] completionHandler:^(NSInteger result) {
+        if (result == NSOKButton) {
+            [current_sess->gui->controller saveBuffer:panel.URL.path];
+        }
+    }];
+}
+
 
 #define ctcp_help _("CTCP Replies - Special codes:\n\n"\
                     "%d  =  data (the whole ctcp)\n"\
@@ -1005,13 +1011,6 @@ AquaChat *AquaChatSharedObject;
     NSCellStateValue shownValue = *pref->preference ? NSOnState : NSOffState;
     if (pref->reverse) shownValue = !shownValue;
     [sender setState:shownValue];
-}
-
-- (void) saveBuffer:(id)sender
-{
-    NSString *filename = [SGFileSelection saveWithWindow:[current_sess->gui->controller window]].path;
-    if ( filename != nil )
-        [current_sess->gui->controller saveBuffer:filename];
 }
 
 - (void) updateUsermenu

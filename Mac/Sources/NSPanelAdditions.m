@@ -8,20 +8,6 @@
 
 #import "NSPanelAdditions.h"
 
-@implementation NSSavePanel (XChatAqua)
-
-- (NSInteger)runModalForWindow:(NSWindow *)window {
-    NSInteger status;
-    
-    [self beginSheetModalForWindow:window completionHandler:NULL];
-    status = [self runModal];
-    [NSApp endSheet:self];
-
-    return status;
-}
-
-@end
-
 @implementation NSOpenPanel (XChatAqua)
 
 - (id)initCommonPanel {

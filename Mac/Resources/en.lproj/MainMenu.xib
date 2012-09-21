@@ -2,18 +2,18 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1070</int>
-		<string key="IBDocument.SystemVersion">11E53</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2182</string>
-		<string key="IBDocument.AppKitVersion">1138.47</string>
-		<string key="IBDocument.HIToolboxVersion">569.00</string>
+		<string key="IBDocument.SystemVersion">12C54</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2840</string>
+		<string key="IBDocument.AppKitVersion">1187.34</string>
+		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2182</string>
+			<string key="NS.object.0">2840</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
+			<string>NSCustomObject</string>
 			<string>NSMenu</string>
 			<string>NSMenuItem</string>
-			<string>NSCustomObject</string>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -365,11 +365,10 @@
 									<reference key="NSOnImage" ref="42437661"/>
 									<reference key="NSMixedImage" ref="1054068937"/>
 								</object>
-								<object class="NSMenuItem" id="656072199">
+								<object class="NSMenuItem" id="511983583">
 									<reference key="NSMenu" ref="799812591"/>
-									<string key="NSTitle">Load Plugin or Script...</string>
+									<string key="NSTitle">Save Text...</string>
 									<string key="NSKeyEquiv"/>
-									<int key="NSKeyEquivModMask">1048576</int>
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="42437661"/>
 									<reference key="NSMixedImage" ref="1054068937"/>
@@ -1249,9 +1248,6 @@
 			<object class="NSCustomObject" id="1009676812">
 				<string key="NSClassName">AquaChat</string>
 			</object>
-			<object class="NSCustomObject" id="474046388">
-				<string key="NSClassName">SUUpdater</string>
-			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<array class="NSMutableArray" key="connectionRecords">
@@ -1705,14 +1701,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">loadPlugin:</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="656072199"/>
-					</object>
-					<int key="connectionID">1437</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">clearWindow:</string>
 						<reference key="source" ref="1009676812"/>
 						<reference key="destination" ref="723820629"/>
@@ -2047,6 +2035,14 @@
 					</object>
 					<int key="connectionID">1608</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">saveBuffer:</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="511983583"/>
+					</object>
+					<int key="connectionID">1611</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -2302,10 +2298,10 @@
 							<reference ref="239048632"/>
 							<reference ref="640851067"/>
 							<reference ref="388349331"/>
-							<reference ref="656072199"/>
-							<reference ref="824281397"/>
 							<reference ref="588251919"/>
 							<reference ref="802524968"/>
+							<reference ref="511983583"/>
+							<reference ref="824281397"/>
 						</array>
 						<reference key="parent" ref="424379219"/>
 					</object>
@@ -2342,11 +2338,6 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">1158</int>
 						<reference key="object" ref="388349331"/>
-						<reference key="parent" ref="799812591"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">1159</int>
-						<reference key="object" ref="656072199"/>
 						<reference key="parent" ref="799812591"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -2555,12 +2546,6 @@
 						<string key="objectName">AquaChat</string>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">1408</int>
-						<reference key="object" ref="474046388"/>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">SparkleUpdater</string>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">1469</int>
 						<reference key="object" ref="380740093"/>
 						<reference key="parent" ref="426041567"/>
@@ -2574,11 +2559,6 @@
 						<int key="objectID">1565</int>
 						<reference key="object" ref="635356415"/>
 						<reference key="parent" ref="596487960"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">1566</int>
-						<reference key="object" ref="824281397"/>
-						<reference key="parent" ref="799812591"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1291</int>
@@ -2972,6 +2952,16 @@
 						<reference key="object" ref="869499051"/>
 						<reference key="parent" ref="576339767"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1610</int>
+						<reference key="object" ref="824281397"/>
+						<reference key="parent" ref="799812591"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1609</int>
+						<reference key="object" ref="511983583"/>
+						<reference key="parent" ref="799812591"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -2989,7 +2979,6 @@
 				<string key="1086.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1106.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1158.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="1159.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1161.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1162.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1167.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3025,7 +3014,6 @@
 				<string key="1402.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1403.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1404.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="1408.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="143.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="144.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="145.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3069,7 +3057,6 @@
 				<string key="1531.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1532.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1565.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="1566.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1576.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1577.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1578.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3083,6 +3070,8 @@
 				<string key="1600.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1602.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1603.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="1609.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="1610.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="163.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="169.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="255.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3122,7 +3111,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1608</int>
+			<int key="maxID">1611</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3136,12 +3125,13 @@
 						<string key="findPrevious:">id</string>
 						<string key="insertMIRCFormat:">id</string>
 						<string key="jumpToSelection:">id</string>
-						<string key="loadPlugin:">id</string>
 						<string key="openDownload:">id</string>
 						<string key="openHomepage:">id</string>
+						<string key="openIRCChannel:">id</string>
 						<string key="openIssues:">id</string>
 						<string key="openNewChannel:">id</string>
 						<string key="openNewServer:">id</string>
+						<string key="saveBuffer:">id</string>
 						<string key="selectNextTab:">id</string>
 						<string key="selectPreviousTab:">id</string>
 						<string key="showAsciiWindow:">id</string>
@@ -3202,16 +3192,16 @@
 							<string key="name">jumpToSelection:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="loadPlugin:">
-							<string key="name">loadPlugin:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 						<object class="IBActionInfo" key="openDownload:">
 							<string key="name">openDownload:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="openHomepage:">
 							<string key="name">openHomepage:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="openIRCChannel:">
+							<string key="name">openIRCChannel:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="openIssues:">
@@ -3224,6 +3214,10 @@
 						</object>
 						<object class="IBActionInfo" key="openNewServer:">
 							<string key="name">openNewServer:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="saveBuffer:">
+							<string key="name">saveBuffer:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="selectNextTab:">
@@ -3436,6 +3430,10 @@
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
+		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
+			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
+			<real value="1070" key="NS.object.0"/>
+		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.InterfaceBuilder3</string>
 			<real value="4000" key="NS.object.0"/>
