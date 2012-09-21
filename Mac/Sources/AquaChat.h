@@ -136,7 +136,7 @@
 - (IBAction) openNewChannel:(id)sender;
 - (IBAction) toggleTabAttachment:(id)sender;
 - (IBAction) closeTab:(id)sender;
-- (IBAction) loadPlugin:(id)sender;
+- (IBAction) saveBuffer:(id)sender;
 // Edit menu
 - (IBAction) clearWindow:(id)sender;
 - (IBAction) showSearchPanel:(id)sender;

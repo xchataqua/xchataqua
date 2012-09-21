@@ -97,9 +97,12 @@ static int do_add_url (const void *key, void *cbd)
 
 - (void) save:(id)sender
 {
-    NSString *filename = [SGFileSelection saveWithWindow:[sender window]].path;
-    if (filename != nil)
-        url_save([filename UTF8String], "w", true);
+    NSSavePanel *panel = [NSSavePanel savePanel];
+    [panel beginSheetModalForWindow:[sender window] completionHandler:^(NSInteger result) {
+        if (result == NSOKButton) {
+            url_save((char *)panel.URL.path, "w", true);
+        }
+    }];
 }
 
 - (void)removeAllURLs:(id)sender

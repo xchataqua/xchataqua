@@ -439,10 +439,12 @@ extern struct XATextEventItem XATextEvents[];
     [fontManager orderFrontFontPanel:self];
 }
 
-- (void) applyBackgroundImage:(id)sender
-{
+- (void) applyBackgroundImage:(id)sender {
     [self makeFirstResponder:self];
-    [backgroundImageTextField setStringValue:[SGFileSelection selectWithWindow:self].path];
+    NSOpenPanel *panel = [NSOpenPanel commonOpenPanel];
+    [panel beginSheetModalForWindow:self completionHandler:^(NSInteger result) {
+        [backgroundImageTextField setStringValue:panel.URL.path];
+    }];
 }
 
 - (void) removeBackgroundImage:(id)sender
@@ -462,13 +464,15 @@ extern struct XATextEventItem XATextEvents[];
     NSOpenPanel *panel = [NSOpenPanel commonOpenPanel];
     panel.delegate = self;
     panel.directoryURL = [[[NSBundle mainBundle] resourceURL] URLByAppendingPathComponent:@"theme"];
-    NSInteger status = [panel runModalForWindow:self];
-    if (status == NSOKButton) {
-        ColorPalette *palette = [[ColorPalette alloc] init];
-        [palette loadFromURL:panel.URL];
-        [self populateColorsFromPalette:palette];
-        [palette release];
-    }
+    
+    [panel beginSheetModalForWindow:self completionHandler:^(NSInteger result){
+        if (result == NSOKButton) {
+            ColorPalette *palette = [[ColorPalette alloc] init];
+            [palette loadFromURL:panel.URL];
+            [self populateColorsFromPalette:palette];
+            [palette release];
+        }
+    }];
 }
 
 #pragma mark NSOpenPanel delegate

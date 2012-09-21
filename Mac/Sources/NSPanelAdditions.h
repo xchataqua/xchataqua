@@ -8,12 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface NSSavePanel (XChatAqua)
-
-- (NSInteger)runModalForWindow:(NSWindow *)window;
-
-@end
-
 @interface NSOpenPanel (XChatAqua)
 
 - (id)initCommonPanel;

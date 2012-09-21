@@ -35,6 +35,8 @@ extern GSList *plugin_list;
 
 #import "PluginManager.h"
 
+#import "NSPanelAdditions.h"
+
 #pragma mark -
 
 @interface PluginWindow ()
@@ -79,12 +81,14 @@ extern GSList *plugin_list;
 #pragma mark IBAction
 
 - (void)addUserPlugin:(id)sender {
-    NSString *f = [SGFileSelection selectWithWindow:nil inDirectory:@"Plugins"].path;
-    if (f) {
-        UserPluginManager *manager = [UserPluginManager sharedPluginManager];
-        [manager addItemWithFilename:f];
-        [manager save];
-    }
+    NSOpenPanel *panel = [NSOpenPanel commonOpenPanel];
+    [panel beginWithCompletionHandler:^(NSInteger result) {
+        if (result == NSOKButton) {
+            UserPluginManager *manager = [UserPluginManager sharedPluginManager];
+            [manager addItemWithFilename:panel.URL.path];
+            [manager save];
+        }
+    }];
 }
 
 - (void)removeUserPlugin:(id)sender {
@@ -99,7 +103,11 @@ extern GSList *plugin_list;
 }
 
 - (void) loadPlugin:(id)sender {
-    [[AquaChat sharedAquaChat] loadPlugin:sender];
+    NSOpenPanel *panel = [NSOpenPanel commonOpenPanel];
+    [panel beginSheetModalForWindow:self completionHandler:^(NSInteger result) {
+        NSString *cmd = [NSString stringWithFormat:@"LOAD \"%@\"", panel.URL.path];
+        handle_command (current_sess, (char *) [cmd UTF8String], FALSE);
+    }];
 }
 
 - (void) unloadPlugin:(id)sender {
