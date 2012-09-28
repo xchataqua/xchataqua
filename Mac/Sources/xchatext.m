@@ -9,6 +9,7 @@
 #import "SystemVersion.h"
 
 #import "PluginManager.h"
+#import "XAFileUtil.h"
 
 #include "text.h"
 #include "plugin.h"
@@ -16,7 +17,7 @@
 char *get_xdir_fs(void) {
     static NSString *applicationSupportDirectory = nil;
     if (applicationSupportDirectory == nil) {
-        applicationSupportDirectory = [[SGFileUtility findApplicationSupportFor:@PRODUCT_NAME] retain];
+        applicationSupportDirectory = [[[XAFileUtil findSupportFolderFor:@PRODUCT_NAME] path] retain];
     }
     return (char *)[applicationSupportDirectory UTF8String];
 }
