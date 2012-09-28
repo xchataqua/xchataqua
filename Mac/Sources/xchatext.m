@@ -35,6 +35,7 @@ char *get_downloaddir_fs(void) {
         free(path);
         return NULL;
     }
+    
     return (char *)path;
 }
 
@@ -56,11 +57,10 @@ char *get_plugin_bundle_path(char *filename) {
 
 void aqua_plugin_auto_load_item(struct session *ps, const char *filename) {
     char *pMsg = plugin_load (ps, (char *)filename, NULL);
-	if (pMsg)
-	{
-		PrintTextf (ps, "AutoLoad failed for: %s\n", filename);
-		PrintText (ps, pMsg);
-	}
+    if (pMsg) {
+      PrintTextf (ps, "AutoLoad failed for: %s\n", filename);
+      PrintText (ps, pMsg);
+    }
 }
 
 void aqua_plugin_auto_load(struct session *ps) {

@@ -28,50 +28,6 @@ static NSString *SGFileSelectionFixPath (NSString *path)
 
 @implementation SGFileSelection
 
-+ (NSURL *) selectWithWindow:(NSWindow *) win
-{
-    return [self selectWithWindow:win inDirectory:nil];
-}
-
-+ (NSURL *) selectWithWindow:(NSWindow *) win inDirectory:(NSString *) dir
-{
-    NSOpenPanel *panel = [NSOpenPanel commonOpenPanel];
-
-    if (dir) {
-        NSString *fixedDirectory = SGFileSelectionFixPath(dir);
-        [panel setDirectoryURL:[NSURL fileURLWithPath:fixedDirectory isDirectory:YES]];
-    }
-    
-    NSInteger sts;
-    if (win) {
-        sts = [panel runModalForWindow:win];
-    } else {
-        sts = [panel runModal];
-    }
-
-    if (sts == NSOKButton)
-    {
-        NSURL *URL = [[panel URLs] objectAtIndex:0];
-        return URL;   
-    }
-
-    return nil;
-}
-
-+ (NSURL *) saveWithWindow:(NSWindow *) win
-{
-    NSSavePanel *p = [NSSavePanel savePanel];
-    
-    [p setPrompt:NSLocalizedStringFromTable(@"Select", @"xchataqua", @"")];
-    
-    NSInteger sts = [p runModalForWindow:win];
-
-    if (sts) {
-        return p.URL;
-    }    
-    return nil;
-}
-
 + (void) getFile:(NSString *)title initial:(NSString *)initial callback:(callback_t)callback userdata:(void *)userdata flags:(int)flags
 {
     id panel;
