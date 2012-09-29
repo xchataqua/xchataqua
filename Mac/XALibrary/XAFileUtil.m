@@ -130,6 +130,55 @@
     return XCSupportFolder;
 }
 
+//
+// Find sound files in the various system standard locations
+//
+// This searches for the Library folder in the various "domains" (User, System,
+// etc.) that have a "Sounds" sub-folder.
+//
+// By default this will search the following folders (in this order):
+//   ~/Library/Sounds
+//   /Library/Sounds
+//   /Network/Library/Sounds
+//   /System/Library/Sounds
+//
+// Note that this method previously looked for sounds also inside the
+// application bundle, but since we don't currently ship any sound files with
+// XCA, and users should not generally mess around inside the app bundle, this
+// is no longer supported. If we start shipping sounds in a future version this
+// can be handled simply by adding the relevant resource directory to the
+// libraryFolders array (just before the for loop).
+//
++ (NSArray *) findSystemSounds {
+    // Array to collect the sounds we find
+    NSMutableArray *sounds = [[NSMutableArray alloc] init];
+
+    // Get the default NSFileManager and ask it for all Library folders in all domains
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSArray *libraryFolders = [manager URLsForDirectory:NSLibraryDirectory inDomains:NSAllDomainsMask];
+
+    // Loop over the Library folders and look for sounds inside a "Sounds" subfolder
+	for (NSURL *library in libraryFolders) {
+		NSURL *soundsFolder = [library URLByAppendingPathComponent:@"Sounds"];
+        if (![XAFileUtil exists:soundsFolder] && ![XAFileUtil isDirectory:soundsFolder]) {
+            continue;
+        }
+        NSArray *files = [manager contentsOfDirectoryAtURL:soundsFolder
+                                includingPropertiesForKeys:nil
+                                                   options:NSDirectoryEnumerationSkipsHiddenFiles
+                                                     error:nil];
+
+        // For every file found, strip the filename extension and add it
+		for (NSURL *file in files) {
+            NSString *soundName = [[file lastPathComponent] stringByDeletingPathExtension];
+			[sounds addObject:soundName];
+		}
+	}
+
+    // Return an immutable copy of the array of sound names
+//    NSArray *returnSounds = [NSArray arrayWithArray:sounds];
+    return sounds;
+}
 
 #pragma mark -
 #pragma mark Create Application Support folders
