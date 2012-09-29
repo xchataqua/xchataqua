@@ -6,6 +6,21 @@
 //  Copyright 2005 __MyCompanyName__. All rights reserved.
 //
 
+//
+// TODO: Phase out this class
+//
+// This class is only used once in XCA: in AquaPlugins.m:fix_url, and it's
+// only used to extract the URL scheme and other minor stuff. We could
+// strictly speaking just yank it out right away and live with the missing
+// checks, but it would be better to replace it either with NSRegularExpression
+// or the full Apple Data Detectors (which inludes a link extractor). However,
+// these classes are only available starting with Mac OS X 10.7.
+//
+// For now we keep the class, but we should find some way to get rid of it, at
+// the latest when we up our deployment target to 10.7.
+//
+
+
 #import "SGRegex.h"
 
 @implementation SGRegex
