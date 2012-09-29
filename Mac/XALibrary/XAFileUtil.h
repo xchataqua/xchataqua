@@ -14,6 +14,7 @@
 + (BOOL) isSymLink:(NSURL *)url;
 + (NSURL *) findSupportFolderFor:(NSString *)app;
 + (NSURL *) findSupportFolderFor:(NSString *)app named:(NSString *)folder;
++ (NSArray *) findSystemSounds;
 + (BOOL) createSupportFolderFor:(NSString *)app error:(NSError **)err;
 + (BOOL) createSupportFolderFor:(NSString *)app named:(NSString *)folder error:(NSError **)err;
 @end

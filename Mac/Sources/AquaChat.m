@@ -507,31 +507,47 @@ AquaChat *AquaChatSharedObject;
     [(FriendWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:FriendWindowKey] update];
 }
 
-- (void) playWaveNamed:(const char *)filename
-{
-    NSString *key = [NSString stringWithUTF8String:filename];
-    NSSound *sound = [soundCache objectForKey:key];
-    
-    if (sound == nil)
-    {
-        NSString *path = key;
-        
-        if ([key characterAtIndex:0] != '/')
-        {
-            NSString *bundle = [[NSBundle mainBundle] bundlePath];
-            path = [NSString stringWithFormat:@"%@/../Sounds/%@", bundle, key];
-        }
-        
-        sound = [[NSSound alloc] initWithContentsOfFile:path byReference:NO];
-        if (sound == nil)
+//
+// Plays a named sound file using NSSound
+//
+// This method is called by fe-aqua.m:fe_play_wave(), which is in turn invoked
+// by xchat's text.c:sound_play(). Its argument is the name of a sound file
+// that xchat gets from the settings, who are in turn populated by XCA's
+// PreferencesWindow.m:loadSounds:.
+//
+- (void) playWaveNamed:(const char *)filename {
+    // Older versions of the code used fully qualified paths to identify the
+    // sound file to play; so strip leading path and filename extension from the
+    // passed in filename, if any, to account for data from old prefs files.
+    NSString *soundName = [[[NSString stringWithUTF8String:filename] lastPathComponent] stringByDeletingPathExtension];
+
+    // If there's a cached NSSound object for this sound, use it.
+    NSSound *sound = [soundCache objectForKey:soundName];
+
+    // If there wasn't a hit in the cache
+    if (sound == nil) {
+        // Ask NSSound to search for a sound file by name and init with that
+        NSSound *sound = [NSSound soundNamed:soundName];
+
+        // No sound with that name was found, so just beep and bail out
+        if (sound == nil) {
+            NSBeep();
+            NSLog(@"Configured sound named \"%@\" was not found.", soundName);
             return;
-        [soundCache setObject:sound forKey:key];
-        [sound setName:path];
-        [sound release];
+        }
+
+        [soundCache setObject:sound forKey:soundName]; // Cache it for next time
+        [sound release]; // soundCache retains it, so release here to avoid over-retaining
     }
-    
-    if (![sound isPlaying])
+
+    // Play the sound unless it is already playing (from the previous event)
+    //
+    // Note that NSSound stops playing a sound when the object is deallocated,
+    // so this code will break if the caching above is removed: it relies on the
+    // NSMutableDictionary that backs soundCache retaining the NSSound object.
+    if (![sound isPlaying]) {
         [sound play];
+    }
 }
 
 - (void) openNetworkWindowForSession:(struct session *)sess
