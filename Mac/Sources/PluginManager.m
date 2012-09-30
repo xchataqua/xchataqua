@@ -14,7 +14,7 @@ typedef struct session xchat_context;
 #include "plugin.h"
 #include "util.h"
 
-
+#import "XAFileUtil.h"
 #import "PluginManager.h"
 
 extern GSList *plugin_list;
@@ -261,7 +261,7 @@ EmbeddedPluginManager *EmbeddedPluginManagerSharedObject;
 + (void)initialize {
     if (self != [EmbeddedPluginManager class]) return;
     
-    EmbeddedPluginConfigurationFilename = [[[SGFileUtility findApplicationSupportFor:@PRODUCT_NAME] stringByAppendingPathComponent:@"embedpluginsauto.plist"] retain];
+    EmbeddedPluginConfigurationFilename = [[[[XAFileUtil findSupportFolderFor:@PRODUCT_NAME] path] stringByAppendingPathComponent:@"embedpluginsauto.plist"] retain];
     EmbeddedPluginManagerSharedObject = [[self alloc] init];
 }
 
@@ -313,7 +313,7 @@ void UserPluginManagerLoadCallback(char *filename) {
 + (void)initialize {
     if (self != [UserPluginManager class]) return;
 
-    UserPluginConfigurationFilename = [[[SGFileUtility findApplicationSupportFor:@PRODUCT_NAME] stringByAppendingPathComponent:@"pluginsauto.plist"] copy];
+    UserPluginConfigurationFilename = [[[[XAFileUtil findSupportFolderFor:@PRODUCT_NAME] path] stringByAppendingPathComponent:@"pluginsauto.plist"] copy];
     UserPluginManagerSharedObject = [[self alloc] init];
 }
 
@@ -327,7 +327,7 @@ void UserPluginManagerLoadCallback(char *filename) {
 
 - (void)loadItems {
     [self->_items removeAllObjects];
-    NSString *path = [[SGFileUtility findApplicationSupportFor:@PRODUCT_NAME] stringByAppendingPathComponent:@"plugins"];
+    NSString *path = [[[XAFileUtil findSupportFolderFor:@PRODUCT_NAME] path] stringByAppendingPathComponent:@"plugins"];
     const char *cpath = path.UTF8String;
     UserPluginManagerLoadCallbackReceiver = self;
     for_files ((char *)cpath, "*.bundle", UserPluginManagerLoadCallback);
@@ -336,7 +336,7 @@ void UserPluginManagerLoadCallback(char *filename) {
 
 - (void)addItemWithFilename:(NSString *)filename {
     NSString *name = [filename lastPathComponent];
-    NSString *pluginDirectory = [[SGFileUtility findApplicationSupportFor:@PRODUCT_NAME] stringByAppendingPathComponent:@"plugins"];
+    NSString *pluginDirectory = [[[XAFileUtil findSupportFolderFor:@PRODUCT_NAME] path] stringByAppendingPathComponent:@"plugins"];
     NSString *pluginFilename = [pluginDirectory stringByAppendingPathComponent:name];
     NSString *cmd = [NSString stringWithFormat:@"rm -rf '%@'", pluginFilename];
     system(cmd.UTF8String); // if directory...

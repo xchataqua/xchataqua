@@ -203,8 +203,7 @@ static const char * strip_crap (const char *s)
     return self;
 }
 
-- (id) initWithCoder:(NSCoder *)aDecoder
-{
+- (id) initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     [self ChannelWindowInit];
     return self;

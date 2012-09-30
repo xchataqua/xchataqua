@@ -22,7 +22,7 @@
 #import "TabOrWindowView.h"
 
 #ifdef USE_DCC64
-#   define DCC_SIZE_FMT "qi"
+#   define DCC_SIZE_FMT "lli"
 #else
 #   define DCC_SIZE_FMT "u"
 #endif

@@ -25,6 +25,7 @@
 #import "ColorPalette.h"
 #import "ChatViewController.h"
 #import "NSPanelAdditions.h"
+#import "XAFileUtil.h"
 
 #include "text.h"
 #undef TYPE_BOOL
@@ -661,40 +662,38 @@ extern struct XATextEventItem XATextEvents[];
     }
 }
 
-- (void) loadSounds
-{    
+//
+// Find system sound files and stash the list in an ivar (sounds)
+//
+- (void) loadSounds {
+    // Clean out any (possibly stale) sounds
     [sounds removeAllObjects];
+
+    // Add a "<none>" selection (default) to the top of the menu
     [sounds addObject:NSLocalizedStringFromTable(@"<none>", @"xchat", @"")];
-    
-    NSString *directoryName = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/../Sounds"]; // weird path
-    NSFileManager *manager = [NSFileManager defaultManager];
-    NSArray *files = [manager contentsOfDirectoryAtPath:directoryName error:NULL];
-    
-    for ( NSString *sound in files ) {
-        NSString *fullPath = [directoryName stringByAppendingFormat:@"/%@", sound];
-        BOOL isDir;
-        if ([manager fileExistsAtPath:fullPath isDirectory:&isDir] && !isDir)
-            [sounds addObject:sound];
-    }
-    
-    for ( NSString *sound in [SGSoundUtility systemSounds] ) {
-        [sounds addObject:sound];
-    }
+
+    // Ask XAFileUtil to find all named system sounds...
+    NSArray *systemSounds = [XAFileUtil findSystemSounds];
+
+    // ...and add them to the popup
+    [sounds addObjectsFromArray:systemSounds];
 }
 
-- (void) makeSoundMenu
-{
+//
+// Populate the sounds popup menu for the "Event/Sounds" preferences
+//
+- (void) makeSoundMenu {
+    // Allocate a NSPopUpButtonCell and configure it
     NSPopUpButtonCell *cell = [[NSPopUpButtonCell alloc] initTextCell:@"" pullsDown:NO];
     [cell setBordered:NO];
-    for (NSString *sound in sounds)
-    {
-        NSRange range = [sound rangeOfString:@"/" options:NSBackwardsSearch];
-        if (range.location != NSNotFound)
-            sound = [sound substringFromIndex:range.location + 1];
-        [cell addItemWithTitle:sound];
-    }
+
+    // Add all the previously found system sounds as menu items
+    [cell addItemsWithTitles:sounds];
+
+    // Add it to the soundsTableView
     [[[soundsTableView tableColumns] objectAtIndex:1] setDataCell:cell];
-    [cell release];
+
+    [cell release]; // Retained by the tableview, so release it here
 }
 
 - (void) getSoundEvents

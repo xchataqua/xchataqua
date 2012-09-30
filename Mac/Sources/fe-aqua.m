@@ -16,8 +16,6 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
 
-#import <Carbon/Carbon.h>
-
 #undef TYPE_BOOL
 #include "cfgfiles.h"
 #include "util.h"
@@ -32,6 +30,7 @@
 #import "BanWindow.h"
 #import "RawLogWindow.h"
 #import "MenuMaker.h"
+#import "XAFileUtil.h"
 
 #import "UtilityWindow.h"
 
@@ -48,13 +47,19 @@ static void init_plugins_once()
     static bool done;
     if (done)
         return;
-    
-    NSString *supportDirectory = [SGFileUtility findApplicationSupportFor:@PRODUCT_NAME];
-    NSString *cmd = [NSString stringWithFormat:@"mkdir '%@'", [supportDirectory stringByAppendingPathComponent:@"plugins"]];
-    system(cmd.UTF8String);
-        
-    plugin_add (current_sess, NULL, NULL, (void *) XAInitInternalPlugin, NULL, NULL, FALSE);
-    
+
+    NSError *err;
+    BOOL result = [XAFileUtil createSupportFolderFor:@PRODUCT_NAME named:@"plugins" error:&err];
+
+    // If create… returns anything except YES, the directory does not exist
+    // and could not be created; and the reason is in &err.
+    if (result == YES) {
+        plugin_add(current_sess, NULL, NULL, (void *) XAInitInternalPlugin, NULL, NULL, FALSE);
+    } else {
+        NSLog(@"Plugin directory does not exist and could not be created: %@", [err localizedDescription]);
+        [NSApp presentError:err]; // FIXME: Should we terminate here?
+    }
+
     done = true;
 }
 
@@ -152,61 +157,99 @@ fe_input_add (int sok, int flags, void *func, void *data)
 
 static void setupAppSupport ()
 {
-    NSString *asdir = [SGFileUtility findApplicationSupportFor:@PRODUCT_NAME];
-    NSString *xcdir = [NSString stringWithUTF8String:get_xdir_utf8()];
-    
-    if ([asdir isEqualToString:xcdir]) {
-        NSFileManager *manager = [NSFileManager defaultManager];
-        BOOL isDirectory;
-        BOOL exist = [manager fileExistsAtPath:asdir isDirectory:&isDirectory];
-        if (!exist) {
-            [manager createDirectoryAtPath:asdir withIntermediateDirectories:YES attributes:nil error:NULL];
+    // FIXME: asdir and xcdir will always be identical; so this is bugged.
+    // It's literally the same code implementing both.
+    NSURL *asdir = [XAFileUtil findSupportFolderFor:@PRODUCT_NAME];
+    NSURL *xcdir = [NSURL fileURLWithPath:[NSString stringWithUTF8String:get_xdir_utf8()] isDirectory:YES];
+
+    if ([asdir isEqual:xcdir]) {
+        NSError *err;
+        BOOL result = [XAFileUtil createSupportFolderFor:@PRODUCT_NAME error:&err];
+
+        // If create… returns anything except YES, the directory does not exist
+        // and could not be created; and the reason is in &err.
+        if (!result) {
+            NSLog(@"Support directory does not exist and could not be created: %@", [err localizedDescription]);
+            [NSApp presentError:err]; // FIXME: Should we terminate here?
         }
     } else {
-        bool xclink_exists = [SGFileUtility isSymLink:xcdir];
-        bool xcdir_exists = [SGFileUtility isDirectory:xcdir];
-        bool asdir_exists = [SGFileUtility isDirectory:asdir];
-        
+        bool xclink_exists = [XAFileUtil isSymLink:xcdir];
+        bool xcdir_exists  = [XAFileUtil isDirectory:xcdir];
+        bool asdir_exists  = [XAFileUtil isDirectory:asdir];
+
         // State 1
-        if (xcdir_exists && asdir_exists)
-        {
-            NSLog(@"~/.xchat2 and ApplicationSupport/XChat Azure!?");
+        if (xcdir_exists && asdir_exists) {
+            NSLog(@"Both ~/.xchat2 and Application Support/XChat Azure/ exist!?");
             return;
         }
         
         // State 2
-        if (xcdir_exists && !asdir_exists)
-        {
-            rename (get_xdir_utf8 (), [asdir fileSystemRepresentation]);
-            #ifdef CONFIG_Aqua
-            symlink ([asdir fileSystemRepresentation], get_xdir_utf8 ());
-            #endif
+        if (xcdir_exists && !asdir_exists) {
+            // Move ~/.xchat2 to our Application Support folder
+            // FIXME: We really should check for errors here
+            [[NSFileManager defaultManager] moveItemAtURL:xcdir toURL:asdir error:nil];
+
+#ifdef CONFIG_Aqua
+            NSError *err;
+            BOOL result = [[NSFileManager defaultManager] createSymbolicLinkAtPath:xcdir
+                                                                withDestinationURL:asdir
+                                                                             error:&err];
+            if (!result) {
+                NSLog(@"createSymbolicLinkAtURL:%@ failed: %@", xcdir, err);
+            }
+#endif
             return;
         }
         
         // State 3
-        if (!xclink_exists && !xcdir_exists && asdir_exists)
-        {
-            #ifdef CONFIG_Aqua
-            symlink ([asdir fileSystemRepresentation], get_xdir_utf8 ());
-            #endif
+        if (!xclink_exists && !xcdir_exists && asdir_exists) {
+#ifdef CONFIG_Aqua
+            NSError *err;
+            BOOL result = [[NSFileManager defaultManager] createSymbolicLinkAtPath:xcdir
+                                                                withDestinationURL:asdir
+                                                                             error:&err];
+            if (!result) {
+                NSLog(@"createSymbolicLinkAtURL:%@ failed: %@", xcdir, err);
+            }
+#endif
             return;
         }
         
         // State 4
-        if (!xclink_exists && !xcdir_exists && !asdir_exists)
-        {
-            mkdir ([asdir fileSystemRepresentation], 0755);
-            #ifdef CONFIG_Aqua
-            symlink ([asdir fileSystemRepresentation], get_xdir_utf8 ());
-            #endif
+        if (!xclink_exists && !xcdir_exists && !asdir_exists) {
+            NSError *asdir_err;
+            BOOL asdir_result = [XAFileUtil createSupportFolderFor:@PRODUCT_NAME error:&asdir_err];
+
+            // If create… returns anything except YES, the directory does not exist
+            // and could not be created; and the reason is in &err.
+            if (!asdir_result) {
+                NSLog(@"Support directory does not exist and could not be created: %@", [asdir_err localizedDescription]);
+                [NSApp presentError:asdir_err]; // FIXME: Should we terminate here?
+            }
+
+#ifdef CONFIG_Aqua
+            NSError *symlink_err;
+            BOOL symlink_result = [[NSFileManager defaultManager] createSymbolicLinkAtURL:xcdir
+                                                               withDestinationURL:asdir
+                                                                            error:&symlink_err];
+            if (!symlink_result) {
+                NSLog(@"createSymbolicLinkAtURL:%@ failed: %@", xcdir, symlink_err);
+            }
+#endif
             return;
         }
         
         // State 6
-        if (xclink_exists && !asdir_exists)
-        {
-            mkdir ([asdir fileSystemRepresentation], 0755);
+        if (xclink_exists && !asdir_exists) {
+            NSError *err;
+            BOOL result = [XAFileUtil createSupportFolderFor:@PRODUCT_NAME error:&err];
+
+            // If create… returns anything except YES, the directory does not exist
+            // and could not be created; and the reason is in &err.
+            if (!result) {
+                NSLog(@"Support directory does not exist and could not be created: %@", [err localizedDescription]);
+                [NSApp presentError:err]; // FIXME: Should we terminate here?
+            }
         }
     }
 }
@@ -309,22 +352,22 @@ fe_init (void)
     NSString *mainNibFile = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"NSMainNibFile"];
     [NSBundle loadNibNamed:mainNibFile owner:NSApp];
     
-    // This is not just for debug.
-#if !CLX_BUILD
-    if (GetCurrentKeyModifiers () & (optionKey | rightOptionKey))
-#endif
+    // Do not connect to network if app is launched while holding the Option key
+    if ([NSEvent modifierFlags] & NSAlternateKeyMask) {
         arg_dont_autoconnect = true;
-    
+    }
+
     NSString *bundle = [[NSBundle mainBundle] bundlePath];
-    chdir ([[NSString stringWithFormat:@"%@/..", bundle] fileSystemRepresentation]);
+    NSString *cwd = [NSString stringWithFormat:@"%@/..", bundle];
+    [[NSFileManager defaultManager] changeCurrentDirectoryPath:cwd];
     
 #if CONFIG_Azure
-    NSString *configDirectory = [SGFileUtility findApplicationSupportFor:@PRODUCT_NAME];
-    if ([SGFileUtility isSymLink:configDirectory]) {
+    NSURL *configDirectory = [XAFileUtil findSupportFolderFor:@PRODUCT_NAME];
+    if ([XAFileUtil isSymLink:configDirectory]) {
         if ([SGAlert confirmWithString:NSLocalizedStringFromTable(
-            @"This version of " @PRODUCT_NAME @" is sandboxed. "
-            @PRODUCT_NAME" tried to migrate you configuration but it seems to be failed. "
-            @"Do you want to download recovery script for this problem?", @"xchataqua", @"")])
+          @"This version of " @PRODUCT_NAME @" is sandboxed. "
+          @PRODUCT_NAME" tried to migrate your configuration, but it seems to have failed. "
+          @"Do you want to download a recovery script for this problem?", @"xchataqua", @"")])
         {
             [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/xchataqua/xchataqua/blob/master/README.md#i-lost-all-configurations-after-update-to-111-or-later"]];
             [NSApp terminate:nil];

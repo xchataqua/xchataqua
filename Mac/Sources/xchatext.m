@@ -9,6 +9,7 @@
 #import "SystemVersion.h"
 
 #import "PluginManager.h"
+#import "XAFileUtil.h"
 
 #include "text.h"
 #include "plugin.h"
@@ -16,7 +17,7 @@
 char *get_xdir_fs(void) {
     static NSString *applicationSupportDirectory = nil;
     if (applicationSupportDirectory == nil) {
-        applicationSupportDirectory = [[SGFileUtility findApplicationSupportFor:@PRODUCT_NAME] retain];
+        applicationSupportDirectory = [[[XAFileUtil findSupportFolderFor:@PRODUCT_NAME] path] retain];
     }
     return (char *)[applicationSupportDirectory UTF8String];
 }
@@ -56,11 +57,10 @@ char *get_plugin_bundle_path(char *filename) {
 
 void aqua_plugin_auto_load_item(struct session *ps, const char *filename) {
     char *pMsg = plugin_load (ps, (char *)filename, NULL);
-	if (pMsg)
-	{
-		PrintTextf (ps, "AutoLoad failed for: %s\n", filename);
-		PrintText (ps, pMsg);
-	}
+    if (pMsg) {
+      PrintTextf (ps, "AutoLoad failed for: %s\n", filename);
+      PrintText (ps, pMsg);
+    }
 }
 
 void aqua_plugin_auto_load(struct session *ps) {

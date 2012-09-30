@@ -44,7 +44,7 @@
 }
 
 - (void) dealloc {
-    // self.object = nil; // memory leak expected but no crash
+    object = nil;
     [super dealloc];
 }
 
@@ -117,7 +117,7 @@
     [panel setMessageText:alertText];
     [panel setAlertStyle:NSInformationalAlertStyle];
     
-    SGAlertConfirmDelegate *confirmDelegate = [[SGAlertConfirmDelegate alloc] init];
+    SGAlertConfirmDelegate *confirmDelegate = [[[SGAlertConfirmDelegate alloc] init] autorelease];
     [confirmDelegate setObject:obj];
     confirmDelegate->yesSel = yesSel;
     confirmDelegate->noSel = noSel;
