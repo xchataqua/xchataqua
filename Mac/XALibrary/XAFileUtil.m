@@ -169,10 +169,7 @@
                                                      error:nil];
 
         // For every file found, strip the filename extension and add it
-		for (NSURL *file in files) {
-            NSString *soundName = [[file lastPathComponent] stringByDeletingPathExtension];
-			[sounds addObject:soundName];
-		}
+        [sounds addObjectsFromArray:files];
 	}
 
     // Return an immutable copy of the array of sound names
