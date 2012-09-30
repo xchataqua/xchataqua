@@ -67,7 +67,6 @@
 		0F8EA6550CFB2F5C001AE9AE /* PluginWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6470CFB2F5C001AE9AE /* PluginWindow.m */; };
 		0F8EA6560CFB2F5C001AE9AE /* RawLogWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6490CFB2F5C001AE9AE /* RawLogWindow.m */; };
 		0F8EA68D0CFB300B001AE9AE /* SGFileDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6650CFB300B001AE9AE /* SGFileDescriptor.m */; };
-		0F8EA68F0CFB300B001AE9AE /* SGFileUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6690CFB300B001AE9AE /* SGFileUtility.m */; };
 		0F8EA6940CFB300B001AE9AE /* SGRegex.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6730CFB300B001AE9AE /* SGRegex.m */; };
 		0F8EA6970CFB300B001AE9AE /* SGSoundUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6790CFB300B001AE9AE /* SGSoundUtility.m */; };
 		0F8EA6B10CFB3398001AE9AE /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6AC0CFB3398001AE9AE /* ChatViewController.m */; };
@@ -162,7 +161,6 @@
 		380AD1F313C698E1003EEE3D /* xchat.c in Sources */ = {isa = PBXBuildFile; fileRef = 380AD1E713C698E1003EEE3D /* xchat.c */; };
 		380AD1F413C698E1003EEE3D /* xchat.h in Headers */ = {isa = PBXBuildFile; fileRef = 380AD1E813C698E1003EEE3D /* xchat.h */; };
 		380AD1F513C698E1003EEE3D /* xchatc.h in Headers */ = {isa = PBXBuildFile; fileRef = 380AD1E913C698E1003EEE3D /* xchatc.h */; };
-		380B9D1A13C6E5D70029CE25 /* SGFileUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 380B9D1913C6E5D70029CE25 /* SGFileUtility.m */; };
 		381A6D6A15F052BF00E76478 /* perl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F06C10E1FDA5E00359159 /* perl.c */; };
 		381A6D6C15F052BF00E76478 /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 38763F2513DD460E008C40DB /* libperl.dylib */; };
 		3839010413C06619004D20BC /* CLTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3839010313C06619004D20BC /* CLTabCell.m */; };
@@ -376,7 +374,6 @@
 		3876250913C7024F00850913 /* PluginWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6470CFB2F5C001AE9AE /* PluginWindow.m */; };
 		3876250A13C7024F00850913 /* RawLogWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6490CFB2F5C001AE9AE /* RawLogWindow.m */; };
 		3876250B13C7024F00850913 /* SGFileDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6650CFB300B001AE9AE /* SGFileDescriptor.m */; };
-		3876250C13C7024F00850913 /* SGFileUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6690CFB300B001AE9AE /* SGFileUtility.m */; };
 		3876250D13C7024F00850913 /* SGRegex.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6730CFB300B001AE9AE /* SGRegex.m */; };
 		3876250E13C7024F00850913 /* SGSoundUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6790CFB300B001AE9AE /* SGSoundUtility.m */; };
 		3876250F13C7024F00850913 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6AC0CFB3398001AE9AE /* ChatViewController.m */; };
@@ -419,7 +416,6 @@
 		3876253713C7024F00850913 /* SGVBoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCBE13C6A0CB00B95036 /* SGVBoxView.m */; };
 		3876253813C7024F00850913 /* SGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCC013C6A0CB00B95036 /* SGView.m */; };
 		3876253913C7024F00850913 /* SGWrapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDCC213C6A0CB00B95036 /* SGWrapView.m */; };
-		3876253A13C7024F00850913 /* SGFileUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 380B9D1913C6E5D70029CE25 /* SGFileUtility.m */; };
 		3876253D13C7024F00850913 /* libxchat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC8F4AE0DEEE51700504F31 /* libxchat.a */; };
 		3876253E13C7024F00850913 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		3876253F13C7024F00850913 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8EA70A0CFB384A001AE9AE /* Carbon.framework */; };
@@ -561,6 +557,8 @@
 		38FC937013CAF449006CB5C8 /* xchataqua.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38FC92CE13CAF449006CB5C8 /* xchataqua.strings */; };
 		38FC93CA13CAF46E006CB5C8 /* locale in Resources */ = {isa = PBXBuildFile; fileRef = 38FC93C913CAF46E006CB5C8 /* locale */; };
 		38FC93CB13CAF46E006CB5C8 /* locale in Resources */ = {isa = PBXBuildFile; fileRef = 38FC93C913CAF46E006CB5C8 /* locale */; };
+		3B4D30BA15F5314600704C98 /* XAFileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4D30B915F5314600704C98 /* XAFileUtil.m */; };
+		3B4D30BB15F5314600704C98 /* XAFileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4D30B915F5314600704C98 /* XAFileUtil.m */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		B0D937F10FFB0D34009370B5 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */; };
 		B0D937F20FFB0D34009370B5 /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937F00FFB0D34009370B5 /* libssl.dylib */; };
@@ -1006,8 +1004,6 @@
 		0F8EA6590CFB300B001AE9AE /* SG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SG.h; sourceTree = "<group>"; };
 		0F8EA6640CFB300B001AE9AE /* SGFileDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFileDescriptor.h; sourceTree = "<group>"; };
 		0F8EA6650CFB300B001AE9AE /* SGFileDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFileDescriptor.m; sourceTree = "<group>"; };
-		0F8EA6680CFB300B001AE9AE /* SGFileUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFileUtility.h; sourceTree = "<group>"; };
-		0F8EA6690CFB300B001AE9AE /* SGFileUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFileUtility.m; sourceTree = "<group>"; };
 		0F8EA6720CFB300B001AE9AE /* SGRegex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGRegex.h; sourceTree = "<group>"; };
 		0F8EA6730CFB300B001AE9AE /* SGRegex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGRegex.m; sourceTree = "<group>"; };
 		0F8EA6780CFB300B001AE9AE /* SGSoundUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGSoundUtility.h; sourceTree = "<group>"; };
@@ -1140,8 +1136,6 @@
 		380AD1E713C698E1003EEE3D /* xchat.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xchat.c; sourceTree = "<group>"; usesTabs = 1; };
 		380AD1E813C698E1003EEE3D /* xchat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xchat.h; sourceTree = "<group>"; usesTabs = 1; };
 		380AD1E913C698E1003EEE3D /* xchatc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xchatc.h; sourceTree = "<group>"; usesTabs = 1; };
-		380B9D1813C6E5D70029CE25 /* SGFileUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFileUtility.h; sourceTree = "<group>"; };
-		380B9D1913C6E5D70029CE25 /* SGFileUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFileUtility.m; sourceTree = "<group>"; };
 		380F1EF013E29C930033E3AC /* browser.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = browser.pl; sourceTree = "<group>"; };
 		380F1EF113E29C930033E3AC /* google.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = google.pl; sourceTree = "<group>"; };
 		381A6D7115F052BF00E76478 /* perl-mountainlion.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-mountainlion.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2370,6 +2364,8 @@
 		38FC936913CAF449006CB5C8 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_CN; path = zh_CN.lproj/xchat.strings; sourceTree = "<group>"; };
 		38FC936A13CAF449006CB5C8 /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_TW; path = zh_TW.lproj/xchat.strings; sourceTree = "<group>"; };
 		38FC93C913CAF46E006CB5C8 /* locale */ = {isa = PBXFileReference; lastKnownFileType = folder; name = locale; path = ../../Resources/locale; sourceTree = "<group>"; };
+		3B4D30B815F5314600704C98 /* XAFileUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XAFileUtil.h; path = Mac/XALibrary/XAFileUtil.h; sourceTree = "<group>"; };
+		3B4D30B915F5314600704C98 /* XAFileUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XAFileUtil.m; path = Mac/XALibrary/XAFileUtil.m; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* X-Chat Aqua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "X-Chat Aqua.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B07C7AB20F4395E200E11B58 /* BuildNumber.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = BuildNumber.xcconfig; sourceTree = "<group>"; };
 		B07C7AD60F4398FC00E11B58 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -2600,8 +2596,6 @@
 				2D4ACFB01230005E00DEB5FA /* SGDebug.m */,
 				0F8EA6640CFB300B001AE9AE /* SGFileDescriptor.h */,
 				0F8EA6650CFB300B001AE9AE /* SGFileDescriptor.m */,
-				0F8EA6680CFB300B001AE9AE /* SGFileUtility.h */,
-				0F8EA6690CFB300B001AE9AE /* SGFileUtility.m */,
 				0F8EA6720CFB300B001AE9AE /* SGRegex.h */,
 				0F8EA6730CFB300B001AE9AE /* SGRegex.m */,
 				0F8EA6780CFB300B001AE9AE /* SGSoundUtility.h */,
@@ -2708,6 +2702,7 @@
 				2DC6AD151187773F0048B7C7 /* Resources */,
 				0F8EA6580CFB2F71001AE9AE /* SGLibrary */,
 				388BDC9D13C69F8D00B95036 /* SGLibrary-Mac */,
+				3B4D30BC15F5315500704C98 /* XALibrary */,
 				3894C1AF1590D2C200BCD762 /* SGView */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -3201,8 +3196,6 @@
 				388BDCA313C6A0CB00B95036 /* SGArray.m */,
 				388BDCA613C6A0CB00B95036 /* SGFileSelection.h */,
 				388BDCA713C6A0CB00B95036 /* SGFileSelection.m */,
-				380B9D1813C6E5D70029CE25 /* SGFileUtility.h */,
-				380B9D1913C6E5D70029CE25 /* SGFileUtility.m */,
 				388BDCAA13C6A0CB00B95036 /* SGGuiUtility.h */,
 				388BDCAB13C6A0CB00B95036 /* SGGuiUtility.m */,
 				388BDCB313C6A0CB00B95036 /* SGRequest.h */,
@@ -3335,6 +3328,15 @@
 				38E573E8158F2226007943DA /* TimerSample.rb */,
 			);
 			path = samples;
+			sourceTree = "<group>";
+		};
+		3B4D30BC15F5315500704C98 /* XALibrary */ = {
+			isa = PBXGroup;
+			children = (
+				3B4D30B815F5314600704C98 /* XAFileUtil.h */,
+				3B4D30B915F5314600704C98 /* XAFileUtil.m */,
+			);
+			name = XALibrary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -4407,7 +4409,6 @@
 				3876250913C7024F00850913 /* PluginWindow.m in Sources */,
 				3876250A13C7024F00850913 /* RawLogWindow.m in Sources */,
 				3876250B13C7024F00850913 /* SGFileDescriptor.m in Sources */,
-				3876250C13C7024F00850913 /* SGFileUtility.m in Sources */,
 				3876250D13C7024F00850913 /* SGRegex.m in Sources */,
 				3876250E13C7024F00850913 /* SGSoundUtility.m in Sources */,
 				3876250F13C7024F00850913 /* ChatViewController.m in Sources */,
@@ -4450,13 +4451,13 @@
 				3876253713C7024F00850913 /* SGVBoxView.m in Sources */,
 				3876253813C7024F00850913 /* SGView.m in Sources */,
 				3876253913C7024F00850913 /* SGWrapView.m in Sources */,
-				3876253A13C7024F00850913 /* SGFileUtility.m in Sources */,
 				387676951589BC41007366B7 /* XATabWindow.m in Sources */,
 				387676961589BC48007366B7 /* UserListTableView.m in Sources */,
 				38E5737F158EEF38007943DA /* xchatext.m in Sources */,
 				38E573E2158F1A76007943DA /* AquaPlugins.m in Sources */,
 				3894C1B31590D93C00BCD762 /* NSPanelAdditions.m in Sources */,
 				3864594C15E509E500C4CA45 /* PluginManager.m in Sources */,
+				3B4D30BB15F5314600704C98 /* XAFileUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4496,7 +4497,6 @@
 				0F8EA6550CFB2F5C001AE9AE /* PluginWindow.m in Sources */,
 				0F8EA6560CFB2F5C001AE9AE /* RawLogWindow.m in Sources */,
 				0F8EA68D0CFB300B001AE9AE /* SGFileDescriptor.m in Sources */,
-				0F8EA68F0CFB300B001AE9AE /* SGFileUtility.m in Sources */,
 				0F8EA6940CFB300B001AE9AE /* SGRegex.m in Sources */,
 				0F8EA6970CFB300B001AE9AE /* SGSoundUtility.m in Sources */,
 				0F8EA6B10CFB3398001AE9AE /* ChatViewController.m in Sources */,
@@ -4539,13 +4539,13 @@
 				388BDCD213C6A0CB00B95036 /* SGVBoxView.m in Sources */,
 				388BDCD313C6A0CB00B95036 /* SGView.m in Sources */,
 				388BDCD413C6A0CB00B95036 /* SGWrapView.m in Sources */,
-				380B9D1A13C6E5D70029CE25 /* SGFileUtility.m in Sources */,
 				387676941589BC41007366B7 /* XATabWindow.m in Sources */,
 				387676971589BC49007366B7 /* UserListTableView.m in Sources */,
 				38E57380158EEF39007943DA /* xchatext.m in Sources */,
 				38E573E1158F1A76007943DA /* AquaPlugins.m in Sources */,
 				3894C1B41590D93D00BCD762 /* NSPanelAdditions.m in Sources */,
 				3864594B15E509E500C4CA45 /* PluginManager.m in Sources */,
+				3B4D30BA15F5314600704C98 /* XAFileUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
