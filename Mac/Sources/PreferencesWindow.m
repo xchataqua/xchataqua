@@ -569,9 +569,10 @@ extern struct XATextEventItem XATextEvents[];
             }
             
             NSInteger num = [object integerValue];
-            if (num)
+            if (num > 0)
             {
-                sound_files [row] = strdup ([[sounds objectAtIndex:num] UTF8String]);
+                NSURL *soundURL = [sounds objectAtIndex:num];
+                sound_files [row] = strdup (soundURL.path.UTF8String);
                 [[AquaChat sharedAquaChat] playWaveNamed:sound_files [row]];
             }
             
@@ -688,7 +689,9 @@ extern struct XATextEventItem XATextEvents[];
     [cell setBordered:NO];
 
     // Add all the previously found system sounds as menu items
-    [cell addItemsWithTitles:sounds];
+    for (NSURL *sound in sounds) {
+        [cell addItemWithTitle:[sound lastPathComponent]];
+    }
 
     // Add it to the soundsTableView
     [[[soundsTableView tableColumns] objectAtIndex:1] setDataCell:cell];
