@@ -31,6 +31,7 @@ typedef struct session xchat_context;
 extern GSList *plugin_list;
 
 #import "AquaChat.h"
+#import "XAFileUtil.h"
 #import "PluginWindow.h"
 
 #import "PluginManager.h"
@@ -121,7 +122,7 @@ extern GSList *plugin_list;
 }
 
 - (void)showStartupItemsInFinder:(id)sender {
-    NSString *path = [[SGFileUtility findApplicationSupportFor:@PRODUCT_NAME] stringByAppendingPathComponent:@"plugins"];
+    NSString *path = [[[XAFileUtil findSupportFolderFor:@PRODUCT_NAME] path] stringByAppendingPathComponent:@"plugins"];
     [[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:path isDirectory:YES]];
 }
 

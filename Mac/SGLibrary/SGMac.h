@@ -21,7 +21,6 @@
 //#import "SGArray.h" not used in xca
 #import "SGBoxView.h"
 #import "SGFileSelection.h"
-#import "SGFileUtility.h"
 #import "SGGuiUtility.h"
 #import "SGRequest.h"
 
