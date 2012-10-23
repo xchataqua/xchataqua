@@ -92,7 +92,7 @@ extern struct XATextEventItem XATextEvents[];
         
         if (sound_files && sound_files[event])
         {
-            soundIndex = [sounds indexOfObject:[NSString stringWithUTF8String:sound_files[event]]];
+            soundIndex = [sounds indexOfObject:[NSURL fileURLWithPath:[NSString stringWithUTF8String:sound_files[event]]]];
         }
         
         struct XATextEventItem *info = &XATextEvents[event];
@@ -572,8 +572,10 @@ extern struct XATextEventItem XATextEvents[];
             if (num > 0)
             {
                 NSURL *soundURL = [sounds objectAtIndex:num];
-                sound_files [row] = strdup (soundURL.path.UTF8String);
+                sound_files[row] = strdup(soundURL.path.UTF8String);
                 [[AquaChat sharedAquaChat] playWaveNamed:sound_files [row]];
+            } else {
+                sound_files[row] = 0;
             }
             
             break;
