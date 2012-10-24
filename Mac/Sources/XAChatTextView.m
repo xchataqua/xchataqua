@@ -419,7 +419,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     didCompleteLayoutForTextContainer:(NSTextContainer *)aTextContainer
     atEnd:(BOOL)flag
 {
-    SGLog(FALSE, @"didCompleteLayoutForTextContainer %d\n", atBottom);
+    dlog(FALSE, @"didCompleteLayoutForTextContainer %d\n", atBottom);
     if (atBottom)
     {
 #if 1
@@ -442,7 +442,7 @@ static NSCursor *XAChatTextViewSizableCursor;
 
     atBottom = dmax < cmax + fontSize.height * 2;
 
-    SGLog(FALSE, @"Update at bottom: dmax=%f, cmax=%f, at_bottom=%d\n", dmax, cmax, atBottom);
+    dlog(FALSE, @"Update at bottom: dmax=%f, cmax=%f, at_bottom=%d\n", dmax, cmax, atBottom);
 }
 
 - (void)viewDidMoveToWindow
@@ -619,7 +619,7 @@ static NSCursor *XAChatTextViewSizableCursor;
                 return [[MenuMaker defaultMenuMaker] menuForChannel:word inSession:sess];
                 
             case WORD_EMAIL:
-                return [[MenuMaker defaultMenuMaker] menuForURL:[NSString stringWithFormat:@"mailto:%@", word] inSession:sess];
+                return [[MenuMaker defaultMenuMaker] menuForURL:[@"mailto:%@" format:word] inSession:sess];
         }
     }
     

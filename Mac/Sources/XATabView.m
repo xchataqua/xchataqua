@@ -561,7 +561,6 @@ NSNib *XATabViewItemTabMenuNib;
     [self setHideCloseButtons:prefs.xa_hide_tab_close_buttons];
     [self setOutlineWidth:prefs.xa_outline_width];
     [self redrawTabItems];
-    SGLogRect(0, @"tab view frame", self.frame);
 }
 
 - (void) setOutlineWidth:(CGFloat) width
@@ -590,14 +589,12 @@ NSNib *XATabViewItemTabMenuNib;
         [[_chatViewContainer.subviews objectAtIndex:0] removeFromSuperview];
     }
     if (xchat_is_quitting) return; // optimization..?
-    
-    SGLogRect(0, @"chat view container", _chatViewContainer.bounds);
+
     [chatView setFrame:_chatViewContainer.bounds];
     [_chatViewContainer addSubview:chatView];
     [_chatViewContainer setStretchView:chatView];
     
-    SGAssert(_tabButtonView);
-    SGLogRect(0 && _tabButtonView, @"tab button view", _tabButtonView.frame);
+    dassert(_tabButtonView);
     
     if (self->tabViewType != XATabViewTypeOutline) {
         [_chatViewContainer addSubview:_tabButtonView];

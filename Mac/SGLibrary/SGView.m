@@ -15,7 +15,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#import <objc/runtime.h>
 #import "SGView.h"
 
 //////////////////////////////////////////////////////////////////////
@@ -178,14 +177,16 @@
 
 + (void) initialize
 {
-    // swap original -setHidden: to new one
-    Method originalMethod = class_getInstanceMethod([NSView class], @selector(setHidden:));
-    Method overrideMethod = class_getInstanceMethod([NSView class], @selector(setSGHidden:));
-    IMP originalImplementation = method_getImplementation(originalMethod);
-    IMP overrideImplementation = method_getImplementation(overrideMethod);
-    if ( originalImplementation != overrideImplementation ) {
-        method_setImplementation(class_getInstanceMethod([NSView class], @selector(setOriginalHidden:)), originalImplementation);
-        method_setImplementation(originalMethod, overrideImplementation);
+    if (self == [SGView class]) {
+        NSAMethod *mHidden = [[NSView classObject] methodObjectForSelector:@selector(setHidden:)];
+        NSAMethod *mSGHidden = [[NSView classObject] methodObjectForSelector:@selector(setSGHidden:)];
+        NSAMethod *mOriginalHidden = [[NSView classObject] methodObjectForSelector:@selector(setOriginalHidden:)];
+
+        // move original -setHidden: to new one
+        if (mHidden.implementation != mSGHidden.implementation) {
+            mOriginalHidden.implementation = mHidden.implementation;
+            mHidden.implementation = mSGHidden.implementation;
+        }
     }
 }
 

@@ -151,7 +151,7 @@ extern GSList *plugin_list;
         case 2: return item.filename;
         case 3: return item.description;
     }
-    SGAssert(NO);
+    dassert(NO);
     return @"";
 }
 
@@ -199,7 +199,7 @@ extern GSList *plugin_list;
         case 2: return item.version;
         case 3: return [item.filename lastPathComponent];
     }
-    SGAssert(NO);
+    dassert(NO);
     return @"";
 }
 

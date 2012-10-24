@@ -547,7 +547,7 @@ extern struct XATextEventItem XATextEvents[];
         case 3: return item->bounce;
         case 4: return item->show;
     }
-    SGAssert(NO);
+    dassert(NO);
     return @"";
 }
 

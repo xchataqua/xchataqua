@@ -79,8 +79,9 @@
         serverItem->name = [[NSString alloc] initWithUTF8String:serverHostname];
         cPort = "";
     }
-    
-    if (serverItem->ssl = (*cPort == '+'))
+
+    serverItem->ssl = (*cPort == '+');
+    if (serverItem->ssl)
     {
         cPort++;
     }
@@ -675,7 +676,7 @@
         case 1: return 3;
         case 2: return 2;
     }
-    SGAssert(NO);
+    dassert(NO);
     return 0;
 }
 
@@ -757,7 +758,7 @@
         case 0: return UITableViewCellEditingStyleDelete;
         case 1: return UITableViewCellEditingStyleInsert;
     }
-    SGAssert(NO);
+    dassert(NO);
     return UITableViewCellEditingStyleNone;
 }
 
@@ -912,7 +913,7 @@
         case 1: return 2;
         case 2: return 2;
     }
-    SGAssert(NO);
+    dassert(NO);
     return 0;
 }
 
@@ -977,7 +978,7 @@
         case 0: return 4;
         case 1: return 2;
     }
-    SGAssert(NO);
+    dassert(NO);
     return 0;
 }
 
@@ -1008,7 +1009,7 @@
                         cell.accessoryView = networkViewController->acceptInvalidSslSwitch;
                         break;
                     default:
-                        SGAssert(NO);
+                        dassert(NO);
                 }
                 break;
             case 1:
@@ -1022,11 +1023,11 @@
                         cell.accessoryView = networkViewController->serverPasswordTextField;
                         break;
                     default:
-                        SGAssert(NO);
+                        dassert(NO);
                 }
                 break;
             default:
-                SGAssert(NO);
+                dassert(NO);
         }
     }
     return cell;

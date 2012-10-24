@@ -230,7 +230,7 @@
         case 5: return item->invite;
         case 6: return item->unignore;
     }
-    SGAssert(NO);
+    dassert(NO);
     return @"";
 }
 

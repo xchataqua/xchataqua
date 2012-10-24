@@ -100,7 +100,7 @@ UIFont *sharedHiddenFont;
 	
 	const char *start = text;
 			
-	for (char x; x = get_next_char (&text, stop_at); )
+	for (char x = get_next_char (&text, stop_at); x != 0; x = get_next_char (&text, stop_at))
 	{
 		switch (x)
 		{

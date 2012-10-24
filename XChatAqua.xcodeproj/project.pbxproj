@@ -11,6 +11,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 2DDC6FE41231BD1E0015A26C /* Build configuration list for PBXAggregateTarget "Prebuild" */;
 			buildPhases = (
+				38F0696916382384002723AB /* Install Pods */,
 				389DC407155569EB003BA8D9 /* Generate XChat Package Name */,
 				2DDC6FEA1231BD760015A26C /* Generate Build Number */,
 				2DDC6FEF1231BDD40015A26C /* Generate Localization Files */,
@@ -104,7 +105,6 @@
 		0FC8F5C40DEEEA3E00504F31 /* libxchat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC8F4AE0DEEE51700504F31 /* libxchat.a */; };
 		0FC8F6AF0DEEF3AC00504F31 /* AquaChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA5F80CFB2500001AE9AE /* AquaChat.m */; };
 		0FC8F6ED0DEEF64200504F31 /* fe-aqua.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA3CE0CFAF7E2001AE9AE /* fe-aqua.m */; };
-		2D4ACFB11230005E00DEB5FA /* SGDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4ACFB01230005E00DEB5FA /* SGDebug.m */; };
 		2D78138A10E77CC700C71AF8 /* perl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F06C10E1FDA5E00359159 /* perl.c */; };
 		2D78138E10E77E4E00C71AF8 /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D78138B10E77D1A00C71AF8 /* libperl.dylib */; };
 		2D7817CA10E872D200C71AF8 /* fe-aqua_utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7817C910E872D200C71AF8 /* fe-aqua_utility.m */; };
@@ -393,7 +393,6 @@
 		3876252113C7024F00850913 /* fe-aqua.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA3CE0CFAF7E2001AE9AE /* fe-aqua.m */; };
 		3876252313C7024F00850913 /* SystemVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F2FEFB70E1FC5A800DE4D41 /* SystemVersion.m */; };
 		3876252413C7024F00850913 /* fe-aqua_utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7817C910E872D200C71AF8 /* fe-aqua_utility.m */; };
-		3876252513C7024F00850913 /* SGDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4ACFB01230005E00DEB5FA /* SGDebug.m */; };
 		3876252613C7024F00850913 /* UtilityWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D487239D128F9DBC00647D7B /* UtilityWindow.m */; };
 		3876252713C7024F00850913 /* ViewerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FBD93912E44946003EA441 /* ViewerWindow.m */; };
 		3876252813C7024F00850913 /* CLTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3839010313C06619004D20BC /* CLTabCell.m */; };
@@ -543,6 +542,8 @@
 		38E57380158EEF39007943DA /* xchatext.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E57378158EBD03007943DA /* xchatext.m */; };
 		38E573E1158F1A76007943DA /* AquaPlugins.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E573E0158F1A76007943DA /* AquaPlugins.m */; };
 		38E573E2158F1A76007943DA /* AquaPlugins.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E573E0158F1A76007943DA /* AquaPlugins.m */; };
+		38F06933163820B0002723AB /* libPods-XChat Azure.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F06932163820B0002723AB /* libPods-XChat Azure.a */; };
+		38F06935163820CA002723AB /* libPods-XChat Aqua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F06934163820CA002723AB /* libPods-XChat Aqua.a */; };
 		38F5BF6D15A9BA0E0075B0DF /* libintl.h in Headers */ = {isa = PBXBuildFile; fileRef = 38F5BF6B15A9BA0E0075B0DF /* libintl.h */; };
 		38F5BF6E15A9BA0E0075B0DF /* libintl.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F5BF6C15A9BA0E0075B0DF /* libintl.m */; };
 		38FC936B13CAF449006CB5C8 /* xchat.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38FC92B713CAF449006CB5C8 /* xchat.strings */; };
@@ -1035,7 +1036,7 @@
 		0F8EA6DB0CFB347B001AE9AE /* UrlGrabberWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrlGrabberWindow.m; sourceTree = "<group>"; };
 		0F8EA6DE0CFB347B001AE9AE /* UserCommandsWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCommandsWindow.h; sourceTree = "<group>"; };
 		0F8EA6DF0CFB347B001AE9AE /* UserCommandsWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCommandsWindow.m; sourceTree = "<group>"; };
-		0F8EA70A0CFB384A001AE9AE /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		0F8EA70A0CFB384A001AE9AE /* Carbon.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		0F8EA74B0CFB6BB7001AE9AE /* blue.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = blue.tiff; path = Resources/blue.tiff; sourceTree = "<group>"; };
 		0F8EA74D0CFB6BB7001AE9AE /* close.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = close.tiff; path = Resources/close.tiff; sourceTree = "<group>"; };
 		0F8EA74F0CFB6BB7001AE9AE /* connect.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = connect.tif; path = Resources/connect.tif; sourceTree = "<group>"; };
@@ -1060,12 +1061,11 @@
 		0FC8F3E80DEEDA0C00504F31 /* python.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = python.c; path = ../../../xchat/plugins/python/python.c; sourceTree = "<group>"; usesTabs = 1; };
 		0FC8F3F50DEEDAB300504F31 /* Python.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Python.framework; path = System/Library/Frameworks/Python.framework; sourceTree = SDKROOT; };
 		0FC8F4AE0DEEE51700504F31 /* libxchat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxchat.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		199FA26E6A554F1F875E34D3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		2D4ACF77122FFED900DEB5FA /* SGDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGDebug.h; sourceTree = "<group>"; };
-		2D4ACFB01230005E00DEB5FA /* SGDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGDebug.m; sourceTree = "<group>"; };
 		2D6D421E121E85470082F2EF /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-snowleopard.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D78138B10E77D1A00C71AF8 /* libperl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libperl.dylib; path = "build/XChatAqua.build/Perl/5.10.0/darwin-thread-multi-2level/CORE/libperl.dylib"; sourceTree = SOURCE_ROOT; };
@@ -1143,7 +1143,7 @@
 		384A963E1588F2CC00268814 /* xchat-ruby.c */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.c; path = "xchat-ruby.c"; sourceTree = "<group>"; tabWidth = 2; };
 		384A96471588F41200268814 /* xchat-ruby-plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "xchat-ruby-plugin.h"; sourceTree = "<group>"; };
 		384A96481588F66100268814 /* rubyenv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rubyenv; sourceTree = "<group>"; };
-		385F766D155148FC00689E6E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		385F766D155148FC00689E6E /* libiconv.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		385F783215515C3F00689E6E /* libglib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libglib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		385F7DF115515DC900689E6E /* gallocator.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = gallocator.c; sourceTree = "<group>"; };
 		385F7DF215515DC900689E6E /* gallocator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gallocator.h; sourceTree = "<group>"; };
@@ -2292,7 +2292,7 @@
 		388C8E6F13C6E10400AAF20D /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = zh_TW; path = zh_TW.lproj/UserCommandsWindow.xib; sourceTree = "<group>"; };
 		3894C1B11590D6F400BCD762 /* NSPanelAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSPanelAdditions.h; sourceTree = "<group>"; };
 		3894C1B21590D6F400BCD762 /* NSPanelAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSPanelAdditions.m; sourceTree = "<group>"; };
-		38A6909F15A84485008CC31F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		38A6909F15A84485008CC31F /* QuartzCore.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		38CE5A63154A551600480EC6 /* alt_completion.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = alt_completion.pl; path = xchat/plugins/perl/alt_completion.pl; sourceTree = SOURCE_ROOT; };
 		38CE5A64154A551600480EC6 /* char_count.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = char_count.pl; path = xchat/plugins/perl/char_count.pl; sourceTree = SOURCE_ROOT; };
 		38CE5A65154A551600480EC6 /* irc.pm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = irc.pm.h; path = xchat/plugins/perl/irc.pm.h; sourceTree = SOURCE_ROOT; };
@@ -2307,6 +2307,9 @@
 		38E573E6158F2226007943DA /* JBanner.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = JBanner.rb; sourceTree = "<group>"; };
 		38E573E7158F2226007943DA /* JFilter.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = JFilter.rb; sourceTree = "<group>"; };
 		38E573E8158F2226007943DA /* TimerSample.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = TimerSample.rb; sourceTree = "<group>"; };
+		38F067EB1636DB62002723AB /* libPods.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libPods.a; path = Pods/build/Debug/libPods.a; sourceTree = "<group>"; };
+		38F06932163820B0002723AB /* libPods-XChat Azure.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-XChat Azure.a"; path = "Pods/build/Debug/libPods-XChat Azure.a"; sourceTree = "<group>"; };
+		38F06934163820CA002723AB /* libPods-XChat Aqua.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-XChat Aqua.a"; path = "Pods/build/Debug/libPods-XChat Aqua.a"; sourceTree = "<group>"; };
 		38F5BF6B15A9BA0E0075B0DF /* libintl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libintl.h; path = gettext/libintl.h; sourceTree = "<group>"; };
 		38F5BF6C15A9BA0E0075B0DF /* libintl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = libintl.m; path = gettext/libintl.m; sourceTree = "<group>"; };
 		38FC92B813CAF449006CB5C8 /* am */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = am; path = am.lproj/xchat.strings; sourceTree = "<group>"; };
@@ -2356,12 +2359,16 @@
 		38FC93C913CAF46E006CB5C8 /* locale */ = {isa = PBXFileReference; lastKnownFileType = folder; name = locale; path = ../../Resources/locale; sourceTree = "<group>"; };
 		3B4D30B815F5314600704C98 /* XAFileUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XAFileUtil.h; path = Mac/XALibrary/XAFileUtil.h; sourceTree = "<group>"; };
 		3B4D30B915F5314600704C98 /* XAFileUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XAFileUtil.m; path = Mac/XALibrary/XAFileUtil.m; sourceTree = "<group>"; };
+		4581A5D270604E95AADD56B8 /* libPods-XChat Aqua.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XChat Aqua.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1107320486CEB800E47090 /* X-Chat Aqua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "X-Chat Aqua.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B7C664CA2BB48DCB301BFA0 /* Pods-XChat Azure.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XChat Azure.xcconfig"; path = "Pods/Pods-XChat Azure.xcconfig"; sourceTree = SOURCE_ROOT; };
 		B07C7AB20F4395E200E11B58 /* BuildNumber.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = BuildNumber.xcconfig; sourceTree = "<group>"; };
 		B07C7AD60F4398FC00E11B58 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		B07C7AD70F4398FC00E11B58 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = /usr/lib/libcrypto.dylib; sourceTree = "<absolute>"; };
-		B0D937F00FFB0D34009370B5 /* libssl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.dylib; path = /usr/lib/libssl.dylib; sourceTree = "<absolute>"; };
+		B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = /usr/lib/libcrypto.dylib; sourceTree = "<absolute>"; };
+		B0D937F00FFB0D34009370B5 /* libssl.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.dylib; path = /usr/lib/libssl.dylib; sourceTree = "<absolute>"; };
+		C46ED6FB49AE45D086797781 /* libPods-XChat Azure.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XChat Azure.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C51F1E5CA23A49AE9CAEAEDF /* Pods-XChat Aqua.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XChat Aqua.xcconfig"; path = "Pods/Pods-XChat Aqua.xcconfig"; sourceTree = SOURCE_ROOT; };
 		D406B462129D789400EF6B2B /* fe-aqua_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "fe-aqua_common.h"; sourceTree = "<group>"; };
 		D439129912DE2569009BE73C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Mac/Azure/Info.plist; sourceTree = "<group>"; };
 		D46631D3129DC3B1004B66B8 /* UtilityTableViewDragAndDrop.inc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityTableViewDragAndDrop.inc.m; sourceTree = "<group>"; };
@@ -2370,7 +2377,7 @@
 		D4FBD93812E44946003EA441 /* ViewerWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewerWindow.h; sourceTree = "<group>"; };
 		D4FBD93912E44946003EA441 /* ViewerWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewerWindow.m; sourceTree = "<group>"; };
 		D4FBD93D12E449D5003EA441 /* ViewerWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewerWindow.xib; sourceTree = "<group>"; };
-		D4FBD9C512E458C4003EA441 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		D4FBD9C512E458C4003EA441 /* WebKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2428,6 +2435,7 @@
 				3876254613C7024F00850913 /* WebKit.framework in Frameworks */,
 				38CE5A95154A689F00480EC6 /* ShortcutRecorder.framework in Frameworks */,
 				38CE5AE2154A718500480EC6 /* Growl.framework in Frameworks */,
+				38F06933163820B0002723AB /* libPods-XChat Azure.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2451,6 +2459,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38A690A115A844A4008CC31F /* QuartzCore.framework in Frameworks */,
 				385F8153155167C200689E6E /* libiconv.dylib in Frameworks */,
 				385F8151155167B800689E6E /* libglib.a in Frameworks */,
 				0FC8F5C40DEEEA3E00504F31 /* libxchat.a in Frameworks */,
@@ -2461,7 +2470,7 @@
 				D4FBD9C612E458C4003EA441 /* WebKit.framework in Frameworks */,
 				38BC97B6154A994D005894EF /* ShortcutRecorder.framework in Frameworks */,
 				38E34015154A74C2005B59F8 /* Growl.framework in Frameworks */,
-				38A690A115A844A4008CC31F /* QuartzCore.framework in Frameworks */,
+				38F06935163820CA002723AB /* libPods-XChat Aqua.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2582,8 +2591,6 @@
 			isa = PBXGroup;
 			children = (
 				0F8EA6590CFB300B001AE9AE /* SG.h */,
-				2D4ACF77122FFED900DEB5FA /* SGDebug.h */,
-				2D4ACFB01230005E00DEB5FA /* SGDebug.m */,
 				0F8EA6640CFB300B001AE9AE /* SGFileDescriptor.h */,
 				0F8EA6650CFB300B001AE9AE /* SGFileDescriptor.m */,
 				0F8EA6720CFB300B001AE9AE /* SGRegex.h */,
@@ -2642,6 +2649,7 @@
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				D4FBD9C512E458C4003EA441 /* WebKit.framework */,
 				38A6909F15A84485008CC31F /* QuartzCore.framework */,
+				38F067EB1636DB62002723AB /* libPods.a */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -2678,6 +2686,8 @@
 		29B97314FDCFA39411CA2CEA /* X-Chat Aqua */ = {
 			isa = PBXGroup;
 			children = (
+				38F06934163820CA002723AB /* libPods-XChat Aqua.a */,
+				38F06932163820B0002723AB /* libPods-XChat Azure.a */,
 				38CE5A85154A687300480EC6 /* ShortcutRecorder.xcodeproj */,
 				38CE5AA4154A70E100480EC6 /* Growl.xcodeproj */,
 				38771A4415A7C0090046929E /* Aqua */,
@@ -2704,6 +2714,9 @@
 			children = (
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+				199FA26E6A554F1F875E34D3 /* libPods.a */,
+				C46ED6FB49AE45D086797781 /* libPods-XChat Azure.a */,
+				4581A5D270604E95AADD56B8 /* libPods-XChat Aqua.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3155,6 +3168,7 @@
 				0F8EA3660CFAA49B001AE9AE /* Info.plist */,
 				38771A4015A7B5220046929E /* Entitlements.entitlements */,
 				38771A4615A7C0880046929E /* container-migration.plist */,
+				C51F1E5CA23A49AE9CAEAEDF /* Pods-XChat Aqua.xcconfig */,
 			);
 			name = Aqua;
 			path = Mac/Sources;
@@ -3166,6 +3180,7 @@
 				D439129912DE2569009BE73C /* Info.plist */,
 				38771A4815A7C0980046929E /* Entitlements.entitlements */,
 				38771A4115A7B7D80046929E /* container-migration.plist */,
+				9B7C664CA2BB48DCB301BFA0 /* Pods-XChat Azure.xcconfig */,
 			);
 			name = Azure;
 			sourceTree = "<group>";
@@ -3590,6 +3605,7 @@
 				38876F3D154C7727000B7E27 /* Copy PlugIns */,
 				387C689315F2623C00811A98 /* Build Growl XPCService */,
 				3834677D15C9882800497A27 /* Copy Growl XPC */,
+				2DFDFFDB3BE3493BA3BBCCC7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3660,6 +3676,7 @@
 				38BC97B9154A9AAC005894EF /* Copy Plugins */,
 				387C689215F261A900811A98 /* Build Growl XPCService */,
 				38E4A0EE15CBABE6000312D1 /* Copy Growl XPC */,
+				B4249A4023BF4C7CBA9FB187 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -4092,6 +4109,20 @@
 			shellPath = /bin/sh;
 			shellScript = "# shell script goes here\nexit 0";
 		};
+		2DFDFFDB3BE3493BA3BBCCC7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-XChat Azure-resources.sh\"\n";
+		};
 		381A6D6715F052BF00E76478 /* Generate Symlink For Lion Perl Library & XChat Plugin Headers */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4218,6 +4249,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "rm -rf \"$BUILT_PRODUCTS_DIR/\"*.bundle/Contents/embedded.provisionprofile";
+		};
+		38F0696916382384002723AB /* Install Pods */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Install Pods";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "if [ ! `which pod` ]; then\n    echo 'You should install cocoapod before do this'\n    echo 'Try \"sudo gem install cocoapods && pod setup\"'\n    exit 1\nfi\n\nif [ -e 'Pofile.lock' ]; then\n    pod install\nelse\n    pod update\nfi\n\ncd Pods\nxcodebuild -target 'Pods-XChat Aqua'\nxcodebuild -target 'Pods-XChat Azure'";
+		};
+		B4249A4023BF4C7CBA9FB187 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-XChat Aqua-resources.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -4413,7 +4472,6 @@
 				3876252113C7024F00850913 /* fe-aqua.m in Sources */,
 				3876252313C7024F00850913 /* SystemVersion.m in Sources */,
 				3876252413C7024F00850913 /* fe-aqua_utility.m in Sources */,
-				3876252513C7024F00850913 /* SGDebug.m in Sources */,
 				3876252613C7024F00850913 /* UtilityWindow.m in Sources */,
 				3876252713C7024F00850913 /* ViewerWindow.m in Sources */,
 				3876252813C7024F00850913 /* CLTabCell.m in Sources */,
@@ -4499,7 +4557,6 @@
 				0FC8F6ED0DEEF64200504F31 /* fe-aqua.m in Sources */,
 				0F2FEFBD0E1FC8E900DE4D41 /* SystemVersion.m in Sources */,
 				2D7817CA10E872D200C71AF8 /* fe-aqua_utility.m in Sources */,
-				2D4ACFB11230005E00DEB5FA /* SGDebug.m in Sources */,
 				D487239E128F9DBC00647D7B /* UtilityWindow.m in Sources */,
 				D4FBD95912E44CD0003EA441 /* ViewerWindow.m in Sources */,
 				3839010413C06619004D20BC /* CLTabCell.m in Sources */,
@@ -6074,6 +6131,7 @@
 		};
 		3876258913C7024F00850913 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B7C664CA2BB48DCB301BFA0 /* Pods-XChat Azure.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CODE_SIGN_ENTITLEMENTS = Mac/Entitlements.entitlements;
@@ -6090,12 +6148,16 @@
 				);
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(TARGET_PLATFORM)",
+					"$(inherited)",
 					xchat/src/common,
 					glib,
 					gettext,
 				);
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Pods/build/Debug\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_CODE = Azure;
 				PRODUCT_NAME = "XChat Azure";
@@ -6104,6 +6166,7 @@
 		};
 		3876258A13C7024F00850913 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B7C664CA2BB48DCB301BFA0 /* Pods-XChat Azure.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CODE_SIGN_ENTITLEMENTS = Mac/Entitlements.entitlements;
@@ -6119,12 +6182,16 @@
 				);
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(TARGET_PLATFORM)",
+					"$(inherited)",
 					xchat/src/common,
 					glib,
 					gettext,
 				);
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Pods/build/Debug\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_CODE = Azure;
 				PRODUCT_NAME = "XChat Azure";
@@ -6271,6 +6338,7 @@
 		};
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C51F1E5CA23A49AE9CAEAEDF /* Pods-XChat Aqua.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CODE_SIGN_ENTITLEMENTS = Mac/Entitlements.entitmements;
@@ -6290,19 +6358,24 @@
 				);
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(TARGET_PLATFORM)",
+					"$(inherited)",
 					xchat/src,
+					glib,
 					gettext,
 				);
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Pods/build/Debug\"",
+				);
 				PRODUCT_CODE = Aqua;
 				PRODUCT_NAME = "X-Chat Aqua";
-				USER_HEADER_SEARCH_PATHS = "$(TARGET_PLATFORM) xchat/src glib";
 			};
 			name = Debug;
 		};
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C51F1E5CA23A49AE9CAEAEDF /* Pods-XChat Aqua.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CODE_SIGN_ENTITLEMENTS = Mac/Entitlements.entitmements;
@@ -6320,14 +6393,18 @@
 				);
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(TARGET_PLATFORM)",
+					"$(inherited)",
 					xchat/src,
+					glib,
 					gettext,
 				);
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Pods/build/Debug\"",
+				);
 				PRODUCT_CODE = Aqua;
 				PRODUCT_NAME = "X-Chat Aqua";
-				USER_HEADER_SEARCH_PATHS = "$(TARGET_PLATFORM) xchat/src glib";
 			};
 			name = Release;
 		};
@@ -6350,7 +6427,11 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = Mac;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					Mac,
+				);
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"";
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx10.7;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
@@ -6375,7 +6456,11 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = Mac;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					Mac,
+				);
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"";
 				SDKROOT = macosx10.7;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
 				TARGET_PLATFORM = Mac;
