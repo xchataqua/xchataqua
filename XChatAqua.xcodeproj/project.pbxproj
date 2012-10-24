@@ -544,6 +544,7 @@
 		38E573E2158F1A76007943DA /* AquaPlugins.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E573E0158F1A76007943DA /* AquaPlugins.m */; };
 		38F06933163820B0002723AB /* libPods-XChat Azure.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F06932163820B0002723AB /* libPods-XChat Azure.a */; };
 		38F06935163820CA002723AB /* libPods-XChat Aqua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F06934163820CA002723AB /* libPods-XChat Aqua.a */; };
+		38F069C016386905002723AB /* gquark.c in Sources */ = {isa = PBXBuildFile; fileRef = 38F069BE16386904002723AB /* gquark.c */; };
 		38F5BF6D15A9BA0E0075B0DF /* libintl.h in Headers */ = {isa = PBXBuildFile; fileRef = 38F5BF6B15A9BA0E0075B0DF /* libintl.h */; };
 		38F5BF6E15A9BA0E0075B0DF /* libintl.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F5BF6C15A9BA0E0075B0DF /* libintl.m */; };
 		38FC936B13CAF449006CB5C8 /* xchat.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38FC92B713CAF449006CB5C8 /* xchat.strings */; };
@@ -2262,6 +2263,7 @@
 		38F067EB1636DB62002723AB /* libPods.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libPods.a; path = Pods/build/Debug/libPods.a; sourceTree = "<group>"; };
 		38F06932163820B0002723AB /* libPods-XChat Azure.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-XChat Azure.a"; path = "Pods/build/Debug/libPods-XChat Azure.a"; sourceTree = "<group>"; };
 		38F06934163820CA002723AB /* libPods-XChat Aqua.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-XChat Aqua.a"; path = "Pods/build/Debug/libPods-XChat Aqua.a"; sourceTree = "<group>"; };
+		38F069BE16386904002723AB /* gquark.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gquark.c; sourceTree = "<group>"; };
 		38F5BF6B15A9BA0E0075B0DF /* libintl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libintl.h; path = gettext/libintl.h; sourceTree = "<group>"; };
 		38F5BF6C15A9BA0E0075B0DF /* libintl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = libintl.m; path = gettext/libintl.m; sourceTree = "<group>"; };
 		38FC92B813CAF449006CB5C8 /* am */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = am; path = am.lproj/xchat.strings; sourceTree = "<group>"; };
@@ -2930,6 +2932,7 @@
 				385F7E9215515DC900689E6E /* gprintfint.h */,
 				385F7E9315515DC900689E6E /* gqsort.c */,
 				385F7E9415515DC900689E6E /* gqsort.h */,
+				38F069BE16386904002723AB /* gquark.c */,
 				385F7E9515515DC900689E6E /* gquark.h */,
 				385F7E9615515DC900689E6E /* gqueue.c */,
 				385F7E9715515DC900689E6E /* gqueue.h */,
@@ -4293,6 +4296,7 @@
 				385F81481551623500689E6E /* gconvert.c in Sources */,
 				385F81491551627C00689E6E /* gcharset.c in Sources */,
 				385F814A155162DE00689E6E /* localcharset.c in Sources */,
+				38F069C016386905002723AB /* gquark.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
