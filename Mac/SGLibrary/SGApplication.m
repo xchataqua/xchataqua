@@ -106,7 +106,7 @@ NSMutableArray *SGApplicationCustomers = nil;
 }
 
 - (void)sendOriginalEvent:(NSEvent *)anEvent {
-    SGAssert(NO);
+    dassert(NO);
 }
 
 - (void)sendXAEvent:(NSEvent *)anEvent {

@@ -86,7 +86,7 @@ static int do_add_url (const void *key, void *cbd)
     NSString *menuTitle = url;
     // TODO: encode 'url' like menu_urlmenu??
     if ([url length] > 50)
-        menuTitle = [NSString stringWithFormat:@"%@...", [url substringWithRange:NSMakeRange (0, 45)]];
+        menuTitle = [@"%@..." format:[url substringWithRange:NSMakeRange (0, 45)]];
     NSMenuItem *item = [menu addItemWithTitle:menuTitle action:nil keyEquivalent:@""];
     [item setEnabled:NO];
     [[MenuMaker defaultMenuMaker] appendItemList:urlhandler_list toMenu:menu withTarget:url inSession:NULL];

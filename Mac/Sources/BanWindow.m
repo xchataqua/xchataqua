@@ -192,7 +192,7 @@
         case 2: return [item when];
     }
     
-    SGAssert(NO);
+    dassert(NO);
     return @"";
 }
 

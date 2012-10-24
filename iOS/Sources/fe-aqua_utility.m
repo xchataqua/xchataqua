@@ -225,7 +225,7 @@ static int timer_seq = 1;
 	if (callback == NULL) {
 		// XXX: do not run below if callback is NULL
 		// then, so what should i do if it is NULL?
-		SGLog(TRUE, @"XXX: callback is null the app killer");
+		dlog(TRUE, @"XXX: callback is null the app killer");
 	}
 	else if (callback (userdata) == 0)
 	{

@@ -52,7 +52,7 @@
             [tableView reloadData];
             break;
         default:
-            SGAssert(NO);
+            dassert(NO);
     }
     [selectedItem release];
     [tableView unregisterDraggedTypes];

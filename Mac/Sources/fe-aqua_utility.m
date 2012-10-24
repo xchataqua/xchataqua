@@ -115,7 +115,7 @@ static int TimerThingSequence = 1;
 + (id)timerWithInterval:(int)the_interval callback:(timer_callback)the_callback
                userdata:(void *)the_userdata
 {
-    SGAssert(the_callback != NULL);
+    dassert(the_callback != NULL);
     TimerThing *thing = [[TimerThing alloc] init];
     
     thing->interval = (NSTimeInterval) the_interval / 1000;
@@ -187,7 +187,7 @@ static int TimerThingSequence = 1;
     if (callback == NULL) {
         // XXX: do not run below if callback is NULL
         // then, so what should i do if it is NULL?
-        SGLog(TRUE, @"XXX: callback is null the app killer");
+        dlog(TRUE, @"XXX: callback is null the app killer");
     } else if (callback(userdata) == 0) {
         // Only honour his request to destroy this timer only if
         // he did not already do it in the callback.  We NULL out

@@ -197,7 +197,7 @@
         case 3: return item->networks;
         case 4: return [item last];
     }
-    SGAssert(NO);
+    dassert(NO);
     return @"";
 }
 
