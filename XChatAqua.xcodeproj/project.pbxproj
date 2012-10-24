@@ -1145,17 +1145,6 @@
 		384A96481588F66100268814 /* rubyenv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rubyenv; sourceTree = "<group>"; };
 		385F766D155148FC00689E6E /* libiconv.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		385F783215515C3F00689E6E /* libglib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libglib.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		385F7DF115515DC900689E6E /* gallocator.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = gallocator.c; sourceTree = "<group>"; };
-		385F7DF215515DC900689E6E /* gallocator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gallocator.h; sourceTree = "<group>"; };
-		385F7DF315515DC900689E6E /* gcache.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = gcache.c; sourceTree = "<group>"; };
-		385F7DF415515DC900689E6E /* gcache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gcache.h; sourceTree = "<group>"; };
-		385F7DF515515DC900689E6E /* gcompletion.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = gcompletion.c; sourceTree = "<group>"; };
-		385F7DF615515DC900689E6E /* gcompletion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gcompletion.h; sourceTree = "<group>"; };
-		385F7DF715515DC900689E6E /* gmain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gmain.h; sourceTree = "<group>"; };
-		385F7DF815515DC900689E6E /* grel.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = grel.c; sourceTree = "<group>"; };
-		385F7DF915515DC900689E6E /* grel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = grel.h; sourceTree = "<group>"; };
-		385F7DFA15515DC900689E6E /* gthread-deprecated.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "gthread-deprecated.c"; sourceTree = "<group>"; };
-		385F7DFB15515DC900689E6E /* gthread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gthread.h; sourceTree = "<group>"; };
 		385F7DFC15515DC900689E6E /* docs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = docs.c; sourceTree = "<group>"; };
 		385F7DFD15515DC900689E6E /* galloca.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = galloca.h; sourceTree = "<group>"; };
 		385F7DFE15515DC900689E6E /* garray.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = garray.c; sourceTree = "<group>"; };
@@ -1217,10 +1206,6 @@
 		385F7E3A15515DC900689E6E /* gkeyfile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gkeyfile.h; sourceTree = "<group>"; };
 		385F7E3B15515DC900689E6E /* glib-init.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "glib-init.c"; sourceTree = "<group>"; };
 		385F7E3C15515DC900689E6E /* glib-init.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "glib-init.h"; sourceTree = "<group>"; };
-		385F7E3E15515DC900689E6E /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		385F7E3F15515DC900689E6E /* gen-mirroring-tab.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "gen-mirroring-tab.c"; sourceTree = "<group>"; };
-		385F7E4015515DC900689E6E /* packtab.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = packtab.c; sourceTree = "<group>"; };
-		385F7E4115515DC900689E6E /* packtab.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = packtab.h; sourceTree = "<group>"; };
 		385F7E4215515DC900689E6E /* glib-object.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "glib-object.h"; sourceTree = "<group>"; };
 		385F7E4315515DC900689E6E /* glib-private.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "glib-private.c"; sourceTree = "<group>"; };
 		385F7E4415515DC900689E6E /* glib-private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "glib-private.h"; sourceTree = "<group>"; };
@@ -1247,39 +1232,6 @@
 		385F7E6115515DC900689E6E /* gmirroringtable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gmirroringtable.h; sourceTree = "<group>"; };
 		385F7E6215515DC900689E6E /* gnode.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = gnode.c; sourceTree = "<group>"; };
 		385F7E6315515DC900689E6E /* gnode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gnode.h; sourceTree = "<group>"; };
-		385F7E6615515DC900689E6E /* asnprintf.Plo */ = {isa = PBXFileReference; lastKnownFileType = text; path = asnprintf.Plo; sourceTree = "<group>"; };
-		385F7E6715515DC900689E6E /* printf-args.Plo */ = {isa = PBXFileReference; lastKnownFileType = text; path = "printf-args.Plo"; sourceTree = "<group>"; };
-		385F7E6815515DC900689E6E /* printf-parse.Plo */ = {isa = PBXFileReference; lastKnownFileType = text; path = "printf-parse.Plo"; sourceTree = "<group>"; };
-		385F7E6915515DC900689E6E /* printf.Plo */ = {isa = PBXFileReference; lastKnownFileType = text; path = printf.Plo; sourceTree = "<group>"; };
-		385F7E6A15515DC900689E6E /* vasnprintf.Plo */ = {isa = PBXFileReference; lastKnownFileType = text; path = vasnprintf.Plo; sourceTree = "<group>"; };
-		385F7E6C15515DC900689E6E /* libgnulib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libgnulib.a; sourceTree = "<group>"; };
-		385F7E6D15515DC900689E6E /* libgnulib.la */ = {isa = PBXFileReference; lastKnownFileType = text; path = libgnulib.la; sourceTree = "<group>"; };
-		385F7E6E15515DC900689E6E /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		385F7E6F15515DC900689E6E /* Makefile.am */ = {isa = PBXFileReference; lastKnownFileType = text; path = Makefile.am; sourceTree = "<group>"; };
-		385F7E7015515DC900689E6E /* Makefile.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = Makefile.in; sourceTree = "<group>"; };
-		385F7E7115515DC900689E6E /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		385F7E7215515DC900689E6E /* asnprintf.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = asnprintf.c; sourceTree = "<group>"; };
-		385F7E7315515DC900689E6E /* asnprintf.lo */ = {isa = PBXFileReference; lastKnownFileType = text; path = asnprintf.lo; sourceTree = "<group>"; };
-		385F7E7415515DC900689E6E /* asnprintf.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = asnprintf.o; sourceTree = "<group>"; };
-		385F7E7515515DC900689E6E /* g-gnulib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "g-gnulib.h"; sourceTree = "<group>"; };
-		385F7E7615515DC900689E6E /* libgnulib.la */ = {isa = PBXFileReference; lastKnownFileType = text; path = libgnulib.la; sourceTree = "<group>"; };
-		385F7E7715515DC900689E6E /* makefile.msc */ = {isa = PBXFileReference; lastKnownFileType = text; path = makefile.msc; sourceTree = "<group>"; };
-		385F7E7815515DC900689E6E /* printf-args.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "printf-args.c"; sourceTree = "<group>"; };
-		385F7E7915515DC900689E6E /* printf-args.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "printf-args.h"; sourceTree = "<group>"; };
-		385F7E7A15515DC900689E6E /* printf-args.lo */ = {isa = PBXFileReference; lastKnownFileType = text; path = "printf-args.lo"; sourceTree = "<group>"; };
-		385F7E7B15515DC900689E6E /* printf-args.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "printf-args.o"; sourceTree = "<group>"; };
-		385F7E7C15515DC900689E6E /* printf-parse.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "printf-parse.c"; sourceTree = "<group>"; };
-		385F7E7D15515DC900689E6E /* printf-parse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "printf-parse.h"; sourceTree = "<group>"; };
-		385F7E7E15515DC900689E6E /* printf-parse.lo */ = {isa = PBXFileReference; lastKnownFileType = text; path = "printf-parse.lo"; sourceTree = "<group>"; };
-		385F7E7F15515DC900689E6E /* printf-parse.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "printf-parse.o"; sourceTree = "<group>"; };
-		385F7E8015515DC900689E6E /* printf.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = printf.c; sourceTree = "<group>"; };
-		385F7E8115515DC900689E6E /* printf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = printf.h; sourceTree = "<group>"; };
-		385F7E8215515DC900689E6E /* printf.lo */ = {isa = PBXFileReference; lastKnownFileType = text; path = printf.lo; sourceTree = "<group>"; };
-		385F7E8315515DC900689E6E /* printf.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = printf.o; sourceTree = "<group>"; };
-		385F7E8415515DC900689E6E /* vasnprintf.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vasnprintf.c; sourceTree = "<group>"; };
-		385F7E8515515DC900689E6E /* vasnprintf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vasnprintf.h; sourceTree = "<group>"; };
-		385F7E8615515DC900689E6E /* vasnprintf.lo */ = {isa = PBXFileReference; lastKnownFileType = text; path = vasnprintf.lo; sourceTree = "<group>"; };
-		385F7E8715515DC900689E6E /* vasnprintf.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = vasnprintf.o; sourceTree = "<group>"; };
 		385F7E8815515DC900689E6E /* goption.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = goption.c; sourceTree = "<group>"; };
 		385F7E8915515DC900689E6E /* goption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = goption.h; sourceTree = "<group>"; };
 		385F7E8A15515DC900689E6E /* gpattern.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = gpattern.c; sourceTree = "<group>"; };
@@ -2878,9 +2830,6 @@
 		385F7D8D15515DC900689E6E /* glib */ = {
 			isa = PBXGroup;
 			children = (
-				385F7DF015515DC900689E6E /* deprecated */,
-				385F7E3D15515DC900689E6E /* glib-mirroring-tab */,
-				385F7E6415515DC900689E6E /* gnulib */,
 				385F7DFC15515DC900689E6E /* docs.c */,
 				385F7DFD15515DC900689E6E /* galloca.h */,
 				385F7DFE15515DC900689E6E /* garray.c */,
@@ -3063,91 +3012,6 @@
 				385F7EE915515DCA00689E6E /* libcharset */,
 			);
 			path = glib;
-			sourceTree = "<group>";
-		};
-		385F7DF015515DC900689E6E /* deprecated */ = {
-			isa = PBXGroup;
-			children = (
-				385F7DF115515DC900689E6E /* gallocator.c */,
-				385F7DF215515DC900689E6E /* gallocator.h */,
-				385F7DF315515DC900689E6E /* gcache.c */,
-				385F7DF415515DC900689E6E /* gcache.h */,
-				385F7DF515515DC900689E6E /* gcompletion.c */,
-				385F7DF615515DC900689E6E /* gcompletion.h */,
-				385F7DF715515DC900689E6E /* gmain.h */,
-				385F7DF815515DC900689E6E /* grel.c */,
-				385F7DF915515DC900689E6E /* grel.h */,
-				385F7DFA15515DC900689E6E /* gthread-deprecated.c */,
-				385F7DFB15515DC900689E6E /* gthread.h */,
-			);
-			path = deprecated;
-			sourceTree = "<group>";
-		};
-		385F7E3D15515DC900689E6E /* glib-mirroring-tab */ = {
-			isa = PBXGroup;
-			children = (
-				385F7E3E15515DC900689E6E /* Makefile */,
-				385F7E3F15515DC900689E6E /* gen-mirroring-tab.c */,
-				385F7E4015515DC900689E6E /* packtab.c */,
-				385F7E4115515DC900689E6E /* packtab.h */,
-			);
-			path = "glib-mirroring-tab";
-			sourceTree = "<group>";
-		};
-		385F7E6415515DC900689E6E /* gnulib */ = {
-			isa = PBXGroup;
-			children = (
-				385F7E6515515DC900689E6E /* .deps */,
-				385F7E6B15515DC900689E6E /* .libs */,
-				385F7E6E15515DC900689E6E /* Makefile */,
-				385F7E6F15515DC900689E6E /* Makefile.am */,
-				385F7E7015515DC900689E6E /* Makefile.in */,
-				385F7E7115515DC900689E6E /* README */,
-				385F7E7215515DC900689E6E /* asnprintf.c */,
-				385F7E7315515DC900689E6E /* asnprintf.lo */,
-				385F7E7415515DC900689E6E /* asnprintf.o */,
-				385F7E7515515DC900689E6E /* g-gnulib.h */,
-				385F7E7615515DC900689E6E /* libgnulib.la */,
-				385F7E7715515DC900689E6E /* makefile.msc */,
-				385F7E7815515DC900689E6E /* printf-args.c */,
-				385F7E7915515DC900689E6E /* printf-args.h */,
-				385F7E7A15515DC900689E6E /* printf-args.lo */,
-				385F7E7B15515DC900689E6E /* printf-args.o */,
-				385F7E7C15515DC900689E6E /* printf-parse.c */,
-				385F7E7D15515DC900689E6E /* printf-parse.h */,
-				385F7E7E15515DC900689E6E /* printf-parse.lo */,
-				385F7E7F15515DC900689E6E /* printf-parse.o */,
-				385F7E8015515DC900689E6E /* printf.c */,
-				385F7E8115515DC900689E6E /* printf.h */,
-				385F7E8215515DC900689E6E /* printf.lo */,
-				385F7E8315515DC900689E6E /* printf.o */,
-				385F7E8415515DC900689E6E /* vasnprintf.c */,
-				385F7E8515515DC900689E6E /* vasnprintf.h */,
-				385F7E8615515DC900689E6E /* vasnprintf.lo */,
-				385F7E8715515DC900689E6E /* vasnprintf.o */,
-			);
-			path = gnulib;
-			sourceTree = "<group>";
-		};
-		385F7E6515515DC900689E6E /* .deps */ = {
-			isa = PBXGroup;
-			children = (
-				385F7E6615515DC900689E6E /* asnprintf.Plo */,
-				385F7E6715515DC900689E6E /* printf-args.Plo */,
-				385F7E6815515DC900689E6E /* printf-parse.Plo */,
-				385F7E6915515DC900689E6E /* printf.Plo */,
-				385F7E6A15515DC900689E6E /* vasnprintf.Plo */,
-			);
-			path = .deps;
-			sourceTree = "<group>";
-		};
-		385F7E6B15515DC900689E6E /* .libs */ = {
-			isa = PBXGroup;
-			children = (
-				385F7E6C15515DC900689E6E /* libgnulib.a */,
-				385F7E6D15515DC900689E6E /* libgnulib.la */,
-			);
-			path = .libs;
 			sourceTree = "<group>";
 		};
 		385F7EE915515DCA00689E6E /* libcharset */ = {
