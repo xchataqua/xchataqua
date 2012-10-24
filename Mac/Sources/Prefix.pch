@@ -19,8 +19,10 @@
 #include "xchatc.h"
 #include "fe.h"
 
+#include "debug.h"
+
 #ifdef __OBJC__
-    #import <Foundation/Foundation.h>
+    #import <FoundationExtension/FoundationExtension.h>
     #import <AppKit/AppKit.h>
     #undef TYPE_BOOL
     #import "SG.h"

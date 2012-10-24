@@ -234,7 +234,7 @@
         case 0: return [item filename];
     }
     
-    SGAssert(NO);
+    dassert(NO);
     return @"";
 }
 

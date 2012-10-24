@@ -334,7 +334,7 @@ static const char * strip_crap (const char *s)
         case 1: return [entry numberOfUsersString];
         case 2: return [entry topic];
     }
-    SGAssert(NO);
+    dassert(NO);
     return @"";
 }
 

@@ -186,7 +186,7 @@
         case 1: return [item command];
     }
     
-    SGAssert(NO);
+    dassert(NO);
     return @"";
 }
 

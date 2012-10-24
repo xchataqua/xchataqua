@@ -160,7 +160,7 @@ one_time_work_phase2()
 void
 fe_new_window (struct session *sess, int focus)
 {
-	SGLog(FE_TRACKING, @"fe_new_window session: %p focus: %d", sess, focus);
+	dlog(FE_TRACKING, @"fe_new_window session: %p focus: %d", sess, focus);
 	
 	sess->gui = (struct session_gui *) malloc (sizeof (struct session_gui));
 	sess->gui->chatViewController = [ChatViewController viewControllerForSession:sess];
@@ -182,14 +182,14 @@ fe_new_window (struct session *sess, int focus)
 void
 fe_print_text (struct session *sess, char *text, time_t stamp)
 {
-	SGLog(FE_TRACKING, @"fe_print_text session: %p timestamp: %d text: %s", sess, stamp, text);
+	dlog(FE_TRACKING, @"fe_print_text session: %p timestamp: %d text: %s", sess, stamp, text);
 	[sess->gui->chatViewController printText:[NSString stringWithUTF8String:text] stamp:stamp];
 }
 
 void
 fe_timeout_remove (int tag)
 {
-	SGLog(FE_TRACKING, @"fe_timeout_remove tag: %d", tag);
+	dlog(FE_TRACKING, @"fe_timeout_remove tag: %d", tag);
 #if USE_GLIKE_TIMER
 	[GLikeTimer removeTimerWithTag:tag];
 #else
@@ -211,21 +211,21 @@ fe_timeout_add (int interval, void *callback, void *userdata)
 
 	tag = [timer tag];
 #endif
-	SGLog(FE_TRACKING, @"fe_timeout_add return tag: %d interval: %d ...", tag, interval);
+	dlog(FE_TRACKING, @"fe_timeout_add return tag: %d interval: %d ...", tag, interval);
 	return tag;
 }
 
 void
 fe_idle_add (void *func, void *data)
 {
-	SGLog(FE_TRACKING, @"fe_idle_add ...");
+	dlog(FE_TRACKING, @"fe_idle_add ...");
 	fe_timeout_add (0, func, data);
 }
 
 void
 fe_input_remove (int tag)
 {
-	SGLog(FE_TRACKING, @"fe_input_remove tag: %d", tag);
+	dlog(FE_TRACKING, @"fe_input_remove tag: %d", tag);
 	InputThing *thing = [InputThing findTagged:tag];
 	[thing disable];
 	[thing release];
@@ -234,7 +234,7 @@ fe_input_remove (int tag)
 int
 fe_input_add (int sok, int flags, void *func, void *data)
 {
-	SGLog(FE_TRACKING, @"fe_input_add sok: %x flags: %x ...", sok, flags);
+	dlog(FE_TRACKING, @"fe_input_add sok: %x flags: %x ...", sok, flags);
 	InputThing *thing = [[InputThing socketFromFD:sok 
 											flags:flags 
 											 func:(socket_callback)func 
@@ -256,10 +256,10 @@ fe_input_add (int sok, int flags, void *func, void *data)
 int
 fe_args (int pargc, char *pargv[])
 {
-	SGLog(FE_TRACKING, @"fe_args argc: %d", pargc);
+	dlog(FE_TRACKING, @"fe_args argc: %d", pargc);
 	#if FE_TRACKING
 	for ( int i = 1; i < pargc; i++ ) {
-		SGLog(FE_TRACKING, @"\targ%d: %s", i, pargv[i]);
+		dlog(FE_TRACKING, @"\targ%d: %s", i, pargv[i]);
 	}
 	#endif
 	
@@ -356,7 +356,7 @@ static void fix_log_files_and_pref ()
 void
 fe_init (void)
 {
-	SGLog(FE_TRACKING, @"fe_init");
+	dlog(FE_TRACKING, @"fe_init");
 #if USE_GLIKE_TIMER
 	[GLikeTimer self];
 #endif
@@ -407,7 +407,7 @@ static void USER_not_enough_parameters_bug ()
 void
 fe_main (void)
 {
-	SGLog(FE_TRACKING, @"fe_main start");
+	dlog(FE_TRACKING, @"fe_main start");
 	
 	USER_not_enough_parameters_bug ();
 	
@@ -439,20 +439,20 @@ fe_main (void)
 	
 	[initPool release];
 	
-	SGLog(FE_TRACKING, @"fe_main end");
+	dlog(FE_TRACKING, @"fe_main end");
 }
 
 void
 fe_exit (void)
 {
-	SGLog(FE_TRACKING, @"fe_exit");
+	dlog(FE_TRACKING, @"fe_exit");
 	exit (0);
 }
 
 void
 fe_new_server (struct server *serv)
 {
-	SGLog(FE_TRACKING, @"fe_new_server");
+	dlog(FE_TRACKING, @"fe_new_server");
 	
 	static int server_num;
 	
@@ -466,7 +466,7 @@ fe_new_server (struct server *serv)
 void
 fe_message (char *msg, int flags)
 {
-	SGLog(FE_TRACKING, @"fe_message flags: %x msg:%s", flags, msg);
+	dlog(FE_TRACKING, @"fe_message flags: %x msg:%s", flags, msg);
 	// TODO Deal with FE_MSG_HASTITLE
 
 	BOOL wait = (flags & FE_MSG_WAIT) != 0;
@@ -495,7 +495,7 @@ fe_message (char *msg, int flags)
 void
 fe_get_int (char *msg, int def, void *callback, void *userdata)
 {
-	SGLog(TRUE, @"fe_get_int def: %d msg: %s", def, msg);
+	dlog(TRUE, @"fe_get_int def: %d msg: %s", def, msg);
 	//NSString *s = [SGRequest requestWithString:[NSString stringWithUTF8String:msg]
 	//					defaultValue:[NSString stringWithFormat:@"%d", def]];
 	NSString *s = @"0"; // FIXME:
@@ -517,7 +517,7 @@ fe_get_int (char *msg, int def, void *callback, void *userdata)
 void
 fe_get_str (char *msg, char *def, void *callback, void *userdata)
 {
-	SGLog(TRUE, @"fe_get_int def: %s msg: %s", def, msg);
+	dlog(TRUE, @"fe_get_int def: %s msg: %s", def, msg);
 	//NSString *s = [SGRequest requestWithString:[NSString stringWithUTF8String:msg]
 	//					defaultValue:[NSString stringWithUTF8String:def]];
 	NSString *s = @"";
@@ -539,21 +539,21 @@ fe_get_str (char *msg, char *def, void *callback, void *userdata)
 void
 fe_close_window (struct session *sess)
 {
-	SGLog(1, @"fe_close_window session: %p", sess);
+	dlog(1, @"fe_close_window session: %p", sess);
 	[[ApplicationDelegate mainViewController] removeGroupItemForUtility:sess->gui->chatViewController];
 }
 
 void
 fe_beep (void)
 {
-	SGLog(TRUE, @"fe_beep");
+	dlog(TRUE, @"fe_beep");
 	//NSBeep ();
 }
 
 void
 fe_add_rawlog (struct server *serv, char *text, int len, int outbound)
 {
-	SGLog(FE_TRACKING, @"fe_add_rawlog serv: %p ...", serv);
+	dlog(FE_TRACKING, @"fe_add_rawlog serv: %p ...", serv);
 	RawLogViewController *viewController = [RawLogViewController viewControllerIfExistsForSession:(struct session *)serv]; // fake pointer
 	[viewController setServer:serv];
 	[viewController printLog:text length:len outbound:outbound];
@@ -562,48 +562,48 @@ fe_add_rawlog (struct server *serv, char *text, int len, int outbound)
 void
 fe_set_topic (struct session *sess, char *topic, char *stripped_topic)
 {
-	SGLog(1, @"fe_set_topic");
+	dlog(1, @"fe_set_topic");
 	//[sess->gui->chatWindow setTopic:topic];
 }
 
 void
 fe_cleanup (void)
 {
-	SGLog(1, @"fe_clean_up");
+	dlog(1, @"fe_clean_up");
 	//[[AquaChat sharedAquaChat] cleanup];
 }
 
 void
 fe_set_hilight (struct session *sess)
 {
-	SGLog(1, @"fe_set_hilight sess: %p", sess);
+	dlog(1, @"fe_set_hilight sess: %p", sess);
 	//[sess->gui->chatWindow setHilight];
 }
 
 void
 fe_update_mode_buttons (struct session *sess, char mode, char sign)
 {
-	SGLog(1, @"set_update_mode_button sess: %p mode: %c sign: %c", sess, mode, sign);
+	dlog(1, @"set_update_mode_button sess: %p mode: %c sign: %c", sess, mode, sign);
 	//[sess->gui->chatWindow modeButtons:mode sign:sign];
 }
 
 void
 fe_update_channel_key (struct session *sess)
 {
-	SGLog(1, @"fe_update_channel_key sess: %p", sess);
+	dlog(1, @"fe_update_channel_key sess: %p", sess);
 }
 
 void
 fe_update_channel_limit (struct session *sess)
 {
-	SGLog(1, @"fe_update_channel_limit sess: %p", sess);
+	dlog(1, @"fe_update_channel_limit sess: %p", sess);
 	//[sess->gui->chatWindow channelLimit];
 }
 
 int
 fe_is_chanwindow (struct server *serv)
 {
-	SGLog(1, @"fe_is_chanwindow serv: %p", serv);
+	dlog(1, @"fe_is_chanwindow serv: %p", serv);
 	return 0; // FIXME:
 	//return [UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(ChannelWindowKey, serv)] != nil;
 }
@@ -611,21 +611,21 @@ fe_is_chanwindow (struct server *serv)
 void
 fe_add_chan_list (struct server *serv, char *chan, char *users, char *topic)
 {
-	SGLog(1, @"fe_add_chan_list serv: %p chan: %s users: %s topic: %s", serv, chan, users, topic);
+	dlog(1, @"fe_add_chan_list serv: %p chan: %s users: %s topic: %s", serv, chan, users, topic);
 	//[(ChannelWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(ChannelWindowKey, serv)] addChannelWithName:[NSString stringWithUTF8String:chan] numberOfUsers:[NSString stringWithUTF8String:users] topic:[NSString stringWithUTF8String:topic]];
 }
 
 void
 fe_chan_list_end (struct server *serv)
 {
-	SGLog(1, @"fe_chan_list_end serv: %p", serv);
+	dlog(1, @"fe_chan_list_end serv: %p", serv);
 	//	[(ChannelWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(ChannelWindowKey, serv)] refreshFinished];
 }
 
 int
 fe_is_banwindow (struct session *sess)
 {
-	SGLog(1, @"fe_is_banwindow session: %p");
+	dlog(1, @"fe_is_banwindow session: %p");
 	return 0;
 	//return [UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(BanWindowKey, sess)] ? true : false;
 }
@@ -633,14 +633,14 @@ fe_is_banwindow (struct session *sess)
 void
 fe_add_ban_list (struct session *sess, char *mask, char *who, char *when, int is_exemption)
 {
-	SGLog(1, @"fe_add_ban_list session: %p mask: %s who: %s when: %s is_exemption: %d", sess, mask, who, when, is_exemption);
+	dlog(1, @"fe_add_ban_list session: %p mask: %s who: %s when: %s is_exemption: %d", sess, mask, who, when, is_exemption);
 	//[(BanWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(BanWindowKey, sess)] addBanWithMask:[NSString stringWithUTF8String:mask] who:[NSString stringWithUTF8String:who] when:[NSString stringWithUTF8String:when] isExemption:is_exemption];
 }	 
 		  
 void
 fe_ban_list_end (struct session *sess, int is_exemption)
 {
-	SGLog(1, @"fe_ban_list_end session: %p is_exemption: %d", sess, is_exemption);
+	dlog(1, @"fe_ban_list_end session: %p is_exemption: %d", sess, is_exemption);
 	//[(BanWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(BanWindowKey, sess)] refreshFinished];
 }
 
@@ -653,75 +653,75 @@ fe_notify_update (char *name)
 	//	 should probably do the same thing some day too.
 	// 2.  With a NULL args.  Just update the notify list.
 
-	SGLog(1, @"fe_notify_update name: %s", name);
+	dlog(1, @"fe_notify_update name: %s", name);
 	//if (!name)
 	//	[[AquaChat sharedAquaChat] updateFriendWindow];
 }
 
 void fe_notify_ask (char *name, char *networks)
 {
-	SGLog(1, @"fe_notify_ask name: %s networks: %s", name, networks);
+	dlog(1, @"fe_notify_ask name: %s networks: %s", name, networks);
 }
 
 void
 fe_text_clear (struct session *sess, int lines)
 {
-	SGLog(FE_TRACKING, @"fe_text_clear session: %p lines: %d", sess, lines);
+	dlog(FE_TRACKING, @"fe_text_clear session: %p lines: %d", sess, lines);
 	[sess->gui->chatViewController clearText:lines];
 }
 
 void
 fe_progressbar_start (struct session *sess)
 {
-	SGLog(1, @"fe_progressbar_start session: %p", sess);
+	dlog(1, @"fe_progressbar_start session: %p", sess);
 	//[sess->gui->chatWindow progressbarStart];
 }
 
 void
 fe_progressbar_end (struct server *serv)
 {
-	SGLog(1, @"fe_progressbar_end serv: %p", serv);
+	dlog(1, @"fe_progressbar_end serv: %p", serv);
 	//[AquaChat forEachSessionOnServer:serv performSelector:@selector (progressbarEnd)];
 }
 
 void
 fe_userlist_insert (struct session *sess, struct User *newuser, int row, int selected)
 {
-	SGLog(FE_TRACKING, @"fe_userlist_insert session: %p", sess);
+	dlog(FE_TRACKING, @"fe_userlist_insert session: %p", sess);
 	[sess->gui->userListView insertUser:newuser row:(NSInteger)row select:selected];
 }
 
 void fe_userlist_update (struct session *sess, struct User *user)
 {
-	SGLog(1, @"fe_userlist_update session: %p user: %p", sess, user);
+	dlog(1, @"fe_userlist_update session: %p user: %p", sess, user);
 	[sess->gui->userListView updateUser:user];
 }
 
 int
 fe_userlist_remove (struct session *sess, struct User *user)
 {
-	SGLog(FE_TRACKING, @"fe_userlist_remove session: %p", sess);
+	dlog(FE_TRACKING, @"fe_userlist_remove session: %p", sess);
 	return (int)[sess->gui->userListView removeUser:user];
 }
 
 void
 fe_userlist_move (struct session *sess, struct User *user, int new_row)
 {
-	SGLog(FE_TRACKING, @"fe_userlist_move session: %p", sess);
+	dlog(FE_TRACKING, @"fe_userlist_move session: %p", sess);
 	[sess->gui->userListView moveUser:user toRow:(NSInteger)new_row];
 }
 
 void
 fe_userlist_numbers (struct session *sess)
 {
-	SGLog(FE_TRACKING, @"fe_userlist_numbers session: %p", sess);
+	dlog(FE_TRACKING, @"fe_userlist_numbers session: %p", sess);
 	[sess->gui->userListView updateStatus];
 }
 
 void
 fe_userlist_clear (struct session *sess)
 {
-	SGLog(FE_TRACKING, @"fe_userlist_clear session: %p", sess);
+	dlog(FE_TRACKING, @"fe_userlist_clear session: %p", sess);
 	[sess->gui->userListView removeAllUsers];
 }
 
@@ -800,35 +800,35 @@ fe_dlgbuttons_update (struct session *sess)
 void
 fe_set_channel (struct session *sess)
 {
-	SGLog(1, @"fe_set_channel session: %p", sess);
+	dlog(1, @"fe_set_channel session: %p", sess);
 	[sess->gui->chatViewController setChannel];
 }
 
 void
 fe_set_title (struct session *sess)
 {
-	SGLog(FE_TRACKING, @"fe_set_title session: %p", sess);
+	dlog(FE_TRACKING, @"fe_set_title session: %p", sess);
 	[sess->gui->chatViewController setTitleBySession];
 }
 
 void
 fe_set_nonchannel (struct session *sess, int state)
 {
-	SGLog(1, @"fe_set_nonchannel session: %p", sess);
+	dlog(1, @"fe_set_nonchannel session: %p", sess);
 	[sess->gui->chatViewController setNonchannel];
 }
 
 void
 fe_set_nick (struct server *serv, char *newnick)
 {
-	SGLog(FE_TRACKING, @"fe_set_nick serv: %p newnick: %s", serv, newnick);
+	dlog(FE_TRACKING, @"fe_set_nick serv: %p newnick: %s", serv, newnick);
 	[AppDelegate performSelector:@selector(setNickname:) withObject:NSSTR(newnick) forEachSessionOnServer:serv];
 }
 
 void
 fe_change_nick (struct server *serv, char *nick, char *newnick)
 {
-	SGLog(1, @"fe_change_nick serv: %p nick: %s newnick: %s", serv, nick, newnick);
+	dlog(1, @"fe_change_nick serv: %p nick: %s newnick: %s", serv, nick, newnick);
 	session *sess = find_dialog (serv, nick);
 	if (sess)
 	{
@@ -945,7 +945,7 @@ fe_ctrl_gui (session *sess, fe_gui_action action, int arg)
 void
 fe_userlist_rehash (struct session *sess, struct User *user)
 {
-	SGLog(FE_TRACKING, @"fe_userlist_rehash session: %p user: %p", sess, user);
+	dlog(FE_TRACKING, @"fe_userlist_rehash session: %p user: %p", sess, user);
 	[sess->gui->userListView rehashUser:user];
 }
 
@@ -960,14 +960,14 @@ fe_dcc_send_filereq (struct session *sess, char *nick, int maxcps, int passive)
 
 void fe_confirm (const char *message, void (*yesproc)(void *), void (*noproc)(void *), void *ud)
 {
-	SGLog(FE_TRACKING, @"fe_confirm msg: %s", message);
+	dlog(FE_TRACKING, @"fe_confirm msg: %s", message);
 	confirm_wrapper (message, yesproc, noproc, ud);
 }
 
 int
 fe_gui_info (session *sess, int info_type)
 {
-	SGLog(FE_TRACKING, @"fe_gui_info session: %p infotype: %d", sess, info_type);
+	dlog(FE_TRACKING, @"fe_gui_info session: %p infotype: %d", sess, info_type);
 	switch (info_type)
 	{
 		case 0: // window status
@@ -985,13 +985,13 @@ fe_gui_info (session *sess, int info_type)
 
 char * fe_get_inputbox_contents (struct session *sess)
 {
-	SGLog(FE_TRACKING, @"fe_get_inputbox_contents session: %p", sess);
+	dlog(FE_TRACKING, @"fe_get_inputbox_contents session: %p", sess);
 	return (char *)CSTR([sess->gui->chatViewController inputText]);
 }
 
 void fe_set_inputbox_contents (struct session *sess, char *text)
 {
-	SGLog(FE_TRACKING, @"fe_set_inputbox_contents session: %p text: %s", sess, text);
+	dlog(FE_TRACKING, @"fe_set_inputbox_contents session: %p text: %s", sess, text);
 	[sess->gui->chatViewController setInputText:NSSTR(text)];
 }
 
@@ -1002,50 +1002,50 @@ int fe_get_inputbox_cursor (struct session *sess)
 
 void fe_set_inputbox_cursor (struct session *sess, int delta, int pos)
 {
-	SGLog(1, @"fe_set_inputbox_cursor session: %p delta: %d pos: %d", sess, delta, pos);
+	dlog(1, @"fe_set_inputbox_cursor session: %p delta: %d pos: %d", sess, delta, pos);
 	//[sess->gui->chatViewController setInputTextPosition:pos delta:delta];
 }
 
 void fe_open_url (const char *url)
 {
-	SGLog(FE_TRACKING, @"fe_open_url url: %s", url);
+	dlog(FE_TRACKING, @"fe_open_url url: %s", url);
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithUTF8String:url]]];
 }
 
 void fe_menu_del (menu_entry *me)
 {
-	SGLog(1, @"fe_menu_del");
+	dlog(1, @"fe_menu_del");
 //	[[MenuMaker defaultMenuMaker] menu_del:me];
 }
 
 char * fe_menu_add (menu_entry *me)
 {
-	SGLog(1, @"fe_menu_add");
+	dlog(1, @"fe_menu_add");
 	//[[MenuMaker defaultMenuMaker] menu_add:me];
 	return me->label;
 }
 
 void fe_menu_update (menu_entry *me)
 {
-	SGLog(1, @"fe_menu_update");
+	dlog(1, @"fe_menu_update");
 	//[[MenuMaker defaultMenuMaker] menu_update:me];
 }
 
 void fe_uselect (session *sess, char *word[], int do_clear, int scroll_to)
 {
-	SGLog(1, @"fe_uselect session: %p ...", sess);
+	dlog(1, @"fe_uselect session: %p ...", sess);
 	[sess->gui->userListView userlistSelectNames:word clear:do_clear scrollTo:scroll_to];
 }
 
 void fe_server_event (server *serv, int type, int arg)
 {
-	SGLog(1, @"fe_server_event serv: %p type: %d arg: %d", serv, type, arg);
+	dlog(1, @"fe_server_event serv: %p type: %d arg: %d", serv, type, arg);
 	//[[AquaChat sharedAquaChat] server_event:serv event_type:type arg:arg];
 }
 
 void *fe_gui_info_ptr (session *sess, int info_type)
 {
-	SGLog(1, @"fe_gui_info_ptr session: %p infotype: %d", sess, info_type);
+	dlog(1, @"fe_gui_info_ptr session: %p infotype: %d", sess, info_type);
 	switch (info_type)
 	{
 		case 0:	/* native window pointer (for plugins) */ //?????
@@ -1057,7 +1057,7 @@ void *fe_gui_info_ptr (session *sess, int info_type)
 void
 fe_userlist_set_selected (struct session *sess)
 {
-	SGLog(1, @"fe_userlist_set_selected session: %p", sess);
+	dlog(1, @"fe_userlist_set_selected session: %p", sess);
 	//[sess->gui->chatWindow userlistSetSelected];
 }
 
@@ -1084,7 +1084,7 @@ void fe_get_file (const char *title, char *initial,
 				  void (*callback) (void *userdata, char *file), void *userdata,
 				  int flags)
 {
-	SGLog(1, @"fe_get_file");
+	dlog(1, @"fe_get_file");
 	//[SGFileSelection getFile:[NSString stringWithUTF8String:title]
 	//				 initial:[NSString stringWithUTF8String:initial]
 	//				callback:callback userdata:userdata flags:flags];

@@ -165,7 +165,7 @@ extern char *pntevts[];
         return row < 0 ? 0 : [[(TextEventsItem *)[eventsItems objectAtIndex:row] helps] count];
     }
 
-    SGAssert(NO);
+    dassert(NO);
     return 0;
 }
 
@@ -197,7 +197,7 @@ extern char *pntevts[];
         }
     }
 
-    SGAssert(NO);
+    dassert(NO);
     return @"";
 }
 

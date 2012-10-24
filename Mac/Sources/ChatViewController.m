@@ -1885,7 +1885,7 @@ static NSImage *emptyBulletImage;
         case 1: return u->nick;
         case 2: return u->host;
     }
-    SGAssert(NO);
+    dassert(NO);
     return @"";
 }
 

@@ -814,7 +814,7 @@ static NSString *charsets[] =
         dataArray = network->connectCommands;
     } 
     else {
-        SGAssert(NO);
+        dassert(NO);
     }
     
     id selectedItem = [[dataArray objectAtIndex:selectedRow] retain];
@@ -829,7 +829,7 @@ static NSString *charsets[] =
             [tableView reloadData];
             break;
         default:
-            SGAssert(NO);
+            dassert(NO);
     }
     [selectedItem release];
     [tableView unregisterDraggedTypes];
@@ -892,7 +892,7 @@ static NSString *charsets[] =
         return [network->connectCommands count];
     }
     
-    SGAssert(NO);
+    dassert(NO);
     return 0;
 }
 
@@ -941,7 +941,7 @@ static NSString *charsets[] =
             return [network->connectCommands objectAtIndex:rowIndex];
         }
     }
-    SGAssert(NO);
+    dassert(NO);
     return @"";
 }
 
