@@ -545,8 +545,6 @@
 		38F06933163820B0002723AB /* libPods-XChat Azure.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F06932163820B0002723AB /* libPods-XChat Azure.a */; };
 		38F06935163820CA002723AB /* libPods-XChat Aqua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F06934163820CA002723AB /* libPods-XChat Aqua.a */; };
 		38F069C016386905002723AB /* gquark.c in Sources */ = {isa = PBXBuildFile; fileRef = 38F069BE16386904002723AB /* gquark.c */; };
-		38F5BF6D15A9BA0E0075B0DF /* libintl.h in Headers */ = {isa = PBXBuildFile; fileRef = 38F5BF6B15A9BA0E0075B0DF /* libintl.h */; };
-		38F5BF6E15A9BA0E0075B0DF /* libintl.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F5BF6C15A9BA0E0075B0DF /* libintl.m */; };
 		38FC936B13CAF449006CB5C8 /* xchat.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38FC92B713CAF449006CB5C8 /* xchat.strings */; };
 		38FC936C13CAF449006CB5C8 /* xchat.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38FC92B713CAF449006CB5C8 /* xchat.strings */; };
 		38FC936D13CAF449006CB5C8 /* libsg.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38FC92CB13CAF449006CB5C8 /* libsg.strings */; };
@@ -2263,8 +2261,6 @@
 		38F06932163820B0002723AB /* libPods-XChat Azure.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-XChat Azure.a"; path = "Pods/build/Debug/libPods-XChat Azure.a"; sourceTree = "<group>"; };
 		38F06934163820CA002723AB /* libPods-XChat Aqua.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-XChat Aqua.a"; path = "Pods/build/Debug/libPods-XChat Aqua.a"; sourceTree = "<group>"; };
 		38F069BE16386904002723AB /* gquark.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gquark.c; sourceTree = "<group>"; };
-		38F5BF6B15A9BA0E0075B0DF /* libintl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libintl.h; sourceTree = "<group>"; };
-		38F5BF6C15A9BA0E0075B0DF /* libintl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = libintl.m; sourceTree = "<group>"; };
 		38FC92B813CAF449006CB5C8 /* am */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = am; path = am.lproj/xchat.strings; sourceTree = "<group>"; };
 		38FC92B913CAF449006CB5C8 /* az */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = az; path = az.lproj/xchat.strings; sourceTree = "<group>"; };
 		38FC92BA13CAF449006CB5C8 /* be */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = be; path = be.lproj/xchat.strings; sourceTree = "<group>"; };
@@ -2794,15 +2790,6 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		3855AF4B163AACAB005584CD /* libintl */ = {
-			isa = PBXGroup;
-			children = (
-				38F5BF6B15A9BA0E0075B0DF /* libintl.h */,
-				38F5BF6C15A9BA0E0075B0DF /* libintl.m */,
-			);
-			path = libintl;
-			sourceTree = "<group>";
-		};
 		385DCEF91558C260002FE467 /* xchat */ = {
 			isa = PBXGroup;
 			children = (
@@ -2815,7 +2802,6 @@
 		385F774A155158BB00689E6E /* staticlib */ = {
 			isa = PBXGroup;
 			children = (
-				3855AF4B163AACAB005584CD /* libintl */,
 				385F782D15515BFD00689E6E /* glib */,
 				385DCEF91558C260002FE467 /* xchat */,
 			);
@@ -3243,7 +3229,6 @@
 				380AD1F213C698E1003EEE3D /* xchat-plugin.h in Headers */,
 				380AD1F413C698E1003EEE3D /* xchat.h in Headers */,
 				380AD1F513C698E1003EEE3D /* xchatc.h in Headers */,
-				38F5BF6D15A9BA0E0075B0DF /* libintl.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4194,7 +4179,6 @@
 				380AD1F013C698E1003EEE3D /* util.c in Sources */,
 				380AD1F313C698E1003EEE3D /* xchat.c in Sources */,
 				38E5737E158EE6AC007943DA /* plugin.c in Sources */,
-				38F5BF6E15A9BA0E0075B0DF /* libintl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5745,7 +5729,7 @@
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
-					Mac,
+					"$(inherited)",
 					xchat/src/common,
 					glib,
 					libintl,
@@ -5769,7 +5753,7 @@
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
-					Mac,
+					"$(inherited)",
 					xchat/src/common,
 					glib,
 					libintl,
@@ -5949,7 +5933,6 @@
 		385F783415515C4000689E6E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -5973,7 +5956,6 @@
 		385F783515515C4000689E6E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
 				COPY_PHASE_STRIP = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -6018,7 +6000,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Pods/build/Debug\"",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_CODE = Azure;
 				PRODUCT_NAME = "XChat Azure";
 			};
@@ -6052,7 +6033,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Pods/build/Debug\"",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_CODE = Azure;
 				PRODUCT_NAME = "XChat Azure";
 			};
@@ -6290,6 +6270,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					Mac,
+					"Pods/libintl-alternative",
 				);
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"";
 				ONLY_ACTIVE_ARCH = YES;
@@ -6319,6 +6300,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					Mac,
+					"Pods/libintl-alternative",
 				);
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"";
 				SDKROOT = macosx10.7;
