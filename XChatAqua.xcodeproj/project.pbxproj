@@ -4116,7 +4116,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "if [ ! `which pod` ]; then\n    echo 'You should install cocoapod before do this'\n    echo 'Try \"sudo gem install cocoapods && pod setup\"'\n    exit 1\nfi\n\nif [ -e 'Pofile.lock' ]; then\n    pod install\nelse\n    pod update\nfi\n\ncd Pods\nxcodebuild -target 'Pods-XChat Aqua'\nxcodebuild -target 'Pods-XChat Azure'";
+			shellScript = "if [ ! `which pod` ]; then\n    echo 'You should install cocoapod before do this'\n    echo 'Try \"sudo gem install cocoapods && pod setup\"'\n    exit 1\nfi\n\nif [ -e 'Pofile.lock' ]; then\n    pod install\nfi\n\ncd Pods\nxcodebuild -target 'Pods-XChat Aqua'\nxcodebuild -target 'Pods-XChat Azure'";
 		};
 		B4249A4023BF4C7CBA9FB187 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5732,7 +5732,6 @@
 					"$(inherited)",
 					xchat/src/common,
 					glib,
-					libintl,
 				);
 				OTHER_CFLAGS = (
 					"-I",
@@ -5756,7 +5755,6 @@
 					"$(inherited)",
 					xchat/src/common,
 					glib,
-					libintl,
 				);
 				OTHER_CFLAGS = (
 					"-I",
@@ -5990,16 +5988,18 @@
 				);
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					xchat/src/common,
+					"${PODS_HEADERS_SEARCH_PATHS}",
 					glib,
-					libintl,
+					"$(PODS_ROOT)/libintl-alternative",
+					"$(PODS_ROOT)/FoundationExtension",
+					"$(PODS_ROOT)/cdebug",
 				);
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Pods/build/Debug\"",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_CODE = Azure;
 				PRODUCT_NAME = "XChat Azure";
 			};
@@ -6023,16 +6023,18 @@
 				);
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					xchat/src/common,
+					"${PODS_HEADERS_SEARCH_PATHS}",
 					glib,
-					libintl,
+					"$(PODS_ROOT)/libintl-alternative",
+					"$(PODS_ROOT)/FoundationExtension",
+					"$(PODS_ROOT)/cdebug",
 				);
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Pods/build/Debug\"",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_CODE = Azure;
 				PRODUCT_NAME = "XChat Azure";
 			};
@@ -6182,7 +6184,6 @@
 			buildSettings = {
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CODE_SIGN_ENTITLEMENTS = Mac/Entitlements.entitmements;
-				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(TARGET_PLATFORM)/$(PRODUCT_CODE)/Frameworks\"/**",
 					"\"$(TARGET_PLATFORM)/ShortcutRecorder/build/$(CONFIGURATION)\"/**",
@@ -6273,6 +6274,7 @@
 					"Pods/libintl-alternative",
 				);
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx10.7;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
@@ -6303,6 +6305,7 @@
 					"Pods/libintl-alternative",
 				);
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				SDKROOT = macosx10.7;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
 				TARGET_PLATFORM = Mac;
