@@ -1,4 +1,4 @@
-platform :osx
+platform :osx, "10.6"
 workspace 'XChatAqua'
 
 target :'XChat Azure' do
