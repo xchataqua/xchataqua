@@ -464,6 +464,7 @@
 		3876769A1589CA0F007366B7 /* ChatWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 387676981589CA0F007366B7 /* ChatWindow.xib */; };
 		38771A4215A7B7DB0046929E /* container-migration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38771A4115A7B7D80046929E /* container-migration.plist */; };
 		38771A4715A7C0880046929E /* container-migration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38771A4615A7C0880046929E /* container-migration.plist */; };
+		3877F43916A3EBC1007CD975 /* libPods-XChat Aqua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F06934163820CA002723AB /* libPods-XChat Aqua.a */; };
 		3882282015930240000AB63D /* theme in Resources */ = {isa = PBXBuildFile; fileRef = 3882281F15930240000AB63D /* theme */; };
 		3882282115930240000AB63D /* theme in Resources */ = {isa = PBXBuildFile; fileRef = 3882281F15930240000AB63D /* theme */; };
 		388BDCC313C6A0CB00B95036 /* SGAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDC9F13C6A0CB00B95036 /* SGAlert.m */; };
@@ -543,7 +544,6 @@
 		38E573E1158F1A76007943DA /* AquaPlugins.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E573E0158F1A76007943DA /* AquaPlugins.m */; };
 		38E573E2158F1A76007943DA /* AquaPlugins.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E573E0158F1A76007943DA /* AquaPlugins.m */; };
 		38F06933163820B0002723AB /* libPods-XChat Azure.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F06932163820B0002723AB /* libPods-XChat Azure.a */; };
-		38F06935163820CA002723AB /* libPods-XChat Aqua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F06934163820CA002723AB /* libPods-XChat Aqua.a */; };
 		38F069C016386905002723AB /* gquark.c in Sources */ = {isa = PBXBuildFile; fileRef = 38F069BE16386904002723AB /* gquark.c */; };
 		38FC936B13CAF449006CB5C8 /* xchat.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38FC92B713CAF449006CB5C8 /* xchat.strings */; };
 		38FC936C13CAF449006CB5C8 /* xchat.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38FC92B713CAF449006CB5C8 /* xchat.strings */; };
@@ -2417,7 +2417,7 @@
 				D4FBD9C612E458C4003EA441 /* WebKit.framework in Frameworks */,
 				38BC97B6154A994D005894EF /* ShortcutRecorder.framework in Frameworks */,
 				38E34015154A74C2005B59F8 /* Growl.framework in Frameworks */,
-				38F06935163820CA002723AB /* libPods-XChat Aqua.a in Frameworks */,
+				3877F43916A3EBC1007CD975 /* libPods-XChat Aqua.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4116,7 +4116,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "if [ ! `which pod` ]; then\n    echo 'You should install cocoapod before do this'\n    echo 'Try \"sudo gem install cocoapods && pod setup\"'\n    exit 1\nfi\n\nif [ -e 'Pofile.lock' ]; then\n    pod install\nfi\n\ncd Pods\nxcodebuild -target 'Pods-XChat Aqua'\nxcodebuild -target 'Pods-XChat Azure'";
+			shellScript = "if [ ! `which pod` ]; then\n    echo 'You should install cocoapod before do this'\n    echo 'Try \"sudo gem install cocoapods && pod setup\"'\n    exit 1\nfi\n\nif [ -e 'Pofile.lock' ]; then\n    pod install\nfi\n\ncd \"$PROJECT_DIR\"/Pods\nxcodebuild -target 'Pods-XChat Aqua'\nxcodebuild -target 'Pods-XChat Azure'";
 		};
 		B4249A4023BF4C7CBA9FB187 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5997,9 +5997,9 @@
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Pods/build/Debug\"",
+					"\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PRODUCT_CODE = Azure;
 				PRODUCT_NAME = "XChat Azure";
 			};
@@ -6032,9 +6032,9 @@
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Pods/build/Debug\"",
+					"\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PRODUCT_CODE = Azure;
 				PRODUCT_NAME = "XChat Azure";
 			};
@@ -6183,12 +6183,10 @@
 			baseConfigurationReference = C51F1E5CA23A49AE9CAEAEDF /* Pods-XChat Aqua.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
-				CODE_SIGN_ENTITLEMENTS = Mac/Entitlements.entitmements;
+				CODE_SIGN_ENTITLEMENTS = Mac/Entitlements.entitlements;
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(TARGET_PLATFORM)/$(PRODUCT_CODE)/Frameworks\"/**",
 					"\"$(TARGET_PLATFORM)/ShortcutRecorder/build/$(CONFIGURATION)\"/**",
 					"\"$(TARGET_PLATFORM)/Growl/build/$(CONFIGURATION)\"/**",
-					"\"$(SRCROOT)/Mac/Aqua/Frameworks/Sparkle\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -6207,6 +6205,7 @@
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"",
 					"\"$(SRCROOT)/Pods/build/Debug\"",
 				);
 				PRODUCT_CODE = Aqua;
@@ -6219,12 +6218,10 @@
 			baseConfigurationReference = C51F1E5CA23A49AE9CAEAEDF /* Pods-XChat Aqua.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
-				CODE_SIGN_ENTITLEMENTS = Mac/Entitlements.entitmements;
+				CODE_SIGN_ENTITLEMENTS = Mac/Entitlements.entitlements;
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(TARGET_PLATFORM)/$(PRODUCT_CODE)/Frameworks\"/**",
 					"\"$(TARGET_PLATFORM)/ShortcutRecorder/build/$(CONFIGURATION)\"/**",
 					"\"$(TARGET_PLATFORM)/Growl/build/$(CONFIGURATION)\"/**",
-					"\"$(SRCROOT)/Mac/Aqua/Frameworks/Sparkle\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(TARGET_PLATFORM)/Sources/Prefix.pch";
@@ -6242,6 +6239,7 @@
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"",
 					"\"$(SRCROOT)/Pods/build/Debug\"",
 				);
 				PRODUCT_CODE = Aqua;
