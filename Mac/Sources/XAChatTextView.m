@@ -296,6 +296,10 @@ static NSCursor *XAChatTextViewSizableCursor;
     char buff [128];  // 128 = large enough for timestamp
     char *prepend = buff;
 
+    if (stamp == 0) {
+        stamp = time(NULL);
+    }
+
     if (prefs.timestamp)
     {
         prepend += strftime (buff, sizeof (buff), prefs.stamp_format, localtime (&stamp));
