@@ -25,6 +25,8 @@
 #import "MIRCString.h"
 #import "MenuMaker.h"
 
+#import "SystemVersion.h" // for OS X file:/// crash workaround
+
 static NSAttributedString *XAChatTextViewNewLine;
 //static NSAttributedString *tab;
 static NSCursor *XAChatTextViewSizableCursor;
@@ -334,11 +336,29 @@ static NSCursor *XAChatTextViewSizableCursor;
                                                       font:normalFont
                                                   boldFont:boldFont];
 
+
+    //---- HOTFIX upper case file:/// crash bug for OS X 10.8
+    if ([SystemVersion minor] == 8) {
+        NSString *cursedString = [NSString stringWithUTF8String:text];
+
+        char cCursedWord[9] = "file:///";
+        cCursedWord[0] = 'F'; // stupid runtime string builder not to kill the xcode
+        NSString *cursedWord = [NSString stringWithUTF8String:cCursedWord];
+
+        NSString *rescuedString = cursedString;
+        if ([cursedString rangeOfString:cursedWord].location != NSNotFound) {
+            rescuedString = [cursedString stringByReplacingOccurrencesOfString:cursedWord withString:@"file:///"];
+        }
+        text = (char *)[rescuedString UTF8String];
+    }
+    //---- End of HOTFIX
+
     MIRCString *msgString = [MIRCString stringWithUTF8String:text
                                                       length:len
                                                      palette:self.palette
                                                         font:normalFont
                                                     boldFont:boldFont];
+
     [pre_str appendAttributedString:msgString];
     [pre_str appendAttributedString:XAChatTextViewNewLine];
 
