@@ -1341,10 +1341,10 @@
 		387676921589BC41007366B7 /* XATabWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XATabWindow.h; sourceTree = "<group>"; };
 		387676931589BC41007366B7 /* XATabWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XATabWindow.m; sourceTree = "<group>"; };
 		387676981589CA0F007366B7 /* ChatWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatWindow.xib; sourceTree = "<group>"; };
-		38771A4015A7B5220046929E /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Entitlements.entitlements; path = ../Entitlements.entitlements; sourceTree = "<group>"; };
+		38771A4015A7B5220046929E /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Entitlements.entitlements; path = ../Aqua/Entitlements.entitlements; sourceTree = "<group>"; };
 		38771A4115A7B7D80046929E /* container-migration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "container-migration.plist"; path = "Mac/Azure/container-migration.plist"; sourceTree = "<group>"; };
 		38771A4615A7C0880046929E /* container-migration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "container-migration.plist"; path = "Mac/Aqua/container-migration.plist"; sourceTree = SOURCE_ROOT; };
-		38771A4815A7C0980046929E /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Entitlements.entitlements; path = Mac/Entitlements.entitlements; sourceTree = "<group>"; };
+		38771A4815A7C0980046929E /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Entitlements.entitlements; path = Mac/Azure/Entitlements.entitlements; sourceTree = "<group>"; };
 		387C79FB13DEA26A00A79FA8 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/libsg.strings; sourceTree = "<group>"; };
 		387C79FE13DEA27D00A79FA8 /* de */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/xchataqua.strings; sourceTree = "<group>"; };
 		3882281F15930240000AB63D /* theme */ = {isa = PBXFileReference; lastKnownFileType = folder; name = theme; path = Resources/theme; sourceTree = SOURCE_ROOT; };
@@ -5974,7 +5974,7 @@
 			baseConfigurationReference = 9B7C664CA2BB48DCB301BFA0 /* Pods-XChat Azure.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
-				CODE_SIGN_ENTITLEMENTS = Mac/Entitlements.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Mac/Azure/Entitlements.entitlements;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(TARGET_PLATFORM)/ShortcutRecorder/build/$(CONFIGURATION)\"/**",
 					"\"$(TARGET_PLATFORM)/Growl/build/$(CONFIGURATION)\"/**",
@@ -6010,7 +6010,7 @@
 			baseConfigurationReference = 9B7C664CA2BB48DCB301BFA0 /* Pods-XChat Azure.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
-				CODE_SIGN_ENTITLEMENTS = Mac/Entitlements.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Mac/Azure/Entitlements.entitlements;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(TARGET_PLATFORM)/ShortcutRecorder/build/$(CONFIGURATION)\"/**",
 					"\"$(TARGET_PLATFORM)/Growl/build/$(CONFIGURATION)\"/**",
@@ -6183,7 +6183,7 @@
 			baseConfigurationReference = C51F1E5CA23A49AE9CAEAEDF /* Pods-XChat Aqua.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
-				CODE_SIGN_ENTITLEMENTS = Mac/Entitlements.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Mac/Aqua/Entitlements.entitlements;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(TARGET_PLATFORM)/ShortcutRecorder/build/$(CONFIGURATION)\"/**",
 					"\"$(TARGET_PLATFORM)/Growl/build/$(CONFIGURATION)\"/**",
@@ -6218,7 +6218,7 @@
 			baseConfigurationReference = C51F1E5CA23A49AE9CAEAEDF /* Pods-XChat Aqua.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
-				CODE_SIGN_ENTITLEMENTS = Mac/Entitlements.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Mac/Aqua/Entitlements.entitlements;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(TARGET_PLATFORM)/ShortcutRecorder/build/$(CONFIGURATION)\"/**",
 					"\"$(TARGET_PLATFORM)/Growl/build/$(CONFIGURATION)\"/**",
