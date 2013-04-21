@@ -138,11 +138,9 @@
 		380AD1D113C698CA003EEE3D /* plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 380AD1B713C698CA003EEE3D /* plugin.h */; };
 		380AD1D213C698CA003EEE3D /* proto-irc.c in Sources */ = {isa = PBXBuildFile; fileRef = 380AD1B813C698CA003EEE3D /* proto-irc.c */; };
 		380AD1D313C698CA003EEE3D /* proto-irc.h in Headers */ = {isa = PBXBuildFile; fileRef = 380AD1B913C698CA003EEE3D /* proto-irc.h */; };
-		380AD1D413C698CA003EEE3D /* server.c in Sources */ = {isa = PBXBuildFile; fileRef = 380AD1BA13C698CA003EEE3D /* server.c */; };
 		380AD1D513C698CA003EEE3D /* server.h in Headers */ = {isa = PBXBuildFile; fileRef = 380AD1BB13C698CA003EEE3D /* server.h */; };
 		380AD1D613C698CA003EEE3D /* servlist.c in Sources */ = {isa = PBXBuildFile; fileRef = 380AD1BC13C698CA003EEE3D /* servlist.c */; };
 		380AD1D713C698CA003EEE3D /* servlist.h in Headers */ = {isa = PBXBuildFile; fileRef = 380AD1BD13C698CA003EEE3D /* servlist.h */; };
-		380AD1D813C698CA003EEE3D /* ssl.c in Sources */ = {isa = PBXBuildFile; fileRef = 380AD1BE13C698CA003EEE3D /* ssl.c */; };
 		380AD1D913C698CA003EEE3D /* ssl.h in Headers */ = {isa = PBXBuildFile; fileRef = 380AD1BF13C698CA003EEE3D /* ssl.h */; };
 		380AD1DA13C698CA003EEE3D /* text.c in Sources */ = {isa = PBXBuildFile; fileRef = 380AD1C013C698CA003EEE3D /* text.c */; };
 		380AD1DB13C698CA003EEE3D /* text.h in Headers */ = {isa = PBXBuildFile; fileRef = 380AD1C113C698CA003EEE3D /* text.h */; };
@@ -167,6 +165,8 @@
 		384A96461588F2CC00268814 /* xchat-ruby.c in Sources */ = {isa = PBXBuildFile; fileRef = 384A963E1588F2CC00268814 /* xchat-ruby.c */; };
 		384A964B1588F6FE00268814 /* DEVELOPERS in CopyFiles */ = {isa = PBXBuildFile; fileRef = 384A96341588F2CC00268814 /* DEVELOPERS */; };
 		384A964C1588F6FE00268814 /* rubyenv in CopyFiles */ = {isa = PBXBuildFile; fileRef = 384A96481588F66100268814 /* rubyenv */; };
+		384FD89116E5BD070066139A /* ssl.c in Sources */ = {isa = PBXBuildFile; fileRef = 380AD1BE13C698CA003EEE3D /* ssl.c */; };
+		384FD89216E5BD360066139A /* server.c in Sources */ = {isa = PBXBuildFile; fileRef = 380AD1BA13C698CA003EEE3D /* server.c */; };
 		385F783A15515CE500689E6E /* libglib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 385F783215515C3F00689E6E /* libglib.a */; };
 		385F807415515F2C00689E6E /* docs.c in Sources */ = {isa = PBXBuildFile; fileRef = 385F7DFC15515DC900689E6E /* docs.c */; };
 		385F807515515F2C00689E6E /* galloca.h in Headers */ = {isa = PBXBuildFile; fileRef = 385F7DFD15515DC900689E6E /* galloca.h */; };
@@ -4169,9 +4169,7 @@
 				380AD1CC13C698CA003EEE3D /* outbound.c in Sources */,
 				380AD1CE13C698CA003EEE3D /* plugin-timer.c in Sources */,
 				380AD1D213C698CA003EEE3D /* proto-irc.c in Sources */,
-				380AD1D413C698CA003EEE3D /* server.c in Sources */,
 				380AD1D613C698CA003EEE3D /* servlist.c in Sources */,
-				380AD1D813C698CA003EEE3D /* ssl.c in Sources */,
 				380AD1DA13C698CA003EEE3D /* text.c in Sources */,
 				380AD1EA13C698E1003EEE3D /* tree.c in Sources */,
 				380AD1EC13C698E1003EEE3D /* url.c in Sources */,
@@ -4352,6 +4350,8 @@
 				3894C1B31590D93C00BCD762 /* NSPanelAdditions.m in Sources */,
 				3864594C15E509E500C4CA45 /* PluginManager.m in Sources */,
 				3B4D30BB15F5314600704C98 /* XAFileUtil.m in Sources */,
+				384FD89116E5BD070066139A /* ssl.c in Sources */,
+				384FD89216E5BD360066139A /* server.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
