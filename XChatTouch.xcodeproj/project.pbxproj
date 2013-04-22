@@ -58,7 +58,7 @@
 		0F8EA78D0CFB6C9A001AE9AE /* red.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0F8EA77D0CFB6C9A001AE9AE /* red.tiff */; };
 		0FC8F5C40DEEEA3E00504F31 /* libxchat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC8F4AE0DEEE51700504F31 /* libxchat.a */; };
 		0FC8F6ED0DEEF64200504F31 /* fe-iphone.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA3CE0CFAF7E2001AE9AE /* fe-iphone.m */; };
-		2D7817CA10E872D200C71AF8 /* fe-aqua_utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7817C910E872D200C71AF8 /* fe-aqua_utility.m */; };
+		2D7817CA10E872D200C71AF8 /* fe-iphone_utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7817C910E872D200C71AF8 /* fe-iphone_utility.m */; };
 		381297D513CACC7500AE8746 /* cfgfiles.c in Sources */ = {isa = PBXBuildFile; fileRef = 381297CC13CACC6D00AE8746 /* cfgfiles.c */; };
 		381297D613CACC7500AE8746 /* cfgfiles.h in Headers */ = {isa = PBXBuildFile; fileRef = 381297CD13CACC6D00AE8746 /* cfgfiles.h */; };
 		381297D713CACC7500AE8746 /* chanopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 381297CE13CACC6D00AE8746 /* chanopt.c */; };
@@ -300,11 +300,12 @@
 		389DC30D15550990003BA8D9 /* libcharset.h in Headers */ = {isa = PBXBuildFile; fileRef = 389DC0BE1555098E003BA8D9 /* libcharset.h */; };
 		389DC30F15550990003BA8D9 /* localcharset.h in Headers */ = {isa = PBXBuildFile; fileRef = 389DC0C01555098E003BA8D9 /* localcharset.h */; };
 		389DC3741555099E003BA8D9 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 389DC3731555099E003BA8D9 /* config.h */; };
-		389DC37515550BEA003BA8D9 /* libglib2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CBF12A12B96A6400B4E35E /* libglib2.a */; };
 		389DC37715550C12003BA8D9 /* localcharset.c in Sources */ = {isa = PBXBuildFile; fileRef = 389DC0BF1555098E003BA8D9 /* localcharset.c */; };
 		389DC37815551291003BA8D9 /* genviron.c in Sources */ = {isa = PBXBuildFile; fileRef = 389DBFEC1555098E003BA8D9 /* genviron.c */; };
+		38D930951725C4DF00BD0938 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38D930941725C4DE00BD0938 /* CoreGraphics.framework */; };
+		38D930961725C4FC00BD0938 /* libglib2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CBF12A12B96A6400B4E35E /* libglib2.a */; };
+		38D930981725C57300BD0938 /* gquark.c in Sources */ = {isa = PBXBuildFile; fileRef = 38D930971725C57300BD0938 /* gquark.c */; };
 		38F069681638222D002723AB /* libPods-XChat iPhone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F069671638222D002723AB /* libPods-XChat iPhone.a */; };
-		38F51868160B32B900224DE4 /* libintl.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F51867160B32B900224DE4 /* libintl.m */; };
 		38F5186B160B33E900224DE4 /* xchatext.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F5186A160B33E900224DE4 /* xchatext.m */; };
 		38FC927913CADF7E006CB5C8 /* xchat.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38FC91C513CADF7E006CB5C8 /* xchat.strings */; };
 		38FC927A13CADF7E006CB5C8 /* libsg.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38FC91D913CADF7E006CB5C8 /* libsg.strings */; };
@@ -418,8 +419,8 @@
 		0FC8F4AE0DEEE51700504F31 /* libxchat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libxchat.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		2D6D421E121E85470082F2EF /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
-		2D7817C810E872D200C71AF8 /* fe-aqua_utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "fe-aqua_utility.h"; sourceTree = "<group>"; };
-		2D7817C910E872D200C71AF8 /* fe-aqua_utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "fe-aqua_utility.m"; sourceTree = "<group>"; };
+		2D7817C810E872D200C71AF8 /* fe-iphone_utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "fe-iphone_utility.h"; sourceTree = "<group>"; };
+		2D7817C910E872D200C71AF8 /* fe-iphone_utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "fe-iphone_utility.m"; sourceTree = "<group>"; };
 		2DDC6FA21231733E0015A26C /* build_number.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = build_number.h; sourceTree = "<group>"; };
 		381297CC13CACC6D00AE8746 /* cfgfiles.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cfgfiles.c; sourceTree = "<group>"; };
 		381297CD13CACC6D00AE8746 /* cfgfiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cfgfiles.h; sourceTree = "<group>"; };
@@ -682,9 +683,9 @@
 		389DC0BF1555098E003BA8D9 /* localcharset.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = localcharset.c; sourceTree = "<group>"; };
 		389DC0C01555098E003BA8D9 /* localcharset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = localcharset.h; sourceTree = "<group>"; };
 		389DC3731555099E003BA8D9 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = glib/config.h; sourceTree = SOURCE_ROOT; };
+		38D930941725C4DE00BD0938 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		38D930971725C57300BD0938 /* gquark.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gquark.c; sourceTree = "<group>"; };
 		38F069671638222D002723AB /* libPods-XChat iPhone.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-XChat iPhone.a"; path = "Pods/build/Release-iphoneos/libPods-XChat iPhone.a"; sourceTree = "<group>"; };
-		38F51866160B32B900224DE4 /* libintl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libintl.h; sourceTree = "<group>"; };
-		38F51867160B32B900224DE4 /* libintl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = libintl.m; sourceTree = "<group>"; };
 		38F5186A160B33E900224DE4 /* xchatext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xchatext.m; sourceTree = "<group>"; };
 		38FC91C613CADF7E006CB5C8 /* am */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = am; path = am.lproj/xchat.strings; sourceTree = "<group>"; };
 		38FC91C713CADF7E006CB5C8 /* az */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = az; path = az.lproj/xchat.strings; sourceTree = "<group>"; };
@@ -777,8 +778,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				389DC37515550BEA003BA8D9 /* libglib2.a in Frameworks */,
+				38D930961725C4FC00BD0938 /* libglib2.a in Frameworks */,
 				0FC8F5C40DEEEA3E00504F31 /* libxchat.a in Frameworks */,
+				38D930951725C4DF00BD0938 /* CoreGraphics.framework in Frameworks */,
 				D4CBF0A712B96A3500B4E35E /* Foundation.framework in Frameworks */,
 				D4CBF00A12B9657000B4E35E /* UIKit.framework in Frameworks */,
 				D4CBF3BB12B9778000B4E35E /* libiconv.dylib in Frameworks */,
@@ -890,6 +892,7 @@
 		29B97314FDCFA39411CA2CEA /* X-Chat Aqua */ = {
 			isa = PBXGroup;
 			children = (
+				38D930941725C4DE00BD0938 /* CoreGraphics.framework */,
 				38F069671638222D002723AB /* libPods-XChat iPhone.a */,
 				2DC6ACE6118776D40048B7C7 /* Sources */,
 				2DC6AD151187773F0048B7C7 /* Resources */,
@@ -930,8 +933,8 @@
 				381297CB13CACB9000AE8746 /* Utility Windows */,
 				D406B462129D789400EF6B2B /* fe-iphone_common.h */,
 				0F8EA3CE0CFAF7E2001AE9AE /* fe-iphone.m */,
-				2D7817C810E872D200C71AF8 /* fe-aqua_utility.h */,
-				2D7817C910E872D200C71AF8 /* fe-aqua_utility.m */,
+				2D7817C810E872D200C71AF8 /* fe-iphone_utility.h */,
+				2D7817C910E872D200C71AF8 /* fe-iphone_utility.m */,
 				D4CBF45912B97F2E00B4E35E /* AppDelegate.h */,
 				D4CBF45A12B97F2E00B4E35E /* AppDelegate.m */,
 				D4CBF89912BAB3D300B4E35E /* MainViewController.h */,
@@ -1004,15 +1007,6 @@
 				D49A18C212BD71FB0018AC79 /* RawLogViewController.xib */,
 			);
 			name = "Utility Windows";
-			sourceTree = "<group>";
-		};
-		389DBED1155507A8003BA8D9 /* gettext */ = {
-			isa = PBXGroup;
-			children = (
-				38F51866160B32B900224DE4 /* libintl.h */,
-				38F51867160B32B900224DE4 /* libintl.m */,
-			);
-			path = gettext;
 			sourceTree = "<group>";
 		};
 		389DBF5515550971003BA8D9 /* glib */ = {
@@ -1135,6 +1129,7 @@
 				389DC05B1555098E003BA8D9 /* gprintfint.h */,
 				389DC05C1555098E003BA8D9 /* gqsort.c */,
 				389DC05D1555098E003BA8D9 /* gqsort.h */,
+				38D930971725C57300BD0938 /* gquark.c */,
 				389DC05E1555098E003BA8D9 /* gquark.h */,
 				389DC05F1555098E003BA8D9 /* gqueue.c */,
 				389DC0601555098E003BA8D9 /* gqueue.h */,
@@ -1276,7 +1271,6 @@
 		38F51869160B331D00224DE4 /* staticlib */ = {
 			isa = PBXGroup;
 			children = (
-				389DBED1155507A8003BA8D9 /* gettext */,
 				389DBF5515550971003BA8D9 /* glib */,
 				0F8EA3160CFAA342001AE9AE /* xchat */,
 			);
@@ -1489,7 +1483,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "XChat iPhone" */;
 			buildPhases = (
-				38F0697016382694002723AB /* Install Pods */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				8D1107290486CEB800E47090 /* Resources */,
@@ -1694,20 +1687,6 @@
 			shellPath = /bin/bash;
 			shellScript = "#!/bin/bash\n\n[ -f ~/.bashrc ] && source ~/.bashrc\n[ -f ~/.profile ] && source ~/.profile\n\necho \"Generating config.package_name.in.h\"\n\ncd \"$PROJECT_DIR\"\n\"tools/gen_xchat_package_name.sh\" > \"xchat/config.package_name.in.h\"";
 		};
-		38F0697016382694002723AB /* Install Pods */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Install Pods";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "if [ ! `which pod` ]; then\n    echo 'You should install cocoapod before do this'\n    echo 'Try \"sudo gem install cocoapods && pod setup\"'\n    exit 1\nfi\n\nif [ -e 'Pofile.lock' ]; then\n    pod install\nelse\n    pod update\nfi\n\ncd Pods\nxcodebuild -target 'Pods-XChat Aqua'\nxcodebuild -target 'Pods-XChat Azure'";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1750,7 +1729,7 @@
 				0F8EA6E70CFB347B001AE9AE /* GLikeTimer.m in Sources */,
 				0F8EA6ED0CFB347B001AE9AE /* XACommon.m in Sources */,
 				0FC8F6ED0DEEF64200504F31 /* fe-iphone.m in Sources */,
-				2D7817CA10E872D200C71AF8 /* fe-aqua_utility.m in Sources */,
+				2D7817CA10E872D200C71AF8 /* fe-iphone_utility.m in Sources */,
 				D4CBF45B12B97F2E00B4E35E /* AppDelegate.m in Sources */,
 				D4CBF48912B9824B00B4E35E /* NetworkViewController.m in Sources */,
 				D4CBF49E12B9845500B4E35E /* UtilityViewController.m in Sources */,
@@ -1763,7 +1742,6 @@
 				D490452012CF67C5007D9843 /* mIRCString.m in Sources */,
 				38FC92AC13CAE23A006CB5C8 /* bundle_loader_plugin.m in Sources */,
 				38FC92AF13CAE29E006CB5C8 /* SystemVersion.m in Sources */,
-				38F51868160B32B900224DE4 /* libintl.m in Sources */,
 				38F5186B160B33E900224DE4 /* xchatext.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1856,6 +1834,7 @@
 				389DC30815550990003BA8D9 /* gwakeup.c in Sources */,
 				389DC37715550C12003BA8D9 /* localcharset.c in Sources */,
 				389DC37815551291003BA8D9 /* genviron.c in Sources */,
+				38D930981725C57300BD0938 /* gquark.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1969,17 +1948,16 @@
 		};
 		0FC8F4AF0DEEE51700504F31 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D489054E4B084C608D425CDC /* Pods-XChat iPhone.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				HEADER_SEARCH_PATHS = (
-					.,
-					xchat/src/common,
-					"$(TARGET_PLATFORM)",
+					"${PODS_HEADERS_SEARCH_PATHS}",
 					glib,
-					gettext,
+					"$(PODS_ROOT)/libintl-alternative",
 				);
 				OTHER_CFLAGS = (
 					"-w",
@@ -1994,15 +1972,14 @@
 		};
 		0FC8F4B00DEEE51700504F31 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D489054E4B084C608D425CDC /* Pods-XChat iPhone.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				HEADER_SEARCH_PATHS = (
-					.,
-					xchat/src/common,
-					"$(TARGET_PLATFORM)",
+					"${PODS_HEADERS_SEARCH_PATHS}",
 					glib,
-					gettext,
+					"$(PODS_ROOT)/libintl-alternative",
 				);
 				OTHER_CFLAGS = (
 					"-w",
@@ -2056,6 +2033,7 @@
 					"${PODS_HEADERS_SEARCH_PATHS}",
 					.,
 					glib,
+					"$(PODS_ROOT)/libintl-alternative",
 				);
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
@@ -2074,6 +2052,7 @@
 					"${PODS_HEADERS_SEARCH_PATHS}",
 					.,
 					glib,
+					"$(PODS_ROOT)/libintl-alternative",
 				);
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
@@ -2102,7 +2081,7 @@
 					xchat/src/common,
 					"$(TARGET_PLATFORM)",
 					glib,
-					gettext,
+					"$(PODS_ROOT)/libintl-alternative",
 				);
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "";
@@ -2128,7 +2107,7 @@
 					xchat/src/common,
 					"$(TARGET_PLATFORM)",
 					glib,
-					gettext,
+					"$(PODS_ROOT)/libintl-alternative",
 				);
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "";
@@ -2140,6 +2119,7 @@
 		};
 		D4CBF12812B96A6400B4E35E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D489054E4B084C608D425CDC /* Pods-XChat iPhone.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2152,6 +2132,7 @@
 				HEADER_SEARCH_PATHS = (
 					glib,
 					gettext,
+					"$(PODS_ROOT)/libintl-alternative",
 				);
 				OTHER_CFLAGS = (
 					"-w",
@@ -2166,6 +2147,7 @@
 		};
 		D4CBF12912B96A6400B4E35E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D489054E4B084C608D425CDC /* Pods-XChat iPhone.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -2176,6 +2158,7 @@
 				HEADER_SEARCH_PATHS = (
 					glib,
 					gettext,
+					"$(PODS_ROOT)/libintl-alternative",
 				);
 				OTHER_CFLAGS = (
 					"-w",

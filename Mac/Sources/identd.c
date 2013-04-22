@@ -84,7 +84,7 @@ static void identd (void *arg, int c, void *cbd)
 
 	struct two_ints *x = (struct two_ints *)malloc(sizeof(struct two_ints));
 	x->sock = read_sok;
-	x->tag = fe_input_add (read_sok, FIA_READ, (void *) identd_reply, x);
+	x->tag = fe_input_add (read_sok, FIA_READ, (input_callback)identd_reply, x);
 }
 
 int 
@@ -163,7 +163,7 @@ identd_really_start ()
 		PrintText (current_sess, "Unable to start identd\n");
 	else
 	{
-		ident_tag = fe_input_add (ident_sok, FIA_READ, (void *) identd, NULL);
+		ident_tag = fe_input_add (ident_sok, FIA_READ, (input_callback)identd, NULL);
 		PrintText (current_sess, "identd started\n");
 	}
 }
@@ -177,7 +177,7 @@ identd_start ()
 	if (current_sess)
 		identd_really_start ();
 	else
-		fe_timeout_add (0, (void *) identd_start, NULL);
+		fe_timeout_add (0, (void *)identd_start, NULL);
 	
 	return 0;
 }

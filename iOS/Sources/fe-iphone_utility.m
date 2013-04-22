@@ -17,7 +17,7 @@
 
 #include "outbound.h"
 
-#import "fe-aqua_utility.h"
+#import "fe-iphone_utility.h"
 
 #define CPP_INPUT_THING 0
 #define CPP_TIMER_THING 0
@@ -139,13 +139,13 @@ static int timer_seq = 1;
 @implementation TimerThing
 @synthesize tag;
 
-+ (id)timerFromInterval:(int)the_interval callback:(timer_callback)the_callback
++ (id)timerFromInterval:(int)the_interval callback:(void *)the_callback
 			   userdata:(void *)the_userdata
 {
 	TimerThing *thing = [[TimerThing alloc] init];
 	
 	thing->interval = (NSTimeInterval) the_interval / 1000;
-	thing->callback = the_callback;
+	thing->_callback = the_callback;
 	thing->userdata = the_userdata;
 	thing->tag = timer_seq ++;
 	thing->timer = nil;
@@ -178,7 +178,7 @@ static int timer_seq = 1;
 		{
 			TimerThing *timer = (TimerThing *) atimer;
 			[timer invalidate];
-			timer->callback = NULL;	 // We'll use this to detect released
+			timer->_callback = NULL;	 // We'll use this to detect released
 			[timer release];			// timers in [TimerThing fire]
 			return;
 		}
@@ -221,8 +221,10 @@ static int timer_seq = 1;
 	
 	[self retain];	// Retain ourselvs just in case he decides
 	// to release us in the callback.
+
+    int (*callback)(void *) = (int (*)(void *))self->_callback;
 	
-	if (callback == NULL) {
+	if (_callback == NULL) {
 		// XXX: do not run below if callback is NULL
 		// then, so what should i do if it is NULL?
 		dlog(TRUE, @"XXX: callback is null the app killer");
