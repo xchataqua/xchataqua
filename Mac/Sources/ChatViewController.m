@@ -559,7 +559,7 @@ static NSImage *emptyBulletImage;
     char buf[128];
     
     struct popup *p = [(UserlistButton *)sender popup];
-    auto_insert (buf, sizeof (buf), (unsigned char *)p->cmd, 0, 0, "", "", "", "", "", "", sess->channel);
+    auto_insert (buf, sizeof (buf), p->cmd, 0, 0, "", "", "", "", "", "", sess->channel);
     handle_command (sess, buf, TRUE);
 }
 

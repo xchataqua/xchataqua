@@ -49,12 +49,10 @@ typedef int (*socket_callback) (void *source, int condition, void *user_data);
 #	import "GLikeTimer.h"
 #else
 
-typedef int (*timer_callback) (void *user_data);
-
 @interface TimerThing : NSObject
 {
 	NSTimeInterval interval;
-	timer_callback callback;
+	void *_callback;
 	void *userdata;
 	int tag;
 	
@@ -63,7 +61,7 @@ typedef int (*timer_callback) (void *user_data);
 
 @property (nonatomic, readonly) int tag;
 
-+ (id)timerFromInterval:(int)the_interval callback:(timer_callback)the_callback
++ (id)timerFromInterval:(int)the_interval callback:(void *)the_callback
 			   userdata:(void *)the_userdata;
 + (void)removeTimerWithTag:(int)atag;
 - (void)schedule;

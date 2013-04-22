@@ -83,7 +83,7 @@ fe_new_window (struct session *sess, int focus)
 }
 
 void
-fe_print_text (struct session *sess, char *text, time_t stamp)
+fe_print_text (struct session *sess, const char *text, time_t stamp)
 {
     NSString *string = [NSString stringWithUTF8String:text];
     if ( string == nil ) return;
@@ -91,7 +91,7 @@ fe_print_text (struct session *sess, char *text, time_t stamp)
 }
 
 void
-fe_timeout_remove (int tag)
+fe_timeout_remove (long tag)
 {
 #if USE_GLIKE_TIMER
     [GLikeTimer removeTimerWithTag:tag];
@@ -100,14 +100,14 @@ fe_timeout_remove (int tag)
 #endif
 }
 
-int
-fe_timeout_add (int interval, void *callback, void *userdata)
+long
+fe_timeout_add (long interval, void *callback, void *userdata)
 {
 #if USE_GLIKE_TIMER
-    return [GLikeTimer addTaggedTimerWithMSInterval:interval callback:(GSourceFunc)callback userData:userdata];
+    return [GLikeTimer addTaggedTimerWithMSInterval:interval callback:callback userData:userdata];
 #else
     TimerThing *timer = [TimerThing timerWithInterval:interval
-                                             callback:(timer_callback)callback userdata:userdata];
+                                             callback:callback userdata:userdata];
     
     [timer schedule];
     
@@ -122,7 +122,7 @@ fe_idle_add (void *func, void *data)
 }
 
 void
-fe_input_remove (int tag)
+fe_input_remove (long tag)
 {
     InputThing *thing = [InputThing inputForTag:tag];
     [thing disable];
@@ -130,9 +130,9 @@ fe_input_remove (int tag)
 }
 
 int
-fe_input_add (int sok, int flags, void *func, void *data)
+fe_input_add (int sok, int flags, input_callback func, void *data)
 {
-    InputThing *thing = [InputThing inputWithSocketFD:sok flags:flags callback:(socket_callback)func data:data]; 
+    InputThing *thing = [InputThing inputWithSocketFD:sok flags:flags callback:func data:data]; 
     return [thing tag];
 }
 
@@ -551,7 +551,7 @@ fe_beep (void)
 }
 
 void
-fe_add_rawlog (struct server *serv, char *text, int len, int outbound)
+fe_add_rawlog (struct server *serv, const char *text, const ssize_t len, int outbound)
 {
     RawLogWindow *window = [UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(RawLogWindowKey, serv)];
     [window log:text length:len outbound:outbound];
@@ -666,7 +666,7 @@ fe_progressbar_end (struct server *serv)
 }
 
 void
-fe_userlist_insert (struct session *sess, struct User *newuser, int row, int selected)
+fe_userlist_insert (struct session *sess, struct User *newuser, long row, int selected)
 {
     [sess->gui->controller userlistInsert:newuser row:(NSInteger)row select:selected];
 }
@@ -683,7 +683,7 @@ fe_userlist_remove (struct session *sess, struct User *user)
 }
 
 void
-fe_userlist_move (struct session *sess, struct User *user, int new_row)
+fe_userlist_move (struct session *sess, struct User *user, long new_row)
 {
     [sess->gui->controller userlistMove:user row:(NSInteger)new_row];
 }
@@ -829,7 +829,7 @@ fe_lastlog (session * sess, session * lastlog_sess, char *sstr, gboolean regexp)
 }
 
 void
-fe_set_lag (server * serv, int lag)
+fe_set_lag (server * serv, long lag)
 {
     // lag seems to be measured as tenths of seconds since the ping was sent.
     // -1 indicates that we sent a PING but we are stil waiting for the PING reply.
