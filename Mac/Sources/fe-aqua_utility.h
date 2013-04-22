@@ -15,8 +15,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-typedef int (*socket_callback) (void *source, int condition, void *user_data);
-
 @class SGFileDescriptor;
 @interface InputThing : NSObject
 {
@@ -24,7 +22,7 @@ typedef int (*socket_callback) (void *source, int condition, void *user_data);
     SGFileDescriptor *wf;
     SGFileDescriptor *ef;
     
-    socket_callback  func;
+    input_callback  func;
     void            *data;
     
     int tag;
@@ -32,9 +30,9 @@ typedef int (*socket_callback) (void *source, int condition, void *user_data);
 
 @property (nonatomic,readonly) int tag;
 
-+ (id)inputWithSocketFD:(int)socket flags:(int)flags callback:(socket_callback)callback data:(void *)data;
++ (id)inputWithSocketFD:(int)socket flags:(int)flags callback:(input_callback)callback data:(void *)data;
 
-+ (id)inputForTag:(int)tag;
++ (id)inputForTag:(long)tag;
 - (void)disable;
 - (void)remove;
 
@@ -47,23 +45,21 @@ typedef int (*socket_callback) (void *source, int condition, void *user_data);
 #    import "GLikeTimer.h"
 #else
 
-typedef int (*timer_callback) (void *user_data);
-
 @interface TimerThing : NSObject
 {
-    NSTimeInterval interval;
-    timer_callback callback;
-    void *userdata;
-    int tag;
+    NSTimeInterval _interval;
+    void *_callback;
+    void *_userdata;
+    int _tag;
     
-    NSTimer *timer;
+    NSTimer *_timer;
 }
 
 @property (nonatomic, readonly) int tag;
 
-+ (id)timerWithInterval:(int)the_interval callback:(timer_callback)the_callback
++ (id)timerWithInterval:(long)the_interval callback:(void *)the_callback
                userdata:(void *)the_userdata;
-+ (id)timerForTag:(int)tag;
++ (id)timerForTag:(long)tag;
 - (void)schedule;
 - (void)invalidate;
 - (void)remove;

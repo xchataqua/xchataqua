@@ -31,7 +31,7 @@
 #include "outbound.h"
 
 #import "fe-iphone_common.h"
-#import "fe-aqua_utility.h"
+#import "fe-iphone_utility.h"
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
@@ -180,14 +180,14 @@ fe_new_window (struct session *sess, int focus)
 }
 
 void
-fe_print_text (struct session *sess, char *text, time_t stamp)
+fe_print_text (struct session *sess, const char *text, time_t stamp)
 {
 	dlog(FE_TRACKING, @"fe_print_text session: %p timestamp: %d text: %s", sess, stamp, text);
 	[sess->gui->chatViewController printText:[NSString stringWithUTF8String:text] stamp:stamp];
 }
 
 void
-fe_timeout_remove (int tag)
+fe_timeout_remove (long tag)
 {
 	dlog(FE_TRACKING, @"fe_timeout_remove tag: %d", tag);
 #if USE_GLIKE_TIMER
@@ -197,15 +197,15 @@ fe_timeout_remove (int tag)
 #endif
 }
 
-int
-fe_timeout_add (int interval, void *callback, void *userdata)
+long
+fe_timeout_add (long interval, void *callback, void *userdata)
 {
 	int tag;	
 #if USE_GLIKE_TIMER
 	tag = [GLikeTimer addTaggedTimerWithMSInterval:interval callback:(GSourceFunc)callback userData:userdata];
 #else
 	TimerThing *timer = [[TimerThing timerFromInterval:interval 
-		callback:(timer_callback)callback userdata:userdata] retain];
+		callback:(void *)callback userdata:userdata] retain];
 
 	[timer schedule];
 
@@ -223,7 +223,7 @@ fe_idle_add (void *func, void *data)
 }
 
 void
-fe_input_remove (int tag)
+fe_input_remove (long tag)
 {
 	dlog(FE_TRACKING, @"fe_input_remove tag: %d", tag);
 	InputThing *thing = [InputThing findTagged:tag];
@@ -232,7 +232,7 @@ fe_input_remove (int tag)
 }
 
 int
-fe_input_add (int sok, int flags, void *func, void *data)
+fe_input_add (int sok, int flags, input_callback func, void *data)
 {
 	dlog(FE_TRACKING, @"fe_input_add sok: %x flags: %x ...", sok, flags);
 	InputThing *thing = [[InputThing socketFromFD:sok 
@@ -551,7 +551,7 @@ fe_beep (void)
 }
 
 void
-fe_add_rawlog (struct server *serv, char *text, int len, int outbound)
+fe_add_rawlog (struct server *serv, const char *text, const ssize_t len, int outbound)
 {
 	dlog(FE_TRACKING, @"fe_add_rawlog serv: %p ...", serv);
 	RawLogViewController *viewController = [RawLogViewController viewControllerIfExistsForSession:(struct session *)serv]; // fake pointer
@@ -685,7 +685,7 @@ fe_progressbar_end (struct server *serv)
 }
 
 void
-fe_userlist_insert (struct session *sess, struct User *newuser, int row, int selected)
+fe_userlist_insert (struct session *sess, struct User *newuser, long row, int selected)
 {
 	dlog(FE_TRACKING, @"fe_userlist_insert session: %p", sess);
 	[sess->gui->userListView insertUser:newuser row:(NSInteger)row select:selected];
@@ -705,7 +705,7 @@ fe_userlist_remove (struct session *sess, struct User *user)
 }
 
 void
-fe_userlist_move (struct session *sess, struct User *user, int new_row)
+fe_userlist_move (struct session *sess, struct User *user, long new_row)
 {
 	dlog(FE_TRACKING, @"fe_userlist_move session: %p", sess);
 	[sess->gui->userListView moveUser:user toRow:(NSInteger)new_row];
@@ -876,7 +876,7 @@ fe_lastlog (session * sess, session * lastlog_sess, char *sstr, gboolean regexp)
 }
 
 void
-fe_set_lag (server * serv, int lag)
+fe_set_lag (server * serv, long lag)
 {
 	// lag seems to be measured as tenths of seconds since the ping was sent.
 	// -1 indicates that we sent a PING but we are stil waiting for the PING reply.

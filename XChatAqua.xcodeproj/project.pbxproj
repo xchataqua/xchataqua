@@ -125,7 +125,6 @@
 		380AD1A913C69893003EEE3D /* inbound.h in Headers */ = {isa = PBXBuildFile; fileRef = 380AD1A513C69893003EEE3D /* inbound.h */; };
 		380AD1C413C698CA003EEE3D /* modes.c in Sources */ = {isa = PBXBuildFile; fileRef = 380AD1AA13C698CA003EEE3D /* modes.c */; };
 		380AD1C513C698CA003EEE3D /* modes.h in Headers */ = {isa = PBXBuildFile; fileRef = 380AD1AB13C698CA003EEE3D /* modes.h */; };
-		380AD1C613C698CA003EEE3D /* msproxy.c in Sources */ = {isa = PBXBuildFile; fileRef = 380AD1AC13C698CA003EEE3D /* msproxy.c */; };
 		380AD1C713C698CA003EEE3D /* msproxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 380AD1AD13C698CA003EEE3D /* msproxy.h */; };
 		380AD1C813C698CA003EEE3D /* network.c in Sources */ = {isa = PBXBuildFile; fileRef = 380AD1AE13C698CA003EEE3D /* network.c */; };
 		380AD1C913C698CA003EEE3D /* network.h in Headers */ = {isa = PBXBuildFile; fileRef = 380AD1AF13C698CA003EEE3D /* network.h */; };
@@ -165,8 +164,6 @@
 		384A96461588F2CC00268814 /* xchat-ruby.c in Sources */ = {isa = PBXBuildFile; fileRef = 384A963E1588F2CC00268814 /* xchat-ruby.c */; };
 		384A964B1588F6FE00268814 /* DEVELOPERS in CopyFiles */ = {isa = PBXBuildFile; fileRef = 384A96341588F2CC00268814 /* DEVELOPERS */; };
 		384A964C1588F6FE00268814 /* rubyenv in CopyFiles */ = {isa = PBXBuildFile; fileRef = 384A96481588F66100268814 /* rubyenv */; };
-		384FD89116E5BD070066139A /* ssl.c in Sources */ = {isa = PBXBuildFile; fileRef = 380AD1BE13C698CA003EEE3D /* ssl.c */; };
-		384FD89216E5BD360066139A /* server.c in Sources */ = {isa = PBXBuildFile; fileRef = 380AD1BA13C698CA003EEE3D /* server.c */; };
 		385F783A15515CE500689E6E /* libglib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 385F783215515C3F00689E6E /* libglib.a */; };
 		385F807415515F2C00689E6E /* docs.c in Sources */ = {isa = PBXBuildFile; fileRef = 385F7DFC15515DC900689E6E /* docs.c */; };
 		385F807515515F2C00689E6E /* galloca.h in Headers */ = {isa = PBXBuildFile; fileRef = 385F7DFD15515DC900689E6E /* galloca.h */; };
@@ -175,7 +172,6 @@
 		385F807815515F2C00689E6E /* gasyncqueue.c in Sources */ = {isa = PBXBuildFile; fileRef = 385F7E0015515DC900689E6E /* gasyncqueue.c */; };
 		385F807915515F2C00689E6E /* gasyncqueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 385F7E0115515DC900689E6E /* gasyncqueue.h */; };
 		385F807A15515F2C00689E6E /* gasyncqueueprivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 385F7E0215515DC900689E6E /* gasyncqueueprivate.h */; };
-		385F807B15515F2C00689E6E /* gatomic.c in Sources */ = {isa = PBXBuildFile; fileRef = 385F7E0315515DC900689E6E /* gatomic.c */; };
 		385F807C15515F2C00689E6E /* gatomic.h in Headers */ = {isa = PBXBuildFile; fileRef = 385F7E0415515DC900689E6E /* gatomic.h */; };
 		385F807D15515F2C00689E6E /* gbacktrace.c in Sources */ = {isa = PBXBuildFile; fileRef = 385F7E0515515DC900689E6E /* gbacktrace.c */; };
 		385F807E15515F2C00689E6E /* gbacktrace.h in Headers */ = {isa = PBXBuildFile; fileRef = 385F7E0615515DC900689E6E /* gbacktrace.h */; };
@@ -208,7 +204,6 @@
 		385F809B15515F2C00689E6E /* gerror.h in Headers */ = {isa = PBXBuildFile; fileRef = 385F7E2615515DC900689E6E /* gerror.h */; };
 		385F809C15515F2C00689E6E /* gfileutils.c in Sources */ = {isa = PBXBuildFile; fileRef = 385F7E2715515DC900689E6E /* gfileutils.c */; };
 		385F809D15515F2C00689E6E /* gfileutils.h in Headers */ = {isa = PBXBuildFile; fileRef = 385F7E2815515DC900689E6E /* gfileutils.h */; };
-		385F809E15515F2C00689E6E /* ggettext.c in Sources */ = {isa = PBXBuildFile; fileRef = 385F7E2915515DC900689E6E /* ggettext.c */; };
 		385F809F15515F2C00689E6E /* ggettext.h in Headers */ = {isa = PBXBuildFile; fileRef = 385F7E2A15515DC900689E6E /* ggettext.h */; };
 		385F80A015515F2C00689E6E /* ghash.c in Sources */ = {isa = PBXBuildFile; fileRef = 385F7E2B15515DC900689E6E /* ghash.c */; };
 		385F80A115515F2C00689E6E /* ghash.h in Headers */ = {isa = PBXBuildFile; fileRef = 385F7E2C15515DC900689E6E /* ghash.h */; };
@@ -521,6 +516,10 @@
 		38D501DE1593F52500C9B65D /* alt_completion.pl in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 38CE5A63154A551600480EC6 /* alt_completion.pl */; };
 		38D501DF1593F52900C9B65D /* char_count.pl in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 38CE5A64154A551600480EC6 /* char_count.pl */; };
 		38D501E01593F52D00C9B65D /* google.pl in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 380F1EF113E29C930033E3AC /* google.pl */; };
+		38D9307A17244D2000BD0938 /* ggettext.c in Sources */ = {isa = PBXBuildFile; fileRef = 385F7E2915515DC900689E6E /* ggettext.c */; };
+		38D9307B17246E0B00BD0938 /* server.c in Sources */ = {isa = PBXBuildFile; fileRef = 380AD1BA13C698CA003EEE3D /* server.c */; };
+		38D9307C17246E1000BD0938 /* ssl.c in Sources */ = {isa = PBXBuildFile; fileRef = 380AD1BE13C698CA003EEE3D /* ssl.c */; };
+		38D9307D17246E2A00BD0938 /* gatomic.c in Sources */ = {isa = PBXBuildFile; fileRef = 385F7E0315515DC900689E6E /* gatomic.c */; };
 		38DA68CF13C8D72700B12F16 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C89F213C6E10100AAF20D /* MainMenu.xib */; };
 		38E34015154A74C2005B59F8 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5AC5154A70E300480EC6 /* Growl.framework */; };
 		38E34016154A75BF005B59F8 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5A8F154A687400480EC6 /* ShortcutRecorder.framework */; };
@@ -4163,7 +4162,6 @@
 				380AD1A613C69893003EEE3D /* ignore.c in Sources */,
 				380AD1A813C69893003EEE3D /* inbound.c in Sources */,
 				380AD1C413C698CA003EEE3D /* modes.c in Sources */,
-				380AD1C613C698CA003EEE3D /* msproxy.c in Sources */,
 				380AD1C813C698CA003EEE3D /* network.c in Sources */,
 				380AD1CA13C698CA003EEE3D /* notify.c in Sources */,
 				380AD1CC13C698CA003EEE3D /* outbound.c in Sources */,
@@ -4177,6 +4175,8 @@
 				380AD1F013C698E1003EEE3D /* util.c in Sources */,
 				380AD1F313C698E1003EEE3D /* xchat.c in Sources */,
 				38E5737E158EE6AC007943DA /* plugin.c in Sources */,
+				38D9307B17246E0B00BD0938 /* server.c in Sources */,
+				38D9307C17246E1000BD0938 /* ssl.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4203,7 +4203,6 @@
 				385F807415515F2C00689E6E /* docs.c in Sources */,
 				385F807615515F2C00689E6E /* garray.c in Sources */,
 				385F807815515F2C00689E6E /* gasyncqueue.c in Sources */,
-				385F807B15515F2C00689E6E /* gatomic.c in Sources */,
 				385F807D15515F2C00689E6E /* gbacktrace.c in Sources */,
 				385F807F15515F2C00689E6E /* gbase64.c in Sources */,
 				385F808115515F2C00689E6E /* gbitlock.c in Sources */,
@@ -4217,7 +4216,6 @@
 				385F809815515F2C00689E6E /* genviron.c in Sources */,
 				385F809A15515F2C00689E6E /* gerror.c in Sources */,
 				385F809C15515F2C00689E6E /* gfileutils.c in Sources */,
-				385F809E15515F2C00689E6E /* ggettext.c in Sources */,
 				385F80A015515F2C00689E6E /* ghash.c in Sources */,
 				385F80A215515F2C00689E6E /* ghmac.c in Sources */,
 				385F80A415515F2C00689E6E /* ghook.c in Sources */,
@@ -4281,6 +4279,8 @@
 				385F81491551627C00689E6E /* gcharset.c in Sources */,
 				385F814A155162DE00689E6E /* localcharset.c in Sources */,
 				38F069C016386905002723AB /* gquark.c in Sources */,
+				38D9307A17244D2000BD0938 /* ggettext.c in Sources */,
+				38D9307D17246E2A00BD0938 /* gatomic.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4350,8 +4350,6 @@
 				3894C1B31590D93C00BCD762 /* NSPanelAdditions.m in Sources */,
 				3864594C15E509E500C4CA45 /* PluginManager.m in Sources */,
 				3B4D30BB15F5314600704C98 /* XAFileUtil.m in Sources */,
-				384FD89116E5BD070066139A /* ssl.c in Sources */,
-				384FD89216E5BD360066139A /* server.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5634,6 +5632,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				HEADER_SEARCH_PATHS = (
 					Mac,
 					Mac/contrib/include,
@@ -5660,6 +5659,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				HEADER_SEARCH_PATHS = (
 					Mac,
 					Mac/contrib/include,
@@ -5728,11 +5728,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_WARN_ABOUT_POINTER_SIGNEDNESS = NO;
-				GCC_WARN_MISSING_PARENTHESES = NO;
-				GCC_WARN_PEDANTIC = NO;
-				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = NO;
-				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					xchat/src/common,
@@ -5752,11 +5747,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				GCC_WARN_ABOUT_POINTER_SIGNEDNESS = NO;
-				GCC_WARN_MISSING_PARENTHESES = NO;
-				GCC_WARN_PEDANTIC = NO;
-				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = NO;
-				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					xchat/src/common,
@@ -5782,6 +5772,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_PEDANTIC = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
@@ -5813,6 +5804,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_PEDANTIC = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
@@ -5879,6 +5871,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_PEDANTIC = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
@@ -5914,6 +5907,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_PEDANTIC = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
@@ -5960,6 +5954,10 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					Mac,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = glib;
@@ -5979,6 +5977,10 @@
 					"LIBDIR=\\\"@loader_path/../Frameworks\\\"",
 				);
 				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					Mac,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = glib;
@@ -6068,6 +6070,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_PEDANTIC = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
@@ -6103,6 +6106,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_PEDANTIC = NO;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
@@ -6157,6 +6161,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					Mac,
@@ -6183,6 +6188,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					Mac,

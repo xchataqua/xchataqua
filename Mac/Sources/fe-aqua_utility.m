@@ -33,7 +33,7 @@ static int InputThingSequence = 1;
     }
 }
 
-+ (id)inputWithSocketFD:(int)socket flags:(int)flags callback:(socket_callback)callback data:(void *)the_data {
++ (id)inputWithSocketFD:(int)socket flags:(int)flags callback:(input_callback)callback data:(void *)the_data {
     InputThing *thing = [[InputThing alloc] init];
     
     thing->func = callback;
@@ -57,7 +57,7 @@ static int InputThingSequence = 1;
     return [thing autorelease];
 }
 
-+ (id)inputForTag:(int)atag
++ (id)inputForTag:(long)atag
 {
     for (InputThing *athing in InputThingItems)
     {
@@ -103,7 +103,7 @@ NSMutableArray *TimerThingItems;
 static int TimerThingSequence = 1;
 
 @implementation TimerThing
-@synthesize tag;
+@synthesize tag=_tag;
 
 + (void) initialize {
     if (self == [TimerThing class]) {
@@ -112,16 +112,16 @@ static int TimerThingSequence = 1;
     }
 }
 
-+ (id)timerWithInterval:(int)the_interval callback:(timer_callback)the_callback
++ (id)timerWithInterval:(long)the_interval callback:(void *)the_callback
                userdata:(void *)the_userdata
 {
     dassert(the_callback != NULL);
     TimerThing *thing = [[TimerThing alloc] init];
     
-    thing->interval = (NSTimeInterval) the_interval / 1000;
-    thing->tag = TimerThingSequence ++;
-    thing->callback = the_callback;
-    thing->userdata = the_userdata;
+    thing->_interval = (NSTimeInterval) the_interval / 1000;
+    thing->_tag = TimerThingSequence ++;
+    thing->_callback = the_callback;
+    thing->_userdata = the_userdata;
 
     [TimerThingLock lock];
     [TimerThingItems addObject:thing];
@@ -132,12 +132,12 @@ static int TimerThingSequence = 1;
     return [thing autorelease];
 }
 
-+ (id)timerForTag:(int)tag {
++ (id)timerForTag:(long)tag {
     [TimerThingLock lock];
     id timer = nil;
     for (TimerThing *atimer in TimerThingItems)
     {
-        if (atimer->tag == tag) {
+        if (atimer->_tag == tag) {
             timer = atimer;
             break;
         }
@@ -148,7 +148,7 @@ static int TimerThingSequence = 1;
 
 - (void)remove {
     [self invalidate];
-    self->callback = NULL;     // We'll use this to detect released
+    self->_callback = NULL;     // We'll use this to detect released
     [TimerThingLock lock];
     [[self retain] autorelease];
     [TimerThingItems removeObjectIdenticalTo:self];
@@ -163,32 +163,34 @@ static int TimerThingSequence = 1;
 
 - (void)invalidate
 {
-    if (timer)
+    if (_timer)
     {
-        [timer invalidate];
-        timer = nil;
+        [_timer invalidate];
+        _timer = nil;
     }
 }
 
 - (void)schedule
 {
-    timer = [NSTimer scheduledTimerWithTimeInterval:interval
-                                             target:self
-                                           selector:@selector(fire:)
-                                           userInfo:nil
-                                            repeats:NO];
+    self->_timer = [NSTimer scheduledTimerWithTimeInterval:self->_interval
+                                                    target:self
+                                                  selector:@selector(fire:)
+                                                  userInfo:nil
+                                                   repeats:NO];
 }
 
 - (void)fire:(id)userInfo
 {
-    [timer invalidate];
-    timer = nil;
+    [_timer invalidate];
+    _timer = nil;
+
+    int (*callback)(void *) = (int (*)(void *))self->_callback;
     
-    if (callback == NULL) {
+    if (_callback == NULL) {
         // XXX: do not run below if callback is NULL
         // then, so what should i do if it is NULL?
         dlog(TRUE, @"XXX: callback is null the app killer");
-    } else if (callback(userdata) == 0) {
+    } else if (callback(_userdata) == 0) {
         // Only honour his request to destroy this timer only if
         // he did not already do it in the callback.  We NULL out
         // the callback when he removes a timer to signal us here
