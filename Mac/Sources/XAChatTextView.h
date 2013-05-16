@@ -42,11 +42,12 @@
     NSSize      fontSize;
     BOOL        atBottom;
     NSInteger   numberOfLines;
-    BOOL        pendingEditing;
+    BOOL _scrollingBack;
 }
 
 @property(nonatomic, retain) ColorPalette *palette;
 @property(nonatomic, retain ) NSMutableParagraphStyle *style;
+@property(nonatomic, assign, getter=isScrollingBack) BOOL scrollingBack;
 
 - (void) printText:(NSString *)text;
 - (void) printText:(NSString *)text stamp:(time_t)stamp;

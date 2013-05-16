@@ -1769,6 +1769,14 @@ static NSImage *emptyBulletImage;
     
 }
 
+- (BOOL)isScrollingBack {
+    return [self->chatTextView isScrollingBack];
+}
+
+- (void)setScrollingBack:(BOOL)scrollingBack {
+    [self->chatTextView setScrollingBack:scrollingBack];
+}
+
 - (void) printText:(NSString *)text
 {
     [self printText:text stamp:time(NULL)];

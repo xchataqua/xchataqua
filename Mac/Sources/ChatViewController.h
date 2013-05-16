@@ -69,10 +69,12 @@
 @property (nonatomic, readonly) NSWindow *window;
 @property (nonatomic, readonly) struct session *session;
 @property (nonatomic, retain) NSButton *tButton, *sButton, *iButton, *pButton, *mButton,
-                                         *bButton, *lButton, *kButton, *CButton, *uButton;
+                                       *bButton, *lButton, *kButton, *CButton, *uButton;
 @property (nonatomic, retain, setter=setnButton:) NSButton *nButton;
 @property (nonatomic, retain, setter=setNButton:) NSButton *NButton;
-@property (nonatomic, retain)   NSTextField *limitTextField, *keyTextField;
+@property (nonatomic, retain) NSTextField *limitTextField, *keyTextField;
+
+@property (nonatomic, assign, getter=isScrollingBack) BOOL scrollingBack;
 
 - (IBAction) doMircColor:(id)sender;
 - (IBAction)toggleConferenceMode:(id)sender;

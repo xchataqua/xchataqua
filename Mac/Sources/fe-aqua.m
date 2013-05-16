@@ -90,6 +90,14 @@ fe_print_text (struct session *sess, const char *text, time_t stamp)
     [sess->gui->controller printText:string stamp:stamp];
 }
 
+void fe_scrollback_start(struct session *sess) {
+    [sess->gui->controller setScrollingBack:YES];
+}
+
+void fe_scrollback_end(struct session *sess) {
+    [sess->gui->controller setScrollingBack:NO];
+}
+
 void
 fe_timeout_remove (long tag)
 {
