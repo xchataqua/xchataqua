@@ -629,9 +629,13 @@ AquaChat *AquaChatSharedObject;
     [current_sess->gui->controller doMircColor:sender];
 }
 
-- (void) toggleAway:(id)sender
-{
-    handle_command (current_sess, "away", FALSE);
+- (void)toggleAway:(id)sender {
+    NSMenuItem *item = sender;
+    if (item.state == NSOffState) {
+        handle_command (current_sess, "away", FALSE);
+    } else {
+        handle_command (current_sess, "back", FALSE);
+    }
 }
 
 - (void) showChannelWindow:(id)sender
