@@ -34,6 +34,7 @@ static NSCursor *XAChatTextViewSizableCursor;
 @implementation XAChatTextView
 @synthesize palette=_palette;
 @synthesize style=_style;
+@synthesize scrollingBack=_scrollingBack;
 
 + (void)initialize {
     [super initialize];
@@ -49,7 +50,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     if (self != nil) {
         wordRange = NSMakeRange(NSNotFound, 0);
         fontSize = NSMakeSize(10, 20);
-            
+        
         _style = [[NSMutableParagraphStyle alloc] init];
         
         [self setRichText:YES];
@@ -117,7 +118,7 @@ static NSCursor *XAChatTextViewSizableCursor;
                                     range:NSMakeRange(0, [pstripped length])];
     
     [pb setString:pstripped forType:NSStringPboardType];
- 
+    
     // RTF version.  Remove the hidden text completely.
     NSMutableAttributedString *rstripped = [attr_string mutableCopyWithZone:nil];
     NSRange range = NSMakeRange(0, [rstripped length]);
@@ -126,7 +127,7 @@ static NSCursor *XAChatTextViewSizableCursor;
         NSRange ret;
         
         id font = [rstripped attribute:NSFontAttributeName
-                               atIndex:range.location 
+                               atIndex:range.location
                  longestEffectiveRange:&ret
                                inRange:range];
 
@@ -161,14 +162,16 @@ static NSCursor *XAChatTextViewSizableCursor;
 
 - (NSDragOperation) draggingUpdated:(id <NSDraggingInfo>) sender
 {
-    if (!dropHandler /* || [self isHiddenOrHasHiddenAncestor] */)
+    if (!dropHandler /* || [self isHiddenOrHasHiddenAncestor] */) {
         return NSDragOperationNone;
-        
+    }
+    
     NSPasteboard *pboard = [sender draggingPasteboard];
 
-    if (![[pboard types] containsObject:NSFilenamesPboardType])
+    if (![[pboard types] containsObject:NSFilenamesPboardType]) {
         return NSDragOperationNone;
-        
+    }
+    
     return NSDragOperationCopy;
 }
 
@@ -252,7 +255,7 @@ static NSCursor *XAChatTextViewSizableCursor;
         
         NSMutableDictionary *nattr = [attr mutableCopyWithZone:nil];
         [nattr setObject:nf forKey:NSFontAttributeName];
- 
+        
         //if ([attr objectForKey:NSParagraphStyleAttributeName])
             //[nattr setObject:style forKey:NSParagraphStyleAttributeName];
 
@@ -289,11 +292,24 @@ static NSCursor *XAChatTextViewSizableCursor;
     [stg endEditing];
 }
 
+- (void)setScrollingBack:(BOOL)scrollingBack {
+    if (self->_scrollingBack == scrollingBack) return;
+
+    self->_scrollingBack = scrollingBack;
+    if (scrollingBack) {
+        [self.textStorage beginEditing];
+    } else {
+        [self.textStorage endEditing];
+    }
+}
+
 - (void)printLine:(char *)text length:(int)len stamp:(time_t)stamp
 {
-    NSMutableAttributedString *stg = [self textStorage];    
+    NSMutableAttributedString *stg = [self textStorage];
 
-    [stg beginEditing];
+    if (!self.isScrollingBack) {
+        [stg beginEditing];
+    }
     
     char buff [128];  // 128 = large enough for timestamp
     char *prepend = buff;
@@ -319,7 +335,7 @@ static NSCursor *XAChatTextViewSizableCursor;
             tmp ++;
         else
             *prepend++ = '\t';
-    }    
+    }
 
     *prepend = 0;
     
@@ -371,13 +387,9 @@ static NSCursor *XAChatTextViewSizableCursor;
     
     [self clearLinesIfFlooded];
 
-    [stg endEditing];
-}
-
-- (void) endEditing
-{
-    [[self textStorage] endEditing];
-    pendingEditing = NO;
+    if (!self.isScrollingBack) {
+        [stg endEditing];
+    }
 }
 
 - (void) printLine:(char *)text length:(int)len
@@ -392,20 +404,14 @@ static NSCursor *XAChatTextViewSizableCursor;
 
 - (void) printText:(NSString *)aText stamp:(time_t)stamp
 {
-    NSMutableAttributedString *stg = [self textStorage];    
+    NSMutableAttributedString *stg = [self textStorage];
     // TBD: Yuck!! Cast away const.  fe-gtk does this so it must be ok..
     char *text = (char *)[aText UTF8String];
 
     char *last_text = text;
     int len = 0;
 
-    /* coalesce multiple print_text calls into a single update to avoid delay when loading scrollback. */
-    // NOTE: this is unsafe. this will raise exceptions
-    if (!pendingEditing) {
-        [stg beginEditing];
-        [self performSelector:@selector(endEditing) withObject:nil afterDelay:0.01];
-        pendingEditing = YES;
-    }
+    [stg beginEditing];
 
     // split the text into separate lines
     while  (*text)
@@ -418,19 +424,21 @@ static NSCursor *XAChatTextViewSizableCursor;
                 last_text = text;
                 len = 0;
                 break;
-            case '\007':                        
+            case '\007':
                 *text = ' ';
-                if (!prefs.filterbeep) 
+                if (!prefs.filterbeep)
                     NSBeep();
             default:
                 text++;
                 len++;
-        } 
+        }
     }
 
     if (len) {
         [self printLine:last_text length:len stamp:stamp];
     }
+
+    [stg endEditing];
 }
 
 - (void)clearText
@@ -439,7 +447,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     [self setString:@""];
 }
 
-- (void)layoutManager:(NSLayoutManager *)aLayoutManager 
+- (void)layoutManager:(NSLayoutManager *)aLayoutManager
     didCompleteLayoutForTextContainer:(NSTextContainer *)aTextContainer
     atEnd:(BOOL)flag
 {
@@ -494,7 +502,7 @@ static NSCursor *XAChatTextViewSizableCursor;
         }
     }
     // Docs say that characterIndexForPoint will return -1 for a point that is out of range.
-    // Practice says otherwise.  
+    // Practice says otherwise.
     // 24 Jan 06 - SBG
     // This crashes when joining channels with 1300+ users... it's useless anyway.
     //illegal_index = [self characterIndexForPoint:NSMakePoint (-100,-100)];
@@ -599,7 +607,7 @@ static NSCursor *XAChatTextViewSizableCursor;
 }
 
 - (NSMenu *) menuForEvent:(NSEvent *) theEvent
-{    
+{
     session *sess = [self currentSession];
     
     NSRange sel = [self selectedRange];
@@ -623,7 +631,7 @@ static NSCursor *XAChatTextViewSizableCursor;
         
         return [m autorelease];
     }
-        
+    
     if (word)
     {
         [[NSRunLoop currentRunLoop] performSelector:@selector (clear_hot_word)
@@ -777,10 +785,10 @@ static NSCursor *XAChatTextViewSizableCursor;
 
     word = [[s substringWithRange:wordRange] retain];
     
-    [stg addAttribute:NSUnderlineStyleAttributeName 
+    [stg addAttribute:NSUnderlineStyleAttributeName
                 value:[NSNumber numberWithInt:NSSingleUnderlineStyle]
                 range:wordRange];
-                
+    
     return NO;
 }
 
