@@ -149,9 +149,9 @@
 // can be handled simply by adding the relevant resource directory to the
 // libraryFolders array (just before the for loop).
 //
-+ (NSArray *) findSystemSounds {
++ (NSArray *)findSystemSounds {
     // Array to collect the sounds we find
-    NSMutableArray *sounds = [[NSMutableArray alloc] init];
+    NSMutableArray *sounds = [NSMutableArray array];
 
     // Get the default NSFileManager and ask it for all Library folders in all domains
     NSFileManager *manager = [NSFileManager defaultManager];
@@ -172,8 +172,6 @@
         [sounds addObjectsFromArray:files];
 	}
 
-    // Return an immutable copy of the array of sound names
-//    NSArray *returnSounds = [NSArray arrayWithArray:sounds];
     return sounds;
 }
 

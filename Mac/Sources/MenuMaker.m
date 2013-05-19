@@ -339,16 +339,16 @@ static MenuMaker *defaultMenuMaker;
 
 - (NSMenuItem *)commandItemWithName:(NSString *)name command:(const char *)cmd target:(NSString *)target session:(struct session *)sess
 {
-    NSString * icon = nil;
+    NSString *icon = nil;
     NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:[self stripImageFromTitle:name icon:&icon] action:@selector(execute:) keyEquivalent:@""];
     CommandHandler *handler = [CommandHandler handlerWithCommand:cmd target:(target ? [target UTF8String] : nil) session:sess];
     [item setRepresentedObject:handler];
     [item setTarget:handler];
-    if(icon)
-    {
+    if (icon != nil) {
         NSString * path = [[NSBundle mainBundle] pathForResource:icon ofType:@"tiff" inDirectory:@"Images"];
-        if(path)
+        if (path) {
             [item setImage:[[[NSImage alloc] initWithContentsOfFile:path] autorelease]];
+        }
     }
     return [item autorelease];
 }
@@ -477,22 +477,23 @@ static MenuMaker *defaultMenuMaker;
 
 - (NSString *)stripImageFromTitle:(NSString *)title icon:(NSString **)icon
 {
-    NSInteger length;
     // stringByReplacingOccurrencesOfString is not available on 10.4.
     //    title = [title stringByReplacingOccurrencesOfString:@"_" withString:@""];
     NSMutableString *mTitle = [title mutableCopy];
-    [mTitle replaceOccurrencesOfString:@"_" withString:@"" options:NSCaseInsensitiveSearch range:(NSRange){0,[mTitle length]}];
-    title = [NSString stringWithString: [mTitle autorelease]];
+    [mTitle replaceOccurrencesOfString:@"_" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [mTitle length])];
+    title = [NSString stringWithString:mTitle];
+    [mTitle release];
 
-    length = [title length];
-    if([[title substringFromIndex:length-1] isEqualToString:@"~"])
-    {
+    NSInteger length = [title length];
+    if ([[title substringFromIndex:length-1] isEqualToString:@"~"]) {
         NSRange r = [title rangeOfString:@"~" options:NSBackwardsSearch range:NSMakeRange(0, length-1)];
-        if(r.location == NSNotFound)
+        if (r.location == NSNotFound) {
             return title;
+        }
 
-        if(icon)
-            *icon = [[title substringWithRange:NSMakeRange(r.location+1, length-r.location-2)] retain];
+        if (icon) {
+            *icon = [title substringWithRange:NSMakeRange(r.location+1, length-r.location-2)];
+        }
         title = [title substringToIndex:r.location];
     }
     return title;
