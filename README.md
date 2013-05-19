@@ -1,15 +1,15 @@
 # X-Chat Aqua
 
-X-Chat Aqua is a XChat front-end for Mac OS X. It originally starts from http://sourceforge.net/projects/xchataqua/
+X-Chat Aqua is a XChat front-end for Mac OS X.
+Visit us [http://xchataqua.github.io/](http://xchataqua.github.io/) (Moved from [http://sourceforge.net/projects/xchataqua/](http://sourceforge.net/projects/xchataqua/))
 
 # XChat Azure
 
-XChat Azure is a fork from X-Chat Aqua, the Mac OS X native XChat front-end.
+XChat Azure is a new brand of X-Chat Aqua, especially for Apple Appstore. See below for details.
 
 # Downloads
 * 10.7/10.8: Official appstore release is working on latest 2 versions of OS X. Download it from [Appstore](http://itunes.apple.com/app/id447521961)
-* 10.6: Download last available version (1.12.7) from download page [https://github.com/downloads/xchataqua/xchataqua/XChat%20Azure%201.12.7.pkg](https://github.com/downloads/xchataqua/xchataqua/XChat%20Azure%201.12.7.pkg)
-* Older OS X: Download XChat Aqua from Source forge [http://sourceforge.net/projects/xchataqua/](http://sourceforge.net/projects/xchataqua/)
+* For older OS X versions or development version, visit [http://xchataqua.github.io/#Download](http://xchataqua.github.io/#Download)
 
 
 # I lost all configurations after update to 1.11 or later
@@ -20,11 +20,11 @@ XChat Azure is a fork from X-Chat Aqua, the Mac OS X native XChat front-end.
 ## Auto-recovery script
   0. WARNING: DO NOT RUN THIS SCRIPT WHILE RUNNING XCHAT AZURE
   1. Download the [Script](http://xchataqua.github.com/downloads/fixdata.tar)
-  2. Run the script: It will show the result. No bad message mean Good result.
+  2. Run the script: It will show the result. No bad message means Good result.
 
 ## For profesional
 
-After Azure 1.11, it is using App sandboxing by Apple Appstore policy.
+After Azure 1.11, it is using App sandboxing by Mac Appstore policy.
 
 In most of case, this is occured because your Azure configuration directory is symlink to other one.
 
@@ -68,10 +68,10 @@ But I should keep Mac App Store guidelines to submit X-Chat Aqua. There were som
 **Main Reason**: Any application on Mac App Store may not use names that include 'Mac', 'OS X', 'Aqua' or any other of Apples trademarks.
 
 There was no way. So I dropped the name.
-Also, where was several other issues because I didn't want to change X-Chat Aqua developement policy.
+Also, there was several other issues because I didn't want to change X-Chat Aqua developement policy.
 
 * We should remove whole ppc/ppc64 support
-* We should support osx10.6 only
+* We should support only OS X 10.6 or later
 * We should remove update module (Sparkle, in this case)
 * We should not work on ~/.xchat2 the traditional configutaion directory.
 
