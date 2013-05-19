@@ -537,7 +537,6 @@ AquaChat *AquaChatSharedObject;
         }
 
         [soundCache setObject:sound forKey:soundName]; // Cache it for next time
-        [sound release]; // soundCache retains it, so release here to avoid over-retaining
     }
 
     // Play the sound unless it is already playing (from the previous event)
