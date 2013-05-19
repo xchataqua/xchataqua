@@ -277,8 +277,6 @@ static NSCursor *XAChatTextViewSizableCursor;
     
     NSTextStorage *stg = [self textStorage];
     
-    [stg beginEditing];
-    
     while (numberOfLines > prefs.max_lines)
     {
         NSString *s = [stg mutableString];
@@ -288,8 +286,6 @@ static NSCursor *XAChatTextViewSizableCursor;
         [stg deleteCharactersInRange:firstLine];
         numberOfLines--;
     }
-    
-    [stg endEditing];
 }
 
 - (void)setScrollingBack:(BOOL)scrollingBack {
@@ -303,25 +299,21 @@ static NSCursor *XAChatTextViewSizableCursor;
     }
 }
 
-- (void)printLine:(char *)text length:(int)len stamp:(time_t)stamp
-{
-    NSMutableAttributedString *stg = [self textStorage];
-
-    if (!self.isScrollingBack) {
-        [stg beginEditing];
-    }
-    
-    char buff [128];  // 128 = large enough for timestamp
+- (void)printLine:(const char *)givenText length:(size_t)len stamp:(time_t)stamp {
+    char buff[128];  // 128 = large enough for timestamp
     char *prepend = buff;
 
     if (stamp == 0) {
         stamp = time(NULL);
     }
 
-    if (prefs.timestamp)
-    {
-        prepend += strftime (buff, sizeof (buff), prefs.stamp_format, localtime (&stamp));
+    if (prefs.timestamp) {
+        prepend += strftime(buff, sizeof(buff), prefs.stamp_format, localtime(&stamp));
     }
+
+    char textBuffer[len + 1];
+    char *text = textBuffer;
+    strcpy(text, givenText);
     
     char *tmp = text;
     char *end = tmp + len;
@@ -379,70 +371,47 @@ static NSCursor *XAChatTextViewSizableCursor;
     [pre_str appendAttributedString:XAChatTextViewNewLine];
 
     [pre_str addAttribute:NSParagraphStyleAttributeName
-                    value:self.style range:NSMakeRange (0, [pre_str length])];
+                    value:self.style
+                    range:NSMakeRange(0, [pre_str length])];
 
-    [stg appendAttributedString:pre_str];
+    [self.textStorage appendAttributedString:pre_str];
     
     numberOfLines ++;
-    
-    [self clearLinesIfFlooded];
-
-    if (!self.isScrollingBack) {
-        [stg endEditing];
-    }
 }
 
-- (void) printLine:(char *)text length:(int)len
-{
+- (void)printLine:(const char *)text length:(size_t)len {
     [self printLine:text length:len stamp:time(NULL)];
 }
 
-- (void) printText:(NSString *)const_text
-{
+- (void)printText:(NSString *)const_text {
     [self printText:const_text stamp:time(NULL)];
 }
 
-- (void) printText:(NSString *)aText stamp:(time_t)stamp
-{
-    NSMutableAttributedString *stg = [self textStorage];
-    // TBD: Yuck!! Cast away const.  fe-gtk does this so it must be ok..
-    char *text = (char *)[aText UTF8String];
-
-    char *last_text = text;
-    int len = 0;
-
-    [stg beginEditing];
-
-    // split the text into separate lines
-    while  (*text)
-    {
-        switch (*text)
-        {
-            case '\n':
-                [self printLine:last_text length:len];
-                text++;
-                last_text = text;
-                len = 0;
-                break;
-            case '\007':
-                *text = ' ';
-                if (!prefs.filterbeep)
-                    NSBeep();
-            default:
-                text++;
-                len++;
+- (void)printText:(NSString *)aText stamp:(time_t)stamp {
+    if (!self.isScrollingBack) {
+        [self.textStorage beginEditing];
+    }
+    
+    for (NSString *line in [aText componentsSeparatedByString:@"\n"]) {
+        if ([line hasSubstring:@"\007"]) {
+            NSBeep();
+            line = [line stringByReplacingOccurrencesOfString:@"\007" withString:@""]; // ???: Once @"" was @" "
         }
+        const char *cLine = line.UTF8String;
+        size_t len = strlen(cLine);
+        if (len == 0) {
+            continue;
+        }
+        [self printLine:cLine length:len stamp:stamp];
     }
 
-    if (len) {
-        [self printLine:last_text length:len stamp:stamp];
+    if (!self.isScrollingBack) {
+        [self clearLinesIfFlooded];
+        [self.textStorage endEditing];
     }
-
-    [stg endEditing];
 }
 
-- (void)clearText
-{
+- (void)clearText {
     numberOfLines = 0;
     [self setString:@""];
 }
