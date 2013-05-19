@@ -112,8 +112,7 @@
     [super setEditable:(isEditable && ![self isLocked])];
 }
 
-- (void) computeTextFrame:(NSRect *) textFrame andLockFrame:(NSRect *) lockFrame fromCellFrame:(NSRect) aRect
-{
+- (void)computeTextFrame:(NSRect *)textFrame andLockFrame:(NSRect *)lockFrame fromCellFrame:(NSRect)aRect {
     if (!lockCell)
     {
         *textFrame = aRect;
@@ -134,7 +133,7 @@
     return [super drawingRectForBounds:textFrame];
 }
 
-- (void) drawWithFrame:(NSRect) cellFrame inView:(NSView *) controlView 
+- (void) drawWithFrame:(NSRect)cellFrame inView:(NSView *) controlView
 {
     NSRect textFrame, lockFrame;
     [self computeTextFrame:&textFrame andLockFrame:&lockFrame fromCellFrame:cellFrame];
