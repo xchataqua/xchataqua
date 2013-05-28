@@ -73,6 +73,7 @@
 @property (nonatomic, retain, setter=setnButton:) NSButton *nButton;
 @property (nonatomic, retain, setter=setNButton:) NSButton *NButton;
 @property (nonatomic, retain) NSTextField *limitTextField, *keyTextField;
+@property (nonatomic, retain) NSTextField *nickTextField;
 
 @property (nonatomic, assign, getter=isScrollingBack) BOOL scrollingBack;
 
