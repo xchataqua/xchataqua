@@ -782,9 +782,25 @@ AquaChat *AquaChatSharedObject;
     [[NSApp keyWindow] performClose:sender];
 }
 
-- (void) toggleAwayToValue:(bool) is_away
-{
-    [awayMenuItem setState:is_away ? NSOnState : NSOffState];
+- (void)toggleAwayToValue:(BOOL)isAway {
+    [awayMenuItem setState:isAway ? NSOnState : NSOffState];
+    NSColor *awayColor;
+    if (prefs.style_inputbox && prefs.tab_layout == 2) {
+        if (isAway) {
+            awayColor = [self.palette getColor:XAColorAwayUser];
+        } else {
+            awayColor = [self.palette getColor:XAColorForeground];
+        }
+    } else {
+        if (isAway) {
+            awayColor = [NSColor grayColor];
+        } else {
+            awayColor = [NSColor textColor];
+        }
+    }
+    if (current_sess) {
+        current_sess->gui->controller.nickTextField.textColor = awayColor;
+    }
 }
 
 - (void) showNetworkWindow:(id)sender

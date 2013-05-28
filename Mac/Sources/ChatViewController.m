@@ -413,6 +413,7 @@ static NSImage *emptyBulletImage;
 @implementation ChatViewController
 @synthesize tButton, nButton, sButton, iButton, pButton, mButton, bButton, lButton, kButton, CButton, NButton, uButton;
 @synthesize limitTextField, keyTextField;
+@synthesize nickTextField;
 
 + (void)initialize {
     if (self == [ChatViewController class]) {
@@ -664,8 +665,7 @@ static NSImage *emptyBulletImage;
 
     NSColor *foregroundColor = [p getColor:XAColorForeground];
     NSColor *backgroundColor = [p getColor:XAColorBackground];
-    if (prefs.style_inputbox)
-    {
+    if (prefs.style_inputbox) {
         inputTextField.font = [[AquaChat sharedAquaChat] font];
         [inputTextField sizeToFit];
         nickTextField.font = [[AquaChat sharedAquaChat] font];
@@ -674,14 +674,12 @@ static NSImage *emptyBulletImage;
             CGColorRef bgcolor = CGColorCreateGenericRGB(backgroundColor.redComponent, backgroundColor.greenComponent, backgroundColor.blueComponent, backgroundColor.alphaComponent);
             [inputContainerView.layer setBackgroundColor:bgcolor];
             CGColorRelease(bgcolor);
-            nickTextField.textColor = foregroundColor;
             nickTextField.backgroundColor = backgroundColor;
         } else {
             [inputContainerView setWantsLayer:NO];
             CGColorRef bgcolor = CGColorCreateGenericRGB(0, 0, 0, 0);
             [inputContainerView.layer setBackgroundColor:bgcolor];
             CGColorRelease(bgcolor);
-            nickTextField.textColor = [NSColor textColor];
             nickTextField.backgroundColor = [NSColor textBackgroundColor];
         }
 
@@ -700,13 +698,14 @@ static NSImage *emptyBulletImage;
         nickTextField.font = [NSFont controlContentFontOfSize:0];
         
         // fg, bg
-        inputTextField.textColor = [NSColor textColor];
         inputTextField.backgroundColor = [NSColor textBackgroundColor];
         topicTextField.textColor = [NSColor textColor];
         topicTextField.backgroundColor = [NSColor textBackgroundColor];
         nickTextField.textColor = [NSColor textColor];
         nickTextField.backgroundColor = [NSColor textBackgroundColor];
     }
+
+    [[AquaChat sharedAquaChat] toggleAwayToValue:sess->server->is_away];
 
     if (prefs.style_namelistgad) {
         // bg only

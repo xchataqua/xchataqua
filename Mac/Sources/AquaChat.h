@@ -100,7 +100,7 @@
 
 // fe-aqua
 - (void) post_init;
-- (void) toggleAwayToValue:(bool)is_away;
+- (void)toggleAwayToValue:(BOOL)isAway;
 - (void) cleanup;
 - (void) updatePluginWindow;
 - (void) updateIgnoreWindowForLevel:(int)level;
