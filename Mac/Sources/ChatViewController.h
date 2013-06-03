@@ -22,8 +22,7 @@
 @class ChatSplitView;
 @class UserListTableView;
 
-@interface ChatViewController : NSViewController
-<XAEventChain,NSTextViewDelegate,NSTextFieldDelegate,NSTableViewDataSource,NSTableViewDelegate,NSSplitViewDelegate>
+@interface ChatViewController: NSViewController<XAEventChain, NSTextViewDelegate, NSTextFieldDelegate, NSTableViewDataSource, NSTableViewDelegate, NSSplitViewDelegate>
 {
     IBOutlet XAChatTextView     *chatTextView;
     IBOutlet NSView             *inputContainerView;

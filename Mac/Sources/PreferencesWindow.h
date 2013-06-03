@@ -65,7 +65,8 @@ struct PreferenceItem
  
     // Input box
     //  Input box
-    IBOutlet NSButton *inputBoxUseTextBoxFontCheckBox, *spellCheckingCheckBox;
+    IBOutlet NSButton *inputBoxUseTextBoxFontCheckBox;
+    IBOutlet NSButton *spellCheckingCheckBox, *grammerCheckingCheckBox, *autocorrectionCheckBox;
     IBOutlet NSButton *interpretPercentAsciiCheckBox, *interpretPercentColorCheckBox; // not in fe-gtk
     //  Nick Completion
     IBOutlet NSButton *tabCompletionCheckBox; // fe-aqua
@@ -173,7 +174,7 @@ struct PreferenceItem
     IBOutlet NSPopUpButton *autoAcceptDccChatPopUp;
     IBOutlet NSButton *autoOpenDccChatCheckBox, *autoOpenDccReceiveCheckBox, *autoOpenDccSendCheckBox;
     
-    struct PreferenceItem preferenceItems[97];
+    struct PreferenceItem preferenceItems[99];
 }
 
 - (IBAction)applyPreferences:(id)sender;
