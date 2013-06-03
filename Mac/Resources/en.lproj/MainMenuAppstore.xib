@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1070</int>
-		<string key="IBDocument.SystemVersion">12C54</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2840</string>
-		<string key="IBDocument.AppKitVersion">1187.34</string>
-		<string key="IBDocument.HIToolboxVersion">625.00</string>
+		<int key="IBDocument.SystemTarget">1080</int>
+		<string key="IBDocument.SystemVersion">12D78</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
+		<string key="IBDocument.AppKitVersion">1187.37</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2840</string>
+			<string key="NS.object.0">3084</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSCustomObject</string>
@@ -1550,22 +1550,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">newChannelTabMenuItem</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="239048632"/>
-					</object>
-					<int key="connectionID">1414</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">newServerTabMenuItem</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="789590668"/>
-					</object>
-					<int key="connectionID">1415</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">nextWindowMenuItem</string>
 						<reference key="source" ref="1009676812"/>
 						<reference key="destination" ref="230031632"/>
@@ -2051,6 +2035,22 @@
 						<reference key="destination" ref="733000723"/>
 					</object>
 					<int key="connectionID">1621</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">channelTabMenuItem</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="239048632"/>
+					</object>
+					<int key="connectionID">1625</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">serverTabMenuItem</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="789590668"/>
+					</object>
+					<int key="connectionID">1626</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3127,7 +3127,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1624</int>
+			<int key="maxID">1626</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3375,14 +3375,14 @@
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="awayMenuItem">NSMenuItem</string>
+						<string key="channelTabMenuItem">NSMenuItem</string>
 						<string key="invisibleMenuItem">NSMenuItem</string>
 						<string key="modeButtonsMenuItem">NSMenuItem</string>
-						<string key="newChannelTabMenuItem">NSMenuItem</string>
-						<string key="newServerTabMenuItem">NSMenuItem</string>
 						<string key="nextWindowMenuItem">NSMenuItem</string>
 						<string key="previousWindowMenuItem">NSMenuItem</string>
 						<string key="receiveNoticesMenuItem">NSMenuItem</string>
 						<string key="receiveWallopsMenuItem">NSMenuItem</string>
+						<string key="serverTabMenuItem">NSMenuItem</string>
 						<string key="userListMenuItem">NSMenuItem</string>
 						<string key="userMenu">NSMenu</string>
 						<string key="userlistButtonsMenuItem">NSMenuItem</string>
@@ -3392,20 +3392,16 @@
 							<string key="name">awayMenuItem</string>
 							<string key="candidateClassName">NSMenuItem</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="channelTabMenuItem">
+							<string key="name">channelTabMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="invisibleMenuItem">
 							<string key="name">invisibleMenuItem</string>
 							<string key="candidateClassName">NSMenuItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="modeButtonsMenuItem">
 							<string key="name">modeButtonsMenuItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="newChannelTabMenuItem">
-							<string key="name">newChannelTabMenuItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="newServerTabMenuItem">
-							<string key="name">newServerTabMenuItem</string>
 							<string key="candidateClassName">NSMenuItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="nextWindowMenuItem">
@@ -3422,6 +3418,10 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="receiveWallopsMenuItem">
 							<string key="name">receiveWallopsMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="serverTabMenuItem">
+							<string key="name">serverTabMenuItem</string>
 							<string key="candidateClassName">NSMenuItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="userListMenuItem">
@@ -3446,10 +3446,6 @@
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
-			<real value="1070" key="NS.object.0"/>
-		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.InterfaceBuilder3</string>
 			<real value="4000" key="NS.object.0"/>

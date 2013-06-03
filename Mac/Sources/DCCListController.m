@@ -108,8 +108,8 @@
 
 - (void) awakeFromNib
 {
-    for (NSInteger i = 0; i < [itemTableView numberOfColumns]; i ++) {
-        [[[itemTableView tableColumns] objectAtIndex:i] setIdentifier:[NSString stringWithFormat:@"%ld", i]];
+    for (unsigned i = 0; i < [itemTableView numberOfColumns]; i ++) {
+        [[[itemTableView tableColumns] objectAtIndex:i] setIdentifier:[NSString stringWithFormat:@"%u", i]];
     }
     
     [itemTableView setDataSource:self];
@@ -161,7 +161,7 @@
 
 - (void) remove:(struct DCC *) dcc
 {
-    for (NSInteger i = 0; i < [dccItems count]; i ++)
+    for (NSUInteger i = 0; i < [dccItems count]; i ++)
     {
         DCCItem *item = [dccItems objectAtIndex:i];
         if (item->dcc == dcc)

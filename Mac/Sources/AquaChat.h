@@ -51,24 +51,6 @@
 
 @interface AquaChat : NSObject <GrowlApplicationBridgeDelegate, NSApplicationDelegate, XAEventChain> {
 @public
-    //Main menu
-    // File menu
-    IBOutlet NSMenuItem *newChannelTabMenuItem;
-    IBOutlet NSMenuItem *newServerTabMenuItem;
-    // View menu
-    IBOutlet NSMenuItem *userListMenuItem, *userlistButtonsMenuItem, *modeButtonsMenuItem;
-    // IRC menu
-    IBOutlet NSMenuItem *invisibleMenuItem;
-    IBOutlet NSMenuItem *receiveWallopsMenuItem;
-    IBOutlet NSMenuItem *receiveNoticesMenuItem;
-    IBOutlet NSMenuItem *awayMenuItem;
-    // Usermenu menu
-    IBOutlet NSMenu *userMenu;
-    // Window menu
-    IBOutlet NSMenuItem *nextWindowMenuItem;
-    IBOutlet NSMenuItem *previousWindowMenuItem;
-    //End of main menu
-    
     NSString *searchString;
     
     ColorPalette *_palette;
@@ -84,12 +66,49 @@
     
     NSInteger _badgeCount;
     XATabWindow *_mainWindow;
+
+    //Main menu
+    // File menu
+    NSMenuItem *_channelTabMenuItem;
+    NSMenuItem *_serverTabMenuItem;
+    // View menu
+    NSMenuItem *_userListMenuItem, *_userlistButtonsMenuItem, *_modeButtonsMenuItem;
+    // IRC menu
+    NSMenuItem *_invisibleMenuItem;
+    NSMenuItem *_receiveWallopsMenuItem;
+    NSMenuItem *_receiveNoticesMenuItem;
+    NSMenuItem *_awayMenuItem;
+    // Usermenu menu
+    NSMenu *_userMenu;
+    // Window menu
+    NSMenuItem *_nextWindowMenuItem;
+    NSMenuItem *_previousWindowMenuItem;
+    //End of main menu
 }
 
 @property (nonatomic, readonly) NSFont *font, *boldFont;
 @property (nonatomic, retain) ColorPalette *palette;
 @property (nonatomic, assign) NSInteger badgeCount;
 @property (nonatomic, readonly) XATabWindow *mainWindow;
+
+
+//Main menu
+// File menu
+@property(nonatomic, retain) IBOutlet NSMenuItem *channelTabMenuItem;
+@property(nonatomic, retain) IBOutlet NSMenuItem *serverTabMenuItem;
+// View menu
+@property(nonatomic, retain) IBOutlet NSMenuItem *userListMenuItem, *userlistButtonsMenuItem, *modeButtonsMenuItem;
+// IRC menu
+@property(nonatomic, retain) IBOutlet NSMenuItem *invisibleMenuItem;
+@property(nonatomic, retain) IBOutlet NSMenuItem *receiveWallopsMenuItem;
+@property(nonatomic, retain) IBOutlet NSMenuItem *receiveNoticesMenuItem;
+@property(nonatomic, retain) IBOutlet NSMenuItem *awayMenuItem;
+// Usermenu menu
+@property(nonatomic, retain) IBOutlet NSMenu *userMenu;
+// Window menu
+@property(nonatomic, retain) IBOutlet NSMenuItem *nextWindowMenuItem;
+@property(nonatomic, retain) IBOutlet NSMenuItem *previousWindowMenuItem;
+//End of main menu
 
 - (void) event:(int) event args:(char **) args session:(struct session *) sess;
 
