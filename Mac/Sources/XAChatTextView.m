@@ -296,6 +296,8 @@ static NSCursor *XAChatTextViewSizableCursor;
         [self.textStorage beginEditing];
     } else {
         [self.textStorage endEditing];
+        self->atBottom = YES;
+        [self scrollPoint:NSMakePoint(0, NSMaxY([self bounds]))];
     }
 }
 
