@@ -200,6 +200,8 @@ extern struct XATextEventItem XATextEvents[];
         { inputBoxUseTextBoxFontCheckBox, &prefs.style_inputbox, MYPREF_INT },
         { userlistUseTextBoxFontCheckBox, &prefs.style_namelistgad, MYPREF_INT },
         { spellCheckingCheckBox, &prefs.gui_input_spell, MYPREF_INT },
+        { grammerCheckingCheckBox, &prefs.xa_input_grammar, MYPREF_INT },
+        { autocorrectionCheckBox, &prefs.xa_input_autocorrect, MYPREF_INT },
         { interpretPercentAsciiCheckBox, &prefs.perc_ascii, MYPREF_INT },
         { interpretPercentColorCheckBox, &prefs.perc_color, MYPREF_INT },
         { tabCompletionCheckBox, &prefs.xa_tab_completion, MYPREF_INT },

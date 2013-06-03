@@ -2209,24 +2209,21 @@ static NSImage *emptyBulletImage;
     }
 }
 
-/*
- * MARK: -
- * MARK: Handle command keys
- *
- * inputTextField delegate and helper functions.
- */
-- (BOOL)control:(NSControl *)control textShouldBeginEditing:(NSText *)fieldEditor
-{
-    if (prefs.gui_input_spell)
-        [(NSTextView *)fieldEditor setContinuousSpellCheckingEnabled:YES];
-    
+#pragma mark inputTextField delegate and helper functions.
+
+- (BOOL)control:(NSControl *)control textShouldBeginEditing:(NSText *)fieldEditor {
+    NSTextView *textView = (NSTextView *)fieldEditor;
+    [textView setContinuousSpellCheckingEnabled:prefs.gui_input_spell];
+    [textView setGrammarCheckingEnabled:prefs.xa_input_grammar];
+    [textView setAutomaticSpellingCorrectionEnabled:prefs.xa_input_autocorrect];
     return YES;
 }
 
-- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor
-{
-    prefs.gui_input_spell = [(NSTextView *)fieldEditor isContinuousSpellCheckingEnabled];
-    [(NSTextView *)fieldEditor setContinuousSpellCheckingEnabled:NO];
+- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
+    NSTextView *textView = (NSTextView *)fieldEditor;
+    prefs.gui_input_spell = [textView isContinuousSpellCheckingEnabled];
+    prefs.xa_input_grammar = [textView isGrammarCheckingEnabled];
+    prefs.xa_input_autocorrect = [textView isAutomaticSpellingCorrectionEnabled];
     return YES;
 }
 
