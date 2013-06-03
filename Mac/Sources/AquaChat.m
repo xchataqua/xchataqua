@@ -81,9 +81,25 @@ struct XATextEventItem XATextEvents[NUM_XP];
 AquaChat *AquaChatSharedObject;
 
 @implementation AquaChat
+
 @synthesize font, boldFont;
 @synthesize palette=_palette;
 @synthesize mainWindow=_mainWindow;
+
+//Main menu
+// File menu
+@synthesize channelTabMenuItem=_channelTabMenuItem, serverTabMenuItem=_serverTabMenuItem;
+// View menu
+@synthesize userListMenuItem=_userListMenuItem, userlistButtonsMenuItem=_userlistButtonsMenuItem, modeButtonsMenuItem=_modeButtonsMenuItem;
+// IRC menu
+@synthesize invisibleMenuItem=_invisibleMenuItem;
+@synthesize receiveWallopsMenuItem=_receiveWallopsMenuItem, receiveNoticesMenuItem=_receiveNoticesMenuItem;
+@synthesize awayMenuItem=_awayMenuItem;
+// Usermenu menu
+@synthesize userMenu=_userMenu;
+// Window menu
+@synthesize nextWindowMenuItem=_nextWindowMenuItem, previousWindowMenuItem=_previousWindowMenuItem;
+//End of main menu
 
 - (void) post_init
 {    
@@ -125,7 +141,7 @@ AquaChat *AquaChatSharedObject;
     if (value == 0) {
         tile.badgeLabel = nil;
     } else {
-        tile.badgeLabel = [NSString stringWithFormat:@"%ld", value];
+        tile.badgeLabel = [NSString stringWithFormat:@"%ld", (long)value];
     }
     _badgeCount = value;
 }
@@ -155,14 +171,14 @@ AquaChat *AquaChatSharedObject;
     NSString* keyCodeString;
     keyCodeString = SRStringForKeyCode(prefs.tab_left_key);
     if ( keyCodeString != nil ) {
-        [previousWindowMenuItem setKeyEquivalent:keyCodeString];
-        [previousWindowMenuItem setKeyEquivalentModifierMask:prefs.tab_left_modifiers];
+        [self.previousWindowMenuItem setKeyEquivalent:keyCodeString];
+        [self.previousWindowMenuItem setKeyEquivalentModifierMask:prefs.tab_left_modifiers];
     }
     
     keyCodeString = SRStringForKeyCode(prefs.tab_right_key);
     if ( keyCodeString != nil ) {
-        [nextWindowMenuItem setKeyEquivalent:keyCodeString];
-        [nextWindowMenuItem setKeyEquivalentModifierMask:prefs.tab_right_modifiers];
+        [self.nextWindowMenuItem setKeyEquivalent:keyCodeString];
+        [self.nextWindowMenuItem setKeyEquivalentModifierMask:prefs.tab_right_modifiers];
     }
     
     if (prefs.identd)
@@ -694,7 +710,7 @@ AquaChat *AquaChatSharedObject;
 - (void) openNewServer:(id)sender
 {
     int old = prefs.tabchannels;
-    prefs.tabchannels = sender == newServerTabMenuItem;
+    prefs.tabchannels = sender == self.serverTabMenuItem;
     new_ircwindow (NULL, NULL, SESS_SERVER, true);
     prefs.tabchannels = old;
 }
@@ -702,7 +718,7 @@ AquaChat *AquaChatSharedObject;
 - (void) openNewChannel:(id)sender
 {
     int old = prefs.tabchannels;
-    prefs.tabchannels = sender == newChannelTabMenuItem;
+    prefs.tabchannels = sender == self.channelTabMenuItem;
     new_ircwindow (current_sess->server, NULL, SESS_CHANNEL, true);
     prefs.tabchannels = old;
 }
@@ -783,7 +799,7 @@ AquaChat *AquaChatSharedObject;
 }
 
 - (void)toggleAwayToValue:(BOOL)isAway {
-    [awayMenuItem setState:isAway ? NSOnState : NSOffState];
+    [self.awayMenuItem setState:isAway ? NSOnState : NSOffState];
     NSColor *awayColor;
     if (prefs.style_inputbox && prefs.tab_layout == 2) {
         if (isAway) {
@@ -1050,10 +1066,10 @@ AquaChat *AquaChatSharedObject;
 
 - (void) updateUsermenu
 {
-    while ([userMenu numberOfItems] > 2)
-        [userMenu removeItemAtIndex:2];
+    while ([self.userMenu numberOfItems] > 2)
+        [self.userMenu removeItemAtIndex:2];
     
-    [[MenuMaker defaultMenuMaker] appendItemList:usermenu_list toMenu:userMenu withTarget:nil inSession:NULL];
+    [[MenuMaker defaultMenuMaker] appendItemList:usermenu_list toMenu:self.userMenu withTarget:nil inSession:NULL];
 }
 
 - (void) loadMenuPreferences
@@ -1061,13 +1077,13 @@ AquaChat *AquaChatSharedObject;
     struct XAMenuPreferenceItem tempPreferences [] =
     {
         // IRC menu
-        { invisibleMenuItem, &prefs.invisible, NO },
-        { receiveNoticesMenuItem, &prefs.servernotice, NO },
-        { receiveWallopsMenuItem, &prefs.wallops, NO },
+        { self.invisibleMenuItem, &prefs.invisible, NO },
+        { self.receiveNoticesMenuItem, &prefs.servernotice, NO },
+        { self.receiveWallopsMenuItem, &prefs.wallops, NO },
         // View menu
-        { userListMenuItem,  &prefs.hideuserlist, YES },
-        { userlistButtonsMenuItem, &prefs.userlistbuttons, NO },
-        { modeButtonsMenuItem, &prefs.chanmodebuttons, NO },
+        { self.userListMenuItem,  &prefs.hideuserlist, YES },
+        { self.userlistButtonsMenuItem, &prefs.userlistbuttons, NO },
+        { self.modeButtonsMenuItem, &prefs.chanmodebuttons, NO },
     };
     
     for (NSUInteger i = 0; i < sizeof(menuPreferenceItems) / sizeof(menuPreferenceItems[0]); i ++)
