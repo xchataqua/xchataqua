@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1070</int>
-		<string key="IBDocument.SystemVersion">12C54</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2840</string>
-		<string key="IBDocument.AppKitVersion">1187.34</string>
-		<string key="IBDocument.HIToolboxVersion">625.00</string>
+		<int key="IBDocument.SystemTarget">1080</int>
+		<string key="IBDocument.SystemVersion">12D78</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
+		<string key="IBDocument.AppKitVersion">1187.37</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2840</string>
+			<string key="NS.object.0">3084</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSCustomObject</string>
@@ -37,7 +37,7 @@
 				<array class="NSMutableArray" key="NSMenuItems">
 					<object class="NSMenuItem" id="353751178">
 						<reference key="NSMenu" ref="925004221"/>
-						<string key="NSTitle">X-Chat Aqua</string>
+						<string key="NSTitle"/>
 						<string key="NSKeyEquiv"/>
 						<int key="NSKeyEquivModMask">1048576</int>
 						<int key="NSMnemonicLoc">2147483647</int>
@@ -51,7 +51,7 @@
 						</object>
 						<string key="NSAction">submenuAction:</string>
 						<object class="NSMenu" key="NSSubmenu" id="596487960">
-							<string key="NSTitle">X-Chat Aqua</string>
+							<string key="NSTitle"/>
 							<array class="NSMutableArray" key="NSMenuItems">
 								<object class="NSMenuItem" id="627151727">
 									<reference key="NSMenu" ref="596487960"/>
@@ -1559,22 +1559,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">newChannelTabMenuItem</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="239048632"/>
-					</object>
-					<int key="connectionID">1414</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">newServerTabMenuItem</string>
-						<reference key="source" ref="1009676812"/>
-						<reference key="destination" ref="789590668"/>
-					</object>
-					<int key="connectionID">1415</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">nextWindowMenuItem</string>
 						<reference key="source" ref="1009676812"/>
 						<reference key="destination" ref="230031632"/>
@@ -2068,6 +2052,22 @@
 						<reference key="destination" ref="511983583"/>
 					</object>
 					<int key="connectionID">1611</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">channelTabMenuItem</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="239048632"/>
+					</object>
+					<int key="connectionID">1615</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">serverTabMenuItem</string>
+						<reference key="source" ref="1009676812"/>
+						<reference key="destination" ref="789590668"/>
+					</object>
+					<int key="connectionID">1616</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3151,329 +3151,11 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1614</int>
+			<int key="maxID">1616</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">AquaChat</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="clearWindow:">id</string>
-						<string key="closeTab:">id</string>
-						<string key="findNext:">id</string>
-						<string key="findPrevious:">id</string>
-						<string key="insertMIRCFormat:">id</string>
-						<string key="jumpToSelection:">id</string>
-						<string key="openDownload:">id</string>
-						<string key="openHomepage:">id</string>
-						<string key="openIRCChannel:">id</string>
-						<string key="openIssues:">id</string>
-						<string key="openNewChannel:">id</string>
-						<string key="openNewServer:">id</string>
-						<string key="saveBuffer:">id</string>
-						<string key="selectNextTab:">id</string>
-						<string key="selectPreviousTab:">id</string>
-						<string key="showAsciiWindow:">id</string>
-						<string key="showBanWindow:">id</string>
-						<string key="showChannelWindow:">id</string>
-						<string key="showCtcpRepliesWindow:">id</string>
-						<string key="showDccChatWindow:">id</string>
-						<string key="showDccRecieveWindow:">id</string>
-						<string key="showDccSendWindow:">id</string>
-						<string key="showDialogButtonsWindow:">id</string>
-						<string key="showFriendWindow:">id</string>
-						<string key="showIgnoreWindow:">id</string>
-						<string key="showLogViewWindow:">id</string>
-						<string key="showNetworkWindow:">id</string>
-						<string key="showPluginWindow:">id</string>
-						<string key="showPreferencesWindow:">id</string>
-						<string key="showRawLogWindow:">id</string>
-						<string key="showReleaseNotes:">id</string>
-						<string key="showReplacePopupWindow:">id</string>
-						<string key="showSearchPanel:">id</string>
-						<string key="showTextEventsWindow:">id</string>
-						<string key="showUrlGrabberWindow:">id</string>
-						<string key="showUrlHandlersWindow:">id</string>
-						<string key="showUserCommandsWindow:">id</string>
-						<string key="showUserMenusWindow:">id</string>
-						<string key="showUserlistButtonsWindow:">id</string>
-						<string key="showUserlistPopupWindow:">id</string>
-						<string key="toggleAway:">id</string>
-						<string key="toggleInvisible:">id</string>
-						<string key="toggleMenuItemAndReloadPreferences:">id</string>
-						<string key="toggleReceiveServerNotices:">id</string>
-						<string key="toggleReceiveWallops:">id</string>
-						<string key="toggleTabAttachment:">id</string>
-						<string key="useSelectionForFind:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="clearWindow:">
-							<string key="name">clearWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="closeTab:">
-							<string key="name">closeTab:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="findNext:">
-							<string key="name">findNext:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="findPrevious:">
-							<string key="name">findPrevious:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="insertMIRCFormat:">
-							<string key="name">insertMIRCFormat:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="jumpToSelection:">
-							<string key="name">jumpToSelection:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="openDownload:">
-							<string key="name">openDownload:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="openHomepage:">
-							<string key="name">openHomepage:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="openIRCChannel:">
-							<string key="name">openIRCChannel:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="openIssues:">
-							<string key="name">openIssues:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="openNewChannel:">
-							<string key="name">openNewChannel:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="openNewServer:">
-							<string key="name">openNewServer:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="saveBuffer:">
-							<string key="name">saveBuffer:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="selectNextTab:">
-							<string key="name">selectNextTab:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="selectPreviousTab:">
-							<string key="name">selectPreviousTab:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showAsciiWindow:">
-							<string key="name">showAsciiWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showBanWindow:">
-							<string key="name">showBanWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showChannelWindow:">
-							<string key="name">showChannelWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showCtcpRepliesWindow:">
-							<string key="name">showCtcpRepliesWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showDccChatWindow:">
-							<string key="name">showDccChatWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showDccRecieveWindow:">
-							<string key="name">showDccRecieveWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showDccSendWindow:">
-							<string key="name">showDccSendWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showDialogButtonsWindow:">
-							<string key="name">showDialogButtonsWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showFriendWindow:">
-							<string key="name">showFriendWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showIgnoreWindow:">
-							<string key="name">showIgnoreWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showLogViewWindow:">
-							<string key="name">showLogViewWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showNetworkWindow:">
-							<string key="name">showNetworkWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showPluginWindow:">
-							<string key="name">showPluginWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showPreferencesWindow:">
-							<string key="name">showPreferencesWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showRawLogWindow:">
-							<string key="name">showRawLogWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showReleaseNotes:">
-							<string key="name">showReleaseNotes:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showReplacePopupWindow:">
-							<string key="name">showReplacePopupWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showSearchPanel:">
-							<string key="name">showSearchPanel:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showTextEventsWindow:">
-							<string key="name">showTextEventsWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showUrlGrabberWindow:">
-							<string key="name">showUrlGrabberWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showUrlHandlersWindow:">
-							<string key="name">showUrlHandlersWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showUserCommandsWindow:">
-							<string key="name">showUserCommandsWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showUserMenusWindow:">
-							<string key="name">showUserMenusWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showUserlistButtonsWindow:">
-							<string key="name">showUserlistButtonsWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showUserlistPopupWindow:">
-							<string key="name">showUserlistPopupWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="toggleAway:">
-							<string key="name">toggleAway:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="toggleInvisible:">
-							<string key="name">toggleInvisible:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="toggleMenuItemAndReloadPreferences:">
-							<string key="name">toggleMenuItemAndReloadPreferences:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="toggleReceiveServerNotices:">
-							<string key="name">toggleReceiveServerNotices:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="toggleReceiveWallops:">
-							<string key="name">toggleReceiveWallops:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="toggleTabAttachment:">
-							<string key="name">toggleTabAttachment:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="useSelectionForFind:">
-							<string key="name">useSelectionForFind:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="awayMenuItem">NSMenuItem</string>
-						<string key="invisibleMenuItem">NSMenuItem</string>
-						<string key="modeButtonsMenuItem">NSMenuItem</string>
-						<string key="newChannelTabMenuItem">NSMenuItem</string>
-						<string key="newServerTabMenuItem">NSMenuItem</string>
-						<string key="nextWindowMenuItem">NSMenuItem</string>
-						<string key="previousWindowMenuItem">NSMenuItem</string>
-						<string key="receiveNoticesMenuItem">NSMenuItem</string>
-						<string key="receiveWallopsMenuItem">NSMenuItem</string>
-						<string key="userListMenuItem">NSMenuItem</string>
-						<string key="userMenu">NSMenu</string>
-						<string key="userlistButtonsMenuItem">NSMenuItem</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="awayMenuItem">
-							<string key="name">awayMenuItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="invisibleMenuItem">
-							<string key="name">invisibleMenuItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="modeButtonsMenuItem">
-							<string key="name">modeButtonsMenuItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="newChannelTabMenuItem">
-							<string key="name">newChannelTabMenuItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="newServerTabMenuItem">
-							<string key="name">newServerTabMenuItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="nextWindowMenuItem">
-							<string key="name">nextWindowMenuItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="previousWindowMenuItem">
-							<string key="name">previousWindowMenuItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="receiveNoticesMenuItem">
-							<string key="name">receiveNoticesMenuItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="receiveWallopsMenuItem">
-							<string key="name">receiveWallopsMenuItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="userListMenuItem">
-							<string key="name">userListMenuItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="userMenu">
-							<string key="name">userMenu</string>
-							<string key="candidateClassName">NSMenu</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="userlistButtonsMenuItem">
-							<string key="name">userlistButtonsMenuItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/AquaChat.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
-			<real value="1070" key="NS.object.0"/>
-		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.InterfaceBuilder3</string>
 			<real value="4000" key="NS.object.0"/>

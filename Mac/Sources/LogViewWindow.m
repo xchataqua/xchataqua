@@ -77,11 +77,11 @@
     struct stat sb;
     fstat (fd, &sb);
     
-    char *buff = (char *) malloc (sb.st_size + 1);
+    char *buff = (char *) malloc ((size_t)sb.st_size + 1);
     
     char *ptr = buff;
     
-    while ((read (fd, ptr, sb.st_size - (ptr - buff))) > 0)
+    while ((read (fd, ptr, (size_t)sb.st_size - (ptr - buff))) > 0)
         ;
     buff[sb.st_size] = 0;
     
