@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1070</int>
-		<string key="IBDocument.SystemVersion">12C54</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2840</string>
-		<string key="IBDocument.AppKitVersion">1187.34</string>
-		<string key="IBDocument.HIToolboxVersion">625.00</string>
+		<int key="IBDocument.SystemTarget">1080</int>
+		<string key="IBDocument.SystemVersion">12D78</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
+		<string key="IBDocument.AppKitVersion">1187.37</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2840</string>
+			<string key="NS.object.0">3084</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSCustomObject</string>
@@ -68,9 +68,8 @@
 												<object class="NSOutlineView" id="322745791">
 													<reference key="NSNextResponder" ref="470452905"/>
 													<int key="NSvFlags">256</int>
-													<string key="NSFrameSize">{104, 398}</string>
+													<string key="NSFrameSize">{104, 383}</string>
 													<reference key="NSSuperview" ref="470452905"/>
-													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="961298780"/>
 													<string key="NSReuseIdentifierKey">_NS:13</string>
 													<bool key="NSEnabled">YES</bool>
@@ -172,9 +171,8 @@
 													<bool key="NSOutlineViewIndentationMarkerFollowsCellKey">NO</bool>
 												</object>
 											</array>
-											<string key="NSFrame">{{1, 1}, {0, 398}}</string>
+											<string key="NSFrame">{{1, 1}, {0, 383}}</string>
 											<reference key="NSSuperview" ref="220394343"/>
-											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="322745791"/>
 											<string key="NSReuseIdentifierKey">_NS:11</string>
 											<reference key="NSDocView" ref="322745791"/>
@@ -186,7 +184,6 @@
 											<int key="NSvFlags">-2147483392</int>
 											<string key="NSFrame">{{224, 17}, {15, 102}}</string>
 											<reference key="NSSuperview" ref="220394343"/>
-											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="663353172"/>
 											<string key="NSReuseIdentifierKey">_NS:58</string>
 											<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
@@ -197,9 +194,8 @@
 										<object class="NSScroller" id="663353172">
 											<reference key="NSNextResponder" ref="220394343"/>
 											<int key="NSvFlags">256</int>
-											<string key="NSFrame">{{1, 383}, {0, 16}}</string>
+											<string key="NSFrame">{{1, 384}, {0, 15}}</string>
 											<reference key="NSSuperview" ref="220394343"/>
-											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="925696705"/>
 											<string key="NSReuseIdentifierKey">_NS:60</string>
 											<bool key="NSEnabled">YES</bool>
@@ -211,7 +207,6 @@
 									</array>
 									<string key="NSFrameSize">{0, 400}</string>
 									<reference key="NSSuperview" ref="667103462"/>
-									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="470452905"/>
 									<string key="NSReuseIdentifierKey">_NS:9</string>
 									<int key="NSsFlags">133810</int>
@@ -228,15 +223,12 @@
 									<int key="NSvFlags">256</int>
 									<string key="NSFrame">{{1, 0}, {499, 400}}</string>
 									<reference key="NSSuperview" ref="667103462"/>
-									<reference key="NSWindow"/>
-									<reference key="NSNextKeyView"/>
 									<string key="NSReuseIdentifierKey">_NS:13</string>
 									<string key="NSClassName">SGBoxView</string>
 								</object>
 							</array>
 							<string key="NSFrame">{{0, 2}, {500, 400}}</string>
 							<reference key="NSSuperview" ref="1006"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="220394343"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSIsVertical">YES</bool>
@@ -245,10 +237,9 @@
 					</array>
 					<string key="NSFrameSize">{500, 402}</string>
 					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="667103462"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1920, 1058}}</string>
 				<string key="NSMinSize">{200, 172}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<int key="NSWindowCollectionBehavior">128</int>
@@ -456,102 +447,9 @@
 			<nil key="sourceID"/>
 			<int key="maxID">43</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">SGBoxView</string>
-					<string key="superclassName">SGView</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">stretchView</string>
-						<string key="NS.object.0">NSView</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">stretchView</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">stretchView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/SGBoxView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">SGView</string>
-					<string key="superclassName">NSView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/SGView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">TabOrWindowViewTabDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/TabOrWindowViewTabDelegate.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">XATabView</string>
-					<string key="superclassName">NSView</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="_chatViewContainer">SGBoxView</string>
-						<string key="delegate">id</string>
-						<string key="tabOutlineView">XATabViewOutlineView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="_chatViewContainer">
-							<string key="name">_chatViewContainer</string>
-							<string key="candidateClassName">SGBoxView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="delegate">
-							<string key="name">delegate</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="tabOutlineView">
-							<string key="name">tabOutlineView</string>
-							<string key="candidateClassName">XATabViewOutlineView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/XATabView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">XATabViewOutlineCell</string>
-					<string key="superclassName">NSTextFieldCell</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/XATabViewOutlineCell.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">XATabViewOutlineView</string>
-					<string key="superclassName">NSOutlineView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/XATabViewOutlineView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">XATabWindow</string>
-					<string key="superclassName">NSWindow</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/XATabWindow.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
-			<real value="1070" key="NS.object.0"/>
-		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 	</data>

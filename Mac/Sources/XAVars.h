@@ -21,3 +21,5 @@
 {"gui_ulist_size", P_OFFINT (xa_paned_pos), TYPE_INT},
 {"builtin_plugins_version", P_OFFSET (xa_builtin_plugins_version), TYPE_STR},
 {"bounce_continuously", P_OFFINT(xa_bounce_continuously), TYPE_INT},
+{"gui_input_grammar", P_OFFINT(xa_input_grammar), TYPE_INT},
+{"gui_input_autocorrect", P_OFFINT(xa_input_autocorrect), TYPE_INT},
