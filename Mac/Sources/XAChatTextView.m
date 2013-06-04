@@ -84,10 +84,6 @@ static NSCursor *XAChatTextViewSizableCursor;
     [boldFont release];
     [word release];
     
-    if (mouseEventRequestId) {
-        [NSApp cancelRequestEvents:mouseEventRequestId];
-    }
-    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
     [super dealloc];
@@ -188,18 +184,23 @@ static NSCursor *XAChatTextViewSizableCursor;
     [self setBackgroundColor:[_palette getColor:XAColorBackground]];
 }
 
-- (void)adjustMargin
-{
+- (void)adjustMargin {
     CGFloat indent = prefs.xa_text_manual_indent_chars * fontSize.width;
-    
-    NSMutableParagraphStyle *style = self.style = [[[NSMutableParagraphStyle alloc] init] autorelease];
+
+    NSMutableParagraphStyle *style = [[[NSMutableParagraphStyle alloc] init] autorelease];
+
     NSTextTab *tabStop = [[[NSTextTab alloc] initWithType:NSRightTabStopType location:indent] autorelease];
     [style setTabStops:[NSArray arrayWithObject:tabStop]];
     [style setLineHeightMultiple:prefs.xa_line_height / 100.0];
     
     indent += fontSize.width;
 
-    lineRect.origin.x = floor (indent + fontSize.width * 2 / 3) - 1;
+    CGFloat newLineRectX = floor (indent + fontSize.width * 2 / 3) - 2;
+    if (newLineRectX == lineRect.origin.x) {
+        return;
+    }
+    
+    lineRect.origin.x = newLineRectX;
 
     indent += fontSize.width;
 
@@ -210,6 +211,8 @@ static NSCursor *XAChatTextViewSizableCursor;
         [style addTabStop:tabStop];
         indent += fontSize.width;
     }
+
+    self.style = style;
     
     NSMutableAttributedString *storage = [self textStorage];
     NSRange whole = NSMakeRange (0, storage.length);
@@ -235,7 +238,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     NSDictionary *attr = [NSDictionary dictionaryWithObject:normalFont forKey:NSFontAttributeName];
     fontSize = [@"-" sizeWithAttributes:attr];
     
-    if (![new_font isEqual:old_font]) {   // CL: setup_margin is VERY expensive, don't do it unless necessary
+    if (![new_font isEqual:old_font]) {   // CL: adjustMargin is VERY expensive, don't do it unless necessary
         [self adjustMargin];
     }
 
@@ -450,17 +453,7 @@ static NSCursor *XAChatTextViewSizableCursor;
 
 - (void)viewDidMoveToWindow
 {
-    if (mouseEventRequestId) {
-        [NSApp cancelRequestEvents:mouseEventRequestId];
-    }
-
     [[self window] setAcceptsMouseMovedEvents:true];
-
-    mouseEventRequestId = [NSApp requestEvents:NSMouseMoved
-                                     forWindow:[self window]
-                                       forView:nil
-                                      selector:@selector (myMouseMoved:)
-                                        object:self];
 
     if (atBottom)
     {
@@ -496,7 +489,7 @@ static NSCursor *XAChatTextViewSizableCursor;
 - (void) resetCursorRects
 {
     NSRect rect = self.visibleRect;
-    lineRect = NSMakeRect(lineRect.origin.x, rect.origin.y, 3, rect.size.height);
+    lineRect = NSMakeRect(lineRect.origin.x, rect.origin.y, 5.0, rect.size.height);
 
     [self addCursorRect:lineRect cursor:XAChatTextViewSizableCursor];
 }
@@ -700,14 +693,13 @@ static NSCursor *XAChatTextViewSizableCursor;
     return 0;
 }
 
-- (BOOL) myMouseMoved:(NSEvent *) theEvent
-{
+- (void)mouseMoved:(NSEvent *)theEvent {
     // TBD: The use of 'superview' below assumes we live in a scroll view
     //      which is not always true.
     if (![self window] || ![NSApplication event:theEvent inView:[self superview]])
     {
         [self clear_hot_word];
-        return NO;
+        return;
     }
 
     NSPoint point = [theEvent locationInWindow];
@@ -719,7 +711,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     if (word)
     {
         if (NSLocationInRange(idx, wordRange))
-            return NO;
+            return;
         [self clear_hot_word];
     }
 
@@ -727,13 +719,13 @@ static NSCursor *XAChatTextViewSizableCursor;
     NSUInteger slen = [s length];
 
     if (slen == 0)
-        return NO;
+        return;
         
     if (slen == idx)
-        return NO;
+        return;
 
     if (isspace ([s characterAtIndex:idx]))
-        return NO;
+        return;
     
     // From this point, we know we have a selection...
     
@@ -752,15 +744,13 @@ static NSCursor *XAChatTextViewSizableCursor;
 /*    wordType = my_text_word_check (s, &word_start, &word_stop);    */
 
     if (wordType <= 0)
-        return NO;
+        return;
 
     word = [[s substringWithRange:wordRange] retain];
     
     [stg addAttribute:NSUnderlineStyleAttributeName
                 value:[NSNumber numberWithInt:NSSingleUnderlineStyle]
                 range:wordRange];
-    
-    return NO;
 }
 
 - (void) keyDown:(NSEvent *) theEvent

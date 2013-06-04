@@ -32,8 +32,6 @@
 			selector:(SEL)selector
 			  object:(id)object;
 
-- (void) cancelRequestEvents:(id)requestId;
-
 // TBD: This should probably be an extension to NSEvent
 + (BOOL) event:(NSEvent *)event inView:(NSView *)view;
 
