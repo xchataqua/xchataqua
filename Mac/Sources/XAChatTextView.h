@@ -37,7 +37,6 @@
     NSRange     wordRange;
     int         wordType;
     NSString    *word;
-    id          mouseEventRequestId;
     ChatViewController  *dropHandler;
     NSSize      fontSize;
     BOOL        atBottom;
@@ -49,6 +48,7 @@
 @property(nonatomic, retain ) NSMutableParagraphStyle *style;
 @property(nonatomic, assign, getter=isScrollingBack) BOOL scrollingBack;
 
+- (void)adjustMargin;
 - (void) printText:(NSString *)text;
 - (void) printText:(NSString *)text stamp:(time_t)stamp;
 - (void) clearText;
