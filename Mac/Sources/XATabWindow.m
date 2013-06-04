@@ -42,6 +42,10 @@
     }
 }
 
+- (void)close {
+    [NSApp terminate:self]; // this prevent parting!
+}
+
 - (void)applyPreferences:(id)sender {
     [self.tabView applyPreferences:sender];
 }
