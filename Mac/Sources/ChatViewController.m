@@ -1158,6 +1158,8 @@ static NSImage *emptyBulletImage;
     }
     
     fe_set_away (sess->server);
+
+    [self->chatTextView adjustMargin];
 }
 
 - (void) setTabColor:(int)col flash:(BOOL)flash
