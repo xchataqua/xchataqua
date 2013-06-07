@@ -15,6 +15,7 @@
 				389DC407155569EB003BA8D9 /* Generate XChat Package Name */,
 				2DDC6FEA1231BD760015A26C /* Generate Build Number */,
 				2DDC6FEF1231BDD40015A26C /* Generate Localization Files */,
+				388FD04217618D0C00469B76 /* Generate fake XPC */,
 			);
 			dependencies = (
 			);
@@ -3456,7 +3457,6 @@
 				3876258513C7024F00850913 /* Copy Frameworks */,
 				38E4A0DE15CB9F3D000312D1 /* Remove PlugIns embedded provision file */,
 				38876F3D154C7727000B7E27 /* Copy PlugIns */,
-				387C689315F2623C00811A98 /* Build Growl XPCService */,
 				3834677D15C9882800497A27 /* Copy Growl XPC */,
 				2DFDFFDB3BE3493BA3BBCCC7 /* Copy Pods Resources */,
 			);
@@ -4047,19 +4047,19 @@
 			shellPath = /bin/sh;
 			shellScript = "cd \"$PROJECT_DIR\"\nxcodebuild -project XChatAqua.xcodeproj -target 'Growl XPCService'";
 		};
-		387C689315F2623C00811A98 /* Build Growl XPCService */ = {
+		388FD04217618D0C00469B76 /* Generate fake XPC */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Build Growl XPCService";
+			name = "Generate fake XPC";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "";
+			shellScript = "cd $PROJECT_DIR\nif [ ! -e build/$CONFIGURATION/XPCServices ]; then\n    mkdir build/$CONFIGURATION/XPCServices\nfi";
 		};
 		389DC407155569EB003BA8D9 /* Generate XChat Package Name */ = {
 			isa = PBXShellScriptBuildPhase;
