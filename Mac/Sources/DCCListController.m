@@ -47,7 +47,7 @@
 
 - (void) update
 {
-    self.status = [NSString stringWithUTF8String:dccstat[dcc->dccstat].name];
+    self.status = @(dccstat[dcc->dccstat].name);
     prevDccStat = dcc->dccstat;
 }
 
@@ -109,7 +109,7 @@
 - (void) awakeFromNib
 {
     for (unsigned i = 0; i < [itemTableView numberOfColumns]; i ++) {
-        [[[itemTableView tableColumns] objectAtIndex:i] setIdentifier:[NSString stringWithFormat:@"%u", i]];
+        [[itemTableView tableColumns][i] setIdentifier:[NSString stringWithFormat:@"%u", i]];
     }
     
     [itemTableView setDataSource:self];
@@ -134,7 +134,7 @@
 {
     for (NSUInteger i = 0; i < [dccItems count]; i ++)
     {
-        DCCItem *item = [dccItems objectAtIndex:i];
+        DCCItem *item = dccItems[i];
         if (item->dcc == dcc)
         {
             if (item->prevDccStat != dcc->dccstat) {
@@ -163,7 +163,7 @@
 {
     for (NSUInteger i = 0; i < [dccItems count]; i ++)
     {
-        DCCItem *item = [dccItems objectAtIndex:i];
+        DCCItem *item = dccItems[i];
         if (item->dcc == dcc)
         {
             if (dcc->dccstat == STAT_ACTIVE) [self setActiveCount:activeCount - 1];
@@ -180,7 +180,7 @@
     NSInteger row = [itemTableView selectedRow];
     if (row >= 0)
     {
-        DCCItem *item = [dccItems objectAtIndex:row];
+        DCCItem *item = dccItems[row];
         struct DCC *dcc = item->dcc;
         dcc_abort (dcc->serv->front_session, dcc);
     }
@@ -204,7 +204,7 @@ objectValueForTableColumn:(NSTableColumn *) aTableColumn
 
 - (void)tableView:(NSTableView *)aTableView willDisplayCell:(id)aCell forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
-    DCCItem *item = [dccItems objectAtIndex:rowIndex];
+    DCCItem *item = dccItems[rowIndex];
     NSColor *color = [[[AquaChat sharedAquaChat] palette] getColor:dccstat[item->dcc->dccstat].color];
     [aCell setTextColor:color];
 }

@@ -240,35 +240,32 @@ NSFont *sharedHiddenFont;
         bg = xx;
     }
     
-    [attr setObject:[p getColor:fg]
-             forKey:NSForegroundColorAttributeName];
+    attr[NSForegroundColorAttributeName] = [p getColor:fg];
     
     if (bg >= 0)
     {
-        [attr setObject:[p getColor:bg]
-                 forKey:NSBackgroundColorAttributeName];
+        attr[NSBackgroundColorAttributeName] = [p getColor:bg];
     }
     
     if (under)
-        [attr setObject:[NSNumber numberWithInt:NSSingleUnderlineStyle]
-                 forKey:NSUnderlineStyleAttributeName];
+        attr[NSUnderlineStyleAttributeName] = @(NSSingleUnderlineStyle);
     
     if (hidden)
     {
-        [attr setObject:[MIRCString hiddenFont] forKey:NSFontAttributeName];
-        [attr setObject:[NSColor colorWithDeviceWhite:1.0 alpha:0.0] forKey:NSForegroundColorAttributeName];
+        attr[NSFontAttributeName] = [MIRCString hiddenFont];
+        attr[NSForegroundColorAttributeName] = [NSColor colorWithDeviceWhite:1.0 alpha:0.0];
     }
     else if (bold && boldFont)
     {
         if([boldFont isEqual:font])
         {
             /* emulate bold */
-            [attr setObject:[NSNumber numberWithFloat:-3.0f] forKey:NSStrokeWidthAttributeName];
+            attr[NSStrokeWidthAttributeName] = @-3.0f;
         }
-        [attr setObject:boldFont forKey:NSFontAttributeName];
+        attr[NSFontAttributeName] = boldFont;
     }
     else if (font)
-        [attr setObject:font forKey:NSFontAttributeName];
+        attr[NSFontAttributeName] = font;
     
     NSAttributedString *as = [[NSAttributedString alloc] initWithString:s attributes:attr];
     

@@ -85,7 +85,7 @@ fe_new_window (struct session *sess, int focus)
 void
 fe_print_text (struct session *sess, const char *text, time_t stamp)
 {
-    NSString *string = [NSString stringWithUTF8String:text];
+    NSString *string = @(text);
     if ( string == nil ) return;
     [sess->gui->controller printText:string stamp:stamp];
 }
@@ -168,7 +168,7 @@ static void setupAppSupport ()
     // FIXME: asdir and xcdir will always be identical; so this is bugged.
     // It's literally the same code implementing both.
     NSURL *asdir = [XAFileUtil findSupportFolderFor:@PRODUCT_NAME];
-    NSURL *xcdir = [NSURL fileURLWithPath:[NSString stringWithUTF8String:get_xdir_utf8()] isDirectory:YES];
+    NSURL *xcdir = [NSURL fileURLWithPath:@(get_xdir_utf8()) isDirectory:YES];
 
     if ([asdir isEqual:xcdir]) {
         NSError *err;
@@ -303,7 +303,7 @@ fe_args (int argc, char *argv[])
 static void fix_log_files_and_pref ()
 {
     // Check for the change.. maybe some smart user did this already..
-    if ([[NSString stringWithUTF8String:prefs.logmask] hasSuffix:@".txt"])
+    if ([@(prefs.logmask) hasSuffix:@".txt"])
         return;
     
     // If logging is off, fix the pref and log files.
@@ -357,7 +357,7 @@ fe_init (void)
     [GLikeTimer self];
 #endif
     [NSApplication sharedApplication];
-    NSString *mainNibFile = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"NSMainNibFile"];
+    NSString *mainNibFile = [[NSBundle mainBundle] infoDictionary][@"NSMainNibFile"];
     [NSBundle loadNibNamed:mainNibFile owner:NSApp];
     
     // Do not connect to network if app is launched while holding the Option key
@@ -492,22 +492,22 @@ fe_message (char *msg, int flags)
     
     if (flags & FE_MSG_INFO)
     {
-        [SGAlert noticeWithString:[NSString stringWithUTF8String:msg] andWait:wait];
+        [SGAlert noticeWithString:@(msg) andWait:wait];
     }
     else if (flags & FE_MSG_WARN)
     {
-        [SGAlert alertWithString:[NSString stringWithUTF8String:msg] andWait:wait];
+        [SGAlert alertWithString:@(msg) andWait:wait];
     }
     else if (flags & FE_MSG_ERROR)
     {
-        [SGAlert errorWithString:[NSString stringWithUTF8String:msg] andWait:wait];
+        [SGAlert errorWithString:@(msg) andWait:wait];
     }
 }
 
 void
 fe_get_int (char *msg, int def, void *callback, void *userdata)
 {
-    NSString *s = [SGRequest stringByRequestWithTitle:[NSString stringWithUTF8String:msg]
+    NSString *s = [SGRequest stringByRequestWithTitle:@(msg)
                                          defaultValue:[NSString stringWithFormat:@"%d", def]];
     
     int value = 0;
@@ -528,8 +528,8 @@ fe_get_int (char *msg, int def, void *callback, void *userdata)
 void
 fe_get_str (char *msg, char *def, void *callback, void *userdata)
 {
-    NSString *s = [SGRequest stringByRequestWithTitle:[NSString stringWithUTF8String:msg]
-                                         defaultValue:[NSString stringWithUTF8String:def]];
+    NSString *s = [SGRequest stringByRequestWithTitle:@(msg)
+                                         defaultValue:@(def)];
     
     char *value = NULL;
     int cancel = 1;
@@ -592,7 +592,7 @@ fe_update_mode_buttons (struct session *sess, char mode, char sign)
 void
 fe_update_channel_key (struct session *sess)
 {
-    sess->gui->controller.keyTextField.stringValue = [NSString stringWithUTF8String:sess->channelkey];
+    sess->gui->controller.keyTextField.stringValue = @(sess->channelkey);
 }
 
 void
@@ -610,7 +610,7 @@ fe_is_chanwindow (struct server *serv)
 void
 fe_add_chan_list (struct server *serv, char *chan, char *users, char *topic)
 {
-    [(ChannelWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(ChannelWindowKey, serv)] addChannelWithName:[NSString stringWithUTF8String:chan] numberOfUsers:[NSString stringWithUTF8String:users] topic:[NSString stringWithUTF8String:topic]];
+    [(ChannelWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(ChannelWindowKey, serv)] addChannelWithName:@(chan) numberOfUsers:@(users) topic:@(topic)];
 }
 
 void
@@ -628,7 +628,7 @@ fe_is_banwindow (struct session *sess)
 void
 fe_add_ban_list (struct session *sess, char *mask, char *who, char *when, int is_exemption)
 {
-    [(BanWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(BanWindowKey, sess)] addBanWithMask:[NSString stringWithUTF8String:mask] who:[NSString stringWithUTF8String:who] when:[NSString stringWithUTF8String:when] isExemption:is_exemption];
+    [(BanWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(BanWindowKey, sess)] addBanWithMask:@(mask) who:@(who) when:@(when) isExemption:is_exemption];
 }     
 
 void
@@ -858,7 +858,7 @@ fe_set_lag (server * serv, long lag)
     
     [AquaChat forEachSessionOnServer:serv
                      performSelector:@selector (setLag:)
-                          withObject:[NSNumber numberWithFloat:per]];
+                          withObject:@(per)];
 }
 
 void
@@ -926,7 +926,7 @@ void fe_confirm (const char *message, void (*yesproc)(void *), void (*noproc)(vo
     o->yesproc = yesproc;
     o->noproc = noproc;
     o->ud = ud;
-    [SGAlert confirmWithString:[NSString stringWithUTF8String:message]
+    [SGAlert confirmWithString:@(message)
                         inform:o
                         yesSel:@selector (do_yes)
                          noSel:@selector (do_no)];
@@ -958,7 +958,7 @@ char * fe_get_inputbox_contents (struct session *sess)
 
 void fe_set_inputbox_contents (struct session *sess, char *text)
 {
-    [sess->gui->controller setInputText:[NSString stringWithUTF8String:text]];
+    [sess->gui->controller setInputText:@(text)];
 }
 
 int fe_get_inputbox_cursor (struct session *sess)
@@ -973,7 +973,7 @@ void fe_set_inputbox_cursor (struct session *sess, int delta, int pos)
 
 void fe_open_url (const char *url)
 {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithUTF8String:url]]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@(url)]];
 }
 
 void fe_menu_del (menu_entry *me)
@@ -1041,8 +1041,8 @@ void fe_get_file (const char *title, char *initial,
                   void (*callback) (void *userdata, char *file), void *userdata,
                   int flags)
 {
-    [SGFileSelection getFile:[NSString stringWithUTF8String:title]
-                     initial:[NSString stringWithUTF8String:initial]
+    [SGFileSelection getFile:@(title)
+                     initial:@(initial)
                     callback:callback userdata:userdata flags:flags];
 }
 
@@ -1060,9 +1060,9 @@ void fe_tray_set_icon (feicon icon)
 }
 void fe_tray_set_tooltip (const char *text)
 {
-    [[AquaChat sharedAquaChat] growl:[NSString stringWithUTF8String:text] title:nil];
+    [[AquaChat sharedAquaChat] growl:@(text) title:nil];
 }
 void fe_tray_set_balloon (const char *title, const char *text)
 {
-    [[AquaChat sharedAquaChat] growl:[NSString stringWithUTF8String:text] title:[NSString stringWithUTF8String:title]];
+    [[AquaChat sharedAquaChat] growl:@(text) title:@(title)];
 }

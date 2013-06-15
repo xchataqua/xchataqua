@@ -92,11 +92,11 @@
         if (prevCommand && strcasecmp ([[prevCommand name] UTF8String], pop->name) == 0)
         {
             [[prevCommand cmd] appendString:@"\n"];
-            [[prevCommand cmd] appendString:[NSString stringWithUTF8String:pop->cmd]];
+            [[prevCommand cmd] appendString:@(pop->cmd)];
         }
         else
         {
-            UserCommandItem *item = [UserCommandItem commandWithName:[NSString stringWithUTF8String:pop->name] command:[NSString stringWithUTF8String:pop->cmd]];
+            UserCommandItem *item = [UserCommandItem commandWithName:@(pop->name) command:@(pop->cmd)];
             [commands addObject:item];
             prevCommand = item;
         }
@@ -152,7 +152,7 @@
     
     for (NSUInteger i = 0; i < [commands count]; i ++)
     {
-        UserCommandItem *item = [commands objectAtIndex:i];
+        UserCommandItem *item = commands[i];
         
         const char *cmd = [[item cmd] UTF8String];
         while (*cmd)
@@ -186,7 +186,7 @@
     NSInteger commandIndex = [commandTableView selectedRow];
     if (commandIndex >= 0)
     {
-        UserCommandItem *item = [commands objectAtIndex:commandIndex];
+        UserCommandItem *item = commands[commandIndex];
         [[item cmd] setString:[commandTextView string]];
     }
     return YES;
@@ -197,7 +197,7 @@
     NSInteger commandIndex = [commandTableView selectedRow];
     if (commandIndex >= 0)
     {
-        UserCommandItem *item = [commands objectAtIndex:commandIndex];
+        UserCommandItem *item = commands[commandIndex];
         [commandTextView setString:[item cmd]];
     }
     else
@@ -215,13 +215,13 @@
 
 - (id) tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
-    UserCommandItem *item = [commands objectAtIndex:rowIndex];
+    UserCommandItem *item = commands[rowIndex];
     return [item name];
 }
 
 - (void) tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
-    UserCommandItem *item = [commands objectAtIndex:rowIndex];
+    UserCommandItem *item = commands[rowIndex];
     [item setName:anObject];
 }
 

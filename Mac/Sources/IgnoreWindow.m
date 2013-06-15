@@ -151,7 +151,7 @@
     [button setControlSize:NSSmallControlSize];
     [button setTitle:@""];
     for (NSUInteger i = 1; i < [self->ignoreTableView numberOfColumns]; i++)
-        [[[self->ignoreTableView tableColumns] objectAtIndex:i] setDataCell:button];
+        [[self->ignoreTableView tableColumns][i] setDataCell:button];
     [button release];
     
     [self loadData];
@@ -196,7 +196,7 @@
     
     [[ignoreTableView window] makeFirstResponder:ignoreTableView];
     
-    IgnoreItem *item = [ignores objectAtIndex:row];
+    IgnoreItem *item = ignores[row];
     
     ignore_del (NULL, item.ign);    // This will call me back
     
@@ -218,7 +218,7 @@
 
 - (id) tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
-    IgnoreItem *item = [ignores objectAtIndex:rowIndex];
+    IgnoreItem *item = ignores[rowIndex];
     
     switch ([[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn])
     {
@@ -236,7 +236,7 @@
 
 -(void) tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
-    [[ignores objectAtIndex:rowIndex] setValue:anObject forField:[[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn]];
+    [ignores[rowIndex] setValue:anObject forField:[[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn]];
 }
 
 @end

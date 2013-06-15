@@ -46,7 +46,7 @@
 	// [ChatWindow -awakeFromNib]
 	[self clearText:0];
 	if (self->server)
-		[self setNickname:NSSTR(self->server->nick)];
+		[self setNickname:@(self->server->nick)];
 	[self setTitleBySession];
 	//[self setNonchannel];
 
@@ -68,12 +68,12 @@
 - (void) historyUp {
 	char *history = history_up(&[self session]->history, (char *)CSTR([inputTextField text]));
 	if ( history )
-		[self setInputText:NSSTR(history)];
+		[self setInputText:@(history)];
 }
 
 - (void) historyDown {
 	char *history = history_down(&[self session]->history);
-	[self setInputText:history ? NSSTR(history) : @""];
+	[self setInputText:history ? @(history) : @""];
 }
 
 - (void) toggleUserView {
@@ -192,7 +192,7 @@
 - (void) setTitleBySession {
 	int type = [self session]->type;
 	
-	NSString *chan = [NSString stringWithUTF8String:[self session]->channel];
+	NSString *chan = @([self session]->channel);
 	
 	NSString *title;
 	switch (type)

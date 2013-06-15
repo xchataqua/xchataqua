@@ -47,7 +47,7 @@
 #if 1
         [[NSRunLoop currentRunLoop] performSelector:@selector (do_layouts)
             target:self argument:nil order:0
-            modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]];
+            modes:@[NSDefaultRunLoopMode]];
 #else
         [NSApp addAfterEvent:self sel:@selector (do_layouts)];
 #endif
@@ -320,7 +320,7 @@ static void noDisplay (NSView *v)
     NSUInteger i = [self viewOrder:the_view];
     if (i == NSNotFound)
         return nil;
-    return [metaViews objectAtIndex:i];
+    return metaViews[i];
 }
 
 - (void) setOrder:(NSUInteger)order forView:(NSView *) the_view
@@ -328,7 +328,7 @@ static void noDisplay (NSView *v)
     NSUInteger i = [self viewOrder:the_view];
     if (i == NSNotFound)
         return;
-    id metaview = [metaViews objectAtIndex:i];
+    id metaview = metaViews[i];
     [metaview retain];
     [metaViews removeObjectAtIndex:i];
     if (order > [metaViews count])
@@ -343,7 +343,7 @@ static void noDisplay (NSView *v)
 {
     for (NSUInteger i = 0; i < [metaViews count]; i ++)
     {
-        id metaView = [metaViews objectAtIndex:i];
+        id metaView = metaViews[i];
         if ([metaView view] == the_view)
             return i;
     }

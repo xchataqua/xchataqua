@@ -63,7 +63,7 @@ extern int dcc_getcpssum;
 - (void) update
 {
     [super update];
-    self.from = [NSString stringWithUTF8String:dcc->nick];
+    self.from = @(dcc->nick);
 }
 
 @end
@@ -103,21 +103,21 @@ extern int dcc_getcpssum;
     NSInteger row = [itemTableView selectedRow];
     if (row >= 0)
     {
-        DCCFileRecieveItem *item = [dccItems objectAtIndex:row];
+        DCCFileRecieveItem *item = dccItems[row];
         
         // Reveal the proper file
         NSString *fileToReveal;
         if (item->dcc->dccstat == STAT_DONE)
         {
-            NSString *dir = [NSString stringWithUTF8String:prefs.dcc_completed_dir];
-            NSString *file = [NSString stringWithUTF8String:item->dcc->file];
+            NSString *dir = @(prefs.dcc_completed_dir);
+            NSString *file = @(item->dcc->file);
             fileToReveal = [dir stringByAppendingPathComponent:file];
         }
         else
         {
             // We want destfile, not destfile_fs.
             // NSWorkspace will take care of getting the fs representation
-            fileToReveal = [NSString stringWithUTF8String:item->dcc->destfile];
+            fileToReveal = @(item->dcc->destfile);
         }
         
         [[NSWorkspace sharedWorkspace] selectFile:fileToReveal inFileViewerRootedAtPath:nil];
@@ -129,7 +129,7 @@ extern int dcc_getcpssum;
     NSInteger row = [itemTableView selectedRow];
     if (row >= 0)
     {
-        DCCFileRecieveItem *item = [dccItems objectAtIndex:row];
+        DCCFileRecieveItem *item = dccItems[row];
         struct DCC *dcc = item->dcc;
         dcc_get (dcc);
     }
@@ -140,7 +140,7 @@ extern int dcc_getcpssum;
     NSInteger row = [itemTableView selectedRow];
     if (row >= 0)
     {
-        DCCFileRecieveItem *item = [dccItems objectAtIndex:row];
+        DCCFileRecieveItem *item = dccItems[row];
         struct DCC *dcc = item->dcc;
         dcc_resume (dcc);
     }
@@ -151,7 +151,7 @@ extern int dcc_getcpssum;
     NSInteger row = [itemTableView selectedRow];
     if (row >= 0)
     {
-        DCCFileRecieveItem *item = [dccItems objectAtIndex:row];
+        DCCFileRecieveItem *item = dccItems[row];
         
         struct DCC *dcc = item->dcc;
         
@@ -174,7 +174,7 @@ extern int dcc_getcpssum;
 
 - (NSNumber *)globalSpeedLimit
 {
-    if (prefs.dcc_global_max_get_cps) return [NSNumber numberWithInt:prefs.dcc_global_max_get_cps / 1024];
+    if (prefs.dcc_global_max_get_cps) return @(prefs.dcc_global_max_get_cps / 1024);
     else return nil;
 }
 
@@ -189,7 +189,7 @@ extern int dcc_getcpssum;
 
 - (id) tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger) rowIndex
 {
-    DCCFileRecieveItem *item = [dccItems objectAtIndex:rowIndex];
+    DCCFileRecieveItem *item = dccItems[rowIndex];
     
     switch ([[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn])
     {

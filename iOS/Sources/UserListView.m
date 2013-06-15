@@ -129,7 +129,7 @@ static UIImage *emptyBulletImage;
 - (void) rehashUser:(struct User *)user {
 	NSInteger idx = [self indexOfUser:user];
 	if ( idx == NSNotFound ) return;
-	[[users objectAtIndex:idx] rehash];
+	[users[idx] rehash];
 	[userListTableView reloadData];
 }
 
@@ -205,7 +205,7 @@ static UIImage *emptyBulletImage;
 	
 	if (*names[0]) {
 		for (NSUInteger i = 0, n = [users count]; i < n; i++) {
-			struct User *user = [(ChannelUser *)[users objectAtIndex:i] user];
+			struct User *user = [(ChannelUser *)users[i] user];
 			NSUInteger j = 0;
 			do {
 				if (self->session->server->p_cmp (user->nick, names[j]) == 0) {
@@ -238,7 +238,7 @@ static UIImage *emptyBulletImage;
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
 	
 	}
-	ChannelUser *u = [users objectAtIndex:indexPath.row];
+	ChannelUser *u = users[indexPath.row];
 	cell.imageView.image = [self imageForUser:[u user]];
 	cell.textLabel.text = [u nickname];
 	cell.textLabel.textColor = [u color];
@@ -288,7 +288,7 @@ static UIImage *emptyBulletImage;
 
 - (NSInteger) indexOfUser:(struct User *)user {
 	for (NSUInteger i = 0; i < [users count]; i++) {
-		if ([(ChannelUser *)[users objectAtIndex:i] user] == user)
+		if ([(ChannelUser *)users[i] user] == user)
 			return i;
 	}
 	return NSNotFound;

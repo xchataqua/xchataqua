@@ -59,7 +59,7 @@ static NSString *SGFileSelectionFixPath (NSString *path)
             }
             callback(userdata, 0);
         } else {
-            NSURL *URL = [[panel URLs] objectAtIndex:0];
+            NSURL *URL = [panel URLs][0];
             callback(userdata, (char *) URL.path.UTF8String);
         }
     } else {

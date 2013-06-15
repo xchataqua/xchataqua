@@ -38,27 +38,27 @@ NSMutableDictionary *utilities;
 }
 
 + (UtilityWindow *) utilityIfExistsByKey:(id)aKey {
-    return [utilities objectForKey:aKey];
+    return utilities[aKey];
 }
 
 + (UtilityWindow *) utilityByKey:(id)aKey {
-    UtilityWindow *utility = [utilities objectForKey:aKey];
+    UtilityWindow *utility = utilities[aKey];
     if ( utility == nil ) {
         utility = [[self alloc] init];
         utility->windowKey = [aKey retain];        
-        [utilities setObject:utility forKey:aKey];
+        utilities[aKey] = utility;
         [utility release];
     }
     return utility;
 }
 
 + (UtilityWindow *) utilityByKey:(id)aKey windowNibName:(NSString *)nibName {
-    UtilityWindow *utility = [utilities objectForKey:aKey];
+    UtilityWindow *utility = utilities[aKey];
     if ( utility == nil ) {
         NSWindowController *windowController = [[NSWindowController alloc] initWithWindowNibName:nibName];
         utility = (UtilityWindow *)[windowController window];
         utility->windowKey = [aKey retain];
-        [utilities setObject:utility forKey:aKey];
+        utilities[aKey] = utility;
         [windowController release];
     }
     return utility;
@@ -73,7 +73,7 @@ NSMutableDictionary *utilities;
 
 - (void) dealloc {
     [self->windowKey release];
-    if ([utilities objectForKey:windowKey]) {
+    if (utilities[windowKey]) {
         [utilities removeObjectForKey:windowKey];
     }
     [super dealloc];
@@ -93,16 +93,16 @@ NSMutableDictionary *utilities;
 }
 
 + (UtilityTabOrWindowView *) utilityIfExistsByKey:(id)aKey {
-    return [utilities objectForKey:aKey];
+    return utilities[aKey];
 }
 
 + (UtilityTabOrWindowView *) utilityByKey:(id)aKey viewNibName:(NSString *)nibName {
-    UtilityTabOrWindowView *utility = [utilities objectForKey:aKey];
+    UtilityTabOrWindowView *utility = utilities[aKey];
     if ( utility == nil ) {
         NSViewController *viewController = [[NSViewController alloc] initWithNibName:nibName bundle:nil];
         utility = (UtilityTabOrWindowView *)viewController.view;
         utility->windowKey = [aKey retain];
-        [utilities setObject:utility forKey:aKey];
+        utilities[aKey] = utility;
         [viewController release];
     }
     return utility;

@@ -188,7 +188,7 @@ static float trans = 1;
     do
     {
         windowIndex = (windowIndex + direction + [windows count]) % [windows count];
-        win = [windows objectAtIndex:windowIndex];
+        win = windows[windowIndex];
         // all windows minimized
         if(try_count-- == 0)
             return;
@@ -224,7 +224,7 @@ static float trans = 1;
     NSWindow *mainWindow = [[AquaChat sharedAquaChat] mainWindow];
     if (mainWindow != nil) {
         XATabView *tabView = mainWindow.contentView;
-        NSString *groupName = [NSString stringWithUTF8String:server->servername];
+        NSString *groupName = @(server->servername);
         [tabView setName:groupName forGroup:server->gui->tabGroup];
     }
 }
@@ -389,7 +389,7 @@ static float trans = 1;
             if (self->server)
             {
                 if (self->server->servername[0])        // Can this ever happen?
-                    groupName = [NSString stringWithUTF8String:self->server->servername];
+                    groupName = @(self->server->servername);
                 else
                     groupName = NSLocalizedStringFromTable(@"<Not Connected>", @"xchataqua", @"tab group label when not connected yet");
             }

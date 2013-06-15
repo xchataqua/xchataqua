@@ -99,7 +99,7 @@
     for (GSList *list = *slist; list; list = list->next)
     {
         struct popup *pop = (struct popup *) list->data;
-        [items addObject:[EditListItem itemWithName:[NSString stringWithUTF8String:pop->name] command:[NSString stringWithUTF8String:pop->cmd]]];
+        [items addObject:[EditListItem itemWithName:@(pop->name) command:@(pop->cmd)]];
     }
     
     [itemTableView reloadData];
@@ -178,7 +178,7 @@
 
 - (id) tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger) rowIndex
 {
-    EditListItem *item = [items objectAtIndex:rowIndex];
+    EditListItem *item = items[rowIndex];
     
     switch ([[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn])
     {
@@ -192,7 +192,7 @@
 
 - (void) tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
-    EditListItem *item = [items objectAtIndex:rowIndex];
+    EditListItem *item = items[rowIndex];
     
     switch ([[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn])
     {

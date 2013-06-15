@@ -45,7 +45,7 @@
 {
     for (NSUInteger i = start; i <= stop; i++)
     {
-        SGWrapViewMetaView *metaView = [metaViews objectAtIndex:i];
+        SGWrapViewMetaView *metaView = metaViews[i];
         if (! [[metaView view] isHidden])
             metaView->pending_frame.origin.x += unit;
     }
@@ -71,7 +71,7 @@
         
         for (NSUInteger i = 0; i < [metaViews count]; i ++)
         {
-            SGWrapViewMetaView *metaView = [metaViews objectAtIndex:i];
+            SGWrapViewMetaView *metaView = metaViews[i];
      
             if ([[metaView view] isHidden])
                 continue;
@@ -104,7 +104,7 @@
 
         for (NSUInteger i = 0; i < [metaViews count]; i ++)
         {
-            SGWrapViewMetaView *metaView = [metaViews objectAtIndex:i];
+            SGWrapViewMetaView *metaView = metaViews[i];
             if (![[metaView view] isHidden])
                 [metaView setFrame:metaView->pending_frame];
         }

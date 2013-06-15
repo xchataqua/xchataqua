@@ -54,7 +54,7 @@ extern char *pntevts[];
         textEvent->helps = [[NSMutableArray alloc] initWithCapacity:event->num_args & 0x7f];
 
         for (NSInteger i = 0; i < (event->num_args & 0x7f); i++)
-            [textEvent->helps addObject:[NSString stringWithUTF8String:event->help[i]]];
+            [textEvent->helps addObject:@(event->help[i])];
     }
     return [textEvent autorelease];
 }
@@ -162,7 +162,7 @@ extern char *pntevts[];
     if (aTableView == helpTableView)
     {
         NSInteger row = [eventTableView selectedRow];
-        return row < 0 ? 0 : [[(TextEventsItem *)[eventsItems objectAtIndex:row] helps] count];
+        return row < 0 ? 0 : [[(TextEventsItem *)eventsItems[row] helps] count];
     }
 
     dassert(NO);
@@ -175,7 +175,7 @@ extern char *pntevts[];
     
     if (aTableView == eventTableView)
     {
-        TextEventsItem *item = [eventsItems objectAtIndex:rowIndex];
+        TextEventsItem *item = eventsItems[rowIndex];
         
         switch ( column )
         {
@@ -188,11 +188,11 @@ extern char *pntevts[];
     {
         switch ( column )
         {
-            case 0: return [NSNumber numberWithInteger:rowIndex+1];
+            case 0: return @(rowIndex+1);
             case 1:
             {
                 NSInteger eventIndex = [eventTableView selectedRow];
-                return eventIndex < 0 ? @"" : [[(TextEventsItem *)[eventsItems objectAtIndex:eventIndex] helps] objectAtIndex:rowIndex];
+                return eventIndex < 0 ? @"" : [(TextEventsItem *)eventsItems[eventIndex] helps][rowIndex];
             }
         }
     }
@@ -207,7 +207,7 @@ extern char *pntevts[];
     {
         prefs.save_pevents = true;
         
-        TextEventsItem *item = [eventsItems objectAtIndex:rowIndex];
+        TextEventsItem *item = eventsItems[rowIndex];
 
         switch ([[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn])
         {
@@ -263,7 +263,7 @@ extern char *pntevts[];
     
     for (int i = 0; i < NUM_XP; i ++)                      
     {
-        [eventsItems addObject:[TextEventsItem textEventWithEvent:&te[i] text:[NSString stringWithUTF8String:pntevts_text[i]]]];
+        [eventsItems addObject:[TextEventsItem textEventWithEvent:&te[i] text:@(pntevts_text[i])]];
     }
 }
 
@@ -288,7 +288,7 @@ extern char *pntevts[];
         y ++;
     }
     *y = 0;
-    [testTextView printText:[NSString stringWithUTF8String:output]];
+    [testTextView printText:@(output)];
     free(output);
 }
 

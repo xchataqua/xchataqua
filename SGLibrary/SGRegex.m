@@ -99,7 +99,7 @@
 
 - (NSString *) getNthMatch:(NSInteger) n
 {
-	return [list objectAtIndex:n];
+	return list[n];
 }
 
 @end

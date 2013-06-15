@@ -164,7 +164,7 @@ NSImage *XATabViewOutlineCellCloseImage;
 
         if ([item isKindOfClass:[XATabViewItem class]])
         {
-            NSTableColumn *tableColumn = [[self tableColumns] objectAtIndex:col];
+            NSTableColumn *tableColumn = [self tableColumns][col];
             XATabViewOutlineCell *cell = [tableColumn dataCell];
             
             if ([cell isKindOfClass:[XATabViewOutlineCell class]])
@@ -220,7 +220,7 @@ NSImage *XATabViewOutlineCellCloseImage;
         fontSize *= 0.86;
     }
     NSFont *font = [NSFont systemFontOfSize:fontSize];
-    XATabViewOutlineCell *dataCell = [[self.tableColumns objectAtIndex:0] dataCell];
+    XATabViewOutlineCell *dataCell = [(self.tableColumns)[0] dataCell];
     dataCell.font = font;
     
     NSLayoutManager *layoutManager=[[NSLayoutManager new] autorelease];
@@ -586,7 +586,7 @@ NSNib *XATabViewItemTabMenuNib;
 - (void)setChatView:(id)chatView {
     if (chatView == nil) return;
     while (_chatViewContainer.subviews.count > 0) {
-        [[_chatViewContainer.subviews objectAtIndex:0] removeFromSuperview];
+        [(_chatViewContainer.subviews)[0] removeFromSuperview];
     }
     if (xchat_is_quitting) return; // optimization..?
 
@@ -640,7 +640,7 @@ NSNib *XATabViewItemTabMenuNib;
             [tabItem.tabButton setHasLeftCap:NO];
             [tabItem.tabButton setHasRightCap:NO];
         }
-        XATabViewItem *firstItem = [group.tabItems objectAtIndex:0];
+        XATabViewItem *firstItem = (group.tabItems)[0];
         [firstItem.tabButton setHasLeftCap:YES];
         XATabViewItem *lastItem = [group.tabItems lastObject];
         [lastItem.tabButton setHasRightCap:YES];
@@ -654,7 +654,7 @@ NSNib *XATabViewItemTabMenuNib;
     NSArray *tabViewItems = self.tabViewItems;
     for (NSUInteger i = 0; i < tabViewItems.count; i ++)
     {
-        XATabViewItem *tab = [tabViewItems objectAtIndex:i];
+        XATabViewItem *tab = tabViewItems[i];
         [tab makeButton:_tabButtonView order:i];
     }
     
@@ -668,7 +668,7 @@ NSNib *XATabViewItemTabMenuNib;
 {
     [_tabOutlineView enclosingScrollView].frame = NSMakeRect(.0, .0, prefs.xa_outline_width, self.frame.size.height);    
     
-    [_tabOutlineView setOutlineTableColumn:[_tabOutlineView.tableColumns objectAtIndex:0]];
+    [_tabOutlineView setOutlineTableColumn:(_tabOutlineView.tableColumns)[0]];
     [_tabOutlineView reloadData];
         
     for (XATabViewGroup *group in _groups) {
@@ -742,7 +742,7 @@ NSNib *XATabViewItemTabMenuNib;
 
 - (XATabViewItem *)tabViewItemAtIndex:(NSInteger)index {
     if (index < 0 || index >= self.tabViewItems.count) return nil;
-    return [self.tabViewItems objectAtIndex:index];
+    return (self.tabViewItems)[index];
 }
 
 - (NSInteger) indexOfTabViewItem:(XATabViewItem *) tabViewItem
@@ -774,9 +774,9 @@ NSNib *XATabViewItemTabMenuNib;
             NSUInteger tabIndex = [self.tabViewItems indexOfObject:tabViewItem];
             NSUInteger lastTabIndex = self.tabViewItems.count - 1;
             NSUInteger selectedIndex;
-            if (tabIndex < lastTabIndex && [[self.tabViewItems objectAtIndex:tabIndex + 1] groupIdentifier] == tabViewItem.groupIdentifier) {
+            if (tabIndex < lastTabIndex && [(self.tabViewItems)[tabIndex + 1] groupIdentifier] == tabViewItem.groupIdentifier) {
                 selectedIndex = tabIndex + 1;
-            } else if (tabIndex > 0 && [[self.tabViewItems objectAtIndex:tabIndex - 1] groupIdentifier] == tabViewItem.groupIdentifier) {
+            } else if (tabIndex > 0 && [(self.tabViewItems)[tabIndex - 1] groupIdentifier] == tabViewItem.groupIdentifier) {
                 selectedIndex = tabIndex - 1;
             } else {
                 selectedIndex = tabIndex == lastTabIndex ? tabIndex - 1 : tabIndex + 1;
@@ -984,14 +984,14 @@ typedef OSStatus
     
     NSUInteger index = 0;
     for (; index < self.tabViewItems.count; index ++) {
-        XATabViewItem *tab = [self.tabViewItems objectAtIndex:index];
+        XATabViewItem *tab = (self.tabViewItems)[index];
         if (tab.groupIdentifier == groupIdentifier) {
             index ++;
             break;
         }
     } // strat of matching group now
     for (; index < self.tabViewItems.count; index ++) {
-        XATabViewItem *tab = [self.tabViewItems objectAtIndex:index];
+        XATabViewItem *tab = (self.tabViewItems)[index];
         if (tab.groupIdentifier != groupIdentifier) {
             break;
         }
@@ -1018,11 +1018,11 @@ typedef OSStatus
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item
 {
     if (item == nil) {
-        return [_groups objectAtIndex:index];
+        return _groups[index];
     }
         
     if ([item isKindOfClass:[XATabViewGroup class]]) {
-        return [[item tabItems] objectAtIndex:index];
+        return [item tabItems][index];
     }
         
     // Not possible

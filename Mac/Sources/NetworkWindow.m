@@ -357,11 +357,11 @@ static NSString *charsets[] =
     // autojoin is in the form of the irc join string
     //
     //        <channel>{,<channel>} [<key>{,<key>}]
-    NSString *autojoins = [NSString stringWithUTF8String:autojoin];
+    NSString *autojoins = @(autojoin);
     NSArray *autojoinParts = [autojoins componentsSeparatedByString:@" "];
     
-    NSString *channelsString = [autojoinParts objectAtIndex:0];
-    NSString *keysString = [autojoinParts count]>1 ? [autojoinParts objectAtIndex:1] : @"";
+    NSString *channelsString = autojoinParts[0];
+    NSString *keysString = [autojoinParts count]>1 ? autojoinParts[1] : @"";
     keysString = [keysString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
     for ( NSString *channelName in [channelsString componentsSeparatedByString:@","] ) {
@@ -372,7 +372,7 @@ static NSString *charsets[] =
     NSArray *keys = [keysString componentsSeparatedByString:@","];
     
     for ( NSUInteger i = 0; i < [keys count]; i++ ) {
-        [[channels objectAtIndex:i] setKey:[keys objectAtIndex:i]];
+        [channels[i] setKey:keys[i]];
     }
 }
 
@@ -382,7 +382,7 @@ static NSString *charsets[] =
     if ( commandsCString == NULL || commandsCString[0] == 0)
         return;
     
-    for ( NSString *command in [[NSString stringWithUTF8String:commandsCString] componentsSeparatedByString:@"\n"] ) {
+    for ( NSString *command in [@(commandsCString) componentsSeparatedByString:@"\n"] ) {
         [connectCommands addObject:command];
     }
 }
@@ -421,10 +421,10 @@ static NSString *charsets[] =
 
 - (void) awakeFromNib
 {    
-    NSTableHeaderCell *heartCell = [[[networkTableView tableColumns] objectAtIndex:0] headerCell];
+    NSTableHeaderCell *heartCell = [[networkTableView tableColumns][0] headerCell];
     [heartCell setImage:[NSImage imageNamed:@"heart.tif"]];
     
-    NSTableHeaderCell *connectionCell = [[[networkTableView tableColumns] objectAtIndex:1] headerCell];
+    NSTableHeaderCell *connectionCell = [[networkTableView tableColumns][1] headerCell];
     [connectionCell setImage:[NSImage imageNamed:@"connect.tif"]];
     
     [self->networkTableView setAutosaveTableColumns:YES];
@@ -525,7 +525,7 @@ static NSString *charsets[] =
     
     [self savePreferences];
     
-    NetworkItem *network = [filteredNetworks objectAtIndex:networkIndex];
+    NetworkItem *network = filteredNetworks[networkIndex];
     
     if (sender == connectNewButton || !is_session (sess))
         sess = NULL;
@@ -543,7 +543,7 @@ static NSString *charsets[] =
     NSInteger networkIndex = [networkTableView selectedRow];
     if (networkIndex < 0) return;
     
-    NetworkItem *network = [filteredNetworks objectAtIndex:networkIndex];
+    NetworkItem *network = filteredNetworks[networkIndex];
     
     BOOL val = [sender intValue];
     
@@ -566,7 +566,7 @@ static NSString *charsets[] =
     NSInteger networkIndex = [networkTableView selectedRow];
     if (networkIndex < 0) return;
     
-    NetworkItem *network = [filteredNetworks objectAtIndex:networkIndex];
+    NetworkItem *network = filteredNetworks[networkIndex];
     
     NSInteger offset = [sender tag];
     char **f = (char **)(((char *)network->ircNet) + offset);
@@ -583,7 +583,7 @@ static NSString *charsets[] =
     NSInteger row = [networkTableView selectedRow];
     if (row >= 0)
     {
-        NetworkItem *network = [filteredNetworks objectAtIndex:row];
+        NetworkItem *network = filteredNetworks[row];
         
         //set_text_value (net_join, &net->net->autojoin);
         
@@ -612,7 +612,7 @@ static NSString *charsets[] =
     if (networkIndex < 0)
         return;
     
-    NetworkItem *network = [filteredNetworks objectAtIndex:networkIndex];
+    NetworkItem *network = filteredNetworks[networkIndex];
     
     [network->channels addObject:[OneChannel channelWithName:NSLocalizedStringFromTable(@"NEW CHANNEL", @"xchataqua", @"Default channel name: MainMenu->File->Server List... => (Select server)->On Join->channels->'+'")]];
     
@@ -631,7 +631,7 @@ static NSString *charsets[] =
     NSInteger networkIndex = [networkTableView selectedRow];
     if (networkIndex < 0) return;
     
-    NetworkItem *network = [filteredNetworks objectAtIndex:networkIndex];
+    NetworkItem *network = filteredNetworks[networkIndex];
     
     NSInteger channelIndex = [networkJoinTableView selectedRow];
     if (channelIndex < 0) return;
@@ -647,7 +647,7 @@ static NSString *charsets[] =
     NSInteger networkIndex = [networkTableView selectedRow];
     if (networkIndex < 0) return;
     
-    NetworkItem *network = [filteredNetworks objectAtIndex:networkIndex];
+    NetworkItem *network = filteredNetworks[networkIndex];
     
     [network->connectCommands addObject:NSLocalizedStringFromTable(@"NEW COMMAND", @"xchataqua", @"Default command: MainMenu->File->Server List... => (Select server)->On Join->commands->'+'")];
     
@@ -666,7 +666,7 @@ static NSString *charsets[] =
     NSInteger networkIndex = [networkTableView selectedRow];
     if (networkIndex < 0) return;
     
-    NetworkItem *network = [filteredNetworks objectAtIndex:networkIndex];
+    NetworkItem *network = filteredNetworks[networkIndex];
     
     NSInteger commandIndex = [networkCommandTableView selectedRow];
     if (commandIndex < 0) return;
@@ -682,7 +682,7 @@ static NSString *charsets[] =
     NSInteger networkIndex = [networkTableView selectedRow];
     if (networkIndex < 0) return;
     
-    NetworkItem *network = [filteredNetworks objectAtIndex:networkIndex];
+    NetworkItem *network = filteredNetworks[networkIndex];
     
     ircserver *ircServer = servlist_server_add (network->ircNet, (char *)[NSLocalizedStringFromTable(@"NewServer", @"xchat", @"") UTF8String]);
     
@@ -708,7 +708,7 @@ static NSString *charsets[] =
     if (serverIndex < 0)
         return;
     
-    NetworkItem *network = [filteredNetworks objectAtIndex:networkIndex];
+    NetworkItem *network = filteredNetworks[networkIndex];
     
     if (g_slist_length (network->ircNet->servlist) < 2)
         return;
@@ -739,7 +739,7 @@ static NSString *charsets[] =
     NSInteger networkIndex = [networkTableView selectedRow];
     if (networkIndex < 0) return;
     
-    NetworkItem *network = [filteredNetworks objectAtIndex:networkIndex];
+    NetworkItem *network = filteredNetworks[networkIndex];
     
     if (![SGAlert confirmWithString:[NSString stringWithFormat:
                                      NSLocalizedStringFromTable(@"Really remove network \"%@\" and all its servers?", @"xchat", @"Dialog Message from clicking '-' of MainMenu->File->Server List..."), network->name]])
@@ -785,9 +785,9 @@ static NSString *charsets[] =
     if ( tableView == networkTableView ) return NO;
     if ( [self->networkTableView selectedRow] < 0 ) return NO;
     
-    [tableView registerForDraggedTypes:[NSArray arrayWithObject:DraggingDataType]];
+    [tableView registerForDraggedTypes:@[DraggingDataType]];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:rowIndexes];
-    [pboard declareTypes:[NSArray arrayWithObject:DraggingDataType] owner:self];
+    [pboard declareTypes:@[DraggingDataType] owner:self];
     [pboard setData:data forType:DraggingDataType];
     return YES;
 }
@@ -801,7 +801,7 @@ static NSString *charsets[] =
     NSIndexSet *rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:rowData];
     NSInteger selectedRow = [rowIndexes firstIndex];
     
-    NetworkItem *network = [filteredNetworks objectAtIndex:[networkTableView selectedRow]];
+    NetworkItem *network = filteredNetworks[[networkTableView selectedRow]];
     
     NSMutableArray *dataArray = nil;
     if ( tableView == networkServerTableView ) {
@@ -817,11 +817,11 @@ static NSString *charsets[] =
         dassert(NO);
     }
     
-    id selectedItem = [[dataArray objectAtIndex:selectedRow] retain];
+    id selectedItem = [dataArray[selectedRow] retain];
     switch (dropOperation) {
         case NSTableViewDropOn:
-            [dataArray replaceObjectAtIndex:selectedRow withObject:[dataArray objectAtIndex:row]];
-            [dataArray replaceObjectAtIndex:row withObject:selectedItem];
+            dataArray[selectedRow] = dataArray[row];
+            dataArray[row] = selectedItem;
             break;
         case NSTableViewDropAbove:
             [dataArray removeObjectAtIndex:selectedRow];
@@ -835,11 +835,11 @@ static NSString *charsets[] =
     [tableView unregisterDraggedTypes];
     
     if ( tableView == networkJoinTableView ) {
-        network = [filteredNetworks objectAtIndex:[networkTableView selectedRow]];
+        network = filteredNetworks[[networkTableView selectedRow]];
         [network resetAutojoin];
     }
     else if ( tableView == networkCommandTableView ) {
-        network = [filteredNetworks objectAtIndex:[networkTableView selectedRow]];
+        network = filteredNetworks[[networkTableView selectedRow]];
         [network resetCommands];
     }
     
@@ -856,13 +856,13 @@ static NSString *charsets[] =
     if ([notification object] == networkTableView)
     {
         // Figure out what was selected from the allNetworks
-        NetworkItem *network = [filteredNetworks objectAtIndex:networkIndex];
+        NetworkItem *network = filteredNetworks[networkIndex];
         prefs.slist_select = (int)[allNetworks indexOfObject:network];
         [self populateEditor];
     }
     else if ([notification object] == networkServerTableView)
     {
-        NetworkItem *network = [filteredNetworks objectAtIndex:networkIndex];
+        NetworkItem *network = filteredNetworks[networkIndex];
         network->ircNet->selected = (int)[networkServerTableView selectedRow];
     }
 }
@@ -875,7 +875,7 @@ static NSString *charsets[] =
     NSInteger networkIndex = [self->networkTableView selectedRow];
     if (networkIndex < 0) return 0;
     
-    NetworkItem *network = [filteredNetworks objectAtIndex:networkIndex];
+    NetworkItem *network = filteredNetworks[networkIndex];
     
     if (aTableView == networkServerTableView)
     {
@@ -902,12 +902,12 @@ static NSString *charsets[] =
     
     if (aTableView == networkTableView)
     {
-        NetworkItem *network =[filteredNetworks objectAtIndex:rowIndex];
+        NetworkItem *network =filteredNetworks[rowIndex];
         switch (column)
         {
-            case 0: return [NSNumber numberWithInteger:[network favorite]];
-            case 1: return [NSNumber numberWithInteger:[network autoconnect]];
-            case 2: return [network name];
+            case 0: return @((NSInteger)network.favorite);
+            case 1: return @((NSInteger)network.autoconnect);
+            case 2: return network.name;
         }
     }
     else
@@ -915,21 +915,21 @@ static NSString *charsets[] =
         NSInteger networkIndex = [self->networkTableView selectedRow];
         if (networkIndex < 0) return @"";
         
-        NetworkItem *network = [filteredNetworks objectAtIndex:networkIndex];
+        NetworkItem *network = filteredNetworks[networkIndex];
         
         if (aTableView == networkServerTableView)
         {
-            ServerItem *serverItem = [network->servers objectAtIndex:rowIndex];
+            ServerItem *serverItem = network->servers[rowIndex];
             switch (column)
             {
                 case 0: return serverItem->name;
                 case 1: return serverItem->port;
-                case 2: return [NSNumber numberWithBool:serverItem->ssl];
+                case 2: return @(serverItem->ssl);
             }
         }
         else if (aTableView == networkJoinTableView)
         {
-            OneChannel *channel = [network->channels objectAtIndex:rowIndex];
+            OneChannel *channel = network->channels[rowIndex];
             switch (column)
             {
                 case 0: return channel->_name;
@@ -938,7 +938,7 @@ static NSString *charsets[] =
         }
         else if (aTableView == networkCommandTableView)
         {
-            return [network->connectCommands objectAtIndex:rowIndex];
+            return network->connectCommands[rowIndex];
         }
     }
     dassert(NO);
@@ -951,7 +951,7 @@ static NSString *charsets[] =
     
     if (aTableView == networkTableView)
     {
-        NetworkItem *network =[filteredNetworks objectAtIndex:rowIndex];
+        NetworkItem *network =filteredNetworks[rowIndex];
         switch (column)
         {
             case 0: [network setFavorite:[anObject boolValue]]; break;
@@ -964,11 +964,11 @@ static NSString *charsets[] =
         NSInteger networkIndex = [networkTableView selectedRow];
         if ( networkIndex < 0) return;
         
-        NetworkItem *network = [filteredNetworks objectAtIndex:networkIndex];
+        NetworkItem *network = filteredNetworks[networkIndex];
         
         if (aTableView == networkServerTableView)
         {
-            ServerItem *serverItem = [network->servers objectAtIndex:rowIndex];
+            ServerItem *serverItem = network->servers[rowIndex];
             switch (column)
             {
                 case 0: [serverItem setServer:anObject]; break;
@@ -983,7 +983,7 @@ static NSString *charsets[] =
         }
         else if (aTableView == networkJoinTableView)
         {
-            OneChannel *channel = [network->channels objectAtIndex:rowIndex];
+            OneChannel *channel = network->channels[rowIndex];
             switch (column)
             {
                 case 0: [channel setName:anObject]; break;
@@ -993,7 +993,7 @@ static NSString *charsets[] =
         }
         else if (aTableView == networkCommandTableView)
         {
-            [network->connectCommands replaceObjectAtIndex:rowIndex withObject:anObject];
+            network->connectCommands[rowIndex] = anObject;
             [network resetCommands];
         }
     }
@@ -1050,7 +1050,7 @@ static NSString *charsets[] =
     char **f = (char **)(((char *) network->ircNet) + offset);
     char *str = *f;
     
-    NSString *val = str ? [NSString stringWithUTF8String:str] : @"";
+    NSString *val = str ? @(str) : @"";
     
     [field setStringValue:val];
 }
@@ -1060,7 +1060,7 @@ static NSString *charsets[] =
     NSInteger networkIndex = [self->networkTableView selectedRow];
     if (networkIndex < 0) return;
     
-    NetworkItem *network = [filteredNetworks objectAtIndex:networkIndex];
+    NetworkItem *network = filteredNetworks[networkIndex];
     
     [networkTitleTextField setStringValue:[NSString stringWithFormat:NSLocalizedStringFromTable(@"Servers for %s", @"xchat", @""), [network->name UTF8String]]];
     
@@ -1112,11 +1112,11 @@ static NSString *charsets[] =
 
 - (void) populate
 {
-    [nick1TextField setStringValue:[NSString stringWithUTF8String:prefs.nick1]];
-    [nick2TextField setStringValue:[NSString stringWithUTF8String:prefs.nick2]];
-    [nick3TextField setStringValue:[NSString stringWithUTF8String:prefs.nick3]];
-    [realnameTextField setStringValue:[NSString stringWithUTF8String:prefs.realname]];
-    [usernameTextField setStringValue:[NSString stringWithUTF8String:prefs.username]];
+    [nick1TextField setStringValue:@(prefs.nick1)];
+    [nick2TextField setStringValue:@(prefs.nick2)];
+    [nick3TextField setStringValue:@(prefs.nick3)];
+    [realnameTextField setStringValue:@(prefs.realname)];
+    [usernameTextField setStringValue:@(prefs.username)];
     
     [showWhenStartupToggleButton setIntegerValue:prefs.slist_skip];
     

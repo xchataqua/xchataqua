@@ -183,7 +183,7 @@
 
 - (id) tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
-    BanItem *item = [bans objectAtIndex:rowIndex];
+    BanItem *item = bans[rowIndex];
     
     switch ( [[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn] )
     {
@@ -212,12 +212,12 @@
         if ( invert ) isTarget = !isTarget;
         
         if ( isTarget )
-            [nicks addObject:[(BanItem *)[bans objectAtIndex:i] mask]];
+            [nicks addObject:[(BanItem *)bans[i] mask]];
     }
     
     const char **masks = (const char **) malloc ([nicks count] * sizeof (const char *));
     for (NSUInteger i = 0; i < [nicks count]; i ++)
-        masks[i] = [[nicks objectAtIndex:i] UTF8String];
+        masks[i] = [nicks[i] UTF8String];
     
     char tbuf[2048];
     send_channel_modes (sess, tbuf, (char **) masks, 0, (int)[nicks count], '-', 'b', 0);
