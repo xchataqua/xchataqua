@@ -262,7 +262,7 @@
 #pragma mark Property Interfaces
 
 - (NSString *) name {
-    return NSSTR(ircNet->name);
+    return @(ircNet->name);
 }
 
 - (void) setAutoconnect:(BOOL)flag
@@ -305,11 +305,11 @@
     // autojoin is in the form of the irc join string
     //
     //        <channel>{,<channel>} [<key>{,<key>}]
-    NSString *autojoins = [NSString stringWithUTF8String:autojoin];
+    NSString *autojoins = @(autojoin);
     NSArray *autojoinParts = [autojoins componentsSeparatedByString:@" \t\n"];
     
-    NSString *channelsString = [autojoinParts objectAtIndex:0];
-    NSString *keysString = [autojoinParts count]>1 ? [autojoinParts objectAtIndex:1] : @"";
+    NSString *channelsString = autojoinParts[0];
+    NSString *keysString = [autojoinParts count]>1 ? autojoinParts[1] : @"";
     
     for ( NSString *channelName in [channelsString componentsSeparatedByString:@","] ) {
         [favoriteChannels addObject:[OneChannel channelWithName:channelName]];
@@ -319,7 +319,7 @@
     NSArray *keys = [keysString componentsSeparatedByString:@","];
     
     for ( NSUInteger i = 0; i < [keys count]; i++ ) {
-        [[favoriteChannels objectAtIndex:i] setKey:[keys objectAtIndex:i]];
+        [favoriteChannels[i] setKey:keys[i]];
     }
 }
 
@@ -329,7 +329,7 @@
     if ( commandsCString == NULL || commandsCString[0] == 0)
         return;
     
-    for ( NSString *command in [[NSString stringWithUTF8String:commandsCString] componentsSeparatedByString:@"\n"] ) {
+    for ( NSString *command in [@(commandsCString) componentsSeparatedByString:@"\n"] ) {
         [connectCommands addObject:command];
     }
 }
@@ -510,7 +510,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     }
-    cell.textLabel.text = [[networks objectAtIndex:indexPath.row] name];
+    cell.textLabel.text = [networks[indexPath.row] name];
     return cell;
 }
 
@@ -526,7 +526,7 @@
     
     [self savePreferences];
     
-    NetworkItem *network = [networks objectAtIndex:indexPath.row];
+    NetworkItem *network = networks[indexPath.row];
     
     prefs.slist_select = [allNetworks indexOfObject:network];
     
@@ -540,7 +540,7 @@
 }
 
 - (void) tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    selectedNetworkItem = [networks objectAtIndex:indexPath.row];
+    selectedNetworkItem = networks[indexPath.row];
     [self loadNetwork];
     [self.navigationController pushViewController:networkPreferenceViewController animated:YES];
 }
@@ -556,14 +556,14 @@
 }
 
 - (NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [charsets objectAtIndex:row];
+    return charsets[row];
 }
 
 - (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     NSInteger offset = [pickerView tag];
     char **f = (char **)(((char *)[selectedNetworkItem ircNet]) + offset);
     free (*f);
-    const char *v = CSTR([charsets objectAtIndex:row]);
+    const char *v = CSTR(charsets[row]);
     *f = *v ? strdup (v) : NULL;
 }
 
@@ -591,7 +591,7 @@
     char **f = (char **)(((char *)[network ircNet]) + offset);
     char *str= *f;
     
-    NSString *val = str ? NSSTR(str) : @"";
+    NSString *val = str ? @(str) : @"";
     
     [field setText:val];
 }
@@ -617,7 +617,7 @@
     char **f = (char **)(((char *)[selectedNetworkItem ircNet]) + offset);
     char *str= *f;
     
-    NSString *val = str ? NSSTR(str) : @"";
+    NSString *val = str ? @(str) : @"";
     
     [charsetPickerView selectRow:[charsets indexOfObject:val] inComponent:0 animated:NO];
 
@@ -626,11 +626,11 @@
 
 - (void)loadPreferences {
     [userViewController->skipOnStartUpSwitch setOn:prefs.slist_skip animated:NO];
-    [userViewController->nickname1TextField setText:NSSTR(prefs.nick1)];
-    [userViewController->nickname2TextField setText:NSSTR(prefs.nick2)];
-    [userViewController->nickname3TextField setText:NSSTR(prefs.nick3)];
-    [userViewController->usernameTextField setText:NSSTR(prefs.username)];
-    [userViewController->realnameTextField setText:NSSTR(prefs.realname)];
+    [userViewController->nickname1TextField setText:@(prefs.nick1)];
+    [userViewController->nickname2TextField setText:@(prefs.nick2)];
+    [userViewController->nickname3TextField setText:@(prefs.nick3)];
+    [userViewController->usernameTextField setText:@(prefs.username)];
+    [userViewController->realnameTextField setText:@(prefs.realname)];
     
     [networks release];
     [allNetworks release];
@@ -798,8 +798,8 @@
     if ( cell == nil ) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    ServerItem *server = [[[networkViewController selectedNetworkItem] servers] objectAtIndex:indexPath.row];
-    cell.textLabel.text = NSSTR(server->ircServer->hostname);
+    ServerItem *server = [[networkViewController selectedNetworkItem] servers][indexPath.row];
+    cell.textLabel.text = @(server->ircServer->hostname);
     return cell;
 }
 
@@ -814,7 +814,7 @@
     if ([tableView isEditing]) {
     edit:
         {
-            ServerItem *selectedServerItem = [servers objectAtIndex:indexPath.row];
+            ServerItem *selectedServerItem = servers[indexPath.row];
             ServersEditTableViewController *editTableViewController = [[ServersEditTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             editTableViewController->selectedNetworkItem = [networkViewController selectedNetworkItem];
             editTableViewController->selectedServerItem = selectedServerItem;
@@ -827,7 +827,7 @@
 - (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSMutableArray *servers = (NSMutableArray *)[[networkViewController selectedNetworkItem] servers];
-        ServerItem *selectedServerItem = [servers objectAtIndex:indexPath.row];
+        ServerItem *selectedServerItem = servers[indexPath.row];
         
         servlist_server_remove([[networkViewController selectedNetworkItem] ircNet], selectedServerItem->ircServer);
         [servers removeObjectAtIndex:indexPath.row];
@@ -1065,7 +1065,7 @@
     if ( cell == nil ) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    OneChannel *channel = [[[networkViewController selectedNetworkItem] favoriteChannels] objectAtIndex:indexPath.row];
+    OneChannel *channel = [[networkViewController selectedNetworkItem] favoriteChannels][indexPath.row];
     cell.textLabel.text = [channel name];
     if ( [[channel key] length] > 0 )
         cell.textLabel.text = [cell.textLabel.text stringByAppendingFormat:@" / %@", [channel key]];
@@ -1082,7 +1082,7 @@
     if ( [tableView isEditing] ) {
     edit:
         {
-            OneChannel *selectedChannel = [favoriteChannels objectAtIndex:indexPath.row];
+            OneChannel *selectedChannel = favoriteChannels[indexPath.row];
             FavoriteChannelsEditTableViewController *editTableViewController = [[FavoriteChannelsEditTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             editTableViewController->selectedNetworkItem = [networkViewController selectedNetworkItem];
             editTableViewController->selectedChannel = selectedChannel;
@@ -1166,7 +1166,7 @@
     if ( cell == nil ) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.textLabel.text = [[[networkViewController selectedNetworkItem] connectCommands] objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[networkViewController selectedNetworkItem] connectCommands][indexPath.row];
     return cell;
 }
 

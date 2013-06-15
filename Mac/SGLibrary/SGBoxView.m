@@ -225,7 +225,7 @@ NSRect NSRectFlip (NSRect rect)
     NSInteger i;
     for (i = first; i != stop; i += incr)
     {
-        id metaView = [metaViews objectAtIndex:i];
+        id metaView = metaViews[i];
         
         if (will_stretch && stretchView == [metaView view])
             break;
@@ -258,7 +258,7 @@ NSRect NSRectFlip (NSRect rect)
         
         for (NSUInteger i = 0; i < [metaViews count]; i ++)
         {
-            id metaView = [metaViews objectAtIndex:i];
+            id metaView = metaViews[i];
             if (![[metaView view] isHidden])
             {
                 NSRect b = [[metaView view] frame];
@@ -285,7 +285,7 @@ NSRect NSRectFlip (NSRect rect)
     if (i != stop)
     for (NSInteger j = stop - incr; j != i; j -= incr)
     {
-        id metaView = [metaViews objectAtIndex:j];
+        id metaView = metaViews[j];
         
         if (stretchView == [metaView view])
             break;
@@ -318,7 +318,7 @@ NSRect NSRectFlip (NSRect rect)
     {
         // We do this one.. visible or not.  Is this a good idea?
         
-        id metaView = [metaViews objectAtIndex:i];
+        id metaView = metaViews[i];
         
         NSRect b = [metaView prefSize];
 

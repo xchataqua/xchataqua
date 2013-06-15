@@ -210,7 +210,7 @@ typedef struct SGFormConstraint
     
     for (NSUInteger i = 0; i < [mviews count]; i ++)
     {
-        SGFormMetaView *view = [mviews objectAtIndex:i];
+        SGFormMetaView *view = mviews[i];
         
         if ([view view] == relative_view)
             continue;
@@ -437,7 +437,7 @@ recompute_our_size:(BOOL) recompute_our_size
 
         for (NSUInteger i = 0; i < [mviews count]; i ++)
         {
-            SGFormMetaView *view = [mviews objectAtIndex:i];
+            SGFormMetaView *view = mviews[i];
 
             for (NSInteger edge = 0; edge < SGFormViewEdgeCount; edge ++)
                 view->constraints [edge].state = SGFormMetaViewStateReset;
@@ -445,7 +445,7 @@ recompute_our_size:(BOOL) recompute_our_size
 
         for (NSUInteger i = 0; i < [mviews count]; i ++)
         {
-            SGFormMetaView *view = [mviews objectAtIndex:i];
+            SGFormMetaView *view = mviews[i];
 
             // Attempt to avoid laying out of hidden children.
             // An edge from a visible child may depend on an edge
@@ -493,7 +493,7 @@ recompute_our_size:(BOOL) recompute_our_size
     
     for (NSUInteger i = 0; i < [mviews count]; i ++)
     {
-        SGFormMetaView *view = [mviews objectAtIndex:i];
+        SGFormMetaView *view = mviews[i];
         [view getInitialBounds];
     }
 
@@ -501,7 +501,7 @@ recompute_our_size:(BOOL) recompute_our_size
 
     for (NSUInteger i = 0; i < [mviews count]; i ++)
     {
-        SGFormMetaView *view = [mviews objectAtIndex:i];
+        SGFormMetaView *view = mviews[i];
         [view setFinalBounds:self];
     }
 }

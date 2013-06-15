@@ -40,13 +40,13 @@ char *get_downloaddir_fs(void) {
 }
 
 char *get_plugin_bundle_path(char *filename) {
-    NSString *bundlePath = [NSString stringWithUTF8String:filename];
+    NSString *bundlePath = @(filename);
     NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
     if (bundle == nil) {
         return NULL;
     }
     
-    NSString *version = [[bundle infoDictionary] objectForKey:@"XChatAquaMacOSVersionBranch"];
+    NSString *version = [bundle infoDictionary][@"XChatAquaMacOSVersionBranch"];
     if(version != nil && [[SystemVersion systemBranch] compare:version options:NSNumericSearch] != NSOrderedSame) {
         return NULL;
     }

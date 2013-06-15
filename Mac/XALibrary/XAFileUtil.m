@@ -80,7 +80,7 @@
     NSDictionary *attrs =
         [[NSFileManager defaultManager] attributesOfItemAtPath:[url path] error:nil];
 
-    if ([attrs objectForKey:NSFileType] == NSFileTypeSymbolicLink) {
+    if (attrs[NSFileType] == NSFileTypeSymbolicLink) {
         isSymlink = YES;
     } else {
         isSymlink = NO;

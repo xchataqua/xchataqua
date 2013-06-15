@@ -66,9 +66,9 @@ extern GSList *plugin_list;
 - (id)initWithBundleInfo:(NSDictionary *)infoDictionary filename:(NSString *)filename {
     self = [super init];
     if (self != nil) {
-        NSString *bundleIdentifier = [infoDictionary objectForKey:@"CFBundleIdentifier"];
+        NSString *bundleIdentifier = infoDictionary[@"CFBundleIdentifier"];
         self->_name = [[[bundleIdentifier componentsSeparatedByString:@"."] lastObject] copy];
-        self->_version = [[infoDictionary objectForKey:@"XChatAquaMacOSVersionBranch"] copy];
+        self->_version = [infoDictionary[@"XChatAquaMacOSVersionBranch"] copy];
         self->_filename = [filename copy];
         self->_description = [@"" copy];
     }
@@ -250,7 +250,7 @@ LoadedPluginManager *LoadedPluginManagerSharedObject;
 
 EmbeddedPluginManager *EmbeddedPluginManagerLoadCallbackReceiver;
 void EmbeddedPluginManagerLoadCallback(char *filename) {
-    [EmbeddedPluginManagerLoadCallbackReceiver addPluginForFilename:[NSString stringWithUTF8String:filename]];
+    [EmbeddedPluginManagerLoadCallbackReceiver addPluginForFilename:@(filename)];
 }
 
 @implementation EmbeddedPluginManager
@@ -305,7 +305,7 @@ NSString *UserPluginConfigurationFilename;
 UserPluginManager *UserPluginManagerSharedObject;
 UserPluginManager *UserPluginManagerLoadCallbackReceiver;
 void UserPluginManagerLoadCallback(char *filename) {
-    [EmbeddedPluginManagerLoadCallbackReceiver addPluginForFilename:[NSString stringWithUTF8String:filename]];
+    [EmbeddedPluginManagerLoadCallbackReceiver addPluginForFilename:@(filename)];
 }
 
 @implementation UserPluginManager

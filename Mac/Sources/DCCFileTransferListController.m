@@ -28,7 +28,7 @@
 - (void) update
 {
     [super update];
-    self.file = [NSString stringWithUTF8String:dcc->file];
+    self.file = @(dcc->file);
     self.size = [NSString stringWithFormat:@"%@", formatNumber (dcc->size)];
     self.position = [NSString stringWithFormat:@"%@", formatNumber (dcc->pos)];
     self.per  = [NSString stringWithFormat:@"%.0f%%", floor((float) dcc->pos / dcc->size * 100.00)];    // the floor is to ensure that the percent does not display 100% until the file is really finished
@@ -67,12 +67,12 @@
     
     NSIndexSet *rowIndexSet = [itemTableView selectedRowIndexes];
     for ( NSUInteger rowIndex = [rowIndexSet firstIndex]; rowIndex != NSNotFound; rowIndex = [rowIndexSet indexGreaterThanIndex:rowIndex]) {
-        DCCFileItem *item = [dccItems objectAtIndex:rowIndex];
+        DCCFileItem *item = dccItems[rowIndex];
         [copyString appendFormat:@"%@ (%"DCC_SIZE_FMT" bytes)\n", [item file], item->dcc->size];
     }
     [copyString deleteCharactersInRange:NSMakeRange([copyString length] - 1, 1)];    //chop off last \n
 
-    [pb declareTypes:[NSArray arrayWithObjects:NSStringPboardType, nil] owner:nil];
+    [pb declareTypes:@[NSStringPboardType] owner:nil];
     [pb setString:copyString forType:NSStringPboardType];
 }
 

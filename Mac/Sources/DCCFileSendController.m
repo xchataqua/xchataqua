@@ -64,7 +64,7 @@ extern int dcc_sendcpssum;
 {
     [super update];
     self.ack = formatNumber(dcc->ack);
-    self.to  = [NSString stringWithUTF8String:dcc->nick];
+    self.to  = @(dcc->nick);
 }
 
 @end
@@ -100,7 +100,7 @@ extern int dcc_sendcpssum;
     NSInteger row = [itemTableView selectedRow];
     if (row >= 0)
     {
-        DCCFileSendItem *item = [dccItems objectAtIndex:row];
+        DCCFileSendItem *item = dccItems[row];
         
         struct DCC *dcc = item->dcc;
         
@@ -121,7 +121,7 @@ extern int dcc_sendcpssum;
 
 - (NSNumber *)globalSpeedLimit
 {
-    if (prefs.dcc_global_max_send_cps) return [NSNumber numberWithInt:prefs.dcc_global_max_send_cps / 1024];
+    if (prefs.dcc_global_max_send_cps) return @(prefs.dcc_global_max_send_cps / 1024);
     else return nil;
 }
 
@@ -138,7 +138,7 @@ extern int dcc_sendcpssum;
 objectValueForTableColumn:(NSTableColumn *)aTableColumn
              row:(NSInteger) rowIndex
 {
-    DCCFileSendItem *item = [dccItems objectAtIndex:rowIndex];
+    DCCFileSendItem *item = dccItems[rowIndex];
     
     switch ( [[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn] )
     {

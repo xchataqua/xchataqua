@@ -275,7 +275,7 @@ static const char * strip_crap (const char *s)
     channelChecked = [regexChannelButton integerValue];
     
     for (NSUInteger i = 0; i < [allChannels count]; i ++)
-        [self filter:[allChannels objectAtIndex:i]];
+        [self filter:allChannels[i]];
     
     [self updateCaption];
     [self sortFilteredChannels];
@@ -307,7 +307,7 @@ static const char * strip_crap (const char *s)
     
     if (row < 0) return;
     
-    ChannelEntry *entry = [filteredChannels objectAtIndex:row];
+    ChannelEntry *entry = filteredChannels[row];
     
     if (self->server->connected && ![[entry channel] isEqualToString:@"*"])
     {
@@ -326,7 +326,7 @@ static const char * strip_crap (const char *s)
 
 - (id) tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
-    ChannelEntry *entry = [filteredChannels objectAtIndex:rowIndex];
+    ChannelEntry *entry = filteredChannels[rowIndex];
     
     switch ([[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn])
     {
@@ -373,14 +373,14 @@ static const char * strip_crap (const char *s)
 - (NSSize) tableView:(NSTableView *)aTableView sizeHintForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
     // This only supports the last column, for now
-    ChannelEntry *entry = [filteredChannels objectAtIndex:rowIndex];
+    ChannelEntry *entry = filteredChannels[rowIndex];
     return entry->size;
 }
 
 - (void) tableView:(NSTableView *)aTableView sizeHintForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex size:(NSSize)size
 {
     // This only supports the last column, for now
-    ChannelEntry *entry = [filteredChannels objectAtIndex:rowIndex];
+    ChannelEntry *entry = filteredChannels[rowIndex];
     entry->size = size;
 }
 

@@ -31,9 +31,9 @@
 - (void)sendActionsForControlEvents:(UIControlEvents)controlEvents withEvent:(UIEvent *)event {
 	NSArray *targets = [[self allTargets] allObjects];
 	for ( NSUInteger i=0; i < [targets count]; i++ ) {
-		NSArray *actions = [self actionsForTarget:[targets objectAtIndex:i] forControlEvent:controlEvents];
+		NSArray *actions = [self actionsForTarget:targets[i] forControlEvent:controlEvents];
 		for ( NSUInteger j=0; j < [actions count]; j++ ) {
-			[self sendAction:NSSelectorFromString([actions objectAtIndex:j]) to:[targets objectAtIndex:i] forEvent:event];
+			[self sendAction:NSSelectorFromString(actions[j]) to:targets[i] forEvent:event];
 		}
 	}
 }
@@ -56,8 +56,8 @@
 	if ( implementedZoomEnabled )
 		if ( [[event allTouches] count] == 2 ) {
 			NSArray *allTouches = [[event allTouches] allObjects];
-			UITouch *t1 = [allTouches objectAtIndex:0];
-			UITouch *t2 = [allTouches objectAtIndex:1];
+			UITouch *t1 = allTouches[0];
+			UITouch *t2 = allTouches[1];
 			distance = (CGFloat)sqrt(pow([t1 locationInView:self].x, 2.0) + pow([t2 locationInView:self].y, 2.0));
 			oldscale = self.zoomScale;
 		}
@@ -75,8 +75,8 @@
 			return;
 		}
 		NSArray *allTouches = [[event allTouches] allObjects];
-		UITouch *t1 = [allTouches objectAtIndex:0];
-		UITouch *t2 = [allTouches objectAtIndex:1];
+		UITouch *t1 = allTouches[0];
+		UITouch *t2 = allTouches[1];
 		CGFloat newdistance = (CGFloat)sqrt(pow([t1 locationInView:self].x, 2.0) + pow([t2 locationInView:self].y, 2.0));
 		float newScale = oldscale*(newdistance/distance);
 		ICLog(ICSCROLL_DEBUG, @"oldscale, newscale, dist, newdist, newscale: %f, %f, %f, %f, %f", oldscale, newScale, distance, newdistance, newScale);

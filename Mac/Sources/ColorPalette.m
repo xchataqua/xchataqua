@@ -157,10 +157,10 @@ static int color_remap [] =
     {
         int x = remap ? color_remap [i] : i;
 
-        id rid = [dict objectForKey:[NSString stringWithFormat:@"color_%d_red", x]];
-        id gid = [dict objectForKey:[NSString stringWithFormat:@"color_%d_green", x]];
-        id bid = [dict objectForKey:[NSString stringWithFormat:@"color_%d_blue", x]];
-        id aid = [dict objectForKey:[NSString stringWithFormat:@"color_%d_alpha", x]];
+        id rid = dict[[NSString stringWithFormat:@"color_%d_red", x]];
+        id gid = dict[[NSString stringWithFormat:@"color_%d_green", x]];
+        id bid = dict[[NSString stringWithFormat:@"color_%d_blue", x]];
+        id aid = dict[[NSString stringWithFormat:@"color_%d_alpha", x]];
             
         if (!rid || !gid || !bid || !aid) continue;
                 

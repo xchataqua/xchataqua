@@ -64,11 +64,11 @@
 #pragma mark property interface
 
 - (NSString *) server {
-    return (serverNotify && serverNotify->laston) ? [NSString stringWithUTF8String:serverNotify->server->servername] : @"";
+    return (serverNotify && serverNotify->laston) ? @(serverNotify->server->servername) : @"";
 }
 
 - (NSString *) last {
-    return (serverNotify && serverNotify->laston) ? [NSString stringWithUTF8String:ctime(&serverNotify->laston)] : NSLocalizedStringFromTable(@"Never", @"xchat", @"");
+    return (serverNotify && serverNotify->laston) ? @(ctime(&serverNotify->laston)) : NSLocalizedStringFromTable(@"Never", @"xchat", @"");
 }
 
 @end
@@ -140,10 +140,10 @@
             }               
         }
         
-        FriendItem *friendItem = [FriendItem friendWithUser:[NSString stringWithUTF8String:user->name]
+        FriendItem *friendItem = [FriendItem friendWithUser:@(user->name)
                                                      online:online
                                                      notify:lastNotify
-                                                   networks:user->networks ? [NSString stringWithUTF8String:user->networks] : @""];
+                                                   networks:user->networks ? @(user->networks) : @""];
         [friends addObject:friendItem];
     }
     
@@ -163,7 +163,7 @@
     if (friendIndex < 0)
         return;
     
-    FriendItem *friend = [self->friends objectAtIndex:friendIndex];
+    FriendItem *friend = self->friends[friendIndex];
     notify_deluser ((char *)[friend->user UTF8String]);
 }
 
@@ -173,7 +173,7 @@
     if (friendIndex < 0)
         return;
     
-    FriendItem *friend = [self->friends objectAtIndex:friendIndex];
+    FriendItem *friend = self->friends[friendIndex];
     if ( friend->serverNotify )
         open_query(friend->serverNotify->server, friend->serverNotify->notify->name, true);
 }
@@ -187,7 +187,7 @@
 
 - (id) tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger) row
 {
-    FriendItem *item = [self->friends objectAtIndex:row];
+    FriendItem *item = self->friends[row];
     
     switch ([[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn])
     {

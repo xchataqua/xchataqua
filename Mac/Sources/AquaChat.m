@@ -247,9 +247,9 @@ AquaChat *AquaChatSharedObject;
         format_event (sess, event, args, o, sizeof (o), 1);
         if (o[0])
         {
-            NSString *title = [NSString stringWithUTF8String:te[event].name];
+            NSString *title = @(te[event].name);
             char *x = strip_color (o, -1, STRIP_ALL);
-            NSString *description = [NSString stringWithUTF8String:x];
+            NSString *description = @(x);
             [self growl:description title:title];
             free (x);
         }
@@ -340,7 +340,7 @@ AquaChat *AquaChatSharedObject;
     NSUInteger count = [windows count];
     
     while (count--) {
-        [[windows objectAtIndex:count] close];
+        [windows[count] close];
     }
     
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -535,10 +535,10 @@ AquaChat *AquaChatSharedObject;
     // Older versions of the code used fully qualified paths to identify the
     // sound file to play; so strip leading path and filename extension from the
     // passed in filename, if any, to account for data from old prefs files.
-    NSString *soundName = [[[NSString stringWithUTF8String:filename] lastPathComponent] stringByDeletingPathExtension];
+    NSString *soundName = [[@(filename) lastPathComponent] stringByDeletingPathExtension];
 
     // If there's a cached NSSound object for this sound, use it.
-    NSSound *sound = [soundCache objectForKey:soundName];
+    NSSound *sound = soundCache[soundName];
 
     // If there wasn't a hit in the cache
     if (sound == nil) {
@@ -552,7 +552,7 @@ AquaChat *AquaChatSharedObject;
             return;
         }
 
-        [soundCache setObject:sound forKey:soundName]; // Cache it for next time
+        soundCache[soundName] = sound; // Cache it for next time
     }
 
     // Play the sound unless it is already playing (from the previous event)
@@ -573,7 +573,7 @@ AquaChat *AquaChatSharedObject;
 
 - (void) addUrl:(const char *) url
 {
-    [(UrlGrabberWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UrlGrabberWindowKey] addUrl:[NSString stringWithUTF8String:url]];
+    [(UrlGrabberWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UrlGrabberWindowKey] addUrl:@(url)];
 }
 
 - (void) ctrl_gui:(session *) sess action:(int) action arg:(int) arg
@@ -995,10 +995,8 @@ AquaChat *AquaChatSharedObject;
 
 - (NSDictionary *) registrationDictionaryForGrowl
 {
-    return [NSDictionary dictionaryWithObjectsAndKeys:
-            [NSArray arrayWithObjects:@"X-Chat", nil], GROWL_NOTIFICATIONS_ALL,
-            [NSArray arrayWithObjects:@"X-Chat", nil], GROWL_NOTIFICATIONS_DEFAULT,
-            nil];
+    return @{GROWL_NOTIFICATIONS_ALL: @[@"X-Chat"],
+            GROWL_NOTIFICATIONS_DEFAULT: @[@"X-Chat"]};
 }
 
 - (BOOL)hasNetworkClientEntitlement {
@@ -1023,9 +1021,9 @@ AquaChat *AquaChatSharedObject;
         struct XATextEventItem *event = &XATextEvents[i];
         char *name = te[i].name;
         
-        event->growl = [[dict objectForKey:[NSString stringWithFormat:@"%s_growl", name]] integerValue];
-        event->show = [[dict objectForKey:[NSString stringWithFormat:@"%s_show", name]] integerValue];
-        event->bounce = [[dict objectForKey:[NSString stringWithFormat:@"%s_bounce", name]] integerValue];
+        event->growl = [dict[[NSString stringWithFormat:@"%s_growl", name]] integerValue];
+        event->show = [dict[[NSString stringWithFormat:@"%s_show", name]] integerValue];
+        event->bounce = [dict[[NSString stringWithFormat:@"%s_bounce", name]] integerValue];
     }
 }
 
@@ -1039,15 +1037,15 @@ AquaChat *AquaChatSharedObject;
         
         if (event->growl)
         {
-            [dict setObject:[NSNumber numberWithInteger:event->growl] forKey:[NSString stringWithFormat:@"%s_growl", name]];
+            dict[[NSString stringWithFormat:@"%s_growl", name]] = @(event->growl);
         }
         if (event->show)
         {
-            [dict setObject:[NSNumber numberWithInteger:event->show] forKey:[NSString stringWithFormat:@"%s_show", name]];
+            dict[[NSString stringWithFormat:@"%s_show", name]] = @(event->show);
         }
         if (event->bounce)
         {
-            [dict setObject:[NSNumber numberWithInteger:event->bounce] forKey:[NSString stringWithFormat:@"%s_bounce", name]];
+            dict[[NSString stringWithFormat:@"%s_bounce", name]] = @(event->bounce);
         }
         
     }

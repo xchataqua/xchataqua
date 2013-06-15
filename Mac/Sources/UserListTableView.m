@@ -43,7 +43,7 @@
         self->popup = pop;
         
         [self setButtonType:NSMomentaryPushButton];
-        [self setTitle:[NSString stringWithUTF8String:popup->name]];
+        [self setTitle:@(popup->name)];
         [self setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
         [[self cell] setControlSize:NSSmallControlSize];
         [self setImagePosition:NSNoImage];

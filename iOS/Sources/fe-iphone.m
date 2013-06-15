@@ -56,7 +56,7 @@ static xchat_plugin *my_plugin_handle;
 
 static NSString *fix_url (const char *url)
 {
-	NSString *ret = [NSString stringWithUTF8String:url];
+	NSString *ret = @(url);
 	
 	SGRegex *regex = [SGRegex
 		regexWithString:@"(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?"
@@ -183,7 +183,7 @@ void
 fe_print_text (struct session *sess, const char *text, time_t stamp)
 {
 	dlog(FE_TRACKING, @"fe_print_text session: %p timestamp: %d text: %s", sess, stamp, text);
-	[sess->gui->chatViewController printText:[NSString stringWithUTF8String:text] stamp:stamp];
+	[sess->gui->chatViewController printText:@(text) stamp:stamp];
 }
 
 void
@@ -305,7 +305,7 @@ fe_args (int pargc, char *pargv[])
 static void fix_log_files_and_pref ()
 {
 	// Check for the change.. maybe some smart user did this already..
-	if ([[NSString stringWithUTF8String:prefs.logmask] hasSuffix:@".txt"])
+	if ([@(prefs.logmask) hasSuffix:@".txt"])
 		return;
 
 	// If logging is off, fix the pref and log files.
@@ -471,7 +471,7 @@ fe_message (char *msg, int flags)
 
 	BOOL wait = (flags & FE_MSG_WAIT) != 0;
 	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"XChat"
-														message:[NSString stringWithUTF8String:msg]
+														message:@(msg)
 													   delegate:nil
 											  cancelButtonTitle:XCHATLSTR(@"OK")
 											  otherButtonTitles:nil];
@@ -822,7 +822,7 @@ void
 fe_set_nick (struct server *serv, char *newnick)
 {
 	dlog(FE_TRACKING, @"fe_set_nick serv: %p newnick: %s", serv, newnick);
-	[AppDelegate performSelector:@selector(setNickname:) withObject:NSSTR(newnick) forEachSessionOnServer:serv];
+	[AppDelegate performSelector:@selector(setNickname:) withObject:@(newnick) forEachSessionOnServer:serv];
 }
 
 void
@@ -895,7 +895,7 @@ fe_set_lag (server * serv, long lag)
 	if (per > 1.0)
 		per = 1.0;
 
-	[AppDelegate performSelector:@selector(setLag:) withObject:[NSNumber numberWithFloat:per] forEachSessionOnServer:serv];
+	[AppDelegate performSelector:@selector(setLag:) withObject:@(per) forEachSessionOnServer:serv];
 }
 
 void
@@ -992,7 +992,7 @@ char * fe_get_inputbox_contents (struct session *sess)
 void fe_set_inputbox_contents (struct session *sess, char *text)
 {
 	dlog(FE_TRACKING, @"fe_set_inputbox_contents session: %p text: %s", sess, text);
-	[sess->gui->chatViewController setInputText:NSSTR(text)];
+	[sess->gui->chatViewController setInputText:@(text)];
 }
 
 int fe_get_inputbox_cursor (struct session *sess)
@@ -1009,7 +1009,7 @@ void fe_set_inputbox_cursor (struct session *sess, int delta, int pos)
 void fe_open_url (const char *url)
 {
 	dlog(FE_TRACKING, @"fe_open_url url: %s", url);
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithUTF8String:url]]];
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@(url)]];
 }
 
 void fe_menu_del (menu_entry *me)

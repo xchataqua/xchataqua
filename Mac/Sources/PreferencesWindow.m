@@ -92,7 +92,7 @@ extern struct XATextEventItem XATextEvents[];
         
         if (sound_files && sound_files[event])
         {
-            soundIndex = [sounds indexOfObject:[NSURL fileURLWithPath:[NSString stringWithUTF8String:sound_files[event]]]];
+            soundIndex = [sounds indexOfObject:[NSURL fileURLWithPath:@(sound_files[event])]];
         }
         
         struct XATextEventItem *info = &XATextEvents[event];
@@ -306,34 +306,31 @@ extern struct XATextEventItem XATextEvents[];
         preferenceItems [i] = items [i];
     }
     
-    NSArray *interface= [NSArray arrayWithObjects:NSLocalizedStringFromTable(@"Interface", @"xchat", @""),
+    NSArray *interface= @[NSLocalizedStringFromTable(@"Interface", @"xchat", @""),
                          [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"Text box", @"xchat", @"") pane:0],
                          [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"Input box", @"xchat", @"") pane:1],
                          [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"User list", @"xchat", @"") pane:2],
                          [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"Channel switcher", @"xchat", @"") pane:3],
                          [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"Other", @"xchataqua", @"") pane:4],
-                         [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"Colors", @"xchat", @"") pane:5],
-                         nil];
-    NSArray *chatting = [NSArray arrayWithObjects:NSLocalizedStringFromTable(@"Chatting", @"xchat", @""),
+                         [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"Colors", @"xchat", @"") pane:5]];
+    NSArray *chatting = @[NSLocalizedStringFromTable(@"Chatting", @"xchat", @""),
                          [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"Alerts", @"xchat", @"") pane:6],
                          [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"General", @"xchat", @"") pane:7],
                          [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"Logging", @"xchat", @"") pane:8],
                          [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"Events/Sounds", @"xchataqua", @"") pane:9],
-                         [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"Advanced", @"xchat", @"") pane:10],
-                         nil];
-    NSArray  *network = [NSArray arrayWithObjects:NSLocalizedStringFromTable(@"Network", @"xchat", @""),
+                         [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"Advanced", @"xchat", @"") pane:10]];
+    NSArray  *network = @[NSLocalizedStringFromTable(@"Network", @"xchat", @""),
                          [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"Network setup", @"xchat", @"") pane:11],
-                         [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"File transfers", @"xchat", @"") pane:12],
-                         nil];
+                         [PreferenceLeaf leafWithLabel:NSLocalizedStringFromTable(@"File transfers", @"xchat", @"") pane:12]];
     categories = [[NSArray alloc] initWithObjects:interface, chatting, network, nil];
     
     [categoryOutlineView reloadData];
     
     [categoryOutlineView setIndentationPerLevel:15];
     
-    [categoryOutlineView expandItem:[categories objectAtIndex:0] expandChildren:YES];
-    [categoryOutlineView expandItem:[categories objectAtIndex:1] expandChildren:YES];
-    [categoryOutlineView expandItem:[categories objectAtIndex:2] expandChildren:YES];
+    [categoryOutlineView expandItem:categories[0] expandChildren:YES];
+    [categoryOutlineView expandItem:categories[1] expandChildren:YES];
+    [categoryOutlineView expandItem:categories[2] expandChildren:YES];
     
     [self fillColorWellsFromTag];
     [self loadSounds];
@@ -344,14 +341,14 @@ extern struct XATextEventItem XATextEvents[];
     [bcell setButtonType:NSSwitchButton];
     [bcell setControlSize:NSMiniControlSize];
     [bcell setAllowsMixedState:YES];
-    [[[soundsTableView tableColumns] objectAtIndex:2] setDataCell:bcell];
-    [[[soundsTableView tableColumns] objectAtIndex:3] setDataCell:bcell];
+    [[soundsTableView tableColumns][2] setDataCell:bcell];
+    [[soundsTableView tableColumns][3] setDataCell:bcell];
     [bcell release];
     
     bcell = [[SoundButtonCell alloc] initTextCell:@""];
     [bcell setButtonType:NSSwitchButton];
     [bcell setControlSize:NSMiniControlSize];
-    [[[soundsTableView tableColumns] objectAtIndex:4] setDataCell:bcell];
+    [[soundsTableView tableColumns][4] setDataCell:bcell];
     [bcell release];
     
     [self center];
@@ -365,7 +362,7 @@ extern struct XATextEventItem XATextEvents[];
 {
     NSFont *font = [fontManager convertFont:[[AquaChat sharedAquaChat] font]];
     sprintf (prefs.font_normal, "%s %.1f", [[font fontName] UTF8String], [font pointSize]);
-    [textBoxFontTextField setStringValue:[NSString stringWithUTF8String:prefs.font_normal]];
+    [textBoxFontTextField setStringValue:@(prefs.font_normal)];
 }
 
 #pragma mark IBActions
@@ -377,7 +374,7 @@ extern struct XATextEventItem XATextEvents[];
 
 - (void) showRawPreferences:(id)sender
 {
-    NSString *s = [NSString stringWithUTF8String:(const char *)get_xdir_fs()];
+    NSString *s = @((const char *)get_xdir_fs());
     [[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:s]];
 }
 
@@ -508,8 +505,8 @@ extern struct XATextEventItem XATextEvents[];
 - (id) outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item
 {
     if ( item == nil )
-        return [categories objectAtIndex:index];
-    return [item objectAtIndex:index + 1];
+        return categories[index];
+    return item[index + 1];
 }
 
 - (BOOL) outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item
@@ -526,7 +523,7 @@ extern struct XATextEventItem XATextEvents[];
 
 - (id) outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
 {
-    return [item isKindOfClass:[NSArray class]] ? [item objectAtIndex:0] : ((PreferenceLeaf *)item)->label;
+    return [item isKindOfClass:[NSArray class]] ? item[0] : ((PreferenceLeaf *)item)->label;
 }
 
 #pragma mark -
@@ -539,7 +536,7 @@ extern struct XATextEventItem XATextEvents[];
 
 - (id) tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    SoundEvent *item = [soundEvents objectAtIndex:row];
+    SoundEvent *item = soundEvents[row];
     
     switch ([[tableView tableColumns] indexOfObjectIdenticalTo:tableColumn])
     {
@@ -555,7 +552,7 @@ extern struct XATextEventItem XATextEvents[];
 
 - (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-    SoundEvent *item = [soundEvents objectAtIndex:row];
+    SoundEvent *item = soundEvents[row];
     
     switch ([[tableView tableColumns] indexOfObjectIdenticalTo:tableColumn])
     {
@@ -573,7 +570,7 @@ extern struct XATextEventItem XATextEvents[];
             NSInteger num = [object integerValue];
             if (num > 0)
             {
-                NSURL *soundURL = [sounds objectAtIndex:num];
+                NSURL *soundURL = sounds[num];
                 sound_files[row] = strdup(soundURL.path.UTF8String);
                 [[AquaChat sharedAquaChat] playWaveNamed:sound_files [row]];
             } else {
@@ -623,7 +620,7 @@ extern struct XATextEventItem XATextEvents[];
             {
                 const char *v = (const char *) preferenceItems[i].pref;
                 if (!v) v = "";
-                NSString *tmp = [NSString stringWithUTF8String:v];
+                NSString *tmp = @(v);
                 [preferenceItems[i].item setStringValue:tmp];    
                 break;
             }
@@ -698,7 +695,7 @@ extern struct XATextEventItem XATextEvents[];
     }
 
     // Add it to the soundsTableView
-    [[[soundsTableView tableColumns] objectAtIndex:1] setDataCell:cell];
+    [[soundsTableView tableColumns][1] setDataCell:cell];
 
     [cell release]; // Retained by the tableview, so release it here
 }

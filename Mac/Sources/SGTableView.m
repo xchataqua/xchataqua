@@ -93,10 +93,10 @@
 
 -(void) textDidEndEditing:(NSNotification*) notification 
 {
-	if ([[[notification userInfo] objectForKey:@"NSTextMovement"] integerValue] == NSReturnTextMovement)
+	if ([[notification userInfo][@"NSTextMovement"] integerValue] == NSReturnTextMovement)
 	{
 		NSMutableDictionary *newUserInfo = [NSMutableDictionary dictionaryWithDictionary:[notification userInfo]];
-		[newUserInfo setObject:[NSNumber numberWithInt:NSIllegalTextMovement] forKey:@"NSTextMovement"];
+		newUserInfo[@"NSTextMovement"] = @(NSIllegalTextMovement);
 		notification = [NSNotification notificationWithName:[notification name]
 													 object:[notification object]
 												   userInfo:newUserInfo];

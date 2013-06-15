@@ -95,7 +95,7 @@ void bundle_loader_auto_load(int pass)
 		if ( pass ==
 			(((de->d_namlen > 7 && strcasecmp(".bundle", de->d_name+de->d_namlen-7) == 0))
 			 ||(de->d_namlen > 3 && strcasecmp(".so", de->d_name+de->d_namlen-3) == 0 ))){
-				NSString *cmd = [NSString stringWithFormat:@"LOAD \"%@/%@\"", plugins_dir, [NSString stringWithUTF8String:de->d_name]];
+				NSString *cmd = [NSString stringWithFormat:@"LOAD \"%@/%@\"", plugins_dir, @(de->d_name)];
 				handle_command (current_sess, (char *) [cmd UTF8String], FALSE);
 			}
 	}

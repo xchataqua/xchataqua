@@ -56,7 +56,7 @@ static NSCursor *XAChatTextViewSizableCursor;
         [self setRichText:YES];
         [self setEditable:NO];
 
-        [self registerForDraggedTypes:[NSArray arrayWithObject:NSFilenamesPboardType]];
+        [self registerForDraggedTypes:@[NSFilenamesPboardType]];
         [[self layoutManager] setDelegate:self];
     }
     return self;
@@ -96,7 +96,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     // Setup the pasteboard
     NSPasteboard *pb = [NSPasteboard generalPasteboard];
 
-    NSArray *types = [NSArray arrayWithObjects:NSStringPboardType, NSRTFPboardType, nil];
+    NSArray *types = @[NSStringPboardType, NSRTFPboardType];
     [pb declareTypes:types owner:self];
 
     NSRange selection = [self selectedRange];
@@ -190,7 +190,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     NSMutableParagraphStyle *style = [[[NSMutableParagraphStyle alloc] init] autorelease];
 
     NSTextTab *tabStop = [[[NSTextTab alloc] initWithType:NSRightTabStopType location:indent] autorelease];
-    [style setTabStops:[NSArray arrayWithObject:tabStop]];
+    [style setTabStops:@[tabStop]];
     [style setLineHeightMultiple:prefs.xa_line_height / 100.0];
     
     indent += fontSize.width;
@@ -235,7 +235,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     normalFont = [new_font retain];
     boldFont = [new_boldFont retain];
 
-    NSDictionary *attr = [NSDictionary dictionaryWithObject:normalFont forKey:NSFontAttributeName];
+    NSDictionary *attr = @{NSFontAttributeName: normalFont};
     fontSize = [@"-" sizeWithAttributes:attr];
     
     if (![new_font isEqual:old_font]) {   // CL: adjustMargin is VERY expensive, don't do it unless necessary
@@ -352,11 +352,11 @@ static NSCursor *XAChatTextViewSizableCursor;
 
     //---- HOTFIX upper case file:/// crash bug for OS X 10.8
     if ([SystemVersion minor] == 8) {
-        NSString *cursedString = [NSString stringWithUTF8String:text];
+        NSString *cursedString = @(text);
 
         char cCursedWord[9] = "file:///";
         cCursedWord[0] = 'F'; // stupid runtime string builder not to kill the xcode
-        NSString *cursedWord = [NSString stringWithUTF8String:cCursedWord];
+        NSString *cursedWord = @(cCursedWord);
 
         NSString *rescuedString = cursedString;
         if ([cursedString rangeOfString:cursedWord].location != NSNotFound) {
@@ -600,7 +600,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     {
         [[NSRunLoop currentRunLoop] performSelector:@selector (clear_hot_word)
                                              target:self argument:nil order:1
-                                              modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]];
+                                              modes:@[NSDefaultRunLoopMode]];
 
         switch (wordType)
         {
@@ -749,7 +749,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     word = [[s substringWithRange:wordRange] retain];
     
     [stg addAttribute:NSUnderlineStyleAttributeName
-                value:[NSNumber numberWithInt:NSSingleUnderlineStyle]
+                value:@(NSSingleUnderlineStyle)
                 range:wordRange];
 }
 
