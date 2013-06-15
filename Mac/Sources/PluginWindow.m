@@ -97,7 +97,7 @@ extern GSList *plugin_list;
     if (row < 0)
         return;
     PluginFileManager *manager = [UserPluginManager sharedPluginManager];
-    PluginItem *item = [manager.items objectAtIndex:row];
+    PluginItem *item = (manager.items)[row];
 
     [manager.items removeObject:item];
     [manager save];
@@ -117,7 +117,7 @@ extern GSList *plugin_list;
         return;
     
     PluginManager *manager = [UserPluginManager sharedPluginManager];
-    PluginItem *item = [manager.items objectAtIndex:row];
+    PluginItem *item = (manager.items)[row];
     [self unloadPluginWithName:item.filename];
 }
 
@@ -142,7 +142,7 @@ extern GSList *plugin_list;
 - (id) tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
     PluginManager *manager = [LoadedPluginManager sharedPluginManager];
 
-    PluginItem *item = [manager.items objectAtIndex:rowIndex];
+    PluginItem *item = (manager.items)[rowIndex];
     
     switch ([[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn])
     {
@@ -190,11 +190,11 @@ extern GSList *plugin_list;
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     PluginFileManager *manager = [self managerForTableView:tableView];
     
-    PluginItem *item = [manager.items objectAtIndex:row];
+    PluginItem *item = (manager.items)[row];
     
     switch ([[tableView tableColumns] indexOfObjectIdenticalTo:tableColumn])
     {
-        case 0: return [NSNumber numberWithBool:[manager hasAutoloadItem:item]];
+        case 0: return @([manager hasAutoloadItem:item]);
         case 1: return item.name;
         case 2: return item.version;
         case 3: return [item.filename lastPathComponent];
@@ -205,7 +205,7 @@ extern GSList *plugin_list;
 
 - (void) tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
     PluginFileManager *manager = [self managerForTableView:aTableView];
-    PluginItem *item = [manager.items objectAtIndex:rowIndex];
+    PluginItem *item = (manager.items)[rowIndex];
     
     NSInteger column = [[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn];
     switch (column) {

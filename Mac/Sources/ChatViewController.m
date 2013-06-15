@@ -198,7 +198,7 @@
 
 - (NSRect) dividerRect
 {
-    NSView *first = [[self subviews] objectAtIndex:0];
+    NSView *first = [self subviews][0];
     
     NSRect firstRect = [first frame];
     firstRect.origin.x = firstRect.size.width - 1;
@@ -233,8 +233,8 @@
 
 - (void) adjustSubviews 
 {
-    NSView *firstView = [[self subviews] objectAtIndex:0];
-    NSView *secondView = [[self subviews] objectAtIndex:1];
+    NSView *firstView = [self subviews][0];
+    NSView *secondView = [self subviews][1];
     
     [firstView setPostsFrameChangedNotifications:NO];
     [secondView setPostsFrameChangedNotifications:NO];
@@ -262,20 +262,20 @@
 
 - (NSInteger)splitPosition
 {
-    NSView *second = [[self subviews] objectAtIndex:1];
+    NSView *second = [self subviews][1];
     NSRect secondFrame = [second frame];
     return (int)secondFrame.size.width;
 }
 
 - (void)setSplitPosition:(NSInteger)position
 {
-    NSView *first = [[self subviews] objectAtIndex:0];
-    NSView *second = [[self subviews] objectAtIndex:1];
+    NSView *first = [self subviews][0];
+    NSView *second = [self subviews][1];
     
     [first setPostsFrameChangedNotifications:NO];
     [second setPostsFrameChangedNotifications:NO];
     
-    NSView *ulist = [[self subviews] objectAtIndex:1];
+    NSView *ulist = [self subviews][1];
     NSRect ulistFrame = [ulist frame];
     ulistFrame.size.width = position;
     [ulist setFrame:ulistFrame];
@@ -334,8 +334,8 @@
     [nick release];
     [host release];
     
-    NSString *nickString = [NSString stringWithUTF8String:user->nick];
-    NSString *hostString = user->hostname ? [NSString stringWithUTF8String:user->hostname] : @"";
+    NSString *nickString = @(user->nick);
+    NSString *hostString = user->hostname ? @(user->hostname) : @"";
     ColorPalette *palette = [[AquaChat sharedAquaChat] palette];
     
     NSColor *color;
@@ -348,7 +348,7 @@
             color = [NSColor blackColor];
         }
     }
-    NSDictionary *attr = [NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
+    NSDictionary *attr = @{NSForegroundColorAttributeName: color};
     
     nick = [[NSAttributedString alloc] initWithString:nickString attributes:attr];
     host = [[NSAttributedString alloc] initWithString:hostString attributes:attr];
@@ -366,7 +366,7 @@
 {
     NSArray *columns = [table tableColumns];
     /* nickname column */
-    id dataCell = [[columns objectAtIndex:1] dataCell];
+    id dataCell = [columns[1] dataCell];
     [dataCell setAttributedStringValue: nick];
     nickSize = [dataCell cellSize];
     
@@ -383,7 +383,7 @@
     
     /* host column */
     if (prefs.showhostname_in_userlist) {
-        dataCell = [[columns objectAtIndex:2] dataCell];
+        dataCell = [columns[2] dataCell];
         [dataCell setObjectValue: host];
         hostSize = [dataCell cellSize];
     }
@@ -394,7 +394,7 @@
 
 - (NSString *)nick
 {
-    return [NSString stringWithUTF8String:user->nick];
+    return @(user->nick);
 }
 
 @end
@@ -530,7 +530,7 @@ static NSImage *emptyBulletImage;
     
     for (NSUInteger i = 0; i < [[headerBoxView subviews] count]; )
     {
-        NSView *view = [[headerBoxView subviews] objectAtIndex:i];
+        NSView *view = [headerBoxView subviews][i];
         if (view == topicTextField || [view frame].origin.x < topicOriginX)
             i ++;
         else
@@ -642,7 +642,7 @@ static NSImage *emptyBulletImage;
     self.limitTextField.stringValue = [NSString stringWithFormat:@"%d", self->sess->limit];
     self.kButton = [self modeButtonForFlag:'k' selector:@selector (doKButton:)];
     self.keyTextField = [self modeTextFieldForSelector:@selector (doKeyTextField:)];
-    self.keyTextField.stringValue = [NSString stringWithUTF8String:self->sess->channelkey];
+    self.keyTextField.stringValue = @(self->sess->channelkey);
     
     [headerBoxView sizeToFit];
 }
@@ -736,7 +736,7 @@ static NSImage *emptyBulletImage;
     ColorPalette *palette = [[AquaChat sharedAquaChat] palette];
     if (prefs.background && strlen(prefs.background) > 0) {
         palette = [[palette copy] autorelease];
-        NSImage *image = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithUTF8String:prefs.background]];
+        NSImage *image = [[NSImage alloc] initWithContentsOfFile:@(prefs.background)];
         [palette setColor:XAColorBackground color:[NSColor colorWithPatternImage:image]];
         [image release];
     }
@@ -788,7 +788,7 @@ static NSImage *emptyBulletImage;
         buff [1] = 0;
     }
     
-    [self insertText:[NSString stringWithUTF8String:buff]];
+    [self insertText:@(buff)];
 }
 
 - (void) setupSessMenuButton
@@ -855,7 +855,7 @@ static NSImage *emptyBulletImage;
     [userlistTableView setTarget:self];
     [userlistTableView setDataSource:self];
     [userlistTableView setDelegate:self];
-    [userlistTableView registerForDraggedTypes:[NSArray arrayWithObject:NSFilenamesPboardType]];
+    [userlistTableView registerForDraggedTypes:@[NSFilenamesPboardType]];
     
     //[inputTextField registerForDraggedTypes:[NSArray arrayWithObject:NSStringPboardType]];
     
@@ -871,14 +871,14 @@ static NSImage *emptyBulletImage;
     }
     
     NSArray *cols = [userlistTableView tableColumns];
-    NSTableColumn *col_zero = [cols objectAtIndex:0];
+    NSTableColumn *col_zero = cols[0];
     [col_zero setDataCell:[[[NSImageCell alloc] init] autorelease]];
-    NSTableColumn *col_one  = [cols objectAtIndex:1];
+    NSTableColumn *col_one  = cols[1];
     [col_one setDataCell:[[[NSTextFieldCell alloc] init] autorelease]];
     [[col_one dataCell] setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
     if (prefs.showhostname_in_userlist)
     {
-        NSTableColumn *col_two = [cols objectAtIndex:2];
+        NSTableColumn *col_two = cols[2];
         [col_two setDataCell:[[[NSTextFieldCell alloc] init] autorelease]];
         [[col_two dataCell] setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
     }
@@ -971,7 +971,7 @@ static NSImage *emptyBulletImage;
     NSIndexSet *rowIndexSet = [userlistTableView selectedRowIndexes];
     for (NSUInteger rowIndex = [rowIndexSet firstIndex]; rowIndex != NSNotFound; rowIndex = [rowIndexSet indexGreaterThanIndex:rowIndex] )
     {
-        ChannelUser *u = [users objectAtIndex:rowIndex];
+        ChannelUser *u = users[rowIndex];
         struct User *user = u->user;
         
         if (using_allnicks)
@@ -979,7 +979,7 @@ static NSImage *emptyBulletImage;
             if ([allnicks length])
                 [allnicks appendString:@" "];
             
-            [allnicks appendString:[NSString stringWithUTF8String:user->nick]];
+            [allnicks appendString:@(user->nick)];
         }
         
         if (!first_nick)
@@ -1004,7 +1004,7 @@ static NSImage *emptyBulletImage;
 - (void) setupUserlistButtons
 {
     while ([[buttonBoxView subviews] count])
-        [[[buttonBoxView subviews] objectAtIndex:0] removeFromSuperviewWithoutNeedingDisplay];
+        [[buttonBoxView subviews][0] removeFromSuperviewWithoutNeedingDisplay];
     
     for (GSList *list = button_list; list; list = list->next)
     {
@@ -1027,7 +1027,7 @@ static NSImage *emptyBulletImage;
         NSInteger row = [sender selectedRow];
         if (row >= 0)
         {
-            ChannelUser *u = (ChannelUser *) [users objectAtIndex:row];
+            ChannelUser *u = (ChannelUser *) users[row];
             struct User *user = u->user;
             nick_command_parse (sess, prefs.doubleclickuser, user->nick, user->nick);
         }
@@ -1327,14 +1327,14 @@ static NSImage *emptyBulletImage;
 
 - (void) setNick
 {
-    [nickTextField setStringValue:[NSString stringWithUTF8String:sess->server->nick]];
+    [nickTextField setStringValue:@(sess->server->nick)];
     [nickTextField sizeToFit];
 }
 
 - (NSInteger) findUser:(struct User *) user
 {
     for (NSUInteger i = 0; i < [users count]; i ++)
-        if ([(ChannelUser *)[users objectAtIndex:i] user] == user)
+        if ([(ChannelUser *)users[i] user] == user)
             return i;
     return NSNotFound;
 }
@@ -1343,7 +1343,7 @@ static NSImage *emptyBulletImage;
 - (NSInteger) findUser:(struct User *) user returnObject:(ChannelUser **) userObject
 {
     for (NSUInteger i = 0, n = [users count]; i < n; i++) {
-        ChannelUser *u = (ChannelUser *) [users objectAtIndex:i];
+        ChannelUser *u = (ChannelUser *) users[i];
         if ([u user] == user) {
             *userObject = u;
             return i;
@@ -1402,11 +1402,11 @@ static NSImage *emptyBulletImage;
         if (user->nickSize.height > maxRowHeight) maxRowHeight = user->nickSize.height;
     }
     
-    NSTableColumn *column = [[userlistTableView tableColumns] objectAtIndex:1];
+    NSTableColumn *column = [userlistTableView tableColumns][1];
     [column sizeToFit];
     if (maxNickWidth != [column width]) [column setWidth: maxNickWidth];
     if (prefs.showhostname_in_userlist) {
-        column = [[userlistTableView tableColumns] objectAtIndex:2];
+        column = [userlistTableView tableColumns][2];
         if (maxHostWidth != [column width]) [column setWidth: maxHostWidth];
     }
     if (maxRowHeight != [userlistTableView rowHeight]) [userlistTableView setRowHeight: maxRowHeight];
@@ -1416,7 +1416,7 @@ static NSImage *emptyBulletImage;
 {
     NSArray *columns = [userlistTableView tableColumns];
     /* nickname column */
-    NSTableColumn *column = [columns objectAtIndex:1];
+    NSTableColumn *column = columns[1];
     CGFloat width = user->nickSize.width;
     if (width > maxNickWidth) {
         maxNickWidth = width+0.5f; // Leopard fix :) Where this 0.25 come from?// WEIRDNESS
@@ -1424,7 +1424,7 @@ static NSImage *emptyBulletImage;
     }
     /* host column */
     if (prefs.showhostname_in_userlist) {
-        column = [columns objectAtIndex:2];
+        column = columns[2];
         CGFloat width = user->hostSize.width;
         if (width > maxHostWidth) {
             maxHostWidth = width;
@@ -1456,7 +1456,7 @@ static NSImage *emptyBulletImage;
 {
     NSArray *columns = [userlistTableView tableColumns];
     /* nickname column */
-    NSTableColumn *column = [columns objectAtIndex:1];
+    NSTableColumn *column = columns[1];
     CGFloat width = user->nickSize.width;
     if ((width < oldNickSize.width) && (oldNickSize.width == maxNickWidth)) {
         [self recalculateUserTableLayout];
@@ -1468,7 +1468,7 @@ static NSImage *emptyBulletImage;
     }
     /* host column */
     if (prefs.showhostname_in_userlist) {
-        column = [columns objectAtIndex:2];
+        column = columns[2];
         CGFloat width = user->hostSize.width;
         if ((width < oldHostSize.width) && (oldHostSize.width == maxHostWidth)) {
             [self recalculateUserTableLayout];
@@ -1508,7 +1508,7 @@ static NSImage *emptyBulletImage;
     
     if (*names[0]) {
         for (NSUInteger i = 0, n = [users count]; i < n; i++) {
-            struct User *user = [(ChannelUser *)[users objectAtIndex:i] user];
+            struct User *user = [(ChannelUser *)users[i] user];
             NSUInteger j = 0;
             do {
                 if (sess->server->p_cmp (user->nick, names[j]) == 0) {
@@ -1689,7 +1689,7 @@ static NSImage *emptyBulletImage;
     
     int type = sess->type;
     
-    NSString *chan = [NSString stringWithUTF8String:sess->channel];
+    NSString *chan = @(sess->channel);
     
     switch (type)
     {
@@ -1750,7 +1750,7 @@ static NSImage *emptyBulletImage;
     NSTextStorage *sourceStorage = [chatTextView textStorage];
     NSTextStorage *destStorage = [logWin->chatTextView textStorage];
     NSString *text = [sourceStorage string];
-    NSString *key = [NSString stringWithUTF8String:ckey];
+    NSString *key = @(ckey);
     NSUInteger length = [text length];
     NSUInteger start = 0;
     while (true) {
@@ -1806,14 +1806,14 @@ static NSImage *emptyBulletImage;
     if (!nick)
     {
         if (sess->type == SESS_DIALOG)
-            nick = [NSString stringWithUTF8String:sess->channel];
+            nick = @(sess->channel);
         else
         {
             NSInteger row = [userlistTableView selectedRow];
             if (row < 0)
                 return NO;
             nick = [[userlistTableView dataSource] tableView:userlistTableView
-                                   objectValueForTableColumn:[[userlistTableView tableColumns] objectAtIndex:1]
+                                   objectValueForTableColumn:[userlistTableView tableColumns][1]
                                                          row:row];
         }
     }
@@ -1829,7 +1829,7 @@ static NSImage *emptyBulletImage;
 {
     for (NSUInteger row = 0; row < [users count]; row++)
     {
-        ChannelUser *u = [users objectAtIndex:row];
+        ChannelUser *u = users[row];
         u->user->selected = [userlistTableView isRowSelected:row];
     }
 }
@@ -1887,7 +1887,7 @@ static NSImage *emptyBulletImage;
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
 {
-    ChannelUser *u = [users objectAtIndex:row];
+    ChannelUser *u = users[row];
     switch ([[tableView tableColumns] indexOfObjectIdenticalTo:tableColumn])
     {
         case 0: return [self imageForUser:u->user];
@@ -1908,7 +1908,7 @@ static NSImage *emptyBulletImage;
 
 - (BOOL)tableView:(NSTableView *)tableView acceptDrop:(id <NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation
 {
-    NSAttributedString *nick = [[tableView dataSource] tableView:tableView objectValueForTableColumn:[[tableView tableColumns] objectAtIndex:1] row:row];
+    NSAttributedString *nick = [[tableView dataSource] tableView:tableView objectValueForTableColumn:[tableView tableColumns][1] row:row];
     return [self processFileDrop:info forUser:[nick string]];
 }
 
@@ -1926,7 +1926,7 @@ static NSImage *emptyBulletImage;
         [[menu addItemWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTable(@"%d users selected", @"xchataqua", @"Popup menu message when you right-clicked userlist."), count] action:nil keyEquivalent:@""] setEnabled:NO];
         userlistMenuItemCurrentUser = NULL;
     } else {
-        ChannelUser *userObject = (ChannelUser *) [users objectAtIndex:[rows firstIndex]];
+        ChannelUser *userObject = (ChannelUser *) users[[rows firstIndex]];
         struct User *user = [userObject user];
         
         nick = [userObject nick];
@@ -1959,7 +1959,7 @@ static NSImage *emptyBulletImage;
 {
     if ([matches count] < 1) return 0;
     
-    NSString *shortestPrefix = [[matches objectAtIndex:0] stringValue];
+    NSString *shortestPrefix = [matches[0] stringValue];
     
     for (TabCompletionItem *thisItem in matches) {
         NSString *commonPrefix = [thisItem.stringValue commonPrefixWithString:shortestPrefix options:NSCaseInsensitiveSearch];
@@ -1983,7 +1983,7 @@ static NSImage *emptyBulletImage;
         struct popup *pop = (struct popup *) list->data;
         size_t this_len = strlen (pop->name);
         if (len <= this_len && strncasecmp (utf, pop->name, len) == 0)
-            [matchArray addObject:[TabCompletionItem completionWithValue:[NSString stringWithUTF8String:pop->name]]];
+            [matchArray addObject:[TabCompletionItem completionWithValue:@(pop->name)]];
     }
     
     for (int i = 0; xc_cmds[i].name; i ++)
@@ -1991,7 +1991,7 @@ static NSImage *emptyBulletImage;
         char *cmd = xc_cmds[i].name;
         size_t this_len = strlen (cmd);
         if (len <= this_len && strncasecmp (utf, cmd, len) == 0)
-            [matchArray addObject:[TabCompletionItem completionWithValue:[NSString stringWithUTF8String:cmd]]];
+            [matchArray addObject:[TabCompletionItem completionWithValue:@(cmd)]];
     }
     
     return [matchArray allObjects];
@@ -2011,7 +2011,7 @@ static NSImage *emptyBulletImage;
             [matchArray release];
             return nil;
         }
-        [matchArray addObject:[TabCompletionItem completionWithValue:[NSString stringWithUTF8String:sess->channel]]];
+        [matchArray addObject:[TabCompletionItem completionWithValue:@(sess->channel)]];
     }
     else
     {
@@ -2019,7 +2019,7 @@ static NSImage *emptyBulletImage;
             struct User *user = u->user;
             size_t this_len = strlen (user->nick);
             if (len <= this_len && rfc_ncasecmp ((char *) utf, user->nick, len) == 0)
-                [matchArray addObject:[NickCompletionItem nickWithNick:[NSString stringWithUTF8String:user->nick] lasttalk:user->lasttalk]];
+                [matchArray addObject:[NickCompletionItem nickWithNick:@(user->nick) lasttalk:user->lasttalk]];
         }
     }
     
@@ -2041,7 +2041,7 @@ static NSImage *emptyBulletImage;
         {
             size_t this_len = strlen (tmp_sess->channel);
             if (len <= this_len && strncasecmp (utf, tmp_sess->channel, len) == 0)
-                [matchArray addObject:[TabCompletionItem completionWithValue:[NSString stringWithUTF8String:tmp_sess->channel]]];
+                [matchArray addObject:[TabCompletionItem completionWithValue:@(tmp_sess->channel)]];
         }
     }
     
@@ -2162,12 +2162,12 @@ static NSImage *emptyBulletImage;
     // exceed what we typed, we'll complete up to the ambiguity.
     if ([matchArray count] == 1 || (!prefs.xa_scrolling_completion && shortestPrefix > completionTextRange.length))
     {
-        NSString *first = [[matchArray objectAtIndex:0] stringValue];
+        NSString *first = [matchArray[0] stringValue];
         NSMutableString *rightMutableString = [NSMutableString stringWithString:[first substringToIndex:shortestPrefix]];
         if ([matchArray count] == 1)
         {
             if (shouldAddSuffix && prefs.nick_suffix[0]) {
-                [rightMutableString appendString:[NSString stringWithUTF8String:prefs.nick_suffix]]; 
+                [rightMutableString appendString:@(prefs.nick_suffix)]; 
             }
             [rightMutableString appendString:@" "];
         }
@@ -2177,7 +2177,7 @@ static NSImage *emptyBulletImage;
     
     if (prefs.xa_scrolling_completion)
     {
-        NSString *completionItem = [[matchArray objectAtIndex:self.completionIndex] stringValue];
+        NSString *completionItem = [matchArray[self.completionIndex] stringValue];
         
         // Final string to insert.
         NSMutableString *replacementString = [NSMutableString stringWithString:@""];
@@ -2193,7 +2193,7 @@ static NSImage *emptyBulletImage;
         
         // Tack on the nick suffix if set.
         if (shouldAddSuffix && prefs.nick_suffix[0]) {
-            [rightMutableString appendString:[NSString stringWithUTF8String:prefs.nick_suffix]]; 
+            [rightMutableString appendString:@(prefs.nick_suffix)]; 
         }
         [rightMutableString appendString:@" "];
         
@@ -2269,14 +2269,14 @@ static NSImage *emptyBulletImage;
     {
         const char *prevInput = history_up(&sess->history, (char *) [[inputTextField stringValue] UTF8String]);
         if (prevInput != NULL) {
-            [self setInputText:[NSString stringWithUTF8String:prevInput]];
+            [self setInputText:@(prevInput)];
         }
         didHandleSelector = YES;
     }
     else if (commandSelector == @selector(moveDown:))
     {
         const char *nextInput = history_down(&sess->history);
-        [self setInputText:nextInput == NULL ? @"" : [NSString stringWithUTF8String:nextInput]];
+        [self setInputText:nextInput == NULL ? @"" : @(nextInput)];
         didHandleSelector = YES;
     }
     

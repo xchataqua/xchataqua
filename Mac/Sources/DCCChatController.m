@@ -61,10 +61,10 @@
 - (void) update
 {
     [super update];
-    self.toFrom   = [NSString stringWithUTF8String:dcc->nick];
+    self.toFrom   = @(dcc->nick);
     self.recv     = [NSString stringWithFormat:@"%"DCC_SIZE_FMT, dcc->pos];
     self.sent     = [NSString stringWithFormat:@"%"DCC_SIZE_FMT, dcc->size];
-    self.startTime= [NSString stringWithUTF8String:ctime(&dcc->starttime)];
+    self.startTime= @(ctime(&dcc->starttime));
 }
 
 @end
@@ -99,7 +99,7 @@
     NSInteger row = [itemTableView selectedRow];
     if (row != NSNotFound)
     {
-        DccChatItem *item = [dccItems objectAtIndex:row];
+        DccChatItem *item = dccItems[row];
         struct DCC *dcc = item->dcc;
         dcc_get(dcc);
     }
@@ -116,7 +116,7 @@
 
 - (id) tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger) rowIndex
 {
-    DccChatItem *item = [dccItems objectAtIndex:rowIndex];
+    DccChatItem *item = dccItems[rowIndex];
 
     switch ([[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn])
     {

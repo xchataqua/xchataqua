@@ -22,9 +22,9 @@
 #define DraggingDataType @"TemporaryDataType"
 
 - (BOOL) tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard {
-    [tableView registerForDraggedTypes:[NSArray arrayWithObject:DraggingDataType]];
+    [tableView registerForDraggedTypes:@[DraggingDataType]];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:rowIndexes];
-    [pboard declareTypes:[NSArray arrayWithObject:DraggingDataType] owner:self];
+    [pboard declareTypes:@[DraggingDataType] owner:self];
     [pboard setData:data forType:DraggingDataType];
     return YES;
 }
@@ -40,11 +40,11 @@
     
     NSMutableArray *dataArray = DATA_ARRAY;
     
-    id selectedItem = [[dataArray objectAtIndex:selectedRow] retain];
+    id selectedItem = [dataArray[selectedRow] retain];
     switch (dropOperation) {
         case NSTableViewDropOn:
-            [dataArray replaceObjectAtIndex:selectedRow withObject:[dataArray objectAtIndex:row]];
-            [dataArray replaceObjectAtIndex:row withObject:selectedItem];
+            dataArray[selectedRow] = dataArray[row];
+            dataArray[row] = selectedItem;
             break;
         case NSTableViewDropAbove:
             [dataArray removeObjectAtIndex:selectedRow];

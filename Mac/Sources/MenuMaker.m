@@ -205,13 +205,13 @@ static MenuMaker *defaultMenuMaker;
 
         for (NSUInteger i = 0; i < (sizeof(labels) / sizeof(labels[0])); i++) {
             test = [[NSMutableAttributedString alloc] initWithString:[labels[i] stringByAppendingString:@"    "]
-                    attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont boldSystemFontOfSize:0], NSFontAttributeName, nil]];
+                    attributes:@{NSFontAttributeName: [NSFont boldSystemFontOfSize:0]}];
             size = [test size];
             if (maxUserInfoLabelWidth < size.width) maxUserInfoLabelWidth = size.width;
             [test dealloc];
         }
         test = [[NSMutableAttributedString alloc] initWithString:@"    "
-                attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont boldSystemFontOfSize:0], NSFontAttributeName, nil]];
+                attributes:@{NSFontAttributeName: [NSFont boldSystemFontOfSize:0]}];
         size = [test size];
         userInfoTabWidth = size.width;
         [test dealloc];
@@ -222,7 +222,7 @@ static MenuMaker *defaultMenuMaker;
 - (NSMenuItem *)userInfoItemWithLabel:(NSString *)label value:(const char *)value
 {
     NSMutableAttributedString *attrTitle = [[NSMutableAttributedString alloc] initWithString:[label stringByAppendingString:@"    "]
-        attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont boldSystemFontOfSize:0], NSFontAttributeName, nil]];
+        attributes:@{NSFontAttributeName: [NSFont boldSystemFontOfSize:0]}];
 
     do {
         NSSize size = [attrTitle size];
@@ -230,8 +230,8 @@ static MenuMaker *defaultMenuMaker;
         [[attrTitle mutableString] appendString:@"    "];
     } while (1);
 
-    NSAttributedString *attrValue = [[NSAttributedString alloc] initWithString:value ? [NSString stringWithUTF8String:value] : NSLocalizedStringFromTable(@"Unknown", @"xchat", @"")
-        attributes:[NSDictionary dictionaryWithObjectsAndKeys:[NSFont systemFontOfSize:0], NSFontAttributeName, nil]];
+    NSAttributedString *attrValue = [[NSAttributedString alloc] initWithString:value ? @(value) : NSLocalizedStringFromTable(@"Unknown", @"xchat", @"")
+        attributes:@{NSFontAttributeName: [NSFont systemFontOfSize:0]}];
     [attrTitle appendAttributedString:attrValue];
     [attrValue release];
 
@@ -372,14 +372,14 @@ static MenuMaker *defaultMenuMaker;
     while (list) {
         pop = (struct popup *) list->data;
         if (!strncasecmp (pop->name, "SUB", 3)) {
-            item = [currentMenu addItemWithTitle:[self stripImageFromTitle:[NSString stringWithUTF8String:pop->cmd] icon:nil] action:nil keyEquivalent:@""];
+            item = [currentMenu addItemWithTitle:[self stripImageFromTitle:@(pop->cmd) icon:nil] action:nil keyEquivalent:@""];
 
             currentMenu = [[[NSMenu alloc] initWithTitle:@""] autorelease];
             [currentMenu setAutoenablesItems:false];
             [item setSubmenu:currentMenu];
         }
         else if (!strncasecmp (pop->name, "TOGGLE", 6)) {
-            [currentMenu addItem:[self togglerItemWithName:[NSString stringWithUTF8String:pop->name+7] option:pop->cmd]];
+            [currentMenu addItem:[self togglerItemWithName:@(pop->name+7) option:pop->cmd]];
         }
         else if (!strncasecmp (pop->name, "ENDSUB", 6)) {
             if (currentMenu != menu)
@@ -389,7 +389,7 @@ static MenuMaker *defaultMenuMaker;
             [currentMenu addItem:[NSMenuItem separatorItem]];
         }
         else {
-            [currentMenu addItem:[self commandItemWithName:[NSString stringWithUTF8String:pop->name] command:pop->cmd target:target session:sess]];
+            [currentMenu addItem:[self commandItemWithName:@(pop->name) command:pop->cmd target:target session:sess]];
         }
         list = list->next;
     }
@@ -408,7 +408,7 @@ static MenuMaker *defaultMenuMaker;
         memcpy(namebuf, rest, len);
         namebuf[len] = 0;
 
-        NSString *name = [NSString stringWithUTF8String:namebuf];
+        NSString *name = @(namebuf);
         if (!name) return nil;
         NSMenuItem *item = [menu itemWithTitle:name];
         if (!item) return nil;
@@ -423,7 +423,7 @@ static MenuMaker *defaultMenuMaker;
 {
     NSMenu *parent = [self menu_find_from_path:entry->path];
     if (parent == nil) return;
-    NSMenuItem *item = [parent itemWithTitle:[NSString stringWithUTF8String:entry->label]];
+    NSMenuItem *item = [parent itemWithTitle:@(entry->label)];
     if (item == nil) return;
     [parent removeItem:item];
 }
@@ -435,7 +435,7 @@ static MenuMaker *defaultMenuMaker;
 
     if (parent == nil) return;
     if (entry->label) {
-        NSString *title = [NSString stringWithUTF8String:entry->label];
+        NSString *title = @(entry->label);
         item = [[[NSMenuItem alloc] initWithTitle:title
                                            action:nil
                                     keyEquivalent:@""] autorelease];
@@ -469,7 +469,7 @@ static MenuMaker *defaultMenuMaker;
 {
     NSMenu *parent = [self menu_find_from_path:entry->path];
     if (parent == nil) return;
-    NSMenuItem *item = [parent itemWithTitle:[NSString stringWithUTF8String:entry->label]];
+    NSMenuItem *item = [parent itemWithTitle:@(entry->label)];
     if (item == nil) return;
     [item setEnabled:entry->enable];
     [item setState:entry->state ? NSOnState : NSOffState];

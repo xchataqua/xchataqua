@@ -84,14 +84,14 @@ NSMutableDictionary *gTimers;
 {
 	NSTimer *timer = [self scheduledTimerWithMSInterval:ms callback:function userData:data];
 	int tag = [timer hash];
-	[gTimers setObject:timer forKey:[NSNumber numberWithInt:tag]];
+	gTimers[@(tag)] = timer;
 	return (guint)tag;
 }
 
 + (gboolean)removeTimerWithTag:(guint)tag
 {
 	id key = [NSNumber numberWithInt:tag];
-	NSTimer *timer = [gTimers objectForKey:key];
+	NSTimer *timer = gTimers[key];
 	if (timer == nil) return false;
 	[gTimers removeObjectForKey:key];
 	[timer invalidate];

@@ -39,7 +39,7 @@
 			if (i % cols == 0)
 				thisw = 0;
 			
-			id metaView = [metaViews objectAtIndex:i];
+			id metaView = metaViews[i];
 			NSRect b = [metaView prefSize];
 			
 			thisw += b.size.width;
@@ -69,7 +69,7 @@
 			NSUInteger ii = (i * cols) % actualRows;
 			if (ii >= [metaViews count]) continue;
 
-			id metaView = [metaViews objectAtIndex:ii];
+			id metaView = metaViews[ii];
 			NSRect b = [metaView prefSize];
 
 			thish += b.size.height;
@@ -84,7 +84,7 @@
 	
 	for (NSUInteger i = 0; i < [metaViews count]; i ++)
 	{
-		id metaView = [metaViews objectAtIndex:i];
+		id metaView = metaViews[i];
 		
 		NSRect b;
 	

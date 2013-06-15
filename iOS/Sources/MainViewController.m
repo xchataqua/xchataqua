@@ -85,7 +85,7 @@
 
 - (void) reloadData {
 	while ( [[channelSwitcherScrollView subviews] count] > 0 ) {
-		[[[channelSwitcherScrollView subviews] objectAtIndex:0] removeFromSuperview];
+		[[channelSwitcherScrollView subviews][0] removeFromSuperview];
 	}
 	CGFloat width = 0;
 	for (GroupInfo *group in groups) {
@@ -119,7 +119,7 @@
 
 - (void)channelTabSelected:(UISegmentedControl *)sender {
 	GroupInfo *group = [self groupInfoForGroupId:[sender tag]];
-	[self makeKeyView:[[group tabs] objectAtIndex:[sender selectedSegmentIndex]]];
+	[self makeKeyView:[group tabs][[sender selectedSegmentIndex]]];
 }
 
 - (void) addGroupItemForUtility:(UtilityViewController *)utilityViewController {
@@ -158,7 +158,7 @@
 
 - (void) makeKeyView:(UtilityViewController *)utilityViewController {
 	while ( [[contentView subviews] count] > 0 )
-		[[[contentView subviews] objectAtIndex:0] removeFromSuperview];
+		[[contentView subviews][0] removeFromSuperview];
 	[utilityViewController viewWillAppear:NO];
 	utilityViewController.view.frame = contentView.bounds;
 	[self.navigationItem setPrompt:utilityViewController.title];

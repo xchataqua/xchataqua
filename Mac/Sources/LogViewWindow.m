@@ -85,7 +85,7 @@
         ;
     buff[sb.st_size] = 0;
     
-    NSString *contents = [NSString stringWithUTF8String:buff];
+    NSString *contents = @(buff);
     
     free(buff);
     
@@ -150,7 +150,7 @@
     NSInteger row = [set firstIndex];
     while (row != NSNotFound)
     {
-        LogItem *logItem = [filteredLogs objectAtIndex:row];
+        LogItem *logItem = filteredLogs[row];
         unlink([[logItem path] fileSystemRepresentation]);
         row = [set indexGreaterThanIndex:row];
     }
@@ -169,7 +169,7 @@
     
     for (NSUInteger i = 0; i < [allLogs count]; i ++)
     {
-        LogItem *log = [allLogs objectAtIndex:i];
+        LogItem *log = allLogs[i];
         if ([log filter:filter])
             [filteredLogs addObject:log];
     }
@@ -182,7 +182,7 @@
 {
     NSInteger row = [logTableView selectedRow];
     if (row < 0) return;
-    LogItem *log = [filteredLogs objectAtIndex:row];
+    LogItem *log = filteredLogs[row];
     [[NSWorkspace sharedWorkspace] selectFile:[log path] inFileViewerRootedAtPath:@""];
 }
 
@@ -195,7 +195,7 @@
     NSInteger row = [set firstIndex];
     while (row != NSNotFound)
     {
-        LogItem *log = [filteredLogs objectAtIndex:row];
+        LogItem *log = filteredLogs[row];
         [[NSWorkspace sharedWorkspace] openFile:[log path] withApplication:@"TextEdit"];
         row = [set indexGreaterThanIndex:row];
     }
@@ -227,7 +227,7 @@
 
 - (id) tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
-    LogItem *item = [filteredLogs objectAtIndex:rowIndex];
+    LogItem *item = filteredLogs[rowIndex];
     
     switch ([[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn])
     {
@@ -245,7 +245,7 @@
     NSInteger row = [logTableView selectedRow];
     if (row >= 0 && [logTableView numberOfSelectedRows] == 1)
     {
-        LogItem *logItem = [filteredLogs objectAtIndex:row];
+        LogItem *logItem = filteredLogs[row];
         contents = [logItem contents];
     }
     
