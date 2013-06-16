@@ -38,6 +38,10 @@ To recover this, find the original configuration and replace symlink to original
   2. ~/Library/Application Support/X-Chat Aqua (If you moved from Aqua)
   3. ~/Library/Application Support/XChat Azure (If something goes wrong with Azure)
 
+# Where is my config files? Where is my log files?
+
+Visit "~/Library/Containers/org.3rddev.xchatazure/Data/Library/Application Support/XChat Azure/". "~" means your home directory. (For example, /Users/myname)
+
 # Move GTK xchat2 or XChat Aqua to Azure
 
 NOTE: DO NOT TRY THIS IF YOU DON'T UNDERSTAND WHAT YOU ARE DOING
