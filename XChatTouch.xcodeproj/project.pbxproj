@@ -1955,7 +1955,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				HEADER_SEARCH_PATHS = (
-					"${PODS_HEADERS_SEARCH_PATHS}",
+					"${inherited}",
 					glib,
 					"$(PODS_ROOT)/libintl-alternative",
 				);
@@ -1977,7 +1977,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				HEADER_SEARCH_PATHS = (
-					"${PODS_HEADERS_SEARCH_PATHS}",
+					"${inherited}",
 					glib,
 					"$(PODS_ROOT)/libintl-alternative",
 				);
@@ -2030,7 +2030,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iOS/Sources/Prefix.pch;
 				HEADER_SEARCH_PATHS = (
-					"${PODS_HEADERS_SEARCH_PATHS}",
+					"${inherited}",
 					.,
 					glib,
 					"$(PODS_ROOT)/libintl-alternative",
@@ -2049,7 +2049,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iOS/Sources/Prefix.pch;
 				HEADER_SEARCH_PATHS = (
-					"${PODS_HEADERS_SEARCH_PATHS}",
+					"${inherited}",
 					.,
 					glib,
 					"$(PODS_ROOT)/libintl-alternative",
