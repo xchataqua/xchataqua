@@ -178,9 +178,9 @@
 + (void) initialize
 {
     if (self == [SGView class]) {
-        NSAMethod *mHidden = [[NSView classObject] methodObjectForSelector:@selector(setHidden:)];
-        NSAMethod *mSGHidden = [[NSView classObject] methodObjectForSelector:@selector(setSGHidden:)];
-        NSAMethod *mOriginalHidden = [[NSView classObject] methodObjectForSelector:@selector(setOriginalHidden:)];
+        NSAMethod *mHidden = [NSView  methodForSelector:@selector(setHidden:)];
+        NSAMethod *mSGHidden = [NSView  methodForSelector:@selector(setSGHidden:)];
+        NSAMethod *mOriginalHidden = [NSView  methodForSelector:@selector(setOriginalHidden:)];
 
         // move original -setHidden: to new one
         if (mHidden.implementation != mSGHidden.implementation) {
