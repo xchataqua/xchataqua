@@ -500,15 +500,12 @@
 		3894C1B41590D93D00BCD762 /* NSPanelAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3894C1B21590D6F400BCD762 /* NSPanelAdditions.m */; };
 		38A690A015A84485008CC31F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A6909F15A84485008CC31F /* QuartzCore.framework */; };
 		38A690A115A844A4008CC31F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A6909F15A84485008CC31F /* QuartzCore.framework */; };
-		38BC97B6154A994D005894EF /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5A8F154A687400480EC6 /* ShortcutRecorder.framework */; };
-		38BC97B7154A996F005894EF /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5A8F154A687400480EC6 /* ShortcutRecorder.framework */; };
 		38BC97B8154A996F005894EF /* Growl.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5AC5154A70E300480EC6 /* Growl.framework */; };
 		38BC97BA154A9AD4005894EF /* python.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */; };
 		38BC97BB154A9AD4005894EF /* tcl.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 0F8F08110E1FE00800359159 /* tcl.bundle */; };
 		38BC97BC154A9AD4005894EF /* perl-snowleopard.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 2D78138010E77C6400C71AF8 /* perl-snowleopard.bundle */; };
 		38BC97BD154A9AD4005894EF /* ruby.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 38D1414013D800E60026B7B5 /* ruby.bundle */; };
 		38BC97BE154A9AD4005894EF /* perl-lion.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 38763F2213DD40D6008C40DB /* perl-lion.bundle */; };
-		38CE5A95154A689F00480EC6 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5A8F154A687400480EC6 /* ShortcutRecorder.framework */; };
 		38CE5AE2154A718500480EC6 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5AC5154A70E300480EC6 /* Growl.framework */; };
 		38D1414213D801B70026B7B5 /* Ruby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38D1414113D801B70026B7B5 /* Ruby.framework */; };
 		38D501DB1593F51800C9B65D /* JBanner.rb in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 38E573E6158F2226007943DA /* JBanner.rb */; };
@@ -523,7 +520,6 @@
 		38D9307D17246E2A00BD0938 /* gatomic.c in Sources */ = {isa = PBXBuildFile; fileRef = 385F7E0315515DC900689E6E /* gatomic.c */; };
 		38DA68CF13C8D72700B12F16 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388C89F213C6E10100AAF20D /* MainMenu.xib */; };
 		38E34015154A74C2005B59F8 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5AC5154A70E300480EC6 /* Growl.framework */; };
-		38E34016154A75BF005B59F8 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5A8F154A687400480EC6 /* ShortcutRecorder.framework */; };
 		38E34017154A75BF005B59F8 /* Growl.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5AC5154A70E300480EC6 /* Growl.framework */; };
 		38E4A0D315CB9BD9000312D1 /* tcl.bundle in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 0F8F08110E1FE00800359159 /* tcl.bundle */; };
 		38E4A0D415CB9BD9000312D1 /* python.bundle in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */; };
@@ -634,34 +630,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 38D1413613D800E60026B7B5;
 			remoteInfo = ruby;
-		};
-		38BC97B4154A9941005894EF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 38CE5A85154A687300480EC6 /* ShortcutRecorder.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 9398377F0DA42965007F53F3;
-			remoteInfo = ShortcutRecorder.framework;
-		};
-		38CE5A8E154A687400480EC6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 38CE5A85154A687300480EC6 /* ShortcutRecorder.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 939837800DA42965007F53F3;
-			remoteInfo = ShortcutRecorder.framework;
-		};
-		38CE5A90154A687400480EC6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 38CE5A85154A687300480EC6 /* ShortcutRecorder.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 93983B220DA43C4E007F53F3;
-			remoteInfo = ShortcutRecorder_Tester;
-		};
-		38CE5A93154A688D00480EC6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 38CE5A85154A687300480EC6 /* ShortcutRecorder.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 9398377F0DA42965007F53F3;
-			remoteInfo = ShortcutRecorder.framework;
 		};
 		38CE5AC2154A70E300480EC6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -833,7 +801,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				38BC97B7154A996F005894EF /* ShortcutRecorder.framework in Copy Frameworks */,
 				38BC97B8154A996F005894EF /* Growl.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -876,7 +843,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				38E34016154A75BF005B59F8 /* ShortcutRecorder.framework in Copy Frameworks */,
 				38E34017154A75BF005B59F8 /* Growl.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -2247,7 +2213,6 @@
 		38CE5A64154A551600480EC6 /* char_count.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = char_count.pl; path = xchat/plugins/perl/char_count.pl; sourceTree = SOURCE_ROOT; };
 		38CE5A65154A551600480EC6 /* irc.pm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = irc.pm.h; path = xchat/plugins/perl/irc.pm.h; sourceTree = SOURCE_ROOT; };
 		38CE5A66154A551600480EC6 /* xchat.pm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xchat.pm.h; path = xchat/plugins/perl/xchat.pm.h; sourceTree = SOURCE_ROOT; };
-		38CE5A85154A687300480EC6 /* ShortcutRecorder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShortcutRecorder.xcodeproj; path = Mac/ShortcutRecorder/ShortcutRecorder.xcodeproj; sourceTree = "<group>"; };
 		38CE5AA4154A70E100480EC6 /* Growl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Growl.xcodeproj; path = Mac/Growl/Growl.xcodeproj; sourceTree = "<group>"; };
 		38D1414013D800E60026B7B5 /* ruby.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ruby.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		38D1414113D801B70026B7B5 /* Ruby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ruby.framework; path = System/Library/Frameworks/Ruby.framework; sourceTree = SDKROOT; };
@@ -2380,7 +2345,6 @@
 				3876254013C7024F00850913 /* libcrypto.dylib in Frameworks */,
 				3876254113C7024F00850913 /* libssl.dylib in Frameworks */,
 				3876254613C7024F00850913 /* WebKit.framework in Frameworks */,
-				38CE5A95154A689F00480EC6 /* ShortcutRecorder.framework in Frameworks */,
 				38CE5AE2154A718500480EC6 /* Growl.framework in Frameworks */,
 				38F06933163820B0002723AB /* libPods-XChat Azure.a in Frameworks */,
 			);
@@ -2415,7 +2379,6 @@
 				B0D937F10FFB0D34009370B5 /* libcrypto.dylib in Frameworks */,
 				B0D937F20FFB0D34009370B5 /* libssl.dylib in Frameworks */,
 				D4FBD9C612E458C4003EA441 /* WebKit.framework in Frameworks */,
-				38BC97B6154A994D005894EF /* ShortcutRecorder.framework in Frameworks */,
 				38E34015154A74C2005B59F8 /* Growl.framework in Frameworks */,
 				3877F43916A3EBC1007CD975 /* libPods-XChat Aqua.a in Frameworks */,
 			);
@@ -2633,7 +2596,6 @@
 		29B97314FDCFA39411CA2CEA /* X-Chat Aqua */ = {
 			isa = PBXGroup;
 			children = (
-				38CE5A85154A687300480EC6 /* ShortcutRecorder.xcodeproj */,
 				38CE5AA4154A70E100480EC6 /* Growl.xcodeproj */,
 				38771A4415A7C0090046929E /* Aqua */,
 				38771A4515A7C04C0046929E /* Azure */,
@@ -3124,15 +3086,6 @@
 			name = src;
 			sourceTree = "<group>";
 		};
-		38CE5A86154A687300480EC6 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				38CE5A8F154A687400480EC6 /* ShortcutRecorder.framework */,
-				38CE5A91154A687400480EC6 /* ShortcutRecorder.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		38CE5AA5154A70E100480EC6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -3464,7 +3417,6 @@
 			);
 			dependencies = (
 				387624F913C7024F00850913 /* PBXTargetDependency */,
-				38CE5A94154A688D00480EC6 /* PBXTargetDependency */,
 				38CE5AE1154A717900480EC6 /* PBXTargetDependency */,
 				38E4A0E315CBABA5000312D1 /* PBXTargetDependency */,
 				38E4A0E515CBABA5000312D1 /* PBXTargetDependency */,
@@ -3535,7 +3487,6 @@
 			);
 			dependencies = (
 				0FC8F5C30DEEEA3B00504F31 /* PBXTargetDependency */,
-				38BC97B5154A9941005894EF /* PBXTargetDependency */,
 				38E34014154A74B0005B59F8 /* PBXTargetDependency */,
 				38BC97A9154A9937005894EF /* PBXTargetDependency */,
 				38BC97AB154A9937005894EF /* PBXTargetDependency */,
@@ -3618,10 +3569,6 @@
 					ProductGroup = 38CE5AA5154A70E100480EC6 /* Products */;
 					ProjectRef = 38CE5AA4154A70E100480EC6 /* Growl.xcodeproj */;
 				},
-				{
-					ProductGroup = 38CE5A86154A687300480EC6 /* Products */;
-					ProjectRef = 38CE5A85154A687300480EC6 /* ShortcutRecorder.xcodeproj */;
-				},
 			);
 			projectRoot = "";
 			targets = (
@@ -3643,20 +3590,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		38CE5A8F154A687400480EC6 /* ShortcutRecorder.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ShortcutRecorder.framework;
-			remoteRef = 38CE5A8E154A687400480EC6 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		38CE5A91154A687400480EC6 /* ShortcutRecorder.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = ShortcutRecorder.app;
-			remoteRef = 38CE5A90154A687400480EC6 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		38CE5AC3154A70E300480EC6 /* Growl.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
@@ -4490,16 +4423,6 @@
 			isa = PBXTargetDependency;
 			target = 38D1413613D800E60026B7B5 /* ruby */;
 			targetProxy = 38BC97B2154A9937005894EF /* PBXContainerItemProxy */;
-		};
-		38BC97B5154A9941005894EF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ShortcutRecorder.framework;
-			targetProxy = 38BC97B4154A9941005894EF /* PBXContainerItemProxy */;
-		};
-		38CE5A94154A688D00480EC6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ShortcutRecorder.framework;
-			targetProxy = 38CE5A93154A688D00480EC6 /* PBXContainerItemProxy */;
 		};
 		38CE5AE1154A717900480EC6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
