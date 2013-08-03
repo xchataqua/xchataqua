@@ -20,7 +20,6 @@
  * Correspond to main menu: Application -> Preferences...
  */
 
-#import <ShortcutRecorder/ShortcutRecorder.h>
 #import "UtilityWindow.h"
 
 enum
@@ -94,7 +93,6 @@ struct PreferenceItem
     IBOutlet NSButton *newTabsToFrontCheckBox; // not in fe-gtk
     IBOutlet NSButton *hideTabCloseButtonsCheckBox; // fe-aqua
     IBOutlet NSButton *smallerTextTabCheckBox;
-    IBOutlet SRRecorderCell *tabLeftRecorderCell, *tabRightRecorderCell; // fe-aqua
     IBOutlet NSPopUpButton *tabPositionPopUp;
     IBOutlet NSTextField *shortenTabLabelLengthTextField;
     //  missing 'shorten tab labels' in fe-gtk
