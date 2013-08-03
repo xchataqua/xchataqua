@@ -23,8 +23,6 @@
 
 #import "NSPanelAdditions.h"
 
-#import <ShortcutRecorder/ShortcutRecorder.h>
-
 #import "AquaChat.h"
 #import "AutoAwayController.h"
 #import "MenuMaker.h"
@@ -167,19 +165,6 @@ AquaChat *AquaChatSharedObject;
     
     // Toggle menu has no effect anymore
     if ([sender isKindOfClass:[NSMenuItem class]]) return;
-    
-    NSString* keyCodeString;
-    keyCodeString = SRStringForKeyCode(prefs.tab_left_key);
-    if ( keyCodeString != nil ) {
-        [self.previousWindowMenuItem setKeyEquivalent:keyCodeString];
-        [self.previousWindowMenuItem setKeyEquivalentModifierMask:prefs.tab_left_modifiers];
-    }
-    
-    keyCodeString = SRStringForKeyCode(prefs.tab_right_key);
-    if ( keyCodeString != nil ) {
-        [self.nextWindowMenuItem setKeyEquivalent:keyCodeString];
-        [self.nextWindowMenuItem setKeyEquivalentModifierMask:prefs.tab_right_modifiers];
-    }
     
     if (prefs.identd)
         identd_start ();

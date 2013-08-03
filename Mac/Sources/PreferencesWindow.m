@@ -405,14 +405,6 @@ extern struct XATextEventItem XATextEvents[];
     
     prefs.tab_layout = (int)[switcherTypePopUp indexOfSelectedItem] * 2; // 1 is reserved
     
-    KeyCombo left_combo = [tabLeftRecorderCell keyCombo];
-    prefs.tab_left_modifiers = left_combo.flags;
-    prefs.tab_left_key = left_combo.code;
-    
-    KeyCombo right_combo = [tabRightRecorderCell keyCombo];
-    prefs.tab_right_modifiers = right_combo.flags;
-    prefs.tab_right_key = right_combo.code;
-    
     ColorPalette *palette = [[AquaChat sharedAquaChat] palette];
     for (NSUInteger i = 0; i < [palette numberOfColors]; i++) {
         [palette setColor:i color:[colorWells[i] color]];
@@ -632,12 +624,6 @@ extern struct XATextEventItem XATextEvents[];
     }
     
     [switcherTypePopUp selectItemAtIndex:prefs.tab_layout/2];
-    
-    KeyCombo left_combo = { prefs.tab_left_modifiers, prefs.tab_left_key };
-    [tabLeftRecorderCell setKeyCombo:left_combo];
-    
-    KeyCombo right_combo = { prefs.tab_right_modifiers, prefs.tab_right_key };
-    [tabRightRecorderCell setKeyCombo:right_combo];
     
     ColorPalette *palette = [[AquaChat sharedAquaChat] palette];
     
