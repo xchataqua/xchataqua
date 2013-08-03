@@ -268,12 +268,12 @@ fe_args (int argc, char *argv[])
     initPool = [[NSAutoreleasePool alloc] init];    
     
     setlocale (LC_ALL, "");
-#if ENABLE_NLS
+    #if ENABLE_NLS
     NSString *localePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/locale"];
     bindtextdomain (GETTEXT_PACKAGE, [localePath UTF8String]);
     bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
     textdomain (GETTEXT_PACKAGE);
-#endif
+    #endif
     
     // Find the default charset pref.. 
     // This is really gross but we need it really early!
@@ -285,7 +285,7 @@ fe_args (int argc, char *argv[])
         {
             const char *k = strtok (buff, " =\n");
             const char *v = strtok (NULL, " =\n");
-            if (strcmp (k, "default_charset") == 0)
+            if (k && strcmp (k, "default_charset") == 0)
             {
                 if (v && v[0])  /* v can be NULL */
                     setenv ("CHARSET", v, 1);
