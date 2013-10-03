@@ -31,7 +31,7 @@ for xibstringslocale in "$XIB_STRINGS_DIR"/*; do
 
 	lprojdir="$LPROJ_DIR/$locale.lproj"
 	if [ ! -e "$lprojdir" ]; then
-		mkdir "$lprojdir"
+		mkdir -p "$lprojdir"
 	fi
 	for strings in "$xibstringslocale"/*.xib.strings; do
 		# strings: generated one

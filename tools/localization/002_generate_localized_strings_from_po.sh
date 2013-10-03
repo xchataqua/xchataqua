@@ -41,7 +41,7 @@ for po_strings in "$PO_STRINGS_DIR"/*.strings; do
 
 	# generate locale xib strings
 	if [ ! -e "$XIB_STRINGS_DIR/$locale" ]; then
-		mkdir "$XIB_STRINGS_DIR/$locale"
+		mkdir -p "$XIB_STRINGS_DIR/$locale"
 	fi
 	
 	for strings in "$BASE_XIB_STRINGS_DIR"/*.xib.strings; do
