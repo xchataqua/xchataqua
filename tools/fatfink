@@ -27,7 +27,7 @@ for lib in *.a; do
     lipo -create $lib $PPC/lib/$lib -output $FAT/lib/$lib
 done
 
-mkdir $FAT/lib/pkgconfig
+mkdir -p $FAT/lib/pkgconfig
 cd $PPC/lib/pkgconfig
 for i in *pc; do
     sed -e 's/\/sw/\/sw_fat/g' < $i > $FAT/lib/pkgconfig/$i
