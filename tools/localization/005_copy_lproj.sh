@@ -19,7 +19,7 @@ fi
 for lproj in "$LPROJ_DIR/*.lproj"; do
 	xibdir="$XIB_DIR"/`basename "$lproj"`
 	if [ ! -e "$xibdir" ]; then
-		mkdir "$xibdir"
+		mkdir -p "$xibdir"
 	fi
 	
 	echo -n "copying $lproj"
