@@ -3992,7 +3992,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd $PROJECT_DIR\nif [ ! -e build/$CONFIGURATION/XPCServices ]; then\n    mkdir build/$CONFIGURATION/XPCServices\nfi";
+			shellScript = "cd $PROJECT_DIR\nif [ ! -e build/$CONFIGURATION/XPCServices ]; then\n    mkdir -p build/$CONFIGURATION/XPCServices\nfi";
 		};
 		389DC407155569EB003BA8D9 /* Generate XChat Package Name */ = {
 			isa = PBXShellScriptBuildPhase;
