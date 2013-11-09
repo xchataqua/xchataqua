@@ -72,6 +72,7 @@ extern struct XATextEventItem XATextEvents[];
     NSString *name;
     NSNumber *sound;
     NSNumber *growl;
+    NSNumber *notification;
     NSNumber *show;
     NSNumber *bounce;
 }
@@ -99,6 +100,7 @@ extern struct XATextEventItem XATextEvents[];
         
         self->sound = [[NSNumber alloc] initWithInteger:soundIndex];
         self->growl = [[NSNumber alloc] initWithInteger:info->growl];
+        self->notification = [[NSNumber alloc] initWithInteger:info->notification];
         self->show  = [[NSNumber alloc] initWithInteger:info->show];
         self->bounce= [[NSNumber alloc] initWithInteger:info->bounce];
     }
@@ -110,6 +112,7 @@ extern struct XATextEventItem XATextEvents[];
     [name release];
     [sound release];
     [growl release];
+    [notification release];
     [bounce release];
     [show release];
     [super dealloc];
@@ -343,12 +346,13 @@ extern struct XATextEventItem XATextEvents[];
     [bcell setAllowsMixedState:YES];
     [[soundsTableView tableColumns][2] setDataCell:bcell];
     [[soundsTableView tableColumns][3] setDataCell:bcell];
+    [[soundsTableView tableColumns][4] setDataCell:bcell];
     [bcell release];
     
     bcell = [[SoundButtonCell alloc] initTextCell:@""];
     [bcell setButtonType:NSSwitchButton];
     [bcell setControlSize:NSMiniControlSize];
-    [[soundsTableView tableColumns][4] setDataCell:bcell];
+    [[soundsTableView tableColumns][5] setDataCell:bcell];
     [bcell release];
     
     [self center];
@@ -535,8 +539,9 @@ extern struct XATextEventItem XATextEvents[];
         case 0: return item->name;
         case 1: return item->sound;
         case 2: return item->growl;
-        case 3: return item->bounce;
-        case 4: return item->show;
+        case 3: return item->notification;
+        case 4: return item->bounce;
+        case 5: return item->show;
     }
     dassert(NO);
     return @"";
@@ -579,12 +584,18 @@ extern struct XATextEventItem XATextEvents[];
             break;
             
         case 3:
+            [item->notification release];
+            item->notification = [object retain];
+            XATextEvents[row].notification = [item->notification intValue];
+            break;
+            
+        case 4:
             [item->bounce release];
             item->bounce = [object retain];
             XATextEvents[row].bounce = [item->bounce intValue];
             break;
             
-        case 4:
+        case 5:
             [item->show release];
             item->show = [object retain];
             XATextEvents[row].show = [item->show intValue];
