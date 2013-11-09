@@ -345,8 +345,16 @@ extern struct XATextEventItem XATextEvents[];
     [bcell setControlSize:NSMiniControlSize];
     [bcell setAllowsMixedState:YES];
     [[soundsTableView tableColumns][2] setDataCell:bcell];
-    [[soundsTableView tableColumns][3] setDataCell:bcell];
     [[soundsTableView tableColumns][4] setDataCell:bcell];
+    [bcell release];
+    
+    bcell = [[SoundButtonCell alloc] initTextCell:@""];
+    [bcell setButtonType:NSSwitchButton];
+    [bcell setControlSize:NSMiniControlSize];
+    [bcell setAllowsMixedState:YES];
+    if (NSClassFromString(@"NSUserNotificationCenter") == nil)
+        [bcell setEnabled:NO];
+    [[soundsTableView tableColumns][3] setDataCell:bcell];
     [bcell release];
     
     bcell = [[SoundButtonCell alloc] initTextCell:@""];
