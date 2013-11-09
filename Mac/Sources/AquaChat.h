@@ -49,7 +49,7 @@
 @class DCCChatController;
 @class XATabWindow;
 
-@interface AquaChat : NSObject <GrowlApplicationBridgeDelegate, NSApplicationDelegate, XAEventChain> {
+@interface AquaChat : NSObject <GrowlApplicationBridgeDelegate, NSApplicationDelegate, XAEventChain, NSUserNotificationCenterDelegate> {
 @public
     NSString *searchString;
     
