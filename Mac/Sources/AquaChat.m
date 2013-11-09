@@ -240,6 +240,27 @@ AquaChat *AquaChatSharedObject;
         }
     }
     
+    if (info->notification)
+    {
+        char o[4096];
+        format_event (sess, event, args, o, sizeof (o), 1);
+        if (o[0])
+        {
+            NSUserNotification *notification = [[NSUserNotification alloc] init];
+            notification.title = @(te[event].name);
+
+            char *x = strip_color (o, -1, STRIP_ALL);
+            notification.informativeText = @(x);
+
+            NSMutableDictionary *settings = [NSMutableDictionary dictionary];
+            settings[@"setting"] = [NSNumber numberWithInt:info->notification];
+            notification.userInfo = settings;
+
+            [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+            free (x);
+        }
+    }
+    
     if (info->bounce && (info->bounce == -1 || bg))
     {
         fe_flash_window(sess);
@@ -295,6 +316,8 @@ AquaChat *AquaChatSharedObject;
                  object:nil];
     
     [NSApp requestEvents:NSKeyDown forWindow:nil forView:nil selector:@selector (myKeyDown:) object:self];
+    
+    [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
 }
 
 - (void) applicationDidBecomeActive:(NSNotification *) aNotification
@@ -331,6 +354,14 @@ AquaChat *AquaChatSharedObject;
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     xchat_exit ();
+}
+
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification
+{
+    NSNumber *setting = notification.userInfo[@"setting"];
+    if ([setting integerValue] == -1)
+      return YES;
+    return NO;
 }
 
 #pragma mark NSWorkspace notification
@@ -1007,6 +1038,7 @@ AquaChat *AquaChatSharedObject;
         char *name = te[i].name;
         
         event->growl = [dict[[NSString stringWithFormat:@"%s_growl", name]] integerValue];
+        event->notification = [dict[[NSString stringWithFormat:@"%s_notification", name]] integerValue];
         event->show = [dict[[NSString stringWithFormat:@"%s_show", name]] integerValue];
         event->bounce = [dict[[NSString stringWithFormat:@"%s_bounce", name]] integerValue];
     }
@@ -1023,6 +1055,10 @@ AquaChat *AquaChatSharedObject;
         if (event->growl)
         {
             dict[[NSString stringWithFormat:@"%s_growl", name]] = @(event->growl);
+        }
+        if (event->notification)
+        {
+            dict[[NSString stringWithFormat:@"%s_notification", name]] = @(event->notification);
         }
         if (event->show)
         {

@@ -34,6 +34,7 @@ struct server_gui
 
 struct XATextEventItem {
     NSInteger growl;
+    NSInteger notification;
     NSInteger show;
     NSInteger bounce;
 };
