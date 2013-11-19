@@ -499,6 +499,8 @@
 		3894C1B41590D93D00BCD762 /* NSPanelAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3894C1B21590D6F400BCD762 /* NSPanelAdditions.m */; };
 		38A690A015A84485008CC31F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A6909F15A84485008CC31F /* QuartzCore.framework */; };
 		38A690A115A844A4008CC31F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A6909F15A84485008CC31F /* QuartzCore.framework */; };
+		38B2007C183BDF56006C1EA1 /* perl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F06C10E1FDA5E00359159 /* perl.c */; };
+		38B2007E183BDF56006C1EA1 /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 38763F2513DD460E008C40DB /* libperl.dylib */; };
 		38BC97B8154A996F005894EF /* Growl.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 38CE5AC5154A70E300480EC6 /* Growl.framework */; };
 		38BC97BA154A9AD4005894EF /* python.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */; };
 		38BC97BB154A9AD4005894EF /* tcl.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 0F8F08110E1FE00800359159 /* tcl.bundle */; };
@@ -860,6 +862,15 @@
 				38E4A0DD15CB9C16000312D1 /* char_count.pl in Copy PlugIns */,
 			);
 			name = "Copy PlugIns";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38B2007F183BDF56006C1EA1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		38BC97B9154A9AAC005894EF /* Copy Plugins */ = {
@@ -2201,6 +2212,8 @@
 		3894C1B11590D6F400BCD762 /* NSPanelAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSPanelAdditions.h; sourceTree = "<group>"; };
 		3894C1B21590D6F400BCD762 /* NSPanelAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSPanelAdditions.m; sourceTree = "<group>"; };
 		38A6909F15A84485008CC31F /* QuartzCore.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		38B20083183BDF56006C1EA1 /* perl-mavericks.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "perl-mavericks.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		38B20084183BDF57006C1EA1 /* perl-mavericks-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "perl-mavericks-Info.plist"; path = "/Volumes/UserSpace/Projects/xchataqua/perl-mavericks-Info.plist"; sourceTree = "<absolute>"; };
 		38CE5A63154A551600480EC6 /* alt_completion.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = alt_completion.pl; path = xchat/plugins/perl/alt_completion.pl; sourceTree = SOURCE_ROOT; };
 		38CE5A64154A551600480EC6 /* char_count.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = char_count.pl; path = xchat/plugins/perl/char_count.pl; sourceTree = SOURCE_ROOT; };
 		38CE5A65154A551600480EC6 /* irc.pm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = irc.pm.h; path = xchat/plugins/perl/irc.pm.h; sourceTree = SOURCE_ROOT; };
@@ -2346,6 +2359,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				38763F2613DD460E008C40DB /* libperl.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38B2007D183BDF56006C1EA1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38B2007E183BDF56006C1EA1 /* libperl.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2580,6 +2601,7 @@
 				38876EF4154C766A000B7E27 /* XPCServices */,
 				385F783215515C3F00689E6E /* libglib.a */,
 				381A6D7115F052BF00E76478 /* perl-mountainlion.bundle */,
+				38B20083183BDF56006C1EA1 /* perl-mavericks.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2603,6 +2625,7 @@
 				B07C7AB20F4395E200E11B58 /* BuildNumber.xcconfig */,
 				B07C7AD60F4398FC00E11B58 /* Debug.xcconfig */,
 				B07C7AD70F4398FC00E11B58 /* Release.xcconfig */,
+				38B20084183BDF57006C1EA1 /* perl-mavericks-Info.plist */,
 			);
 			name = "X-Chat Aqua";
 			sourceTree = "<group>";
@@ -3440,6 +3463,25 @@
 			productReference = 38763F2213DD40D6008C40DB /* perl-lion.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
+		38B20078183BDF56006C1EA1 /* perl-mavericks */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 38B20080183BDF56006C1EA1 /* Build configuration list for PBXNativeTarget "perl-mavericks" */;
+			buildPhases = (
+				38B20079183BDF56006C1EA1 /* Generate Symlink For Lion Perl Library & XChat Plugin Headers */,
+				38B2007A183BDF56006C1EA1 /* Resources */,
+				38B2007B183BDF56006C1EA1 /* Sources */,
+				38B2007D183BDF56006C1EA1 /* Frameworks */,
+				38B2007F183BDF56006C1EA1 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "perl-mavericks";
+			productName = "perl-snowleopard";
+			productReference = 38B20083183BDF56006C1EA1 /* perl-mavericks.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 		38D1413613D800E60026B7B5 /* ruby */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 38D1413D13D800E60026B7B5 /* Build configuration list for PBXNativeTarget "ruby" */;
@@ -3572,6 +3614,7 @@
 				2D78137F10E77C6400C71AF8 /* perl-snowleopard */,
 				38763F1813DD40D6008C40DB /* perl-lion */,
 				381A6D6615F052BF00E76478 /* perl-mountainlion */,
+				38B20078183BDF56006C1EA1 /* perl-mavericks */,
 				38D1413613D800E60026B7B5 /* ruby */,
 				2DDC70011231DA230015A26C /* printenv */,
 				38771A5615A7D71D0046929E /* Growl XPCService */,
@@ -3762,6 +3805,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		38763F1A13DD40D6008C40DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38B2007A183BDF56006C1EA1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3997,6 +4047,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "#!/bin/bash\n\n[ -f ~/.bashrc ] && source ~/.bashrc\n[ -f ~/.profile ] && source ~/.profile\n\necho \"Generating config.package_name.in.h\"\n\ncd \"$PROJECT_DIR\"\n\"tools/gen_xchat_package_name.sh\" > \"xchat/config.package_name.in.h\"";
+		};
+		38B20079183BDF56006C1EA1 /* Generate Symlink For Lion Perl Library & XChat Plugin Headers */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Symlink For Lion Perl Library & XChat Plugin Headers";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "TARGET_DIR=\"$PROJECT_TEMP_DIR\"\nrm -rf \"$TARGET_DIR/Perl/5.12\"\nmkdir -p \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/\"\nif [ -e '/System/Library/Perl/5.12/' ]; then\n\tln -s '/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib' \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\"\nelse\n\tln -s \"$PROJECT_DIR/Mac/contrib/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\" \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\"\nfi\n\ncd \"$PROJECT_DIR/xchat/plugins/perl\"\n./generate_header\n\nexit";
 		};
 		38BC9850154AD8A7005894EF /* Generate XChat Plugin Header */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4281,6 +4345,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				38763F1C13DD40D6008C40DB /* perl.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38B2007B183BDF56006C1EA1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38B2007C183BDF56006C1EA1 /* perl.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6061,6 +6133,81 @@
 			};
 			name = Release;
 		};
+		38B20081183BDF56006C1EA1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				GCC_WARN_PEDANTIC = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					Mac,
+					Mac/contrib/include,
+					"/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
+					"Mac/contrib/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
+					xchat/src/common,
+					xchat/plugins/perl,
+				);
+				INFOPLIST_FILE = "perl-mavericks-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				LIBRARY_SEARCH_PATHS = (
+					"\"/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE\"",
+					"\"$(SRCROOT)/build/XChatAqua.build/Perl/5.12/darwin-thread-multi-2level/CORE\"",
+				);
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				PRODUCT_NAME = "perl-mavericks";
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "Mac Mac/contrib/include";
+			};
+			name = Debug;
+		};
+		38B20082183BDF56006C1EA1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				GCC_WARN_PEDANTIC = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					Mac,
+					Mac/contrib/include,
+					"/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
+					"Mac/contrib/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE",
+					xchat/src/common,
+					xchat/plugins/perl,
+				);
+				INFOPLIST_FILE = "perl-mavericks-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				LIBRARY_SEARCH_PATHS = (
+					"\"/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE\"",
+					"\"$(SRCROOT)/build/XChatAqua.build/Perl/5.12/darwin-thread-multi-2level/CORE\"",
+				);
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				PRODUCT_NAME = "perl-mavericks";
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "Mac Mac/contrib/include";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		38D1413E13D800E60026B7B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -6223,7 +6370,7 @@
 					"Pods/libintl-alternative",
 				);
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
@@ -6259,7 +6406,7 @@
 					"Pods/libintl-alternative",
 				);
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
 				TARGET_PLATFORM = Mac;
@@ -6364,6 +6511,15 @@
 			buildConfigurations = (
 				38771A5815A7D71D0046929E /* Debug */,
 				38771A5915A7D71D0046929E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		38B20080183BDF56006C1EA1 /* Build configuration list for PBXNativeTarget "perl-mavericks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38B20081183BDF56006C1EA1 /* Debug */,
+				38B20082183BDF56006C1EA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
