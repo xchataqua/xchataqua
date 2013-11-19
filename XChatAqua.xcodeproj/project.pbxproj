@@ -50,7 +50,6 @@
 
 /* Begin PBXBuildFile section */
 		0F2FEF340E1FAB9100DE4D41 /* python.c in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8F3E80DEEDA0C00504F31 /* python.c */; };
-		0F2FEF430E1FAC3200DE4D41 /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC8F3F50DEEDAB300504F31 /* Python.framework */; };
 		0F2FEFBD0E1FC8E900DE4D41 /* SystemVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F2FEFB70E1FC5A800DE4D41 /* SystemVersion.m */; };
 		0F7065540E1FA32E00FEA21C /* Changes in Resources */ = {isa = PBXBuildFile; fileRef = 0F7065530E1FA32E00FEA21C /* Changes */; };
 		0F8EA62E0CFB2E0A001AE9AE /* AsciiWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6250CFB2E0A001AE9AE /* AsciiWindow.m */; };
@@ -756,13 +755,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0F8F08100E1FE00800359159;
 			remoteInfo = tcl;
-		};
-		38E4A0E415CBABA5000312D1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0F2FEF2A0E1FAB1500DE4D41;
-			remoteInfo = python;
 		};
 		38E4A0E615CBABA5000312D1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -2297,7 +2289,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F2FEF430E1FAC3200DE4D41 /* Python.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3419,7 +3410,6 @@
 				387624F913C7024F00850913 /* PBXTargetDependency */,
 				38CE5AE1154A717900480EC6 /* PBXTargetDependency */,
 				38E4A0E315CBABA5000312D1 /* PBXTargetDependency */,
-				38E4A0E515CBABA5000312D1 /* PBXTargetDependency */,
 				38E4A0E715CBABA5000312D1 /* PBXTargetDependency */,
 				38E4A0E915CBABA5000312D1 /* PBXTargetDependency */,
 				381A6D7515F053AB00E76478 /* PBXTargetDependency */,
@@ -4443,11 +4433,6 @@
 			isa = PBXTargetDependency;
 			target = 0F8F08100E1FE00800359159 /* tcl */;
 			targetProxy = 38E4A0E215CBABA5000312D1 /* PBXContainerItemProxy */;
-		};
-		38E4A0E515CBABA5000312D1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0F2FEF2A0E1FAB1500DE4D41 /* python */;
-			targetProxy = 38E4A0E415CBABA5000312D1 /* PBXContainerItemProxy */;
 		};
 		38E4A0E715CBABA5000312D1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
