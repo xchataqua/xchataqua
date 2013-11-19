@@ -240,7 +240,7 @@ AquaChat *AquaChatSharedObject;
         }
     }
     
-    if (info->notification)
+    if (info->notification && (NSClassFromString(@"NSUserNotificationCenter") != nil))
     {
         char o[4096];
         format_event (sess, event, args, o, sizeof (o), 1);
