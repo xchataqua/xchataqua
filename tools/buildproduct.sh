@@ -8,6 +8,3 @@ xcodebuild -project '../XChatAqua.xcodeproj' -target 'XChat Azure' -configuratio
 cd '../build/Release' && \
 productbuild --component "XChat Azure.app" '/Applications' --sign "3rd Party Mac Developer Installer: 3rddev Inc." "XChat Azure $version.pkg"
 
-echo "Release? Do not forget build REAL XPC for Growl"
-cd "$PWD"
-bash testxpc.sh
