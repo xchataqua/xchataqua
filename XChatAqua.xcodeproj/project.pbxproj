@@ -15,7 +15,6 @@
 				389DC407155569EB003BA8D9 /* Generate XChat Package Name */,
 				2DDC6FEA1231BD760015A26C /* Generate Build Number */,
 				2DDC6FEF1231BDD40015A26C /* Generate Localization Files */,
-				388FD04217618D0C00469B76 /* Generate fake XPC */,
 			);
 			dependencies = (
 			);
@@ -513,7 +512,6 @@
 		38E4A0DB15CB9C06000312D1 /* TimerSample.rb in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 38E573E8158F2226007943DA /* TimerSample.rb */; };
 		38E4A0DC15CB9C16000312D1 /* alt_completion.pl in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 38CE5A63154A551600480EC6 /* alt_completion.pl */; };
 		38E4A0DD15CB9C16000312D1 /* char_count.pl in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 38CE5A64154A551600480EC6 /* char_count.pl */; };
-		38E4A0EF15CBAC04000312D1 /* XPCServices in Copy Growl XPC */ = {isa = PBXBuildFile; fileRef = 38876EF4154C766A000B7E27 /* XPCServices */; };
 		38E5737E158EE6AC007943DA /* plugin.c in Sources */ = {isa = PBXBuildFile; fileRef = 380AD1B613C698CA003EEE3D /* plugin.c */; };
 		38E5737F158EEF38007943DA /* xchatext.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E57378158EBD03007943DA /* xchatext.m */; };
 		38E57380158EEF39007943DA /* xchatext.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E57378158EBD03007943DA /* xchatext.m */; };
@@ -712,17 +710,6 @@
 			dstSubfolderSpec = 13;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		38E4A0EE15CBABE6000312D1 /* Copy Growl XPC */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = Contents;
-			dstSubfolderSpec = 1;
-			files = (
-				38E4A0EF15CBAC04000312D1 /* XPCServices in Copy Growl XPC */,
-			);
-			name = "Copy Growl XPC";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -1117,7 +1104,6 @@
 		387C79FB13DEA26A00A79FA8 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/libsg.strings; sourceTree = "<group>"; };
 		387C79FE13DEA27D00A79FA8 /* de */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/xchataqua.strings; sourceTree = "<group>"; };
 		3882281F15930240000AB63D /* theme */ = {isa = PBXFileReference; lastKnownFileType = folder; name = theme; path = Resources/theme; sourceTree = SOURCE_ROOT; };
-		38876EF4154C766A000B7E27 /* XPCServices */ = {isa = PBXFileReference; lastKnownFileType = folder; path = XPCServices; sourceTree = BUILT_PRODUCTS_DIR; };
 		388BDC9E13C6A0CB00B95036 /* SGAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAlert.h; sourceTree = "<group>"; };
 		388BDC9F13C6A0CB00B95036 /* SGAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAlert.m; sourceTree = "<group>"; };
 		388BDCA013C6A0CB00B95036 /* SGApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGApplication.h; sourceTree = "<group>"; };
@@ -2386,7 +2372,6 @@
 				0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */,
 				38763F2213DD40D6008C40DB /* perl-lion.bundle */,
 				38D1414013D800E60026B7B5 /* ruby.bundle */,
-				38876EF4154C766A000B7E27 /* XPCServices */,
 				385F783215515C3F00689E6E /* libglib.a */,
 				381A6D7115F052BF00E76478 /* perl-mountainlion.bundle */,
 				38B20083183BDF56006C1EA1 /* perl-mavericks.bundle */,
@@ -3254,8 +3239,6 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				0F8EA7C40CFB6EC9001AE9AE /* Copy Frameworks */,
 				38BC97B9154A9AAC005894EF /* Copy Plugins */,
-				387C689215F261A900811A98 /* Build Growl XPCService */,
-				38E4A0EE15CBABE6000312D1 /* Copy Growl XPC */,
 				B4249A4023BF4C7CBA9FB187 /* Copy Pods Resources */,
 			);
 			buildRules = (
@@ -3599,34 +3582,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "exit\nTARGET_DIR=\"$PROJECT_TEMP_DIR\"\nrm -rf \"$TARGET_DIR/Perl/5.12\"\nmkdir -p \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/\"\nif [ -e '/System/Library/Perl/5.12/' ]; then\n\tln -s '/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib' \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\"\nelse\n\tln -s \"$PROJECT_DIR/Mac/contrib/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\" \"$TARGET_DIR/Perl/5.12/darwin-thread-multi-2level/CORE/libperl.dylib\"\nfi\n\ncd \"$PROJECT_DIR/xchat/plugins/perl\"\n./generate_header\n\nexit";
-		};
-		387C689215F261A900811A98 /* Build Growl XPCService */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Build Growl XPCService";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cd \"$PROJECT_DIR\"\nxcodebuild -project XChatAqua.xcodeproj -target 'Growl XPCService'";
-		};
-		388FD04217618D0C00469B76 /* Generate fake XPC */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Generate fake XPC";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cd $PROJECT_DIR\nif [ ! -e build/$CONFIGURATION/XPCServices ]; then\n    mkdir -p build/$CONFIGURATION/XPCServices\nfi";
 		};
 		389DC407155569EB003BA8D9 /* Generate XChat Package Name */ = {
 			isa = PBXShellScriptBuildPhase;
