@@ -15,7 +15,9 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
+#if ENABLE_GROWL
 #import <Growl/GrowlApplicationBridge.h>
+#endif
 #include "dcc.h"
 
 #define PreferencesWindowKey    @"PreferencesWindow"
@@ -49,7 +51,11 @@
 @class DCCChatController;
 @class XATabWindow;
 
-@interface AquaChat : NSObject <GrowlApplicationBridgeDelegate, NSApplicationDelegate, XAEventChain, NSUserNotificationCenterDelegate> {
+@interface AquaChat : NSObject <
+#if ENABLE_GROWL
+GrowlApplicationBridgeDelegate,
+#endif
+NSApplicationDelegate, XAEventChain, NSUserNotificationCenterDelegate> {
 @public
     NSString *searchString;
     
@@ -133,7 +139,9 @@
 - (void) addUrl:(const char *) url;
 - (void) playWaveNamed:(const char *)filename;
 - (void) openNetworkWindowForSession:(struct session *) sess;
+#if ENABLE_GROWL
 - (void) growl:(NSString *)text title:(NSString *)title;
+#endif
 - (void) ctrl_gui:(struct session *) sess action:(int) action arg:(int) arg;
 - (void) server_event:(struct server *)server event_type:(int)type arg:(int)arg;
 

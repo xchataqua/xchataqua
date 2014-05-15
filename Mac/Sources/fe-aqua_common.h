@@ -33,7 +33,9 @@ struct server_gui
 };
 
 struct XATextEventItem {
+#if ENABLE_GROWL
     NSInteger growl;
+#endif
     NSInteger notification;
     NSInteger show;
     NSInteger bounce;
