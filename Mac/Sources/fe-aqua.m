@@ -1060,9 +1060,35 @@ void fe_tray_set_icon (feicon icon)
 }
 void fe_tray_set_tooltip (const char *text)
 {
+    #if ENABLE_GROWL
     [[AquaChat sharedAquaChat] growl:@(text) title:nil];
+    #endif
+    {
+        NSUserNotification *notification = [[NSUserNotification alloc] init];
+        notification.informativeText = @(text);
+
+        NSMutableDictionary *settings = [NSMutableDictionary dictionary];
+        settings[@"setting"] = [NSNumber numberWithInteger:1];
+        notification.userInfo = settings;
+
+        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+    }
 }
+
 void fe_tray_set_balloon (const char *title, const char *text)
 {
+    #if ENABLE_GROWL
     [[AquaChat sharedAquaChat] growl:@(text) title:@(title)];
+    #endif
+    {
+        NSUserNotification *notification = [[NSUserNotification alloc] init];
+        notification.title = @(title);
+        notification.informativeText = @(text);
+
+        NSMutableDictionary *settings = [NSMutableDictionary dictionary];
+        settings[@"setting"] = [NSNumber numberWithInteger:1];
+        notification.userInfo = settings;
+
+        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+    }
 }
