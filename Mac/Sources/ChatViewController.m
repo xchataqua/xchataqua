@@ -909,6 +909,10 @@ static NSImage *emptyBulletImage;
         [nickTextField setHidden:YES];
         [myOpOrVoiceIconImageView setHidden:YES];
     }
+    if (prefs.gui_tweaks & 128)
+    {
+        [sessMenuButton setHidden:YES];
+    }
     
     if (sess->type == SESS_DIALOG)
         [self setChannel];
