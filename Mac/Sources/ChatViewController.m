@@ -904,6 +904,16 @@ static NSImage *emptyBulletImage;
     [self setTitle];
     [self setNonchannel:NO];
     
+    if (prefs.gui_tweaks & 2)
+    {
+        [nickTextField setHidden:YES];
+        [myOpOrVoiceIconImageView setHidden:YES];
+    }
+    if (prefs.gui_tweaks & 128)
+    {
+        [sessMenuButton setHidden:YES];
+    }
+    
     if (sess->type == SESS_DIALOG)
         [self setChannel];
     else
@@ -1633,14 +1643,20 @@ static NSImage *emptyBulletImage;
 
 - (void) progressbarStart
 {
-    [progressIndicator startAnimation:self];
-    [progressIndicator setHidden:NO];
+    if (!prefs.gui_tweaks & 2)
+    {
+        [progressIndicator startAnimation:self];
+        [progressIndicator setHidden:NO];
+    }
 }
 
 - (void) progressbarEnd
 {
-    [progressIndicator setHidden:YES];
-    [progressIndicator stopAnimation:self];
+    if (!prefs.gui_tweaks & 2)
+    {
+        [progressIndicator setHidden:YES];
+        [progressIndicator stopAnimation:self];
+    }
 }
 
 // Used only for updating menus
