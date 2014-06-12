@@ -350,7 +350,9 @@ extern struct XATextEventItem XATextEvents[];
     [bcell setButtonType:NSSwitchButton];
     [bcell setControlSize:NSMiniControlSize];
     [bcell setAllowsMixedState:YES];
+    #if ENABLE_GROWL
     [[soundsTableView tableColumns][2] setDataCell:bcell];
+    #endif
     [[soundsTableView tableColumns][4] setDataCell:bcell];
     [bcell release];
     
@@ -358,8 +360,9 @@ extern struct XATextEventItem XATextEvents[];
     [bcell setButtonType:NSSwitchButton];
     [bcell setControlSize:NSMiniControlSize];
     [bcell setAllowsMixedState:YES];
-    if (NSClassFromString(@"NSUserNotificationCenter") == nil)
+    if (NSClassFromString(@"NSUserNotificationCenter") == nil) {
         [bcell setEnabled:NO];
+    }
     [[soundsTableView tableColumns][3] setDataCell:bcell];
     [bcell release];
     
