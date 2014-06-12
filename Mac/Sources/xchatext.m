@@ -27,16 +27,13 @@ char *get_appdir_fs(void) {
 }
 
 char *get_downloaddir_fs(void) {
-    FSRef ref;
-    if (FSFindFolder(kUserDomain, kDownloadsFolderType, false, &ref) != noErr)
-        return NULL;
-    UInt8 *path = malloc(sizeof(UInt8) * PATH_MAX);
-    if (FSRefMakePath(&ref, path, sizeof(UInt8) * PATH_MAX) != noErr) {
-        free(path);
-        return NULL;
+    static NSString *path = nil;
+    if (path == nil) {
+        path = [NSSearchPathForDirectoriesInDomains(NSDownloadsDirectory, NSUserDomainMask, YES)[0] retain];
     }
-    
-    return (char *)path;
+    char *path_alloc = malloc(sizeof(char) * (strlen(path.UTF8String) + 1));
+    strncpy(path_alloc, path.UTF8String, path.length);
+    return path_alloc;
 }
 
 char *get_plugin_bundle_path(char *filename) {
