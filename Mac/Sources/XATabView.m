@@ -226,8 +226,8 @@ NSImage *XATabViewOutlineCellCloseImage;
  *
  */
 - (void)applyPreferences:(id)sender {
-    CGFloat fontSize = prefs.style_namelistgad ? [AquaChat sharedAquaChat].font.pointSize * 0.9 : [NSFont smallSystemFontSize];
-    if (prefs.tab_small) {
+    CGFloat fontSize = prefs.hex_gui_ulist_style ? [AquaChat sharedAquaChat].font.pointSize * 0.9 : [NSFont smallSystemFontSize];
+    if (prefs.hex_gui_tab_small) {
         fontSize *= 0.86;
     }
     NSFont *font = [NSFont systemFontOfSize:fontSize];
@@ -238,7 +238,7 @@ NSImage *XATabViewOutlineCellCloseImage;
     [self setRowHeight:[layoutManager defaultLineHeightForFont:font] * 1.2 + 1];
     
     ColorPalette *p = [[AquaChat sharedAquaChat] palette];
-    if (prefs.style_namelistgad) {
+    if (prefs.hex_gui_ulist_style) {
         dataCell.textColor = [p getColor:XAColorForeground];
         self.backgroundColor = [p getColor:XAColorBackground];
     } else {
@@ -313,7 +313,7 @@ NSImage *XATabViewOutlineCellCloseImage;
         [cell release];
         
         CGFloat fontSize = [NSFont smallSystemFontSize];
-        if (prefs.tab_small) {
+        if (prefs.hex_gui_tab_small) {
             fontSize *= 0.86;
         }
         [self setFont:[NSFont systemFontOfSize:fontSize]];
@@ -406,7 +406,7 @@ NSNib *XATabViewItemTabMenuNib;
     [box addSubview:self->_tabButton];
     [box setOrder:order forView:self->_tabButton];
 
-    if (prefs.tab_layout == 0) {
+    if (prefs.hex_gui_tab_layout == 0) {
         [self redrawTitle];
     }
 }
@@ -431,7 +431,7 @@ NSNib *XATabViewItemTabMenuNib;
 }
 
 - (void)redrawTitle {
-    if (prefs.tab_layout == 0) {
+    if (prefs.hex_gui_tab_layout == 0) {
         [self->_tabButton setTitle:self->_label];
         [self->_tabButton sizeToFit];
     } else {
@@ -440,7 +440,7 @@ NSNib *XATabViewItemTabMenuNib;
 }
 
 - (NSColor *)titleColor {
-    if (!prefs.style_namelistgad && self.titleColorIndex == XAColorForeground) {
+    if (!prefs.hex_gui_ulist_style && self.titleColorIndex == XAColorForeground) {
         return [NSColor blackColor];
     }
     return [[[AquaChat sharedAquaChat] palette] getColor:self.titleColorIndex];
@@ -544,10 +544,10 @@ NSNib *XATabViewItemTabMenuNib;
 - (void)applyPreferences:sender {
     [_tabOutlineView applyPreferences:sender];
     
-    if ( prefs.tab_layout == 2 ) {
+    if ( prefs.hex_gui_tab_layout == 2 ) {
         tabViewType = XATabViewTypeOutline;
     } else {
-        switch ( prefs._tabs_position ) {
+        switch ( prefs.hex_gui_tab_pos ) {
             case 0: tabViewType = NSBottomTabsBezelBorder; break;
             case 1: tabViewType = NSTopTabsBezelBorder; break;
             case 2: tabViewType = NSRightTabsBezelBorder; break;
@@ -587,7 +587,7 @@ NSNib *XATabViewItemTabMenuNib;
     while (_chatViewContainer.subviews.count > 0) {
         [(_chatViewContainer.subviews)[0] removeFromSuperview];
     }
-    if (xchat_is_quitting) return; // optimization..?
+    if (hexchat_is_quitting) return; // optimization..?
 
     [chatView setFrame:_chatViewContainer.bounds];
     [_chatViewContainer addSubview:chatView];
@@ -765,7 +765,7 @@ NSNib *XATabViewItemTabMenuNib;
     {
         _selectedTabViewItem = nil;
 
-        if (self.tabViewItems.count > 1 && !xchat_is_quitting) {
+        if (self.tabViewItems.count > 1 && !hexchat_is_quitting) {
             // If there is another tab on the right of the tab being closed, and it's in the same group, choose it;
             // Else, if there is another tab on the left of the tab being closed, and it's in the same group, choose it;
             // Else, choose the tab on the right unless it's the last tab;
@@ -792,7 +792,7 @@ NSNib *XATabViewItemTabMenuNib;
         [_groups removeObject:group];
     }
     
-    if (xchat_is_quitting) return;
+    if (hexchat_is_quitting) return;
 
     [_tabOutlineView reloadData];
     // Removing items above the current item muck up the selected item in the outline
@@ -1067,7 +1067,7 @@ typedef OSStatus
         [cell setHasCloseButton:!prefs.xa_hide_tab_close_buttons];
     } else {
         NSColor *color;
-        if (prefs.tab_layout == 2 && prefs.style_namelistgad) {
+        if (prefs.hex_gui_tab_layout == 2 && prefs.hex_gui_ulist_style) {
             color = [[[AquaChat sharedAquaChat] palette] getColor:XAColorForeground];
         } else {
             color = [NSColor blackColor];

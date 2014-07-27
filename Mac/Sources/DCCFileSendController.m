@@ -121,14 +121,14 @@ extern int dcc_sendcpssum;
 
 - (NSNumber *)globalSpeedLimit
 {
-    if (prefs.dcc_global_max_send_cps) return @(prefs.dcc_global_max_send_cps / 1024);
+    if (prefs.hex_dcc_global_max_send_cps) return @(prefs.hex_dcc_global_max_send_cps / 1024);
     else return nil;
 }
 
 - (void)setGlobalSpeedLimit:(id)value
 {
-    if ([value respondsToSelector:@selector(intValue)]) prefs.dcc_global_max_send_cps = [value intValue] * 1024;
-    else prefs.dcc_global_max_send_cps = 0;
+    if ([value respondsToSelector:@selector(intValue)]) prefs.hex_dcc_global_max_send_cps = [value intValue] * 1024;
+    else prefs.hex_dcc_global_max_send_cps = 0;
 }
 
 //////////////

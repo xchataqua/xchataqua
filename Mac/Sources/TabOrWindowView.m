@@ -135,7 +135,7 @@ static float trans = 1;
 }
 
 + (void)applyPreferences:(id)sender {
-    [TabOrWindowView setTransparency:prefs.transparent ? prefs.tint_red : 255];
+    [TabOrWindowView setTransparency:prefs.hex_text_transparent ? prefs.hex_gui_transparency : 255];
 }
 
 + (void) setTransparency:(NSInteger)transparency
@@ -339,8 +339,8 @@ static float trans = 1;
                                              styleMask:windowStyleMask
                                                backing:NSBackingStoreBuffered
                                                  defer:NO];
-        NSPoint origin = NSMakePoint(prefs.mainwindow_left + (prefs.mainwindow_width - self.frame.size.width) / 2,
-                                     prefs.mainwindow_top  + (prefs.mainwindow_height- self.frame.size.height)/ 2);
+        NSPoint origin = NSMakePoint(prefs.hex_gui_win_left + (prefs.hex_gui_win_width - self.frame.size.width) / 2,
+                                     prefs.hex_gui_win_top  + (prefs.hex_gui_win_height- self.frame.size.height)/ 2);
         [window setFrameOrigin:origin];
 
         [window setAlphaValue:trans];

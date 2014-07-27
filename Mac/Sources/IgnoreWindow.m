@@ -177,8 +177,13 @@
 {
     [[ignoreTableView window] makeFirstResponder:ignoreTableView];
     
-    if ([self find:"new!new@new.com"] < 0)
+    if ([self find:"new!new@new.com"] < 0) {
+        #if USE_HEXCHAT
+        ignore_add("new!new@new.com", 0, 1);
+        #else
         ignore_add("new!new@new.com", 0); // Calls me back to create my list
+        #endif
+    }
     
     NSInteger row = [self find:"new!new@new.com"];
     

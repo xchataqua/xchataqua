@@ -145,7 +145,7 @@
 
 @property BOOL autoconnect, favorite;
 @property(readonly) NSString *name;
-@property(readonly) NSArray *servers, *favoriteChannels, *connectCommands;
+@property(readonly) NSArray *servers;
 @property(readonly) struct ircnet *ircNet;
 
 + (NetworkItem *)networkWithIrcnet:(ircnet *)ircNet;

@@ -19,10 +19,12 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 
-#include "xchat.h"
-#include "xchatc.h"
 #include "text.h"
 #include "fe.h"
+
+#if USE_HEXCHAT
+#define input_callback void *
+#endif
 
 static int ident_sok = -1;
 static int ident_tag = -1;
@@ -49,7 +51,7 @@ static void identd_reply (void *arg, int c, void *cbd)
 	{
 		char outbuf [256];
 		snprintf (outbuf, sizeof (outbuf) - 1, "%d, %d : USERID : UNIX : %s\r\n",
-									atoi (buf), atoi (p + 1), prefs.username);
+									atoi (buf), atoi (p + 1), prefs.hex_irc_user_name);
 		outbuf[sizeof (outbuf) - 1] = 0;	/* ensure null termination */
 		send (x->sock, outbuf, strlen (outbuf), 0);
 	}

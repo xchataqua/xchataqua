@@ -128,7 +128,7 @@
 }
 
 - (void) saveToFile:(id)sender {
-    int fh = xchat_open_file ((char *)[filename UTF8String], O_TRUNC | O_WRONLY | O_CREAT, 0600, XOF_DOMODE);
+    int fh = hexchat_open_file ((char *)[filename UTF8String], O_TRUNC | O_WRONLY | O_CREAT, 0600, XOF_DOMODE);
     if (fh == -1 ) return;
     
     char buf[512];

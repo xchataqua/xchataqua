@@ -22,6 +22,8 @@
 
 #import "UtilityWindow.h"
 
+#define IRC_DEFAULT_CHARSET     "UTF-8 (Unicode)"
+
 @interface NetworkWindow : UtilityWindow <NSTableViewDataSource,NSTableViewDelegate> {
     IBOutlet NSComboBox     *charsetComboBox;
     IBOutlet NSButton       *connectNewButton;
@@ -31,7 +33,7 @@
     IBOutlet NSTableView    *networkTableView;
     IBOutlet NSTextField    *networkNicknameTextField;
     IBOutlet NSTextField    *networkNickname2TextField;
-    IBOutlet NSTextField    *networkNickservPasswordTextField;
+    IBOutlet NSComboBox     *networkLoginMethodComboBox;
     IBOutlet NSTextField    *networkPasswordTextField;
     IBOutlet NSTextField    *networkRealnameTextField;
     IBOutlet NSTableView    *networkServerTableView;
@@ -66,6 +68,7 @@
 - (IBAction)connectToSelectdNetwork:(id)sender;
 - (IBAction)setFlagWithControl:(id)sender;
 - (IBAction)setFieldWithControl:(id)sender;
+- (IBAction)setIndexWithControl:(id)sender;
 - (IBAction)addChannel:(id)sender;
 - (IBAction)removeChannel:(id)sender;
 - (IBAction)addCommand:(id)sender;
@@ -75,8 +78,5 @@
 - (IBAction)addNetwork:(id)sender;
 - (IBAction)removeNetwork:(id)sender;
 - (IBAction)doFilter:(id)sender;
-
-// not used
-//- (IBAction)doDoneEdit:(id)sender;
 
 @end

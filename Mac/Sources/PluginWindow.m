@@ -20,11 +20,10 @@
  * Correspond to main menu: Window -> Plugins and Scripts...
  */
 
-#define PLUGIN_C
 typedef struct session xchat_context;
 
 #include "outbound.h"
-#include "xchat-plugin.h"
+#include "hexchat-plugin.h"
 #include "plugin.h"
 #include "util.h"
 

@@ -8,7 +8,7 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -40,7 +40,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     [super initialize];
     XAChatTextViewNewLine = [[NSAttributedString alloc] initWithString:@"\n"];
     //tab = [[NSAttributedString alloc] initWithString:@"\t"];
-    
+
     XAChatTextViewSizableCursor = [[NSCursor alloc] initWithImage:[NSImage imageNamed:@"lr_cursor.tiff"] hotSpot:NSMakePoint (8,8)];
 }
 
@@ -50,9 +50,9 @@ static NSCursor *XAChatTextViewSizableCursor;
     if (self != nil) {
         wordRange = NSMakeRange(NSNotFound, 0);
         fontSize = NSMakeSize(10, 20);
-        
+
         _style = [[NSMutableParagraphStyle alloc] init];
-        
+
         [self setRichText:YES];
         [self setEditable:NO];
 
@@ -63,7 +63,7 @@ static NSCursor *XAChatTextViewSizableCursor;
 
 - (void) awakeFromNib
 {
-    // Scrolling is achieved by moving the origin of the NSClipView's bounds rectangle. 
+    // Scrolling is achieved by moving the origin of the NSClipView's bounds rectangle.
     // So you can receive notification of changes to the scroll position by adding yourself
     // as an observer of NSViewBoundsDidChangeNotification for the NSScrollView's NSClipView
     // ([theScrollView contentView]).
@@ -87,7 +87,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     [normalFont release];
     [boldFont release];
     [word release];
-    
+
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
     [super dealloc];
@@ -105,27 +105,27 @@ static NSCursor *XAChatTextViewSizableCursor;
 
     NSRange selection = [self selectedRange];
     NSTextStorage *stg = [self textStorage];
-    
+
     // Get the selected text
     NSAttributedString *attr_string = [stg attributedSubstringFromRange:selection];
 
     // Plain text version.  Convert tabs to spaces.
     NSString *plain = [attr_string string];
     NSMutableString *pstripped = [plain mutableCopyWithZone:nil];
-    [pstripped replaceOccurrencesOfString:@"\t" 
+    [pstripped replaceOccurrencesOfString:@"\t"
                                withString:@" "
                                   options:NSLiteralSearch
                                     range:NSMakeRange(0, [pstripped length])];
-    
+
     [pb setString:pstripped forType:NSStringPboardType];
-    
+
     // RTF version.  Remove the hidden text completely.
     NSMutableAttributedString *rstripped = [attr_string mutableCopyWithZone:nil];
     NSRange range = NSMakeRange(0, [rstripped length]);
     while (range.length > 0)
     {
         NSRange ret;
-        
+
         id font = [rstripped attribute:NSFontAttributeName
                                atIndex:range.location
                  longestEffectiveRange:&ret
@@ -142,7 +142,7 @@ static NSCursor *XAChatTextViewSizableCursor;
             range.length -= ret.length;
         }
     }
-    
+
     NSData *rtfData = [rstripped RTFFromRange:(NSMakeRange(0, [rstripped length]))
                            documentAttributes:@{}];
     [pb setData:rtfData forType:NSRTFPboardType];
@@ -165,13 +165,13 @@ static NSCursor *XAChatTextViewSizableCursor;
     if (!dropHandler /* || [self isHiddenOrHasHiddenAncestor] */) {
         return NSDragOperationNone;
     }
-    
+
     NSPasteboard *pboard = [sender draggingPasteboard];
 
     if (![[pboard types] containsObject:NSFilenamesPboardType]) {
         return NSDragOperationNone;
     }
-    
+
     return NSDragOperationCopy;
 }
 
@@ -184,7 +184,7 @@ static NSCursor *XAChatTextViewSizableCursor;
 {
     [_palette autorelease];
     _palette = [object retain];
-    
+
     [self setBackgroundColor:[_palette getColor:XAColorBackground]];
 }
 
@@ -196,14 +196,14 @@ static NSCursor *XAChatTextViewSizableCursor;
     NSTextTab *tabStop = [[[NSTextTab alloc] initWithType:NSRightTabStopType location:indent] autorelease];
     [style setTabStops:@[tabStop]];
     [style setLineHeightMultiple:prefs.xa_line_height / 100.0];
-    
+
     indent += fontSize.width;
 
     CGFloat newLineRectX = floor (indent + fontSize.width * 2 / 3) - 2;
     if (newLineRectX == lineRect.origin.x) {
         return;
     }
-    
+
     lineRect.origin.x = newLineRectX;
 
     indent += fontSize.width;
@@ -217,7 +217,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     }
 
     self.style = style;
-    
+
     NSMutableAttributedString *storage = [self textStorage];
     NSRange whole = NSMakeRange (0, storage.length);
     [storage beginEditing];
@@ -235,13 +235,13 @@ static NSCursor *XAChatTextViewSizableCursor;
 {
     NSFont *old_font = [normalFont autorelease];
 //    NSFont *old_boldFont = [boldFont autorelease];
-    
+
     normalFont = [new_font retain];
     boldFont = [new_boldFont retain];
 
     NSDictionary *attr = @{NSFontAttributeName: normalFont};
     fontSize = [@"-" sizeWithAttributes:attr];
-    
+
     if (![new_font isEqual:old_font]) {   // CL: adjustMargin is VERY expensive, don't do it unless necessary
         [self adjustMargin];
     }
@@ -254,20 +254,20 @@ static NSCursor *XAChatTextViewSizableCursor;
     {
         NSRange r;
         NSRange limit = NSMakeRange (i, [s length] - i);
-        NSDictionary *attr = 
+        NSDictionary *attr =
             [s attributesAtIndex:i longestEffectiveRange:&r inRange:limit];
-        
+
         NSFont *of = [attr objectForKey:NSFontAttributeName];
         NSFont *nf = of == old_boldFont ? boldFont : normalFont;
-        
+
         NSMutableDictionary *nattr = [attr mutableCopyWithZone:nil];
         [nattr setObject:nf forKey:NSFontAttributeName];
-        
+
         //if ([attr objectForKey:NSParagraphStyleAttributeName])
             //[nattr setObject:style forKey:NSParagraphStyleAttributeName];
 
         [s setAttributes:nattr range:r];
-        
+
         i += r.length;
     }
 #endif
@@ -275,16 +275,16 @@ static NSCursor *XAChatTextViewSizableCursor;
 
 - (void)clearLinesIfFlooded
 {
-    if (prefs.max_lines == 0)
+    if (prefs.hex_text_max_lines == 0)
         return;
 
-    int threshhold = prefs.max_lines + prefs.max_lines * 0.1;
+    int threshhold = prefs.hex_text_max_lines + prefs.hex_text_max_lines * 0.1;
     if (numberOfLines < threshhold)
         return;
-    
+
     NSTextStorage *stg = [self textStorage];
-    
-    while (numberOfLines > prefs.max_lines)
+
+    while (numberOfLines > prefs.hex_text_max_lines)
     {
         NSString *s = [stg mutableString];
         NSRange firstLine = [s lineRangeForRange:NSMakeRange(0, 0)];
@@ -316,21 +316,21 @@ static NSCursor *XAChatTextViewSizableCursor;
         stamp = time(NULL);
     }
 
-    if (prefs.timestamp) {
-        prepend += strftime(buff, sizeof(buff), prefs.stamp_format, localtime(&stamp));
+    if (prefs.hex_stamp_text) {
+        prepend += strftime(buff, sizeof(buff), prefs.hex_stamp_text_format, localtime(&stamp));
     }
 
     char textBuffer[len + 1];
     char *text = textBuffer;
     strcpy(text, givenText);
-    
+
     char *tmp = text;
     char *end = tmp + len;
 
-    if (prefs.indent_nicks)
+    if (prefs.hex_text_indent)
     {
         *prepend++ = '\t';
-        
+
         tmp = strchr (text, '\t');
         if (tmp)
             tmp ++;
@@ -339,7 +339,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     }
 
     *prepend = 0;
-    
+
     while (tmp && *tmp && tmp < end)    // Blast remaining tabs
     {
         if (*tmp == '\t')
@@ -457,7 +457,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     if (!self.isScrollingBack) {
         [self.textStorage beginEditing];
     }
-    
+
     for (NSString *line in [aText componentsSeparatedByString:@"\n"]) {
         if ([line containsString:@"\007"]) {
             NSBeep();
@@ -488,7 +488,7 @@ static NSCursor *XAChatTextViewSizableCursor;
 - (void)updateAtBottom:(NSNotification *)notification
 {
     NSClipView *clipView = (NSClipView *)[self superview];
-    
+
     CGFloat dmax = NSMaxY(clipView.documentRect);
     CGFloat cmax = NSMaxY(clipView.documentVisibleRect);
 
@@ -560,7 +560,7 @@ static NSCursor *XAChatTextViewSizableCursor;
 - (void) do_link
 {
     const char *cmd = NULL;
-    
+
     switch (wordType)
     {
         case WORD_HOST:
@@ -568,7 +568,7 @@ static NSCursor *XAChatTextViewSizableCursor;
         case WORD_URL:
             cmd = prefs.xa_urlcommand;
             break;
-            
+
         case WORD_NICK:
             cmd = prefs.xa_nickcommand;
             break;
@@ -576,13 +576,13 @@ static NSCursor *XAChatTextViewSizableCursor;
         case WORD_CHANNEL:
             cmd = prefs.xa_channelcommand;
             break;
-        
+
         default:
             return;
     }
 
     nick_command_parse ([self currentSession], (char *) cmd, (char *) [word UTF8String], (char *) [word UTF8String]);
-    
+
     [self clear_hot_word];
 }
 
@@ -602,18 +602,18 @@ static NSCursor *XAChatTextViewSizableCursor;
     }
 
     int margin = prefs.xa_text_manual_indent_chars;
-    
+
     for (;;)
     {
         NSEvent *nextEvent = [[self window] nextEventMatchingMask:NSLeftMouseUpMask|NSLeftMouseDraggedMask];
 
         if ([nextEvent type] == NSLeftMouseUp)
             break;
-        
+
         NSPoint mouseLoc = [self convertPoint:[nextEvent locationInWindow] fromView:nil];
-        
+
         int new_margin = (int)(mouseLoc.x / fontSize.width) - 1;
-        
+
         if (new_margin > 2 && new_margin < 50 && new_margin != margin)
         {
             margin = new_margin;
@@ -626,7 +626,7 @@ static NSCursor *XAChatTextViewSizableCursor;
 - (NSMenu *) menuForEvent:(NSEvent *) theEvent
 {
     session *sess = [self currentSession];
-    
+
     NSRange sel = [self selectedRange];
     if (sel.location != NSNotFound && sel.length > 0)
     {
@@ -639,16 +639,16 @@ static NSCursor *XAChatTextViewSizableCursor;
         [i setSubmenu:url_menu];
         [m addItem:i];
         [i release];
-        
+
         NSMenu *nick_menu = [[MenuMaker defaultMenuMaker] menuForNick:text inSession:sess];
         i = [[NSMenuItem alloc] initWithTitle:@"Nick Actions" action:nil keyEquivalent:@""];
         [i setSubmenu:nick_menu];
         [m addItem:i];
         [i release];
-        
+
         return [m autorelease];
     }
-    
+
     if (word)
     {
         [[NSRunLoop currentRunLoop] performSelector:@selector (clear_hot_word)
@@ -660,18 +660,18 @@ static NSCursor *XAChatTextViewSizableCursor;
             case WORD_HOST:
             case WORD_URL:
                 return [[MenuMaker defaultMenuMaker] menuForURL:word inSession:sess];
-                
+
             case WORD_NICK:
                 return [[MenuMaker defaultMenuMaker] menuForNick:word inSession:sess];
-                
+
             case WORD_CHANNEL:
                 return [[MenuMaker defaultMenuMaker] menuForChannel:word inSession:sess];
-                
+
             case WORD_EMAIL:
                 return [[MenuMaker defaultMenuMaker] menuForURL:[@"mailto:%@" format:word] inSession:sess];
         }
     }
-    
+
     // TBD:
     // if (sess->type == dialog)
     //   return [[AquaChat sharedAquaChat] nickMenuForServer:current_sess->server
@@ -709,7 +709,7 @@ static NSCursor *XAChatTextViewSizableCursor;
         size_t len = strlen(cword);// range->length;
 
         // Let common have first crack at it.
-        int ret = nickOnly ? 0 : url_check_word (cword, len);    /* common/url.c */
+        int ret = url_check_word (cword);    /* common/url.c */
 
         // If we get something from common, double check a few things..
         if (ret)
@@ -720,14 +720,14 @@ static NSCursor *XAChatTextViewSizableCursor;
                 range->location++;
                 range->length--;
             }
-            
+
             return ret;
         }
-        
+
         //
         // Else, check for stuff that common doesn't.
         //
-        
+
         // @nick
         if (strchr (sess->server->nick_prefixes, cword[0]) && userlist_find (sess, cword+1))
         {
@@ -735,7 +735,7 @@ static NSCursor *XAChatTextViewSizableCursor;
             range->length--;
             return WORD_NICK;
         }
-        
+
         // Just plain nick
         if (userlist_find (sess, cword))
             return WORD_NICK;
@@ -743,7 +743,7 @@ static NSCursor *XAChatTextViewSizableCursor;
         // What does this do?
         //if (sess->type == SESS_DIALOG)
         //    return WORD_DIALOG;
-        
+
         // Check for words surrounded in brackets.
         // Narrow the range and try again.
         NSRange aposRange;
@@ -775,10 +775,10 @@ static NSCursor *XAChatTextViewSizableCursor;
             nickOnly = true;
             continue;
         }
-        
+
         return 0;
     }
-    
+
     return 0;
 }
 
@@ -810,21 +810,21 @@ static NSCursor *XAChatTextViewSizableCursor;
 
     if (slen == 0)
         return;
-        
+
     if (slen == idx)
         return;
 
     if (isspace ([s characterAtIndex:idx]))
         return;
-    
+
     // From this point, we know we have a selection...
-    
+
     NSUInteger word_start = idx;
     NSUInteger word_stop = idx;
-    
+
     while (word_start > 0 && !isspace ([s characterAtIndex:word_start-1]))    /* CL: maybe this should be iswspace, or a test using whitespaceAndNewlineCharacterSet? */
         word_start --;
-    
+
     while (word_stop < slen && !isspace ([s characterAtIndex:word_stop+1]))
         word_stop ++;
 
@@ -837,7 +837,7 @@ static NSCursor *XAChatTextViewSizableCursor;
         return;
 
     word = [[s substringWithRange:wordRange] retain];
-    
+
     [stg addAttribute:NSUnderlineStyleAttributeName
                 value:@(NSUnderlineStyleSingle)
                 range:wordRange];
@@ -857,12 +857,12 @@ static NSCursor *XAChatTextViewSizableCursor;
 - (void) drawRect:(NSRect) aRect
 {
     [super drawRect:aRect];
-    
-    if (!prefs.show_separator || !prefs.indent_nicks)
+
+    if (!prefs.hex_text_show_sep || !prefs.hex_text_indent)
     {
         return;
     }
-    
+
     [[self.palette getColor:XAColorForeground] set];
     [[NSGraphicsContext currentContext] setShouldAntialias:false];
     NSBezierPath *p = [NSBezierPath bezierPath];

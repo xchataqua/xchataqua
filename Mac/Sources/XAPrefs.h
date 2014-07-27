@@ -18,3 +18,6 @@ unsigned int xa_bounce_continuously;
 char xa_builtin_plugins_version[10];
 unsigned int xa_input_grammar;
 unsigned int xa_input_autocorrect;
+unsigned int xa_input_beep_chans;
+unsigned int xa_input_beep_priv;
+unsigned int xa_input_beep_hilight;

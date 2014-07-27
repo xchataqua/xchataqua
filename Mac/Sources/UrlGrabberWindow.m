@@ -8,7 +8,7 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -59,10 +59,10 @@ static int do_add_url (const void *key, void *cbd)
 - (void) awakeFromNib
 {
     [self->urlTableView setTarget:self];
-    
+
     [self setTitle:NSLocalizedStringFromTable(@"XChat: URL Grabber", @"xchat", @"Title of Window: MainMenu->Window->URL Grabber...")];
     [self setTabTitle:NSLocalizedStringFromTable(@"urlgrabber", @"xchataqua", @"")];
-    
+
     tree_foreach ((tree *)url_tree, do_add_url, self);
 }
 
@@ -80,7 +80,7 @@ static int do_add_url (const void *key, void *cbd)
 {
     NSInteger urlIndex = [self->urlTableView selectedRow];
     if (urlIndex < 0) return;
-    
+
     NSMenu *menu = [[NSMenu alloc] initWithTitle:@""];
     NSString *url = urls[urlIndex];
     NSString *menuTitle = url;
@@ -90,7 +90,7 @@ static int do_add_url (const void *key, void *cbd)
     NSMenuItem *item = [menu addItemWithTitle:menuTitle action:nil keyEquivalent:@""];
     [item setEnabled:NO];
     [[MenuMaker defaultMenuMaker] appendItemList:urlhandler_list toMenu:menu withTarget:url inSession:NULL];
-    
+
     [self->urlTableView setMenu:menu];
     [menu release];
 }
@@ -100,7 +100,7 @@ static int do_add_url (const void *key, void *cbd)
     NSSavePanel *panel = [NSSavePanel savePanel];
     [panel beginSheetModalForWindow:[sender window] completionHandler:^(NSInteger result) {
         if (result == NSModalResponseOK) {
-            url_save((char *)panel.URL.path, "w", true);
+            url_save_tree((char *)panel.URL.path, "w", true);
         }
     }];
 }

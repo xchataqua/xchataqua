@@ -13,7 +13,7 @@
 @implementation XATabWindow
 
 - (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag {
-    contentRect = NSMakeRect(prefs.mainwindow_left, prefs.mainwindow_top, prefs.mainwindow_width, prefs.mainwindow_height);
+    contentRect = NSMakeRect(prefs.hex_gui_win_left, prefs.hex_gui_win_top, prefs.hex_gui_win_width, prefs.hex_gui_win_height);
     self = [super initWithContentRect:contentRect styleMask:aStyle backing:bufferingType defer:flag];
     if (self != nil) {
         // animation!

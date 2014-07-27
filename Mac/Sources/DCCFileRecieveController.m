@@ -19,8 +19,6 @@
  * Correspond to main menu: Window -> File Receive...
  */
 
-#include "xchat.h"
-#include "xchatc.h"
 #include "network.h"
 #include "dcc.h"
 
@@ -109,7 +107,7 @@ extern int dcc_getcpssum;
         NSString *fileToReveal;
         if (item->dcc->dccstat == STAT_DONE)
         {
-            NSString *dir = @(prefs.dcc_completed_dir);
+            NSString *dir = @(prefs.hex_dcc_completed_dir);
             NSString *file = @(item->dcc->file);
             fileToReveal = [dir stringByAppendingPathComponent:file];
         }
@@ -174,14 +172,14 @@ extern int dcc_getcpssum;
 
 - (NSNumber *)globalSpeedLimit
 {
-    if (prefs.dcc_global_max_get_cps) return @(prefs.dcc_global_max_get_cps / 1024);
+    if (prefs.hex_dcc_global_max_get_cps) return @(prefs.hex_dcc_global_max_get_cps / 1024);
     else return nil;
 }
 
 - (void)setGlobalSpeedLimit:(id)value
 {
-    if ([value respondsToSelector:@selector(intValue)]) prefs.dcc_global_max_get_cps = [value intValue] * 1024;
-    else prefs.dcc_global_max_get_cps = 0;
+    if ([value respondsToSelector:@selector(intValue)]) prefs.hex_dcc_global_max_get_cps = [value intValue] * 1024;
+    else prefs.hex_dcc_global_max_get_cps = 0;
 }
 
 //////////////

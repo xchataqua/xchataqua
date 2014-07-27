@@ -51,6 +51,8 @@
 @class DCCChatController;
 @class XATabWindow;
 
+extern char *get_xdir_fs(void);
+
 @interface AquaChat : NSObject <
 #if ENABLE_GROWL
 GrowlApplicationBridgeDelegate,

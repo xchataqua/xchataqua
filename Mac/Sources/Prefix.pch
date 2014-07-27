@@ -15,11 +15,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-#include "xchat.h"
-#include "xchatc.h"
-#include "fe.h"
-
 #include <debug.h>
+
+#ifdef USE_HEXCHAT
+    #include "hexchat.h"
+    #include "hexchatc.h"
+#else
+    #include "xchat.h"
+    #include "xchatc.h"
+#endif
+#include "fe.h"
 
 #ifdef __OBJC__
     #import <FoundationExtension/FoundationExtension.h>
@@ -35,3 +40,7 @@
 #else
     #define PRODUCT_NAME "X-Chat Aqua"
 #endif
+
+#include "build_number.h"
+
+extern char *get_xdir_fs(void);

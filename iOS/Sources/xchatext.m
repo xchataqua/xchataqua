@@ -14,7 +14,7 @@
 char *get_xdir_fs(void) {
     static NSString *path = nil;
     if (path == nil) {
-        path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0] retain];
+        path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0] copy];
     }
     return (char *)[path UTF8String];
 }
@@ -27,7 +27,7 @@ char *get_appdir_fs(void) {
 char *get_downloaddir_fs(void) {
     static NSString *path = nil;
     if (path == nil) {
-        path = [NSSearchPathForDirectoriesInDomains(NSDownloadsDirectory, NSUserDomainMask, YES)[0] retain];
+        path = [NSSearchPathForDirectoriesInDomains(NSDownloadsDirectory, NSUserDomainMask, YES)[0] copy];
     }
     return (char *)[path UTF8String];
 }

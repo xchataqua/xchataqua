@@ -18,6 +18,7 @@
 #import "AquaChat.h"
 #import "AquaPlugins.h"
 
+#include "hexchat-plugin.h"
 #include "text.h"
 #include "outbound.h"
 
@@ -159,7 +160,7 @@ static int
 event_cb (char *word[], void *cbd)
 {
     int event = (int) (size_t)cbd;
-    struct session *sess = (struct session *) xchat_get_context(XAInternalPluginHandle);
+    struct session *sess = (struct session *) hexchat_get_context(XAInternalPluginHandle);
     [[AquaChat sharedAquaChat] event:event args:word session:sess];
     return XCHAT_EAT_NONE;
 }
@@ -174,14 +175,15 @@ int XAInitInternalPlugin(xchat_plugin *plugin_handle, char **plugin_name,
     *plugin_desc = (char*)"Does stuff";
     *plugin_version = (char*)"";
     
-    xchat_hook_command (plugin_handle, "APPLESCRIPT", XCHAT_PRI_NORM, 
+    hexchat_hook_command (plugin_handle, "APPLESCRIPT", XCHAT_PRI_NORM,
                         applescript_cb, APPLESCRIPT_HELP, plugin_handle);
     
-    xchat_hook_command (plugin_handle, "BROWSER", XCHAT_PRI_NORM, 
+    hexchat_hook_command (plugin_handle, "BROWSER", XCHAT_PRI_NORM,
                         browser_cb, BROWSER_HELP, plugin_handle);
     
-    for (NSInteger i = 0; i < NUM_XP; i ++)
-        xchat_hook_print (plugin_handle, te[i].name, XCHAT_PRI_NORM, event_cb, (void *) i);
+    for (NSInteger i = 0; i < NUM_XP; i ++) {
+        hexchat_hook_print (plugin_handle, te[i].name, XCHAT_PRI_NORM, event_cb, (void *) i);
+    }
     
     return 1;       /* return 1 for success */
 }

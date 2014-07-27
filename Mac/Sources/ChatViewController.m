@@ -155,7 +155,7 @@
 {
     NickCompletionItem *other = (NickCompletionItem *) aNick;
     
-    if (prefs.completion_sort == 1) {
+    if (prefs.hex_completion_sort == 1) {
         if (other.lasttalk == self.lasttalk) {
             return NSOrderedSame;
         } else if (other.lasttalk < self.lasttalk) {
@@ -185,12 +185,12 @@
     NSSplitViewDividerStyle dividerStyle;
     if (self.splitPosition < 10) {
         prefs.xa_paned_pos = 30;
-        prefs.hideuserlist = 1;
+        prefs.hex_gui_ulist_hide = 1;
         self.splitPosition = 0;
         dividerStyle = NSSplitViewDividerStyleThick;
     } else {
         prefs.xa_paned_pos = (int)self.splitPosition;
-        prefs.hideuserlist = 0;
+        prefs.hex_gui_ulist_hide = 0;
         dividerStyle = NSSplitViewDividerStyleThin;
     }
     self.dividerStyle = dividerStyle;
@@ -221,7 +221,7 @@
     
     if ([theEvent clickCount] == 2)
     {
-        if (prefs.hideuserlist) {
+        if (prefs.hex_gui_ulist_hide) {
             [self setSplitPosition:prefs.xa_paned_pos];
             [self viewDidResize:self];
         } else {
@@ -342,7 +342,7 @@
     if (user->away) {
         color = [palette getColor:XAColorAwayUser];
     } else {
-        if (prefs.style_namelistgad) {
+        if (prefs.hex_gui_ulist_style) {
             color = [palette getColor:XAColorForeground];
         } else {
             color = [NSColor blackColor];
@@ -382,7 +382,7 @@
     //    nickSize=[layoutManager usedRectForTextContainer:textContainer].size;
     
     /* host column */
-    if (prefs.showhostname_in_userlist) {
+    if (prefs.hex_gui_ulist_show_hosts) {
         dataCell = [columns[2] dataCell];
         [dataCell setObjectValue: host];
         hostSize = [dataCell cellSize];
@@ -560,7 +560,7 @@ static NSImage *emptyBulletImage;
     char buf[128];
     
     struct popup *p = [(UserlistButton *)sender popup];
-    auto_insert (buf, sizeof (buf), p->cmd, 0, 0, "", "", "", "", "", "", sess->channel);
+    auto_insert (buf, sizeof (buf), p->cmd, 0, 0, "", "", "", "", "", "", sess->channel, sess->channel);
     handle_command (sess, buf, TRUE);
 }
 
@@ -648,7 +648,7 @@ static NSImage *emptyBulletImage;
 }
 
 - (void)adjustSplitBar {
-    if (sess->type != SESS_CHANNEL || prefs.hideuserlist) {
+    if (sess->type != SESS_CHANNEL || prefs.hex_gui_ulist_hide) {
         [userlistSplitView setSplitPosition:1];
     } else if (prefs.xa_paned_pos > 0) {
         [userlistSplitView setSplitPosition:prefs.xa_paned_pos];
@@ -665,11 +665,11 @@ static NSImage *emptyBulletImage;
 
     NSColor *foregroundColor = [p getColor:XAColorForeground];
     NSColor *backgroundColor = [p getColor:XAColorBackground];
-    if (prefs.style_inputbox) {
+    if (prefs.hex_gui_input_style) {
         inputTextField.font = [[AquaChat sharedAquaChat] font];
         [inputTextField sizeToFit];
         nickTextField.font = [[AquaChat sharedAquaChat] font];
-        if (prefs.tab_layout == 2) {
+        if (prefs.hex_gui_tab_layout == 2) {
             [inputContainerView setWantsLayer:YES];
             CGColorRef bgcolor = CGColorCreateGenericRGB(backgroundColor.redComponent, backgroundColor.greenComponent, backgroundColor.blueComponent, backgroundColor.alphaComponent);
             [inputContainerView.layer setBackgroundColor:bgcolor];
@@ -707,7 +707,7 @@ static NSImage *emptyBulletImage;
 
     [[AquaChat sharedAquaChat] toggleAwayToValue:sess->server->is_away];
 
-    if (prefs.style_namelistgad) {
+    if (prefs.hex_gui_ulist_style) {
         // bg only
         [userlistTableView setBackgroundColor:backgroundColor];
 
@@ -734,19 +734,19 @@ static NSImage *emptyBulletImage;
     }
     
     ColorPalette *palette = [[AquaChat sharedAquaChat] palette];
-    if (prefs.background && strlen(prefs.background) > 0) {
+    if (prefs.hex_text_background && strlen(prefs.hex_text_background) > 0) {
         palette = [[palette copy] autorelease];
-        NSImage *image = [[NSImage alloc] initWithContentsOfFile:@(prefs.background)];
+        NSImage *image = [[NSImage alloc] initWithContentsOfFile:@(prefs.hex_text_background)];
         [palette setColor:XAColorBackground color:[NSColor colorWithPatternImage:image]];
         [image release];
     }
     [chatTextView setPalette:palette];
     
-    [buttonBoxView setHidden:!prefs.userlistbuttons];
+    [buttonBoxView setHidden:!prefs.hex_gui_ulist_buttons];
     [self setupUserlistButtons];
     
     SEL setupModeButtons = @selector(cleanHeaderBoxView);
-    if (prefs.chanmodebuttons)
+    if (prefs.hex_gui_mode_buttons)
     {
         switch (sess->type) {
             case SESS_CHANNEL: setupModeButtons = @selector(setupChannelModeButtons); break;
@@ -825,7 +825,7 @@ static NSImage *emptyBulletImage;
 
 - (void) awakeFromNib
 {
-    [self.chatView setFrameSize:NSMakeSize (prefs.mainwindow_width, prefs.mainwindow_height)];
+    [self.chatView setFrameSize:NSMakeSize (prefs.hex_gui_win_width, prefs.hex_gui_win_height)];
     [chatTextView setFrame:[chatScrollView documentVisibleRect]];
     
     [headerBoxView layoutNow];
@@ -859,7 +859,7 @@ static NSImage *emptyBulletImage;
     
     //[inputTextField registerForDraggedTypes:[NSArray arrayWithObject:NSStringPboardType]];
     
-    if (prefs.showhostname_in_userlist)
+    if (prefs.hex_gui_ulist_show_hosts)
     {
         NSTableColumn *c = [[NSTableColumn alloc] initWithIdentifier:@""];
         [c setEditable:false];
@@ -876,7 +876,7 @@ static NSImage *emptyBulletImage;
     NSTableColumn *col_one  = cols[1];
     [col_one setDataCell:[[[NSTextFieldCell alloc] init] autorelease]];
     [[col_one dataCell] setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
-    if (prefs.showhostname_in_userlist)
+    if (prefs.hex_gui_ulist_show_hosts)
     {
         NSTableColumn *col_two = cols[2];
         [col_two setDataCell:[[[NSTextFieldCell alloc] init] autorelease]];
@@ -903,17 +903,14 @@ static NSImage *emptyBulletImage;
     [self setNick];
     [self setTitle];
     [self setNonchannel:NO];
-    
-    if (prefs.gui_tweaks & 2)
-    {
-        [nickTextField setHidden:YES];
-        [myOpOrVoiceIconImageView setHidden:YES];
+
+    if (!prefs.hex_gui_input_nick) {
+        nickTextField.hidden = YES;
     }
-    if (prefs.gui_tweaks & 128)
-    {
-        [sessMenuButton setHidden:YES];
+    if (!prefs.hex_gui_input_icon) {
+        myOpOrVoiceIconImageView.hidden = YES;
     }
-    
+
     if (sess->type == SESS_DIALOG)
         [self setChannel];
     else
@@ -922,15 +919,15 @@ static NSImage *emptyBulletImage;
     
     if (sess->type == SESS_DIALOG)
     {
-        if (prefs.privmsgtab)
-            [self.chatView becomeTabAndShow:prefs.newtabstofront];
+        if (prefs.hex_gui_tab_dialogs)
+            [self.chatView becomeTabAndShow:prefs.hex_gui_tab_newtofront];
         else
             [self.chatView becomeWindowAndShow:true];
     }
     else
     {
-        if (prefs.tabchannels)
-            [self.chatView becomeTabAndShow:prefs.newtabstofront];
+        if (prefs.hex_gui_tab_chans)
+            [self.chatView becomeTabAndShow:prefs.hex_gui_tab_newtofront];
         else
             [self.chatView becomeWindowAndShow:true];
     }
@@ -1032,14 +1029,14 @@ static NSImage *emptyBulletImage;
 
 - (void) doDoubleclick:(id)sender
 {
-    if (prefs.doubleclickuser [0])
+    if (prefs.hex_gui_ulist_doubleclick [0])
     {
         NSInteger row = [sender selectedRow];
         if (row >= 0)
         {
             ChannelUser *u = (ChannelUser *) users[row];
             struct User *user = u->user;
-            nick_command_parse (sess, prefs.doubleclickuser, user->nick, user->nick);
+            nick_command_parse (sess, prefs.hex_gui_ulist_doubleclick, user->nick, user->nick);
         }
     }
 }
@@ -1050,9 +1047,9 @@ static NSImage *emptyBulletImage;
     
     if (sess->waitchannel[0]) {
         NSMutableString *s2 = [NSMutableString stringWithUTF8String:sess->waitchannel];
-        if (prefs.truncchans > 2 && [s2 length] > prefs.truncchans)
+        if (prefs.hex_gui_tab_trunc > 2 && [s2 length] > prefs.hex_gui_tab_trunc)
         {
-            NSUInteger start = prefs.truncchans - 4;
+            NSUInteger start = prefs.hex_gui_tab_trunc - 4;
             NSUInteger len = [s2 length] - start;
             [s2 replaceCharactersInRange:NSMakeRange(start, len) withString:@".."];
         }
@@ -1103,8 +1100,8 @@ static NSImage *emptyBulletImage;
     NSWindow *window = resizeNotification.object;
     NSRect windowRectangle = window.frame;
     
-    prefs.mainwindow_width  = windowRectangle.size.width;
-    prefs.mainwindow_height = windowRectangle.size.height;
+    prefs.hex_gui_win_width  = windowRectangle.size.width;
+    prefs.hex_gui_win_height = windowRectangle.size.height;
 }
 
 /*
@@ -1116,8 +1113,8 @@ static NSImage *emptyBulletImage;
     NSWindow *window = moveNotification.object;
     NSRect windowRectangle = window.frame;
     
-    prefs.mainwindow_top  = windowRectangle.origin.y;
-    prefs.mainwindow_left = windowRectangle.origin.x;
+    prefs.hex_gui_win_top  = windowRectangle.origin.y;
+    prefs.hex_gui_win_left = windowRectangle.origin.x;
 }
 
 - (void) windowDidEnterFullScreen:(NSNotification *) notification
@@ -1316,9 +1313,9 @@ static NSImage *emptyBulletImage;
 {
     NSMutableString *channelString = [NSMutableString stringWithUTF8String:sess->channel];
     
-    if (prefs.truncchans && [channelString length] > prefs.truncchans)
+    if (prefs.hex_gui_tab_trunc && [channelString length] > prefs.hex_gui_tab_trunc)
     {
-        NSUInteger start = prefs.truncchans - 2;
+        NSUInteger start = prefs.hex_gui_tab_trunc - 2;
         NSUInteger len = [channelString length] - start;
         [channelString replaceCharactersInRange:NSMakeRange (start, len) withString:@".."];
     }
@@ -1418,14 +1415,14 @@ static NSImage *emptyBulletImage;
     
     for ( ChannelUser *user in users ) {
         if (user->nickSize.width > maxNickWidth) maxNickWidth = user->nickSize.width;
-        if ((prefs.showhostname_in_userlist) && (user->hostSize.width > maxHostWidth)) maxHostWidth = user->hostSize.width;
+        if ((prefs.hex_gui_ulist_show_hosts) && (user->hostSize.width > maxHostWidth)) maxHostWidth = user->hostSize.width;
         if (user->nickSize.height > maxRowHeight) maxRowHeight = user->nickSize.height;
     }
     
     NSTableColumn *column = [userlistTableView tableColumns][1];
     [column sizeToFit];
     if (maxNickWidth != [column width]) [column setWidth: maxNickWidth];
-    if (prefs.showhostname_in_userlist) {
+    if (prefs.hex_gui_ulist_show_hosts) {
         column = [userlistTableView tableColumns][2];
         if (maxHostWidth != [column width]) [column setWidth: maxHostWidth];
     }
@@ -1443,7 +1440,7 @@ static NSImage *emptyBulletImage;
         [column setWidth: maxNickWidth];
     }
     /* host column */
-    if (prefs.showhostname_in_userlist) {
+    if (prefs.hex_gui_ulist_show_hosts) {
         column = columns[2];
         CGFloat width = user->hostSize.width;
         if (width > maxHostWidth) {
@@ -1464,7 +1461,7 @@ static NSImage *emptyBulletImage;
     /* nickname column */
     if (user->nickSize.width == maxNickWidth) [self recalculateUserTableLayout];
     /* host column */
-    else if ((prefs.showhostname_in_userlist) && (user->hostSize.width == maxHostWidth)) [self recalculateUserTableLayout];
+    else if ((prefs.hex_gui_ulist_show_hosts) && (user->hostSize.width == maxHostWidth)) [self recalculateUserTableLayout];
     /* row height */
     else {
         CGFloat height = (user->nickSize.height > user->hostSize.height ? user->nickSize.height: user->hostSize.height);
@@ -1487,7 +1484,7 @@ static NSImage *emptyBulletImage;
         [column setWidth: width];
     }
     /* host column */
-    if (prefs.showhostname_in_userlist) {
+    if (prefs.hex_gui_ulist_show_hosts) {
         column = columns[2];
         CGFloat width = user->hostSize.width;
         if ((width < oldHostSize.width) && (oldHostSize.width == maxHostWidth)) {
@@ -1651,22 +1648,23 @@ static NSImage *emptyBulletImage;
     return (id)self.view;
 }
 
-- (void) progressbarStart
-{
-    if (!prefs.gui_tweaks & 2)
-    {
-        [progressIndicator startAnimation:self];
-        [progressIndicator setHidden:NO];
-    }
+- (void) progressbarStart {
+// HEXDO:
+//    if (!prefs.gui_tweaks & 2)
+//    {
+//        [progressIndicator startAnimation:self];
+//        [progressIndicator setHidden:NO];
+//    }
 }
 
 - (void) progressbarEnd
 {
-    if (!prefs.gui_tweaks & 2)
-    {
-        [progressIndicator setHidden:YES];
-        [progressIndicator stopAnimation:self];
-    }
+// HEXDO:
+//    if (!prefs.gui_tweaks & 2)
+//    {
+//        [progressIndicator setHidden:YES];
+//        [progressIndicator stopAnimation:self];
+//    }
 }
 
 // Used only for updating menus
@@ -1846,7 +1844,7 @@ static NSImage *emptyBulletImage;
     
     NSArray *files = [pboard propertyListForType:NSFilenamesPboardType];
     for ( id file in files ) {
-        dcc_send (sess, (char *)[nick UTF8String], (char *)[file UTF8String], prefs.dcc_max_send_cps, 0);
+        dcc_send (sess, (char *)[nick UTF8String], (char *)[file UTF8String], prefs.hex_dcc_max_send_cps, 0);
     }
     return YES;
 }
@@ -2149,7 +2147,7 @@ static NSImage *emptyBulletImage;
     if (completionTextRange.location == 0)
     {
         // If the first char is the command char (/), it's a command.
-        if ([textFieldString characterAtIndex:0] == prefs.cmdchar[0])
+        if ([textFieldString characterAtIndex:0] == prefs.hex_input_command_char[0])
         {
             // Don't include the command char (/) in the prefix to complete.
             completionTextRange.location++;
@@ -2192,8 +2190,8 @@ static NSImage *emptyBulletImage;
         NSMutableString *rightMutableString = [NSMutableString stringWithString:[first substringToIndex:shortestPrefix]];
         if ([matchArray count] == 1)
         {
-            if (shouldAddSuffix && prefs.nick_suffix[0]) {
-                [rightMutableString appendString:@(prefs.nick_suffix)]; 
+            if (shouldAddSuffix && prefs.hex_completion_suffix[0]) {
+                [rightMutableString appendString:@(prefs.hex_completion_suffix)];
             }
             [rightMutableString appendString:@" "];
         }
@@ -2218,8 +2216,8 @@ static NSImage *emptyBulletImage;
         NSMutableString *rightMutableString = [NSMutableString stringWithString:rightString];
         
         // Tack on the nick suffix if set.
-        if (shouldAddSuffix && prefs.nick_suffix[0]) {
-            [rightMutableString appendString:@(prefs.nick_suffix)]; 
+        if (shouldAddSuffix && prefs.hex_completion_suffix[0]) {
+            [rightMutableString appendString:@(prefs.hex_completion_suffix)];
         }
         [rightMutableString appendString:@" "];
         
@@ -2241,7 +2239,7 @@ static NSImage *emptyBulletImage;
 
 - (BOOL)control:(NSControl *)control textShouldBeginEditing:(NSText *)fieldEditor {
     NSTextView *textView = (NSTextView *)fieldEditor;
-    [textView setContinuousSpellCheckingEnabled:prefs.gui_input_spell];
+    [textView setContinuousSpellCheckingEnabled:prefs.hex_gui_input_spell];
     [textView setGrammarCheckingEnabled:prefs.xa_input_grammar];
     [textView setAutomaticSpellingCorrectionEnabled:prefs.xa_input_autocorrect];
     return YES;
@@ -2249,7 +2247,7 @@ static NSImage *emptyBulletImage;
 
 - (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor {
     NSTextView *textView = (NSTextView *)fieldEditor;
-    prefs.gui_input_spell = [textView isContinuousSpellCheckingEnabled];
+    prefs.hex_gui_input_spell = [textView isContinuousSpellCheckingEnabled];
     prefs.xa_input_grammar = [textView isGrammarCheckingEnabled];
     prefs.xa_input_autocorrect = [textView isAutomaticSpellingCorrectionEnabled];
     return YES;

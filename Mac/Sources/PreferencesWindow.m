@@ -192,116 +192,116 @@ extern struct XATextEventItem XATextEvents[];
     struct PreferenceItem items [] =
     {
         // Text box
-        { textBoxFontTextField, &prefs.font_normal, MYPREF_STRING },
+        { textBoxFontTextField, &prefs.hex_text_font_main, MYPREF_STRING },
         { lineHeightTextField, &prefs.xa_line_height, MYPREF_INT },
-        { backgroundImageTextField, &prefs.background, MYPREF_STRING },
-        { maxLinesTextField, &prefs.max_lines, MYPREF_INT },
-        { scrollbackStripColorCheckBox, &prefs.text_replay_strip_color, MYPREF_INT },
-        { coloredNicksCheckBox, &prefs.colorednicks, MYPREF_INT },
-        { indentNicksCheckBox, &prefs.indent_nicks, MYPREF_INT },
-        { showSeparatorCheckBox, &prefs.show_separator, MYPREF_INT },
-        { stripMircColorCheckBox, &prefs.stripcolor, MYPREF_INT },
-        { transparentCheckBox, &prefs.transparent, MYPREF_INT },
-        { transparentSlider, &prefs.tint_red, MYPREF_INT },
-        { timeStampCheckBox, &prefs.timestamp, MYPREF_INT },
-        { timeStampFormatTextField, &prefs.stamp_format, MYPREF_STRING },
+        { backgroundImageTextField, &prefs.hex_text_background, MYPREF_STRING },
+        { maxLinesTextField, &prefs.hex_text_max_lines, MYPREF_INT },
+        { scrollbackStripColorCheckBox, &prefs.hex_text_stripcolor_replay, MYPREF_INT },
+        { coloredNicksCheckBox, &prefs.hex_text_color_nicks, MYPREF_INT },
+        { indentNicksCheckBox, &prefs.hex_text_indent, MYPREF_INT },
+        { showSeparatorCheckBox, &prefs.hex_text_show_sep, MYPREF_INT },
+        { stripMircColorCheckBox, &prefs.hex_text_stripcolor_msg, MYPREF_INT },
+        { transparentCheckBox, &prefs.hex_text_transparent, MYPREF_INT },
+        { transparentSlider, &prefs.hex_gui_transparency, MYPREF_INT },
+        { timeStampCheckBox, &prefs.hex_stamp_text, MYPREF_INT },
+        { timeStampFormatTextField, &prefs.hex_stamp_text_format, MYPREF_STRING },
         // Input box
-        { inputBoxUseTextBoxFontCheckBox, &prefs.style_inputbox, MYPREF_INT },
-        { userlistUseTextBoxFontCheckBox, &prefs.style_namelistgad, MYPREF_INT },
-        { spellCheckingCheckBox, &prefs.gui_input_spell, MYPREF_INT },
+        { inputBoxUseTextBoxFontCheckBox, &prefs.hex_gui_input_style, MYPREF_INT },
+        { userlistUseTextBoxFontCheckBox, &prefs.hex_gui_ulist_style, MYPREF_INT },
+        { spellCheckingCheckBox, &prefs.hex_gui_input_spell, MYPREF_INT },
         { grammerCheckingCheckBox, &prefs.xa_input_grammar, MYPREF_INT },
         { autocorrectionCheckBox, &prefs.xa_input_autocorrect, MYPREF_INT },
-        { interpretPercentAsciiCheckBox, &prefs.perc_ascii, MYPREF_INT },
-        { interpretPercentColorCheckBox, &prefs.perc_color, MYPREF_INT },
+        { interpretPercentAsciiCheckBox, &prefs.hex_input_perc_ascii, MYPREF_INT },
+        { interpretPercentColorCheckBox, &prefs.hex_input_perc_color, MYPREF_INT },
         { tabCompletionCheckBox, &prefs.xa_tab_completion, MYPREF_INT },
-        { suffixCompletionCheckBox, &prefs.nickcompletion, MYPREF_INT },
-        { suffixCompletionTextField, &prefs.nick_suffix, MYPREF_STRING },
-        { nickCompletionSortPopUp, &prefs.completion_sort, MYPREF_MENU },
+        { suffixCompletionCheckBox, &prefs.hex_completion_auto, MYPREF_INT },
+        { suffixCompletionTextField, &prefs.hex_completion_suffix, MYPREF_STRING },
+        { nickCompletionSortPopUp, &prefs.hex_completion_sort, MYPREF_MENU },
         { scrollingCompletionCheckBox, &prefs.xa_scrolling_completion, MYPREF_INT },
         // User list
-        { hideUserlistCheckBox, &prefs.hideuserlist, MYPREF_INT },
-        { showUserlistButtonsCheckBox, &prefs.userlistbuttons, MYPREF_INT },
-        { showHostnameCheckBox, &prefs.showhostname_in_userlist, MYPREF_INT },
-        { userlistSortPopUp, &prefs.userlist_sort, MYPREF_MENU },
-        { awayTrackCheckBox, &prefs.away_track, MYPREF_INT },
-        { awayMaxSizeTextField, &prefs.away_size_max, MYPREF_INT },
-        { doubleClickCommandTextField, &prefs.doubleclickuser, MYPREF_STRING },
+        { hideUserlistCheckBox, &prefs.hex_gui_ulist_hide, MYPREF_INT },
+        { showUserlistButtonsCheckBox, &prefs.hex_gui_ulist_buttons, MYPREF_INT },
+        { showHostnameCheckBox, &prefs.hex_gui_ulist_show_hosts, MYPREF_INT },
+        { userlistSortPopUp, &prefs.hex_gui_ulist_sort, MYPREF_MENU },
+        { awayTrackCheckBox, &prefs.hex_away_track, MYPREF_INT },
+        { awayMaxSizeTextField, &prefs.hex_away_size_max, MYPREF_INT },
+        { doubleClickCommandTextField, &prefs.hex_gui_ulist_doubleclick, MYPREF_STRING },
         // Channel switcher
-        { useServerTabCheckBox, &prefs.use_server_tab, MYPREF_INT },
-        { useNoticesTabCheckBox, &prefs.notices_tabs, MYPREF_INT },
-        { autoDialogCheckBox, &prefs.autodialog, MYPREF_INT },
-        { newTabsToFrontCheckBox, &prefs.newtabstofront, MYPREF_INT },
+        { useServerTabCheckBox, &prefs.hex_gui_tab_server, MYPREF_INT },
+        { useNoticesTabCheckBox, &prefs.hex_gui_tab_server, MYPREF_INT },
+        { autoDialogCheckBox, &prefs.hex_gui_autoopen_dialog, MYPREF_INT },
+        { newTabsToFrontCheckBox, &prefs.hex_gui_tab_newtofront, MYPREF_INT },
         { hideTabCloseButtonsCheckBox, &prefs.xa_hide_tab_close_buttons, MYPREF_INT },
-        { smallerTextTabCheckBox, &prefs.tab_small, MYPREF_INT },
-        { tabPositionPopUp, &prefs._tabs_position, MYPREF_MENU },
-        { shortenTabLabelLengthTextField, &prefs.truncchans, MYPREF_INT },
-        { openChannelsInPopUp, &prefs.tabchannels, MYPREF_MENU },
-        { openDialogsInPopUp, &prefs.privmsgtab, MYPREF_MENU },
-        { openUtilitiesInPopUp, &prefs.windows_as_tabs, MYPREF_MENU },
+        { smallerTextTabCheckBox, &prefs.hex_gui_tab_small, MYPREF_INT },
+        { tabPositionPopUp, &prefs.hex_gui_tab_pos, MYPREF_MENU },
+        { shortenTabLabelLengthTextField, &prefs.hex_gui_tab_trunc, MYPREF_INT },
+        { openChannelsInPopUp, &prefs.hex_gui_tab_chans, MYPREF_MENU },
+        { openDialogsInPopUp, &prefs.hex_gui_tab_dialogs, MYPREF_MENU },
+        { openUtilitiesInPopUp, &prefs.hex_gui_tab_utils, MYPREF_MENU },
         // Other
-        { showChannelModeButtonsCheckBox, &prefs.chanmodebuttons, MYPREF_INT },
+        { showChannelModeButtonsCheckBox, &prefs.hex_gui_ulist_hide, MYPREF_INT },
         { defaultCharsetTextField, &prefs.xa_default_charset, MYPREF_STRING },
         { urlLinkCommandTextField, &prefs.xa_urlcommand, MYPREF_STRING },
         { nickLinkCommandTextField, &prefs.xa_nickcommand, MYPREF_STRING },
         { channelLinkCommandTextField, &prefs.xa_channelcommand, MYPREF_STRING },
         // Colors
         // Alerts
-        { beepOnChannelCheckBox, &prefs.input_beep_chans, MYPREF_INT },
-        { beepOnPrivateCheckBox, &prefs.input_beep_priv, MYPREF_INT },
-        { beepOnHighlightedCheckBox, &prefs.input_beep_hilight, MYPREF_INT },
-        { extraHighlightWordsTextField, &prefs.irc_extra_hilight, MYPREF_STRING },
-        { noHighlightWordsTextField, &prefs.irc_no_hilight, MYPREF_STRING },
-        { nickHighlightWordsTextField, &prefs.irc_nick_hilight, MYPREF_STRING },
+        { beepOnChannelCheckBox, &prefs.xa_input_beep_chans, MYPREF_INT },
+        { beepOnPrivateCheckBox, &prefs.xa_input_beep_priv, MYPREF_INT },
+        { beepOnHighlightedCheckBox, &prefs.xa_input_beep_hilight, MYPREF_INT },
+        { extraHighlightWordsTextField, &prefs.hex_irc_extra_hilight, MYPREF_STRING },
+        { noHighlightWordsTextField, &prefs.hex_irc_no_hilight, MYPREF_STRING },
+        { nickHighlightWordsTextField, &prefs.hex_irc_nick_hilight, MYPREF_STRING },
         // Generals
-        { quitMessageTextField, &prefs.quitreason, MYPREF_STRING },
-        { partMessageTextField, &prefs.partreason, MYPREF_STRING },
-        { awayMessageTextField, &prefs.awayreason, MYPREF_STRING },
+        { quitMessageTextField, &prefs.hex_irc_quit_reason, MYPREF_STRING },
+        { partMessageTextField, &prefs.hex_irc_part_reason, MYPREF_STRING },
+        { awayMessageTextField, &prefs.hex_away_reason, MYPREF_STRING },
         { sleepMessageTextField, &prefs.xa_sleepmessage, MYPREF_STRING },
-        { showAwayMessageCheckBox, &prefs.show_away_message, MYPREF_INT },
-        { autoUnmarkAwayCheckBox, &prefs.auto_unmark_away, MYPREF_INT },
-        { showAwayOnceCheckBox, &prefs.show_away_once, MYPREF_INT },
+        { showAwayMessageCheckBox, &prefs.hex_away_track, MYPREF_INT },
+        { autoUnmarkAwayCheckBox, &prefs.hex_away_auto_unmark, MYPREF_INT },
+        { showAwayOnceCheckBox, &prefs.hex_away_show_once, MYPREF_INT },
         { partOnSleepCheckBox, &prefs.xa_partonsleep, MYPREF_INT },
         { autoAwayCheckBox, &prefs.xa_auto_away, MYPREF_INT },
         { autoAwayMinutesTextField, &prefs.xa_auto_away_delay, MYPREF_INT },
-        { autoRejoinCheckBox, &prefs.autorejoin, MYPREF_INT },
-        { whoisOnNotifyCheckBox, &prefs.whois_on_notifyonline, MYPREF_INT },
-        { rawModesCheckBox, &prefs.raw_modes, MYPREF_INT },
-        { hideJoinPartCheckBox, &prefs.confmode, MYPREF_INT },
+        { autoRejoinCheckBox, &prefs.hex_irc_auto_rejoin, MYPREF_INT },
+        { whoisOnNotifyCheckBox, &prefs.hex_notify_whois_online, MYPREF_INT },
+        { rawModesCheckBox, &prefs.hex_irc_raw_modes, MYPREF_INT },
+        { hideJoinPartCheckBox, &prefs.hex_irc_conf_mode, MYPREF_INT },
         // Loggings
-        { displayPreviousScrollbackCheckBox, &prefs.text_replay, MYPREF_INT },
-        { enableLoggingCheckBox, &prefs.logging, MYPREF_INT },
-        { logFilenameMaskTextField, &prefs.logmask, MYPREF_STRING },
-        { timestampsInLogsCheckBox, &prefs.timestamp_logs, MYPREF_INT },
-        { timestampInLogsFormatTextField, &prefs.timestamp_log_format, MYPREF_STRING },
+        { displayPreviousScrollbackCheckBox, &prefs.hex_text_replay, MYPREF_INT },
+        { enableLoggingCheckBox, &prefs.hex_irc_logging, MYPREF_INT },
+        { logFilenameMaskTextField, &prefs.hex_irc_logmask, MYPREF_STRING },
+        { timestampsInLogsCheckBox, &prefs.hex_stamp_log, MYPREF_INT },
+        { timestampInLogsFormatTextField, &prefs.hex_stamp_log_format, MYPREF_STRING },
         // Sound
         { bounceCountinuouslyCheckBox, &prefs.xa_bounce_continuously, MYPREF_INT },
         // Network setup
-        { bindAddressTextField, &prefs.hostname, MYPREF_STRING },
-        { proxyPortTextField, &prefs.proxy_port, MYPREF_INT },
-        { proxyHostTextField, &prefs.proxy_host, MYPREF_STRING },
-        { proxyTypePopUp, &prefs.proxy_type, MYPREF_MENU },
-        { proxyUsePopup, &prefs.proxy_use, MYPREF_MENU },
-        { proxyAuthenicationCheckBox, &prefs.proxy_auth, MYPREF_INT },
-        { proxyUsernameTextField, &prefs.proxy_user, MYPREF_STRING },
-        { proxyUsernameTextField, &prefs.proxy_pass, MYPREF_STRING },
-        { autoReconnectDelayTextField, &prefs.recon_delay, MYPREF_INT },
-        { autoReconnectCheckBox, &prefs.autoreconnect, MYPREF_INT },
-        { neverGiveUpReconnectionCheckBox, &prefs.autoreconnectonfail, MYPREF_INT },
-        { identdCheckBox, &prefs.identd, MYPREF_INT },
+        { bindAddressTextField, &prefs.hex_net_bind_host, MYPREF_STRING },
+        { proxyPortTextField, &prefs.hex_net_proxy_port, MYPREF_INT },
+        { proxyHostTextField, &prefs.hex_net_proxy_host, MYPREF_STRING },
+        { proxyTypePopUp, &prefs.hex_net_proxy_type, MYPREF_MENU },
+        { proxyUsePopup, &prefs.hex_net_proxy_use, MYPREF_MENU },
+        { proxyAuthenicationCheckBox, &prefs.hex_net_proxy_auth, MYPREF_INT },
+        { proxyUsernameTextField, &prefs.hex_net_proxy_user, MYPREF_STRING },
+        { proxyUsernameTextField, &prefs.hex_net_proxy_pass, MYPREF_STRING },
+        { autoReconnectDelayTextField, &prefs.hex_net_reconnect_delay, MYPREF_INT },
+        { autoReconnectCheckBox, &prefs.hex_net_auto_reconnect, MYPREF_INT },
+        { neverGiveUpReconnectionCheckBox, &prefs.hex_net_auto_reconnectonfail, MYPREF_INT },
+        { identdCheckBox, &prefs.hex_identd, MYPREF_INT },
         // File transfers
-        { autoAcceptDccPopUp, &prefs.autodccsend, MYPREF_MENU },
-        { downloadsDirectoryTextField, &prefs.dccdir, MYPREF_STRING },
-        { completedDownloadsDirectoryTextField, &prefs.dcc_completed_dir, MYPREF_STRING },
-        { downloadWithNickCheckBox, &prefs.dccwithnick, MYPREF_INT },
-        { downloadSpaceToUnderscoreCheckBox, &prefs.dcc_send_fillspaces, MYPREF_INT },
-        { ipFromServerCheckBox, &prefs.ip_from_server, MYPREF_INT },
-        { dccAddressTextField, &prefs.dcc_ip_str, MYPREF_STRING },
-        { dccFirstSendPortTextField, &prefs.first_dcc_send_port, MYPREF_INT },
-        { dccLastSendPortTextField, &prefs.last_dcc_send_port, MYPREF_INT },
-        { autoAcceptDccChatPopUp, &prefs.autodccchat, MYPREF_MENU },
-        { autoOpenDccChatCheckBox, &prefs.autoopendccchatwindow, MYPREF_INT },
-        { autoOpenDccReceiveCheckBox, &prefs.autoopendccrecvwindow, MYPREF_INT },
-        { autoOpenDccSendCheckBox, &prefs.autoopendccsendwindow, MYPREF_INT },
+        { autoAcceptDccPopUp, &prefs.hex_dcc_auto_recv, MYPREF_MENU },
+        { downloadsDirectoryTextField, &prefs.hex_dcc_dir, MYPREF_STRING },
+        { completedDownloadsDirectoryTextField, &prefs.hex_dcc_completed_dir, MYPREF_STRING },
+        { downloadWithNickCheckBox, &prefs.hex_dcc_save_nick, MYPREF_INT },
+        { downloadSpaceToUnderscoreCheckBox, &prefs.hex_dcc_send_fillspaces, MYPREF_INT },
+        { ipFromServerCheckBox, &prefs.hex_dcc_ip_from_server, MYPREF_INT },
+        { dccAddressTextField, &prefs.dcc_ip, MYPREF_STRING },
+        { dccFirstSendPortTextField, &prefs.hex_dcc_port_first, MYPREF_INT },
+        { dccLastSendPortTextField, &prefs.hex_dcc_port_last, MYPREF_INT },
+        { autoAcceptDccChatPopUp, &prefs.hex_dcc_auto_chat, MYPREF_MENU },
+        { autoOpenDccChatCheckBox, &prefs.hex_gui_autoopen_chat, MYPREF_INT },
+        { autoOpenDccReceiveCheckBox, &prefs.hex_gui_autoopen_recv, MYPREF_INT },
+        { autoOpenDccSendCheckBox, &prefs.hex_gui_autoopen_send, MYPREF_INT },
     };
     
     // I was using #assert totally wrong.. this is the next best thing
@@ -382,8 +382,8 @@ extern struct XATextEventItem XATextEvents[];
 - (void) changeFont:(id) fontManager
 {
     NSFont *font = [fontManager convertFont:[[AquaChat sharedAquaChat] font]];
-    sprintf (prefs.font_normal, "%s %.1f", [[font fontName] UTF8String], [font pointSize]);
-    [textBoxFontTextField setStringValue:@(prefs.font_normal)];
+    sprintf (prefs.hex_text_font_main, "%s %.1f", [[font fontName] UTF8String], [font pointSize]);
+    [textBoxFontTextField setStringValue:@(prefs.hex_text_font_main)];
 }
 
 #pragma mark IBActions
@@ -424,7 +424,7 @@ extern struct XATextEventItem XATextEvents[];
         }
     }
     
-    prefs.tab_layout = (int)[switcherTypePopUp indexOfSelectedItem] * 2; // 1 is reserved
+    prefs.hex_gui_tab_layout = (int)[switcherTypePopUp indexOfSelectedItem] * 2; // 1 is reserved
     
     ColorPalette *palette = [[AquaChat sharedAquaChat] palette];
     for (NSUInteger i = 0; i < [palette numberOfColors]; i++) {
@@ -441,7 +441,7 @@ extern struct XATextEventItem XATextEvents[];
 
 - (void) performCancel:(id)sender
 {
-    [TabOrWindowView setTransparency:prefs.transparent ? prefs.tint_red : 255];
+    [TabOrWindowView setTransparency:prefs.hex_text_transparent ? prefs.hex_gui_transparency : 255];
     [self close];
 }
 
@@ -658,7 +658,7 @@ extern struct XATextEventItem XATextEvents[];
         }
     }
     
-    [switcherTypePopUp selectItemAtIndex:prefs.tab_layout/2];
+    [switcherTypePopUp selectItemAtIndex:prefs.hex_gui_tab_layout/2];
     
     ColorPalette *palette = [[AquaChat sharedAquaChat] palette];
     

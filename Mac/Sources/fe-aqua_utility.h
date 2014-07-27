@@ -22,15 +22,15 @@
     SGFileDescriptor *wf;
     SGFileDescriptor *ef;
     
-    input_callback  func;
-    void            *data;
+    void *func;
+    void *data;
     
     int tag;
 }
 
 @property (nonatomic,readonly) int tag;
 
-+ (id)inputWithSocketFD:(int)socket flags:(int)flags callback:(input_callback)callback data:(void *)data;
++ (id)inputWithSocketFD:(int)socket flags:(int)flags callback:(void *)callback data:(void *)data;
 
 + (id)inputForTag:(long)tag;
 - (void)disable;

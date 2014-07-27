@@ -17,7 +17,7 @@
 char *get_xdir_fs(void) {
     static NSString *applicationSupportDirectory = nil;
     if (applicationSupportDirectory == nil) {
-        applicationSupportDirectory = [[[XAFileUtil findSupportFolderFor:@PRODUCT_NAME] path] retain];
+        applicationSupportDirectory = [[[XAFileUtil findSupportFolderFor:@PRODUCT_NAME] path] copy];
     }
     return (char *)[applicationSupportDirectory UTF8String];
 }

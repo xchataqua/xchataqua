@@ -33,7 +33,7 @@ static int InputThingSequence = 1;
     }
 }
 
-+ (id)inputWithSocketFD:(int)socket flags:(int)flags callback:(input_callback)callback data:(void *)the_data {
++ (id)inputWithSocketFD:(int)socket flags:(int)flags callback:(void *)callback data:(void *)the_data {
     InputThing *thing = [[InputThing alloc] init];
     
     thing->func = callback;
@@ -86,9 +86,11 @@ static int InputThingSequence = 1;
     [ef disable];
 }
 
+typedef gboolean (*input_callback) (GIOChannel *source, GIOCondition condition, void *user_data);
 - (void)doit:(id)obj
 {
-    func (NULL, 0, data);
+    input_callback func_t = func;
+    func_t (NULL, 0, data);
 }
 
 @end

@@ -123,7 +123,7 @@
 
 - (void) show:(BOOL) and_bring_to_front
 {
-    if (prefs.windows_as_tabs)
+    if (prefs.hex_gui_tab_utils)
         [dccListView becomeTabAndShow:and_bring_to_front];
     else
         [dccListView becomeWindowAndShow:and_bring_to_front];

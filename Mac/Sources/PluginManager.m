@@ -7,10 +7,10 @@
 //
 
 #define PLUGIN_C
-typedef struct session xchat_context;
+typedef struct session hexchat_context;
 
 #include "cfgfiles.h"
-#include "xchat-plugin.h"
+#include "hexchat-plugin.h"
 #include "plugin.h"
 #include "util.h"
 
@@ -26,8 +26,8 @@ extern GSList *plugin_list;
 + (id)pluginWithBundleInfo:(NSDictionary *)infoDictionary filename:(NSString *)filename;
 - (id)initWithFilename:(NSString *)filename;
 + (id)pluginWithFilename:(NSString *)filename;
-- (id)initWithXChatPlugin:(xchat_plugin *)plugin;
-+ (id)pluginWithXChatPlugin:(xchat_plugin *)plugin;
+- (id)initWithXChatPlugin:(hexchat_plugin *)plugin;
++ (id)pluginWithXChatPlugin:(hexchat_plugin *)plugin;
 
 @end
 
@@ -94,7 +94,7 @@ extern GSList *plugin_list;
     return [[[self alloc] initWithFilename:filename] autorelease];
 }
 
-- (id)initWithXChatPlugin:(xchat_plugin *)plugin {
+- (id)initWithXChatPlugin:(hexchat_plugin *)plugin {
     self = [super init];
     if (self != nil) {
         self->_name = [[NSString alloc] initWithUTF8String:plugin->name];
@@ -105,7 +105,7 @@ extern GSList *plugin_list;
     return self;
 }
 
-+ (id)pluginWithXChatPlugin:(xchat_plugin *)plugin {
++ (id)pluginWithXChatPlugin:(hexchat_plugin *)plugin {
     return [[[self alloc] initWithXChatPlugin:plugin] autorelease];
 }
 
@@ -149,7 +149,7 @@ LoadedPluginManager *LoadedPluginManagerSharedObject;
     [self->_items removeAllObjects];
     
     for (GSList *list = plugin_list; list; list = list->next) {
-        xchat_plugin *pl = (xchat_plugin *) list->data;
+        hexchat_plugin *pl = (hexchat_plugin *) list->data;
         if (pl->version && pl->version [0]) {
             [self->_items addObject:[PluginItem pluginWithXChatPlugin:pl]];
         }

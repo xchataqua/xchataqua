@@ -70,7 +70,7 @@ nick_command (struct session * sess, char *cmd)
     /*      gtkutil_get_number ("title", "Number to kill:", shit, "hi");*/
     
     if (*cmd == '!')
-        xchat_exec (cmd + 1);
+        hexchat_exec (cmd + 1);
     else
         handle_command (sess, cmd, TRUE);
 }
@@ -93,10 +93,16 @@ nick_command_parse (struct session *sess, const char *cmd, const char *nick, con
     /* this can't overflow, since popup->cmd is only 256 */
     len = strlen (cmd) + strlen (nick) + strlen (allnick) + 512;
     buf = (char *) malloc (len);
-    
+
+#if USE_HEXCHAT
+    auto_insert (buf, (int)len, cmd, 0, 0, (char *)allnick, sess->channel, "",
+                 server_get_network (sess->server, TRUE), (char*)host,
+                 sess->server->nick, (char *)nick, (char *)nick);
+#else
     auto_insert (buf, (int)len, cmd, 0, 0, (char *)allnick, sess->channel, "",
                  server_get_network (sess->server, TRUE), (char*)host,
                  sess->server->nick, (char *)nick);
+#endif
     
     nick_command (sess, buf);
     

@@ -82,8 +82,8 @@ fe_new_window (struct session *sess, int focus)
     init_plugins_once();
 }
 
-void
-fe_print_text (struct session *sess, const char *text, time_t stamp)
+void fe_print_text (struct session *sess, char *text, time_t stamp,
+					gboolean no_activity)
 {
     NSString *string = @(text);
     if ( string == nil ) return;
@@ -99,7 +99,7 @@ void fe_scrollback_end(struct session *sess) {
 }
 
 void
-fe_timeout_remove (long tag)
+fe_timeout_remove (int tag)
 {
 #if USE_GLIKE_TIMER
     [GLikeTimer removeTimerWithTag:tag];
@@ -108,8 +108,7 @@ fe_timeout_remove (long tag)
 #endif
 }
 
-long
-fe_timeout_add (long interval, void *callback, void *userdata)
+int fe_timeout_add (int interval, void *callback, void *userdata)
 {
 #if USE_GLIKE_TIMER
     return [GLikeTimer addTaggedTimerWithMSInterval:interval callback:callback userData:userdata];
@@ -130,7 +129,7 @@ fe_idle_add (void *func, void *data)
 }
 
 void
-fe_input_remove (long tag)
+fe_input_remove (int tag)
 {
     InputThing *thing = [InputThing inputForTag:tag];
     [thing disable];
@@ -138,7 +137,7 @@ fe_input_remove (long tag)
 }
 
 int
-fe_input_add (int sok, int flags, input_callback func, void *data)
+fe_input_add (int sok, int flags, void *func, void *data)
 {
     InputThing *thing = [InputThing inputWithSocketFD:sok flags:flags callback:func data:data]; 
     return [thing tag];
@@ -168,7 +167,7 @@ static void setupAppSupport ()
     // FIXME: asdir and xcdir will always be identical; so this is bugged.
     // It's literally the same code implementing both.
     NSURL *asdir = [XAFileUtil findSupportFolderFor:@PRODUCT_NAME];
-    NSURL *xcdir = [NSURL fileURLWithPath:@(get_xdir_utf8()) isDirectory:YES];
+    NSURL *xcdir = [NSURL fileURLWithPath:@(get_xdir_fs()) isDirectory:YES];
 
     if ([asdir isEqual:xcdir]) {
         NSError *err;
@@ -306,16 +305,26 @@ fe_args (int pargc, char *pargv[])
     return -1;
 }
 
+void fe_preload() {
+    setlocale (LC_ALL, "");
+#if ENABLE_NLS
+    NSString *localePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/locale"];
+    bindtextdomain (GETTEXT_PACKAGE, [localePath UTF8String]);
+    bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
+    textdomain (GETTEXT_PACKAGE);
+#endif
+}
+
 static void fix_log_files_and_pref ()
 {
     // Check for the change.. maybe some smart user did this already..
-    if ([@(prefs.logmask) hasSuffix:@".txt"])
+    if ([@(prefs.hex_irc_logmask) hasSuffix:@".txt"])
         return;
     
     // If logging is off, fix the pref and log files.
     // It's a little sneaky but is probably right for the vast majority ??
     // Else we probably should ask first.
-    if (prefs.logging && ! [SGAlert confirmWithString:
+    if (prefs.hex_irc_logging && ! [SGAlert confirmWithString:
                             NSLocalizedStringFromTable(@"This version of XChat Azure has spotlight searchable"
                                                        @" log support but I have to change your log filename mask preference and rename your existing logs."
                                                        @"  Do you want me to do that?", @"xchataqua", @"")])
@@ -324,14 +333,14 @@ static void fix_log_files_and_pref ()
     }
     
     // Fix the logmask pref.  Chop off the extension.. no matter what it is.
-    char *last_dot = strrchr (prefs.logmask, '.');
+    char *last_dot = strrchr (prefs.hex_irc_logmask, '.');
     if (last_dot)
         *last_dot = 0;
     // Append .txt.. spotlight will automatically index these files.
-    strcat (prefs.logmask, ".txt");
+    strcat (prefs.hex_irc_logmask, ".txt");
     
     // Rename the existing log files
-    NSString *dir = [NSString stringWithFormat:@"%s/xchatlogs", get_xdir_utf8 ()];
+    NSString *dir = [NSString stringWithFormat:@"%s/xchatlogs", get_xdir_fs ()];
     NSFileManager *fm = [NSFileManager defaultManager];
     NSDirectoryEnumerator *enumerator = [fm enumeratorAtPath:dir];
     
@@ -349,8 +358,8 @@ static void fix_log_files_and_pref ()
             *last_dot = 0;
         strcat (buff, ".txt");
         
-        NSString *old_name = [NSString stringWithFormat:@"%s/xchatlogs/%@", get_xdir_utf8(), fname];
-        NSString *new_name = [NSString stringWithFormat:@"%s/xchatlogs/%s", get_xdir_utf8(), buff];
+        NSString *old_name = [NSString stringWithFormat:@"%s/xchatlogs/%@", get_xdir_fs(), fname];
+        NSString *new_name = [NSString stringWithFormat:@"%s/xchatlogs/%s", get_xdir_fs(), buff];
         
         rename ([old_name fileSystemRepresentation], [new_name fileSystemRepresentation]);
     }
@@ -421,22 +430,23 @@ static void USER_not_enough_parameters_bug ()
     // Remove empty fields in the server list.
     // This code correct a problem that X-Chat Aqua introduced into the server list file.
     // NOTE: Let the memory leak just in case the serverlist is open now
-    
+
     bool found_any = false;
     
     for (GSList *list = network_list; list; list = list->next)
     {
         ircnet *net = (ircnet *) list->data;
-        found_any |= fix_field (&net->command);
-        found_any |= fix_field (&net->autojoin);
+        found_any |= g_slist_length(net->commandlist) > 0;
+        found_any |= g_slist_length(net->favchanlist) > 0;
         found_any |= fix_field (&net->nick);
         found_any |= fix_field (&net->pass);
         found_any |= fix_field (&net->real);
         found_any |= fix_field (&net->user);
     }
     
-    if (found_any)
+    if (found_any) {
         servlist_save();
+    }
 }
 
 void
@@ -521,19 +531,40 @@ fe_get_int (char *msg, int def, void *callback, void *userdata)
 {
     NSString *s = [SGRequest stringByRequestWithTitle:@(msg)
                                          defaultValue:[NSString stringWithFormat:@"%d", def]];
-    
+
     int value = 0;
     int cancel = 1;
-    
+
     if (s)
     {
         value = [s intValue];
         cancel = 0;
     }
-    
+
     void (*cb) (int cancel, int value, void *user_data);
     cb = (void (*) (int cancel, int value, void *user_data)) callback;
-    
+
+    cb (cancel, value, userdata);
+}
+
+void
+fe_get_bool (char *msg, char *prompt, void *callback, void *userdata)
+{
+    NSString *s = [SGRequest stringByRequestWithTitle:[@(msg) stringByAppendingFormat:@": %s", prompt]
+                                         defaultValue:@"0"];
+
+    char *value = NULL;
+    int cancel = 1;
+
+    if (s)
+    {
+        value = (char *) [s UTF8String];
+        cancel = 0;
+    }
+
+    void (*cb) (int cancel, char *value, void *user_data);
+    cb = (void (*) (int cancel, char *value, void *user_data)) callback;
+
     cb (cancel, value, userdata);
 }
 
@@ -564,15 +595,11 @@ fe_close_window (struct session *sess)
     [sess->gui->controller closeWindow];
 }
 
-void
-fe_beep (void)
-{
+void fe_beep (session *sess) {
     NSBeep ();
 }
 
-void
-fe_add_rawlog (struct server *serv, const char *text, const ssize_t len, int outbound)
-{
+void fe_add_rawlog (struct server *serv, char *text, int len, int outbound) {
     RawLogWindow *window = [UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(RawLogWindowKey, serv)];
     [window log:text length:len outbound:outbound];
 }
@@ -637,15 +664,12 @@ fe_is_banwindow (struct session *sess)
     return [UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(BanWindowKey, sess)] ? true : false;
 }
 
-void
-fe_add_ban_list (struct session *sess, char *mask, char *who, char *when, int is_exemption)
-{
-    [(BanWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(BanWindowKey, sess)] addBanWithMask:@(mask) who:@(who) when:@(when) isExemption:is_exemption];
-}     
+gboolean fe_add_ban_list (struct session *sess, char *mask, char *who, char *when, int rplcode) {
+    //HEXDO
+    //[(BanWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(BanWindowKey, sess)] addBanWithMask:@(mask) who:@(who) when:@(when) isExemption:is_exemption];
+}
 
-void
-fe_ban_list_end (struct session *sess, int is_exemption)
-{
+gboolean fe_ban_list_end (struct session *sess, int rplcode) {
     [(BanWindow *)[UtilityTabOrWindowView utilityIfExistsByKey:UtilityWindowKey(BanWindowKey, sess)] refreshFinished];
 }
 
@@ -685,10 +709,8 @@ fe_progressbar_end (struct server *serv)
     [AquaChat forEachSessionOnServer:serv performSelector:@selector (progressbarEnd)];
 }
 
-void
-fe_userlist_insert (struct session *sess, struct User *newuser, long row, int selected)
-{
-    [sess->gui->controller userlistInsert:newuser row:(NSInteger)row select:selected];
+void fe_userlist_insert (struct session *sess, struct User *newuser, int row, int sel) {
+    [sess->gui->controller userlistInsert:newuser row:(NSInteger)row select:sel];
 }
 
 void fe_userlist_update (struct session *sess, struct User *user)
@@ -702,9 +724,7 @@ fe_userlist_remove (struct session *sess, struct User *user)
     return (int)[sess->gui->controller userlistRemove:user];
 }
 
-void
-fe_userlist_move (struct session *sess, struct User *user, long new_row)
-{
+void fe_userlist_move (struct session *sess, struct User *user, int new_row) {
     [sess->gui->controller userlistMove:user row:(NSInteger)new_row];
 }
 
@@ -842,9 +862,7 @@ fe_dcc_open_chat_win (int passive)
     return [[AquaChat sharedAquaChat] openDCCChatWindowAndShow:!passive];
 }
 
-void
-fe_lastlog (session * sess, session * lastlog_sess, char *sstr, gboolean regexp)
-{
+void fe_lastlog (session *sess, session *lastlog_sess, char *sstr, gtk_xtext_search_flags flags) {
     [sess->gui->controller lastlogIntoWindow:lastlog_sess->gui->controller key:sstr];
 }
 
@@ -1103,4 +1121,12 @@ void fe_tray_set_balloon (const char *title, const char *text)
 
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
     }
+}
+
+const char *fe_get_default_font() {
+    return "LucidaGrande 12.0";
+}
+
+void fe_open_chan_list(server *serv, char *filter, int do_refresh) {
+    NSLog(@"CHANLIST!");
 }

@@ -139,8 +139,9 @@ static int color_remap [] =
 - (void) loadLegacy // load palette.conf
 {
     // Load saved value
-
-    NSString *fn = [NSString stringWithFormat:@"%s/palette.conf", get_xdir_fs()];
+    char *url = get_xdir_fs();
+    dassert(url);
+    NSString *fn = [NSString stringWithFormat:@"%s/palette.conf", url];
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:fn];
 
     if (!dict) {
@@ -209,12 +210,12 @@ static int color_remap [] =
 
 - (void)loadFromURL:(NSURL *)fileURL {
     const char *filename = fileURL.path.UTF8String;
-    int file = xchat_open_file((char *)filename, O_RDONLY, 0, XOF_FULLPATH);
+    int file = hexchat_open_file((char *)filename, O_RDONLY, 0, XOF_FULLPATH);
     [self loadFromXChatFile:file];
 }
 
 - (void)loadFromConfiguration {
-    int file = xchat_open_file("colors.conf", O_RDONLY, 0, 0);
+    int file = hexchat_open_file("colors.conf", O_RDONLY, 0, 0);
     if (file == -1) {
         [self loadLegacy];
         return;
@@ -224,7 +225,7 @@ static int color_remap [] =
 
 - (void) save
 {
-    int file = xchat_open_file ("colors.conf", O_TRUNC | O_WRONLY | O_CREAT, 0600, XOF_DOMODE);
+    int file = hexchat_open_file ("colors.conf", O_TRUNC | O_WRONLY | O_CREAT, 0600, XOF_DOMODE);
 	if (file != -1)
 	{
 		/* mIRC colors 0-31 are here */
