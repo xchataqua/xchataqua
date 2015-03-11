@@ -83,8 +83,7 @@
 }
 
 - (void)setTarget:(id)aTarget didCloseSelector:(SEL)selector {
-    [aTarget release];
-    self->target = [aTarget retain];
+    self->target = aTarget;
     self->didCloseSelector = selector;
 }
 
