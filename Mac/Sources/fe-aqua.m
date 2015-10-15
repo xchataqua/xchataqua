@@ -358,8 +358,11 @@ fe_init (void)
 #endif
     [NSApplication sharedApplication];
     NSString *mainNibFile = [[NSBundle mainBundle] infoDictionary][@"NSMainNibFile"];
+    /*
+    NSArray *objects = nil;
+    [[NSBundle mainBundle] loadNibNamed:mainNibFile owner:NSApp topLevelObjects:&objects];
+     */
     [NSBundle loadNibNamed:mainNibFile owner:NSApp];
-    
     // Do not connect to network if app is launched while holding the Option key
     if ([NSEvent modifierFlags] & NSAlternateKeyMask) {
         arg_dont_autoconnect = true;

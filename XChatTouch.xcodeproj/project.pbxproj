@@ -1498,6 +1498,7 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				0F8EA7C40CFB6EC9001AE9AE /* Copy Frameworks */,
 				0301C87908B940649BC1D167 /* Copy Pods Resources */,
+				B530EF7A6953488CEF31FC99 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1696,6 +1697,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "#!/bin/bash\n\n[ -f ~/.bashrc ] && source ~/.bashrc\n[ -f ~/.profile ] && source ~/.profile\n\necho \"Generating config.package_name.in.h\"\n\ncd \"$PROJECT_DIR\"\n\"tools/gen_xchat_package_name.sh\" > \"xchat/config.package_name.in.h\"";
+		};
+		B530EF7A6953488CEF31FC99 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XChat iPhone/Pods-XChat iPhone-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
