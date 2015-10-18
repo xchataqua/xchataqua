@@ -861,7 +861,7 @@ static NSImage *emptyBulletImage;
     
     if (prefs.showhostname_in_userlist)
     {
-        NSTableColumn *c = [[NSTableColumn alloc] initWithIdentifier:nil];
+        NSTableColumn *c = [[NSTableColumn alloc] initWithIdentifier:@""];
         [c setEditable:false];
         //[c setMaxWidth:250];
         //[c setMinWidth:250];

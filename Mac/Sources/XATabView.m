@@ -246,18 +246,6 @@ NSImage *XATabViewOutlineCellCloseImage;
 
 #pragma mark -
 
-//! @abstract   Group information, usually server. Or utility windows group.
-@interface XATabViewGroup: NSObject {
-    NSMutableArray *_tabItems;
-    NSInteger _identifier; // from xchat core
-    NSString *_name;
-}
-
-@property(nonatomic, retain) NSString *name;
-@property(nonatomic, readonly) NSInteger identifier;
-@property(nonatomic, readonly) NSMutableArray *tabItems;
-
-@end
 
 @implementation XATabViewGroup
 @synthesize tabItems=_tabItems;
@@ -866,9 +854,7 @@ NSNib *XATabViewItemTabMenuNib;
     for (XATabViewItem *item in self.tabViewItems) {
         [item redrawTitle];
     }
-    for (XATabViewGroup *group in self->_groups) {
-        [self.tabOutlineView reloadData];
-    }
+    [self.tabOutlineView reloadData];
 }
 
 #define kBackgroundStyleGroup   0

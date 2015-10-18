@@ -214,7 +214,7 @@
     
     NSModalSession modalSession = [NSApp beginModalSessionForWindow:self];
     NSInteger ret;
-    while ((ret = [NSApp runModalSession:modalSession]) == NSRunContinuesResponse)
+    while ((ret = [NSApp runModalSession:modalSession]) == NSModalResponseContinue)
         ;
     [NSApp endModalSession:modalSession];
     [self close];

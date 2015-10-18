@@ -24,6 +24,6 @@ typedef void (*callback_t)(void * userdata, char * fname);
 
 @interface SGFileSelection : NSObject
 
-+ (void) getFile:(NSString *)title initial:(NSString *)initial callback:(callback_t)callback userdata:(void *)userdata flags:(int)flags;
++ (void) getFile:(NSString *)title initialURL:(NSURL *)initial callback:(callback_t)callback userdata:(void *)userdata flags:(int)flags;
 
 @end

@@ -103,10 +103,10 @@ nick_command_parse (struct session *sess, const char *cmd, const char *nick, con
     free (buf);
 }
 
-NSString * formatNumber (int n)
+NSString *formatNumber(NSInteger n)
 {
     if (n < 1000)
-        return [NSString stringWithFormat:@"%d", n];
+        return [NSString stringWithFormat:@"%ld", n];
     
     if (n < 1000000)
         return [NSString stringWithFormat:@"%.1fk", (float) n / 1000];

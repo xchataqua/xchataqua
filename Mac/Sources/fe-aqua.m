@@ -916,7 +916,7 @@ fe_dcc_send_filereq (struct session *sess, char *nick, int maxcps, int passive)
 {
     NSOpenPanel *panel = [NSOpenPanel commonOpenPanel];
     [panel beginSheetModalForWindow:[current_sess->gui->controller window] completionHandler:^(NSInteger result) {
-        if (result == NSOKButton) {
+        if (result == NSModalResponseOK) {
             NSString *path = panel.URL.path;
             dcc_send(sess, nick, (char *)path.UTF8String, maxcps, passive);
         }
@@ -1045,7 +1045,7 @@ void fe_get_file (const char *title, char *initial,
                   int flags)
 {
     [SGFileSelection getFile:@(title)
-                     initial:@(initial)
+                  initialURL:@(initial).fileURL
                     callback:callback userdata:userdata flags:flags];
 }
 

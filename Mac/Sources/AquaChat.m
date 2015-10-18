@@ -258,7 +258,7 @@ AquaChat *AquaChatSharedObject;
             notification.informativeText = @(x);
 
             NSMutableDictionary *settings = [NSMutableDictionary dictionary];
-            settings[@"setting"] = [NSNumber numberWithInt:info->notification];
+            settings[@"setting"] = @(info->notification);
             notification.userInfo = settings;
 
             [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
@@ -859,7 +859,7 @@ AquaChat *AquaChatSharedObject;
     //    [p setPrompt:NSLocalizedStringFromTable(@"Select", @"xchataqua", @"")];
     
     [panel beginSheetModalForWindow:[current_sess->gui->controller window] completionHandler:^(NSInteger result) {
-        if (result == NSOKButton) {
+        if (result == NSModalResponseOK) {
             [current_sess->gui->controller saveBuffer:panel.URL.path];
         }
     }];

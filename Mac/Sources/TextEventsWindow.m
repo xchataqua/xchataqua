@@ -116,11 +116,11 @@ extern char *pntevts[];
         [self testOne:i];
 }
 
-- (void) loadFrom:(id)sender
+- (void)loadFrom:(id)sender
 {
     NSOpenPanel *panel = [NSOpenPanel commonOpenPanel];
     [panel beginSheetModalForWindow:self completionHandler:^(NSInteger result) {
-        if (result == NSOKButton) {
+        if (result == NSModalResponseOK) {
             NSURL *URL = panel.URL;
             const char *path = URL.path.UTF8String;
             pevent_load ((char *)path);
