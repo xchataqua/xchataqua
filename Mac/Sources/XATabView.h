@@ -107,3 +107,17 @@
 - (IBAction)link_delink:(id)sender;
 
 @end
+
+
+//! @abstract   Group information, usually server. Or utility windows group.
+@interface XATabViewGroup: NSObject {
+    NSMutableArray *_tabItems;
+    NSInteger _identifier; // from xchat core
+    NSString *_name;
+}
+
+@property(nonatomic, retain) NSString *name;
+@property(nonatomic, readonly) NSInteger identifier;
+@property(nonatomic, readonly) NSMutableArray *tabItems;
+
+@end

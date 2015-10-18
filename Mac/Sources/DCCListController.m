@@ -66,8 +66,7 @@
         
         hasSelection = NO;
         lastDCCStatus = 0xFF;
-        
-        [NSBundle loadNibNamed:nibName owner:self];
+        [[NSBundle mainBundle] loadNibNamed:nibName owner:self topLevelObjects:nil];
     }
     return self;
 }

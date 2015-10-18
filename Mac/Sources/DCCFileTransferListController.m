@@ -29,8 +29,8 @@
 {
     [super update];
     self.file = @(dcc->file);
-    self.size = [NSString stringWithFormat:@"%@", formatNumber (dcc->size)];
-    self.position = [NSString stringWithFormat:@"%@", formatNumber (dcc->pos)];
+    self.size = [NSString stringWithFormat:@"%@", formatNumber(dcc->size)];
+    self.position = [NSString stringWithFormat:@"%@", formatNumber(dcc->pos)];
     self.per  = [NSString stringWithFormat:@"%.0f%%", floor((float) dcc->pos / dcc->size * 100.00)];    // the floor is to ensure that the percent does not display 100% until the file is really finished
     self.kbs = [NSString stringWithFormat:@"%.1f", (float) dcc->cps / 1024];
     if ( dcc->cps ) {

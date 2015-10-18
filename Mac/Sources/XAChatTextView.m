@@ -140,7 +140,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     }
     
     NSData *rtfData = [rstripped RTFFromRange:(NSMakeRange(0, [rstripped length]))
-                           documentAttributes:nil];
+                           documentAttributes:@{}];
     [pb setData:rtfData forType:NSRTFPboardType];
     [rstripped release];
     [pstripped release];
@@ -398,7 +398,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     }
     
     for (NSString *line in [aText componentsSeparatedByString:@"\n"]) {
-        if ([line hasSubstring:@"\007"]) {
+        if ([line containsString:@"\007"]) {
             NSBeep();
             line = [line stringByReplacingOccurrencesOfString:@"\007" withString:@""]; // ???: Once @"" was @" "
         }
@@ -702,9 +702,10 @@ static NSCursor *XAChatTextViewSizableCursor;
         return;
     }
 
-    NSPoint point = [theEvent locationInWindow];
-    NSPoint where = [[theEvent window] convertBaseToScreen:point];
-    NSUInteger idx = [self characterIndexForPoint:where];
+    NSRect pointRect = NSZeroRect;
+    pointRect.origin = [theEvent locationInWindow];
+    NSRect where = [[theEvent window] convertRectToScreen:pointRect];
+    NSUInteger idx = [self characterIndexForPoint:where.origin];
 
     NSTextStorage *stg = [self textStorage];
 

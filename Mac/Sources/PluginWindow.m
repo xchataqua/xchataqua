@@ -84,7 +84,7 @@ extern GSList *plugin_list;
 - (void)addUserPlugin:(id)sender {
     NSOpenPanel *panel = [NSOpenPanel commonOpenPanel];
     [panel beginWithCompletionHandler:^(NSInteger result) {
-        if (result == NSOKButton) {
+        if (result == NSModalResponseOK) {
             UserPluginManager *manager = [UserPluginManager sharedPluginManager];
             [manager addItemWithFilename:panel.URL.path];
             [manager save];
