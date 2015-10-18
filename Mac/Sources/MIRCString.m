@@ -248,7 +248,7 @@ NSFont *sharedHiddenFont;
     }
     
     if (under)
-        attr[NSUnderlineStyleAttributeName] = @(NSSingleUnderlineStyle);
+        attr[NSUnderlineStyleAttributeName] = @(NSUnderlineStyleSingle);
     
     if (hidden)
     {

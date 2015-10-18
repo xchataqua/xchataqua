@@ -479,7 +479,7 @@ extern struct XATextEventItem XATextEvents[];
     panel.directoryURL = [[[NSBundle mainBundle] resourceURL] URLByAppendingPathComponent:@"theme"];
     
     [panel beginSheetModalForWindow:self completionHandler:^(NSInteger result){
-        if (result == NSOKButton) {
+        if (result == NSModalResponseOK) {
             ColorPalette *palette = [[ColorPalette alloc] init];
             [palette loadFromURL:panel.URL];
             [self populateColorsFromPalette:palette];

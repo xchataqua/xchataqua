@@ -28,7 +28,7 @@ static NSString *SGFileSelectionFixPath (NSString *path)
 
 @implementation SGFileSelection
 
-+ (void) getFile:(NSString *)title initial:(NSString *)initial callback:(callback_t)callback userdata:(void *)userdata flags:(int)flags
++ (void) getFile:(NSString *)title initialURL:(NSURL *)initial callback:(callback_t)callback userdata:(void *)userdata flags:(int)flags
 {
     id panel;
     BOOL dir=NO;
@@ -40,7 +40,7 @@ static NSString *SGFileSelectionFixPath (NSString *path)
     
     [panel setTitle:title];
     if(initial)
-        [panel setDirectory:initial];
+        [panel setDirectoryURL:initial];
     if(flags & FRF_MULTIPLE)
         [panel setAllowsMultipleSelection:YES];
     if(flags & FRF_CHOOSEFOLDER)
@@ -50,7 +50,7 @@ static NSString *SGFileSelectionFixPath (NSString *path)
     
     NSInteger sts = [panel runModal];
         
-    if (sts == NSOKButton) {
+    if (sts == NSModalResponseOK) {
         if(flags & FRF_MULTIPLE)
         {
             for (NSURL *URL in [panel URLs]) {

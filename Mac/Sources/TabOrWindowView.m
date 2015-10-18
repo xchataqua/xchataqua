@@ -382,7 +382,7 @@ static float trans = 1;
         [tabView addTabViewItem:tabViewItem toGroup:tabGroup];
         [tabViewItem release];
         
-        if ([[tabView groupForIdentifier:tabGroup] name] == nil)
+        if ([tabView groupForIdentifier:tabGroup].name == nil)
         {
             NSString *groupName;
             

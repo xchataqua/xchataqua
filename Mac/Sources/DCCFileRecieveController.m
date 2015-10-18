@@ -119,8 +119,8 @@ extern int dcc_getcpssum;
             // NSWorkspace will take care of getting the fs representation
             fileToReveal = @(item->dcc->destfile);
         }
-        
-        [[NSWorkspace sharedWorkspace] selectFile:fileToReveal inFileViewerRootedAtPath:nil];
+
+        [[NSWorkspace sharedWorkspace] selectFile:fileToReveal inFileViewerRootedAtPath:@""];
     }
 }
 

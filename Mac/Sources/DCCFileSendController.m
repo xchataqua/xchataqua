@@ -63,7 +63,7 @@ extern int dcc_sendcpssum;
 - (void) update
 {
     [super update];
-    self.ack = formatNumber(dcc->ack);
+    self.ack = formatNumber((gint64)dcc->ack);
     self.to  = @(dcc->nick);
 }
 

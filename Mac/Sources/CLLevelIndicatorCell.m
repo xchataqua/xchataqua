@@ -72,7 +72,7 @@ static inline CGRect CGRectFromNSRect(NSRect nsRect)
 	}
 }
 
-- (void) setKind:(UInt16)kind
+- (void)setKind:(UInt16)kind
 {
 	drawInfo.kind = kind;
 }
