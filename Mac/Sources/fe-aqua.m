@@ -262,9 +262,15 @@ static void setupAppSupport ()
     }
 }
 
+int argc;
+char **argv;
+
 int
-fe_args (int argc, char *argv[])
+fe_args (int pargc, char *pargv[])
 {
+    argc = pargc;
+    argv = pargv;
+
     initPool = [[NSAutoreleasePool alloc] init];    
     
     setlocale (LC_ALL, "");
@@ -461,10 +467,9 @@ fe_main (void)
     putenv("CFZombieLevel=3");
     
 #endif
-    
     [[AquaChat sharedAquaChat] post_init];
-    
     [initPool release];
+
     [NSApp run];
 }
 

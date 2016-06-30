@@ -7,6 +7,8 @@ target :'XChat Azure' do
     pod 'FoundationExtension'
     pod 'libintl-alternative'
     pod 'OpenSSL'
+    pod 'Fabric'
+    pod 'Crashlytics'
 end
 
 target :'XChat Aqua' do
@@ -14,6 +16,8 @@ target :'XChat Aqua' do
     pod 'FoundationExtension'
     pod 'libintl-alternative'
     pod 'OpenSSL'
+    pod 'Fabric'
+    pod 'Crashlytics'
 end
 
 target :'XChat iPhone' do
