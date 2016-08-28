@@ -55,5 +55,6 @@
 - (void) setFont:(NSFont *)font boldFont:(NSFont *)boldFont;
 - (void) setDropHandler:(id)dropHandler;
 - (void) updateAtBottom:(NSNotification *) notif;
+- (void) frameChanged:(NSNotification *) notif;
 
 @end

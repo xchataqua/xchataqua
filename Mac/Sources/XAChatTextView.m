@@ -57,7 +57,6 @@ static NSCursor *XAChatTextViewSizableCursor;
         [self setEditable:NO];
 
         [self registerForDraggedTypes:@[NSFilenamesPboardType]];
-        [[self layoutManager] setDelegate:self];
     }
     return self;
 }
@@ -74,6 +73,11 @@ static NSCursor *XAChatTextViewSizableCursor;
                                                 name:@"NSViewBoundsDidChangeNotification"
                                               object:[self superview]];
     [self updateAtBottom:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(frameChanged:)
+                                                 name:@"NSViewFrameDidChangeNotification"
+                                               object:self];
 }
 
 - (void) dealloc
@@ -448,29 +452,14 @@ static NSCursor *XAChatTextViewSizableCursor;
         [self clearLinesIfFlooded];
         [self.textStorage endEditing];
     }
+
+    if (atBottom)
+        [self scrollPoint:NSMakePoint(0, NSMaxY([self frame]) - NSHeight([[self superview] bounds]))];
 }
 
 - (void)clearText {
     numberOfLines = 0;
     [self setString:@""];
-}
-
-- (void)layoutManager:(NSLayoutManager *)aLayoutManager
-    didCompleteLayoutForTextContainer:(NSTextContainer *)aTextContainer
-    atEnd:(BOOL)flag
-{
-    dlog(FALSE, @"didCompleteLayoutForTextContainer %d\n", atBottom);
-    if (atBottom)
-    {
-#if 1
-        [self scrollPoint:NSMakePoint(0, NSMaxY([self bounds]))];
-#else
-        NSClipView *clipView = [self superview];
-        if (![clipView isKindOfClass:[NSClipView class]]) return;
-        [clipView scrollToPoint:[clipView constrainScrollPoint:NSMakePoint(0,[self frame].size.height)]];
-        [[clipView superview] reflectScrolledClipView:clipView];
-#endif
-    }
 }
 
 - (void)updateAtBottom:(NSNotification *)notification
@@ -480,9 +469,16 @@ static NSCursor *XAChatTextViewSizableCursor;
     CGFloat dmax = NSMaxY(clipView.documentRect);
     CGFloat cmax = NSMaxY(clipView.documentVisibleRect);
 
-    atBottom = dmax < cmax + fontSize.height * 2;
+    atBottom = (dmax < cmax + fontSize.height * 2) || (NSMaxY([self frame]) <= NSHeight([[self superview] bounds]));
 
     dlog(FALSE, @"Update at bottom: dmax=%f, cmax=%f, at_bottom=%d\n", dmax, cmax, atBottom);
+}
+
+
+- (void)frameChanged:(NSNotification *)notif
+{
+    if (atBottom)
+        [self scrollPoint:NSMakePoint(0, NSMaxY([self frame]) - NSHeight([[self superview] bounds]))];
 }
 
 - (void)viewDidMoveToWindow
