@@ -515,8 +515,10 @@
 		38FC93CB13CAF46E006CB5C8 /* locale in Resources */ = {isa = PBXBuildFile; fileRef = 38FC93C913CAF46E006CB5C8 /* locale */; };
 		3B4D30BA15F5314600704C98 /* XAFileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4D30B915F5314600704C98 /* XAFileUtil.m */; };
 		3B4D30BB15F5314600704C98 /* XAFileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4D30B915F5314600704C98 /* XAFileUtil.m */; };
+		5B3A10C51D726E7E008F982D /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3A10C31D726E7A008F982D /* libcrypto.a */; };
+		5B3A10C61D726E81008F982D /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3A10C41D726E7A008F982D /* libssl.a */; };
+		5BEA62C61D72A79C00846DC7 /* cert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 5BEA62C51D72A76700846DC7 /* cert.pem */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		B0D937F10FFB0D34009370B5 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */; };
 		D487239E128F9DBC00647D7B /* UtilityWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D487239D128F9DBC00647D7B /* UtilityWindow.m */; };
 		D4FBD93E12E449D5003EA441 /* ViewerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4FBD93D12E449D5003EA441 /* ViewerWindow.xib */; };
 		D4FBD95912E44CD0003EA441 /* ViewerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FBD93912E44946003EA441 /* ViewerWindow.m */; };
@@ -1051,7 +1053,6 @@
 		385F7EF715515DCA00689E6E /* localcharset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = localcharset.h; sourceTree = "<group>"; };
 		385F814515515FE000689E6E /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		385FCFB415984EFC0058F381 /* RawLogWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RawLogWindow.xib; sourceTree = "<group>"; };
-		38626FBF1CE308730068F384 /* libssl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libssl.tbd; path = usr/lib/libssl.tbd; sourceTree = SDKROOT; };
 		3864594915E509E400C4CA45 /* PluginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluginManager.h; sourceTree = "<group>"; };
 		3864594A15E509E500C4CA45 /* PluginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PluginManager.m; sourceTree = "<group>"; };
 		38701ACF15C99AE400FB3EAC /* xchat.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = xchat.icns; sourceTree = SOURCE_ROOT; };
@@ -2029,11 +2030,13 @@
 		38FC93C913CAF46E006CB5C8 /* locale */ = {isa = PBXFileReference; lastKnownFileType = folder; name = locale; path = ../../Resources/locale; sourceTree = "<group>"; };
 		3B4D30B815F5314600704C98 /* XAFileUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XAFileUtil.h; path = Mac/XALibrary/XAFileUtil.h; sourceTree = "<group>"; };
 		3B4D30B915F5314600704C98 /* XAFileUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XAFileUtil.m; path = Mac/XALibrary/XAFileUtil.m; sourceTree = "<group>"; };
+		5B3A10C31D726E7A008F982D /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = ../../../../usr/local/Cellar/openssl/1.0.2h_1/lib/libcrypto.a; sourceTree = "<group>"; };
+		5B3A10C41D726E7A008F982D /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = ../../../../usr/local/Cellar/openssl/1.0.2h_1/lib/libssl.a; sourceTree = "<group>"; };
+		5BEA62C51D72A76700846DC7 /* cert.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cert.pem; path = /usr/local/etc/openssl/cert.pem; sourceTree = "<absolute>"; };
 		8D1107320486CEB800E47090 /* X-Chat Aqua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "X-Chat Aqua.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B07C7AB20F4395E200E11B58 /* BuildNumber.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = BuildNumber.xcconfig; sourceTree = "<group>"; };
 		B07C7AD60F4398FC00E11B58 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		B07C7AD70F4398FC00E11B58 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = /usr/lib/libcrypto.dylib; sourceTree = "<absolute>"; };
 		D406B462129D789400EF6B2B /* fe-aqua_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "fe-aqua_common.h"; sourceTree = "<group>"; };
 		D439129912DE2569009BE73C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Mac/Azure/Info.plist; sourceTree = "<group>"; };
 		D46631D3129DC3B1004B66B8 /* UtilityTableViewDragAndDrop.inc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityTableViewDragAndDrop.inc.m; sourceTree = "<group>"; };
@@ -2074,6 +2077,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B3A10C61D726E81008F982D /* libssl.a in Frameworks */,
 				38A690A015A84485008CC31F /* QuartzCore.framework in Frameworks */,
 				385F81471551616800689E6E /* libiconv.dylib in Frameworks */,
 				385F783A15515CE500689E6E /* libglib.a in Frameworks */,
@@ -2082,6 +2086,7 @@
 				3876253F13C7024F00850913 /* Carbon.framework in Frameworks */,
 				3876254613C7024F00850913 /* WebKit.framework in Frameworks */,
 				38F06933163820B0002723AB /* libPods-XChat Azure.a in Frameworks */,
+				5B3A10C51D726E7E008F982D /* libcrypto.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2111,7 +2116,6 @@
 				0FC8F5C40DEEEA3E00504F31 /* libxchat.a in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				0F8EA70B0CFB384A001AE9AE /* Carbon.framework in Frameworks */,
-				B0D937F10FFB0D34009370B5 /* libcrypto.dylib in Frameworks */,
 				D4FBD9C612E458C4003EA441 /* WebKit.framework in Frameworks */,
 				3877F43916A3EBC1007CD975 /* libPods-XChat Aqua.a in Frameworks */,
 			);
@@ -2284,7 +2288,8 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B0D937EF0FFB0D34009370B5 /* libcrypto.dylib */,
+				5B3A10C31D726E7A008F982D /* libcrypto.a */,
+				5B3A10C41D726E7A008F982D /* libssl.a */,
 				385F766D155148FC00689E6E /* libiconv.dylib */,
 				0F8EA70A0CFB384A001AE9AE /* Carbon.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
@@ -2348,7 +2353,6 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				38626FBF1CE308730068F384 /* libssl.tbd */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 				38F06934163820CA002723AB /* libPods-XChat Aqua.a */,
@@ -2410,6 +2414,7 @@
 		2DC6AD151187773F0048B7C7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5BEA62C51D72A76700846DC7 /* cert.pem */,
 				38FC93C913CAF46E006CB5C8 /* locale */,
 				3882281F15930240000AB63D /* theme */,
 				2DEA303D0F87235400D6DC0D /* images */,
@@ -3281,6 +3286,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BEA62C61D72A79C00846DC7 /* cert.pem in Resources */,
 				3876254D13C7024F00850913 /* blue.tiff in Resources */,
 				3876254E13C7024F00850913 /* close.tiff in Resources */,
 				3876255013C7024F00850913 /* connect.tif in Resources */,
@@ -3507,7 +3513,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "exit\nTARGET_DIR=\"$PROJECT_TEMP_DIR\"\nPERL_VERSION=\"5.18\"\nrm -rf \"$TARGET_DIR/Perl/$PERL_VERSION\"\nmkdir -p \"$TARGET_DIR/Perl/$PERL_VERSION/darwin-thread-multi-2level/CORE/\"\nif [ -e \"/System/Library/Perl/$PERL_VERSION\" ]; then\n\tln -s \"/System/Library/Perl/$PERL_VERSION/darwin-thread-multi-2level/CORE/libperl.dylib\" \"$TARGET_DIR/Perl/$PERL_VERSION/darwin-thread-multi-2level/CORE/libperl.dylib\"\nelse\n\tln -s \"$PROJECT_DIR/Mac/contrib/System/Library/Perl/$PERL_VERSION/darwin-thread-multi-2level/CORE/libperl.dylib\" \"$TARGET_DIR/Perl/$PERL_VERSION/darwin-thread-multi-2level/CORE/libperl.dylib\"\nfi\n\ncd \"$PROJECT_DIR/xchat/plugins/perl\"\n./generate_header\n\nexit";
+			shellScript = "#exit\nTARGET_DIR=\"$PROJECT_TEMP_DIR\"\nPERL_VERSION=\"5.18\"\nrm -rf \"$TARGET_DIR/Perl/$PERL_VERSION\"\nmkdir -p \"$TARGET_DIR/Perl/$PERL_VERSION/darwin-thread-multi-2level/CORE/\"\nif [ -e \"/System/Library/Perl/$PERL_VERSION\" ]; then\n\tln -s \"/System/Library/Perl/$PERL_VERSION/darwin-thread-multi-2level/CORE/libperl.dylib\" \"$TARGET_DIR/Perl/$PERL_VERSION/darwin-thread-multi-2level/CORE/libperl.dylib\"\nelse\n\tln -s \"$PROJECT_DIR/Mac/contrib/System/Library/Perl/$PERL_VERSION/darwin-thread-multi-2level/CORE/libperl.dylib\" \"$TARGET_DIR/Perl/$PERL_VERSION/darwin-thread-multi-2level/CORE/libperl.dylib\"\nfi\n\ncd \"$PROJECT_DIR/xchat/plugins/perl\"\n./generate_header\n\nexit";
 		};
 		38BC9850154AD8A7005894EF /* Generate XChat Plugin Header */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5139,6 +5145,8 @@
 				OTHER_CFLAGS = (
 					"-I",
 					"$(SDK_DIR)/usr/include",
+					"-I",
+					/usr/local/opt/openssl/include,
 				);
 				PRODUCT_NAME = xchat;
 				SKIP_INSTALL = YES;
@@ -5159,6 +5167,8 @@
 				OTHER_CFLAGS = (
 					"-I",
 					"$(SDK_DIR)/usr/include",
+					"-I",
+					/usr/local/opt/openssl/include,
 				);
 				PRODUCT_NAME = xchat;
 				SKIP_INSTALL = YES;
@@ -5278,6 +5288,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"",
+					/usr/local/Cellar/openssl/1.0.2h_1/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = org.3rddev.xchatazure;
@@ -5312,6 +5323,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"",
+					/usr/local/Cellar/openssl/1.0.2h_1/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = org.3rddev.xchatazure;
@@ -5554,6 +5566,10 @@
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"-I",
+					/usr/local/opt/openssl/include,
+				);
 				SDKROOT = macosx;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
 				TARGET_PLATFORM = Mac;
@@ -5587,6 +5603,10 @@
 				);
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = (
+					"-I",
+					/usr/local/opt/openssl/include,
+				);
 				SDKROOT = macosx;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
 				TARGET_PLATFORM = Mac;
