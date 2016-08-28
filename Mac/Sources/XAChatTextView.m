@@ -784,7 +784,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     word = [[s substringWithRange:wordRange] retain];
     
     [stg addAttribute:NSUnderlineStyleAttributeName
-                value:@(NSSingleUnderlineStyle)
+                value:@(NSUnderlineStyleSingle)
                 range:wordRange];
 }
 
