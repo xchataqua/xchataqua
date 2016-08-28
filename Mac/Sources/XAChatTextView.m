@@ -379,9 +379,43 @@ static NSCursor *XAChatTextViewSizableCursor;
                     value:self.style
                     range:NSMakeRange(0, [pre_str length])];
 
+    long idx = [self.textStorage length];
+
     [self.textStorage appendAttributedString:pre_str];
-    
+
     numberOfLines ++;
+
+    NSString *s = [self.textStorage string];
+    long slen = [self.textStorage length];
+
+    for (; idx < slen; idx++) {
+        NSUInteger word_start = idx;
+        NSUInteger word_stop = idx;
+
+        if (isspace ([s characterAtIndex:word_start]))
+          continue;
+
+        while (word_stop < slen && !isspace ([s characterAtIndex:word_stop+1]))
+          word_stop ++;
+
+        NSRange range = NSMakeRange (word_start, word_stop - word_start + 1);
+
+        int type = [self checkHotwordInRange:&range];
+
+        if (type == WORD_URL)
+        {
+            NSString *substring = [s substringWithRange:range];
+            if (substring) {
+                substring = [substring stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithRange:NSMakeRange(' ', '~')]];
+                NSURL *url = [NSURL URLWithString:substring];
+                if (url)
+                    [self.textStorage addAttribute:NSLinkAttributeName
+                                             value:url
+                                             range:range];
+            }
+        }
+        idx = word_stop;
+    }
 }
 
 - (void)printLine:(const char *)text length:(size_t)len {
