@@ -130,6 +130,9 @@ AquaChat *AquaChatSharedObject;
     
     NSWindowController *controller = [[NSWindowController alloc] initWithWindowNibName:@"ChatWindow"];
     self->_mainWindow = (id)controller.window;
+
+    if (prefs.gui_win_state == 1)
+        [self->_mainWindow toggleFullScreen:nil];
     
     [self applyPreferences:nil];
 }
