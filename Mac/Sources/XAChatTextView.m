@@ -684,15 +684,33 @@ static NSCursor *XAChatTextViewSizableCursor;
 {
     session *sess = [self currentSession];
     NSString *text = [[self textStorage] string];
+    bool nickOnly = FALSE;
+
+    // First, strip any brackets and remove trailing commas
+    unichar c;
+    while (range->length > 2 &&
+           ((c = [text characterAtIndex: (range->location + range->length - 1)]),
+            (c == ',' || c == ')' || c == ']' || c == '}' || c == '>')))
+        range->length--;
+
+    while (range->length > 2 &&
+           ((c = [text characterAtIndex: (range->location + range->length - 1)]),
+            (c == '(' || c == '[' || c == '{' || c == '<')))
+    {
+        range->location++;
+        range->length--;
+    }
 
     for (;;)
     {
         char *cword = (char *)[[text substringWithRange:*range] UTF8String];
+        if (!cword)
+            return 0;
         size_t len = strlen(cword);// range->length;
 
         // Let common have first crack at it.
-        int ret = url_check_word (cword, len);    /* common/url.c */
-        
+        int ret = nickOnly ? 0 : url_check_word (cword, len);    /* common/url.c */
+
         // If we get something from common, double check a few things..
         if (ret)
         {
@@ -728,15 +746,33 @@ static NSCursor *XAChatTextViewSizableCursor;
         
         // Check for words surrounded in brackets.
         // Narrow the range and try again.
-        if ((*cword == '(' && cword[len - 1] == ')') ||
-            (*cword == '[' && cword[len - 1] == ']') ||
-            (*cword == '{' && cword[len - 1] == '}') ||
-            (*cword == '<' && cword[len - 1] == '>') ||
-            (!isalpha(*cword) && *cword == cword[len - 1]))
+        NSRange aposRange;
+        if ((!isalpha(*cword) && *cword == cword[len - 1]))
         {
             if (range->length < 3) break;    /* check this before subtracting; length is unsigned */
             range->location++;
             range->length -= 2;
+            continue;
+        }
+        else if (!isalnum(cword[len - 1]))
+        {
+            if (range->length < 2) break;
+            range->length--;
+            nickOnly = true;
+            continue;
+        }
+        else if (!isalnum(*cword))
+        {
+            if (range->length < 2) break;
+            range->location++;
+            range->length--;
+            continue;
+        }
+        else if ((aposRange = [text rangeOfString:@"'" options:NSBackwardsSearch range:*range]).location != NSNotFound)
+        {
+            // Try backing up to the last apostrophe (might find a nick match)
+            range->length = aposRange.location - range->location;
+            nickOnly = true;
             continue;
         }
         
