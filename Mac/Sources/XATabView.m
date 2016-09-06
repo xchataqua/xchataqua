@@ -137,6 +137,7 @@ NSImage *XATabViewOutlineCellCloseImage;
 @interface XATabViewOutlineView : NSOutlineView<XAEventChain>
 
 - (void)selectRowForTabViewItem:(XATabViewItem *)tabViewItem;
+- (NSRect) frameOfCellAtColumn:(NSInteger)column row:(NSInteger)row;
 
 @end
 
@@ -145,6 +146,16 @@ NSImage *XATabViewOutlineCellCloseImage;
 - (BOOL) acceptsFirstResponder
 {
     return NO;
+}
+
+- (NSRect)frameOfCellAtColumn:(NSInteger)column row:(NSInteger)row {
+  NSRect superFrame = [super frameOfCellAtColumn:column row:row];
+  id item = [self itemAtRow:row];
+
+  if (column == 0 && [item isKindOfClass:[XATabViewItem class]]) {
+      return NSMakeRect(10, superFrame.origin.y, [self bounds].size.width - 10, superFrame.size.height);
+  }
+  return superFrame;
 }
 
 // Grab mouse down and deal with the close button without selecting
