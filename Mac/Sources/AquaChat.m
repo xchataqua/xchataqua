@@ -257,6 +257,15 @@ AquaChat *AquaChatSharedObject;
             NSUserNotification *notification = [[NSUserNotification alloc] init];
             notification.title = @(te[event].name);
 
+            if (event == XP_TE_PRIVMSG ||
+                event == XP_TE_DPRIVMSG ||
+                event == XP_TE_HCHANMSG)
+            {
+                notification.subtitle = @(sess ? sess->channel : args[1]);
+                if (event == XP_TE_DPRIVMSG)
+                    strncpy(o, args[2], sizeof(o));
+            }
+
             char *x = strip_color (o, -1, STRIP_ALL);
             notification.informativeText = @(x);
 
