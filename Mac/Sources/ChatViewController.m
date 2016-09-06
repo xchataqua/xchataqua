@@ -1120,6 +1120,16 @@ static NSImage *emptyBulletImage;
     prefs.mainwindow_left = windowRectangle.origin.x;
 }
 
+- (void) windowDidEnterFullScreen:(NSNotification *) notification
+{
+    prefs.gui_win_state = 1;
+}
+
+- (void) windowDidExitFullScreen:(NSNotification *) notification
+{
+    prefs.gui_win_state = 0;
+}
+
 - (void) windowWillClose:(NSNotification *) notification
 {
     session_free (sess);
