@@ -654,7 +654,7 @@ NSNib *XATabViewItemTabMenuNib;
 
 - (void) makeOutline
 {
-    [_tabOutlineView enclosingScrollView].frame = NSMakeRect(.0, .0, prefs.xa_outline_width, self.frame.size.height);    
+    [[_tabOutlineView enclosingScrollView] setFrameSize: NSMakeSize(prefs.xa_outline_width, self.frame.size.height)];
     
     [_tabOutlineView setOutlineTableColumn:(_tabOutlineView.tableColumns)[0]];
     [_tabOutlineView reloadData];
