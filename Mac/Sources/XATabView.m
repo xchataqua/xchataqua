@@ -1078,7 +1078,8 @@ typedef OSStatus
 
 - (void)splitViewDidResizeSubviews:(NSNotification *)notification {
     if (self->tabViewType == XATabViewTypeOutline) {
-        prefs.xa_outline_width = _tabOutlineView.frame.size.width;
+        NSScrollView *outlineScroll = [_tabOutlineView enclosingScrollView];
+        prefs.xa_outline_width = outlineScroll.frame.size.width;
     }
 }
 
