@@ -262,6 +262,8 @@ AquaChat *AquaChatSharedObject;
 
             NSMutableDictionary *settings = [NSMutableDictionary dictionary];
             settings[@"setting"] = @(info->notification);
+            settings[@"channel"] = @(sess ? sess->channel : "");
+            settings[@"server"] = @((sess && sess->server) ? sess->server->id : -1);
             notification.userInfo = settings;
 
             [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
@@ -372,6 +374,31 @@ AquaChat *AquaChatSharedObject;
     if ([setting integerValue] == -1)
       return YES;
     return NO;
+}
+
+- (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification
+{
+    NSNumber *servId = notification.userInfo[@"server"];
+    NSString *channel = notification.userInfo[@"channel"];
+    struct server *serv;
+    for (GSList *slist = serv_list; slist; slist = slist->next)
+    {
+        serv = (struct server *) slist->data;
+        if (serv->id == [servId intValue])
+        {
+            char *chan = (char*)[channel UTF8String];
+            if (!chan)
+                break;
+            struct session *sess = find_dialog (serv, chan);
+            if (!sess)
+                sess = find_channel (serv, chan);
+            if (sess && sess->gui && sess->gui->controller && sess->gui->controller.chatView)
+            {
+                [sess->gui->controller.chatView makeKeyAndOrderFront:nil];
+            }
+            break;
+        }
+    }
 }
 
 #pragma mark NSWorkspace notification
