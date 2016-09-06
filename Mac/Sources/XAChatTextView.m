@@ -418,6 +418,29 @@ static NSCursor *XAChatTextViewSizableCursor;
                                              range:range];
             }
         }
+        else if (type == WORD_NICK && prefs.colorednicks)
+        {
+            const char *substring = [[s substringWithRange:range] UTF8String];
+            NSColor *color;
+            if (!strcmp(substring, [self currentSession]->me->nick))
+            {
+                color = [self.palette getColor:XAColorNickMentioned];
+            }
+            else
+            {
+                static char rcolors[] = { 19, 20, 22, 24, 25, 26, 27, 28, 29 };
+
+                long sum = 0;
+
+                for (unsigned long i = range.location; i < range.location + range.length; i++)
+                    sum += [s characterAtIndex:i];
+                sum %= sizeof (rcolors);
+                color = [self.palette getColor:rcolors[sum]];
+            }
+            [self.textStorage addAttribute:NSForegroundColorAttributeName
+                                     value:color
+                                     range:range];
+        }
         idx = word_stop;
     }
 }
