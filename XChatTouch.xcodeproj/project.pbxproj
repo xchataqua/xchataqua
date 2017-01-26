@@ -48,6 +48,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		040718B7B96261482E5CF05D /* libPods-XChat iPhone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 657690F09216490D90B192F6 /* libPods-XChat iPhone.a */; };
 		0F8EA68D0CFB300B001AE9AE /* SGFileDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6650CFB300B001AE9AE /* SGFileDescriptor.m */; };
 		0F8EA6940CFB300B001AE9AE /* SGRegex.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6730CFB300B001AE9AE /* SGRegex.m */; };
 		0F8EA6E70CFB347B001AE9AE /* GLikeTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8EA6C00CFB347B001AE9AE /* GLikeTimer.m */; };
@@ -775,6 +776,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		10A02B7F563DFE387468D6C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D11072E0486CEB800E47090 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -786,6 +794,14 @@
 				D4CBF00A12B9657000B4E35E /* UIKit.framework in Frameworks */,
 				D4CBF3BB12B9778000B4E35E /* libiconv.dylib in Frameworks */,
 				38F069681638222D002723AB /* libPods-XChat iPhone.a in Frameworks */,
+				040718B7B96261482E5CF05D /* libPods-XChat iPhone.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7C38DDAC634C194EA08BE91 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1478,6 +1494,7 @@
 			buildPhases = (
 				0FC8F4AA0DEEE51700504F31 /* Headers */,
 				0FC8F4AB0DEEE51700504F31 /* Sources */,
+				A7C38DDAC634C194EA08BE91 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1493,12 +1510,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "XChat iPhone" */;
 			buildPhases = (
+				DD671C2076FA270E23A210A0 /* [CP] Check Pods Manifest.lock */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				8D1107290486CEB800E47090 /* Resources */,
 				0F8EA7C40CFB6EC9001AE9AE /* Copy Frameworks */,
-				0301C87908B940649BC1D167 /* Copy Pods Resources */,
-				B530EF7A6953488CEF31FC99 /* Embed Pods Frameworks */,
+				0301C87908B940649BC1D167 /* [CP] Copy Pods Resources */,
+				B530EF7A6953488CEF31FC99 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1517,6 +1535,7 @@
 			buildPhases = (
 				D4CBF10E12B96A6400B4E35E /* Headers */,
 				D4CBF10F12B96A6400B4E35E /* Sources */,
+				10A02B7F563DFE387468D6C7 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1589,6 +1608,7 @@
 				sl,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* X-Chat Aqua */;
+			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1629,14 +1649,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0301C87908B940649BC1D167 /* Copy Pods Resources */ = {
+		0301C87908B940649BC1D167 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1698,19 +1718,34 @@
 			shellPath = /bin/bash;
 			shellScript = "#!/bin/bash\n\n[ -f ~/.bashrc ] && source ~/.bashrc\n[ -f ~/.profile ] && source ~/.profile\n\necho \"Generating config.package_name.in.h\"\n\ncd \"$PROJECT_DIR\"\n\"tools/gen_xchat_package_name.sh\" > \"xchat/config.package_name.in.h\"";
 		};
-		B530EF7A6953488CEF31FC99 /* Embed Pods Frameworks */ = {
+		B530EF7A6953488CEF31FC99 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XChat iPhone/Pods-XChat iPhone-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD671C2076FA270E23A210A0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

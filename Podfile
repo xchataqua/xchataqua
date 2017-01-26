@@ -24,3 +24,11 @@ target :'XChat iPhone' do
     pod 'FoundationExtension/UIKitExtension'
     pod 'libintl-alternative'
 end
+
+target :'glib' do
+    pod 'libintl-alternative'
+end
+
+target :'xchat' do
+    pod 'libintl-alternative'
+end
