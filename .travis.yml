@@ -1,0 +1,10 @@
+language: objective-c
+sudo: false
+xcode_workspace: XChatAqua.xcworkspace
+osx_image: xcode8
+xcode_scheme: XChat Azure
+install:
+  - pod install
+  - xcodebuild -workspace XChatAqua.xcworkspace -scheme Prebuild
+script:
+  - xcodebuild -workspace XChatAqua.xcworkspace -scheme 'XChat Azure'
