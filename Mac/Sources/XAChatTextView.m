@@ -57,7 +57,6 @@ static NSCursor *XAChatTextViewSizableCursor;
         [self setEditable:NO];
 
         [self registerForDraggedTypes:@[NSFilenamesPboardType]];
-        [[self layoutManager] setDelegate:self];
     }
     return self;
 }
@@ -74,6 +73,11 @@ static NSCursor *XAChatTextViewSizableCursor;
                                                 name:@"NSViewBoundsDidChangeNotification"
                                               object:[self superview]];
     [self updateAtBottom:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(frameChanged:)
+                                                 name:@"NSViewFrameDidChangeNotification"
+                                               object:self];
 }
 
 - (void) dealloc
@@ -379,9 +383,66 @@ static NSCursor *XAChatTextViewSizableCursor;
                     value:self.style
                     range:NSMakeRange(0, [pre_str length])];
 
+    long idx = [self.textStorage length];
+
     [self.textStorage appendAttributedString:pre_str];
-    
+
     numberOfLines ++;
+
+    NSString *s = [self.textStorage string];
+    long slen = [self.textStorage length];
+
+    for (; idx < slen; idx++) {
+        NSUInteger word_start = idx;
+        NSUInteger word_stop = idx;
+
+        if (isspace ([s characterAtIndex:word_start]))
+          continue;
+
+        while (word_stop < slen && !isspace ([s characterAtIndex:word_stop+1]))
+          word_stop ++;
+
+        NSRange range = NSMakeRange (word_start, word_stop - word_start + 1);
+
+        int type = [self checkHotwordInRange:&range];
+
+        if (type == WORD_URL)
+        {
+            NSString *substring = [s substringWithRange:range];
+            if (substring) {
+                substring = [substring stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithRange:NSMakeRange(' ', '~')]];
+                NSURL *url = [NSURL URLWithString:substring];
+                if (url)
+                    [self.textStorage addAttribute:NSLinkAttributeName
+                                             value:url
+                                             range:range];
+            }
+        }
+        else if (type == WORD_NICK && prefs.colorednicks)
+        {
+            const char *substring = [[s substringWithRange:range] UTF8String];
+            NSColor *color;
+            if (!strcmp(substring, [self currentSession]->me->nick))
+            {
+                color = [self.palette getColor:XAColorNickMentioned];
+            }
+            else
+            {
+                static char rcolors[] = { 19, 20, 22, 24, 25, 26, 27, 28, 29 };
+
+                long sum = 0;
+
+                for (unsigned long i = range.location; i < range.location + range.length; i++)
+                    sum += [s characterAtIndex:i];
+                sum %= sizeof (rcolors);
+                color = [self.palette getColor:rcolors[sum]];
+            }
+            [self.textStorage addAttribute:NSForegroundColorAttributeName
+                                     value:color
+                                     range:range];
+        }
+        idx = word_stop;
+    }
 }
 
 - (void)printLine:(const char *)text length:(size_t)len {
@@ -414,29 +475,14 @@ static NSCursor *XAChatTextViewSizableCursor;
         [self clearLinesIfFlooded];
         [self.textStorage endEditing];
     }
+
+    if (atBottom)
+        [self scrollPoint:NSMakePoint(0, NSMaxY([self frame]) - NSHeight([[self superview] bounds]))];
 }
 
 - (void)clearText {
     numberOfLines = 0;
     [self setString:@""];
-}
-
-- (void)layoutManager:(NSLayoutManager *)aLayoutManager
-    didCompleteLayoutForTextContainer:(NSTextContainer *)aTextContainer
-    atEnd:(BOOL)flag
-{
-    dlog(FALSE, @"didCompleteLayoutForTextContainer %d\n", atBottom);
-    if (atBottom)
-    {
-#if 1
-        [self scrollPoint:NSMakePoint(0, NSMaxY([self bounds]))];
-#else
-        NSClipView *clipView = [self superview];
-        if (![clipView isKindOfClass:[NSClipView class]]) return;
-        [clipView scrollToPoint:[clipView constrainScrollPoint:NSMakePoint(0,[self frame].size.height)]];
-        [[clipView superview] reflectScrolledClipView:clipView];
-#endif
-    }
 }
 
 - (void)updateAtBottom:(NSNotification *)notification
@@ -446,9 +492,16 @@ static NSCursor *XAChatTextViewSizableCursor;
     CGFloat dmax = NSMaxY(clipView.documentRect);
     CGFloat cmax = NSMaxY(clipView.documentVisibleRect);
 
-    atBottom = dmax < cmax + fontSize.height * 2;
+    atBottom = (dmax < cmax + fontSize.height * 2) || (NSMaxY([self frame]) <= NSHeight([[self superview] bounds]));
 
     dlog(FALSE, @"Update at bottom: dmax=%f, cmax=%f, at_bottom=%d\n", dmax, cmax, atBottom);
+}
+
+
+- (void)frameChanged:(NSNotification *)notif
+{
+    if (atBottom)
+        [self scrollPoint:NSMakePoint(0, NSMaxY([self frame]) - NSHeight([[self superview] bounds]))];
 }
 
 - (void)viewDidMoveToWindow
@@ -631,15 +684,33 @@ static NSCursor *XAChatTextViewSizableCursor;
 {
     session *sess = [self currentSession];
     NSString *text = [[self textStorage] string];
+    bool nickOnly = FALSE;
+
+    // First, strip any brackets and remove trailing commas
+    unichar c;
+    while (range->length > 2 &&
+           ((c = [text characterAtIndex: (range->location + range->length - 1)]),
+            (c == ',' || c == ')' || c == ']' || c == '}' || c == '>')))
+        range->length--;
+
+    while (range->length > 2 &&
+           ((c = [text characterAtIndex: (range->location + range->length - 1)]),
+            (c == '(' || c == '[' || c == '{' || c == '<')))
+    {
+        range->location++;
+        range->length--;
+    }
 
     for (;;)
     {
         char *cword = (char *)[[text substringWithRange:*range] UTF8String];
+        if (!cword)
+            return 0;
         size_t len = strlen(cword);// range->length;
 
         // Let common have first crack at it.
-        int ret = url_check_word (cword, len);    /* common/url.c */
-        
+        int ret = nickOnly ? 0 : url_check_word (cword, len);    /* common/url.c */
+
         // If we get something from common, double check a few things..
         if (ret)
         {
@@ -675,15 +746,33 @@ static NSCursor *XAChatTextViewSizableCursor;
         
         // Check for words surrounded in brackets.
         // Narrow the range and try again.
-        if ((*cword == '(' && cword[len - 1] == ')') ||
-            (*cword == '[' && cword[len - 1] == ']') ||
-            (*cword == '{' && cword[len - 1] == '}') ||
-            (*cword == '<' && cword[len - 1] == '>') ||
-            (!isalpha(*cword) && *cword == cword[len - 1]))
+        NSRange aposRange;
+        if ((!isalpha(*cword) && *cword == cword[len - 1]))
         {
             if (range->length < 3) break;    /* check this before subtracting; length is unsigned */
             range->location++;
             range->length -= 2;
+            continue;
+        }
+        else if (!isalnum(cword[len - 1]))
+        {
+            if (range->length < 2) break;
+            range->length--;
+            nickOnly = true;
+            continue;
+        }
+        else if (!isalnum(*cword))
+        {
+            if (range->length < 2) break;
+            range->location++;
+            range->length--;
+            continue;
+        }
+        else if ((aposRange = [text rangeOfString:@"'" options:NSBackwardsSearch range:*range]).location != NSNotFound)
+        {
+            // Try backing up to the last apostrophe (might find a nick match)
+            range->length = aposRange.location - range->location;
+            nickOnly = true;
             continue;
         }
         
@@ -750,7 +839,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     word = [[s substringWithRange:wordRange] retain];
     
     [stg addAttribute:NSUnderlineStyleAttributeName
-                value:@(NSSingleUnderlineStyle)
+                value:@(NSUnderlineStyleSingle)
                 range:wordRange];
 }
 

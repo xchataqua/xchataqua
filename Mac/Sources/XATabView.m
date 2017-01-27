@@ -137,6 +137,7 @@ NSImage *XATabViewOutlineCellCloseImage;
 @interface XATabViewOutlineView : NSOutlineView<XAEventChain>
 
 - (void)selectRowForTabViewItem:(XATabViewItem *)tabViewItem;
+- (NSRect) frameOfCellAtColumn:(NSInteger)column row:(NSInteger)row;
 
 @end
 
@@ -145,6 +146,16 @@ NSImage *XATabViewOutlineCellCloseImage;
 - (BOOL) acceptsFirstResponder
 {
     return NO;
+}
+
+- (NSRect)frameOfCellAtColumn:(NSInteger)column row:(NSInteger)row {
+  NSRect superFrame = [super frameOfCellAtColumn:column row:row];
+  id item = [self itemAtRow:row];
+
+  if (column == 0 && [item isKindOfClass:[XATabViewItem class]]) {
+      return NSMakeRect(10, superFrame.origin.y, [self bounds].size.width - 10, superFrame.size.height);
+  }
+  return superFrame;
 }
 
 // Grab mouse down and deal with the close button without selecting
@@ -654,7 +665,7 @@ NSNib *XATabViewItemTabMenuNib;
 
 - (void) makeOutline
 {
-    [_tabOutlineView enclosingScrollView].frame = NSMakeRect(.0, .0, prefs.xa_outline_width, self.frame.size.height);    
+    [[_tabOutlineView enclosingScrollView] setFrameSize: NSMakeSize(prefs.xa_outline_width, self.frame.size.height)];
     
     [_tabOutlineView setOutlineTableColumn:(_tabOutlineView.tableColumns)[0]];
     [_tabOutlineView reloadData];
@@ -1078,7 +1089,8 @@ typedef OSStatus
 
 - (void)splitViewDidResizeSubviews:(NSNotification *)notification {
     if (self->tabViewType == XATabViewTypeOutline) {
-        prefs.xa_outline_width = _tabOutlineView.frame.size.width;
+        NSScrollView *outlineScroll = [_tabOutlineView enclosingScrollView];
+        prefs.xa_outline_width = outlineScroll.frame.size.width;
     }
 }
 

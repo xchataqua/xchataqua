@@ -443,6 +443,10 @@ void
 fe_main (void)
 {
     USER_not_enough_parameters_bug ();
+
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    NSString *pemPath = [mainBundle pathForResource:@"cert" ofType:@"pem"];
+    setenv("SSL_CERT_FILE", [pemPath UTF8String], 0);
     
 #if 0
     struct rlimit rlp;
