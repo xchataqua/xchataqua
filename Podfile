@@ -6,7 +6,6 @@ target :'XChat Azure' do
     xcodeproj 'XChatAqua.xcodeproj'
     pod 'FoundationExtension'
     pod 'libintl-alternative'
-    pod 'OpenSSL'
     pod 'Fabric'
     pod 'Crashlytics'
 end
@@ -15,7 +14,6 @@ target :'XChat Aqua' do
     xcodeproj 'XChatAqua.xcodeproj'
     pod 'FoundationExtension'
     pod 'libintl-alternative'
-    pod 'OpenSSL'
     pod 'Fabric'
     pod 'Crashlytics'
 end

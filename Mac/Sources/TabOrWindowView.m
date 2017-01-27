@@ -53,6 +53,24 @@ static float trans = 1;
     }
 }
 
+- (void)windowDidEnterFullScreen:(NSNotification *)notification {
+    XATabWindow *window = notification.object;
+    for (XATabViewItem *item in window.tabView.tabViewItems) {
+        id delegate = ((TabOrWindowView *)item.view).delegate;
+        if ([delegate respondsToSelector:@selector (windowDidEnterFullScreen:)])
+            [delegate windowDidEnterFullScreen:notification];
+    }
+}
+
+- (void)windowDidExitFullScreen:(NSNotification *)notification {
+    XATabWindow *window = notification.object;
+    for (XATabViewItem *item in window.tabView.tabViewItems) {
+        id delegate = ((TabOrWindowView *)item.view).delegate;
+        if ([delegate respondsToSelector:@selector (windowDidExitFullScreen:)])
+            [delegate windowDidExitFullScreen:notification];
+    }
+}
+
 - (void)windowCloseTab:(XATabWindow *)window {
     XATabViewItem *item = window.tabView.selectedTabViewItem;
     [item performClose:window];
@@ -316,7 +334,7 @@ static float trans = 1;
     if (!window)
     {
         NSUInteger windowStyleMask = NSTitledWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask | NSResizableWindowMask;
-        
+
         window = [[NSWindow alloc] initWithContentRect:self.frame
                                              styleMask:windowStyleMask
                                                backing:NSBackingStoreBuffered
@@ -439,6 +457,18 @@ static float trans = 1;
 {
     if ([delegate respondsToSelector:@selector (windowDidMove:)])
         [delegate windowDidMove:notification];
+}
+
+- (void) windowDidEnterFullScreen:(NSNotification *) notification
+{
+    if ([delegate respondsToSelector:@selector (windowDidEnterFullScreen:)])
+        [delegate windowDidEnterFullScreen:notification];
+}
+
+- (void) windowDidExitFullScreen:(NSNotification *) notification
+{
+    if ([delegate respondsToSelector:@selector (windowDidExitFullScreen:)])
+        [delegate windowDidExitFullScreen:notification];
 }
 
 - (void) windowDidBecomeKey:(NSNotification *) notification
