@@ -130,6 +130,9 @@ AquaChat *AquaChatSharedObject;
     
     NSWindowController *controller = [[NSWindowController alloc] initWithWindowNibName:@"ChatWindow"];
     self->_mainWindow = (id)controller.window;
+
+    if (prefs.gui_win_state == 1)
+        [self->_mainWindow toggleFullScreen:nil];
     
     [self applyPreferences:nil];
 }
@@ -257,11 +260,22 @@ AquaChat *AquaChatSharedObject;
             NSUserNotification *notification = [[NSUserNotification alloc] init];
             notification.title = @(te[event].name);
 
+            if (event == XP_TE_PRIVMSG ||
+                event == XP_TE_DPRIVMSG ||
+                event == XP_TE_HCHANMSG)
+            {
+                notification.subtitle = @(sess ? sess->channel : args[1]);
+                if (event == XP_TE_DPRIVMSG)
+                    strncpy(o, args[2], sizeof(o));
+            }
+
             char *x = strip_color (o, -1, STRIP_ALL);
             notification.informativeText = @(x);
 
             NSMutableDictionary *settings = [NSMutableDictionary dictionary];
             settings[@"setting"] = @(info->notification);
+            settings[@"channel"] = @(sess ? sess->channel : "");
+            settings[@"server"] = @((sess && sess->server) ? sess->server->id : -1);
             notification.userInfo = settings;
 
             [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
@@ -372,6 +386,31 @@ AquaChat *AquaChatSharedObject;
     if ([setting integerValue] == -1)
       return YES;
     return NO;
+}
+
+- (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification
+{
+    NSNumber *servId = notification.userInfo[@"server"];
+    NSString *channel = notification.userInfo[@"channel"];
+    struct server *serv;
+    for (GSList *slist = serv_list; slist; slist = slist->next)
+    {
+        serv = (struct server *) slist->data;
+        if (serv->id == [servId intValue])
+        {
+            char *chan = (char*)[channel UTF8String];
+            if (!chan)
+                break;
+            struct session *sess = find_dialog (serv, chan);
+            if (!sess)
+                sess = find_channel (serv, chan);
+            if (sess && sess->gui && sess->gui->controller && sess->gui->controller.chatView)
+            {
+                [sess->gui->controller.chatView makeKeyAndOrderFront:nil];
+            }
+            break;
+        }
+    }
 }
 
 #pragma mark NSWorkspace notification
