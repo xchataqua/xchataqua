@@ -15,13 +15,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
+#import <Foundation/Foundation.h>
 #import "SystemVersion.h"
 
 static SystemVersion *SystemVersionSharedSystemVersion;
 
 @implementation SystemVersion
 @synthesize systemVersion, buildVersion, systemBranch;
-@synthesize version, major, minor, bugfix;
+@synthesize major, minor, bugfix;
 
 + (void) initialize {
     if (self == [SystemVersion class]) {
@@ -36,19 +37,17 @@ static SystemVersion *SystemVersionSharedSystemVersion;
 - (id) init {
     self = [super init];
     if (self != nil) {
-        NSDictionary * dict = [[NSDictionary alloc] initWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"];
+        NSDictionary * dict = [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"];
         
         buildVersion  = [[dict valueForKey:@"ProductBuildVersion"] retain];
         systemVersion = [[dict valueForKey:@"ProductVersion"] retain];
-        
-        Gestalt(gestaltSystemVersion, &version);
-        Gestalt(gestaltSystemVersionMajor, &major);
-        Gestalt(gestaltSystemVersionMinor, &minor);
-        Gestalt(gestaltSystemVersionBugFix, &bugfix);
-        
+
+        NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
+        self->major = version.majorVersion;
+        self->minor = version.minorVersion;
+        self->bugfix = version.patchVersion;
+
         systemBranch = [[NSString alloc] initWithFormat:@"%d.%d", major, minor];
-        
-        [dict release];
     }
     return self;
 }
@@ -61,19 +60,15 @@ static SystemVersion *SystemVersionSharedSystemVersion;
     [super dealloc];
 }
 
-+ (SInt32)version {
-    return [[SystemVersion sharedInstance] version];
-}
-
-+ (SInt32)major {
++ (NSInteger)major {
     return [[SystemVersion sharedInstance] major];
 }
 
-+ (SInt32)minor {
++ (NSInteger)minor {
     return [[SystemVersion sharedInstance] minor];
 }
 
-+ (SInt32)bugfix {
++ (NSInteger)bugfix {
     return [[SystemVersion sharedInstance] bugfix];
 }
 

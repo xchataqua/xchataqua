@@ -19,21 +19,19 @@
 	NSString *systemVersion;
 	NSString *buildVersion;
 	NSString *systemBranch;
-    SInt32 version;
-	SInt32 major;
-	SInt32 minor;
-	SInt32 bugfix;
+	NSInteger major;
+	NSInteger minor;
+	NSInteger bugfix;
 }
 
 + (SystemVersion*)sharedInstance;
 
 @property (nonatomic, readonly) NSString *systemVersion, *buildVersion, *systemBranch;
-@property (nonatomic, readonly) SInt32 version, major, minor, bugfix;
+@property (nonatomic, readonly) NSInteger major, minor, bugfix;
 
-+ (SInt32)version;
-+ (SInt32)major;
-+ (SInt32)minor;
-+ (SInt32)bugfix;
++ (NSInteger)major;
++ (NSInteger)minor;
++ (NSInteger)bugfix;
 + (NSString *)systemVersion;
 + (NSString *)buildVersion;
 + (NSString *)systemBranch;
