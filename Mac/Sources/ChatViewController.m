@@ -688,6 +688,8 @@ static NSImage *emptyBulletImage;
         inputTextField.backgroundColor = backgroundColor;
         topicTextField.textColor = foregroundColor;
         topicTextField.backgroundColor = backgroundColor;
+        nickTextField.textColor = foregroundColor;
+        nickTextField.backgroundColor = backgroundColor;
     } else {
         [inputContainerView setWantsLayer:NO];
         CGColorRef bgcolor = CGColorCreateGenericRGB(0, 0, 0, 0);
