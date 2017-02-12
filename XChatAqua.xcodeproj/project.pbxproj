@@ -144,6 +144,10 @@
 		380AD1F413C698E1003EEE3D /* xchat.h in Headers */ = {isa = PBXBuildFile; fileRef = 380AD1E813C698E1003EEE3D /* xchat.h */; };
 		380AD1F513C698E1003EEE3D /* xchatc.h in Headers */ = {isa = PBXBuildFile; fileRef = 380AD1E913C698E1003EEE3D /* xchatc.h */; };
 		382F50D51949BDD800ACEA18 /* perl.bundle in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 38B20083183BDF56006C1EA1 /* perl.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		383064231E50698D005D6C8D /* libcrypto.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3A10C31D726E7A008F982D /* libcrypto.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		383064241E506994005D6C8D /* libssl.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3A10C41D726E7A008F982D /* libssl.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		383064261E506BDD005D6C8D /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3A10C31D726E7A008F982D /* libcrypto.dylib */; };
+		383064271E506BE0005D6C8D /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3A10C41D726E7A008F982D /* libssl.dylib */; };
 		3839010413C06619004D20BC /* CLTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3839010313C06619004D20BC /* CLTabCell.m */; };
 		3839010713C0667B004D20BC /* CLTabViewButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3839010613C0667B004D20BC /* CLTabViewButtonCell.m */; };
 		384A96461588F2CC00268814 /* xchat-ruby.c in Sources */ = {isa = PBXBuildFile; fileRef = 384A963E1588F2CC00268814 /* xchat-ruby.c */; };
@@ -438,7 +442,6 @@
 		3876769A1589CA0F007366B7 /* ChatWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 387676981589CA0F007366B7 /* ChatWindow.xib */; };
 		38771A4215A7B7DB0046929E /* container-migration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38771A4115A7B7D80046929E /* container-migration.plist */; };
 		38771A4715A7C0880046929E /* container-migration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38771A4615A7C0880046929E /* container-migration.plist */; };
-		3877F43916A3EBC1007CD975 /* libPods-XChat Aqua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F06934163820CA002723AB /* libPods-XChat Aqua.a */; };
 		3882282015930240000AB63D /* theme in Resources */ = {isa = PBXBuildFile; fileRef = 3882281F15930240000AB63D /* theme */; };
 		3882282115930240000AB63D /* theme in Resources */ = {isa = PBXBuildFile; fileRef = 3882281F15930240000AB63D /* theme */; };
 		388BDCC313C6A0CB00B95036 /* SGAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 388BDC9F13C6A0CB00B95036 /* SGAlert.m */; };
@@ -502,7 +505,6 @@
 		38E57380158EEF39007943DA /* xchatext.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E57378158EBD03007943DA /* xchatext.m */; };
 		38E573E1158F1A76007943DA /* AquaPlugins.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E573E0158F1A76007943DA /* AquaPlugins.m */; };
 		38E573E2158F1A76007943DA /* AquaPlugins.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E573E0158F1A76007943DA /* AquaPlugins.m */; };
-		38F06933163820B0002723AB /* libPods-XChat Azure.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F06932163820B0002723AB /* libPods-XChat Azure.a */; };
 		38F069C016386905002723AB /* gquark.c in Sources */ = {isa = PBXBuildFile; fileRef = 38F069BE16386904002723AB /* gquark.c */; };
 		38F700771BD0340800379EE7 /* python.bundle in Copy PlugIns */ = {isa = PBXBuildFile; fileRef = 0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38F700781BD034F400379EE7 /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC8F3F50DEEDAB300504F31 /* Python.framework */; };
@@ -516,8 +518,6 @@
 		38FC93CB13CAF46E006CB5C8 /* locale in Resources */ = {isa = PBXBuildFile; fileRef = 38FC93C913CAF46E006CB5C8 /* locale */; };
 		3B4D30BA15F5314600704C98 /* XAFileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4D30B915F5314600704C98 /* XAFileUtil.m */; };
 		3B4D30BB15F5314600704C98 /* XAFileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4D30B915F5314600704C98 /* XAFileUtil.m */; };
-		5B3A10C51D726E7E008F982D /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3A10C31D726E7A008F982D /* libcrypto.a */; };
-		5B3A10C61D726E81008F982D /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3A10C41D726E7A008F982D /* libssl.a */; };
 		5BEA62C61D72A79C00846DC7 /* cert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 5BEA62C51D72A76700846DC7 /* cert.pem */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		ACEC6D46D56FF53EEAB1AF3C /* libPods-xchat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2E1D3D3E6ABF2A2948A27C1 /* libPods-xchat.a */; };
@@ -637,6 +637,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				383064241E506994005D6C8D /* libssl.dylib in Copy Frameworks */,
+				383064231E50698D005D6C8D /* libcrypto.dylib in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1985,9 +1987,6 @@
 		38E573E6158F2226007943DA /* JBanner.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = JBanner.rb; sourceTree = "<group>"; };
 		38E573E7158F2226007943DA /* JFilter.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = JFilter.rb; sourceTree = "<group>"; };
 		38E573E8158F2226007943DA /* TimerSample.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = TimerSample.rb; sourceTree = "<group>"; };
-		38F067EB1636DB62002723AB /* libPods.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libPods.a; path = Pods/build/Debug/libPods.a; sourceTree = "<group>"; };
-		38F06932163820B0002723AB /* libPods-XChat Azure.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-XChat Azure.a"; path = "Pods/build/Debug/libPods-XChat Azure.a"; sourceTree = "<group>"; };
-		38F06934163820CA002723AB /* libPods-XChat Aqua.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-XChat Aqua.a"; path = "Pods/build/Debug/libPods-XChat Aqua.a"; sourceTree = "<group>"; };
 		38F069BE16386904002723AB /* gquark.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gquark.c; sourceTree = "<group>"; };
 		38FC92B813CAF449006CB5C8 /* am */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = am; path = am.lproj/xchat.strings; sourceTree = "<group>"; };
 		38FC92B913CAF449006CB5C8 /* az */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = az; path = az.lproj/xchat.strings; sourceTree = "<group>"; };
@@ -2039,8 +2038,8 @@
 		44D94F5BC57BE5AA94A45DEF /* Pods-XChat Azure.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XChat Azure.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XChat Azure/Pods-XChat Azure.debug.xcconfig"; sourceTree = "<group>"; };
 		4ED66BCD56186FC78816DDA4 /* Pods-xchat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xchat.release.xcconfig"; path = "Pods/Target Support Files/Pods-xchat/Pods-xchat.release.xcconfig"; sourceTree = "<group>"; };
 		576A923649D585F34EEC7605 /* libPods-glib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-glib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B3A10C31D726E7A008F982D /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = ../../../../usr/local/Cellar/openssl/1.0.2h_1/lib/libcrypto.a; sourceTree = "<group>"; };
-		5B3A10C41D726E7A008F982D /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = ../../../../usr/local/Cellar/openssl/1.0.2h_1/lib/libssl.a; sourceTree = "<group>"; };
+		5B3A10C31D726E7A008F982D /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = openssl/libcrypto.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B3A10C41D726E7A008F982D /* libssl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.dylib; path = openssl/libssl.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BEA62C51D72A76700846DC7 /* cert.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cert.pem; path = /usr/local/etc/openssl/cert.pem; sourceTree = "<absolute>"; };
 		7370A638C7550C64F1C7567F /* Pods-glib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-glib.release.xcconfig"; path = "Pods/Target Support Files/Pods-glib/Pods-glib.release.xcconfig"; sourceTree = "<group>"; };
 		7DBEC2CD6EEC1787F0951374 /* libPods-XChat Aqua.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XChat Aqua.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2091,7 +2090,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B3A10C61D726E81008F982D /* libssl.a in Frameworks */,
 				38A690A015A84485008CC31F /* QuartzCore.framework in Frameworks */,
 				385F81471551616800689E6E /* libiconv.dylib in Frameworks */,
 				385F783A15515CE500689E6E /* libglib.a in Frameworks */,
@@ -2099,9 +2097,9 @@
 				3876253E13C7024F00850913 /* Cocoa.framework in Frameworks */,
 				3876253F13C7024F00850913 /* Carbon.framework in Frameworks */,
 				3876254613C7024F00850913 /* WebKit.framework in Frameworks */,
-				38F06933163820B0002723AB /* libPods-XChat Azure.a in Frameworks */,
-				5B3A10C51D726E7E008F982D /* libcrypto.a in Frameworks */,
 				DE53E3E0235B896B3C25A146 /* libPods-XChat Azure.a in Frameworks */,
+				383064261E506BDD005D6C8D /* libcrypto.dylib in Frameworks */,
+				383064271E506BE0005D6C8D /* libssl.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2140,7 +2138,6 @@
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				0F8EA70B0CFB384A001AE9AE /* Carbon.framework in Frameworks */,
 				D4FBD9C612E458C4003EA441 /* WebKit.framework in Frameworks */,
-				3877F43916A3EBC1007CD975 /* libPods-XChat Aqua.a in Frameworks */,
 				E33269E4FBED69BAB557EEF9 /* libPods-XChat Aqua.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2314,14 +2311,13 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5B3A10C31D726E7A008F982D /* libcrypto.a */,
-				5B3A10C41D726E7A008F982D /* libssl.a */,
+				5B3A10C31D726E7A008F982D /* libcrypto.dylib */,
+				5B3A10C41D726E7A008F982D /* libssl.dylib */,
 				385F766D155148FC00689E6E /* libiconv.dylib */,
 				0F8EA70A0CFB384A001AE9AE /* Carbon.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				D4FBD9C512E458C4003EA441 /* WebKit.framework */,
 				38A6909F15A84485008CC31F /* QuartzCore.framework */,
-				38F067EB1636DB62002723AB /* libPods.a */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -2382,8 +2378,6 @@
 			children = (
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
-				38F06934163820CA002723AB /* libPods-XChat Aqua.a */,
-				38F06932163820B0002723AB /* libPods-XChat Azure.a */,
 				7DBEC2CD6EEC1787F0951374 /* libPods-XChat Aqua.a */,
 				195C985B0CA9E1D903B5DEB0 /* libPods-XChat Azure.a */,
 				576A923649D585F34EEC7605 /* libPods-glib.a */,
@@ -3131,11 +3125,13 @@
 			buildPhases = (
 				B819D2D5F9CF474F211CA2B6 /* [CP] Check Pods Manifest.lock */,
 				387624FB13C7024F00850913 /* Sources */,
+				3830641F1E504ED4005D6C8D /* Prepare openssl dylibs */,
 				3876253B13C7024F00850913 /* Frameworks */,
 				3876254713C7024F00850913 /* Resources */,
 				3876258513C7024F00850913 /* Copy Frameworks */,
 				38E4A0DE15CB9F3D000312D1 /* Remove PlugIns embedded provision file */,
 				38876F3D154C7727000B7E27 /* Copy PlugIns */,
+				383064251E506A67005D6C8D /* Rename dylib from executable */,
 				2DFDFFDB3BE3493BA3BBCCC7 /* [CP] Copy Pods Resources */,
 				C3D21CD0D94B5D5574819B18 /* [CP] Embed Pods Frameworks */,
 				389B258E1CE30AD000232915 /* Fabric */,
@@ -3517,6 +3513,38 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XChat Azure/Pods-XChat Azure-resources.sh\"\n";
+		};
+		3830641F1E504ED4005D6C8D /* Prepare openssl dylibs */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				/usr/local/opt/openssl/lib/libcrypto.dylib,
+				/usr/local/opt/openssl/lib/libssl.dylib,
+			);
+			name = "Prepare openssl dylibs";
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/openssl/libcrypto.dylib",
+				"$(BUILT_PRODUCTS_DIR)/openssl/libssl.dylib",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "# install openssl from homebrew to pass this phase!\nHOMEBREW_PREFIX='/usr/local'\nOPENSSL_BUILD_DIR=\"${BUILT_PRODUCTS_DIR}/openssl\"\nrm -rf \"${OPENSSL_BUILD_DIR}\"\nmkdir -p \"${OPENSSL_BUILD_DIR}\"\n\ncp \"${HOMEBREW_PREFIX}/opt/openssl/lib/libcrypto.dylib\" \"${OPENSSL_BUILD_DIR}/libcrypto.dylib\"\ncp \"${HOMEBREW_PREFIX}/opt/openssl/lib/libssl.dylib\" \"${OPENSSL_BUILD_DIR}/libssl.dylib\"\n\nchmod 666 \"${OPENSSL_BUILD_DIR}/libssl.dylib\" \"${OPENSSL_BUILD_DIR}/libcrypto.dylib\"\n\nRELATIVE_CRYPTO_DYLIB=\"@executable_path/../Frameworks/libcrypto.dylib\"\nRELATIVE_SSL_DYLIB=\"@executable_path/../Frameworks/libssl.dylib\"\n\n/usr/bin/install_name_tool -id \"${RELATIVE_CRYPTO_DYLIB}\" \"${OPENSSL_BUILD_DIR}/libcrypto.dylib\"\n\nBREW_CRYPTO_DYLIB=`otool -L \"${OPENSSL_BUILD_DIR}/libssl.dylib\" | sed -n -e 's/.\\(\\/.*crypto.*.dylib\\) .*$/\\1/p'`\n/usr/bin/install_name_tool -id \"$RELATIVE_SSL_DYLIB\" -change \"$BREW_CRYPTO_DYLIB\" \"$RELATIVE_CRYPTO_DYLIB\" \"${OPENSSL_BUILD_DIR}/libssl.dylib\"\n";
+		};
+		383064251E506A67005D6C8D /* Rename dylib from executable */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Rename dylib from executable";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "OPENSSL_BUILD_DIR=\"${BUILT_PRODUCTS_DIR}/openssl\"\nRELATIVE_CRYPTO_DYLIB=\"@executable_path/../Frameworks/libcrypto.dylib\"\nRELATIVE_SSL_DYLIB=\"@executable_path/../Frameworks/libssl.dylib\"\n\necho \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\n/usr/bin/install_name_tool -change \"/usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib\" \"$RELATIVE_CRYPTO_DYLIB\" -change \"/usr/local/opt/openssl/lib/libssl.1.0.0.dylib\" \"$RELATIVE_SSL_DYLIB\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"";
 		};
 		384A964D1588FBD100268814 /* Generate rubyenv */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5414,15 +5442,12 @@
 				HEADER_SEARCH_PATHS = (
 					"${inherited}",
 					glib,
-					"$(PODS_ROOT)/libintl-alternative",
-					"$(PODS_ROOT)/FoundationExtension",
-					"$(PODS_ROOT)/cdebug",
 				);
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"",
-					/usr/local/Cellar/openssl/1.0.2h_1/lib,
+					"\"$(BUILT_PRODUCTS_DIR)/openssl\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = org.3rddev.xchatazure;
@@ -5450,15 +5475,12 @@
 				HEADER_SEARCH_PATHS = (
 					"${inherited}",
 					glib,
-					"$(PODS_ROOT)/libintl-alternative",
-					"$(PODS_ROOT)/FoundationExtension",
-					"$(PODS_ROOT)/cdebug",
 				);
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"",
-					/usr/local/Cellar/openssl/1.0.2h_1/lib,
+					"\"$(BUILT_PRODUCTS_DIR)/openssl\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = org.3rddev.xchatazure;
@@ -5698,7 +5720,7 @@
 					"$(inherited)",
 					Mac,
 				);
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"";
+				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
@@ -5737,7 +5759,7 @@
 					"$(inherited)",
 					Mac,
 				);
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"";
+				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_CFLAGS = (
 					"-I",
