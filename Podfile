@@ -1,9 +1,9 @@
-platform :osx, "10.9"
+platform :osx, "10.10"
 xcodeproj 'XChatAqua.xcodeproj'
 workspace 'XChatAqua'
 
 target :'XChat Azure' do
-    xcodeproj 'XChatAqua.xcodeproj'
+    project 'XChatAqua.xcodeproj'
     pod 'FoundationExtension'
     pod 'libintl-alternative'
     pod 'Fabric'
@@ -11,7 +11,7 @@ target :'XChat Azure' do
 end
 
 target :'XChat Aqua' do
-    xcodeproj 'XChatAqua.xcodeproj'
+    project 'XChatAqua.xcodeproj'
     pod 'FoundationExtension'
     pod 'libintl-alternative'
     pod 'Fabric'
@@ -20,7 +20,7 @@ end
 
 target :'XChat iPhone' do
     platform :ios
-    xcodeproj 'XChatTouch.xcodeproj'
+    project 'XChatTouch.xcodeproj'
     pod 'FoundationExtension/UIKitExtension'
     pod 'libintl-alternative'
 end

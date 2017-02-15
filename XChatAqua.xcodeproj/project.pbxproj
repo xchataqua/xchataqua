@@ -2220,14 +2220,14 @@
 			files = (
 				38A690A015A84485008CC31F /* QuartzCore.framework in Frameworks */,
 				385F81471551616800689E6E /* libiconv.dylib in Frameworks */,
+				383064261E506BDD005D6C8D /* libcrypto.dylib in Frameworks */,
+				383064271E506BE0005D6C8D /* libssl.dylib in Frameworks */,
 				385F783A15515CE500689E6E /* libglib.a in Frameworks */,
 				3876253D13C7024F00850913 /* libxchat.a in Frameworks */,
 				3876253E13C7024F00850913 /* Cocoa.framework in Frameworks */,
 				3876253F13C7024F00850913 /* Carbon.framework in Frameworks */,
 				3876254613C7024F00850913 /* WebKit.framework in Frameworks */,
 				DE53E3E0235B896B3C25A146 /* libPods-XChat Azure.a in Frameworks */,
-				383064261E506BDD005D6C8D /* libcrypto.dylib in Frameworks */,
-				383064271E506BE0005D6C8D /* libssl.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3260,7 +3260,6 @@
 				3876258513C7024F00850913 /* Copy Frameworks */,
 				38E4A0DE15CB9F3D000312D1 /* Remove PlugIns embedded provision file */,
 				38876F3D154C7727000B7E27 /* Copy PlugIns */,
-				383064251E506A67005D6C8D /* Rename dylib from executable */,
 				2DFDFFDB3BE3493BA3BBCCC7 /* [CP] Copy Pods Resources */,
 				C3D21CD0D94B5D5574819B18 /* [CP] Embed Pods Frameworks */,
 				389B258E1CE30AD000232915 /* Fabric */,
@@ -3651,20 +3650,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XChat Azure/Pods-XChat Azure-resources.sh\"\n";
 		};
-		383064251E506A67005D6C8D /* Rename dylib from executable */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Rename dylib from executable";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "exit()\n\nOPENSSL_BUILD_DIR=\"${BUILT_PRODUCTS_DIR}/openssl\"\nRELATIVE_CRYPTO_DYLIB=\"@executable_path/../Frameworks/libcrypto.dylib\"\nRELATIVE_SSL_DYLIB=\"@executable_path/../Frameworks/libssl.dylib\"\n\necho \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\n/usr/bin/install_name_tool -change \"/usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib\" \"$RELATIVE_CRYPTO_DYLIB\" -change \"/usr/local/opt/openssl/lib/libssl.1.0.0.dylib\" \"$RELATIVE_SSL_DYLIB\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"";
-		};
 		384A964D1588FBD100268814 /* Generate rubyenv */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3722,8 +3707,8 @@
 				"$(BUILT_PRODUCTS_DIR)/openssl/libssl.dylib",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# install openssl from homebrew to pass this phase!\nHOMEBREW_PREFIX='/usr/local'\nOPENSSL_BUILD_DIR=\"${BUILT_PRODUCTS_DIR}/openssl\"\nrm -rf \"${OPENSSL_BUILD_DIR}\"\nmkdir -p \"${OPENSSL_BUILD_DIR}\"\n\ncp \"${HOMEBREW_PREFIX}/opt/openssl/lib/libcrypto.dylib\" \"${OPENSSL_BUILD_DIR}/libcrypto.dylib\"\ncp \"${HOMEBREW_PREFIX}/opt/openssl/lib/libssl.dylib\" \"${OPENSSL_BUILD_DIR}/libssl.dylib\"\n\nchmod 666 \"${OPENSSL_BUILD_DIR}/libssl.dylib\" \"${OPENSSL_BUILD_DIR}/libcrypto.dylib\"\n\nRELATIVE_CRYPTO_DYLIB=\"@executable_path/../Frameworks/libcrypto.dylib\"\nRELATIVE_SSL_DYLIB=\"@executable_path/../Frameworks/libssl.dylib\"\n\n/usr/bin/install_name_tool -id \"${RELATIVE_CRYPTO_DYLIB}\" \"${OPENSSL_BUILD_DIR}/libcrypto.dylib\"\n\nBREW_CRYPTO_DYLIB=`otool -L \"${OPENSSL_BUILD_DIR}/libssl.dylib\" | sed -n -e 's/.\\(\\/.*crypto.*.dylib\\) .*$/\\1/p'`\n/usr/bin/install_name_tool -id \"$RELATIVE_SSL_DYLIB\" -change \"$BREW_CRYPTO_DYLIB\" \"$RELATIVE_CRYPTO_DYLIB\" \"${OPENSSL_BUILD_DIR}/libssl.dylib\"\n";
+			shellPath = /bin/bash;
+			shellScript = "# brew install openssl\nHOMEBREW_PREFIX='/usr/local'\nOPENSSL_BUILD_DIR=\"${BUILT_PRODUCTS_DIR}/openssl\"\nrm -rf \"${OPENSSL_BUILD_DIR}\"\nmkdir -p \"${OPENSSL_BUILD_DIR}\"\n\ncp \"${HOMEBREW_PREFIX}/opt/openssl/lib/libcrypto.dylib\" \"${OPENSSL_BUILD_DIR}/libcrypto.dylib\"\ncp \"${HOMEBREW_PREFIX}/opt/openssl/lib/libssl.dylib\" \"${OPENSSL_BUILD_DIR}/libssl.dylib\"\n\nchmod 666 \"${OPENSSL_BUILD_DIR}/libssl.dylib\" \"${OPENSSL_BUILD_DIR}/libcrypto.dylib\"\n\nRELATIVE_CRYPTO_DYLIB=\"@executable_path/../Frameworks/libcrypto.dylib\"\nRELATIVE_SSL_DYLIB=\"@executable_path/../Frameworks/libssl.dylib\"\n\n/usr/bin/install_name_tool -id \"${RELATIVE_CRYPTO_DYLIB}\" \"${OPENSSL_BUILD_DIR}/libcrypto.dylib\"\n\nBREW_CRYPTO_DYLIB=`otool -L \"${OPENSSL_BUILD_DIR}/libssl.dylib\" | sed -n -e 's/.\\(\\/.*crypto.*.dylib\\) .*$/\\1/p'`\n/usr/bin/install_name_tool -id \"$RELATIVE_SSL_DYLIB\" -change \"$BREW_CRYPTO_DYLIB\" \"$RELATIVE_CRYPTO_DYLIB\" \"${OPENSSL_BUILD_DIR}/libssl.dylib\"\n";
 		};
 		38B20079183BDF56006C1EA1 /* Generate Symlink For Lion Perl Library & XChat Plugin Headers */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5528,10 +5513,9 @@
 					glib,
 				);
 				OTHER_CFLAGS = (
+					"$(inherited)",
 					"-I",
 					"$(SDK_DIR)/usr/include",
-					"-I",
-					/usr/local/opt/openssl/include,
 				);
 				PRODUCT_NAME = xchat;
 				SKIP_INSTALL = YES;
@@ -5550,10 +5534,9 @@
 					glib,
 				);
 				OTHER_CFLAGS = (
+					"$(inherited)",
 					"-I",
 					"$(SDK_DIR)/usr/include",
-					"-I",
-					/usr/local/opt/openssl/include,
 				);
 				PRODUCT_NAME = xchat;
 				SKIP_INSTALL = YES;
@@ -5669,7 +5652,6 @@
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"",
 					"\"$(BUILT_PRODUCTS_DIR)/openssl\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -5702,7 +5684,6 @@
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"",
 					"\"$(BUILT_PRODUCTS_DIR)/openssl\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -6079,6 +6060,7 @@
 				38B0B6071E54B961003C7405 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		38B20080183BDF56006C1EA1 /* Build configuration list for PBXNativeTarget "perl" */ = {
 			isa = XCConfigurationList;
