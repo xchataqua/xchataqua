@@ -11,7 +11,6 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 2DDC6FE41231BD1E0015A26C /* Build configuration list for PBXAggregateTarget "Prebuild" */;
 			buildPhases = (
-				38F0696916382384002723AB /* Install Pods */,
 				389DC407155569EB003BA8D9 /* Generate XChat Package Name */,
 				2DDC6FEA1231BD760015A26C /* Generate Build Number */,
 				2DDC6FEF1231BDD40015A26C /* Generate Localization Files */,
@@ -32,6 +31,17 @@
 			);
 			name = printenv;
 			productName = "Print Environtment Variables";
+		};
+		38B0B6041E54B961003C7405 /* openssl */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 38B0B6051E54B961003C7405 /* Build configuration list for PBXAggregateTarget "openssl" */;
+			buildPhases = (
+				38B0B6081E54B984003C7405 /* Build openssl dylibs from homebrew */,
+			);
+			dependencies = (
+			);
+			name = openssl;
+			productName = openssl;
 		};
 /* End PBXAggregateTarget section */
 
@@ -487,6 +497,11 @@
 		3894C1B41590D93D00BCD762 /* NSPanelAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3894C1B21590D6F400BCD762 /* NSPanelAdditions.m */; };
 		38A690A015A84485008CC31F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A6909F15A84485008CC31F /* QuartzCore.framework */; };
 		38A690A115A844A4008CC31F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38A6909F15A84485008CC31F /* QuartzCore.framework */; };
+		38B0B6021E54B8C3003C7405 /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3A10C41D726E7A008F982D /* libssl.dylib */; };
+		38B0B6031E54B8C5003C7405 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3A10C31D726E7A008F982D /* libcrypto.dylib */; };
+		38B0B60D1E54BA24003C7405 /* libcrypto.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3A10C31D726E7A008F982D /* libcrypto.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		38B0B60E1E54BA2B003C7405 /* libssl.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3A10C41D726E7A008F982D /* libssl.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		38B0B60F1E54BA57003C7405 /* cert.pem in Resources */ = {isa = PBXBuildFile; fileRef = 5BEA62C51D72A76700846DC7 /* cert.pem */; };
 		38B2007C183BDF56006C1EA1 /* perl.c in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F06C10E1FDA5E00359159 /* perl.c */; };
 		38B2007E183BDF56006C1EA1 /* libperl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 38763F2513DD460E008C40DB /* libperl.dylib */; };
 		38BC97BA154A9AD4005894EF /* python.bundle in Copy Plugins */ = {isa = PBXBuildFile; fileRef = 0F2FEF2B0E1FAB1500DE4D41 /* python.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -550,6 +565,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0FC8F4AD0DEEE51700504F31;
 			remoteInfo = xchat;
+		};
+		38B0B6001E54B779003C7405 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DDC6FD91231BCA00015A26C;
+			remoteInfo = Prebuild;
+		};
+		38B0B6091E54B9CB003C7405 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 38B0B6041E54B961003C7405;
+			remoteInfo = openssl;
+		};
+		38B0B60B1E54B9D4003C7405 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 38B0B6041E54B961003C7405;
+			remoteInfo = openssl;
 		};
 		38B20092183BE23A006C1EA1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -623,6 +659,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				38B0B60E1E54BA2B003C7405 /* libssl.dylib in Copy Frameworks */,
+				38B0B60D1E54BA24003C7405 /* libcrypto.dylib in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2223,6 +2261,8 @@
 			files = (
 				38A690A115A844A4008CC31F /* QuartzCore.framework in Frameworks */,
 				385F8153155167C200689E6E /* libiconv.dylib in Frameworks */,
+				38B0B6031E54B8C5003C7405 /* libcrypto.dylib in Frameworks */,
+				38B0B6021E54B8C3003C7405 /* libssl.dylib in Frameworks */,
 				385F8151155167B800689E6E /* libglib.a in Frameworks */,
 				0FC8F5C40DEEEA3E00504F31 /* libxchat.a in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
@@ -3215,7 +3255,6 @@
 			buildPhases = (
 				B819D2D5F9CF474F211CA2B6 /* [CP] Check Pods Manifest.lock */,
 				387624FB13C7024F00850913 /* Sources */,
-				3830641F1E504ED4005D6C8D /* Prepare openssl dylibs */,
 				3876253B13C7024F00850913 /* Frameworks */,
 				3876254713C7024F00850913 /* Resources */,
 				3876258513C7024F00850913 /* Copy Frameworks */,
@@ -3230,6 +3269,7 @@
 			);
 			dependencies = (
 				384FCB141E548A2600F51524 /* PBXTargetDependency */,
+				38B0B60A1E54B9CB003C7405 /* PBXTargetDependency */,
 				387624F913C7024F00850913 /* PBXTargetDependency */,
 				38E4A0E315CBABA5000312D1 /* PBXTargetDependency */,
 				38B20093183BE23A006C1EA1 /* PBXTargetDependency */,
@@ -3297,6 +3337,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				38B0B6011E54B779003C7405 /* PBXTargetDependency */,
+				38B0B60C1E54B9D4003C7405 /* PBXTargetDependency */,
 				0FC8F5C30DEEEA3B00504F31 /* PBXTargetDependency */,
 				38BC97A9154A9937005894EF /* PBXTargetDependency */,
 				38BC97AB154A9937005894EF /* PBXTargetDependency */,
@@ -3323,6 +3365,11 @@
 								enabled = 1;
 							};
 						};
+					};
+					38B0B6041E54B961003C7405 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 9384JEL3M9;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -3382,6 +3429,7 @@
 			projectRoot = "";
 			targets = (
 				2DDC6FD91231BCA00015A26C /* Prebuild */,
+				38B0B6041E54B961003C7405 /* openssl */,
 				8D1107260486CEB800E47090 /* XChat Aqua */,
 				387624F813C7024F00850913 /* XChat Azure */,
 				385F783115515C3F00689E6E /* glib */,
@@ -3481,6 +3529,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38B0B60F1E54BA57003C7405 /* cert.pem in Resources */,
 				0F8EA7580CFB6BB7001AE9AE /* blue.tiff in Resources */,
 				0F8EA75A0CFB6BB7001AE9AE /* close.tiff in Resources */,
 				0F8EA75C0CFB6BB7001AE9AE /* connect.tif in Resources */,
@@ -3602,24 +3651,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XChat Azure/Pods-XChat Azure-resources.sh\"\n";
 		};
-		3830641F1E504ED4005D6C8D /* Prepare openssl dylibs */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				/usr/local/opt/openssl/lib/libcrypto.dylib,
-				/usr/local/opt/openssl/lib/libssl.dylib,
-			);
-			name = "Prepare openssl dylibs";
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/openssl/libcrypto.dylib",
-				"$(BUILT_PRODUCTS_DIR)/openssl/libssl.dylib",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "# install openssl from homebrew to pass this phase!\nHOMEBREW_PREFIX='/usr/local'\nOPENSSL_BUILD_DIR=\"${BUILT_PRODUCTS_DIR}/openssl\"\nrm -rf \"${OPENSSL_BUILD_DIR}\"\nmkdir -p \"${OPENSSL_BUILD_DIR}\"\n\ncp \"${HOMEBREW_PREFIX}/opt/openssl/lib/libcrypto.dylib\" \"${OPENSSL_BUILD_DIR}/libcrypto.dylib\"\ncp \"${HOMEBREW_PREFIX}/opt/openssl/lib/libssl.dylib\" \"${OPENSSL_BUILD_DIR}/libssl.dylib\"\n\nchmod 666 \"${OPENSSL_BUILD_DIR}/libssl.dylib\" \"${OPENSSL_BUILD_DIR}/libcrypto.dylib\"\n\nRELATIVE_CRYPTO_DYLIB=\"@executable_path/../Frameworks/libcrypto.dylib\"\nRELATIVE_SSL_DYLIB=\"@executable_path/../Frameworks/libssl.dylib\"\n\n/usr/bin/install_name_tool -id \"${RELATIVE_CRYPTO_DYLIB}\" \"${OPENSSL_BUILD_DIR}/libcrypto.dylib\"\n\nBREW_CRYPTO_DYLIB=`otool -L \"${OPENSSL_BUILD_DIR}/libssl.dylib\" | sed -n -e 's/.\\(\\/.*crypto.*.dylib\\) .*$/\\1/p'`\n/usr/bin/install_name_tool -id \"$RELATIVE_SSL_DYLIB\" -change \"$BREW_CRYPTO_DYLIB\" \"$RELATIVE_CRYPTO_DYLIB\" \"${OPENSSL_BUILD_DIR}/libssl.dylib\"\n";
-		};
 		383064251E506A67005D6C8D /* Rename dylib from executable */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3632,7 +3663,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "OPENSSL_BUILD_DIR=\"${BUILT_PRODUCTS_DIR}/openssl\"\nRELATIVE_CRYPTO_DYLIB=\"@executable_path/../Frameworks/libcrypto.dylib\"\nRELATIVE_SSL_DYLIB=\"@executable_path/../Frameworks/libssl.dylib\"\n\necho \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\n/usr/bin/install_name_tool -change \"/usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib\" \"$RELATIVE_CRYPTO_DYLIB\" -change \"/usr/local/opt/openssl/lib/libssl.1.0.0.dylib\" \"$RELATIVE_SSL_DYLIB\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"";
+			shellScript = "exit()\n\nOPENSSL_BUILD_DIR=\"${BUILT_PRODUCTS_DIR}/openssl\"\nRELATIVE_CRYPTO_DYLIB=\"@executable_path/../Frameworks/libcrypto.dylib\"\nRELATIVE_SSL_DYLIB=\"@executable_path/../Frameworks/libssl.dylib\"\n\necho \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\n/usr/bin/install_name_tool -change \"/usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib\" \"$RELATIVE_CRYPTO_DYLIB\" -change \"/usr/local/opt/openssl/lib/libssl.1.0.0.dylib\" \"$RELATIVE_SSL_DYLIB\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"";
 		};
 		384A964D1588FBD100268814 /* Generate rubyenv */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3676,6 +3707,24 @@
 			shellPath = /bin/bash;
 			shellScript = "#!/bin/bash\n\n[ -f ~/.bashrc ] && source ~/.bashrc\n[ -f ~/.profile ] && source ~/.profile\n\necho \"Generating config.package_name.in.h\"\n\ncd \"$PROJECT_DIR\"\n\"tools/gen_xchat_package_name.sh\" > \"xchat/config.package_name.in.h\"";
 		};
+		38B0B6081E54B984003C7405 /* Build openssl dylibs from homebrew */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				/usr/local/opt/openssl/lib/libcrypto.dylib,
+				/usr/local/opt/openssl/lib/libssl.dylib,
+			);
+			name = "Build openssl dylibs from homebrew";
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/openssl/libcrypto.dylib",
+				"$(BUILT_PRODUCTS_DIR)/openssl/libssl.dylib",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# install openssl from homebrew to pass this phase!\nHOMEBREW_PREFIX='/usr/local'\nOPENSSL_BUILD_DIR=\"${BUILT_PRODUCTS_DIR}/openssl\"\nrm -rf \"${OPENSSL_BUILD_DIR}\"\nmkdir -p \"${OPENSSL_BUILD_DIR}\"\n\ncp \"${HOMEBREW_PREFIX}/opt/openssl/lib/libcrypto.dylib\" \"${OPENSSL_BUILD_DIR}/libcrypto.dylib\"\ncp \"${HOMEBREW_PREFIX}/opt/openssl/lib/libssl.dylib\" \"${OPENSSL_BUILD_DIR}/libssl.dylib\"\n\nchmod 666 \"${OPENSSL_BUILD_DIR}/libssl.dylib\" \"${OPENSSL_BUILD_DIR}/libcrypto.dylib\"\n\nRELATIVE_CRYPTO_DYLIB=\"@executable_path/../Frameworks/libcrypto.dylib\"\nRELATIVE_SSL_DYLIB=\"@executable_path/../Frameworks/libssl.dylib\"\n\n/usr/bin/install_name_tool -id \"${RELATIVE_CRYPTO_DYLIB}\" \"${OPENSSL_BUILD_DIR}/libcrypto.dylib\"\n\nBREW_CRYPTO_DYLIB=`otool -L \"${OPENSSL_BUILD_DIR}/libssl.dylib\" | sed -n -e 's/.\\(\\/.*crypto.*.dylib\\) .*$/\\1/p'`\n/usr/bin/install_name_tool -id \"$RELATIVE_SSL_DYLIB\" -change \"$BREW_CRYPTO_DYLIB\" \"$RELATIVE_CRYPTO_DYLIB\" \"${OPENSSL_BUILD_DIR}/libssl.dylib\"\n";
+		};
 		38B20079183BDF56006C1EA1 /* Generate Symlink For Lion Perl Library & XChat Plugin Headers */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3717,20 +3766,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "rm -rf \"$BUILT_PRODUCTS_DIR/\"*.bundle/Contents/embedded.provisionprofile";
-		};
-		38F0696916382384002723AB /* Install Pods */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Install Pods";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "\ncd \"$PROJECT_DIR\"/Pods\nxcodebuild -target 'Pods-XChat Aqua'\nxcodebuild -target 'Pods-XChat Azure'";
 		};
 		71158C99BA56B119013C6058 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4159,6 +4194,21 @@
 			isa = PBXTargetDependency;
 			target = 0FC8F4AD0DEEE51700504F31 /* xchat */;
 			targetProxy = 387624FA13C7024F00850913 /* PBXContainerItemProxy */;
+		};
+		38B0B6011E54B779003C7405 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2DDC6FD91231BCA00015A26C /* Prebuild */;
+			targetProxy = 38B0B6001E54B779003C7405 /* PBXContainerItemProxy */;
+		};
+		38B0B60A1E54B9CB003C7405 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 38B0B6041E54B961003C7405 /* openssl */;
+			targetProxy = 38B0B6091E54B9CB003C7405 /* PBXContainerItemProxy */;
+		};
+		38B0B60C1E54B9D4003C7405 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 38B0B6041E54B961003C7405 /* openssl */;
+			targetProxy = 38B0B60B1E54B9D4003C7405 /* PBXContainerItemProxy */;
 		};
 		38B20093183BE23A006C1EA1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5662,6 +5712,22 @@
 			};
 			name = Release;
 		};
+		38B0B6061E54B961003C7405 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 9384JEL3M9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		38B0B6071E54B961003C7405 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 9384JEL3M9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		38B20081183BDF56006C1EA1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -5822,8 +5888,7 @@
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"",
-					"\"$(SRCROOT)/Pods/build/Debug\"",
+					"\"$(BUILT_PRODUCTS_DIR)/openssl\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.sourceforge.xchataqua;
 				PRODUCT_CODE = Aqua;
@@ -5854,8 +5919,7 @@
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Pods/build/$(CONFIGURATION)\"",
-					"\"$(SRCROOT)/Pods/build/Debug\"",
+					"\"$(BUILT_PRODUCTS_DIR)/openssl\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.sourceforge.xchataqua;
 				PRODUCT_CODE = Aqua;
@@ -6007,6 +6071,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		38B0B6051E54B961003C7405 /* Build configuration list for PBXAggregateTarget "openssl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38B0B6061E54B961003C7405 /* Debug */,
+				38B0B6071E54B961003C7405 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		38B20080183BDF56006C1EA1 /* Build configuration list for PBXNativeTarget "perl" */ = {
 			isa = XCConfigurationList;

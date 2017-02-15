@@ -13,7 +13,7 @@ if [ ! -h "$SANDBOX" ]; then
 	fi
 	exit
 fi
-	
+
 echo "Your real data is symlinked... This may cause critical problems..."
 rm "$SANDBOX"
 
