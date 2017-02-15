@@ -18,6 +18,6 @@ for localedir in "$MANUAL_STRINGS_DIR"/*; do
 		continue
 	fi
 	echo -n "$locale "
-	$CP "$MANUAL_STRINGS_DIR/$locale/"*.strings "$COMMON_RES_DIR/$locale.lproj/"
+	$CP "$MANUAL_STRINGS_DIR/$locale/"*.strings "$LPROJ_DIR/$locale.lproj/"
 done
 echo "done"

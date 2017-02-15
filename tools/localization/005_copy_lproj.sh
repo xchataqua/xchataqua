@@ -21,7 +21,7 @@ for lproj in "$LPROJ_DIR/*.lproj"; do
 	if [ ! -e "$xibdir" ]; then
 		mkdir -p "$xibdir"
 	fi
-	
+
 	echo -n "copying $lproj"
 	for xibtemp in "$lproj/*.xib"; do
 		xibfile=$xibdir/`basename $xibtemp`

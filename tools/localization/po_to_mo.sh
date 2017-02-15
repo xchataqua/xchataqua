@@ -23,7 +23,7 @@ for pofile in `ls "$PO_DIR"/*.po`; do
 		fi
 		continue
 	fi
-	
+
 	mkdir -p "$modir"
 	cmd="'$MSGFMT' -o '$mofile' '$pofile'"
 	if [ $DEBUG ]; then

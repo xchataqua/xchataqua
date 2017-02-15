@@ -25,6 +25,16 @@
 
 #import "UtilityWindow.h"
 
+
+@interface LocalizedWindowController: NSWindowController
+
+@end
+
+@implementation LocalizedWindowController
+
+@end
+
+
 NSMutableDictionary *utilities;
 @implementation UtilityWindow
 @synthesize windowKey;
@@ -52,10 +62,10 @@ NSMutableDictionary *utilities;
     return utility;
 }
 
-+ (UtilityWindow *) utilityByKey:(id)aKey windowNibName:(NSString *)nibName {
++ (UtilityWindow *)utilityByKey:(id)aKey windowNibName:(NSString *)nibName {
     UtilityWindow *utility = utilities[aKey];
     if ( utility == nil ) {
-        NSWindowController *windowController = [[NSWindowController alloc] initWithWindowNibName:nibName];
+        LocalizedWindowController *windowController = [[LocalizedWindowController alloc] initWithWindowNibName:nibName];
         utility = (UtilityWindow *)[windowController window];
         utility->windowKey = [aKey retain];
         utilities[aKey] = utility;

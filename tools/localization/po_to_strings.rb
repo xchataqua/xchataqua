@@ -7,11 +7,11 @@ class PoParser
   def initialize(po_file)
     @po_file = File.read(po_file)
   end
-  
+
   def strings
     @strings||=parse
   end
-  
+
   def save_strings(file)
     str = ""
     strings.each do |key,value|
@@ -60,6 +60,6 @@ private
 end
 
 Dir.glob("po/*.po") do |f|
-	puts f	
+	puts f
   PoParser.new(f).save_strings(f.gsub(/\.po$/, '.strings'))
 end

@@ -11,54 +11,44 @@ if [ "$1" == 'clean' ]; then
 	exit
 fi
 
-BASE_SED='002.sed'
-SED_TEMP_DIR="$L10N_TEMP_DIR/localesed"
-
-if [ ! -e "$SED_TEMP_DIR" ]; then
-	mkdir -p "$SED_TEMP_DIR"
-fi
-
-checkdone=''
 for po_strings in "$PO_STRINGS_DIR"/*.strings; do
 	locale=`basename "$po_strings" .strings`
 	if [ $BASE_LOCALE = $locale ]; then
 		continue
 	fi
-	if [ $DEBUG ]; then
-		echo -n "generate $locale.sed"
-	else
-		echo -n $locale
-	fi
+    echo -n "$locale "
 
-	#generate sed file
-	sedtemp="$SED_TEMP_DIR/$locale.sed"
-	echo "#!/bin/sed" > "$sedtemp"
-	xibstrings="$MANUAL_STRINGS_DIR/$locale/xib.strings"
-	if [ -e "$xibstrings" ]; then
-		sed -f "$BASE_SED" "$xibstrings" >> "$sedtemp"
-	fi
-	sed -f "$BASE_SED" "$PO_STRINGS_DIR/$locale.strings" >> "$sedtemp"
+    cp "${po_strings}" "${L10N_TEMP_DIR}/$locale.strings"
+	app_strings="$MANUAL_STRINGS_DIR/$locale/xib.strings"
+    if [ -e "$app_strings" ]; then
+        cat "${app_strings}" >> "${L10N_TEMP_DIR}/$locale.strings"
+    fi
+	app_strings="$MANUAL_STRINGS_DIR/$locale/xchataqua.strings"
+    if [ -e "$app_strings" ]; then
+        cat "${app_strings}" >> "${L10N_TEMP_DIR}/$locale.strings"
+    fi
 
-	# generate locale xib strings
-	if [ ! -e "$XIB_STRINGS_DIR/$locale" ]; then
-		mkdir -p "$XIB_STRINGS_DIR/$locale"
-	fi
-	
-	for strings in "$BASE_XIB_STRINGS_DIR"/*.xib.strings; do
-		newstrings="$XIB_STRINGS_DIR/$locale/"`basename "$strings"`
-		if [ "$newstrings" -nt "$strings" ] && [ "$newstrings" -nt "$xibstrings" ] && [ "$newstrings" -nt "$PO_STRINGS_DIR/$locale.strings" ]; then
-			continue
-		fi
-		cmd="sed -f '$sedtemp' '$strings'"
-		if [ $DEBUG ]; then
-			echo "$cmd > '$newstrings' &"
-		fi
-	 	eval "$cmd > '$newstrings' &"
-		checkdone=$checkdone'1'
-		echo -n .
+    lprojdir="$LPROJ_DIR/$locale.lproj"
+    if [ ! -e "$lprojdir" ]; then
+        mkdir -p "$lprojdir"
+    fi
+
+    for xib_strings in ${LPROJ_DIR}/${BASE_LOCALE}.lproj/*.strings; do
+        xib_strings_basename=`basename ${xib_strings}`
+        xib_strings_target="${lprojdir}/${xib_strings_basename}"
+        if [ 1 ]; then
+        # if [ "${xib_strings}" -nt "${xib_strings_target}" ]; then
+            ./apply_localizable_strings.py "${xib_strings}" "${L10N_TEMP_DIR}/$locale.strings" > "${xib_strings_target}"
+            echo -n .
+        else
+            echo -n s
+        fi
 	done
+
+    if [ -e "$MANUAL_STRINGS_DIR/$locale/xchataqua.strings" ]; then
+        cp "$MANUAL_STRINGS_DIR/$locale/xchataqua.strings" "${lprojdir}/"
+    fi
 	echo ""
-	wait $!
 done
 if [ $checkdone ]; then
 	if [ $DEBUG ]; then
