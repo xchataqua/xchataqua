@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import re
 import sys
+import polib
 import localizable
 
 
@@ -21,7 +22,7 @@ def deshortcut(k, v):
     return k2, v
 
 
-def create_map(s):
+def create_strings_map(s):
     m = {}
     for i in s:
         if not i['key']:
@@ -34,8 +35,21 @@ def create_map(s):
     return m
 
 
-def apply(source, localization):
-    trans_map = create_map(localization)
+def create_po_map(s):
+    m = {}
+    for i in s:
+        if not i.msgid:
+            continue
+        k, v = i.msgid, i.msgstr
+        k, v = deshortcut(k, v)
+        m[k] = v
+        if k.startswith('XChat: '):
+            m[k.lstrip('XChat: ')] = v.lstrip('XChat: ')
+    return m
+
+
+def apply(source, trans_map):
+    result = []
     for l in source:
         orig = l['value']
         prefix = u''
@@ -48,7 +62,10 @@ def apply(source, localization):
             orig = orig.rstrip(':')
         trans = trans_map.get(orig)
         if trans:
-            l['value'] = prefix + trans + suffix
+            item = l.copy()
+            item['value'] = prefix + trans + suffix
+            result.append(item)
+    return result
 
 
 if __name__ == '__main__':
@@ -56,8 +73,14 @@ if __name__ == '__main__':
     f2 = sys.argv[2]
 
     s = localizable.parse_strings(filename=f1)
-    l = localizable.parse_strings(filename=f2)
+    if f2.endswith('.po'):
+        l = polib.pofile(f2)
+        m = create_po_map(l)
+    elif f2.endswith('.strings'):
+        l = localizable.parse_strings(filename=f2)
+        m = create_strings_map(l)
+    else:
+        assert False, f2
 
-    apply(s, l)
-
-    print(localizable.write_strings(s).encode('utf-8'))
+    r = apply(s, m)
+    print(localizable.write_strings(r).encode('utf-8'))
