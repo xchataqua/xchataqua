@@ -48,7 +48,7 @@ def create_po_map(s):
     return m
 
 
-def apply(source, trans_map):
+def apply(source, *trans_maps):
     result = []
     for l in source:
         orig = l['value']
@@ -60,27 +60,37 @@ def apply(source, trans_map):
         elif orig.endswith(':'):
             suffix = u':'
             orig = orig.rstrip(':')
-        trans = trans_map.get(orig)
+        trans = None
+        for m in trans_maps:
+            trans = m.get(orig)
+            if trans:
+                break
+        item = l.copy()
         if trans:
-            item = l.copy()
             item['value'] = prefix + trans + suffix
-            result.append(item)
+        result.append(item)
     return result
 
+
+def load_source(filename):
+    if filename.endswith('.po'):
+        l = polib.pofile(filename)
+        m = create_po_map(l)
+    elif filename.endswith('.strings'):
+        l = localizable.parse_strings(filename=filename)
+        m = create_strings_map(l)
+    else:
+        assert False, filename
+    return l, m
 
 if __name__ == '__main__':
     f1 = sys.argv[1]
     f2 = sys.argv[2]
+    f3 = sys.argv[3]
 
     s = localizable.parse_strings(filename=f1)
-    if f2.endswith('.po'):
-        l = polib.pofile(f2)
-        m = create_po_map(l)
-    elif f2.endswith('.strings'):
-        l = localizable.parse_strings(filename=f2)
-        m = create_strings_map(l)
-    else:
-        assert False, f2
+    l1, m1 = load_source(f2)
+    l2, m2 = load_source(f3)
 
-    r = apply(s, m)
+    r = apply(s, m1, m2)
     print(localizable.write_strings(r).encode('utf-8'))

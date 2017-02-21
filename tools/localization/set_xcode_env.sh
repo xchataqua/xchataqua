@@ -5,7 +5,7 @@ if [ ! "$PROJECT_FILE" ]; then
 	exit -1
 fi
 
-xcodebuild -project "$PROJECT_FILE" -target 'printenv' 2>/dev/null | grep 'setenv' | sed -e 's/^ *setenv //' -e 's/ /=/' > .xcodeenv
+xcodebuild -project "$PROJECT_FILE" -target 'printenv' 2>/dev/null | grep 'export' > .xcodeenv
 . .xcodeenv 2>/dev/null
 rm .xcodeenv
 

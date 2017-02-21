@@ -11,21 +11,24 @@ if [ "$1" == 'clean' ]; then
 	exit
 fi
 
-for po_strings in "$PO_STRINGS_DIR"/*.strings; do
-	locale=`basename "$po_strings" .strings`
-	if [ $BASE_LOCALE = $locale ]; then
+mkdir -p "${L10N_TEMP_DIR}"
+
+for po in "$PO_DIR"/*.po; do
+	locale=`basename ${po} .po`
+	if [ ${BASE_LOCALE} = ${locale} ]; then
 		continue
 	fi
-    echo -n "$locale "
+    echo -n "${locale} "
 
-    cp "${po_strings}" "${L10N_TEMP_DIR}/$locale.strings"
+    strings="${L10N_TEMP_DIR}/$locale.strings"
+    echo '' > "${strings}"
 	app_strings="$MANUAL_STRINGS_DIR/$locale/xib.strings"
     if [ -e "$app_strings" ]; then
-        cat "${app_strings}" >> "${L10N_TEMP_DIR}/$locale.strings"
+        cat "${app_strings}" >> "${strings}"
     fi
 	app_strings="$MANUAL_STRINGS_DIR/$locale/xchataqua.strings"
     if [ -e "$app_strings" ]; then
-        cat "${app_strings}" >> "${L10N_TEMP_DIR}/$locale.strings"
+        cat "${app_strings}" >> "${strings}"
     fi
 
     lprojdir="$LPROJ_DIR/$locale.lproj"
@@ -36,9 +39,9 @@ for po_strings in "$PO_STRINGS_DIR"/*.strings; do
     for xib_strings in ${LPROJ_DIR}/${BASE_LOCALE}.lproj/*.strings; do
         xib_strings_basename=`basename ${xib_strings}`
         xib_strings_target="${lprojdir}/${xib_strings_basename}"
-        # if [ 1 ]; then
-        if [ "${xib_strings}" -nt "${xib_strings_target}" ]; then
-            ./apply_localizable_strings.py "${xib_strings}" "${L10N_TEMP_DIR}/$locale.strings" > "${xib_strings_target}"
+        if [ 1 ]; then
+        #if [ "${xib_strings}" -nt "${xib_strings_target}" ]; then
+            ./apply_localizable_strings.py "${xib_strings}" "${po}" "${strings}" > "${xib_strings_target}"
             echo -n .
         else
             echo -n s

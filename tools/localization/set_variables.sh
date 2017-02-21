@@ -5,12 +5,11 @@ if [ ! $PROJECT_DIR ]; then
 fi
 
 BASE_LOCALE='en'
-IBTOOL_FLAGS=""
 
-L10N_TEMP_DIR="$PROJECT_TEMP_DIR/Localization"
+L10N_TEMP_DIR="$BUILT_PRODUCTS_DIR/Localization"
 MANUAL_STRINGS_DIR="$PROJECT_DIR/tools/localization/strings"
 
-PO_DIR="$PROJECT_DIR/xchat/po"
+PO_DIR="$PROJECT_DIR/tools/localization/po"
 PO_STRINGS_DIR="$PROJECT_DIR/tools/localization/po"
 MO_BASE_DIR="$PROJECT_DIR/Resources/locale"
 
