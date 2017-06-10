@@ -42,7 +42,7 @@ To recover this, find the original configuration and replace symlink to original
 
 # Where is my config files? Where is my log files?
 
-Visit "~/Library/Containers/org.3rddev.xchatazure/Data/Library/Application Support/XChat Azure/". "~" means your home directory. (For example, /Users/myname)
+Visit `~/Library/Containers/org.3rddev.xchatazure/Data/Library/Application Support/XChat Azure/`. `~` means your home directory. (For example, /Users/myname)
 
 # Move GTK xchat2 or XChat Aqua to Azure
 
