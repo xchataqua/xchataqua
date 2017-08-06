@@ -362,6 +362,7 @@ fe_init (void)
 #if USE_GLIKE_TIMER
     [GLikeTimer self];
 #endif
+    //[[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
     [NSApplication sharedApplication];
     NSString *mainNibFile = [[NSBundle mainBundle] infoDictionary][@"NSMainNibFile"];
     /*

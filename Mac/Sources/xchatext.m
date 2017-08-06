@@ -65,12 +65,14 @@ void aqua_plugin_auto_load(struct session *ps) {
     PluginFileManager *manager = [EmbeddedPluginManager sharedPluginManager];
     for (PluginItem *item in manager.items) {
         if ([manager hasAutoloadItem:item]) {
+            // NSLog(@"xchat aqua loading plugin: %@", item.filename);
             aqua_plugin_auto_load_item(ps, item.filename.UTF8String);
         }
     }
     manager = [UserPluginManager sharedPluginManager];
     for (PluginItem *item in manager.items) {
         if ([manager hasAutoloadItem:item]) {
+            // NSLog(@"xchat aqua loading plugin: %@", item.filename);
             aqua_plugin_auto_load_item(ps, item.filename.UTF8String);
         }
     }

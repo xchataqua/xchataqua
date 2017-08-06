@@ -39,8 +39,7 @@ for po in "$PO_DIR"/*.po; do
     for xib_strings in ${LPROJ_DIR}/${BASE_LOCALE}.lproj/*.strings; do
         xib_strings_basename=`basename ${xib_strings}`
         xib_strings_target="${lprojdir}/${xib_strings_basename}"
-        if [ 1 ]; then
-        #if [ "${xib_strings}" -nt "${xib_strings_target}" ]; then
+        if [ "${xib_strings}" -nt "${xib_strings_target}" ]; then
             ./apply_localizable_strings.py "${xib_strings}" "${po}" "${strings}" > "${xib_strings_target}"
             echo -n .
         else

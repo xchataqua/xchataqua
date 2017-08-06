@@ -209,10 +209,14 @@ LoadedPluginManager *LoadedPluginManagerSharedObject;
 
 - (void)loadAutoItems {
     [self->_autoItems release];
+    self->_autoItems = [[NSMutableArray alloc] init];
+    return;
+    /*
     self->_autoItems = [[NSMutableArray alloc] initWithContentsOfFile:[[self class] autoItemConfigurationFilename]];
     if (self->_autoItems == nil) {
         self->_autoItems = [[NSMutableArray alloc] init];
     }
+    */
 }
 
 - (void)addAutoloadItem:(PluginItem *)item {

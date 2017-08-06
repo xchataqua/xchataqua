@@ -55,29 +55,6 @@
 	XCA, you'll probably want to set POINTERS_ARE_TAGS to 0.
 */
 
-#define GLIKETIMER_32BIT_ONLY 0
-#if GLIKETIMER_32BIT_ONLY
-
-+ (guint)addTaggedTimerWithMSInterval:(guint)ms callback:(GSourceFunc)function userData:(gpointer)data
-{
-	return (guint)[self scheduledTimerWithMSInterval:ms callback:function userData:data];
-}
-
-+ (gboolean)removeTimerWithTag:(guint)tag
-{
-	//FIXME: 32bit only
-	[(NSTimer *)tag invalidate];
-	return true;
-}
-
-- (void)doCallback:(NSTimer*)timer
-{
-	if ((function(userData) == 0) && [timer isValid])	// note: glib allows callers to remove the timer
-		[timer invalidate];								// explicitly from within the callback, and then
-}														// return 0. Guard against this by using isValid.
-
-#else
-
 NSMutableDictionary *gTimers;
 
 + (guint)addTaggedTimerWithMSInterval:(guint)ms callback:(GSourceFunc)function userData:(gpointer)data
@@ -101,18 +78,9 @@ NSMutableDictionary *gTimers;
 - (void)doCallback:(NSTimer*)timer
 {
 	int tag = [timer hash];						// note: glib allows callers to remove the timer
-	if (function(userData) == 0)				// explicitly from within the callback, and then
+    if (function(userData) == 0) {				// explicitly from within the callback, and then
 		[GLikeTimer removeTimerWithTag:tag];	// return 0. removeTimerWithTag has no problem
-}												// with double-removes, but we need to save the tag.
-
-#endif
-
-+ (void)initialize
-{
-#if GLIKETIMER_32BIT_ONLY
-#else
-	gTimers = [NSMutableDictionary dictionaryWithCapacity:5];
-#endif
+    }                                           // with double-removes, but we need to save the tag.
 }
 
 @end
