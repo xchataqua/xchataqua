@@ -65,15 +65,17 @@ void aqua_plugin_auto_load(struct session *ps) {
     PluginFileManager *manager = [EmbeddedPluginManager sharedPluginManager];
     for (PluginItem *item in manager.items) {
         if ([manager hasAutoloadItem:item]) {
+            PrintTextf (ps, "AutoLoad was set but disabled for: %s\n", item.filename.UTF8String);
             // NSLog(@"xchat aqua loading plugin: %@", item.filename);
-            aqua_plugin_auto_load_item(ps, item.filename.UTF8String);
+//            aqua_plugin_auto_load_item(ps, item.filename.UTF8String);
         }
     }
     manager = [UserPluginManager sharedPluginManager];
     for (PluginItem *item in manager.items) {
         if ([manager hasAutoloadItem:item]) {
+            PrintTextf (ps, "AutoLoad was set but disabled for: %s\n", item.filename.UTF8String);
             // NSLog(@"xchat aqua loading plugin: %@", item.filename);
-            aqua_plugin_auto_load_item(ps, item.filename.UTF8String);
+//            aqua_plugin_auto_load_item(ps, item.filename.UTF8String);
         }
     }
 }
