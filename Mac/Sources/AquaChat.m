@@ -39,7 +39,7 @@
 #import "ColorPalette.h"
 #import "ChatViewController.h"
 #import "DCCFileSendController.h"
-#import "DCCFileRecieveController.h"
+#import "DCCFileReceiveController.h"
 #import "DCCChatController.h"
 #import "EditListWindow.h"
 #import "FriendWindow.h"
@@ -561,11 +561,11 @@ AquaChat *AquaChatSharedObject;
     return is_new;
 }
 
-- (BOOL)openDCCRecieveWindowAndShow:(BOOL)show {
+- (BOOL)openDCCReceiveWindowAndShow:(BOOL)show {
     BOOL is_new = dcc_recv_window != nil;
     
     if (!dcc_recv_window) {
-        dcc_recv_window = [[DCCFileRecieveController alloc] init];
+        dcc_recv_window = [[DCCFileReceiveController alloc] init];
     }
     
     [dcc_recv_window show:show];
@@ -725,9 +725,9 @@ AquaChat *AquaChatSharedObject;
     [[UtilityTabOrWindowView utilityByKey:UtilityWindowKey(ChannelWindowKey, current_sess->server) viewNibName:@"ChannelWindow"] becomeTabOrWindowAndShow:YES];
 }
 
-- (void) showDccRecieveWindow:(id)sender
+- (void) showDccReceiveWindow:(id)sender
 {
-    [self openDCCRecieveWindowAndShow:YES];
+    [self openDCCReceiveWindowAndShow:YES];
 }
 
 - (void) showDccChatWindow:(id)sender

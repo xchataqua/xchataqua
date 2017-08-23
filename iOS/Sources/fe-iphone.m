@@ -849,7 +849,7 @@ fe_dcc_open_recv_win (int passive)
 {
 	NSLog(@"dcc recv");
 	return 1;
-	//return [[AquaChat sharedAquaChat] openDccRecieveWindowAndShow:!passive];
+	//return [[AquaChat sharedAquaChat] openDccReceiveWindowAndShow:!passive];
 }
 
 int

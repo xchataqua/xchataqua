@@ -828,7 +828,7 @@ fe_ignore_update (int level)
 int
 fe_dcc_open_recv_win (int passive)
 {
-    return [[AquaChat sharedAquaChat] openDCCRecieveWindowAndShow:!passive];
+    return [[AquaChat sharedAquaChat] openDCCReceiveWindowAndShow:!passive];
 }
 
 int

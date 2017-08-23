@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA */
 
-/* DCCFileRecieveController.m
+/* DCCFileReceiveController.m
  * Correspond to main menu: Window -> File Receive...
  */
 
@@ -24,13 +24,13 @@
 #include "network.h"
 #include "dcc.h"
 
-#import "DCCFileRecieveController.h"
+#import "DCCFileReceiveController.h"
 
 extern int dcc_getcpssum;
 
 //////////////////////////////////////////////////////////////////////
 
-@interface DCCFileRecieveItem : DCCFileItem {
+@interface DCCFileReceiveItem : DCCFileItem {
     NSString *from;
 }
 
@@ -41,7 +41,7 @@ extern int dcc_getcpssum;
 
 @end
 
-@implementation DCCFileRecieveItem
+@implementation DCCFileReceiveItem
 @synthesize from;
 
 - (id) initWithDCC:(struct DCC *) the_dcc
@@ -70,7 +70,7 @@ extern int dcc_getcpssum;
 
 //////////////////////////////////////////////////////////////////////
 
-@implementation DCCFileRecieveController
+@implementation DCCFileReceiveController
 
 + (NSSet *) keyPathsForValuesAffectingActiveString {
     return [NSSet setWithObject:@"activeCount"];
@@ -86,7 +86,7 @@ extern int dcc_getcpssum;
 - (DCCItem *)itemWithDCC:(struct DCC *) dcc
 {
     if (dcc->type != TYPE_RECV) return nil;
-    else return [[[DCCFileRecieveItem alloc] initWithDCC:dcc] autorelease];
+    else return [[[DCCFileReceiveItem alloc] initWithDCC:dcc] autorelease];
 }
 
 - (void) awakeFromNib
@@ -94,7 +94,7 @@ extern int dcc_getcpssum;
     cpssum = &dcc_getcpssum;
     [super awakeFromNib];
     
-    [dccListView setTitle:NSLocalizedStringFromTable(@"XChat: File Recieve List", @"xchataqua", @"")];
+    [dccListView setTitle:NSLocalizedStringFromTable(@"XChat: File Receive List", @"xchataqua", @"")];
     [dccListView setTabTitle:NSLocalizedStringFromTable(@"dccrecv", @"xchataqua", @"")];
 }
 
@@ -103,7 +103,7 @@ extern int dcc_getcpssum;
     NSInteger row = [itemTableView selectedRow];
     if (row >= 0)
     {
-        DCCFileRecieveItem *item = dccItems[row];
+        DCCFileReceiveItem *item = dccItems[row];
         
         // Reveal the proper file
         NSString *fileToReveal;
@@ -129,7 +129,7 @@ extern int dcc_getcpssum;
     NSInteger row = [itemTableView selectedRow];
     if (row >= 0)
     {
-        DCCFileRecieveItem *item = dccItems[row];
+        DCCFileReceiveItem *item = dccItems[row];
         struct DCC *dcc = item->dcc;
         dcc_get (dcc);
     }
@@ -140,7 +140,7 @@ extern int dcc_getcpssum;
     NSInteger row = [itemTableView selectedRow];
     if (row >= 0)
     {
-        DCCFileRecieveItem *item = dccItems[row];
+        DCCFileReceiveItem *item = dccItems[row];
         struct DCC *dcc = item->dcc;
         dcc_resume (dcc);
     }
@@ -151,7 +151,7 @@ extern int dcc_getcpssum;
     NSInteger row = [itemTableView selectedRow];
     if (row >= 0)
     {
-        DCCFileRecieveItem *item = dccItems[row];
+        DCCFileReceiveItem *item = dccItems[row];
         
         struct DCC *dcc = item->dcc;
         
@@ -189,7 +189,7 @@ extern int dcc_getcpssum;
 
 - (id) tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger) rowIndex
 {
-    DCCFileRecieveItem *item = dccItems[rowIndex];
+    DCCFileReceiveItem *item = dccItems[rowIndex];
     
     switch ([[aTableView tableColumns] indexOfObjectIdenticalTo:aTableColumn])
     {
