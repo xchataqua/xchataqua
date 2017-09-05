@@ -1604,7 +1604,7 @@ static NSImage *emptyBulletImage;
         [userlistTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:srow-1] byExtendingSelection:NO];
     else if (idx == srow)
         [userlistTableView deselectAll:self];
-    [userlistTableView reloadData]; 
+    [userlistTableView reloadData];
     
     return srow == idx;
 }
@@ -1687,7 +1687,7 @@ static NSImage *emptyBulletImage;
     /* CL */
     [self recalculateUserTableLayout];
     /* CL end */
-    [userlistTableView reloadData]; 
+    [userlistTableView reloadData];
 }
 
 - (void) channelLimit
@@ -2244,6 +2244,14 @@ static NSImage *emptyBulletImage;
     [textView setContinuousSpellCheckingEnabled:prefs.gui_input_spell];
     [textView setGrammarCheckingEnabled:prefs.xa_input_grammar];
     [textView setAutomaticSpellingCorrectionEnabled:prefs.xa_input_autocorrect];
+
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    for (ChannelUser *user in self->users) {
+        [arr addObject:[user->nick string]];
+    }
+    [[NSSpellChecker sharedSpellChecker] setIgnoredWords:arr inSpellDocumentWithTag:textView.spellCheckerDocumentTag];
+    [arr release];
+
     return YES;
 }
 
