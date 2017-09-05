@@ -694,7 +694,7 @@ static NSCursor *XAChatTextViewSizableCursor;
         range->length--;
 
     while (range->length > 2 &&
-           ((c = [text characterAtIndex: (range->location + range->length - 1)]),
+           ((c = [text characterAtIndex: range->location]),
             (c == '(' || c == '[' || c == '{' || c == '<')))
     {
         range->location++;
