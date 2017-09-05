@@ -148,7 +148,7 @@
     
     NSButtonCell *button = [[NSButtonCell alloc] init];
     [button setButtonType:NSSwitchButton];
-    [button setControlSize:NSSmallControlSize];
+    [button setControlSize:NSControlSizeSmall];
     [button setTitle:@""];
     for (NSUInteger i = 1; i < [self->ignoreTableView numberOfColumns]; i++)
         [[self->ignoreTableView tableColumns][i] setDataCell:button];

@@ -152,8 +152,9 @@ static void *SGFileDescriptorMainLoop (void *args)
             }
         }
     }
-    
-    pthread_mutex_unlock (&SGFileDescriptorMutex);
+
+//Unreachable
+//    pthread_mutex_unlock (&SGFileDescriptorMutex);
     
     return NULL;
 }

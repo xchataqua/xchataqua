@@ -605,9 +605,9 @@ static NSCursor *XAChatTextViewSizableCursor;
     
     for (;;)
     {
-        NSEvent *nextEvent = [[self window] nextEventMatchingMask:NSLeftMouseUpMask|NSLeftMouseDraggedMask];
+        NSEvent *nextEvent = [[self window] nextEventMatchingMask:NSEventMaskLeftMouseUp|NSEventMaskLeftMouseDragged];
 
-        if ([nextEvent type] == NSLeftMouseUp)
+        if ([nextEvent type] == NSEventTypeLeftMouseUp)
             break;
         
         NSPoint mouseLoc = [self convertPoint:[nextEvent locationInWindow] fromView:nil];

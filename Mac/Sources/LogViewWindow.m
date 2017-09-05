@@ -266,8 +266,8 @@
 { 
     if ( [self selectedRow] < 0 ) return;
     
-    unichar key = [[event charactersIgnoringModifiers] characterAtIndex:0]; 
-    NSUInteger flags = [event modifierFlags] & NSDeviceIndependentModifierFlagsMask; 
+    unichar key = [[event charactersIgnoringModifiers] characterAtIndex:0];
+    NSUInteger flags = [event modifierFlags] & NSEventModifierFlagDeviceIndependentFlagsMask;
     if (key == NSDeleteCharacter && flags == 0) 
     { 
         [(LogViewWindow *)[self delegate] removeSelectedLogFiles];

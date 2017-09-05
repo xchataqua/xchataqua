@@ -45,7 +45,7 @@
                                     AWNumberOfColumns * AWButtonHeight+ AWMargin + AWMargin);
     
     self = [super initWithContentRect:windowRect 
-                            styleMask:NSTitledWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask
+                            styleMask:NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable
                               backing:NSBackingStoreBuffered
                                 defer:NO];
     
@@ -59,8 +59,7 @@
             [lineTextField setBezeled:NO];
             [lineTextField setBordered:NO];
             [lineTextField setDrawsBackground:NO];
-            [lineTextField setAlignment:NSRightTextAlignment];
-            [lineTextField setTitleWithMnemonic:[NSString stringWithFormat:@"%03d", y * AWNumberOfColumns]];
+            [lineTextField setAlignment:NSTextAlignmentRight];
             [lineTextField sizeToFit];
             NSRect lineFrame = [lineTextField frame];
             NSPoint lineOrigin = NSMakePoint (AWMargin + AWLabelWidth - lineFrame.size.width - 5.0f, 

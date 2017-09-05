@@ -43,7 +43,7 @@
 #define URLHandlersWindowKey    @"URLHandlersWindow"
 #define UserMenusWindowKey      @"UserMenusWindow"
 
-#define UtilityWindowKey(KEY, ADDR) [KEY stringByAppendingFormat:@"_%p", ADDR]
+#define UtilityWindowKey(KEY, ADDR) [KEY stringByAppendingFormat:@"_%p", (void*)ADDR]
 
 @class ColorPalette;
 @class DCCFileSendController;

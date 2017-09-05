@@ -291,7 +291,7 @@
     [alert addButtonWithTitle:NSLocalizedStringFromTable(@"Don't Save", @"xchataqua", @"")];
     [alert setMessageText:NSLocalizedStringFromTable(@"Do you want to set the topic?", @"xchataqua", @"")];
     [alert setInformativeText:NSLocalizedStringFromTable(@"You have changed the topic. Do you want to save the changes and set the topic for this channel?", @"xchataqua", @"")];
-    [alert setAlertStyle:NSWarningAlertStyle];
+    [alert setAlertStyle:NSAlertStyleWarning];
     [alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
     
     // Return NO so the focus stays on the text field. We'll remove focus from

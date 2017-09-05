@@ -52,15 +52,15 @@
                 return YES;
         }
         
-        NSUInteger eventMask = NSLeftMouseDownMask | NSLeftMouseUpMask
-                             | NSMouseMovedMask | NSLeftMouseDraggedMask | NSOtherMouseDraggedMask
-                             | NSRightMouseDraggedMask;
+        NSUInteger eventMask = NSEventMaskLeftMouseDown | NSEventMaskLeftMouseUp
+        | NSEventMaskMouseMoved | NSEventMaskLeftMouseDragged | NSEventMaskOtherMouseDragged
+        | NSEventMaskRightMouseDragged;
         
         event = [NSApp nextEventMatchingMask:eventMask
                                    untilDate:nil
                                       inMode:NSEventTrackingRunLoopMode
                                      dequeue:YES];
-        if ([event type] == NSLeftMouseUp)
+        if ([event type] == NSEventTypeLeftMouseUp)
             return NO;
     }
 }

@@ -333,7 +333,7 @@ static float trans = 1;
     
     if (!window)
     {
-        NSUInteger windowStyleMask = NSTitledWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask | NSResizableWindowMask;
+        NSUInteger windowStyleMask = NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable;
 
         window = [[NSWindow alloc] initWithContentRect:self.frame
                                              styleMask:windowStyleMask

@@ -5,7 +5,7 @@ base = "../../Resources"
 
 Dir.glob("po/*.strings") do |f|
   lang = $1 if f =~ /po\/(.+?)\.strings/
-  unless File.exists?(File.join(base, "#{lang}.lproj"))
+  unless File.exist?(File.join(base, "#{lang}.lproj"))
     Dir.mkdir(File.join(base, "#{lang}.lproj"))
     puts lang
   end

@@ -183,7 +183,7 @@ AquaChat *AquaChatSharedObject;
 
 - (BOOL) myKeyDown:(NSEvent *) theEvent
 {
-    if (([theEvent modifierFlags] & NSCommandKeyMask) == 0)
+    if (([theEvent modifierFlags] & NSEventModifierFlagCommand) == 0)
         return NO;
     
     NSString *key = [theEvent characters];
@@ -339,7 +339,7 @@ AquaChat *AquaChatSharedObject;
                    name:NSWorkspaceDidWakeNotification
                  object:nil];
     
-    [NSApp requestEvents:NSKeyDown forWindow:nil forView:nil selector:@selector (myKeyDown:) object:self];
+    [NSApp requestEvents:NSEventTypeKeyDown forWindow:nil forView:nil selector:@selector (myKeyDown:) object:self];
     
     [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
 }

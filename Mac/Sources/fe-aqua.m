@@ -306,55 +306,7 @@ fe_args (int pargc, char *pargv[])
     return -1;
 }
 
-static void fix_log_files_and_pref ()
-{
-    // Check for the change.. maybe some smart user did this already..
-    if ([@(prefs.logmask) hasSuffix:@".txt"])
-        return;
-    
-    // If logging is off, fix the pref and log files.
-    // It's a little sneaky but is probably right for the vast majority ??
-    // Else we probably should ask first.
-    if (prefs.logging && ! [SGAlert confirmWithString:
-                            NSLocalizedStringFromTable(@"This version of XChat Azure has spotlight searchable"
-                                                       @" log support but I have to change your log filename mask preference and rename your existing logs."
-                                                       @"  Do you want me to do that?", @"xchataqua", @"")])
-    {
-        return;
-    }
-    
-    // Fix the logmask pref.  Chop off the extension.. no matter what it is.
-    char *last_dot = strrchr (prefs.logmask, '.');
-    if (last_dot)
-        *last_dot = 0;
-    // Append .txt.. spotlight will automatically index these files.
-    strcat (prefs.logmask, ".txt");
-    
-    // Rename the existing log files
-    NSString *dir = [NSString stringWithFormat:@"%s/xchatlogs", get_xdir_utf8 ()];
-    NSFileManager *fm = [NSFileManager defaultManager];
-    NSDirectoryEnumerator *enumerator = [fm enumeratorAtPath:dir];
-    
-    for (NSString *fname = [enumerator nextObject]; fname != nil; fname = [enumerator nextObject] )
-    {
-        if ([fname hasPrefix:@"."] || [fname hasSuffix:@".txt"])
-            continue;
-        
-        char buff [512];
-        strncpy (buff, [fname UTF8String], sizeof(buff) - 1);
-        buff [sizeof(buff) - 1] = 0;
-        
-        char *last_dot = strrchr (buff, '.');
-        if (last_dot)
-            *last_dot = 0;
-        strcat (buff, ".txt");
-        
-        NSString *old_name = [NSString stringWithFormat:@"%s/xchatlogs/%@", get_xdir_utf8(), fname];
-        NSString *new_name = [NSString stringWithFormat:@"%s/xchatlogs/%s", get_xdir_utf8(), buff];
-        
-        rename ([old_name fileSystemRepresentation], [new_name fileSystemRepresentation]);
-    }
-}
+static NSArray *topLevelObjects = nil;
 
 void
 fe_init (void)
@@ -365,13 +317,10 @@ fe_init (void)
     //[[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
     [NSApplication sharedApplication];
     NSString *mainNibFile = [[NSBundle mainBundle] infoDictionary][@"NSMainNibFile"];
-    /*
-    NSArray *objects = nil;
-    [[NSBundle mainBundle] loadNibNamed:mainNibFile owner:NSApp topLevelObjects:&objects];
-     */
-    [NSBundle loadNibNamed:mainNibFile owner:NSApp];
+    [[NSBundle mainBundle] loadNibNamed:mainNibFile owner:NSApp topLevelObjects:&topLevelObjects];
+    [topLevelObjects retain];
     // Do not connect to network if app is launched while holding the Option key
-    if ([NSEvent modifierFlags] & NSAlternateKeyMask) {
+    if ([NSEvent modifierFlags] & NSEventModifierFlagOption) {
         arg_dont_autoconnect = true;
     }
 

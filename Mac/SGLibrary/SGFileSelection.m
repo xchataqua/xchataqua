@@ -18,14 +18,6 @@
 #import "SGFileSelection.h"
 #import "NSPanelAdditions.h"
 
-static NSString *SGFileSelectionFixPath (NSString *path)
-{
-    if ([path isAbsolutePath]) return path;
-    
-    // Assume it's relative to the dir with the app bundle
-    return [NSString stringWithFormat:@"%@/../%@", [[NSBundle mainBundle] bundlePath], path];
-}
-
 @implementation SGFileSelection
 
 + (void) getFile:(NSString *)title initialURL:(NSURL *)initial callback:(callback_t)callback userdata:(void *)userdata flags:(int)flags

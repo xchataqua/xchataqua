@@ -45,7 +45,7 @@
         [self setButtonType:NSMomentaryLightButton];
         [self setTitle:@(popup->name)];
         [self setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
-        [[self cell] setControlSize:NSSmallControlSize];
+        [[self cell] setControlSize:NSControlSizeSmall];
         [self setImagePosition:NSNoImage];
         [self setBezelStyle:NSTexturedSquareBezelStyle];
         [self sizeToFit];

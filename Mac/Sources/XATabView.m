@@ -309,7 +309,7 @@ NSImage *XATabViewOutlineCellCloseImage;
         
         CLTabViewButtonCell *cell = [[[[self class] cellClass] alloc] init];
         [self setCell:cell];
-        [cell setControlSize:NSSmallControlSize];
+        [cell setControlSize:NSControlSizeSmall];
         [cell release];
         
         CGFloat fontSize = [NSFont smallSystemFontSize];
@@ -376,8 +376,10 @@ NSNib *XATabViewItemTabMenuNib;
 - (id) initWithIdentifier:(id) identifier
 {
     self = [super init];
-    if (self != nil) {    
-        [XATabViewItemTabMenuNib instantiateNibWithOwner:self topLevelObjects:nil];
+    if (self != nil) {
+        NSArray *topLevelObjects;
+        [XATabViewItemTabMenuNib instantiateWithOwner:self topLevelObjects:&topLevelObjects];
+        _topLevelObjects = [topLevelObjects retain];
         self->_titleColorIndex = XAColorForeground;
     }
     return self;
