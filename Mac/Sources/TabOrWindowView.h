@@ -52,4 +52,6 @@
 
 - (void)setInitialFirstResponder:(NSView *) responder;
 
+- (void)clearNotifications;
+
 @end

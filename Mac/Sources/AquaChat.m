@@ -414,6 +414,10 @@ AquaChat *AquaChatSharedObject;
             break;
         }
     }
+
+    [center removeDeliveredNotification:notification];
+
+    //handle_command
 }
 
 #pragma mark NSWorkspace notification
