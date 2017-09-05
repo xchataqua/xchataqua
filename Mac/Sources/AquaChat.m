@@ -270,6 +270,8 @@ AquaChat *AquaChatSharedObject;
                 notification.subtitle = @(sess ? sess->channel : args[1]);
                 if (event == XP_TE_DPRIVMSG)
                     strncpy(o, args[2], sizeof(o));
+
+                notification.hasReplyButton = true;
             }
 
             char *x = strip_color (o, -1, STRIP_ALL);
@@ -407,9 +409,17 @@ AquaChat *AquaChatSharedObject;
             struct session *sess = find_dialog (serv, chan);
             if (!sess)
                 sess = find_channel (serv, chan);
-            if (sess && sess->gui && sess->gui->controller && sess->gui->controller.chatView)
+            if (sess)
             {
-                [sess->gui->controller.chatView makeKeyAndOrderFront:nil];
+                if (notification.activationType == NSUserNotificationActivationTypeReplied)
+                {
+                    handle_multiline(sess, (char *)[[notification.response string] UTF8String], TRUE, TRUE);
+                }
+                else
+                {
+                    if (sess->gui && sess->gui->controller && sess->gui->controller.chatView)
+                        [sess->gui->controller.chatView makeKeyAndOrderFront:nil];
+                }
             }
             break;
         }
