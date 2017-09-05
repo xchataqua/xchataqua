@@ -262,7 +262,10 @@ AquaChat *AquaChatSharedObject;
 
             if (event == XP_TE_PRIVMSG ||
                 event == XP_TE_DPRIVMSG ||
-                event == XP_TE_HCHANMSG)
+                event == XP_TE_HCHANMSG ||
+                event == XP_TE_PRIVACTION ||
+                event == XP_TE_DPRIVACTION ||
+                event == XP_TE_HCHANACTION)
             {
                 notification.subtitle = @(sess ? sess->channel : args[1]);
                 if (event == XP_TE_DPRIVMSG)
