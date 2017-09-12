@@ -47,7 +47,7 @@
 
 @class ColorPalette;
 @class DCCFileSendController;
-@class DCCFileRecieveController;
+@class DCCFileReceiveController;
 @class DCCChatController;
 @class XATabWindow;
 
@@ -65,7 +65,7 @@ NSApplicationDelegate, XAEventChain, NSUserNotificationCenterDelegate> {
     NSFont *boldFont;
     
     DCCFileSendController *dcc_send_window;
-    DCCFileRecieveController *dcc_recv_window;
+    DCCFileReceiveController *dcc_recv_window;
     DCCChatController *dcc_chat_window;
     
     NSMutableDictionary *soundCache;
@@ -134,7 +134,7 @@ NSApplicationDelegate, XAEventChain, NSUserNotificationCenterDelegate> {
 - (void) addDcc:(struct DCC *) dcc;
 - (void) removeDcc:(struct DCC *) dcc;
 - (BOOL)openDCCSendWindowAndShow:(BOOL)show;
-- (BOOL)openDCCRecieveWindowAndShow:(BOOL)show;
+- (BOOL)openDCCReceiveWindowAndShow:(BOOL)show;
 - (BOOL)openDCCChatWindowAndShow:(BOOL)show;
 - (void) addUrl:(const char *) url;
 - (void) playWaveNamed:(const char *)filename;
@@ -186,7 +186,7 @@ NSApplicationDelegate, XAEventChain, NSUserNotificationCenterDelegate> {
 - (IBAction) showBanWindow:(id)sender;
 - (IBAction) showAsciiWindow:(id)sender;
 - (IBAction) showDccChatWindow:(id)sender;
-- (IBAction) showDccRecieveWindow:(id)sender;
+- (IBAction) showDccReceiveWindow:(id)sender;
 - (IBAction) showDccSendWindow:(id)sender;
 - (IBAction) showIgnoreWindow:(id)sender;
 - (IBAction) showFriendWindow:(id)sender;
