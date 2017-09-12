@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13178.6"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -444,7 +444,7 @@
                                     <action selector="toggleMenuItemAndReloadPreferences:" target="853" id="1599"/>
                                 </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="1622"/>
+                            <menuItem isSeparatorItem="YES" id="PNp-es-fAA"/>
                             <menuItem title="Enter Full Screen" id="1623">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
@@ -514,19 +514,34 @@
                             <menuItem isSeparatorItem="YES" id="1085">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Next Window" keyEquivalent="}" id="1082">
-                                <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                            <menuItem title="Next Window" id="1082">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="selectNextTab:" target="853" id="1448"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Previous Window" keyEquivalent="{" id="1083">
-                                <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                            <menuItem title="Previous Window" id="1083">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="selectPreviousTab:" target="853" id="1449"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="1079">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Next Tab" keyEquivalent="}" id="gER-j0-Eq2">
+                                <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                                <connections>
+                                    <action selector="selectNextTab:" target="853" id="DUu-Us-ZBH"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Previous Tab" keyEquivalent="{" id="KuZ-AW-hEk">
+                                <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                                <connections>
+                                    <action selector="selectPreviousTab:" target="853" id="Pap-tP-CU2"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="rOu-j5-e39">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
                             <menuItem title="List of Channels..." id="1186">
@@ -551,7 +566,7 @@
                             </menuItem>
                             <menuItem title="File Receive..." id="1177">
                                 <connections>
-                                    <action selector="showDccReceiveWindow:" target="853" id="1456"/>
+                                    <action selector="showDccRecieveWindow:" target="853" id="1456"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="File Send..." id="1180">

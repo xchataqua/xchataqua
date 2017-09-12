@@ -93,7 +93,7 @@ extern struct XATextEventItem XATextEvents[];
         
         NSUInteger soundIndex = 0;
         
-        if (sound_files && sound_files[event])
+        if (sound_files[event])
         {
             soundIndex = [sounds indexOfObject:[NSURL fileURLWithPath:@(sound_files[event])]];
         }
@@ -348,7 +348,7 @@ extern struct XATextEventItem XATextEvents[];
     
     NSButtonCell *bcell = [[SoundButtonCell alloc] initTextCell:@""];
     [bcell setButtonType:NSSwitchButton];
-    [bcell setControlSize:NSMiniControlSize];
+    [bcell setControlSize:NSControlSizeMini];
     [bcell setAllowsMixedState:YES];
     #if ENABLE_GROWL
     [[soundsTableView tableColumns][2] setDataCell:bcell];
@@ -358,7 +358,7 @@ extern struct XATextEventItem XATextEvents[];
     
     bcell = [[SoundButtonCell alloc] initTextCell:@""];
     [bcell setButtonType:NSSwitchButton];
-    [bcell setControlSize:NSMiniControlSize];
+    [bcell setControlSize:NSControlSizeMini];
     [bcell setAllowsMixedState:YES];
     if (NSClassFromString(@"NSUserNotificationCenter") == nil) {
         [bcell setEnabled:NO];
@@ -368,14 +368,12 @@ extern struct XATextEventItem XATextEvents[];
     
     bcell = [[SoundButtonCell alloc] initTextCell:@""];
     [bcell setButtonType:NSSwitchButton];
-    [bcell setControlSize:NSMiniControlSize];
+    [bcell setControlSize:NSControlSizeMini];
     [[soundsTableView tableColumns][5] setDataCell:bcell];
     [bcell release];
     
     [self center];
-    
-    [[NSFontManager sharedFontManager] setDelegate:self];
-    
+
     [self populate];
 }
 

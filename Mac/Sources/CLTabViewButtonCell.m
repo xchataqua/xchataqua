@@ -175,8 +175,8 @@ enum {
             [trackCell highlight:NO withFrame:trackFrame inView:controlView];
             if (activated) break;
         }
-        theEvent = [[controlView window] nextEventMatchingMask:NSLeftMouseUpMask | NSLeftMouseDraggedMask];
-        if ([theEvent type] == NSLeftMouseUp)
+        theEvent = [[controlView window] nextEventMatchingMask:NSEventMaskLeftMouseUp | NSEventMaskLeftMouseDragged];
+        if ([theEvent type] == NSEventTypeLeftMouseUp)
             break;
     } while (1);
 }

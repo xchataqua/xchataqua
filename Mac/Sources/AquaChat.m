@@ -183,7 +183,7 @@ AquaChat *AquaChatSharedObject;
 
 - (BOOL) myKeyDown:(NSEvent *) theEvent
 {
-    if (([theEvent modifierFlags] & NSCommandKeyMask) == 0)
+    if (([theEvent modifierFlags] & NSEventModifierFlagCommand) == 0)
         return NO;
     
     NSString *key = [theEvent characters];
@@ -262,11 +262,16 @@ AquaChat *AquaChatSharedObject;
 
             if (event == XP_TE_PRIVMSG ||
                 event == XP_TE_DPRIVMSG ||
-                event == XP_TE_HCHANMSG)
+                event == XP_TE_HCHANMSG ||
+                event == XP_TE_PRIVACTION ||
+                event == XP_TE_DPRIVACTION ||
+                event == XP_TE_HCHANACTION)
             {
                 notification.subtitle = @(sess ? sess->channel : args[1]);
                 if (event == XP_TE_DPRIVMSG)
                     strncpy(o, args[2], sizeof(o));
+
+                notification.hasReplyButton = true;
             }
 
             char *x = strip_color (o, -1, STRIP_ALL);
@@ -339,7 +344,7 @@ AquaChat *AquaChatSharedObject;
                    name:NSWorkspaceDidWakeNotification
                  object:nil];
     
-    [NSApp requestEvents:NSKeyDown forWindow:nil forView:nil selector:@selector (myKeyDown:) object:self];
+    [NSApp requestEvents:NSEventTypeKeyDown forWindow:nil forView:nil selector:@selector (myKeyDown:) object:self];
     
     [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
 }
@@ -404,13 +409,25 @@ AquaChat *AquaChatSharedObject;
             struct session *sess = find_dialog (serv, chan);
             if (!sess)
                 sess = find_channel (serv, chan);
-            if (sess && sess->gui && sess->gui->controller && sess->gui->controller.chatView)
+            if (sess)
             {
-                [sess->gui->controller.chatView makeKeyAndOrderFront:nil];
+                if (notification.activationType == NSUserNotificationActivationTypeReplied)
+                {
+                    handle_multiline(sess, (char *)[[notification.response string] UTF8String], TRUE, TRUE);
+                }
+                else
+                {
+                    if (sess->gui && sess->gui->controller && sess->gui->controller.chatView)
+                        [sess->gui->controller.chatView makeKeyAndOrderFront:nil];
+                }
             }
             break;
         }
     }
+
+    [center removeDeliveredNotification:notification];
+
+    //handle_command
 }
 
 #pragma mark NSWorkspace notification

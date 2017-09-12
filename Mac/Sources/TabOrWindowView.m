@@ -104,6 +104,8 @@ static float trans = 1;
     if (title) {
         [tabView.window setTitle:title];
     }
+
+    [(TabOrWindowView *)[tabViewItem view] clearNotifications];
     
     current_tab = NULL;        // Set this to NULL.. the next line of code will
     // do the right thing IF it's a chat window!!
@@ -333,7 +335,7 @@ static float trans = 1;
     
     if (!window)
     {
-        NSUInteger windowStyleMask = NSTitledWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask | NSResizableWindowMask;
+        NSUInteger windowStyleMask = NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable;
 
         window = [[NSWindow alloc] initWithContentRect:self.frame
                                              styleMask:windowStyleMask
@@ -444,6 +446,26 @@ static float trans = 1;
         if ([delegate respondsToSelector:@selector (windowWillClose:)])
             [delegate windowWillClose:nil];
         [self release];
+    }
+}
+
+- (void) clearNotifications
+{
+    if (!server)
+        return;
+
+    NSArray *notifications = [NSUserNotificationCenter defaultUserNotificationCenter].deliveredNotifications;
+
+    for (NSUserNotification *notification in notifications)
+    {
+        NSNumber *servId = notification.userInfo[@"server"];
+        NSString *channel = notification.userInfo[@"channel"];
+        if (!servId || !channel)
+            continue;
+
+        if ([servId intValue] == server->id &&
+             [channel isEqualToString:tabViewItem.label])
+            [[NSUserNotificationCenter defaultUserNotificationCenter] removeDeliveredNotification:notification];
     }
 }
 

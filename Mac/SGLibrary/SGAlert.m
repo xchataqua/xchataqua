@@ -35,11 +35,10 @@
           returnCode:(NSInteger)returnCode 
          contextInfo:(void *)contextInfo
 {
-    switch (returnCode) {
-        case NSAlertFirstButtonReturn: [object performSelector:noSel]; break;
-        case NSAlertSecondButtonReturn:[object performSelector:yesSel];break;
-        default: break;
-    }
+    if (returnCode == NSAlertFirstButtonReturn)
+        [object performSelector:noSel];
+    else if (returnCode == NSAlertSecondButtonReturn)
+        [object performSelector:yesSel];
     [self release];
 }
 
@@ -80,17 +79,17 @@
 
 + (void) alertWithString:(NSString *)alertText andWait:(BOOL)wait
 {
-    [self doitWithStyle:NSWarningAlertStyle message:alertText andWait:wait];
+    [self doitWithStyle:NSAlertStyleWarning message:alertText andWait:wait];
 }
 
 + (void) noticeWithString:(NSString *)alertText andWait:(BOOL)wait
 {
-    [self doitWithStyle:NSInformationalAlertStyle message:alertText andWait:wait];
+    [self doitWithStyle:NSAlertStyleInformational message:alertText andWait:wait];
 }
 
 + (void) errorWithString:(NSString *)alertText andWait:(BOOL) wait
 {
-    [self doitWithStyle:NSCriticalAlertStyle message:alertText andWait:wait];
+    [self doitWithStyle:NSAlertStyleCritical message:alertText andWait:wait];
 }
 
 + (BOOL) confirmWithString:(NSString *)alertText
@@ -99,7 +98,7 @@
     [panel addButtonWithTitle:NSLocalizedStringFromTable(@"No", @"libsg", @"button")];
     [panel addButtonWithTitle:NSLocalizedStringFromTable(@"Yes",@"libsg", @"button")];
     [panel setMessageText:alertText];
-    [panel setAlertStyle:NSInformationalAlertStyle];
+    [panel setAlertStyle:NSAlertStyleInformational];
     
     NSInteger ret = [panel runModal];
     [panel release];
@@ -115,7 +114,7 @@
     [panel addButtonWithTitle:NSLocalizedStringFromTable(@"No" ,@"libsg", @"button")];
     [panel addButtonWithTitle:NSLocalizedStringFromTable(@"Yes",@"libsg", @"button")];
     [panel setMessageText:alertText];
-    [panel setAlertStyle:NSInformationalAlertStyle];
+    [panel setAlertStyle:NSAlertStyleInformational];
     
     SGAlertConfirmDelegate *confirmDelegate = [[SGAlertConfirmDelegate alloc] init];
     [confirmDelegate setObject:obj];

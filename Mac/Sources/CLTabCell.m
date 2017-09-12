@@ -55,7 +55,7 @@
  is only available on the 10.4 version of HIToolbox. */
 + (BOOL)available
 {
-	return (HIThemeDrawSegment != NULL);
+	return true;
 }
 
 - (id)init {
@@ -105,11 +105,11 @@
 	SInt32 metric;
 	
 	contentSize = [self contentSize];
-	verify_noerr( GetThemeMetric(kThemeMetricLargeTabHeight, &metric) );
+	assert( GetThemeMetric(kThemeMetricLargeTabHeight, &metric) == noErr );
 	mySize.height = metric;
-	verify_noerr( GetThemeMetric(kThemeMetricTabFrameOverlap, &metric) );
+	assert( GetThemeMetric(kThemeMetricTabFrameOverlap, &metric) == noErr );
 	mySize.height += metric;
-	verify_noerr( GetThemeMetric(kThemeMetricLargeTabCapsWidth, &metric) );
+	assert( GetThemeMetric(kThemeMetricLargeTabCapsWidth, &metric) == noErr );
 	mySize.width = floor(contentSize.width) + metric * 2;
 	
 	return mySize;

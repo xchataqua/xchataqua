@@ -39,7 +39,7 @@
 {
     self = [super init];
     if (self != nil) {
-        [NSBundle loadNibNamed:@"SGRequest" owner:self];
+        [[NSBundle mainBundle] loadNibNamed:@"SGRequest" owner:self topLevelObjects:nil];
         [[label window] setTitle:title];
         [label setStringValue:title];
         [[label window] center];
@@ -63,7 +63,7 @@
     [[label window] makeKeyAndOrderFront:self];
     NSModalSession session = [NSApp beginModalSessionForWindow:[label window]];
     NSInteger ret;
-    while ((ret = [NSApp runModalSession:session]) == NSRunContinuesResponse)
+    while ((ret = [NSApp runModalSession:session]) == NSModalResponseContinue)
         ;
     [NSApp endModalSession:session];     
     [[label window] close];

@@ -404,7 +404,8 @@ static NSCursor *XAChatTextViewSizableCursor;
 
         NSRange range = NSMakeRange (word_start, word_stop - word_start + 1);
 
-        int type = [self checkHotwordInRange:&range];
+        const char *normalizedName = NULL;
+        int type = [self checkHotwordInRange:&range normalizedString:&normalizedName];
 
         if (type == WORD_URL)
         {
@@ -422,24 +423,32 @@ static NSCursor *XAChatTextViewSizableCursor;
         {
             const char *substring = [[s substringWithRange:range] UTF8String];
             NSColor *color;
-            if (!strcmp(substring, [self currentSession]->me->nick))
+            if (substring)
             {
-                color = [self.palette getColor:XAColorNickMentioned];
-            }
-            else
-            {
-                static char rcolors[] = { 19, 20, 22, 24, 25, 26, 27, 28, 29 };
+                if (!strcasecmp(substring, [self currentSession]->me->nick))
+                {
+                    color = [self.palette getColor:XAColorNickMentioned];
+                }
+                else
+                {
+                    static char rcolors[] = { 19, 20, 22, 24, 25, 26, 27, 28, 29 };
 
-                long sum = 0;
+                    long sum = 0;
 
-                for (unsigned long i = range.location; i < range.location + range.length; i++)
-                    sum += [s characterAtIndex:i];
-                sum %= sizeof (rcolors);
-                color = [self.palette getColor:rcolors[sum]];
+                    if (normalizedName) {
+                        while (*normalizedName)
+                            sum += *normalizedName++;
+                    } else {
+                        for (unsigned long i = 0; i < range.location + range.length; i++)
+                            sum += [s characterAtIndex:i];
+                    }
+                    sum %= sizeof (rcolors);
+                    color = [self.palette getColor:rcolors[sum]];
+                }
+                [self.textStorage addAttribute:NSForegroundColorAttributeName
+                                         value:color
+                                         range:range];
             }
-            [self.textStorage addAttribute:NSForegroundColorAttributeName
-                                     value:color
-                                     range:range];
         }
         idx = word_stop;
     }
@@ -605,9 +614,9 @@ static NSCursor *XAChatTextViewSizableCursor;
     
     for (;;)
     {
-        NSEvent *nextEvent = [[self window] nextEventMatchingMask:NSLeftMouseUpMask|NSLeftMouseDraggedMask];
+        NSEvent *nextEvent = [[self window] nextEventMatchingMask:NSEventMaskLeftMouseUp|NSEventMaskLeftMouseDragged];
 
-        if ([nextEvent type] == NSLeftMouseUp)
+        if ([nextEvent type] == NSEventTypeLeftMouseUp)
             break;
         
         NSPoint mouseLoc = [self convertPoint:[nextEvent locationInWindow] fromView:nil];
@@ -680,11 +689,13 @@ static NSCursor *XAChatTextViewSizableCursor;
     return [super menuForEvent:theEvent];
 }
 
-- (int)checkHotwordInRange:(NSRangePointer)range
+- (int)checkHotwordInRange:(NSRangePointer)range normalizedString:(const char**)string
 {
     session *sess = [self currentSession];
     NSString *text = [[self textStorage] string];
     bool nickOnly = FALSE;
+
+    struct User *user = NULL;
 
     // First, strip any brackets and remove trailing commas
     unichar c;
@@ -694,7 +705,7 @@ static NSCursor *XAChatTextViewSizableCursor;
         range->length--;
 
     while (range->length > 2 &&
-           ((c = [text characterAtIndex: (range->location + range->length - 1)]),
+           ((c = [text characterAtIndex: range->location]),
             (c == '(' || c == '[' || c == '{' || c == '<')))
     {
         range->location++;
@@ -729,16 +740,22 @@ static NSCursor *XAChatTextViewSizableCursor;
         //
         
         // @nick
-        if (strchr (sess->server->nick_prefixes, cword[0]) && userlist_find (sess, cword+1))
+        if (strchr (sess->server->nick_prefixes, cword[0]) && (user = userlist_find (sess, cword+1)))
         {
             range->location++;
             range->length--;
+            if (string)
+                *string = user->nick;
             return WORD_NICK;
         }
         
         // Just plain nick
-        if (userlist_find (sess, cword))
+        if ((user = userlist_find (sess, cword)))
+        {
+            if (string)
+                *string = user->nick;
             return WORD_NICK;
+        }
 
         // What does this do?
         //if (sess->type == SESS_DIALOG)
@@ -830,7 +847,7 @@ static NSCursor *XAChatTextViewSizableCursor;
 
     wordRange = NSMakeRange (word_start, word_stop - word_start + 1);
 
-    wordType = [self checkHotwordInRange:&wordRange];
+    wordType = [self checkHotwordInRange:&wordRange normalizedString:nil];
 /*    wordType = my_text_word_check (s, &word_start, &word_stop);    */
 
     if (wordType <= 0)

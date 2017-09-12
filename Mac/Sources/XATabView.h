@@ -85,6 +85,7 @@
     NSInteger _groupIdentifier;
     id _initialFirstResponder;
     XATabViewButton *_tabButton;
+    NSArray *_topLevelObjects;
 @public    // TODO - fix this
     IBOutlet NSMenu *contextMenu;
 }

@@ -587,7 +587,7 @@ static NSImage *emptyBulletImage;
     
     [b setButtonType:NSPushOnPushOffButton];
     [b setTitle:[NSString stringWithFormat:@"%c", toupper (flag)]];
-    [[b cell] setControlSize:NSSmallControlSize];
+    [[b cell] setControlSize:NSControlSizeSmall];
     [b setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
     [b setImagePosition:NSNoImage];
     [b setBezelStyle:NSTexturedSquareBezelStyle];
@@ -609,7 +609,7 @@ static NSImage *emptyBulletImage;
 {
     NSTextField *b = [[NSTextField alloc] init];
     
-    [[b cell] setControlSize:NSSmallControlSize];
+    [[b cell] setControlSize:NSControlSizeSmall];
     [b setStringValue:@"999"];    
     [b setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
     [b sizeToFit];
@@ -734,7 +734,7 @@ static NSImage *emptyBulletImage;
     }
     
     ColorPalette *palette = [[AquaChat sharedAquaChat] palette];
-    if (prefs.background && strlen(prefs.background) > 0) {
+    if (*prefs.background) {
         palette = [[palette copy] autorelease];
         NSImage *image = [[NSImage alloc] initWithContentsOfFile:@(prefs.background)];
         [palette setColor:XAColorBackground color:[NSColor colorWithPatternImage:image]];
@@ -1604,7 +1604,7 @@ static NSImage *emptyBulletImage;
         [userlistTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:srow-1] byExtendingSelection:NO];
     else if (idx == srow)
         [userlistTableView deselectAll:self];
-    [userlistTableView reloadData]; 
+    [userlistTableView reloadData];
     
     return srow == idx;
 }
@@ -1653,7 +1653,7 @@ static NSImage *emptyBulletImage;
 
 - (void) progressbarStart
 {
-    if (!prefs.gui_tweaks & 2)
+    if (!(prefs.gui_tweaks & 2))
     {
         [progressIndicator startAnimation:self];
         [progressIndicator setHidden:NO];
@@ -1662,7 +1662,7 @@ static NSImage *emptyBulletImage;
 
 - (void) progressbarEnd
 {
-    if (!prefs.gui_tweaks & 2)
+    if (!(prefs.gui_tweaks & 2))
     {
         [progressIndicator setHidden:YES];
         [progressIndicator stopAnimation:self];
@@ -1687,7 +1687,7 @@ static NSImage *emptyBulletImage;
     /* CL */
     [self recalculateUserTableLayout];
     /* CL end */
-    [userlistTableView reloadData]; 
+    [userlistTableView reloadData];
 }
 
 - (void) channelLimit
@@ -2244,6 +2244,14 @@ static NSImage *emptyBulletImage;
     [textView setContinuousSpellCheckingEnabled:prefs.gui_input_spell];
     [textView setGrammarCheckingEnabled:prefs.xa_input_grammar];
     [textView setAutomaticSpellingCorrectionEnabled:prefs.xa_input_autocorrect];
+
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    for (ChannelUser *user in self->users) {
+        [arr addObject:[user->nick string]];
+    }
+    [[NSSpellChecker sharedSpellChecker] setIgnoredWords:arr inSpellDocumentWithTag:textView.spellCheckerDocumentTag];
+    [arr release];
+
     return YES;
 }
 
@@ -2283,7 +2291,7 @@ static NSImage *emptyBulletImage;
     if (commandSelector == @selector(insertNewline:))
     {
         NSEvent *theEvent = [NSApp currentEvent];
-        if ([theEvent type] == NSKeyDown && ([theEvent modifierFlags] & NSShiftKeyMask))
+        if ([theEvent type] == NSEventTypeKeyDown && ([theEvent modifierFlags] & NSEventModifierFlagShift))
         {
             [textView insertNewlineIgnoringFieldEditor:control];
             didHandleSelector = YES;
