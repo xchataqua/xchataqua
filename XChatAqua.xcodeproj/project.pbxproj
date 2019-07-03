@@ -3218,7 +3218,6 @@
 				0FC8F4AA0DEEE51700504F31 /* Headers */,
 				0FC8F4AB0DEEE51700504F31 /* Sources */,
 				4BDB8E2A10A076C8C66DB0C0 /* Frameworks */,
-				E30B9811288B70FE20AC55BA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3238,7 +3237,6 @@
 				385F782E15515C3F00689E6E /* Sources */,
 				385F782F15515C3F00689E6E /* Frameworks */,
 				385F783015515C3F00689E6E /* Headers */,
-				285AD412E267876B366C540A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3261,8 +3259,6 @@
 				38E4A0DE15CB9F3D000312D1 /* Remove PlugIns embedded provision file */,
 				38876F3D154C7727000B7E27 /* Copy PlugIns */,
 				389B258E1CE30AD000232915 /* Fabric */,
-				AC7DC48E0E8A81BE652F18E2 /* [CP] Embed Pods Frameworks */,
-				4E38AE423E2B669D5E7A2E28 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3329,8 +3325,6 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				0F8EA7C40CFB6EC9001AE9AE /* Copy Frameworks */,
 				38BC97B9154A9AAC005894EF /* Copy Plugins */,
-				546812607B7A62307998E6FA /* [CP] Embed Pods Frameworks */,
-				E1631DB464C65474CA7972E5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3618,21 +3612,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		285AD412E267876B366C540A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-glib/Pods-glib-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		2DDC6FEA1231BD760015A26C /* Generate Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3780,36 +3759,6 @@
 			shellPath = /bin/bash;
 			shellScript = "rm -rf \"$BUILT_PRODUCTS_DIR/\"*.bundle/Contents/embedded.provisionprofile";
 		};
-		4E38AE423E2B669D5E7A2E28 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XChat Azure/Pods-XChat Azure-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		546812607B7A62307998E6FA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XChat Aqua/Pods-XChat Aqua-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A4502F4A54BF5F8FB6DC37F0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3828,21 +3777,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AC7DC48E0E8A81BE652F18E2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XChat Azure/Pods-XChat Azure-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C081BE2947EEBDCB5ADAD841 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3859,36 +3793,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E1631DB464C65474CA7972E5 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XChat Aqua/Pods-XChat Aqua-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E30B9811288B70FE20AC55BA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xchat/Pods-xchat-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -5671,8 +5575,8 @@
 				);
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(BUILT_PRODUCTS_DIR)/openssl\"",
 					"$(inherited)",
+					"\"$(BUILT_PRODUCTS_DIR)/openssl\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_CODE_SIGN_FLAGS = "";
@@ -5704,8 +5608,8 @@
 				);
 				INFOPLIST_FILE = "$(TARGET_PLATFORM)/${PRODUCT_CODE}/Info.plist";
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(BUILT_PRODUCTS_DIR)/openssl\"",
 					"$(inherited)",
+					"\"$(BUILT_PRODUCTS_DIR)/openssl\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_CODE_SIGN_FLAGS = "";
