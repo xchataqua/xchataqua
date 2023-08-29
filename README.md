@@ -21,7 +21,7 @@ XChat Azure is a new brand of X-Chat Aqua, especially for Apple Appstore. See be
 
 ## Auto-recovery script
   0. WARNING: DO NOT RUN THIS SCRIPT WHILE RUNNING XCHAT AZURE
-  1. Download the [Script](http://xchataqua.github.com/downloads/fixdata.tar)
+  1. Download the [Script](http://xchataqua.github.io/downloads/fixdata.tar)
   2. Run the script: It will show the result. No bad message means Good result.
 
 ## For profesional
