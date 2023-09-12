@@ -1050,7 +1050,7 @@ AquaChat *AquaChatSharedObject;
 // Open developer page
 - (void) openHomepage:(id)sender
 {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://xchataqua.github.com/"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://xchataqua.github.io/"]];
 }
 
 // Open the X-Chat Aqua download page (same as homepage for now).
