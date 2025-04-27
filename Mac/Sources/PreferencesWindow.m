@@ -489,8 +489,17 @@ extern struct XATextEventItem XATextEvents[];
 #pragma mark NSOpenPanel delegate
 
 - (BOOL)panel:(id)sender shouldEnableURL:(NSURL *)url {
-    NSString *path = url.absoluteString;
-    return [path hasSuffix:@"/"] || [path hasSuffix:@"colors.conf"];
+    NSString *path = url.path;
+    BOOL isDirectory;
+    [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDirectory];
+
+    if (isDirectory) {
+        // Check if the directory contains a colors.conf file
+        NSString *colorsConfPath = [path stringByAppendingPathComponent:@"colors.conf"];
+        return [[NSFileManager defaultManager] fileExistsAtPath:colorsConfPath];
+    }
+
+    return [path hasSuffix:@"colors.conf"];
 }
 
 #pragma mark NSOutlineView delegate
