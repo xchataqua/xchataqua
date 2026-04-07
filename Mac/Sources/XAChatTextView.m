@@ -574,7 +574,7 @@ static NSCursor *XAChatTextViewSizableCursor;
     {
         case WORD_URL:
             // processed by native support
-            break;
+            return;
         case WORD_HOST:
         case WORD_EMAIL:
             cmd = prefs.xa_urlcommand;
@@ -590,6 +590,10 @@ static NSCursor *XAChatTextViewSizableCursor;
 
         default:
             return;
+    }
+
+    if (!cmd || !*cmd) {
+        return;
     }
 
     nick_command_parse ([self currentSession], (char *) cmd, (char *) [word UTF8String], (char *) [word UTF8String]);
@@ -679,7 +683,7 @@ static NSCursor *XAChatTextViewSizableCursor;
                 return [[MenuMaker defaultMenuMaker] menuForChannel:word inSession:sess];
 
             case WORD_EMAIL:
-                return [[MenuMaker defaultMenuMaker] menuForURL:[@"mailto:%@" format:word] inSession:sess];
+                return [[MenuMaker defaultMenuMaker] menuForURL:[NSString stringWithFormat:@"mailto:%@", word] inSession:sess];
         }
     }
 

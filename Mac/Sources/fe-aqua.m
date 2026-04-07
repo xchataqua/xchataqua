@@ -1004,7 +1004,7 @@ void fe_get_file (const char *title, char *initial,
                   int flags)
 {
     [SGFileSelection getFile:@(title)
-                  initialURL:@(initial).fileURL
+                  initialURL:[NSURL fileURLWithPath:@(initial)]
                     callback:callback userdata:userdata flags:flags];
 }
 

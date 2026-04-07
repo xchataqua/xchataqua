@@ -190,7 +190,7 @@
     [cell setFont:[self font]];
     [cell setScrollable:YES];
     [cell setPlaceholderString:
-     [@"(%@)" format:NSLocalizedStringFromTable(@"Topic is not set", @"xchataqua", @"Blank title on channel")]];
+     [NSString stringWithFormat:@"(%@)", NSLocalizedStringFromTable(@"Topic is not set", @"xchataqua", @"Blank title on channel")]];
     [self setCell:cell];
     [cell release];
     [self calcSize];

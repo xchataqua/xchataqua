@@ -338,9 +338,9 @@ void UserPluginManagerLoadCallback(char *filename) {
     NSString *name = [filename lastPathComponent];
     NSString *pluginDirectory = [[[XAFileUtil findSupportFolderFor:@PRODUCT_NAME] path] stringByAppendingPathComponent:@"plugins"];
     NSString *pluginFilename = [pluginDirectory stringByAppendingPathComponent:name];
-    NSString *cmd = [@"rm -rf '%@'" format:pluginFilename];
+    NSString *cmd = [NSString stringWithFormat:@"rm -rf '%@'", pluginFilename];
     system(cmd.UTF8String); // if directory...
-    cmd = [@"cp -R '%@' '%@'" format:filename, [pluginDirectory stringByAppendingString:@"/"]];
+    cmd = [NSString stringWithFormat:@"cp -R '%@' '%@'", filename, [pluginDirectory stringByAppendingString:@"/"]];
     system(cmd.UTF8String); // install
     [self.items addObject:[PluginItem pluginWithFilename:pluginFilename]];
 }

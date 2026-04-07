@@ -25,7 +25,7 @@
 @implementation ViewerWindow
 
 - (void)showURL:(NSURL *)URL {
-    [self setTitle:[@"XChat: Viewer / %@" format:[URL absoluteString]]];
+    [self setTitle:[NSString stringWithFormat:@"XChat: Viewer / %@", [URL absoluteString]]];
     [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:URL]];
 }
 
